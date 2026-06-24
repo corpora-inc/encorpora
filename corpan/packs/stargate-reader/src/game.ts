@@ -1283,6 +1283,30 @@ export function createStargateReader(
   }
   document.addEventListener("visibilitychange", handleVisibilityChange)
 
+  // --- Host blocking-overlay pause (issue #436) ---
+  // When the app opens a full-screen blocking overlay (the Corpán Plus paywall)
+  // over this reader, it dispatches `corpan:host-pause`; `corpan:host-resume` on
+  // close. The reader's Page-Visibility handler deliberately KEEPS audio playing
+  // when backgrounded (for lock-screen / media-session playback), so it is NOT a
+  // pause path — without this, narration would keep playing behind the paywall.
+  // The only in-reader paywall trigger today (`maybeOfferPlus`) fires from the
+  // playback-ENDED callback, where audio is already stopped; this listener is
+  // defense-in-depth so any OTHER way the host raises the overlay over a live
+  // reader (now or future) also stops + resumes narration via the real
+  // `doPause()` / `doPlay()` transport path.
+  let hostPauseWasPlaying = false
+  function handleHostPause() {
+    hostPauseWasPlaying = desiredPlaying || isPlaying
+    if (hostPauseWasPlaying) doPause()
+  }
+  function handleHostResume() {
+    if (!hostPauseWasPlaying) return
+    hostPauseWasPlaying = false
+    void doPlay()
+  }
+  window.addEventListener("corpan:host-pause", handleHostPause)
+  window.addEventListener("corpan:host-resume", handleHostResume)
+
   // --- Data loading & initialization ---
   async function initialize() {
     try {
@@ -1749,6 +1773,8 @@ export function createStargateReader(
     stopBackgroundTimers()
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
+    window.removeEventListener("corpan:host-pause", handleHostPause)
+    window.removeEventListener("corpan:host-resume", handleHostResume)
     canvas.removeEventListener("touchstart", onSwipeTouchStart)
     canvas.removeEventListener("touchmove", onSwipeTouchMove)
     canvas.removeEventListener("touchend", onSwipeTouchEnd)

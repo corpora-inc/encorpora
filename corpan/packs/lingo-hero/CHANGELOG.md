@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.8] - 2026-06-23
+
+Pause the pack when the host opens a blocking overlay (the Corpán Plus paywall)
+over it (#436) — preview channel, non-gating. No gameplay/scoring/audio/layout
+changes; reuses the existing Page-Visibility pause/resume path.
+
+### Added
+- **Pause under the paywall (#436).** Listen for the host's generic
+  `corpan:host-pause` / `corpan:host-resume` window events (dispatched when the
+  paywall opens/closes over the active pack) and route them through the EXACT
+  same `pause("manual")` / `resume()` path the Page-Visibility handler and the
+  in-game pause sheet already use: the AudioContext is suspended (via
+  `gamePaused`), the rAF advance is gated, and the chart-time baseline is rebased
+  on resume so nothing teleports. A `hostPaused` guard resumes only the pause the
+  overlay caused, so it never stomps a manual or backgrounded pause.
+
 ## [0.4.7] - 2026-06-23
 
 Bottom-HUD + top-prompt polish follow-ups from the 0.4.6 design-critic pass

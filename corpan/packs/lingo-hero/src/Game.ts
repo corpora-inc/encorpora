@@ -93,6 +93,13 @@ export class Game {
   private pausedAt: number = 0;
   /** Detach handles for the visibility / blur / pagehide listeners. */
   private visibilityHandlers: Array<() => void> = [];
+  /**
+   * True while the game is paused specifically BECAUSE the host opened a blocking
+   * overlay (the Corpán Plus paywall) over the pack via `corpan:host-pause`. Lets
+   * `corpan:host-resume` resume only the pause it caused — so it never stomps a
+   * pause the player set manually, nor one from backgrounding the app.
+   */
+  private hostPaused: boolean = false;
 
   // ---- Result LINGER (phrase-complete celebration dwell) ------------------
   /**
@@ -265,6 +272,32 @@ export class Game {
       () => window.removeEventListener("pagehide", onPageHide),
       () => window.removeEventListener("pageshow", onPageShow)
     );
+
+    // HOST BLOCKING-OVERLAY pause (issue #436). When the app opens the Corpán
+    // Plus paywall over this pack it dispatches `corpan:host-pause`; without
+    // pausing here the loop + music keep running behind the full-screen sheet.
+    // Reuse the EXACT same `pause("manual")` / `resume()` path the Page
+    // Visibility handler above and the in-game pause sheet use — it suspends the
+    // AudioContext (via `gamePaused`) and gates the rAF advance, then rebases the
+    // chart-time baseline on resume so nothing teleports.
+    if (typeof window !== "undefined") {
+      const onHostPause = () => {
+        if (this.paused) return; // already paused (manual / backgrounded) — leave it
+        this.hostPaused = true;
+        this.pause("manual");
+      };
+      const onHostResume = () => {
+        if (!this.hostPaused) return; // only resume the pause WE caused
+        this.hostPaused = false;
+        this.resume();
+      };
+      window.addEventListener("corpan:host-pause", onHostPause);
+      window.addEventListener("corpan:host-resume", onHostResume);
+      this.visibilityHandlers.push(
+        () => window.removeEventListener("corpan:host-pause", onHostPause),
+        () => window.removeEventListener("corpan:host-resume", onHostResume)
+      );
+    }
   }
 
   /** Pause the game loop + audio. Idempotent. */
@@ -286,6 +319,9 @@ export class Game {
   resume() {
     if (!this.paused) return;
     this.paused = false;
+    // Any resume clears the host-overlay flag: once we're unpaused, a later
+    // `corpan:host-resume` must not double-resume a fresh manual/background pause.
+    this.hostPaused = false;
     const now = performance.now();
     const pausedMs = Math.max(0, now - this.pausedAt);
 

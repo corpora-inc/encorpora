@@ -8,6 +8,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Pause the active pack while the paywall is up (#436).** When the Corpán Plus
+  paywall opens over a running pack, the app now dispatches a generic
+  `corpan:host-pause` window event (and `corpan:host-resume` when it closes) at
+  the single open/close chokepoint in `store/paywall.ts`. This fires for EVERY
+  trigger (`corpan:request-unlock`, Library "Unlock with Plus", dismiss / Escape
+  / scrim-tap, and the post-subscribe "Continue"), exactly once each, guarded by
+  the `open` flag so a re-open for a new surface can't double-fire. Packs that
+  opt in (Lingo Hero, Stargate/Earthgate readers) suspend their loop + audio so
+  nothing keeps playing behind the full-screen sheet, and resume on close. The
+  event is generic (not paywall-specific) so future blocking overlays reuse it,
+  mirroring the existing `corpan:host-dispose` convention.
 - **New "Semi large" text-size option.** Adds a size between Medium and Large
   (`1.1rem`, CSS class `text-semi-large`) to the text-size picker, and makes it
   the default for new profiles so default reading text is a touch larger. New

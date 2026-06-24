@@ -10,6 +10,20 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.4] - 2026-06-24
+
+### Added
+- **Pause narration under the paywall (#436).** Listen for the host's generic
+  `corpan:host-pause` / `corpan:host-resume` window events (dispatched when the
+  Corpán Plus paywall opens/closes over the active pack) and route them through
+  the real `doPause()` / `doPlay()` transport path so narration stops behind the
+  full-screen sheet and resumes on close. The reader's Page-Visibility handler
+  intentionally KEEPS audio playing when backgrounded (lock-screen / media
+  session), so it was not a pause path. The in-reader end-of-preview trigger
+  (`maybeOfferPlus`) already fires after playback has ended; this listener is
+  defense-in-depth for any other way the host raises a blocking overlay over a
+  live reader. Resumes only if audio was playing when the overlay opened.
+
 ## [0.7.3] - 2026-06-23
 
 ### Fixed

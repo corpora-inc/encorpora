@@ -90,6 +90,32 @@ type PaywallState = {
   closePaywall: () => void
 }
 
+/**
+ * Tell the active content pack (reader / game) to PAUSE itself while a blocking
+ * overlay (this paywall) is up over it, then RESUME when it closes. Without this
+ * the pack keeps running its loop + audio *behind* the full-screen paywall.
+ *
+ * Contract (generic so any future blocking overlay can reuse it, mirroring the
+ * existing `corpan:host-dispose` convention):
+ *   - `corpan:host-pause`  — dispatched once when the overlay opens.
+ *   - `corpan:host-resume` — dispatched once when it closes.
+ * Packs that opt in listen on `window` and pause/resume their own loop+audio.
+ *
+ * Fired ONLY at the store's single open/close chokepoint and guarded by the
+ * `open` flag below, so every trigger (request-unlock, "Unlock with Plus",
+ * dismiss, Escape, scrim tap, successful subscribe → Continue) gets exactly one
+ * pause and one matching resume — never double-fired, never orphaned.
+ */
+function dispatchHostBlock(type: "pause" | "resume") {
+  if (typeof window === "undefined") return
+  try {
+    window.dispatchEvent(new CustomEvent(`corpan:host-${type}`))
+  } catch {
+    // Pausing the pack is best-effort; a dispatch failure must never block the
+    // paywall open/close itself.
+  }
+}
+
 export const usePaywallStore = create<PaywallState>((set, get) => ({
   open: false,
   context: null,
@@ -103,7 +129,12 @@ export const usePaywallStore = create<PaywallState>((set, get) => ({
       if (now - lastEngagementAt() < ENGAGEMENT_CAP_MS) return false
       stampEngagement(now)
     }
+    // Only the false→true transition pauses the pack, so re-opening the paywall
+    // for a new surface while it's already up can't fire a second pause (which
+    // would orphan a resume and leave the pack stuck paused on close).
+    const wasOpen = get().open
     set({ open: true, context })
+    if (!wasOpen) dispatchHostBlock("pause")
     // Funnel: paywall_shown — fired at the single open chokepoint so it can
     // never drift from the visual component the paywall team owns.
     trackPaywallShownFunnel(context.surface, context.packId)
@@ -124,6 +155,10 @@ export const usePaywallStore = create<PaywallState>((set, get) => ({
         trackPaywallDismissedFunnel(ctx.surface)
       }
     }
+    // Resume the pack only if the paywall was actually up — closePaywall() can
+    // be called defensively when already closed; don't fire an unpaired resume.
+    const wasOpen = get().open
     set({ open: false, context: null })
+    if (wasOpen) dispatchHostBlock("resume")
   },
 }))
