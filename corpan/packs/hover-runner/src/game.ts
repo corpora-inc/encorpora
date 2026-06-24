@@ -49,6 +49,7 @@ import {
   GLOW,
   SSAO,
   PYRAMIDS,
+  POST_PROCESSING,
 } from "./core/visualConfig"
 import type {
   GameState,
@@ -651,32 +652,34 @@ export const createHoverRunner = (
     scene,
     [camera]
   )
+  // Post-process values are sourced from POST_PROCESSING in visualConfig
+  // (single source of truth — these are the exact values that render today).
   // Chromatic aberration for sci-fi aesthetic
-  renderPipeline.chromaticAberrationEnabled = true
-  renderPipeline.chromaticAberration.aberrationAmount = 15
-  renderPipeline.chromaticAberration.radialIntensity = 0.8
+  renderPipeline.chromaticAberrationEnabled = POST_PROCESSING.chromaticAberration.enabled
+  renderPipeline.chromaticAberration.aberrationAmount = POST_PROCESSING.chromaticAberration.amount
+  renderPipeline.chromaticAberration.radialIntensity = POST_PROCESSING.chromaticAberration.radialIntensity
 
   // Subtle vignette for focus
-  renderPipeline.imageProcessing.vignetteEnabled = true
-  renderPipeline.imageProcessing.vignetteWeight = 1.5
-  renderPipeline.imageProcessing.vignetteStretch = 0.5
+  renderPipeline.imageProcessing.vignetteEnabled = POST_PROCESSING.vignette.enabled
+  renderPipeline.imageProcessing.vignetteWeight = POST_PROCESSING.vignette.weight
+  renderPipeline.imageProcessing.vignetteStretch = POST_PROCESSING.vignette.stretch
   renderPipeline.imageProcessing.vignetteCameraFov = camera.fov
 
   // Minimal bloom - keep things sharp
-  renderPipeline.bloomEnabled = true
-  renderPipeline.bloomThreshold = 0.9  // Very high threshold - only brightest
-  renderPipeline.bloomWeight = 0.99    // Very subtle
-  renderPipeline.bloomKernel = 32
-  renderPipeline.bloomScale = 0.3
+  renderPipeline.bloomEnabled = POST_PROCESSING.bloom.enabled
+  renderPipeline.bloomThreshold = POST_PROCESSING.bloom.threshold
+  renderPipeline.bloomWeight = POST_PROCESSING.bloom.weight
+  renderPipeline.bloomKernel = POST_PROCESSING.bloom.kernel
+  renderPipeline.bloomScale = POST_PROCESSING.bloom.scale
 
   // Sharpen for crisp visuals
-  renderPipeline.sharpenEnabled = true
-  renderPipeline.sharpen.edgeAmount = 0.2
+  renderPipeline.sharpenEnabled = POST_PROCESSING.sharpen.enabled
+  renderPipeline.sharpen.edgeAmount = POST_PROCESSING.sharpen.edgeAmount
 
   // Subtle film grain for cinematic texture
-  renderPipeline.grainEnabled = true
-  renderPipeline.grain.intensity = 3  // Reduced from 8 for crispness
-  renderPipeline.grain.animated = true
+  renderPipeline.grainEnabled = POST_PROCESSING.grain.enabled
+  renderPipeline.grain.intensity = POST_PROCESSING.grain.intensity
+  renderPipeline.grain.animated = POST_PROCESSING.grain.animated
 
   const road = createRoad(scene)
   const hoverboard = createHoverboard(scene)

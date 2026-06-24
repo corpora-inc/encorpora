@@ -10,6 +10,34 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-06-24 — Dead-code removal + post-process config is the single source of truth
+
+### Removed
+- **Three unreachable avatar variants in `hoverboard.ts`** (`neon` /
+  `crystal-wave` / `solar-flare`). They were built every time the hoverboard
+  was created but never selectable — the skin map in `game.ts` only ever calls
+  `hoverboard.setVariant(...)` with `variantId` ∈ {`corpan`, `desert`,
+  `glacier`}. Grep-confirmed zero references to the removed variant ids before
+  deleting; the shared helpers they used (`createEmissivePbr`, `scaleColor`,
+  `MeshBuilder`) are still used by the live variants. (The unrelated `neon`
+  *env-prop* skin in `game.ts`, which maps to `variantId: "corpan"`, is
+  untouched.)
+- **Never-imported `createAvatarAura` / `updateAvatarAura` exports in
+  `systems/particles.ts`.** Grep-confirmed zero importers across the pack.
+
+### Changed
+- **`POST_PROCESSING` in `core/visualConfig.ts` is now the single source of
+  truth for the render pipeline, and `game.ts` reads from it.** Previously
+  `game.ts` set bloom/sharpen/grain/chromatic/vignette with inline literals
+  that had drifted from the (never-imported) `visualConfig` constants. The
+  config was reconciled to `game.ts`'s **current live values** (so the rendered
+  output is byte-for-byte identical) and `game.ts` now reads those constants.
+  Values brought into the config to match what renders today: `bloom.weight`
+  `0.01 → 0.99`, `sharpen.edgeAmount` `1.5 → 0.2`, `grain.intensity` `2 → 3`;
+  all other post-process values already matched. **No visual change** — this is
+  a pure value-preserving config-truth reconciliation. (`vignetteCameraFov`
+  stays inline in `game.ts` because it reads the live `camera.fov`.)
+
 ## [0.3.3] - 2026-06-23 — Native haptics
 
 ### Added
