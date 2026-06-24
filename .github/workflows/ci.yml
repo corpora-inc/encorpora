@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
+      dja: ${{ steps.filter.outputs.dja }}
       lambda: ${{ steps.filter.outputs.lambda }}
       packs: ${{ steps.filter.outputs.packs }}
       terraform: ${{ steps.filter.outputs.terraform }}
@@ -74,6 +75,7 @@ jobs:
           }
 
           set_output corpan_app '^(corpan/corpan-app/|\.github/workflows/ci\.yml$)'
+          set_output dja '^(corpan/dja/|\.github/workflows/ci\.yml$)'
           set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
           set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
@@ -103,6 +105,36 @@ jobs:
       - name: Build
         working-directory: corpan/corpan-app
         run: npm run build
+
+  # Django content-generation tests (corpan/dja). The shipped SQLite content
+  # bundle is built from this code; a regression here (e.g. the #486 silent
+  # translation-corruption bug) would otherwise ship unnoticed. The two test
+  # modules under cor/utils are plain-pytest and stub out Django + corpora_ai
+  # in sys.modules, so the only runtime deps are pytest + pydantic — no Django
+  # install, no DB, no API access. Fast (<1s) and self-contained, so it cannot
+  # jam the merge queue. Skips cleanly when no corpan/dja/** files changed,
+  # exactly like the sibling area jobs; ci-gate treats a skip as a pass.
+  dja:
+    name: dja · tests
+    needs: changes
+    if: needs.changes.outputs.dja == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test deps (pinned)
+        run: python -m pip install --disable-pip-version-check "pytest==8.3.4" "pydantic==2.12.5"
+      - name: Run dja tests
+        working-directory: corpan/dja
+        # Scope to cor/utils: the plain-pytest modules live here and stub their
+        # Django/corpora_ai deps. This auto-collects future test_*.py added in
+        # this dir, while NOT collecting cor/tests.py (a Django TestCase
+        # placeholder that would need a full Django install + DB) — keeping the
+        # gate fast and unable to jam the queue.
+        run: python -m pytest cor/utils -q
 
   lambda:
     name: lambda · tests
@@ -255,7 +287,7 @@ jobs:
   # Skipped needs are fine; any failure or cancellation fails the gate.
   ci-gate:
     name: ci-gate
-    needs: [changes, corpan-app, lambda, web-io, changed-packs, terraform, pack-catalog]
+    needs: [changes, corpan-app, dja, lambda, web-io, changed-packs, terraform, pack-catalog]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
