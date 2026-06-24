@@ -6,6 +6,58 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.8] - 2026-06-24
+
+The prompt-truncation fix that the 0.4.3 and 0.4.6 "fixes" only *appeared* to
+make — both passed a NON-faithful harness and still truncated on the operator's
+iPad (#460) — plus the level-meter HUD height match (#461). Preview channel.
+
+### Fixed
+- **Prompt no longer truncates on a long comma phrase on iPad (#460).** Root
+  cause, found with a FAITHFUL reproduction (the real game mounted at the real
+  narrow PLAY-COLUMN width — not the full landscape viewport the old harness
+  used — with the iOS font-swap timing reproduced): the heavy display face
+  ("Russo One" / Lato-Heavy) swaps in a beat AFTER the first prompt fit (the
+  normal iOS WKWebView sequence). Its wider glyphs reflow the phrase to MORE
+  lines, but nothing re-fit the prompt or recomputed the spawn play-top, so the
+  stale, too-high play-top let falling tiles spawn OVER the prompt's last line —
+  the operator's "doesn't show the whole prompt." At the narrow play column a
+  long comma phrase wraps to 3+ lines, which is why it only showed there.
+  The fix:
+  - Re-fit the prompt AND recompute the spawn clearance on
+    `document.fonts.ready` (the heavy face landing), so the layout settles
+    against the REAL glyph metrics.
+  - A second deferred (rAF) re-fit pass catches a late font swap even without
+    the fonts.ready signal.
+  - The Hud now fires an `onPromptFit` callback after every fit settles; Game
+    recomputes the spawn play-top from it, so the prompt→playfield clearance
+    stays in sync no matter WHO changed the prompt (round load, resize, direct
+    setQuestion, or a font reflow). Falling tiles now always clear the prompt's
+    last line.
+  - Defensive `overflow: visible` pinned all the way up the prompt's ancestor
+    chain (`.hud`, `.top-bar`, `.prompt-stack`) so no ancestor band can ever
+    clip the wrapped lines.
+  - **The e2e was the real reason this shipped broken twice.** The old #441
+    assertion measured the `.question-box`'s OWN metrics — but that box is
+    `overflow:visible` + `height:auto`, so its rect always grows to contain the
+    text and can NEVER report clipping itself; it also rendered at full viewport
+    width where a long phrase fits on 1–2 lines. The new #460 assertion is
+    faithful: it constrains the host to the real portrait play-column width on
+    portrait + landscape iPad, reproduces the iOS font-swap race, walks the
+    prompt's ANCESTOR chain (failing on any ancestor/viewport clip), and asserts
+    the prompt's last line clears the lane spawn play-top. It FAILS on 0.4.7 and
+    passes on 0.4.8 — a real regression guard, proven before shipping.
+
+### Changed
+- **Level meter matches the SCORE/STREAK plate height (#461).** The bottom row's
+  center level meter was a thin single-row pill (label + bar side by side), much
+  shorter than the two flanking plates. It now STACKS its two rows vertically —
+  the "Lv N · pp%" label/percent on top, the progress bar below — so all three
+  bottom-row elements read at the SAME height and the row is balanced. It stays
+  the slim center element (narrower than the fat plates); it grows in height to
+  match, not in width. Verified equal-height on big iPad (portrait + landscape)
+  and phone.
+
 ## [0.4.7] - 2026-06-23
 
 Bottom-HUD + top-prompt polish follow-ups from the 0.4.6 design-critic pass

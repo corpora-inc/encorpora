@@ -335,71 +335,179 @@ else {
   }
 }
 
-// --- Contract (e2): #441 — LONG + COMMA prompt FULLY VISIBLE at PHONE *and*
-// IPAD widths (portrait + landscape). The 0.4.3 fitPrompt() jammed phrases into
-// <=2 lines, hit a font floor, and let the overflow spill the band on iPad — the
-// exact clip the operator kept hitting. This proves the FULL phrase (every word)
-// renders without any glyph clipped, measured with a Range over the rendered text
-// (immune to scrollHeight/clientHeight integer rounding), across viewport widths.
+// --- Contract (e2): #460 — LONG + COMMA prompt FULLY VISIBLE at the REAL
+// PLAY-COLUMN WIDTH on portrait *and* landscape iPad, under the iOS font-swap
+// race. This REPLACES the old #441 assertion, which was MEANINGLESS: it measured
+// the `.question-box`'s OWN getBoundingClientRect, but that box is
+// `overflow:visible` + `height:auto`, so its rect ALWAYS grows to contain the
+// text → spill was always ~0 (it can never report clipping itself). It also
+// rendered the prompt at FULL viewport width, where a long phrase fits on 1–2
+// lines and never stresses the wrap. Both gaps let two "fixes" (0.4.3, 0.4.6)
+// pass a non-faithful harness while the operator's iPad still truncated.
+//
+// This version is FAITHFUL to the device:
+//   1. NARROW PLAY-COLUMN WIDTH — the host is constrained to a portrait play
+//      column (360–430px) so the comma phrase wraps to 3+ lines (the stress the
+//      full-width harness never applied), on both portrait and landscape iPad.
+//   2. iOS FONT-SWAP RACE — the heavy display face (Russo One / Lato-Heavy) is
+//      held back until AFTER the prompt is set, then released, reproducing the
+//      WKWebView sequence where the woff2 swaps in a beat after first paint and
+//      the phrase reflows WIDER/taller than the fallback fit measured.
+//   3. ANCESTOR / VISUAL clip — we walk the prompt's ANCESTOR chain and fail if
+//      any ancestor that establishes a clip (overflow != visible) or the
+//      VIEWPORT cuts the wrapped text, instead of trusting the question-box's
+//      own metrics.
+//   4. SPAWN-COVER — the prompt's wrapped text bottom must NOT fall below the
+//      lane spawn play-top (else falling tiles render OVER the last line — the
+//      operator's "doesn't show the whole prompt"). This is the real, width- and
+//      font-timing-dependent failure the prior harness could not see.
 {
   const LONG = "They built a fort, then argued about what to defend it from";
-  const WORDS = LONG.replace(/[.,]/g, "").split(/\s+/).filter(Boolean);
+  const EXTRA =
+    "The committee, having deliberated for hours, finally agreed that the proposal, though ambitious, deserved a cautious and measured trial run";
+  // Real iPad sizes, with the host constrained to a portrait PLAY-COLUMN width
+  // (not the full landscape viewport) — the dimension the old harness got wrong.
   const SIZES = [
-    { name: "phone-portrait", w: 390, h: 844 },
-    { name: "ipad-portrait", w: 834, h: 1112 },
-    { name: "ipad-landscape", w: 1180, h: 820 },
+    { name: "ipad-landscape-col", vw: 1080, vh: 810, hw: 360, hh: 760, phrase: LONG },
+    { name: "ipad-landscape-col-extralong", vw: 1080, vh: 810, hw: 360, hh: 760, phrase: EXTRA },
+    { name: "ipad-portrait-col", vw: 834, vh: 1112, hw: 430, hh: 980, phrase: LONG },
+    { name: "ipad11-landscape-col", vw: 1194, vh: 834, hw: 390, hh: 780, phrase: EXTRA },
+    { name: "phone-portrait", vw: 390, vh: 844, hw: 0, hh: 0, phrase: LONG },
   ];
   for (const sz of SIZES) {
-    const vp = await browser.newPage({ viewport: { width: sz.w, height: sz.h }, deviceScaleFactor: 2 });
-    vp.on("pageerror", (e) => fail(`pageerror(441-${sz.name}): ` + e.message));
+    const words = sz.phrase.replace(/[.,]/g, "").split(/\s+/).filter(Boolean);
+    const vp = await browser.newPage({
+      viewport: { width: sz.vw, height: sz.vh },
+      deviceScaleFactor: 2,
+    });
+    vp.on("pageerror", (e) => fail(`pageerror(460-${sz.name}): ` + e.message));
+    // iOS font-swap race: hold the heavy display face until after the fit.
+    let releaseFont = null;
+    const fontGate = new Promise((r) => (releaseFont = r));
+    await vp.route("**/lato-heavy.woff2", async (route) => {
+      await fontGate;
+      route.continue();
+    });
     await vp.goto(harness);
     await vp.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
-    // Give the pack the FULL viewport (the app hands the pack the whole screen).
-    await vp.evaluate(() => {
+    // Constrain the host to the real play-column box (centered), so the pack
+    // measures container.clientWidth == that narrow width — not the full vp.
+    await vp.evaluate((sz) => {
       const h = document.getElementById("host");
-      if (h) { h.style.margin = "0"; h.style.width = "100vw"; h.style.height = "100vh"; }
-    });
-    await vp.evaluate(() => {
-      const p = [...document.querySelectorAll("button")].find((b) => /practice/i.test(b.textContent || ""));
-      if (p) p.click(); else window.__lingoHero.startGame("PRACTICE");
-    });
-    await vp.waitForTimeout(350);
+      if (!h) return;
+      h.style.margin = "0";
+      if (sz.hw) {
+        // Anchor the narrow play column at the TOP-center (top:0), exactly like
+        // the real app where the pack header sits at the top of a full-height
+        // container — only the WIDTH is the play column. Centering it vertically
+        // would move the prompt to mid-viewport and distort the clip geometry.
+        h.style.position = "fixed";
+        h.style.width = sz.hw + "px";
+        h.style.height = sz.hh + "px";
+        h.style.left = "50%";
+        h.style.top = "0";
+        h.style.transform = "translateX(-50%)";
+        h.style.inset = "auto";
+      } else {
+        h.style.width = "100vw";
+        h.style.height = "100vh";
+      }
+      window.dispatchEvent(new Event("resize"));
+    }, sz);
+    await vp.waitForTimeout(120);
+    // Enter play + set the long phrase WHILE the heavy font is still blocked
+    // (fit happens at fallback metrics, exactly like iOS first paint).
+    await vp.evaluate((phrase) => {
+      const p = [...document.querySelectorAll("button")].find((b) =>
+        /practice/i.test(b.textContent || "")
+      );
+      if (p) p.click();
+      else window.__lingoHero.startGame("PRACTICE");
+      window.__lingoHero.hud.setQuestion(phrase);
+    }, sz.phrase);
+    await vp.waitForTimeout(150);
+    // Release the heavy font → it swaps in, glyphs widen, the phrase reflows.
+    releaseFont();
+    await vp.waitForTimeout(650); // fonts.ready re-fit + re-clearance settles
+    // Re-assert the phrase (the round loop may auto-advance), then measure.
     const m = await vp.evaluate((args) => {
-      const [text, words] = args;
-      window.__lingoHero.hud.setQuestion(text);
+      const [phrase, wordsIn] = args;
+      const lh = window.__lingoHero;
+      lh.hud.setQuestion(phrase);
+      // NOTE: we deliberately do NOT dispatch a synthetic resize here. The whole
+      // point of #460 is the iOS FONT-SWAP race: the heavy display face lands
+      // AFTER the initial fit and the phrase reflows taller. The fix re-fits the
+      // prompt AND recomputes the spawn play-top on document.fonts.ready (which
+      // fired during the wait above once we released the woff2). A resize tick
+      // would MASK the regression by recomputing the clearance the broken build
+      // never did on font-ready — so this test relies solely on the font-ready
+      // path, giving it real teeth against the exact bug that shipped twice.
       const el = document.querySelector("#question-box");
       if (!el) return null;
-      const cs = getComputedStyle(el);
-      const eb = el.getBoundingClientRect();
-      const padT = parseFloat(cs.paddingTop) || 0, padB = parseFloat(cs.paddingBottom) || 0;
-      const padL = parseFloat(cs.paddingLeft) || 0, padR = parseFloat(cs.paddingRight) || 0;
-      const rng = document.createRange(); rng.selectNodeContents(el);
-      const tb = rng.getBoundingClientRect();
+      const rng = document.createRange();
+      rng.selectNodeContents(el);
+      const t = rng.getBoundingClientRect();
       const txt = el.textContent || "";
-      return {
-        fontPx: parseFloat(cs.fontSize),
-        allPresent: words.every((w) => txt.includes(w)),
-        missing: words.filter((w) => !txt.includes(w)),
-        // glyph spill past the content box (Range measures the line box, which
-        // includes ~1px font leading — so 1.5px is the real-clip threshold).
-        spillBottom: Math.max(0, tb.bottom - (eb.bottom - padB)),
-        spillTop: Math.max(0, (eb.top + padT) - tb.top),
-        spillRight: Math.max(0, tb.right - (eb.right - padR)),
-        spillLeft: Math.max(0, (eb.left + padL) - tb.left),
+      // (3) Walk the ancestor chain — find the FIRST clipper (overflow != visible
+      // that cuts the wrapped text) or a viewport cut.
+      const desc = (n) => {
+        const id = n.id ? "#" + n.id : "";
+        const c =
+          n.className && typeof n.className === "string"
+            ? "." + n.className.trim().split(/\s+/).join(".")
+            : "";
+        return n.tagName.toLowerCase() + id + (id ? "" : c);
       };
-    }, [LONG, WORDS]);
-    if (!m) { fail(`#441 ${sz.name}: no #question-box`); }
-    else {
-      const SPILL = 1.5;
-      if (!m.allPresent) fail(`#441 ${sz.name}: prompt missing words ${JSON.stringify(m.missing)}`);
-      if (m.spillBottom > SPILL || m.spillTop > SPILL || m.spillRight > SPILL || m.spillLeft > SPILL) {
-        fail(`#441 ${sz.name}: prompt CLIPPED — spill(t/b/l/r)=${m.spillTop.toFixed(1)}/${m.spillBottom.toFixed(1)}/${m.spillLeft.toFixed(1)}/${m.spillRight.toFixed(1)} (font ${m.fontPx}px)`);
+      let clipper = null;
+      let node = el;
+      const vh = window.innerHeight;
+      while (node && node !== document.documentElement) {
+        const cs = getComputedStyle(node);
+        const r = node.getBoundingClientRect();
+        if (cs.overflowY !== "visible") {
+          const overB = t.bottom - r.bottom;
+          const overT = r.top - t.top;
+          if ((overB > 1.5 || overT > 1.5) && !clipper) {
+            clipper = `${desc(node)} (overflow ${cs.overflowX}/${cs.overflowY}) cuts ↓${overB.toFixed(1)}/↑${overT.toFixed(1)}`;
+          }
+        }
+        node = node.parentElement;
       }
-      if (m.allPresent && m.spillBottom <= SPILL && m.spillTop <= SPILL && m.spillRight <= SPILL && m.spillLeft <= SPILL) {
-        console.log(`OK: #441 long+comma prompt fully visible at ${sz.name} ${sz.w}x${sz.h} (font ${m.fontPx}px, all ${WORDS.length} words, spill<=${SPILL}px)`);
-      }
+      if (!clipper && t.bottom - vh > 1.5)
+        clipper = `VIEWPORT cuts ↓${(t.bottom - vh).toFixed(1)}`;
+      if (!clipper && -t.top > 1.5)
+        clipper = `VIEWPORT cuts ↑${(-t.top).toFixed(1)}`;
+      // (4) Spawn-cover: prompt text bottom vs lane spawn play-top (canvas-local).
+      const canvas = document.querySelector("canvas");
+      const ctop = canvas.getBoundingClientRect().top;
+      const playTopY = lh.laneSystem.getPlayTopY();
+      const promptBottomLocal = t.bottom - ctop;
+      return {
+        fontPx: parseFloat(getComputedStyle(el).fontSize),
+        qbWidth: el.clientWidth,
+        allPresent: wordsIn.every((w) => txt.includes(w)),
+        missing: wordsIn.filter((w) => !txt.includes(w)),
+        clipper,
+        promptBottomLocal,
+        playTopY,
+        coverPx: promptBottomLocal - playTopY,
+      };
+    }, [sz.phrase, words]);
+    if (!m) {
+      fail(`#460 ${sz.name}: no #question-box`);
+    } else {
+      if (!m.allPresent)
+        fail(`#460 ${sz.name}: prompt missing words ${JSON.stringify(m.missing)}`);
+      if (m.clipper)
+        fail(`#460 ${sz.name}: prompt CLIPPED by ANCESTOR/viewport — ${m.clipper} (col ${m.qbWidth}px, font ${m.fontPx.toFixed(0)}px)`);
+      // The prompt's last line must clear the spawn play-top (tiles must not
+      // spawn over it). A small tolerance for sub-pixel rounding.
+      if (m.coverPx > 2.0)
+        fail(`#460 ${sz.name}: prompt last line COVERED by spawn area by ${m.coverPx.toFixed(1)}px (promptBottom ${m.promptBottomLocal.toFixed(0)} > playTop ${m.playTopY.toFixed(0)}, col ${m.qbWidth}px)`);
+      if (m.allPresent && !m.clipper && m.coverPx <= 2.0)
+        console.log(`OK: #460 long+comma prompt fully visible at ${sz.name} (col ${m.qbWidth}px, font ${m.fontPx.toFixed(0)}px, all ${words.length} words, no ancestor clip, clears spawn by ${(-m.coverPx).toFixed(0)}px)`);
     }
-    await vp.screenshot({ path: join(outDir, `prompt-441-${sz.name}.png`) });
+    await vp.screenshot({ path: join(outDir, `prompt-460-${sz.name}.png`) });
     await vp.close();
   }
 }

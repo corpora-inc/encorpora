@@ -547,6 +547,14 @@ canvas {
   padding: calc(var(--safe-top) + 4px) 0 0;
   gap: 4px;
   pointer-events: none;
+  /* #460 — the prompt header must NEVER be clipped by an ancestor. The HUD and
+     every container ABOVE the prompt explicitly keep overflow visible so a long
+     comma phrase that wraps to 3+ lines spills past the translucent band into
+     the (transparent) playfield instead of being cut off. This is a hard
+     contract: the operator hit truncation when an ancestor band clipped the
+     wrapped lines, so we pin overflow:visible all the way up the prompt chain. */
+  overflow: visible;
+  min-height: 0;
 }
 
 /* Full-width, edge-to-edge top header — just prompt + building pills, minimum
@@ -566,6 +574,9 @@ canvas {
   padding-right: calc(14px + env(safe-area-inset-right, 0px));
   padding-top: 46px;
   box-sizing: border-box;
+  /* #460 — never clip the wrapped prompt (see .hud note). */
+  overflow: visible;
+  min-height: 0;
 }
 
 /* TOP-LEFT CHROME (issue #426): the small PAUSE control + a single MUTE toggle.
@@ -712,6 +723,9 @@ canvas {
   gap: var(--na-space-1);
   min-width: 0;
   width: 100%;
+  /* #460 — never clip the wrapped prompt (see .hud note). */
+  overflow: visible;
+  min-height: 0;
 }
 
 /* The prompt is a TRANSLUCENT overlay label — no solid card, so the falling
@@ -909,23 +923,36 @@ canvas {
   text-align: center;
 }
 
-/* The CENTER meter is THIN: it does NOT grow like the fat plates — it takes a
-   modest fixed-ish slice between them, so the two score/streak plates dominate
-   and the meter reads as a slim progress strip. */
+/* #461 — the CENTER level meter now matches the SCORE/STREAK plate HEIGHT.
+   Instead of a thin single-row pill (label + bar side by side, much shorter than
+   the two flanking plates), the meter cell STACKS its two rows VERTICALLY — the
+   "Lv N · pp%" label/percent ON TOP, the progress bar BELOW — so all three
+   bottom-row elements read at the SAME height and the row is visually balanced.
+   It still stays the SLIM center element (narrower than the fat plates) — it
+   grows in height to match, not in width. `align-items: stretch` lets the bar
+   span the cell width; `justify-content: center` vertically centers the 2 rows
+   so they sit level with the plates' label+value. */
 .lh-stats .mastery-readout {
   flex: 0 1 auto;
-  align-self: center;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: auto;
   min-width: clamp(72px, 22vw, 150px);
   max-width: 32%;
   margin: 0;
-  gap: 8px;
-  padding: clamp(3px, 1vmin, 6px) clamp(8px, 1.6vw, 14px);
+  gap: clamp(4px, 1.2vmin, 8px);
+  padding: clamp(0.4rem, 1.4vmin, 0.7rem) clamp(0.7rem, 2vw, 1.2rem);
   font-size: clamp(0.6rem, 2.4vmin, 0.78rem);
 }
-/* Keep the meter's progress bar from collapsing in the compact row. */
+/* The progress bar now sits on its OWN row beneath the label and spans the
+   meter cell width (capped) so the 2-row meter reads as a proper plate. */
 .lh-stats .mastery-bar {
-  min-width: 34px;
+  flex: 0 0 auto;
+  width: 100%;
+  min-width: 48px;
+  max-width: 160px;
 }
 /* The in-stats meter label is a mixed-case readout ("Lv 1 · 0%") — keep its
    intended casing + middot separator (#445.3); do NOT uppercase it like the
