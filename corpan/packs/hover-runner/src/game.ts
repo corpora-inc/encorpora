@@ -1262,7 +1262,7 @@ export const createHoverRunner = (
   }
 
   // Initialize screen shake system
-  const { shakeOffset, trigger: triggerScreenShake } = createScreenShake()
+  const { shakeOffset, trigger: triggerScreenShake, update: updateScreenShake } = createScreenShake()
 
   const createPhraseMesh = (spec: PhraseSpec) => {
     const scale = getTextScale() * 1.45 * getSettings().textScaleFactor
@@ -2583,6 +2583,10 @@ export const createHoverRunner = (
       )
       updateSpeedLines(speedLines, speedMultiplier)
     }
+    // #438 PR-6: advance the screen shake on the render clock so it is
+    // frame-rate independent and decays cleanly even while paused (was a
+    // separate setInterval that drifted on high-refresh displays).
+    updateScreenShake(dt)
     const farX = road.getFarCenterX()
     cameraTarget.set(
       farX * 0.2 + shakeOffset.x,
