@@ -210,20 +210,29 @@ export const MAQAMAT: Mode[] = [
     aliases: ["Nahwand", "Maqam Nahawand"],
     notes: "Minor-like; upper Hijaz on the 5th gives the harmonic-minor leading tone. 12-TET-aligned (no neutral tones).",
   }),
-  // Kurd = jins Kurd on tonic + jins Kurd/Nahawand on the 5th (≈ Phrygian).
-  buildMaqam("maqam.kurd", "Kurd", JINS_KURD, JINS_NAHAWAND, 702, {
+  // Kurd = jins Kurd on tonic + jins Nahawand on the 4th (498) (≈ Phrygian).
+  buildMaqam("maqam.kurd", "Kurd", JINS_KURD, JINS_NAHAWAND, 498, {
     aliases: ["Kurd-i", "Maqam Kurd"],
-    notes: "Phrygian-like; 12-TET-aligned (no neutral tones). 0 90 294 498 702 792 996.",
+    notes:
+      "Phrygian-like; 12-TET-aligned (no neutral tones). Lower Kurd + jins Nahawand on the " +
+      "4th (498) → 0 90 294 498 702 792 996. Source: maqamworld.com/en/maqam/kurd.php.",
   }),
-  // Ajam = jins Ajam (pentachord) on tonic + jins Rast/Ajam on the 5th (≈ major).
-  buildMaqam("maqam.ajam", "Ajam", JINS_AJAM, JINS_NAHAWAND, 702, {
+  // Ajam = jins Ajam (pentachord) on tonic + jins Nahawand on the 6th (≈ MAJOR scale).
+  buildMaqam("maqam.ajam", "Ajam", JINS_AJAM, JINS_NAHAWAND, 906, {
     aliases: ["Ajam Ushayran", "Maqam Ajam"],
-    notes: "Major-like; 12-TET-aligned. Built on a major pentachord. 0 204 408 498 702 906 996/1110.",
+    notes:
+      "Major scale (Arabic 'major'); 12-TET-aligned. Major pentachord + jins Nahawand on the " +
+      "6th (906) → 0 204 408 498 702 906 1110 (major 7th B, NOT ♭7). maqamworld also names a " +
+      "Kurd middle-jins on the 3rd (adds no new degree here). Source: maqamworld.com/en/maqam/ajam_ushayran.php.",
   }),
-  // Nikriz = jins Nikriz (pentachord, raised 4th) on tonic + Hijaz/Rast above.
-  buildMaqam("maqam.nikriz", "Nikriz", JINS_NIKRIZ, JINS_RAST, 702, {
+  // Nikriz = jins Nikriz (pentachord, raised 4th) on tonic + jins NAHAWAND on the 5th.
+  buildMaqam("maqam.nikriz", "Nikriz", JINS_NIKRIZ, JINS_NAHAWAND, 702, {
     aliases: ["Nigriz", "Maqam Nikriz"],
-    notes: "Pentachord with a raised 4th (594¢, A4) over a minor 3rd. Nikriz lower + Rast upper.",
+    notes:
+      "Arabic Nikriz: lower Nikriz pentachord (raised 4th 594¢) + jins Nahawand on the 5th → " +
+      "C D E♭ F♯ G A B♭ (0 204 294 594 702 906 996). A MINOR 7th (B♭), not neutral. " +
+      "(Turkish makam Nikriz, rooted on Rast with a neutral 7th, is a separate regional variant — " +
+      "future 'school'.) Source: maqamworld.com/en/maqam/nikriz.php.",
   }),
   // Suznak = Rast lower + Hijaz on the 5th (Rast with a Hijaz upper).
   buildMaqam("maqam.suznak", "Suznak", JINS_RAST, JINS_HIJAZ, 702, {

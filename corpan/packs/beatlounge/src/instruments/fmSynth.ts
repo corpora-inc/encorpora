@@ -36,9 +36,12 @@ export const createFmInstrument = (config: FmConfig): Instrument => {
     output: out,
     live: live.api,
     trigger(note: TriggerNote, when: number) {
-      const name = Tone.Frequency(note.pitch, "midi").toNote()
+      // Detuned frequency = 12-TET freq × 2^(cents/1200). 0 cents ⇒ unchanged.
+      const freq =
+        Tone.Frequency(note.pitch, "midi").toFrequency() *
+        Math.pow(2, (note.detuneCents ?? 0) / 1200)
       try {
-        poly.triggerAttackRelease(name, Math.max(0.02, note.durationSec), when, note.velocity)
+        poly.triggerAttackRelease(freq, Math.max(0.02, note.durationSec), when, note.velocity)
       } catch {
         /* ignore voice exhaustion */
       }

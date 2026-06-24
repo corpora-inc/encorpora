@@ -77,12 +77,14 @@ export const createSinePadInstrument = (config: SynthConfig): Instrument => {
     output: out,
     live: live.api,
     trigger(note: TriggerNote, when: number) {
-      const name = Tone.Frequency(note.pitch, "midi").toNote()
+      const freq =
+        Tone.Frequency(note.pitch, "midi").toFrequency() *
+        Math.pow(2, (note.detuneCents ?? 0) / 1200)
       // Pads want to breathe: ensure a minimum sustain so the slow attack opens.
       const dur = Math.max(0.3, note.durationSec)
       for (const layer of layers) {
         try {
-          layer.triggerAttackRelease(name, dur, when, note.velocity)
+          layer.triggerAttackRelease(freq, dur, when, note.velocity)
         } catch {
           /* ignore voice exhaustion */
         }
