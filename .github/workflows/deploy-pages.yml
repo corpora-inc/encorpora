@@ -78,6 +78,13 @@ jobs:
         working-directory: corpan/packs/hanzipan
         run: node scripts/pack.mjs
 
+      # Wordpan is a DATA-ONLY pack (no JS build) — the built-in Phrase Flip
+      # experience queries its word_explanation table on long-press. The
+      # data/word.sqlite3 ships via Git LFS (checkout sets lfs: true above).
+      - name: Package Wordpan (es→en word explanations)
+        working-directory: corpan/packs/wordpan
+        run: node scripts/pack.mjs
+
       - name: Install Juice Squeeze Dependencies
         working-directory: corpan/packs/juice-squeeze
         run: npm install --legacy-peer-deps
@@ -256,6 +263,12 @@ jobs:
           cp -R corpan/packs/hanzipan/dist "web/io/out/corpan/packs/hanzipan/"
           cp -R corpan/packs/hanzipan/data "web/io/out/corpan/packs/hanzipan/"
           cp corpan/packs/hanzipan/hanzipan.zip "web/io/out/corpan/packs/hanzipan.zip"
+
+      - name: Copy Wordpan into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/wordpan"
+          cp corpan/packs/wordpan/manifest.json "web/io/out/corpan/packs/wordpan/"
+          cp corpan/packs/wordpan/wordpan-es-en.zip "web/io/out/corpan/packs/wordpan-es-en.zip"
 
       - name: Copy Juice Squeeze into io/out
         run: |
