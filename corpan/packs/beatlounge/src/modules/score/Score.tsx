@@ -230,12 +230,55 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
     return ids
   }, [selectedCells, track, view])
 
+  // The degree-row keys of the selected notes — so "+" can spread a layer across
+  // exactly the rows the user selected (#395). `row.key` is the degree string.
+  const selectedDegreeKeys = useMemo(() => {
+    const keys = new Set<string>()
+    if (!view) return keys
+    for (const cell of selectedCells) {
+      const row = view.rows[Number(cell.split(":")[0])]
+      if (row) keys.add(row.key)
+    }
+    return keys
+  }, [selectedCells, view])
+
   // ---- the +/− layer dial — one undo batch per tap --------------------------
   const runDial = (op: "add" | "remove") => {
     // A manual layer tap on an armed track wins: disarm so the conductor stops
     // overwriting it. The +/- batch below stays a single undoable edit + toast.
     if (auto.on) auto.arm(false)
     const before = store.vanilla.getState().doc
+    const finishToast = (summary: string) =>
+      host.toast(summary, { undo: () => store.vanilla.getState().doc !== before && store.undo() })
+
+    // ---- #395: when a NOTE selection exists, the dial acts ON the selection ----
+    if (selectedNoteIds.size > 0) {
+      if (op === "remove") {
+        // "−" removes exactly the selected notes (one undo step).
+        const cmds = [...selectedNoteIds].map(
+          (noteId) => ({ t: "removeNote" as const, trackId, noteId })
+        )
+        const n = cmds.length
+        store.dispatch({ t: "batch", commands: cmds, label: "score-remove-selected" })
+        setSelectedCells(new Set())
+        finishToast(n === 1 ? ct("score.removedNoteOne", { n: "1" }) : ct("score.removedNotes", { n: String(n) }))
+        return
+      }
+      // "+" spreads a fresh layer across the SELECTED notes' rows (all of them).
+      const seedSel = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
+      const selResult = buildScoreCommands(store.vanilla.getState().doc, {
+        trackId, op, selectedRows: selectedDegreeKeys, metric, table, octaves: OCTAVES, seed: seedSel,
+      })
+      if (selResult.commands.length === 0) {
+        host.toast(selResult.summary || ct("score.nothingToApply"))
+        return
+      }
+      store.dispatch({ t: "batch", commands: selResult.commands, label: `score-${op}` })
+      finishToast(selResult.summary)
+      return
+    }
+
+    // ---- no note selection: today's behaviour (row-head selection / global) ----
     const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
     const result = buildScoreCommands(store.vanilla.getState().doc, {
       trackId,
@@ -251,7 +294,57 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
       return
     }
     store.dispatch({ t: "batch", commands: result.commands, label: `score-${op}` })
-    host.toast(result.summary, {
+    finishToast(result.summary)
+  }
+
+  // ---- #332: Evolve the selected notes — vary them IN KEY (transpose a coherent
+  // amount, or mirror the contour). Each selected note carries its degree (its
+  // row), so we shift the degree and resolve the new pitch from the range rows. --
+  const evolveSelection = () => {
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isInstrumentTrack(cur) || selectedCells.size === 0 || !view) return
+    if (auto.on) auto.arm(false)
+    const before = store.vanilla.getState().doc
+
+    const sel: { degree: number; tick: number; id: string; duration: number; velocity: number }[] = []
+    for (const cellKey of selectedCells) {
+      const [ri, s] = cellKey.split(":").map(Number)
+      const row = view.rows[ri]
+      if (!row) continue
+      const tick = tickForStep(s, cur.grid)
+      const note = cur.notes.find((n) => n.tick === tick && n.pitch === row.midi)
+      if (note) sel.push({ degree: row.degree, tick, id: note.id, duration: note.duration, velocity: note.velocity })
+    }
+    if (sel.length === 0) return
+
+    // One transform for the whole selection: mostly a coherent in-scale transpose,
+    // sometimes a contour inversion around the selection's mean degree.
+    const mean = sel.reduce((a, n) => a + n.degree, 0) / sel.length
+    const mapDeg =
+      Math.random() < 0.3
+        ? (d: number) => Math.round(2 * mean - d) // invert contour
+        : ((off) => (d: number) => d + off)([-2, -1, 1, 2][Math.floor(Math.random() * 4)]) // transpose
+
+    const midiForDegree = (deg: number): number | null =>
+      view.rows.find((r) => r.degree === deg)?.midi ?? null
+
+    const newNotes = sel
+      .map((n) => {
+        const midi = midiForDegree(mapDeg(n.degree))
+        return midi == null ? null : { tick: n.tick, duration: n.duration, pitch: midi, velocity: n.velocity }
+      })
+      .filter((n): n is NonNullable<typeof n> => n !== null)
+    if (newNotes.length === 0) {
+      host.toast(ct("score.nothingToApply"))
+      return
+    }
+    const cmds = [
+      ...sel.map((n) => ({ t: "removeNote" as const, trackId, noteId: n.id })),
+      ...newNotes.map((note) => ({ t: "addNote" as const, trackId, note })),
+    ]
+    store.dispatch({ t: "batch", commands: cmds, label: "score-evolve" })
+    setSelectedCells(new Set()) // note ids changed
+    host.toast(ct("score.evolvedToast", { n: String(newNotes.length) }), {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -331,6 +424,16 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
               ? ct("score.selectCount", { n: String(selectedNoteIds.size) })
               : ct("score.select")}
           </button>
+          {selectMode && selectedNoteIds.size > 0 && (
+            <button
+              type="button"
+              className="bl-chip"
+              onClick={evolveSelection}
+              title={ct("score.evolveSelHint")}
+            >
+              {ct("score.evolveSel")}
+            </button>
+          )}
           {audio && (
             <button
               type="button"
