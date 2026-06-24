@@ -12,9 +12,11 @@
  *   (b) CATCH SCORES — tapping the lane of the correct NEXT target word (the
  *       one with seqIndex === caughtCount), at its visual position on the strum
  *       line, INCREASES the score. (input coords + catch-in-sequence)
- *   (c) NO TAP-THROUGH — tapping the on-screen chrome (the Pause control + its
- *       Resume/Exit sheet, and the single Mute toggle) does NOT score; the
- *       controls must capture their own taps rather than leaking into a lane.
+ *   (c) NO TAP-THROUGH — tapping the on-screen chrome (the persistent Pause
+ *       control + its Resume/Mute/Exit sheet) does NOT score; the controls must
+ *       capture their own taps rather than leaking into a lane. (#462: the Pause
+ *       control is now ALWAYS visible — no auto-hide — and the Mute toggle lives
+ *       INSIDE the pause sheet, not as a separate HUD pill.)
  *   (e) PROMPT FULLY VISIBLE — a deliberately LONG primary-language prompt
  *       renders without truncation (no horizontal overflow; wraps within the
  *       header band). The #426 prompt auto-fit/wrap contract.
@@ -152,17 +154,42 @@ await page.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { 
 }
 
 // --- Contract (c): control tap (Pause) must NOT score (no tap-through). ------
-// The top-left chrome is now a PAUSE control that opens a Resume/Exit sheet, plus
-// a single MUTE toggle. Both sit in the pointer-events:none overlay but opt back
-// in + stopPropagation, so a tap on them must NOT reach the lane input. We stub
-// corpan:exit so the eventual Exit doesn't tear the game down mid-test, and
-// force the chrome visible (it auto-fades during play) before measuring.
+// #462: the top-left chrome is now ONE small PERSISTENT pause control (always
+// visible during play — NO auto-hide, NO tap-the-playfield-to-reveal). It opens
+// a Resume / Mute / Exit sheet. The mute toggle moved INTO that sheet (there is
+// NO separate mute HUD pill anymore). The control sits in the pointer-events:none
+// overlay but opts back in + stopPropagation, so a tap on it must NOT reach the
+// lane input. We stub corpan:exit so the eventual Exit doesn't tear the game down
+// mid-test. We do NOT remove any chrome-hidden class — the control is persistent.
 await page.evaluate(() => {
   window.__exitFired = 0;
   window.addEventListener("corpan:exit", () => { window.__exitFired++; }, true);
-  // Surface the auto-fading chrome so the control is hittable in this frame.
-  document.querySelector(".ui-layer")?.classList.remove("chrome-hidden");
 });
+// The pause control must be PERSISTENTLY visible during play — assert it is
+// present, not [hidden], and has real (non-zero opacity) layout, WITHOUT any
+// test-side reveal (the old auto-hide is gone).
+{
+  const vis = await page.evaluate(() => {
+    const b = document.querySelector("#lh-pause");
+    if (!b) return { present: false };
+    const r = b.getBoundingClientRect();
+    const cs = getComputedStyle(b);
+    return {
+      present: true,
+      w: r.width, h: r.height,
+      visible: cs.display !== "none" && parseFloat(cs.opacity || "1") > 0.05,
+      // No separate mute HUD pill may exist OUTSIDE the (hidden) pause sheet.
+      hudMutePills: [...document.querySelectorAll(".lh-mute-btn")].filter(
+        (m) => !m.closest("#lh-pause-sheet")
+      ).length,
+    };
+  });
+  if (!vis.present) fail("#462: no persistent #lh-pause control present during play");
+  else if (!(vis.w > 0 && vis.h > 0)) fail(`#462: pause control has no layout size (w=${vis.w}, h=${vis.h})`);
+  else if (!vis.visible) fail("#462: pause control present but not visible (display:none / opacity ~0) — it must be PERSISTENT, no auto-hide");
+  else if (vis.hudMutePills > 0) fail(`#462: a MUTE pill is still in the HUD (${vis.hudMutePills}) — it must move into the pause sheet`);
+  else console.log("OK: #462 pause control persistently visible during play; no HUD mute pill");
+}
 const pauseCtl = await page.evaluate(() => {
   const b = document.querySelector("#lh-pause"); if (!b) return null;
   const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -174,13 +201,44 @@ else {
   await page.waitForTimeout(140);
   if ((await read()).score !== before) fail("tap-through: Pause tap changed the score");
   else console.log("OK: Pause tap did not leak into a lane");
-  // The pause sheet must now be open (Resume / Exit) and the run paused.
+  // The pause sheet must now be open with Resume / Mute / Exit (#462 moved mute
+  // into the sheet) and the run paused.
   const sheetOpen = await page.evaluate(() => {
     const s = document.querySelector("#lh-pause-sheet");
-    return !!s && !s.hidden && !!document.querySelector("#lh-exit") && !!document.querySelector("#lh-resume");
+    return !!s && !s.hidden &&
+      !!document.querySelector("#lh-resume") &&
+      !!document.querySelector("#lh-mute") &&
+      !!document.querySelector("#lh-exit");
   });
-  if (!sheetOpen) fail("pause control did not open the Resume/Exit sheet");
-  else console.log("OK: pause control opened the Resume/Exit sheet");
+  if (!sheetOpen) fail("pause control did not open the Resume/Mute/Exit sheet");
+  else console.log("OK: pause control opened the Resume/Mute/Exit sheet");
+
+  // --- Contract (c2): the MUTE control now lives INSIDE the open sheet (#462).
+  // Exactly ONE mute control must exist, and it must be within the pause sheet.
+  // Tapping it must NOT leak a tap into a lane (score unchanged).
+  const muteCtl = await page.evaluate(() => {
+    const all = document.querySelectorAll("#lh-mute, .lh-mute-btn");
+    if (all.length !== 1) return { dupe: true, count: all.length };
+    const b = document.querySelector("#lh-mute");
+    if (!b) return null;
+    if (!b.closest("#lh-pause-sheet")) return { outside: true };
+    const r = b.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  });
+  if (!muteCtl) fail("no #lh-mute control found inside the pause sheet");
+  else if (muteCtl.dupe) fail(`expected exactly one mute control, found ${muteCtl.count}`);
+  else if (muteCtl.outside) fail("#462: the mute control is NOT inside the pause sheet (it must move into Resume/Mute/Exit)");
+  else {
+    const beforeM = (await read()).score;
+    await page.mouse.click(muteCtl.x, muteCtl.y);
+    await page.waitForTimeout(120);
+    if ((await read()).score !== beforeM) fail("tap-through: in-sheet Mute tap changed the score");
+    else console.log("OK: in-sheet Mute tap did not leak into a lane");
+    // Tap again to restore audio-neutral state for later phases.
+    await page.mouse.click(muteCtl.x, muteCtl.y);
+    await page.waitForTimeout(80);
+  }
+
   // Tapping Exit inside the sheet must NOT score either, and must fire corpan:exit.
   const exit = await page.evaluate(() => {
     const b = document.querySelector("#lh-exit"); if (!b) return null;
@@ -197,26 +255,6 @@ else {
   }
   // Resume so the rest of the test plays normally (Exit was stubbed, run is live).
   await page.evaluate(() => window.__lingoHero.resume && window.__lingoHero.resume());
-}
-
-// --- Contract (c2): MUTE control tap must NOT score (no tap-through). --------
-await page.evaluate(() => document.querySelector(".ui-layer")?.classList.remove("chrome-hidden"));
-const muteCtl = await page.evaluate(() => {
-  const b = document.querySelector("#lh-mute"); if (!b) return null;
-  // Exactly ONE mute control must exist.
-  if (document.querySelectorAll("#lh-mute, .lh-mute-btn").length !== 1) return { dupe: true };
-  const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-});
-if (!muteCtl) fail("no #lh-mute control found");
-else if (muteCtl.dupe) fail("more than one mute control present");
-else {
-  const before = (await read()).score;
-  await page.mouse.click(muteCtl.x, muteCtl.y);
-  await page.waitForTimeout(120);
-  if ((await read()).score !== before) fail("tap-through: Mute tap changed the score");
-  else console.log("OK: Mute tap did not leak into a lane");
-  // Unmute again so audio state is neutral for later phases.
-  await page.mouse.click(muteCtl.x, muteCtl.y);
 }
 
 // --- Contract (c3): #442 — lane hit-testing is ISOLATED to the lane COLUMNS. ---
@@ -345,8 +383,13 @@ else {
     if (probe.scrollWidth > probe.clientWidth + 1) {
       fail(`prompt overflows horizontally (scrollWidth ${probe.scrollWidth} > clientWidth ${probe.clientWidth})`);
     }
-    // Allow up to ~3 lines of slack (the box wraps to 2; padding adds a little).
-    const maxH = probe.lineHeightPx * 3 + 8;
+    // Budget = the prompt's OWN fit MAX_LINES (4) + a little padding slack. #462
+    // narrowed the side gutters to clear the floating corner pause control, so a
+    // long phrase wraps to one more line on a phone column than it did under the
+    // old reserved-band layout — still fully visible (no clip), within the
+    // prompt's 4-line auto-fit budget. (The #460 spawn-cover tests below are the
+    // faithful at-play-column contract; this is the coarse no-clip guard.)
+    const maxH = probe.lineHeightPx * 4 + 8;
     if (probe.scrollHeight > maxH) {
       fail(`prompt overflows vertically (scrollHeight ${probe.scrollHeight} > budget ${maxH.toFixed(0)})`);
     }
