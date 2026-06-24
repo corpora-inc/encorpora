@@ -10,6 +10,28 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.6] - 2026-06-24 — delta-timed, stackable screen shake (#438 PR-6)
+
+### Changed
+- **Screen shake is now frame-rate independent and stacks on rapid hits
+  (#438 PR-6).** The fail/wrong-answer camera shake was driven by a separate
+  `setInterval(16ms)` and early-returned while a shake was already running.
+  Two problems on a premium bar:
+  - *Not frame-rate independent.* On a 120Hz iPad the timer still ticked every
+    ~16ms while the frame rendered every ~8ms, so the camera only jittered on
+    alternate frames; on a janky frame the offset overshot. The shake now
+    advances on the render loop's clamped `dt` (`updateScreenShake(dt)` in the
+    `runRenderLoop` callback), so it reads identically at 60/90/120fps.
+  - *Dropped stacked hits.* `if (shakeActive) return` meant a second fail in
+    quick succession produced no extra feedback. Shake is now an `energy`
+    scalar that decays exponentially (`exp(dt)`, ~90ms half-life); each trigger
+    ADDS energy (capped at 2× the single-hit kick) so consecutive fails
+    compound the jolt instead of being ignored.
+  Decays cleanly to exact rest even while paused. Pure render-side change — no
+  gameplay, audio, translation, or paywall-contract impact. Covered by a new
+  `particles.test.ts` regression suite (frame-rate independence + stacking,
+  both asserted via Monte-Carlo energy proxies, run green 3×).
+
 ## [0.3.5] - 2026-06-23 — iOS audio unlock + premium post-process re-tune + revived velocity effects + paywall pause
 
 ### Fixed

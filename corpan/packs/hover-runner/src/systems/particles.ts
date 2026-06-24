@@ -101,37 +101,55 @@ export const createFailParticles = (scene: Scene, position: Vector3) => {
   activeParticleTimeouts.add(timeoutId)
 }
 
+// Screen shake — delta-timed and stackable (#438 PR-6).
+//
+// The old impl drove the offset from a separate `setInterval(16ms)`, which is
+// NOT frame-rate independent (on a 120Hz iPad the timer still ticks every
+// ~16ms while the frame renders every ~8ms, so the camera only jitters on
+// alternate frames; on a janky frame it overshoots) and it early-returned
+// (`if (shakeActive) return`) so two fails in quick succession produced only
+// one shake — the second hit gave no extra feedback.
+//
+// New model: a single `energy` scalar that decays exponentially every frame.
+// `trigger()` ADDS energy (capped) so consecutive hits compound instead of
+// being dropped. `update(dt)` is driven by the existing render loop (which
+// already computes a clamped `dt`), so the shake is frame-rate independent and
+// in lockstep with `scene.render()`.
 export const createScreenShake = () => {
   const shakeOffset = new Vector3(0, 0, 0)
-  let shakeActive = false
+  let energy = 0
+
+  // Per-trigger energy injection. Tuned so a single hit reads like the old
+  // 0.08 peak; the cap keeps a burst of fails from going seasick.
+  const KICK = 0.08
+  const MAX_ENERGY = 0.16
+  // Exponential decay: energy halves roughly every ~90ms (matches the old
+  // ~260ms visible-shake window where the linear ramp fell below perceptible).
+  const HALF_LIFE_MS = 90
 
   const trigger = () => {
-    if (shakeActive) return
-    shakeActive = true
-
-    const startTime = performance.now()
-    const duration = 260
-    const intensity = 0.08
-
-    const shakeInterval = setInterval(() => {
-      const elapsed = performance.now() - startTime
-      if (elapsed >= duration) {
-        clearInterval(shakeInterval)
-        shakeOffset.set(0, 0, 0)
-        shakeActive = false
-        return
-      }
-
-      const decay = 1 - elapsed / duration
-      const amount = intensity * decay
-
-      shakeOffset.x = (Math.random() - 0.5) * amount * 2
-      shakeOffset.y = (Math.random() - 0.5) * amount * 2
-      shakeOffset.z = (Math.random() - 0.5) * amount
-    }, 16)
+    energy = Math.min(MAX_ENERGY, energy + KICK)
   }
 
-  return { shakeOffset, trigger }
+  const update = (dt: number) => {
+    if (energy <= 0.0001) {
+      if (shakeOffset.x !== 0 || shakeOffset.y !== 0 || shakeOffset.z !== 0) {
+        shakeOffset.set(0, 0, 0)
+      }
+      energy = 0
+      return
+    }
+
+    // Frame-rate-independent exponential decay.
+    const dtMs = dt * 1000
+    energy *= Math.pow(0.5, dtMs / HALF_LIFE_MS)
+
+    shakeOffset.x = (Math.random() - 0.5) * energy * 2
+    shakeOffset.y = (Math.random() - 0.5) * energy * 2
+    shakeOffset.z = (Math.random() - 0.5) * energy
+  }
+
+  return { shakeOffset, trigger, update }
 }
 
 // ============================================================================
