@@ -88,7 +88,7 @@ import { createHoverboard } from "./rendering/hoverboard"
 import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 
 // Systems
-import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts, createAmbientParticles, createStarfieldParticles, createEnergyFieldParticles, createSpeedLines } from "./systems/particles"
+import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts, createAmbientParticles, createStarfieldParticles, createEnergyFieldParticles, createSpeedLines, updateSpeedLines } from "./systems/particles"
 import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
 import { createDailyQuota, getQuota } from "@shared/monetization"
@@ -161,8 +161,14 @@ export const createHoverRunner = (
     }
   }
   const onVisibilityChange = () => {
-    if (document.visibilityState === "visible" && !wakeLock) {
-      void requestWakeLock()
+    if (document.visibilityState === "visible") {
+      if (!wakeLock) {
+        void requestWakeLock()
+      }
+      // iOS (#437): the AudioContext is re-suspended on background; resume it
+      // when we return to the foreground so music/SFX aren't stuck silent.
+      // No-op on a running context (Android/desktop) — safe, no regression.
+      sfx.resume()
     }
   }
 
@@ -367,6 +373,26 @@ export const createHoverRunner = (
     dispose()
   }
   window.addEventListener("corpan:host-dispose", onHostDispose as EventListener)
+
+  // Paywall / host pause (#436). The core-app dispatches `corpan:host-pause`
+  // when it overlays the paywall (or any host-level modal) and
+  // `corpan:host-resume` when it dismisses it. Pause = stop the RAF update
+  // advance (via the existing `paused` gate, which also halts speech repeats)
+  // AND suspend the AudioContext so music/SFX go quiet. Resume = un-suspend
+  // audio + restart the update advance. We reuse the same `setPaused` path the
+  // settings drawer uses, so gameplay/speech state stays consistent.
+  const onHostPause = () => {
+    setPaused(true)
+    sfx.suspend()
+  }
+  const onHostResume = () => {
+    // Resume audio first so the context is `running` before the loop ticks
+    // again. No-op if it was never suspended (safe on Android/desktop).
+    sfx.resume()
+    setPaused(false)
+  }
+  window.addEventListener("corpan:host-pause", onHostPause)
+  window.addEventListener("corpan:host-resume", onHostResume)
 
   // --- Settings drawer ---
   //
@@ -2511,6 +2537,17 @@ export const createHoverRunner = (
   let perfTimer = 0
   let lastLongFrameLog = 0
 
+  // #438 PR-5: speed-line normalization bounds. getPhraseSpeed() returns the
+  // raw phrase speed (baselineSpeed .. maxSpeed, defaults ~12 .. ~22). We map
+  // that span onto the 0..1 multiplier updateSpeedLines() expects so slow play
+  // shows calm streaks and fast play ramps them up. Read from tuning so a user
+  // who widens the speed range still gets a sensible mapping.
+  const SPEED_LINE_MIN = tuningStore.getState().settings.baselineSpeed
+  const SPEED_LINE_MAX = Math.max(
+    SPEED_LINE_MIN + 1,
+    tuningStore.getState().settings.maxSpeed
+  )
+
   engine.runRenderLoop(() => {
     const dt = Math.min(engine.getDeltaTime() / 1000, 0.05)
     const dtMs = dt * 1000
@@ -2534,6 +2571,17 @@ export const createHoverRunner = (
           cachedProgression.electricIntensity
         )
       }
+
+      // #438 PR-5: drive the speed-lines off the live phrase speed so the
+      // velocity-feel reacts to the game. updateSpeedLines() was exported but
+      // never called, so this effect was dead. Normalize phrase speed (baseline
+      // ~12 .. max ~22) into a 0..1 multiplier the effect expects.
+      const phraseSpeed = getPhraseSpeed()
+      const speedMultiplier = Math.max(
+        0,
+        Math.min(1, (phraseSpeed - SPEED_LINE_MIN) / (SPEED_LINE_MAX - SPEED_LINE_MIN))
+      )
+      updateSpeedLines(speedLines, speedMultiplier)
     }
     const farX = road.getFarCenterX()
     cameraTarget.set(
@@ -2688,6 +2736,8 @@ export const createHoverRunner = (
       "corpan:host-dispose",
       onHostDispose as EventListener
     )
+    window.removeEventListener("corpan:host-pause", onHostPause)
+    window.removeEventListener("corpan:host-resume", onHostResume)
     settingsDrawer.dispose()
     unsubUiLang()
     unsubHostLang?.()
