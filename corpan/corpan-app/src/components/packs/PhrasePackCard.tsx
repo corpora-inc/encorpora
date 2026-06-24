@@ -180,14 +180,26 @@ export function PhrasePackCard({
             {/* Header */}
             <div className="flex items-start justify-between gap-2">
                 <div className="flex-1 min-w-0">
-                    <h3
-                        className={[
-                            "font-semibold leading-tight",
-                            compact ? "text-sm" : "text-base",
-                        ].join(" ")}
-                    >
-                        {pack.name}
-                    </h3>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                        <h3
+                            className={[
+                                "font-semibold leading-tight",
+                                compact ? "text-sm" : "text-base",
+                            ].join(" ")}
+                        >
+                            {pack.name}
+                        </h3>
+                        {/* Dev-mode-only "preview" packs (channel === "preview")
+                            carry an amber PREVIEW marker so it's unmistakable
+                            they're not part of the stable catalog. Stable packs
+                            stay unbadged. Literal string — a technical/dev
+                            marker, deliberately not run through i18n. */}
+                        {pack.channel === "preview" && (
+                            <span className="shrink-0 inline-flex items-center px-1.5 py-0.5 rounded-full border border-amber-400/70 bg-amber-500/[0.12] text-amber-600 text-[9px] font-semibold uppercase tracking-wider">
+                                PREVIEW
+                            </span>
+                        )}
+                    </div>
                     {pack.topic && pack.topic !== pack.name && (
                         <p className="text-[11px] text-muted-foreground/80 mt-0.5">
                             {pack.topic}

@@ -18,6 +18,10 @@ Conventions: `corpan/CHANGELOGS.md`.
   already shipped: hover-runner (#459) pauses its game loop; the shared reader
   shell pauses narration audio (stargate/earthgate); lingo-hero's listener is a
   separate follow-up. No user-facing strings; no locale keys added.
+- **PREVIEW badge on dev-mode-only phrase packs.** Phrase-pack cards now show a
+  small amber **PREVIEW** pill when `pack.channel === "preview"` — the packs
+  revealed only in developer mode. Stable packs stay unbadged. The label is an
+  intentional literal (not localized) since it's a technical/dev marker (#468).
 - **New "Semi large" text-size option.** Adds a size between Medium and Large
   (`1.1rem`, CSS class `text-semi-large`) to the text-size picker, and makes it
   the default for new profiles so default reading text is a touch larger. New
