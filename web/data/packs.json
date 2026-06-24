@@ -294,26 +294,6 @@
     "tagline": "Master Mandarin characters, stroke by stroke."
   },
   {
-    "id": "wordpan_es_en",
-    "name": "Spanish explanations for English",
-    "description": "Long-press any English word in Phrase Flip to read what it means, in Spanish. Ships ~11,757 word explanations (Spanish + English).",
-    "status": "prototype",
-    "listed": false,
-    "zipUrl": "/corpan/packs/wordpan-es-en.zip",
-    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/wordpan",
-    "minAppVersion": "0.9.0",
-    "channel": "preview",
-    "packType": "data",
-    "purchase": {
-      "type": "free"
-    },
-    "languages": [
-      "en",
-      "es"
-    ],
-    "tagline": "What does this word mean? Long-press to find out."
-  },
-  {
     "id": "juice_squeeze",
     "name": "Juice Squeeze",
     "description": "Fast-paced phrase building with splashy juice rewards and native audio feedback",

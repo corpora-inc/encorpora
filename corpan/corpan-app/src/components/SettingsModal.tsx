@@ -4,6 +4,7 @@ import { Home as HomeIcon, Sparkles, Star } from "lucide-react";
 import corpanMark from "@/assets/corpan-mark-trim.png";
 import { LanguageSelectOrder } from "./LanguageSelectOrder";
 import { PhrasePackToggleSection } from "./packs/PhrasePackToggleSection";
+import { WordPackSection } from "./packs/WordPackSection";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
 import { RomanizationToggle } from "./RomanizationToggle";
@@ -222,6 +223,7 @@ export function SettingsModal({
           <LanguageSelectOrder />
           <JumpToTTSButton fullWidth />
           <PhrasePackToggleSection />
+          <WordPackSection />
           <LevelsPicker />
           <RomanizationToggle />
           <ScrollNavigationToggle />

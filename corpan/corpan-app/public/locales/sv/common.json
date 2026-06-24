@@ -844,5 +844,13 @@
     "installing": "Installerar…",
     "installFailed": "Kunde inte installeras. Kontrollera anslutningen och försök igen.",
     "retry": "Försök igen"
+  },
+  "wordPacks": {
+    "header": "Ordförklaringar",
+    "intro": "Installera ett paket för att långtrycka på vilket ord som helst i Phrase Flip och läsa vad det betyder på ditt språk.",
+    "install": "Installera ({{size}})",
+    "installing": "Installerar…",
+    "installed": "Installerat",
+    "retry": "Försök igen"
   }
 }

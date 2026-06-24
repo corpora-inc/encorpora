@@ -844,5 +844,13 @@
     "installing": "Memasang…",
     "installFailed": "Tidak dapat dipasang. Periksa sambungan anda dan cuba lagi.",
     "retry": "Cuba lagi"
+  },
+  "wordPacks": {
+    "header": "Penjelasan perkataan",
+    "intro": "Pasang pek untuk menekan lama mana-mana perkataan dalam Phrase Flip dan membaca maksudnya dalam bahasa anda.",
+    "install": "Pasang ({{size}})",
+    "installing": "Memasang…",
+    "installed": "Dipasang",
+    "retry": "Cuba lagi"
   }
 }

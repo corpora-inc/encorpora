@@ -844,5 +844,13 @@
     "installing": "Telepítés…",
     "installFailed": "A telepítés nem sikerült. Ellenőrizd a kapcsolatot, és próbáld újra.",
     "retry": "Újra"
+  },
+  "wordPacks": {
+    "header": "Szómagyarázatok",
+    "intro": "Telepíts egy csomagot, majd nyomj hosszan bármelyik szóra a Phrase Flipben, és olvasd el, mit jelent a saját nyelveden.",
+    "install": "Telepítés ({{size}})",
+    "installing": "Telepítés…",
+    "installed": "Telepítve",
+    "retry": "Újra"
   }
 }

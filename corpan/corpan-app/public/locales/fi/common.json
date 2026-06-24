@@ -844,5 +844,13 @@
     "installing": "Asennetaan…",
     "installFailed": "Asennus epäonnistui. Tarkista yhteys ja yritä uudelleen.",
     "retry": "Yritä uudelleen"
+  },
+  "wordPacks": {
+    "header": "Sanaselitykset",
+    "intro": "Asenna paketti, niin voit painaa Phrase Flipissä mitä tahansa sanaa pitkään ja lukea, mitä se tarkoittaa omalla kielelläsi.",
+    "install": "Asenna ({{size}})",
+    "installing": "Asennetaan…",
+    "installed": "Asennettu",
+    "retry": "Yritä uudelleen"
   }
 }

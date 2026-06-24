@@ -844,5 +844,13 @@
     "installing": "安裝緊…",
     "installFailed": "裝唔到。請檢查網絡再試。",
     "retry": "再試"
+  },
+  "wordPacks": {
+    "header": "字詞解釋",
+    "intro": "安裝一個包，就可以喺 Phrase Flip 度長㩒任何一個字，用你嘅語言睇佢嘅意思。",
+    "install": "安裝（{{size}}）",
+    "installing": "安裝緊…",
+    "installed": "已安裝",
+    "retry": "再試"
   }
 }

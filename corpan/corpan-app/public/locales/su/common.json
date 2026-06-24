@@ -844,5 +844,13 @@
     "installing": "Masang…",
     "installFailed": "Teu tiasa dipasang. Pariksa koneksi sareng cobian deui.",
     "retry": "Cobian deui"
+  },
+  "wordPacks": {
+    "header": "Katerangan kecap",
+    "intro": "Pasang hiji pakét pikeun mencét lila kecap naon waé dina Phrase Flip sareng maca hartina dina basa anjeun.",
+    "install": "Pasang ({{size}})",
+    "installing": "Masang…",
+    "installed": "Dipasang",
+    "retry": "Cobian deui"
   }
 }

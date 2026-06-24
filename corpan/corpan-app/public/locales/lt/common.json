@@ -844,5 +844,13 @@
     "installing": "Diegiama…",
     "installFailed": "Nepavyko įdiegti. Patikrinkite ryšį ir bandykite dar kartą.",
     "retry": "Bandyti dar kartą"
+  },
+  "wordPacks": {
+    "header": "Žodžių paaiškinimai",
+    "intro": "Įdiekite paketą, kad galėtumėte ilgai paspausti bet kurį žodį Phrase Flip ir perskaityti, ką jis reiškia jūsų kalba.",
+    "install": "Įdiegti ({{size}})",
+    "installing": "Diegiama…",
+    "installed": "Įdiegta",
+    "retry": "Bandyti dar kartą"
   }
 }

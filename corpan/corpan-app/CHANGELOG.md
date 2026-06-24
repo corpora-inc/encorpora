@@ -7,6 +7,24 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Word-explanation packs ship from a dedicated S3 index, not the main
+  catalog (#477, #478, #479; supersedes #498's catalog registration).** Word
+  packs ("wordpan") are a new kind of artifact: they are no longer registered
+  in `web/data/packs.json` (which would have put them in `catalog-v3.json` and
+  on the Home picker) and no longer published to GitHub Pages. They are now
+  discovered from a separate CloudFront index
+  (`corpan/word-packs/index.json`), keyed by a (native→target) language pair,
+  mirroring the phrase-pack catalog. New `contentPacks/wordPackCatalog.ts`
+  (typed parse + channel/minAppVersion gating + pair resolver),
+  `store/wordPackCatalog.ts` (5-min-TTL polled store), and
+  `hooks/useWordPackCatalog.ts`. A new word-pack section in Settings lists the
+  packs that explain words in the user's native language and installs them
+  (≈3 MB) from the index `zipUrl`. The Phrase Flip long-press install path now
+  resolves the same index `zipUrl` instead of a `packs.json` entry. The
+  popover/lookup behaviour and tap-to-speak TTS are unchanged. New
+  `wordPacks.*` locale keys (all 54 locales).
+
 ### Added
 - **Long-press word explanations in Phrase Flip (#477, #478, #479).** Long-press
   (touch) or right-click / long mouse-press (desktop) any English word in a

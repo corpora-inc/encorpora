@@ -844,5 +844,13 @@
     "installing": "Instalando…",
     "installFailed": "Não foi possível instalar. Verifique sua conexão e tente novamente.",
     "retry": "Tentar de novo"
+  },
+  "wordPacks": {
+    "header": "Explicações de palavras",
+    "intro": "Instale um pacote para pressionar e segurar qualquer palavra no Phrase Flip e ler o que ela significa no seu idioma.",
+    "install": "Instalar ({{size}})",
+    "installing": "Instalando…",
+    "installed": "Instalado",
+    "retry": "Tentar de novo"
   }
 }

@@ -844,5 +844,13 @@
     "installing": "Instal·lant…",
     "installFailed": "No s'ha pogut instal·lar. Comprova la connexió i torna-ho a provar.",
     "retry": "Torna-ho a provar"
+  },
+  "wordPacks": {
+    "header": "Explicacions de paraules",
+    "intro": "Instal·la un paquet per mantenir premuda qualsevol paraula a Phrase Flip i llegir què significa en la teva llengua.",
+    "install": "Instal·la ({{size}})",
+    "installing": "Instal·lant…",
+    "installed": "Instal·lat",
+    "retry": "Torna-ho a provar"
   }
 }

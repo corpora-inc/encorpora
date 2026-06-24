@@ -844,5 +844,13 @@
     "installing": "Inasakinisha…",
     "installFailed": "Imeshindwa kusakinisha. Angalia muunganisho wako na ujaribu tena.",
     "retry": "Jaribu tena"
+  },
+  "wordPacks": {
+    "header": "Maelezo ya maneno",
+    "intro": "Sakinisha kifurushi ili ubonyeze kwa muda mrefu neno lolote katika Phrase Flip na usome maana yake katika lugha yako.",
+    "install": "Sakinisha ({{size}})",
+    "installing": "Inasakinisha…",
+    "installed": "Imesakinishwa",
+    "retry": "Jaribu tena"
   }
 }

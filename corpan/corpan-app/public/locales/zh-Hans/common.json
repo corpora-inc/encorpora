@@ -844,5 +844,13 @@
     "installing": "安装中…",
     "installFailed": "无法安装。请检查网络后重试。",
     "retry": "重试"
+  },
+  "wordPacks": {
+    "header": "单词解释",
+    "intro": "安装语言包后，即可在 Phrase Flip 中长按任意单词，用你的语言查看它的含义。",
+    "install": "安装（{{size}}）",
+    "installing": "安装中…",
+    "installed": "已安装",
+    "retry": "重试"
   }
 }

@@ -844,5 +844,13 @@
     "installing": "Instaliranje…",
     "installFailed": "Instalacija nije uspjela. Provjerite vezu i pokušajte ponovno.",
     "retry": "Pokušaj ponovno"
+  },
+  "wordPacks": {
+    "header": "Objašnjenja riječi",
+    "intro": "Instalirajte paket pa dugo pritisnite bilo koju riječ u Phrase Flipu i pročitajte što znači na vašem jeziku.",
+    "install": "Instaliraj ({{size}})",
+    "installing": "Instaliranje…",
+    "installed": "Instalirano",
+    "retry": "Pokušaj ponovno"
   }
 }

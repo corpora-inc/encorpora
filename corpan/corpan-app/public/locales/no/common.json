@@ -844,5 +844,13 @@
     "installing": "Installerer…",
     "installFailed": "Kunne ikke installeres. Sjekk tilkoblingen og prøv igjen.",
     "retry": "Prøv igjen"
+  },
+  "wordPacks": {
+    "header": "Ordforklaringer",
+    "intro": "Installer en pakke for å trykke lenge på et hvilket som helst ord i Phrase Flip og lese hva det betyr på ditt språk.",
+    "install": "Installer ({{size}})",
+    "installing": "Installerer…",
+    "installed": "Installert",
+    "retry": "Prøv igjen"
   }
 }

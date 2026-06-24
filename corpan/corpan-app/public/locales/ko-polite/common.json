@@ -844,5 +844,13 @@
     "installing": "설치 중…",
     "installFailed": "설치하지 못했어요. 연결을 확인하고 다시 시도해 주세요.",
     "retry": "다시 시도"
+  },
+  "wordPacks": {
+    "header": "단어 설명",
+    "intro": "팩을 설치하면 Phrase Flip에서 아무 단어나 길게 눌러 그 뜻을 모국어로 읽어 볼 수 있어요.",
+    "install": "설치 ({{size}})",
+    "installing": "설치 중…",
+    "installed": "설치됨",
+    "retry": "다시 시도"
   }
 }
