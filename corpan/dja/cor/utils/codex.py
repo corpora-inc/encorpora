@@ -55,6 +55,10 @@ def run(prompt: str, *, reasoning: str = "low", timeout: float = 240.0,
         capture_output=True,
         text=True,
         timeout=timeout,
+        # CRITICAL: `codex exec` blocks on "Reading additional input from
+        # stdin..." unless stdin is closed. Without this it hangs forever in
+        # any non-interactive or threaded context.
+        stdin=subprocess.DEVNULL,
     )
     elapsed = time.monotonic() - t0
     if proc.returncode != 0:

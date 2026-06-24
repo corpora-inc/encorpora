@@ -32,10 +32,12 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from typing import Dict, List
+from typing import Callable, Dict, List, Optional, Type, TypeVar
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from extract_words import collect_words
 
@@ -123,8 +125,13 @@ ENGLISH_SYSTEM = (
     "(2) where the word came from (etymology/origin); and (3) how the original "
     "idea branched into the modern senses. Friendly, accessible, accurate. Write "
     "in English only. If you are unsure of the precise root, hedge with phrases "
-    "like 'is thought to come from' -- NEVER invent a root. Output JSON with "
-    "`items`: each item has `word` and `explanation`."
+    "like 'is thought to come from' -- NEVER invent a root. When an origin is "
+    "SURPRISING or counterintuitive (e.g. a Romance word borrowed from a "
+    "Germanic root, like Italian 'banca' giving English 'bank', or an everyday "
+    "word with an unexpected lineage), state the borrowing path EXPLICITLY so a "
+    "sharp reader does not mistake a correct fact for an error. Still never "
+    "confabulate; hedge when unsure. Output JSON with `items`: each item has "
+    "`word` and `explanation`."
 )
 
 VERIFY_SYSTEM = (
@@ -138,6 +145,143 @@ VERIFY_SYSTEM = (
     "paragraph that softens/fixes it (keep ~50 words, keep the senses). NEVER "
     "confabulate a root; when unsure, hedge. Output JSON with `items`."
 )
+
+
+def translate_system(lang: str) -> str:
+    return (
+        f"Translate each English word-explanation into language code '{lang}', "
+        f"written naturally IN that language. Preserve meaning, tone, hedges, "
+        f"and the ~50-word length. Do NOT add facts. Output JSON `items` with "
+        f"`word` and `text`."
+    )
+
+
+# --------------------------------------------------------------------------
+# Codex backend (subscription codex-cli, FREE) -- ADDITIVE alongside openai.
+#
+# Codex has no separate system role, so we compose system+user into one
+# prompt string and demand JSON-only output. Each batch is validated against
+# its pydantic schema; on parse/validation failure we retry up to
+# `max_retries` times, then skip-and-log so one bad batch can't wedge the run.
+# Batches run concurrently via a thread pool of `codex exec` subprocesses
+# (network-bound, not CPU-bound). Seed writes are serialized under a lock so
+# two workers never clobber the checkpoint file.
+# --------------------------------------------------------------------------
+TBatch = TypeVar("TBatch", bound=BaseModel)
+
+
+def compose_codex_prompt(system: str, user: str) -> str:
+    """Fold a system+user pair into one JSON-only codex prompt."""
+    return (
+        f"{system}\n\n"
+        "Respond with ONLY a single JSON object and nothing else -- no prose, "
+        "no markdown fences, no commentary. The JSON must match the described "
+        "`items` shape exactly.\n\n"
+        "INPUT:\n"
+        f"{user}"
+    )
+
+
+def run_codex_batch(
+    system: str,
+    user: str,
+    schema: Type[TBatch],
+    *,
+    reasoning: str,
+    model: Optional[str],
+    timeout: float,
+    max_retries: int,
+    label: str,
+) -> Optional[TBatch]:
+    """Run one codex batch, validate against `schema`, retry, then give up.
+
+    Returns the validated model, or None if every attempt failed (the caller
+    logs and skips so the overall run keeps making progress).
+    """
+    # Imported lazily so the module stays import-safe for the CI gate (which
+    # has only stdlib + pydantic and never executes a real codex call). Ensure
+    # the dja root is importable so `cor.utils.codex` resolves regardless of
+    # how this script was launched (the script dir is word_pack/, not dja/).
+    dja_root = str(Path(__file__).resolve().parents[1])
+    if dja_root not in sys.path:
+        sys.path.insert(0, dja_root)
+    from cor.utils import codex
+
+    prompt = compose_codex_prompt(system, user)
+    last_err = ""
+    for attempt in range(1, max_retries + 2):  # 1 try + max_retries retries
+        try:
+            obj = codex.run_json(
+                prompt, reasoning=reasoning, model=model, timeout=timeout
+            )
+            return schema.model_validate(obj)
+        except (ValidationError, ValueError, json.JSONDecodeError) as exc:
+            last_err = f"{type(exc).__name__}: {str(exc)[:200]}"
+        except codex.CodexError as exc:
+            last_err = f"CodexError: {str(exc)[:200]}"
+        except Exception as exc:  # noqa: BLE001 -- never let a batch wedge the pool
+            last_err = f"{type(exc).__name__}: {str(exc)[:200]}"
+        if attempt <= max_retries:
+            print(
+                f"[{label}] attempt {attempt} failed ({last_err}); retrying",
+                file=sys.stderr,
+                flush=True,
+            )
+    print(
+        f"[{label}] SKIPPED after {max_retries + 1} attempts: {last_err}",
+        file=sys.stderr,
+        flush=True,
+    )
+    return None
+
+
+def run_codex_stage(
+    batches: List[List[str]],
+    build_prompt: Callable[[List[str]], "tuple[str, str]"],
+    schema: Type[TBatch],
+    apply_result: Callable[[TBatch], None],
+    *,
+    concurrency: int,
+    reasoning: str,
+    model: Optional[str],
+    timeout: float,
+    max_retries: int,
+    save: Callable[[], None],
+    save_lock: threading.Lock,
+    stage: str,
+) -> None:
+    """Run a stage's batches concurrently, applying results + checkpointing
+    under a lock so the seed file is never written by two workers at once."""
+    if not batches:
+        return
+
+    def work(idx_batch):
+        idx, batch = idx_batch
+        system, user = build_prompt(batch)
+        label = f"{stage} batch {idx}/{len(batches)} ({len(batch)} words)"
+        print(f"[{label}] dispatch", flush=True)
+        return idx, run_codex_batch(
+            system,
+            user,
+            schema,
+            reasoning=reasoning,
+            model=model,
+            timeout=timeout,
+            max_retries=max_retries,
+            label=label,
+        )
+
+    indexed = list(enumerate(batches, start=1))
+    with ThreadPoolExecutor(max_workers=max(1, concurrency)) as pool:
+        futures = [pool.submit(work, ib) for ib in indexed]
+        for fut in as_completed(futures):
+            idx, res = fut.result()
+            if res is None:
+                continue
+            # Mutating the shared seed + writing it must be serialized.
+            with save_lock:
+                apply_result(res)
+                save()
 
 
 def main() -> None:
@@ -166,8 +310,37 @@ def main() -> None:
     ap.add_argument("--words", nargs="*", default=None, help="Explicit word list.")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--batch-size", type=int, default=8)
-    ap.add_argument("--provider", type=str, default="openai")
+    ap.add_argument(
+        "--provider",
+        type=str,
+        default="openai",
+        help="LLM backend: 'openai' (billed corpora_ai) or 'codex' "
+        "(FREE subscription codex-cli).",
+    )
     ap.add_argument("--completion-model", type=str, default=None)
+    # Codex-only knobs (ignored by the openai path).
+    ap.add_argument(
+        "--concurrency",
+        type=int,
+        default=8,
+        help="codex: max concurrent `codex exec` batches.",
+    )
+    ap.add_argument(
+        "--reasoning",
+        type=str,
+        default="low",
+        help="codex: model_reasoning_effort (low keeps latency down).",
+    )
+    ap.add_argument(
+        "--timeout", type=float, default=240.0, help="codex: per-batch timeout (s)."
+    )
+    ap.add_argument(
+        "--max-retries",
+        type=int,
+        default=2,
+        help="codex: retries per batch on parse/validation failure before "
+        "skip-and-log.",
+    )
     ap.add_argument(
         "--skip-verify",
         action="store_true",
@@ -175,9 +348,13 @@ def main() -> None:
     )
     args = ap.parse_args()
 
+    use_codex = args.provider == "codex"
+
     # Heavy imports deferred so parsing helpers stay import-safe for tests.
-    from corpora_ai.llm_interface import ChatCompletionTextMessage
-    from corpora_ai.provider_loader import load_llm_provider
+    # The codex path needs neither corpora_ai nor a billed key.
+    if not use_codex:
+        from corpora_ai.llm_interface import ChatCompletionTextMessage
+        from corpora_ai.provider_loader import load_llm_provider
 
     core_db = args.core_db.resolve()
     if not core_db.exists():
@@ -206,6 +383,113 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     seed = load_seed(out)
 
+    # --- Shared, backend-agnostic merge logic (same for openai + codex) ---
+    save_lock = threading.Lock()
+
+    def save():
+        save_seed(out, seed)
+
+    def apply_english(res: ExplanationBatch) -> None:
+        for item in res.items:
+            rec = seed.setdefault(item.word, {"explanation": {}})
+            rec["explanation"]["en"] = item.explanation.strip()
+
+    def apply_verify(res: VerifyBatch) -> None:
+        for item in res.items:
+            rec = seed.get(item.word)
+            if not rec:
+                continue
+            rec["origin_confidence"] = (item.confidence or "medium").lower()
+            if item.note:
+                rec["origin_note"] = item.note.strip()
+            if item.corrected.strip():
+                rec["explanation"]["en"] = item.corrected.strip()
+
+    def make_apply_translation(lang: str):
+        def apply_translation(res: TranslationBatch) -> None:
+            for item in res.items:
+                rec = seed.get(item.word)
+                if rec and item.text.strip():
+                    rec["explanation"][lang] = item.text.strip()
+
+        return apply_translation
+
+    def english_payload(batch: List[str]) -> str:
+        return "\n".join(batch)
+
+    def en_para_payload(batch: List[str]) -> str:
+        return "\n".join(f"{w}: {seed[w]['explanation']['en']}" for w in batch)
+
+    # --- Work-set selectors (identical resume semantics for both backends) ---
+    def missing_en_words() -> List[str]:
+        return [
+            w for w in words if "en" not in seed.get(w, {}).get("explanation", {})
+        ]
+
+    def to_verify_words() -> List[str]:
+        return [
+            w
+            for w in words
+            if "en" in seed.get(w, {}).get("explanation", {})
+            and not seed[w].get("origin_confidence")
+        ]
+
+    def to_translate_words(lang: str) -> List[str]:
+        return [
+            w
+            for w in words
+            if "en" in seed.get(w, {}).get("explanation", {})
+            and lang not in seed[w]["explanation"]
+        ]
+
+    if use_codex:
+        # --- Codex backend: validated, retried, concurrent, lock-checkpointed.
+        codex_kwargs = dict(
+            concurrency=args.concurrency,
+            reasoning=args.reasoning,
+            model=args.completion_model,
+            timeout=args.timeout,
+            max_retries=args.max_retries,
+            save=save,
+            save_lock=save_lock,
+        )
+
+        # 1) English authoring.
+        run_codex_stage(
+            chunk(missing_en_words(), args.batch_size),
+            lambda b: (ENGLISH_SYSTEM, english_payload(b)),
+            ExplanationBatch,
+            apply_english,
+            stage="english",
+            **codex_kwargs,
+        )
+
+        # 2) Origin verification (English only).
+        if not args.skip_verify:
+            run_codex_stage(
+                chunk(to_verify_words(), args.batch_size),
+                lambda b: (VERIFY_SYSTEM, en_para_payload(b)),
+                VerifyBatch,
+                apply_verify,
+                stage="verify",
+                **codex_kwargs,
+            )
+
+        # 3) Translation into each target language.
+        for lang in [c for c in langs if c != "en"]:
+            run_codex_stage(
+                chunk(to_translate_words(lang), args.batch_size),
+                lambda b, lang=lang: (translate_system(lang), en_para_payload(b)),
+                TranslationBatch,
+                make_apply_translation(lang),
+                stage=f"translate {lang}",
+                **codex_kwargs,
+            )
+
+        print(f"Done. Wrote {out}")
+        return
+
+    # --- OpenAI backend (billed corpora_ai) -- unchanged behavior. ---
     llm_kwargs = {}
     if args.completion_model:
         llm_kwargs["completion_model"] = args.completion_model
@@ -215,77 +499,42 @@ def main() -> None:
         return ChatCompletionTextMessage(role=role, text=text)
 
     # 1) English authoring.
-    missing_en = [w for w in words if "en" not in seed.get(w, {}).get("explanation", {})]
-    for i, batch in enumerate(chunk(missing_en, args.batch_size), start=1):
+    for i, batch in enumerate(chunk(missing_en_words(), args.batch_size), start=1):
         print(f"[english] batch {i} ({len(batch)} words)", flush=True)
         res = llm.get_data_completion(
-            [msg("system", ENGLISH_SYSTEM), msg("user", "\n".join(batch))],
+            [msg("system", ENGLISH_SYSTEM), msg("user", english_payload(batch))],
             ExplanationBatch,
         )
-        for item in res.items:
-            rec = seed.setdefault(item.word, {"explanation": {}})
-            rec["explanation"]["en"] = item.explanation.strip()
-        save_seed(out, seed)
+        apply_english(res)
+        save()
 
     # 2) Origin verification (English only).
     if not args.skip_verify:
-        to_verify = [
-            w
-            for w in words
-            if "en" in seed.get(w, {}).get("explanation", {})
-            and not seed[w].get("origin_confidence")
-        ]
-        for i, batch in enumerate(chunk(to_verify, args.batch_size), start=1):
+        for i, batch in enumerate(chunk(to_verify_words(), args.batch_size), start=1):
             print(f"[verify] batch {i} ({len(batch)} words)", flush=True)
-            payload = "\n".join(
-                f"{w}: {seed[w]['explanation']['en']}" for w in batch
-            )
             res = llm.get_data_completion(
-                [msg("system", VERIFY_SYSTEM), msg("user", payload)], VerifyBatch
+                [msg("system", VERIFY_SYSTEM), msg("user", en_para_payload(batch))],
+                VerifyBatch,
             )
-            for item in res.items:
-                rec = seed.get(item.word)
-                if not rec:
-                    continue
-                rec["origin_confidence"] = (item.confidence or "medium").lower()
-                if item.note:
-                    rec["origin_note"] = item.note.strip()
-                if item.corrected.strip():
-                    rec["explanation"]["en"] = item.corrected.strip()
-            save_seed(out, seed)
+            apply_verify(res)
+            save()
 
     # 3) Translation of the verified English into each target language.
     for lang in [c for c in langs if c != "en"]:
-        todo = [
-            w
-            for w in words
-            if "en" in seed.get(w, {}).get("explanation", {})
-            and lang not in seed[w]["explanation"]
-        ]
-        for i, batch in enumerate(chunk(todo, args.batch_size), start=1):
+        apply_translation = make_apply_translation(lang)
+        for i, batch in enumerate(
+            chunk(to_translate_words(lang), args.batch_size), start=1
+        ):
             print(f"[translate {lang}] batch {i} ({len(batch)} words)", flush=True)
-            payload = "\n".join(
-                f"{w}: {seed[w]['explanation']['en']}" for w in batch
-            )
             res = llm.get_data_completion(
                 [
-                    msg(
-                        "system",
-                        f"Translate each English word-explanation into language "
-                        f"code '{lang}', written naturally IN that language. "
-                        f"Preserve meaning, tone, hedges, and the ~50-word "
-                        f"length. Do NOT add facts. Output JSON `items` with "
-                        f"`word` and `text`.",
-                    ),
-                    msg("user", payload),
+                    msg("system", translate_system(lang)),
+                    msg("user", en_para_payload(batch)),
                 ],
                 TranslationBatch,
             )
-            for item in res.items:
-                rec = seed.get(item.word)
-                if rec and item.text.strip():
-                    rec["explanation"][lang] = item.text.strip()
-            save_seed(out, seed)
+            apply_translation(res)
+            save()
 
     print(f"Done. Wrote {out}")
 
