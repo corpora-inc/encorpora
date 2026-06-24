@@ -82,6 +82,33 @@ python3 generate_word_explanations.py --all-langs
 Output writes to `seed/explanations_full.json`. Pass that file into the builder
 with `--explanations`.
 
+### Backends: `--provider openai` (billed) vs `--provider codex` (free)
+
+The default `--provider openai` routes batches through `corpora_ai` (billed
+OpenAI API). For the full-corpus run, use the **subscription codex-cli**
+backend (`--provider codex`, FREE, gpt-5.5): it composes each stage's
+system+user prompt into one JSON-only `codex exec` call (via
+`cor/utils/codex.py`), validates the reply against the same
+`ExplanationBatch`/`VerifyBatch`/`TranslationBatch` schemas, retries a failed
+batch up to `--max-retries` (default 2) times, then **skip-and-logs** so one
+bad batch can't wedge the run. Batches run concurrently (`--concurrency`,
+default 8) and the seed checkpoint is written under a lock after each batch, so
+a kill mid-run is safe to resume (it re-targets only unfinished words/langs).
+
+```bash
+# free codex backend, concurrent, resumable
+python3 generate_word_explanations.py \
+  --provider codex --concurrency 12 --batch-size 12 \
+  --all-langs --out seed/explanations_full.json
+```
+
+Measured (gpt-5.5, ~50-word paragraphs): a batch of 12 words ≈ 20s; per-word
+cost drops with batch size (≈2.9s/word at 4 → ≈1.7s/word at 12). The ChatGPT
+subscription showed **no throttling at concurrency 8 or 16** on the probe.
+Recommended: `--batch-size 12 --concurrency 12`. Projected wall-time at that
+setting: EN authoring + verify of all 11,757 words ≈ **~1 h**; full ×53-language
+translation ≈ **~1 day** (≈18 h at concurrency 16).
+
 ## Build
 
 ```bash
