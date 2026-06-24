@@ -684,6 +684,31 @@ export function createStargateReader(
   let timelineWords: TimelineWord[] = []
   let currentWordHint = 0
 
+  // ── Perf diagnostic (segment-boundary smoothness; #455) ────────────────
+  // Off by default — it's free when disabled (one boolean test per frame).
+  // Enable with `?srperf=1` in the URL or `localStorage.sr_perf = "1"`, then
+  // watch the console / on-canvas HUD. It surfaces the max frame time inside a
+  // window around each segment boundary plus the forced (un-pre-warmed) glyph
+  // rasterizations that frame — the metric the #455 fix drives toward zero.
+  const perfHudEnabled = (() => {
+    try {
+      const q = new URLSearchParams(window.location.search)
+      if (q.get("srperf") === "1") return true
+      return window.localStorage?.getItem("sr_perf") === "1"
+    } catch {
+      return false
+    }
+  })()
+  let lastFrameAtMs = 0          // performance.now() of previous render frame
+  let perfLastSegIndex = -1      // last segment index seen by the perf probe
+  let perfBoundaryFramesLeft = 0 // frames remaining in the post-boundary window
+  let perfWindowMaxFrameMs = 0   // worst frame time in the current boundary window
+  let perfWindowForced = 0       // forced rasterizations summed over the window
+  let perfHud: HTMLDivElement | null = null
+  // Sample this many frames after each boundary (≈0.5s at 60fps) to capture the
+  // hitch even if it lands a frame or two after the index advances.
+  const PERF_BOUNDARY_WINDOW_FRAMES = 30
+
   // --- Swipe-to-navigate segment gesture ---
   let swipeStartY = 0
   let swipeStartX = 0
@@ -1463,8 +1488,44 @@ export function createStargateReader(
   }
 
   // --- Render loop ---
+  // Perf HUD: a tiny on-canvas readout of the last segment boundary's worst
+  // frame time + forced rasterizations. Created lazily, only when the probe is
+  // enabled, so it has zero footprint in normal builds.
+  function updatePerfHud(
+    seg: number,
+    maxFrameMs: number,
+    forced: number,
+    hitch: boolean
+  ) {
+    if (!perfHudEnabled) return
+    if (!perfHud) {
+      perfHud = document.createElement("div")
+      perfHud.style.cssText =
+        "position:absolute;top:8px;left:8px;z-index:9999;" +
+        "font:11px/1.4 monospace;padding:6px 8px;border-radius:6px;" +
+        "background:rgba(0,0,0,0.6);color:#9ff;pointer-events:none;white-space:pre"
+      const parent = canvas.parentElement ?? document.body
+      parent.appendChild(perfHud)
+    }
+    perfHud.style.color = hitch ? "#f99" : "#9ff"
+    perfHud.textContent =
+      `SR perf · seg ${seg}\n` +
+      `boundary maxFrame ${maxFrameMs.toFixed(1)}ms\n` +
+      `forced rasters ${forced}${hitch ? "  ⚠ HITCH" : ""}`
+  }
+
   function renderLoop() {
     if (disposed) return
+
+    // Perf probe: measure inter-frame time. Frame N's duration is the gap from
+    // the previous frame's start to this one's. A boundary hitch shows up as one
+    // long gap. Cost when disabled: a single boolean test.
+    let frameDeltaMs = 0
+    if (perfHudEnabled) {
+      const nowMs = performance.now()
+      if (lastFrameAtMs > 0) frameDeltaMs = nowMs - lastFrameAtMs
+      lastFrameAtMs = nowMs
+    }
 
     // Lockscreen controls can pause/resume WebAudio via WebKit without
     // delivering JS action handlers. Reconcile app state with engine state.
@@ -1596,6 +1657,41 @@ export function createStargateReader(
       wordStream.update(visualMs, timelineWords, currentWordHint, wordHoldEnabled)
     }
 
+    // Perf probe: open a sampling window at each segment boundary and report the
+    // worst frame time + forced rasterizations within it. This is how the
+    // operator confirms on a real device that the inter-segment jerk (#455) is
+    // gone: forced should be ~0 and maxFrame should stay near the frame budget.
+    if (perfHudEnabled && audioEngine) {
+      const segIdx = audioEngine.getCurrentSegmentIndex()
+      if (perfLastSegIndex !== -1 && segIdx !== perfLastSegIndex) {
+        // Boundary just crossed — start/refresh the sampling window.
+        perfBoundaryFramesLeft = PERF_BOUNDARY_WINDOW_FRAMES
+        perfWindowMaxFrameMs = 0
+        perfWindowForced = 0
+      }
+      perfLastSegIndex = segIdx
+
+      if (perfBoundaryFramesLeft > 0) {
+        if (frameDeltaMs > perfWindowMaxFrameMs) perfWindowMaxFrameMs = frameDeltaMs
+        perfWindowForced += wordStream?.getLastFrameStats().forced ?? 0
+        perfBoundaryFramesLeft--
+        if (perfBoundaryFramesLeft === 0) {
+          const hitch = perfWindowMaxFrameMs > 24 // >~1.5 frames @60fps
+          srTrace(
+            "perf:segment-boundary",
+            {
+              seg: segIdx,
+              maxFrameMs: Math.round(perfWindowMaxFrameMs * 10) / 10,
+              forcedRasterizations: perfWindowForced,
+              hitch,
+            },
+            { level: hitch ? "warn" : "log" }
+          )
+          updatePerfHud(segIdx, perfWindowMaxFrameMs, perfWindowForced, hitch)
+        }
+      }
+    }
+
     // Update waveform stream (visualMs for smooth swipe animation)
     if (waveformStream && waveformStream.mesh.isVisible && timelineWords.length > 0 && waveformCache) {
       waveformStream.update(visualMs, timelineWords, waveformCache, currentWordHint)
@@ -1682,6 +1778,8 @@ export function createStargateReader(
     pulseRing?.dispose()
     starfield?.dispose()
     glow.dispose()
+    perfHud?.remove()
+    perfHud = null
     engine.stopRenderLoop()
     scene.dispose()
     engine.dispose()

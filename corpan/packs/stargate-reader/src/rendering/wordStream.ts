@@ -36,10 +36,27 @@ type WordMesh = {
 
 export type WordHoldConfig = { holdY?: number; zPull?: number }
 
+/**
+ * Per-frame rasterization stats, surfaced for the perf diagnostic overlay.
+ *
+ * - `rasterized`: glyphs drawn to a DynamicTexture this frame (budgeted pre-warm
+ *   + any forced must-be-legible draws).
+ * - `forced`: glyphs that had to be drawn this frame because the word was already
+ *   at/inside the fade-in zone with no pre-warmed texture ready. This is the
+ *   metric that spikes on an unmitigated segment boundary; the pre-warm pass
+ *   aims to keep it at 0.
+ */
+export type WordStreamStats = {
+  rasterized: number
+  forced: number
+}
+
 export type WordStream = {
   root: TransformNode
   update: (currentMs: number, words: TimelineWord[], currentWordIndex: number, wordHold?: boolean) => void
   configure: (config: WordHoldConfig) => void
+  /** Stats from the most recent update() call (for the perf diagnostic). */
+  getLastFrameStats: () => WordStreamStats
   dispose: () => void
 }
 
@@ -151,22 +168,35 @@ export function createWordStream(scene: Scene): WordStream {
   // Per-frame rasterization budget. Drawing a glyph onto a DynamicTexture
   // (measureText + fillText + a 512x384 GPU upload) is the most expensive
   // synchronous step in this renderer. When several words cross into the
-  // look-ahead range in the same frame (dense phrase, post-seek, post-swipe),
-  // doing all of them at once is the source of the occasional hitch.
+  // legible zone in the same frame (dense phrase, post-seek, post-swipe, and —
+  // the case #455 targets — the first words of a new segment arriving as a
+  // cluster after the inter-segment pause), doing all of them at once is a
+  // one-frame hitch: the inter-segment jerk.
   //
   // Words are fully transparent (computeFade === 0) while z > FADE_IN_Z, and the
   // look-ahead range extends to LOOK_AHEAD_Z (well beyond FADE_IN_Z), so a word
-  // has a long runway of invisible frames before it must be legible. We rasterize
-  // immediately for any word that is at/inside the fade-in zone (must be ready),
-  // and cap rasterizations of still-invisible far words to this budget per frame.
+  // has a long runway of invisible frames before it must be legible. We use that
+  // runway to PRE-WARM textures: each frame we rasterize up to this many words,
+  // chosen NEAREST-to-fade-in first, so by the time any word crosses FADE_IN_Z
+  // its glyph is already drawn (renderWord() early-returns) and nothing has to be
+  // drawn at the boundary. The must-be-legible fallback below stays as a
+  // correctness backstop, but in normal playback it should fire ~0 times.
+  //
   // Deferred far words stay invisible (alpha 0) regardless, so output is identical.
   const MAX_RASTERIZE_PER_FRAME = 2
+
+  // Reused scratch buffer for the pre-warm priority pass (avoid per-frame alloc).
+  const prewarmCandidates: { idx: number; margin: number }[] = []
+
+  const lastFrameStats: WordStreamStats = { rasterized: 0, forced: 0 }
 
   return {
     root,
 
     update: (currentMs: number, words: TimelineWord[], currentWordIndex: number, wordHold = true) => {
       let rasterizeBudget = MAX_RASTERIZE_PER_FRAME
+      let rasterizedThisFrame = 0
+      let forcedThisFrame = 0
       const lookAheadMs = LOOK_AHEAD_Z * MS_PER_Z_UNIT
       const lookBehindMs = LOOK_BEHIND_Z * MS_PER_Z_UNIT
 
@@ -186,7 +216,44 @@ export function createWordStream(scene: Scene): WordStream {
         }
       }
 
-      // Assign/update meshes for visible words
+      // ── Pre-warm pass ──────────────────────────────────────────────────
+      // Before assigning/positioning, decide which still-invisible far words to
+      // rasterize this frame. We prioritise by how close each word is to crossing
+      // FADE_IN_Z (smallest positive margin first) so the budget is always spent
+      // on the words that will need to be legible soonest — never starved by
+      // words that are still far up the runway. This is what eliminates the
+      // boundary burst: the first words of the next segment get warmed during the
+      // current segment's invisible runway, frame by frame, ahead of the boundary.
+      prewarmCandidates.length = 0
+      for (let i = visStart; i < visEnd; i++) {
+        const word = words[i]
+        const midpointMs = (word.absoluteStartMs + word.absoluteEndMs) / 2
+        const z = wordToZ(midpointMs, currentMs)
+        // Only far (still-transparent) words that don't yet have their glyph.
+        if (z <= FADE_IN_Z || z > LOOK_AHEAD_Z) continue
+        const existing = assignedMeshes.get(i)
+        if (existing && existing.assignedWord === word.word) continue
+        prewarmCandidates.push({ idx: i, margin: z - FADE_IN_Z })
+      }
+      if (prewarmCandidates.length > 1) {
+        prewarmCandidates.sort((a, b) => a.margin - b.margin)
+      }
+      for (let k = 0; k < prewarmCandidates.length && rasterizeBudget > 0; k++) {
+        const i = prewarmCandidates[k].idx
+        let mesh = assignedMeshes.get(i)
+        if (!mesh) {
+          const acquired = acquireMesh()
+          if (!acquired) break // pool exhausted
+          mesh = acquired
+          assignedMeshes.set(i, mesh)
+          mesh.plane.isVisible = false // stays hidden (alpha 0) until it crosses FADE_IN_Z
+        }
+        renderWord(mesh, words[i].word)
+        rasterizeBudget--
+        rasterizedThisFrame++
+      }
+
+      // ── Assign/update/position visible words ───────────────────────────
       for (let i = visStart; i < visEnd; i++) {
         const word = words[i]
         const midpointMs = (word.absoluteStartMs + word.absoluteEndMs) / 2
@@ -204,19 +271,22 @@ export function createWordStream(scene: Scene): WordStream {
           assignedMeshes.set(i, mesh)
         }
 
-        // Render text (only on assignment change). Glyph rasterization is the
-        // heaviest synchronous step, so we spread it across frames for words
-        // that are still fully transparent (z > FADE_IN_Z): they are invisible
-        // until they reach the fade-in zone, giving a long runway to prepare
-        // the texture. Words at/inside the fade-in zone must be ready now.
+        // Render text (only on assignment change). The pre-warm pass above has
+        // already drawn most upcoming glyphs while they were still invisible.
         const needsRender = mesh.assignedWord !== word.word
         if (needsRender) {
           if (z <= FADE_IN_Z) {
-            // Must be legible this frame — always rasterize.
+            // Must be legible this frame and the pre-warm didn't reach it — draw
+            // now (correctness backstop). Each occurrence is a potential boundary
+            // hitch; the diagnostic counts these so smoothness is measurable.
             renderWord(mesh, word.word)
+            rasterizedThisFrame++
+            forcedThisFrame++
           } else if (rasterizeBudget > 0) {
+            // Far word the priority pass had budget left for.
             renderWord(mesh, word.word)
             rasterizeBudget--
+            rasterizedThisFrame++
           } else {
             // Defer: word is fully transparent at this z, so leaving the stale
             // texture for a frame is visually identical. Keep it hidden until
@@ -260,12 +330,17 @@ export function createWordStream(scene: Scene): WordStream {
           mesh.material.emissiveColor = approachColor
         }
       }
+
+      lastFrameStats.rasterized = rasterizedThisFrame
+      lastFrameStats.forced = forcedThisFrame
     },
 
     configure: (config: WordHoldConfig) => {
       if (config.holdY !== undefined) holdY = config.holdY
       if (config.zPull !== undefined) holdZPull = config.zPull
     },
+
+    getLastFrameStats: () => lastFrameStats,
 
     dispose: () => {
       for (const mesh of pool) {
