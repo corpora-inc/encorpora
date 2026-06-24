@@ -204,6 +204,12 @@ export class Game {
       this.progression
     );
     this.hud.applyLanguage(this.activeLanguage);
+    // #460 — whenever the prompt (re-)fits (per round, on resize, and crucially
+    // when the heavy display font swaps in and reflows the phrase taller), keep
+    // the spawn play-top in sync so falling tiles never cover the prompt's last
+    // line. This makes the prompt→playfield clearance automatic regardless of
+    // who changed the prompt, closing the iOS font-swap gap the operator hit.
+    this.hud.setOnPromptFit(() => this.applySpawnClearance());
     this.effects = initEffects(
       this.canvas.getContext("2d")!,
       this.bus,
@@ -224,6 +230,20 @@ export class Game {
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
         this.fontsReady = true;
+        // #460 — RE-FIT THE PROMPT once the heavy display face has swapped in.
+        // The first fitPrompt() during setQuestion() can run against the FALLBACK
+        // metrics (system-ui), then the vendored Lato-Heavy ("Russo One") lands a
+        // moment later (notably on iOS WKWebView, where the woff2 swaps in after
+        // first paint) with WIDER glyphs → the phrase reflows to MORE lines than
+        // the fallback measured. Without a re-fit the prompt keeps the stale
+        // fallback font size, the extra wrapped line spills below the reserved
+        // header band, and the playfield clearance (computed from the stale
+        // height) lets falling tiles / the assemble strip cover that last line —
+        // the operator's "doesn't show the whole prompt" on a long comma phrase.
+        // Re-fitting + recomputing the play-area top on font-ready closes that
+        // gap so the FULL phrase is laid out against the real glyph metrics.
+        this.hud?.onResize();
+        this.applySpawnClearance();
       });
     } else {
       this.fontsReady = true;

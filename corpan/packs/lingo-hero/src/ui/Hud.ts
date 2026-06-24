@@ -111,6 +111,16 @@ export class Hud {
   /** Words seen this run + correct count (drive the in-run mastery readout). */
   private runSeen = 0;
   private runCorrect = 0;
+  /**
+   * #460 — fired AFTER the prompt has (re-)fitted to a final wrapped layout,
+   * including the deferred rAF / font-swap re-fits. Game subscribes to recompute
+   * the spawn play-top so falling tiles always clear the prompt's LAST line — no
+   * matter WHO changed the prompt (loadRound, a direct setQuestion, resize, or
+   * the font-ready reflow). Without this, a re-fit that grew the prompt taller
+   * left the play-top stale and tiles spawned over the last line (the operator's
+   * "doesn't show the whole prompt" at a narrow play column on iPad).
+   */
+  private onPromptFitCb?: () => void;
 
   constructor(
     container: HTMLElement,
@@ -357,6 +367,17 @@ export class Hud {
   private fitPrompt(): void {
     if (typeof requestAnimationFrame === "function") {
       requestAnimationFrame(() => this.fitPromptNow());
+      // #460 — a SECOND deferred re-fit one more frame out. The vendored heavy
+      // display face ("Russo One"/Lato-Heavy) can swap in AFTER the first fit
+      // (notably on iOS WKWebView, where the woff2 lands a beat after first
+      // paint). Its wider glyphs reflow the phrase to more lines than the
+      // fallback measured; without re-measuring, the prompt keeps the stale
+      // fallback size and the extra line spills the band. The extra frame
+      // re-fits against the real glyph metrics so the FULL phrase stays visible.
+      // (Game.ts also re-fits on document.fonts.ready for the definitive swap.)
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => this.fitPromptNow())
+      );
     }
     // Also run synchronously so callers/tests that measure immediately see a fit.
     this.fitPromptNow();
@@ -394,6 +415,19 @@ export class Hud {
       apply(size);
       guard++;
     }
+    // #460 — the wrapped layout is now final for this fit pass. Tell Game so it
+    // recomputes the spawn play-top against the prompt's settled height (the
+    // prompt may have just grown taller from a font swap / narrower column).
+    this.onPromptFitCb?.();
+  }
+
+  /**
+   * #460 — register a callback fired after every prompt (re-)fit settles, so the
+   * owner (Game) can recompute the spawn-clearance play-top against the prompt's
+   * final wrapped height. Idempotent + cheap; called on each fit pass.
+   */
+  setOnPromptFit(cb: () => void): void {
+    this.onPromptFitCb = cb;
   }
 
   /**
