@@ -116,6 +116,10 @@ export type ReaderInstance = {
   /** Persist the current playback bookmark on demand. Used before an upgrade
    *  reload so the new (full) pack resumes exactly where the preview was. */
   persistBookmark?: () => void
+  /** Pause/resume narration audio in response to a host blocking overlay
+   *  (e.g. the Corpán Plus paywall). The reader resumes only the pause IT made
+   *  via this call, so it never overrides a user's manual pause. */
+  setPlaybackPaused?: (paused: boolean) => void
 }
 
 export type ReaderFactory = (
@@ -914,6 +918,21 @@ export function createAppShell(
     showEndOfBookSuggestion(bookId, language)
   }
   window.addEventListener("corpan:book-finished", onBookFinished)
+
+  // Host blocking overlay (e.g. the Corpán Plus paywall) → pause narration so
+  // it doesn't keep playing behind the modal, then resume on dismiss. The host
+  // (corpan-app store/paywall.ts) dispatches these generic `corpan:host-*`
+  // signals; the reader tracks its own `hostPaused` flag so resume only undoes
+  // the pause WE made here, never a user's manual pause. Both readers get this
+  // for free since the shell owns the reader instance.
+  const onHostPause = (): void => {
+    readerInstance?.setPlaybackPaused?.(true)
+  }
+  const onHostResume = (): void => {
+    readerInstance?.setPlaybackPaused?.(false)
+  }
+  window.addEventListener("corpan:host-pause", onHostPause)
+  window.addEventListener("corpan:host-resume", onHostResume)
 
   // -----------------------------------------------------------------------
   // Corpán Plus preview → full upgrade (3 layers).
@@ -3274,6 +3293,8 @@ export function createAppShell(
     window.removeEventListener("corpan:subscription-recorded", onPurchaseEvent)
     window.removeEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
     window.removeEventListener("corpan:book-finished", onBookFinished)
+    window.removeEventListener("corpan:host-pause", onHostPause)
+    window.removeEventListener("corpan:host-resume", onHostResume)
     dismissEndOfBookSuggestion()
     window.removeEventListener(ENTITLEMENTS_CHANGED_EVENT, onEntitlementsChanged)
     window.removeEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)

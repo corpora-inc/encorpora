@@ -63,6 +63,29 @@ function stampEngagement(now: number) {
   }
 }
 
+/**
+ * Tell the active content pack / reader to pause (or resume) while a blocking
+ * overlay is up. The paywall is a full-screen modal — anything playing behind
+ * it (pack gameplay, reader narration audio) must stop so it doesn't compete
+ * for the user's attention/ears, then resume cleanly on dismiss.
+ *
+ * This is a GENERIC host signal (reusable by any future blocking overlay),
+ * following the `corpan:host-dispose` convention. Listeners already shipped:
+ *   - hover-runner (PR #459) pauses its game loop.
+ *   - the shared reader shell (stargate/earthgate) pauses narration audio.
+ *   - lingo-hero (follow-up) pauses its rhythm game.
+ * Listeners must only resume the pause THEY caused (track a `hostPaused` flag),
+ * so a host-resume never overrides a user's own manual pause.
+ */
+function dispatchHostBlock(type: "pause" | "resume"): void {
+  try {
+    window.dispatchEvent(new CustomEvent(`corpan:host-${type}`))
+  } catch (e) {
+    // Best-effort — host absent / SSR. Never let it break the paywall.
+    console.warn(`[paywall] corpan:host-${type} dispatch failed`, e)
+  }
+}
+
 /** Legacy per-reader skin hint. Readers still pass this on `request-unlock`,
  *  but the universal paywall IGNORES it — there is ONE dark, brand-defining
  *  paywall everywhere now (no per-pack theming). Kept only so existing callers
@@ -103,7 +126,12 @@ export const usePaywallStore = create<PaywallState>((set, get) => ({
       if (now - lastEngagementAt() < ENGAGEMENT_CAP_MS) return false
       stampEngagement(now)
     }
+    const wasOpen = get().open
     set({ open: true, context })
+    // Pause the active pack/reader the moment the blocking overlay appears, but
+    // only on a genuine closed→open transition (never re-fire if it was already
+    // up — e.g. a second surface racing the first), so resume stays balanced.
+    if (!wasOpen) dispatchHostBlock("pause")
     // Funnel: paywall_shown — fired at the single open chokepoint so it can
     // never drift from the visual component the paywall team owns.
     trackPaywallShownFunnel(context.surface, context.packId)
@@ -115,6 +143,7 @@ export const usePaywallStore = create<PaywallState>((set, get) => ({
     // paywall_converted; otherwise it was dismissed without converting. (The
     // store-level converted event is a backstop; the authoritative plan/code/
     // platform conversion is emitted from purchase.ts.)
+    const wasOpen = get().open
     const ctx = get().context
     if (ctx) {
       const sub = useEntitlementStore.getState().subscription
@@ -125,5 +154,8 @@ export const usePaywallStore = create<PaywallState>((set, get) => ({
       }
     }
     set({ open: false, context: null })
+    // Resume the active pack/reader once — and only when we were actually open,
+    // so an idempotent close (e.g. unmount after dismiss) can't double-resume.
+    if (wasOpen) dispatchHostBlock("resume")
   },
 }))
