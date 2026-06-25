@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-06-25
+
+### Added
+- Maqam regional intonation **schools**: a per-song **Intonation** picker
+  (24-EDO grid · Pan-Arab just · Egyptian · Syrian) that shifts the neutral
+  (sikah / Rast-3rd) cents by region — Egyptian flatter (342¢), Syrian higher
+  (360¢) — re-tuning everything live on both the sequencer and the ribbon. The
+  maqamat are now built from a school-keyed neutral table (jins-first, so the 7th
+  tracks the 3rd automatically). Default = the 24-EDO grid (sourced, learner-clean).
+  Sourced to maqamworld / microtonaltheory; Turkish makam + Persian dastgah remain
+  separate future systems. (Beat-Lounge-Plus.)
+
 ### Fixed
 - Loading a phrase no longer kills all audio (synths + drums going dead until an
   app restart). Root cause: the scratch FX bus re-called `Tone.setContext`, which

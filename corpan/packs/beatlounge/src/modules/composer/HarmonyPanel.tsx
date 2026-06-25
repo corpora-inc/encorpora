@@ -27,6 +27,7 @@ import { useBeatloungeStore } from "../../store/store"
 import {
   docHarmony,
   type HarmonyScaleFamily,
+  type MaqamSchool,
   type Id,
 } from "../../model/document"
 import type { Command } from "../../model/command"
@@ -131,6 +132,7 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
           onChange={applyHarmony}
           family={h.scale.family}
           scaleId={h.scale.id}
+          school={h.scale.school ?? "grid"}
           micro={micro}
         />
       ) : (
@@ -206,10 +208,26 @@ interface ModePanelProps {
   onChange: (command: Command) => void
   family: HarmonyScaleFamily
   scaleId: string
+  school: MaqamSchool
   micro: boolean
 }
 
-const ModePanel = ({ onChange, family, scaleId, micro }: ModePanelProps) => {
+/** Maqam regional intonation schools (label via i18n; ids mirror the model). */
+const SCHOOL_IDS: MaqamSchool[] = ["grid", "just", "egyptian", "syrian"]
+const schoolLabel = (id: MaqamSchool): string => {
+  switch (id) {
+    case "grid":
+      return ct("harmony.schoolGrid")
+    case "just":
+      return ct("harmony.schoolJust")
+    case "egyptian":
+      return ct("harmony.schoolEgyptian")
+    case "syrian":
+      return ct("harmony.schoolSyrian")
+  }
+}
+
+const ModePanel = ({ onChange, family, scaleId, school, micro }: ModePanelProps) => {
   const scales = useMemo(() => scalesForFamily(family), [family])
   return (
     <div className="bl-hb-mode-panel" data-bl-nocapture>
@@ -244,6 +262,22 @@ const ModePanel = ({ onChange, family, scaleId, micro }: ModePanelProps) => {
           ))}
         </select>
       </label>
+      {family === "maqam" && (
+        <label className="bl-hb-scale">
+          <span className="bl-hb-cap">{ct("harmony.school")}</span>
+          <select
+            className="bl-hb-select"
+            value={school}
+            onChange={(e) => onChange({ t: "setSchool", school: e.target.value as MaqamSchool })}
+          >
+            {SCHOOL_IDS.map((id) => (
+              <option key={id} value={id}>
+                {schoolLabel(id)}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       {micro && (
         <span className="bl-hb-micro" aria-hidden="true">
           microtonal

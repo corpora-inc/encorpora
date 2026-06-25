@@ -282,6 +282,10 @@ export type HarmonyScaleFamily = "western" | "thaat" | "melakarta" | "maqam"
 /** Built-in tuning systems (mirrors `music/tuning` TuningSystemId). */
 export type HarmonyTuningId = "equal12" | "pythagorean" | "just"
 
+/** Regional intonation school for maqam (mirrors `music/modes` MaqamSchool).
+ *  Optional — absent ⇒ the default school. Only meaningful for the maqam family. */
+export type MaqamSchool = "grid" | "just" | "egyptian" | "syrian"
+
 /**
  * The active modal scale: a corpus mode id (e.g. "western.ionian") within a
  * family, intonated through a tuning. The tonic lives on `Harmony` (shared with
@@ -293,6 +297,8 @@ export interface HarmonyScale {
   id: string
   /** How the abstract degrees are intonated. Default "equal12" (chord-safe). */
   tuning: HarmonyTuningId
+  /** Maqam regional intonation school (maqam family only). Absent ⇒ default school. */
+  school?: MaqamSchool
 }
 
 /**
