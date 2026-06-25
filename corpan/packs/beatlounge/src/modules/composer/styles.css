@@ -91,6 +91,20 @@
   border-color: color-mix(in srgb, var(--bl-accent) 55%, transparent);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--bl-accent) 35%, transparent);
 }
+/* Read-only intonation value (Persian/Turkish) — looks like a select but inert. */
+.bl-hb-static {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px dashed var(--bl-border);
+  background: color-mix(in srgb, var(--bl-surface-2) 60%, transparent);
+  color: color-mix(in srgb, var(--bl-text) 80%, transparent);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.02em;
+}
 
 /* ---- Mode panel ---- */
 .bl-hb-mode-panel {
@@ -98,19 +112,19 @@
   flex-direction: column;
   gap: var(--bl-s2);
 }
-/* The 4 scale systems (Western · Thaat · Melakarta · Maqam) must FIT one phone row
-   — "Melakarta" is long, and the popover swallows an inner scroll, so make them fit
-   rather than scroll: nowrap + tight padding + a hair-smaller label so all four sit
-   on one line down to ~320px, none clipped. */
+/* The 6 scale systems (Western · Thaat · Melakarta · Maqam · Persian · Turkish)
+   don't fit one phone row, so they WRAP to a second row and each button sizes to
+   its own label (no squashing / clipping). */
 .bl-hb-fam {
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
+  gap: var(--bl-s1);
 }
 .bl-hb-fam .bl-seg-btn {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   white-space: nowrap;
-  padding: 0 var(--bl-s2);
+  padding: 0 var(--bl-s3);
   font-size: var(--bl-fs-micro);
   letter-spacing: 0;
 }
@@ -123,6 +137,54 @@
   padding: var(--bl-s1) var(--bl-s2);
   border: 1px solid color-mix(in srgb, var(--bl-accent) 45%, transparent);
   border-radius: var(--bl-radius-sm);
+}
+
+/* ---- tuning strip: the active scale's degrees plotted as cents over a faint
+   12-TET ruler, so microtonal degrees sit visibly off the grid ---- */
+.bl-tuning-strip {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  margin-top: var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+  background: color-mix(in srgb, var(--bl-accent) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bl-accent) 22%, transparent);
+  overflow: visible;
+}
+.bl-ts-tet {
+  position: absolute;
+  top: 38%;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.14);
+}
+.bl-ts-deg {
+  position: absolute;
+  top: 22%;
+  bottom: 4px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--bl-accent);
+  border-radius: 2px;
+}
+.bl-ts-deg.is-tonic {
+  width: 3px;
+  background: #fff;
+}
+.bl-ts-deg.is-micro {
+  width: 3px;
+  background: var(--bl-accent-hot);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--bl-accent-hot) 70%, transparent);
+}
+.bl-ts-cents {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1px;
+  font: 600 9px / 1 var(--bl-font);
+  color: var(--bl-accent-hot);
+  white-space: nowrap;
 }
 
 /* ---- the visual chord grid over the loop ---- */

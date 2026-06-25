@@ -165,9 +165,12 @@ describe("Arabic maqam (researched, non-12-TET)", () => {
     expect(bayati.degrees[1].cents).toBe(150)
     expect(modeCents(bayati).slice(0, 4)).toEqual([0, 150, 294, 498])
   })
-  it("Saba has its signature narrowed 4th (590¢, not 500)", () => {
+  it("Saba has its signature narrowed (diminished) 4th — BELOW the perfect 4th", () => {
     const saba = getMode("maqam.saba")!
-    expect(modeCents(saba)).toContain(590)
+    // The 4th degree is the crushed "diminished 4th" (~400¢), well below P4 (498).
+    expect(saba.degrees[3].cents).toBe(400)
+    expect(saba.degrees[3].cents).toBeLessThan(498)
+    expect(modeCents(saba)).toEqual([0, 150, 300, 400, 700, 800, 1000])
   })
   it("Hijaz has the augmented-2nd colour (128 → 386, a ~258¢ leap)", () => {
     const hijaz = getMode("maqam.hijaz")!

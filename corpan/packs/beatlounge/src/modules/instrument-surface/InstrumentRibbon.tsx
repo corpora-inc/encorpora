@@ -169,7 +169,11 @@ export const InstrumentRibbon = ({
     const notes = activeMidiInRange(doc, 0, win.lowMidi, win.lowMidi + win.spanSemis)
     return notes.map((midi) => ({
       midi,
-      x: midiToX(midi, win),
+      // Position the fret at its TRUE pitch (degree + the active tuning's cents),
+      // not the 12-TET key — so maqam neutral tones sit where they actually sound
+      // and a school/tuning change visibly nudges the fret. Same detuneForMidi the
+      // audio uses, so the line you see matches the pitch you hear.
+      x: midiToX(midi + detuneForMidi(midi, doc, 0) / 100, win),
       tonic: pitchClass(midi) === tonicPc,
       label: noteLabel(midi),
     }))
@@ -324,6 +328,8 @@ export const InstrumentRibbon = ({
     // Open a live voice on the BOUND TRACK's real instrument (polyphonic). The
     // sounding pitch carries the maqam/tuning detune; the recorded pitch (below)
     // stays the integer degree.
+    // The sounding pitch carries the active tuning's exact cents; the recorded
+    // pitch (below) stays the integer degree.
     const handle = host.playLiveVoice(trackId, playPitch(midi), 0.9)
     // Soundfont/sampler fallback: no live pool → a stepped one-shot per crossing.
     if (!handle) host.previewTrack(trackId, 0.9, Math.round(midi))

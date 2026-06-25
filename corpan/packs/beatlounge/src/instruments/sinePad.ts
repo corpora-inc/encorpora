@@ -93,12 +93,19 @@ export const createSinePadInstrument = (config: SynthConfig): Instrument => {
     update(next: InstrumentConfig) {
       if (!isSynth(next)) return
       const nextOsc = next.osc === "triangle" ? "triangle" : "sine"
-      for (const layer of layers) {
-        layer.set({ oscillator: { type: nextOsc }, envelope: { ...next.env } })
+      // Only re-seat layers/voices when osc/env actually change — a live harmony
+      // switch leaves them identical, and re-running live.refresh would reset
+      // held/pooled voices' frequency (microtuning sticks). See synth.ts rationale.
+      const voiceChanged =
+        nextOsc !== liveOsc || JSON.stringify(next.env) !== JSON.stringify(liveEnv)
+      if (voiceChanged) {
+        for (const layer of layers) {
+          layer.set({ oscillator: { type: nextOsc }, envelope: { ...next.env } })
+        }
+        liveOsc = nextOsc
+        liveEnv = { ...next.env }
+        live.refresh((v) => v.set({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }))
       }
-      liveOsc = nextOsc
-      liveEnv = { ...next.env }
-      live.refresh((v) => v.set({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }))
       filter.type = next.filter.type
       filter.frequency.value = next.filter.frequency
       filter.Q.value = next.filter.q

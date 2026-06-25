@@ -62,15 +62,29 @@ export const createMonoSynthLive = (opts: MonoSynthLiveOpts): MonoSynthLive => {
       const node = opts.make()
       node.connect(opts.dest)
       built.push(node)
+      // The exact Hz the last setHz requested. triggerAttack must trigger at THIS,
+      // not node.frequency.value: setHz schedules the pitch for a future `when`, so
+      // node.frequency.value (read now) is the STALE prior pitch, and Tone's
+      // triggerAttack re-sets frequency to whatever note we pass — clobbering the
+      // microtonal bend with the stale value. (Confirmed against Tone Monophonic.ts.)
+      let lastHz = 0
       return {
         attack(velocity, when) {
+          // Trigger at the Hz the last setHz REQUESTED, not node.frequency.value:
+          // setHz schedules the new pitch for a future `when`, so frequency.value
+          // read now is the STALE prior pitch — and Tone's triggerAttack re-sets the
+          // oscillator to whatever note we pass, which would clobber the microtonal
+          // frequency with that stale value. (Confirmed against Tone Monophonic.ts;
+          // this is what made fretted maqam/Persian/Turkish notes snap to 12-TET.)
+          const target = lastHz > 0 ? lastHz : Number(node.frequency.value)
           try {
-            node.triggerAttack(node.frequency.value, when, velocity)
+            node.triggerAttack(target, when, velocity)
           } catch {
             /* re-attack under heavy retrigger — ignore */
           }
         },
         setHz(hz, when, glideSec) {
+          lastHz = hz
           const f = node.frequency
           if (glideSec > 0) {
             // Ramp from the live value for a click-free portamento.

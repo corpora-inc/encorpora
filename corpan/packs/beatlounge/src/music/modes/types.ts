@@ -15,7 +15,7 @@
  */
 
 /** Which musical system a mode belongs to. */
-export type ModeFamily = "western" | "thaat" | "melakarta" | "maqam"
+export type ModeFamily = "western" | "thaat" | "melakarta" | "maqam" | "persian" | "turkish"
 
 /**
  * Optional rational derivation for a degree — the exact frequency ratio its

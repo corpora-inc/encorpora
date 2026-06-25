@@ -151,14 +151,36 @@ export const AJNAS: Jins[] = [
  * own degree 0) is dropped if it coincides with the lower jins' top degree
  * (shared pivot); otherwise both are kept (adjoining ajnas).
  */
+const MAQAM_INTERVAL = ["1", "b2", "2", "b3", "3", "4", "b5", "5", "b6", "6", "b7", "7", "8"]
+/** Label a raw cents value by its nearest 12-TET interval (for explicit degrees). */
+const labelForCents = (c: number): string => {
+  const semi = Math.round(c / 100)
+  const base = MAQAM_INTERVAL[semi] ?? String(semi)
+  const dev = Math.round(c - semi * 100)
+  return Math.abs(dev) > 6 ? `${base}${dev > 0 ? "+" : "-"}` : base
+}
+
 const buildMaqam = (
   id: string,
   name: string,
   lower: Jins,
   upper: Jins | undefined,
   upperRootCents: number,
-  opts: { aliases?: string[]; notes?: string } = {}
+  opts: { aliases?: string[]; notes?: string; degrees?: readonly number[] } = {}
 ): Mode => {
+  // Some neutral/non-standard maqamat (Saba, Sikah, Huzam, Nahawand) don't fall
+  // out of a simple lower+upper jins stack — their degrees are given EXPLICITLY.
+  if (opts.degrees) {
+    return {
+      id,
+      name,
+      family: "maqam",
+      degrees: opts.degrees.map((c) => ({ cents: c, label: labelForCents(c) })),
+      aliases: opts.aliases,
+      ajnas: upper ? { lower, upper, upperRootCents } : { lower, upperRootCents },
+      notes: opts.notes,
+    }
+  }
   const degrees: ModeDegree[] = [...lower.degrees]
   if (upper) {
     const lowTop = lower.degrees[lower.degrees.length - 1].cents
@@ -199,35 +221,45 @@ const buildMaqamatFrom = (a: AjnasSet): Mode[] => [
     aliases: ["Bayat", "Maqam Bayati"],
     notes: "Lower Bayati (neutral 2nd 150¢) + upper Nahawand on the 4th. 0 150 294 498 702 792 996.",
   }),
-  // Hijaz = jins Hijaz on tonic + jins Rast on the 4th (or Nahawand variant).
-  buildMaqam("maqam.hijaz", "Hijaz", a.hijaz, a.rast, 498, {
+  // Hijaz = jins Hijaz on tonic + jins NAHAWAND on the 4th → minor 6th + minor 7th
+  // (the iconic Phrygian-dominant Hijaz: C D♭ E F G A♭ B♭). The Rast-upper variant
+  // gives a neutral 6th, which reads major-ish; Nahawand is the common form.
+  buildMaqam("maqam.hijaz", "Hijaz", a.hijaz, a.nahawand, 498, {
     aliases: ["Hicaz", "Maqam Hijaz"],
-    notes: "Lower Hijaz (½, aug2, ½) + upper Rast on the 4th. Aug-2nd colour; upper jins varies by region.",
+    notes: "Lower Hijaz (½, aug2, ½) + upper Nahawand on the 4th → 0 128 386 498 702 792 996 (minor 6th A♭, minor 7th B♭).",
   }),
   // Hijazkar = Hijaz on tonic + Hijaz on the 5th (symmetric "double Hijaz").
   buildMaqam("maqam.hijazkar", "Hijazkar", a.hijaz, a.hijaz, 702, {
     aliases: ["Hijaz Kar", "Shahnaz", "Shadd Araban-family"],
     notes: "Two Hijaz tetrachords (double-harmonic shape). 0 128 386 498 702 830 1088.",
   }),
-  // Saba = jins Saba on tonic + jins Hijaz on the (lowered) 3rd region.
+  // Saba — the crushed/mournful NARROWED 4th: the 4th degree (400¢) sits BELOW the
+  // perfect 4th (498). Explicit degrees (maqamworld: Saba + Hijaz on the 3rd).
   buildMaqam("maqam.saba", "Saba", a.saba, a.hijaz, 294, {
     aliases: ["Maqam Saba"],
-    notes: "Lower Saba (narrowed 4th 590¢) + upper Hijaz from the m3. Signature 'yearning' diminished 4th.",
+    degrees: [0, 150, 300, 400, 700, 800, 1000],
+    notes: "0 150 300 400 700 800 1000. Signature diminished/narrowed 4th (400¢, below the P4). Only deg2 (150) is neutral. Source: maqamworld.com/en/maqam/saba.php.",
   }),
-  // Sikah / Sigah = jins Sikah on tonic (rooted on a half-flat) + Rast above.
+  // Sikah — rooted on a NEUTRAL tonic (E½b); 7 degrees. Explicit (Sikah trichord +
+  // Upper Rast on the 3rd + Rast on the 6th).
   buildMaqam("maqam.sikah", "Sikah", a.sikah, a.rast, 498, {
     aliases: ["Sigah", "Segah", "Maqam Sikah"],
-    notes: "Rooted on a half-flat (E½b). Sikah trichord + Rast. The neutral degrees define it.",
+    degrees: [0, 150, 350, 550, 700, 850, 1050],
+    notes: "0 150 350 550 700 850 1050. Tonic is itself a half-flat (sikah pitch). Source: maqamworld.com/en/maqam/sikah.php.",
   }),
-  // Huzam = a Sikah-family maqam: Sikah + Hijaz with the characteristic raise.
+  // Huzam — Sikah with jins Hijaz on the 3rd → the augmented-2nd leap between deg4
+  // (450) and deg5 (750). Explicit degrees (fixes the impossible 294→350 step).
   buildMaqam("maqam.huzam", "Huzam", a.sikah, a.hijaz, 294, {
     aliases: ["Huzzam", "Mukhalif", "Maqam Huzam"],
-    notes: "Sikah lower + Hijaz upper (raised colour). Neutral root, augmented-2nd above.",
+    degrees: [0, 150, 350, 450, 750, 850, 1050],
+    notes: "0 150 350 450 750 850 1050. Sikah + Hijaz on the 3rd (aug-2nd at deg4→5). Neutral tonic. Source: maqamworld.com/en/maqam/huzam.php.",
   }),
-  // Nahawand = jins Nahawand on tonic + jins Hijaz on the 5th (≈ harmonic minor).
+  // Nahawand ≈ harmonic minor. Explicit degrees: the upper-Hijaz stack gave a
+  // too-sharp 6th (830, from Hijaz's wide 2nd); a clean minor 6th (792) is correct.
   buildMaqam("maqam.nahawand", "Nahawand", a.nahawand, a.hijaz, 702, {
     aliases: ["Nahwand", "Maqam Nahawand"],
-    notes: "Minor-like; upper Hijaz on the 5th gives the harmonic-minor leading tone. 12-TET-aligned (no neutral tones).",
+    degrees: [0, 204, 294, 498, 702, 792, 1088],
+    notes: "Harmonic minor: 0 204 294 498 702 792 1088 (clean minor 6th A♭ + leading tone B). 12-TET-aligned.",
   }),
   // Kurd = jins Kurd on tonic + jins Nahawand on the 4th (498) (≈ Phrygian).
   buildMaqam("maqam.kurd", "Kurd", a.kurd, a.nahawand, 498, {

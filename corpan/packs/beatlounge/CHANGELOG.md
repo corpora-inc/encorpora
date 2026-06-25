@@ -5,6 +5,36 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-06-25
+
+### Added
+- **Tuning visualization**: a cents-accurate **tuning strip** under the harmony
+  panel showing each scale degree's exact pitch, with the cents value on every
+  degree that sits off the 12-TET grid (maqam neutrals, Persian koron/sori,
+  Turkish commas, and Just/Pythagorean re-voicings of Western/Thaat/Melakarta).
+  The ribbon's frets are drawn at their true microtonal positions.
+- **Persian dastgāh** family (Shur, Mahur, Homayun, Segah, Chahargah, Nava,
+  Rast-Panjgah) and **Turkish makam** family (Rast, Mahur, Buselik, Nihavend,
+  Uşşak, Hüseyni, Kürdi, Hicaz, Saba, Segah), each with tradition-sourced cents.
+- **Just / Pythagorean** intonation for Western/Thaat/Melakarta — audible and
+  shown on the tuning strip.
+
+### Fixed
+- **Microtuning was lost on every synth voice** (sequencer + ribbon) since 0.6.0:
+  the live voice re-triggered at a stale oscillator frequency, so Tone clobbered
+  the microtonal pitch back to 12-TET. Voices now trigger at the requested
+  frequency — maqam/Persian/Turkish degrees lock to their exact cents.
+- **Tuning stuck to 12-TET after switching modes live**: a harmony-only reconcile
+  re-seated held/pooled synth voices; gated so it only re-seats when the
+  oscillator/envelope actually changes.
+- **Sequencer notes collapsed/doubled and volume jumped on a live scale switch**:
+  `detuneForMidi` snapped out-of-scale authored notes onto the nearest degree,
+  colliding distinct pitches into a unison. Out-of-scale notes now play 12-TET as
+  placed; only in-scale notes bend to their exact cents.
+- **Maqam interval corrections** (Hijaz 6th, Saba/Sikah/Huzam/Nahawand jins
+  placement, Ajam, Turkish Hicaz/Saba) against tradition.
+- **Sampler** now honors microtonal detune (frequency repitch).
+
 ## [0.6.0] - 2026-06-25
 
 ### Added

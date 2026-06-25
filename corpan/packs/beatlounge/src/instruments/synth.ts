@@ -53,10 +53,21 @@ export const createSynthInstrument = (config: SynthConfig): Instrument => {
     },
     update(next: InstrumentConfig) {
       if (!isSynth(next)) return
-      poly.set({ oscillator: { type: next.osc }, envelope: { ...next.env } })
-      liveOsc = next.osc
-      liveEnv = { ...next.env }
-      live.refresh((v) => v.set({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }))
+      // Only re-seat oscillator/envelope when they ACTUALLY change. reconcile()
+      // calls update() on every doc change — including a live harmony switch
+      // (mode/school/tuning) that leaves osc/env identical. Re-running poly.set /
+      // live.refresh then recreates oscillators and resets their frequency Signal,
+      // dropping the microtonal pitch of currently-held + pooled live voices — the
+      // "tuning sticks to 12-TET after switching modes live" bug. Filter params are
+      // plain value writes (no node recreation), so they stay unconditional.
+      const voiceChanged =
+        next.osc !== liveOsc || JSON.stringify(next.env) !== JSON.stringify(liveEnv)
+      if (voiceChanged) {
+        poly.set({ oscillator: { type: next.osc }, envelope: { ...next.env } })
+        liveOsc = next.osc
+        liveEnv = { ...next.env }
+        live.refresh((v) => v.set({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }))
+      }
       filter.type = next.filter.type
       filter.frequency.value = next.filter.frequency
       filter.Q.value = next.filter.q

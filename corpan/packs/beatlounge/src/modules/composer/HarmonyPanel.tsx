@@ -28,9 +28,11 @@ import {
   docHarmony,
   type HarmonyScaleFamily,
   type MaqamSchool,
+  type HarmonyTuningId,
   type Id,
 } from "../../model/document"
 import type { Command } from "../../model/command"
+import { resolveMode, effectiveTuning, scaleCents } from "../../music/resolver"
 import { snapAllMelodicTracksToHarmony } from "../instruments/snapHarmony"
 import { CORPUS, listByFamily, FAMILIES, type CorpusProgression } from "../../music/chords"
 import {
@@ -73,6 +75,15 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
   const grid = useMemo(() => buildChordGrid(doc), [doc])
   const mode = modeById(h.scale.family, h.scale.id)
   const micro = scaleIsMicrotonal(mode)
+  // Active scale degrees as cents-above-tonic — the EXACT cents the resolver plays.
+  // Must use scaleCents (mode + tuning), NOT mode.degrees alone: for Just/Pythagorean
+  // the 12-TET skeleton is re-voiced off the grid (Western/Thaat/Melakarta), and for
+  // maqam the school's neutral cents already live on the mode. resolveMode is
+  // school-aware; scaleCents adds the tuning-system re-voicing on top.
+  const tuningCents = useMemo(
+    () => (h.mode === "modal" ? scaleCents(resolveMode(h), effectiveTuning(h)) : []),
+    [h]
+  )
 
   /**
    * Dispatch a harmony-changing command and THEN snap the WHOLE SONG (every
@@ -128,13 +139,17 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
       </div>
 
       {h.mode === "modal" ? (
-        <ModePanel
-          onChange={applyHarmony}
-          family={h.scale.family}
-          scaleId={h.scale.id}
-          school={h.scale.school ?? "grid"}
-          micro={micro}
-        />
+        <>
+          <ModePanel
+            onChange={applyHarmony}
+            family={h.scale.family}
+            scaleId={h.scale.id}
+            school={h.scale.school ?? "grid"}
+            tuning={h.scale.tuning}
+            micro={micro}
+          />
+          <TuningStrip cents={tuningCents} />
+        </>
       ) : (
         <ProgressionPanel
           grid={grid}
@@ -209,6 +224,7 @@ interface ModePanelProps {
   family: HarmonyScaleFamily
   scaleId: string
   school: MaqamSchool
+  tuning: HarmonyTuningId
   micro: boolean
 }
 
@@ -227,7 +243,23 @@ const schoolLabel = (id: MaqamSchool): string => {
   }
 }
 
-const ModePanel = ({ onChange, family, scaleId, school, micro }: ModePanelProps) => {
+/** Tuning systems for the 12-TET-skeleton families (Just ≈ shruti for thaat). */
+const TUNING_IDS: HarmonyTuningId[] = ["equal12", "just", "pythagorean"]
+const tuningLabel = (id: HarmonyTuningId): string => {
+  switch (id) {
+    case "equal12":
+      return ct("harmony.tuningEqual")
+    case "just":
+      return ct("harmony.tuningJust")
+    case "pythagorean":
+      return ct("harmony.tuningPythagorean")
+  }
+}
+/** Families whose 12-TET skeleton benefits from a Just/Pythagorean re-voicing.
+ *  Maqam uses its own `school`; persian/turkish carry baked microtonal cents. */
+const TUNABLE_FAMILIES = new Set<HarmonyScaleFamily>(["western", "thaat", "melakarta"])
+
+const ModePanel = ({ onChange, family, scaleId, school, tuning, micro }: ModePanelProps) => {
   const scales = useMemo(() => scalesForFamily(family), [family])
   return (
     <div className="bl-hb-mode-panel" data-bl-nocapture>
@@ -262,9 +294,28 @@ const ModePanel = ({ onChange, family, scaleId, school, micro }: ModePanelProps)
           ))}
         </select>
       </label>
+      {/* Intonation — one consistent row per family: Western/Indian get the tuning
+          system, maqam gets the regional school, Persian/Turkish show their own
+          authoritative tuning (read-only) so the row is never blank. */}
+      {TUNABLE_FAMILIES.has(family) && (
+        <label className="bl-hb-scale">
+          <span className="bl-hb-cap">{ct("harmony.intonation")}</span>
+          <select
+            className="bl-hb-select"
+            value={tuning}
+            onChange={(e) => onChange({ t: "setTuning", tuning: e.target.value as HarmonyTuningId })}
+          >
+            {TUNING_IDS.map((id) => (
+              <option key={id} value={id}>
+                {tuningLabel(id)}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       {family === "maqam" && (
         <label className="bl-hb-scale">
-          <span className="bl-hb-cap">{ct("harmony.school")}</span>
+          <span className="bl-hb-cap">{ct("harmony.intonation")}</span>
           <select
             className="bl-hb-select"
             value={school}
@@ -278,11 +329,51 @@ const ModePanel = ({ onChange, family, scaleId, school, micro }: ModePanelProps)
           </select>
         </label>
       )}
+      {(family === "persian" || family === "turkish") && (
+        <label className="bl-hb-scale">
+          <span className="bl-hb-cap">{ct("harmony.intonation")}</span>
+          <span className="bl-hb-static">
+            {family === "persian" ? ct("harmony.intonationRadif") : ct("harmony.intonationAEU")}
+          </span>
+        </label>
+      )}
       {micro && (
         <span className="bl-hb-micro" aria-hidden="true">
           microtonal
         </span>
       )}
+    </div>
+  )
+}
+
+// ============================================================== Tuning strip
+/**
+ * A 0–1200¢ ruler that plots the active scale's degrees at their EXACT cents over
+ * faint 12-TET reference ticks — so microtonal degrees (maqam neutral tones,
+ * Persian koron/sori, Turkish commas) are visibly OFF the grid, and changing the
+ * school/tuning visibly nudges them. Microtonal degrees carry their cents value.
+ */
+const TuningStrip = ({ cents }: { cents: number[] }) => {
+  const degrees = useMemo(() => cents.filter((c) => c < 1200 - 0.5), [cents])
+  if (degrees.length === 0) return null
+  return (
+    <div className="bl-tuning-strip" aria-label={ct("harmony.tuningMap")}>
+      {Array.from({ length: 13 }, (_, i) => i * 100).map((c) => (
+        <span key={`tet${c}`} className="bl-ts-tet" style={{ left: `${(c / 1200) * 100}%` }} />
+      ))}
+      {degrees.map((c, i) => {
+        const dev = c - Math.round(c / 100) * 100
+        const isMicro = Math.abs(dev) > 3
+        return (
+          <span
+            key={i}
+            className={`bl-ts-deg${i === 0 ? " is-tonic" : ""}${isMicro ? " is-micro" : ""}`}
+            style={{ left: `${(c / 1200) * 100}%` }}
+          >
+            {isMicro && <span className="bl-ts-cents">{Math.round(c)}</span>}
+          </span>
+        )
+      })}
     </div>
   )
 }
