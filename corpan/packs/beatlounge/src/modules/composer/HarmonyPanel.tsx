@@ -32,7 +32,7 @@ import {
   type Id,
 } from "../../model/document"
 import type { Command } from "../../model/command"
-import { resolveMode, resolveTuning, scaleCents } from "../../music/resolver"
+import { resolveMode, effectiveTuning, scaleCents } from "../../music/resolver"
 import { snapAllMelodicTracksToHarmony } from "../instruments/snapHarmony"
 import { CORPUS, listByFamily, FAMILIES, type CorpusProgression } from "../../music/chords"
 import {
@@ -81,7 +81,7 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
   // maqam the school's neutral cents already live on the mode. resolveMode is
   // school-aware; scaleCents adds the tuning-system re-voicing on top.
   const tuningCents = useMemo(
-    () => (h.mode === "modal" ? scaleCents(resolveMode(h), resolveTuning(h)) : []),
+    () => (h.mode === "modal" ? scaleCents(resolveMode(h), effectiveTuning(h)) : []),
     [h]
   )
 

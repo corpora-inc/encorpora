@@ -55,6 +55,18 @@ export const resolveMode = (h: Harmony): Mode => {
 export const resolveTuning = (h: Harmony): TuningSystem =>
   TUNING_SYSTEMS[h.scale.tuning] ?? TUNING_SYSTEMS.equal12
 
+/** Families whose modes carry their OWN authored neutral cents (maqam neutrals,
+ *  Persian koron/sori, Turkish commas). A just/pythagorean tuning is meant for the
+ *  diatonic families — it must never re-voice these, or a value carried over from a
+ *  previous diatonic scale would distort their authored intervals. */
+const AUTHORED_MICROTONAL_FAMILIES = new Set(["maqam", "persian", "turkish"])
+
+/** The tuning that ACTUALLY applies: equal12 for authored-microtonal families (so
+ *  their cents play verbatim), else the doc's chosen tuning. Use this everywhere the
+ *  played/displayed cents are derived, so the strip and the sound always agree. */
+export const effectiveTuning = (h: Harmony): TuningSystem =>
+  AUTHORED_MICROTONAL_FAMILIES.has(h.scale.family) ? TUNING_SYSTEMS.equal12 : resolveTuning(h)
+
 // ===================================================================== chords
 /**
  * The active chord at a tick (chordal mode): the LAST chord whose tick ≤ the
@@ -231,7 +243,10 @@ export const detuneForMidi = (
   // (the "volume jumps on scale switch" bug). Ribbon/live play already quantizes
   // to in-scale frets before playing, so it is unaffected by this guard.
   if (!inHarmony(midi, doc, tick)) return 0
-  const tuning = resolveTuning(h)
+  // effectiveTuning, not resolveTuning: a maqam/Persian/Turkish mode must play its
+  // authored cents even if the doc still carries a just/pythagorean tuning from a
+  // previously-selected diatonic scale (which would otherwise re-voice + distort it).
+  const tuning = effectiveTuning(h)
   if (tuning.id === "equal12") {
     // 12-TET-multiple Western modes ⇒ 0; maqam neutral cents ⇒ real detune.
     const mode = resolveMode(h)
