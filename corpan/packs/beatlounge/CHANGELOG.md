@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- Loading a phrase no longer kills all audio (synths + drums going dead until an
+  app restart). Root cause: the scratch FX bus re-called `Tone.setContext`, which
+  is NOT idempotent — it re-wraps the raw context in a new `Tone.Context` and
+  disposes the previous one, orphaning every node the main graph had built. Both
+  `setContext` calls are now guarded (only set when Tone isn't already on that raw
+  context). Also hardened the scheduler so one instrument throwing in dispatch can
+  no longer wedge the whole transport. (Beat-Lounge-Plus.)
+
 ## [0.5.0] "Plus" - 2026-06-23
 
 ### Added

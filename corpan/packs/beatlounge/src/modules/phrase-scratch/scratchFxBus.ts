@@ -48,9 +48,12 @@ export interface ScratchFxBus {
  * is the decks' destination; the wired chain ends at `ctx.destination`.
  */
 export const createScratchFxBus = (ctx: AudioContext): ScratchFxBus => {
-  // Ensure Tone routes onto OUR context (idempotent; the main graph also sets
-  // this — both use host.audioContext()).
-  Tone.setContext(ctx)
+  // Ensure Tone routes onto OUR context. CRITICAL: `Tone.setContext` re-wraps the
+  // raw ctx in a NEW Tone.Context and DISPOSES the previous one — which orphans
+  // every node the main graph already built (synths + drums go DEAD until the app
+  // is reloaded). It is NOT idempotent. So only set it when Tone isn't already on
+  // this exact raw context (the main graph normally set it first).
+  if (Tone.getContext().rawContext !== ctx) Tone.setContext(ctx)
 
   const input = ctx.createGain()
   let inserts: LiveInsert[] = []

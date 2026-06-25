@@ -153,7 +153,18 @@ export const createScheduler = (deps: SchedulerDeps): Scheduler => {
     const planned = collectTriggers(doc, lastScheduledTick, windowEnd)
     for (const p of planned) {
       const when = audioStart + p.scheduledTick * spt()
-      triggerSubs.forEach((cb) => cb({ trackId: p.trackId, when, note: p.note }))
+      // A single instrument throwing must NEVER stall the scheduler: an unguarded
+      // throw here skips `lastScheduledTick = windowEnd` below, so the SAME window
+      // (and the SAME throw) repeats every tick — wedging ALL audio until the app
+      // is restarted. Isolate each subscriber so one bad trigger can't take the
+      // transport (or the other tracks) down with it.
+      triggerSubs.forEach((cb) => {
+        try {
+          cb({ trackId: p.trackId, when, note: p.note })
+        } catch (err) {
+          console.error("[beatlounge] trigger dispatch failed; skipping", p.trackId, err)
+        }
+      })
     }
     lastScheduledTick = windowEnd
   }
