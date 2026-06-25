@@ -220,10 +220,17 @@ export const detuneForMidi = (
   doc: BeatloungeDoc,
   tick: Tick
 ): number => {
-  void tick // modal scale + tuning are time-invariant; tick kept for API symmetry
   const h = docHarmony(doc)
   // Chordal implied scales are 12-TET → no detune.
   if (h.mode === "chordal") return 0
+  // Only notes that BELONG to the active scale bend to their exact cents. An
+  // out-of-scale authored note — e.g. a sequencer pitch stranded after a live
+  // mode switch — must play 12-TET as placed, NOT snap onto the nearest degree:
+  // snapping collapses distinct pitches onto a unison (in Hijaz, MIDI 61→+28¢ and
+  // 62→−72¢ both land on 61.28), which loses the user's note AND sums amplitude
+  // (the "volume jumps on scale switch" bug). Ribbon/live play already quantizes
+  // to in-scale frets before playing, so it is unaffected by this guard.
+  if (!inHarmony(midi, doc, tick)) return 0
   const tuning = resolveTuning(h)
   if (tuning.id === "equal12") {
     // 12-TET-multiple Western modes ⇒ 0; maqam neutral cents ⇒ real detune.

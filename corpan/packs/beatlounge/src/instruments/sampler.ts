@@ -104,9 +104,15 @@ export const createSamplerInstrument = (config: SamplerConfig): Instrument => {
     output: out,
     trigger(note: TriggerNote, when: number) {
       if (!sampler) return
-      const name = noteName(note.pitch)
+      // Honor microtonal detune by repitching the buffer to the exact frequency
+      // (Tone.Sampler accepts a frequency and repitches continuously; AVOID
+      // AudioBufferSourceNode.detune — unsupported on Safari/WebKit). 0 cents ⇒
+      // the buffer's natural repitch for that MIDI note.
+      const freq =
+        Tone.Frequency(note.pitch, "midi").toFrequency() *
+        Math.pow(2, (note.detuneCents ?? 0) / 1200)
       try {
-        sampler.triggerAttackRelease(name, Math.max(0.05, note.durationSec), when, note.velocity)
+        sampler.triggerAttackRelease(freq, Math.max(0.05, note.durationSec), when, note.velocity)
       } catch {
         /* sampler can throw on voice exhaustion; ignore */
       }
