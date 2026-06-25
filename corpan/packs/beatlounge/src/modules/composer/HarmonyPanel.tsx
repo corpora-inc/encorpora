@@ -32,7 +32,7 @@ import {
   type Id,
 } from "../../model/document"
 import type { Command } from "../../model/command"
-import { resolveMode } from "../../music/resolver"
+import { resolveMode, resolveTuning, scaleCents } from "../../music/resolver"
 import { snapAllMelodicTracksToHarmony } from "../instruments/snapHarmony"
 import { CORPUS, listByFamily, FAMILIES, type CorpusProgression } from "../../music/chords"
 import {
@@ -75,10 +75,13 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
   const grid = useMemo(() => buildChordGrid(doc), [doc])
   const mode = modeById(h.scale.family, h.scale.id)
   const micro = scaleIsMicrotonal(mode)
-  // Active scale degrees as cents-above-tonic — school/tuning-aware (resolveMode),
-  // so the tuning strip shows exactly what the resolver plays.
+  // Active scale degrees as cents-above-tonic — the EXACT cents the resolver plays.
+  // Must use scaleCents (mode + tuning), NOT mode.degrees alone: for Just/Pythagorean
+  // the 12-TET skeleton is re-voiced off the grid (Western/Thaat/Melakarta), and for
+  // maqam the school's neutral cents already live on the mode. resolveMode is
+  // school-aware; scaleCents adds the tuning-system re-voicing on top.
   const tuningCents = useMemo(
-    () => (h.mode === "modal" ? resolveMode(h).degrees.map((d) => d.cents) : []),
+    () => (h.mode === "modal" ? scaleCents(resolveMode(h), resolveTuning(h)) : []),
     [h]
   )
 
