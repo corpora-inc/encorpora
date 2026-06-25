@@ -33,6 +33,8 @@ export const HARMONY_FAMILIES: { id: HarmonyScaleFamily; label: string }[] = [
   { id: "thaat", label: "Thaat" },
   { id: "melakarta", label: "Melakarta" },
   { id: "maqam", label: "Maqam" },
+  { id: "persian", label: "Persian" },
+  { id: "turkish", label: "Turkish" },
 ]
 
 /** The selectable scales of a family, as { id, name }. */

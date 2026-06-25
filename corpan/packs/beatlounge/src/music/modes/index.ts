@@ -16,6 +16,8 @@ import { WESTERN_MODES } from "./western"
 import { THAATS } from "./thaats"
 import { MELAKARTAS } from "./melakarta"
 import { MAQAMAT } from "./maqam"
+import { PERSIAN_DASTGAH } from "./persian"
+import { TURKISH_MAKAMLAR } from "./turkish"
 import { modeCents } from "./types"
 import type { ModeCents as TuningModeCents } from "../tuning"
 
@@ -24,6 +26,8 @@ export { modeCents } from "./types"
 export { WESTERN_MODES } from "./western"
 export { THAATS, THAAT_SHRUTI } from "./thaats"
 export { MELAKARTAS, buildMelakarta } from "./melakarta"
+export { PERSIAN_DASTGAH } from "./persian"
+export { TURKISH_MAKAMLAR } from "./turkish"
 export {
   MAQAMAT,
   AJNAS,
@@ -49,6 +53,8 @@ export const MODES_BY_FAMILY: Record<ModeFamily, Mode[]> = {
   thaat: THAATS,
   melakarta: MELAKARTAS,
   maqam: MAQAMAT,
+  persian: PERSIAN_DASTGAH,
+  turkish: TURKISH_MAKAMLAR,
 }
 
 /** The flat corpus — every mode, all families. */
@@ -57,6 +63,8 @@ export const ALL_MODES: Mode[] = [
   ...THAATS,
   ...MELAKARTAS,
   ...MAQAMAT,
+  ...PERSIAN_DASTGAH,
+  ...TURKISH_MAKAMLAR,
 ]
 
 /** id → Mode lookup (the primary index). */
@@ -99,5 +107,7 @@ export const CORPUS_COUNTS = {
   thaat: THAATS.length,
   melakarta: MELAKARTAS.length,
   maqam: MAQAMAT.length,
+  persian: PERSIAN_DASTGAH.length,
+  turkish: TURKISH_MAKAMLAR.length,
   total: ALL_MODES.length,
 } as const

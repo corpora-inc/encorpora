@@ -277,7 +277,13 @@ export interface Bus {
 export type HarmonyMode = "modal" | "chordal"
 
 /** The corpus family a modal scale is drawn from (mirrors `music/modes`). */
-export type HarmonyScaleFamily = "western" | "thaat" | "melakarta" | "maqam"
+export type HarmonyScaleFamily =
+  | "western"
+  | "thaat"
+  | "melakarta"
+  | "maqam"
+  | "persian"
+  | "turkish"
 
 /** Built-in tuning systems (mirrors `music/tuning` TuningSystemId). */
 export type HarmonyTuningId = "equal12" | "pythagorean" | "just"
