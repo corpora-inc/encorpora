@@ -48,6 +48,15 @@ export const createFmInstrument = (config: FmConfig): Instrument => {
     },
     update(next: InstrumentConfig) {
       if (!isFm(next)) return
+      // Only re-seat voice config when it ACTUALLY changes — a live harmony switch
+      // reconciles every instrument but leaves these identical, and re-running
+      // live.refresh would reset held/pooled voices' frequency (microtuning sticks
+      // to 12-TET after switching modes). See synth.ts for the full rationale.
+      const voiceChanged =
+        next.harmonicity !== fm.harmonicity ||
+        next.modIndex !== fm.modIndex ||
+        JSON.stringify(next.env) !== JSON.stringify(fm.env)
+      if (!voiceChanged) return
       poly.set({
         harmonicity: next.harmonicity,
         modulationIndex: next.modIndex,
