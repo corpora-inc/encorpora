@@ -29,7 +29,7 @@ import {
   type ModeCents,
   type TuningSystem,
 } from "./tuning"
-import { MODE_BY_ID, toModeCents, WESTERN_MODES } from "./modes"
+import { MODE_BY_ID, toModeCents, WESTERN_MODES, maqamatForSchool, DEFAULT_SCHOOL } from "./modes"
 import type { Mode } from "./modes"
 import { parseChord, toPc, type Chord } from "./harmony"
 
@@ -40,9 +40,16 @@ const fmod = (n: number, m: number): number => ((n % m) + m) % m
 const FALLBACK_MODE: Mode =
   MODE_BY_ID["western.ionian"] ?? WESTERN_MODES[0]
 
-/** Resolve the corpus Mode for a harmony's modal scale (forgiving). */
-export const resolveMode = (h: Harmony): Mode =>
-  MODE_BY_ID[h.scale.id] ?? FALLBACK_MODE
+/** Resolve the corpus Mode for a harmony's modal scale (forgiving). For maqam the
+ *  per-song regional `school` picks the right neutral-cents variant (same mode id,
+ *  different sikah/Rast-3rd) so switching school re-tunes live. */
+export const resolveMode = (h: Harmony): Mode => {
+  if (h.scale.family === "maqam") {
+    const m = maqamatForSchool(h.scale.school ?? DEFAULT_SCHOOL).find((x) => x.id === h.scale.id)
+    if (m) return m
+  }
+  return MODE_BY_ID[h.scale.id] ?? FALLBACK_MODE
+}
 
 /** Resolve the TuningSystem for a harmony (defaults to equal12). */
 export const resolveTuning = (h: Harmony): TuningSystem =>

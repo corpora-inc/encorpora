@@ -448,6 +448,12 @@ export const reduce = (doc: BeatloungeDoc, cmd: Command): BeatloungeDoc => {
       return withHarmony(doc, { ...h, scale: { ...h.scale, tuning: cmd.tuning } })
     }
 
+    case "setSchool": {
+      const h = harmonyOf(doc)
+      if ((h.scale.school ?? "grid") === cmd.school) return doc
+      return withHarmony(doc, { ...h, scale: { ...h.scale, school: cmd.school } })
+    }
+
     case "setReference": {
       const h = harmonyOf(doc)
       const hz = cmd.reference.hz

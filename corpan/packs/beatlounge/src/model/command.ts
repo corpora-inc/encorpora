@@ -18,6 +18,7 @@ import type {
   HarmonyReference,
   HarmonyScaleFamily,
   HarmonyTuningId,
+  MaqamSchool,
   Id,
   InstrumentConfig,
   Midi,
@@ -104,6 +105,8 @@ export type Command =
   | { t: "setScale"; family: HarmonyScaleFamily; id: string }
   /** Set the modal tuning (equal12 | pythagorean | just). */
   | { t: "setTuning"; tuning: HarmonyTuningId }
+  /** Set the maqam regional intonation school (maqam family only). */
+  | { t: "setSchool"; school: MaqamSchool }
   /** Set the reference pitch (A4 = 440 / 442 / drone anchor). */
   | { t: "setReference"; reference: HarmonyReference }
   /** Replace the whole chord timeline (chord-fill / browse-994 drop). */

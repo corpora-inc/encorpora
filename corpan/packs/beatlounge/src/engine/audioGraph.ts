@@ -73,7 +73,10 @@ export const createAudioGraph = (
   fragmentDeps?: TtsFragmentDeps
 ): AudioGraph => {
   // Ensure Tone uses our context so node times line up with the scheduler.
-  Tone.setContext(ctx)
+  // GUARDED: setContext re-wraps the raw ctx in a NEW Tone.Context and DISPOSES the
+  // previous one — orphaning every node already built (total silence). Only set it
+  // when Tone isn't already on this exact raw context.
+  if (Tone.getContext().rawContext !== ctx) Tone.setContext(ctx)
 
   const limiter = new Tone.Limiter(-1).toDestination()
   const masterVol = new Tone.Volume(Tone.gainToDb(0.8)).connect(limiter)

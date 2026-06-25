@@ -28,6 +28,9 @@ export {
   MAQAMAT,
   AJNAS,
   NEUTRAL,
+  SCHOOL_NEUTRAL,
+  DEFAULT_SCHOOL,
+  maqamatForSchool,
   JINS_RAST,
   JINS_BAYATI,
   JINS_HIJAZ,
@@ -38,6 +41,7 @@ export {
   JINS_NIKRIZ,
   JINS_SABA,
 } from "./maqam"
+export type { MaqamSchool, NeutralTable } from "./maqam"
 
 /** Per-family lists. */
 export const MODES_BY_FAMILY: Record<ModeFamily, Mode[]> = {

@@ -46,79 +46,98 @@
 import type { Jins, Mode, ModeDegree } from "./types"
 
 // ─────────────────────────────────────────────────────── neutral-tone cents
-/** The principled neutral-interval cents this corpus uses (see header). */
-export const NEUTRAL = {
-  /** Rast / Sikah neutral 3rd above a root (≈ 27/22). 24-TET alt: 350. */
-  rastThird: 355,
-  /** Bayati neutral 2nd above a root (≈ 12/11 = 150.6¢). 24-TET alt: 150. */
-  neutralSecond: 150,
-  /** Neutral 6th in a Rast-type upper jins (3rd above the 5th). */
-  rastSixth: 355,
-  /** Rast neutral 7th = 5th(702) + neutral-3rd(355) − octave-fold ≈ 1057.
-   *  We use 1050 (the common B½b, also the 24-TET value). */
-  neutralSeventh: 1050,
-  /** Saba's narrowed 4th (diminished, "yearning"). ~590¢. */
-  sabaFourth: 590,
-} as const
+/**
+ * The school-variable neutral cents. Because maqamat COMPOSE ajnas, these few
+ * jins-level values are ALL a regional school needs — shifting `rastThird` moves
+ * Rast's 3rd, Rast's 7th (via the upper jins) AND Sikah together. Everything else
+ * (whole tones, P4/P5, Hijaz's augmented 2nd) is fixed and school-invariant.
+ */
+export interface NeutralTable {
+  /** Rast / Sikah neutral 3rd above a root — the primary regional marker. */
+  rastThird: number
+  /** Bayati / Saba neutral 2nd above a root (≈ 12/11 = 150.6¢). */
+  neutralSecond: number
+  /** Saba's narrowed ("yearning") 4th. */
+  sabaFourth: number
+}
+
+/**
+ * Regional intonation schools (Arabic). They differ in the neutral (sikah/Rast)
+ * 3rd — the degree Arab musicians actually argue about by region. Sourced:
+ *   - grid: the 1932 Cairo-Congress 24-EDO 50¢ grid (pedagogical lingua franca).
+ *   - just: 27/22 = 354.5¢ (microtonaltheory "Arab Rast") — the pan-Arab middle.
+ *   - egyptian: ~342¢, the FLATTER sikah (Abu Shumays/Ableton: "lower in Egypt").
+ *   - syrian: ~360¢, the HIGHER sikah ("typically higher in Syria than Egypt").
+ * `neutralSecond` (150) and `sabaFourth` (590) are held constant — no clean
+ * regional split in the literature; Saba's 4th stays at the shipped 590¢ (sources
+ * cluster 582–600) pending a dedicated review. Turkish makam (53-comma) and
+ * Persian dastgah (koron/sori) are separate SYSTEMS, not schools.
+ */
+export type MaqamSchool = "grid" | "just" | "egyptian" | "syrian"
+
+export const SCHOOL_NEUTRAL: Record<MaqamSchool, NeutralTable> = {
+  grid: { rastThird: 350, neutralSecond: 150, sabaFourth: 590 },
+  just: { rastThird: 355, neutralSecond: 150, sabaFourth: 590 },
+  egyptian: { rastThird: 342, neutralSecond: 150, sabaFourth: 590 },
+  syrian: { rastThird: 360, neutralSecond: 150, sabaFourth: 590 },
+}
+
+/** The default school — the 24-EDO grid (clean, sourced, learner-friendly). */
+export const DEFAULT_SCHOOL: MaqamSchool = "grid"
+
+/** The default neutral table (back-compat export; = the default school). */
+export const NEUTRAL: NeutralTable = SCHOOL_NEUTRAL[DEFAULT_SCHOOL]
 
 // ─────────────────────────────────────────────────────────────────── ajnas
 const deg = (cents: number, label: string): ModeDegree => ({ cents, label })
 
-/** Jins Rast (tetrachord): 1 – ¾ – ¾ – 1. C D E½b F. */
-export const JINS_RAST: Jins = {
-  id: "jins.rast",
-  name: "Rast",
-  degrees: [deg(0, "Sus"), deg(204, "M2 9/8"), deg(NEUTRAL.rastThird, "neutral 3rd"), deg(498, "P4 4/3")],
+/** The nine ajnas as a set — built from a neutral table (a school = a table). */
+export interface AjnasSet {
+  rast: Jins
+  bayati: Jins
+  hijaz: Jins
+  nahawand: Jins
+  kurd: Jins
+  ajam: Jins
+  sikah: Jins
+  nikriz: Jins
+  saba: Jins
 }
-/** Jins Bayati (tetrachord): ¾ – ¾ – 1. D E½b F G. */
-export const JINS_BAYATI: Jins = {
-  id: "jins.bayati",
-  name: "Bayati",
-  degrees: [deg(0, "Sus"), deg(NEUTRAL.neutralSecond, "neutral 2nd"), deg(294, "m3"), deg(498, "P4")],
-}
-/** Jins Hijaz (tetrachord): ½ – aug2 – ½. D E♭ F♯ G. (augmented 2nd = 296¢ here,
- *  the just Hijaz 14/13–5/4 spelling gives 0,128,386,498.) */
-export const JINS_HIJAZ: Jins = {
-  id: "jins.hijaz",
-  name: "Hijaz",
-  degrees: [deg(0, "Sus"), deg(128, "neutral/min 2nd 14/13"), deg(386, "M3 5/4"), deg(498, "P4")],
-}
-/** Jins Nahawand (tetrachord, minor-like): 1 – ½ – 1. C D E♭ F. */
-export const JINS_NAHAWAND: Jins = {
-  id: "jins.nahawand",
-  name: "Nahawand",
-  degrees: [deg(0, "Sus"), deg(204, "M2"), deg(294, "m3"), deg(498, "P4")],
-}
-/** Jins Kurd (tetrachord, Phrygian-like): ½ – 1 – 1. D E♭ F G. */
-export const JINS_KURD: Jins = {
-  id: "jins.kurd",
-  name: "Kurd",
-  degrees: [deg(0, "Sus"), deg(90, "m2 256/243"), deg(294, "m3"), deg(498, "P4")],
-}
-/** Jins Ajam (pentachord, major-like): 1 – 1 – ½ – 1. B♭ C D E♭ F → 0 2 4 5 7. */
-export const JINS_AJAM: Jins = {
-  id: "jins.ajam",
-  name: "Ajam",
-  degrees: [deg(0, "Sus"), deg(204, "M2 9/8"), deg(408, "M3 81/64"), deg(498, "P4"), deg(702, "P5")],
-}
-/** Jins Sikah (trichord on a half-flat root): neutral 3rd then ½. */
-export const JINS_SIKAH: Jins = {
-  id: "jins.sikah",
-  name: "Sikah",
-  degrees: [deg(0, "Sus (½b)"), deg(NEUTRAL.rastThird, "neutral 3rd"), deg(498, "P4")],
-}
-/** Jins Nikriz (pentachord): 1 – ½ – aug2-ish – ½ … 0 2 3 6 7. */
-export const JINS_NIKRIZ: Jins = {
-  id: "jins.nikriz",
-  name: "Nikriz",
-  degrees: [deg(0, "Sus"), deg(204, "M2"), deg(294, "m3"), deg(594, "A4"), deg(702, "P5")],
-}
-/** Jins Saba (tetrachord, narrowed 4th): ¾ – ¾ – dim. D E½b F G♭. */
-export const JINS_SABA: Jins = {
-  id: "jins.saba",
-  name: "Saba",
-  degrees: [deg(0, "Sus"), deg(NEUTRAL.neutralSecond, "neutral 2nd"), deg(294, "m3"), deg(NEUTRAL.sabaFourth, "dim 4th")],
-}
+
+/** Construct all nine ajnas from a neutral table. Only the neutral degrees
+ *  (`rastThird`, `neutralSecond`, `sabaFourth`) vary; the rest are fixed. */
+const buildAjnasSet = (n: NeutralTable): AjnasSet => ({
+  // Jins Rast (tetrachord): 1 – ¾ – ¾ – 1. C D E½b F.
+  rast: { id: "jins.rast", name: "Rast", degrees: [deg(0, "Sus"), deg(204, "M2 9/8"), deg(n.rastThird, "neutral 3rd"), deg(498, "P4 4/3")] },
+  // Jins Bayati (tetrachord): ¾ – ¾ – 1. D E½b F G.
+  bayati: { id: "jins.bayati", name: "Bayati", degrees: [deg(0, "Sus"), deg(n.neutralSecond, "neutral 2nd"), deg(294, "m3"), deg(498, "P4")] },
+  // Jins Hijaz (tetrachord): ½ – aug2 – ½. D E♭ F♯ G.
+  hijaz: { id: "jins.hijaz", name: "Hijaz", degrees: [deg(0, "Sus"), deg(128, "neutral/min 2nd 14/13"), deg(386, "M3 5/4"), deg(498, "P4")] },
+  // Jins Nahawand (tetrachord, minor-like): 1 – ½ – 1. C D E♭ F.
+  nahawand: { id: "jins.nahawand", name: "Nahawand", degrees: [deg(0, "Sus"), deg(204, "M2"), deg(294, "m3"), deg(498, "P4")] },
+  // Jins Kurd (tetrachord, Phrygian-like): ½ – 1 – 1. D E♭ F G.
+  kurd: { id: "jins.kurd", name: "Kurd", degrees: [deg(0, "Sus"), deg(90, "m2 256/243"), deg(294, "m3"), deg(498, "P4")] },
+  // Jins Ajam (pentachord, major-like): 1 – 1 – ½ – 1.
+  ajam: { id: "jins.ajam", name: "Ajam", degrees: [deg(0, "Sus"), deg(204, "M2 9/8"), deg(408, "M3 81/64"), deg(498, "P4"), deg(702, "P5")] },
+  // Jins Sikah (trichord on a half-flat root): neutral 3rd then ½.
+  sikah: { id: "jins.sikah", name: "Sikah", degrees: [deg(0, "Sus (½b)"), deg(n.rastThird, "neutral 3rd"), deg(498, "P4")] },
+  // Jins Nikriz (pentachord): 1 – ½ – aug2-ish – ½ … 0 2 3 6 7.
+  nikriz: { id: "jins.nikriz", name: "Nikriz", degrees: [deg(0, "Sus"), deg(204, "M2"), deg(294, "m3"), deg(594, "A4"), deg(702, "P5")] },
+  // Jins Saba (tetrachord, narrowed 4th): ¾ – ¾ – dim. D E½b F G♭.
+  saba: { id: "jins.saba", name: "Saba", degrees: [deg(0, "Sus"), deg(n.neutralSecond, "neutral 2nd"), deg(294, "m3"), deg(n.sabaFourth, "dim 4th")] },
+})
+
+/** The DEFAULT-school ajnas — the individually-exported consts (back-compat). */
+const DEFAULT_AJNAS = buildAjnasSet(NEUTRAL)
+export const JINS_RAST = DEFAULT_AJNAS.rast
+export const JINS_BAYATI = DEFAULT_AJNAS.bayati
+export const JINS_HIJAZ = DEFAULT_AJNAS.hijaz
+export const JINS_NAHAWAND = DEFAULT_AJNAS.nahawand
+export const JINS_KURD = DEFAULT_AJNAS.kurd
+export const JINS_AJAM = DEFAULT_AJNAS.ajam
+export const JINS_SIKAH = DEFAULT_AJNAS.sikah
+export const JINS_NIKRIZ = DEFAULT_AJNAS.nikriz
+export const JINS_SABA = DEFAULT_AJNAS.saba
 
 export const AJNAS: Jins[] = [
   JINS_RAST, JINS_BAYATI, JINS_HIJAZ, JINS_NAHAWAND, JINS_KURD,
@@ -169,56 +188,56 @@ const buildMaqam = (
  * The principal maqamat. Upper-jins root is typically the 5th (702¢) for Rast-
  * family, the 4th (498¢) for Bayati-family — per standard ajnas decomposition.
  */
-export const MAQAMAT: Mode[] = [
+const buildMaqamatFrom = (a: AjnasSet): Mode[] => [
   // Rast = jins Rast on tonic + jins Rast on the 5th (G A B½b C) → neutral 3rd & 7th.
-  buildMaqam("maqam.rast", "Rast", JINS_RAST, JINS_RAST, 702, {
+  buildMaqam("maqam.rast", "Rast", a.rast, a.rast, 702, {
     aliases: ["Maqam Rast"],
     notes: "Lower Rast + upper Rast on the 5th. Degrees 0 204 355 498 702 906 1057. Neutral 3rd 355¢ & neutral 7th ~1057¢. 24-TET alt: 350/1050.",
   }),
   // Bayati = jins Bayati on tonic + jins Nahawand on the 4th (G A B♭ C).
-  buildMaqam("maqam.bayati", "Bayati", JINS_BAYATI, JINS_NAHAWAND, 498, {
+  buildMaqam("maqam.bayati", "Bayati", a.bayati, a.nahawand, 498, {
     aliases: ["Bayat", "Maqam Bayati"],
     notes: "Lower Bayati (neutral 2nd 150¢) + upper Nahawand on the 4th. 0 150 294 498 702 792 996.",
   }),
   // Hijaz = jins Hijaz on tonic + jins Rast on the 4th (or Nahawand variant).
-  buildMaqam("maqam.hijaz", "Hijaz", JINS_HIJAZ, JINS_RAST, 498, {
+  buildMaqam("maqam.hijaz", "Hijaz", a.hijaz, a.rast, 498, {
     aliases: ["Hicaz", "Maqam Hijaz"],
     notes: "Lower Hijaz (½, aug2, ½) + upper Rast on the 4th. Aug-2nd colour; upper jins varies by region.",
   }),
   // Hijazkar = Hijaz on tonic + Hijaz on the 5th (symmetric "double Hijaz").
-  buildMaqam("maqam.hijazkar", "Hijazkar", JINS_HIJAZ, JINS_HIJAZ, 702, {
+  buildMaqam("maqam.hijazkar", "Hijazkar", a.hijaz, a.hijaz, 702, {
     aliases: ["Hijaz Kar", "Shahnaz", "Shadd Araban-family"],
     notes: "Two Hijaz tetrachords (double-harmonic shape). 0 128 386 498 702 830 1088.",
   }),
   // Saba = jins Saba on tonic + jins Hijaz on the (lowered) 3rd region.
-  buildMaqam("maqam.saba", "Saba", JINS_SABA, JINS_HIJAZ, 294, {
+  buildMaqam("maqam.saba", "Saba", a.saba, a.hijaz, 294, {
     aliases: ["Maqam Saba"],
     notes: "Lower Saba (narrowed 4th 590¢) + upper Hijaz from the m3. Signature 'yearning' diminished 4th.",
   }),
   // Sikah / Sigah = jins Sikah on tonic (rooted on a half-flat) + Rast above.
-  buildMaqam("maqam.sikah", "Sikah", JINS_SIKAH, JINS_RAST, 498, {
+  buildMaqam("maqam.sikah", "Sikah", a.sikah, a.rast, 498, {
     aliases: ["Sigah", "Segah", "Maqam Sikah"],
     notes: "Rooted on a half-flat (E½b). Sikah trichord + Rast. The neutral degrees define it.",
   }),
   // Huzam = a Sikah-family maqam: Sikah + Hijaz with the characteristic raise.
-  buildMaqam("maqam.huzam", "Huzam", JINS_SIKAH, JINS_HIJAZ, 294, {
+  buildMaqam("maqam.huzam", "Huzam", a.sikah, a.hijaz, 294, {
     aliases: ["Huzzam", "Mukhalif", "Maqam Huzam"],
     notes: "Sikah lower + Hijaz upper (raised colour). Neutral root, augmented-2nd above.",
   }),
   // Nahawand = jins Nahawand on tonic + jins Hijaz on the 5th (≈ harmonic minor).
-  buildMaqam("maqam.nahawand", "Nahawand", JINS_NAHAWAND, JINS_HIJAZ, 702, {
+  buildMaqam("maqam.nahawand", "Nahawand", a.nahawand, a.hijaz, 702, {
     aliases: ["Nahwand", "Maqam Nahawand"],
     notes: "Minor-like; upper Hijaz on the 5th gives the harmonic-minor leading tone. 12-TET-aligned (no neutral tones).",
   }),
   // Kurd = jins Kurd on tonic + jins Nahawand on the 4th (498) (≈ Phrygian).
-  buildMaqam("maqam.kurd", "Kurd", JINS_KURD, JINS_NAHAWAND, 498, {
+  buildMaqam("maqam.kurd", "Kurd", a.kurd, a.nahawand, 498, {
     aliases: ["Kurd-i", "Maqam Kurd"],
     notes:
       "Phrygian-like; 12-TET-aligned (no neutral tones). Lower Kurd + jins Nahawand on the " +
       "4th (498) → 0 90 294 498 702 792 996. Source: maqamworld.com/en/maqam/kurd.php.",
   }),
   // Ajam = jins Ajam (pentachord) on tonic + jins Nahawand on the 6th (≈ MAJOR scale).
-  buildMaqam("maqam.ajam", "Ajam", JINS_AJAM, JINS_NAHAWAND, 906, {
+  buildMaqam("maqam.ajam", "Ajam", a.ajam, a.nahawand, 906, {
     aliases: ["Ajam Ushayran", "Maqam Ajam"],
     notes:
       "Major scale (Arabic 'major'); 12-TET-aligned. Major pentachord + jins Nahawand on the " +
@@ -226,7 +245,7 @@ export const MAQAMAT: Mode[] = [
       "Kurd middle-jins on the 3rd (adds no new degree here). Source: maqamworld.com/en/maqam/ajam_ushayran.php.",
   }),
   // Nikriz = jins Nikriz (pentachord, raised 4th) on tonic + jins NAHAWAND on the 5th.
-  buildMaqam("maqam.nikriz", "Nikriz", JINS_NIKRIZ, JINS_NAHAWAND, 702, {
+  buildMaqam("maqam.nikriz", "Nikriz", a.nikriz, a.nahawand, 702, {
     aliases: ["Nigriz", "Maqam Nikriz"],
     notes:
       "Arabic Nikriz: lower Nikriz pentachord (raised 4th 594¢) + jins Nahawand on the 5th → " +
@@ -235,8 +254,26 @@ export const MAQAMAT: Mode[] = [
       "future 'school'.) Source: maqamworld.com/en/maqam/nikriz.php.",
   }),
   // Suznak = Rast lower + Hijaz on the 5th (Rast with a Hijaz upper).
-  buildMaqam("maqam.suznak", "Suznak", JINS_RAST, JINS_HIJAZ, 702, {
+  buildMaqam("maqam.suznak", "Suznak", a.rast, a.hijaz, 702, {
     aliases: ["SuzNak", "Maqam Suznak"],
     notes: "Rast lower (neutral 3rd 355¢) + Hijaz upper on the 5th. A Rast-family maqam with an aug-2nd top.",
   }),
 ]
+
+// ────────────────────────────────────────────────────────── schools registry
+const SCHOOL_CACHE = new Map<MaqamSchool, Mode[]>()
+
+/** The maqamat intonated for a given regional school (built once, cached). The
+ *  mode ids are identical across schools — only the neutral cents differ — so the
+ *  resolver can swap school live without touching the doc's mode id. */
+export const maqamatForSchool = (school: MaqamSchool): Mode[] => {
+  let v = SCHOOL_CACHE.get(school)
+  if (!v) {
+    v = buildMaqamatFrom(buildAjnasSet(SCHOOL_NEUTRAL[school]))
+    SCHOOL_CACHE.set(school, v)
+  }
+  return v
+}
+
+/** The default-school maqamat (back-compat export + the no-school fallback). */
+export const MAQAMAT: Mode[] = maqamatForSchool(DEFAULT_SCHOOL)

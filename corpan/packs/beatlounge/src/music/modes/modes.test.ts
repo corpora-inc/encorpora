@@ -13,6 +13,7 @@ import {
   WESTERN_MODES,
   buildMelakarta,
   NEUTRAL,
+  maqamatForSchool,
 } from "./index"
 import { detuneCentsForMidi, equal12 } from "../tuning"
 
@@ -141,13 +142,23 @@ describe("Arabic maqam (researched, non-12-TET)", () => {
     }
     expect(MAQAMAT.length).toBeGreaterThanOrEqual(12)
   })
-  it("Rast carries a NON-12-TET neutral 3rd (355¢, not 300/400)", () => {
+  it("Rast carries a NON-12-TET neutral 3rd (350¢ on the default grid school)", () => {
     const rast = getMode("maqam.rast")!
     const third = rast.degrees.find((d) => Math.abs(d.cents - NEUTRAL.rastThird) < 1)!
-    expect(third.cents).toBe(355)
+    expect(third.cents).toBe(350) // default school = 24-EDO grid
     expect(third.cents % 100).not.toBe(0) // genuinely microtonal
-    // Rast structure: 0 204 355 498 702 ...
-    expect(modeCents(rast).slice(0, 5)).toEqual([0, 204, 355, 498, 702])
+    // Rast structure (grid default): 0 204 350 498 702 ...
+    expect(modeCents(rast).slice(0, 5)).toEqual([0, 204, 350, 498, 702])
+  })
+  it("regional schools shift the Rast neutral 3rd (grid 350 · just 355 · egyptian 342 · syrian 360)", () => {
+    const thirdFor = (school: Parameters<typeof maqamatForSchool>[0]) =>
+      maqamatForSchool(school).find((m) => m.id === "maqam.rast")!.degrees[2].cents
+    expect(thirdFor("grid")).toBe(350)
+    expect(thirdFor("just")).toBe(355)
+    expect(thirdFor("egyptian")).toBe(342) // Egyptian sikah is flatter
+    expect(thirdFor("syrian")).toBe(360) // Syrian sikah is higher
+    // the 7th tracks the 3rd via the upper jins (jins-first composition)
+    expect(maqamatForSchool("egyptian").find((m) => m.id === "maqam.rast")!.degrees[6].cents).toBe(1044)
   })
   it("Bayati carries a NON-12-TET neutral 2nd (150¢ ≈ 12/11)", () => {
     const bayati = getMode("maqam.bayati")!
@@ -173,10 +184,10 @@ describe("Arabic maqam (researched, non-12-TET)", () => {
       expect(m.ajnas!.lower.degrees[0].cents).toBe(0)
     }
   })
-  it("the detune bridge bends a played MIDI E down to Rast's 355¢ neutral 3rd", () => {
+  it("the detune bridge bends a played MIDI E down to Rast's neutral 3rd (grid 350¢)", () => {
     const rast = toModeCents(getMode("maqam.rast")!)
-    // tonic C4 = 60, play E (64): 12-TET 400¢ → 355¢ ⇒ −45¢.
-    expect(detuneCentsForMidi(64, rast, equal12, 60)).toBeCloseTo(-45, 1)
+    // tonic C4 = 60, play E (64): 12-TET 400¢ → 350¢ (grid default) ⇒ −50¢.
+    expect(detuneCentsForMidi(64, rast, equal12, 60)).toBeCloseTo(-50, 1)
   })
 })
 
