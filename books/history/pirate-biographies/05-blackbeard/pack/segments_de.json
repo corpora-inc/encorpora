@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "de",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ein Hinweis an den Leser",
+      "text_markdown": "Ein Hinweis an den Leser"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist die wahre Geschichte des furchteinflößendsten Piraten, der je gelebt hat.",
+      "text_markdown": "Dies ist die wahre Geschichte des furchteinflößendsten Piraten, der je gelebt hat.",
+      "tts": {
+        "text": "Dies ist die wahre Geschichte des furchteinflößendsten Piraten, der je gelebt hat.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Name war Edward Teach, doch die Welt erinnert sich an ihn als Blackbeard.",
+      "text_markdown": "Sein Name war Edward Teach, doch die Welt erinnert sich an ihn als Blackbeard.",
+      "tts": {
+        "text": "Sein Name war Edward Teach, doch die Welt erinnert sich an ihn als Blackbeard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er terrorisierte die Meere nur etwa 2 Jahre lang, doch seine Legende hat über 300 Jahre überdauert.",
+      "text_markdown": "Er terrorisierte die Meere nur etwa 2 Jahre lang, doch seine Legende hat über 300 Jahre überdauert.",
+      "tts": {
+        "text": "Er terrorisierte die Meere nur etwa zwei Jahre lang, doch seine Legende hat über dreihundert Jahre überdauert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard sah nicht aus wie die Piraten, die man in Filmen sieht.",
+      "text_markdown": "Blackbeard sah nicht aus wie die Piraten, die man in Filmen sieht.",
+      "tts": {
+        "text": "Blackbeard sah nicht aus wie die Piraten, die man in Filmen sieht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war schlimmer.",
+      "text_markdown": "Er war schlimmer.",
+      "tts": {
+        "text": "Er war schlimmer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er flocht langsam brennende Lunten in seinen gewaltigen schwarzen Bart und zündete sie vor der Schlacht an.",
+      "text_markdown": "Er flocht langsam brennende Lunten in seinen gewaltigen schwarzen Bart und zündete sie vor der Schlacht an.",
+      "tts": {
+        "text": "Er flocht langsam brennende Lunten in seinen gewaltigen schwarzen Bart und zündete sie vor der Schlacht an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rauch kräuselte sich um sein Gesicht und ließ ihn wie einen Dämon aussehen, der aus dem Meer aufsteigt.",
+      "text_markdown": "Rauch kräuselte sich um sein Gesicht und ließ ihn wie einen Dämon aussehen, der aus dem Meer aufsteigt.",
+      "tts": {
+        "text": "Rauch kräuselte sich um sein Gesicht und ließ ihn wie einen Dämon aussehen, der aus dem Meer aufsteigt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieses Buch wird dich in die Häfen und Schifffahrtswege des frühen achtzehnten Jahrhunderts führen.",
+      "text_markdown": "Dieses Buch wird dich in die Häfen und Schifffahrtswege des frühen achtzehnten Jahrhunderts führen.",
+      "tts": {
+        "text": "Dieses Buch wird dich in die Häfen und Schifffahrtswege des frühen achtzehnten Jahrhunderts führen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du wirst sehen, wie gewöhnliche Seeleute zu Gesetzlosen wurden und wie Imperien darum kämpften, sie aufzuhalten.",
+      "text_markdown": "Du wirst sehen, wie gewöhnliche Seeleute zu Gesetzlosen wurden und wie Imperien darum kämpften, sie aufzuhalten.",
+      "tts": {
+        "text": "Du wirst sehen, wie gewöhnliche Seeleute zu Gesetzlosen wurden und wie Imperien darum kämpften, sie aufzuhalten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alles in diesem Buch basiert auf historischen Aufzeichnungen, Gerichtsdokumenten und Augenzeugenberichten.",
+      "text_markdown": "Alles in diesem Buch basiert auf historischen Aufzeichnungen, Gerichtsdokumenten und Augenzeugenberichten.",
+      "tts": {
+        "text": "Alles in diesem Buch basiert auf historischen Aufzeichnungen, Gerichtsdokumenten und Augenzeugenberichten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wenn die Fakten unsicher sind, werden wir das klar sagen.",
+      "text_markdown": "Wenn die Fakten unsicher sind, werden wir das klar sagen.",
+      "tts": {
+        "text": "Wenn die Fakten unsicher sind, werden wir das klar sagen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Welt, die einen Piraten erschuf",
+      "text_markdown": "Die Welt, die einen Piraten erschuf"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das späte siebzehnte Jahrhundert war ein Zeitalter der Imperien und des Ozeanhandels.",
+      "text_markdown": "Das späte siebzehnte Jahrhundert war ein Zeitalter der Imperien und des Ozeanhandels.",
+      "tts": {
+        "text": "Das späte siebzehnte Jahrhundert war ein Zeitalter der Imperien und des Ozeanhandels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England, Spanien, Frankreich und die Niederlande wetteiferten um Kolonien in Amerika.",
+      "text_markdown": "England, Spanien, Frankreich und die Niederlande wetteiferten um Kolonien in Amerika.",
+      "tts": {
+        "text": "England, Spanien, Frankreich und die Niederlande wetteiferten um Kolonien in Amerika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Handelsschiffe transportierten Zucker, Tabak, Baumwolle und versklavte Menschen über den Atlantik.",
+      "text_markdown": "Ihre Handelsschiffe transportierten Zucker, Tabak, Baumwolle und versklavte Menschen über den Atlantik.",
+      "tts": {
+        "text": "Ihre Handelsschiffe transportierten Zucker, Tabak, Baumwolle und versklavte Menschen über den Atlantik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wo immer wertvolle Fracht über das Meer bewegt wurde, folgten Piraten.",
+      "text_markdown": "Wo immer wertvolle Fracht über das Meer bewegt wurde, folgten Piraten.",
+      "tts": {
+        "text": "Wo immer wertvolle Fracht über das Meer bewegt wurde, folgten Piraten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Karibik war der Knotenpunkt dieses globalen Handels.",
+      "text_markdown": "Die Karibik war der Knotenpunkt dieses globalen Handels.",
+      "tts": {
+        "text": "Die Karibik war der Knotenpunkt dieses globalen Handels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hunderte von Inseln waren über die warmen türkisfarbenen Gewässer zwischen Florida und Südamerika verstreut.",
+      "text_markdown": "Hunderte von Inseln waren über die warmen türkisfarbenen Gewässer zwischen Florida und Südamerika verstreut.",
+      "tts": {
+        "text": "Hunderte von Inseln waren über die warmen türkisfarbenen Gewässer zwischen Florida und Südamerika verstreut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viele dieser Inseln gehörten europäischen Mächten, die sie als Zuckerplantagen nutzten.",
+      "text_markdown": "Viele dieser Inseln gehörten europäischen Mächten, die sie als Zuckerplantagen nutzten.",
+      "tts": {
+        "text": "Viele dieser Inseln gehörten europäischen Mächten, die sie als Zuckerplantagen nutzten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Schiffe beladen mit Zucker und Rum segelten jede Woche von karibischen Häfen nach Europa.",
+      "text_markdown": "Schiffe beladen mit Zucker und Rum segelten jede Woche von karibischen Häfen nach Europa.",
+      "tts": {
+        "text": "Schiffe beladen mit Zucker und Rum segelten jede Woche von karibischen Häfen nach Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "England und Spanien waren seit über einem Jahrhundert Rivalen.",
+      "text_markdown": "England und Spanien waren seit über einem Jahrhundert Rivalen.",
+      "tts": {
+        "text": "England und Spanien waren seit über einem Jahrhundert Rivalen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Englische Freibeuter wie Sir Francis Drake hatten im späten fünfzehnten Jahrhundert spanische Schatzflotten überfallen.",
+      "text_markdown": "Englische Freibeuter wie Sir Francis Drake hatten im späten fünfzehnten Jahrhundert spanische Schatzflotten überfallen.",
+      "tts": {
+        "text": "Englische Freibeuter wie Sir Francis Drake hatten im späten fünfzehnten Jahrhundert spanische Schatzflotten überfallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Freibeuter war ein privater Schiffskapitän, der von einer Regierung autorisiert war, feindliche Schiffe anzugreifen.",
+      "text_markdown": "Ein Freibeuter war ein privater Schiffskapitän, der von einer Regierung autorisiert war, feindliche Schiffe anzugreifen.",
+      "tts": {
+        "text": "Ein Freibeuter war ein privater Schiffskapitän, der von einer Regierung autorisiert war, feindliche Schiffe anzugreifen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Freibeuter trugen ein Dokument namens Kaperbrief, der ihre Angriffe legalisierte.",
+      "text_markdown": "Freibeuter trugen ein Dokument namens Kaperbrief, der ihre Angriffe legalisierte.",
+      "tts": {
+        "text": "Freibeuter trugen ein Dokument namens Kaperbrief, der ihre Angriffe legalisierte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Krieg der Königin Anne brach 1702 aus und dauerte bis 1713.",
+      "text_markdown": "Der Krieg der Königin Anne brach 1702 aus und dauerte bis 1713.",
+      "tts": {
+        "text": "Der Krieg der Königin Anne brach siebzehnhundertzwei aus und dauerte bis siebzehnhundertdreizehn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dies war Teil eines größeren europäischen Konflikts, des Spanischen Erbfolgekrieges.",
+      "text_markdown": "Dies war Teil eines größeren europäischen Konflikts, des Spanischen Erbfolgekrieges.",
+      "tts": {
+        "text": "Dies war Teil eines größeren europäischen Konflikts, des Spanischen Erbfolgekrieges.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "England und seine Verbündeten kämpften gegen Frankreich und Spanien um die Kontrolle über Handelsrouten und Gebiete.",
+      "text_markdown": "England und seine Verbündeten kämpften gegen Frankreich und Spanien um die Kontrolle über Handelsrouten und Gebiete.",
+      "tts": {
+        "text": "England und seine Verbündeten kämpften gegen Frankreich und Spanien um die Kontrolle über Handelsrouten und Gebiete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Während des Krieges dienten Tausende von Seeleuten auf Kaperschiffen und überfielen feindliche Handelsschiffe um des Profits willen.",
+      "text_markdown": "Während des Krieges dienten Tausende von Seeleuten auf Kaperschiffen und überfielen feindliche Handelsschiffe um des Profits willen.",
+      "tts": {
+        "text": "Während des Krieges dienten Tausende von Seeleuten auf Kaperschiffen und überfielen feindliche Handelsschiffe um des Profits willen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als der Krieg mit dem Vertrag von Utrecht 1713 endete, änderte sich alles.",
+      "text_markdown": "Als der Krieg mit dem Vertrag von Utrecht 1713 endete, änderte sich alles.",
+      "tts": {
+        "text": "Als der Krieg mit dem Vertrag von Utrecht siebzehnhundertdreizehn endete, änderte sich alles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaperbriefe wurden über Nacht annulliert.",
+      "text_markdown": "Kaperbriefe wurden über Nacht annulliert.",
+      "tts": {
+        "text": "Kaperbriefe wurden über Nacht annulliert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tausende ausgebildeter Seeleute und Kämpfer standen plötzlich ohne legale Beschäftigung da.",
+      "text_markdown": "Tausende ausgebildeter Seeleute und Kämpfer standen plötzlich ohne legale Beschäftigung da.",
+      "tts": {
+        "text": "Tausende ausgebildeter Seeleute und Kämpfer standen plötzlich ohne legale Beschäftigung da.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Viele von ihnen besaßen nichts als die Kleider auf dem Leib und ihr Wissen über das Meer.",
+      "text_markdown": "Viele von ihnen besaßen nichts als die Kleider auf dem Leib und ihr Wissen über das Meer.",
+      "tts": {
+        "text": "Viele von ihnen besaßen nichts als die Kleider auf dem Leib und ihr Wissen über das Meer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Leben als gewöhnlicher Seemann in dieser Ära war brutal.",
+      "text_markdown": "Das Leben als gewöhnlicher Seemann in dieser Ära war brutal.",
+      "tts": {
+        "text": "Das Leben als gewöhnlicher Seemann in dieser Ära war brutal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Handelskapitäne regierten ihre Schiffe wie Tyrannen.",
+      "text_markdown": "Handelskapitäne regierten ihre Schiffe wie Tyrannen.",
+      "tts": {
+        "text": "Handelskapitäne regierten ihre Schiffe wie Tyrannen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seeleute wurden für geringfügige Vergehen geschlagen und manchmal überhaupt nicht bezahlt.",
+      "text_markdown": "Seeleute wurden für geringfügige Vergehen geschlagen und manchmal überhaupt nicht bezahlt.",
+      "tts": {
+        "text": "Seeleute wurden für geringfügige Vergehen geschlagen und manchmal überhaupt nicht bezahlt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der durchschnittliche Seemann verdiente etwa 1 Pfund im Monat, kaum genug zum Überleben an Land.",
+      "text_markdown": "Der durchschnittliche Seemann verdiente etwa 1 Pfund im Monat, kaum genug zum Überleben an Land.",
+      "tts": {
+        "text": "Der durchschnittliche Seemann verdiente etwa ein Pfund im Monat, kaum genug zum Überleben an Land.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Marinedienst war in vielerlei Hinsicht noch schlimmer.",
+      "text_markdown": "Der Marinedienst war in vielerlei Hinsicht noch schlimmer.",
+      "tts": {
+        "text": "Der Marinedienst war in vielerlei Hinsicht noch schlimmer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Royal Navy setzte Presskommandos ein, um Männer von der Straße zu entführen und auf Kriegsschiffe zu zwingen.",
+      "text_markdown": "Die Royal Navy setzte Presskommandos ein, um Männer von der Straße zu entführen und auf Kriegsschiffe zu zwingen.",
+      "tts": {
+        "text": "Die Royal Navy setzte Presskommandos ein, um Männer von der Straße zu entführen und auf Kriegsschiffe zu zwingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Krankheiten töteten mehr Seeleute als der Kampf es je tat.",
+      "text_markdown": "Krankheiten töteten mehr Seeleute als der Kampf es je tat.",
+      "tts": {
+        "text": "Krankheiten töteten mehr Seeleute als der Kampf es je tat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Skorbut, Ruhr und tropische Fieber fegten mit erschreckender Geschwindigkeit durch die beengten unteren Decks.",
+      "text_markdown": "Skorbut, Ruhr und tropische Fieber fegten mit erschreckender Geschwindigkeit durch die beengten unteren Decks.",
+      "tts": {
+        "text": "Skorbut, Ruhr und tropische Fieber fegten mit erschreckender Geschwindigkeit durch die beengten unteren Decks.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Piraterie bot eine Alternative, die viele Seeleute unwiderstehlich fanden.",
+      "text_markdown": "Die Piraterie bot eine Alternative, die viele Seeleute unwiderstehlich fanden.",
+      "tts": {
+        "text": "Die Piraterie bot eine Alternative, die viele Seeleute unwiderstehlich fanden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piraten wählten ihre eigenen Kapitäne und stimmten über wichtige Entscheidungen ab.",
+      "text_markdown": "Piraten wählten ihre eigenen Kapitäne und stimmten über wichtige Entscheidungen ab.",
+      "tts": {
+        "text": "Piraten wählten ihre eigenen Kapitäne und stimmten über wichtige Entscheidungen ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Beutegeld wurde wesentlich gerechter aufgeteilt als auf Handels- oder Marineschiffen.",
+      "text_markdown": "Das Beutegeld wurde wesentlich gerechter aufgeteilt als auf Handels- oder Marineschiffen.",
+      "tts": {
+        "text": "Das Beutegeld wurde wesentlich gerechter aufgeteilt als auf Handels- oder Marineschiffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein gewöhnlicher Pirat konnte in einem einzigen Raubzug verdienen, wofür ein Handelsseemann mehrere Jahre brauchte.",
+      "text_markdown": "Ein gewöhnlicher Pirat konnte in einem einzigen Raubzug verdienen, wofür ein Handelsseemann mehrere Jahre brauchte.",
+      "tts": {
+        "text": "Ein gewöhnlicher Pirat konnte in einem einzigen Raubzug verdienen, wofür ein Handelsseemann mehrere Jahre brauchte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Insel New Providence auf den Bahamas wurde zur inoffiziellen Hauptstadt der Piraterie.",
+      "text_markdown": "Die Insel New Providence auf den Bahamas wurde zur inoffiziellen Hauptstadt der Piraterie.",
+      "tts": {
+        "text": "Die Insel New Providence auf den Bahamas wurde zur inoffiziellen Hauptstadt der Piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Haupthafen in Nassau konnte Hunderte von Schiffen beherbergen.",
+      "text_markdown": "Ihr Haupthafen in Nassau konnte Hunderte von Schiffen beherbergen.",
+      "tts": {
+        "text": "Ihr Haupthafen in Nassau konnte Hunderte von Schiffen beherbergen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Insel hatte keine starke Kolonialregierung und keine Festung, die sie verteidigen konnte.",
+      "text_markdown": "Die Insel hatte keine starke Kolonialregierung und keine Festung, die sie verteidigen konnte.",
+      "tts": {
+        "text": "Die Insel hatte keine starke Kolonialregierung und keine Festung, die sie verteidigen konnte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anfang des achtzehnten Jahrhunderts übertrafen die Piraten in Nassau die ehrlichen Bürger an Zahl.",
+      "text_markdown": "Anfang des achtzehnten Jahrhunderts übertrafen die Piraten in Nassau die ehrlichen Bürger an Zahl.",
+      "tts": {
+        "text": "Anfang des achtzehnten Jahrhunderts übertrafen die Piraten in Nassau die ehrlichen Bürger an Zahl.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau wurde zu dem, was Historiker die Republik der Piraten nennen.",
+      "text_markdown": "Nassau wurde zu dem, was Historiker die Republik der Piraten nennen.",
+      "tts": {
+        "text": "Nassau wurde zu dem, was Historiker die Republik der Piraten nennen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piratenkapitäne wie Benjamin Hornigold, Charles Vane und Calico Jack Rackham nannten sie ihr Zuhause.",
+      "text_markdown": "Piratenkapitäne wie Benjamin Hornigold, Charles Vane und Calico Jack Rackham nannten sie ihr Zuhause.",
+      "tts": {
+        "text": "Piratenkapitäne wie Benjamin Hornigold, Charles Vane und Calico Jack Rackham nannten sie ihr Zuhause.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Schiffe trafen ständig ein und brachten gestohlene Waren zum Handeln.",
+      "text_markdown": "Schiffe trafen ständig ein und brachten gestohlene Waren zum Handeln.",
+      "tts": {
+        "text": "Schiffe trafen ständig ein und brachten gestohlene Waren zum Handeln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tavernen und Märkte entstanden, um die Piratenwirtschaft zu bedienen.",
+      "text_markdown": "Tavernen und Märkte entstanden, um die Piratenwirtschaft zu bedienen.",
+      "tts": {
+        "text": "Tavernen und Märkte entstanden, um die Piratenwirtschaft zu bedienen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Kolonialregierungen entlang der amerikanischen Küste waren schlecht verteidigt.",
+      "text_markdown": "Die Kolonialregierungen entlang der amerikanischen Küste waren schlecht verteidigt.",
+      "tts": {
+        "text": "Die Kolonialregierungen entlang der amerikanischen Küste waren schlecht verteidigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia, die Carolinas und die Neuengland-Kolonien waren auf den Handel angewiesen.",
+      "text_markdown": "Virginia, die Carolinas und die Neuengland-Kolonien waren auf den Handel angewiesen.",
+      "tts": {
+        "text": "Virginia, die Carolinas und die Neuengland-Kolonien waren auf den Handel angewiesen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Häfen waren geschäftig, aber ihre Marinen waren klein.",
+      "text_markdown": "Ihre Häfen waren geschäftig, aber ihre Marinen waren klein.",
+      "tts": {
+        "text": "Ihre Häfen waren geschäftig, aber ihre Marinen waren klein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein einzelnes gut bewaffnetes Piratenschiff konnte den gesamten Handel einer Kolonie lahmlegen.",
+      "text_markdown": "Ein einzelnes gut bewaffnetes Piratenschiff konnte den gesamten Handel einer Kolonie lahmlegen.",
+      "tts": {
+        "text": "Ein einzelnes gut bewaffnetes Piratenschiff konnte den gesamten Handel einer Kolonie lahmlegen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies war die Welt, die Edward Teach hervorbrachte.",
+      "text_markdown": "Dies war die Welt, die Edward Teach hervorbrachte.",
+      "tts": {
+        "text": "Dies war die Welt, die Edward Teach hervorbrachte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es war eine Welt gewaltsamer Möglichkeiten, in der ein mutiger Seemann reich werden oder beim Versuch sterben konnte.",
+      "text_markdown": "Es war eine Welt gewaltsamer Möglichkeiten, in der ein mutiger Seemann reich werden oder beim Versuch sterben konnte.",
+      "tts": {
+        "text": "Es war eine Welt gewaltsamer Möglichkeiten, in der ein mutiger Seemann reich werden oder beim Versuch sterben konnte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Grenze zwischen legaler Freibeuterei und illegaler Piraterie war dünn und verschob sich ständig.",
+      "text_markdown": "Die Grenze zwischen legaler Freibeuterei und illegaler Piraterie war dünn und verschob sich ständig.",
+      "tts": {
+        "text": "Die Grenze zwischen legaler Freibeuterei und illegaler Piraterie war dünn und verschob sich ständig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die einen Piraten erschuf",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard sollte diese Grauzone besser ausnutzen als fast jeder andere.",
+      "text_markdown": "Blackbeard sollte diese Grauzone besser ausnutzen als fast jeder andere.",
+      "tts": {
+        "text": "Blackbeard sollte diese Grauzone besser ausnutzen als fast jeder andere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Entstehung von Edward Teach",
+      "text_markdown": "Die Entstehung von Edward Teach"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Über Blackbeards frühes Leben ist fast nichts mit Sicherheit bekannt.",
+      "text_markdown": "Über Blackbeards frühes Leben ist fast nichts mit Sicherheit bekannt.",
+      "tts": {
+        "text": "Über Blackbeards frühes Leben ist fast nichts mit Sicherheit bekannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das ist bei Piraten üblich, deren Leben vor der Piraterie selten in offizielle Aufzeichnungen gelangte.",
+      "text_markdown": "Das ist bei Piraten üblich, deren Leben vor der Piraterie selten in offizielle Aufzeichnungen gelangte.",
+      "tts": {
+        "text": "Das ist bei Piraten üblich, deren Leben vor der Piraterie selten in offizielle Aufzeichnungen gelangte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historiker müssen seine Herkunft aus verstreuten Hinweisen und späteren Berichten zusammensetzen.",
+      "text_markdown": "Historiker müssen seine Herkunft aus verstreuten Hinweisen und späteren Berichten zusammensetzen.",
+      "tts": {
+        "text": "Historiker müssen seine Herkunft aus verstreuten Hinweisen und späteren Berichten zusammensetzen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die am weitesten akzeptierte Theorie ist, dass Edward Teach in Bristol, England, geboren wurde.",
+      "text_markdown": "Die am weitesten akzeptierte Theorie ist, dass Edward Teach in Bristol, England, geboren wurde.",
+      "tts": {
+        "text": "Die am weitesten akzeptierte Theorie ist, dass Edward Teach in Bristol, England, geboren wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol war eine der größten Hafenstädte des Britischen Empires im späten siebzehnten Jahrhundert.",
+      "text_markdown": "Bristol war eine der größten Hafenstädte des Britischen Empires im späten siebzehnten Jahrhundert.",
+      "tts": {
+        "text": "Bristol war eine der größten Hafenstädte des Britischen Empires im späten siebzehnten Jahrhundert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Schiffe segelten von Bristol nach Afrika, in die Karibik und zu den amerikanischen Kolonien.",
+      "text_markdown": "Schiffe segelten von Bristol nach Afrika, in die Karibik und zu den amerikanischen Kolonien.",
+      "tts": {
+        "text": "Schiffe segelten von Bristol nach Afrika, in die Karibik und zu den amerikanischen Kolonien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Wirtschaft der Stadt basierte auf dem Seehandel, einschließlich des transatlantischen Sklavenhandels.",
+      "text_markdown": "Die Wirtschaft der Stadt basierte auf dem Seehandel, einschließlich des transatlantischen Sklavenhandels.",
+      "tts": {
+        "text": "Die Wirtschaft der Stadt basierte auf dem Seehandel, einschließlich des transatlantischen Sklavenhandels.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historiker schätzen, dass Teach um 1680 geboren wurde, obwohl keine Geburtsurkunde gefunden wurde.",
+      "text_markdown": "Historiker schätzen, dass Teach um 1680 geboren wurde, obwohl keine Geburtsurkunde gefunden wurde.",
+      "tts": {
+        "text": "Historiker schätzen, dass Teach um sechzehnhundertachtzig geboren wurde, obwohl keine Geburtsurkunde gefunden wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Nachname erscheint in verschiedenen Aufzeichnungen als Teach, Thatch, Thach und Tatch.",
+      "text_markdown": "Sein Nachname erscheint in verschiedenen Aufzeichnungen als Teach, Thatch, Thach und Tatch.",
+      "tts": {
+        "text": "Sein Nachname erscheint in verschiedenen Aufzeichnungen als Teach, Thatch, Thach und Tatch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Rechtschreibung war in dieser Ära nicht standardisiert, und Namen wurden oft phonetisch geschrieben.",
+      "text_markdown": "Die Rechtschreibung war in dieser Ära nicht standardisiert, und Namen wurden oft phonetisch geschrieben.",
+      "tts": {
+        "text": "Die Rechtschreibung war in dieser Ära nicht standardisiert, und Namen wurden oft phonetisch geschrieben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Einige Hinweise deuten darauf hin, dass Teach aus einer angesehenen Familie stammte.",
+      "text_markdown": "Einige Hinweise deuten darauf hin, dass Teach aus einer angesehenen Familie stammte.",
+      "tts": {
+        "text": "Einige Hinweise deuten darauf hin, dass Teach aus einer angesehenen Familie stammte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er konnte lesen und schreiben, was für gewöhnliche Seeleute dieser Zeit ungewöhnlich war.",
+      "text_markdown": "Er konnte lesen und schreiben, was für gewöhnliche Seeleute dieser Zeit ungewöhnlich war.",
+      "tts": {
+        "text": "Er konnte lesen und schreiben, was für gewöhnliche Seeleute dieser Zeit ungewöhnlich war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Brief, den er schrieb, ist in historischen Archiven erhalten und zeigt eine klare und selbstbewusste Handschrift.",
+      "text_markdown": "Ein Brief, den er schrieb, ist in historischen Archiven erhalten und zeigt eine klare und selbstbewusste Handschrift.",
+      "tts": {
+        "text": "Ein Brief, den er schrieb, ist in historischen Archiven erhalten und zeigt eine klare und selbstbewusste Handschrift.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lese- und Schreibkenntnisse deuten auf zumindest eine gewisse formale Bildung hin, wahrscheinlich an einer der Armenschulen von Bristol.",
+      "text_markdown": "Lese- und Schreibkenntnisse deuten auf zumindest eine gewisse formale Bildung hin, wahrscheinlich an einer der Armenschulen von Bristol.",
+      "tts": {
+        "text": "Lese- und Schreibkenntnisse deuten auf zumindest eine gewisse formale Bildung hin, wahrscheinlich an einer der Armenschulen von Bristol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach ging fast sicher als junger Mann zur See.",
+      "text_markdown": "Teach ging fast sicher als junger Mann zur See.",
+      "tts": {
+        "text": "Teach ging fast sicher als junger Mann zur See.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In Bristol war das Meer der naheliegendste Weg zur Beschäftigung.",
+      "text_markdown": "In Bristol war das Meer der naheliegendste Weg zur Beschäftigung.",
+      "tts": {
+        "text": "In Bristol war das Meer der naheliegendste Weg zur Beschäftigung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jungen im Alter von nur zwölf Jahren dienten als Schiffsjungen oder Lehrlingsseeeleute auf Handelsschiffen.",
+      "text_markdown": "Jungen im Alter von nur zwölf Jahren dienten als Schiffsjungen oder Lehrlingsseeeleute auf Handelsschiffen.",
+      "tts": {
+        "text": "Jungen im Alter von nur zwölf Jahren dienten als Schiffsjungen oder Lehrlingsseeeleute auf Handelsschiffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Arbeit war gefährlich, bot aber Abenteuer und die Chance, die Welt zu sehen.",
+      "text_markdown": "Die Arbeit war gefährlich, bot aber Abenteuer und die Chance, die Welt zu sehen.",
+      "tts": {
+        "text": "Die Arbeit war gefährlich, bot aber Abenteuer und die Chance, die Welt zu sehen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als der Krieg der Königin Anne begann, trat Teach wahrscheinlich als Freibeuter in den Dienst.",
+      "text_markdown": "Als der Krieg der Königin Anne begann, trat Teach wahrscheinlich als Freibeuter in den Dienst.",
+      "tts": {
+        "text": "Als der Krieg der Königin Anne begann, trat Teach wahrscheinlich als Freibeuter in den Dienst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol war eine wichtige Basis für Kaperoperationen gegen französische und spanische Schifffahrt.",
+      "text_markdown": "Bristol war eine wichtige Basis für Kaperoperationen gegen französische und spanische Schifffahrt.",
+      "tts": {
+        "text": "Bristol war eine wichtige Basis für Kaperoperationen gegen französische und spanische Schifffahrt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein junger Mann mit Segelerfahrung wäre eifrig rekrutiert worden.",
+      "text_markdown": "Ein junger Mann mit Segelerfahrung wäre eifrig rekrutiert worden.",
+      "tts": {
+        "text": "Ein junger Mann mit Segelerfahrung wäre eifrig rekrutiert worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Freibeuterei lehrte Teach die Fähigkeiten des Seekampfes, die ihn später berühmt machen sollten.",
+      "text_markdown": "Die Freibeuterei lehrte Teach die Fähigkeiten des Seekampfes, die ihn später berühmt machen sollten.",
+      "tts": {
+        "text": "Die Freibeuterei lehrte Teach die Fähigkeiten des Seekampfes, die ihn später berühmt machen sollten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Krieg gab Teach Jahre an Erfahrung im Schiffskampf.",
+      "text_markdown": "Der Krieg gab Teach Jahre an Erfahrung im Schiffskampf.",
+      "tts": {
+        "text": "Der Krieg gab Teach Jahre an Erfahrung im Schiffskampf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er lernte, mit Kanonen umzugehen, feindliche Schiffe zu entern und eine Mannschaft unter Feuer zu führen.",
+      "text_markdown": "Er lernte, mit Kanonen umzugehen, feindliche Schiffe zu entern und eine Mannschaft unter Feuer zu führen.",
+      "tts": {
+        "text": "Er lernte, mit Kanonen umzugehen, feindliche Schiffe zu entern und eine Mannschaft unter Feuer zu führen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er lernte auch die Geografie der Karibik und die Muster der Handelsschifffahrt kennen.",
+      "text_markdown": "Er lernte auch die Geografie der Karibik und die Muster der Handelsschifffahrt kennen.",
+      "tts": {
+        "text": "Er lernte auch die Geografie der Karibik und die Muster der Handelsschifffahrt kennen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dieses Wissen war für einen zukünftigen Piraten von unschätzbarem Wert.",
+      "text_markdown": "Dieses Wissen war für einen zukünftigen Piraten von unschätzbarem Wert.",
+      "tts": {
+        "text": "Dieses Wissen war für einen zukünftigen Piraten von unschätzbarem Wert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als der Krieg 1713 endete, befand sich Teach in derselben Lage wie Tausende anderer Seeleute.",
+      "text_markdown": "Als der Krieg 1713 endete, befand sich Teach in derselben Lage wie Tausende anderer Seeleute.",
+      "tts": {
+        "text": "Als der Krieg siebzehnhundertdreizehn endete, befand sich Teach in derselben Lage wie Tausende anderer Seeleute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er hatte Fähigkeiten und Erfahrung, aber keinen legalen Weg, sie einzusetzen.",
+      "text_markdown": "Er hatte Fähigkeiten und Erfahrung, aber keinen legalen Weg, sie einzusetzen.",
+      "tts": {
+        "text": "Er hatte Fähigkeiten und Erfahrung, aber keinen legalen Weg, sie einzusetzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Friedensmarine schrumpfte, und Handelsschiffe stellten nicht ein.",
+      "text_markdown": "Die Friedensmarine schrumpfte, und Handelsschiffe stellten nicht ein.",
+      "tts": {
+        "text": "Die Friedensmarine schrumpfte, und Handelsschiffe stellten nicht ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Weg in die Piraterie war für Männer wie ihn fast unvermeidlich.",
+      "text_markdown": "Der Weg in die Piraterie war für Männer wie ihn fast unvermeidlich.",
+      "tts": {
+        "text": "Der Weg in die Piraterie war für Männer wie ihn fast unvermeidlich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach machte sich auf den Weg zur Insel New Providence auf den Bahamas.",
+      "text_markdown": "Teach machte sich auf den Weg zur Insel New Providence auf den Bahamas.",
+      "tts": {
+        "text": "Teach machte sich auf den Weg zur Insel New Providence auf den Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dort schloss er sich der Mannschaft von Kapitän Benjamin Hornigold an, einem der erfolgreichsten Piraten der Ära.",
+      "text_markdown": "Dort schloss er sich der Mannschaft von Kapitän Benjamin Hornigold an, einem der erfolgreichsten Piraten der Ära.",
+      "tts": {
+        "text": "Dort schloss er sich der Mannschaft von Kapitän Benjamin Hornigold an, einem der erfolgreichsten Piraten der Ära.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold war ein ehemaliger Freibeuter, der sich nach dem Krieg der Piraterie zugewandt hatte.",
+      "text_markdown": "Hornigold war ein ehemaliger Freibeuter, der sich nach dem Krieg der Piraterie zugewandt hatte.",
+      "tts": {
+        "text": "Hornigold war ein ehemaliger Freibeuter, der sich nach dem Krieg der Piraterie zugewandt hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er befehligte eine kleine Flotte von Schiffen, die vom Hafen von Nassau aus operierte.",
+      "text_markdown": "Er befehligte eine kleine Flotte von Schiffen, die vom Hafen von Nassau aus operierte.",
+      "tts": {
+        "text": "Er befehligte eine kleine Flotte von Schiffen, die vom Hafen von Nassau aus operierte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold erkannte schnell Teachs Fähigkeiten.",
+      "text_markdown": "Hornigold erkannte schnell Teachs Fähigkeiten.",
+      "tts": {
+        "text": "Hornigold erkannte schnell Teachs Fähigkeiten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teach war körperlich imposant und deutlich über sechs Fuß groß in einer Zeit, als die meisten Männer viel kleiner waren.",
+      "text_markdown": "Teach war körperlich imposant und deutlich über sechs Fuß groß in einer Zeit, als die meisten Männer viel kleiner waren.",
+      "tts": {
+        "text": "Teach war körperlich imposant und deutlich über sechs Fuß groß in einer Zeit, als die meisten Männer viel kleiner waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war mutig im Kampf und hatte ein natürliches Talent, andere Männer zu führen.",
+      "text_markdown": "Er war mutig im Kampf und hatte ein natürliches Talent, andere Männer zu führen.",
+      "tts": {
+        "text": "Er war mutig im Kampf und hatte ein natürliches Talent, andere Männer zu führen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hornigold gab Teach das Kommando über eine erbeutete Schaluppe.",
+      "text_markdown": "Hornigold gab Teach das Kommando über eine erbeutete Schaluppe.",
+      "tts": {
+        "text": "Hornigold gab Teach das Kommando über eine erbeutete Schaluppe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ende 1717 erbeuteten Teach und Hornigold ein großes französisches Handelsschiff namens La Concorde.",
+      "text_markdown": "Ende 1717 erbeuteten Teach und Hornigold ein großes französisches Handelsschiff namens La Concorde.",
+      "tts": {
+        "text": "Ende siebzehnhundertsiebzehn erbeuteten Teach und Hornigold ein großes französisches Handelsschiff namens La Concorde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Concorde war ein Sklavenschiff, schwer bewaffnet und mit wertvoller Fracht.",
+      "text_markdown": "La Concorde war ein Sklavenschiff, schwer bewaffnet und mit wertvoller Fracht.",
+      "tts": {
+        "text": "La Concorde war ein Sklavenschiff, schwer bewaffnet und mit wertvoller Fracht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teach beanspruchte das Schiff für sich selbst und begann, es umzubauen.",
+      "text_markdown": "Teach beanspruchte das Schiff für sich selbst und begann, es umzubauen.",
+      "tts": {
+        "text": "Teach beanspruchte das Schiff für sich selbst und begann, es umzubauen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er montierte zusätzliche Kanonen, bis das Schiff vor Feuerkraft strotzte.",
+      "text_markdown": "Er montierte zusätzliche Kanonen, bis das Schiff vor Feuerkraft strotzte.",
+      "tts": {
+        "text": "Er montierte zusätzliche Kanonen, bis das Schiff vor Feuerkraft strotzte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach taufte sein neues Flaggschiff auf den Namen Queen Anne's Revenge.",
+      "text_markdown": "Teach taufte sein neues Flaggschiff auf den Namen Queen Anne's Revenge.",
+      "tts": {
+        "text": "Teach taufte sein neues Flaggschiff auf den Namen Queen Anne's Revenge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Name war eine bewusste politische Aussage.",
+      "text_markdown": "Der Name war eine bewusste politische Aussage.",
+      "tts": {
+        "text": "Der Name war eine bewusste politische Aussage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er verwies auf Königin Anne, während deren Herrschaft die Freibeuter legal gedient hatten.",
+      "text_markdown": "Er verwies auf Königin Anne, während deren Herrschaft die Freibeuter legal gedient hatten.",
+      "tts": {
+        "text": "Er verwies auf Königin Anne, während deren Herrschaft die Freibeuter legal gedient hatten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teach erklärte, dass seine Piraterie Rache für die gebrochenen Versprechen der Krone war.",
+      "text_markdown": "Teach erklärte, dass seine Piraterie Rache für die gebrochenen Versprechen der Krone war.",
+      "tts": {
+        "text": "Teach erklärte, dass seine Piraterie Rache für die gebrochenen Versprechen der Krone war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mit 40 Kanonen und einer Mannschaft von über 300 Mann war die Queen Anne's Revenge eines der mächtigsten Piratenschiffe auf See.",
+      "text_markdown": "Mit 40 Kanonen und einer Mannschaft von über 300 Mann war die Queen Anne's Revenge eines der mächtigsten Piratenschiffe auf See.",
+      "tts": {
+        "text": "Mit vierzig Kanonen und einer Mannschaft von über dreihundert Mann war die Queen Anne's Revenge eines der mächtigsten Piratenschiffe auf See.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Blackbeard war nicht mehr ein untergeordneter Pirat, der unter der Autorität eines anderen operierte.",
+      "text_markdown": "Blackbeard war nicht mehr ein untergeordneter Pirat, der unter der Autorität eines anderen operierte.",
+      "tts": {
+        "text": "Blackbeard war nicht mehr ein untergeordneter Pirat, der unter der Autorität eines anderen operierte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war nun eine Macht, mit der man rechnen musste.",
+      "text_markdown": "Er war nun eine Macht, mit der man rechnen musste.",
+      "tts": {
+        "text": "Er war nun eine Macht, mit der man rechnen musste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Die Entstehung von Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Legende von Blackbeard sollte gerade beginnen.",
+      "text_markdown": "Die Legende von Blackbeard sollte gerade beginnen.",
+      "tts": {
+        "text": "Die Legende von Blackbeard sollte gerade beginnen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Schrecken des Atlantiks",
+      "text_markdown": "Der Schrecken des Atlantiks"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anfang 1718 segelte Blackbeard mit der Queen Anne's Revenge von der Karibik nordwärts.",
+      "text_markdown": "Anfang 1718 segelte Blackbeard mit der Queen Anne's Revenge von der Karibik nordwärts.",
+      "tts": {
+        "text": "Anfang siebzehnhundertachtzehn segelte Blackbeard mit der Queen Anne's Revenge von der Karibik nordwärts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er steuerte die Schifffahrtswege entlang der amerikanischen Kolonialküste an.",
+      "text_markdown": "Er steuerte die Schifffahrtswege entlang der amerikanischen Kolonialküste an.",
+      "tts": {
+        "text": "Er steuerte die Schifffahrtswege entlang der amerikanischen Kolonialküste an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Gewässer waren reich an Handelsverkehr und schlecht verteidigt.",
+      "text_markdown": "Diese Gewässer waren reich an Handelsverkehr und schlecht verteidigt.",
+      "tts": {
+        "text": "Diese Gewässer waren reich an Handelsverkehr und schlecht verteidigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard beabsichtigte, diese Verwundbarkeit voll auszunutzen.",
+      "text_markdown": "Blackbeard beabsichtigte, diese Verwundbarkeit voll auszunutzen.",
+      "tts": {
+        "text": "Blackbeard beabsichtigte, diese Verwundbarkeit voll auszunutzen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards Strategie beruhte ebenso auf Terror wie auf Feuerkraft.",
+      "text_markdown": "Blackbeards Strategie beruhte ebenso auf Terror wie auf Feuerkraft.",
+      "tts": {
+        "text": "Blackbeards Strategie beruhte ebenso auf Terror wie auf Feuerkraft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er verstand, dass ein verängstigter Feind sich ohne Kampf ergeben würde.",
+      "text_markdown": "Er verstand, dass ein verängstigter Feind sich ohne Kampf ergeben würde.",
+      "tts": {
+        "text": "Er verstand, dass ein verängstigter Feind sich ohne Kampf ergeben würde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eine vermiedene Schlacht war eine gewonnene Schlacht, denn sie bewahrte seine Mannschaft und seine Schiffe.",
+      "text_markdown": "Eine vermiedene Schlacht war eine gewonnene Schlacht, denn sie bewahrte seine Mannschaft und seine Schiffe.",
+      "tts": {
+        "text": "Eine vermiedene Schlacht war eine gewonnene Schlacht, denn sie bewahrte seine Mannschaft und seine Schiffe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jedes Element seines Erscheinungsbildes war darauf ausgelegt, die Angst zu maximieren.",
+      "text_markdown": "Jedes Element seines Erscheinungsbildes war darauf ausgelegt, die Angst zu maximieren.",
+      "tts": {
+        "text": "Jedes Element seines Erscheinungsbildes war darauf ausgelegt, die Angst zu maximieren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ließ seinen dichten schwarzen Bart auf eine enorme Länge wachsen, der den größten Teil seines Gesichts und seiner Brust bedeckte.",
+      "text_markdown": "Er ließ seinen dichten schwarzen Bart auf eine enorme Länge wachsen, der den größten Teil seines Gesichts und seiner Brust bedeckte.",
+      "tts": {
+        "text": "Er ließ seinen dichten schwarzen Bart auf eine enorme Länge wachsen, der den größten Teil seines Gesichts und seiner Brust bedeckte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vor der Schlacht flocht er langsam brennende Hanflunten, sogenannte Lunte, in seinen Bart.",
+      "text_markdown": "Vor der Schlacht flocht er langsam brennende Hanflunten, sogenannte Lunte, in seinen Bart.",
+      "tts": {
+        "text": "Vor der Schlacht flocht er langsam brennende Hanflunten, sogenannte Lunte, in seinen Bart.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wenn sie angezündet wurden, erzeugten diese Lunten Rauchwolken um seinen Kopf.",
+      "text_markdown": "Wenn sie angezündet wurden, erzeugten diese Lunten Rauchwolken um seinen Kopf.",
+      "tts": {
+        "text": "Wenn sie angezündet wurden, erzeugten diese Lunten Rauchwolken um seinen Kopf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Effekt war überirdisch, wie ein Monster, das aus schwefelhaltigem Feuer auftaucht.",
+      "text_markdown": "Der Effekt war überirdisch, wie ein Monster, das aus schwefelhaltigem Feuer auftaucht.",
+      "tts": {
+        "text": "Der Effekt war überirdisch, wie ein Monster, das aus schwefelhaltigem Feuer auftaucht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er trug mehrere Pistolen, die über seiner Brust in einem Lederbandelier befestigt waren.",
+      "text_markdown": "Er trug mehrere Pistolen, die über seiner Brust in einem Lederbandelier befestigt waren.",
+      "tts": {
+        "text": "Er trug mehrere Pistolen, die über seiner Brust in einem Lederbandelier befestigt waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er trug auch mehrere Entermesser und Dolche an seinem Gürtel.",
+      "text_markdown": "Er trug auch mehrere Entermesser und Dolche an seinem Gürtel.",
+      "tts": {
+        "text": "Er trug auch mehrere Entermesser und Dolche an seinem Gürtel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Kleidung war bewusst theatralisch, darauf ausgelegt, so furchteinflößend wie möglich zu wirken.",
+      "text_markdown": "Seine Kleidung war bewusst theatralisch, darauf ausgelegt, so furchteinflößend wie möglich zu wirken.",
+      "tts": {
+        "text": "Seine Kleidung war bewusst theatralisch, darauf ausgelegt, so furchteinflößend wie möglich zu wirken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Augenzeugen beschrieben ihn als das leibhaftige Ebenbild des Teufels.",
+      "text_markdown": "Augenzeugen beschrieben ihn als das leibhaftige Ebenbild des Teufels.",
+      "tts": {
+        "text": "Augenzeugen beschrieben ihn als das leibhaftige Ebenbild des Teufels.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard versammelte eine kleine Flotte von Piratenschiffen um sich.",
+      "text_markdown": "Blackbeard versammelte eine kleine Flotte von Piratenschiffen um sich.",
+      "tts": {
+        "text": "Blackbeard versammelte eine kleine Flotte von Piratenschiffen um sich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Auf seinem Höhepunkt befehligte er 4 Schiffe und mehrere hundert Piraten.",
+      "text_markdown": "Auf seinem Höhepunkt befehligte er 4 Schiffe und mehrere hundert Piraten.",
+      "tts": {
+        "text": "Auf seinem Höhepunkt befehligte er vier Schiffe und mehrere hundert Piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dies war eine ungewöhnliche Konzentration von Piratenmacht.",
+      "text_markdown": "Dies war eine ungewöhnliche Konzentration von Piratenmacht.",
+      "tts": {
+        "text": "Dies war eine ungewöhnliche Konzentration von Piratenmacht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die meisten Piraten operierten allein oder zu zweit, aber Blackbeard dachte in größerem Maßstab.",
+      "text_markdown": "Die meisten Piraten operierten allein oder zu zweit, aber Blackbeard dachte in größerem Maßstab.",
+      "tts": {
+        "text": "Die meisten Piraten operierten allein oder zu zweit, aber Blackbeard dachte in größerem Maßstab.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine Flotte erbeutete Schiff um Schiff entlang der Küste.",
+      "text_markdown": "Seine Flotte erbeutete Schiff um Schiff entlang der Küste.",
+      "tts": {
+        "text": "Seine Flotte erbeutete Schiff um Schiff entlang der Küste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Handelskapitäne, die seine schwarze Flagge sahen, ergaben sich oft sofort.",
+      "text_markdown": "Handelskapitäne, die seine schwarze Flagge sahen, ergaben sich oft sofort.",
+      "tts": {
+        "text": "Handelskapitäne, die seine schwarze Flagge sahen, ergaben sich oft sofort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wer Widerstand leistete, wurde durch zahlenmäßige und feuertechnische Überlegenheit überwältigt.",
+      "text_markdown": "Wer Widerstand leistete, wurde durch zahlenmäßige und feuertechnische Überlegenheit überwältigt.",
+      "tts": {
+        "text": "Wer Widerstand leistete, wurde durch zahlenmäßige und feuertechnische Überlegenheit überwältigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeards Ruf verbreitete sich in jedem Hafen von der Karibik bis nach Neuengland.",
+      "text_markdown": "Blackbeards Ruf verbreitete sich in jedem Hafen von der Karibik bis nach Neuengland.",
+      "tts": {
+        "text": "Blackbeards Ruf verbreitete sich in jedem Hafen von der Karibik bis nach Neuengland.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bei einem typischen Angriff hisste Blackbeard falsche Flaggen, um sich seinem Ziel zu nähern.",
+      "text_markdown": "Bei einem typischen Angriff hisste Blackbeard falsche Flaggen, um sich seinem Ziel zu nähern.",
+      "tts": {
+        "text": "Bei einem typischen Angriff hisste Blackbeard falsche Flaggen, um sich seinem Ziel zu nähern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piraten fuhren oft unter der Flagge einer befreundeten Nation, um sich zu nähern, bevor sie sich zu erkennen gaben.",
+      "text_markdown": "Piraten fuhren oft unter der Flagge einer befreundeten Nation, um sich zu nähern, bevor sie sich zu erkennen gaben.",
+      "tts": {
+        "text": "Piraten fuhren oft unter der Flagge einer befreundeten Nation, um sich zu nähern, bevor sie sich zu erkennen gaben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Im letzten Moment hissten sie ihre wahre Piratenflagge.",
+      "text_markdown": "Im letzten Moment hissten sie ihre wahre Piratenflagge.",
+      "tts": {
+        "text": "Im letzten Moment hissten sie ihre wahre Piratenflagge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bis dahin war es für das Opfer in der Regel zu spät, um zu entkommen.",
+      "text_markdown": "Bis dahin war es für das Opfer in der Regel zu spät, um zu entkommen.",
+      "tts": {
+        "text": "Bis dahin war es für das Opfer in der Regel zu spät, um zu entkommen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards Flagge war unverwechselbar und furchteinflößend.",
+      "text_markdown": "Blackbeards Flagge war unverwechselbar und furchteinflößend.",
+      "tts": {
+        "text": "Blackbeards Flagge war unverwechselbar und furchteinflößend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie zeigte ein Skelett, das in einer Hand eine Sanduhr und in der anderen einen Speer hielt.",
+      "text_markdown": "Sie zeigte ein Skelett, das in einer Hand eine Sanduhr und in der anderen einen Speer hielt.",
+      "tts": {
+        "text": "Sie zeigte ein Skelett, das in einer Hand eine Sanduhr und in der anderen einen Speer hielt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Speer war auf ein blutendes Herz gerichtet.",
+      "text_markdown": "Der Speer war auf ein blutendes Herz gerichtet.",
+      "tts": {
+        "text": "Der Speer war auf ein blutendes Herz gerichtet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Botschaft war klar: Eure Zeit läuft ab, und der Tod kommt.",
+      "text_markdown": "Die Botschaft war klar: Eure Zeit läuft ab, und der Tod kommt.",
+      "tts": {
+        "text": "Die Botschaft war klar: Eure Zeit läuft ab, und der Tod kommt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Mai 1718 führte Blackbeard seinen kühnsten Plan aus.",
+      "text_markdown": "Im Mai 1718 führte Blackbeard seinen kühnsten Plan aus.",
+      "tts": {
+        "text": "Im Mai siebzehnhundertachtzehn führte Blackbeard seinen kühnsten Plan aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er segelte mit seiner Flotte direkt in den Hafen von Charleston, South Carolina.",
+      "text_markdown": "Er segelte mit seiner Flotte direkt in den Hafen von Charleston, South Carolina.",
+      "tts": {
+        "text": "Er segelte mit seiner Flotte direkt in den Hafen von Charleston, South Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Charleston war einer der reichsten und wichtigsten Häfen in den amerikanischen Kolonien.",
+      "text_markdown": "Charleston war einer der reichsten und wichtigsten Häfen in den amerikanischen Kolonien.",
+      "tts": {
+        "text": "Charleston war einer der reichsten und wichtigsten Häfen in den amerikanischen Kolonien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Was folgte, war einer der dreistesten Akte der Piraterie in der Geschichte.",
+      "text_markdown": "Was folgte, war einer der dreistesten Akte der Piraterie in der Geschichte.",
+      "tts": {
+        "text": "Was folgte, war einer der dreistesten Akte der Piraterie in der Geschichte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard blockierte den gesamten Hafen von Charleston.",
+      "text_markdown": "Blackbeard blockierte den gesamten Hafen von Charleston.",
+      "tts": {
+        "text": "Blackbeard blockierte den gesamten Hafen von Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kein Schiff konnte ohne seine Erlaubnis ein- oder auslaufen.",
+      "text_markdown": "Kein Schiff konnte ohne seine Erlaubnis ein- oder auslaufen.",
+      "tts": {
+        "text": "Kein Schiff konnte ohne seine Erlaubnis ein- oder auslaufen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fast eine Woche lang hielt er die Stadt als Geisel.",
+      "text_markdown": "Fast eine Woche lang hielt er die Stadt als Geisel.",
+      "tts": {
+        "text": "Fast eine Woche lang hielt er die Stadt als Geisel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er erbeutete jedes Schiff, das versuchte, durch die Hafeneinfahrt zu fahren.",
+      "text_markdown": "Er erbeutete jedes Schiff, das versuchte, durch die Hafeneinfahrt zu fahren.",
+      "tts": {
+        "text": "Er erbeutete jedes Schiff, das versuchte, durch die Hafeneinfahrt zu fahren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er erbeutete mindestens 8 Schiffe während der Blockade.",
+      "text_markdown": "Er erbeutete mindestens 8 Schiffe während der Blockade.",
+      "tts": {
+        "text": "Er erbeutete mindestens acht Schiffe während der Blockade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unter seinen Gefangenen waren einige der prominentesten Bürger Charlestons.",
+      "text_markdown": "Unter seinen Gefangenen waren einige der prominentesten Bürger Charlestons.",
+      "tts": {
+        "text": "Unter seinen Gefangenen waren einige der prominentesten Bürger Charlestons.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er nahm Geiseln und drohte, sie alle zu töten.",
+      "text_markdown": "Er nahm Geiseln und drohte, sie alle zu töten.",
+      "tts": {
+        "text": "Er nahm Geiseln und drohte, sie alle zu töten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards Forderung war überraschend.",
+      "text_markdown": "Blackbeards Forderung war überraschend.",
+      "tts": {
+        "text": "Blackbeards Forderung war überraschend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er verlangte weder Gold noch Juwelen.",
+      "text_markdown": "Er verlangte weder Gold noch Juwelen.",
+      "tts": {
+        "text": "Er verlangte weder Gold noch Juwelen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stattdessen forderte er eine Truhe mit Medizin.",
+      "text_markdown": "Stattdessen forderte er eine Truhe mit Medizin.",
+      "tts": {
+        "text": "Stattdessen forderte er eine Truhe mit Medizin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Historiker glauben, dass seine Mannschaft an Syphilis und anderen unter Seeleuten verbreiteten Krankheiten litt.",
+      "text_markdown": "Historiker glauben, dass seine Mannschaft an Syphilis und anderen unter Seeleuten verbreiteten Krankheiten litt.",
+      "tts": {
+        "text": "Historiker glauben, dass seine Mannschaft an Syphilis und anderen unter Seeleuten verbreiteten Krankheiten litt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Gouverneur von South Carolina hatte keine Marine, die Blackbeards Flotte hätte herausfordern können.",
+      "text_markdown": "Der Gouverneur von South Carolina hatte keine Marine, die Blackbeards Flotte hätte herausfordern können.",
+      "tts": {
+        "text": "Der Gouverneur von South Carolina hatte keine Marine, die Blackbeards Flotte hätte herausfordern können.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nach angespannten Verhandlungen schickte die Stadt die Medizin an die Piraten.",
+      "text_markdown": "Nach angespannten Verhandlungen schickte die Stadt die Medizin an die Piraten.",
+      "tts": {
+        "text": "Nach angespannten Verhandlungen schickte die Stadt die Medizin an die Piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeard ließ seine Geiseln frei, nachdem er ihnen zuvor ihre Wertsachen abgenommen hatte.",
+      "text_markdown": "Blackbeard ließ seine Geiseln frei, nachdem er ihnen zuvor ihre Wertsachen abgenommen hatte.",
+      "tts": {
+        "text": "Blackbeard ließ seine Geiseln frei, nachdem er ihnen zuvor ihre Wertsachen abgenommen hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er segelte von Charleston ab, sein Ruf auf dem absoluten Höhepunkt.",
+      "text_markdown": "Er segelte von Charleston ab, sein Ruf auf dem absoluten Höhepunkt.",
+      "tts": {
+        "text": "Er segelte von Charleston ab, sein Ruf auf dem absoluten Höhepunkt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach Charleston segelte Blackbeard nordwärts zum Beaufort Inlet in North Carolina.",
+      "text_markdown": "Nach Charleston segelte Blackbeard nordwärts zum Beaufort Inlet in North Carolina.",
+      "tts": {
+        "text": "Nach Charleston segelte Blackbeard nordwärts zum Beaufort Inlet in North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hier lief die Queen Anne's Revenge auf einer Sandbank auf und ging verloren.",
+      "text_markdown": "Hier lief die Queen Anne's Revenge auf einer Sandbank auf und ging verloren.",
+      "tts": {
+        "text": "Hier lief die Queen Anne's Revenge auf einer Sandbank auf und ging verloren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Einige Historiker glauben, dass dies eine absichtliche Tat Blackbeards war, um seine Flotte und Mannschaft zu reduzieren.",
+      "text_markdown": "Einige Historiker glauben, dass dies eine absichtliche Tat Blackbeards war, um seine Flotte und Mannschaft zu reduzieren.",
+      "tts": {
+        "text": "Einige Historiker glauben, dass dies eine absichtliche Tat Blackbeards war, um seine Flotte und Mannschaft zu reduzieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der Schrecken des Atlantiks",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hunderte von Piraten wurden gestrandet, während Blackbeard den besten Schatz für sich behielt.",
+      "text_markdown": "Hunderte von Piraten wurden gestrandet, während Blackbeard den besten Schatz für sich behielt.",
+      "tts": {
+        "text": "Hunderte von Piraten wurden gestrandet, während Blackbeard den besten Schatz für sich behielt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Auf dem Höhepunkt seiner Macht",
+      "text_markdown": "Auf dem Höhepunkt seiner Macht"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach dem Verlust der Queen Anne's Revenge segelte Blackbeard in die Stadt Bath, North Carolina.",
+      "text_markdown": "Nach dem Verlust der Queen Anne's Revenge segelte Blackbeard in die Stadt Bath, North Carolina.",
+      "tts": {
+        "text": "Nach dem Verlust der Queen Anne's Revenge segelte Blackbeard in die Stadt Bath, North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dort traf er Gouverneur Charles Eden und nahm eine königliche Begnadigung an.",
+      "text_markdown": "Dort traf er Gouverneur Charles Eden und nahm eine königliche Begnadigung an.",
+      "tts": {
+        "text": "Dort traf er Gouverneur Charles Eden und nahm eine königliche Begnadigung an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Begnadigung sollte seine Karriere als Pirat beenden.",
+      "text_markdown": "Die Begnadigung sollte seine Karriere als Pirat beenden.",
+      "tts": {
+        "text": "Die Begnadigung sollte seine Karriere als Pirat beenden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aber Blackbeard hatte nicht die Absicht, sich zur Ruhe zu setzen.",
+      "text_markdown": "Aber Blackbeard hatte nicht die Absicht, sich zur Ruhe zu setzen.",
+      "tts": {
+        "text": "Aber Blackbeard hatte nicht die Absicht, sich zur Ruhe zu setzen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath war eine winzige Gemeinde von wenigen Dutzend Häusern am Pamlico River.",
+      "text_markdown": "Bath war eine winzige Gemeinde von wenigen Dutzend Häusern am Pamlico River.",
+      "tts": {
+        "text": "Bath war eine winzige Gemeinde von wenigen Dutzend Häusern am Pamlico River.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es war ein unwahrscheinliches Zuhause für den gefürchtetsten Piraten des Atlantiks.",
+      "text_markdown": "Es war ein unwahrscheinliches Zuhause für den gefürchtetsten Piraten des Atlantiks.",
+      "tts": {
+        "text": "Es war ein unwahrscheinliches Zuhause für den gefürchtetsten Piraten des Atlantiks.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aber seine Abgeschiedenheit und sein korrupter Gouverneur machten es perfekt für Blackbeards Zwecke.",
+      "text_markdown": "Aber seine Abgeschiedenheit und sein korrupter Gouverneur machten es perfekt für Blackbeards Zwecke.",
+      "tts": {
+        "text": "Aber seine Abgeschiedenheit und sein korrupter Gouverneur machten es perfekt für Blackbeards Zwecke.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gouverneur Charles Eden scheint ein bereitwilliger Partner Blackbeards gewesen zu sein.",
+      "text_markdown": "Gouverneur Charles Eden scheint ein bereitwilliger Partner Blackbeards gewesen zu sein.",
+      "tts": {
+        "text": "Gouverneur Charles Eden scheint ein bereitwilliger Partner Blackbeards gewesen zu sein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er verschaffte dem Piraten rechtliche Deckung für dessen fortgesetzte Aktivitäten.",
+      "text_markdown": "Er verschaffte dem Piraten rechtliche Deckung für dessen fortgesetzte Aktivitäten.",
+      "tts": {
+        "text": "Er verschaffte dem Piraten rechtliche Deckung für dessen fortgesetzte Aktivitäten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeard erbeutete Schiffe auf See und brachte dann die Ladung nach Bath.",
+      "text_markdown": "Blackbeard erbeutete Schiffe auf See und brachte dann die Ladung nach Bath.",
+      "tts": {
+        "text": "Blackbeard erbeutete Schiffe auf See und brachte dann die Ladung nach Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eden erklärte die Güter für legitime Bergung und nahm einen Anteil an den Gewinnen.",
+      "text_markdown": "Eden erklärte die Güter für legitime Bergung und nahm einen Anteil an den Gewinnen.",
+      "tts": {
+        "text": "Eden erklärte die Güter für legitime Bergung und nahm einen Anteil an den Gewinnen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard heiratete während seiner Zeit in Bath eine einheimische Frau.",
+      "text_markdown": "Blackbeard heiratete während seiner Zeit in Bath eine einheimische Frau.",
+      "tts": {
+        "text": "Blackbeard heiratete während seiner Zeit in Bath eine einheimische Frau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie soll etwa 16 Jahre alt gewesen sein.",
+      "text_markdown": "Sie soll etwa 16 Jahre alt gewesen sein.",
+      "tts": {
+        "text": "Sie soll etwa sechzehn Jahre alt gewesen sein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historische Aufzeichnungen deuten darauf hin, dass sie möglicherweise seine vierzehnte Ehefrau war.",
+      "text_markdown": "Historische Aufzeichnungen deuten darauf hin, dass sie möglicherweise seine vierzehnte Ehefrau war.",
+      "tts": {
+        "text": "Historische Aufzeichnungen deuten darauf hin, dass sie möglicherweise seine vierzehnte Ehefrau war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die meisten dieser Ehen waren informelle Vereinbarungen, die unter Seeleuten üblich waren.",
+      "text_markdown": "Die meisten dieser Ehen waren informelle Vereinbarungen, die unter Seeleuten üblich waren.",
+      "tts": {
+        "text": "Die meisten dieser Ehen waren informelle Vereinbarungen, die unter Seeleuten üblich waren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trotz seiner Begnadigung fuhr Blackbeard fort, Schiffe zu überfallen.",
+      "text_markdown": "Trotz seiner Begnadigung fuhr Blackbeard fort, Schiffe zu überfallen.",
+      "tts": {
+        "text": "Trotz seiner Begnadigung fuhr Blackbeard fort, Schiffe zu überfallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er behauptete, die erbeuteten Schiffe seien spanische oder französische Schiffe, was sie zu rechtmäßiger Beute mache.",
+      "text_markdown": "Er behauptete, die erbeuteten Schiffe seien spanische oder französische Schiffe, was sie zu rechtmäßiger Beute mache.",
+      "tts": {
+        "text": "Er behauptete, die erbeuteten Schiffe seien spanische oder französische Schiffe, was sie zu rechtmäßiger Beute mache.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gouverneur Eden bestätigte diese Behauptungen bereitwillig ohne Untersuchung.",
+      "text_markdown": "Gouverneur Eden bestätigte diese Behauptungen bereitwillig ohne Untersuchung.",
+      "tts": {
+        "text": "Gouverneur Eden bestätigte diese Behauptungen bereitwillig ohne Untersuchung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards Beziehung zur lokalen Gemeinschaft war komplex.",
+      "text_markdown": "Blackbeards Beziehung zur lokalen Gemeinschaft war komplex.",
+      "tts": {
+        "text": "Blackbeards Beziehung zur lokalen Gemeinschaft war komplex.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Einige Einwohner begrüßten den Wohlstand, den er in ihre notleidende Stadt brachte.",
+      "text_markdown": "Einige Einwohner begrüßten den Wohlstand, den er in ihre notleidende Stadt brachte.",
+      "tts": {
+        "text": "Einige Einwohner begrüßten den Wohlstand, den er in ihre notleidende Stadt brachte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Andere lebten in Angst vor dem gewalttätigen Piraten und seiner bewaffneten Mannschaft.",
+      "text_markdown": "Andere lebten in Angst vor dem gewalttätigen Piraten und seiner bewaffneten Mannschaft.",
+      "tts": {
+        "text": "Andere lebten in Angst vor dem gewalttätigen Piraten und seiner bewaffneten Mannschaft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niemand wagte es, ihn offen herauszufordern.",
+      "text_markdown": "Niemand wagte es, ihn offen herauszufordern.",
+      "tts": {
+        "text": "Niemand wagte es, ihn offen herauszufordern.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er veranstaltete prunkvolle Zusammenkünfte in seinem Haus in Bath.",
+      "text_markdown": "Er veranstaltete prunkvolle Zusammenkünfte in seinem Haus in Bath.",
+      "tts": {
+        "text": "Er veranstaltete prunkvolle Zusammenkünfte in seinem Haus in Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Prominente Einheimische, darunter der Gouverneur selbst, nahmen an diesen Veranstaltungen teil.",
+      "text_markdown": "Prominente Einheimische, darunter der Gouverneur selbst, nahmen an diesen Veranstaltungen teil.",
+      "tts": {
+        "text": "Prominente Einheimische, darunter der Gouverneur selbst, nahmen an diesen Veranstaltungen teil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gestohlener Wein und Spirituosen flossen reichlich.",
+      "text_markdown": "Gestohlener Wein und Spirituosen flossen reichlich.",
+      "tts": {
+        "text": "Gestohlener Wein und Spirituosen flossen reichlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Feiern halfen Blackbeard, sein Netzwerk aus Verbündeten und Informanten aufrechtzuerhalten.",
+      "text_markdown": "Diese Feiern halfen Blackbeard, sein Netzwerk aus Verbündeten und Informanten aufrechtzuerhalten.",
+      "tts": {
+        "text": "Diese Feiern halfen Blackbeard, sein Netzwerk aus Verbündeten und Informanten aufrechtzuerhalten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard unterhielt auch ein Versteck auf Ocracoke Island.",
+      "text_markdown": "Blackbeard unterhielt auch ein Versteck auf Ocracoke Island.",
+      "tts": {
+        "text": "Blackbeard unterhielt auch ein Versteck auf Ocracoke Island.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke war eine abgelegene Barriereinsel an den Outer Banks von North Carolina.",
+      "text_markdown": "Ocracoke war eine abgelegene Barriereinsel an den Outer Banks von North Carolina.",
+      "tts": {
+        "text": "Ocracoke war eine abgelegene Barriereinsel an den Outer Banks von North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre flachen Gewässer und tückischen Untiefen machten es großen Kriegsschiffen nahezu unmöglich, sich zu nähern.",
+      "text_markdown": "Ihre flachen Gewässer und tückischen Untiefen machten es großen Kriegsschiffen nahezu unmöglich, sich zu nähern.",
+      "tts": {
+        "text": "Ihre flachen Gewässer und tückischen Untiefen machten es großen Kriegsschiffen nahezu unmöglich, sich zu nähern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Für einen Piraten, der die Fahrrinnen kannte, war es eine uneinnehmbare Festung.",
+      "text_markdown": "Für einen Piraten, der die Fahrrinnen kannte, war es eine uneinnehmbare Festung.",
+      "tts": {
+        "text": "Für einen Piraten, der die Fahrrinnen kannte, war es eine uneinnehmbare Festung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere Piraten kamen nach Ocracoke zum Handeln, Nachschubholen und Geselligkeit.",
+      "text_markdown": "Andere Piraten kamen nach Ocracoke zum Handeln, Nachschubholen und Geselligkeit.",
+      "tts": {
+        "text": "Andere Piraten kamen nach Ocracoke zum Handeln, Nachschubholen und Geselligkeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles Vane, ein weiterer berüchtigter Piratenkapitän, besuchte Blackbeard dort.",
+      "text_markdown": "Charles Vane, ein weiterer berüchtigter Piratenkapitän, besuchte Blackbeard dort.",
+      "tts": {
+        "text": "Charles Vane, ein weiterer berüchtigter Piratenkapitän, besuchte Blackbeard dort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die beiden Mannschaften hielten ein tagelang dauerndes Fest am Strand ab.",
+      "text_markdown": "Die beiden Mannschaften hielten ein tagelang dauerndes Fest am Strand ab.",
+      "tts": {
+        "text": "Die beiden Mannschaften hielten ein tagelang dauerndes Fest am Strand ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Berichte über dieses Piratentreffen alarmierten die Kolonialbeamten entlang der gesamten Küste.",
+      "text_markdown": "Berichte über dieses Piratentreffen alarmierten die Kolonialbeamten entlang der gesamten Küste.",
+      "tts": {
+        "text": "Berichte über dieses Piratentreffen alarmierten die Kolonialbeamten entlang der gesamten Küste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Piraten lebten nach einem Verhaltenskodex, den Blackbeard streng durchsetzte.",
+      "text_markdown": "Die Piraten lebten nach einem Verhaltenskodex, den Blackbeard streng durchsetzte.",
+      "tts": {
+        "text": "Die Piraten lebten nach einem Verhaltenskodex, den Blackbeard streng durchsetzte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeder Mann hatte eine Stimme bei wichtigen Entscheidungen.",
+      "text_markdown": "Jeder Mann hatte eine Stimme bei wichtigen Entscheidungen.",
+      "tts": {
+        "text": "Jeder Mann hatte eine Stimme bei wichtigen Entscheidungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Beute wurde nach vereinbarten Anteilen verteilt.",
+      "text_markdown": "Die Beute wurde nach vereinbarten Anteilen verteilt.",
+      "tts": {
+        "text": "Die Beute wurde nach vereinbarten Anteilen verteilt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wer beim Stehlen aus der gemeinsamen Schatzkiste erwischt wurde, wurde streng bestraft.",
+      "text_markdown": "Wer beim Stehlen aus der gemeinsamen Schatzkiste erwischt wurde, wurde streng bestraft.",
+      "tts": {
+        "text": "Wer beim Stehlen aus der gemeinsamen Schatzkiste erwischt wurde, wurde streng bestraft.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Händler und Plantagenbesitzer entlang der Küste waren verzweifelt.",
+      "text_markdown": "Händler und Plantagenbesitzer entlang der Küste waren verzweifelt.",
+      "tts": {
+        "text": "Händler und Plantagenbesitzer entlang der Küste waren verzweifelt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Handel wurde durch Blackbeards ständige Überfälle abgewürgt.",
+      "text_markdown": "Ihr Handel wurde durch Blackbeards ständige Überfälle abgewürgt.",
+      "tts": {
+        "text": "Ihr Handel wurde durch Blackbeards ständige Überfälle abgewürgt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Versicherungsraten für Schiffe, die durch karolinische Gewässer fuhren, schossen in die Höhe.",
+      "text_markdown": "Die Versicherungsraten für Schiffe, die durch karolinische Gewässer fuhren, schossen in die Höhe.",
+      "tts": {
+        "text": "Die Versicherungsraten für Schiffe, die durch karolinische Gewässer fuhren, schossen in die Höhe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Einige Händler hörten ganz auf, Schiffe zu schicken, und zogen es vor, Geschäfte zu verlieren statt alles.",
+      "text_markdown": "Einige Händler hörten ganz auf, Schiffe zu schicken, und zogen es vor, Geschäfte zu verlieren statt alles.",
+      "tts": {
+        "text": "Einige Händler hörten ganz auf, Schiffe zu schicken, und zogen es vor, Geschäfte zu verlieren statt alles.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Gouverneur von Virginia, Alexander Spotswood, war besonders empört.",
+      "text_markdown": "Der Gouverneur von Virginia, Alexander Spotswood, war besonders empört.",
+      "tts": {
+        "text": "Der Gouverneur von Virginia, Alexander Spotswood, war besonders empört.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginias Wirtschaft hing von Tabakexporten ab, die durch die Chesapeake Bay verschifft wurden.",
+      "text_markdown": "Virginias Wirtschaft hing von Tabakexporten ab, die durch die Chesapeake Bay verschifft wurden.",
+      "tts": {
+        "text": "Virginias Wirtschaft hing von Tabakexporten ab, die durch die Chesapeake Bay verschifft wurden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeards Präsenz in der Nähe bedrohte Virginias wichtigste Industrie.",
+      "text_markdown": "Blackbeards Präsenz in der Nähe bedrohte Virginias wichtigste Industrie.",
+      "tts": {
+        "text": "Blackbeards Präsenz in der Nähe bedrohte Virginias wichtigste Industrie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spotswood beschloss, dass Virginia handeln würde, wenn North Carolina sich nicht um den Piraten kümmerte.",
+      "text_markdown": "Spotswood beschloss, dass Virginia handeln würde, wenn North Carolina sich nicht um den Piraten kümmerte.",
+      "tts": {
+        "text": "Spotswood beschloss, dass Virginia handeln würde, wenn North Carolina sich nicht um den Piraten kümmerte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood begann im Geheimen eine militärische Operation zu planen, um Blackbeard zu fangen oder zu töten.",
+      "text_markdown": "Spotswood begann im Geheimen eine militärische Operation zu planen, um Blackbeard zu fangen oder zu töten.",
+      "tts": {
+        "text": "Spotswood begann im Geheimen eine militärische Operation zu planen, um Blackbeard zu fangen oder zu töten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia-Truppen ohne Erlaubnis nach North Carolina zu schicken war rechtlich fragwürdig.",
+      "text_markdown": "Virginia-Truppen ohne Erlaubnis nach North Carolina zu schicken war rechtlich fragwürdig.",
+      "tts": {
+        "text": "Virginia-Truppen ohne Erlaubnis nach North Carolina zu schicken war rechtlich fragwürdig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt seiner Macht",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aber Spotswood beschloss trotzdem zu handeln, da er glaubte, die Bedrohung rechtfertige außergewöhnliche Maßnahmen.",
+      "text_markdown": "Aber Spotswood beschloss trotzdem zu handeln, da er glaubte, die Bedrohung rechtfertige außergewöhnliche Maßnahmen.",
+      "tts": {
+        "text": "Aber Spotswood beschloss trotzdem zu handeln, da er glaubte, die Bedrohung rechtfertige außergewöhnliche Maßnahmen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Schlacht von Ocracoke",
+      "text_markdown": "Die Schlacht von Ocracoke"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im November 1718 setzte Gouverneur Spotswood seinen Plan in die Tat um.",
+      "text_markdown": "Im November 1718 setzte Gouverneur Spotswood seinen Plan in die Tat um.",
+      "tts": {
+        "text": "Im November siebzehnhundertachtzehn setzte Gouverneur Spotswood seinen Plan in die Tat um.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er mietete zwei kleine Schaluppen von zivilen Eigentümern und unterstellte sie dem Marinekommando.",
+      "text_markdown": "Er mietete zwei kleine Schaluppen von zivilen Eigentümern und unterstellte sie dem Marinekommando.",
+      "tts": {
+        "text": "Er mietete zwei kleine Schaluppen von zivilen Eigentümern und unterstellte sie dem Marinekommando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Expedition wurde von Leutnant Robert Maynard von der Royal Navy angeführt.",
+      "text_markdown": "Die Expedition wurde von Leutnant Robert Maynard von der Royal Navy angeführt.",
+      "tts": {
+        "text": "Die Expedition wurde von Leutnant Robert Maynard von der Royal Navy angeführt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maynard war ein erfahrener Offizier mit dem Ruf für Mut und Entschlossenheit.",
+      "text_markdown": "Maynard war ein erfahrener Offizier mit dem Ruf für Mut und Entschlossenheit.",
+      "tts": {
+        "text": "Maynard war ein erfahrener Offizier mit dem Ruf für Mut und Entschlossenheit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood wählte Schaluppen, weil sie einen geringen Tiefgang hatten.",
+      "text_markdown": "Spotswood wählte Schaluppen, weil sie einen geringen Tiefgang hatten.",
+      "tts": {
+        "text": "Spotswood wählte Schaluppen, weil sie einen geringen Tiefgang hatten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nur Flachwasserschiffe konnten durch die Kanäle um Ocracoke Island navigieren.",
+      "text_markdown": "Nur Flachwasserschiffe konnten durch die Kanäle um Ocracoke Island navigieren.",
+      "tts": {
+        "text": "Nur Flachwasserschiffe konnten durch die Kanäle um Ocracoke Island navigieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Größere Kriegsschiffe wären lange vor Erreichen von Blackbeards Ankerplatz auf Grund gelaufen.",
+      "text_markdown": "Größere Kriegsschiffe wären lange vor Erreichen von Blackbeards Ankerplatz auf Grund gelaufen.",
+      "tts": {
+        "text": "Größere Kriegsschiffe wären lange vor Erreichen von Blackbeards Ankerplatz auf Grund gelaufen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynards zwei Schaluppen trugen insgesamt etwa 60 Mann.",
+      "text_markdown": "Maynards zwei Schaluppen trugen insgesamt etwa 60 Mann.",
+      "tts": {
+        "text": "Maynards zwei Schaluppen trugen insgesamt etwa sechzig Mann.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es waren Matrosen von Kriegsschiffen der Royal Navy, die in Virginia stationiert waren.",
+      "text_markdown": "Es waren Matrosen von Kriegsschiffen der Royal Navy, die in Virginia stationiert waren.",
+      "tts": {
+        "text": "Es waren Matrosen von Kriegsschiffen der Royal Navy, die in Virginia stationiert waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den Männern wurde ein Anteil an jeder erbeuteten Piratenbeute versprochen.",
+      "text_markdown": "Den Männern wurde ein Anteil an jeder erbeuteten Piratenbeute versprochen.",
+      "tts": {
+        "text": "Den Männern wurde ein Anteil an jeder erbeuteten Piratenbeute versprochen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Expedition segelte von Virginia aus im Geheimen nach Süden.",
+      "text_markdown": "Die Expedition segelte von Virginia aus im Geheimen nach Süden.",
+      "tts": {
+        "text": "Die Expedition segelte von Virginia aus im Geheimen nach Süden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotswood erzählte fast niemandem von der Mission, um zu verhindern, dass Blackbeard gewarnt wurde.",
+      "text_markdown": "Spotswood erzählte fast niemandem von der Mission, um zu verhindern, dass Blackbeard gewarnt wurde.",
+      "tts": {
+        "text": "Spotswood erzählte fast niemandem von der Mission, um zu verhindern, dass Blackbeard gewarnt wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geschwindigkeit und Überraschung waren entscheidend für den Erfolg des Plans.",
+      "text_markdown": "Geschwindigkeit und Überraschung waren entscheidend für den Erfolg des Plans.",
+      "tts": {
+        "text": "Geschwindigkeit und Überraschung waren entscheidend für den Erfolg des Plans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Am Abend des 21. November 1718 trafen Maynards Schaluppen in der Nähe von Ocracoke Island ein.",
+      "text_markdown": "Am Abend des 21. November 1718 trafen Maynards Schaluppen in der Nähe von Ocracoke Island ein.",
+      "tts": {
+        "text": "Am Abend des einundzwanzigsten November siebzehnhundertachtzehn trafen Maynards Schaluppen in der Nähe von Ocracoke Island ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie ankerten am Rand des Kanals und warteten auf die Morgendämmerung.",
+      "text_markdown": "Sie ankerten am Rand des Kanals und warteten auf die Morgendämmerung.",
+      "tts": {
+        "text": "Sie ankerten am Rand des Kanals und warteten auf die Morgendämmerung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maynard konnte die Lichter von Blackbeards Schaluppe Adventure im Hafen sehen.",
+      "text_markdown": "Maynard konnte die Lichter von Blackbeards Schaluppe Adventure im Hafen sehen.",
+      "tts": {
+        "text": "Maynard konnte die Lichter von Blackbeards Schaluppe Adventure im Hafen sehen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Piraten feierten, ohne zu ahnen, dass ihr Verhängnis nahte.",
+      "text_markdown": "Die Piraten feierten, ohne zu ahnen, dass ihr Verhängnis nahte.",
+      "tts": {
+        "text": "Die Piraten feierten, ohne zu ahnen, dass ihr Verhängnis nahte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bei Tagesanbruch fuhren Maynards Schaluppen in den Kanal ein.",
+      "text_markdown": "Bei Tagesanbruch fuhren Maynards Schaluppen in den Kanal ein.",
+      "tts": {
+        "text": "Bei Tagesanbruch fuhren Maynards Schaluppen in den Kanal ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Blackbeard sichtete sie sofort und erkannte sie als Bedrohung.",
+      "text_markdown": "Blackbeard sichtete sie sofort und erkannte sie als Bedrohung.",
+      "tts": {
+        "text": "Blackbeard sichtete sie sofort und erkannte sie als Bedrohung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er kappte sein Ankertau und versuchte, sich für den Kampf in Position zu bringen.",
+      "text_markdown": "Er kappte sein Ankertau und versuchte, sich für den Kampf in Position zu bringen.",
+      "tts": {
+        "text": "Er kappte sein Ankertau und versuchte, sich für den Kampf in Position zu bringen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die engen, flachen Gewässer des Ocracoke Inlet verwandelten die Schlacht in ein Nahkampfgefecht.",
+      "text_markdown": "Die engen, flachen Gewässer des Ocracoke Inlet verwandelten die Schlacht in ein Nahkampfgefecht.",
+      "tts": {
+        "text": "Die engen, flachen Gewässer des Ocracoke Inlet verwandelten die Schlacht in ein Nahkampfgefecht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards erster Zug war verheerend.",
+      "text_markdown": "Blackbeards erster Zug war verheerend.",
+      "tts": {
+        "text": "Blackbeards erster Zug war verheerend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er feuerte eine Breitseite aus Kanonen, die mit Kartätschen und Metallschrott geladen waren.",
+      "text_markdown": "Er feuerte eine Breitseite aus Kanonen, die mit Kartätschen und Metallschrott geladen waren.",
+      "tts": {
+        "text": "Er feuerte eine Breitseite aus Kanonen, die mit Kartätschen und Metallschrott geladen waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Explosion fegte über das Deck einer von Maynards Schaluppen.",
+      "text_markdown": "Die Explosion fegte über das Deck einer von Maynards Schaluppen.",
+      "tts": {
+        "text": "Die Explosion fegte über das Deck einer von Maynards Schaluppen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Kommandant der Schaluppe wurde sofort getötet, zusammen mit mehreren seiner Männer.",
+      "text_markdown": "Der Kommandant der Schaluppe wurde sofort getötet, zusammen mit mehreren seiner Männer.",
+      "tts": {
+        "text": "Der Kommandant der Schaluppe wurde sofort getötet, zusammen mit mehreren seiner Männer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynards eigene Schaluppe erlitt schwere Schäden durch das Kanonenfeuer.",
+      "text_markdown": "Maynards eigene Schaluppe erlitt schwere Schäden durch das Kanonenfeuer.",
+      "tts": {
+        "text": "Maynards eigene Schaluppe erlitt schwere Schäden durch das Kanonenfeuer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Etwa ein Drittel seiner Mannschaft wurde im ersten Schusswechsel getötet oder verwundet.",
+      "text_markdown": "Etwa ein Drittel seiner Mannschaft wurde im ersten Schusswechsel getötet oder verwundet.",
+      "tts": {
+        "text": "Etwa ein Drittel seiner Mannschaft wurde im ersten Schusswechsel getötet oder verwundet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aber Maynard hatte einen klugen Plan.",
+      "text_markdown": "Aber Maynard hatte einen klugen Plan.",
+      "tts": {
+        "text": "Aber Maynard hatte einen klugen Plan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er befahl den meisten seiner überlebenden Männer, sich unter Deck zu verstecken.",
+      "text_markdown": "Er befahl den meisten seiner überlebenden Männer, sich unter Deck zu verstecken.",
+      "tts": {
+        "text": "Er befahl den meisten seiner überlebenden Männer, sich unter Deck zu verstecken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nur wenige Matrosen blieben auf dem Oberdeck sichtbar.",
+      "text_markdown": "Nur wenige Matrosen blieben auf dem Oberdeck sichtbar.",
+      "tts": {
+        "text": "Nur wenige Matrosen blieben auf dem Oberdeck sichtbar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Als Blackbeard auf das scheinbar leere Schiff blickte, nahm er an, dass die meiste Mannschaft tot war.",
+      "text_markdown": "Als Blackbeard auf das scheinbar leere Schiff blickte, nahm er an, dass die meiste Mannschaft tot war.",
+      "tts": {
+        "text": "Als Blackbeard auf das scheinbar leere Schiff blickte, nahm er an, dass die meiste Mannschaft tot war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er befahl seinen Piraten, Maynards Schaluppe zum Entern zu stürmen.",
+      "text_markdown": "Er befahl seinen Piraten, Maynards Schaluppe zum Entern zu stürmen.",
+      "tts": {
+        "text": "Er befahl seinen Piraten, Maynards Schaluppe zum Entern zu stürmen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard und seine Männer schwangen sich auf das Deck von Maynards Schaluppe.",
+      "text_markdown": "Blackbeard und seine Männer schwangen sich auf das Deck von Maynards Schaluppe.",
+      "tts": {
+        "text": "Blackbeard und seine Männer schwangen sich auf das Deck von Maynards Schaluppe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In diesem Moment gab Maynard das Signal.",
+      "text_markdown": "In diesem Moment gab Maynard das Signal.",
+      "tts": {
+        "text": "In diesem Moment gab Maynard das Signal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine versteckten Matrosen stürmten von unten herauf, Waffen in der Hand.",
+      "text_markdown": "Seine versteckten Matrosen stürmten von unten herauf, Waffen in der Hand.",
+      "tts": {
+        "text": "Seine versteckten Matrosen stürmten von unten herauf, Waffen in der Hand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Piraten fanden sich in einem wütenden Nahkampf Mann gegen Mann gefangen.",
+      "text_markdown": "Die Piraten fanden sich in einem wütenden Nahkampf Mann gegen Mann gefangen.",
+      "tts": {
+        "text": "Die Piraten fanden sich in einem wütenden Nahkampf Mann gegen Mann gefangen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard und Maynard kämpften direkt gegeneinander.",
+      "text_markdown": "Blackbeard und Maynard kämpften direkt gegeneinander.",
+      "tts": {
+        "text": "Blackbeard und Maynard kämpften direkt gegeneinander.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Blackbeard schwang sein Entermesser mit solcher Kraft, dass er Maynards Schwertklinge zerbrach.",
+      "text_markdown": "Blackbeard schwang sein Entermesser mit solcher Kraft, dass er Maynards Schwertklinge zerbrach.",
+      "tts": {
+        "text": "Blackbeard schwang sein Entermesser mit solcher Kraft, dass er Maynards Schwertklinge zerbrach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Als Blackbeard sein Entermesser zum tödlichen Schlag erhob, schlitzte einer von Maynards Männern ihm den Hals auf.",
+      "text_markdown": "Als Blackbeard sein Entermesser zum tödlichen Schlag erhob, schlitzte einer von Maynards Männern ihm den Hals auf.",
+      "tts": {
+        "text": "Als Blackbeard sein Entermesser zum tödlichen Schlag erhob, schlitzte einer von Maynards Männern ihm den Hals auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard taumelte, kämpfte aber weiter.",
+      "text_markdown": "Blackbeard taumelte, kämpfte aber weiter.",
+      "tts": {
+        "text": "Blackbeard taumelte, kämpfte aber weiter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schließlich brach Blackbeard zusammen und starb auf dem Deck von Maynards Schaluppe.",
+      "text_markdown": "Schließlich brach Blackbeard zusammen und starb auf dem Deck von Maynards Schaluppe.",
+      "tts": {
+        "text": "Schließlich brach Blackbeard zusammen und starb auf dem Deck von Maynards Schaluppe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Als sein Körper untersucht wurde, zählte man 5 Schusswunden und über 20 Schwerthiebe.",
+      "text_markdown": "Als sein Körper untersucht wurde, zählte man 5 Schusswunden und über 20 Schwerthiebe.",
+      "tts": {
+        "text": "Als sein Körper untersucht wurde, zählte man fünf Schusswunden und über zwanzig Schwerthiebe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die übrigen Piraten ergaben sich, als sie ihren Kapitän fallen sahen.",
+      "text_markdown": "Die übrigen Piraten ergaben sich, als sie ihren Kapitän fallen sahen.",
+      "tts": {
+        "text": "Die übrigen Piraten ergaben sich, als sie ihren Kapitän fallen sahen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard befahl, Blackbeards Kopf vom Körper abzutrennen.",
+      "text_markdown": "Maynard befahl, Blackbeards Kopf vom Körper abzutrennen.",
+      "tts": {
+        "text": "Maynard befahl, Blackbeards Kopf vom Körper abzutrennen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Kopf wurde am Bugspriet seiner Schaluppe aufgehängt als Beweis für die Tötung.",
+      "text_markdown": "Der Kopf wurde am Bugspriet seiner Schaluppe aufgehängt als Beweis für die Tötung.",
+      "tts": {
+        "text": "Der Kopf wurde am Bugspriet seiner Schaluppe aufgehängt als Beweis für die Tötung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeards kopfloser Körper wurde in die Gewässer des Ocracoke Inlet geworfen.",
+      "text_markdown": "Blackbeards kopfloser Körper wurde in die Gewässer des Ocracoke Inlet geworfen.",
+      "tts": {
+        "text": "Blackbeards kopfloser Körper wurde in die Gewässer des Ocracoke Inlet geworfen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Die Schlacht von Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Legende besagt, dass der Körper um die Schaluppe schwamm, bevor er sank, obwohl dies sicherlich Fiktion ist.",
+      "text_markdown": "Die Legende besagt, dass der Körper um die Schaluppe schwamm, bevor er sank, obwohl dies sicherlich Fiktion ist.",
+      "tts": {
+        "text": "Die Legende besagt, dass der Körper um die Schaluppe schwamm, bevor er sank, obwohl dies sicherlich Fiktion ist.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Legende, die niemals stirbt",
+      "text_markdown": "Die Legende, die niemals stirbt"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards Tod sandte Schockwellen durch die Piratengemeinschaft.",
+      "text_markdown": "Blackbeards Tod sandte Schockwellen durch die Piratengemeinschaft.",
+      "tts": {
+        "text": "Blackbeards Tod sandte Schockwellen durch die Piratengemeinschaft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wenn der gefürchtetste Pirat des Atlantiks gejagt und getötet werden konnte, war niemand sicher.",
+      "text_markdown": "Wenn der gefürchtetste Pirat des Atlantiks gejagt und getötet werden konnte, war niemand sicher.",
+      "tts": {
+        "text": "Wenn der gefürchtetste Pirat des Atlantiks gejagt und getötet werden konnte, war niemand sicher.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viele Piraten nahmen in den folgenden Monaten königliche Begnadigungen an.",
+      "text_markdown": "Viele Piraten nahmen in den folgenden Monaten königliche Begnadigungen an.",
+      "tts": {
+        "text": "Viele Piraten nahmen in den folgenden Monaten königliche Begnadigungen an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Goldene Zeitalter der Piraterie ging in seine letzten Jahre.",
+      "text_markdown": "Das Goldene Zeitalter der Piraterie ging in seine letzten Jahre.",
+      "tts": {
+        "text": "Das Goldene Zeitalter der Piraterie ging in seine letzten Jahre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die überlebenden Mitglieder von Blackbeards Mannschaft wurden in Virginia vor Gericht gestellt.",
+      "text_markdown": "Die überlebenden Mitglieder von Blackbeards Mannschaft wurden in Virginia vor Gericht gestellt.",
+      "tts": {
+        "text": "Die überlebenden Mitglieder von Blackbeards Mannschaft wurden in Virginia vor Gericht gestellt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die meisten wurden für schuldig befunden und gehängt.",
+      "text_markdown": "Die meisten wurden für schuldig befunden und gehängt.",
+      "tts": {
+        "text": "Die meisten wurden für schuldig befunden und gehängt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Körper wurden in Eisenkäfigen am Kai als grausame Warnung ausgestellt.",
+      "text_markdown": "Ihre Körper wurden in Eisenkäfigen am Kai als grausame Warnung ausgestellt.",
+      "tts": {
+        "text": "Ihre Körper wurden in Eisenkäfigen am Kai als grausame Warnung ausgestellt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Kolonialbehörden wollten unmissverständlich klarstellen, dass die Zeit der Piratenduldung vorbei war.",
+      "text_markdown": "Die Kolonialbehörden wollten unmissverständlich klarstellen, dass die Zeit der Piratenduldung vorbei war.",
+      "tts": {
+        "text": "Die Kolonialbehörden wollten unmissverständlich klarstellen, dass die Zeit der Piratenduldung vorbei war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724 wurde ein Buch mit dem Titel Eine allgemeine Geschichte der Piraten in London veröffentlicht.",
+      "text_markdown": "1724 wurde ein Buch mit dem Titel Eine allgemeine Geschichte der Piraten in London veröffentlicht.",
+      "tts": {
+        "text": "Siebzehnhundertvierundzwanzig wurde ein Buch mit dem Titel Eine allgemeine Geschichte der Piraten in London veröffentlicht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Autor war als Kapitän Charles Johnson angegeben, obwohl seine wahre Identität unbekannt bleibt.",
+      "text_markdown": "Der Autor war als Kapitän Charles Johnson angegeben, obwohl seine wahre Identität unbekannt bleibt.",
+      "tts": {
+        "text": "Der Autor war als Kapitän Charles Johnson angegeben, obwohl seine wahre Identität unbekannt bleibt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dieses Buch widmete Blackbeards Abenteuern ein ganzes Kapitel.",
+      "text_markdown": "Dieses Buch widmete Blackbeards Abenteuern ein ganzes Kapitel.",
+      "tts": {
+        "text": "Dieses Buch widmete Blackbeards Abenteuern ein ganzes Kapitel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es war das Fundament, auf dem die Legende von Blackbeard errichtet wurde.",
+      "text_markdown": "Es war das Fundament, auf dem die Legende von Blackbeard errichtet wurde.",
+      "tts": {
+        "text": "Es war das Fundament, auf dem die Legende von Blackbeard errichtet wurde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Laufe der Jahrhunderte wurde Blackbeard zum Sinnbild der Piraterie selbst.",
+      "text_markdown": "Im Laufe der Jahrhunderte wurde Blackbeard zum Sinnbild der Piraterie selbst.",
+      "tts": {
+        "text": "Im Laufe der Jahrhunderte wurde Blackbeard zum Sinnbild der Piraterie selbst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wenn Menschen sich einen Piraten vorstellen, sehen sie typischerweise jemanden, der wie Blackbeard aussieht.",
+      "text_markdown": "Wenn Menschen sich einen Piraten vorstellen, sehen sie typischerweise jemanden, der wie Blackbeard aussieht.",
+      "tts": {
+        "text": "Wenn Menschen sich einen Piraten vorstellen, sehen sie typischerweise jemanden, der wie Blackbeard aussieht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der riesige Bart, die rauchenden Lunten, die Pistolenbandoliere sind zu einem Standardbild der Piraterie geworden.",
+      "text_markdown": "Der riesige Bart, die rauchenden Lunten, die Pistolenbandoliere sind zu einem Standardbild der Piraterie geworden.",
+      "tts": {
+        "text": "Der riesige Bart, die rauchenden Lunten, die Pistolenbandoliere sind zu einem Standardbild der Piraterie geworden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kein anderer Pirat hat einen so nachhaltigen Einfluss auf die Populärkultur gehabt.",
+      "text_markdown": "Kein anderer Pirat hat einen so nachhaltigen Einfluss auf die Populärkultur gehabt.",
+      "tts": {
+        "text": "Kein anderer Pirat hat einen so nachhaltigen Einfluss auf die Populärkultur gehabt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1996 entdeckten Meeresarchäologen das Wrack eines Schiffes in der Nähe von Beaufort, North Carolina.",
+      "text_markdown": "1996 entdeckten Meeresarchäologen das Wrack eines Schiffes in der Nähe von Beaufort, North Carolina.",
+      "tts": {
+        "text": "Neunzehnhundertsechsundneunzig entdeckten Meeresarchäologen das Wrack eines Schiffes in der Nähe von Beaufort, North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie glauben, dass es die Überreste der Queen Anne's Revenge sind.",
+      "text_markdown": "Sie glauben, dass es die Überreste der Queen Anne's Revenge sind.",
+      "tts": {
+        "text": "Sie glauben, dass es die Überreste der Queen Anne's Revenge sind.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Über 280.000 Artefakte wurden seitdem von der Fundstelle geborgen.",
+      "text_markdown": "Über 280.000 Artefakte wurden seitdem von der Fundstelle geborgen.",
+      "tts": {
+        "text": "Über zweihundertachtzigtausend Artefakte wurden seitdem von der Fundstelle geborgen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Darunter befinden sich Kanonen, Anker, medizinische Instrumente und Goldstaub.",
+      "text_markdown": "Darunter befinden sich Kanonen, Anker, medizinische Instrumente und Goldstaub.",
+      "tts": {
+        "text": "Darunter befinden sich Kanonen, Anker, medizinische Instrumente und Goldstaub.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Artefakte verraten uns viel über den Alltag an Bord eines Piratenschiffs.",
+      "text_markdown": "Die Artefakte verraten uns viel über den Alltag an Bord eines Piratenschiffs.",
+      "tts": {
+        "text": "Die Artefakte verraten uns viel über den Alltag an Bord eines Piratenschiffs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie zeigen, dass die Mannschaft gut aß, mit Hinweisen auf Schweinefleisch, Rindfleisch und Fisch in ihrer Ernährung.",
+      "text_markdown": "Sie zeigen, dass die Mannschaft gut aß, mit Hinweisen auf Schweinefleisch, Rindfleisch und Fisch in ihrer Ernährung.",
+      "tts": {
+        "text": "Sie zeigen, dass die Mannschaft gut aß, mit Hinweisen auf Schweinefleisch, Rindfleisch und Fisch in ihrer Ernährung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Medizinische Instrumente deuten darauf hin, dass das Schiff einen Chirurgen an Bord hatte, wie die meisten großen Schiffe.",
+      "text_markdown": "Medizinische Instrumente deuten darauf hin, dass das Schiff einen Chirurgen an Bord hatte, wie die meisten großen Schiffe.",
+      "tts": {
+        "text": "Medizinische Instrumente deuten darauf hin, dass das Schiff einen Chirurgen an Bord hatte, wie die meisten großen Schiffe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Goldstaub bestätigt den enormen Reichtum, den die Piraterie erzeugen konnte.",
+      "text_markdown": "Der Goldstaub bestätigt den enormen Reichtum, den die Piraterie erzeugen konnte.",
+      "tts": {
+        "text": "Der Goldstaub bestätigt den enormen Reichtum, den die Piraterie erzeugen konnte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeards Karriere als Pirat dauerte nur etwa zwei Jahre.",
+      "text_markdown": "Blackbeards Karriere als Pirat dauerte nur etwa zwei Jahre.",
+      "tts": {
+        "text": "Blackbeards Karriere als Pirat dauerte nur etwa zwei Jahre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In dieser kurzen Zeit erbeutete er Dutzende von Schiffen und terrorisierte eine ganze Küste.",
+      "text_markdown": "In dieser kurzen Zeit erbeutete er Dutzende von Schiffen und terrorisierte eine ganze Küste.",
+      "tts": {
+        "text": "In dieser kurzen Zeit erbeutete er Dutzende von Schiffen und terrorisierte eine ganze Küste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er blockierte einen wichtigen Kolonialhafen und trotzte der mächtigsten Marine der Welt.",
+      "text_markdown": "Er blockierte einen wichtigen Kolonialhafen und trotzte der mächtigsten Marine der Welt.",
+      "tts": {
+        "text": "Er blockierte einen wichtigen Kolonialhafen und trotzte der mächtigsten Marine der Welt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seine Geschichte bleibt eines der dramatischsten Kapitel der Seefahrtsgeschichte.",
+      "text_markdown": "Seine Geschichte bleibt eines der dramatischsten Kapitel der Seefahrtsgeschichte.",
+      "tts": {
+        "text": "Seine Geschichte bleibt eines der dramatischsten Kapitel der Seefahrtsgeschichte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute lebt Blackbeards Name in zahllosen Büchern, Filmen und Fernsehsendungen fort.",
+      "text_markdown": "Heute lebt Blackbeards Name in zahllosen Büchern, Filmen und Fernsehsendungen fort.",
+      "tts": {
+        "text": "Heute lebt Blackbeards Name in zahllosen Büchern, Filmen und Fernsehsendungen fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke Island ist heute ein beliebtes Touristenziel, teilweise wegen seiner Piratengeschichte.",
+      "text_markdown": "Ocracoke Island ist heute ein beliebtes Touristenziel, teilweise wegen seiner Piratengeschichte.",
+      "tts": {
+        "text": "Ocracoke Island ist heute ein beliebtes Touristenziel, teilweise wegen seiner Piratengeschichte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jedes Jahr veranstaltet die Stadt ein Festival zum Jahrestag der berühmten Schlacht.",
+      "text_markdown": "Jedes Jahr veranstaltet die Stadt ein Festival zum Jahrestag der berühmten Schlacht.",
+      "tts": {
+        "text": "Jedes Jahr veranstaltet die Stadt ein Festival zum Jahrestag der berühmten Schlacht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende, die niemals stirbt",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Pirat, der seinen Bart anzündete, ist zu einer unsterblichen Figur der populären Vorstellungswelt geworden.",
+      "text_markdown": "Der Pirat, der seinen Bart anzündete, ist zu einer unsterblichen Figur der populären Vorstellungswelt geworden.",
+      "tts": {
+        "text": "Der Pirat, der seinen Bart anzündete, ist zu einer unsterblichen Figur der populären Vorstellungswelt geworden.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

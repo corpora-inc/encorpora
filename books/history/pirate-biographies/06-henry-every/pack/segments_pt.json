@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_every",
+  "language": "pt",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma nota ao leitor",
+      "text_markdown": "Uma nota ao leitor"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta é a história verdadeira de um pirata que realizou o maior roubo da história e depois desapareceu.",
+      "text_markdown": "Esta é a história verdadeira de um pirata que realizou o maior roubo da história e depois desapareceu.",
+      "tts": {
+        "text": "Esta é a história verdadeira de um pirata que realizou o maior roubo da história e depois desapareceu.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu nome era Henry Every, e ele foi certa vez o homem mais procurado da Terra.",
+      "text_markdown": "Seu nome era Henry Every, e ele foi certa vez o homem mais procurado da Terra.",
+      "tts": {
+        "text": "Seu nome era Henry Every, e ele foi certa vez o homem mais procurado da Terra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nenhum governo jamais o capturou, e ninguém sabe como ou onde ele morreu.",
+      "text_markdown": "Nenhum governo jamais o capturou, e ninguém sabe como ou onde ele morreu.",
+      "tts": {
+        "text": "Nenhum governo jamais o capturou, e ninguém sabe como ou onde ele morreu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em um único ataque, Every capturou um tesouro no valor de milhões.",
+      "text_markdown": "Em um único ataque, Every capturou um tesouro no valor de milhões.",
+      "tts": {
+        "text": "Em um único ataque, Every capturou um tesouro no valor de milhões.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu crime causou uma crise diplomática entre dois impérios.",
+      "text_markdown": "Seu crime causou uma crise diplomática entre dois impérios.",
+      "tts": {
+        "text": "Seu crime causou uma crise diplomática entre dois impérios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quase destruiu a Companhia das Índias Orientais, a corporação mais poderosa do mundo.",
+      "text_markdown": "Quase destruiu a Companhia das Índias Orientais, a corporação mais poderosa do mundo.",
+      "tts": {
+        "text": "Quase destruiu a Companhia das Índias Orientais, a corporação mais poderosa do mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este livro vai levá-lo às rotas comerciais do Oceano Índico no final do século dezessete.",
+      "text_markdown": "Este livro vai levá-lo às rotas comerciais do Oceano Índico no final do século dezessete.",
+      "tts": {
+        "text": "Este livro vai levá-lo às rotas comerciais do Oceano Índico no final do século dezessete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Você seguirá Every das docas da Inglaterra até as costas de Madagascar.",
+      "text_markdown": "Você seguirá Every das docas da Inglaterra até as costas de Madagascar.",
+      "tts": {
+        "text": "Você seguirá Every das docas da Inglaterra até as costas de Madagascar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tudo neste livro é baseado em registros históricos, transcrições de julgamentos e relatos de testemunhas oculares.",
+      "text_markdown": "Tudo neste livro é baseado em registros históricos, transcrições de julgamentos e relatos de testemunhas oculares.",
+      "tts": {
+        "text": "Tudo neste livro é baseado em registros históricos, transcrições de julgamentos e relatos de testemunhas oculares.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Quando os fatos forem incertos, diremos isso claramente.",
+      "text_markdown": "Quando os fatos forem incertos, diremos isso claramente.",
+      "tts": {
+        "text": "Quando os fatos forem incertos, diremos isso claramente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O mundo do comércio no Oceano Índico",
+      "text_markdown": "O mundo do comércio no Oceano Índico"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Oceano Índico era a zona comercial mais rica da Terra no século dezessete.",
+      "text_markdown": "O Oceano Índico era a zona comercial mais rica da Terra no século dezessete.",
+      "tts": {
+        "text": "O Oceano Índico era a zona comercial mais rica da Terra no século dezessete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navios transportavam seda, especiarias, joias e ouro entre a Índia, a Arábia, a África Oriental e o Sudeste Asiático.",
+      "text_markdown": "Navios transportavam seda, especiarias, joias e ouro entre a Índia, a Arábia, a África Oriental e o Sudeste Asiático.",
+      "tts": {
+        "text": "Navios transportavam seda, especiarias, joias e ouro entre a Índia, a Arábia, a África Oriental e o Sudeste Asiático.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essas rotas comerciais operavam há milhares de anos, muito antes da chegada dos europeus.",
+      "text_markdown": "Essas rotas comerciais operavam há milhares de anos, muito antes da chegada dos europeus.",
+      "tts": {
+        "text": "Essas rotas comerciais operavam há milhares de anos, muito antes da chegada dos europeus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A riqueza que fluía por essas águas era quase inimaginável.",
+      "text_markdown": "A riqueza que fluía por essas águas era quase inimaginável.",
+      "tts": {
+        "text": "A riqueza que fluía por essas águas era quase inimaginável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Império Mogol controlava a maior parte do subcontinente indiano durante este período.",
+      "text_markdown": "O Império Mogol controlava a maior parte do subcontinente indiano durante este período.",
+      "tts": {
+        "text": "O Império Mogol controlava a maior parte do subcontinente indiano durante este período.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era um dos impérios mais ricos e poderosos do mundo.",
+      "text_markdown": "Era um dos impérios mais ricos e poderosos do mundo.",
+      "tts": {
+        "text": "Era um dos impérios mais ricos e poderosos do mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os imperadores mogóis comandavam exércitos vastos e viviam em extraordinário luxo.",
+      "text_markdown": "Os imperadores mogóis comandavam exércitos vastos e viviam em extraordinário luxo.",
+      "tts": {
+        "text": "Os imperadores mogóis comandavam exércitos vastos e viviam em extraordinário luxo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seus palácios eram decorados com ouro, pedras preciosas e os tecidos mais finos do mundo.",
+      "text_markdown": "Seus palácios eram decorados com ouro, pedras preciosas e os tecidos mais finos do mundo.",
+      "tts": {
+        "text": "Seus palácios eram decorados com ouro, pedras preciosas e os tecidos mais finos do mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Todo ano, a elite mogol enviava navios na viagem de peregrinação a Meca.",
+      "text_markdown": "Todo ano, a elite mogol enviava navios na viagem de peregrinação a Meca.",
+      "tts": {
+        "text": "Todo ano, a elite mogol enviava navios na viagem de peregrinação a Meca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esses navios de peregrinos também transportavam enormes quantidades de mercadorias.",
+      "text_markdown": "Esses navios de peregrinos também transportavam enormes quantidades de mercadorias.",
+      "tts": {
+        "text": "Esses navios de peregrinos também transportavam enormes quantidades de mercadorias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ouro, prata, joias e sedas enchiam seus porões de carga.",
+      "text_markdown": "Ouro, prata, joias e sedas enchiam seus porões de carga.",
+      "tts": {
+        "text": "Ouro, prata, joias e sedas enchiam seus porões de carga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A frota anual de peregrinos era o alvo mais rico em qualquer oceano.",
+      "text_markdown": "A frota anual de peregrinos era o alvo mais rico em qualquer oceano.",
+      "tts": {
+        "text": "A frota anual de peregrinos era o alvo mais rico em qualquer oceano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Mar Vermelho era a porta de entrada entre o Oceano Índico e as cidades sagradas do Islã.",
+      "text_markdown": "O Mar Vermelho era a porta de entrada entre o Oceano Índico e as cidades sagradas do Islã.",
+      "tts": {
+        "text": "O Mar Vermelho era a porta de entrada entre o Oceano Índico e as cidades sagradas do Islã.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navios da Índia subiam o Mar Vermelho até o porto de Jidá, a porta de entrada para Meca.",
+      "text_markdown": "Navios da Índia subiam o Mar Vermelho até o porto de Jidá, a porta de entrada para Meca.",
+      "tts": {
+        "text": "Navios da Índia subiam o Mar Vermelho até o porto de Jidá, a porta de entrada para Meca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O estreito de Bab el-Mandeb, no extremo sul do Mar Vermelho, era um ponto de estrangulamento natural.",
+      "text_markdown": "O estreito de Bab el-Mandeb, no extremo sul do Mar Vermelho, era um ponto de estrangulamento natural.",
+      "tts": {
+        "text": "O estreito de Bab el-Mandeb, no extremo sul do Mar Vermelho, era um ponto de estrangulamento natural.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Qualquer pirata que esperasse naquele estreito poderia interceptar os navios mais ricos do mundo.",
+      "text_markdown": "Qualquer pirata que esperasse naquele estreito poderia interceptar os navios mais ricos do mundo.",
+      "tts": {
+        "text": "Qualquer pirata que esperasse naquele estreito poderia interceptar os navios mais ricos do mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As potências europeias vinham se expandindo para o Oceano Índico desde o final do século quatorze.",
+      "text_markdown": "As potências europeias vinham se expandindo para o Oceano Índico desde o final do século quatorze.",
+      "tts": {
+        "text": "As potências europeias vinham se expandindo para o Oceano Índico desde o final do século quatorze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os portugueses foram os primeiros, seguidos pelos holandeses, ingleses e franceses.",
+      "text_markdown": "Os portugueses foram os primeiros, seguidos pelos holandeses, ingleses e franceses.",
+      "tts": {
+        "text": "Os portugueses foram os primeiros, seguidos pelos holandeses, ingleses e franceses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eles estabeleceram postos comerciais, chamados feitorias, ao longo das costas da Índia e do Sudeste Asiático.",
+      "text_markdown": "Eles estabeleceram postos comerciais, chamados feitorias, ao longo das costas da Índia e do Sudeste Asiático.",
+      "tts": {
+        "text": "Eles estabeleceram postos comerciais, chamados feitorias, ao longo das costas da Índia e do Sudeste Asiático.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esses postos avançados foram as bases dos futuros impérios coloniais.",
+      "text_markdown": "Esses postos avançados foram as bases dos futuros impérios coloniais.",
+      "tts": {
+        "text": "Esses postos avançados foram as bases dos futuros impérios coloniais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Companhia Inglesa das Índias Orientais era a presença inglesa mais importante na região.",
+      "text_markdown": "A Companhia Inglesa das Índias Orientais era a presença inglesa mais importante na região.",
+      "tts": {
+        "text": "A Companhia Inglesa das Índias Orientais era a presença inglesa mais importante na região.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Recebeu uma carta régia da Rainha Elizabeth I em 1600.",
+      "text_markdown": "Recebeu uma carta régia da Rainha Elizabeth I em 1600.",
+      "tts": {
+        "text": "Recebeu uma carta régia da Rainha Elizabeth Primeira em mil e seiscentos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A companhia tinha o monopólio legal de todo o comércio inglês com a Ásia.",
+      "text_markdown": "A companhia tinha o monopólio legal de todo o comércio inglês com a Ásia.",
+      "tts": {
+        "text": "A companhia tinha o monopólio legal de todo o comércio inglês com a Ásia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seus lucros eram enormes, e seus acionistas incluíam algumas das pessoas mais poderosas da Inglaterra.",
+      "text_markdown": "Seus lucros eram enormes, e seus acionistas incluíam algumas das pessoas mais poderosas da Inglaterra.",
+      "tts": {
+        "text": "Seus lucros eram enormes, e seus acionistas incluíam algumas das pessoas mais poderosas da Inglaterra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Companhia das Índias Orientais operava com a permissão do imperador mogol.",
+      "text_markdown": "A Companhia das Índias Orientais operava com a permissão do imperador mogol.",
+      "tts": {
+        "text": "A Companhia das Índias Orientais operava com a permissão do imperador mogol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sem a boa vontade mogol, a companhia não podia comerciar nos portos indianos.",
+      "text_markdown": "Sem a boa vontade mogol, a companhia não podia comerciar nos portos indianos.",
+      "tts": {
+        "text": "Sem a boa vontade mogol, a companhia não podia comerciar nos portos indianos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essa relação era frágil e dependia de confiança mútua.",
+      "text_markdown": "Essa relação era frágil e dependia de confiança mútua.",
+      "tts": {
+        "text": "Essa relação era frágil e dependia de confiança mútua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Qualquer ataque de piratas ingleses a navios mogóis poderia destruir completamente essa confiança.",
+      "text_markdown": "Qualquer ataque de piratas ingleses a navios mogóis poderia destruir completamente essa confiança.",
+      "tts": {
+        "text": "Qualquer ataque de piratas ingleses a navios mogóis poderia destruir completamente essa confiança.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piratas europeus vinham saqueando navios no Oceano Índico havia décadas.",
+      "text_markdown": "Piratas europeus vinham saqueando navios no Oceano Índico havia décadas.",
+      "tts": {
+        "text": "Piratas europeus vinham saqueando navios no Oceano Índico havia décadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A ilha de Madagascar, na costa leste da África, servia como base pirata.",
+      "text_markdown": "A ilha de Madagascar, na costa leste da África, servia como base pirata.",
+      "tts": {
+        "text": "A ilha de Madagascar, na costa leste da África, servia como base pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os piratas podiam se esconder em seus muitos portos, reabastecer com comida e água frescas e esperar por suas presas.",
+      "text_markdown": "Os piratas podiam se esconder em seus muitos portos, reabastecer com comida e água frescas e esperar por suas presas.",
+      "tts": {
+        "text": "Os piratas podiam se esconder em seus muitos portos, reabastecer com comida e água frescas e esperar por suas presas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De Madagascar, era uma curta navegação até as movimentadas rotas marítimas na costa da Índia.",
+      "text_markdown": "De Madagascar, era uma curta navegação até as movimentadas rotas marítimas na costa da Índia.",
+      "tts": {
+        "text": "De Madagascar, era uma curta navegação até as movimentadas rotas marítimas na costa da Índia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A rota entre a Índia e o Mar Vermelho era chamada de Rota Pirata.",
+      "text_markdown": "A rota entre a Índia e o Mar Vermelho era chamada de Rota Pirata.",
+      "tts": {
+        "text": "A rota entre a Índia e o Mar Vermelho era chamada de Rota Pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piratas ingleses e americanos navegavam metade do mundo para alcançar esses campos de caça.",
+      "text_markdown": "Piratas ingleses e americanos navegavam metade do mundo para alcançar esses campos de caça.",
+      "tts": {
+        "text": "Piratas ingleses e americanos navegavam metade do mundo para alcançar esses campos de caça.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As recompensas valiam a longa viagem.",
+      "text_markdown": "As recompensas valiam a longa viagem.",
+      "tts": {
+        "text": "As recompensas valiam a longa viagem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Um único navio de tesouro indiano podia transportar mais riqueza do que dezenas de mercadores caribenhos.",
+      "text_markdown": "Um único navio de tesouro indiano podia transportar mais riqueza do que dezenas de mercadores caribenhos.",
+      "tts": {
+        "text": "Um único navio de tesouro indiano podia transportar mais riqueza do que dezenas de mercadores caribenhos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A vida dos marinheiros ingleses comuns era dura na década de mil seiscentos e noventa.",
+      "text_markdown": "A vida dos marinheiros ingleses comuns era dura na década de mil seiscentos e noventa.",
+      "tts": {
+        "text": "A vida dos marinheiros ingleses comuns era dura na década de mil seiscentos e noventa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os salários eram baixos, a disciplina era brutal e as doenças eram generalizadas.",
+      "text_markdown": "Os salários eram baixos, a disciplina era brutal e as doenças eram generalizadas.",
+      "tts": {
+        "text": "Os salários eram baixos, a disciplina era brutal e as doenças eram generalizadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muitos marinheiros haviam servido nas guerras contra a França e se encontraram desempregados quando veio a paz.",
+      "text_markdown": "Muitos marinheiros haviam servido nas guerras contra a França e se encontraram desempregados quando veio a paz.",
+      "tts": {
+        "text": "Muitos marinheiros haviam servido nas guerras contra a França e se encontraram desempregados quando veio a paz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O Oceano Índico oferecia uma tentadora fuga da pobreza e da opressão.",
+      "text_markdown": "O Oceano Índico oferecia uma tentadora fuga da pobreza e da opressão.",
+      "tts": {
+        "text": "O Oceano Índico oferecia uma tentadora fuga da pobreza e da opressão.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Governadores coloniais nas Américas às vezes apoiavam secretamente piratas do Oceano Índico.",
+      "text_markdown": "Governadores coloniais nas Américas às vezes apoiavam secretamente piratas do Oceano Índico.",
+      "tts": {
+        "text": "Governadores coloniais nas Américas às vezes apoiavam secretamente piratas do Oceano Índico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os piratas traziam riquezas roubadas para portos coloniais, impulsionando as economias locais.",
+      "text_markdown": "Os piratas traziam riquezas roubadas para portos coloniais, impulsionando as economias locais.",
+      "tts": {
+        "text": "Os piratas traziam riquezas roubadas para portos coloniais, impulsionando as economias locais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Autoridades em Nova York, Rhode Island e nas Carolinas eram conhecidas por fazer vista grossa.",
+      "text_markdown": "Autoridades em Nova York, Rhode Island e nas Carolinas eram conhecidas por fazer vista grossa.",
+      "tts": {
+        "text": "Autoridades em Nova York, Rhode Island e nas Carolinas eram conhecidas por fazer vista grossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa corrupção facilitava que os piratas operassem com quase total impunidade.",
+      "text_markdown": "Essa corrupção facilitava que os piratas operassem com quase total impunidade.",
+      "tts": {
+        "text": "Essa corrupção facilitava que os piratas operassem com quase total impunidade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este era o mundo em que Henry Every entrou quando se tornou pirata.",
+      "text_markdown": "Este era o mundo em que Henry Every entrou quando se tornou pirata.",
+      "tts": {
+        "text": "Este era o mundo em que Henry Every entrou quando se tornou pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era um mundo onde a riqueza dos impérios se movia em mar aberto com proteção mínima.",
+      "text_markdown": "Era um mundo onde a riqueza dos impérios se movia em mar aberto com proteção mínima.",
+      "tts": {
+        "text": "Era um mundo onde a riqueza dos impérios se movia em mar aberto com proteção mínima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O imperador mogol confiava que as nações europeias controlariam seus próprios súditos.",
+      "text_markdown": "O imperador mogol confiava que as nações europeias controlariam seus próprios súditos.",
+      "tts": {
+        "text": "O imperador mogol confiava que as nações europeias controlariam seus próprios súditos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo do comércio no Oceano Índico",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa confiança estava prestes a ser destruída.",
+      "text_markdown": "Essa confiança estava prestes a ser destruída.",
+      "tts": {
+        "text": "Essa confiança estava prestes a ser destruída.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A formação de um amotinado",
+      "text_markdown": "A formação de um amotinado"
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every provavelmente nasceu por volta de 1659 no oeste da Inglaterra.",
+      "text_markdown": "Henry Every provavelmente nasceu por volta de 1659 no oeste da Inglaterra.",
+      "tts": {
+        "text": "Henry Every provavelmente nasceu por volta de mil seiscentos e cinquenta e nove no oeste da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alguns historiadores acreditam que ele veio da aldeia de Newton Ferrers, em Devon.",
+      "text_markdown": "Alguns historiadores acreditam que ele veio da aldeia de Newton Ferrers, em Devon.",
+      "tts": {
+        "text": "Alguns historiadores acreditam que ele veio da aldeia de Newton Ferrers, em Devon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Devon era um condado marítimo, e muitos de seus jovens iam para o mar.",
+      "text_markdown": "Devon era um condado marítimo, e muitos de seus jovens iam para o mar.",
+      "tts": {
+        "text": "Devon era um condado marítimo, e muitos de seus jovens iam para o mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muito pouco se sabe sobre sua infância ou família.",
+      "text_markdown": "Muito pouco se sabe sobre sua infância ou família.",
+      "tts": {
+        "text": "Muito pouco se sabe sobre sua infância ou família.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seu nome aparece em registros históricos com muitas grafias diferentes.",
+      "text_markdown": "Seu nome aparece em registros históricos com muitas grafias diferentes.",
+      "tts": {
+        "text": "Seu nome aparece em registros históricos com muitas grafias diferentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Every, Avery, Evory e Ivory são todas encontradas em documentos da época.",
+      "text_markdown": "Every, Avery, Evory e Ivory são todas encontradas em documentos da época.",
+      "tts": {
+        "text": "Every, Avery, Evory e Ivory são todas encontradas em documentos da época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Isso era típico em uma era em que a ortografia não era padronizada.",
+      "text_markdown": "Isso era típico em uma era em que a ortografia não era padronizada.",
+      "tts": {
+        "text": "Isso era típico em uma era em que a ortografia não era padronizada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A maioria dos historiadores usa a grafia Every, que aparece nos registros mais oficiais.",
+      "text_markdown": "A maioria dos historiadores usa a grafia Every, que aparece nos registros mais oficiais.",
+      "tts": {
+        "text": "A maioria dos historiadores usa a grafia Every, que aparece nos registros mais oficiais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every foi para o mar jovem, como a maioria dos marinheiros de sua época.",
+      "text_markdown": "Every foi para o mar jovem, como a maioria dos marinheiros de sua época.",
+      "tts": {
+        "text": "Every foi para o mar jovem, como a maioria dos marinheiros de sua época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Provavelmente serviu em navios mercantes e possivelmente em embarcações da Marinha Real.",
+      "text_markdown": "Provavelmente serviu em navios mercantes e possivelmente em embarcações da Marinha Real.",
+      "tts": {
+        "text": "Provavelmente serviu em navios mercantes e possivelmente em embarcações da Marinha Real.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na década de mil seiscentos e noventa, ele era um marinheiro experiente e competente.",
+      "text_markdown": "Na década de mil seiscentos e noventa, ele era um marinheiro experiente e competente.",
+      "tts": {
+        "text": "Na década de mil seiscentos e noventa, ele era um marinheiro experiente e competente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele entendia navegação, marinharia e gestão de tripulações.",
+      "text_markdown": "Ele entendia navegação, marinharia e gestão de tripulações.",
+      "tts": {
+        "text": "Ele entendia navegação, marinharia e gestão de tripulações.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há evidências de que Every esteve envolvido no tráfico de escravos antes de se tornar pirata.",
+      "text_markdown": "Há evidências de que Every esteve envolvido no tráfico de escravos antes de se tornar pirata.",
+      "tts": {
+        "text": "Há evidências de que Every esteve envolvido no tráfico de escravos antes de se tornar pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele pode ter servido em navios que transportavam africanos escravizados através do Atlântico.",
+      "text_markdown": "Ele pode ter servido em navios que transportavam africanos escravizados através do Atlântico.",
+      "tts": {
+        "text": "Ele pode ter servido em navios que transportavam africanos escravizados através do Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O tráfico de escravos era legal e lucrativo, embora horrivelmente cruel.",
+      "text_markdown": "O tráfico de escravos era legal e lucrativo, embora horrivelmente cruel.",
+      "tts": {
+        "text": "O tráfico de escravos era legal e lucrativo, embora horrivelmente cruel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era um dos poucos comércios marítimos que pagavam relativamente bem.",
+      "text_markdown": "Era um dos poucos comércios marítimos que pagavam relativamente bem.",
+      "tts": {
+        "text": "Era um dos poucos comércios marítimos que pagavam relativamente bem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1693, Every se alistou como imediato a bordo de um corsário chamado Charles II.",
+      "text_markdown": "Em 1693, Every se alistou como imediato a bordo de um corsário chamado Charles II.",
+      "tts": {
+        "text": "Em mil seiscentos e noventa e três, Every se alistou como imediato a bordo de um corsário chamado Charles Segundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O navio fazia parte de uma pequena frota contratada pelo governo espanhol.",
+      "text_markdown": "O navio fazia parte de uma pequena frota contratada pelo governo espanhol.",
+      "tts": {
+        "text": "O navio fazia parte de uma pequena frota contratada pelo governo espanhol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A Espanha queria que corsários ingleses atacassem contrabandistas franceses no Caribe.",
+      "text_markdown": "A Espanha queria que corsários ingleses atacassem contrabandistas franceses no Caribe.",
+      "tts": {
+        "text": "A Espanha queria que corsários ingleses atacassem contrabandistas franceses no Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Parecia um empreendimento legítimo e potencialmente lucrativo.",
+      "text_markdown": "Parecia um empreendimento legítimo e potencialmente lucrativo.",
+      "tts": {
+        "text": "Parecia um empreendimento legítimo e potencialmente lucrativo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Charles II estava ancorado no porto espanhol de La Coruña, aguardando ordens.",
+      "text_markdown": "O Charles II estava ancorado no porto espanhol de La Coruña, aguardando ordens.",
+      "tts": {
+        "text": "O Charles Segundo estava ancorado no porto espanhol de La Coruña, aguardando ordens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A tripulação estava presa no porto há meses sem pagamento e sem ação.",
+      "text_markdown": "A tripulação estava presa no porto há meses sem pagamento e sem ação.",
+      "tts": {
+        "text": "A tripulação estava presa no porto há meses sem pagamento e sem ação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os marinheiros ficaram inquietos e furiosos.",
+      "text_markdown": "Os marinheiros ficaram inquietos e furiosos.",
+      "tts": {
+        "text": "Os marinheiros ficaram inquietos e furiosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eles haviam se alistado para lucros rápidos, não para espera interminável.",
+      "text_markdown": "Eles haviam se alistado para lucros rápidos, não para espera interminável.",
+      "tts": {
+        "text": "Eles haviam se alistado para lucros rápidos, não para espera interminável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O capitão do navio era um homem chamado Charles Gibson.",
+      "text_markdown": "O capitão do navio era um homem chamado Charles Gibson.",
+      "tts": {
+        "text": "O capitão do navio era um homem chamado Charles Gibson.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele era amplamente detestado pela tripulação por sua disciplina severa e promessas quebradas.",
+      "text_markdown": "Ele era amplamente detestado pela tripulação por sua disciplina severa e promessas quebradas.",
+      "tts": {
+        "text": "Ele era amplamente detestado pela tripulação por sua disciplina severa e promessas quebradas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os homens sentiam que haviam sido enganados quanto às condições de serviço.",
+      "text_markdown": "Os homens sentiam que haviam sido enganados quanto às condições de serviço.",
+      "tts": {
+        "text": "Os homens sentiam que haviam sido enganados quanto às condições de serviço.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Frustração e ressentimento fermentavam abaixo do convés.",
+      "text_markdown": "Frustração e ressentimento fermentavam abaixo do convés.",
+      "tts": {
+        "text": "Frustração e ressentimento fermentavam abaixo do convés.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na noite de 6 de junho de 1694, Henry Every liderou um motim.",
+      "text_markdown": "Na noite de 6 de junho de 1694, Henry Every liderou um motim.",
+      "tts": {
+        "text": "Na noite de seis de junho de mil seiscentos e noventa e quatro, Henry Every liderou um motim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enquanto o capitão Gibson dormia em sua cabine, Every e seus aliados tomaram o navio.",
+      "text_markdown": "Enquanto o capitão Gibson dormia em sua cabine, Every e seus aliados tomaram o navio.",
+      "tts": {
+        "text": "Enquanto o capitão Gibson dormia em sua cabine, Every e seus aliados tomaram o navio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O motim foi bem planejado e executado com violência mínima.",
+      "text_markdown": "O motim foi bem planejado e executado com violência mínima.",
+      "tts": {
+        "text": "O motim foi bem planejado e executado com violência mínima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ao amanhecer, Every tinha controle total da embarcação.",
+      "text_markdown": "Ao amanhecer, Every tinha controle total da embarcação.",
+      "tts": {
+        "text": "Ao amanhecer, Every tinha controle total da embarcação.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every deu a Gibson e aos marinheiros leais uma escolha.",
+      "text_markdown": "Every deu a Gibson e aos marinheiros leais uma escolha.",
+      "tts": {
+        "text": "Every deu a Gibson e aos marinheiros leais uma escolha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podiam se juntar ao motim ou ser deixados em terra.",
+      "text_markdown": "Podiam se juntar ao motim ou ser deixados em terra.",
+      "tts": {
+        "text": "Podiam se juntar ao motim ou ser deixados em terra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cerca de 16 homens optaram por sair e foram colocados em terra em um pequeno barco.",
+      "text_markdown": "Cerca de 16 homens optaram por sair e foram colocados em terra em um pequeno barco.",
+      "tts": {
+        "text": "Cerca de dezesseis homens optaram por sair e foram colocados em terra em um pequeno barco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O resto da tripulação, ávido por aventura e riquezas, uniu seu destino ao de Every.",
+      "text_markdown": "O resto da tripulação, ávido por aventura e riquezas, uniu seu destino ao de Every.",
+      "tts": {
+        "text": "O resto da tripulação, ávido por aventura e riquezas, uniu seu destino ao de Every.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every renomeou o navio para Fancy.",
+      "text_markdown": "Every renomeou o navio para Fancy.",
+      "tts": {
+        "text": "Every renomeou o navio para Fancy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Declarou que navegariam para o Oceano Índico em busca de fortuna.",
+      "text_markdown": "Declarou que navegariam para o Oceano Índico em busca de fortuna.",
+      "tts": {
+        "text": "Declarou que navegariam para o Oceano Índico em busca de fortuna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A tripulação aplaudiu o anúncio.",
+      "text_markdown": "A tripulação aplaudiu o anúncio.",
+      "tts": {
+        "text": "A tripulação aplaudiu o anúncio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every acabara de cometer um ato de pirataria que mudaria o curso da história.",
+      "text_markdown": "Every acabara de cometer um ato de pirataria que mudaria o curso da história.",
+      "tts": {
+        "text": "Every acabara de cometer um ato de pirataria que mudaria o curso da história.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Antes de rumar ao Oceano Índico, Every navegou ao sul pela costa africana.",
+      "text_markdown": "Antes de rumar ao Oceano Índico, Every navegou ao sul pela costa africana.",
+      "tts": {
+        "text": "Antes de rumar ao Oceano Índico, Every navegou ao sul pela costa africana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parou em vários portos para reabastecer e recrutar membros adicionais para a tripulação.",
+      "text_markdown": "Parou em vários portos para reabastecer e recrutar membros adicionais para a tripulação.",
+      "tts": {
+        "text": "Parou em vários portos para reabastecer e recrutar membros adicionais para a tripulação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Piratas de outros navios se juntaram ao Fancy, atraídos pela crescente reputação de Every.",
+      "text_markdown": "Piratas de outros navios se juntaram ao Fancy, atraídos pela crescente reputação de Every.",
+      "tts": {
+        "text": "Piratas de outros navios se juntaram ao Fancy, atraídos pela crescente reputação de Every.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Quando chegou a Madagascar, sua tripulação era grande e bem armada.",
+      "text_markdown": "Quando chegou a Madagascar, sua tripulação era grande e bem armada.",
+      "tts": {
+        "text": "Quando chegou a Madagascar, sua tripulação era grande e bem armada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every provou ser um líder e navegador excepcional.",
+      "text_markdown": "Every provou ser um líder e navegador excepcional.",
+      "tts": {
+        "text": "Every provou ser um líder e navegador excepcional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mantinha a disciplina sem recorrer à crueldade.",
+      "text_markdown": "Mantinha a disciplina sem recorrer à crueldade.",
+      "tts": {
+        "text": "Mantinha a disciplina sem recorrer à crueldade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tomava decisões rapidamente e se comunicava de forma clara com seus homens.",
+      "text_markdown": "Tomava decisões rapidamente e se comunicava de forma clara com seus homens.",
+      "tts": {
+        "text": "Tomava decisões rapidamente e se comunicava de forma clara com seus homens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "A formação de um amotinado",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A tripulação confiava nele completamente, e sua lealdade seria recompensada além dos seus mais loucos sonhos.",
+      "text_markdown": "A tripulação confiava nele completamente, e sua lealdade seria recompensada além dos seus mais loucos sonhos.",
+      "tts": {
+        "text": "A tripulação confiava nele completamente, e sua lealdade seria recompensada além dos seus mais loucos sonhos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O maior prêmio",
+      "text_markdown": "O maior prêmio"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1695, Every levou o Fancy até a foz do Mar Vermelho.",
+      "text_markdown": "Em 1695, Every levou o Fancy até a foz do Mar Vermelho.",
+      "tts": {
+        "text": "Em mil seiscentos e noventa e cinco, Every levou o Fancy até a foz do Mar Vermelho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sabia que a frota anual de peregrinos mogóis logo passaria por ali.",
+      "text_markdown": "Sabia que a frota anual de peregrinos mogóis logo passaria por ali.",
+      "tts": {
+        "text": "Sabia que a frota anual de peregrinos mogóis logo passaria por ali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esses navios estavam voltando para a Índia após a peregrinação a Meca.",
+      "text_markdown": "Esses navios estavam voltando para a Índia após a peregrinação a Meca.",
+      "tts": {
+        "text": "Esses navios estavam voltando para a Índia após a peregrinação a Meca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seus porões de carga estariam transbordando de tesouros.",
+      "text_markdown": "Seus porões de carga estariam transbordando de tesouros.",
+      "tts": {
+        "text": "Seus porões de carga estariam transbordando de tesouros.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every não era o único pirata esperando no estreito.",
+      "text_markdown": "Every não era o único pirata esperando no estreito.",
+      "tts": {
+        "text": "Every não era o único pirata esperando no estreito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vários outros navios piratas haviam se reunido no mesmo ponto de estrangulamento.",
+      "text_markdown": "Vários outros navios piratas haviam se reunido no mesmo ponto de estrangulamento.",
+      "tts": {
+        "text": "Vários outros navios piratas haviam se reunido no mesmo ponto de estrangulamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Entre eles estava um navio comandado por Thomas Tew, um famoso pirata americano de Rhode Island.",
+      "text_markdown": "Entre eles estava um navio comandado por Thomas Tew, um famoso pirata americano de Rhode Island.",
+      "tts": {
+        "text": "Entre eles estava um navio comandado por Thomas Tew, um famoso pirata americano de Rhode Island.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every convenceu os outros capitães a formar uma aliança temporária.",
+      "text_markdown": "Every convenceu os outros capitães a formar uma aliança temporária.",
+      "tts": {
+        "text": "Every convenceu os outros capitães a formar uma aliança temporária.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os piratas concordaram que Every serviria como comodoro de sua pequena frota.",
+      "text_markdown": "Os piratas concordaram que Every serviria como comodoro de sua pequena frota.",
+      "tts": {
+        "text": "Os piratas concordaram que Every serviria como comodoro de sua pequena frota.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta foi uma conquista notável para um homem que havia se tornado pirata apenas um ano antes.",
+      "text_markdown": "Esta foi uma conquista notável para um homem que havia se tornado pirata apenas um ano antes.",
+      "tts": {
+        "text": "Esta foi uma conquista notável para um homem que havia se tornado pirata apenas um ano antes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua autoridade natural e pensamento claro o diferenciavam dos outros líderes piratas.",
+      "text_markdown": "Sua autoridade natural e pensamento claro o diferenciavam dos outros líderes piratas.",
+      "tts": {
+        "text": "Sua autoridade natural e pensamento claro o diferenciavam dos outros líderes piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os outros capitães respeitavam seu julgamento e concordaram em seguir seus sinais em batalha.",
+      "text_markdown": "Os outros capitães respeitavam seu julgamento e concordaram em seguir seus sinais em batalha.",
+      "tts": {
+        "text": "Os outros capitães respeitavam seu julgamento e concordaram em seguir seus sinais em batalha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frota mogol apareceu em setembro de 1695.",
+      "text_markdown": "A frota mogol apareceu em setembro de 1695.",
+      "tts": {
+        "text": "A frota mogol apareceu em setembro de mil seiscentos e noventa e cinco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Consistia em cerca de 25 navios, incluindo várias grandes embarcações armadas.",
+      "text_markdown": "Consistia em cerca de 25 navios, incluindo várias grandes embarcações armadas.",
+      "tts": {
+        "text": "Consistia em cerca de vinte e cinco navios, incluindo várias grandes embarcações armadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os piratas atacaram, mas as escoltas mogóis revidaram ferozmente.",
+      "text_markdown": "Os piratas atacaram, mas as escoltas mogóis revidaram ferozmente.",
+      "tts": {
+        "text": "Os piratas atacaram, mas as escoltas mogóis revidaram ferozmente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas Tew foi morto na primeira troca de tiros, com o estômago dilacerado por uma bala de canhão.",
+      "text_markdown": "Thomas Tew foi morto na primeira troca de tiros, com o estômago dilacerado por uma bala de canhão.",
+      "tts": {
+        "text": "Thomas Tew foi morto na primeira troca de tiros, com o estômago dilacerado por uma bala de canhão.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria dos navios piratas desistiu do ataque após a morte de Tew.",
+      "text_markdown": "A maioria dos navios piratas desistiu do ataque após a morte de Tew.",
+      "tts": {
+        "text": "A maioria dos navios piratas desistiu do ataque após a morte de Tew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A frota mogol se dispersou, com navios individuais fugindo em direções diferentes.",
+      "text_markdown": "A frota mogol se dispersou, com navios individuais fugindo em direções diferentes.",
+      "tts": {
+        "text": "A frota mogol se dispersou, com navios individuais fugindo em direções diferentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas Every e o Fancy continuaram sozinhos.",
+      "text_markdown": "Mas Every e o Fancy continuaram sozinhos.",
+      "tts": {
+        "text": "Mas Every e o Fancy continuaram sozinhos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele não ia deixar o maior prêmio de sua vida escapar.",
+      "text_markdown": "Ele não ia deixar o maior prêmio de sua vida escapar.",
+      "tts": {
+        "text": "Ele não ia deixar o maior prêmio de sua vida escapar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every primeiro capturou um navio chamado Fateh Mohammed.",
+      "text_markdown": "Every primeiro capturou um navio chamado Fateh Mohammed.",
+      "tts": {
+        "text": "Every primeiro capturou um navio chamado Fateh Mohammed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sua carga valia entre 50.000 e 60.000 libras, uma fortuna enorme.",
+      "text_markdown": "Sua carga valia entre 50.000 e 60.000 libras, uma fortuna enorme.",
+      "tts": {
+        "text": "Sua carga valia entre cinquenta mil e sessenta mil libras, uma fortuna enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A tripulação de Every saqueou o navio e o soltou.",
+      "text_markdown": "A tripulação de Every saqueou o navio e o soltou.",
+      "tts": {
+        "text": "A tripulação de Every saqueou o navio e o soltou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas Every sabia que um prêmio ainda maior continuava fugindo à sua frente.",
+      "text_markdown": "Mas Every sabia que um prêmio ainda maior continuava fugindo à sua frente.",
+      "tts": {
+        "text": "Mas Every sabia que um prêmio ainda maior continuava fugindo à sua frente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Ganj-i-Sawai era o maior navio da frota mogol.",
+      "text_markdown": "O Ganj-i-Sawai era o maior navio da frota mogol.",
+      "tts": {
+        "text": "O Ganj-i-Sawai era o maior navio da frota mogol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu nome significava Tesouro Incomparável, e ele fazia jus ao nome.",
+      "text_markdown": "Seu nome significava Tesouro Incomparável, e ele fazia jus ao nome.",
+      "tts": {
+        "text": "Seu nome significava Tesouro Incomparável, e ele fazia jus ao nome.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pertencia ao próprio imperador mogol, Aurangzeb.",
+      "text_markdown": "Pertencia ao próprio imperador mogol, Aurangzeb.",
+      "tts": {
+        "text": "Pertencia ao próprio imperador mogol, Aurangzeb.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Carregava 62 canhões e mais de 400 soldados, superando em muito a tripulação de Every.",
+      "text_markdown": "Carregava 62 canhões e mais de 400 soldados, superando em muito a tripulação de Every.",
+      "tts": {
+        "text": "Carregava sessenta e dois canhões e mais de quatrocentos soldados, superando em muito a tripulação de Every.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Fancy alcançou o Ganj-i-Sawai após uma longa perseguição.",
+      "text_markdown": "O Fancy alcançou o Ganj-i-Sawai após uma longa perseguição.",
+      "tts": {
+        "text": "O Fancy alcançou o Ganj-i-Sawai após uma longa perseguição.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O que aconteceu a seguir foi um dos mais importantes combates navais da história da pirataria.",
+      "text_markdown": "O que aconteceu a seguir foi um dos mais importantes combates navais da história da pirataria.",
+      "tts": {
+        "text": "O que aconteceu a seguir foi um dos mais importantes combates navais da história da pirataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every abriu fogo contra o enorme navio mogol.",
+      "text_markdown": "Every abriu fogo contra o enorme navio mogol.",
+      "tts": {
+        "text": "Every abriu fogo contra o enorme navio mogol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Um dos primeiros tiros atingiu o mastro principal do Ganj-i-Sawai, comprometendo sua capacidade de manobra.",
+      "text_markdown": "Um dos primeiros tiros atingiu o mastro principal do Ganj-i-Sawai, comprometendo sua capacidade de manobra.",
+      "tts": {
+        "text": "Um dos primeiros tiros atingiu o mastro principal do Ganj-i-Sawai, comprometendo sua capacidade de manobra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em seguida, um dos próprios canhões do Ganj-i-Sawai explodiu em seu convés.",
+      "text_markdown": "Em seguida, um dos próprios canhões do Ganj-i-Sawai explodiu em seu convés.",
+      "tts": {
+        "text": "Em seguida, um dos próprios canhões do Ganj-i-Sawai explodiu em seu convés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A explosão matou vários artilheiros mogóis e lançou os defensores em confusão.",
+      "text_markdown": "A explosão matou vários artilheiros mogóis e lançou os defensores em confusão.",
+      "tts": {
+        "text": "A explosão matou vários artilheiros mogóis e lançou os defensores em confusão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every aproveitou o momento e ordenou a abordagem.",
+      "text_markdown": "Every aproveitou o momento e ordenou a abordagem.",
+      "tts": {
+        "text": "Every aproveitou o momento e ordenou a abordagem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os piratas invadiram a amurada do navio mogol.",
+      "text_markdown": "Os piratas invadiram a amurada do navio mogol.",
+      "tts": {
+        "text": "Os piratas invadiram a amurada do navio mogol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O combate foi intenso, mas relativamente breve.",
+      "text_markdown": "O combate foi intenso, mas relativamente breve.",
+      "tts": {
+        "text": "O combate foi intenso, mas relativamente breve.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os soldados mogóis, apesar de sua superioridade numérica, estavam desmoralizados pela explosão do canhão.",
+      "text_markdown": "Os soldados mogóis, apesar de sua superioridade numérica, estavam desmoralizados pela explosão do canhão.",
+      "tts": {
+        "text": "Os soldados mogóis, apesar de sua superioridade numérica, estavam desmoralizados pela explosão do canhão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu capitão se escondeu abaixo do convés em vez de liderar a defesa.",
+      "text_markdown": "Seu capitão se escondeu abaixo do convés em vez de liderar a defesa.",
+      "tts": {
+        "text": "Seu capitão se escondeu abaixo do convés em vez de liderar a defesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Após algumas horas, os piratas tinham o controle do navio.",
+      "text_markdown": "Após algumas horas, os piratas tinham o controle do navio.",
+      "tts": {
+        "text": "Após algumas horas, os piratas tinham o controle do navio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O que os piratas encontraram no porão do Ganj-i-Sawai os deixou estupefatos.",
+      "text_markdown": "O que os piratas encontraram no porão do Ganj-i-Sawai os deixou estupefatos.",
+      "tts": {
+        "text": "O que os piratas encontraram no porão do Ganj-i-Sawai os deixou estupefatos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Moedas de ouro e prata estavam empilhadas em baús e barris.",
+      "text_markdown": "Moedas de ouro e prata estavam empilhadas em baús e barris.",
+      "tts": {
+        "text": "Moedas de ouro e prata estavam empilhadas em baús e barris.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pedras preciosas, sedas finas e marfim preenchiam cada espaço disponível.",
+      "text_markdown": "Pedras preciosas, sedas finas e marfim preenchiam cada espaço disponível.",
+      "tts": {
+        "text": "Pedras preciosas, sedas finas e marfim preenchiam cada espaço disponível.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O valor total foi estimado entre 200.000 e 600.000 libras.",
+      "text_markdown": "O valor total foi estimado entre 200.000 e 600.000 libras.",
+      "tts": {
+        "text": "O valor total foi estimado entre duzentas mil e seiscentas mil libras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para contextualizar, um trabalhador inglês qualificado ganhava cerca de 10 libras por ano.",
+      "text_markdown": "Para contextualizar, um trabalhador inglês qualificado ganhava cerca de 10 libras por ano.",
+      "tts": {
+        "text": "Para contextualizar, um trabalhador inglês qualificado ganhava cerca de dez libras por ano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A parte de cada pirata no espólio era suficiente para viver pelo resto da vida.",
+      "text_markdown": "A parte de cada pirata no espólio era suficiente para viver pelo resto da vida.",
+      "tts": {
+        "text": "A parte de cada pirata no espólio era suficiente para viver pelo resto da vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Henry Every acabara de capturar um dos prêmios mais ricos de toda a história da pirataria.",
+      "text_markdown": "Henry Every acabara de capturar um dos prêmios mais ricos de toda a história da pirataria.",
+      "tts": {
+        "text": "Henry Every acabara de capturar um dos prêmios mais ricos de toda a história da pirataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nenhum pirata antes ou depois dele jamais tomou tanto em um único ataque.",
+      "text_markdown": "Nenhum pirata antes ou depois dele jamais tomou tanto em um único ataque.",
+      "tts": {
+        "text": "Nenhum pirata antes ou depois dele jamais tomou tanto em um único ataque.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os piratas passaram vários dias saqueando o Ganj-i-Sawai.",
+      "text_markdown": "Os piratas passaram vários dias saqueando o Ganj-i-Sawai.",
+      "tts": {
+        "text": "Os piratas passaram vários dias saqueando o Ganj-i-Sawai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Submeteram os passageiros e a tripulação a terrível violência.",
+      "text_markdown": "Submeteram os passageiros e a tripulação a terrível violência.",
+      "tts": {
+        "text": "Submeteram os passageiros e a tripulação a terrível violência.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Relatos contemporâneos descrevem roubo, agressão e assassinato a bordo do navio capturado.",
+      "text_markdown": "Relatos contemporâneos descrevem roubo, agressão e assassinato a bordo do navio capturado.",
+      "tts": {
+        "text": "Relatos contemporâneos descrevem roubo, agressão e assassinato a bordo do navio capturado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A brutalidade do ataque teria graves consequências políticas.",
+      "text_markdown": "A brutalidade do ataque teria graves consequências políticas.",
+      "tts": {
+        "text": "A brutalidade do ataque teria graves consequências políticas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Após despojar o navio de seus objetos de valor, Every soltou o Ganj-i-Sawai.",
+      "text_markdown": "Após despojar o navio de seus objetos de valor, Every soltou o Ganj-i-Sawai.",
+      "tts": {
+        "text": "Após despojar o navio de seus objetos de valor, Every soltou o Ganj-i-Sawai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A embarcação avariada mancou de volta ao porto indiano de Surat.",
+      "text_markdown": "A embarcação avariada mancou de volta ao porto indiano de Surat.",
+      "tts": {
+        "text": "A embarcação avariada mancou de volta ao porto indiano de Surat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quando os sobreviventes contaram sua história, a reação foi explosiva.",
+      "text_markdown": "Quando os sobreviventes contaram sua história, a reação foi explosiva.",
+      "tts": {
+        "text": "Quando os sobreviventes contaram sua história, a reação foi explosiva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "O maior prêmio",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every acabara de criar a pior crise diplomática na história do comércio inglês com a Índia.",
+      "text_markdown": "Every acabara de criar a pior crise diplomática na história do comércio inglês com a Índia.",
+      "tts": {
+        "text": "Every acabara de criar a pior crise diplomática na história do comércio inglês com a Índia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O homem mais procurado da Terra",
+      "text_markdown": "O homem mais procurado da Terra"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando a notícia do ataque chegou ao imperador mogol Aurangzeb, sua fúria foi imensa.",
+      "text_markdown": "Quando a notícia do ataque chegou ao imperador mogol Aurangzeb, sua fúria foi imensa.",
+      "tts": {
+        "text": "Quando a notícia do ataque chegou ao imperador mogol Aurangzeb, sua fúria foi imensa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O Ganj-i-Sawai era seu navio pessoal, e seus passageiros incluíam membros da corte real.",
+      "text_markdown": "O Ganj-i-Sawai era seu navio pessoal, e seus passageiros incluíam membros da corte real.",
+      "tts": {
+        "text": "O Ganj-i-Sawai era seu navio pessoal, e seus passageiros incluíam membros da corte real.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O imperador considerou o ataque uma afronta ao próprio Islã, pois o navio transportava peregrinos retornando de Meca.",
+      "text_markdown": "O imperador considerou o ataque uma afronta ao próprio Islã, pois o navio transportava peregrinos retornando de Meca.",
+      "tts": {
+        "text": "O imperador considerou o ataque uma afronta ao próprio Islã, pois o navio transportava peregrinos retornando de Meca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele exigiu que os ingleses fossem responsabilizados.",
+      "text_markdown": "Ele exigiu que os ingleses fossem responsabilizados.",
+      "tts": {
+        "text": "Ele exigiu que os ingleses fossem responsabilizados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aurangzeb ordenou a prisão de todos os comerciantes ingleses na cidade de Surat.",
+      "text_markdown": "Aurangzeb ordenou a prisão de todos os comerciantes ingleses na cidade de Surat.",
+      "tts": {
+        "text": "Aurangzeb ordenou a prisão de todos os comerciantes ingleses na cidade de Surat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os funcionários da Companhia das Índias Orientais foram jogados na prisão.",
+      "text_markdown": "Os funcionários da Companhia das Índias Orientais foram jogados na prisão.",
+      "tts": {
+        "text": "Os funcionários da Companhia das Índias Orientais foram jogados na prisão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seus postos comerciais foram cercados por soldados mogóis.",
+      "text_markdown": "Seus postos comerciais foram cercados por soldados mogóis.",
+      "tts": {
+        "text": "Seus postos comerciais foram cercados por soldados mogóis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Todo o comércio inglês na Índia foi suspenso por tempo indeterminado.",
+      "text_markdown": "Todo o comércio inglês na Índia foi suspenso por tempo indeterminado.",
+      "tts": {
+        "text": "Todo o comércio inglês na Índia foi suspenso por tempo indeterminado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Companhia das Índias Orientais estava em pânico.",
+      "text_markdown": "A Companhia das Índias Orientais estava em pânico.",
+      "tts": {
+        "text": "A Companhia das Índias Orientais estava em pânico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Todo o seu negócio na Índia estava em risco por causa de um único capitão pirata.",
+      "text_markdown": "Todo o seu negócio na Índia estava em risco por causa de um único capitão pirata.",
+      "tts": {
+        "text": "Todo o seu negócio na Índia estava em risco por causa de um único capitão pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os lucros da companhia dependiam da boa vontade mogol, e essa boa vontade evaporou da noite para o dia.",
+      "text_markdown": "Os lucros da companhia dependiam da boa vontade mogol, e essa boa vontade evaporou da noite para o dia.",
+      "tts": {
+        "text": "Os lucros da companhia dependiam da boa vontade mogol, e essa boa vontade evaporou da noite para o dia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eles pressionaram o governo inglês a agir imediatamente.",
+      "text_markdown": "Eles pressionaram o governo inglês a agir imediatamente.",
+      "tts": {
+        "text": "Eles pressionaram o governo inglês a agir imediatamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O governo inglês emitiu um mandado de prisão mundial para Henry Every.",
+      "text_markdown": "O governo inglês emitiu um mandado de prisão mundial para Henry Every.",
+      "tts": {
+        "text": "O governo inglês emitiu um mandado de prisão mundial para Henry Every.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uma recompensa de 500 libras foi colocada em sua cabeça, uma quantia sem precedentes.",
+      "text_markdown": "Uma recompensa de 500 libras foi colocada em sua cabeça, uma quantia sem precedentes.",
+      "tts": {
+        "text": "Uma recompensa de quinhentas libras foi colocada em sua cabeça, uma quantia sem precedentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esta foi a primeira busca mundial da história registrada.",
+      "text_markdown": "Esta foi a primeira busca mundial da história registrada.",
+      "tts": {
+        "text": "Esta foi a primeira busca mundial da história registrada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Todos os portos do mundo anglófono receberam descrições de Every e sua tripulação.",
+      "text_markdown": "Todos os portos do mundo anglófono receberam descrições de Every e sua tripulação.",
+      "tts": {
+        "text": "Todos os portos do mundo anglófono receberam descrições de Every e sua tripulação.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Companhia das Índias Orientais adicionou sua própria recompensa à do governo.",
+      "text_markdown": "A Companhia das Índias Orientais adicionou sua própria recompensa à do governo.",
+      "tts": {
+        "text": "A Companhia das Índias Orientais adicionou sua própria recompensa à do governo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Também prometeram perdão total a qualquer membro da tripulação de Every que se entregasse e testemunhasse contra ele.",
+      "text_markdown": "Também prometeram perdão total a qualquer membro da tripulação de Every que se entregasse e testemunhasse contra ele.",
+      "tts": {
+        "text": "Também prometeram perdão total a qualquer membro da tripulação de Every que se entregasse e testemunhasse contra ele.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A companhia estava desesperada para encontrar Every e demonstrar ao imperador mogol que a justiça seria feita.",
+      "text_markdown": "A companhia estava desesperada para encontrar Every e demonstrar ao imperador mogol que a justiça seria feita.",
+      "tts": {
+        "text": "A companhia estava desesperada para encontrar Every e demonstrar ao imperador mogol que a justiça seria feita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua sobrevivência como empresa dependia disso.",
+      "text_markdown": "Sua sobrevivência como empresa dependia disso.",
+      "tts": {
+        "text": "Sua sobrevivência como empresa dependia disso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enquanto isso, Every estava se afastando do Oceano Índico o mais rápido possível.",
+      "text_markdown": "Enquanto isso, Every estava se afastando do Oceano Índico o mais rápido possível.",
+      "tts": {
+        "text": "Enquanto isso, Every estava se afastando do Oceano Índico o mais rápido possível.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sabia que permanecer perto da cena do crime seria suicídio.",
+      "text_markdown": "Sabia que permanecer perto da cena do crime seria suicídio.",
+      "tts": {
+        "text": "Sabia que permanecer perto da cena do crime seria suicídio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rumou para a ilha de Reunião, no Oceano Índico ocidental.",
+      "text_markdown": "Rumou para a ilha de Reunião, no Oceano Índico ocidental.",
+      "tts": {
+        "text": "Rumou para a ilha de Reunião, no Oceano Índico ocidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lá, dividiu o tesouro entre sua tripulação.",
+      "text_markdown": "Lá, dividiu o tesouro entre sua tripulação.",
+      "tts": {
+        "text": "Lá, dividiu o tesouro entre sua tripulação.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada pirata comum recebeu uma parte no valor de várias centenas de libras.",
+      "text_markdown": "Cada pirata comum recebeu uma parte no valor de várias centenas de libras.",
+      "tts": {
+        "text": "Cada pirata comum recebeu uma parte no valor de várias centenas de libras.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O próprio Every, como capitão, recebeu uma parcela maior.",
+      "text_markdown": "O próprio Every, como capitão, recebeu uma parcela maior.",
+      "tts": {
+        "text": "O próprio Every, como capitão, recebeu uma parcela maior.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os homens agora eram ricos além de qualquer coisa que jamais imaginaram.",
+      "text_markdown": "Os homens agora eram ricos além de qualquer coisa que jamais imaginaram.",
+      "tts": {
+        "text": "Os homens agora eram ricos além de qualquer coisa que jamais imaginaram.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A questão era se conseguiriam viver o bastante para gastar.",
+      "text_markdown": "A questão era se conseguiriam viver o bastante para gastar.",
+      "tts": {
+        "text": "A questão era se conseguiriam viver o bastante para gastar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every então navegou com o Fancy pelo Atlântico até a ilha de New Providence, nas Bahamas.",
+      "text_markdown": "Every então navegou com o Fancy pelo Atlântico até a ilha de New Providence, nas Bahamas.",
+      "tts": {
+        "text": "Every então navegou com o Fancy pelo Atlântico até a ilha de New Providence, nas Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chegou em abril de 1696, quase dois anos depois do motim que iniciou sua carreira pirata.",
+      "text_markdown": "Chegou em abril de 1696, quase dois anos depois do motim que iniciou sua carreira pirata.",
+      "tts": {
+        "text": "Chegou em abril de mil seiscentos e noventa e seis, quase dois anos depois do motim que iniciou sua carreira pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O governador das Bahamas, Nicholas Trott, concordou em abrigar os piratas.",
+      "text_markdown": "O governador das Bahamas, Nicholas Trott, concordou em abrigar os piratas.",
+      "tts": {
+        "text": "O governador das Bahamas, Nicholas Trott, concordou em abrigar os piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every teria subornado Trott com marfim, dinheiro e o próprio Fancy.",
+      "text_markdown": "Every teria subornado Trott com marfim, dinheiro e o próprio Fancy.",
+      "tts": {
+        "text": "Every teria subornado Trott com marfim, dinheiro e o próprio Fancy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O governador Trott emitiu perdões para a tripulação de Every, fingindo que eram marinheiros inocentes.",
+      "text_markdown": "O governador Trott emitiu perdões para a tripulação de Every, fingindo que eram marinheiros inocentes.",
+      "tts": {
+        "text": "O governador Trott emitiu perdões para a tripulação de Every, fingindo que eram marinheiros inocentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os piratas se espalharam pelo Caribe e pelas colônias americanas.",
+      "text_markdown": "Os piratas se espalharam pelo Caribe e pelas colônias americanas.",
+      "tts": {
+        "text": "Os piratas se espalharam pelo Caribe e pelas colônias americanas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alguns foram para Nova York, outros para Filadélfia ou Charleston.",
+      "text_markdown": "Alguns foram para Nova York, outros para Filadélfia ou Charleston.",
+      "tts": {
+        "text": "Alguns foram para Nova York, outros para Filadélfia ou Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Levaram consigo o tesouro mogol roubado, escondendo-o da melhor forma possível.",
+      "text_markdown": "Levaram consigo o tesouro mogol roubado, escondendo-o da melhor forma possível.",
+      "tts": {
+        "text": "Levaram consigo o tesouro mogol roubado, escondendo-o da melhor forma possível.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O próprio Every desapareceu.",
+      "text_markdown": "O próprio Every desapareceu.",
+      "tts": {
+        "text": "O próprio Every desapareceu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta é a parte mais notável de sua história.",
+      "text_markdown": "Esta é a parte mais notável de sua história.",
+      "tts": {
+        "text": "Esta é a parte mais notável de sua história.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Apesar de ser alvo da busca mais intensa que o mundo já vira, ele nunca foi encontrado.",
+      "text_markdown": "Apesar de ser alvo da busca mais intensa que o mundo já vira, ele nunca foi encontrado.",
+      "tts": {
+        "text": "Apesar de ser alvo da busca mais intensa que o mundo já vira, ele nunca foi encontrado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Desapareceu tão completamente como se o mar o tivesse engolido.",
+      "text_markdown": "Desapareceu tão completamente como se o mar o tivesse engolido.",
+      "tts": {
+        "text": "Desapareceu tão completamente como se o mar o tivesse engolido.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vários membros de sua tripulação acabaram capturados e julgados em Londres.",
+      "text_markdown": "Vários membros de sua tripulação acabaram capturados e julgados em Londres.",
+      "tts": {
+        "text": "Vários membros de sua tripulação acabaram capturados e julgados em Londres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seis foram enforcados em 1696, seus corpos exibidos como advertência.",
+      "text_markdown": "Seis foram enforcados em 1696, seus corpos exibidos como advertência.",
+      "tts": {
+        "text": "Seis foram enforcados em mil seiscentos e noventa e seis, seus corpos exibidos como advertência.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas os que foram capturados eram membros de baixa patente da tripulação.",
+      "text_markdown": "Mas os que foram capturados eram membros de baixa patente da tripulação.",
+      "tts": {
+        "text": "Mas os que foram capturados eram membros de baixa patente da tripulação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O próprio Every permaneceu livre.",
+      "text_markdown": "O próprio Every permaneceu livre.",
+      "tts": {
+        "text": "O próprio Every permaneceu livre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os julgamentos em Londres foram eventos sensacionais que cativaram o público inglês.",
+      "text_markdown": "Os julgamentos em Londres foram eventos sensacionais que cativaram o público inglês.",
+      "tts": {
+        "text": "Os julgamentos em Londres foram eventos sensacionais que cativaram o público inglês.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os jornais publicaram relatos detalhados dos depoimentos.",
+      "text_markdown": "Os jornais publicaram relatos detalhados dos depoimentos.",
+      "tts": {
+        "text": "Os jornais publicaram relatos detalhados dos depoimentos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A história de um marinheiro comum que roubou o tesouro de um imperador fascinava pessoas de todas as classes sociais.",
+      "text_markdown": "A história de um marinheiro comum que roubou o tesouro de um imperador fascinava pessoas de todas as classes sociais.",
+      "tts": {
+        "text": "A história de um marinheiro comum que roubou o tesouro de um imperador fascinava pessoas de todas as classes sociais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every se tornou o criminoso mais famoso de sua época.",
+      "text_markdown": "Every se tornou o criminoso mais famoso de sua época.",
+      "tts": {
+        "text": "Every se tornou o criminoso mais famoso de sua época.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A crise diplomática com o Império Mogol levou anos para ser resolvida.",
+      "text_markdown": "A crise diplomática com o Império Mogol levou anos para ser resolvida.",
+      "tts": {
+        "text": "A crise diplomática com o Império Mogol levou anos para ser resolvida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Companhia das Índias Orientais acabou pagando indenização e reforçando suas patrulhas navais.",
+      "text_markdown": "A Companhia das Índias Orientais acabou pagando indenização e reforçando suas patrulhas navais.",
+      "tts": {
+        "text": "A Companhia das Índias Orientais acabou pagando indenização e reforçando suas patrulhas navais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O comércio mogol-inglês foi retomado, mas o relacionamento foi permanentemente danificado.",
+      "text_markdown": "O comércio mogol-inglês foi retomado, mas o relacionamento foi permanentemente danificado.",
+      "tts": {
+        "text": "O comércio mogol-inglês foi retomado, mas o relacionamento foi permanentemente danificado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "O homem mais procurado da Terra",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O incidente demonstrou que piratas europeus podiam ameaçar a estabilidade de grandes impérios.",
+      "text_markdown": "O incidente demonstrou que piratas europeus podiam ameaçar a estabilidade de grandes impérios.",
+      "tts": {
+        "text": "O incidente demonstrou que piratas europeus podiam ameaçar a estabilidade de grandes impérios.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O desaparecimento",
+      "text_markdown": "O desaparecimento"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O desaparecimento de Henry Every é um dos grandes mistérios não resolvidos da história da pirataria.",
+      "text_markdown": "O desaparecimento de Henry Every é um dos grandes mistérios não resolvidos da história da pirataria.",
+      "tts": {
+        "text": "O desaparecimento de Henry Every é um dos grandes mistérios não resolvidos da história da pirataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Depois de deixar as Bahamas, ele nunca mais foi visto de forma confiável.",
+      "text_markdown": "Depois de deixar as Bahamas, ele nunca mais foi visto de forma confiável.",
+      "tts": {
+        "text": "Depois de deixar as Bahamas, ele nunca mais foi visto de forma confiável.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historiadores propuseram muitas teorias sobre o que aconteceu com ele, mas nenhuma pode ser comprovada.",
+      "text_markdown": "Historiadores propuseram muitas teorias sobre o que aconteceu com ele, mas nenhuma pode ser comprovada.",
+      "tts": {
+        "text": "Historiadores propuseram muitas teorias sobre o que aconteceu com ele, mas nenhuma pode ser comprovada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma teoria sugere que Every voltou à Inglaterra sob um nome falso.",
+      "text_markdown": "Uma teoria sugere que Every voltou à Inglaterra sob um nome falso.",
+      "tts": {
+        "text": "Uma teoria sugere que Every voltou à Inglaterra sob um nome falso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Inglaterra era um país grande, e um homem com dinheiro podia facilmente se misturar numa cidade como Londres.",
+      "text_markdown": "A Inglaterra era um país grande, e um homem com dinheiro podia facilmente se misturar numa cidade como Londres.",
+      "tts": {
+        "text": "A Inglaterra era um país grande, e um homem com dinheiro podia facilmente se misturar numa cidade como Londres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se evitasse gastar de forma extravagante, poderia ter vivido seus dias em tranquila obscuridade.",
+      "text_markdown": "Se evitasse gastar de forma extravagante, poderia ter vivido seus dias em tranquila obscuridade.",
+      "tts": {
+        "text": "Se evitasse gastar de forma extravagante, poderia ter vivido seus dias em tranquila obscuridade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta é considerada uma das teorias mais plausíveis.",
+      "text_markdown": "Esta é considerada uma das teorias mais plausíveis.",
+      "tts": {
+        "text": "Esta é considerada uma das teorias mais plausíveis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outra teoria afirma que Every foi para a Irlanda.",
+      "text_markdown": "Outra teoria afirma que Every foi para a Irlanda.",
+      "tts": {
+        "text": "Outra teoria afirma que Every foi para a Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Irlanda era menos rigidamente controlada que a Inglaterra, e seus portos eram movimentados com navegação transatlântica.",
+      "text_markdown": "A Irlanda era menos rigidamente controlada que a Inglaterra, e seus portos eram movimentados com navegação transatlântica.",
+      "tts": {
+        "text": "A Irlanda era menos rigidamente controlada que a Inglaterra, e seus portos eram movimentados com navegação transatlântica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Um estranho rico teria atraído menos atenção ali.",
+      "text_markdown": "Um estranho rico teria atraído menos atenção ali.",
+      "tts": {
+        "text": "Um estranho rico teria atraído menos atenção ali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alguns relatos o colocam na cidade portuária de Cork.",
+      "text_markdown": "Alguns relatos o colocam na cidade portuária de Cork.",
+      "tts": {
+        "text": "Alguns relatos o colocam na cidade portuária de Cork.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma terceira teoria sugere que Every navegou para a costa leste da África ou Madagascar.",
+      "text_markdown": "Uma terceira teoria sugere que Every navegou para a costa leste da África ou Madagascar.",
+      "tts": {
+        "text": "Uma terceira teoria sugere que Every navegou para a costa leste da África ou Madagascar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muitos piratas se aposentaram em Madagascar, onde viviam entre a população local.",
+      "text_markdown": "Muitos piratas se aposentaram em Madagascar, onde viviam entre a população local.",
+      "tts": {
+        "text": "Muitos piratas se aposentaram em Madagascar, onde viviam entre a população local.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alguns até se casaram com mulheres locais e se tornaram pequenos chefes.",
+      "text_markdown": "Alguns até se casaram com mulheres locais e se tornaram pequenos chefes.",
+      "tts": {
+        "text": "Alguns até se casaram com mulheres locais e se tornaram pequenos chefes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every poderia ter vivido confortavelmente em tal cenário com sua enorme fortuna.",
+      "text_markdown": "Every poderia ter vivido confortavelmente em tal cenário com sua enorme fortuna.",
+      "tts": {
+        "text": "Every poderia ter vivido confortavelmente em tal cenário com sua enorme fortuna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A teoria mais romântica afirma que Every morreu na pobreza.",
+      "text_markdown": "A teoria mais romântica afirma que Every morreu na pobreza.",
+      "tts": {
+        "text": "A teoria mais romântica afirma que Every morreu na pobreza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Segundo esse relato, ele foi enganado por comerciantes de Bristol que lidaram com suas joias roubadas.",
+      "text_markdown": "Segundo esse relato, ele foi enganado por comerciantes de Bristol que lidaram com suas joias roubadas.",
+      "tts": {
+        "text": "Segundo esse relato, ele foi enganado por comerciantes de Bristol que lidaram com suas joias roubadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deram-lhe muito menos do que as joias valiam, e ele não tinha recurso legal.",
+      "text_markdown": "Deram-lhe muito menos do que as joias valiam, e ele não tinha recurso legal.",
+      "tts": {
+        "text": "Deram-lhe muito menos do que as joias valiam, e ele não tinha recurso legal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Supostamente morreu sem um tostão, incapaz de acessar sua própria fortuna roubada.",
+      "text_markdown": "Supostamente morreu sem um tostão, incapaz de acessar sua própria fortuna roubada.",
+      "tts": {
+        "text": "Supostamente morreu sem um tostão, incapaz de acessar sua própria fortuna roubada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essa história de pobreza apareceu pela primeira vez em um livro publicado décadas após o desaparecimento de Every.",
+      "text_markdown": "Essa história de pobreza apareceu pela primeira vez em um livro publicado décadas após o desaparecimento de Every.",
+      "tts": {
+        "text": "Essa história de pobreza apareceu pela primeira vez em um livro publicado décadas após o desaparecimento de Every.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A maioria dos historiadores a considera pouco confiável.",
+      "text_markdown": "A maioria dos historiadores a considera pouco confiável.",
+      "tts": {
+        "text": "A maioria dos historiadores a considera pouco confiável.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pode ter sido inventada como uma fábula moral, mostrando que o crime não compensa.",
+      "text_markdown": "Pode ter sido inventada como uma fábula moral, mostrando que o crime não compensa.",
+      "tts": {
+        "text": "Pode ter sido inventada como uma fábula moral, mostrando que o crime não compensa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A verdade é que ninguém sabe o que aconteceu com Henry Every.",
+      "text_markdown": "A verdade é que ninguém sabe o que aconteceu com Henry Every.",
+      "tts": {
+        "text": "A verdade é que ninguém sabe o que aconteceu com Henry Every.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O que é certo é que ele escapou completamente da justiça.",
+      "text_markdown": "O que é certo é que ele escapou completamente da justiça.",
+      "tts": {
+        "text": "O que é certo é que ele escapou completamente da justiça.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele foi o único grande pirata da Era de Ouro que nunca foi capturado, nunca foi morto em batalha e nunca foi levado a julgamento.",
+      "text_markdown": "Ele foi o único grande pirata da Era de Ouro que nunca foi capturado, nunca foi morto em batalha e nunca foi levado a julgamento.",
+      "tts": {
+        "text": "Ele foi o único grande pirata da Era de Ouro que nunca foi capturado, nunca foi morto em batalha e nunca foi levado a julgamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele venceu o sistema completamente.",
+      "text_markdown": "Ele venceu o sistema completamente.",
+      "tts": {
+        "text": "Ele venceu o sistema completamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O governo inglês acabou desistindo da busca.",
+      "text_markdown": "O governo inglês acabou desistindo da busca.",
+      "tts": {
+        "text": "O governo inglês acabou desistindo da busca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Outros piratas surgiram e caíram, e outras crises exigiram atenção.",
+      "text_markdown": "Outros piratas surgiram e caíram, e outras crises exigiram atenção.",
+      "tts": {
+        "text": "Outros piratas surgiram e caíram, e outras crises exigiram atenção.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every saiu das preocupações oficiais, embora sua lenda só crescesse.",
+      "text_markdown": "Every saiu das preocupações oficiais, embora sua lenda só crescesse.",
+      "tts": {
+        "text": "Every saiu das preocupações oficiais, embora sua lenda só crescesse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os membros de sua tripulação que foram capturados forneceram algumas informações durante os julgamentos.",
+      "text_markdown": "Os membros de sua tripulação que foram capturados forneceram algumas informações durante os julgamentos.",
+      "tts": {
+        "text": "Os membros de sua tripulação que foram capturados forneceram algumas informações durante os julgamentos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Descreveram o ataque ao Ganj-i-Sawai e a divisão do tesouro.",
+      "text_markdown": "Descreveram o ataque ao Ganj-i-Sawai e a divisão do tesouro.",
+      "tts": {
+        "text": "Descreveram o ataque ao Ganj-i-Sawai e a divisão do tesouro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas nenhum deles sabia para onde Every havia ido depois das Bahamas.",
+      "text_markdown": "Mas nenhum deles sabia para onde Every havia ido depois das Bahamas.",
+      "tts": {
+        "text": "Mas nenhum deles sabia para onde Every havia ido depois das Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se algum deles sabia, levou o segredo para o túmulo.",
+      "text_markdown": "Se algum deles sabia, levou o segredo para o túmulo.",
+      "tts": {
+        "text": "Se algum deles sabia, levou o segredo para o túmulo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A busca por Every estabeleceu precedentes importantes no direito internacional.",
+      "text_markdown": "A busca por Every estabeleceu precedentes importantes no direito internacional.",
+      "tts": {
+        "text": "A busca por Every estabeleceu precedentes importantes no direito internacional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi um dos primeiros casos em que governos cooperaram além das fronteiras para perseguir um criminoso.",
+      "text_markdown": "Foi um dos primeiros casos em que governos cooperaram além das fronteiras para perseguir um criminoso.",
+      "tts": {
+        "text": "Foi um dos primeiros casos em que governos cooperaram além das fronteiras para perseguir um criminoso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O sistema de recompensas, o uso de perdões para informantes e a distribuição global de avisos de procurado foram todas inovações.",
+      "text_markdown": "O sistema de recompensas, o uso de perdões para informantes e a distribuição global de avisos de procurado foram todas inovações.",
+      "tts": {
+        "text": "O sistema de recompensas, o uso de perdões para informantes e a distribuição global de avisos de procurado foram todas inovações.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O crime de Henry Every ajudou a criar o arcabouço moderno da justiça criminal internacional.",
+      "text_markdown": "O crime de Henry Every ajudou a criar o arcabouço moderno da justiça criminal internacional.",
+      "tts": {
+        "text": "O crime de Henry Every ajudou a criar o arcabouço moderno da justiça criminal internacional.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 2023, arqueólogos em Rhode Island descobriram uma coleção de moedas árabes.",
+      "text_markdown": "Em 2023, arqueólogos em Rhode Island descobriram uma coleção de moedas árabes.",
+      "tts": {
+        "text": "Em dois mil e vinte e três, arqueólogos em Rhode Island descobriram uma coleção de moedas árabes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As moedas datam do período correto e parecem ser do Império Mogol.",
+      "text_markdown": "As moedas datam do período correto e parecem ser do Império Mogol.",
+      "tts": {
+        "text": "As moedas datam do período correto e parecem ser do Império Mogol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historiadores acreditam que podem ser parte do tesouro do Ganj-i-Sawai.",
+      "text_markdown": "Historiadores acreditam que podem ser parte do tesouro do Ganj-i-Sawai.",
+      "tts": {
+        "text": "Historiadores acreditam que podem ser parte do tesouro do Ganj-i-Sawai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "O desaparecimento",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essas moedas são evidência física de que a tripulação de Every levou sua fortuna roubada para as colônias americanas.",
+      "text_markdown": "Essas moedas são evidência física de que a tripulação de Every levou sua fortuna roubada para as colônias americanas.",
+      "tts": {
+        "text": "Essas moedas são evidência física de que a tripulação de Every levou sua fortuna roubada para as colônias americanas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O legado do rei pirata",
+      "text_markdown": "O legado do rei pirata"
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A história de Henry Every capturou imediatamente a imaginação do público.",
+      "text_markdown": "A história de Henry Every capturou imediatamente a imaginação do público.",
+      "tts": {
+        "text": "A história de Henry Every capturou imediatamente a imaginação do público.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uma peça chamada The Successful Pyrate foi encenada em Londres em 1713.",
+      "text_markdown": "Uma peça chamada The Successful Pyrate foi encenada em Londres em 1713.",
+      "tts": {
+        "text": "Uma peça chamada The Successful Pyrate foi encenada em Londres em mil setecentos e treze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dramatizou as aventuras de Every e o retratou como um rebelde romântico.",
+      "text_markdown": "Dramatizou as aventuras de Every e o retratou como um rebelde romântico.",
+      "tts": {
+        "text": "Dramatizou as aventuras de Every e o retratou como um rebelde romântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A peça foi enormemente popular e teve muitas apresentações.",
+      "text_markdown": "A peça foi enormemente popular e teve muitas apresentações.",
+      "tts": {
+        "text": "A peça foi enormemente popular e teve muitas apresentações.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every se tornou um herói popular na imaginação coletiva.",
+      "text_markdown": "Every se tornou um herói popular na imaginação coletiva.",
+      "tts": {
+        "text": "Every se tornou um herói popular na imaginação coletiva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baladas foram escritas sobre ele e cantadas em tavernas por toda a Inglaterra.",
+      "text_markdown": "Baladas foram escritas sobre ele e cantadas em tavernas por toda a Inglaterra.",
+      "tts": {
+        "text": "Baladas foram escritas sobre ele e cantadas em tavernas por toda a Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uma balada famosa o descrevia como o rei dos piratas que humilhou um poderoso imperador.",
+      "text_markdown": "Uma balada famosa o descrevia como o rei dos piratas que humilhou um poderoso imperador.",
+      "tts": {
+        "text": "Uma balada famosa o descrevia como o rei dos piratas que humilhou um poderoso imperador.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Em uma era de rígida hierarquia de classes, sua história atraía pessoas comuns que sonhavam com liberdade e riqueza.",
+      "text_markdown": "Em uma era de rígida hierarquia de classes, sua história atraía pessoas comuns que sonhavam com liberdade e riqueza.",
+      "tts": {
+        "text": "Em uma era de rígida hierarquia de classes, sua história atraía pessoas comuns que sonhavam com liberdade e riqueza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O sucesso de Every inspirou toda uma geração de piratas que seguiram seus passos.",
+      "text_markdown": "O sucesso de Every inspirou toda uma geração de piratas que seguiram seus passos.",
+      "tts": {
+        "text": "O sucesso de Every inspirou toda uma geração de piratas que seguiram seus passos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Após seu famoso ataque, a Rota Pirata no Oceano Índico se tornou um caminho muito percorrido.",
+      "text_markdown": "Após seu famoso ataque, a Rota Pirata no Oceano Índico se tornou um caminho muito percorrido.",
+      "tts": {
+        "text": "Após seu famoso ataque, a Rota Pirata no Oceano Índico se tornou um caminho muito percorrido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Piratas como William Kidd, Robert Culliford e outros tentaram replicar o sucesso de Every.",
+      "text_markdown": "Piratas como William Kidd, Robert Culliford e outros tentaram replicar o sucesso de Every.",
+      "tts": {
+        "text": "Piratas como William Kidd, Robert Culliford e outros tentaram replicar o sucesso de Every.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nenhum deles igualou sua conquista, e a maioria teve fins violentos ou ignominiosos.",
+      "text_markdown": "Nenhum deles igualou sua conquista, e a maioria teve fins violentos ou ignominiosos.",
+      "tts": {
+        "text": "Nenhum deles igualou sua conquista, e a maioria teve fins violentos ou ignominiosos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As consequências diplomáticas do ataque de Every duraram décadas.",
+      "text_markdown": "As consequências diplomáticas do ataque de Every duraram décadas.",
+      "tts": {
+        "text": "As consequências diplomáticas do ataque de Every duraram décadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Companhia das Índias Orientais foi obrigada a levar a sério o combate à pirataria.",
+      "text_markdown": "A Companhia das Índias Orientais foi obrigada a levar a sério o combate à pirataria.",
+      "tts": {
+        "text": "A Companhia das Índias Orientais foi obrigada a levar a sério o combate à pirataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Começou a financiar escoltas navais para a navegação no Oceano Índico.",
+      "text_markdown": "Começou a financiar escoltas navais para a navegação no Oceano Índico.",
+      "tts": {
+        "text": "Começou a financiar escoltas navais para a navegação no Oceano Índico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essas operações antipirataria acabaram ajudando a companhia a apertar seu controle sobre o comércio indiano.",
+      "text_markdown": "Essas operações antipirataria acabaram ajudando a companhia a apertar seu controle sobre o comércio indiano.",
+      "tts": {
+        "text": "Essas operações antipirataria acabaram ajudando a companhia a apertar seu controle sobre o comércio indiano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns historiadores argumentam que o ataque de Every na verdade acelerou o colonialismo britânico na Índia.",
+      "text_markdown": "Alguns historiadores argumentam que o ataque de Every na verdade acelerou o colonialismo britânico na Índia.",
+      "tts": {
+        "text": "Alguns historiadores argumentam que o ataque de Every na verdade acelerou o colonialismo britânico na Índia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A crise forçou a Companhia das Índias Orientais a construir capacidades militares mais fortes.",
+      "text_markdown": "A crise forçou a Companhia das Índias Orientais a construir capacidades militares mais fortes.",
+      "tts": {
+        "text": "A crise forçou a Companhia das Índias Orientais a construir capacidades militares mais fortes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essas forças militares foram depois usadas não apenas contra piratas, mas contra os próprios estados indianos.",
+      "text_markdown": "Essas forças militares foram depois usadas não apenas contra piratas, mas contra os próprios estados indianos.",
+      "tts": {
+        "text": "Essas forças militares foram depois usadas não apenas contra piratas, mas contra os próprios estados indianos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A cadeia de eventos iniciada pelo ataque de Every contribuiu para a eventual conquista britânica da Índia.",
+      "text_markdown": "A cadeia de eventos iniciada pelo ataque de Every contribuiu para a eventual conquista britânica da Índia.",
+      "tts": {
+        "text": "A cadeia de eventos iniciada pelo ataque de Every contribuiu para a eventual conquista britânica da Índia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A história de Every também influenciou o mais famoso romance de piratas já escrito.",
+      "text_markdown": "A história de Every também influenciou o mais famoso romance de piratas já escrito.",
+      "tts": {
+        "text": "A história de Every também influenciou o mais famoso romance de piratas já escrito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Acredita-se que Daniel Defoe usou a vida de Every como inspiração para partes de sua ficção.",
+      "text_markdown": "Acredita-se que Daniel Defoe usou a vida de Every como inspiração para partes de sua ficção.",
+      "tts": {
+        "text": "Acredita-se que Daniel Defoe usou a vida de Every como inspiração para partes de sua ficção.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A ideia de um pirata que escapa com seu tesouro e desaparece para sempre tornou-se um clássico da literatura de aventura.",
+      "text_markdown": "A ideia de um pirata que escapa com seu tesouro e desaparece para sempre tornou-se um clássico da literatura de aventura.",
+      "tts": {
+        "text": "A ideia de um pirata que escapa com seu tesouro e desaparece para sempre tornou-se um clássico da literatura de aventura.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A vida real de Every foi mais dramática do que a maioria dos contos fictícios de piratas.",
+      "text_markdown": "A vida real de Every foi mais dramática do que a maioria dos contos fictícios de piratas.",
+      "tts": {
+        "text": "A vida real de Every foi mais dramática do que a maioria dos contos fictícios de piratas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every permanece único na história da pirataria.",
+      "text_markdown": "Henry Every permanece único na história da pirataria.",
+      "tts": {
+        "text": "Henry Every permanece único na história da pirataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele cometeu o ato de pirataria mais rico da Era de Ouro.",
+      "text_markdown": "Ele cometeu o ato de pirataria mais rico da Era de Ouro.",
+      "tts": {
+        "text": "Ele cometeu o ato de pirataria mais rico da Era de Ouro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Causou uma crise internacional que abalou dois impérios.",
+      "text_markdown": "Causou uma crise internacional que abalou dois impérios.",
+      "tts": {
+        "text": "Causou uma crise internacional que abalou dois impérios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "O legado do rei pirata",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "E então simplesmente desapareceu, levando seus segredos consigo para o desconhecido.",
+      "text_markdown": "E então simplesmente desapareceu, levando seus segredos consigo para o desconhecido.",
+      "tts": {
+        "text": "E então simplesmente desapareceu, levando seus segredos consigo para o desconhecido.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

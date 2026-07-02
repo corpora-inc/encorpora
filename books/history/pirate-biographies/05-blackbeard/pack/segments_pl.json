@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "pl",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Słowo do czytelnika",
+      "text_markdown": "Słowo do czytelnika"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To prawdziwa historia najstraszniejszego pirata, jaki kiedykolwiek żył.",
+      "text_markdown": "To prawdziwa historia najstraszniejszego pirata, jaki kiedykolwiek żył.",
+      "tts": {
+        "text": "To prawdziwa historia najstraszniejszego pirata, jaki kiedykolwiek żył.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miał na imię Edward Teach, ale świat zapamiętał go jako Czarnobrodego.",
+      "text_markdown": "Miał na imię Edward Teach, ale świat zapamiętał go jako Czarnobrodego.",
+      "tts": {
+        "text": "Miał na imię Edward Teach, ale świat zapamiętał go jako Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Terroryzował morza przez zaledwie około 2 lata, ale jego legenda przetrwała ponad 300.",
+      "text_markdown": "Terroryzował morza przez zaledwie około 2 lata, ale jego legenda przetrwała ponad 300.",
+      "tts": {
+        "text": "Terroryzował morza przez zaledwie około dwóch lat, ale jego legenda przetrwała ponad trzysta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody nie wyglądał jak piraci, których widzisz w filmach.",
+      "text_markdown": "Czarnobrody nie wyglądał jak piraci, których widzisz w filmach.",
+      "tts": {
+        "text": "Czarnobrody nie wyglądał jak piraci, których widzisz w filmach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był gorszy.",
+      "text_markdown": "Był gorszy.",
+      "tts": {
+        "text": "Był gorszy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wplatał wolno palące się lonty w swoją ogromną czarną brodę i podpalał je przed bitwą.",
+      "text_markdown": "Wplatał wolno palące się lonty w swoją ogromną czarną brodę i podpalał je przed bitwą.",
+      "tts": {
+        "text": "Wplatał wolno palące się lonty w swoją ogromną czarną brodę i podpalał je przed bitwą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dym kłębił się wokół jego twarzy, sprawiając, że wyglądał jak demon wynurzający się z morza.",
+      "text_markdown": "Dym kłębił się wokół jego twarzy, sprawiając, że wyglądał jak demon wynurzający się z morza.",
+      "tts": {
+        "text": "Dym kłębił się wokół jego twarzy, sprawiając, że wyglądał jak demon wynurzający się z morza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ta książka zabierze cię do portów i szlaków morskich z początku osiemnastego wieku.",
+      "text_markdown": "Ta książka zabierze cię do portów i szlaków morskich z początku osiemnastego wieku.",
+      "tts": {
+        "text": "Ta książka zabierze cię do portów i szlaków morskich z początku osiemnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zobaczysz, jak zwykli żeglarze stawali się banitami i jak imperia walczyły, by ich powstrzymać.",
+      "text_markdown": "Zobaczysz, jak zwykli żeglarze stawali się banitami i jak imperia walczyły, by ich powstrzymać.",
+      "tts": {
+        "text": "Zobaczysz, jak zwykli żeglarze stawali się banitami i jak imperia walczyły, by ich powstrzymać.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wszystko w tej książce opiera się na dokumentach historycznych, aktach sądowych i relacjach naocznych świadków.",
+      "text_markdown": "Wszystko w tej książce opiera się na dokumentach historycznych, aktach sądowych i relacjach naocznych świadków.",
+      "tts": {
+        "text": "Wszystko w tej książce opiera się na dokumentach historycznych, aktach sądowych i relacjach naocznych świadków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gdy fakty są niepewne, powiemy to jasno.",
+      "text_markdown": "Gdy fakty są niepewne, powiemy to jasno.",
+      "tts": {
+        "text": "Gdy fakty są niepewne, powiemy to jasno.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Świat, który stworzył pirata",
+      "text_markdown": "Świat, który stworzył pirata"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Koniec siedemnastego wieku był epoką imperiów i handlu morskiego.",
+      "text_markdown": "Koniec siedemnastego wieku był epoką imperiów i handlu morskiego.",
+      "tts": {
+        "text": "Koniec siedemnastego wieku był epoką imperiów i handlu morskiego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anglia, Hiszpania, Francja i Holandia rywalizowały o kolonie w obu Amerykach.",
+      "text_markdown": "Anglia, Hiszpania, Francja i Holandia rywalizowały o kolonie w obu Amerykach.",
+      "tts": {
+        "text": "Anglia, Hiszpania, Francja i Holandia rywalizowały o kolonie w obu Amerykach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ich statki handlowe przewoziły cukier, tytoń, bawełnę i zniewolonych ludzi przez Atlantyk.",
+      "text_markdown": "Ich statki handlowe przewoziły cukier, tytoń, bawełnę i zniewolonych ludzi przez Atlantyk.",
+      "tts": {
+        "text": "Ich statki handlowe przewoziły cukier, tytoń, bawełnę i zniewolonych ludzi przez Atlantyk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gdziekolwiek cenne ładunki przemieszczały się po morzu, podążali za nimi piraci.",
+      "text_markdown": "Gdziekolwiek cenne ładunki przemieszczały się po morzu, podążali za nimi piraci.",
+      "tts": {
+        "text": "Gdziekolwiek cenne ładunki przemieszczały się po morzu, podążali za nimi piraci.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morze Karaibskie było skrzyżowaniem tego globalnego handlu.",
+      "text_markdown": "Morze Karaibskie było skrzyżowaniem tego globalnego handlu.",
+      "tts": {
+        "text": "Morze Karaibskie było skrzyżowaniem tego globalnego handlu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setki wysp były rozsiane po ciepłych turkusowych wodach między Florydą a Ameryką Południową.",
+      "text_markdown": "Setki wysp były rozsiane po ciepłych turkusowych wodach między Florydą a Ameryką Południową.",
+      "tts": {
+        "text": "Setki wysp były rozsiane po ciepłych turkusowych wodach między Florydą a Ameryką Południową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wiele z tych wysp należało do mocarstw europejskich, które wykorzystywały je jako plantacje cukru.",
+      "text_markdown": "Wiele z tych wysp należało do mocarstw europejskich, które wykorzystywały je jako plantacje cukru.",
+      "tts": {
+        "text": "Wiele z tych wysp należało do mocarstw europejskich, które wykorzystywały je jako plantacje cukru.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Statki załadowane cukrem i rumem co tydzień odpływały z karaibskich portów do Europy.",
+      "text_markdown": "Statki załadowane cukrem i rumem co tydzień odpływały z karaibskich portów do Europy.",
+      "tts": {
+        "text": "Statki załadowane cukrem i rumem co tydzień odpływały z karaibskich portów do Europy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anglia i Hiszpania rywalizowały od ponad stulecia.",
+      "text_markdown": "Anglia i Hiszpania rywalizowały od ponad stulecia.",
+      "tts": {
+        "text": "Anglia i Hiszpania rywalizowały od ponad stulecia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Angielscy korsarze, tacy jak Sir Francis Drake, napadali na hiszpańskie floty skarbów pod koniec piętnastego wieku.",
+      "text_markdown": "Angielscy korsarze, tacy jak Sir Francis Drake, napadali na hiszpańskie floty skarbów pod koniec piętnastego wieku.",
+      "tts": {
+        "text": "Angielscy korsarze, tacy jak Sir Francis Drake, napadali na hiszpańskie floty skarbów pod koniec piętnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsarz to prywatny kapitan statku upoważniony przez rząd do atakowania wrogich jednostek.",
+      "text_markdown": "Korsarz to prywatny kapitan statku upoważniony przez rząd do atakowania wrogich jednostek.",
+      "tts": {
+        "text": "Korsarz to prywatny kapitan statku upoważniony przez rząd do atakowania wrogich jednostek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsarze posiadali dokument zwany listem kaperskim, który legalizował ich ataki.",
+      "text_markdown": "Korsarze posiadali dokument zwany listem kaperskim, który legalizował ich ataki.",
+      "tts": {
+        "text": "Korsarze posiadali dokument zwany listem kaperskim, który legalizował ich ataki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wojna Królowej Anny wybuchła w 1702 roku i trwała do 1713.",
+      "text_markdown": "Wojna Królowej Anny wybuchła w 1702 roku i trwała do 1713.",
+      "tts": {
+        "text": "Wojna Królowej Anny wybuchła w tysiąc siedemset drugim roku i trwała do tysiąc siedemset trzynastego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był to element większego europejskiego konfliktu znanego jako wojna o sukcesję hiszpańską.",
+      "text_markdown": "Był to element większego europejskiego konfliktu znanego jako wojna o sukcesję hiszpańską.",
+      "tts": {
+        "text": "Był to element większego europejskiego konfliktu znanego jako wojna o sukcesję hiszpańską.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anglia i jej sojusznicy walczyli z Francją i Hiszpanią o kontrolę nad szlakami handlowymi i terytoriami.",
+      "text_markdown": "Anglia i jej sojusznicy walczyli z Francją i Hiszpanią o kontrolę nad szlakami handlowymi i terytoriami.",
+      "tts": {
+        "text": "Anglia i jej sojusznicy walczyli z Francją i Hiszpanią o kontrolę nad szlakami handlowymi i terytoriami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Podczas wojny tysiące żeglarzy służyło na statkach kaperskich, napadając na wrogich kupców dla zysku.",
+      "text_markdown": "Podczas wojny tysiące żeglarzy służyło na statkach kaperskich, napadając na wrogich kupców dla zysku.",
+      "tts": {
+        "text": "Podczas wojny tysiące żeglarzy służyło na statkach kaperskich, napadając na wrogich kupców dla zysku.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy wojna zakończyła się traktatem utrechckim w 1713 roku, wszystko się zmieniło.",
+      "text_markdown": "Gdy wojna zakończyła się traktatem utrechckim w 1713 roku, wszystko się zmieniło.",
+      "tts": {
+        "text": "Gdy wojna zakończyła się traktatem utrechckim w tysiąc siedemset trzynastym roku, wszystko się zmieniło.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Patenty kaperskie zostały cofnięte z dnia na dzień.",
+      "text_markdown": "Patenty kaperskie zostały cofnięte z dnia na dzień.",
+      "tts": {
+        "text": "Patenty kaperskie zostały cofnięte z dnia na dzień.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tysiące wyszkolonych żeglarzy i bojowników nagle straciło legalną pracę.",
+      "text_markdown": "Tysiące wyszkolonych żeglarzy i bojowników nagle straciło legalną pracę.",
+      "tts": {
+        "text": "Tysiące wyszkolonych żeglarzy i bojowników nagle straciło legalną pracę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wielu z nich nie posiadało nic poza ubraniem na grzbiecie i wiedzą o morzu.",
+      "text_markdown": "Wielu z nich nie posiadało nic poza ubraniem na grzbiecie i wiedzą o morzu.",
+      "tts": {
+        "text": "Wielu z nich nie posiadało nic poza ubraniem na grzbiecie i wiedzą o morzu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Życie zwykłego żeglarza w tej epoce było brutalne.",
+      "text_markdown": "Życie zwykłego żeglarza w tej epoce było brutalne.",
+      "tts": {
+        "text": "Życie zwykłego żeglarza w tej epoce było brutalne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitanowie handlowi rządzili swoimi statkami jak tyrani.",
+      "text_markdown": "Kapitanowie handlowi rządzili swoimi statkami jak tyrani.",
+      "tts": {
+        "text": "Kapitanowie handlowi rządzili swoimi statkami jak tyrani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Żeglarze byli bici za drobne przewinienia, a czasem w ogóle nie dostawali zapłaty.",
+      "text_markdown": "Żeglarze byli bici za drobne przewinienia, a czasem w ogóle nie dostawali zapłaty.",
+      "tts": {
+        "text": "Żeglarze byli bici za drobne przewinienia, a czasem w ogóle nie dostawali zapłaty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Przeciętny żeglarz zarabiał około 1 funta miesięcznie, ledwie wystarczającego do przeżycia na lądzie.",
+      "text_markdown": "Przeciętny żeglarz zarabiał około 1 funta miesięcznie, ledwie wystarczającego do przeżycia na lądzie.",
+      "tts": {
+        "text": "Przeciętny żeglarz zarabiał około jednego funta miesięcznie, ledwie wystarczającego do przeżycia na lądzie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Służba w marynarce wojennej była pod wieloma względami jeszcze gorsza.",
+      "text_markdown": "Służba w marynarce wojennej była pod wieloma względami jeszcze gorsza.",
+      "tts": {
+        "text": "Służba w marynarce wojennej była pod wieloma względami jeszcze gorsza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Królewska Marynarka Wojenna używała oddziałów werbunkowych do porywania mężczyzn z ulic i zmuszania do służby na okrętach wojennych.",
+      "text_markdown": "Królewska Marynarka Wojenna używała oddziałów werbunkowych do porywania mężczyzn z ulic i zmuszania do służby na okrętach wojennych.",
+      "tts": {
+        "text": "Królewska Marynarka Wojenna używała oddziałów werbunkowych do porywania mężczyzn z ulic i zmuszania do służby na okrętach wojennych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Choroby zabijały więcej żeglarzy niż walki.",
+      "text_markdown": "Choroby zabijały więcej żeglarzy niż walki.",
+      "tts": {
+        "text": "Choroby zabijały więcej żeglarzy niż walki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Szkorbut, czerwonka i tropikalne gorączki przenikały ciasne dolne pokłady z przerażającą szybkością.",
+      "text_markdown": "Szkorbut, czerwonka i tropikalne gorączki przenikały ciasne dolne pokłady z przerażającą szybkością.",
+      "tts": {
+        "text": "Szkorbut, czerwonka i tropikalne gorączki przenikały ciasne dolne pokłady z przerażającą szybkością.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piractwo oferowało alternatywę, której wielu żeglarzy nie potrafiło się oprzeć.",
+      "text_markdown": "Piractwo oferowało alternatywę, której wielu żeglarzy nie potrafiło się oprzeć.",
+      "tts": {
+        "text": "Piractwo oferowało alternatywę, której wielu żeglarzy nie potrafiło się oprzeć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piraci wybierali własnych kapitanów i głosowali nad ważnymi decyzjami.",
+      "text_markdown": "Piraci wybierali własnych kapitanów i głosowali nad ważnymi decyzjami.",
+      "tts": {
+        "text": "Piraci wybierali własnych kapitanów i głosowali nad ważnymi decyzjami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Łupy dzielono znacznie sprawiedliwiej niż na statkach handlowych czy wojennych.",
+      "text_markdown": "Łupy dzielono znacznie sprawiedliwiej niż na statkach handlowych czy wojennych.",
+      "tts": {
+        "text": "Łupy dzielono znacznie sprawiedliwiej niż na statkach handlowych czy wojennych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zwykły pirat mógł zarobić podczas jednego napadu tyle, ile żeglarz handlowy zarabiał przez kilka lat.",
+      "text_markdown": "Zwykły pirat mógł zarobić podczas jednego napadu tyle, ile żeglarz handlowy zarabiał przez kilka lat.",
+      "tts": {
+        "text": "Zwykły pirat mógł zarobić podczas jednego napadu tyle, ile żeglarz handlowy zarabiał przez kilka lat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wyspa New Providence na Bahamach stała się nieoficjalną stolicą piractwa.",
+      "text_markdown": "Wyspa New Providence na Bahamach stała się nieoficjalną stolicą piractwa.",
+      "tts": {
+        "text": "Wyspa New Providence na Bahamach stała się nieoficjalną stolicą piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jej główny port w Nassau mógł pomieścić setki statków.",
+      "text_markdown": "Jej główny port w Nassau mógł pomieścić setki statków.",
+      "tts": {
+        "text": "Jej główny port w Nassau mógł pomieścić setki statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na wyspie nie było silnego rządu kolonialnego ani fortu zdolnego ją obronić.",
+      "text_markdown": "Na wyspie nie było silnego rządu kolonialnego ani fortu zdolnego ją obronić.",
+      "tts": {
+        "text": "Na wyspie nie było silnego rządu kolonialnego ani fortu zdolnego ją obronić.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Na początku osiemnastego wieku piraci w Nassau przewyższali liczbą uczciwych obywateli.",
+      "text_markdown": "Na początku osiemnastego wieku piraci w Nassau przewyższali liczbą uczciwych obywateli.",
+      "tts": {
+        "text": "Na początku osiemnastego wieku piraci w Nassau przewyższali liczbą uczciwych obywateli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau stało się tym, co historycy nazywają Republiką Piratów.",
+      "text_markdown": "Nassau stało się tym, co historycy nazywają Republiką Piratów.",
+      "tts": {
+        "text": "Nassau stało się tym, co historycy nazywają Republiką Piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piraccy kapitanowie, tacy jak Benjamin Hornigold, Charles Vane i Calico Jack Rackham, nazywali ją domem.",
+      "text_markdown": "Piraccy kapitanowie, tacy jak Benjamin Hornigold, Charles Vane i Calico Jack Rackham, nazywali ją domem.",
+      "tts": {
+        "text": "Piraccy kapitanowie, tacy jak Benjamin Hornigold, Charles Vane i Calico Jack Rackham, nazywali ją domem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Statki przybywały nieustannie, przywożąc skradzione towary do wymiany.",
+      "text_markdown": "Statki przybywały nieustannie, przywożąc skradzione towary do wymiany.",
+      "tts": {
+        "text": "Statki przybywały nieustannie, przywożąc skradzione towary do wymiany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tawerny i targi powstawały, by obsługiwać piracką gospodarkę.",
+      "text_markdown": "Tawerny i targi powstawały, by obsługiwać piracką gospodarkę.",
+      "tts": {
+        "text": "Tawerny i targi powstawały, by obsługiwać piracką gospodarkę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rządy kolonialne wzdłuż amerykańskiego wybrzeża były słabo bronione.",
+      "text_markdown": "Rządy kolonialne wzdłuż amerykańskiego wybrzeża były słabo bronione.",
+      "tts": {
+        "text": "Rządy kolonialne wzdłuż amerykańskiego wybrzeża były słabo bronione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wirginia, Karoliny i kolonie Nowej Anglii zależały od handlu.",
+      "text_markdown": "Wirginia, Karoliny i kolonie Nowej Anglii zależały od handlu.",
+      "tts": {
+        "text": "Wirginia, Karoliny i kolonie Nowej Anglii zależały od handlu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ich porty były ruchliwe, ale ich floty były małe.",
+      "text_markdown": "Ich porty były ruchliwe, ale ich floty były małe.",
+      "tts": {
+        "text": "Ich porty były ruchliwe, ale ich floty były małe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jeden dobrze uzbrojony statek piracki mógł sparaliżować handel całej kolonii.",
+      "text_markdown": "Jeden dobrze uzbrojony statek piracki mógł sparaliżować handel całej kolonii.",
+      "tts": {
+        "text": "Jeden dobrze uzbrojony statek piracki mógł sparaliżować handel całej kolonii.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taki był świat, który wydał Edwarda Teacha.",
+      "text_markdown": "Taki był świat, który wydał Edwarda Teacha.",
+      "tts": {
+        "text": "Taki był świat, który wydał Edwarda Teacha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był to świat brutalnych możliwości, w którym odważny żeglarz mógł się wzbogacić lub zginąć, próbując.",
+      "text_markdown": "Był to świat brutalnych możliwości, w którym odważny żeglarz mógł się wzbogacić lub zginąć, próbując.",
+      "tts": {
+        "text": "Był to świat brutalnych możliwości, w którym odważny żeglarz mógł się wzbogacić lub zginąć, próbując.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Granica między legalnym kaperstwem a nielegalnym piractwem była cienka i ciągle się przesuwała.",
+      "text_markdown": "Granica między legalnym kaperstwem a nielegalnym piractwem była cienka i ciągle się przesuwała.",
+      "tts": {
+        "text": "Granica między legalnym kaperstwem a nielegalnym piractwem była cienka i ciągle się przesuwała.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat, który stworzył pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Czarnobrody miał wykorzystać tę szarą strefę lepiej niż prawie ktokolwiek inny.",
+      "text_markdown": "Czarnobrody miał wykorzystać tę szarą strefę lepiej niż prawie ktokolwiek inny.",
+      "tts": {
+        "text": "Czarnobrody miał wykorzystać tę szarą strefę lepiej niż prawie ktokolwiek inny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kształtowanie Edwarda Teacha",
+      "text_markdown": "Kształtowanie Edwarda Teacha"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O wczesnym życiu Czarnobrodego nie wiadomo prawie nic pewnego.",
+      "text_markdown": "O wczesnym życiu Czarnobrodego nie wiadomo prawie nic pewnego.",
+      "tts": {
+        "text": "O wczesnym życiu Czarnobrodego nie wiadomo prawie nic pewnego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To zjawisko typowe dla piratów, których życie przed piractwem rzadko trafiało do oficjalnych zapisów.",
+      "text_markdown": "To zjawisko typowe dla piratów, których życie przed piractwem rzadko trafiało do oficjalnych zapisów.",
+      "tts": {
+        "text": "To zjawisko typowe dla piratów, których życie przed piractwem rzadko trafiało do oficjalnych zapisów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historycy muszą odtwarzać jego pochodzenie z rozproszonych wskazówek i późniejszych relacji.",
+      "text_markdown": "Historycy muszą odtwarzać jego pochodzenie z rozproszonych wskazówek i późniejszych relacji.",
+      "tts": {
+        "text": "Historycy muszą odtwarzać jego pochodzenie z rozproszonych wskazówek i późniejszych relacji.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Najszerzej akceptowana teoria głosi, że Edward Teach urodził się w Bristolu w Anglii.",
+      "text_markdown": "Najszerzej akceptowana teoria głosi, że Edward Teach urodził się w Bristolu w Anglii.",
+      "tts": {
+        "text": "Najszerzej akceptowana teoria głosi, że Edward Teach urodził się w Bristolu w Anglii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol był jednym z największych miast portowych Imperium Brytyjskiego pod koniec siedemnastego wieku.",
+      "text_markdown": "Bristol był jednym z największych miast portowych Imperium Brytyjskiego pod koniec siedemnastego wieku.",
+      "tts": {
+        "text": "Bristol był jednym z największych miast portowych Imperium Brytyjskiego pod koniec siedemnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Statki odpływały z Bristolu do Afryki, na Karaiby i do kolonii amerykańskich.",
+      "text_markdown": "Statki odpływały z Bristolu do Afryki, na Karaiby i do kolonii amerykańskich.",
+      "tts": {
+        "text": "Statki odpływały z Bristolu do Afryki, na Karaiby i do kolonii amerykańskich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gospodarka miasta opierała się na handlu morskim, w tym na transatlantyckim handlu niewolnikami.",
+      "text_markdown": "Gospodarka miasta opierała się na handlu morskim, w tym na transatlantyckim handlu niewolnikami.",
+      "tts": {
+        "text": "Gospodarka miasta opierała się na handlu morskim, w tym na transatlantyckim handlu niewolnikami.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historycy szacują, że Teach urodził się około 1680 roku, choć nie znaleziono aktu urodzenia.",
+      "text_markdown": "Historycy szacują, że Teach urodził się około 1680 roku, choć nie znaleziono aktu urodzenia.",
+      "tts": {
+        "text": "Historycy szacują, że Teach urodził się około tysiąc sześćset osiemdziesiątego roku, choć nie znaleziono aktu urodzenia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego nazwisko pojawia się w różnych dokumentach jako Teach, Thatch, Thach i Tatch.",
+      "text_markdown": "Jego nazwisko pojawia się w różnych dokumentach jako Teach, Thatch, Thach i Tatch.",
+      "tts": {
+        "text": "Jego nazwisko pojawia się w różnych dokumentach jako Teach, Thatch, Thach i Tatch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pisownia nie była ustandaryzowana w tamtej epoce, a imiona często zapisywano fonetycznie.",
+      "text_markdown": "Pisownia nie była ustandaryzowana w tamtej epoce, a imiona często zapisywano fonetycznie.",
+      "tts": {
+        "text": "Pisownia nie była ustandaryzowana w tamtej epoce, a imiona często zapisywano fonetycznie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pewne dowody sugerują, że Teach pochodził z szanowanej rodziny.",
+      "text_markdown": "Pewne dowody sugerują, że Teach pochodził z szanowanej rodziny.",
+      "tts": {
+        "text": "Pewne dowody sugerują, że Teach pochodził z szanowanej rodziny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Umiał czytać i pisać, co było niezwykłe wśród zwykłych żeglarzy tamtego okresu.",
+      "text_markdown": "Umiał czytać i pisać, co było niezwykłe wśród zwykłych żeglarzy tamtego okresu.",
+      "tts": {
+        "text": "Umiał czytać i pisać, co było niezwykłe wśród zwykłych żeglarzy tamtego okresu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zachowany w archiwach historycznych list jego autorstwa pokazuje jasne i pewne pismo.",
+      "text_markdown": "Zachowany w archiwach historycznych list jego autorstwa pokazuje jasne i pewne pismo.",
+      "tts": {
+        "text": "Zachowany w archiwach historycznych list jego autorstwa pokazuje jasne i pewne pismo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Umiejętność czytania i pisania sugeruje przynajmniej pewne formalne wykształcenie, prawdopodobnie w jednej ze szkół dobroczynnych Bristolu.",
+      "text_markdown": "Umiejętność czytania i pisania sugeruje przynajmniej pewne formalne wykształcenie, prawdopodobnie w jednej ze szkół dobroczynnych Bristolu.",
+      "tts": {
+        "text": "Umiejętność czytania i pisania sugeruje przynajmniej pewne formalne wykształcenie, prawdopodobnie w jednej ze szkół dobroczynnych Bristolu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach niemal na pewno wypłynął na morze jako młody człowiek.",
+      "text_markdown": "Teach niemal na pewno wypłynął na morze jako młody człowiek.",
+      "tts": {
+        "text": "Teach niemal na pewno wypłynął na morze jako młody człowiek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W Bristolu morze było najbardziej oczywistą drogą do zatrudnienia.",
+      "text_markdown": "W Bristolu morze było najbardziej oczywistą drogą do zatrudnienia.",
+      "tts": {
+        "text": "W Bristolu morze było najbardziej oczywistą drogą do zatrudnienia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chłopcy w wieku zaledwie dwunastu lat służyli jako chłopcy okrętowi lub uczniowie żeglarzy na statkach handlowych.",
+      "text_markdown": "Chłopcy w wieku zaledwie dwunastu lat służyli jako chłopcy okrętowi lub uczniowie żeglarzy na statkach handlowych.",
+      "tts": {
+        "text": "Chłopcy w wieku zaledwie dwunastu lat służyli jako chłopcy okrętowi lub uczniowie żeglarzy na statkach handlowych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Praca była niebezpieczna, ale oferowała przygodę i szansę zobaczenia świata.",
+      "text_markdown": "Praca była niebezpieczna, ale oferowała przygodę i szansę zobaczenia świata.",
+      "tts": {
+        "text": "Praca była niebezpieczna, ale oferowała przygodę i szansę zobaczenia świata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy wybuchła Wojna Królowej Anny, Teach prawdopodobnie rozpoczął służbę jako korsarz.",
+      "text_markdown": "Gdy wybuchła Wojna Królowej Anny, Teach prawdopodobnie rozpoczął służbę jako korsarz.",
+      "tts": {
+        "text": "Gdy wybuchła Wojna Królowej Anny, Teach prawdopodobnie rozpoczął służbę jako korsarz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol był główną bazą dla operacji kaperskich przeciwko żegludze francuskiej i hiszpańskiej.",
+      "text_markdown": "Bristol był główną bazą dla operacji kaperskich przeciwko żegludze francuskiej i hiszpańskiej.",
+      "tts": {
+        "text": "Bristol był główną bazą dla operacji kaperskich przeciwko żegludze francuskiej i hiszpańskiej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Młody człowiek z doświadczeniem żeglarskim zostałby chętnie zwerbowany.",
+      "text_markdown": "Młody człowiek z doświadczeniem żeglarskim zostałby chętnie zwerbowany.",
+      "tts": {
+        "text": "Młody człowiek z doświadczeniem żeglarskim zostałby chętnie zwerbowany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaperstwo nauczyło Teacha umiejętności walki morskiej, które później przyniosły mu sławę.",
+      "text_markdown": "Kaperstwo nauczyło Teacha umiejętności walki morskiej, które później przyniosły mu sławę.",
+      "tts": {
+        "text": "Kaperstwo nauczyło Teacha umiejętności walki morskiej, które później przyniosły mu sławę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wojna dała Teachowi lata doświadczenia w walkach okręt przeciw okrętowi.",
+      "text_markdown": "Wojna dała Teachowi lata doświadczenia w walkach okręt przeciw okrętowi.",
+      "tts": {
+        "text": "Wojna dała Teachowi lata doświadczenia w walkach okręt przeciw okrętowi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nauczył się obsługiwać armaty, abordażować wrogie jednostki i dowodzić załogą pod ostrzałem.",
+      "text_markdown": "Nauczył się obsługiwać armaty, abordażować wrogie jednostki i dowodzić załogą pod ostrzałem.",
+      "tts": {
+        "text": "Nauczył się obsługiwać armaty, abordażować wrogie jednostki i dowodzić załogą pod ostrzałem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poznał też geografię Karaibów i wzorce żeglugi handlowej.",
+      "text_markdown": "Poznał też geografię Karaibów i wzorce żeglugi handlowej.",
+      "tts": {
+        "text": "Poznał też geografię Karaibów i wzorce żeglugi handlowej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ta wiedza była bezcenna dla przyszłego pirata.",
+      "text_markdown": "Ta wiedza była bezcenna dla przyszłego pirata.",
+      "tts": {
+        "text": "Ta wiedza była bezcenna dla przyszłego pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy wojna zakończyła się w 1713 roku, Teach znalazł się w takiej samej sytuacji jak tysiące innych żeglarzy.",
+      "text_markdown": "Gdy wojna zakończyła się w 1713 roku, Teach znalazł się w takiej samej sytuacji jak tysiące innych żeglarzy.",
+      "tts": {
+        "text": "Gdy wojna zakończyła się w tysiąc siedemset trzynastym roku, Teach znalazł się w takiej samej sytuacji jak tysiące innych żeglarzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miał umiejętności i doświadczenie, ale nie miał legalnego sposobu ich wykorzystania.",
+      "text_markdown": "Miał umiejętności i doświadczenie, ale nie miał legalnego sposobu ich wykorzystania.",
+      "tts": {
+        "text": "Miał umiejętności i doświadczenie, ale nie miał legalnego sposobu ich wykorzystania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Królewska Marynarka Wojenna w czasie pokoju kurczyła się, a statki handlowe nie zatrudniały.",
+      "text_markdown": "Królewska Marynarka Wojenna w czasie pokoju kurczyła się, a statki handlowe nie zatrudniały.",
+      "tts": {
+        "text": "Królewska Marynarka Wojenna w czasie pokoju kurczyła się, a statki handlowe nie zatrudniały.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Droga do piractwa była dla ludzi takich jak on niemal nieunikniona.",
+      "text_markdown": "Droga do piractwa była dla ludzi takich jak on niemal nieunikniona.",
+      "tts": {
+        "text": "Droga do piractwa była dla ludzi takich jak on niemal nieunikniona.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach udał się na wyspę New Providence na Bahamach.",
+      "text_markdown": "Teach udał się na wyspę New Providence na Bahamach.",
+      "tts": {
+        "text": "Teach udał się na wyspę New Providence na Bahamach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tam dołączył do załogi kapitana Benjamina Hornigolda, jednego z najskuteczniejszych piratów epoki.",
+      "text_markdown": "Tam dołączył do załogi kapitana Benjamina Hornigolda, jednego z najskuteczniejszych piratów epoki.",
+      "tts": {
+        "text": "Tam dołączył do załogi kapitana Benjamina Hornigolda, jednego z najskuteczniejszych piratów epoki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold był byłym korsarzem, który po wojnie zwrócił się ku piractwu.",
+      "text_markdown": "Hornigold był byłym korsarzem, który po wojnie zwrócił się ku piractwu.",
+      "tts": {
+        "text": "Hornigold był byłym korsarzem, który po wojnie zwrócił się ku piractwu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dowodził małą flotyllą statków operującą z portu w Nassau.",
+      "text_markdown": "Dowodził małą flotyllą statków operującą z portu w Nassau.",
+      "tts": {
+        "text": "Dowodził małą flotyllą statków operującą z portu w Nassau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold szybko dostrzegł zdolności Teacha.",
+      "text_markdown": "Hornigold szybko dostrzegł zdolności Teacha.",
+      "tts": {
+        "text": "Hornigold szybko dostrzegł zdolności Teacha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teach był fizycznie imponujący, znacznie przekraczający sześć stóp wzrostu w epoce, gdy większość mężczyzn była o wiele niższa.",
+      "text_markdown": "Teach był fizycznie imponujący, znacznie przekraczający sześć stóp wzrostu w epoce, gdy większość mężczyzn była o wiele niższa.",
+      "tts": {
+        "text": "Teach był fizycznie imponujący, znacznie przekraczający sześć stóp wzrostu w epoce, gdy większość mężczyzn była o wiele niższa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był odważny w walce i miał naturalny talent do dowodzenia ludźmi.",
+      "text_markdown": "Był odważny w walce i miał naturalny talent do dowodzenia ludźmi.",
+      "tts": {
+        "text": "Był odważny w walce i miał naturalny talent do dowodzenia ludźmi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hornigold dał Teachowi dowodzenie nad zdobytym slupem.",
+      "text_markdown": "Hornigold dał Teachowi dowodzenie nad zdobytym slupem.",
+      "tts": {
+        "text": "Hornigold dał Teachowi dowodzenie nad zdobytym slupem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pod koniec 1717 roku Teach i Hornigold schwytali duży francuski statek handlowy La Concorde.",
+      "text_markdown": "Pod koniec 1717 roku Teach i Hornigold schwytali duży francuski statek handlowy La Concorde.",
+      "tts": {
+        "text": "Pod koniec tysiąc siedemset siedemnastego roku Teach i Hornigold schwytali duży francuski statek handlowy La Concorde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Concorde był statkiem niewolniczym, ciężko uzbrojonym i wiozącym cenny ładunek.",
+      "text_markdown": "La Concorde był statkiem niewolniczym, ciężko uzbrojonym i wiozącym cenny ładunek.",
+      "tts": {
+        "text": "La Concorde był statkiem niewolniczym, ciężko uzbrojonym i wiozącym cenny ładunek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teach przejął statek i zaczął go przebudowywać.",
+      "text_markdown": "Teach przejął statek i zaczął go przebudowywać.",
+      "tts": {
+        "text": "Teach przejął statek i zaczął go przebudowywać.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zainstalował dodatkowe armaty, aż statek był najeżony siłą ognia.",
+      "text_markdown": "Zainstalował dodatkowe armaty, aż statek był najeżony siłą ognia.",
+      "tts": {
+        "text": "Zainstalował dodatkowe armaty, aż statek był najeżony siłą ognia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach zmienił nazwę swojego nowego flagowego okrętu na Zemsta Królowej Anny.",
+      "text_markdown": "Teach zmienił nazwę swojego nowego flagowego okrętu na Zemsta Królowej Anny.",
+      "tts": {
+        "text": "Teach zmienił nazwę swojego nowego flagowego okrętu na Zemsta Królowej Anny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ta nazwa była celową deklaracją polityczną.",
+      "text_markdown": "Ta nazwa była celową deklaracją polityczną.",
+      "tts": {
+        "text": "Ta nazwa była celową deklaracją polityczną.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nawiązywała do Królowej Anny, za której panowania korsarze służyli legalnie.",
+      "text_markdown": "Nawiązywała do Królowej Anny, za której panowania korsarze służyli legalnie.",
+      "tts": {
+        "text": "Nawiązywała do Królowej Anny, za której panowania korsarze służyli legalnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teach oświadczał, że jego piractwo jest zemstą za złamane obietnice Korony.",
+      "text_markdown": "Teach oświadczał, że jego piractwo jest zemstą za złamane obietnice Korony.",
+      "tts": {
+        "text": "Teach oświadczał, że jego piractwo jest zemstą za złamane obietnice Korony.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Z 40 armatami i załogą ponad 300 ludzi Zemsta Królowej Anny była jednym z najpotężniejszych statków pirackich na morzu.",
+      "text_markdown": "Z 40 armatami i załogą ponad 300 ludzi Zemsta Królowej Anny była jednym z najpotężniejszych statków pirackich na morzu.",
+      "tts": {
+        "text": "Z czterdziestoma armatami i załogą ponad trzystu ludzi Zemsta Królowej Anny była jednym z najpotężniejszych statków pirackich na morzu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czarnobrody nie był już młodszym piratem działającym pod czyimś dowództwem.",
+      "text_markdown": "Czarnobrody nie był już młodszym piratem działającym pod czyimś dowództwem.",
+      "tts": {
+        "text": "Czarnobrody nie był już młodszym piratem działającym pod czyimś dowództwem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był teraz siłą, z którą trzeba się było liczyć.",
+      "text_markdown": "Był teraz siłą, z którą trzeba się było liczyć.",
+      "tts": {
+        "text": "Był teraz siłą, z którą trzeba się było liczyć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kształtowanie Edwarda Teacha",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Legenda Czarnobrodego miała właśnie się zacząć.",
+      "text_markdown": "Legenda Czarnobrodego miała właśnie się zacząć.",
+      "tts": {
+        "text": "Legenda Czarnobrodego miała właśnie się zacząć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Postrach Atlantyku",
+      "text_markdown": "Postrach Atlantyku"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na początku 1718 roku Czarnobrody popłynął Zemstą Królowej Anny na północ z Karaibów.",
+      "text_markdown": "Na początku 1718 roku Czarnobrody popłynął Zemstą Królowej Anny na północ z Karaibów.",
+      "tts": {
+        "text": "Na początku tysiąc siedemset osiemnastego roku Czarnobrody popłynął Zemstą Królowej Anny na północ z Karaibów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kierował się ku szlakom żeglugowym wzdłuż kolonialnego wybrzeża Ameryki.",
+      "text_markdown": "Kierował się ku szlakom żeglugowym wzdłuż kolonialnego wybrzeża Ameryki.",
+      "tts": {
+        "text": "Kierował się ku szlakom żeglugowym wzdłuż kolonialnego wybrzeża Ameryki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te wody były bogate w ruch handlowy i słabo bronione.",
+      "text_markdown": "Te wody były bogate w ruch handlowy i słabo bronione.",
+      "tts": {
+        "text": "Te wody były bogate w ruch handlowy i słabo bronione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Czarnobrody zamierzał w pełni wykorzystać tę słabość.",
+      "text_markdown": "Czarnobrody zamierzał w pełni wykorzystać tę słabość.",
+      "tts": {
+        "text": "Czarnobrody zamierzał w pełni wykorzystać tę słabość.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Strategia Czarnobrodego opierała się na terrorze nie mniej niż na sile ogniowej.",
+      "text_markdown": "Strategia Czarnobrodego opierała się na terrorze nie mniej niż na sile ogniowej.",
+      "tts": {
+        "text": "Strategia Czarnobrodego opierała się na terrorze nie mniej niż na sile ogniowej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rozumiał, że przerażony wróg podda się bez walki.",
+      "text_markdown": "Rozumiał, że przerażony wróg podda się bez walki.",
+      "tts": {
+        "text": "Rozumiał, że przerażony wróg podda się bez walki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bitwa uniknięta to bitwa wygrana, bo chroniła załogę i statki.",
+      "text_markdown": "Bitwa uniknięta to bitwa wygrana, bo chroniła załogę i statki.",
+      "tts": {
+        "text": "Bitwa uniknięta to bitwa wygrana, bo chroniła załogę i statki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Każdy element jego wyglądu był zaprojektowany tak, by maksymalizować strach.",
+      "text_markdown": "Każdy element jego wyglądu był zaprojektowany tak, by maksymalizować strach.",
+      "tts": {
+        "text": "Każdy element jego wyglądu był zaprojektowany tak, by maksymalizować strach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zapuścił gęstą czarną brodę do ogromnej długości, zakrywając większość twarzy i klatki piersiowej.",
+      "text_markdown": "Zapuścił gęstą czarną brodę do ogromnej długości, zakrywając większość twarzy i klatki piersiowej.",
+      "tts": {
+        "text": "Zapuścił gęstą czarną brodę do ogromnej długości, zakrywając większość twarzy i klatki piersiowej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przed bitwą wplatał w brodę wolno palące się konopne lonty zwane lontami wolnopalącymi.",
+      "text_markdown": "Przed bitwą wplatał w brodę wolno palące się konopne lonty zwane lontami wolnopalącymi.",
+      "tts": {
+        "text": "Przed bitwą wplatał w brodę wolno palące się konopne lonty zwane lontami wolnopalącymi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Po zapaleniu lonty te wytwarzały obłoki dymu wokół jego głowy.",
+      "text_markdown": "Po zapaleniu lonty te wytwarzały obłoki dymu wokół jego głowy.",
+      "tts": {
+        "text": "Po zapaleniu lonty te wytwarzały obłoki dymu wokół jego głowy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Efekt był nieziemski, jak potwór wyłaniający się z siarczystego ognia.",
+      "text_markdown": "Efekt był nieziemski, jak potwór wyłaniający się z siarczystego ognia.",
+      "tts": {
+        "text": "Efekt był nieziemski, jak potwór wyłaniający się z siarczystego ognia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na piersi nosił kilka pistoletów przypiętych do skórzanej bandolery.",
+      "text_markdown": "Na piersi nosił kilka pistoletów przypiętych do skórzanej bandolery.",
+      "tts": {
+        "text": "Na piersi nosił kilka pistoletów przypiętych do skórzanej bandolery.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Na pasie miał też kilka szabel abordażowych i sztyletów.",
+      "text_markdown": "Na pasie miał też kilka szabel abordażowych i sztyletów.",
+      "tts": {
+        "text": "Na pasie miał też kilka szabel abordażowych i sztyletów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego strój był celowo teatralny, zaprojektowany tak, by wyglądać jak najgroźniej.",
+      "text_markdown": "Jego strój był celowo teatralny, zaprojektowany tak, by wyglądać jak najgroźniej.",
+      "tts": {
+        "text": "Jego strój był celowo teatralny, zaprojektowany tak, by wyglądać jak najgroźniej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Świadkowie opisywali go jako uosobienie samego diabła.",
+      "text_markdown": "Świadkowie opisywali go jako uosobienie samego diabła.",
+      "tts": {
+        "text": "Świadkowie opisywali go jako uosobienie samego diabła.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody zebrał wokół siebie małą flotyllę pirackich statków.",
+      "text_markdown": "Czarnobrody zebrał wokół siebie małą flotyllę pirackich statków.",
+      "tts": {
+        "text": "Czarnobrody zebrał wokół siebie małą flotyllę pirackich statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "U szczytu potęgi dowodził 4 statkami i kilkuset piratami.",
+      "text_markdown": "U szczytu potęgi dowodził 4 statkami i kilkuset piratami.",
+      "tts": {
+        "text": "U szczytu potęgi dowodził czterema statkami i kilkuset piratami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To była niezwykła koncentracja pirackiej siły.",
+      "text_markdown": "To była niezwykła koncentracja pirackiej siły.",
+      "tts": {
+        "text": "To była niezwykła koncentracja pirackiej siły.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Większość piratów działała samotnie lub w parach, ale Czarnobrody myślał na większą skalę.",
+      "text_markdown": "Większość piratów działała samotnie lub w parach, ale Czarnobrody myślał na większą skalę.",
+      "tts": {
+        "text": "Większość piratów działała samotnie lub w parach, ale Czarnobrody myślał na większą skalę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego flotylla zdobywała statek za statkiem wzdłuż wybrzeża.",
+      "text_markdown": "Jego flotylla zdobywała statek za statkiem wzdłuż wybrzeża.",
+      "tts": {
+        "text": "Jego flotylla zdobywała statek za statkiem wzdłuż wybrzeża.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitanowie handlowi, widząc jego czarną flagę, często poddawali się natychmiast.",
+      "text_markdown": "Kapitanowie handlowi, widząc jego czarną flagę, często poddawali się natychmiast.",
+      "tts": {
+        "text": "Kapitanowie handlowi, widząc jego czarną flagę, często poddawali się natychmiast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ci, którzy stawiali opór, byli przytłaczani przewagą liczebną i ogniową.",
+      "text_markdown": "Ci, którzy stawiali opór, byli przytłaczani przewagą liczebną i ogniową.",
+      "tts": {
+        "text": "Ci, którzy stawiali opór, byli przytłaczani przewagą liczebną i ogniową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sława Czarnobrodego dotarła do każdego portu od Karaibów po Nową Anglię.",
+      "text_markdown": "Sława Czarnobrodego dotarła do każdego portu od Karaibów po Nową Anglię.",
+      "tts": {
+        "text": "Sława Czarnobrodego dotarła do każdego portu od Karaibów po Nową Anglię.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W typowym ataku Czarnobrody podnosił fałszywą banderę, by zbliżyć się do celu.",
+      "text_markdown": "W typowym ataku Czarnobrody podnosił fałszywą banderę, by zbliżyć się do celu.",
+      "tts": {
+        "text": "W typowym ataku Czarnobrody podnosił fałszywą banderę, by zbliżyć się do celu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piraci często podnosili flagę zaprzyjaźnionego narodu, by się zbliżyć, zanim ujawnią swoją tożsamość.",
+      "text_markdown": "Piraci często podnosili flagę zaprzyjaźnionego narodu, by się zbliżyć, zanim ujawnią swoją tożsamość.",
+      "tts": {
+        "text": "Piraci często podnosili flagę zaprzyjaźnionego narodu, by się zbliżyć, zanim ujawnią swoją tożsamość.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "W ostatniej chwili podnosili swoją prawdziwą piracką flagę.",
+      "text_markdown": "W ostatniej chwili podnosili swoją prawdziwą piracką flagę.",
+      "tts": {
+        "text": "W ostatniej chwili podnosili swoją prawdziwą piracką flagę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Do tego momentu ofiara zwykle nie miała już szansy na ucieczkę.",
+      "text_markdown": "Do tego momentu ofiara zwykle nie miała już szansy na ucieczkę.",
+      "tts": {
+        "text": "Do tego momentu ofiara zwykle nie miała już szansy na ucieczkę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Flaga Czarnobrodego była charakterystyczna i przerażająca.",
+      "text_markdown": "Flaga Czarnobrodego była charakterystyczna i przerażająca.",
+      "tts": {
+        "text": "Flaga Czarnobrodego była charakterystyczna i przerażająca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przedstawiała szkielet trzymający w jednej ręce klepsydrę, a w drugiej włócznię.",
+      "text_markdown": "Przedstawiała szkielet trzymający w jednej ręce klepsydrę, a w drugiej włócznię.",
+      "tts": {
+        "text": "Przedstawiała szkielet trzymający w jednej ręce klepsydrę, a w drugiej włócznię.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Włócznia była skierowana na krwawiące serce.",
+      "text_markdown": "Włócznia była skierowana na krwawiące serce.",
+      "tts": {
+        "text": "Włócznia była skierowana na krwawiące serce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Przekaz był jasny: wasz czas się kończy, a śmierć nadchodzi.",
+      "text_markdown": "Przekaz był jasny: wasz czas się kończy, a śmierć nadchodzi.",
+      "tts": {
+        "text": "Przekaz był jasny: wasz czas się kończy, a śmierć nadchodzi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W maju 1718 roku Czarnobrody przeprowadził swój najśmielszy plan.",
+      "text_markdown": "W maju 1718 roku Czarnobrody przeprowadził swój najśmielszy plan.",
+      "tts": {
+        "text": "W maju tysiąc siedemset osiemnastego roku Czarnobrody przeprowadził swój najśmielszy plan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wpłynął swoją flotyllą wprost do portu w Charleston w Karolinie Południowej.",
+      "text_markdown": "Wpłynął swoją flotyllą wprost do portu w Charleston w Karolinie Południowej.",
+      "tts": {
+        "text": "Wpłynął swoją flotyllą wprost do portu w Charleston w Karolinie Południowej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Charleston był jednym z najbogatszych i najważniejszych portów w koloniach amerykańskich.",
+      "text_markdown": "Charleston był jednym z najbogatszych i najważniejszych portów w koloniach amerykańskich.",
+      "tts": {
+        "text": "Charleston był jednym z najbogatszych i najważniejszych portów w koloniach amerykańskich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "To, co nastąpiło, było jednym z najbardziej zuchwałych aktów piractwa w historii.",
+      "text_markdown": "To, co nastąpiło, było jednym z najbardziej zuchwałych aktów piractwa w historii.",
+      "tts": {
+        "text": "To, co nastąpiło, było jednym z najbardziej zuchwałych aktów piractwa w historii.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody zablokował cały port w Charleston.",
+      "text_markdown": "Czarnobrody zablokował cały port w Charleston.",
+      "tts": {
+        "text": "Czarnobrody zablokował cały port w Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Żaden statek nie mógł wpłynąć ani wypłynąć bez jego zgody.",
+      "text_markdown": "Żaden statek nie mógł wpłynąć ani wypłynąć bez jego zgody.",
+      "tts": {
+        "text": "Żaden statek nie mógł wpłynąć ani wypłynąć bez jego zgody.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przez niemal tydzień trzymał miasto jako zakładnika.",
+      "text_markdown": "Przez niemal tydzień trzymał miasto jako zakładnika.",
+      "tts": {
+        "text": "Przez niemal tydzień trzymał miasto jako zakładnika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Schwytał każdy statek, który próbował przedostać się przez wejście do portu.",
+      "text_markdown": "Schwytał każdy statek, który próbował przedostać się przez wejście do portu.",
+      "tts": {
+        "text": "Schwytał każdy statek, który próbował przedostać się przez wejście do portu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Podczas blokady przejął co najmniej 8 statków.",
+      "text_markdown": "Podczas blokady przejął co najmniej 8 statków.",
+      "tts": {
+        "text": "Podczas blokady przejął co najmniej osiem statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wśród jego jeńców byli jedni z najbardziej prominentnych obywateli Charleston.",
+      "text_markdown": "Wśród jego jeńców byli jedni z najbardziej prominentnych obywateli Charleston.",
+      "tts": {
+        "text": "Wśród jego jeńców byli jedni z najbardziej prominentnych obywateli Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wziął zakładników i groził, że zabije ich wszystkich.",
+      "text_markdown": "Wziął zakładników i groził, że zabije ich wszystkich.",
+      "tts": {
+        "text": "Wziął zakładników i groził, że zabije ich wszystkich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Żądanie Czarnobrodego było zaskakujące.",
+      "text_markdown": "Żądanie Czarnobrodego było zaskakujące.",
+      "tts": {
+        "text": "Żądanie Czarnobrodego było zaskakujące.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nie zażądał złota ani klejnotów.",
+      "text_markdown": "Nie zażądał złota ani klejnotów.",
+      "tts": {
+        "text": "Nie zażądał złota ani klejnotów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zamiast tego zażądał skrzyni lekarstw.",
+      "text_markdown": "Zamiast tego zażądał skrzyni lekarstw.",
+      "tts": {
+        "text": "Zamiast tego zażądał skrzyni lekarstw.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Historycy sądzą, że jego załoga cierpiała na syfilis i inne choroby powszechne wśród żeglarzy.",
+      "text_markdown": "Historycy sądzą, że jego załoga cierpiała na syfilis i inne choroby powszechne wśród żeglarzy.",
+      "tts": {
+        "text": "Historycy sądzą, że jego załoga cierpiała na syfilis i inne choroby powszechne wśród żeglarzy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gubernator Karoliny Południowej nie dysponował marynarką zdolną zmierzyć się z flotyllą Czarnobrodego.",
+      "text_markdown": "Gubernator Karoliny Południowej nie dysponował marynarką zdolną zmierzyć się z flotyllą Czarnobrodego.",
+      "tts": {
+        "text": "Gubernator Karoliny Południowej nie dysponował marynarką zdolną zmierzyć się z flotyllą Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Po napiętych negocjacjach miasto wysłało leki piratom.",
+      "text_markdown": "Po napiętych negocjacjach miasto wysłało leki piratom.",
+      "tts": {
+        "text": "Po napiętych negocjacjach miasto wysłało leki piratom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Czarnobrody uwolnił zakładników, choć wcześniej ogołocił ich z kosztowności.",
+      "text_markdown": "Czarnobrody uwolnił zakładników, choć wcześniej ogołocił ich z kosztowności.",
+      "tts": {
+        "text": "Czarnobrody uwolnił zakładników, choć wcześniej ogołocił ich z kosztowności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Odpłynął z Charleston, a jego reputacja osiągnęła absolutny szczyt.",
+      "text_markdown": "Odpłynął z Charleston, a jego reputacja osiągnęła absolutny szczyt.",
+      "tts": {
+        "text": "Odpłynął z Charleston, a jego reputacja osiągnęła absolutny szczyt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po Charleston Czarnobrody popłynął na północ do zatoki Beaufort w Karolinie Północnej.",
+      "text_markdown": "Po Charleston Czarnobrody popłynął na północ do zatoki Beaufort w Karolinie Północnej.",
+      "tts": {
+        "text": "Po Charleston Czarnobrody popłynął na północ do zatoki Beaufort w Karolinie Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tutaj Zemsta Królowej Anny osiadła na mieliźnie i została stracona.",
+      "text_markdown": "Tutaj Zemsta Królowej Anny osiadła na mieliźnie i została stracona.",
+      "tts": {
+        "text": "Tutaj Zemsta Królowej Anny osiadła na mieliźnie i została stracona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niektórzy historycy uważają, że był to celowy akt Czarnobrodego, mający zmniejszyć flotyllę i załogę.",
+      "text_markdown": "Niektórzy historycy uważają, że był to celowy akt Czarnobrodego, mający zmniejszyć flotyllę i załogę.",
+      "tts": {
+        "text": "Niektórzy historycy uważają, że był to celowy akt Czarnobrodego, mający zmniejszyć flotyllę i załogę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Postrach Atlantyku",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Setki piratów zostało porzuconych, podczas gdy Czarnobrody zatrzymał dla siebie najlepszy skarb.",
+      "text_markdown": "Setki piratów zostało porzuconych, podczas gdy Czarnobrody zatrzymał dla siebie najlepszy skarb.",
+      "tts": {
+        "text": "Setki piratów zostało porzuconych, podczas gdy Czarnobrody zatrzymał dla siebie najlepszy skarb.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "U szczytu potęgi",
+      "text_markdown": "U szczytu potęgi"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po utracie Zemsty Królowej Anny Czarnobrody popłynął do miasteczka Bath w Karolinie Północnej.",
+      "text_markdown": "Po utracie Zemsty Królowej Anny Czarnobrody popłynął do miasteczka Bath w Karolinie Północnej.",
+      "tts": {
+        "text": "Po utracie Zemsty Królowej Anny Czarnobrody popłynął do miasteczka Bath w Karolinie Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tam spotkał się z gubernatorem Charlesem Edenem i przyjął królewski akt łaski.",
+      "text_markdown": "Tam spotkał się z gubernatorem Charlesem Edenem i przyjął królewski akt łaski.",
+      "tts": {
+        "text": "Tam spotkał się z gubernatorem Charlesem Edenem i przyjął królewski akt łaski.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Akt łaski miał zakończyć jego piracką karierę.",
+      "text_markdown": "Akt łaski miał zakończyć jego piracką karierę.",
+      "tts": {
+        "text": "Akt łaski miał zakończyć jego piracką karierę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ale Czarnobrody nie zamierzał przechodzić na emeryturę.",
+      "text_markdown": "Ale Czarnobrody nie zamierzał przechodzić na emeryturę.",
+      "tts": {
+        "text": "Ale Czarnobrody nie zamierzał przechodzić na emeryturę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath było maleńką osadą składającą się z kilkudziesięciu domów nad rzeką Pamlico.",
+      "text_markdown": "Bath było maleńką osadą składającą się z kilkudziesięciu domów nad rzeką Pamlico.",
+      "tts": {
+        "text": "Bath było maleńką osadą składającą się z kilkudziesięciu domów nad rzeką Pamlico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To było mało prawdopodobne miejsce zamieszkania dla najbardziej przerażającego pirata Atlantyku.",
+      "text_markdown": "To było mało prawdopodobne miejsce zamieszkania dla najbardziej przerażającego pirata Atlantyku.",
+      "tts": {
+        "text": "To było mało prawdopodobne miejsce zamieszkania dla najbardziej przerażającego pirata Atlantyku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale jego odizolowanie i skorumpowany gubernator czyniły je idealnym dla celów Czarnobrodego.",
+      "text_markdown": "Ale jego odizolowanie i skorumpowany gubernator czyniły je idealnym dla celów Czarnobrodego.",
+      "tts": {
+        "text": "Ale jego odizolowanie i skorumpowany gubernator czyniły je idealnym dla celów Czarnobrodego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gubernator Charles Eden wydaje się być dobrowolnym wspólnikiem Czarnobrodego.",
+      "text_markdown": "Gubernator Charles Eden wydaje się być dobrowolnym wspólnikiem Czarnobrodego.",
+      "tts": {
+        "text": "Gubernator Charles Eden wydaje się być dobrowolnym wspólnikiem Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zapewniał prawną osłonę dla ciągłej działalności pirata.",
+      "text_markdown": "Zapewniał prawną osłonę dla ciągłej działalności pirata.",
+      "tts": {
+        "text": "Zapewniał prawną osłonę dla ciągłej działalności pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Czarnobrody zdobywał statki na morzu, a następnie przywoził ładunek do Bath.",
+      "text_markdown": "Czarnobrody zdobywał statki na morzu, a następnie przywoził ładunek do Bath.",
+      "tts": {
+        "text": "Czarnobrody zdobywał statki na morzu, a następnie przywoził ładunek do Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eden ogłaszał towary legalnym ocalonym ładunkiem i brał udział w zyskach.",
+      "text_markdown": "Eden ogłaszał towary legalnym ocalonym ładunkiem i brał udział w zyskach.",
+      "tts": {
+        "text": "Eden ogłaszał towary legalnym ocalonym ładunkiem i brał udział w zyskach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Podczas pobytu w Bath Czarnobrody poślubił miejscową kobietę.",
+      "text_markdown": "Podczas pobytu w Bath Czarnobrody poślubił miejscową kobietę.",
+      "tts": {
+        "text": "Podczas pobytu w Bath Czarnobrody poślubił miejscową kobietę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uważa się, że miała około 16 lat.",
+      "text_markdown": "Uważa się, że miała około 16 lat.",
+      "tts": {
+        "text": "Uważa się, że miała około szesnastu lat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Źródła historyczne sugerują, że mogła być jego czternastą żoną.",
+      "text_markdown": "Źródła historyczne sugerują, że mogła być jego czternastą żoną.",
+      "tts": {
+        "text": "Źródła historyczne sugerują, że mogła być jego czternastą żoną.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Większość tych małżeństw stanowiły nieformalne porozumienia, powszechne wśród ludzi morza.",
+      "text_markdown": "Większość tych małżeństw stanowiły nieformalne porozumienia, powszechne wśród ludzi morza.",
+      "tts": {
+        "text": "Większość tych małżeństw stanowiły nieformalne porozumienia, powszechne wśród ludzi morza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimo aktu łaski Czarnobrody nadal napadał na żeglugę.",
+      "text_markdown": "Mimo aktu łaski Czarnobrody nadal napadał na żeglugę.",
+      "tts": {
+        "text": "Mimo aktu łaski Czarnobrody nadal napadał na żeglugę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Twierdził, że zdobyte statki to jednostki hiszpańskie lub francuskie, co czyniło je legalnym łupem.",
+      "text_markdown": "Twierdził, że zdobyte statki to jednostki hiszpańskie lub francuskie, co czyniło je legalnym łupem.",
+      "tts": {
+        "text": "Twierdził, że zdobyte statki to jednostki hiszpańskie lub francuskie, co czyniło je legalnym łupem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gubernator Eden wygodnie potwierdzał te twierdzenia bez dochodzenia.",
+      "text_markdown": "Gubernator Eden wygodnie potwierdzał te twierdzenia bez dochodzenia.",
+      "tts": {
+        "text": "Gubernator Eden wygodnie potwierdzał te twierdzenia bez dochodzenia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Relacja Czarnobrodego z lokalną społecznością była złożona.",
+      "text_markdown": "Relacja Czarnobrodego z lokalną społecznością była złożona.",
+      "tts": {
+        "text": "Relacja Czarnobrodego z lokalną społecznością była złożona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Część mieszkańców cieszyła się z bogactwa, które wnosił do ich borykającego się z problemami miasteczka.",
+      "text_markdown": "Część mieszkańców cieszyła się z bogactwa, które wnosił do ich borykającego się z problemami miasteczka.",
+      "tts": {
+        "text": "Część mieszkańców cieszyła się z bogactwa, które wnosił do ich borykającego się z problemami miasteczka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inni żyli w strachu przed gwałtownym piratem i jego uzbrojoną załogą.",
+      "text_markdown": "Inni żyli w strachu przed gwałtownym piratem i jego uzbrojoną załogą.",
+      "tts": {
+        "text": "Inni żyli w strachu przed gwałtownym piratem i jego uzbrojoną załogą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nikt nie ośmielił się mu otwarcie przeciwstawić.",
+      "text_markdown": "Nikt nie ośmielił się mu otwarcie przeciwstawić.",
+      "tts": {
+        "text": "Nikt nie ośmielił się mu otwarcie przeciwstawić.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Urządzał wystawne spotkania w swoim domu w Bath.",
+      "text_markdown": "Urządzał wystawne spotkania w swoim domu w Bath.",
+      "tts": {
+        "text": "Urządzał wystawne spotkania w swoim domu w Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wybitni miejscowi notable, w tym sam gubernator, uczestniczyli w tych wydarzeniach.",
+      "text_markdown": "Wybitni miejscowi notable, w tym sam gubernator, uczestniczyli w tych wydarzeniach.",
+      "tts": {
+        "text": "Wybitni miejscowi notable, w tym sam gubernator, uczestniczyli w tych wydarzeniach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kradzione wino i trunki lały się strumieniami.",
+      "text_markdown": "Kradzione wino i trunki lały się strumieniami.",
+      "tts": {
+        "text": "Kradzione wino i trunki lały się strumieniami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Te przyjęcia pomagały Czarnobrodemu utrzymywać sieć sojuszników i informatorów.",
+      "text_markdown": "Te przyjęcia pomagały Czarnobrodemu utrzymywać sieć sojuszników i informatorów.",
+      "tts": {
+        "text": "Te przyjęcia pomagały Czarnobrodemu utrzymywać sieć sojuszników i informatorów.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody utrzymywał też kryjówkę na wyspie Ocracoke.",
+      "text_markdown": "Czarnobrody utrzymywał też kryjówkę na wyspie Ocracoke.",
+      "tts": {
+        "text": "Czarnobrody utrzymywał też kryjówkę na wyspie Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke była odległą wyspą barierową na Outer Banks w Karolinie Północnej.",
+      "text_markdown": "Ocracoke była odległą wyspą barierową na Outer Banks w Karolinie Północnej.",
+      "tts": {
+        "text": "Ocracoke była odległą wyspą barierową na Outer Banks w Karolinie Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jej płytkie wody i zdradliwe mielizny sprawiały, że podpłynięcie dużych okrętów wojennych było niemal niemożliwe.",
+      "text_markdown": "Jej płytkie wody i zdradliwe mielizny sprawiały, że podpłynięcie dużych okrętów wojennych było niemal niemożliwe.",
+      "tts": {
+        "text": "Jej płytkie wody i zdradliwe mielizny sprawiały, że podpłynięcie dużych okrętów wojennych było niemal niemożliwe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dla pirata, który znał kanały, była to nie do zdobycia twierdza.",
+      "text_markdown": "Dla pirata, który znał kanały, była to nie do zdobycia twierdza.",
+      "tts": {
+        "text": "Dla pirata, który znał kanały, była to nie do zdobycia twierdza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inni piraci przybywali na Ocracoke, by handlować, uzupełniać zapasy i spotykać się.",
+      "text_markdown": "Inni piraci przybywali na Ocracoke, by handlować, uzupełniać zapasy i spotykać się.",
+      "tts": {
+        "text": "Inni piraci przybywali na Ocracoke, by handlować, uzupełniać zapasy i spotykać się.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles Vane, inny niesławny kapitan piracki, odwiedził tam Czarnobrodego.",
+      "text_markdown": "Charles Vane, inny niesławny kapitan piracki, odwiedził tam Czarnobrodego.",
+      "tts": {
+        "text": "Charles Vane, inny niesławny kapitan piracki, odwiedził tam Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Obie załogi urządziły kilkudniową ucztę na plaży.",
+      "text_markdown": "Obie załogi urządziły kilkudniową ucztę na plaży.",
+      "tts": {
+        "text": "Obie załogi urządziły kilkudniową ucztę na plaży.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Doniesienia o tym pirackim zgromadzeniu zaniepokoiły urzędników kolonialnych wzdłuż całego wybrzeża.",
+      "text_markdown": "Doniesienia o tym pirackim zgromadzeniu zaniepokoiły urzędników kolonialnych wzdłuż całego wybrzeża.",
+      "tts": {
+        "text": "Doniesienia o tym pirackim zgromadzeniu zaniepokoiły urzędników kolonialnych wzdłuż całego wybrzeża.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piraci żyli według kodeksu postępowania, którego Czarnobrody surowo przestrzegał.",
+      "text_markdown": "Piraci żyli według kodeksu postępowania, którego Czarnobrody surowo przestrzegał.",
+      "tts": {
+        "text": "Piraci żyli według kodeksu postępowania, którego Czarnobrody surowo przestrzegał.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Każdy mężczyzna miał prawo głosu w ważnych sprawach.",
+      "text_markdown": "Każdy mężczyzna miał prawo głosu w ważnych sprawach.",
+      "tts": {
+        "text": "Każdy mężczyzna miał prawo głosu w ważnych sprawach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Łupy dzielono według ustalonych udziałów.",
+      "text_markdown": "Łupy dzielono według ustalonych udziałów.",
+      "tts": {
+        "text": "Łupy dzielono według ustalonych udziałów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Każdego przyłapanego na kradzieży ze wspólnego skarbca surowo karano.",
+      "text_markdown": "Każdego przyłapanego na kradzieży ze wspólnego skarbca surowo karano.",
+      "tts": {
+        "text": "Każdego przyłapanego na kradzieży ze wspólnego skarbca surowo karano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kupcy i właściciele plantacji wzdłuż wybrzeża byli zdesperowani.",
+      "text_markdown": "Kupcy i właściciele plantacji wzdłuż wybrzeża byli zdesperowani.",
+      "tts": {
+        "text": "Kupcy i właściciele plantacji wzdłuż wybrzeża byli zdesperowani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ich handel był duszony nieustannymi napadami Czarnobrodego.",
+      "text_markdown": "Ich handel był duszony nieustannymi napadami Czarnobrodego.",
+      "tts": {
+        "text": "Ich handel był duszony nieustannymi napadami Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stawki ubezpieczeniowe dla statków pływających po wodach Karoliny gwałtownie wzrosły.",
+      "text_markdown": "Stawki ubezpieczeniowe dla statków pływających po wodach Karoliny gwałtownie wzrosły.",
+      "tts": {
+        "text": "Stawki ubezpieczeniowe dla statków pływających po wodach Karoliny gwałtownie wzrosły.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niektórzy kupcy całkowicie przestali wysyłać statki, woląc stracić interesy niż stracić wszystko.",
+      "text_markdown": "Niektórzy kupcy całkowicie przestali wysyłać statki, woląc stracić interesy niż stracić wszystko.",
+      "tts": {
+        "text": "Niektórzy kupcy całkowicie przestali wysyłać statki, woląc stracić interesy niż stracić wszystko.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gubernator Wirginii, Alexander Spotswood, był szczególnie oburzony.",
+      "text_markdown": "Gubernator Wirginii, Alexander Spotswood, był szczególnie oburzony.",
+      "tts": {
+        "text": "Gubernator Wirginii, Alexander Spotswood, był szczególnie oburzony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gospodarka Wirginii zależała od eksportu tytoniu transportowanego przez Zatokę Chesapeake.",
+      "text_markdown": "Gospodarka Wirginii zależała od eksportu tytoniu transportowanego przez Zatokę Chesapeake.",
+      "tts": {
+        "text": "Gospodarka Wirginii zależała od eksportu tytoniu transportowanego przez Zatokę Chesapeake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bliskość Czarnobrodego zagrażała najważniejszemu przemysłowi Wirginii.",
+      "text_markdown": "Bliskość Czarnobrodego zagrażała najważniejszemu przemysłowi Wirginii.",
+      "tts": {
+        "text": "Bliskość Czarnobrodego zagrażała najważniejszemu przemysłowi Wirginii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spotswood postanowił, że jeśli Karolina Północna nie zajmie się piratem, zrobi to Wirginia.",
+      "text_markdown": "Spotswood postanowił, że jeśli Karolina Północna nie zajmie się piratem, zrobi to Wirginia.",
+      "tts": {
+        "text": "Spotswood postanowił, że jeśli Karolina Północna nie zajmie się piratem, zrobi to Wirginia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood zaczął potajemnie planować operację wojskową mającą schwytać lub zabić Czarnobrodego.",
+      "text_markdown": "Spotswood zaczął potajemnie planować operację wojskową mającą schwytać lub zabić Czarnobrodego.",
+      "tts": {
+        "text": "Spotswood zaczął potajemnie planować operację wojskową mającą schwytać lub zabić Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wysłanie sił Wirginii do Karoliny Północnej bez pozwolenia było prawnie wątpliwe.",
+      "text_markdown": "Wysłanie sił Wirginii do Karoliny Północnej bez pozwolenia było prawnie wątpliwe.",
+      "tts": {
+        "text": "Wysłanie sił Wirginii do Karoliny Północnej bez pozwolenia było prawnie wątpliwe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "U szczytu potęgi",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale Spotswood zdecydował się działać, wierząc, że zagrożenie usprawiedliwia nadzwyczajne środki.",
+      "text_markdown": "Ale Spotswood zdecydował się działać, wierząc, że zagrożenie usprawiedliwia nadzwyczajne środki.",
+      "tts": {
+        "text": "Ale Spotswood zdecydował się działać, wierząc, że zagrożenie usprawiedliwia nadzwyczajne środki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bitwa pod Ocracoke",
+      "text_markdown": "Bitwa pod Ocracoke"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W listopadzie 1718 roku gubernator Spotswood wprowadził swój plan w życie.",
+      "text_markdown": "W listopadzie 1718 roku gubernator Spotswood wprowadził swój plan w życie.",
+      "tts": {
+        "text": "W listopadzie tysiąc siedemset osiemnastego roku gubernator Spotswood wprowadził swój plan w życie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wynajął dwa małe slupy od cywilnych właścicieli i oddał je pod dowództwo marynarki wojennej.",
+      "text_markdown": "Wynajął dwa małe slupy od cywilnych właścicieli i oddał je pod dowództwo marynarki wojennej.",
+      "tts": {
+        "text": "Wynajął dwa małe slupy od cywilnych właścicieli i oddał je pod dowództwo marynarki wojennej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ekspedycją dowodził porucznik Robert Maynard z Królewskiej Marynarki Wojennej.",
+      "text_markdown": "Ekspedycją dowodził porucznik Robert Maynard z Królewskiej Marynarki Wojennej.",
+      "tts": {
+        "text": "Ekspedycją dowodził porucznik Robert Maynard z Królewskiej Marynarki Wojennej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maynard był doświadczonym oficerem znanym z odwagi i determinacji.",
+      "text_markdown": "Maynard był doświadczonym oficerem znanym z odwagi i determinacji.",
+      "tts": {
+        "text": "Maynard był doświadczonym oficerem znanym z odwagi i determinacji.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood wybrał slupy, ponieważ miały płytki zanurzenie.",
+      "text_markdown": "Spotswood wybrał slupy, ponieważ miały płytki zanurzenie.",
+      "tts": {
+        "text": "Spotswood wybrał slupy, ponieważ miały płytki zanurzenie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tylko statki o płaskim dnie mogły nawigować w kanałach wokół wyspy Ocracoke.",
+      "text_markdown": "Tylko statki o płaskim dnie mogły nawigować w kanałach wokół wyspy Ocracoke.",
+      "tts": {
+        "text": "Tylko statki o płaskim dnie mogły nawigować w kanałach wokół wyspy Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Większe okręty wojenne utknęłyby na mieliźnie na długo przed dotarciem do kotwicowiska Czarnobrodego.",
+      "text_markdown": "Większe okręty wojenne utknęłyby na mieliźnie na długo przed dotarciem do kotwicowiska Czarnobrodego.",
+      "tts": {
+        "text": "Większe okręty wojenne utknęłyby na mieliźnie na długo przed dotarciem do kotwicowiska Czarnobrodego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dwa slupy Maynarda przewoziły w sumie około 60 ludzi.",
+      "text_markdown": "Dwa slupy Maynarda przewoziły w sumie około 60 ludzi.",
+      "tts": {
+        "text": "Dwa slupy Maynarda przewoziły w sumie około sześćdziesięciu ludzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Byli to marynarze z okrętów wojennych Królewskiej Marynarki Wojennej stacjonujących w Wirginii.",
+      "text_markdown": "Byli to marynarze z okrętów wojennych Królewskiej Marynarki Wojennej stacjonujących w Wirginii.",
+      "tts": {
+        "text": "Byli to marynarze z okrętów wojennych Królewskiej Marynarki Wojennej stacjonujących w Wirginii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ludziom obiecano udział w każdym zdobytym pirackim łupie.",
+      "text_markdown": "Ludziom obiecano udział w każdym zdobytym pirackim łupie.",
+      "tts": {
+        "text": "Ludziom obiecano udział w każdym zdobytym pirackim łupie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ekspedycja popłynęła na południe z Wirginii w tajemnicy.",
+      "text_markdown": "Ekspedycja popłynęła na południe z Wirginii w tajemnicy.",
+      "tts": {
+        "text": "Ekspedycja popłynęła na południe z Wirginii w tajemnicy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotswood niemal nikomu nie powiedział o misji, by zapobiec ostrzeżeniu Czarnobrodego.",
+      "text_markdown": "Spotswood niemal nikomu nie powiedział o misji, by zapobiec ostrzeżeniu Czarnobrodego.",
+      "tts": {
+        "text": "Spotswood niemal nikomu nie powiedział o misji, by zapobiec ostrzeżeniu Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Szybkość i zaskoczenie były kluczowe dla powodzenia planu.",
+      "text_markdown": "Szybkość i zaskoczenie były kluczowe dla powodzenia planu.",
+      "tts": {
+        "text": "Szybkość i zaskoczenie były kluczowe dla powodzenia planu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wieczorem 21 listopada 1718 roku slupy Maynarda dotarły w pobliże wyspy Ocracoke.",
+      "text_markdown": "Wieczorem 21 listopada 1718 roku slupy Maynarda dotarły w pobliże wyspy Ocracoke.",
+      "tts": {
+        "text": "Wieczorem dwudziestego pierwszego listopada tysiąc siedemset osiemnastego roku slupy Maynarda dotarły w pobliże wyspy Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zakotwiczyli na skraju kanału i czekali na świt.",
+      "text_markdown": "Zakotwiczyli na skraju kanału i czekali na świt.",
+      "tts": {
+        "text": "Zakotwiczyli na skraju kanału i czekali na świt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maynard mógł widzieć światła slupu Adventure Czarnobrodego w porcie.",
+      "text_markdown": "Maynard mógł widzieć światła slupu Adventure Czarnobrodego w porcie.",
+      "tts": {
+        "text": "Maynard mógł widzieć światła slupu Adventure Czarnobrodego w porcie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Piraci świętowali, nieświadomi zbliżającego się losu.",
+      "text_markdown": "Piraci świętowali, nieświadomi zbliżającego się losu.",
+      "tts": {
+        "text": "Piraci świętowali, nieświadomi zbliżającego się losu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O świcie slupy Maynarda weszły do kanału.",
+      "text_markdown": "O świcie slupy Maynarda weszły do kanału.",
+      "tts": {
+        "text": "O świcie slupy Maynarda weszły do kanału.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czarnobrody natychmiast ich zauważył i rozpoznał zagrożenie.",
+      "text_markdown": "Czarnobrody natychmiast ich zauważył i rozpoznał zagrożenie.",
+      "tts": {
+        "text": "Czarnobrody natychmiast ich zauważył i rozpoznał zagrożenie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przeciął linę kotwiczną i próbował manewrować do walki.",
+      "text_markdown": "Przeciął linę kotwiczną i próbował manewrować do walki.",
+      "tts": {
+        "text": "Przeciął linę kotwiczną i próbował manewrować do walki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wąskie, płytkie wody zatoki Ocracoke zamieniły bitwę w walkę wręcz.",
+      "text_markdown": "Wąskie, płytkie wody zatoki Ocracoke zamieniły bitwę w walkę wręcz.",
+      "tts": {
+        "text": "Wąskie, płytkie wody zatoki Ocracoke zamieniły bitwę w walkę wręcz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierwszy ruch Czarnobrodego był druzgocący.",
+      "text_markdown": "Pierwszy ruch Czarnobrodego był druzgocący.",
+      "tts": {
+        "text": "Pierwszy ruch Czarnobrodego był druzgocący.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wystrzelił salwę z dział naładowanych kartaczami i metalowym złomem.",
+      "text_markdown": "Wystrzelił salwę z dział naładowanych kartaczami i metalowym złomem.",
+      "tts": {
+        "text": "Wystrzelił salwę z dział naładowanych kartaczami i metalowym złomem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eksplozja zmiotła pokład jednego ze slupów Maynarda.",
+      "text_markdown": "Eksplozja zmiotła pokład jednego ze slupów Maynarda.",
+      "tts": {
+        "text": "Eksplozja zmiotła pokład jednego ze slupów Maynarda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dowódca tego slupu zginął na miejscu wraz z kilkoma swoimi ludźmi.",
+      "text_markdown": "Dowódca tego slupu zginął na miejscu wraz z kilkoma swoimi ludźmi.",
+      "tts": {
+        "text": "Dowódca tego slupu zginął na miejscu wraz z kilkoma swoimi ludźmi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sam slup Maynarda doznał ciężkich uszkodzeń od ognia armatniego.",
+      "text_markdown": "Sam slup Maynarda doznał ciężkich uszkodzeń od ognia armatniego.",
+      "tts": {
+        "text": "Sam slup Maynarda doznał ciężkich uszkodzeń od ognia armatniego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Około jednej trzeciej jego załogi zginęło lub zostało rannych w pierwszej wymianie ognia.",
+      "text_markdown": "Około jednej trzeciej jego załogi zginęło lub zostało rannych w pierwszej wymianie ognia.",
+      "tts": {
+        "text": "Około jednej trzeciej jego załogi zginęło lub zostało rannych w pierwszej wymianie ognia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale Maynard miał sprytny plan.",
+      "text_markdown": "Ale Maynard miał sprytny plan.",
+      "tts": {
+        "text": "Ale Maynard miał sprytny plan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rozkazał większości ocalałych schować się pod pokładem.",
+      "text_markdown": "Rozkazał większości ocalałych schować się pod pokładem.",
+      "tts": {
+        "text": "Rozkazał większości ocalałych schować się pod pokładem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Na górnym pokładzie pozostało widocznych tylko kilku żeglarzy.",
+      "text_markdown": "Na górnym pokładzie pozostało widocznych tylko kilku żeglarzy.",
+      "tts": {
+        "text": "Na górnym pokładzie pozostało widocznych tylko kilku żeglarzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gdy Czarnobrody spojrzał na pozornie pusty statek, założył, że większość załogi nie żyje.",
+      "text_markdown": "Gdy Czarnobrody spojrzał na pozornie pusty statek, założył, że większość załogi nie żyje.",
+      "tts": {
+        "text": "Gdy Czarnobrody spojrzał na pozornie pusty statek, założył, że większość załogi nie żyje.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rozkazał swoim piratom abordażować slup Maynarda.",
+      "text_markdown": "Rozkazał swoim piratom abordażować slup Maynarda.",
+      "tts": {
+        "text": "Rozkazał swoim piratom abordażować slup Maynarda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody i jego ludzie wskoczyli na pokład slupu Maynarda.",
+      "text_markdown": "Czarnobrody i jego ludzie wskoczyli na pokład slupu Maynarda.",
+      "tts": {
+        "text": "Czarnobrody i jego ludzie wskoczyli na pokład slupu Maynarda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W tej chwili Maynard dał sygnał.",
+      "text_markdown": "W tej chwili Maynard dał sygnał.",
+      "tts": {
+        "text": "W tej chwili Maynard dał sygnał.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego ukryci żeglarze wyskoczyli spod pokładu z bronią w rękach.",
+      "text_markdown": "Jego ukryci żeglarze wyskoczyli spod pokładu z bronią w rękach.",
+      "tts": {
+        "text": "Jego ukryci żeglarze wyskoczyli spod pokładu z bronią w rękach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Piraci znaleźli się w pułapce zaciętej walki wręcz.",
+      "text_markdown": "Piraci znaleźli się w pułapce zaciętej walki wręcz.",
+      "tts": {
+        "text": "Piraci znaleźli się w pułapce zaciętej walki wręcz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody i Maynard walczyli bezpośrednio ze sobą.",
+      "text_markdown": "Czarnobrody i Maynard walczyli bezpośrednio ze sobą.",
+      "tts": {
+        "text": "Czarnobrody i Maynard walczyli bezpośrednio ze sobą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czarnobrody ciął szablą z taką siłą, że złamał ostrze miecza Maynarda.",
+      "text_markdown": "Czarnobrody ciął szablą z taką siłą, że złamał ostrze miecza Maynarda.",
+      "tts": {
+        "text": "Czarnobrody ciął szablą z taką siłą, że złamał ostrze miecza Maynarda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gdy Czarnobrody uniósł szablę do śmiertelnego ciosu, jeden z ludzi Maynarda przeciął mu szyję.",
+      "text_markdown": "Gdy Czarnobrody uniósł szablę do śmiertelnego ciosu, jeden z ludzi Maynarda przeciął mu szyję.",
+      "tts": {
+        "text": "Gdy Czarnobrody uniósł szablę do śmiertelnego ciosu, jeden z ludzi Maynarda przeciął mu szyję.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Czarnobrody zachwiał się, ale walczył dalej.",
+      "text_markdown": "Czarnobrody zachwiał się, ale walczył dalej.",
+      "tts": {
+        "text": "Czarnobrody zachwiał się, ale walczył dalej.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wreszcie Czarnobrody upadł i skonał na pokładzie slupu Maynarda.",
+      "text_markdown": "Wreszcie Czarnobrody upadł i skonał na pokładzie slupu Maynarda.",
+      "tts": {
+        "text": "Wreszcie Czarnobrody upadł i skonał na pokładzie slupu Maynarda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gdy zbadano jego ciało, naliczono 5 ran postrzałowych i ponad 20 cięć mieczem.",
+      "text_markdown": "Gdy zbadano jego ciało, naliczono 5 ran postrzałowych i ponad 20 cięć mieczem.",
+      "tts": {
+        "text": "Gdy zbadano jego ciało, naliczono pięć ran postrzałowych i ponad dwadzieścia cięć mieczem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pozostali piraci poddali się, widząc upadek swojego kapitana.",
+      "text_markdown": "Pozostali piraci poddali się, widząc upadek swojego kapitana.",
+      "tts": {
+        "text": "Pozostali piraci poddali się, widząc upadek swojego kapitana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard rozkazał odciąć głowę Czarnobrodego od ciała.",
+      "text_markdown": "Maynard rozkazał odciąć głowę Czarnobrodego od ciała.",
+      "tts": {
+        "text": "Maynard rozkazał odciąć głowę Czarnobrodego od ciała.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Głowę zawieszono na bukszprycie slupu jako dowód zabicia.",
+      "text_markdown": "Głowę zawieszono na bukszprycie slupu jako dowód zabicia.",
+      "tts": {
+        "text": "Głowę zawieszono na bukszprycie slupu jako dowód zabicia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bezgłowe ciało Czarnobrodego wrzucono do wód zatoki Ocracoke.",
+      "text_markdown": "Bezgłowe ciało Czarnobrodego wrzucono do wód zatoki Ocracoke.",
+      "tts": {
+        "text": "Bezgłowe ciało Czarnobrodego wrzucono do wód zatoki Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bitwa pod Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Legenda głosi, że ciało przepłynęło wokół slupu, zanim zatonęło, choć to z pewnością fikcja.",
+      "text_markdown": "Legenda głosi, że ciało przepłynęło wokół slupu, zanim zatonęło, choć to z pewnością fikcja.",
+      "tts": {
+        "text": "Legenda głosi, że ciało przepłynęło wokół slupu, zanim zatonęło, choć to z pewnością fikcja.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legenda, która nigdy nie umiera",
+      "text_markdown": "Legenda, która nigdy nie umiera"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Śmierć Czarnobrodego wstrząsnęła piracką społecznością.",
+      "text_markdown": "Śmierć Czarnobrodego wstrząsnęła piracką społecznością.",
+      "tts": {
+        "text": "Śmierć Czarnobrodego wstrząsnęła piracką społecznością.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeśli najbardziej budzący grozę pirat Atlantyku mógł zostać wytropiony i zabity, nikt nie był bezpieczny.",
+      "text_markdown": "Jeśli najbardziej budzący grozę pirat Atlantyku mógł zostać wytropiony i zabity, nikt nie był bezpieczny.",
+      "tts": {
+        "text": "Jeśli najbardziej budzący grozę pirat Atlantyku mógł zostać wytropiony i zabity, nikt nie był bezpieczny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "W kolejnych miesiącach wielu piratów przyjęło królewskie akty łaski.",
+      "text_markdown": "W kolejnych miesiącach wielu piratów przyjęło królewskie akty łaski.",
+      "tts": {
+        "text": "W kolejnych miesiącach wielu piratów przyjęło królewskie akty łaski.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Złoty Wiek Piractwa wchodził w swoje ostatnie lata.",
+      "text_markdown": "Złoty Wiek Piractwa wchodził w swoje ostatnie lata.",
+      "tts": {
+        "text": "Złoty Wiek Piractwa wchodził w swoje ostatnie lata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ocaleli członkowie załogi Czarnobrodego zostali osądzeni w Wirginii.",
+      "text_markdown": "Ocaleli członkowie załogi Czarnobrodego zostali osądzeni w Wirginii.",
+      "tts": {
+        "text": "Ocaleli członkowie załogi Czarnobrodego zostali osądzeni w Wirginii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Większość uznano za winnych i powieszono.",
+      "text_markdown": "Większość uznano za winnych i powieszono.",
+      "tts": {
+        "text": "Większość uznano za winnych i powieszono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ich ciała wystawiono w żelaznych klatkach wzdłuż nabrzeża jako ponure ostrzeżenie.",
+      "text_markdown": "Ich ciała wystawiono w żelaznych klatkach wzdłuż nabrzeża jako ponure ostrzeżenie.",
+      "tts": {
+        "text": "Ich ciała wystawiono w żelaznych klatkach wzdłuż nabrzeża jako ponure ostrzeżenie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Władze kolonialne chciały dać absolutnie jasno do zrozumienia, że era tolerancji dla piratów dobiegła końca.",
+      "text_markdown": "Władze kolonialne chciały dać absolutnie jasno do zrozumienia, że era tolerancji dla piratów dobiegła końca.",
+      "tts": {
+        "text": "Władze kolonialne chciały dać absolutnie jasno do zrozumienia, że era tolerancji dla piratów dobiegła końca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1724 roku w Londynie ukazała się książka zatytułowana Ogólna historia piratów.",
+      "text_markdown": "W 1724 roku w Londynie ukazała się książka zatytułowana Ogólna historia piratów.",
+      "tts": {
+        "text": "W tysiąc siedemset dwudziestym czwartym roku w Londynie ukazała się książka zatytułowana Ogólna historia piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Autorem podano kapitana Charlesa Johnsona, choć jego prawdziwa tożsamość pozostaje nieznana.",
+      "text_markdown": "Autorem podano kapitana Charlesa Johnsona, choć jego prawdziwa tożsamość pozostaje nieznana.",
+      "tts": {
+        "text": "Autorem podano kapitana Charlesa Johnsona, choć jego prawdziwa tożsamość pozostaje nieznana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Książka ta poświęciła cały rozdział wycznom Czarnobrodego.",
+      "text_markdown": "Książka ta poświęciła cały rozdział wycznom Czarnobrodego.",
+      "tts": {
+        "text": "Książka ta poświęciła cały rozdział wycznom Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Była fundamentem, na którym zbudowano legendę Czarnobrodego.",
+      "text_markdown": "Była fundamentem, na którym zbudowano legendę Czarnobrodego.",
+      "tts": {
+        "text": "Była fundamentem, na którym zbudowano legendę Czarnobrodego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez wieki Czarnobrody stał się samym symbolem piractwa.",
+      "text_markdown": "Przez wieki Czarnobrody stał się samym symbolem piractwa.",
+      "tts": {
+        "text": "Przez wieki Czarnobrody stał się samym symbolem piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gdy ludzie wyobrażają sobie pirata, zwykle widzą kogoś, kto wygląda jak Czarnobrody.",
+      "text_markdown": "Gdy ludzie wyobrażają sobie pirata, zwykle widzą kogoś, kto wygląda jak Czarnobrody.",
+      "tts": {
+        "text": "Gdy ludzie wyobrażają sobie pirata, zwykle widzą kogoś, kto wygląda jak Czarnobrody.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ogromna broda, dymiące lonty, bandolera z pistoletami stały się standardowym wizerunkiem pirata.",
+      "text_markdown": "Ogromna broda, dymiące lonty, bandolera z pistoletami stały się standardowym wizerunkiem pirata.",
+      "tts": {
+        "text": "Ogromna broda, dymiące lonty, bandolera z pistoletami stały się standardowym wizerunkiem pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Żaden inny pirat nie wywarł tak trwałego wpływu na kulturę popularną.",
+      "text_markdown": "Żaden inny pirat nie wywarł tak trwałego wpływu na kulturę popularną.",
+      "tts": {
+        "text": "Żaden inny pirat nie wywarł tak trwałego wpływu na kulturę popularną.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1996 roku archeolodzy morscy odkryli wrak statku w pobliżu Beaufort w Karolinie Północnej.",
+      "text_markdown": "W 1996 roku archeolodzy morscy odkryli wrak statku w pobliżu Beaufort w Karolinie Północnej.",
+      "tts": {
+        "text": "W tysiąc dziewięćset dziewięćdziesiątym szóstym roku archeolodzy morscy odkryli wrak statku w pobliżu Beaufort w Karolinie Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uważają, że to szczątki Zemsty Królowej Anny.",
+      "text_markdown": "Uważają, że to szczątki Zemsty Królowej Anny.",
+      "tts": {
+        "text": "Uważają, że to szczątki Zemsty Królowej Anny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Z tego miejsca wydobyto ponad 280 000 artefaktów.",
+      "text_markdown": "Z tego miejsca wydobyto ponad 280 000 artefaktów.",
+      "tts": {
+        "text": "Z tego miejsca wydobyto ponad dwieście osiemdziesiąt tysięcy artefaktów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wśród nich są armaty, kotwice, instrumenty medyczne i złoty pył.",
+      "text_markdown": "Wśród nich są armaty, kotwice, instrumenty medyczne i złoty pył.",
+      "tts": {
+        "text": "Wśród nich są armaty, kotwice, instrumenty medyczne i złoty pył.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Artefakty wiele mówią o codziennym życiu na pokładzie pirackiego statku.",
+      "text_markdown": "Artefakty wiele mówią o codziennym życiu na pokładzie pirackiego statku.",
+      "tts": {
+        "text": "Artefakty wiele mówią o codziennym życiu na pokładzie pirackiego statku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pokazują, że załoga jadła dobrze — ze śladami wieprzowiny, wołowiny i ryb w diecie.",
+      "text_markdown": "Pokazują, że załoga jadła dobrze — ze śladami wieprzowiny, wołowiny i ryb w diecie.",
+      "tts": {
+        "text": "Pokazują, że załoga jadła dobrze — ze śladami wieprzowiny, wołowiny i ryb w diecie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Instrumenty medyczne sugerują, że na statku był chirurg, jak na większości dużych jednostek.",
+      "text_markdown": "Instrumenty medyczne sugerują, że na statku był chirurg, jak na większości dużych jednostek.",
+      "tts": {
+        "text": "Instrumenty medyczne sugerują, że na statku był chirurg, jak na większości dużych jednostek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Złoty pył potwierdza ogromne bogactwo, jakie mogło generować piractwo.",
+      "text_markdown": "Złoty pył potwierdza ogromne bogactwo, jakie mogło generować piractwo.",
+      "tts": {
+        "text": "Złoty pył potwierdza ogromne bogactwo, jakie mogło generować piractwo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kariera Czarnobrodego jako pirata trwała zaledwie około dwóch lat.",
+      "text_markdown": "Kariera Czarnobrodego jako pirata trwała zaledwie około dwóch lat.",
+      "tts": {
+        "text": "Kariera Czarnobrodego jako pirata trwała zaledwie około dwóch lat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W tym krótkim czasie schwytał dziesiątki statków i terroryzował całe wybrzeże.",
+      "text_markdown": "W tym krótkim czasie schwytał dziesiątki statków i terroryzował całe wybrzeże.",
+      "tts": {
+        "text": "W tym krótkim czasie schwytał dziesiątki statków i terroryzował całe wybrzeże.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zablokował ważny port kolonialny i rzucił wyzwanie najpotężniejszej marynarce wojennej świata.",
+      "text_markdown": "Zablokował ważny port kolonialny i rzucił wyzwanie najpotężniejszej marynarce wojennej świata.",
+      "tts": {
+        "text": "Zablokował ważny port kolonialny i rzucił wyzwanie najpotężniejszej marynarce wojennej świata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego historia pozostaje jednym z najbardziej dramatycznych rozdziałów w historii morskiej.",
+      "text_markdown": "Jego historia pozostaje jednym z najbardziej dramatycznych rozdziałów w historii morskiej.",
+      "tts": {
+        "text": "Jego historia pozostaje jednym z najbardziej dramatycznych rozdziałów w historii morskiej.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dziś imię Czarnobrodego żyje w niezliczonych książkach, filmach i programach telewizyjnych.",
+      "text_markdown": "Dziś imię Czarnobrodego żyje w niezliczonych książkach, filmach i programach telewizyjnych.",
+      "tts": {
+        "text": "Dziś imię Czarnobrodego żyje w niezliczonych książkach, filmach i programach telewizyjnych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wyspa Ocracoke jest dziś popularnym celem turystycznym, częściowo z powodu swojej pirackiej historii.",
+      "text_markdown": "Wyspa Ocracoke jest dziś popularnym celem turystycznym, częściowo z powodu swojej pirackiej historii.",
+      "tts": {
+        "text": "Wyspa Ocracoke jest dziś popularnym celem turystycznym, częściowo z powodu swojej pirackiej historii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Co roku miasteczko organizuje festiwal upamiętniający rocznicę słynnej bitwy.",
+      "text_markdown": "Co roku miasteczko organizuje festiwal upamiętniający rocznicę słynnej bitwy.",
+      "tts": {
+        "text": "Co roku miasteczko organizuje festiwal upamiętniający rocznicę słynnej bitwy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legenda, która nigdy nie umiera",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pirat, który podpalał swoją brodę, stał się nieśmiertelną postacią wyobraźni popularnej.",
+      "text_markdown": "Pirat, który podpalał swoją brodę, stał się nieśmiertelną postacią wyobraźni popularnej.",
+      "tts": {
+        "text": "Pirat, który podpalał swoją brodę, stał się nieśmiertelną postacią wyobraźni popularnej.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

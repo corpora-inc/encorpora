@@ -1,0 +1,4502 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sir_francis_drake",
+  "language": "pt",
+  "total_segments": 301,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma nota ao leitor",
+      "text_markdown": "Uma nota ao leitor"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta é uma história real sobre um homem que navegou ao redor do mundo inteiro.",
+      "text_markdown": "Esta é uma história real sobre um homem que navegou ao redor do mundo inteiro.",
+      "tts": {
+        "text": "Esta é uma história real sobre um homem que navegou ao redor do mundo inteiro.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu nome era Francis Drake, e ele se tornou um dos marinheiros mais famosos da história.",
+      "text_markdown": "Seu nome era Francis Drake, e ele se tornou um dos marinheiros mais famosos da história.",
+      "tts": {
+        "text": "Seu nome era Francis Drake, e ele se tornou um dos marinheiros mais famosos da história.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Para a Inglaterra, ele era um herói que salvou a nação da invasão.",
+      "text_markdown": "Para a Inglaterra, ele era um herói que salvou a nação da invasão.",
+      "tts": {
+        "text": "Para a Inglaterra, ele era um herói que salvou a nação da invasão.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para a Espanha, ele era El Draque, o Dragão, o pirata mais temido dos mares.",
+      "text_markdown": "Para a Espanha, ele era El Draque, o Dragão, o pirata mais temido dos mares.",
+      "tts": {
+        "text": "Para a Espanha, ele era El Draque, o Dragão, o pirata mais temido dos mares.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele era as duas coisas ao mesmo tempo.",
+      "text_markdown": "Ele era as duas coisas ao mesmo tempo.",
+      "tts": {
+        "text": "Ele era as duas coisas ao mesmo tempo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se era um herói ou um vilão dependia inteiramente de qual lado do oceano se estava.",
+      "text_markdown": "Se era um herói ou um vilão dependia inteiramente de qual lado do oceano se estava.",
+      "tts": {
+        "text": "Se era um herói ou um vilão dependia inteiramente de qual lado do oceano se estava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake viveu durante um dos séculos mais dramáticos da história europeia.",
+      "text_markdown": "Drake viveu durante um dos séculos mais dramáticos da história europeia.",
+      "tts": {
+        "text": "Drake viveu durante um dos séculos mais dramáticos da história europeia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Impérios se chocavam, religiões dividiam nações, e o mundo estava sendo mapeado pela primeira vez.",
+      "text_markdown": "Impérios se chocavam, religiões dividiam nações, e o mundo estava sendo mapeado pela primeira vez.",
+      "tts": {
+        "text": "Impérios se chocavam, religiões dividiam nações, e o mundo estava sendo mapeado pela primeira vez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua vida foi moldada por todas essas forças.",
+      "text_markdown": "Sua vida foi moldada por todas essas forças.",
+      "tts": {
+        "text": "Sua vida foi moldada por todas essas forças.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta é a sua história.",
+      "text_markdown": "Esta é a sua história.",
+      "tts": {
+        "text": "Esta é a sua história.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O mundo que Drake conheceu",
+      "text_markdown": "O mundo que Drake conheceu"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis Drake nasceu durante o reinado do rei Henrique VIII da Inglaterra.",
+      "text_markdown": "Francis Drake nasceu durante o reinado do rei Henrique VIII da Inglaterra.",
+      "tts": {
+        "text": "Francis Drake nasceu durante o reinado do rei Henrique VIII da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Henrique havia rompido com a Igreja Católica de Roma e estabelecido a Igreja da Inglaterra.",
+      "text_markdown": "Henrique havia rompido com a Igreja Católica de Roma e estabelecido a Igreja da Inglaterra.",
+      "tts": {
+        "text": "Henrique havia rompido com a Igreja Católica de Roma e estabelecido a Igreja da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essa decisão dividiu a Inglaterra em linhas religiosas por gerações.",
+      "text_markdown": "Essa decisão dividiu a Inglaterra em linhas religiosas por gerações.",
+      "tts": {
+        "text": "Essa decisão dividiu a Inglaterra em linhas religiosas por gerações.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Após a morte de Henrique, a Inglaterra passou por anos de turbulência religiosa.",
+      "text_markdown": "Após a morte de Henrique, a Inglaterra passou por anos de turbulência religiosa.",
+      "tts": {
+        "text": "Após a morte de Henrique, a Inglaterra passou por anos de turbulência religiosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu filho Eduardo VI era protestante.",
+      "text_markdown": "Seu filho Eduardo VI era protestante.",
+      "tts": {
+        "text": "Seu filho Eduardo VI era protestante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua filha Maria I era católica e tentou reverter a Reforma.",
+      "text_markdown": "Sua filha Maria I era católica e tentou reverter a Reforma.",
+      "tts": {
+        "text": "Sua filha Maria I era católica e tentou reverter a Reforma.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ela executou tantos protestantes que ganhou o nome de Maria Sanguinária.",
+      "text_markdown": "Ela executou tantos protestantes que ganhou o nome de Maria Sanguinária.",
+      "tts": {
+        "text": "Ela executou tantos protestantes que ganhou o nome de Maria Sanguinária.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1558, Elisabete I tornou-se rainha.",
+      "text_markdown": "Em 1558, Elisabete I tornou-se rainha.",
+      "tts": {
+        "text": "Em mil quinhentos e cinquenta e oito, Elisabete Primeira tornou-se rainha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era protestante, inteligente e politicamente magistral.",
+      "text_markdown": "Era protestante, inteligente e politicamente magistral.",
+      "tts": {
+        "text": "Era protestante, inteligente e politicamente magistral.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu reinado duraria quarenta e cinco anos e ficaria conhecido como a era elisabetana.",
+      "text_markdown": "Seu reinado duraria quarenta e cinco anos e ficaria conhecido como a era elisabetana.",
+      "tts": {
+        "text": "Seu reinado duraria quarenta e cinco anos e ficaria conhecido como a era elisabetana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi durante seu reinado que a Inglaterra começou a desafiar a Espanha pelo poder global.",
+      "text_markdown": "Foi durante seu reinado que a Inglaterra começou a desafiar a Espanha pelo poder global.",
+      "tts": {
+        "text": "Foi durante seu reinado que a Inglaterra começou a desafiar a Espanha pelo poder global.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Espanha sob o rei Filipe II era o império mais poderoso da Terra.",
+      "text_markdown": "A Espanha sob o rei Filipe II era o império mais poderoso da Terra.",
+      "tts": {
+        "text": "A Espanha sob o rei Filipe II era o império mais poderoso da Terra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os territórios espanhóis se estendiam pelas Américas, do México ao Chile.",
+      "text_markdown": "Os territórios espanhóis se estendiam pelas Américas, do México ao Chile.",
+      "tts": {
+        "text": "Os territórios espanhóis se estendiam pelas Américas, do México ao Chile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A Espanha também controlava as Filipinas, partes da Itália e os Países Baixos.",
+      "text_markdown": "A Espanha também controlava as Filipinas, partes da Itália e os Países Baixos.",
+      "tts": {
+        "text": "A Espanha também controlava as Filipinas, partes da Itália e os Países Baixos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A riqueza que fluía das Américas tornava a Espanha fabulosamente rica.",
+      "text_markdown": "A riqueza que fluía das Américas tornava a Espanha fabulosamente rica.",
+      "tts": {
+        "text": "A riqueza que fluía das Américas tornava a Espanha fabulosamente rica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A prata das minas do Peru e do México era a base do poder espanhol.",
+      "text_markdown": "A prata das minas do Peru e do México era a base do poder espanhol.",
+      "tts": {
+        "text": "A prata das minas do Peru e do México era a base do poder espanhol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Frotas de tesouros transportavam essa prata pelo Atlântico em enormes comboios.",
+      "text_markdown": "Frotas de tesouros transportavam essa prata pelo Atlântico em enormes comboios.",
+      "tts": {
+        "text": "Frotas de tesouros transportavam essa prata pelo Atlântico em enormes comboios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esses comboios eram alvos tentadores para qualquer um ousado o suficiente para atacá-los.",
+      "text_markdown": "Esses comboios eram alvos tentadores para qualquer um ousado o suficiente para atacá-los.",
+      "tts": {
+        "text": "Esses comboios eram alvos tentadores para qualquer um ousado o suficiente para atacá-los.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A Marinha espanhola, a mais poderosa do mundo, protegia essas remessas.",
+      "text_markdown": "A Marinha espanhola, a mais poderosa do mundo, protegia essas remessas.",
+      "tts": {
+        "text": "A Marinha espanhola, a mais poderosa do mundo, protegia essas remessas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Tratado de Tordesilhas de 1494 dividiu o mundo entre Espanha e Portugal.",
+      "text_markdown": "O Tratado de Tordesilhas de 1494 dividiu o mundo entre Espanha e Portugal.",
+      "tts": {
+        "text": "O Tratado de Tordesilhas de mil quatrocentos e noventa e quatro dividiu o mundo entre Espanha e Portugal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inglaterra, França e os Países Baixos foram completamente excluídos.",
+      "text_markdown": "Inglaterra, França e os Países Baixos foram completamente excluídos.",
+      "tts": {
+        "text": "Inglaterra, França e os Países Baixos foram completamente excluídos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essas nações rejeitaram o tratado e reivindicaram o direito de comerciar e explorar em qualquer lugar.",
+      "text_markdown": "Essas nações rejeitaram o tratado e reivindicaram o direito de comerciar e explorar em qualquer lugar.",
+      "tts": {
+        "text": "Essas nações rejeitaram o tratado e reivindicaram o direito de comerciar e explorar em qualquer lugar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa discordância foi uma das causas fundamentais de séculos de conflito.",
+      "text_markdown": "Essa discordância foi uma das causas fundamentais de séculos de conflito.",
+      "tts": {
+        "text": "Essa discordância foi uma das causas fundamentais de séculos de conflito.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Devon, no sudoeste da Inglaterra, era um centro de cultura marítima.",
+      "text_markdown": "Devon, no sudoeste da Inglaterra, era um centro de cultura marítima.",
+      "tts": {
+        "text": "Devon, no sudoeste da Inglaterra, era um centro de cultura marítima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os homens de Devon eram pescadores, comerciantes e, cada vez mais, saqueadores.",
+      "text_markdown": "Os homens de Devon eram pescadores, comerciantes e, cada vez mais, saqueadores.",
+      "tts": {
+        "text": "Os homens de Devon eram pescadores, comerciantes e, cada vez mais, saqueadores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O condado produziu alguns dos maiores capitães do mar da Inglaterra.",
+      "text_markdown": "O condado produziu alguns dos maiores capitães do mar da Inglaterra.",
+      "tts": {
+        "text": "O condado produziu alguns dos maiores capitães do mar da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Francis Drake, Walter Raleigh e John Hawkins vieram todos de Devon.",
+      "text_markdown": "Francis Drake, Walter Raleigh e John Hawkins vieram todos de Devon.",
+      "tts": {
+        "text": "Francis Drake, Walter Raleigh e John Hawkins vieram todos de Devon.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Marinha inglesa em meados do século dezesseis era pequena comparada à da Espanha.",
+      "text_markdown": "A Marinha inglesa em meados do século dezesseis era pequena comparada à da Espanha.",
+      "tts": {
+        "text": "A Marinha inglesa em meados do século dezesseis era pequena comparada à da Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Inglaterra não podia enfrentar a Espanha navio contra navio em confronto direto.",
+      "text_markdown": "A Inglaterra não podia enfrentar a Espanha navio contra navio em confronto direto.",
+      "tts": {
+        "text": "A Inglaterra não podia enfrentar a Espanha navio contra navio em confronto direto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em vez disso, os ingleses desenvolveram uma estratégia de ataques e assédio.",
+      "text_markdown": "Em vez disso, os ingleses desenvolveram uma estratégia de ataques e assédio.",
+      "tts": {
+        "text": "Em vez disso, os ingleses desenvolveram uma estratégia de ataques e assédio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Navios rápidos e bem armados podiam atacar comboios de tesouros espanhóis e escapar antes que uma frota pudesse reagir.",
+      "text_markdown": "Navios rápidos e bem armados podiam atacar comboios de tesouros espanhóis e escapar antes que uma frota pudesse reagir.",
+      "tts": {
+        "text": "Navios rápidos e bem armados podiam atacar comboios de tesouros espanhóis e escapar antes que uma frota pudesse reagir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O corso tornou-se a arma não oficial da Inglaterra contra a Espanha.",
+      "text_markdown": "O corso tornou-se a arma não oficial da Inglaterra contra a Espanha.",
+      "tts": {
+        "text": "O corso tornou-se a arma não oficial da Inglaterra contra a Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elisabete não podia declarar guerra abertamente sem arriscar seu reino.",
+      "text_markdown": "Elisabete não podia declarar guerra abertamente sem arriscar seu reino.",
+      "tts": {
+        "text": "Elisabete não podia declarar guerra abertamente sem arriscar seu reino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas podia discretamente autorizar capitães do mar a atacar a navegação espanhola.",
+      "text_markdown": "Mas podia discretamente autorizar capitães do mar a atacar a navegação espanhola.",
+      "tts": {
+        "text": "Mas podia discretamente autorizar capitães do mar a atacar a navegação espanhola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se fossem pegos, ela podia negar qualquer envolvimento.",
+      "text_markdown": "Se fossem pegos, ela podia negar qualquer envolvimento.",
+      "tts": {
+        "text": "Se fossem pegos, ela podia negar qualquer envolvimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O comércio de escravos já fazia parte da navegação inglesa neste período.",
+      "text_markdown": "O comércio de escravos já fazia parte da navegação inglesa neste período.",
+      "tts": {
+        "text": "O comércio de escravos já fazia parte da navegação inglesa neste período.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capitães ingleses sequestravam ou compravam pessoas na África Ocidental.",
+      "text_markdown": "Capitães ingleses sequestravam ou compravam pessoas na África Ocidental.",
+      "tts": {
+        "text": "Capitães ingleses sequestravam ou compravam pessoas na África Ocidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eles os transportavam para as Américas e os vendiam a colonos espanhóis.",
+      "text_markdown": "Eles os transportavam para as Américas e os vendiam a colonos espanhóis.",
+      "tts": {
+        "text": "Eles os transportavam para as Américas e os vendiam a colonos espanhóis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esse comércio brutal era visto como um negócio legítimo pela maioria dos europeus da época.",
+      "text_markdown": "Esse comércio brutal era visto como um negócio legítimo pela maioria dos europeus da época.",
+      "tts": {
+        "text": "Esse comércio brutal era visto como um negócio legítimo pela maioria dos europeus da época.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O mundo ainda estava sendo explorado e mapeado durante a vida de Drake.",
+      "text_markdown": "O mundo ainda estava sendo explorado e mapeado durante a vida de Drake.",
+      "tts": {
+        "text": "O mundo ainda estava sendo explorado e mapeado durante a vida de Drake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os europeus conheciam as formas básicas dos continentes, mas não os detalhes.",
+      "text_markdown": "Os europeus conheciam as formas básicas dos continentes, mas não os detalhes.",
+      "tts": {
+        "text": "Os europeus conheciam as formas básicas dos continentes, mas não os detalhes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O Oceano Pacífico era amplamente desconhecido para os marinheiros europeus.",
+      "text_markdown": "O Oceano Pacífico era amplamente desconhecido para os marinheiros europeus.",
+      "tts": {
+        "text": "O Oceano Pacífico era amplamente desconhecido para os marinheiros europeus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O interior da maioria dos continentes permanecia um mistério.",
+      "text_markdown": "O interior da maioria dos continentes permanecia um mistério.",
+      "tts": {
+        "text": "O interior da maioria dos continentes permanecia um mistério.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A navegação dependia da bússola, do astrolábio e da navegação estimada.",
+      "text_markdown": "A navegação dependia da bússola, do astrolábio e da navegação estimada.",
+      "tts": {
+        "text": "A navegação dependia da bússola, do astrolábio e da navegação estimada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As cartas náuticas eram frequentemente imprecisas, especialmente para águas desconhecidas.",
+      "text_markdown": "As cartas náuticas eram frequentemente imprecisas, especialmente para águas desconhecidas.",
+      "tts": {
+        "text": "As cartas náuticas eram frequentemente imprecisas, especialmente para águas desconhecidas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A habilidade e a experiência de um capitão eram mais importantes do que qualquer instrumento.",
+      "text_markdown": "A habilidade e a experiência de um capitão eram mais importantes do que qualquer instrumento.",
+      "tts": {
+        "text": "A habilidade e a experiência de um capitão eram mais importantes do que qualquer instrumento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O mar não perdoava erros.",
+      "text_markdown": "O mar não perdoava erros.",
+      "tts": {
+        "text": "O mar não perdoava erros.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este foi o mundo que moldou Francis Drake.",
+      "text_markdown": "Este foi o mundo que moldou Francis Drake.",
+      "tts": {
+        "text": "Este foi o mundo que moldou Francis Drake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um mundo de conflito religioso, rivalidade imperial e vastos oceanos desconhecidos.",
+      "text_markdown": "Um mundo de conflito religioso, rivalidade imperial e vastos oceanos desconhecidos.",
+      "tts": {
+        "text": "Um mundo de conflito religioso, rivalidade imperial e vastos oceanos desconhecidos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo que Drake conheceu",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era um mundo onde um marinheiro ousado de uma família modesta podia mudar o curso da história.",
+      "text_markdown": "Era um mundo onde um marinheiro ousado de uma família modesta podia mudar o curso da história.",
+      "tts": {
+        "text": "Era um mundo onde um marinheiro ousado de uma família modesta podia mudar o curso da história.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origens",
+      "text_markdown": "Origens"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis Drake nasceu por volta de 1540 em Tavistock, Devon, Inglaterra.",
+      "text_markdown": "Francis Drake nasceu por volta de 1540 em Tavistock, Devon, Inglaterra.",
+      "tts": {
+        "text": "Francis Drake nasceu por volta de mil quinhentos e quarenta em Tavistock, Devon, Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era o mais velho de doze filhos de Edmund Drake e sua esposa.",
+      "text_markdown": "Era o mais velho de doze filhos de Edmund Drake e sua esposa.",
+      "tts": {
+        "text": "Era o mais velho de doze filhos de Edmund Drake e sua esposa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A família era de posses modestas.",
+      "text_markdown": "A família era de posses modestas.",
+      "tts": {
+        "text": "A família era de posses modestas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Edmund Drake era um fazendeiro que depois se tornou pregador leigo protestante.",
+      "text_markdown": "Edmund Drake era um fazendeiro que depois se tornou pregador leigo protestante.",
+      "tts": {
+        "text": "Edmund Drake era um fazendeiro que depois se tornou pregador leigo protestante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lia a Bíblia para marinheiros e trabalhadores nos estaleiros navais em Kent.",
+      "text_markdown": "Lia a Bíblia para marinheiros e trabalhadores nos estaleiros navais em Kent.",
+      "tts": {
+        "text": "Lia a Bíblia para marinheiros e trabalhadores nos estaleiros navais em Kent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua forte fé protestante moldou a visão de mundo do jovem Francis.",
+      "text_markdown": "Sua forte fé protestante moldou a visão de mundo do jovem Francis.",
+      "tts": {
+        "text": "Sua forte fé protestante moldou a visão de mundo do jovem Francis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake cresceu acreditando que a Espanha católica era inimiga de tudo que é bom.",
+      "text_markdown": "Drake cresceu acreditando que a Espanha católica era inimiga de tudo que é bom.",
+      "tts": {
+        "text": "Drake cresceu acreditando que a Espanha católica era inimiga de tudo que é bom.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A família se mudou para Kent quando Francis era jovem.",
+      "text_markdown": "A família se mudou para Kent quando Francis era jovem.",
+      "tts": {
+        "text": "A família se mudou para Kent quando Francis era jovem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foram forçados a deixar Devon durante uma revolta católica.",
+      "text_markdown": "Foram forçados a deixar Devon durante uma revolta católica.",
+      "tts": {
+        "text": "Foram forçados a deixar Devon durante uma revolta católica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em Kent, viviam perto do rio Medway e dos estaleiros reais.",
+      "text_markdown": "Em Kent, viviam perto do rio Medway e dos estaleiros reais.",
+      "tts": {
+        "text": "Em Kent, viviam perto do rio Medway e dos estaleiros reais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O menino cresceu cercado de navios, marinheiros e o cheiro do mar.",
+      "text_markdown": "O menino cresceu cercado de navios, marinheiros e o cheiro do mar.",
+      "tts": {
+        "text": "O menino cresceu cercado de navios, marinheiros e o cheiro do mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando adolescente, Francis foi colocado como aprendiz do capitão de um pequeno navio de comércio costeiro.",
+      "text_markdown": "Quando adolescente, Francis foi colocado como aprendiz do capitão de um pequeno navio de comércio costeiro.",
+      "tts": {
+        "text": "Quando adolescente, Francis foi colocado como aprendiz do capitão de um pequeno navio de comércio costeiro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aprendeu a navegar nas águas estreitas e traiçoeiras do estuário do Tâmisa e do Canal da Mancha.",
+      "text_markdown": "Aprendeu a navegar nas águas estreitas e traiçoeiras do estuário do Tâmisa e do Canal da Mancha.",
+      "tts": {
+        "text": "Aprendeu a navegar nas águas estreitas e traiçoeiras do estuário do Tâmisa e do Canal da Mancha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estas eram algumas das águas mais difíceis da Europa.",
+      "text_markdown": "Estas eram algumas das águas mais difíceis da Europa.",
+      "tts": {
+        "text": "Estas eram algumas das águas mais difíceis da Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "As habilidades que aprendeu ali o serviriam pelo resto da vida.",
+      "text_markdown": "As habilidades que aprendeu ali o serviriam pelo resto da vida.",
+      "tts": {
+        "text": "As habilidades que aprendeu ali o serviriam pelo resto da vida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando o velho capitão morreu, deixou seu navio para Drake em testamento.",
+      "text_markdown": "Quando o velho capitão morreu, deixou seu navio para Drake em testamento.",
+      "tts": {
+        "text": "Quando o velho capitão morreu, deixou seu navio para Drake em testamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi um presente extraordinário para um jovem sem fortuna.",
+      "text_markdown": "Foi um presente extraordinário para um jovem sem fortuna.",
+      "tts": {
+        "text": "Foi um presente extraordinário para um jovem sem fortuna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake agora tinha seu próprio navio, por menor que fosse.",
+      "text_markdown": "Drake agora tinha seu próprio navio, por menor que fosse.",
+      "tts": {
+        "text": "Drake agora tinha seu próprio navio, por menor que fosse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Estava pronto para buscar sua fortuna nos mares mais amplos.",
+      "text_markdown": "Estava pronto para buscar sua fortuna nos mares mais amplos.",
+      "tts": {
+        "text": "Estava pronto para buscar sua fortuna nos mares mais amplos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O primo de Drake era John Hawkins, um dos mais proeminentes capitães do mar da Inglaterra.",
+      "text_markdown": "O primo de Drake era John Hawkins, um dos mais proeminentes capitães do mar da Inglaterra.",
+      "tts": {
+        "text": "O primo de Drake era John Hawkins, um dos mais proeminentes capitães do mar da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hawkins organizava viagens comerciais para a África Ocidental e o Caribe.",
+      "text_markdown": "Hawkins organizava viagens comerciais para a África Ocidental e o Caribe.",
+      "tts": {
+        "text": "Hawkins organizava viagens comerciais para a África Ocidental e o Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essas viagens incluíam a captura e venda de africanos escravizados.",
+      "text_markdown": "Essas viagens incluíam a captura e venda de africanos escravizados.",
+      "tts": {
+        "text": "Essas viagens incluíam a captura e venda de africanos escravizados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake juntou-se a Hawkins em várias dessas expedições.",
+      "text_markdown": "Drake juntou-se a Hawkins em várias dessas expedições.",
+      "tts": {
+        "text": "Drake juntou-se a Hawkins em várias dessas expedições.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1567, Drake navegou com Hawkins em uma grande expedição ao Caribe.",
+      "text_markdown": "Em 1567, Drake navegou com Hawkins em uma grande expedição ao Caribe.",
+      "tts": {
+        "text": "Em mil quinhentos e sessenta e sete, Drake navegou com Hawkins em uma grande expedição ao Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Transportaram pessoas escravizadas da África para vender nas colônias espanholas.",
+      "text_markdown": "Transportaram pessoas escravizadas da África para vender nas colônias espanholas.",
+      "tts": {
+        "text": "Transportaram pessoas escravizadas da África para vender nas colônias espanholas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As autoridades espanholas nas Américas deviam recusar comerciantes ingleses.",
+      "text_markdown": "As autoridades espanholas nas Américas deviam recusar comerciantes ingleses.",
+      "tts": {
+        "text": "As autoridades espanholas nas Américas deviam recusar comerciantes ingleses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas oficiais locais frequentemente compravam os escravos mesmo assim, ignorando as regras.",
+      "text_markdown": "Mas oficiais locais frequentemente compravam os escravos mesmo assim, ignorando as regras.",
+      "tts": {
+        "text": "Mas oficiais locais frequentemente compravam os escravos mesmo assim, ignorando as regras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A expedição enfrentou problemas em San Juan de Ulúa, um porto no México.",
+      "text_markdown": "A expedição enfrentou problemas em San Juan de Ulúa, um porto no México.",
+      "tts": {
+        "text": "A expedição enfrentou problemas em San Juan de Ulúa, um porto no México.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A frota de Hawkins havia parado ali para reparos.",
+      "text_markdown": "A frota de Hawkins havia parado ali para reparos.",
+      "tts": {
+        "text": "A frota de Hawkins havia parado ali para reparos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uma frota de tesouros espanhola chegou e, após fingir amizade, atacou os navios ingleses.",
+      "text_markdown": "Uma frota de tesouros espanhola chegou e, após fingir amizade, atacou os navios ingleses.",
+      "tts": {
+        "text": "Uma frota de tesouros espanhola chegou e, após fingir amizade, atacou os navios ingleses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A batalha de San Juan de Ulúa em 1568 foi um desastre para os ingleses.",
+      "text_markdown": "A batalha de San Juan de Ulúa em 1568 foi um desastre para os ingleses.",
+      "tts": {
+        "text": "A batalha de San Juan de Ulúa em mil quinhentos e sessenta e oito foi um desastre para os ingleses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A maioria dos navios de Hawkins foi afundada ou capturada.",
+      "text_markdown": "A maioria dos navios de Hawkins foi afundada ou capturada.",
+      "tts": {
+        "text": "A maioria dos navios de Hawkins foi afundada ou capturada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Centenas de marinheiros ingleses foram mortos ou abandonados no México.",
+      "text_markdown": "Centenas de marinheiros ingleses foram mortos ou abandonados no México.",
+      "tts": {
+        "text": "Centenas de marinheiros ingleses foram mortos ou abandonados no México.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake escapou em um pequeno navio, mas a experiência o marcou profundamente.",
+      "text_markdown": "Drake escapou em um pequeno navio, mas a experiência o marcou profundamente.",
+      "tts": {
+        "text": "Drake escapou em um pequeno navio, mas a experiência o marcou profundamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake nunca perdoou a Espanha pela traição em San Juan de Ulúa.",
+      "text_markdown": "Drake nunca perdoou a Espanha pela traição em San Juan de Ulúa.",
+      "tts": {
+        "text": "Drake nunca perdoou a Espanha pela traição em San Juan de Ulúa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Considerou o ataque espanhol traiçoeiro e desonroso.",
+      "text_markdown": "Considerou o ataque espanhol traiçoeiro e desonroso.",
+      "tts": {
+        "text": "Considerou o ataque espanhol traiçoeiro e desonroso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A partir daquele dia, dedicou sua vida a se vingar da Espanha.",
+      "text_markdown": "A partir daquele dia, dedicou sua vida a se vingar da Espanha.",
+      "tts": {
+        "text": "A partir daquele dia, dedicou sua vida a se vingar da Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seu ódio pessoal se alinhava perfeitamente com os interesses nacionais da Inglaterra.",
+      "text_markdown": "Seu ódio pessoal se alinhava perfeitamente com os interesses nacionais da Inglaterra.",
+      "tts": {
+        "text": "Seu ódio pessoal se alinhava perfeitamente com os interesses nacionais da Inglaterra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake retornou à Inglaterra determinado a contra-atacar.",
+      "text_markdown": "Drake retornou à Inglaterra determinado a contra-atacar.",
+      "tts": {
+        "text": "Drake retornou à Inglaterra determinado a contra-atacar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Começou a planejar ataques independentes contra a navegação e assentamentos espanhóis.",
+      "text_markdown": "Começou a planejar ataques independentes contra a navegação e assentamentos espanhóis.",
+      "tts": {
+        "text": "Começou a planejar ataques independentes contra a navegação e assentamentos espanhóis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estudou cada carta náutica e relatório disponível sobre o Caribe.",
+      "text_markdown": "Estudou cada carta náutica e relatório disponível sobre o Caribe.",
+      "tts": {
+        "text": "Estudou cada carta náutica e relatório disponível sobre o Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Conversou com todos os marinheiros que tinham estado na Terra Firme.",
+      "text_markdown": "Conversou com todos os marinheiros que tinham estado na Terra Firme.",
+      "tts": {
+        "text": "Conversou com todos os marinheiros que tinham estado na Terra Firme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Terra Firme era o nome das possessões continentais da Espanha nas Américas.",
+      "text_markdown": "A Terra Firme era o nome das possessões continentais da Espanha nas Américas.",
+      "tts": {
+        "text": "A Terra Firme era o nome das possessões continentais da Espanha nas Américas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estendia-se da Flórida até a costa norte da América do Sul.",
+      "text_markdown": "Estendia-se da Flórida até a costa norte da América do Sul.",
+      "tts": {
+        "text": "Estendia-se da Flórida até a costa norte da América do Sul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os portos de tesouros da Terra Firme eram onde prata e ouro eram carregados nos navios.",
+      "text_markdown": "Os portos de tesouros da Terra Firme eram onde prata e ouro eram carregados nos navios.",
+      "tts": {
+        "text": "Os portos de tesouros da Terra Firme eram onde prata e ouro eram carregados nos navios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esses portos eram os alvos principais de Drake.",
+      "text_markdown": "Esses portos eram os alvos principais de Drake.",
+      "tts": {
+        "text": "Esses portos eram os alvos principais de Drake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ascensão ao poder",
+      "text_markdown": "Ascensão ao poder"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1572, Drake lançou seu primeiro ataque independente à Terra Firme.",
+      "text_markdown": "Em 1572, Drake lançou seu primeiro ataque independente à Terra Firme.",
+      "tts": {
+        "text": "Em mil quinhentos e setenta e dois, Drake lançou seu primeiro ataque independente à Terra Firme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atacou o porto de Nombre de Dios no Istmo do Panamá.",
+      "text_markdown": "Atacou o porto de Nombre de Dios no Istmo do Panamá.",
+      "tts": {
+        "text": "Atacou o porto de Nombre de Dios no Istmo do Panamá.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nombre de Dios era um dos principais pontos de coleta da prata peruana.",
+      "text_markdown": "Nombre de Dios era um dos principais pontos de coleta da prata peruana.",
+      "tts": {
+        "text": "Nombre de Dios era um dos principais pontos de coleta da prata peruana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ataque foi ousado mas quase fatal.",
+      "text_markdown": "O ataque foi ousado mas quase fatal.",
+      "tts": {
+        "text": "O ataque foi ousado mas quase fatal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drake foi ferido por uma bala de mosquete durante o assalto.",
+      "text_markdown": "Drake foi ferido por uma bala de mosquete durante o assalto.",
+      "tts": {
+        "text": "Drake foi ferido por uma bala de mosquete durante o assalto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangrou tanto que seus homens tiveram que carregá-lo de volta aos barcos.",
+      "text_markdown": "Sangrou tanto que seus homens tiveram que carregá-lo de volta aos barcos.",
+      "tts": {
+        "text": "Sangrou tanto que seus homens tiveram que carregá-lo de volta aos barcos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Escaparam com pouco saque, mas com conhecimento valioso das defesas espanholas.",
+      "text_markdown": "Escaparam com pouco saque, mas com conhecimento valioso das defesas espanholas.",
+      "tts": {
+        "text": "Escaparam com pouco saque, mas com conhecimento valioso das defesas espanholas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake não desistiu.",
+      "text_markdown": "Drake não desistiu.",
+      "tts": {
+        "text": "Drake não desistiu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliou-se a um grupo de Cimarrons, africanos escravizados fugidos que viviam livres na selva.",
+      "text_markdown": "Aliou-se a um grupo de Cimarrons, africanos escravizados fugidos que viviam livres na selva.",
+      "tts": {
+        "text": "Aliou-se a um grupo de Cimarrons, africanos escravizados fugidos que viviam livres na selva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os Cimarrons odiavam os espanhóis e estavam ansiosos para ajudar qualquer um que lutasse contra eles.",
+      "text_markdown": "Os Cimarrons odiavam os espanhóis e estavam ansiosos para ajudar qualquer um que lutasse contra eles.",
+      "tts": {
+        "text": "Os Cimarrons odiavam os espanhóis e estavam ansiosos para ajudar qualquer um que lutasse contra eles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Conheciam a selva, as trilhas e os padrões das caravanas de mulas espanholas.",
+      "text_markdown": "Conheciam a selva, as trilhas e os padrões das caravanas de mulas espanholas.",
+      "tts": {
+        "text": "Conheciam a selva, as trilhas e os padrões das caravanas de mulas espanholas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Com os Cimarrons como guias, Drake cruzou o Istmo do Panamá a pé.",
+      "text_markdown": "Com os Cimarrons como guias, Drake cruzou o Istmo do Panamá a pé.",
+      "tts": {
+        "text": "Com os Cimarrons como guias, Drake cruzou o Istmo do Panamá a pé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Abriram caminho pela densa selva tropical durante dias.",
+      "text_markdown": "Abriram caminho pela densa selva tropical durante dias.",
+      "tts": {
+        "text": "Abriram caminho pela densa selva tropical durante dias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No topo de uma crista, Drake escalou uma árvore alta.",
+      "text_markdown": "No topo de uma crista, Drake escalou uma árvore alta.",
+      "tts": {
+        "text": "No topo de uma crista, Drake escalou uma árvore alta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De lá, tornou-se um dos primeiros ingleses a ver o Oceano Pacífico.",
+      "text_markdown": "De lá, tornou-se um dos primeiros ingleses a ver o Oceano Pacífico.",
+      "tts": {
+        "text": "De lá, tornou-se um dos primeiros ingleses a ver o Oceano Pacífico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake teria rezado para que Deus lhe permitisse navegar naquele grande oceano algum dia.",
+      "text_markdown": "Drake teria rezado para que Deus lhe permitisse navegar naquele grande oceano algum dia.",
+      "tts": {
+        "text": "Drake teria rezado para que Deus lhe permitisse navegar naquele grande oceano algum dia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Este momento se tornou uma das histórias mais famosas de sua vida.",
+      "text_markdown": "Este momento se tornou uma das histórias mais famosas de sua vida.",
+      "tts": {
+        "text": "Este momento se tornou uma das histórias mais famosas de sua vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A visão do Pacífico encheu-o de ambição.",
+      "text_markdown": "A visão do Pacífico encheu-o de ambição.",
+      "tts": {
+        "text": "A visão do Pacífico encheu-o de ambição.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Percebeu que as colônias espanholas do Pacífico estavam praticamente indefesas.",
+      "text_markdown": "Percebeu que as colônias espanholas do Pacífico estavam praticamente indefesas.",
+      "tts": {
+        "text": "Percebeu que as colônias espanholas do Pacífico estavam praticamente indefesas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake e os Cimarrons emboscaram uma caravana de mulas espanhola carregando prata e ouro.",
+      "text_markdown": "Drake e os Cimarrons emboscaram uma caravana de mulas espanhola carregando prata e ouro.",
+      "tts": {
+        "text": "Drake e os Cimarrons emboscaram uma caravana de mulas espanhola carregando prata e ouro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O tesouro estava sendo transportado do lado do Pacífico para o lado do Atlântico do Panamá.",
+      "text_markdown": "O tesouro estava sendo transportado do lado do Pacífico para o lado do Atlântico do Panamá.",
+      "tts": {
+        "text": "O tesouro estava sendo transportado do lado do Pacífico para o lado do Atlântico do Panamá.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os invasores capturaram uma enorme quantidade de metais preciosos.",
+      "text_markdown": "Os invasores capturaram uma enorme quantidade de metais preciosos.",
+      "tts": {
+        "text": "Os invasores capturaram uma enorme quantidade de metais preciosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake retornou à Inglaterra rico e famoso.",
+      "text_markdown": "Drake retornou à Inglaterra rico e famoso.",
+      "tts": {
+        "text": "Drake retornou à Inglaterra rico e famoso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A rainha Elisabete tomou nota deste ousado jovem capitão.",
+      "text_markdown": "A rainha Elisabete tomou nota deste ousado jovem capitão.",
+      "tts": {
+        "text": "A rainha Elisabete tomou nota deste ousado jovem capitão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não podia elogiar publicamente um ataque à Espanha em tempo de paz.",
+      "text_markdown": "Não podia elogiar publicamente um ataque à Espanha em tempo de paz.",
+      "tts": {
+        "text": "Não podia elogiar publicamente um ataque à Espanha em tempo de paz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas em privado, ficava encantada com qualquer coisa que enfraquecesse sua rival.",
+      "text_markdown": "Mas em privado, ficava encantada com qualquer coisa que enfraquecesse sua rival.",
+      "tts": {
+        "text": "Mas em privado, ficava encantada com qualquer coisa que enfraquecesse sua rival.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake começou a circular em ambientes próximos à própria rainha.",
+      "text_markdown": "Drake começou a circular em ambientes próximos à própria rainha.",
+      "tts": {
+        "text": "Drake começou a circular em ambientes próximos à própria rainha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1577, Elisabete autorizou secretamente Drake a liderar uma expedição ao Pacífico.",
+      "text_markdown": "Em 1577, Elisabete autorizou secretamente Drake a liderar uma expedição ao Pacífico.",
+      "tts": {
+        "text": "Em mil quinhentos e setenta e sete, Elisabete autorizou secretamente Drake a liderar uma expedição ao Pacífico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O propósito oficial da viagem era exploração.",
+      "text_markdown": "O propósito oficial da viagem era exploração.",
+      "tts": {
+        "text": "O propósito oficial da viagem era exploração.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O propósito real era atacar possessões espanholas na costa pacífica da América do Sul.",
+      "text_markdown": "O propósito real era atacar possessões espanholas na costa pacífica da América do Sul.",
+      "tts": {
+        "text": "O propósito real era atacar possessões espanholas na costa pacífica da América do Sul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A rainha investiu seu próprio dinheiro no empreendimento.",
+      "text_markdown": "A rainha investiu seu próprio dinheiro no empreendimento.",
+      "tts": {
+        "text": "A rainha investiu seu próprio dinheiro no empreendimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake partiu de Plymouth com cinco navios e aproximadamente cento e sessenta homens.",
+      "text_markdown": "Drake partiu de Plymouth com cinco navios e aproximadamente cento e sessenta homens.",
+      "tts": {
+        "text": "Drake partiu de Plymouth com cinco navios e aproximadamente cento e sessenta homens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu navio-capitânia era o Pelican, que depois rebatizou de Golden Hind.",
+      "text_markdown": "Seu navio-capitânia era o Pelican, que depois rebatizou de Golden Hind.",
+      "tts": {
+        "text": "Seu navio-capitânia era o Pelican, que depois rebatizou de Golden Hind.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A frota seguiu para o sul pelo Atlântico em direção à costa da América do Sul.",
+      "text_markdown": "A frota seguiu para o sul pelo Atlântico em direção à costa da América do Sul.",
+      "tts": {
+        "text": "A frota seguiu para o sul pelo Atlântico em direção à costa da América do Sul.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A viagem pela costa atlântica foi difícil.",
+      "text_markdown": "A viagem pela costa atlântica foi difícil.",
+      "tts": {
+        "text": "A viagem pela costa atlântica foi difícil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um navio foi afundado intencionalmente por ser impróprio para navegação.",
+      "text_markdown": "Um navio foi afundado intencionalmente por ser impróprio para navegação.",
+      "tts": {
+        "text": "Um navio foi afundado intencionalmente por ser impróprio para navegação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake também enfrentou um sério desafio à sua autoridade de um cavalheiro chamado Thomas Doughty.",
+      "text_markdown": "Drake também enfrentou um sério desafio à sua autoridade de um cavalheiro chamado Thomas Doughty.",
+      "tts": {
+        "text": "Drake também enfrentou um sério desafio à sua autoridade de um cavalheiro chamado Thomas Doughty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake julgou Doughty por motim e mandou executá-lo.",
+      "text_markdown": "Drake julgou Doughty por motim e mandou executá-lo.",
+      "tts": {
+        "text": "Drake julgou Doughty por motim e mandou executá-lo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frota entrou no Estreito de Magalhães no extremo sul da América do Sul.",
+      "text_markdown": "A frota entrou no Estreito de Magalhães no extremo sul da América do Sul.",
+      "tts": {
+        "text": "A frota entrou no Estreito de Magalhães no extremo sul da América do Sul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O estreito era estreito, traiçoeiro e assolado por tempestades violentas.",
+      "text_markdown": "O estreito era estreito, traiçoeiro e assolado por tempestades violentas.",
+      "tts": {
+        "text": "O estreito era estreito, traiçoeiro e assolado por tempestades violentas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Levou 16 dias para atravessar o estreito.",
+      "text_markdown": "Levou 16 dias para atravessar o estreito.",
+      "tts": {
+        "text": "Levou dezesseis dias para atravessar o estreito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Apenas o Golden Hind e dois outros navios sobreviveram à passagem.",
+      "text_markdown": "Apenas o Golden Hind e dois outros navios sobreviveram à passagem.",
+      "tts": {
+        "text": "Apenas o Golden Hind e dois outros navios sobreviveram à passagem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Após emergir no Pacífico, uma terrível tempestade atingiu os navios restantes.",
+      "text_markdown": "Após emergir no Pacífico, uma terrível tempestade atingiu os navios restantes.",
+      "tts": {
+        "text": "Após emergir no Pacífico, uma terrível tempestade atingiu os navios restantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um navio foi empurrado de volta pelo estreito e retornou à Inglaterra.",
+      "text_markdown": "Um navio foi empurrado de volta pelo estreito e retornou à Inglaterra.",
+      "tts": {
+        "text": "Um navio foi empurrado de volta pelo estreito e retornou à Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Outro navio foi completamente perdido.",
+      "text_markdown": "Outro navio foi completamente perdido.",
+      "tts": {
+        "text": "Outro navio foi completamente perdido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake estava sozinho no Golden Hind, em um oceano vasto e desconhecido.",
+      "text_markdown": "Drake estava sozinho no Golden Hind, em um oceano vasto e desconhecido.",
+      "tts": {
+        "text": "Drake estava sozinho no Golden Hind, em um oceano vasto e desconhecido.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake navegou para o norte ao longo da costa pacífica da América do Sul.",
+      "text_markdown": "Drake navegou para o norte ao longo da costa pacífica da América do Sul.",
+      "tts": {
+        "text": "Drake navegou para o norte ao longo da costa pacífica da América do Sul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As colônias espanholas ali nunca haviam sido atacadas pelo mar.",
+      "text_markdown": "As colônias espanholas ali nunca haviam sido atacadas pelo mar.",
+      "tts": {
+        "text": "As colônias espanholas ali nunca haviam sido atacadas pelo mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Não tinham defesas porque nenhum navio inimigo jamais entrara no Pacífico.",
+      "text_markdown": "Não tinham defesas porque nenhum navio inimigo jamais entrara no Pacífico.",
+      "tts": {
+        "text": "Não tinham defesas porque nenhum navio inimigo jamais entrara no Pacífico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake saqueou porto após porto, encontrando quase nenhuma resistência.",
+      "text_markdown": "Drake saqueou porto após porto, encontrando quase nenhuma resistência.",
+      "tts": {
+        "text": "Drake saqueou porto após porto, encontrando quase nenhuma resistência.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Capturou enormes quantidades de prata, ouro e pedras preciosas.",
+      "text_markdown": "Capturou enormes quantidades de prata, ouro e pedras preciosas.",
+      "tts": {
+        "text": "Capturou enormes quantidades de prata, ouro e pedras preciosas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu maior prêmio foi o navio de tesouros espanhol Nuestra Señora de la Concepción.",
+      "text_markdown": "Seu maior prêmio foi o navio de tesouros espanhol Nuestra Señora de la Concepción.",
+      "tts": {
+        "text": "Seu maior prêmio foi o navio de tesouros espanhol Nuestra Señora de la Concepción.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O navio estava tão pesadamente carregado de tesouros que levou dias para transferir a carga.",
+      "text_markdown": "O navio estava tão pesadamente carregado de tesouros que levou dias para transferir a carga.",
+      "tts": {
+        "text": "O navio estava tão pesadamente carregado de tesouros que levou dias para transferir a carga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O valor do tesouro capturado era espantoso, valendo milhões em moeda atual.",
+      "text_markdown": "O valor do tesouro capturado era espantoso, valendo milhões em moeda atual.",
+      "tts": {
+        "text": "O valor do tesouro capturado era espantoso, valendo milhões em moeda atual.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "No auge",
+      "text_markdown": "No auge"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake não podia retornar pelo caminho que havia percorrido.",
+      "text_markdown": "Drake não podia retornar pelo caminho que havia percorrido.",
+      "tts": {
+        "text": "Drake não podia retornar pelo caminho que havia percorrido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os espanhóis agora o caçavam ao longo de toda a costa sul-americana.",
+      "text_markdown": "Os espanhóis agora o caçavam ao longo de toda a costa sul-americana.",
+      "tts": {
+        "text": "Os espanhóis agora o caçavam ao longo de toda a costa sul-americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Navegar de volta pelo Estreito de Magalhães seria suicida.",
+      "text_markdown": "Navegar de volta pelo Estreito de Magalhães seria suicida.",
+      "tts": {
+        "text": "Navegar de volta pelo Estreito de Magalhães seria suicida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Decidiu continuar para oeste ao redor do mundo.",
+      "text_markdown": "Decidiu continuar para oeste ao redor do mundo.",
+      "tts": {
+        "text": "Decidiu continuar para oeste ao redor do mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Primeiro, Drake navegou para o norte ao longo da costa da América Central e do Norte.",
+      "text_markdown": "Primeiro, Drake navegou para o norte ao longo da costa da América Central e do Norte.",
+      "tts": {
+        "text": "Primeiro, Drake navegou para o norte ao longo da costa da América Central e do Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Historiadores debatem até onde ele foi ao norte.",
+      "text_markdown": "Historiadores debatem até onde ele foi ao norte.",
+      "tts": {
+        "text": "Historiadores debatem até onde ele foi ao norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alguns acreditam que alcançou a área do atual Oregon ou mesmo a Ilha de Vancouver.",
+      "text_markdown": "Alguns acreditam que alcançou a área do atual Oregon ou mesmo a Ilha de Vancouver.",
+      "tts": {
+        "text": "Alguns acreditam que alcançou a área do atual Oregon ou mesmo a Ilha de Vancouver.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Outros colocam seu limite norte perto da Baía de São Francisco.",
+      "text_markdown": "Outros colocam seu limite norte perto da Baía de São Francisco.",
+      "tts": {
+        "text": "Outros colocam seu limite norte perto da Baía de São Francisco.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake desembarcou em algum lugar da costa da Califórnia e reivindicou o território para a Inglaterra.",
+      "text_markdown": "Drake desembarcou em algum lugar da costa da Califórnia e reivindicou o território para a Inglaterra.",
+      "tts": {
+        "text": "Drake desembarcou em algum lugar da costa da Califórnia e reivindicou o território para a Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chamou-o de Nova Albion, significando Nova Bretanha.",
+      "text_markdown": "Chamou-o de Nova Albion, significando Nova Bretanha.",
+      "tts": {
+        "text": "Chamou-o de Nova Albion, significando Nova Bretanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Passou várias semanas em terra, reparando seu navio e descansando sua tripulação.",
+      "text_markdown": "Passou várias semanas em terra, reparando seu navio e descansando sua tripulação.",
+      "tts": {
+        "text": "Passou várias semanas em terra, reparando seu navio e descansando sua tripulação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teria tido interações amigáveis com os povos indígenas locais.",
+      "text_markdown": "Teria tido interações amigáveis com os povos indígenas locais.",
+      "tts": {
+        "text": "Teria tido interações amigáveis com os povos indígenas locais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Nova Albion, Drake virou para o oeste e cruzou o Oceano Pacífico.",
+      "text_markdown": "De Nova Albion, Drake virou para o oeste e cruzou o Oceano Pacífico.",
+      "tts": {
+        "text": "De Nova Albion, Drake virou para o oeste e cruzou o Oceano Pacífico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A travessia levou 68 dias.",
+      "text_markdown": "A travessia levou 68 dias.",
+      "tts": {
+        "text": "A travessia levou sessenta e oito dias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era uma extensão vasta e solitária de oceano com poucas ilhas para reabastecimento.",
+      "text_markdown": "Era uma extensão vasta e solitária de oceano com poucas ilhas para reabastecimento.",
+      "tts": {
+        "text": "Era uma extensão vasta e solitária de oceano com poucas ilhas para reabastecimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A tripulação sobreviveu com suprimentos diminuindo e qualquer peixe que conseguissem pescar.",
+      "text_markdown": "A tripulação sobreviveu com suprimentos diminuindo e qualquer peixe que conseguissem pescar.",
+      "tts": {
+        "text": "A tripulação sobreviveu com suprimentos diminuindo e qualquer peixe que conseguissem pescar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake chegou às Ilhas das Especiarias, conhecidas hoje como as Molucas na Indonésia.",
+      "text_markdown": "Drake chegou às Ilhas das Especiarias, conhecidas hoje como as Molucas na Indonésia.",
+      "tts": {
+        "text": "Drake chegou às Ilhas das Especiarias, conhecidas hoje como as Molucas na Indonésia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Essas ilhas eram a fonte de cravo, noz-moscada e outras especiarias que valiam mais que ouro.",
+      "text_markdown": "Essas ilhas eram a fonte de cravo, noz-moscada e outras especiarias que valiam mais que ouro.",
+      "tts": {
+        "text": "Essas ilhas eram a fonte de cravo, noz-moscada e outras especiarias que valiam mais que ouro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake negociou um acordo comercial com o Sultão de Ternate.",
+      "text_markdown": "Drake negociou um acordo comercial com o Sultão de Ternate.",
+      "tts": {
+        "text": "Drake negociou um acordo comercial com o Sultão de Ternate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Carregou o Golden Hind com seis toneladas de cravo.",
+      "text_markdown": "Carregou o Golden Hind com seis toneladas de cravo.",
+      "tts": {
+        "text": "Carregou o Golden Hind com seis toneladas de cravo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O navio quase chegou ao desastre em um recife nas Índias Orientais.",
+      "text_markdown": "O navio quase chegou ao desastre em um recife nas Índias Orientais.",
+      "tts": {
+        "text": "O navio quase chegou ao desastre em um recife nas Índias Orientais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O Golden Hind encalhou e ficou preso por vinte horas.",
+      "text_markdown": "O Golden Hind encalhou e ficou preso por vinte horas.",
+      "tts": {
+        "text": "O Golden Hind encalhou e ficou preso por vinte horas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake teve que jogar carga ao mar para aliviar o navio o suficiente para que flutuasse novamente.",
+      "text_markdown": "Drake teve que jogar carga ao mar para aliviar o navio o suficiente para que flutuasse novamente.",
+      "tts": {
+        "text": "Drake teve que jogar carga ao mar para aliviar o navio o suficiente para que flutuasse novamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi um dos momentos mais aterrorizantes de toda a viagem.",
+      "text_markdown": "Foi um dos momentos mais aterrorizantes de toda a viagem.",
+      "tts": {
+        "text": "Foi um dos momentos mais aterrorizantes de toda a viagem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake cruzou o Oceano Índico e contornou o Cabo da Boa Esperança no extremo sul da África.",
+      "text_markdown": "Drake cruzou o Oceano Índico e contornou o Cabo da Boa Esperança no extremo sul da África.",
+      "tts": {
+        "text": "Drake cruzou o Oceano Índico e contornou o Cabo da Boa Esperança no extremo sul da África.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navegou para o norte pelo Oceano Atlântico.",
+      "text_markdown": "Navegou para o norte pelo Oceano Atlântico.",
+      "tts": {
+        "text": "Navegou para o norte pelo Oceano Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em 26 de setembro de 1580, o Golden Hind entrou no porto de Plymouth.",
+      "text_markdown": "Em 26 de setembro de 1580, o Golden Hind entrou no porto de Plymouth.",
+      "tts": {
+        "text": "Em vinte e seis de setembro de mil quinhentos e oitenta, o Golden Hind entrou no porto de Plymouth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake estava no mar há quase três anos.",
+      "text_markdown": "Drake estava no mar há quase três anos.",
+      "tts": {
+        "text": "Drake estava no mar há quase três anos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake foi o primeiro capitão a sobreviver a uma circunavegação completa do globo.",
+      "text_markdown": "Drake foi o primeiro capitão a sobreviver a uma circunavegação completa do globo.",
+      "tts": {
+        "text": "Drake foi o primeiro capitão a sobreviver a uma circunavegação completa do globo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fernão de Magalhães iniciou a primeira circunavegação, mas foi morto nas Filipinas.",
+      "text_markdown": "Fernão de Magalhães iniciou a primeira circunavegação, mas foi morto nas Filipinas.",
+      "tts": {
+        "text": "Fernão de Magalhães iniciou a primeira circunavegação, mas foi morto nas Filipinas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Apenas um dos navios de Magalhães completou a viagem, sob um capitão diferente.",
+      "text_markdown": "Apenas um dos navios de Magalhães completou a viagem, sob um capitão diferente.",
+      "tts": {
+        "text": "Apenas um dos navios de Magalhães completou a viagem, sob um capitão diferente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake foi o primeiro a liderar uma expedição ao redor do mundo e retornar vivo.",
+      "text_markdown": "Drake foi o primeiro a liderar uma expedição ao redor do mundo e retornar vivo.",
+      "tts": {
+        "text": "Drake foi o primeiro a liderar uma expedição ao redor do mundo e retornar vivo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O tesouro que Drake trouxe de volta era extraordinário.",
+      "text_markdown": "O tesouro que Drake trouxe de volta era extraordinário.",
+      "tts": {
+        "text": "O tesouro que Drake trouxe de volta era extraordinário.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estimativas sugerem que valia mais do que toda a receita anual da Coroa inglesa.",
+      "text_markdown": "Estimativas sugerem que valia mais do que toda a receita anual da Coroa inglesa.",
+      "tts": {
+        "text": "Estimativas sugerem que valia mais do que toda a receita anual da Coroa inglesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A parte da rainha Elisabete sozinha era enorme.",
+      "text_markdown": "A parte da rainha Elisabete sozinha era enorme.",
+      "tts": {
+        "text": "A parte da rainha Elisabete sozinha era enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os investidores da viagem receberam retornos de milhares por cento.",
+      "text_markdown": "Os investidores da viagem receberam retornos de milhares por cento.",
+      "tts": {
+        "text": "Os investidores da viagem receberam retornos de milhares por cento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 4 de abril de 1581, a rainha Elisabete visitou o Golden Hind em Deptford.",
+      "text_markdown": "Em 4 de abril de 1581, a rainha Elisabete visitou o Golden Hind em Deptford.",
+      "tts": {
+        "text": "Em quatro de abril de mil quinhentos e oitenta e um, a rainha Elisabete visitou o Golden Hind em Deptford.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ela o fez cavaleiro no convés de seu navio.",
+      "text_markdown": "Ela o fez cavaleiro no convés de seu navio.",
+      "tts": {
+        "text": "Ela o fez cavaleiro no convés de seu navio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele se tornou Sir Francis Drake.",
+      "text_markdown": "Ele se tornou Sir Francis Drake.",
+      "tts": {
+        "text": "Ele se tornou Sir Francis Drake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O embaixador espanhol ficou furioso e chamou aquilo de insulto a seu rei.",
+      "text_markdown": "O embaixador espanhol ficou furioso e chamou aquilo de insulto a seu rei.",
+      "tts": {
+        "text": "O embaixador espanhol ficou furioso e chamou aquilo de insulto a seu rei.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake tornou-se um dos homens mais ricos e famosos da Inglaterra.",
+      "text_markdown": "Drake tornou-se um dos homens mais ricos e famosos da Inglaterra.",
+      "tts": {
+        "text": "Drake tornou-se um dos homens mais ricos e famosos da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Comprou a Abadia de Buckland, uma grande propriedade em Devon.",
+      "text_markdown": "Comprou a Abadia de Buckland, uma grande propriedade em Devon.",
+      "tts": {
+        "text": "Comprou a Abadia de Buckland, uma grande propriedade em Devon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Serviu como prefeito de Plymouth.",
+      "text_markdown": "Serviu como prefeito de Plymouth.",
+      "tts": {
+        "text": "Serviu como prefeito de Plymouth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi eleito para o Parlamento.",
+      "text_markdown": "Foi eleito para o Parlamento.",
+      "tts": {
+        "text": "Foi eleito para o Parlamento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1585, Elisabete enviou Drake para atacar o Caribe espanhol mais uma vez.",
+      "text_markdown": "Em 1585, Elisabete enviou Drake para atacar o Caribe espanhol mais uma vez.",
+      "tts": {
+        "text": "Em mil quinhentos e oitenta e cinco, Elisabete enviou Drake para atacar o Caribe espanhol mais uma vez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Desta vez navegou com uma frota de mais de vinte navios e mais de dois mil soldados.",
+      "text_markdown": "Desta vez navegou com uma frota de mais de vinte navios e mais de dois mil soldados.",
+      "tts": {
+        "text": "Desta vez navegou com uma frota de mais de vinte navios e mais de dois mil soldados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saqueou a cidade de Santo Domingo na ilha de Hispaniola.",
+      "text_markdown": "Saqueou a cidade de Santo Domingo na ilha de Hispaniola.",
+      "tts": {
+        "text": "Saqueou a cidade de Santo Domingo na ilha de Hispaniola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Em seguida, capturou e exigiu resgate pela cidade de Cartagena na atual Colômbia.",
+      "text_markdown": "Em seguida, capturou e exigiu resgate pela cidade de Cartagena na atual Colômbia.",
+      "tts": {
+        "text": "Em seguida, capturou e exigiu resgate pela cidade de Cartagena na atual Colômbia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esses ataques humilharam a Espanha e fortaleceram a confiança inglesa.",
+      "text_markdown": "Esses ataques humilharam a Espanha e fortaleceram a confiança inglesa.",
+      "tts": {
+        "text": "Esses ataques humilharam a Espanha e fortaleceram a confiança inglesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Também ajudaram a provocar o rei Filipe II a planejar uma invasão da Inglaterra.",
+      "text_markdown": "Também ajudaram a provocar o rei Filipe II a planejar uma invasão da Inglaterra.",
+      "tts": {
+        "text": "Também ajudaram a provocar o rei Filipe II a planejar uma invasão da Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O confronto entre as duas maiores potências navais do mundo se aproximava.",
+      "text_markdown": "O confronto entre as duas maiores potências navais do mundo se aproximava.",
+      "tts": {
+        "text": "O confronto entre as duas maiores potências navais do mundo se aproximava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O fim",
+      "text_markdown": "O fim"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1587, Drake lançou um dos ataques mais ousados da história naval.",
+      "text_markdown": "Em 1587, Drake lançou um dos ataques mais ousados da história naval.",
+      "tts": {
+        "text": "Em mil quinhentos e oitenta e sete, Drake lançou um dos ataques mais ousados da história naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navegou até o porto espanhol de Cádiz e atacou a frota ali reunida.",
+      "text_markdown": "Navegou até o porto espanhol de Cádiz e atacou a frota ali reunida.",
+      "tts": {
+        "text": "Navegou até o porto espanhol de Cádiz e atacou a frota ali reunida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Destruiu ou capturou aproximadamente trinta navios.",
+      "text_markdown": "Destruiu ou capturou aproximadamente trinta navios.",
+      "tts": {
+        "text": "Destruiu ou capturou aproximadamente trinta navios.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake chamou este ataque de chamuscar a barba do rei da Espanha.",
+      "text_markdown": "Drake chamou este ataque de chamuscar a barba do rei da Espanha.",
+      "tts": {
+        "text": "Drake chamou este ataque de chamuscar a barba do rei da Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O ataque atrasou a Armada espanhola em pelo menos um ano.",
+      "text_markdown": "O ataque atrasou a Armada espanhola em pelo menos um ano.",
+      "tts": {
+        "text": "O ataque atrasou a Armada espanhola em pelo menos um ano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Também destruiu suprimentos e equipamentos que a Espanha precisava para a invasão.",
+      "text_markdown": "Também destruiu suprimentos e equipamentos que a Espanha precisava para a invasão.",
+      "tts": {
+        "text": "Também destruiu suprimentos e equipamentos que a Espanha precisava para a invasão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake retornou à Inglaterra como herói mais uma vez.",
+      "text_markdown": "Drake retornou à Inglaterra como herói mais uma vez.",
+      "tts": {
+        "text": "Drake retornou à Inglaterra como herói mais uma vez.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1588, o rei Filipe II finalmente lançou sua grande frota de invasão.",
+      "text_markdown": "Em 1588, o rei Filipe II finalmente lançou sua grande frota de invasão.",
+      "tts": {
+        "text": "Em mil quinhentos e oitenta e oito, o rei Filipe Segundo finalmente lançou sua grande frota de invasão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Armada espanhola consistia em aproximadamente 130 navios.",
+      "text_markdown": "A Armada espanhola consistia em aproximadamente 130 navios.",
+      "tts": {
+        "text": "A Armada espanhola consistia em aproximadamente cento e trinta navios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era a maior força naval já reunida na história europeia até então.",
+      "text_markdown": "Era a maior força naval já reunida na história europeia até então.",
+      "tts": {
+        "text": "Era a maior força naval já reunida na história europeia até então.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua missão era escoltar um exército dos Países Baixos através do Canal da Mancha.",
+      "text_markdown": "Sua missão era escoltar um exército dos Países Baixos através do Canal da Mancha.",
+      "tts": {
+        "text": "Sua missão era escoltar um exército dos Países Baixos através do Canal da Mancha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake serviu como vice-almirante da frota inglesa sob o comando de Lord Howard de Effingham.",
+      "text_markdown": "Drake serviu como vice-almirante da frota inglesa sob o comando de Lord Howard de Effingham.",
+      "tts": {
+        "text": "Drake serviu como vice-almirante da frota inglesa sob o comando de Lord Howard de Effingham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os navios ingleses eram geralmente menores e mais rápidos do que os galeões espanhóis.",
+      "text_markdown": "Os navios ingleses eram geralmente menores e mais rápidos do que os galeões espanhóis.",
+      "tts": {
+        "text": "Os navios ingleses eram geralmente menores e mais rápidos do que os galeões espanhóis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A artilharia inglesa era superior, com canhões de maior alcance e tripulações mais bem treinadas.",
+      "text_markdown": "A artilharia inglesa era superior, com canhões de maior alcance e tripulações mais bem treinadas.",
+      "tts": {
+        "text": "A artilharia inglesa era superior, com canhões de maior alcance e tripulações mais bem treinadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas o tamanho da Armada era aterrorizante.",
+      "text_markdown": "Mas o tamanho da Armada era aterrorizante.",
+      "tts": {
+        "text": "Mas o tamanho da Armada era aterrorizante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frota inglesa assediou a Armada enquanto ela subia o Canal da Mancha.",
+      "text_markdown": "A frota inglesa assediou a Armada enquanto ela subia o Canal da Mancha.",
+      "tts": {
+        "text": "A frota inglesa assediou a Armada enquanto ela subia o Canal da Mancha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atacavam à distância, usando seus navios mais rápidos e canhões de maior alcance.",
+      "text_markdown": "Atacavam à distância, usando seus navios mais rápidos e canhões de maior alcance.",
+      "tts": {
+        "text": "Atacavam à distância, usando seus navios mais rápidos e canhões de maior alcance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A formação espanhola se manteve, mas os ingleses a impediram de alcançar seus objetivos.",
+      "text_markdown": "A formação espanhola se manteve, mas os ingleses a impediram de alcançar seus objetivos.",
+      "tts": {
+        "text": "A formação espanhola se manteve, mas os ingleses a impediram de alcançar seus objetivos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O momento decisivo veio em Gravelines, na costa de Flandres.",
+      "text_markdown": "O momento decisivo veio em Gravelines, na costa de Flandres.",
+      "tts": {
+        "text": "O momento decisivo veio em Gravelines, na costa de Flandres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os ingleses enviaram brulotes contra a Armada ancorada durante a noite.",
+      "text_markdown": "Os ingleses enviaram brulotes contra a Armada ancorada durante a noite.",
+      "tts": {
+        "text": "Os ingleses enviaram brulotes contra a Armada ancorada durante a noite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os navios em chamas forçaram os navios espanhóis a se dispersarem em pânico.",
+      "text_markdown": "Os navios em chamas forçaram os navios espanhóis a se dispersarem em pânico.",
+      "tts": {
+        "text": "Os navios em chamas forçaram os navios espanhóis a se dispersarem em pânico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A formação cerrada que protegera a Armada foi quebrada.",
+      "text_markdown": "A formação cerrada que protegera a Armada foi quebrada.",
+      "tts": {
+        "text": "A formação cerrada que protegera a Armada foi quebrada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os ingleses atacaram a frota espanhola dispersa com efeito devastador.",
+      "text_markdown": "Os ingleses atacaram a frota espanhola dispersa com efeito devastador.",
+      "tts": {
+        "text": "Os ingleses atacaram a frota espanhola dispersa com efeito devastador.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vários navios espanhóis foram afundados ou empurrados para a costa.",
+      "text_markdown": "Vários navios espanhóis foram afundados ou empurrados para a costa.",
+      "tts": {
+        "text": "Vários navios espanhóis foram afundados ou empurrados para a costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A Armada não conseguiu se reagrupar e foi empurrada para o norte pelo vento.",
+      "text_markdown": "A Armada não conseguiu se reagrupar e foi empurrada para o norte pelo vento.",
+      "tts": {
+        "text": "A Armada não conseguiu se reagrupar e foi empurrada para o norte pelo vento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi forçada a navegar ao redor da Escócia e da Irlanda para retornar à Espanha.",
+      "text_markdown": "Foi forçada a navegar ao redor da Escócia e da Irlanda para retornar à Espanha.",
+      "tts": {
+        "text": "Foi forçada a navegar ao redor da Escócia e da Irlanda para retornar à Espanha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tempestades destruíram muitos navios espanhóis durante a longa viagem de volta.",
+      "text_markdown": "Tempestades destruíram muitos navios espanhóis durante a longa viagem de volta.",
+      "tts": {
+        "text": "Tempestades destruíram muitos navios espanhóis durante a longa viagem de volta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navios naufragaram nas costas rochosas da Escócia e da Irlanda.",
+      "text_markdown": "Navios naufragaram nas costas rochosas da Escócia e da Irlanda.",
+      "tts": {
+        "text": "Navios naufragaram nas costas rochosas da Escócia e da Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Apenas cerca de 65 dos 130 navios originais conseguiram voltar à Espanha.",
+      "text_markdown": "Apenas cerca de 65 dos 130 navios originais conseguiram voltar à Espanha.",
+      "tts": {
+        "text": "Apenas cerca de sessenta e cinco dos cento e trinta navios originais conseguiram voltar à Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Milhares de marinheiros e soldados espanhóis morreram.",
+      "text_markdown": "Milhares de marinheiros e soldados espanhóis morreram.",
+      "tts": {
+        "text": "Milhares de marinheiros e soldados espanhóis morreram.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A derrota da Armada espanhola foi um ponto de virada na história europeia.",
+      "text_markdown": "A derrota da Armada espanhola foi um ponto de virada na história europeia.",
+      "tts": {
+        "text": "A derrota da Armada espanhola foi um ponto de virada na história europeia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Provou que a Espanha não era invencível no mar.",
+      "text_markdown": "Provou que a Espanha não era invencível no mar.",
+      "tts": {
+        "text": "Provou que a Espanha não era invencível no mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deu à Inglaterra a confiança para expandir seu próprio império.",
+      "text_markdown": "Deu à Inglaterra a confiança para expandir seu próprio império.",
+      "tts": {
+        "text": "Deu à Inglaterra a confiança para expandir seu próprio império.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake foi celebrado como um dos salvadores da nação.",
+      "text_markdown": "Drake foi celebrado como um dos salvadores da nação.",
+      "tts": {
+        "text": "Drake foi celebrado como um dos salvadores da nação.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas os últimos anos de Drake trouxeram fracasso e decepção.",
+      "text_markdown": "Mas os últimos anos de Drake trouxeram fracasso e decepção.",
+      "tts": {
+        "text": "Mas os últimos anos de Drake trouxeram fracasso e decepção.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em 1589, liderou um contra-ataque contra a Espanha chamado Armada Inglesa.",
+      "text_markdown": "Em 1589, liderou um contra-ataque contra a Espanha chamado Armada Inglesa.",
+      "tts": {
+        "text": "Em mil quinhentos e oitenta e nove, liderou um contra-ataque contra a Espanha chamado Armada Inglesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A expedição foi um desastre custoso.",
+      "text_markdown": "A expedição foi um desastre custoso.",
+      "tts": {
+        "text": "A expedição foi um desastre custoso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake não conseguiu alcançar nenhum de seus objetivos principais.",
+      "text_markdown": "Drake não conseguiu alcançar nenhum de seus objetivos principais.",
+      "tts": {
+        "text": "Drake não conseguiu alcançar nenhum de seus objetivos principais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1595, Drake navegou para o Caribe pela última vez.",
+      "text_markdown": "Em 1595, Drake navegou para o Caribe pela última vez.",
+      "tts": {
+        "text": "Em mil quinhentos e noventa e cinco, Drake navegou para o Caribe pela última vez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estava acompanhado por seu velho parceiro John Hawkins.",
+      "text_markdown": "Estava acompanhado por seu velho parceiro John Hawkins.",
+      "tts": {
+        "text": "Estava acompanhado por seu velho parceiro John Hawkins.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A expedição foi assolada por azar desde o início.",
+      "text_markdown": "A expedição foi assolada por azar desde o início.",
+      "tts": {
+        "text": "A expedição foi assolada por azar desde o início.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hawkins adoeceu e morreu ao largo da costa de Porto Rico.",
+      "text_markdown": "Hawkins adoeceu e morreu ao largo da costa de Porto Rico.",
+      "tts": {
+        "text": "Hawkins adoeceu e morreu ao largo da costa de Porto Rico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake atacou San Juan, Porto Rico, mas foi repelido pelos defensores espanhóis.",
+      "text_markdown": "Drake atacou San Juan, Porto Rico, mas foi repelido pelos defensores espanhóis.",
+      "tts": {
+        "text": "Drake atacou San Juan, Porto Rico, mas foi repelido pelos defensores espanhóis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atacou vários alvos menores, mas encontrou pouco tesouro.",
+      "text_markdown": "Atacou vários alvos menores, mas encontrou pouco tesouro.",
+      "tts": {
+        "text": "Atacou vários alvos menores, mas encontrou pouco tesouro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os espanhóis haviam fortalecido suas defesas desde os ataques anteriores de Drake.",
+      "text_markdown": "Os espanhóis haviam fortalecido suas defesas desde os ataques anteriores de Drake.",
+      "tts": {
+        "text": "Os espanhóis haviam fortalecido suas defesas desde os ataques anteriores de Drake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A era do saque fácil havia acabado.",
+      "text_markdown": "A era do saque fácil havia acabado.",
+      "tts": {
+        "text": "A era do saque fácil havia acabado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake contraiu disenteria, uma grave doença intestinal.",
+      "text_markdown": "Drake contraiu disenteria, uma grave doença intestinal.",
+      "tts": {
+        "text": "Drake contraiu disenteria, uma grave doença intestinal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sua condição piorou rapidamente enquanto a frota navegava ao longo da costa do Panamá.",
+      "text_markdown": "Sua condição piorou rapidamente enquanto a frota navegava ao longo da costa do Panamá.",
+      "tts": {
+        "text": "Sua condição piorou rapidamente enquanto a frota navegava ao longo da costa do Panamá.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sir Francis Drake morreu em 28 de janeiro de 1596, a bordo de seu navio perto da cidade de Portobelo.",
+      "text_markdown": "Sir Francis Drake morreu em 28 de janeiro de 1596, a bordo de seu navio perto da cidade de Portobelo.",
+      "tts": {
+        "text": "Sir Francis Drake morreu em vinte e oito de janeiro de mil quinhentos e noventa e seis, a bordo de seu navio perto da cidade de Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tinha aproximadamente cinquenta e seis anos.",
+      "text_markdown": "Tinha aproximadamente cinquenta e seis anos.",
+      "tts": {
+        "text": "Tinha aproximadamente cinquenta e seis anos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake foi enterrado no mar em um caixão de chumbo.",
+      "text_markdown": "Drake foi enterrado no mar em um caixão de chumbo.",
+      "tts": {
+        "text": "Drake foi enterrado no mar em um caixão de chumbo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu corpo foi baixado nas águas do Caribe, o mar que tantas vezes saqueara.",
+      "text_markdown": "Seu corpo foi baixado nas águas do Caribe, o mar que tantas vezes saqueara.",
+      "tts": {
+        "text": "Seu corpo foi baixado nas águas do Caribe, o mar que tantas vezes saqueara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu caixão nunca foi encontrado, apesar de várias tentativas modernas de localizá-lo.",
+      "text_markdown": "Seu caixão nunca foi encontrado, apesar de várias tentativas modernas de localizá-lo.",
+      "tts": {
+        "text": "Seu caixão nunca foi encontrado, apesar de várias tentativas modernas de localizá-lo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legado",
+      "text_markdown": "Legado"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sir Francis Drake deixou um dos legados mais complicados de qualquer figura na história naval.",
+      "text_markdown": "Sir Francis Drake deixou um dos legados mais complicados de qualquer figura na história naval.",
+      "tts": {
+        "text": "Sir Francis Drake deixou um dos legados mais complicados de qualquer figura na história naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi simultaneamente um herói nacional e um criminoso internacional.",
+      "text_markdown": "Foi simultaneamente um herói nacional e um criminoso internacional.",
+      "tts": {
+        "text": "Foi simultaneamente um herói nacional e um criminoso internacional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O julgamento depende inteiramente da perspectiva.",
+      "text_markdown": "O julgamento depende inteiramente da perspectiva.",
+      "tts": {
+        "text": "O julgamento depende inteiramente da perspectiva.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Inglaterra, Drake é lembrado como o homem que circunavegou o globo e derrotou a Armada.",
+      "text_markdown": "Na Inglaterra, Drake é lembrado como o homem que circunavegou o globo e derrotou a Armada.",
+      "tts": {
+        "text": "Na Inglaterra, Drake é lembrado como o homem que circunavegou o globo e derrotou a Armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estátuas dele se erguem em Plymouth e outras cidades inglesas.",
+      "text_markdown": "Estátuas dele se erguem em Plymouth e outras cidades inglesas.",
+      "tts": {
+        "text": "Estátuas dele se erguem em Plymouth e outras cidades inglesas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A Ilha de Drake no Plymouth Sound leva seu nome.",
+      "text_markdown": "A Ilha de Drake no Plymouth Sound leva seu nome.",
+      "tts": {
+        "text": "A Ilha de Drake no Plymouth Sound leva seu nome.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele é uma das figuras mais celebradas da história marítima britânica.",
+      "text_markdown": "Ele é uma das figuras mais celebradas da história marítima britânica.",
+      "tts": {
+        "text": "Ele é uma das figuras mais celebradas da história marítima britânica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Espanha e na América Latina, a memória de Drake é muito diferente.",
+      "text_markdown": "Na Espanha e na América Latina, a memória de Drake é muito diferente.",
+      "tts": {
+        "text": "Na Espanha e na América Latina, a memória de Drake é muito diferente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É lembrado como um pirata impiedoso que queimou cidades e roubou tesouros.",
+      "text_markdown": "É lembrado como um pirata impiedoso que queimou cidades e roubou tesouros.",
+      "tts": {
+        "text": "É lembrado como um pirata impiedoso que queimou cidades e roubou tesouros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No Panamá, na Colômbia e em outros países, é um símbolo de violência colonial.",
+      "text_markdown": "No Panamá, na Colômbia e em outros países, é um símbolo de violência colonial.",
+      "tts": {
+        "text": "No Panamá, na Colômbia e em outros países, é um símbolo de violência colonial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O nome El Draque ainda tem peso nas culturas de língua espanhola.",
+      "text_markdown": "O nome El Draque ainda tem peso nas culturas de língua espanhola.",
+      "tts": {
+        "text": "O nome El Draque ainda tem peso nas culturas de língua espanhola.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O envolvimento de Drake no comércio de escravos é uma parte inescapável de seu registro.",
+      "text_markdown": "O envolvimento de Drake no comércio de escravos é uma parte inescapável de seu registro.",
+      "tts": {
+        "text": "O envolvimento de Drake no comércio de escravos é uma parte inescapável de seu registro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Participou de viagens que sequestraram africanos e os venderam como escravos.",
+      "text_markdown": "Participou de viagens que sequestraram africanos e os venderam como escravos.",
+      "tts": {
+        "text": "Participou de viagens que sequestraram africanos e os venderam como escravos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Este aspecto de sua carreira é frequentemente minimizado nas narrativas heroicas inglesas.",
+      "text_markdown": "Este aspecto de sua carreira é frequentemente minimizado nas narrativas heroicas inglesas.",
+      "tts": {
+        "text": "Este aspecto de sua carreira é frequentemente minimizado nas narrativas heroicas inglesas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas é central para entender o homem e sua época.",
+      "text_markdown": "Mas é central para entender o homem e sua época.",
+      "tts": {
+        "text": "Mas é central para entender o homem e sua época.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Passagem de Drake, o traiçoeiro estreito entre a América do Sul e a Antártida, leva seu nome.",
+      "text_markdown": "A Passagem de Drake, o traiçoeiro estreito entre a América do Sul e a Antártida, leva seu nome.",
+      "tts": {
+        "text": "A Passagem de Drake, o traiçoeiro estreito entre a América do Sul e a Antártida, leva seu nome.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Baía de Drake na Califórnia marca o provável local de seu desembarque em Nova Albion.",
+      "text_markdown": "A Baía de Drake na Califórnia marca o provável local de seu desembarque em Nova Albion.",
+      "tts": {
+        "text": "A Baía de Drake na Califórnia marca o provável local de seu desembarque em Nova Albion.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Características geográficas ao redor do mundo levam seu nome.",
+      "text_markdown": "Características geográficas ao redor do mundo levam seu nome.",
+      "tts": {
+        "text": "Características geográficas ao redor do mundo levam seu nome.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma das lendas mais duradouras é a história do Tambor de Drake.",
+      "text_markdown": "Uma das lendas mais duradouras é a história do Tambor de Drake.",
+      "tts": {
+        "text": "Uma das lendas mais duradouras é a história do Tambor de Drake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Segundo a tradição, o tambor de Drake tocará sozinho quando a Inglaterra estiver em perigo.",
+      "text_markdown": "Segundo a tradição, o tambor de Drake tocará sozinho quando a Inglaterra estiver em perigo.",
+      "tts": {
+        "text": "Segundo a tradição, o tambor de Drake tocará sozinho quando a Inglaterra estiver em perigo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O tambor, guardado na Abadia de Buckland, teria sido ouvido antes de grandes eventos militares.",
+      "text_markdown": "O tambor, guardado na Abadia de Buckland, teria sido ouvido antes de grandes eventos militares.",
+      "tts": {
+        "text": "O tambor, guardado na Abadia de Buckland, teria sido ouvido antes de grandes eventos militares.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A lenda captura o quão profundamente Drake está entrelaçado na identidade nacional inglesa.",
+      "text_markdown": "A lenda captura o quão profundamente Drake está entrelaçado na identidade nacional inglesa.",
+      "tts": {
+        "text": "A lenda captura o quão profundamente Drake está entrelaçado na identidade nacional inglesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A distinção entre corsário e pirata sempre foi política.",
+      "text_markdown": "A distinção entre corsário e pirata sempre foi política.",
+      "tts": {
+        "text": "A distinção entre corsário e pirata sempre foi política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drake tinha autorização de sua rainha para atacar a navegação espanhola.",
+      "text_markdown": "Drake tinha autorização de sua rainha para atacar a navegação espanhola.",
+      "tts": {
+        "text": "Drake tinha autorização de sua rainha para atacar a navegação espanhola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Da perspectiva inglesa, isso o tornava um comandante naval legítimo.",
+      "text_markdown": "Da perspectiva inglesa, isso o tornava um comandante naval legítimo.",
+      "tts": {
+        "text": "Da perspectiva inglesa, isso o tornava um comandante naval legítimo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Da perspectiva espanhola, era um ladrão comum sob a proteção de uma coroa.",
+      "text_markdown": "Da perspectiva espanhola, era um ladrão comum sob a proteção de uma coroa.",
+      "tts": {
+        "text": "Da perspectiva espanhola, era um ladrão comum sob a proteção de uma coroa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O que permanece inegável é a magnitude de sua conquista.",
+      "text_markdown": "O que permanece inegável é a magnitude de sua conquista.",
+      "tts": {
+        "text": "O que permanece inegável é a magnitude de sua conquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navegou ao redor de todo o planeta em um navio de madeira não maior do que uma quadra de tênis moderna.",
+      "text_markdown": "Navegou ao redor de todo o planeta em um navio de madeira não maior do que uma quadra de tênis moderna.",
+      "tts": {
+        "text": "Navegou ao redor de todo o planeta em um navio de madeira não maior do que uma quadra de tênis moderna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Desafiou o maior império da Terra e viveu para contar a história.",
+      "text_markdown": "Desafiou o maior império da Terra e viveu para contar a história.",
+      "tts": {
+        "text": "Desafiou o maior império da Terra e viveu para contar a história.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A história de Sir Francis Drake é a prova de que o mundo pertence àqueles ousados o suficiente para cruzá-lo.",
+      "text_markdown": "A história de Sir Francis Drake é a prova de que o mundo pertence àqueles ousados o suficiente para cruzá-lo.",
+      "tts": {
+        "text": "A história de Sir Francis Drake é a prova de que o mundo pertence àqueles ousados o suficiente para cruzá-lo.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "tr",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, yaşamış en korkunç korsanın gerçek hikâyesidir.",
+      "text_markdown": "Bu, yaşamış en korkunç korsanın gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, yaşamış en korkunç korsanın gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Edward Teach'ti, ama dünya onu Karasakal olarak hatırlıyor.",
+      "text_markdown": "Adı Edward Teach'ti, ama dünya onu Karasakal olarak hatırlıyor.",
+      "tts": {
+        "text": "Adı Edward Teach'ti, ama dünya onu Karasakal olarak hatırlıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizleri yalnızca yaklaşık 2 yıl boyunca dehşete düşürdü, ama efsanesi 300 yılı aşkın süredir yaşıyor.",
+      "text_markdown": "Denizleri yalnızca yaklaşık 2 yıl boyunca dehşete düşürdü, ama efsanesi 300 yılı aşkın süredir yaşıyor.",
+      "tts": {
+        "text": "Denizleri yalnızca yaklaşık iki yıl boyunca dehşete düşürdü, ama efsanesi üç yüz yılı aşkın süredir yaşıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal, filmlerde gördüğünüz korsanlara benzemiyordu.",
+      "text_markdown": "Karasakal, filmlerde gördüğünüz korsanlara benzemiyordu.",
+      "tts": {
+        "text": "Karasakal, filmlerde gördüğünüz korsanlara benzemiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha kötüydü.",
+      "text_markdown": "Daha kötüydü.",
+      "tts": {
+        "text": "Daha kötüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Devasa siyah sakalına yavaş yanan fitiller örer ve savaştan önce ateşe verirdi.",
+      "text_markdown": "Devasa siyah sakalına yavaş yanan fitiller örer ve savaştan önce ateşe verirdi.",
+      "tts": {
+        "text": "Devasa siyah sakalına yavaş yanan fitiller örer ve savaştan önce ateşe verirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Duman yüzünün etrafında kıvrılarak onu denizden yükselen bir iblis gibi gösterirdi.",
+      "text_markdown": "Duman yüzünün etrafında kıvrılarak onu denizden yükselen bir iblis gibi gösterirdi.",
+      "tts": {
+        "text": "Duman yüzünün etrafında kıvrılarak onu denizden yükselen bir iblis gibi gösterirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap sizi on sekizinci yüzyılın başlarındaki limanlara ve deniz yollarına götürecek.",
+      "text_markdown": "Bu kitap sizi on sekizinci yüzyılın başlarındaki limanlara ve deniz yollarına götürecek.",
+      "tts": {
+        "text": "Bu kitap sizi on sekizinci yüzyılın başlarındaki limanlara ve deniz yollarına götürecek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sıradan denizcilerin nasıl kanun kaçağı olduğunu ve imparatorlukların onları durdurmak için nasıl mücadele ettiğini göreceksiniz.",
+      "text_markdown": "Sıradan denizcilerin nasıl kanun kaçağı olduğunu ve imparatorlukların onları durdurmak için nasıl mücadele ettiğini göreceksiniz.",
+      "tts": {
+        "text": "Sıradan denizcilerin nasıl kanun kaçağı olduğunu ve imparatorlukların onları durdurmak için nasıl mücadele ettiğini göreceksiniz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitaptaki her şey tarihî kayıtlara, mahkeme belgelerine ve görgü tanığı ifadelerine dayanmaktadır.",
+      "text_markdown": "Bu kitaptaki her şey tarihî kayıtlara, mahkeme belgelerine ve görgü tanığı ifadelerine dayanmaktadır.",
+      "tts": {
+        "text": "Bu kitaptaki her şey tarihî kayıtlara, mahkeme belgelerine ve görgü tanığı ifadelerine dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gerçekler belirsiz olduğunda, bunu açıkça belirteceğiz.",
+      "text_markdown": "Gerçekler belirsiz olduğunda, bunu açıkça belirteceğiz.",
+      "tts": {
+        "text": "Gerçekler belirsiz olduğunda, bunu açıkça belirteceğiz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bir Korsanı Yaratan Dünya",
+      "text_markdown": "Bir Korsanı Yaratan Dünya"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On yedinci yüzyılın sonları, imparatorluklar ve okyanus ticareti çağıydı.",
+      "text_markdown": "On yedinci yüzyılın sonları, imparatorluklar ve okyanus ticareti çağıydı.",
+      "tts": {
+        "text": "On yedinci yüzyılın sonları, imparatorluklar ve okyanus ticareti çağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere, İspanya, Fransa ve Hollanda Amerika kıtasındaki sömürgeler için rekabet ediyordu.",
+      "text_markdown": "İngiltere, İspanya, Fransa ve Hollanda Amerika kıtasındaki sömürgeler için rekabet ediyordu.",
+      "tts": {
+        "text": "İngiltere, İspanya, Fransa ve Hollanda Amerika kıtasındaki sömürgeler için rekabet ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret gemileri şeker, tütün, pamuk ve köleleştirilmiş insanları Atlantik boyunca taşıyordu.",
+      "text_markdown": "Ticaret gemileri şeker, tütün, pamuk ve köleleştirilmiş insanları Atlantik boyunca taşıyordu.",
+      "tts": {
+        "text": "Ticaret gemileri şeker, tütün, pamuk ve köleleştirilmiş insanları Atlantik boyunca taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Denizde değerli yükler nereye giderse, korsanlar peşinden gelirdi.",
+      "text_markdown": "Denizde değerli yükler nereye giderse, korsanlar peşinden gelirdi.",
+      "tts": {
+        "text": "Denizde değerli yükler nereye giderse, korsanlar peşinden gelirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayip Denizi bu küresel ticaretin kavşağıydı.",
+      "text_markdown": "Karayip Denizi bu küresel ticaretin kavşağıydı.",
+      "tts": {
+        "text": "Karayip Denizi bu küresel ticaretin kavşağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Florida ile Güney Amerika arasındaki sıcak turkuaz sularda yüzlerce ada serpilmişti.",
+      "text_markdown": "Florida ile Güney Amerika arasındaki sıcak turkuaz sularda yüzlerce ada serpilmişti.",
+      "tts": {
+        "text": "Florida ile Güney Amerika arasındaki sıcak turkuaz sularda yüzlerce ada serpilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu adaların birçoğu, onları şeker plantasyonu olarak kullanan Avrupa güçlerine aitti.",
+      "text_markdown": "Bu adaların birçoğu, onları şeker plantasyonu olarak kullanan Avrupa güçlerine aitti.",
+      "tts": {
+        "text": "Bu adaların birçoğu, onları şeker plantasyonu olarak kullanan Avrupa güçlerine aitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şeker ve rom yüklü gemiler her hafta Karayip limanlarından Avrupa'ya yelken açardı.",
+      "text_markdown": "Şeker ve rom yüklü gemiler her hafta Karayip limanlarından Avrupa'ya yelken açardı.",
+      "tts": {
+        "text": "Şeker ve rom yüklü gemiler her hafta Karayip limanlarından Avrupa'ya yelken açardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere ve İspanya bir asrı aşkın süredir rakipti.",
+      "text_markdown": "İngiltere ve İspanya bir asrı aşkın süredir rakipti.",
+      "tts": {
+        "text": "İngiltere ve İspanya bir asrı aşkın süredir rakipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sir Francis Drake gibi İngiliz özel korsanlar on beşinci yüzyılın sonlarında İspanyol hazine filolarına baskın düzenlemişti.",
+      "text_markdown": "Sir Francis Drake gibi İngiliz özel korsanlar on beşinci yüzyılın sonlarında İspanyol hazine filolarına baskın düzenlemişti.",
+      "tts": {
+        "text": "Sir Francis Drake gibi İngiliz özel korsanlar on beşinci yüzyılın sonlarında İspanyol hazine filolarına baskın düzenlemişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan, bir hükümet tarafından düşman gemilerine saldırma yetkisi verilmiş özel bir gemi kaptanıydı.",
+      "text_markdown": "Korsan, bir hükümet tarafından düşman gemilerine saldırma yetkisi verilmiş özel bir gemi kaptanıydı.",
+      "tts": {
+        "text": "Korsan, bir hükümet tarafından düşman gemilerine saldırma yetkisi verilmiş özel bir gemi kaptanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar, saldırılarını yasal kılan marka mektubu adlı bir belge taşırlardı.",
+      "text_markdown": "Korsanlar, saldırılarını yasal kılan marka mektubu adlı bir belge taşırlardı.",
+      "tts": {
+        "text": "Korsanlar, saldırılarını yasal kılan marka mektubu adlı bir belge taşırlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliçe Anne Savaşı 1702'de patlak verdi ve 1713'e kadar sürdü.",
+      "text_markdown": "Kraliçe Anne Savaşı 1702'de patlak verdi ve 1713'e kadar sürdü.",
+      "tts": {
+        "text": "Kraliçe Anne Savaşı bin yedi yüz ikide patlak verdi ve bin yedi yüz on üçe kadar sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, İspanya Veraset Savaşı adıyla bilinen daha büyük bir Avrupa çatışmasının parçasıydı.",
+      "text_markdown": "Bu, İspanya Veraset Savaşı adıyla bilinen daha büyük bir Avrupa çatışmasının parçasıydı.",
+      "tts": {
+        "text": "Bu, İspanya Veraset Savaşı adıyla bilinen daha büyük bir Avrupa çatışmasının parçasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiltere ve müttefikleri, ticaret yolları ve toprakların kontrolü için Fransa ve İspanya'ya karşı savaştı.",
+      "text_markdown": "İngiltere ve müttefikleri, ticaret yolları ve toprakların kontrolü için Fransa ve İspanya'ya karşı savaştı.",
+      "tts": {
+        "text": "İngiltere ve müttefikleri, ticaret yolları ve toprakların kontrolü için Fransa ve İspanya'ya karşı savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaş boyunca binlerce denizci korsan gemilerinde hizmet etti ve kâr için düşman tüccarlarını yağmaladı.",
+      "text_markdown": "Savaş boyunca binlerce denizci korsan gemilerinde hizmet etti ve kâr için düşman tüccarlarını yağmaladı.",
+      "tts": {
+        "text": "Savaş boyunca binlerce denizci korsan gemilerinde hizmet etti ve kâr için düşman tüccarlarını yağmaladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş 1713'te Utrecht Antlaşması ile sona erdiğinde her şey değişti.",
+      "text_markdown": "Savaş 1713'te Utrecht Antlaşması ile sona erdiğinde her şey değişti.",
+      "tts": {
+        "text": "Savaş bin yedi yüz on üçte Utrecht Antlaşması ile sona erdiğinde her şey değişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlık belgeleri bir gecede iptal edildi.",
+      "text_markdown": "Korsanlık belgeleri bir gecede iptal edildi.",
+      "tts": {
+        "text": "Korsanlık belgeleri bir gecede iptal edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Binlerce eğitimli denizci ve savaşçı aniden yasal bir iş bulamaz hâle geldi.",
+      "text_markdown": "Binlerce eğitimli denizci ve savaşçı aniden yasal bir iş bulamaz hâle geldi.",
+      "tts": {
+        "text": "Binlerce eğitimli denizci ve savaşçı aniden yasal bir iş bulamaz hâle geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçoğunun sırtlarındaki giysilerden ve deniz bilgilerinden başka hiçbir şeyleri yoktu.",
+      "text_markdown": "Birçoğunun sırtlarındaki giysilerden ve deniz bilgilerinden başka hiçbir şeyleri yoktu.",
+      "tts": {
+        "text": "Birçoğunun sırtlarındaki giysilerden ve deniz bilgilerinden başka hiçbir şeyleri yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde sıradan bir denizci olarak yaşamak acımasızdı.",
+      "text_markdown": "Bu dönemde sıradan bir denizci olarak yaşamak acımasızdı.",
+      "tts": {
+        "text": "Bu dönemde sıradan bir denizci olarak yaşamak acımasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret kaptanları gemilerini birer tiran gibi yönetirdi.",
+      "text_markdown": "Ticaret kaptanları gemilerini birer tiran gibi yönetirdi.",
+      "tts": {
+        "text": "Ticaret kaptanları gemilerini birer tiran gibi yönetirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizciler küçük suçlar yüzünden dövülür ve bazen hiç maaş almazdı.",
+      "text_markdown": "Denizciler küçük suçlar yüzünden dövülür ve bazen hiç maaş almazdı.",
+      "tts": {
+        "text": "Denizciler küçük suçlar yüzünden dövülür ve bazen hiç maaş almazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ortalama bir denizci ayda yaklaşık 1 sterlin kazanırdı; karada hayatta kalmaya zar zor yeten bir miktar.",
+      "text_markdown": "Ortalama bir denizci ayda yaklaşık 1 sterlin kazanırdı; karada hayatta kalmaya zar zor yeten bir miktar.",
+      "tts": {
+        "text": "Ortalama bir denizci ayda yaklaşık bir sterlin kazanırdı; karada hayatta kalmaya zar zor yeten bir miktar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donanma hizmeti birçok açıdan daha da kötüydü.",
+      "text_markdown": "Donanma hizmeti birçok açıdan daha da kötüydü.",
+      "tts": {
+        "text": "Donanma hizmeti birçok açıdan daha da kötüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kraliyet Donanması, sokaktan adam kaçırmak ve onları savaş gemilerine zorla bindirmek için baskı çeteleri kullanırdı.",
+      "text_markdown": "Kraliyet Donanması, sokaktan adam kaçırmak ve onları savaş gemilerine zorla bindirmek için baskı çeteleri kullanırdı.",
+      "tts": {
+        "text": "Kraliyet Donanması, sokaktan adam kaçırmak ve onları savaş gemilerine zorla bindirmek için baskı çeteleri kullanırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hastalıklar savaştan daha çok denizciyi öldürdü.",
+      "text_markdown": "Hastalıklar savaştan daha çok denizciyi öldürdü.",
+      "tts": {
+        "text": "Hastalıklar savaştan daha çok denizciyi öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İskorbüt, dizanteri ve tropikal sıtmalar sıkışık alt güverteleri korkunç bir hızla kasıp kavururdu.",
+      "text_markdown": "İskorbüt, dizanteri ve tropikal sıtmalar sıkışık alt güverteleri korkunç bir hızla kasıp kavururdu.",
+      "tts": {
+        "text": "İskorbüt, dizanteri ve tropikal sıtmalar sıkışık alt güverteleri korkunç bir hızla kasıp kavururdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlık, pek çok denizcinin karşı koyamadığı bir alternatif sunuyordu.",
+      "text_markdown": "Korsanlık, pek çok denizcinin karşı koyamadığı bir alternatif sunuyordu.",
+      "tts": {
+        "text": "Korsanlık, pek çok denizcinin karşı koyamadığı bir alternatif sunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar kendi kaptanlarını seçer ve önemli kararlarda oy kullanırdı.",
+      "text_markdown": "Korsanlar kendi kaptanlarını seçer ve önemli kararlarda oy kullanırdı.",
+      "tts": {
+        "text": "Korsanlar kendi kaptanlarını seçer ve önemli kararlarda oy kullanırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ganimet parası ticaret veya donanma gemilerindekinden çok daha adil paylaşılırdı.",
+      "text_markdown": "Ganimet parası ticaret veya donanma gemilerindekinden çok daha adil paylaşılırdı.",
+      "tts": {
+        "text": "Ganimet parası ticaret veya donanma gemilerindekinden çok daha adil paylaşılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sıradan bir korsan tek bir baskında, bir ticaret denizcisinin birkaç yılda kazandığını elde edebilirdi.",
+      "text_markdown": "Sıradan bir korsan tek bir baskında, bir ticaret denizcisinin birkaç yılda kazandığını elde edebilirdi.",
+      "tts": {
+        "text": "Sıradan bir korsan tek bir baskında, bir ticaret denizcisinin birkaç yılda kazandığını elde edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahamalar'daki New Providence Adası korsanlığın gayri resmî başkenti oldu.",
+      "text_markdown": "Bahamalar'daki New Providence Adası korsanlığın gayri resmî başkenti oldu.",
+      "tts": {
+        "text": "Bahamalar'daki New Providence Adası korsanlığın gayri resmî başkenti oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nassau'daki ana limanı yüzlerce gemiyi barındırabilirdi.",
+      "text_markdown": "Nassau'daki ana limanı yüzlerce gemiyi barındırabilirdi.",
+      "tts": {
+        "text": "Nassau'daki ana limanı yüzlerce gemiyi barındırabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adanın ne güçlü bir sömürge hükümeti ne de onu savunacak bir kalesi vardı.",
+      "text_markdown": "Adanın ne güçlü bir sömürge hükümeti ne de onu savunacak bir kalesi vardı.",
+      "tts": {
+        "text": "Adanın ne güçlü bir sömürge hükümeti ne de onu savunacak bir kalesi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "On sekizinci yüzyılın başlarında Nassau'da korsanlar dürüst vatandaşları sayıca geçmişti.",
+      "text_markdown": "On sekizinci yüzyılın başlarında Nassau'da korsanlar dürüst vatandaşları sayıca geçmişti.",
+      "tts": {
+        "text": "On sekizinci yüzyılın başlarında Nassau'da korsanlar dürüst vatandaşları sayıca geçmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau, tarihçilerin Korsanlar Cumhuriyeti dediği şeye dönüştü.",
+      "text_markdown": "Nassau, tarihçilerin Korsanlar Cumhuriyeti dediği şeye dönüştü.",
+      "tts": {
+        "text": "Nassau, tarihçilerin Korsanlar Cumhuriyeti dediği şeye dönüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Benjamin Hornigold, Charles Vane ve Calico Jack Rackham gibi korsan kaptanlar burayı yurt edinmişti.",
+      "text_markdown": "Benjamin Hornigold, Charles Vane ve Calico Jack Rackham gibi korsan kaptanlar burayı yurt edinmişti.",
+      "tts": {
+        "text": "Benjamin Hornigold, Charles Vane ve Calico Jack Rackham gibi korsan kaptanlar burayı yurt edinmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemiler sürekli gelir, çalıntı malları satmak için getirirdi.",
+      "text_markdown": "Gemiler sürekli gelir, çalıntı malları satmak için getirirdi.",
+      "tts": {
+        "text": "Gemiler sürekli gelir, çalıntı malları satmak için getirirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan ekonomisine hizmet eden meyhaneler ve pazarlar ortaya çıktı.",
+      "text_markdown": "Korsan ekonomisine hizmet eden meyhaneler ve pazarlar ortaya çıktı.",
+      "tts": {
+        "text": "Korsan ekonomisine hizmet eden meyhaneler ve pazarlar ortaya çıktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerikan kıyısı boyunca sömürge hükümetleri zayıf savunmalıydı.",
+      "text_markdown": "Amerikan kıyısı boyunca sömürge hükümetleri zayıf savunmalıydı.",
+      "tts": {
+        "text": "Amerikan kıyısı boyunca sömürge hükümetleri zayıf savunmalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia, Karolinalar ve New England sömürgeleri hayatta kalmak için ticarete bağımlıydı.",
+      "text_markdown": "Virginia, Karolinalar ve New England sömürgeleri hayatta kalmak için ticarete bağımlıydı.",
+      "tts": {
+        "text": "Virginia, Karolinalar ve New England sömürgeleri hayatta kalmak için ticarete bağımlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Limanları hareketliydi ama donanmaları küçüktü.",
+      "text_markdown": "Limanları hareketliydi ama donanmaları küçüktü.",
+      "tts": {
+        "text": "Limanları hareketliydi ama donanmaları küçüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İyi silahlı tek bir korsan gemisi tüm bir sömürgenin ticaretini felç edebilirdi.",
+      "text_markdown": "İyi silahlı tek bir korsan gemisi tüm bir sömürgenin ticaretini felç edebilirdi.",
+      "tts": {
+        "text": "İyi silahlı tek bir korsan gemisi tüm bir sömürgenin ticaretini felç edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Edward Teach'i yaratan dünya buydu.",
+      "text_markdown": "Edward Teach'i yaratan dünya buydu.",
+      "tts": {
+        "text": "Edward Teach'i yaratan dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cesur bir denizcinin zengin olabileceği ya da deneyerek ölebileceği şiddetli fırsatlar dünyasıydı.",
+      "text_markdown": "Cesur bir denizcinin zengin olabileceği ya da deneyerek ölebileceği şiddetli fırsatlar dünyasıydı.",
+      "tts": {
+        "text": "Cesur bir denizcinin zengin olabileceği ya da deneyerek ölebileceği şiddetli fırsatlar dünyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yasal korsanlık ile yasadışı korsanlık arasındaki çizgi ince ve sürekli değişiyordu.",
+      "text_markdown": "Yasal korsanlık ile yasadışı korsanlık arasındaki çizgi ince ve sürekli değişiyordu.",
+      "tts": {
+        "text": "Yasal korsanlık ile yasadışı korsanlık arasındaki çizgi ince ve sürekli değişiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bir Korsanı Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karasakal bu gri alanı neredeyse herkesten daha iyi kullanacaktı.",
+      "text_markdown": "Karasakal bu gri alanı neredeyse herkesten daha iyi kullanacaktı.",
+      "tts": {
+        "text": "Karasakal bu gri alanı neredeyse herkesten daha iyi kullanacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Edward Teach'in Oluşumu",
+      "text_markdown": "Edward Teach'in Oluşumu"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın erken yaşamı hakkında neredeyse hiçbir şey kesin olarak bilinmiyor.",
+      "text_markdown": "Karasakal'ın erken yaşamı hakkında neredeyse hiçbir şey kesin olarak bilinmiyor.",
+      "tts": {
+        "text": "Karasakal'ın erken yaşamı hakkında neredeyse hiçbir şey kesin olarak bilinmiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu korsanlar arasında yaygındır; korsanlık öncesi yaşamları nadiren resmî kayıtlara girerdi.",
+      "text_markdown": "Bu korsanlar arasında yaygındır; korsanlık öncesi yaşamları nadiren resmî kayıtlara girerdi.",
+      "tts": {
+        "text": "Bu korsanlar arasında yaygındır; korsanlık öncesi yaşamları nadiren resmî kayıtlara girerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler onun kökenini dağınık ipuçlarından ve sonraki anlatımlardan bir araya getirmek zorundadır.",
+      "text_markdown": "Tarihçiler onun kökenini dağınık ipuçlarından ve sonraki anlatımlardan bir araya getirmek zorundadır.",
+      "tts": {
+        "text": "Tarihçiler onun kökenini dağınık ipuçlarından ve sonraki anlatımlardan bir araya getirmek zorundadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En yaygın kabul gören teori, Edward Teach'in İngiltere'nin Bristol şehrinde doğduğudur.",
+      "text_markdown": "En yaygın kabul gören teori, Edward Teach'in İngiltere'nin Bristol şehrinde doğduğudur.",
+      "tts": {
+        "text": "En yaygın kabul gören teori, Edward Teach'in İngiltere'nin Bristol şehrinde doğduğudur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol, on yedinci yüzyılın sonlarında Britanya İmparatorluğu'nun en büyük liman şehirlerinden biriydi.",
+      "text_markdown": "Bristol, on yedinci yüzyılın sonlarında Britanya İmparatorluğu'nun en büyük liman şehirlerinden biriydi.",
+      "tts": {
+        "text": "Bristol, on yedinci yüzyılın sonlarında Britanya İmparatorluğu'nun en büyük liman şehirlerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemiler Bristol'dan Afrika'ya, Karayipler'e ve Amerikan sömürgelerine yelken açardı.",
+      "text_markdown": "Gemiler Bristol'dan Afrika'ya, Karayipler'e ve Amerikan sömürgelerine yelken açardı.",
+      "tts": {
+        "text": "Gemiler Bristol'dan Afrika'ya, Karayipler'e ve Amerikan sömürgelerine yelken açardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şehrin ekonomisi, transatlantik köle ticareti de dahil olmak üzere deniz ticaretine dayanıyordu.",
+      "text_markdown": "Şehrin ekonomisi, transatlantik köle ticareti de dahil olmak üzere deniz ticaretine dayanıyordu.",
+      "tts": {
+        "text": "Şehrin ekonomisi, transatlantik köle ticareti de dahil olmak üzere deniz ticaretine dayanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Teach'in 1680 civarında doğduğunu tahmin ediyor, ancak doğum kaydı bulunamadı.",
+      "text_markdown": "Tarihçiler Teach'in 1680 civarında doğduğunu tahmin ediyor, ancak doğum kaydı bulunamadı.",
+      "tts": {
+        "text": "Tarihçiler Teach'in bin altı yüz seksen civarında doğduğunu tahmin ediyor, ancak doğum kaydı bulunamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soyadı çeşitli kayıtlarda Teach, Thatch, Thach ve Tatch olarak geçer.",
+      "text_markdown": "Soyadı çeşitli kayıtlarda Teach, Thatch, Thach ve Tatch olarak geçer.",
+      "tts": {
+        "text": "Soyadı çeşitli kayıtlarda Teach, Thatch, Thach ve Tatch olarak geçer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu dönemde yazım kuralları standart değildi ve isimler genellikle sesletim yoluyla yazılırdı.",
+      "text_markdown": "Bu dönemde yazım kuralları standart değildi ve isimler genellikle sesletim yoluyla yazılırdı.",
+      "tts": {
+        "text": "Bu dönemde yazım kuralları standart değildi ve isimler genellikle sesletim yoluyla yazılırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı kanıtlar Teach'in saygın bir aileden geldiğini düşündürmektedir.",
+      "text_markdown": "Bazı kanıtlar Teach'in saygın bir aileden geldiğini düşündürmektedir.",
+      "tts": {
+        "text": "Bazı kanıtlar Teach'in saygın bir aileden geldiğini düşündürmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Okuma yazma bilirdi ki bu dönemin sıradan denizcileri için alışılmadık bir durumdu.",
+      "text_markdown": "Okuma yazma bilirdi ki bu dönemin sıradan denizcileri için alışılmadık bir durumdu.",
+      "tts": {
+        "text": "Okuma yazma bilirdi ki bu dönemin sıradan denizcileri için alışılmadık bir durumdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yazdığı bir mektup tarihî arşivlerde korunmuş olup net ve kendinden emin bir el yazısı göstermektedir.",
+      "text_markdown": "Yazdığı bir mektup tarihî arşivlerde korunmuş olup net ve kendinden emin bir el yazısı göstermektedir.",
+      "tts": {
+        "text": "Yazdığı bir mektup tarihî arşivlerde korunmuş olup net ve kendinden emin bir el yazısı göstermektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Okuryazarlık, muhtemelen Bristol'ın hayır okullarından birinde en azından bir miktar resmî eğitim aldığına işaret eder.",
+      "text_markdown": "Okuryazarlık, muhtemelen Bristol'ın hayır okullarından birinde en azından bir miktar resmî eğitim aldığına işaret eder.",
+      "tts": {
+        "text": "Okuryazarlık, muhtemelen Bristol'ın hayır okullarından birinde en azından bir miktar resmî eğitim aldığına işaret eder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach neredeyse kesinlikle genç yaşta denize açıldı.",
+      "text_markdown": "Teach neredeyse kesinlikle genç yaşta denize açıldı.",
+      "tts": {
+        "text": "Teach neredeyse kesinlikle genç yaşta denize açıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol'da deniz, iş bulmak için en bariz yoldu.",
+      "text_markdown": "Bristol'da deniz, iş bulmak için en bariz yoldu.",
+      "tts": {
+        "text": "Bristol'da deniz, iş bulmak için en bariz yoldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On iki yaşındaki çocuklar bile ticaret gemilerinde kamarot ya da çırak denizci olarak hizmet ederdi.",
+      "text_markdown": "On iki yaşındaki çocuklar bile ticaret gemilerinde kamarot ya da çırak denizci olarak hizmet ederdi.",
+      "tts": {
+        "text": "On iki yaşındaki çocuklar bile ticaret gemilerinde kamarot ya da çırak denizci olarak hizmet ederdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İş tehlikeliydi ama macera ve dünyayı görme şansı sunuyordu.",
+      "text_markdown": "İş tehlikeliydi ama macera ve dünyayı görme şansı sunuyordu.",
+      "tts": {
+        "text": "İş tehlikeliydi ama macera ve dünyayı görme şansı sunuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliçe Anne Savaşı başladığında Teach muhtemelen korsan olarak hizmete girdi.",
+      "text_markdown": "Kraliçe Anne Savaşı başladığında Teach muhtemelen korsan olarak hizmete girdi.",
+      "tts": {
+        "text": "Kraliçe Anne Savaşı başladığında Teach muhtemelen korsan olarak hizmete girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol, Fransız ve İspanyol gemiciliğine karşı korsanlık operasyonları için önemli bir üstü.",
+      "text_markdown": "Bristol, Fransız ve İspanyol gemiciliğine karşı korsanlık operasyonları için önemli bir üstü.",
+      "tts": {
+        "text": "Bristol, Fransız ve İspanyol gemiciliğine karşı korsanlık operasyonları için önemli bir üstü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizcilik deneyimi olan genç bir adam hevesle askere alınırdı.",
+      "text_markdown": "Denizcilik deneyimi olan genç bir adam hevesle askere alınırdı.",
+      "tts": {
+        "text": "Denizcilik deneyimi olan genç bir adam hevesle askere alınırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlık, Teach'e daha sonra onu ünlü yapacak deniz savaşı becerilerini öğretti.",
+      "text_markdown": "Korsanlık, Teach'e daha sonra onu ünlü yapacak deniz savaşı becerilerini öğretti.",
+      "tts": {
+        "text": "Korsanlık, Teach'e daha sonra onu ünlü yapacak deniz savaşı becerilerini öğretti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş, Teach'e gemiden gemiye savaş konusunda yıllarca deneyim kazandırdı.",
+      "text_markdown": "Savaş, Teach'e gemiden gemiye savaş konusunda yıllarca deneyim kazandırdı.",
+      "tts": {
+        "text": "Savaş, Teach'e gemiden gemiye savaş konusunda yıllarca deneyim kazandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Top kullanmayı, düşman gemilerine çıkmayı ve ateş altında mürettebatı yönetmeyi öğrendi.",
+      "text_markdown": "Top kullanmayı, düşman gemilerine çıkmayı ve ateş altında mürettebatı yönetmeyi öğrendi.",
+      "tts": {
+        "text": "Top kullanmayı, düşman gemilerine çıkmayı ve ateş altında mürettebatı yönetmeyi öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayrıca Karayipler'in coğrafyasını ve ticaret gemiciliğinin kalıplarını öğrendi.",
+      "text_markdown": "Ayrıca Karayipler'in coğrafyasını ve ticaret gemiciliğinin kalıplarını öğrendi.",
+      "tts": {
+        "text": "Ayrıca Karayipler'in coğrafyasını ve ticaret gemiciliğinin kalıplarını öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bilgi gelecekteki bir korsan için paha biçilmezdi.",
+      "text_markdown": "Bu bilgi gelecekteki bir korsan için paha biçilmezdi.",
+      "tts": {
+        "text": "Bu bilgi gelecekteki bir korsan için paha biçilmezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş 1713'te sona erdiğinde Teach kendini binlerce başka denizciyle aynı durumda buldu.",
+      "text_markdown": "Savaş 1713'te sona erdiğinde Teach kendini binlerce başka denizciyle aynı durumda buldu.",
+      "tts": {
+        "text": "Savaş bin yedi yüz on üçte sona erdiğinde Teach kendini binlerce başka denizciyle aynı durumda buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Becerileri ve deneyimi vardı ama bunları kullanmanın yasal bir yolu yoktu.",
+      "text_markdown": "Becerileri ve deneyimi vardı ama bunları kullanmanın yasal bir yolu yoktu.",
+      "tts": {
+        "text": "Becerileri ve deneyimi vardı ama bunları kullanmanın yasal bir yolu yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barış zamanı Kraliyet Donanması küçülüyordu ve ticaret gemileri işe almıyordu.",
+      "text_markdown": "Barış zamanı Kraliyet Donanması küçülüyordu ve ticaret gemileri işe almıyordu.",
+      "tts": {
+        "text": "Barış zamanı Kraliyet Donanması küçülüyordu ve ticaret gemileri işe almıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onun gibi adamlar için korsanlığa giden yol neredeyse kaçınılmazdı.",
+      "text_markdown": "Onun gibi adamlar için korsanlığa giden yol neredeyse kaçınılmazdı.",
+      "tts": {
+        "text": "Onun gibi adamlar için korsanlığa giden yol neredeyse kaçınılmazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach, Bahamalar'daki New Providence Adası'na gitti.",
+      "text_markdown": "Teach, Bahamalar'daki New Providence Adası'na gitti.",
+      "tts": {
+        "text": "Teach, Bahamalar'daki New Providence Adası'na gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orada dönemin en başarılı korsanlarından biri olan Kaptan Benjamin Hornigold'un mürettebatına katıldı.",
+      "text_markdown": "Orada dönemin en başarılı korsanlarından biri olan Kaptan Benjamin Hornigold'un mürettebatına katıldı.",
+      "tts": {
+        "text": "Orada dönemin en başarılı korsanlarından biri olan Kaptan Benjamin Hornigold'un mürettebatına katıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold, savaştan sonra korsanlığa dönen eski bir özel korsandı.",
+      "text_markdown": "Hornigold, savaştan sonra korsanlığa dönen eski bir özel korsandı.",
+      "tts": {
+        "text": "Hornigold, savaştan sonra korsanlığa dönen eski bir özel korsandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nassau limanından faaliyet gösteren küçük bir filo komuta ediyordu.",
+      "text_markdown": "Nassau limanından faaliyet gösteren küçük bir filo komuta ediyordu.",
+      "tts": {
+        "text": "Nassau limanından faaliyet gösteren küçük bir filo komuta ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold, Teach'in yeteneklerini hızla fark etti.",
+      "text_markdown": "Hornigold, Teach'in yeteneklerini hızla fark etti.",
+      "tts": {
+        "text": "Hornigold, Teach'in yeteneklerini hızla fark etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teach fiziksel olarak heybetliydi; çoğu erkeğin çok daha kısa olduğu bir dönemde altı fitin çok üzerindeydi.",
+      "text_markdown": "Teach fiziksel olarak heybetliydi; çoğu erkeğin çok daha kısa olduğu bir dönemde altı fitin çok üzerindeydi.",
+      "tts": {
+        "text": "Teach fiziksel olarak heybetliydi; çoğu erkeğin çok daha kısa olduğu bir dönemde altı fitin çok üzerindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşta cesurdu ve başkalarını yönetme konusunda doğal bir yeteneği vardı.",
+      "text_markdown": "Savaşta cesurdu ve başkalarını yönetme konusunda doğal bir yeteneği vardı.",
+      "tts": {
+        "text": "Savaşta cesurdu ve başkalarını yönetme konusunda doğal bir yeteneği vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hornigold, Teach'e ele geçirilmiş bir süvari gemisinin komutasını verdi.",
+      "text_markdown": "Hornigold, Teach'e ele geçirilmiş bir süvari gemisinin komutasını verdi.",
+      "tts": {
+        "text": "Hornigold, Teach'e ele geçirilmiş bir süvari gemisinin komutasını verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717'nin sonlarında Teach ve Hornigold, La Concorde adlı büyük bir Fransız ticaret gemisini ele geçirdi.",
+      "text_markdown": "1717'nin sonlarında Teach ve Hornigold, La Concorde adlı büyük bir Fransız ticaret gemisini ele geçirdi.",
+      "tts": {
+        "text": "Bin yedi yüz on yedinin sonlarında Teach ve Hornigold, La Concorde adlı büyük bir Fransız ticaret gemisini ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Concorde bir köle gemisiydi; ağır silahlı ve değerli bir yük taşıyordu.",
+      "text_markdown": "La Concorde bir köle gemisiydi; ağır silahlı ve değerli bir yük taşıyordu.",
+      "tts": {
+        "text": "La Concorde bir köle gemisiydi; ağır silahlı ve değerli bir yük taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teach gemiyi kendisine ayırdı ve dönüştürmeye başladı.",
+      "text_markdown": "Teach gemiyi kendisine ayırdı ve dönüştürmeye başladı.",
+      "tts": {
+        "text": "Teach gemiyi kendisine ayırdı ve dönüştürmeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gemi ateş gücüyle dolup taşıncaya kadar ek toplar yerleştirdi.",
+      "text_markdown": "Gemi ateş gücüyle dolup taşıncaya kadar ek toplar yerleştirdi.",
+      "tts": {
+        "text": "Gemi ateş gücüyle dolup taşıncaya kadar ek toplar yerleştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach yeni amiral gemisini Kraliçe Anne'in İntikamı olarak yeniden adlandırdı.",
+      "text_markdown": "Teach yeni amiral gemisini Kraliçe Anne'in İntikamı olarak yeniden adlandırdı.",
+      "tts": {
+        "text": "Teach yeni amiral gemisini Kraliçe Anne'in İntikamı olarak yeniden adlandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu isim kasıtlı bir siyasi beyanattı.",
+      "text_markdown": "Bu isim kasıtlı bir siyasi beyanattı.",
+      "tts": {
+        "text": "Bu isim kasıtlı bir siyasi beyanattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanların yasal olarak hizmet ettiği Kraliçe Anne dönemine atıfta bulunuyordu.",
+      "text_markdown": "Korsanların yasal olarak hizmet ettiği Kraliçe Anne dönemine atıfta bulunuyordu.",
+      "tts": {
+        "text": "Korsanların yasal olarak hizmet ettiği Kraliçe Anne dönemine atıfta bulunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teach, korsanlığının Taç'ın bozulan vaatlerine karşı bir intikam olduğunu ilan ediyordu.",
+      "text_markdown": "Teach, korsanlığının Taç'ın bozulan vaatlerine karşı bir intikam olduğunu ilan ediyordu.",
+      "tts": {
+        "text": "Teach, korsanlığının Taç'ın bozulan vaatlerine karşı bir intikam olduğunu ilan ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "40 topu ve 300'den fazla mürettebatıyla Kraliçe Anne'in İntikamı denizlerdeki en güçlü korsan gemilerinden biriydi.",
+      "text_markdown": "40 topu ve 300'den fazla mürettebatıyla Kraliçe Anne'in İntikamı denizlerdeki en güçlü korsan gemilerinden biriydi.",
+      "tts": {
+        "text": "Kırk topu ve üç yüzden fazla mürettebatıyla Kraliçe Anne'in İntikamı denizlerdeki en güçlü korsan gemilerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karasakal artık başka birinin otoritesi altında çalışan alt düzey bir korsan değildi.",
+      "text_markdown": "Karasakal artık başka birinin otoritesi altında çalışan alt düzey bir korsan değildi.",
+      "tts": {
+        "text": "Karasakal artık başka birinin otoritesi altında çalışan alt düzey bir korsan değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Artık kendi başına hesaba katılması gereken bir güçtü.",
+      "text_markdown": "Artık kendi başına hesaba katılması gereken bir güçtü.",
+      "tts": {
+        "text": "Artık kendi başına hesaba katılması gereken bir güçtü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Edward Teach'in Oluşumu",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karasakal efsanesi başlamak üzereydi.",
+      "text_markdown": "Karasakal efsanesi başlamak üzereydi.",
+      "tts": {
+        "text": "Karasakal efsanesi başlamak üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Atlantik'in Dehşeti",
+      "text_markdown": "Atlantik'in Dehşeti"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718'in başlarında Karasakal, Kraliçe Anne'in İntikamı ile Karayipler'den kuzeye doğru yelken açtı.",
+      "text_markdown": "1718'in başlarında Karasakal, Kraliçe Anne'in İntikamı ile Karayipler'den kuzeye doğru yelken açtı.",
+      "tts": {
+        "text": "Bin yedi yüz on sekizin başlarında Karasakal, Kraliçe Anne'in İntikamı ile Karayipler'den kuzeye doğru yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amerikan sömürge kıyısı boyunca uzanan deniz yollarına doğru ilerliyordu.",
+      "text_markdown": "Amerikan sömürge kıyısı boyunca uzanan deniz yollarına doğru ilerliyordu.",
+      "tts": {
+        "text": "Amerikan sömürge kıyısı boyunca uzanan deniz yollarına doğru ilerliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu sular ticaret trafiğiyle doluydu ve zayıf savunmalıydı.",
+      "text_markdown": "Bu sular ticaret trafiğiyle doluydu ve zayıf savunmalıydı.",
+      "tts": {
+        "text": "Bu sular ticaret trafiğiyle doluydu ve zayıf savunmalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karasakal bu zayıflığı sonuna kadar kullanmayı planlıyordu.",
+      "text_markdown": "Karasakal bu zayıflığı sonuna kadar kullanmayı planlıyordu.",
+      "tts": {
+        "text": "Karasakal bu zayıflığı sonuna kadar kullanmayı planlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın stratejisi ateş gücü kadar dehşete de dayanıyordu.",
+      "text_markdown": "Karasakal'ın stratejisi ateş gücü kadar dehşete de dayanıyordu.",
+      "tts": {
+        "text": "Karasakal'ın stratejisi ateş gücü kadar dehşete de dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korkan bir düşmanın savaşmadan teslim olacağını anlıyordu.",
+      "text_markdown": "Korkan bir düşmanın savaşmadan teslim olacağını anlıyordu.",
+      "tts": {
+        "text": "Korkan bir düşmanın savaşmadan teslim olacağını anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaçınılan bir savaş kazanılmış bir savaştı, çünkü mürettebatını ve gemilerini korurdu.",
+      "text_markdown": "Kaçınılan bir savaş kazanılmış bir savaştı, çünkü mürettebatını ve gemilerini korurdu.",
+      "tts": {
+        "text": "Kaçınılan bir savaş kazanılmış bir savaştı, çünkü mürettebatını ve gemilerini korurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Görünümünün her öğesi korkuyu en üst düzeye çıkarmak için tasarlanmıştı.",
+      "text_markdown": "Görünümünün her öğesi korkuyu en üst düzeye çıkarmak için tasarlanmıştı.",
+      "tts": {
+        "text": "Görünümünün her öğesi korkuyu en üst düzeye çıkarmak için tasarlanmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kalın siyah sakalını yüzünün ve göğsünün çoğunu örtecek kadar uzattı.",
+      "text_markdown": "Kalın siyah sakalını yüzünün ve göğsünün çoğunu örtecek kadar uzattı.",
+      "tts": {
+        "text": "Kalın siyah sakalını yüzünün ve göğsünün çoğunu örtecek kadar uzattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaştan önce sakalına yavaş fitiller adı verilen yavaş yanan kenevir fitilleri örerdi.",
+      "text_markdown": "Savaştan önce sakalına yavaş fitiller adı verilen yavaş yanan kenevir fitilleri örerdi.",
+      "tts": {
+        "text": "Savaştan önce sakalına yavaş fitiller adı verilen yavaş yanan kenevir fitilleri örerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yakıldığında bu fitiller başının çevresinde duman bulutları oluşturuyordu.",
+      "text_markdown": "Yakıldığında bu fitiller başının çevresinde duman bulutları oluşturuyordu.",
+      "tts": {
+        "text": "Yakıldığında bu fitiller başının çevresinde duman bulutları oluşturuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Etki bu dünyaya ait değilmiş gibiydi; kükürtlü alevlerden çıkan bir canavar gibi.",
+      "text_markdown": "Etki bu dünyaya ait değilmiş gibiydi; kükürtlü alevlerden çıkan bir canavar gibi.",
+      "tts": {
+        "text": "Etki bu dünyaya ait değilmiş gibiydi; kükürtlü alevlerden çıkan bir canavar gibi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Göğsüne deri bir palaska ile bağlanmış birden fazla tabanca taşırdı.",
+      "text_markdown": "Göğsüne deri bir palaska ile bağlanmış birden fazla tabanca taşırdı.",
+      "tts": {
+        "text": "Göğsüne deri bir palaska ile bağlanmış birden fazla tabanca taşırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kemerinde ayrıca birkaç pala ve hançer bulunurdu.",
+      "text_markdown": "Kemerinde ayrıca birkaç pala ve hançer bulunurdu.",
+      "tts": {
+        "text": "Kemerinde ayrıca birkaç pala ve hançer bulunurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Giysileri kasıtlı olarak tiyatralti; mümkün olduğunca korkutucu görünmek için tasarlanmıştı.",
+      "text_markdown": "Giysileri kasıtlı olarak tiyatralti; mümkün olduğunca korkutucu görünmek için tasarlanmıştı.",
+      "tts": {
+        "text": "Giysileri kasıtlı olarak tiyatralti; mümkün olduğunca korkutucu görünmek için tasarlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Görgü tanıkları onu şeytanın ta kendisi olarak tanımladı.",
+      "text_markdown": "Görgü tanıkları onu şeytanın ta kendisi olarak tanımladı.",
+      "tts": {
+        "text": "Görgü tanıkları onu şeytanın ta kendisi olarak tanımladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal çevresine küçük bir korsan filosu topladı.",
+      "text_markdown": "Karasakal çevresine küçük bir korsan filosu topladı.",
+      "tts": {
+        "text": "Karasakal çevresine küçük bir korsan filosu topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zirvesinde 4 gemi ve birkaç yüz korsana komuta ediyordu.",
+      "text_markdown": "Zirvesinde 4 gemi ve birkaç yüz korsana komuta ediyordu.",
+      "tts": {
+        "text": "Zirvesinde dört gemi ve birkaç yüz korsana komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, korsan gücünün olağandışı bir yoğunlaşmasıydı.",
+      "text_markdown": "Bu, korsan gücünün olağandışı bir yoğunlaşmasıydı.",
+      "tts": {
+        "text": "Bu, korsan gücünün olağandışı bir yoğunlaşmasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanların çoğu tek başına veya çiftler hâlinde çalışırdı, ama Karasakal daha büyük düşünüyordu.",
+      "text_markdown": "Korsanların çoğu tek başına veya çiftler hâlinde çalışırdı, ama Karasakal daha büyük düşünüyordu.",
+      "tts": {
+        "text": "Korsanların çoğu tek başına veya çiftler hâlinde çalışırdı, ama Karasakal daha büyük düşünüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filosu kıyı boyunca gemi üstüne gemi ele geçirdi.",
+      "text_markdown": "Filosu kıyı boyunca gemi üstüne gemi ele geçirdi.",
+      "tts": {
+        "text": "Filosu kıyı boyunca gemi üstüne gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kara bayrağını gören ticaret kaptanları çoğu zaman derhal teslim oldu.",
+      "text_markdown": "Kara bayrağını gören ticaret kaptanları çoğu zaman derhal teslim oldu.",
+      "tts": {
+        "text": "Kara bayrağını gören ticaret kaptanları çoğu zaman derhal teslim oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Direnenler sayısal ve ateş gücü üstünlüğüyle ezildi.",
+      "text_markdown": "Direnenler sayısal ve ateş gücü üstünlüğüyle ezildi.",
+      "tts": {
+        "text": "Direnenler sayısal ve ateş gücü üstünlüğüyle ezildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karasakal'ın ünü Karayipler'den New England'a kadar her limana yayıldı.",
+      "text_markdown": "Karasakal'ın ünü Karayipler'den New England'a kadar her limana yayıldı.",
+      "tts": {
+        "text": "Karasakal'ın ünü Karayipler'den New England'a kadar her limana yayıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tipik bir saldırıda Karasakal, hedefine yaklaşmak için sahte bayrak çekerdi.",
+      "text_markdown": "Tipik bir saldırıda Karasakal, hedefine yaklaşmak için sahte bayrak çekerdi.",
+      "tts": {
+        "text": "Tipik bir saldırıda Karasakal, hedefine yaklaşmak için sahte bayrak çekerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar kendilerini ifşa etmeden önce yaklaşmak için genellikle dost bir ulusun bayrağını çekerdi.",
+      "text_markdown": "Korsanlar kendilerini ifşa etmeden önce yaklaşmak için genellikle dost bir ulusun bayrağını çekerdi.",
+      "tts": {
+        "text": "Korsanlar kendilerini ifşa etmeden önce yaklaşmak için genellikle dost bir ulusun bayrağını çekerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son anda gerçek korsan bayraklarını çekerlerdi.",
+      "text_markdown": "Son anda gerçek korsan bayraklarını çekerlerdi.",
+      "tts": {
+        "text": "Son anda gerçek korsan bayraklarını çekerlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O zamana kadar kurbanın kaçması genellikle çok geçti.",
+      "text_markdown": "O zamana kadar kurbanın kaçması genellikle çok geçti.",
+      "tts": {
+        "text": "O zamana kadar kurbanın kaçması genellikle çok geçti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın bayrağı benzersiz ve dehşet vericiydi.",
+      "text_markdown": "Karasakal'ın bayrağı benzersiz ve dehşet vericiydi.",
+      "tts": {
+        "text": "Karasakal'ın bayrağı benzersiz ve dehşet vericiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir elinde kum saati, diğerinde mızrak tutan bir iskelet gösteriyordu.",
+      "text_markdown": "Bir elinde kum saati, diğerinde mızrak tutan bir iskelet gösteriyordu.",
+      "tts": {
+        "text": "Bir elinde kum saati, diğerinde mızrak tutan bir iskelet gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mızrak kanayan bir kalbe yönelmişti.",
+      "text_markdown": "Mızrak kanayan bir kalbe yönelmişti.",
+      "tts": {
+        "text": "Mızrak kanayan bir kalbe yönelmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mesaj açıktı: zamanınız doluyor ve ölüm geliyor.",
+      "text_markdown": "Mesaj açıktı: zamanınız doluyor ve ölüm geliyor.",
+      "tts": {
+        "text": "Mesaj açıktı: zamanınız doluyor ve ölüm geliyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mayıs 1718'de Karasakal en cüretkâr planını uygulamaya koydu.",
+      "text_markdown": "Mayıs 1718'de Karasakal en cüretkâr planını uygulamaya koydu.",
+      "tts": {
+        "text": "Bin yedi yüz on sekiz Mayıs'ında Karasakal en cüretkâr planını uygulamaya koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosuyla doğrudan Güney Karolina'daki Charleston limanına girdi.",
+      "text_markdown": "Filosuyla doğrudan Güney Karolina'daki Charleston limanına girdi.",
+      "tts": {
+        "text": "Filosuyla doğrudan Güney Karolina'daki Charleston limanına girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Charleston, Amerikan sömürgelerindeki en zengin ve en önemli limanlardan biriydi.",
+      "text_markdown": "Charleston, Amerikan sömürgelerindeki en zengin ve en önemli limanlardan biriydi.",
+      "tts": {
+        "text": "Charleston, Amerikan sömürgelerindeki en zengin ve en önemli limanlardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ardından gelen, tarihteki en pervasız korsanlık eylemlerinden biriydi.",
+      "text_markdown": "Ardından gelen, tarihteki en pervasız korsanlık eylemlerinden biriydi.",
+      "tts": {
+        "text": "Ardından gelen, tarihteki en pervasız korsanlık eylemlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal tüm Charleston limanını ablukaya aldı.",
+      "text_markdown": "Karasakal tüm Charleston limanını ablukaya aldı.",
+      "tts": {
+        "text": "Karasakal tüm Charleston limanını ablukaya aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onun izni olmadan hiçbir gemi giremez ya da çıkamazdı.",
+      "text_markdown": "Onun izni olmadan hiçbir gemi giremez ya da çıkamazdı.",
+      "tts": {
+        "text": "Onun izni olmadan hiçbir gemi giremez ya da çıkamazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaklaşık bir hafta boyunca şehri rehin tuttu.",
+      "text_markdown": "Yaklaşık bir hafta boyunca şehri rehin tuttu.",
+      "tts": {
+        "text": "Yaklaşık bir hafta boyunca şehri rehin tuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Liman ağzından geçmeye çalışan her gemiyi ele geçirdi.",
+      "text_markdown": "Liman ağzından geçmeye çalışan her gemiyi ele geçirdi.",
+      "tts": {
+        "text": "Liman ağzından geçmeye çalışan her gemiyi ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abluka sırasında en az 8 gemi ele geçirdi.",
+      "text_markdown": "Abluka sırasında en az 8 gemi ele geçirdi.",
+      "tts": {
+        "text": "Abluka sırasında en az sekiz gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirleri arasında Charleston'ın en önde gelen vatandaşlarından bazıları vardı.",
+      "text_markdown": "Esirleri arasında Charleston'ın en önde gelen vatandaşlarından bazıları vardı.",
+      "tts": {
+        "text": "Esirleri arasında Charleston'ın en önde gelen vatandaşlarından bazıları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rehineler aldı ve hepsini öldürmekle tehdit etti.",
+      "text_markdown": "Rehineler aldı ve hepsini öldürmekle tehdit etti.",
+      "tts": {
+        "text": "Rehineler aldı ve hepsini öldürmekle tehdit etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın talebi şaşırtıcıydı.",
+      "text_markdown": "Karasakal'ın talebi şaşırtıcıydı.",
+      "tts": {
+        "text": "Karasakal'ın talebi şaşırtıcıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altın ya da mücevher istemedi.",
+      "text_markdown": "Altın ya da mücevher istemedi.",
+      "tts": {
+        "text": "Altın ya da mücevher istemedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine bir sandık ilaç talep etti.",
+      "text_markdown": "Bunun yerine bir sandık ilaç talep etti.",
+      "tts": {
+        "text": "Bunun yerine bir sandık ilaç talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarihçiler mürettebatının frengi ve denizciler arasında yaygın diğer hastalıklardan muzdarip olduğuna inanıyor.",
+      "text_markdown": "Tarihçiler mürettebatının frengi ve denizciler arasında yaygın diğer hastalıklardan muzdarip olduğuna inanıyor.",
+      "tts": {
+        "text": "Tarihçiler mürettebatının frengi ve denizciler arasında yaygın diğer hastalıklardan muzdarip olduğuna inanıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Karolina valisi, Karasakal'ın filosuyla boy ölçüşebilecek bir donanmaya sahip değildi.",
+      "text_markdown": "Güney Karolina valisi, Karasakal'ın filosuyla boy ölçüşebilecek bir donanmaya sahip değildi.",
+      "tts": {
+        "text": "Güney Karolina valisi, Karasakal'ın filosuyla boy ölçüşebilecek bir donanmaya sahip değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gergin müzakerelerden sonra şehir ilaçları korsanlara gönderdi.",
+      "text_markdown": "Gergin müzakerelerden sonra şehir ilaçları korsanlara gönderdi.",
+      "tts": {
+        "text": "Gergin müzakerelerden sonra şehir ilaçları korsanlara gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karasakal rehinelerini serbest bıraktı, ancak önce değerli eşyalarını aldı.",
+      "text_markdown": "Karasakal rehinelerini serbest bıraktı, ancak önce değerli eşyalarını aldı.",
+      "tts": {
+        "text": "Karasakal rehinelerini serbest bıraktı, ancak önce değerli eşyalarını aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İtibarı mutlak zirvesindeyken Charleston'dan ayrıldı.",
+      "text_markdown": "İtibarı mutlak zirvesindeyken Charleston'dan ayrıldı.",
+      "tts": {
+        "text": "İtibarı mutlak zirvesindeyken Charleston'dan ayrıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Charleston'dan sonra Karasakal kuzeye doğru Kuzey Karolina'daki Beaufort Girişi'ne yelken açtı.",
+      "text_markdown": "Charleston'dan sonra Karasakal kuzeye doğru Kuzey Karolina'daki Beaufort Girişi'ne yelken açtı.",
+      "tts": {
+        "text": "Charleston'dan sonra Karasakal kuzeye doğru Kuzey Karolina'daki Beaufort Girişi'ne yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Burada Kraliçe Anne'in İntikamı bir kumsal sığlığına oturdu ve kaybedildi.",
+      "text_markdown": "Burada Kraliçe Anne'in İntikamı bir kumsal sığlığına oturdu ve kaybedildi.",
+      "tts": {
+        "text": "Burada Kraliçe Anne'in İntikamı bir kumsal sığlığına oturdu ve kaybedildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı tarihçiler bunun Karasakal'ın filosunu ve mürettebatını azaltmak için kasıtlı bir eylem olduğuna inanıyor.",
+      "text_markdown": "Bazı tarihçiler bunun Karasakal'ın filosunu ve mürettebatını azaltmak için kasıtlı bir eylem olduğuna inanıyor.",
+      "tts": {
+        "text": "Bazı tarihçiler bunun Karasakal'ın filosunu ve mürettebatını azaltmak için kasıtlı bir eylem olduğuna inanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Atlantik'in Dehşeti",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yüzlerce korsan mahsur kalırken Karasakal en iyi hazineyi kendisine sakladı.",
+      "text_markdown": "Yüzlerce korsan mahsur kalırken Karasakal en iyi hazineyi kendisine sakladı.",
+      "tts": {
+        "text": "Yüzlerce korsan mahsur kalırken Karasakal en iyi hazineyi kendisine sakladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gücünün Zirvesinde",
+      "text_markdown": "Gücünün Zirvesinde"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliçe Anne'in İntikamı'nı kaybettikten sonra Karasakal, Kuzey Karolina'daki Bath kasabasına yelken açtı.",
+      "text_markdown": "Kraliçe Anne'in İntikamı'nı kaybettikten sonra Karasakal, Kuzey Karolina'daki Bath kasabasına yelken açtı.",
+      "tts": {
+        "text": "Kraliçe Anne'in İntikamı'nı kaybettikten sonra Karasakal, Kuzey Karolina'daki Bath kasabasına yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orada Vali Charles Eden ile görüştü ve kraliyet affını kabul etti.",
+      "text_markdown": "Orada Vali Charles Eden ile görüştü ve kraliyet affını kabul etti.",
+      "tts": {
+        "text": "Orada Vali Charles Eden ile görüştü ve kraliyet affını kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Affın korsan kariyerine son vermesi gerekiyordu.",
+      "text_markdown": "Affın korsan kariyerine son vermesi gerekiyordu.",
+      "tts": {
+        "text": "Affın korsan kariyerine son vermesi gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Karasakal'ın emekliye ayrılma gibi bir niyeti yoktu.",
+      "text_markdown": "Ama Karasakal'ın emekliye ayrılma gibi bir niyeti yoktu.",
+      "tts": {
+        "text": "Ama Karasakal'ın emekliye ayrılma gibi bir niyeti yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath, Pamlico Nehri kıyısında birkaç düzine evden oluşan minik bir yerleşimdi.",
+      "text_markdown": "Bath, Pamlico Nehri kıyısında birkaç düzine evden oluşan minik bir yerleşimdi.",
+      "tts": {
+        "text": "Bath, Pamlico Nehri kıyısında birkaç düzine evden oluşan minik bir yerleşimdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atlantik'in en korkulan korsanı için pek olası olmayan bir yuvaydı.",
+      "text_markdown": "Atlantik'in en korkulan korsanı için pek olası olmayan bir yuvaydı.",
+      "tts": {
+        "text": "Atlantik'in en korkulan korsanı için pek olası olmayan bir yuvaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama tecrit edilmişliği ve yozlaşmış valisi onu Karasakal'ın amaçları için mükemmel kılıyordu.",
+      "text_markdown": "Ama tecrit edilmişliği ve yozlaşmış valisi onu Karasakal'ın amaçları için mükemmel kılıyordu.",
+      "tts": {
+        "text": "Ama tecrit edilmişliği ve yozlaşmış valisi onu Karasakal'ın amaçları için mükemmel kılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vali Charles Eden, Karasakal'ın gönüllü ortağı olmuş görünmektedir.",
+      "text_markdown": "Vali Charles Eden, Karasakal'ın gönüllü ortağı olmuş görünmektedir.",
+      "tts": {
+        "text": "Vali Charles Eden, Karasakal'ın gönüllü ortağı olmuş görünmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanın devam eden faaliyetlerine yasal kılıf sağladı.",
+      "text_markdown": "Korsanın devam eden faaliyetlerine yasal kılıf sağladı.",
+      "tts": {
+        "text": "Korsanın devam eden faaliyetlerine yasal kılıf sağladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karasakal denizde gemileri ele geçirir, ardından yükü Bath'a getirirdi.",
+      "text_markdown": "Karasakal denizde gemileri ele geçirir, ardından yükü Bath'a getirirdi.",
+      "tts": {
+        "text": "Karasakal denizde gemileri ele geçirir, ardından yükü Bath'a getirirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eden malları meşru kurtarılmış yük ilan eder ve kârdan pay alırdı.",
+      "text_markdown": "Eden malları meşru kurtarılmış yük ilan eder ve kârdan pay alırdı.",
+      "tts": {
+        "text": "Eden malları meşru kurtarılmış yük ilan eder ve kârdan pay alırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal, Bath'taki ikameti sırasında yerel bir kadınla evlendi.",
+      "text_markdown": "Karasakal, Bath'taki ikameti sırasında yerel bir kadınla evlendi.",
+      "tts": {
+        "text": "Karasakal, Bath'taki ikameti sırasında yerel bir kadınla evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık 16 yaşında olduğu düşünülüyor.",
+      "text_markdown": "Yaklaşık 16 yaşında olduğu düşünülüyor.",
+      "tts": {
+        "text": "Yaklaşık on altı yaşında olduğu düşünülüyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihî kayıtlar onun on dördüncü eşi olabileceğini düşündürüyor.",
+      "text_markdown": "Tarihî kayıtlar onun on dördüncü eşi olabileceğini düşündürüyor.",
+      "tts": {
+        "text": "Tarihî kayıtlar onun on dördüncü eşi olabileceğini düşündürüyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu evliliklerin çoğu denizciler arasında yaygın olan gayri resmi düzenlemelerdi.",
+      "text_markdown": "Bu evliliklerin çoğu denizciler arasında yaygın olan gayri resmi düzenlemelerdi.",
+      "tts": {
+        "text": "Bu evliliklerin çoğu denizciler arasında yaygın olan gayri resmi düzenlemelerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Affa rağmen Karasakal gemiciliğe saldırmaya devam etti.",
+      "text_markdown": "Affa rağmen Karasakal gemiciliğe saldırmaya devam etti.",
+      "tts": {
+        "text": "Affa rağmen Karasakal gemiciliğe saldırmaya devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele geçirilen gemilerin İspanyol veya Fransız gemileri olduğunu iddia ederek onları meşru ganimet sayıyordu.",
+      "text_markdown": "Ele geçirilen gemilerin İspanyol veya Fransız gemileri olduğunu iddia ederek onları meşru ganimet sayıyordu.",
+      "tts": {
+        "text": "Ele geçirilen gemilerin İspanyol veya Fransız gemileri olduğunu iddia ederek onları meşru ganimet sayıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vali Eden bu iddiaları soruşturma yapmadan rahatça onaylıyordu.",
+      "text_markdown": "Vali Eden bu iddiaları soruşturma yapmadan rahatça onaylıyordu.",
+      "tts": {
+        "text": "Vali Eden bu iddiaları soruşturma yapmadan rahatça onaylıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın yerel toplulukla ilişkisi karmaşıktı.",
+      "text_markdown": "Karasakal'ın yerel toplulukla ilişkisi karmaşıktı.",
+      "tts": {
+        "text": "Karasakal'ın yerel toplulukla ilişkisi karmaşıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı sakinler onun mücadele eden kasabalarına getirdiği zenginliği memnuniyetle karşıladı.",
+      "text_markdown": "Bazı sakinler onun mücadele eden kasabalarına getirdiği zenginliği memnuniyetle karşıladı.",
+      "tts": {
+        "text": "Bazı sakinler onun mücadele eden kasabalarına getirdiği zenginliği memnuniyetle karşıladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri şiddet yanlısı korsanın ve silahlı mürettebatının korkusu altında yaşadı.",
+      "text_markdown": "Diğerleri şiddet yanlısı korsanın ve silahlı mürettebatının korkusu altında yaşadı.",
+      "tts": {
+        "text": "Diğerleri şiddet yanlısı korsanın ve silahlı mürettebatının korkusu altında yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kimse ona açıkça meydan okumaya cesaret edemedi.",
+      "text_markdown": "Kimse ona açıkça meydan okumaya cesaret edemedi.",
+      "tts": {
+        "text": "Kimse ona açıkça meydan okumaya cesaret edemedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath'taki evinde görkemli toplantılar düzenledi.",
+      "text_markdown": "Bath'taki evinde görkemli toplantılar düzenledi.",
+      "tts": {
+        "text": "Bath'taki evinde görkemli toplantılar düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Valinin kendisi de dâhil olmak üzere önde gelen yerel kişiler bu etkinliklere katılırdı.",
+      "text_markdown": "Valinin kendisi de dâhil olmak üzere önde gelen yerel kişiler bu etkinliklere katılırdı.",
+      "tts": {
+        "text": "Valinin kendisi de dâhil olmak üzere önde gelen yerel kişiler bu etkinliklere katılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çalıntı şarap ve içkiler serbestçe akardı.",
+      "text_markdown": "Çalıntı şarap ve içkiler serbestçe akardı.",
+      "tts": {
+        "text": "Çalıntı şarap ve içkiler serbestçe akardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu partiler Karasakal'ın müttefik ve muhbir ağını sürdürmesine yardımcı oldu.",
+      "text_markdown": "Bu partiler Karasakal'ın müttefik ve muhbir ağını sürdürmesine yardımcı oldu.",
+      "tts": {
+        "text": "Bu partiler Karasakal'ın müttefik ve muhbir ağını sürdürmesine yardımcı oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal ayrıca Ocracoke Adası'nda bir sığınak bulunduruyordu.",
+      "text_markdown": "Karasakal ayrıca Ocracoke Adası'nda bir sığınak bulunduruyordu.",
+      "tts": {
+        "text": "Karasakal ayrıca Ocracoke Adası'nda bir sığınak bulunduruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke, Kuzey Karolina'nın Outer Banks'inde ıssız bir bariyer adasıydı.",
+      "text_markdown": "Ocracoke, Kuzey Karolina'nın Outer Banks'inde ıssız bir bariyer adasıydı.",
+      "tts": {
+        "text": "Ocracoke, Kuzey Karolina'nın Outer Banks'inde ıssız bir bariyer adasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sığ suları ve tehlikeli sığlıkları büyük savaş gemilerinin yaklaşmasını neredeyse imkânsız kılıyordu.",
+      "text_markdown": "Sığ suları ve tehlikeli sığlıkları büyük savaş gemilerinin yaklaşmasını neredeyse imkânsız kılıyordu.",
+      "tts": {
+        "text": "Sığ suları ve tehlikeli sığlıkları büyük savaş gemilerinin yaklaşmasını neredeyse imkânsız kılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanalları bilen bir korsan için bu aşılmaz bir kaleydi.",
+      "text_markdown": "Kanalları bilen bir korsan için bu aşılmaz bir kaleydi.",
+      "tts": {
+        "text": "Kanalları bilen bir korsan için bu aşılmaz bir kaleydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diğer korsanlar ticaret yapmak, ikmal etmek ve sosyalleşmek için Ocracoke'a gelirdi.",
+      "text_markdown": "Diğer korsanlar ticaret yapmak, ikmal etmek ve sosyalleşmek için Ocracoke'a gelirdi.",
+      "tts": {
+        "text": "Diğer korsanlar ticaret yapmak, ikmal etmek ve sosyalleşmek için Ocracoke'a gelirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir diğer kötü şöhretli korsan kaptanı Charles Vane, Karasakal'ı orada ziyaret etti.",
+      "text_markdown": "Bir diğer kötü şöhretli korsan kaptanı Charles Vane, Karasakal'ı orada ziyaret etti.",
+      "tts": {
+        "text": "Bir diğer kötü şöhretli korsan kaptanı Charles Vane, Karasakal'ı orada ziyaret etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki mürettebat sahilde günlerce süren bir kutlama yaptı.",
+      "text_markdown": "İki mürettebat sahilde günlerce süren bir kutlama yaptı.",
+      "tts": {
+        "text": "İki mürettebat sahilde günlerce süren bir kutlama yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu korsan toplantısının haberleri kıyı boyunca sömürge yetkililerini tedirgin etti.",
+      "text_markdown": "Bu korsan toplantısının haberleri kıyı boyunca sömürge yetkililerini tedirgin etti.",
+      "tts": {
+        "text": "Bu korsan toplantısının haberleri kıyı boyunca sömürge yetkililerini tedirgin etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar, Karasakal'ın sıkı sıkıya uyguladığı bir davranış kuralına göre yaşarlardı.",
+      "text_markdown": "Korsanlar, Karasakal'ın sıkı sıkıya uyguladığı bir davranış kuralına göre yaşarlardı.",
+      "tts": {
+        "text": "Korsanlar, Karasakal'ın sıkı sıkıya uyguladığı bir davranış kuralına göre yaşarlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her erkeğin önemli kararlarda oy hakkı vardı.",
+      "text_markdown": "Her erkeğin önemli kararlarda oy hakkı vardı.",
+      "tts": {
+        "text": "Her erkeğin önemli kararlarda oy hakkı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ganimet üzerinde anlaşılan paylara göre bölüşülürdü.",
+      "text_markdown": "Ganimet üzerinde anlaşılan paylara göre bölüşülürdü.",
+      "tts": {
+        "text": "Ganimet üzerinde anlaşılan paylara göre bölüşülürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ortak hazineden çalmaya kalkışan herkes sert biçimde cezalandırılırdı.",
+      "text_markdown": "Ortak hazineden çalmaya kalkışan herkes sert biçimde cezalandırılırdı.",
+      "tts": {
+        "text": "Ortak hazineden çalmaya kalkışan herkes sert biçimde cezalandırılırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kıyı boyunca tüccarlar ve plantasyon sahipleri çaresiz kalmıştı.",
+      "text_markdown": "Kıyı boyunca tüccarlar ve plantasyon sahipleri çaresiz kalmıştı.",
+      "tts": {
+        "text": "Kıyı boyunca tüccarlar ve plantasyon sahipleri çaresiz kalmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaretleri Karasakal'ın sürekli baskınlarıyla boğuluyordu.",
+      "text_markdown": "Ticaretleri Karasakal'ın sürekli baskınlarıyla boğuluyordu.",
+      "tts": {
+        "text": "Ticaretleri Karasakal'ın sürekli baskınlarıyla boğuluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karolina sularından geçen gemiler için sigorta oranları fırladı.",
+      "text_markdown": "Karolina sularından geçen gemiler için sigorta oranları fırladı.",
+      "tts": {
+        "text": "Karolina sularından geçen gemiler için sigorta oranları fırladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı tüccarlar her şeyi kaybetmektense iş kaybetmeyi tercih ederek gemi göndermeyi tamamen bıraktı.",
+      "text_markdown": "Bazı tüccarlar her şeyi kaybetmektense iş kaybetmeyi tercih ederek gemi göndermeyi tamamen bıraktı.",
+      "tts": {
+        "text": "Bazı tüccarlar her şeyi kaybetmektense iş kaybetmeyi tercih ederek gemi göndermeyi tamamen bıraktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Virginia Valisi Alexander Spotswood özellikle öfkeliydi.",
+      "text_markdown": "Virginia Valisi Alexander Spotswood özellikle öfkeliydi.",
+      "tts": {
+        "text": "Virginia Valisi Alexander Spotswood özellikle öfkeliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia'nın ekonomisi Chesapeake Körfezi üzerinden sevk edilen tütün ihracatına bağımlıydı.",
+      "text_markdown": "Virginia'nın ekonomisi Chesapeake Körfezi üzerinden sevk edilen tütün ihracatına bağımlıydı.",
+      "tts": {
+        "text": "Virginia'nın ekonomisi Chesapeake Körfezi üzerinden sevk edilen tütün ihracatına bağımlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karasakal'ın yakınlarda bulunması Virginia'nın en hayati endüstrisini tehdit ediyordu.",
+      "text_markdown": "Karasakal'ın yakınlarda bulunması Virginia'nın en hayati endüstrisini tehdit ediyordu.",
+      "tts": {
+        "text": "Karasakal'ın yakınlarda bulunması Virginia'nın en hayati endüstrisini tehdit ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spotswood, Kuzey Karolina korsanla ilgilenmezse Virginia'nın ilgileneceğine karar verdi.",
+      "text_markdown": "Spotswood, Kuzey Karolina korsanla ilgilenmezse Virginia'nın ilgileneceğine karar verdi.",
+      "tts": {
+        "text": "Spotswood, Kuzey Karolina korsanla ilgilenmezse Virginia'nın ilgileneceğine karar verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood, Karasakal'ı yakalamak veya öldürmek için gizlice bir askerî operasyon planlamaya başladı.",
+      "text_markdown": "Spotswood, Karasakal'ı yakalamak veya öldürmek için gizlice bir askerî operasyon planlamaya başladı.",
+      "tts": {
+        "text": "Spotswood, Karasakal'ı yakalamak veya öldürmek için gizlice bir askerî operasyon planlamaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia kuvvetlerini izinsiz olarak Kuzey Karolina'ya göndermek hukuken tartışmalıydı.",
+      "text_markdown": "Virginia kuvvetlerini izinsiz olarak Kuzey Karolina'ya göndermek hukuken tartışmalıydı.",
+      "tts": {
+        "text": "Virginia kuvvetlerini izinsiz olarak Kuzey Karolina'ya göndermek hukuken tartışmalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Gücünün Zirvesinde",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Spotswood yine de harekete geçmeye karar verdi; tehdidi olağanüstü önlemleri meşru kılacak yeterlilikte görüyordu.",
+      "text_markdown": "Ancak Spotswood yine de harekete geçmeye karar verdi; tehdidi olağanüstü önlemleri meşru kılacak yeterlilikte görüyordu.",
+      "tts": {
+        "text": "Ancak Spotswood yine de harekete geçmeye karar verdi; tehdidi olağanüstü önlemleri meşru kılacak yeterlilikte görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ocracoke Savaşı",
+      "text_markdown": "Ocracoke Savaşı"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kasım 1718'de Vali Spotswood planını uygulamaya koydu.",
+      "text_markdown": "Kasım 1718'de Vali Spotswood planını uygulamaya koydu.",
+      "tts": {
+        "text": "Bin yedi yüz on sekiz Kasım'ında Vali Spotswood planını uygulamaya koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sivil sahiplerden iki küçük süvari gemisi kiraladı ve deniz kuvvetleri komutasına verdi.",
+      "text_markdown": "Sivil sahiplerden iki küçük süvari gemisi kiraladı ve deniz kuvvetleri komutasına verdi.",
+      "tts": {
+        "text": "Sivil sahiplerden iki küçük süvari gemisi kiraladı ve deniz kuvvetleri komutasına verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seferi Kraliyet Donanması'ndan Teğmen Robert Maynard yönetti.",
+      "text_markdown": "Seferi Kraliyet Donanması'ndan Teğmen Robert Maynard yönetti.",
+      "tts": {
+        "text": "Seferi Kraliyet Donanması'ndan Teğmen Robert Maynard yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maynard, cesaret ve kararlılık konusunda ün yapmış deneyimli bir subaydı.",
+      "text_markdown": "Maynard, cesaret ve kararlılık konusunda ün yapmış deneyimli bir subaydı.",
+      "tts": {
+        "text": "Maynard, cesaret ve kararlılık konusunda ün yapmış deneyimli bir subaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood süvari gemilerini seçmişti çünkü düşük su çekimleri vardı.",
+      "text_markdown": "Spotswood süvari gemilerini seçmişti çünkü düşük su çekimleri vardı.",
+      "tts": {
+        "text": "Spotswood süvari gemilerini seçmişti çünkü düşük su çekimleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke Adası çevresindeki kanallarda yalnızca düz tabanlı gemiler seyredebilirdi.",
+      "text_markdown": "Ocracoke Adası çevresindeki kanallarda yalnızca düz tabanlı gemiler seyredebilirdi.",
+      "tts": {
+        "text": "Ocracoke Adası çevresindeki kanallarda yalnızca düz tabanlı gemiler seyredebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha büyük savaş gemileri Karasakal'ın demirleme yerine çok uzun süre önce karaya otururdu.",
+      "text_markdown": "Daha büyük savaş gemileri Karasakal'ın demirleme yerine çok uzun süre önce karaya otururdu.",
+      "tts": {
+        "text": "Daha büyük savaş gemileri Karasakal'ın demirleme yerine çok uzun süre önce karaya otururdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard'ın iki süvari gemisi toplamda yaklaşık 60 adam taşıyordu.",
+      "text_markdown": "Maynard'ın iki süvari gemisi toplamda yaklaşık 60 adam taşıyordu.",
+      "tts": {
+        "text": "Maynard'ın iki süvari gemisi toplamda yaklaşık altmış adam taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar Virginia'da konuşlu Kraliyet Donanması savaş gemilerinden denizcilerdi.",
+      "text_markdown": "Bunlar Virginia'da konuşlu Kraliyet Donanması savaş gemilerinden denizcilerdi.",
+      "tts": {
+        "text": "Bunlar Virginia'da konuşlu Kraliyet Donanması savaş gemilerinden denizcilerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlara ele geçirdikleri her türlü korsan ganimetinden pay sözü verildi.",
+      "text_markdown": "Adamlara ele geçirdikleri her türlü korsan ganimetinden pay sözü verildi.",
+      "tts": {
+        "text": "Adamlara ele geçirdikleri her türlü korsan ganimetinden pay sözü verildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sefer gizlilik içinde Virginia'dan güneye doğru yola çıktı.",
+      "text_markdown": "Sefer gizlilik içinde Virginia'dan güneye doğru yola çıktı.",
+      "tts": {
+        "text": "Sefer gizlilik içinde Virginia'dan güneye doğru yola çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotswood, Karasakal'ın uyarılmasını önlemek için görev hakkında neredeyse kimseye söylemedi.",
+      "text_markdown": "Spotswood, Karasakal'ın uyarılmasını önlemek için görev hakkında neredeyse kimseye söylemedi.",
+      "tts": {
+        "text": "Spotswood, Karasakal'ın uyarılmasını önlemek için görev hakkında neredeyse kimseye söylemedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hız ve baskın, planın başarısı için gerekliydi.",
+      "text_markdown": "Hız ve baskın, planın başarısı için gerekliydi.",
+      "tts": {
+        "text": "Hız ve baskın, planın başarısı için gerekliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "21 Kasım 1718 akşamı Maynard'ın süvari gemileri Ocracoke Adası yakınlarına ulaştı.",
+      "text_markdown": "21 Kasım 1718 akşamı Maynard'ın süvari gemileri Ocracoke Adası yakınlarına ulaştı.",
+      "tts": {
+        "text": "Bin yedi yüz on sekiz yılı Kasım ayının yirmi birinci akşamı Maynard'ın süvari gemileri Ocracoke Adası yakınlarına ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanalın kenarına demir attılar ve şafağı beklediler.",
+      "text_markdown": "Kanalın kenarına demir attılar ve şafağı beklediler.",
+      "tts": {
+        "text": "Kanalın kenarına demir attılar ve şafağı beklediler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maynard, limanda Karasakal'ın süvari gemisi Adventure'ın ışıklarını görebiliyordu.",
+      "text_markdown": "Maynard, limanda Karasakal'ın süvari gemisi Adventure'ın ışıklarını görebiliyordu.",
+      "tts": {
+        "text": "Maynard, limanda Karasakal'ın süvari gemisi Adventure'ın ışıklarını görebiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar kutlama yapıyordu; sonlarının yaklaştığından habersizdi.",
+      "text_markdown": "Korsanlar kutlama yapıyordu; sonlarının yaklaştığından habersizdi.",
+      "tts": {
+        "text": "Korsanlar kutlama yapıyordu; sonlarının yaklaştığından habersizdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk ışıkla birlikte Maynard'ın süvari gemileri kanala girdi.",
+      "text_markdown": "İlk ışıkla birlikte Maynard'ın süvari gemileri kanala girdi.",
+      "tts": {
+        "text": "İlk ışıkla birlikte Maynard'ın süvari gemileri kanala girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karasakal onları hemen fark etti ve tehdit olarak algıladı.",
+      "text_markdown": "Karasakal onları hemen fark etti ve tehdit olarak algıladı.",
+      "tts": {
+        "text": "Karasakal onları hemen fark etti ve tehdit olarak algıladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Demir halatını kesti ve savaşmak için manevra yapmaya çalıştı.",
+      "text_markdown": "Demir halatını kesti ve savaşmak için manevra yapmaya çalıştı.",
+      "tts": {
+        "text": "Demir halatını kesti ve savaşmak için manevra yapmaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ocracoke Girişi'nin dar ve sığ suları savaşı yakın dövüşe çevirdi.",
+      "text_markdown": "Ocracoke Girişi'nin dar ve sığ suları savaşı yakın dövüşe çevirdi.",
+      "tts": {
+        "text": "Ocracoke Girişi'nin dar ve sığ suları savaşı yakın dövüşe çevirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın ilk hamlesi yıkıcıydı.",
+      "text_markdown": "Karasakal'ın ilk hamlesi yıkıcıydı.",
+      "tts": {
+        "text": "Karasakal'ın ilk hamlesi yıkıcıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saçma ve metal parçalarla dolu toplardan bir borda ateşi açtı.",
+      "text_markdown": "Saçma ve metal parçalarla dolu toplardan bir borda ateşi açtı.",
+      "tts": {
+        "text": "Saçma ve metal parçalarla dolu toplardan bir borda ateşi açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Patlama Maynard'ın süvari gemilerinden birinin güvertesini silip süpürdü.",
+      "text_markdown": "Patlama Maynard'ın süvari gemilerinden birinin güvertesini silip süpürdü.",
+      "tts": {
+        "text": "Patlama Maynard'ın süvari gemilerinden birinin güvertesini silip süpürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Süvari gemisinin komutanı ve adamlarından birkaçı anında öldü.",
+      "text_markdown": "Süvari gemisinin komutanı ve adamlarından birkaçı anında öldü.",
+      "tts": {
+        "text": "Süvari gemisinin komutanı ve adamlarından birkaçı anında öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard'ın kendi süvari gemisi de top ateşinden ağır hasar aldı.",
+      "text_markdown": "Maynard'ın kendi süvari gemisi de top ateşinden ağır hasar aldı.",
+      "tts": {
+        "text": "Maynard'ın kendi süvari gemisi de top ateşinden ağır hasar aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebatının yaklaşık üçte biri ilk atışmada öldü veya yaralandı.",
+      "text_markdown": "Mürettebatının yaklaşık üçte biri ilk atışmada öldü veya yaralandı.",
+      "tts": {
+        "text": "Mürettebatının yaklaşık üçte biri ilk atışmada öldü veya yaralandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama Maynard'ın akıllıca bir planı vardı.",
+      "text_markdown": "Ama Maynard'ın akıllıca bir planı vardı.",
+      "tts": {
+        "text": "Ama Maynard'ın akıllıca bir planı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayatta kalan adamlarının çoğuna güverte altında saklanmalarını emretti.",
+      "text_markdown": "Hayatta kalan adamlarının çoğuna güverte altında saklanmalarını emretti.",
+      "tts": {
+        "text": "Hayatta kalan adamlarının çoğuna güverte altında saklanmalarını emretti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üst güvertede yalnızca birkaç denizci görünür kaldı.",
+      "text_markdown": "Üst güvertede yalnızca birkaç denizci görünür kaldı.",
+      "tts": {
+        "text": "Üst güvertede yalnızca birkaç denizci görünür kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karasakal görünüşte boş olan gemiye baktığında mürettebatın çoğunun öldüğünü varsaydı.",
+      "text_markdown": "Karasakal görünüşte boş olan gemiye baktığında mürettebatın çoğunun öldüğünü varsaydı.",
+      "tts": {
+        "text": "Karasakal görünüşte boş olan gemiye baktığında mürettebatın çoğunun öldüğünü varsaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlarına Maynard'ın süvari gemisine çıkarak işi bitirmelerini emretti.",
+      "text_markdown": "Korsanlarına Maynard'ın süvari gemisine çıkarak işi bitirmelerini emretti.",
+      "tts": {
+        "text": "Korsanlarına Maynard'ın süvari gemisine çıkarak işi bitirmelerini emretti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal ve adamları Maynard'ın süvari gemisinin güvertesine atladı.",
+      "text_markdown": "Karasakal ve adamları Maynard'ın süvari gemisinin güvertesine atladı.",
+      "tts": {
+        "text": "Karasakal ve adamları Maynard'ın süvari gemisinin güvertesine atladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O anda Maynard işaret verdi.",
+      "text_markdown": "O anda Maynard işaret verdi.",
+      "tts": {
+        "text": "O anda Maynard işaret verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gizlenen denizcileri ellerinde silahlarla aşağıdan fırladı.",
+      "text_markdown": "Gizlenen denizcileri ellerinde silahlarla aşağıdan fırladı.",
+      "tts": {
+        "text": "Gizlenen denizcileri ellerinde silahlarla aşağıdan fırladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar kendilerini kıyasıya bir göğüs göğüse savaşın ortasında buldular.",
+      "text_markdown": "Korsanlar kendilerini kıyasıya bir göğüs göğüse savaşın ortasında buldular.",
+      "tts": {
+        "text": "Korsanlar kendilerini kıyasıya bir göğüs göğüse savaşın ortasında buldular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal ve Maynard doğrudan birbirleriyle savaştı.",
+      "text_markdown": "Karasakal ve Maynard doğrudan birbirleriyle savaştı.",
+      "tts": {
+        "text": "Karasakal ve Maynard doğrudan birbirleriyle savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karasakal palasını öyle bir güçle salladı ki Maynard'ın kılıcının bıçağını kırdı.",
+      "text_markdown": "Karasakal palasını öyle bir güçle salladı ki Maynard'ın kılıcının bıçağını kırdı.",
+      "tts": {
+        "text": "Karasakal palasını öyle bir güçle salladı ki Maynard'ın kılıcının bıçağını kırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karasakal öldürücü darbe için palasını kaldırdığında, Maynard'ın adamlarından biri boynunu kesti.",
+      "text_markdown": "Karasakal öldürücü darbe için palasını kaldırdığında, Maynard'ın adamlarından biri boynunu kesti.",
+      "tts": {
+        "text": "Karasakal öldürücü darbe için palasını kaldırdığında, Maynard'ın adamlarından biri boynunu kesti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karasakal sendeledi ama savaşmaya devam etti.",
+      "text_markdown": "Karasakal sendeledi ama savaşmaya devam etti.",
+      "tts": {
+        "text": "Karasakal sendeledi ama savaşmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda Karasakal yığılıp Maynard'ın süvari gemisinin güvertesinde öldü.",
+      "text_markdown": "Sonunda Karasakal yığılıp Maynard'ın süvari gemisinin güvertesinde öldü.",
+      "tts": {
+        "text": "Sonunda Karasakal yığılıp Maynard'ın süvari gemisinin güvertesinde öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cesedi incelendiğinde 5 kurşun yarası ve 20'den fazla kılıç kesisi sayıldı.",
+      "text_markdown": "Cesedi incelendiğinde 5 kurşun yarası ve 20'den fazla kılıç kesisi sayıldı.",
+      "tts": {
+        "text": "Cesedi incelendiğinde beş kurşun yarası ve yirmiden fazla kılıç kesisi sayıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geri kalan korsanlar kaptanlarının düştüğünü görünce teslim oldu.",
+      "text_markdown": "Geri kalan korsanlar kaptanlarının düştüğünü görünce teslim oldu.",
+      "tts": {
+        "text": "Geri kalan korsanlar kaptanlarının düştüğünü görünce teslim oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard, Karasakal'ın başının kesilmesini emretti.",
+      "text_markdown": "Maynard, Karasakal'ın başının kesilmesini emretti.",
+      "tts": {
+        "text": "Maynard, Karasakal'ın başının kesilmesini emretti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baş, öldürmenin kanıtı olarak süvari gemisinin pruva direğine asıldı.",
+      "text_markdown": "Baş, öldürmenin kanıtı olarak süvari gemisinin pruva direğine asıldı.",
+      "tts": {
+        "text": "Baş, öldürmenin kanıtı olarak süvari gemisinin pruva direğine asıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karasakal'ın başsız cesedi Ocracoke Girişi sularına atıldı.",
+      "text_markdown": "Karasakal'ın başsız cesedi Ocracoke Girişi sularına atıldı.",
+      "tts": {
+        "text": "Karasakal'ın başsız cesedi Ocracoke Girişi sularına atıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ocracoke Savaşı",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Efsaneye göre ceset batmadan önce süvari gemisinin etrafında yüzmüştür, ancak bu kesinlikle kurgudur.",
+      "text_markdown": "Efsaneye göre ceset batmadan önce süvari gemisinin etrafında yüzmüştür, ancak bu kesinlikle kurgudur.",
+      "tts": {
+        "text": "Efsaneye göre ceset batmadan önce süvari gemisinin etrafında yüzmüştür, ancak bu kesinlikle kurgudur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Asla Ölmeyen Efsane",
+      "text_markdown": "Asla Ölmeyen Efsane"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın ölümü korsan topluluğunda şok dalgaları yarattı.",
+      "text_markdown": "Karasakal'ın ölümü korsan topluluğunda şok dalgaları yarattı.",
+      "tts": {
+        "text": "Karasakal'ın ölümü korsan topluluğunda şok dalgaları yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atlantik'in en korkulan korsanı avlanıp öldürülebiliyorsa hiç kimse güvende değildi.",
+      "text_markdown": "Atlantik'in en korkulan korsanı avlanıp öldürülebiliyorsa hiç kimse güvende değildi.",
+      "tts": {
+        "text": "Atlantik'in en korkulan korsanı avlanıp öldürülebiliyorsa hiç kimse güvende değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonraki aylarda birçok korsan kraliyet affını kabul etti.",
+      "text_markdown": "Sonraki aylarda birçok korsan kraliyet affını kabul etti.",
+      "tts": {
+        "text": "Sonraki aylarda birçok korsan kraliyet affını kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlığın Altın Çağı son yıllarına giriyordu.",
+      "text_markdown": "Korsanlığın Altın Çağı son yıllarına giriyordu.",
+      "tts": {
+        "text": "Korsanlığın Altın Çağı son yıllarına giriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın mürettebatının hayatta kalanları Virginia'da yargılandı.",
+      "text_markdown": "Karasakal'ın mürettebatının hayatta kalanları Virginia'da yargılandı.",
+      "tts": {
+        "text": "Karasakal'ın mürettebatının hayatta kalanları Virginia'da yargılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu suçlu bulunarak asıldı.",
+      "text_markdown": "Çoğu suçlu bulunarak asıldı.",
+      "tts": {
+        "text": "Çoğu suçlu bulunarak asıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cesetleri rıhtım boyunca demir kafeslerde teşhir edildi; kasvetli bir uyarı niteliğindeydi.",
+      "text_markdown": "Cesetleri rıhtım boyunca demir kafeslerde teşhir edildi; kasvetli bir uyarı niteliğindeydi.",
+      "tts": {
+        "text": "Cesetleri rıhtım boyunca demir kafeslerde teşhir edildi; kasvetli bir uyarı niteliğindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sömürge yetkilileri korsan hoşgörüsü döneminin sona erdiğini kesin olarak ortaya koymak istiyordu.",
+      "text_markdown": "Sömürge yetkilileri korsan hoşgörüsü döneminin sona erdiğini kesin olarak ortaya koymak istiyordu.",
+      "tts": {
+        "text": "Sömürge yetkilileri korsan hoşgörüsü döneminin sona erdiğini kesin olarak ortaya koymak istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724'te Londra'da Korsanların Genel Tarihi adlı bir kitap yayımlandı.",
+      "text_markdown": "1724'te Londra'da Korsanların Genel Tarihi adlı bir kitap yayımlandı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmi dörtte Londra'da Korsanların Genel Tarihi adlı bir kitap yayımlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yazar Kaptan Charles Johnson olarak belirtilmişti, ancak gerçek kimliği hâlâ bilinmiyor.",
+      "text_markdown": "Yazar Kaptan Charles Johnson olarak belirtilmişti, ancak gerçek kimliği hâlâ bilinmiyor.",
+      "tts": {
+        "text": "Yazar Kaptan Charles Johnson olarak belirtilmişti, ancak gerçek kimliği hâlâ bilinmiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitap Karasakal'ın maceralarına bütün bir bölüm ayırdı.",
+      "text_markdown": "Bu kitap Karasakal'ın maceralarına bütün bir bölüm ayırdı.",
+      "tts": {
+        "text": "Bu kitap Karasakal'ın maceralarına bütün bir bölüm ayırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karasakal efsanesinin üzerine inşa edildiği temeldi.",
+      "text_markdown": "Karasakal efsanesinin üzerine inşa edildiği temeldi.",
+      "tts": {
+        "text": "Karasakal efsanesinin üzerine inşa edildiği temeldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca Karasakal korsanlığın simgesi hâline geldi.",
+      "text_markdown": "Yüzyıllar boyunca Karasakal korsanlığın simgesi hâline geldi.",
+      "tts": {
+        "text": "Yüzyıllar boyunca Karasakal korsanlığın simgesi hâline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar bir korsan hayal ettiklerinde genellikle Karasakal'a benzeyen birini gözlerinde canlandırır.",
+      "text_markdown": "İnsanlar bir korsan hayal ettiklerinde genellikle Karasakal'a benzeyen birini gözlerinde canlandırır.",
+      "tts": {
+        "text": "İnsanlar bir korsan hayal ettiklerinde genellikle Karasakal'a benzeyen birini gözlerinde canlandırır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Devasa sakal, tüten fitiller, tabanca palaskası standart korsan imajı oldu.",
+      "text_markdown": "Devasa sakal, tüten fitiller, tabanca palaskası standart korsan imajı oldu.",
+      "tts": {
+        "text": "Devasa sakal, tüten fitiller, tabanca palaskası standart korsan imajı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Başka hiçbir korsan popüler kültür üzerinde bu kadar kalıcı bir etki bırakmamıştır.",
+      "text_markdown": "Başka hiçbir korsan popüler kültür üzerinde bu kadar kalıcı bir etki bırakmamıştır.",
+      "tts": {
+        "text": "Başka hiçbir korsan popüler kültür üzerinde bu kadar kalıcı bir etki bırakmamıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1996'da deniz arkeologları Kuzey Karolina'daki Beaufort yakınlarında bir gemi enkazı keşfetti.",
+      "text_markdown": "1996'da deniz arkeologları Kuzey Karolina'daki Beaufort yakınlarında bir gemi enkazı keşfetti.",
+      "tts": {
+        "text": "Bin dokuz yüz doksan altıda deniz arkeologları Kuzey Karolina'daki Beaufort yakınlarında bir gemi enkazı keşfetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunun Kraliçe Anne'in İntikamı'nın kalıntıları olduğuna inanıyorlar.",
+      "text_markdown": "Bunun Kraliçe Anne'in İntikamı'nın kalıntıları olduğuna inanıyorlar.",
+      "tts": {
+        "text": "Bunun Kraliçe Anne'in İntikamı'nın kalıntıları olduğuna inanıyorlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O zamandan bu yana alandan 280.000'den fazla eser çıkarıldı.",
+      "text_markdown": "O zamandan bu yana alandan 280.000'den fazla eser çıkarıldı.",
+      "tts": {
+        "text": "O zamandan bu yana alandan iki yüz seksen binden fazla eser çıkarıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bunlar arasında toplar, çapalar, tıbbi aletler ve altın tozu bulunmaktadır.",
+      "text_markdown": "Bunlar arasında toplar, çapalar, tıbbi aletler ve altın tozu bulunmaktadır.",
+      "tts": {
+        "text": "Bunlar arasında toplar, çapalar, tıbbi aletler ve altın tozu bulunmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eserler bize bir korsan gemisindeki günlük yaşam hakkında çok şey anlatıyor.",
+      "text_markdown": "Eserler bize bir korsan gemisindeki günlük yaşam hakkında çok şey anlatıyor.",
+      "tts": {
+        "text": "Eserler bize bir korsan gemisindeki günlük yaşam hakkında çok şey anlatıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebatın iyi beslendiğini, diyetlerinde domuz eti, sığır eti ve balık bulunduğuna dair kanıtlar olduğunu ortaya koyuyor.",
+      "text_markdown": "Mürettebatın iyi beslendiğini, diyetlerinde domuz eti, sığır eti ve balık bulunduğuna dair kanıtlar olduğunu ortaya koyuyor.",
+      "tts": {
+        "text": "Mürettebatın iyi beslendiğini, diyetlerinde domuz eti, sığır eti ve balık bulunduğuna dair kanıtlar olduğunu ortaya koyuyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tıbbi aletler, çoğu büyük gemide olduğu gibi gemide bir cerrah bulunduğunu düşündürüyor.",
+      "text_markdown": "Tıbbi aletler, çoğu büyük gemide olduğu gibi gemide bir cerrah bulunduğunu düşündürüyor.",
+      "tts": {
+        "text": "Tıbbi aletler, çoğu büyük gemide olduğu gibi gemide bir cerrah bulunduğunu düşündürüyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Altın tozu, korsanlığın üretebileceği muazzam zenginliği doğruluyor.",
+      "text_markdown": "Altın tozu, korsanlığın üretebileceği muazzam zenginliği doğruluyor.",
+      "tts": {
+        "text": "Altın tozu, korsanlığın üretebileceği muazzam zenginliği doğruluyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karasakal'ın korsan olarak kariyeri yalnızca yaklaşık iki yıl sürdü.",
+      "text_markdown": "Karasakal'ın korsan olarak kariyeri yalnızca yaklaşık iki yıl sürdü.",
+      "tts": {
+        "text": "Karasakal'ın korsan olarak kariyeri yalnızca yaklaşık iki yıl sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kısa sürede düzinelerce gemi ele geçirdi ve bütün bir kıyı şeridini dehşete düşürdü.",
+      "text_markdown": "Bu kısa sürede düzinelerce gemi ele geçirdi ve bütün bir kıyı şeridini dehşete düşürdü.",
+      "tts": {
+        "text": "Bu kısa sürede düzinelerce gemi ele geçirdi ve bütün bir kıyı şeridini dehşete düşürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Önemli bir sömürge limanını ablukaya aldı ve dünyanın en güçlü donanmasına meydan okudu.",
+      "text_markdown": "Önemli bir sömürge limanını ablukaya aldı ve dünyanın en güçlü donanmasına meydan okudu.",
+      "tts": {
+        "text": "Önemli bir sömürge limanını ablukaya aldı ve dünyanın en güçlü donanmasına meydan okudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hikâyesi denizcilik tarihinin en dramatik bölümlerinden biri olmaya devam ediyor.",
+      "text_markdown": "Hikâyesi denizcilik tarihinin en dramatik bölümlerinden biri olmaya devam ediyor.",
+      "tts": {
+        "text": "Hikâyesi denizcilik tarihinin en dramatik bölümlerinden biri olmaya devam ediyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün Karasakal'ın adı sayısız kitap, film ve televizyon programında yaşıyor.",
+      "text_markdown": "Bugün Karasakal'ın adı sayısız kitap, film ve televizyon programında yaşıyor.",
+      "tts": {
+        "text": "Bugün Karasakal'ın adı sayısız kitap, film ve televizyon programında yaşıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke Adası artık popüler bir turizm destinasyonu, kısmen korsan tarihinden dolayı.",
+      "text_markdown": "Ocracoke Adası artık popüler bir turizm destinasyonu, kısmen korsan tarihinden dolayı.",
+      "tts": {
+        "text": "Ocracoke Adası artık popüler bir turizm destinasyonu, kısmen korsan tarihinden dolayı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her yıl kasaba, ünlü savaşın yıl dönümünü kutlayan bir festival düzenliyor.",
+      "text_markdown": "Her yıl kasaba, ünlü savaşın yıl dönümünü kutlayan bir festival düzenliyor.",
+      "tts": {
+        "text": "Her yıl kasaba, ünlü savaşın yıl dönümünü kutlayan bir festival düzenliyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Asla Ölmeyen Efsane",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sakalını ateşe veren korsan, popüler hayal gücünün ölümsüz bir figürü hâline geldi.",
+      "text_markdown": "Sakalını ateşe veren korsan, popüler hayal gücünün ölümsüz bir figürü hâline geldi.",
+      "tts": {
+        "text": "Sakalını ateşe veren korsan, popüler hayal gücünün ölümsüz bir figürü hâline geldi.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

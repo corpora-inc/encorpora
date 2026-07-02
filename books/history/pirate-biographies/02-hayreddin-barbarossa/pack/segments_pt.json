@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "pt",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma Nota ao Leitor",
+      "text_markdown": "Uma Nota ao Leitor"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta é a verdadeira história de Hayreddin Barbarossa, o homem que transformou o Império Otomano em uma superpotência naval.",
+      "text_markdown": "Esta é a verdadeira história de Hayreddin Barbarossa, o homem que transformou o Império Otomano em uma superpotência naval.",
+      "tts": {
+        "text": "Esta é a verdadeira história de Hayreddin Barbarossa, o homem que transformou o Império Otomano em uma superpotência naval.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele começou a vida como filho de um oleiro em uma ilha grega.",
+      "text_markdown": "Ele começou a vida como filho de um oleiro em uma ilha grega.",
+      "tts": {
+        "text": "Ele começou a vida como filho de um oleiro em uma ilha grega.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Terminou-a como Grande Almirante da mais poderosa marinha do Mar Mediterrâneo.",
+      "text_markdown": "Terminou-a como Grande Almirante da mais poderosa marinha do Mar Mediterrâneo.",
+      "tts": {
+        "text": "Terminou-a como Grande Almirante da mais poderosa marinha do Mar Mediterrâneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sua história abrange um século de conflito entre o Império Otomano e a Europa cristã.",
+      "text_markdown": "Sua história abrange um século de conflito entre o Império Otomano e a Europa cristã.",
+      "tts": {
+        "text": "Sua história abrange um século de conflito entre o Império Otomano e a Europa cristã.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É uma história de irmãos, corsários, sultões e da luta pelo controle do mar.",
+      "text_markdown": "É uma história de irmãos, corsários, sultões e da luta pelo controle do mar.",
+      "tts": {
+        "text": "É uma história de irmãos, corsários, sultões e da luta pelo controle do mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada batalha, aliança e traição descrita neste livro é extraída dos registros históricos.",
+      "text_markdown": "Cada batalha, aliança e traição descrita neste livro é extraída dos registros históricos.",
+      "tts": {
+        "text": "Cada batalha, aliança e traição descrita neste livro é extraída dos registros históricos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A carreira de Barbarossa mudou o mapa do mundo mediterrâneo.",
+      "text_markdown": "A carreira de Barbarossa mudou o mapa do mundo mediterrâneo.",
+      "tts": {
+        "text": "A carreira de Barbarossa mudou o mapa do mundo mediterrâneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A marinha que ele construiu dominou o mar por gerações após sua morte.",
+      "text_markdown": "A marinha que ele construiu dominou o mar por gerações após sua morte.",
+      "tts": {
+        "text": "A marinha que ele construiu dominou o mar por gerações após sua morte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu legado ainda molda as costas e culturas do Norte da África nos dias de hoje.",
+      "text_markdown": "Seu legado ainda molda as costas e culturas do Norte da África nos dias de hoje.",
+      "tts": {
+        "text": "Seu legado ainda molda as costas e culturas do Norte da África nos dias de hoje.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onde o registro histórico é incompleto, dizemos isso claramente.",
+      "text_markdown": "Onde o registro histórico é incompleto, dizemos isso claramente.",
+      "tts": {
+        "text": "Onde o registro histórico é incompleto, dizemos isso claramente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onde os historiadores discordam sobre datas ou detalhes, apresentamos o relato mais amplamente aceito.",
+      "text_markdown": "Onde os historiadores discordam sobre datas ou detalhes, apresentamos o relato mais amplamente aceito.",
+      "tts": {
+        "text": "Onde os historiadores discordam sobre datas ou detalhes, apresentamos o relato mais amplamente aceito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma Nota ao Leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Isto é história, não lenda, e a tratamos com o cuidado que merece.",
+      "text_markdown": "Isto é história, não lenda, e a tratamos com o cuidado que merece.",
+      "tts": {
+        "text": "Isto é história, não lenda, e a tratamos com o cuidado que merece.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O Mundo do Mediterrâneo",
+      "text_markdown": "O Mundo do Mediterrâneo"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Mar Mediterrâneo situa-se na encruzilhada de três continentes.",
+      "text_markdown": "O Mar Mediterrâneo situa-se na encruzilhada de três continentes.",
+      "tts": {
+        "text": "O Mar Mediterrâneo situa-se na encruzilhada de três continentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Europa fica ao norte, a África ao sul e a Ásia ao leste.",
+      "text_markdown": "A Europa fica ao norte, a África ao sul e a Ásia ao leste.",
+      "tts": {
+        "text": "A Europa fica ao norte, a África ao sul e a Ásia ao leste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Por milhares de anos, toda grande civilização em suas costas lutou para controlá-lo.",
+      "text_markdown": "Por milhares de anos, toda grande civilização em suas costas lutou para controlá-lo.",
+      "tts": {
+        "text": "Por milhares de anos, toda grande civilização em suas costas lutou para controlá-lo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No final do século quinze, o Mediterrâneo era um campo de batalha entre duas grandes potências.",
+      "text_markdown": "No final do século quinze, o Mediterrâneo era um campo de batalha entre duas grandes potências.",
+      "tts": {
+        "text": "No final do século quinze, o Mediterrâneo era um campo de batalha entre duas grandes potências.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A leste, o Império Otomano expandia-se rapidamente sob uma série de sultões ambiciosos.",
+      "text_markdown": "A leste, o Império Otomano expandia-se rapidamente sob uma série de sultões ambiciosos.",
+      "tts": {
+        "text": "A leste, o Império Otomano expandia-se rapidamente sob uma série de sultões ambiciosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A oeste, os reinos da Espanha e o Sacro Império Romano sob Carlos V tentavam resistir.",
+      "text_markdown": "A oeste, os reinos da Espanha e o Sacro Império Romano sob Carlos V tentavam resistir.",
+      "tts": {
+        "text": "A oeste, os reinos da Espanha e o Sacro Império Romano sob Carlos Quinto tentavam resistir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Império Otomano havia capturado Constantinopla em mil quatrocentos e cinquenta e três.",
+      "text_markdown": "O Império Otomano havia capturado Constantinopla em mil quatrocentos e cinquenta e três.",
+      "tts": {
+        "text": "O Império Otomano havia capturado Constantinopla em mil quatrocentos e cinquenta e três.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Essa vitória encerrou o Império Bizantino e deu aos otomanos o controle do Mediterrâneo oriental.",
+      "text_markdown": "Essa vitória encerrou o Império Bizantino e deu aos otomanos o controle do Mediterrâneo oriental.",
+      "tts": {
+        "text": "Essa vitória encerrou o Império Bizantino e deu aos otomanos o controle do Mediterrâneo oriental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A cidade foi renomeada Istambul e tornou-se a capital de um vasto e crescente império.",
+      "text_markdown": "A cidade foi renomeada Istambul e tornou-se a capital de um vasto e crescente império.",
+      "tts": {
+        "text": "A cidade foi renomeada Istambul e tornou-se a capital de um vasto e crescente império.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seu porto, o Corno de Ouro, tornou-se o porto-base da frota otomana.",
+      "text_markdown": "Seu porto, o Corno de Ouro, tornou-se o porto-base da frota otomana.",
+      "tts": {
+        "text": "Seu porto, o Corno de Ouro, tornou-se o porto-base da frota otomana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enquanto isso, a Espanha havia acabado de completar a Reconquista.",
+      "text_markdown": "Enquanto isso, a Espanha havia acabado de completar a Reconquista.",
+      "tts": {
+        "text": "Enquanto isso, a Espanha havia acabado de completar a Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em 1492, os monarcas espanhóis Fernando e Isabel conquistaram Granada, o último reino muçulmano na Península Ibérica.",
+      "text_markdown": "Em 1492, os monarcas espanhóis Fernando e Isabel conquistaram Granada, o último reino muçulmano na Península Ibérica.",
+      "tts": {
+        "text": "Em mil quatrocentos e noventa e dois, os monarcas espanhóis Fernando e Isabel conquistaram Granada, o último reino muçulmano na Península Ibérica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Centenas de milhares de muçulmanos e judeus foram expulsos da Espanha nos anos seguintes.",
+      "text_markdown": "Centenas de milhares de muçulmanos e judeus foram expulsos da Espanha nos anos seguintes.",
+      "tts": {
+        "text": "Centenas de milhares de muçulmanos e judeus foram expulsos da Espanha nos anos seguintes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muitos deles fugiram para o Norte da África e o Império Otomano.",
+      "text_markdown": "Muitos deles fugiram para o Norte da África e o Império Otomano.",
+      "tts": {
+        "text": "Muitos deles fugiram para o Norte da África e o Império Otomano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A costa norte-africana, conhecida como Costa da Barbária, tornou-se um refúgio para esses exilados.",
+      "text_markdown": "A costa norte-africana, conhecida como Costa da Barbária, tornou-se um refúgio para esses exilados.",
+      "tts": {
+        "text": "A costa norte-africana, conhecida como Costa da Barbária, tornou-se um refúgio para esses exilados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cidades como Argel, Túnis e Trípoli absorveram ondas de refugiados da Espanha.",
+      "text_markdown": "Cidades como Argel, Túnis e Trípoli absorveram ondas de refugiados da Espanha.",
+      "tts": {
+        "text": "Cidades como Argel, Túnis e Trípoli absorveram ondas de refugiados da Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essas comunidades deslocadas nutriam profundo ressentimento contra a Coroa Espanhola.",
+      "text_markdown": "Essas comunidades deslocadas nutriam profundo ressentimento contra a Coroa Espanhola.",
+      "tts": {
+        "text": "Essas comunidades deslocadas nutriam profundo ressentimento contra a Coroa Espanhola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muitos se voltaram para o corso tanto como meio de subsistência quanto como vingança.",
+      "text_markdown": "Muitos se voltaram para o corso tanto como meio de subsistência quanto como vingança.",
+      "tts": {
+        "text": "Muitos se voltaram para o corso tanto como meio de subsistência quanto como vingança.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um corsário era diferente de um pirata comum.",
+      "text_markdown": "Um corsário era diferente de um pirata comum.",
+      "tts": {
+        "text": "Um corsário era diferente de um pirata comum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os corsários operavam com a autorização de um governo ou governante.",
+      "text_markdown": "Os corsários operavam com a autorização de um governo ou governante.",
+      "tts": {
+        "text": "Os corsários operavam com a autorização de um governo ou governante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atacavam a navegação inimiga e dividiam os lucros com seu estado patrocinador.",
+      "text_markdown": "Atacavam a navegação inimiga e dividiam os lucros com seu estado patrocinador.",
+      "tts": {
+        "text": "Atacavam a navegação inimiga e dividiam os lucros com seu estado patrocinador.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dessa forma, o corso era uma forma de guerra naval conduzida por indivíduos privados.",
+      "text_markdown": "Dessa forma, o corso era uma forma de guerra naval conduzida por indivíduos privados.",
+      "tts": {
+        "text": "Dessa forma, o corso era uma forma de guerra naval conduzida por indivíduos privados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanto os poderes cristãos quanto muçulmanos usavam corsários extensivamente.",
+      "text_markdown": "Tanto os poderes cristãos quanto muçulmanos usavam corsários extensivamente.",
+      "tts": {
+        "text": "Tanto os poderes cristãos quanto muçulmanos usavam corsários extensivamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os Cavaleiros de São João, baseados nas ilhas de Rodes e depois Malta, eram corsários cristãos que atacavam a navegação muçulmana.",
+      "text_markdown": "Os Cavaleiros de São João, baseados nas ilhas de Rodes e depois Malta, eram corsários cristãos que atacavam a navegação muçulmana.",
+      "tts": {
+        "text": "Os Cavaleiros de São João, baseados nas ilhas de Rodes e depois Malta, eram corsários cristãos que atacavam a navegação muçulmana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Corsários muçulmanos baseados no Norte da África atacavam a navegação cristã em retaliação.",
+      "text_markdown": "Corsários muçulmanos baseados no Norte da África atacavam a navegação cristã em retaliação.",
+      "tts": {
+        "text": "Corsários muçulmanos baseados no Norte da África atacavam a navegação cristã em retaliação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O Mediterrâneo era um mar de guerra constante e de baixa intensidade.",
+      "text_markdown": "O Mediterrâneo era um mar de guerra constante e de baixa intensidade.",
+      "tts": {
+        "text": "O Mediterrâneo era um mar de guerra constante e de baixa intensidade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O comércio era o prêmio que impulsionava esse conflito.",
+      "text_markdown": "O comércio era o prêmio que impulsionava esse conflito.",
+      "tts": {
+        "text": "O comércio era o prêmio que impulsionava esse conflito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O Mediterrâneo transportava seda da China, especiarias da Índia, grãos do Egito e lã da Europa.",
+      "text_markdown": "O Mediterrâneo transportava seda da China, especiarias da Índia, grãos do Egito e lã da Europa.",
+      "tts": {
+        "text": "O Mediterrâneo transportava seda da China, especiarias da Índia, grãos do Egito e lã da Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O controle dessas rotas comerciais significava riqueza enorme.",
+      "text_markdown": "O controle dessas rotas comerciais significava riqueza enorme.",
+      "tts": {
+        "text": "O controle dessas rotas comerciais significava riqueza enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cada cidade portuária dependia do mar para sua sobrevivência.",
+      "text_markdown": "Cada cidade portuária dependia do mar para sua sobrevivência.",
+      "tts": {
+        "text": "Cada cidade portuária dependia do mar para sua sobrevivência.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As ilhas do Mediterrâneo eram prêmios estratégicos.",
+      "text_markdown": "As ilhas do Mediterrâneo eram prêmios estratégicos.",
+      "tts": {
+        "text": "As ilhas do Mediterrâneo eram prêmios estratégicos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quem controlasse as ilhas controlava as rotas marítimas entre elas.",
+      "text_markdown": "Quem controlasse as ilhas controlava as rotas marítimas entre elas.",
+      "tts": {
+        "text": "Quem controlasse as ilhas controlava as rotas marítimas entre elas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rodes, Chipre, Creta, Sicília e Malta trocaram de mãos repetidamente ao longo dos séculos.",
+      "text_markdown": "Rodes, Chipre, Creta, Sicília e Malta trocaram de mãos repetidamente ao longo dos séculos.",
+      "tts": {
+        "text": "Rodes, Chipre, Creta, Sicília e Malta trocaram de mãos repetidamente ao longo dos séculos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O poder naval determinava qual império as controlava.",
+      "text_markdown": "O poder naval determinava qual império as controlava.",
+      "tts": {
+        "text": "O poder naval determinava qual império as controlava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As galés eram os navios de guerra do Mediterrâneo nesta era.",
+      "text_markdown": "As galés eram os navios de guerra do Mediterrâneo nesta era.",
+      "tts": {
+        "text": "As galés eram os navios de guerra do Mediterrâneo nesta era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uma galé era uma embarcação longa e estreita movida a remos e velas.",
+      "text_markdown": "Uma galé era uma embarcação longa e estreita movida a remos e velas.",
+      "tts": {
+        "text": "Uma galé era uma embarcação longa e estreita movida a remos e velas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada galé carregava centenas de remadores, muitos deles escravos ou prisioneiros de guerra.",
+      "text_markdown": "Cada galé carregava centenas de remadores, muitos deles escravos ou prisioneiros de guerra.",
+      "tts": {
+        "text": "Cada galé carregava centenas de remadores, muitos deles escravos ou prisioneiros de guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Em batalha, as galés abalroavam navios inimigos e então enviavam soldados armados a bordo para lutar corpo a corpo.",
+      "text_markdown": "Em batalha, as galés abalroavam navios inimigos e então enviavam soldados armados a bordo para lutar corpo a corpo.",
+      "tts": {
+        "text": "Em batalha, as galés abalroavam navios inimigos e então enviavam soldados armados a bordo para lutar corpo a corpo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O sistema de escravidão nas galés era brutal além de qualquer descrição.",
+      "text_markdown": "O sistema de escravidão nas galés era brutal além de qualquer descrição.",
+      "tts": {
+        "text": "O sistema de escravidão nas galés era brutal além de qualquer descrição.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cativos de guerras e ataques eram acorrentados aos remos e forçados a remar até a morte.",
+      "text_markdown": "Cativos de guerras e ataques eram acorrentados aos remos e forçados a remar até a morte.",
+      "tts": {
+        "text": "Cativos de guerras e ataques eram acorrentados aos remos e forçados a remar até a morte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cristãos escravizavam muçulmanos, e muçulmanos escravizavam cristãos.",
+      "text_markdown": "Cristãos escravizavam muçulmanos, e muçulmanos escravizavam cristãos.",
+      "tts": {
+        "text": "Cristãos escravizavam muçulmanos, e muçulmanos escravizavam cristãos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa crueldade era tão rotineira que ambos os lados a aceitavam como normal.",
+      "text_markdown": "Essa crueldade era tão rotineira que ambos os lados a aceitavam como normal.",
+      "tts": {
+        "text": "Essa crueldade era tão rotineira que ambos os lados a aceitavam como normal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Papa em Roma tentou repetidamente unir os reinos cristãos contra a ameaça otomana.",
+      "text_markdown": "O Papa em Roma tentou repetidamente unir os reinos cristãos contra a ameaça otomana.",
+      "tts": {
+        "text": "O Papa em Roma tentou repetidamente unir os reinos cristãos contra a ameaça otomana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Essas alianças, chamadas Ligas Sagradas, reuniam navios da Espanha, Veneza, Gênova e dos Estados Papais.",
+      "text_markdown": "Essas alianças, chamadas Ligas Sagradas, reuniam navios da Espanha, Veneza, Gênova e dos Estados Papais.",
+      "tts": {
+        "text": "Essas alianças, chamadas Ligas Sagradas, reuniam navios da Espanha, Veneza, Gênova e dos Estados Papais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas os reinos cristãos desconfiavam uns dos outros quase tanto quanto temiam os otomanos.",
+      "text_markdown": "Mas os reinos cristãos desconfiavam uns dos outros quase tanto quanto temiam os otomanos.",
+      "tts": {
+        "text": "Mas os reinos cristãos desconfiavam uns dos outros quase tanto quanto temiam os otomanos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essas alianças eram frágeis e frequentemente se desfaziam antes de alcançar resultados duradouros.",
+      "text_markdown": "Essas alianças eram frágeis e frequentemente se desfaziam antes de alcançar resultados duradouros.",
+      "tts": {
+        "text": "Essas alianças eram frágeis e frequentemente se desfaziam antes de alcançar resultados duradouros.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nesse mundo violento e disputado, dois irmãos nasceram em uma ilha grega sob domínio otomano.",
+      "text_markdown": "Nesse mundo violento e disputado, dois irmãos nasceram em uma ilha grega sob domínio otomano.",
+      "tts": {
+        "text": "Nesse mundo violento e disputado, dois irmãos nasceram em uma ilha grega sob domínio otomano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seus nomes eram Aruj e Hizir.",
+      "text_markdown": "Seus nomes eram Aruj e Hizir.",
+      "tts": {
+        "text": "Seus nomes eram Aruj e Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hizir viria a ser conhecido pelo mundo como Hayreddin Barbarossa.",
+      "text_markdown": "Hizir viria a ser conhecido pelo mundo como Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir viria a ser conhecido pelo mundo como Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "O Mundo do Mediterrâneo",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Juntos, eles remodelariam o equilíbrio de poder de todo o Mediterrâneo.",
+      "text_markdown": "Juntos, eles remodelariam o equilíbrio de poder de todo o Mediterrâneo.",
+      "tts": {
+        "text": "Juntos, eles remodelariam o equilíbrio de poder de todo o Mediterrâneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origens",
+      "text_markdown": "Origens"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa nasceu por volta de 1478 na ilha de Lesbos.",
+      "text_markdown": "Hayreddin Barbarossa nasceu por volta de 1478 na ilha de Lesbos.",
+      "tts": {
+        "text": "Hayreddin Barbarossa nasceu por volta de mil quatrocentos e setenta e oito na ilha de Lesbos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos é uma grande ilha grega no nordeste do Mar Egeu, perto da costa da Turquia moderna.",
+      "text_markdown": "Lesbos é uma grande ilha grega no nordeste do Mar Egeu, perto da costa da Turquia moderna.",
+      "tts": {
+        "text": "Lesbos é uma grande ilha grega no nordeste do Mar Egeu, perto da costa da Turquia moderna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na época de seu nascimento, a ilha havia recentemente passado ao controle otomano.",
+      "text_markdown": "Na época de seu nascimento, a ilha havia recentemente passado ao controle otomano.",
+      "tts": {
+        "text": "Na época de seu nascimento, a ilha havia recentemente passado ao controle otomano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seu pai era Yakup, um ex-soldado otomano que se estabeleceu em Lesbos após o serviço militar.",
+      "text_markdown": "Seu pai era Yakup, um ex-soldado otomano que se estabeleceu em Lesbos após o serviço militar.",
+      "tts": {
+        "text": "Seu pai era Yakup, um ex-soldado otomano que se estabeleceu em Lesbos após o serviço militar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakup trabalhava como oleiro e era, segundo a maioria dos relatos, um artesão modesto.",
+      "text_markdown": "Yakup trabalhava como oleiro e era, segundo a maioria dos relatos, um artesão modesto.",
+      "tts": {
+        "text": "Yakup trabalhava como oleiro e era, segundo a maioria dos relatos, um artesão modesto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua mãe era uma mulher grega local, provavelmente de origem cristã, cujo nome é registrado como Katerina.",
+      "text_markdown": "Sua mãe era uma mulher grega local, provavelmente de origem cristã, cujo nome é registrado como Katerina.",
+      "tts": {
+        "text": "Sua mãe era uma mulher grega local, provavelmente de origem cristã, cujo nome é registrado como Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A família não era rica, mas também não era miserável.",
+      "text_markdown": "A família não era rica, mas também não era miserável.",
+      "tts": {
+        "text": "A família não era rica, mas também não era miserável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakup e Katerina tiveram quatro filhos.",
+      "text_markdown": "Yakup e Katerina tiveram quatro filhos.",
+      "tts": {
+        "text": "Yakup e Katerina tiveram quatro filhos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O mais velho era Ishak, depois Aruj, depois Hizir e, por fim, Ilyas.",
+      "text_markdown": "O mais velho era Ishak, depois Aruj, depois Hizir e, por fim, Ilyas.",
+      "tts": {
+        "text": "O mais velho era Ishak, depois Aruj, depois Hizir e, por fim, Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hizir era o menino que se tornaria Hayreddin Barbarossa.",
+      "text_markdown": "Hizir era o menino que se tornaria Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir era o menino que se tornaria Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Todos os quatro irmãos acabariam se lançando ao mar.",
+      "text_markdown": "Todos os quatro irmãos acabariam se lançando ao mar.",
+      "tts": {
+        "text": "Todos os quatro irmãos acabariam se lançando ao mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os irmãos cresceram em um mundo moldado pelo mar.",
+      "text_markdown": "Os irmãos cresceram em um mundo moldado pelo mar.",
+      "tts": {
+        "text": "Os irmãos cresceram em um mundo moldado pelo mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos dependia da pesca e do comércio marítimo para sua economia.",
+      "text_markdown": "Lesbos dependia da pesca e do comércio marítimo para sua economia.",
+      "tts": {
+        "text": "Lesbos dependia da pesca e do comércio marítimo para sua economia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Todo menino na ilha aprendia a manejar um barco antes de saber ler.",
+      "text_markdown": "Todo menino na ilha aprendia a manejar um barco antes de saber ler.",
+      "tts": {
+        "text": "Todo menino na ilha aprendia a manejar um barco antes de saber ler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O mar não era uma abstração para eles; era sua realidade diária.",
+      "text_markdown": "O mar não era uma abstração para eles; era sua realidade diária.",
+      "tts": {
+        "text": "O mar não era uma abstração para eles; era sua realidade diária.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando jovens, os irmãos começaram a trabalhar como marinheiros e comerciantes.",
+      "text_markdown": "Quando jovens, os irmãos começaram a trabalhar como marinheiros e comerciantes.",
+      "tts": {
+        "text": "Quando jovens, os irmãos começaram a trabalhar como marinheiros e comerciantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Transportavam mercadorias entre as ilhas do Egeu e o continente otomano.",
+      "text_markdown": "Transportavam mercadorias entre as ilhas do Egeu e o continente otomano.",
+      "tts": {
+        "text": "Transportavam mercadorias entre as ilhas do Egeu e o continente otomano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas o comércio era um negócio arriscado em um mar cheio de corsários.",
+      "text_markdown": "Mas o comércio era um negócio arriscado em um mar cheio de corsários.",
+      "tts": {
+        "text": "Mas o comércio era um negócio arriscado em um mar cheio de corsários.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Em uma de suas primeiras viagens, os irmãos foram atacados pelos Cavaleiros de São João.",
+      "text_markdown": "Em uma de suas primeiras viagens, os irmãos foram atacados pelos Cavaleiros de São João.",
+      "tts": {
+        "text": "Em uma de suas primeiras viagens, os irmãos foram atacados pelos Cavaleiros de São João.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os Cavaleiros de São João eram uma ordem militar cristã baseada na ilha de Rodes.",
+      "text_markdown": "Os Cavaleiros de São João eram uma ordem militar cristã baseada na ilha de Rodes.",
+      "tts": {
+        "text": "Os Cavaleiros de São João eram uma ordem militar cristã baseada na ilha de Rodes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estavam entre os corsários mais temidos do Mediterrâneo.",
+      "text_markdown": "Estavam entre os corsários mais temidos do Mediterrâneo.",
+      "tts": {
+        "text": "Estavam entre os corsários mais temidos do Mediterrâneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atacavam implacavelmente a navegação muçulmana, capturando mercadorias e escravizando tripulações.",
+      "text_markdown": "Atacavam implacavelmente a navegação muçulmana, capturando mercadorias e escravizando tripulações.",
+      "tts": {
+        "text": "Atacavam implacavelmente a navegação muçulmana, capturando mercadorias e escravizando tripulações.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Durante o ataque ao navio dos irmãos, Ilyas, o mais jovem, foi morto.",
+      "text_markdown": "Durante o ataque ao navio dos irmãos, Ilyas, o mais jovem, foi morto.",
+      "tts": {
+        "text": "Durante o ataque ao navio dos irmãos, Ilyas, o mais jovem, foi morto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj, o mais agressivo dos irmãos, foi capturado e escravizado.",
+      "text_markdown": "Aruj, o mais agressivo dos irmãos, foi capturado e escravizado.",
+      "tts": {
+        "text": "Aruj, o mais agressivo dos irmãos, foi capturado e escravizado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Passou vários anos como escravo de galé, acorrentado aos remos de um navio de guerra cristão.",
+      "text_markdown": "Passou vários anos como escravo de galé, acorrentado aos remos de um navio de guerra cristão.",
+      "tts": {
+        "text": "Passou vários anos como escravo de galé, acorrentado aos remos de um navio de guerra cristão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A experiência o endureceu de maneiras que moldariam o resto de sua vida.",
+      "text_markdown": "A experiência o endureceu de maneiras que moldariam o resto de sua vida.",
+      "tts": {
+        "text": "A experiência o endureceu de maneiras que moldariam o resto de sua vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Quando finalmente foi resgatado ou escapou, era um homem completamente transformado.",
+      "text_markdown": "Quando finalmente foi resgatado ou escapou, era um homem completamente transformado.",
+      "tts": {
+        "text": "Quando finalmente foi resgatado ou escapou, era um homem completamente transformado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj decidiu se tornar um corsário.",
+      "text_markdown": "Aruj decidiu se tornar um corsário.",
+      "tts": {
+        "text": "Aruj decidiu se tornar um corsário.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Obteve um navio e uma tripulação e começou a atacar a navegação cristã no Mediterrâneo oriental.",
+      "text_markdown": "Obteve um navio e uma tripulação e começou a atacar a navegação cristã no Mediterrâneo oriental.",
+      "tts": {
+        "text": "Obteve um navio e uma tripulação e começou a atacar a navegação cristã no Mediterrâneo oriental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu irmão mais novo, Hizir, juntou-se a ele como segundo em comando.",
+      "text_markdown": "Seu irmão mais novo, Hizir, juntou-se a ele como segundo em comando.",
+      "tts": {
+        "text": "Seu irmão mais novo, Hizir, juntou-se a ele como segundo em comando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Juntos, provaram ser invasores marítimos excepcionalmente capazes.",
+      "text_markdown": "Juntos, provaram ser invasores marítimos excepcionalmente capazes.",
+      "tts": {
+        "text": "Juntos, provaram ser invasores marítimos excepcionalmente capazes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os irmãos transferiram sua base de operações para o Mediterrâneo ocidental.",
+      "text_markdown": "Os irmãos transferiram sua base de operações para o Mediterrâneo ocidental.",
+      "tts": {
+        "text": "Os irmãos transferiram sua base de operações para o Mediterrâneo ocidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estabeleceram-se na ilha de Djerba, ao largo da costa da atual Tunísia.",
+      "text_markdown": "Estabeleceram-se na ilha de Djerba, ao largo da costa da atual Tunísia.",
+      "tts": {
+        "text": "Estabeleceram-se na ilha de Djerba, ao largo da costa da atual Tunísia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Djerba, podiam atacar a navegação espanhola e italiana ao longo das movimentadas rotas comerciais.",
+      "text_markdown": "De Djerba, podiam atacar a navegação espanhola e italiana ao longo das movimentadas rotas comerciais.",
+      "tts": {
+        "text": "De Djerba, podiam atacar a navegação espanhola e italiana ao longo das movimentadas rotas comerciais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua reputação cresceu rapidamente entre aliados e inimigos.",
+      "text_markdown": "Sua reputação cresceu rapidamente entre aliados e inimigos.",
+      "tts": {
+        "text": "Sua reputação cresceu rapidamente entre aliados e inimigos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj era a face pública de sua parceria.",
+      "text_markdown": "Aruj era a face pública de sua parceria.",
+      "tts": {
+        "text": "Aruj era a face pública de sua parceria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era ousado, carismático e fisicamente imponente.",
+      "text_markdown": "Era ousado, carismático e fisicamente imponente.",
+      "tts": {
+        "text": "Era ousado, carismático e fisicamente imponente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fontes europeias o descrevem como tendo uma barba ruiva, o que deu aos irmãos seu famoso apelido.",
+      "text_markdown": "Fontes europeias o descrevem como tendo uma barba ruiva, o que deu aos irmãos seu famoso apelido.",
+      "tts": {
+        "text": "Fontes europeias o descrevem como tendo uma barba ruiva, o que deu aos irmãos seu famoso apelido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O nome Barbarossa, que significa barba ruiva, foi originalmente aplicado a Aruj e depois transferido para Hayreddin.",
+      "text_markdown": "O nome Barbarossa, que significa barba ruiva, foi originalmente aplicado a Aruj e depois transferido para Hayreddin.",
+      "tts": {
+        "text": "O nome Barbarossa, que significa barba ruiva, foi originalmente aplicado a Aruj e depois transferido para Hayreddin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir era o estrategista e organizador nos bastidores.",
+      "text_markdown": "Hizir era o estrategista e organizador nos bastidores.",
+      "tts": {
+        "text": "Hizir era o estrategista e organizador nos bastidores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gerenciava a logística de sua crescente frota e mantinha alianças com governantes locais.",
+      "text_markdown": "Gerenciava a logística de sua crescente frota e mantinha alianças com governantes locais.",
+      "tts": {
+        "text": "Gerenciava a logística de sua crescente frota e mantinha alianças com governantes locais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Enquanto Aruj liderava ataques pessoalmente, Hizir garantia o bom funcionamento do empreendimento.",
+      "text_markdown": "Enquanto Aruj liderava ataques pessoalmente, Hizir garantia o bom funcionamento do empreendimento.",
+      "tts": {
+        "text": "Enquanto Aruj liderava ataques pessoalmente, Hizir garantia o bom funcionamento do empreendimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Suas habilidades complementares faziam deles uma equipe formidável.",
+      "text_markdown": "Suas habilidades complementares faziam deles uma equipe formidável.",
+      "tts": {
+        "text": "Suas habilidades complementares faziam deles uma equipe formidável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os ataques dos irmãos serviam a um propósito além do enriquecimento pessoal.",
+      "text_markdown": "Os ataques dos irmãos serviam a um propósito além do enriquecimento pessoal.",
+      "tts": {
+        "text": "Os ataques dos irmãos serviam a um propósito além do enriquecimento pessoal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Resgatavam refugiados muçulmanos que fugiam da Inquisição Espanhola.",
+      "text_markdown": "Resgatavam refugiados muçulmanos que fugiam da Inquisição Espanhola.",
+      "tts": {
+        "text": "Resgatavam refugiados muçulmanos que fugiam da Inquisição Espanhola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Entre 1504 e 1510, transportaram milhares de muçulmanos da Espanha para o Norte da África.",
+      "text_markdown": "Entre 1504 e 1510, transportaram milhares de muçulmanos da Espanha para o Norte da África.",
+      "tts": {
+        "text": "Entre mil quinhentos e quatro e mil quinhentos e dez, transportaram milhares de muçulmanos da Espanha para o Norte da África.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Isso lhes rendeu enorme respeito entre as comunidades muçulmanas da Costa da Barbária.",
+      "text_markdown": "Isso lhes rendeu enorme respeito entre as comunidades muçulmanas da Costa da Barbária.",
+      "tts": {
+        "text": "Isso lhes rendeu enorme respeito entre as comunidades muçulmanas da Costa da Barbária.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj mirou em um prêmio maior do que os ataques.",
+      "text_markdown": "Aruj mirou em um prêmio maior do que os ataques.",
+      "tts": {
+        "text": "Aruj mirou em um prêmio maior do que os ataques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Queria capturar uma cidade e estabelecer uma base capaz de resistir ao poder espanhol.",
+      "text_markdown": "Queria capturar uma cidade e estabelecer uma base capaz de resistir ao poder espanhol.",
+      "tts": {
+        "text": "Queria capturar uma cidade e estabelecer uma base capaz de resistir ao poder espanhol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu alvo era Argel, uma cidade portuária na costa norte-africana com um magnífico porto natural.",
+      "text_markdown": "Seu alvo era Argel, uma cidade portuária na costa norte-africana com um magnífico porto natural.",
+      "tts": {
+        "text": "Seu alvo era Argel, uma cidade portuária na costa norte-africana com um magnífico porto natural.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tomar Argel transformaria os irmãos de corsários em governantes.",
+      "text_markdown": "Tomar Argel transformaria os irmãos de corsários em governantes.",
+      "tts": {
+        "text": "Tomar Argel transformaria os irmãos de corsários em governantes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ascensão ao Poder",
+      "text_markdown": "Ascensão ao Poder"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1516, Aruj capturou a cidade de Argel.",
+      "text_markdown": "Em 1516, Aruj capturou a cidade de Argel.",
+      "tts": {
+        "text": "Em mil quinhentos e dezesseis, Aruj capturou a cidade de Argel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Derrubou o governante local e se declarou Sultão de Argel.",
+      "text_markdown": "Derrubou o governante local e se declarou Sultão de Argel.",
+      "tts": {
+        "text": "Derrubou o governante local e se declarou Sultão de Argel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Foi uma jogada ousada e audaciosa que alarmou o Império Espanhol.",
+      "text_markdown": "Foi uma jogada ousada e audaciosa que alarmou o Império Espanhol.",
+      "tts": {
+        "text": "Foi uma jogada ousada e audaciosa que alarmou o Império Espanhol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Argel estava agora nas mãos de um senhor da guerra corsário.",
+      "text_markdown": "Argel estava agora nas mãos de um senhor da guerra corsário.",
+      "tts": {
+        "text": "Argel estava agora nas mãos de um senhor da guerra corsário.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj provou ser um governante capaz, mas implacável.",
+      "text_markdown": "Aruj provou ser um governante capaz, mas implacável.",
+      "tts": {
+        "text": "Aruj provou ser um governante capaz, mas implacável.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Expandiu seu território ao longo da costa norte-africana.",
+      "text_markdown": "Expandiu seu território ao longo da costa norte-africana.",
+      "tts": {
+        "text": "Expandiu seu território ao longo da costa norte-africana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Construiu alianças com tribos berberes locais e comunidades de refugiados muçulmanos.",
+      "text_markdown": "Construiu alianças com tribos berberes locais e comunidades de refugiados muçulmanos.",
+      "tts": {
+        "text": "Construiu alianças com tribos berberes locais e comunidades de refugiados muçulmanos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas sua expansão agressiva o colocou em conflito direto com a Espanha.",
+      "text_markdown": "Mas sua expansão agressiva o colocou em conflito direto com a Espanha.",
+      "tts": {
+        "text": "Mas sua expansão agressiva o colocou em conflito direto com a Espanha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1518, um grande exército espanhol sitiou a cidade de Tlemcen, onde Aruj estava baseado.",
+      "text_markdown": "Em 1518, um grande exército espanhol sitiou a cidade de Tlemcen, onde Aruj estava baseado.",
+      "tts": {
+        "text": "Em mil quinhentos e dezoito, um grande exército espanhol sitiou a cidade de Tlemcen, onde Aruj estava baseado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aruj tentou escapar com uma pequena força.",
+      "text_markdown": "Aruj tentou escapar com uma pequena força.",
+      "tts": {
+        "text": "Aruj tentou escapar com uma pequena força.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Foi capturado e morto por soldados espanhóis durante a retirada.",
+      "text_markdown": "Foi capturado e morto por soldados espanhóis durante a retirada.",
+      "tts": {
+        "text": "Foi capturado e morto por soldados espanhóis durante a retirada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua morte deixou Hizir como o único irmão sobrevivente e líder de tudo o que Aruj havia construído.",
+      "text_markdown": "Sua morte deixou Hizir como o único irmão sobrevivente e líder de tudo o que Aruj havia construído.",
+      "tts": {
+        "text": "Sua morte deixou Hizir como o único irmão sobrevivente e líder de tudo o que Aruj havia construído.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir, agora no início dos quarenta, enfrentava uma situação impossível.",
+      "text_markdown": "Hizir, agora no início dos quarenta, enfrentava uma situação impossível.",
+      "tts": {
+        "text": "Hizir, agora no início dos quarenta, enfrentava uma situação impossível.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O exército espanhol avançava, seu irmão estava morto e suas forças eram inferiores em número.",
+      "text_markdown": "O exército espanhol avançava, seu irmão estava morto e suas forças eram inferiores em número.",
+      "tts": {
+        "text": "O exército espanhol avançava, seu irmão estava morto e suas forças eram inferiores em número.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Precisava de um aliado poderoso ou perderia tudo.",
+      "text_markdown": "Precisava de um aliado poderoso ou perderia tudo.",
+      "tts": {
+        "text": "Precisava de um aliado poderoso ou perderia tudo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Voltou-se para a maior potência do mundo muçulmano: o Império Otomano.",
+      "text_markdown": "Voltou-se para a maior potência do mundo muçulmano: o Império Otomano.",
+      "tts": {
+        "text": "Voltou-se para a maior potência do mundo muçulmano: o Império Otomano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir enviou emissários ao Sultão Selim I em Istambul.",
+      "text_markdown": "Hizir enviou emissários ao Sultão Selim I em Istambul.",
+      "tts": {
+        "text": "Hizir enviou emissários ao Sultão Selim Primeiro em Istambul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ofereceu colocar Argel sob soberania otomana em troca de apoio militar.",
+      "text_markdown": "Ofereceu colocar Argel sob soberania otomana em troca de apoio militar.",
+      "tts": {
+        "text": "Ofereceu colocar Argel sob soberania otomana em troca de apoio militar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O Sultão reconheceu o valor estratégico de uma base leal no Mediterrâneo ocidental.",
+      "text_markdown": "O Sultão reconheceu o valor estratégico de uma base leal no Mediterrâneo ocidental.",
+      "tts": {
+        "text": "O Sultão reconheceu o valor estratégico de uma base leal no Mediterrâneo ocidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aceitou a oferta e enviou soldados, canhões e uma frota de galés para apoiar Hizir.",
+      "text_markdown": "Aceitou a oferta e enviou soldados, canhões e uma frota de galés para apoiar Hizir.",
+      "tts": {
+        "text": "Aceitou a oferta e enviou soldados, canhões e uma frota de galés para apoiar Hizir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A partir desse momento, Hizir não era mais apenas um corsário.",
+      "text_markdown": "A partir desse momento, Hizir não era mais apenas um corsário.",
+      "tts": {
+        "text": "A partir desse momento, Hizir não era mais apenas um corsário.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era um governador otomano, governando Argel em nome do Sultão.",
+      "text_markdown": "Era um governador otomano, governando Argel em nome do Sultão.",
+      "tts": {
+        "text": "Era um governador otomano, governando Argel em nome do Sultão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adotou o nome honorífico Hayreddin, que significa bondade da fé.",
+      "text_markdown": "Adotou o nome honorífico Hayreddin, que significa bondade da fé.",
+      "tts": {
+        "text": "Adotou o nome honorífico Hayreddin, que significa bondade da fé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A combinação dos recursos otomanos com seu próprio gênio naval tornou-o imbatível.",
+      "text_markdown": "A combinação dos recursos otomanos com seu próprio gênio naval tornou-o imbatível.",
+      "tts": {
+        "text": "A combinação dos recursos otomanos com seu próprio gênio naval tornou-o imbatível.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin passou a década seguinte consolidando o poder otomano ao longo da costa norte-africana.",
+      "text_markdown": "Hayreddin passou a década seguinte consolidando o poder otomano ao longo da costa norte-africana.",
+      "tts": {
+        "text": "Hayreddin passou a década seguinte consolidando o poder otomano ao longo da costa norte-africana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capturou Túnis, expulsou guarnições espanholas de fortalezas-chave e expandiu a frota corsária.",
+      "text_markdown": "Capturou Túnis, expulsou guarnições espanholas de fortalezas-chave e expandiu a frota corsária.",
+      "tts": {
+        "text": "Capturou Túnis, expulsou guarnições espanholas de fortalezas-chave e expandiu a frota corsária.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treinou uma nova geração de comandantes navais que serviriam o Império Otomano por décadas.",
+      "text_markdown": "Treinou uma nova geração de comandantes navais que serviriam o Império Otomano por décadas.",
+      "tts": {
+        "text": "Treinou uma nova geração de comandantes navais que serviriam o Império Otomano por décadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua frota tornou-se a força dominante no Mediterrâneo ocidental.",
+      "text_markdown": "Sua frota tornou-se a força dominante no Mediterrâneo ocidental.",
+      "tts": {
+        "text": "Sua frota tornou-se a força dominante no Mediterrâneo ocidental.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1533, o Sultão Solimão, o Magnífico, convocou Hayreddin a Istambul.",
+      "text_markdown": "Em 1533, o Sultão Solimão, o Magnífico, convocou Hayreddin a Istambul.",
+      "tts": {
+        "text": "Em mil quinhentos e trinta e três, o Sultão Solimão, o Magnífico, convocou Hayreddin a Istambul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Solimão era o governante mais poderoso do mundo na época.",
+      "text_markdown": "Solimão era o governante mais poderoso do mundo na época.",
+      "tts": {
+        "text": "Solimão era o governante mais poderoso do mundo na época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Reconheceu que o Império Otomano precisava de uma marinha profissional à altura de seu lendário exército.",
+      "text_markdown": "Reconheceu que o Império Otomano precisava de uma marinha profissional à altura de seu lendário exército.",
+      "tts": {
+        "text": "Reconheceu que o Império Otomano precisava de uma marinha profissional à altura de seu lendário exército.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nomeou Hayreddin como Kapudan Pasha, o Grande Almirante de toda a frota otomana.",
+      "text_markdown": "Nomeou Hayreddin como Kapudan Pasha, o Grande Almirante de toda a frota otomana.",
+      "tts": {
+        "text": "Nomeou Hayreddin como Kapudan Pasha, o Grande Almirante de toda a frota otomana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essa nomeação foi um ponto de virada na história do Mediterrâneo.",
+      "text_markdown": "Essa nomeação foi um ponto de virada na história do Mediterrâneo.",
+      "tts": {
+        "text": "Essa nomeação foi um ponto de virada na história do Mediterrâneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A marinha otomana era competente, mas não dominante.",
+      "text_markdown": "A marinha otomana era competente, mas não dominante.",
+      "tts": {
+        "text": "A marinha otomana era competente, mas não dominante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sob o comando de Hayreddin, se tornaria a força naval mais temida do mundo.",
+      "text_markdown": "Sob o comando de Hayreddin, se tornaria a força naval mais temida do mundo.",
+      "tts": {
+        "text": "Sob o comando de Hayreddin, se tornaria a força naval mais temida do mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele reconstruiu a frota a partir dos estaleiros de Istambul, aplicando tudo o que aprendera em décadas de guerra corsária.",
+      "text_markdown": "Ele reconstruiu a frota a partir dos estaleiros de Istambul, aplicando tudo o que aprendera em décadas de guerra corsária.",
+      "tts": {
+        "text": "Ele reconstruiu a frota a partir dos estaleiros de Istambul, aplicando tudo o que aprendera em décadas de guerra corsária.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin modernizou as técnicas de construção naval otomanas.",
+      "text_markdown": "Hayreddin modernizou as técnicas de construção naval otomanas.",
+      "tts": {
+        "text": "Hayreddin modernizou as técnicas de construção naval otomanas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Projetou galés mais rápidas e mais manobráveis, baseadas em embarcações corsárias.",
+      "text_markdown": "Projetou galés mais rápidas e mais manobráveis, baseadas em embarcações corsárias.",
+      "tts": {
+        "text": "Projetou galés mais rápidas e mais manobráveis, baseadas em embarcações corsárias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estabeleceu programas de treinamento para oficiais navais otomanos.",
+      "text_markdown": "Estabeleceu programas de treinamento para oficiais navais otomanos.",
+      "tts": {
+        "text": "Estabeleceu programas de treinamento para oficiais navais otomanos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Recrutou corsários experientes de todo o Mediterrâneo para servir como capitães.",
+      "text_markdown": "Recrutou corsários experientes de todo o Mediterrâneo para servir como capitães.",
+      "tts": {
+        "text": "Recrutou corsários experientes de todo o Mediterrâneo para servir como capitães.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sua primeira grande campanha como Grande Almirante teve como alvo a costa italiana.",
+      "text_markdown": "Sua primeira grande campanha como Grande Almirante teve como alvo a costa italiana.",
+      "tts": {
+        "text": "Sua primeira grande campanha como Grande Almirante teve como alvo a costa italiana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em 1534, liderou a frota otomana em um ataque devastador ao longo das costas do sul da Itália.",
+      "text_markdown": "Em 1534, liderou a frota otomana em um ataque devastador ao longo das costas do sul da Itália.",
+      "tts": {
+        "text": "Em mil quinhentos e trinta e quatro, liderou a frota otomana em um ataque devastador ao longo das costas do sul da Itália.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Capturou a cidade de Túnis e a estabeleceu como base naval otomana.",
+      "text_markdown": "Capturou a cidade de Túnis e a estabeleceu como base naval otomana.",
+      "tts": {
+        "text": "Capturou a cidade de Túnis e a estabeleceu como base naval otomana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O ataque aterrorizou os estados cristãos e demonstrou o alcance do poder naval otomano.",
+      "text_markdown": "O ataque aterrorizou os estados cristãos e demonstrou o alcance do poder naval otomano.",
+      "tts": {
+        "text": "O ataque aterrorizou os estados cristãos e demonstrou o alcance do poder naval otomano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Imperador Carlos V do Sacro Império Romano respondeu com um contra-ataque massivo.",
+      "text_markdown": "O Imperador Carlos V do Sacro Império Romano respondeu com um contra-ataque massivo.",
+      "tts": {
+        "text": "O Imperador Carlos Quinto do Sacro Império Romano respondeu com um contra-ataque massivo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em 1535, Carlos reuniu uma das maiores frotas da história europeia para retomar Túnis.",
+      "text_markdown": "Em 1535, Carlos reuniu uma das maiores frotas da história europeia para retomar Túnis.",
+      "tts": {
+        "text": "Em mil quinhentos e trinta e cinco, Carlos reuniu uma das maiores frotas da história europeia para retomar Túnis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A frota incluía navios da Espanha, Itália, Portugal e dos Estados Papais.",
+      "text_markdown": "A frota incluía navios da Espanha, Itália, Portugal e dos Estados Papais.",
+      "tts": {
+        "text": "A frota incluía navios da Espanha, Itália, Portugal e dos Estados Papais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Carlos conseguiu capturar Túnis, mas Hayreddin escapou com o núcleo de sua frota intacto.",
+      "text_markdown": "Carlos conseguiu capturar Túnis, mas Hayreddin escapou com o núcleo de sua frota intacto.",
+      "tts": {
+        "text": "Carlos conseguiu capturar Túnis, mas Hayreddin escapou com o núcleo de sua frota intacto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A perda de Túnis foi um revés, mas não uma derrota.",
+      "text_markdown": "A perda de Túnis foi um revés, mas não uma derrota.",
+      "tts": {
+        "text": "A perda de Túnis foi um revés, mas não uma derrota.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin retirou-se para Argel e começou a reconstruir suas forças imediatamente.",
+      "text_markdown": "Hayreddin retirou-se para Argel e começou a reconstruir suas forças imediatamente.",
+      "tts": {
+        "text": "Hayreddin retirou-se para Argel e começou a reconstruir suas forças imediatamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sabia que a aliança cristã era temporária e se fragmentaria quando a ameaça imediata passasse.",
+      "text_markdown": "Sabia que a aliança cristã era temporária e se fragmentaria quando a ameaça imediata passasse.",
+      "tts": {
+        "text": "Sabia que a aliança cristã era temporária e se fragmentaria quando a ameaça imediata passasse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Estava certo, e em poucos meses a aliança começou a se dissolver.",
+      "text_markdown": "Estava certo, e em poucos meses a aliança começou a se dissolver.",
+      "tts": {
+        "text": "Estava certo, e em poucos meses a aliança começou a se dissolver.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em dois anos, Hayreddin estava pronto para sua maior batalha.",
+      "text_markdown": "Em dois anos, Hayreddin estava pronto para sua maior batalha.",
+      "tts": {
+        "text": "Em dois anos, Hayreddin estava pronto para sua maior batalha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O confronto que definiria seu legado se aproximava.",
+      "text_markdown": "O confronto que definiria seu legado se aproximava.",
+      "tts": {
+        "text": "O confronto que definiria seu legado se aproximava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aconteceria nas águas ao largo da costa ocidental da Grécia.",
+      "text_markdown": "Aconteceria nas águas ao largo da costa ocidental da Grécia.",
+      "tts": {
+        "text": "Aconteceria nas águas ao largo da costa ocidental da Grécia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao Poder",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O nome da batalha era Preveza, e ela mudaria o Mediterrâneo para sempre.",
+      "text_markdown": "O nome da batalha era Preveza, e ela mudaria o Mediterrâneo para sempre.",
+      "tts": {
+        "text": "O nome da batalha era Preveza, e ela mudaria o Mediterrâneo para sempre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "No Auge",
+      "text_markdown": "No Auge"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Batalha de Preveza ocorreu em 28 de setembro de 1538.",
+      "text_markdown": "A Batalha de Preveza ocorreu em 28 de setembro de 1538.",
+      "tts": {
+        "text": "A Batalha de Preveza ocorreu em vinte e oito de setembro de mil quinhentos e trinta e oito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi o confronto naval decisivo do Mediterrâneo no século dezesseis.",
+      "text_markdown": "Foi o confronto naval decisivo do Mediterrâneo no século dezesseis.",
+      "tts": {
+        "text": "Foi o confronto naval decisivo do Mediterrâneo no século dezesseis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De um lado estava a frota otomana sob Hayreddin Barbarossa.",
+      "text_markdown": "De um lado estava a frota otomana sob Hayreddin Barbarossa.",
+      "tts": {
+        "text": "De um lado estava a frota otomana sob Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Do outro, a frota combinada da Liga Sagrada, uma aliança de estados cristãos.",
+      "text_markdown": "Do outro, a frota combinada da Liga Sagrada, uma aliança de estados cristãos.",
+      "tts": {
+        "text": "Do outro, a frota combinada da Liga Sagrada, uma aliança de estados cristãos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frota da Liga Sagrada era comandada pelo almirante genovês Andrea Doria.",
+      "text_markdown": "A frota da Liga Sagrada era comandada pelo almirante genovês Andrea Doria.",
+      "tts": {
+        "text": "A frota da Liga Sagrada era comandada pelo almirante genovês Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Consistia em aproximadamente 300 navios da Espanha, Veneza, Estados Papais e Gênova.",
+      "text_markdown": "Consistia em aproximadamente 300 navios da Espanha, Veneza, Estados Papais e Gênova.",
+      "tts": {
+        "text": "Consistia em aproximadamente trezentos navios da Espanha, Veneza, Estados Papais e Gênova.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No papel, a frota cristã era significativamente maior do que a força otomana.",
+      "text_markdown": "No papel, a frota cristã era significativamente maior do que a força otomana.",
+      "tts": {
+        "text": "No papel, a frota cristã era significativamente maior do que a força otomana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas o tamanho sozinho não vence batalhas no mar.",
+      "text_markdown": "Mas o tamanho sozinho não vence batalhas no mar.",
+      "tts": {
+        "text": "Mas o tamanho sozinho não vence batalhas no mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin comandava cerca de 150 galés, junto com embarcações menores de apoio.",
+      "text_markdown": "Hayreddin comandava cerca de 150 galés, junto com embarcações menores de apoio.",
+      "tts": {
+        "text": "Hayreddin comandava cerca de cento e cinquenta galés, junto com embarcações menores de apoio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sua frota era numericamente inferior, mas melhor treinada, mais bem coordenada e mais bem liderada.",
+      "text_markdown": "Sua frota era numericamente inferior, mas melhor treinada, mais bem coordenada e mais bem liderada.",
+      "tts": {
+        "text": "Sua frota era numericamente inferior, mas melhor treinada, mais bem coordenada e mais bem liderada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin passara décadas lutando nessas águas e conhecia cada corrente, cada padrão de vento e cada vantagem tática que a costa oferecia.",
+      "text_markdown": "Hayreddin passara décadas lutando nessas águas e conhecia cada corrente, cada padrão de vento e cada vantagem tática que a costa oferecia.",
+      "tts": {
+        "text": "Hayreddin passara décadas lutando nessas águas e conhecia cada corrente, cada padrão de vento e cada vantagem tática que a costa oferecia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A batalha ocorreu perto da entrada do Golfo Ambrácio, na costa ocidental da Grécia.",
+      "text_markdown": "A batalha ocorreu perto da entrada do Golfo Ambrácio, na costa ocidental da Grécia.",
+      "tts": {
+        "text": "A batalha ocorreu perto da entrada do Golfo Ambrácio, na costa ocidental da Grécia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin posicionou sua frota para aproveitar os ventos predominantes.",
+      "text_markdown": "Hayreddin posicionou sua frota para aproveitar os ventos predominantes.",
+      "tts": {
+        "text": "Hayreddin posicionou sua frota para aproveitar os ventos predominantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dispôs suas galés em formação de meia-lua que permitia concentrar fogo em grupos inimigos isolados.",
+      "text_markdown": "Dispôs suas galés em formação de meia-lua que permitia concentrar fogo em grupos inimigos isolados.",
+      "tts": {
+        "text": "Dispôs suas galés em formação de meia-lua que permitia concentrar fogo em grupos inimigos isolados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seu posicionamento tático foi magistral.",
+      "text_markdown": "Seu posicionamento tático foi magistral.",
+      "tts": {
+        "text": "Seu posicionamento tático foi magistral.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria hesitou no momento crítico.",
+      "text_markdown": "Andrea Doria hesitou no momento crítico.",
+      "tts": {
+        "text": "Andrea Doria hesitou no momento crítico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Apesar de sua vantagem numérica, relutou em comprometer toda a frota em um combate cerrado.",
+      "text_markdown": "Apesar de sua vantagem numérica, relutou em comprometer toda a frota em um combate cerrado.",
+      "tts": {
+        "text": "Apesar de sua vantagem numérica, relutou em comprometer toda a frota em um combate cerrado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Manteve seus melhores navios em reserva e tentou manobrar para uma posição melhor.",
+      "text_markdown": "Manteve seus melhores navios em reserva e tentou manobrar para uma posição melhor.",
+      "tts": {
+        "text": "Manteve seus melhores navios em reserva e tentou manobrar para uma posição melhor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa cautela provou-se fatal para a causa cristã.",
+      "text_markdown": "Essa cautela provou-se fatal para a causa cristã.",
+      "tts": {
+        "text": "Essa cautela provou-se fatal para a causa cristã.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin atacou agressivamente, mirando nos navios venezianos e papais que avançaram à frente da frota principal.",
+      "text_markdown": "Hayreddin atacou agressivamente, mirando nos navios venezianos e papais que avançaram à frente da frota principal.",
+      "tts": {
+        "text": "Hayreddin atacou agressivamente, mirando nos navios venezianos e papais que avançaram à frente da frota principal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suas galés se aproximaram rapidamente e engajaram a curta distância.",
+      "text_markdown": "Suas galés se aproximaram rapidamente e engajaram a curta distância.",
+      "tts": {
+        "text": "Suas galés se aproximaram rapidamente e engajaram a curta distância.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O combate foi intenso e brutal, com fogo de canhão e luta corpo a corpo em dezenas de navios.",
+      "text_markdown": "O combate foi intenso e brutal, com fogo de canhão e luta corpo a corpo em dezenas de navios.",
+      "tts": {
+        "text": "O combate foi intenso e brutal, com fogo de canhão e luta corpo a corpo em dezenas de navios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os esquadrões cristãos isolados foram esmagados um a um.",
+      "text_markdown": "Os esquadrões cristãos isolados foram esmagados um a um.",
+      "tts": {
+        "text": "Os esquadrões cristãos isolados foram esmagados um a um.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ao final do dia, a Liga Sagrada havia sofrido uma derrota devastadora.",
+      "text_markdown": "Ao final do dia, a Liga Sagrada havia sofrido uma derrota devastadora.",
+      "tts": {
+        "text": "Ao final do dia, a Liga Sagrada havia sofrido uma derrota devastadora.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As forças de Hayreddin capturaram ou afundaram dezenas de navios de guerra cristãos.",
+      "text_markdown": "As forças de Hayreddin capturaram ou afundaram dezenas de navios de guerra cristãos.",
+      "tts": {
+        "text": "As forças de Hayreddin capturaram ou afundaram dezenas de navios de guerra cristãos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Milhares de marinheiros e soldados cristãos foram mortos ou feitos prisioneiros.",
+      "text_markdown": "Milhares de marinheiros e soldados cristãos foram mortos ou feitos prisioneiros.",
+      "tts": {
+        "text": "Milhares de marinheiros e soldados cristãos foram mortos ou feitos prisioneiros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria recuou com os restos de sua frota, deixando o mar para os otomanos.",
+      "text_markdown": "Andrea Doria recuou com os restos de sua frota, deixando o mar para os otomanos.",
+      "tts": {
+        "text": "Andrea Doria recuou com os restos de sua frota, deixando o mar para os otomanos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Batalha de Preveza estabeleceu a supremacia naval otomana no Mediterrâneo.",
+      "text_markdown": "A Batalha de Preveza estabeleceu a supremacia naval otomana no Mediterrâneo.",
+      "tts": {
+        "text": "A Batalha de Preveza estabeleceu a supremacia naval otomana no Mediterrâneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nas décadas seguintes, nenhuma frota cristã pôde desafiar o controle otomano do mar oriental e central.",
+      "text_markdown": "Nas décadas seguintes, nenhuma frota cristã pôde desafiar o controle otomano do mar oriental e central.",
+      "tts": {
+        "text": "Nas décadas seguintes, nenhuma frota cristã pôde desafiar o controle otomano do mar oriental e central.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O Império Otomano podia agora projetar poder militar ao longo de toda a costa norte-africana e contra a Península Itálica.",
+      "text_markdown": "O Império Otomano podia agora projetar poder militar ao longo de toda a costa norte-africana e contra a Península Itálica.",
+      "tts": {
+        "text": "O Império Otomano podia agora projetar poder militar ao longo de toda a costa norte-africana e contra a Península Itálica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi a vitória naval mais importante do século dezesseis.",
+      "text_markdown": "Foi a vitória naval mais importante do século dezesseis.",
+      "tts": {
+        "text": "Foi a vitória naval mais importante do século dezesseis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin retornou a Istambul como herói conquistador.",
+      "text_markdown": "Hayreddin retornou a Istambul como herói conquistador.",
+      "tts": {
+        "text": "Hayreddin retornou a Istambul como herói conquistador.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O Sultão Solimão o recebeu com as mais altas honras que o império podia conceder.",
+      "text_markdown": "O Sultão Solimão o recebeu com as mais altas honras que o império podia conceder.",
+      "tts": {
+        "text": "O Sultão Solimão o recebeu com as mais altas honras que o império podia conceder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O Grande Almirante havia realizado o que o Sultão lhe pedira.",
+      "text_markdown": "O Grande Almirante havia realizado o que o Sultão lhe pedira.",
+      "tts": {
+        "text": "O Grande Almirante havia realizado o que o Sultão lhe pedira.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele fizera da marinha otomana a força suprema no Mediterrâneo.",
+      "text_markdown": "Ele fizera da marinha otomana a força suprema no Mediterrâneo.",
+      "tts": {
+        "text": "Ele fizera da marinha otomana a força suprema no Mediterrâneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos anos seguintes a Preveza, Hayreddin continuou a comandar a frota otomana.",
+      "text_markdown": "Nos anos seguintes a Preveza, Hayreddin continuou a comandar a frota otomana.",
+      "tts": {
+        "text": "Nos anos seguintes a Preveza, Hayreddin continuou a comandar a frota otomana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Conduziu ataques contra cidades costeiras espanholas e italianas.",
+      "text_markdown": "Conduziu ataques contra cidades costeiras espanholas e italianas.",
+      "tts": {
+        "text": "Conduziu ataques contra cidades costeiras espanholas e italianas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Negociou com o rei francês Francisco I, que se aliou aos otomanos contra seu inimigo comum, Carlos V.",
+      "text_markdown": "Negociou com o rei francês Francisco I, que se aliou aos otomanos contra seu inimigo comum, Carlos V.",
+      "tts": {
+        "text": "Negociou com o rei francês Francisco Primeiro, que se aliou aos otomanos contra seu inimigo comum, Carlos Quinto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa aliança entre um império muçulmano e um reino cristão chocou toda a Europa.",
+      "text_markdown": "Essa aliança entre um império muçulmano e um reino cristão chocou toda a Europa.",
+      "tts": {
+        "text": "Essa aliança entre um império muçulmano e um reino cristão chocou toda a Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No inverno de 1543, Hayreddin ancorou sua frota no porto francês de Toulon.",
+      "text_markdown": "No inverno de 1543, Hayreddin ancorou sua frota no porto francês de Toulon.",
+      "tts": {
+        "text": "No inverno de mil quinhentos e quarenta e três, Hayreddin ancorou sua frota no porto francês de Toulon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O rei francês havia oferecido o porto como base para operações conjuntas contra a Espanha.",
+      "text_markdown": "O rei francês havia oferecido o porto como base para operações conjuntas contra a Espanha.",
+      "tts": {
+        "text": "O rei francês havia oferecido o porto como base para operações conjuntas contra a Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Durante vários meses, navios de guerra otomanos operaram a partir de um porto francês.",
+      "text_markdown": "Durante vários meses, navios de guerra otomanos operaram a partir de um porto francês.",
+      "tts": {
+        "text": "Durante vários meses, navios de guerra otomanos operaram a partir de um porto francês.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi um espetáculo que assombrou o mundo cristão e demonstrou que a política de poder podia superar divisões religiosas.",
+      "text_markdown": "Foi um espetáculo que assombrou o mundo cristão e demonstrou que a política de poder podia superar divisões religiosas.",
+      "tts": {
+        "text": "Foi um espetáculo que assombrou o mundo cristão e demonstrou que a política de poder podia superar divisões religiosas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A governança de Hayreddin em Argel prosseguiu ao lado de suas campanhas navais.",
+      "text_markdown": "A governança de Hayreddin em Argel prosseguiu ao lado de suas campanhas navais.",
+      "tts": {
+        "text": "A governança de Hayreddin em Argel prosseguiu ao lado de suas campanhas navais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Construiu mesquitas, banhos públicos e fortificações na cidade.",
+      "text_markdown": "Construiu mesquitas, banhos públicos e fortificações na cidade.",
+      "tts": {
+        "text": "Construiu mesquitas, banhos públicos e fortificações na cidade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Incentivou o comércio e atraiu artesãos qualificados de todo o mundo muçulmano.",
+      "text_markdown": "Incentivou o comércio e atraiu artesãos qualificados de todo o mundo muçulmano.",
+      "tts": {
+        "text": "Incentivou o comércio e atraiu artesãos qualificados de todo o mundo muçulmano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sob seu governo, Argel cresceu de um porto menor para uma das cidades mais importantes do Norte da África.",
+      "text_markdown": "Sob seu governo, Argel cresceu de um porto menor para uma das cidades mais importantes do Norte da África.",
+      "tts": {
+        "text": "Sob seu governo, Argel cresceu de um porto menor para uma das cidades mais importantes do Norte da África.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sua frota protegia as rotas comerciais otomanas que ligavam Istambul ao Mediterrâneo ocidental.",
+      "text_markdown": "Sua frota protegia as rotas comerciais otomanas que ligavam Istambul ao Mediterrâneo ocidental.",
+      "tts": {
+        "text": "Sua frota protegia as rotas comerciais otomanas que ligavam Istambul ao Mediterrâneo ocidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navios mercantes transportando grãos, têxteis e manufaturas navegavam sob a proteção de seus navios de guerra.",
+      "text_markdown": "Navios mercantes transportando grãos, têxteis e manufaturas navegavam sob a proteção de seus navios de guerra.",
+      "tts": {
+        "text": "Navios mercantes transportando grãos, têxteis e manufaturas navegavam sob a proteção de seus navios de guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A prosperidade econômica do Mediterrâneo otomano dependia em grande medida da marinha que Hayreddin construíra.",
+      "text_markdown": "A prosperidade econômica do Mediterrâneo otomano dependia em grande medida da marinha que Hayreddin construíra.",
+      "tts": {
+        "text": "A prosperidade econômica do Mediterrâneo otomano dependia em grande medida da marinha que Hayreddin construíra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "No Auge",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele havia transformado o corso em uma ferramenta do poder imperial.",
+      "text_markdown": "Ele havia transformado o corso em uma ferramenta do poder imperial.",
+      "tts": {
+        "text": "Ele havia transformado o corso em uma ferramenta do poder imperial.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O Fim",
+      "text_markdown": "O Fim"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No início da década de mil quinhentos e quarenta, Hayreddin Barbarossa estava na casa dos sessenta.",
+      "text_markdown": "No início da década de mil quinhentos e quarenta, Hayreddin Barbarossa estava na casa dos sessenta.",
+      "tts": {
+        "text": "No início da década de mil quinhentos e quarenta, Hayreddin Barbarossa estava na casa dos sessenta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Passara mais de quatro décadas no mar, lutando, construindo e comandando.",
+      "text_markdown": "Passara mais de quatro décadas no mar, lutando, construindo e comandando.",
+      "tts": {
+        "text": "Passara mais de quatro décadas no mar, lutando, construindo e comandando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seu corpo estava desgastado por décadas de guerra, condições climáticas adversas e as exigências físicas da vida a bordo.",
+      "text_markdown": "Seu corpo estava desgastado por décadas de guerra, condições climáticas adversas e as exigências físicas da vida a bordo.",
+      "tts": {
+        "text": "Seu corpo estava desgastado por décadas de guerra, condições climáticas adversas e as exigências físicas da vida a bordo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas sua mente permanecia afiada e sua autoridade inquestionável.",
+      "text_markdown": "Mas sua mente permanecia afiada e sua autoridade inquestionável.",
+      "tts": {
+        "text": "Mas sua mente permanecia afiada e sua autoridade inquestionável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Após a campanha de Toulon de 1543, Hayreddin retornou a Istambul.",
+      "text_markdown": "Após a campanha de Toulon de 1543, Hayreddin retornou a Istambul.",
+      "tts": {
+        "text": "Após a campanha de Toulon de mil quinhentos e quarenta e três, Hayreddin retornou a Istambul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Havia completado sua última grande operação naval.",
+      "text_markdown": "Havia completado sua última grande operação naval.",
+      "tts": {
+        "text": "Havia completado sua última grande operação naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O Sultão não lhe pediu que liderasse outra campanha.",
+      "text_markdown": "O Sultão não lhe pediu que liderasse outra campanha.",
+      "tts": {
+        "text": "O Sultão não lhe pediu que liderasse outra campanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Com sua idade e suas realizações, a aposentadoria era tanto merecida quanto apropriada.",
+      "text_markdown": "Com sua idade e suas realizações, a aposentadoria era tanto merecida quanto apropriada.",
+      "tts": {
+        "text": "Com sua idade e suas realizações, a aposentadoria era tanto merecida quanto apropriada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin passou seus últimos anos em Istambul, em um grandioso palácio com vista para o Bósforo.",
+      "text_markdown": "Hayreddin passou seus últimos anos em Istambul, em um grandioso palácio com vista para o Bósforo.",
+      "tts": {
+        "text": "Hayreddin passou seus últimos anos em Istambul, em um grandioso palácio com vista para o Bósforo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ditou suas memórias a um escriba, criando uma das mais importantes fontes primárias da história corsária do Mediterrâneo.",
+      "text_markdown": "Ditou suas memórias a um escriba, criando uma das mais importantes fontes primárias da história corsária do Mediterrâneo.",
+      "tts": {
+        "text": "Ditou suas memórias a um escriba, criando uma das mais importantes fontes primárias da história corsária do Mediterrâneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Essas memórias, conhecidas como Gazavat-i Hayreddin Pasha, sobrevivem em forma de manuscrito.",
+      "text_markdown": "Essas memórias, conhecidas como Gazavat-i Hayreddin Pasha, sobrevivem em forma de manuscrito.",
+      "tts": {
+        "text": "Essas memórias, conhecidas como Gazavat-i Hayreddin Pasha, sobrevivem em forma de manuscrito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Têm sido estudadas por historiadores há séculos.",
+      "text_markdown": "Têm sido estudadas por historiadores há séculos.",
+      "tts": {
+        "text": "Têm sido estudadas por historiadores há séculos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Permaneceu envolvido nos assuntos navais otomanos em papel consultivo.",
+      "text_markdown": "Permaneceu envolvido nos assuntos navais otomanos em papel consultivo.",
+      "tts": {
+        "text": "Permaneceu envolvido nos assuntos navais otomanos em papel consultivo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Almirantes mais jovens buscavam seus conselhos sobre estratégia e construção naval.",
+      "text_markdown": "Almirantes mais jovens buscavam seus conselhos sobre estratégia e construção naval.",
+      "tts": {
+        "text": "Almirantes mais jovens buscavam seus conselhos sobre estratégia e construção naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Havia treinado toda uma geração de oficiais navais que dariam continuidade ao seu trabalho.",
+      "text_markdown": "Havia treinado toda uma geração de oficiais navais que dariam continuidade ao seu trabalho.",
+      "tts": {
+        "text": "Havia treinado toda uma geração de oficiais navais que dariam continuidade ao seu trabalho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O conhecimento institucional que ele incorporou na marinha otomana foi sua contribuição mais duradoura.",
+      "text_markdown": "O conhecimento institucional que ele incorporou na marinha otomana foi sua contribuição mais duradoura.",
+      "tts": {
+        "text": "O conhecimento institucional que ele incorporou na marinha otomana foi sua contribuição mais duradoura.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa morreu em 4 de julho de 1546, em Istambul.",
+      "text_markdown": "Hayreddin Barbarossa morreu em 4 de julho de 1546, em Istambul.",
+      "tts": {
+        "text": "Hayreddin Barbarossa morreu em quatro de julho de mil quinhentos e quarenta e seis, em Istambul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tinha aproximadamente sessenta e oito anos.",
+      "text_markdown": "Tinha aproximadamente sessenta e oito anos.",
+      "tts": {
+        "text": "Tinha aproximadamente sessenta e oito anos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua morte foi lamentada em todo o Império Otomano.",
+      "text_markdown": "Sua morte foi lamentada em todo o Império Otomano.",
+      "tts": {
+        "text": "Sua morte foi lamentada em todo o Império Otomano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O Sultão Solimão ordenou a construção de um magnífico mausoléu às margens do Bósforo, em Beşiktaş.",
+      "text_markdown": "O Sultão Solimão ordenou a construção de um magnífico mausoléu às margens do Bósforo, em Beşiktaş.",
+      "tts": {
+        "text": "O Sultão Solimão ordenou a construção de um magnífico mausoléu às margens do Bósforo, em Beşiktaş.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O mausoléu permanece de pé até hoje no distrito de Beşiktaş, em Istambul.",
+      "text_markdown": "O mausoléu permanece de pé até hoje no distrito de Beşiktaş, em Istambul.",
+      "tts": {
+        "text": "O mausoléu permanece de pé até hoje no distrito de Beşiktaş, em Istambul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É um monumento da arquitetura otomana, decorado com azulejos e caligrafia.",
+      "text_markdown": "É um monumento da arquitetura otomana, decorado com azulejos e caligrafia.",
+      "tts": {
+        "text": "É um monumento da arquitetura otomana, decorado com azulejos e caligrafia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Durante séculos, marinheiros otomanos visitaram o mausoléu antes de partir em viagens.",
+      "text_markdown": "Durante séculos, marinheiros otomanos visitaram o mausoléu antes de partir em viagens.",
+      "tts": {
+        "text": "Durante séculos, marinheiros otomanos visitaram o mausoléu antes de partir em viagens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rezavam por uma passagem segura e pelo espírito do grande almirante para guiá-los.",
+      "text_markdown": "Rezavam por uma passagem segura e pelo espírito do grande almirante para guiá-los.",
+      "tts": {
+        "text": "Rezavam por uma passagem segura e pelo espírito do grande almirante para guiá-los.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seus sucessores na marinha otomana mantiveram a frota que ele construíra.",
+      "text_markdown": "Seus sucessores na marinha otomana mantiveram a frota que ele construíra.",
+      "tts": {
+        "text": "Seus sucessores na marinha otomana mantiveram a frota que ele construíra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Almirantes como Turgut Reis e Piyale Pasha continuaram a dominância naval otomana por décadas.",
+      "text_markdown": "Almirantes como Turgut Reis e Piyale Pasha continuaram a dominância naval otomana por décadas.",
+      "tts": {
+        "text": "Almirantes como Turgut Reis e Piyale Pasha continuaram a dominância naval otomana por décadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Haviam aprendido sua arte sob Hayreddin e levaram adiante suas doutrinas táticas.",
+      "text_markdown": "Haviam aprendido sua arte sob Hayreddin e levaram adiante suas doutrinas táticas.",
+      "tts": {
+        "text": "Haviam aprendido sua arte sob Hayreddin e levaram adiante suas doutrinas táticas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A Batalha de Lepanto em mil quinhentos e setenta e um acabaria por encerrar a supremacia otomana no mar, mas mesmo essa derrota não destruiu a marinha que Hayreddin criara.",
+      "text_markdown": "A Batalha de Lepanto em mil quinhentos e setenta e um acabaria por encerrar a supremacia otomana no mar, mas mesmo essa derrota não destruiu a marinha que Hayreddin criara.",
+      "tts": {
+        "text": "A Batalha de Lepanto em mil quinhentos e setenta e um acabaria por encerrar a supremacia otomana no mar, mas mesmo essa derrota não destruiu a marinha que Hayreddin criara.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os territórios norte-africanos que Hayreddin colocou sob controle otomano permaneceram províncias otomanas por séculos.",
+      "text_markdown": "Os territórios norte-africanos que Hayreddin colocou sob controle otomano permaneceram províncias otomanas por séculos.",
+      "tts": {
+        "text": "Os territórios norte-africanos que Hayreddin colocou sob controle otomano permaneceram províncias otomanas por séculos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Argel, Túnis e Trípoli permaneceram como bases corsárias até o século dezenove.",
+      "text_markdown": "Argel, Túnis e Trípoli permaneceram como bases corsárias até o século dezenove.",
+      "tts": {
+        "text": "Argel, Túnis e Trípoli permaneceram como bases corsárias até o século dezenove.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A tradição corsária da Costa da Barbária que Hayreddin ajudou a estabelecer durou trezentos anos.",
+      "text_markdown": "A tradição corsária da Costa da Barbária que Hayreddin ajudou a estabelecer durou trezentos anos.",
+      "tts": {
+        "text": "A tradição corsária da Costa da Barbária que Hayreddin ajudou a estabelecer durou trezentos anos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seria necessário o poder combinado da França e da Grã-Bretanha para finalmente encerrá-la.",
+      "text_markdown": "Seria necessário o poder combinado da França e da Grã-Bretanha para finalmente encerrá-la.",
+      "tts": {
+        "text": "Seria necessário o poder combinado da França e da Grã-Bretanha para finalmente encerrá-la.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin morreu como vivera: a serviço do estado otomano.",
+      "text_markdown": "Hayreddin morreu como vivera: a serviço do estado otomano.",
+      "tts": {
+        "text": "Hayreddin morreu como vivera: a serviço do estado otomano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Começara como filho de um oleiro em uma ilha grega.",
+      "text_markdown": "Começara como filho de um oleiro em uma ilha grega.",
+      "tts": {
+        "text": "Começara como filho de um oleiro em uma ilha grega.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Terminou como o almirante mais celebrado da história do Império Otomano.",
+      "text_markdown": "Terminou como o almirante mais celebrado da história do Império Otomano.",
+      "tts": {
+        "text": "Terminou como o almirante mais celebrado da história do Império Otomano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "O Fim",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua jornada de Lesbos ao Grande Almirantado é uma das carreiras mais notáveis da história naval.",
+      "text_markdown": "Sua jornada de Lesbos ao Grande Almirantado é uma das carreiras mais notáveis da história naval.",
+      "tts": {
+        "text": "Sua jornada de Lesbos ao Grande Almirantado é uma das carreiras mais notáveis da história naval.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legado",
+      "text_markdown": "Legado"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa transformou o Império Otomano de uma potência terrestre em uma superpotência naval.",
+      "text_markdown": "Hayreddin Barbarossa transformou o Império Otomano de uma potência terrestre em uma superpotência naval.",
+      "tts": {
+        "text": "Hayreddin Barbarossa transformou o Império Otomano de uma potência terrestre em uma superpotência naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Antes de sua carreira, os otomanos eram formidáveis em terra, mas marginais no mar.",
+      "text_markdown": "Antes de sua carreira, os otomanos eram formidáveis em terra, mas marginais no mar.",
+      "tts": {
+        "text": "Antes de sua carreira, os otomanos eram formidáveis em terra, mas marginais no mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Após sua carreira, a marinha otomana controlou o Mediterrâneo por gerações.",
+      "text_markdown": "Após sua carreira, a marinha otomana controlou o Mediterrâneo por gerações.",
+      "tts": {
+        "text": "Após sua carreira, a marinha otomana controlou o Mediterrâneo por gerações.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa transformação está entre as mais significativas realizações militares do século dezesseis.",
+      "text_markdown": "Essa transformação está entre as mais significativas realizações militares do século dezesseis.",
+      "tts": {
+        "text": "Essa transformação está entre as mais significativas realizações militares do século dezesseis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sua vitória em Preveza é estudada em academias navais ao redor do mundo até hoje.",
+      "text_markdown": "Sua vitória em Preveza é estudada em academias navais ao redor do mundo até hoje.",
+      "tts": {
+        "text": "Sua vitória em Preveza é estudada em academias navais ao redor do mundo até hoje.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Demonstra como liderança e tática superiores podem superar a desvantagem numérica.",
+      "text_markdown": "Demonstra como liderança e tática superiores podem superar a desvantagem numérica.",
+      "tts": {
+        "text": "Demonstra como liderança e tática superiores podem superar a desvantagem numérica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A batalha mostrou que uma frota bem coordenada pode derrotar uma maior, porém mal comandada.",
+      "text_markdown": "A batalha mostrou que uma frota bem coordenada pode derrotar uma maior, porém mal comandada.",
+      "tts": {
+        "text": "A batalha mostrou que uma frota bem coordenada pode derrotar uma maior, porém mal comandada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Continua sendo um exemplo clássico de estratégia naval cinco séculos depois.",
+      "text_markdown": "Continua sendo um exemplo clássico de estratégia naval cinco séculos depois.",
+      "tts": {
+        "text": "Continua sendo um exemplo clássico de estratégia naval cinco séculos depois.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O impacto de Hayreddin no Norte da África foi igualmente profundo.",
+      "text_markdown": "O impacto de Hayreddin no Norte da África foi igualmente profundo.",
+      "tts": {
+        "text": "O impacto de Hayreddin no Norte da África foi igualmente profundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ao colocar Argel e outras cidades sob o domínio otomano, criou uma estrutura política que durou séculos.",
+      "text_markdown": "Ao colocar Argel e outras cidades sob o domínio otomano, criou uma estrutura política que durou séculos.",
+      "tts": {
+        "text": "Ao colocar Argel e outras cidades sob o domínio otomano, criou uma estrutura política que durou séculos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As populações dessas cidades foram moldadas por suas políticas de acolhimento de refugiados da Espanha.",
+      "text_markdown": "As populações dessas cidades foram moldadas por suas políticas de acolhimento de refugiados da Espanha.",
+      "tts": {
+        "text": "As populações dessas cidades foram moldadas por suas políticas de acolhimento de refugiados da Espanha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A mistura cultural de influências berberes, árabes, turcas e andaluzas que define o Magreb hoje tem raízes no mundo que Hayreddin ajudou a criar.",
+      "text_markdown": "A mistura cultural de influências berberes, árabes, turcas e andaluzas que define o Magreb hoje tem raízes no mundo que Hayreddin ajudou a criar.",
+      "tts": {
+        "text": "A mistura cultural de influências berberes, árabes, turcas e andaluzas que define o Magreb hoje tem raízes no mundo que Hayreddin ajudou a criar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Turquia, Hayreddin Barbarossa é um herói nacional.",
+      "text_markdown": "Na Turquia, Hayreddin Barbarossa é um herói nacional.",
+      "tts": {
+        "text": "Na Turquia, Hayreddin Barbarossa é um herói nacional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Marinha Turca batizou seu primeiro submarino em sua homenagem.",
+      "text_markdown": "A Marinha Turca batizou seu primeiro submarino em sua homenagem.",
+      "tts": {
+        "text": "A Marinha Turca batizou seu primeiro submarino em sua homenagem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua imagem aparece em monumentos, selos e moedas.",
+      "text_markdown": "Sua imagem aparece em monumentos, selos e moedas.",
+      "tts": {
+        "text": "Sua imagem aparece em monumentos, selos e moedas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toda criança turca em idade escolar aprende seu nome e sua história.",
+      "text_markdown": "Toda criança turca em idade escolar aprende seu nome e sua história.",
+      "tts": {
+        "text": "Toda criança turca em idade escolar aprende seu nome e sua história.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na memória histórica europeia, Barbarossa é uma figura mais complexa.",
+      "text_markdown": "Na memória histórica europeia, Barbarossa é uma figura mais complexa.",
+      "tts": {
+        "text": "Na memória histórica europeia, Barbarossa é uma figura mais complexa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para os espanhóis e italianos de sua época, era um inimigo temido e um saqueador implacável.",
+      "text_markdown": "Para os espanhóis e italianos de sua época, era um inimigo temido e um saqueador implacável.",
+      "tts": {
+        "text": "Para os espanhóis e italianos de sua época, era um inimigo temido e um saqueador implacável.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Para os franceses, era um aliado inesperado contra seu rival espanhol em comum.",
+      "text_markdown": "Para os franceses, era um aliado inesperado contra seu rival espanhol em comum.",
+      "tts": {
+        "text": "Para os franceses, era um aliado inesperado contra seu rival espanhol em comum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seu legado na Europa reflete a natureza dividida e contestada da história mediterrânea.",
+      "text_markdown": "Seu legado na Europa reflete a natureza dividida e contestada da história mediterrânea.",
+      "tts": {
+        "text": "Seu legado na Europa reflete a natureza dividida e contestada da história mediterrânea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historiadores debatem se Hayreddin deveria ser chamado de pirata.",
+      "text_markdown": "Historiadores debatem se Hayreddin deveria ser chamado de pirata.",
+      "tts": {
+        "text": "Historiadores debatem se Hayreddin deveria ser chamado de pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele operou com a autoridade explícita do Sultão Otomano durante a maior parte de sua carreira.",
+      "text_markdown": "Ele operou com a autoridade explícita do Sultão Otomano durante a maior parte de sua carreira.",
+      "tts": {
+        "text": "Ele operou com a autoridade explícita do Sultão Otomano durante a maior parte de sua carreira.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suas atividades corsárias eram uma forma reconhecida de guerra naval no Mediterrâneo do século dezesseis.",
+      "text_markdown": "Suas atividades corsárias eram uma forma reconhecida de guerra naval no Mediterrâneo do século dezesseis.",
+      "tts": {
+        "text": "Suas atividades corsárias eram uma forma reconhecida de guerra naval no Mediterrâneo do século dezesseis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A linha entre pirataria e guerra naval patrocinada pelo estado era tênue, e Hayreddin viveu em ambos os lados dela.",
+      "text_markdown": "A linha entre pirataria e guerra naval patrocinada pelo estado era tênue, e Hayreddin viveu em ambos os lados dela.",
+      "tts": {
+        "text": "A linha entre pirataria e guerra naval patrocinada pelo estado era tênue, e Hayreddin viveu em ambos os lados dela.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O que está fora de debate é a escala de sua realização.",
+      "text_markdown": "O que está fora de debate é a escala de sua realização.",
+      "tts": {
+        "text": "O que está fora de debate é a escala de sua realização.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um filho de oleiro de uma ilha grega construiu a mais poderosa marinha do Mediterrâneo.",
+      "text_markdown": "Um filho de oleiro de uma ilha grega construiu a mais poderosa marinha do Mediterrâneo.",
+      "tts": {
+        "text": "Um filho de oleiro de uma ilha grega construiu a mais poderosa marinha do Mediterrâneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Derrotou as frotas combinadas dos mais poderosos estados cristãos da Europa.",
+      "text_markdown": "Derrotou as frotas combinadas dos mais poderosos estados cristãos da Europa.",
+      "tts": {
+        "text": "Derrotou as frotas combinadas dos mais poderosos estados cristãos da Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Governou uma grande cidade, moldou a política de um continente e morreu honrado pelo mais poderoso império do mundo.",
+      "text_markdown": "Governou uma grande cidade, moldou a política de um continente e morreu honrado pelo mais poderoso império do mundo.",
+      "tts": {
+        "text": "Governou uma grande cidade, moldou a política de um continente e morreu honrado pelo mais poderoso império do mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sua vida é um testemunho do que ambição, habilidade e oportunidade podem produzir quando se encontram no momento certo da história.",
+      "text_markdown": "Sua vida é um testemunho do que ambição, habilidade e oportunidade podem produzir quando se encontram no momento certo da história.",
+      "tts": {
+        "text": "Sua vida é um testemunho do que ambição, habilidade e oportunidade podem produzir quando se encontram no momento certo da história.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "zh",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是海雷丁·巴巴罗萨的真实故事，他使奥斯曼帝国成为了海上超级强国。",
+      "text_markdown": "这是海雷丁·巴巴罗萨的真实故事，他使奥斯曼帝国成为了海上超级强国。",
+      "tts": {
+        "text": "这是海雷丁·巴巴罗萨的真实故事，他使奥斯曼帝国成为了海上超级强国。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的人生始于一座希腊小岛上一个陶匠之子。",
+      "text_markdown": "他的人生始于一座希腊小岛上一个陶匠之子。",
+      "tts": {
+        "text": "他的人生始于一座希腊小岛上一个陶匠之子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他最终成为地中海最强大海军的大元帅。",
+      "text_markdown": "他最终成为地中海最强大海军的大元帅。",
+      "tts": {
+        "text": "他最终成为地中海最强大海军的大元帅。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的故事横跨了奥斯曼帝国与基督教欧洲之间长达一个世纪的冲突。",
+      "text_markdown": "他的故事横跨了奥斯曼帝国与基督教欧洲之间长达一个世纪的冲突。",
+      "tts": {
+        "text": "他的故事横跨了奥斯曼帝国与基督教欧洲之间长达一个世纪的冲突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个关于兄弟、海盗、苏丹以及争夺海洋控制权的故事。",
+      "text_markdown": "这是一个关于兄弟、海盗、苏丹以及争夺海洋控制权的故事。",
+      "tts": {
+        "text": "这是一个关于兄弟、海盗、苏丹以及争夺海洋控制权的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本书中描述的每一场战役、每一次联盟和每一次背叛都来自历史记载。",
+      "text_markdown": "本书中描述的每一场战役、每一次联盟和每一次背叛都来自历史记载。",
+      "tts": {
+        "text": "本书中描述的每一场战役、每一次联盟和每一次背叛都来自历史记载。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴罗萨的事业改变了地中海世界的版图。",
+      "text_markdown": "巴巴罗萨的事业改变了地中海世界的版图。",
+      "tts": {
+        "text": "巴巴罗萨的事业改变了地中海世界的版图。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他建立的海军在他去世后数代人的时间里主宰着海洋。",
+      "text_markdown": "他建立的海军在他去世后数代人的时间里主宰着海洋。",
+      "tts": {
+        "text": "他建立的海军在他去世后数代人的时间里主宰着海洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的遗产至今仍在塑造着北非的海岸线和文化。",
+      "text_markdown": "他的遗产至今仍在塑造着北非的海岸线和文化。",
+      "tts": {
+        "text": "他的遗产至今仍在塑造着北非的海岸线和文化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在历史记载不完整的地方，我们明确说明。",
+      "text_markdown": "在历史记载不完整的地方，我们明确说明。",
+      "tts": {
+        "text": "在历史记载不完整的地方，我们明确说明。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在历史学家对日期或细节存在分歧的地方，我们呈现最被广泛接受的说法。",
+      "text_markdown": "在历史学家对日期或细节存在分歧的地方，我们呈现最被广泛接受的说法。",
+      "tts": {
+        "text": "在历史学家对日期或细节存在分歧的地方，我们呈现最被广泛接受的说法。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是历史，不是传说，我们以应有的严谨态度对待它。",
+      "text_markdown": "这是历史，不是传说，我们以应有的严谨态度对待它。",
+      "tts": {
+        "text": "这是历史，不是传说，我们以应有的严谨态度对待它。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地中海的世界",
+      "text_markdown": "地中海的世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海位于三大洲的交汇处。",
+      "text_markdown": "地中海位于三大洲的交汇处。",
+      "tts": {
+        "text": "地中海位于三大洲的交汇处。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北面是欧洲，南面是非洲，东面是亚洲。",
+      "text_markdown": "北面是欧洲，南面是非洲，东面是亚洲。",
+      "tts": {
+        "text": "北面是欧洲，南面是非洲，东面是亚洲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数千年来，沿岸的每一个伟大文明都曾为控制它而战。",
+      "text_markdown": "数千年来，沿岸的每一个伟大文明都曾为控制它而战。",
+      "tts": {
+        "text": "数千年来，沿岸的每一个伟大文明都曾为控制它而战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到十五世纪末，地中海成为两大强国的战场。",
+      "text_markdown": "到十五世纪末，地中海成为两大强国的战场。",
+      "tts": {
+        "text": "到十五世纪末，地中海成为两大强国的战场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "东方的奥斯曼帝国在一系列雄心勃勃的苏丹治下迅速扩张。",
+      "text_markdown": "东方的奥斯曼帝国在一系列雄心勃勃的苏丹治下迅速扩张。",
+      "tts": {
+        "text": "东方的奥斯曼帝国在一系列雄心勃勃的苏丹治下迅速扩张。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西方的西班牙诸王国和查理五世统治下的神圣罗马帝国则试图反击。",
+      "text_markdown": "西方的西班牙诸王国和查理五世统治下的神圣罗马帝国则试图反击。",
+      "tts": {
+        "text": "西方的西班牙诸王国和查理五世统治下的神圣罗马帝国则试图反击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥斯曼帝国于1453年攻占了君士坦丁堡。",
+      "text_markdown": "奥斯曼帝国于1453年攻占了君士坦丁堡。",
+      "tts": {
+        "text": "奥斯曼帝国于一四五三年攻占了君士坦丁堡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那次胜利终结了拜占庭帝国，使奥斯曼人控制了东地中海。",
+      "text_markdown": "那次胜利终结了拜占庭帝国，使奥斯曼人控制了东地中海。",
+      "tts": {
+        "text": "那次胜利终结了拜占庭帝国，使奥斯曼人控制了东地中海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城市被更名为伊斯坦布尔，成为一个庞大且不断增长的帝国的首都。",
+      "text_markdown": "这座城市被更名为伊斯坦布尔，成为一个庞大且不断增长的帝国的首都。",
+      "tts": {
+        "text": "这座城市被更名为伊斯坦布尔，成为一个庞大且不断增长的帝国的首都。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它的港口金角湾成为奥斯曼舰队的母港。",
+      "text_markdown": "它的港口金角湾成为奥斯曼舰队的母港。",
+      "tts": {
+        "text": "它的港口金角湾成为奥斯曼舰队的母港。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与此同时，西班牙刚刚完成了收复失地运动。",
+      "text_markdown": "与此同时，西班牙刚刚完成了收复失地运动。",
+      "tts": {
+        "text": "与此同时，西班牙刚刚完成了收复失地运动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492年，西班牙君主费迪南德和伊莎贝拉征服了格拉纳达，即伊比利亚半岛上最后一个穆斯林王国。",
+      "text_markdown": "1492年，西班牙君主费迪南德和伊莎贝拉征服了格拉纳达，即伊比利亚半岛上最后一个穆斯林王国。",
+      "tts": {
+        "text": "一四九二年，西班牙君主费迪南德和伊莎贝拉征服了格拉纳达，即伊比利亚半岛上最后一个穆斯林王国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "随后数年间，数十万穆斯林和犹太人被驱逐出西班牙。",
+      "text_markdown": "随后数年间，数十万穆斯林和犹太人被驱逐出西班牙。",
+      "tts": {
+        "text": "随后数年间，数十万穆斯林和犹太人被驱逐出西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其中许多人逃往了北非和奥斯曼帝国。",
+      "text_markdown": "其中许多人逃往了北非和奥斯曼帝国。",
+      "tts": {
+        "text": "其中许多人逃往了北非和奥斯曼帝国。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "被称为巴巴里海岸的北非沿海地区成为这些流亡者的避难所。",
+      "text_markdown": "被称为巴巴里海岸的北非沿海地区成为这些流亡者的避难所。",
+      "tts": {
+        "text": "被称为巴巴里海岸的北非沿海地区成为这些流亡者的避难所。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔、突尼斯和的黎波里等城市吸纳了来自西班牙的一波波难民。",
+      "text_markdown": "阿尔及尔、突尼斯和的黎波里等城市吸纳了来自西班牙的一波波难民。",
+      "tts": {
+        "text": "阿尔及尔、突尼斯和的黎波里等城市吸纳了来自西班牙的一波波难民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些流离失所的社区对西班牙王室怀有深深的怨恨。",
+      "text_markdown": "这些流离失所的社区对西班牙王室怀有深深的怨恨。",
+      "tts": {
+        "text": "这些流离失所的社区对西班牙王室怀有深深的怨恨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "许多人转向海盗活动，既作为谋生手段，也作为复仇方式。",
+      "text_markdown": "许多人转向海盗活动，既作为谋生手段，也作为复仇方式。",
+      "tts": {
+        "text": "许多人转向海盗活动，既作为谋生手段，也作为复仇方式。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗与普通的海上劫匪不同。",
+      "text_markdown": "海盗与普通的海上劫匪不同。",
+      "tts": {
+        "text": "海盗与普通的海上劫匪不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗在政府或统治者的授权下行动。",
+      "text_markdown": "海盗在政府或统治者的授权下行动。",
+      "tts": {
+        "text": "海盗在政府或统治者的授权下行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们攻击敌方船只，并将利润与庇护国分享。",
+      "text_markdown": "他们攻击敌方船只，并将利润与庇护国分享。",
+      "tts": {
+        "text": "他们攻击敌方船只，并将利润与庇护国分享。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "因此，海盗活动是由私人进行的一种海上战争形式。",
+      "text_markdown": "因此，海盗活动是由私人进行的一种海上战争形式。",
+      "tts": {
+        "text": "因此，海盗活动是由私人进行的一种海上战争形式。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "基督教和穆斯林势力都广泛使用海盗。",
+      "text_markdown": "基督教和穆斯林势力都广泛使用海盗。",
+      "tts": {
+        "text": "基督教和穆斯林势力都广泛使用海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "驻扎在罗德岛和后来的马耳他岛上的圣约翰骑士团是劫掠穆斯林船只的基督教海盗。",
+      "text_markdown": "驻扎在罗德岛和后来的马耳他岛上的圣约翰骑士团是劫掠穆斯林船只的基督教海盗。",
+      "tts": {
+        "text": "驻扎在罗德岛和后来的马耳他岛上的圣约翰骑士团是劫掠穆斯林船只的基督教海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "以北非为基地的穆斯林海盗则反过来劫掠基督教船只。",
+      "text_markdown": "以北非为基地的穆斯林海盗则反过来劫掠基督教船只。",
+      "tts": {
+        "text": "以北非为基地的穆斯林海盗则反过来劫掠基督教船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地中海是一片持续进行低烈度战争的海域。",
+      "text_markdown": "地中海是一片持续进行低烈度战争的海域。",
+      "tts": {
+        "text": "地中海是一片持续进行低烈度战争的海域。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贸易是驱动这场冲突的奖赏。",
+      "text_markdown": "贸易是驱动这场冲突的奖赏。",
+      "tts": {
+        "text": "贸易是驱动这场冲突的奖赏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地中海承载着来自中国的丝绸、印度的香料、埃及的谷物和欧洲的羊毛。",
+      "text_markdown": "地中海承载着来自中国的丝绸、印度的香料、埃及的谷物和欧洲的羊毛。",
+      "tts": {
+        "text": "地中海承载着来自中国的丝绸、印度的香料、埃及的谷物和欧洲的羊毛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "控制这些贸易路线意味着巨大的财富。",
+      "text_markdown": "控制这些贸易路线意味着巨大的财富。",
+      "tts": {
+        "text": "控制这些贸易路线意味着巨大的财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每一座港口城市都依赖海洋生存。",
+      "text_markdown": "每一座港口城市都依赖海洋生存。",
+      "tts": {
+        "text": "每一座港口城市都依赖海洋生存。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海的岛屿是战略要地。",
+      "text_markdown": "地中海的岛屿是战略要地。",
+      "tts": {
+        "text": "地中海的岛屿是战略要地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "控制了岛屿的人就控制了岛屿之间的航道。",
+      "text_markdown": "控制了岛屿的人就控制了岛屿之间的航道。",
+      "tts": {
+        "text": "控制了岛屿的人就控制了岛屿之间的航道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "罗德岛、塞浦路斯、克里特岛、西西里岛和马耳他在几个世纪中多次易手。",
+      "text_markdown": "罗德岛、塞浦路斯、克里特岛、西西里岛和马耳他在几个世纪中多次易手。",
+      "tts": {
+        "text": "罗德岛、塞浦路斯、克里特岛、西西里岛和马耳他在几个世纪中多次易手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海上力量决定了哪个帝国能拥有它们。",
+      "text_markdown": "海上力量决定了哪个帝国能拥有它们。",
+      "tts": {
+        "text": "海上力量决定了哪个帝国能拥有它们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "桨帆船是这个时代地中海的战舰。",
+      "text_markdown": "桨帆船是这个时代地中海的战舰。",
+      "tts": {
+        "text": "桨帆船是这个时代地中海的战舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "桨帆船是一种靠桨和帆驱动的狭长船只。",
+      "text_markdown": "桨帆船是一种靠桨和帆驱动的狭长船只。",
+      "tts": {
+        "text": "桨帆船是一种靠桨和帆驱动的狭长船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每艘桨帆船搭载数百名桨手，其中许多是奴隶或战俘。",
+      "text_markdown": "每艘桨帆船搭载数百名桨手，其中许多是奴隶或战俘。",
+      "tts": {
+        "text": "每艘桨帆船搭载数百名桨手，其中许多是奴隶或战俘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "作战时，桨帆船撞击敌船，然后派遣武装士兵登船进行肉搏战。",
+      "text_markdown": "作战时，桨帆船撞击敌船，然后派遣武装士兵登船进行肉搏战。",
+      "tts": {
+        "text": "作战时，桨帆船撞击敌船，然后派遣武装士兵登船进行肉搏战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "桨帆船奴隶制度残酷得无法形容。",
+      "text_markdown": "桨帆船奴隶制度残酷得无法形容。",
+      "tts": {
+        "text": "桨帆船奴隶制度残酷得无法形容。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从战争和劫掠中抓获的俘虏被锁链拴在船桨上，被迫划桨直到死去。",
+      "text_markdown": "从战争和劫掠中抓获的俘虏被锁链拴在船桨上，被迫划桨直到死去。",
+      "tts": {
+        "text": "从战争和劫掠中抓获的俘虏被锁链拴在船桨上，被迫划桨直到死去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "基督徒奴役穆斯林，穆斯林也奴役基督徒。",
+      "text_markdown": "基督徒奴役穆斯林，穆斯林也奴役基督徒。",
+      "tts": {
+        "text": "基督徒奴役穆斯林，穆斯林也奴役基督徒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种残暴行为如此常见，以至于双方都视之为正常。",
+      "text_markdown": "这种残暴行为如此常见，以至于双方都视之为正常。",
+      "tts": {
+        "text": "这种残暴行为如此常见，以至于双方都视之为正常。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗马教皇多次试图联合基督教王国对抗奥斯曼威胁。",
+      "text_markdown": "罗马教皇多次试图联合基督教王国对抗奥斯曼威胁。",
+      "tts": {
+        "text": "罗马教皇多次试图联合基督教王国对抗奥斯曼威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些被称为神圣联盟的联合将来自西班牙、威尼斯、热那亚和教皇国的船只聚集在一起。",
+      "text_markdown": "这些被称为神圣联盟的联合将来自西班牙、威尼斯、热那亚和教皇国的船只聚集在一起。",
+      "tts": {
+        "text": "这些被称为神圣联盟的联合将来自西班牙、威尼斯、热那亚和教皇国的船只聚集在一起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但基督教王国之间的互不信任几乎与它们对奥斯曼人的恐惧一样深。",
+      "text_markdown": "但基督教王国之间的互不信任几乎与它们对奥斯曼人的恐惧一样深。",
+      "tts": {
+        "text": "但基督教王国之间的互不信任几乎与它们对奥斯曼人的恐惧一样深。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些联盟十分脆弱，往往在取得持久成果之前就瓦解了。",
+      "text_markdown": "这些联盟十分脆弱，往往在取得持久成果之前就瓦解了。",
+      "tts": {
+        "text": "这些联盟十分脆弱，往往在取得持久成果之前就瓦解了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "就在这个暴力纷争的世界里，两个兄弟在奥斯曼统治下的一座希腊岛屿上出生了。",
+      "text_markdown": "就在这个暴力纷争的世界里，两个兄弟在奥斯曼统治下的一座希腊岛屿上出生了。",
+      "tts": {
+        "text": "就在这个暴力纷争的世界里，两个兄弟在奥斯曼统治下的一座希腊岛屿上出生了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的名字是阿鲁吉和希兹尔。",
+      "text_markdown": "他们的名字是阿鲁吉和希兹尔。",
+      "tts": {
+        "text": "他们的名字是阿鲁吉和希兹尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "希兹尔后来为世人所知的名字是海雷丁·巴巴罗萨。",
+      "text_markdown": "希兹尔后来为世人所知的名字是海雷丁·巴巴罗萨。",
+      "tts": {
+        "text": "希兹尔后来为世人所知的名字是海雷丁·巴巴罗萨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "兄弟二人将重塑整个地中海的权力格局。",
+      "text_markdown": "兄弟二人将重塑整个地中海的权力格局。",
+      "tts": {
+        "text": "兄弟二人将重塑整个地中海的权力格局。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁·巴巴罗萨大约于1478年出生在莱斯沃斯岛。",
+      "text_markdown": "海雷丁·巴巴罗萨大约于1478年出生在莱斯沃斯岛。",
+      "tts": {
+        "text": "海雷丁·巴巴罗萨大约于一四七八年出生在莱斯沃斯岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莱斯沃斯岛是爱琴海东北部的一个大型希腊岛屿，靠近现代土耳其海岸。",
+      "text_markdown": "莱斯沃斯岛是爱琴海东北部的一个大型希腊岛屿，靠近现代土耳其海岸。",
+      "tts": {
+        "text": "莱斯沃斯岛是爱琴海东北部的一个大型希腊岛屿，靠近现代土耳其海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在他出生时，该岛刚刚被纳入奥斯曼控制之下。",
+      "text_markdown": "在他出生时，该岛刚刚被纳入奥斯曼控制之下。",
+      "tts": {
+        "text": "在他出生时，该岛刚刚被纳入奥斯曼控制之下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的父亲雅库普是一位退役的奥斯曼士兵，服完兵役后定居在莱斯沃斯岛。",
+      "text_markdown": "他的父亲雅库普是一位退役的奥斯曼士兵，服完兵役后定居在莱斯沃斯岛。",
+      "tts": {
+        "text": "他的父亲雅库普是一位退役的奥斯曼士兵，服完兵役后定居在莱斯沃斯岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "雅库普以制陶为业，大多数史料记载他是一位普通的手艺人。",
+      "text_markdown": "雅库普以制陶为业，大多数史料记载他是一位普通的手艺人。",
+      "tts": {
+        "text": "雅库普以制陶为业，大多数史料记载他是一位普通的手艺人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的母亲是当地一位很可能具有基督教背景的希腊女性，史料中记载的名字是卡捷琳娜。",
+      "text_markdown": "他的母亲是当地一位很可能具有基督教背景的希腊女性，史料中记载的名字是卡捷琳娜。",
+      "tts": {
+        "text": "他的母亲是当地一位很可能具有基督教背景的希腊女性，史料中记载的名字是卡捷琳娜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个家庭算不上富裕，但也不至于贫困。",
+      "text_markdown": "这个家庭算不上富裕，但也不至于贫困。",
+      "tts": {
+        "text": "这个家庭算不上富裕，但也不至于贫困。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雅库普和卡捷琳娜育有四个儿子。",
+      "text_markdown": "雅库普和卡捷琳娜育有四个儿子。",
+      "tts": {
+        "text": "雅库普和卡捷琳娜育有四个儿子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "长子伊沙克，然后是阿鲁吉，再次是希兹尔，最小的是伊利亚斯。",
+      "text_markdown": "长子伊沙克，然后是阿鲁吉，再次是希兹尔，最小的是伊利亚斯。",
+      "tts": {
+        "text": "长子伊沙克，然后是阿鲁吉，再次是希兹尔，最小的是伊利亚斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "希兹尔就是日后成为海雷丁·巴巴罗萨的那个男孩。",
+      "text_markdown": "希兹尔就是日后成为海雷丁·巴巴罗萨的那个男孩。",
+      "tts": {
+        "text": "希兹尔就是日后成为海雷丁·巴巴罗萨的那个男孩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "四兄弟最终都走上了航海之路。",
+      "text_markdown": "四兄弟最终都走上了航海之路。",
+      "tts": {
+        "text": "四兄弟最终都走上了航海之路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟们在一个由大海塑造的世界中长大。",
+      "text_markdown": "兄弟们在一个由大海塑造的世界中长大。",
+      "tts": {
+        "text": "兄弟们在一个由大海塑造的世界中长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莱斯沃斯岛的经济依赖渔业和海上贸易。",
+      "text_markdown": "莱斯沃斯岛的经济依赖渔业和海上贸易。",
+      "tts": {
+        "text": "莱斯沃斯岛的经济依赖渔业和海上贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "岛上的每个男孩在学会阅读之前就先学会了驾船。",
+      "text_markdown": "岛上的每个男孩在学会阅读之前就先学会了驾船。",
+      "tts": {
+        "text": "岛上的每个男孩在学会阅读之前就先学会了驾船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大海对他们来说不是抽象概念，而是每日的现实。",
+      "text_markdown": "大海对他们来说不是抽象概念，而是每日的现实。",
+      "tts": {
+        "text": "大海对他们来说不是抽象概念，而是每日的现实。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟们年轻时便开始从事水手和商人的工作。",
+      "text_markdown": "兄弟们年轻时便开始从事水手和商人的工作。",
+      "tts": {
+        "text": "兄弟们年轻时便开始从事水手和商人的工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在爱琴海诸岛与奥斯曼大陆之间运送货物。",
+      "text_markdown": "他们在爱琴海诸岛与奥斯曼大陆之间运送货物。",
+      "tts": {
+        "text": "他们在爱琴海诸岛与奥斯曼大陆之间运送货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但在一片充满海盗的海域中，经商是件危险的事。",
+      "text_markdown": "但在一片充满海盗的海域中，经商是件危险的事。",
+      "tts": {
+        "text": "但在一片充满海盗的海域中，经商是件危险的事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在一次早期航行中，兄弟们遭到了圣约翰骑士团的袭击。",
+      "text_markdown": "在一次早期航行中，兄弟们遭到了圣约翰骑士团的袭击。",
+      "tts": {
+        "text": "在一次早期航行中，兄弟们遭到了圣约翰骑士团的袭击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "圣约翰骑士团是驻扎在罗德岛的一个基督教军事修会。",
+      "text_markdown": "圣约翰骑士团是驻扎在罗德岛的一个基督教军事修会。",
+      "tts": {
+        "text": "圣约翰骑士团是驻扎在罗德岛的一个基督教军事修会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们是地中海最令人恐惧的海盗之一。",
+      "text_markdown": "他们是地中海最令人恐惧的海盗之一。",
+      "tts": {
+        "text": "他们是地中海最令人恐惧的海盗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们无情地攻击穆斯林船只，掠夺货物并奴役船员。",
+      "text_markdown": "他们无情地攻击穆斯林船只，掠夺货物并奴役船员。",
+      "tts": {
+        "text": "他们无情地攻击穆斯林船只，掠夺货物并奴役船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在对兄弟们船只的袭击中，最小的弟弟伊利亚斯被杀。",
+      "text_markdown": "在对兄弟们船只的袭击中，最小的弟弟伊利亚斯被杀。",
+      "tts": {
+        "text": "在对兄弟们船只的袭击中，最小的弟弟伊利亚斯被杀。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟中最具攻击性的阿鲁吉被俘并沦为奴隶。",
+      "text_markdown": "兄弟中最具攻击性的阿鲁吉被俘并沦为奴隶。",
+      "tts": {
+        "text": "兄弟中最具攻击性的阿鲁吉被俘并沦为奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被锁链拴在一艘基督教战舰的船桨上，度过了数年的桨帆船奴隶生涯。",
+      "text_markdown": "他被锁链拴在一艘基督教战舰的船桨上，度过了数年的桨帆船奴隶生涯。",
+      "tts": {
+        "text": "他被锁链拴在一艘基督教战舰的船桨上，度过了数年的桨帆船奴隶生涯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这段经历以深远的方式磨砺了他，塑造了他余生的道路。",
+      "text_markdown": "这段经历以深远的方式磨砺了他，塑造了他余生的道路。",
+      "tts": {
+        "text": "这段经历以深远的方式磨砺了他，塑造了他余生的道路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当他最终被赎回或逃脱时，他已经脱胎换骨。",
+      "text_markdown": "当他最终被赎回或逃脱时，他已经脱胎换骨。",
+      "tts": {
+        "text": "当他最终被赎回或逃脱时，他已经脱胎换骨。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿鲁吉决定自己也成为一名海盗。",
+      "text_markdown": "阿鲁吉决定自己也成为一名海盗。",
+      "tts": {
+        "text": "阿鲁吉决定自己也成为一名海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他获得了一艘船和一批船员，开始在东地中海劫掠基督教船只。",
+      "text_markdown": "他获得了一艘船和一批船员，开始在东地中海劫掠基督教船只。",
+      "tts": {
+        "text": "他获得了一艘船和一批船员，开始在东地中海劫掠基督教船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的弟弟希兹尔作为副手加入了他。",
+      "text_markdown": "他的弟弟希兹尔作为副手加入了他。",
+      "tts": {
+        "text": "他的弟弟希兹尔作为副手加入了他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "兄弟二人证明了自己是极为出色的海上劫掠者。",
+      "text_markdown": "兄弟二人证明了自己是极为出色的海上劫掠者。",
+      "tts": {
+        "text": "兄弟二人证明了自己是极为出色的海上劫掠者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟们将行动基地转移到了西地中海。",
+      "text_markdown": "兄弟们将行动基地转移到了西地中海。",
+      "tts": {
+        "text": "兄弟们将行动基地转移到了西地中海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在现代突尼斯海岸外的杰尔巴岛建立了根据地。",
+      "text_markdown": "他们在现代突尼斯海岸外的杰尔巴岛建立了根据地。",
+      "tts": {
+        "text": "他们在现代突尼斯海岸外的杰尔巴岛建立了根据地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从杰尔巴岛出发，他们可以沿繁忙的贸易航线劫掠西班牙和意大利的船只。",
+      "text_markdown": "从杰尔巴岛出发，他们可以沿繁忙的贸易航线劫掠西班牙和意大利的船只。",
+      "tts": {
+        "text": "从杰尔巴岛出发，他们可以沿繁忙的贸易航线劫掠西班牙和意大利的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们在盟友和敌人中的声望迅速增长。",
+      "text_markdown": "他们在盟友和敌人中的声望迅速增长。",
+      "tts": {
+        "text": "他们在盟友和敌人中的声望迅速增长。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿鲁吉是他们合作关系的公众面孔。",
+      "text_markdown": "阿鲁吉是他们合作关系的公众面孔。",
+      "tts": {
+        "text": "阿鲁吉是他们合作关系的公众面孔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他大胆、富有魅力，体格威武。",
+      "text_markdown": "他大胆、富有魅力，体格威武。",
+      "tts": {
+        "text": "他大胆、富有魅力，体格威武。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "欧洲文献描述他蓄着红色胡须，这正是兄弟俩著名绰号的由来。",
+      "text_markdown": "欧洲文献描述他蓄着红色胡须，这正是兄弟俩著名绰号的由来。",
+      "tts": {
+        "text": "欧洲文献描述他蓄着红色胡须，这正是兄弟俩著名绰号的由来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "巴巴罗萨这个名字意为红胡子，最初指的是阿鲁吉，后来转移到了海雷丁身上。",
+      "text_markdown": "巴巴罗萨这个名字意为红胡子，最初指的是阿鲁吉，后来转移到了海雷丁身上。",
+      "tts": {
+        "text": "巴巴罗萨这个名字意为红胡子，最初指的是阿鲁吉，后来转移到了海雷丁身上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "希兹尔是幕后的战略家和组织者。",
+      "text_markdown": "希兹尔是幕后的战略家和组织者。",
+      "tts": {
+        "text": "希兹尔是幕后的战略家和组织者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他管理着不断壮大的舰队的后勤工作，并维护与当地统治者的联盟关系。",
+      "text_markdown": "他管理着不断壮大的舰队的后勤工作，并维护与当地统治者的联盟关系。",
+      "tts": {
+        "text": "他管理着不断壮大的舰队的后勤工作，并维护与当地统治者的联盟关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "阿鲁吉亲自率领突袭行动时，希兹尔确保整个事业运转顺畅。",
+      "text_markdown": "阿鲁吉亲自率领突袭行动时，希兹尔确保整个事业运转顺畅。",
+      "tts": {
+        "text": "阿鲁吉亲自率领突袭行动时，希兹尔确保整个事业运转顺畅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们互补的技能使他们成为一支强大的团队。",
+      "text_markdown": "他们互补的技能使他们成为一支强大的团队。",
+      "tts": {
+        "text": "他们互补的技能使他们成为一支强大的团队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟们的劫掠行动服务于超越个人财富的目的。",
+      "text_markdown": "兄弟们的劫掠行动服务于超越个人财富的目的。",
+      "tts": {
+        "text": "兄弟们的劫掠行动服务于超越个人财富的目的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们救援逃离西班牙宗教裁判所的穆斯林难民。",
+      "text_markdown": "他们救援逃离西班牙宗教裁判所的穆斯林难民。",
+      "tts": {
+        "text": "他们救援逃离西班牙宗教裁判所的穆斯林难民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在1504年至1510年间，他们将数千名穆斯林从西班牙运送到北非。",
+      "text_markdown": "在1504年至1510年间，他们将数千名穆斯林从西班牙运送到北非。",
+      "tts": {
+        "text": "在一五零四年至一五一零年间，他们将数千名穆斯林从西班牙运送到北非。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这为他们赢得了巴巴里海岸穆斯林社区的巨大尊敬。",
+      "text_markdown": "这为他们赢得了巴巴里海岸穆斯林社区的巨大尊敬。",
+      "tts": {
+        "text": "这为他们赢得了巴巴里海岸穆斯林社区的巨大尊敬。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿鲁吉将目光投向了比劫掠更大的目标。",
+      "text_markdown": "阿鲁吉将目光投向了比劫掠更大的目标。",
+      "tts": {
+        "text": "阿鲁吉将目光投向了比劫掠更大的目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他想要攻占一座城市，建立一个能够抵抗西班牙势力的基地。",
+      "text_markdown": "他想要攻占一座城市，建立一个能够抵抗西班牙势力的基地。",
+      "tts": {
+        "text": "他想要攻占一座城市，建立一个能够抵抗西班牙势力的基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的目标是阿尔及尔，一座拥有宏伟天然港口的北非沿海城市。",
+      "text_markdown": "他的目标是阿尔及尔，一座拥有宏伟天然港口的北非沿海城市。",
+      "tts": {
+        "text": "他的目标是阿尔及尔，一座拥有宏伟天然港口的北非沿海城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "攻占阿尔及尔将使兄弟二人从海盗变为统治者。",
+      "text_markdown": "攻占阿尔及尔将使兄弟二人从海盗变为统治者。",
+      "tts": {
+        "text": "攻占阿尔及尔将使兄弟二人从海盗变为统治者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起之路",
+      "text_markdown": "崛起之路"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1516年，阿鲁吉攻占了阿尔及尔城。",
+      "text_markdown": "1516年，阿鲁吉攻占了阿尔及尔城。",
+      "tts": {
+        "text": "一五一六年，阿鲁吉攻占了阿尔及尔城。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他推翻了当地统治者，自封为阿尔及尔苏丹。",
+      "text_markdown": "他推翻了当地统治者，自封为阿尔及尔苏丹。",
+      "tts": {
+        "text": "他推翻了当地统治者，自封为阿尔及尔苏丹。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是一次大胆而惊人的举动，令西班牙帝国深感不安。",
+      "text_markdown": "这是一次大胆而惊人的举动，令西班牙帝国深感不安。",
+      "tts": {
+        "text": "这是一次大胆而惊人的举动，令西班牙帝国深感不安。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "阿尔及尔如今落入了一个海盗军阀手中。",
+      "text_markdown": "阿尔及尔如今落入了一个海盗军阀手中。",
+      "tts": {
+        "text": "阿尔及尔如今落入了一个海盗军阀手中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿鲁吉证明了自己是一位能干但残酷的统治者。",
+      "text_markdown": "阿鲁吉证明了自己是一位能干但残酷的统治者。",
+      "tts": {
+        "text": "阿鲁吉证明了自己是一位能干但残酷的统治者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他沿北非海岸扩展领土。",
+      "text_markdown": "他沿北非海岸扩展领土。",
+      "tts": {
+        "text": "他沿北非海岸扩展领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他与当地柏柏尔部落和穆斯林难民社区建立了联盟。",
+      "text_markdown": "他与当地柏柏尔部落和穆斯林难民社区建立了联盟。",
+      "tts": {
+        "text": "他与当地柏柏尔部落和穆斯林难民社区建立了联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他的激进扩张使他与西班牙发生了直接冲突。",
+      "text_markdown": "但他的激进扩张使他与西班牙发生了直接冲突。",
+      "tts": {
+        "text": "但他的激进扩张使他与西班牙发生了直接冲突。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1518年，一支庞大的西班牙军队围攻了阿鲁吉所在的特莱姆森城。",
+      "text_markdown": "1518年，一支庞大的西班牙军队围攻了阿鲁吉所在的特莱姆森城。",
+      "tts": {
+        "text": "一五一八年，一支庞大的西班牙军队围攻了阿鲁吉所在的特莱姆森城。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿鲁吉试图率少量兵力突围。",
+      "text_markdown": "阿鲁吉试图率少量兵力突围。",
+      "tts": {
+        "text": "阿鲁吉试图率少量兵力突围。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在撤退过程中，他被西班牙士兵抓获并杀害。",
+      "text_markdown": "在撤退过程中，他被西班牙士兵抓获并杀害。",
+      "tts": {
+        "text": "在撤退过程中，他被西班牙士兵抓获并杀害。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的死使希兹尔成为唯一幸存的兄弟，也是阿鲁吉所建一切的领导者。",
+      "text_markdown": "他的死使希兹尔成为唯一幸存的兄弟，也是阿鲁吉所建一切的领导者。",
+      "tts": {
+        "text": "他的死使希兹尔成为唯一幸存的兄弟，也是阿鲁吉所建一切的领导者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四十出头的希兹尔面临着不可能的处境。",
+      "text_markdown": "四十出头的希兹尔面临着不可能的处境。",
+      "tts": {
+        "text": "四十出头的希兹尔面临着不可能的处境。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙军队在推进，他的兄弟已经战死，他的兵力寡不敌众。",
+      "text_markdown": "西班牙军队在推进，他的兄弟已经战死，他的兵力寡不敌众。",
+      "tts": {
+        "text": "西班牙军队在推进，他的兄弟已经战死，他的兵力寡不敌众。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他需要一个强大的盟友，否则将失去一切。",
+      "text_markdown": "他需要一个强大的盟友，否则将失去一切。",
+      "tts": {
+        "text": "他需要一个强大的盟友，否则将失去一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他转向了穆斯林世界最强大的力量：奥斯曼帝国。",
+      "text_markdown": "他转向了穆斯林世界最强大的力量：奥斯曼帝国。",
+      "tts": {
+        "text": "他转向了穆斯林世界最强大的力量：奥斯曼帝国。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "希兹尔向伊斯坦布尔的塞利姆一世苏丹派出了使节。",
+      "text_markdown": "希兹尔向伊斯坦布尔的塞利姆一世苏丹派出了使节。",
+      "tts": {
+        "text": "希兹尔向伊斯坦布尔的塞利姆一世苏丹派出了使节。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他提出将阿尔及尔纳入奥斯曼主权，以换取军事支持。",
+      "text_markdown": "他提出将阿尔及尔纳入奥斯曼主权，以换取军事支持。",
+      "tts": {
+        "text": "他提出将阿尔及尔纳入奥斯曼主权，以换取军事支持。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "苏丹认识到在西地中海拥有一个忠诚据点的战略价值。",
+      "text_markdown": "苏丹认识到在西地中海拥有一个忠诚据点的战略价值。",
+      "tts": {
+        "text": "苏丹认识到在西地中海拥有一个忠诚据点的战略价值。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他接受了提议，派遣士兵、大炮和一支桨帆船队来支援希兹尔。",
+      "text_markdown": "他接受了提议，派遣士兵、大炮和一支桨帆船队来支援希兹尔。",
+      "tts": {
+        "text": "他接受了提议，派遣士兵、大炮和一支桨帆船队来支援希兹尔。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从此以后，希兹尔不再只是一个海盗。",
+      "text_markdown": "从此以后，希兹尔不再只是一个海盗。",
+      "tts": {
+        "text": "从此以后，希兹尔不再只是一个海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是以苏丹之名统治阿尔及尔的奥斯曼总督。",
+      "text_markdown": "他是以苏丹之名统治阿尔及尔的奥斯曼总督。",
+      "tts": {
+        "text": "他是以苏丹之名统治阿尔及尔的奥斯曼总督。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他取了海雷丁这个尊号，意为信仰之善。",
+      "text_markdown": "他取了海雷丁这个尊号，意为信仰之善。",
+      "tts": {
+        "text": "他取了海雷丁这个尊号，意为信仰之善。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奥斯曼帝国的资源与他自身的海上天赋相结合，使他势不可挡。",
+      "text_markdown": "奥斯曼帝国的资源与他自身的海上天赋相结合，使他势不可挡。",
+      "tts": {
+        "text": "奥斯曼帝国的资源与他自身的海上天赋相结合，使他势不可挡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁用接下来的十年巩固了奥斯曼帝国在北非海岸的力量。",
+      "text_markdown": "海雷丁用接下来的十年巩固了奥斯曼帝国在北非海岸的力量。",
+      "tts": {
+        "text": "海雷丁用接下来的十年巩固了奥斯曼帝国在北非海岸的力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他攻占了突尼斯，将西班牙驻军从关键堡垒中驱逐，并扩大了海盗舰队。",
+      "text_markdown": "他攻占了突尼斯，将西班牙驻军从关键堡垒中驱逐，并扩大了海盗舰队。",
+      "tts": {
+        "text": "他攻占了突尼斯，将西班牙驻军从关键堡垒中驱逐，并扩大了海盗舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他培养了新一代海军指挥官，他们将在未来数十年中为奥斯曼帝国效力。",
+      "text_markdown": "他培养了新一代海军指挥官，他们将在未来数十年中为奥斯曼帝国效力。",
+      "tts": {
+        "text": "他培养了新一代海军指挥官，他们将在未来数十年中为奥斯曼帝国效力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的舰队成为西地中海的主导力量。",
+      "text_markdown": "他的舰队成为西地中海的主导力量。",
+      "tts": {
+        "text": "他的舰队成为西地中海的主导力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1533年，苏莱曼大帝召海雷丁前往伊斯坦布尔。",
+      "text_markdown": "1533年，苏莱曼大帝召海雷丁前往伊斯坦布尔。",
+      "tts": {
+        "text": "一五三三年，苏莱曼大帝召海雷丁前往伊斯坦布尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏莱曼是当时世界上最有权势的统治者。",
+      "text_markdown": "苏莱曼是当时世界上最有权势的统治者。",
+      "tts": {
+        "text": "苏莱曼是当时世界上最有权势的统治者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他认识到奥斯曼帝国需要一支能与其传奇陆军相匹配的专业海军。",
+      "text_markdown": "他认识到奥斯曼帝国需要一支能与其传奇陆军相匹配的专业海军。",
+      "tts": {
+        "text": "他认识到奥斯曼帝国需要一支能与其传奇陆军相匹配的专业海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他任命海雷丁为卡普丹帕夏，即整个奥斯曼舰队的大元帅。",
+      "text_markdown": "他任命海雷丁为卡普丹帕夏，即整个奥斯曼舰队的大元帅。",
+      "tts": {
+        "text": "他任命海雷丁为卡普丹帕夏，即整个奥斯曼舰队的大元帅。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这次任命是地中海历史的转折点。",
+      "text_markdown": "这次任命是地中海历史的转折点。",
+      "tts": {
+        "text": "这次任命是地中海历史的转折点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥斯曼海军虽有一定实力，但远非主导力量。",
+      "text_markdown": "奥斯曼海军虽有一定实力，但远非主导力量。",
+      "tts": {
+        "text": "奥斯曼海军虽有一定实力，但远非主导力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在海雷丁的指挥下，它将成为世界上最令人畏惧的海上力量。",
+      "text_markdown": "在海雷丁的指挥下，它将成为世界上最令人畏惧的海上力量。",
+      "tts": {
+        "text": "在海雷丁的指挥下，它将成为世界上最令人畏惧的海上力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他从伊斯坦布尔的造船厂开始重建舰队，运用了他在数十年海盗战争中学到的一切。",
+      "text_markdown": "他从伊斯坦布尔的造船厂开始重建舰队，运用了他在数十年海盗战争中学到的一切。",
+      "tts": {
+        "text": "他从伊斯坦布尔的造船厂开始重建舰队，运用了他在数十年海盗战争中学到的一切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁使奥斯曼造船技术实现了现代化。",
+      "text_markdown": "海雷丁使奥斯曼造船技术实现了现代化。",
+      "tts": {
+        "text": "海雷丁使奥斯曼造船技术实现了现代化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他设计了以海盗船为蓝本的更快、更灵活的桨帆船。",
+      "text_markdown": "他设计了以海盗船为蓝本的更快、更灵活的桨帆船。",
+      "tts": {
+        "text": "他设计了以海盗船为蓝本的更快、更灵活的桨帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他为奥斯曼海军军官建立了训练计划。",
+      "text_markdown": "他为奥斯曼海军军官建立了训练计划。",
+      "tts": {
+        "text": "他为奥斯曼海军军官建立了训练计划。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他从地中海各地招募经验丰富的海盗担任船长。",
+      "text_markdown": "他从地中海各地招募经验丰富的海盗担任船长。",
+      "tts": {
+        "text": "他从地中海各地招募经验丰富的海盗担任船长。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "作为大元帅的首次重大战役以意大利海岸为目标。",
+      "text_markdown": "作为大元帅的首次重大战役以意大利海岸为目标。",
+      "tts": {
+        "text": "作为大元帅的首次重大战役以意大利海岸为目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1534年，他率领奥斯曼舰队沿南意大利海岸发动了毁灭性的突袭。",
+      "text_markdown": "1534年，他率领奥斯曼舰队沿南意大利海岸发动了毁灭性的突袭。",
+      "tts": {
+        "text": "一五三四年，他率领奥斯曼舰队沿南意大利海岸发动了毁灭性的突袭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他攻占了突尼斯城，并将其建立为奥斯曼海军基地。",
+      "text_markdown": "他攻占了突尼斯城，并将其建立为奥斯曼海军基地。",
+      "tts": {
+        "text": "他攻占了突尼斯城，并将其建立为奥斯曼海军基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这次突袭令基督教国家胆寒，展示了奥斯曼海上力量的延伸范围。",
+      "text_markdown": "这次突袭令基督教国家胆寒，展示了奥斯曼海上力量的延伸范围。",
+      "tts": {
+        "text": "这次突袭令基督教国家胆寒，展示了奥斯曼海上力量的延伸范围。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "神圣罗马帝国皇帝查理五世发动了大规模反击。",
+      "text_markdown": "神圣罗马帝国皇帝查理五世发动了大规模反击。",
+      "tts": {
+        "text": "神圣罗马帝国皇帝查理五世发动了大规模反击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1535年，查理五世集结了欧洲历史上最大的舰队之一来夺回突尼斯。",
+      "text_markdown": "1535年，查理五世集结了欧洲历史上最大的舰队之一来夺回突尼斯。",
+      "tts": {
+        "text": "一五三五年，查理五世集结了欧洲历史上最大的舰队之一来夺回突尼斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "舰队包含了来自西班牙、意大利、葡萄牙和教皇国的船只。",
+      "text_markdown": "舰队包含了来自西班牙、意大利、葡萄牙和教皇国的船只。",
+      "tts": {
+        "text": "舰队包含了来自西班牙、意大利、葡萄牙和教皇国的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "查理五世成功攻占了突尼斯，但海雷丁带着舰队核心力量逃脱了。",
+      "text_markdown": "查理五世成功攻占了突尼斯，但海雷丁带着舰队核心力量逃脱了。",
+      "tts": {
+        "text": "查理五世成功攻占了突尼斯，但海雷丁带着舰队核心力量逃脱了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "失去突尼斯是一次挫折，但不是一次失败。",
+      "text_markdown": "失去突尼斯是一次挫折，但不是一次失败。",
+      "tts": {
+        "text": "失去突尼斯是一次挫折，但不是一次失败。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海雷丁退守阿尔及尔，立即开始重建力量。",
+      "text_markdown": "海雷丁退守阿尔及尔，立即开始重建力量。",
+      "tts": {
+        "text": "海雷丁退守阿尔及尔，立即开始重建力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他知道基督教联盟是暂时的，一旦眼前的威胁过去就会瓦解。",
+      "text_markdown": "他知道基督教联盟是暂时的，一旦眼前的威胁过去就会瓦解。",
+      "tts": {
+        "text": "他知道基督教联盟是暂时的，一旦眼前的威胁过去就会瓦解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他说对了，几个月内联盟就开始分崩离析。",
+      "text_markdown": "他说对了，几个月内联盟就开始分崩离析。",
+      "tts": {
+        "text": "他说对了，几个月内联盟就开始分崩离析。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两年之内，海雷丁已为他最伟大的战役做好了准备。",
+      "text_markdown": "两年之内，海雷丁已为他最伟大的战役做好了准备。",
+      "tts": {
+        "text": "两年之内，海雷丁已为他最伟大的战役做好了准备。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "将决定他遗产的对决正在逼近。",
+      "text_markdown": "将决定他遗产的对决正在逼近。",
+      "tts": {
+        "text": "将决定他遗产的对决正在逼近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它将在希腊西海岸的水域中展开。",
+      "text_markdown": "它将在希腊西海岸的水域中展开。",
+      "tts": {
+        "text": "它将在希腊西海岸的水域中展开。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这场战役的名字叫普雷韦扎，它将永远改变地中海。",
+      "text_markdown": "这场战役的名字叫普雷韦扎，它将永远改变地中海。",
+      "tts": {
+        "text": "这场战役的名字叫普雷韦扎，它将永远改变地中海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "巅峰时刻",
+      "text_markdown": "巅峰时刻"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "普雷韦扎海战发生于1538年9月28日。",
+      "text_markdown": "普雷韦扎海战发生于1538年9月28日。",
+      "tts": {
+        "text": "普雷韦扎海战发生于一五三八年九月二十八日。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是十六世纪地中海决定性的海上交战。",
+      "text_markdown": "这是十六世纪地中海决定性的海上交战。",
+      "tts": {
+        "text": "这是十六世纪地中海决定性的海上交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一方是海雷丁·巴巴罗萨率领的奥斯曼舰队。",
+      "text_markdown": "一方是海雷丁·巴巴罗萨率领的奥斯曼舰队。",
+      "tts": {
+        "text": "一方是海雷丁·巴巴罗萨率领的奥斯曼舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "另一方是神圣联盟——基督教国家联合舰队。",
+      "text_markdown": "另一方是神圣联盟——基督教国家联合舰队。",
+      "tts": {
+        "text": "另一方是神圣联盟——基督教国家联合舰队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "神圣联盟舰队由热那亚海军上将安德烈亚·多里亚指挥。",
+      "text_markdown": "神圣联盟舰队由热那亚海军上将安德烈亚·多里亚指挥。",
+      "tts": {
+        "text": "神圣联盟舰队由热那亚海军上将安德烈亚·多里亚指挥。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它由来自西班牙、威尼斯、教皇国和热那亚的约300艘船只组成。",
+      "text_markdown": "它由来自西班牙、威尼斯、教皇国和热那亚的约300艘船只组成。",
+      "tts": {
+        "text": "它由来自西班牙、威尼斯、教皇国和热那亚的约三百艘船只组成。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从纸面上看，基督教舰队的规模远大于奥斯曼军队。",
+      "text_markdown": "从纸面上看，基督教舰队的规模远大于奥斯曼军队。",
+      "tts": {
+        "text": "从纸面上看，基督教舰队的规模远大于奥斯曼军队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但仅凭规模并不能赢得海战。",
+      "text_markdown": "但仅凭规模并不能赢得海战。",
+      "tts": {
+        "text": "但仅凭规模并不能赢得海战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁指挥着约150艘桨帆船及更小的辅助船只。",
+      "text_markdown": "海雷丁指挥着约150艘桨帆船及更小的辅助船只。",
+      "tts": {
+        "text": "海雷丁指挥着约一百五十艘桨帆船及更小的辅助船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的舰队虽在数量上处于劣势，但训练更好、协调更佳、指挥更优。",
+      "text_markdown": "他的舰队虽在数量上处于劣势，但训练更好、协调更佳、指挥更优。",
+      "tts": {
+        "text": "他的舰队虽在数量上处于劣势，但训练更好、协调更佳、指挥更优。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海雷丁在这片水域作战了数十年，熟悉每一道洋流、每一种风向以及海岸线提供的每一个战术优势。",
+      "text_markdown": "海雷丁在这片水域作战了数十年，熟悉每一道洋流、每一种风向以及海岸线提供的每一个战术优势。",
+      "tts": {
+        "text": "海雷丁在这片水域作战了数十年，熟悉每一道洋流、每一种风向以及海岸线提供的每一个战术优势。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战役发生在希腊西海岸安布拉基亚湾入口附近。",
+      "text_markdown": "战役发生在希腊西海岸安布拉基亚湾入口附近。",
+      "tts": {
+        "text": "战役发生在希腊西海岸安布拉基亚湾入口附近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海雷丁将舰队部署在有利于借助盛行风向的位置。",
+      "text_markdown": "海雷丁将舰队部署在有利于借助盛行风向的位置。",
+      "tts": {
+        "text": "海雷丁将舰队部署在有利于借助盛行风向的位置。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将桨帆船排成新月形阵型，使火力能集中打击被孤立的敌方编队。",
+      "text_markdown": "他将桨帆船排成新月形阵型，使火力能集中打击被孤立的敌方编队。",
+      "tts": {
+        "text": "他将桨帆船排成新月形阵型，使火力能集中打击被孤立的敌方编队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的战术部署堪称大师手笔。",
+      "text_markdown": "他的战术部署堪称大师手笔。",
+      "tts": {
+        "text": "他的战术部署堪称大师手笔。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安德烈亚·多里亚在关键时刻犹豫了。",
+      "text_markdown": "安德烈亚·多里亚在关键时刻犹豫了。",
+      "tts": {
+        "text": "安德烈亚·多里亚在关键时刻犹豫了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "尽管拥有数量优势，他却不愿将全部舰队投入近距离交战。",
+      "text_markdown": "尽管拥有数量优势，他却不愿将全部舰队投入近距离交战。",
+      "tts": {
+        "text": "尽管拥有数量优势，他却不愿将全部舰队投入近距离交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将最好的战舰留作预备队，试图寻找更好的阵位。",
+      "text_markdown": "他将最好的战舰留作预备队，试图寻找更好的阵位。",
+      "tts": {
+        "text": "他将最好的战舰留作预备队，试图寻找更好的阵位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种谨慎对基督教事业来说是致命的。",
+      "text_markdown": "这种谨慎对基督教事业来说是致命的。",
+      "tts": {
+        "text": "这种谨慎对基督教事业来说是致命的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁发动了猛烈进攻，瞄准了冲在主舰队前面的威尼斯和教皇国舰船。",
+      "text_markdown": "海雷丁发动了猛烈进攻，瞄准了冲在主舰队前面的威尼斯和教皇国舰船。",
+      "tts": {
+        "text": "海雷丁发动了猛烈进攻，瞄准了冲在主舰队前面的威尼斯和教皇国舰船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的桨帆船迅速逼近，在近距离展开交战。",
+      "text_markdown": "他的桨帆船迅速逼近，在近距离展开交战。",
+      "tts": {
+        "text": "他的桨帆船迅速逼近，在近距离展开交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战斗激烈而残酷，数十艘船上炮火纷飞、肉搏厮杀。",
+      "text_markdown": "战斗激烈而残酷，数十艘船上炮火纷飞、肉搏厮杀。",
+      "tts": {
+        "text": "战斗激烈而残酷，数十艘船上炮火纷飞、肉搏厮杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "被孤立的基督教分队被逐一击溃。",
+      "text_markdown": "被孤立的基督教分队被逐一击溃。",
+      "tts": {
+        "text": "被孤立的基督教分队被逐一击溃。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到日终时，神圣联盟已遭受毁灭性的失败。",
+      "text_markdown": "到日终时，神圣联盟已遭受毁灭性的失败。",
+      "tts": {
+        "text": "到日终时，神圣联盟已遭受毁灭性的失败。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海雷丁的部队俘获或击沉了数十艘基督教战舰。",
+      "text_markdown": "海雷丁的部队俘获或击沉了数十艘基督教战舰。",
+      "tts": {
+        "text": "海雷丁的部队俘获或击沉了数十艘基督教战舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数千名基督教水兵和士兵阵亡或被俘。",
+      "text_markdown": "数千名基督教水兵和士兵阵亡或被俘。",
+      "tts": {
+        "text": "数千名基督教水兵和士兵阵亡或被俘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "安德烈亚·多里亚率残部撤退，将海洋拱手让给了奥斯曼人。",
+      "text_markdown": "安德烈亚·多里亚率残部撤退，将海洋拱手让给了奥斯曼人。",
+      "tts": {
+        "text": "安德烈亚·多里亚率残部撤退，将海洋拱手让给了奥斯曼人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "普雷韦扎海战确立了奥斯曼帝国在地中海的海上霸权。",
+      "text_markdown": "普雷韦扎海战确立了奥斯曼帝国在地中海的海上霸权。",
+      "tts": {
+        "text": "普雷韦扎海战确立了奥斯曼帝国在地中海的海上霸权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "此后数十年间，没有任何基督教舰队能够挑战奥斯曼对东部和中部海域的控制。",
+      "text_markdown": "此后数十年间，没有任何基督教舰队能够挑战奥斯曼对东部和中部海域的控制。",
+      "tts": {
+        "text": "此后数十年间，没有任何基督教舰队能够挑战奥斯曼对东部和中部海域的控制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奥斯曼帝国现在可以将军事力量投射到整个北非海岸以及意大利半岛。",
+      "text_markdown": "奥斯曼帝国现在可以将军事力量投射到整个北非海岸以及意大利半岛。",
+      "tts": {
+        "text": "奥斯曼帝国现在可以将军事力量投射到整个北非海岸以及意大利半岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是十六世纪最重要的海上胜利。",
+      "text_markdown": "这是十六世纪最重要的海上胜利。",
+      "tts": {
+        "text": "这是十六世纪最重要的海上胜利。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁作为凯旋的英雄回到了伊斯坦布尔。",
+      "text_markdown": "海雷丁作为凯旋的英雄回到了伊斯坦布尔。",
+      "tts": {
+        "text": "海雷丁作为凯旋的英雄回到了伊斯坦布尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏莱曼大帝以帝国所能给予的最高荣誉接待了他。",
+      "text_markdown": "苏莱曼大帝以帝国所能给予的最高荣誉接待了他。",
+      "tts": {
+        "text": "苏莱曼大帝以帝国所能给予的最高荣誉接待了他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这位大元帅完成了苏丹交给他的使命。",
+      "text_markdown": "这位大元帅完成了苏丹交给他的使命。",
+      "tts": {
+        "text": "这位大元帅完成了苏丹交给他的使命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他使奥斯曼海军成为了地中海的至高力量。",
+      "text_markdown": "他使奥斯曼海军成为了地中海的至高力量。",
+      "tts": {
+        "text": "他使奥斯曼海军成为了地中海的至高力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "普雷韦扎之后的岁月里，海雷丁继续统帅奥斯曼舰队。",
+      "text_markdown": "普雷韦扎之后的岁月里，海雷丁继续统帅奥斯曼舰队。",
+      "tts": {
+        "text": "普雷韦扎之后的岁月里，海雷丁继续统帅奥斯曼舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他对西班牙和意大利沿海城市发动了突袭。",
+      "text_markdown": "他对西班牙和意大利沿海城市发动了突袭。",
+      "tts": {
+        "text": "他对西班牙和意大利沿海城市发动了突袭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他与法国国王弗朗索瓦一世进行了谈判，后者与奥斯曼人结盟对抗共同的敌人查理五世。",
+      "text_markdown": "他与法国国王弗朗索瓦一世进行了谈判，后者与奥斯曼人结盟对抗共同的敌人查理五世。",
+      "tts": {
+        "text": "他与法国国王弗朗索瓦一世进行了谈判，后者与奥斯曼人结盟对抗共同的敌人查理五世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一个穆斯林帝国与一个基督教王国之间的这一联盟震惊了整个欧洲。",
+      "text_markdown": "一个穆斯林帝国与一个基督教王国之间的这一联盟震惊了整个欧洲。",
+      "tts": {
+        "text": "一个穆斯林帝国与一个基督教王国之间的这一联盟震惊了整个欧洲。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1543年冬，海雷丁将舰队停泊在法国港口土伦。",
+      "text_markdown": "1543年冬，海雷丁将舰队停泊在法国港口土伦。",
+      "tts": {
+        "text": "一五四三年冬，海雷丁将舰队停泊在法国港口土伦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法国国王将这个港口作为联合对西作战的基地提供给他。",
+      "text_markdown": "法国国王将这个港口作为联合对西作战的基地提供给他。",
+      "tts": {
+        "text": "法国国王将这个港口作为联合对西作战的基地提供给他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数月之间，奥斯曼战舰从一个法国港口出击行动。",
+      "text_markdown": "数月之间，奥斯曼战舰从一个法国港口出击行动。",
+      "tts": {
+        "text": "数月之间，奥斯曼战舰从一个法国港口出击行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一奇观震惊了基督教世界，表明权力政治可以超越宗教分歧。",
+      "text_markdown": "这一奇观震惊了基督教世界，表明权力政治可以超越宗教分歧。",
+      "tts": {
+        "text": "这一奇观震惊了基督教世界，表明权力政治可以超越宗教分歧。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁对阿尔及尔的治理与他的海上征战同步进行。",
+      "text_markdown": "海雷丁对阿尔及尔的治理与他的海上征战同步进行。",
+      "tts": {
+        "text": "海雷丁对阿尔及尔的治理与他的海上征战同步进行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在城中建造了清真寺、公共浴室和防御工事。",
+      "text_markdown": "他在城中建造了清真寺、公共浴室和防御工事。",
+      "tts": {
+        "text": "他在城中建造了清真寺、公共浴室和防御工事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他鼓励贸易，并从穆斯林世界各地吸引了能工巧匠。",
+      "text_markdown": "他鼓励贸易，并从穆斯林世界各地吸引了能工巧匠。",
+      "tts": {
+        "text": "他鼓励贸易，并从穆斯林世界各地吸引了能工巧匠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在他的治理下，阿尔及尔从一个小港口发展成为北非最重要的城市之一。",
+      "text_markdown": "在他的治理下，阿尔及尔从一个小港口发展成为北非最重要的城市之一。",
+      "tts": {
+        "text": "在他的治理下，阿尔及尔从一个小港口发展成为北非最重要的城市之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的舰队保护着连接伊斯坦布尔与西地中海的奥斯曼贸易航线。",
+      "text_markdown": "他的舰队保护着连接伊斯坦布尔与西地中海的奥斯曼贸易航线。",
+      "tts": {
+        "text": "他的舰队保护着连接伊斯坦布尔与西地中海的奥斯曼贸易航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "运载粮食、纺织品和制成品的商船在他的战舰护卫下航行。",
+      "text_markdown": "运载粮食、纺织品和制成品的商船在他的战舰护卫下航行。",
+      "tts": {
+        "text": "运载粮食、纺织品和制成品的商船在他的战舰护卫下航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奥斯曼地中海的经济繁荣在很大程度上依赖于海雷丁建立的海军。",
+      "text_markdown": "奥斯曼地中海的经济繁荣在很大程度上依赖于海雷丁建立的海军。",
+      "tts": {
+        "text": "奥斯曼地中海的经济繁荣在很大程度上依赖于海雷丁建立的海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他将海盗劫掠转变为帝国权力的工具。",
+      "text_markdown": "他将海盗劫掠转变为帝国权力的工具。",
+      "tts": {
+        "text": "他将海盗劫掠转变为帝国权力的工具。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终章",
+      "text_markdown": "终章"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到十五世纪四十年代初，海雷丁·巴巴罗萨已年过六旬。",
+      "text_markdown": "到十五世纪四十年代初，海雷丁·巴巴罗萨已年过六旬。",
+      "tts": {
+        "text": "到十五世纪四十年代初，海雷丁·巴巴罗萨已年过六旬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在海上度过了四十多年，战斗、建设、指挥。",
+      "text_markdown": "他在海上度过了四十多年，战斗、建设、指挥。",
+      "tts": {
+        "text": "他在海上度过了四十多年，战斗、建设、指挥。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的身体在数十年的征战、恶劣天气和舰上生活的艰苦中逐渐磨损。",
+      "text_markdown": "他的身体在数十年的征战、恶劣天气和舰上生活的艰苦中逐渐磨损。",
+      "tts": {
+        "text": "他的身体在数十年的征战、恶劣天气和舰上生活的艰苦中逐渐磨损。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他的头脑依然敏锐，权威不容挑战。",
+      "text_markdown": "但他的头脑依然敏锐，权威不容挑战。",
+      "tts": {
+        "text": "但他的头脑依然敏锐，权威不容挑战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1543年土伦远征之后，海雷丁回到了伊斯坦布尔。",
+      "text_markdown": "1543年土伦远征之后，海雷丁回到了伊斯坦布尔。",
+      "tts": {
+        "text": "一五四三年土伦远征之后，海雷丁回到了伊斯坦布尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他完成了最后一次重大海上行动。",
+      "text_markdown": "他完成了最后一次重大海上行动。",
+      "tts": {
+        "text": "他完成了最后一次重大海上行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "苏丹没有再让他率领另一次远征。",
+      "text_markdown": "苏丹没有再让他率领另一次远征。",
+      "tts": {
+        "text": "苏丹没有再让他率领另一次远征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "以他的年龄和成就，退休是理所当然且恰如其分的。",
+      "text_markdown": "以他的年龄和成就，退休是理所当然且恰如其分的。",
+      "tts": {
+        "text": "以他的年龄和成就，退休是理所当然且恰如其分的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁在伊斯坦布尔度过了最后的岁月，住在一座俯瞰博斯普鲁斯海峡的宏伟宫殿里。",
+      "text_markdown": "海雷丁在伊斯坦布尔度过了最后的岁月，住在一座俯瞰博斯普鲁斯海峡的宏伟宫殿里。",
+      "tts": {
+        "text": "海雷丁在伊斯坦布尔度过了最后的岁月，住在一座俯瞰博斯普鲁斯海峡的宏伟宫殿里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将回忆录口述给一位抄写员，创作了地中海海盗史最重要的第一手资料之一。",
+      "text_markdown": "他将回忆录口述给一位抄写员，创作了地中海海盗史最重要的第一手资料之一。",
+      "tts": {
+        "text": "他将回忆录口述给一位抄写员，创作了地中海海盗史最重要的第一手资料之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些被称为《海雷丁帕夏战记》的回忆录以手稿形式留存至今。",
+      "text_markdown": "这些被称为《海雷丁帕夏战记》的回忆录以手稿形式留存至今。",
+      "tts": {
+        "text": "这些被称为《海雷丁帕夏战记》的回忆录以手稿形式留存至今。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数百年来一直被历史学家研究。",
+      "text_markdown": "数百年来一直被历史学家研究。",
+      "tts": {
+        "text": "数百年来一直被历史学家研究。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他继续以顾问身份参与奥斯曼海军事务。",
+      "text_markdown": "他继续以顾问身份参与奥斯曼海军事务。",
+      "tts": {
+        "text": "他继续以顾问身份参与奥斯曼海军事务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年轻的海军将领们向他请教战略和造船方面的建议。",
+      "text_markdown": "年轻的海军将领们向他请教战略和造船方面的建议。",
+      "tts": {
+        "text": "年轻的海军将领们向他请教战略和造船方面的建议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他培养了整整一代将继承他事业的海军军官。",
+      "text_markdown": "他培养了整整一代将继承他事业的海军军官。",
+      "tts": {
+        "text": "他培养了整整一代将继承他事业的海军军官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他在奥斯曼海军中建立的制度性知识是他最持久的贡献。",
+      "text_markdown": "他在奥斯曼海军中建立的制度性知识是他最持久的贡献。",
+      "tts": {
+        "text": "他在奥斯曼海军中建立的制度性知识是他最持久的贡献。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁·巴巴罗萨于1546年7月4日在伊斯坦布尔去世。",
+      "text_markdown": "海雷丁·巴巴罗萨于1546年7月4日在伊斯坦布尔去世。",
+      "tts": {
+        "text": "海雷丁·巴巴罗萨于一五四六年七月四日在伊斯坦布尔去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他大约六十八岁。",
+      "text_markdown": "他大约六十八岁。",
+      "tts": {
+        "text": "他大约六十八岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的去世在整个奥斯曼帝国引起了悲痛。",
+      "text_markdown": "他的去世在整个奥斯曼帝国引起了悲痛。",
+      "tts": {
+        "text": "他的去世在整个奥斯曼帝国引起了悲痛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "苏莱曼大帝下令在贝希克塔什的博斯普鲁斯海峡岸边为他建造了一座宏伟的陵墓。",
+      "text_markdown": "苏莱曼大帝下令在贝希克塔什的博斯普鲁斯海峡岸边为他建造了一座宏伟的陵墓。",
+      "tts": {
+        "text": "苏莱曼大帝下令在贝希克塔什的博斯普鲁斯海峡岸边为他建造了一座宏伟的陵墓。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这座陵墓至今仍矗立在伊斯坦布尔的贝希克塔什区。",
+      "text_markdown": "这座陵墓至今仍矗立在伊斯坦布尔的贝希克塔什区。",
+      "tts": {
+        "text": "这座陵墓至今仍矗立在伊斯坦布尔的贝希克塔什区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一座以瓷砖和书法装饰的奥斯曼建筑纪念碑。",
+      "text_markdown": "这是一座以瓷砖和书法装饰的奥斯曼建筑纪念碑。",
+      "tts": {
+        "text": "这是一座以瓷砖和书法装饰的奥斯曼建筑纪念碑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数百年来，奥斯曼水手们出航前都会前来瞻仰陵墓。",
+      "text_markdown": "数百年来，奥斯曼水手们出航前都会前来瞻仰陵墓。",
+      "tts": {
+        "text": "数百年来，奥斯曼水手们出航前都会前来瞻仰陵墓。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们祈求平安航行，祈求这位伟大海军元帅的在天之灵指引他们。",
+      "text_markdown": "他们祈求平安航行，祈求这位伟大海军元帅的在天之灵指引他们。",
+      "tts": {
+        "text": "他们祈求平安航行，祈求这位伟大海军元帅的在天之灵指引他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在奥斯曼海军中的继任者维持着他所建立的舰队。",
+      "text_markdown": "他在奥斯曼海军中的继任者维持着他所建立的舰队。",
+      "tts": {
+        "text": "他在奥斯曼海军中的继任者维持着他所建立的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "图尔古特·雷伊斯和皮亚莱帕夏等海军将领在此后数十年中延续了奥斯曼的海上霸权。",
+      "text_markdown": "图尔古特·雷伊斯和皮亚莱帕夏等海军将领在此后数十年中延续了奥斯曼的海上霸权。",
+      "tts": {
+        "text": "图尔古特·雷伊斯和皮亚莱帕夏等海军将领在此后数十年中延续了奥斯曼的海上霸权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在海雷丁麾下学习了技艺，并继承了他的战术思想。",
+      "text_markdown": "他们在海雷丁麾下学习了技艺，并继承了他的战术思想。",
+      "tts": {
+        "text": "他们在海雷丁麾下学习了技艺，并继承了他的战术思想。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一五七一年的勒班陀海战最终将终结奥斯曼的海上霸权，但即使那场失败也未能摧毁海雷丁所创建的海军。",
+      "text_markdown": "一五七一年的勒班陀海战最终将终结奥斯曼的海上霸权，但即使那场失败也未能摧毁海雷丁所创建的海军。",
+      "tts": {
+        "text": "一五七一年的勒班陀海战最终将终结奥斯曼的海上霸权，但即使那场失败也未能摧毁海雷丁所创建的海军。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁纳入奥斯曼控制的北非领土在此后数百年间一直是奥斯曼行省。",
+      "text_markdown": "海雷丁纳入奥斯曼控制的北非领土在此后数百年间一直是奥斯曼行省。",
+      "tts": {
+        "text": "海雷丁纳入奥斯曼控制的北非领土在此后数百年间一直是奥斯曼行省。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔、突尼斯和的黎波里一直到十九世纪仍是海盗基地。",
+      "text_markdown": "阿尔及尔、突尼斯和的黎波里一直到十九世纪仍是海盗基地。",
+      "tts": {
+        "text": "阿尔及尔、突尼斯和的黎波里一直到十九世纪仍是海盗基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海雷丁帮助建立的巴巴里海岸海盗传统延续了三百年。",
+      "text_markdown": "海雷丁帮助建立的巴巴里海岸海盗传统延续了三百年。",
+      "tts": {
+        "text": "海雷丁帮助建立的巴巴里海岸海盗传统延续了三百年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "终结这一传统需要法国和英国的联合力量。",
+      "text_markdown": "终结这一传统需要法国和英国的联合力量。",
+      "tts": {
+        "text": "终结这一传统需要法国和英国的联合力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁如其一生所活的那样死去：为奥斯曼国家效力。",
+      "text_markdown": "海雷丁如其一生所活的那样死去：为奥斯曼国家效力。",
+      "tts": {
+        "text": "海雷丁如其一生所活的那样死去：为奥斯曼国家效力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从一座希腊岛屿上陶匠的儿子开始。",
+      "text_markdown": "他从一座希腊岛屿上陶匠的儿子开始。",
+      "tts": {
+        "text": "他从一座希腊岛屿上陶匠的儿子开始。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他以奥斯曼帝国历史上最杰出的海军将领的身份终结。",
+      "text_markdown": "他以奥斯曼帝国历史上最杰出的海军将领的身份终结。",
+      "tts": {
+        "text": "他以奥斯曼帝国历史上最杰出的海军将领的身份终结。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他从莱斯沃斯岛到大元帅之位的历程，是海军史上最非凡的职业生涯之一。",
+      "text_markdown": "他从莱斯沃斯岛到大元帅之位的历程，是海军史上最非凡的职业生涯之一。",
+      "tts": {
+        "text": "他从莱斯沃斯岛到大元帅之位的历程，是海军史上最非凡的职业生涯之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁·巴巴罗萨将奥斯曼帝国从一个陆上强国转变为一个海上超级强国。",
+      "text_markdown": "海雷丁·巴巴罗萨将奥斯曼帝国从一个陆上强国转变为一个海上超级强国。",
+      "tts": {
+        "text": "海雷丁·巴巴罗萨将奥斯曼帝国从一个陆上强国转变为一个海上超级强国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在他的事业之前，奥斯曼人在陆地上强大，在海上却无足轻重。",
+      "text_markdown": "在他的事业之前，奥斯曼人在陆地上强大，在海上却无足轻重。",
+      "tts": {
+        "text": "在他的事业之前，奥斯曼人在陆地上强大，在海上却无足轻重。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在他的事业之后，奥斯曼海军控制地中海长达数代人之久。",
+      "text_markdown": "在他的事业之后，奥斯曼海军控制地中海长达数代人之久。",
+      "tts": {
+        "text": "在他的事业之后，奥斯曼海军控制地中海长达数代人之久。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一转变是十六世纪最重大的军事成就之一。",
+      "text_markdown": "这一转变是十六世纪最重大的军事成就之一。",
+      "tts": {
+        "text": "这一转变是十六世纪最重大的军事成就之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在普雷韦扎的胜利至今仍在世界各地的海军学院中被研究。",
+      "text_markdown": "他在普雷韦扎的胜利至今仍在世界各地的海军学院中被研究。",
+      "tts": {
+        "text": "他在普雷韦扎的胜利至今仍在世界各地的海军学院中被研究。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它证明了卓越的领导力和战术如何能够克服数量上的劣势。",
+      "text_markdown": "它证明了卓越的领导力和战术如何能够克服数量上的劣势。",
+      "tts": {
+        "text": "它证明了卓越的领导力和战术如何能够克服数量上的劣势。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这场战役表明，一支协调良好的舰队可以击败一支规模更大但指挥不善的舰队。",
+      "text_markdown": "这场战役表明，一支协调良好的舰队可以击败一支规模更大但指挥不善的舰队。",
+      "tts": {
+        "text": "这场战役表明，一支协调良好的舰队可以击败一支规模更大但指挥不善的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "五个世纪之后，它仍然是海军战略的经典教科书案例。",
+      "text_markdown": "五个世纪之后，它仍然是海军战略的经典教科书案例。",
+      "tts": {
+        "text": "五个世纪之后，它仍然是海军战略的经典教科书案例。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海雷丁对北非的影响同样深远。",
+      "text_markdown": "海雷丁对北非的影响同样深远。",
+      "tts": {
+        "text": "海雷丁对北非的影响同样深远。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "通过将阿尔及尔和其他城市纳入奥斯曼统治，他创建了延续数百年的政治结构。",
+      "text_markdown": "通过将阿尔及尔和其他城市纳入奥斯曼统治，他创建了延续数百年的政治结构。",
+      "tts": {
+        "text": "通过将阿尔及尔和其他城市纳入奥斯曼统治，他创建了延续数百年的政治结构。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些城市的人口因他接纳西班牙难民的政策而被重新塑造。",
+      "text_markdown": "这些城市的人口因他接纳西班牙难民的政策而被重新塑造。",
+      "tts": {
+        "text": "这些城市的人口因他接纳西班牙难民的政策而被重新塑造。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "如今定义马格里布的柏柏尔、阿拉伯、土耳其和安达卢西亚文化融合，其根源就在海雷丁帮助创造的那个世界。",
+      "text_markdown": "如今定义马格里布的柏柏尔、阿拉伯、土耳其和安达卢西亚文化融合，其根源就在海雷丁帮助创造的那个世界。",
+      "tts": {
+        "text": "如今定义马格里布的柏柏尔、阿拉伯、土耳其和安达卢西亚文化融合，其根源就在海雷丁帮助创造的那个世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在土耳其，海雷丁·巴巴罗萨是民族英雄。",
+      "text_markdown": "在土耳其，海雷丁·巴巴罗萨是民族英雄。",
+      "tts": {
+        "text": "在土耳其，海雷丁·巴巴罗萨是民族英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "土耳其海军以他的名字命名了第一艘潜艇。",
+      "text_markdown": "土耳其海军以他的名字命名了第一艘潜艇。",
+      "tts": {
+        "text": "土耳其海军以他的名字命名了第一艘潜艇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的形象出现在纪念碑、邮票和货币上。",
+      "text_markdown": "他的形象出现在纪念碑、邮票和货币上。",
+      "tts": {
+        "text": "他的形象出现在纪念碑、邮票和货币上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每一个土耳其学童都学习他的名字和故事。",
+      "text_markdown": "每一个土耳其学童都学习他的名字和故事。",
+      "tts": {
+        "text": "每一个土耳其学童都学习他的名字和故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在欧洲的历史记忆中，巴巴罗萨是一个更为复杂的人物。",
+      "text_markdown": "在欧洲的历史记忆中，巴巴罗萨是一个更为复杂的人物。",
+      "tts": {
+        "text": "在欧洲的历史记忆中，巴巴罗萨是一个更为复杂的人物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对他那个时代的西班牙人和意大利人来说，他是令人恐惧的敌人和无情的劫掠者。",
+      "text_markdown": "对他那个时代的西班牙人和意大利人来说，他是令人恐惧的敌人和无情的劫掠者。",
+      "tts": {
+        "text": "对他那个时代的西班牙人和意大利人来说，他是令人恐惧的敌人和无情的劫掠者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对法国人来说，他是对抗共同的西班牙对手时意想不到的盟友。",
+      "text_markdown": "对法国人来说，他是对抗共同的西班牙对手时意想不到的盟友。",
+      "tts": {
+        "text": "对法国人来说，他是对抗共同的西班牙对手时意想不到的盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他在欧洲的遗产反映了地中海历史分裂而充满争议的本质。",
+      "text_markdown": "他在欧洲的遗产反映了地中海历史分裂而充满争议的本质。",
+      "tts": {
+        "text": "他在欧洲的遗产反映了地中海历史分裂而充满争议的本质。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家们争论海雷丁是否应该被称为海盗。",
+      "text_markdown": "历史学家们争论海雷丁是否应该被称为海盗。",
+      "tts": {
+        "text": "历史学家们争论海雷丁是否应该被称为海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在他职业生涯的大部分时间里，他都在奥斯曼苏丹的明确授权下行事。",
+      "text_markdown": "在他职业生涯的大部分时间里，他都在奥斯曼苏丹的明确授权下行事。",
+      "tts": {
+        "text": "在他职业生涯的大部分时间里，他都在奥斯曼苏丹的明确授权下行事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的海盗活动是十六世纪地中海公认的一种海上战争形式。",
+      "text_markdown": "他的海盗活动是十六世纪地中海公认的一种海上战争形式。",
+      "tts": {
+        "text": "他的海盗活动是十六世纪地中海公认的一种海上战争形式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗行为与国家支持的海上战争之间的界限是模糊的，海雷丁在这条线的两侧都生活过。",
+      "text_markdown": "海盗行为与国家支持的海上战争之间的界限是模糊的，海雷丁在这条线的两侧都生活过。",
+      "tts": {
+        "text": "海盗行为与国家支持的海上战争之间的界限是模糊的，海雷丁在这条线的两侧都生活过。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "毋庸置疑的是他成就的规模。",
+      "text_markdown": "毋庸置疑的是他成就的规模。",
+      "tts": {
+        "text": "毋庸置疑的是他成就的规模。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个来自希腊岛屿的陶匠之子建立了地中海最强大的海军。",
+      "text_markdown": "一个来自希腊岛屿的陶匠之子建立了地中海最强大的海军。",
+      "tts": {
+        "text": "一个来自希腊岛屿的陶匠之子建立了地中海最强大的海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他击败了欧洲最强大的基督教国家的联合舰队。",
+      "text_markdown": "他击败了欧洲最强大的基督教国家的联合舰队。",
+      "tts": {
+        "text": "他击败了欧洲最强大的基督教国家的联合舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他治理了一座重要城市，塑造了一个大洲的政治格局，在世界上最强大帝国的尊崇中辞世。",
+      "text_markdown": "他治理了一座重要城市，塑造了一个大洲的政治格局，在世界上最强大帝国的尊崇中辞世。",
+      "tts": {
+        "text": "他治理了一座重要城市，塑造了一个大洲的政治格局，在世界上最强大帝国的尊崇中辞世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他的一生证明了当雄心、才能和机遇在历史的正确时刻交汇时，能够创造出怎样的奇迹。",
+      "text_markdown": "他的一生证明了当雄心、才能和机遇在历史的正确时刻交汇时，能够创造出怎样的奇迹。",
+      "tts": {
+        "text": "他的一生证明了当雄心、才能和机遇在历史的正确时刻交汇时，能够创造出怎样的奇迹。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

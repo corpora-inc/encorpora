@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_every",
+  "language": "ja",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者の皆さまへ",
+      "text_markdown": "読者の皆さまへ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、史上最大の強奪を成し遂げ、その後姿を消した海賊の実話です。",
+      "text_markdown": "これは、史上最大の強奪を成し遂げ、その後姿を消した海賊の実話です。",
+      "tts": {
+        "text": "これは、史上最大の強奪を成し遂げ、その後姿を消した海賊の実話です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はヘンリー・エブリー、かつて地球上で最も指名手配された男でした。",
+      "text_markdown": "彼の名はヘンリー・エブリー、かつて地球上で最も指名手配された男でした。",
+      "tts": {
+        "text": "彼の名はヘンリー・エブリー、かつて地球上で最も指名手配された男でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どの政府も彼を捕らえることができず、彼がいつどこで死んだかは誰も知りません。",
+      "text_markdown": "どの政府も彼を捕らえることができず、彼がいつどこで死んだかは誰も知りません。",
+      "tts": {
+        "text": "どの政府も彼を捕らえることができず、彼がいつどこで死んだかは誰も知りません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "たった一度の襲撃で、エブリーは数百万の価値がある財宝を奪いました。",
+      "text_markdown": "たった一度の襲撃で、エブリーは数百万の価値がある財宝を奪いました。",
+      "tts": {
+        "text": "たった一度の襲撃で、エブリーは数百万の価値がある財宝を奪いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の犯罪は二つの帝国の間に外交危機を引き起こしました。",
+      "text_markdown": "彼の犯罪は二つの帝国の間に外交危機を引き起こしました。",
+      "tts": {
+        "text": "彼の犯罪は二つの帝国の間に外交危機を引き起こしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは世界最強の企業である東インド会社をほぼ壊滅させました。",
+      "text_markdown": "それは世界最強の企業である東インド会社をほぼ壊滅させました。",
+      "tts": {
+        "text": "それは世界最強の企業である東インド会社をほぼ壊滅させました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本は、十七世紀後半のインド洋の交易路へとあなたを導きます。",
+      "text_markdown": "この本は、十七世紀後半のインド洋の交易路へとあなたを導きます。",
+      "tts": {
+        "text": "この本は、じゅうななせいきこうはんのインド洋の交易路へとあなたを導きます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エブリーの足跡を、イングランドの波止場からマダガスカルの海岸までたどることになります。",
+      "text_markdown": "エブリーの足跡を、イングランドの波止場からマダガスカルの海岸までたどることになります。",
+      "tts": {
+        "text": "エブリーの足跡を、イングランドの波止場からマダガスカルの海岸までたどることになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この本の内容はすべて、歴史的記録、裁判記録、目撃者の証言に基づいています。",
+      "text_markdown": "この本の内容はすべて、歴史的記録、裁判記録、目撃者の証言に基づいています。",
+      "tts": {
+        "text": "この本の内容はすべて、歴史的記録、裁判記録、目撃者の証言に基づいています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者の皆さまへ",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "事実が不確かな場合は、はっきりとそう述べます。",
+      "text_markdown": "事実が不確かな場合は、はっきりとそう述べます。",
+      "tts": {
+        "text": "事実が不確かな場合は、はっきりとそう述べます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "インド洋貿易の世界",
+      "text_markdown": "インド洋貿易の世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世紀、インド洋は地球上で最も豊かな交易圏でした。",
+      "text_markdown": "十七世紀、インド洋は地球上で最も豊かな交易圏でした。",
+      "tts": {
+        "text": "じゅうななせいき、インド洋は地球上で最も豊かな交易圏でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船は絹、香辛料、宝石、金をインド、アラビア、東アフリカ、東南アジアの間で運んでいました。",
+      "text_markdown": "船は絹、香辛料、宝石、金をインド、アラビア、東アフリカ、東南アジアの間で運んでいました。",
+      "tts": {
+        "text": "船は絹、香辛料、宝石、金をインド、アラビア、東アフリカ、東南アジアの間で運んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの交易路は、ヨーロッパ人が到来するはるか以前から、数千年にわたって機能していました。",
+      "text_markdown": "これらの交易路は、ヨーロッパ人が到来するはるか以前から、数千年にわたって機能していました。",
+      "tts": {
+        "text": "これらの交易路は、ヨーロッパ人が到来するはるか以前から、数千年にわたって機能していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの海域を流れる富は、想像を超えるほどでした。",
+      "text_markdown": "これらの海域を流れる富は、想像を超えるほどでした。",
+      "tts": {
+        "text": "これらの海域を流れる富は、想像を超えるほどでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時代、ムガル帝国はインド亜大陸の大部分を支配していました。",
+      "text_markdown": "この時代、ムガル帝国はインド亜大陸の大部分を支配していました。",
+      "tts": {
+        "text": "この時代、ムガル帝国はインド亜大陸の大部分を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは世界で最も裕福で最も強大な帝国の一つでした。",
+      "text_markdown": "それは世界で最も裕福で最も強大な帝国の一つでした。",
+      "tts": {
+        "text": "それは世界で最も裕福で最も強大な帝国のひとつでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムガル皇帝は広大な軍隊を指揮し、並外れた贅沢の中で暮らしていました。",
+      "text_markdown": "ムガル皇帝は広大な軍隊を指揮し、並外れた贅沢の中で暮らしていました。",
+      "tts": {
+        "text": "ムガル皇帝は広大な軍隊を指揮し、並外れた贅沢の中で暮らしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "宮殿は金、宝石、地上で最も精緻な織物で飾られていました。",
+      "text_markdown": "宮殿は金、宝石、地上で最も精緻な織物で飾られていました。",
+      "tts": {
+        "text": "宮殿は金、宝石、地上で最も精緻な織物で飾られていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "毎年、ムガルの上流階級はメッカへの巡礼航海のために船を送りました。",
+      "text_markdown": "毎年、ムガルの上流階級はメッカへの巡礼航海のために船を送りました。",
+      "tts": {
+        "text": "毎年、ムガルの上流階級はメッカへの巡礼航海のために船を送りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの巡礼船は、膨大な量の交易品も運んでいました。",
+      "text_markdown": "これらの巡礼船は、膨大な量の交易品も運んでいました。",
+      "tts": {
+        "text": "これらの巡礼船は、膨大な量の交易品も運んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "金、銀、宝石、絹が船倉を満たしていました。",
+      "text_markdown": "金、銀、宝石、絹が船倉を満たしていました。",
+      "tts": {
+        "text": "金、銀、宝石、絹が船倉を満たしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "年に一度の巡礼船団は、あらゆる海洋で最も富裕な標的でした。",
+      "text_markdown": "年に一度の巡礼船団は、あらゆる海洋で最も富裕な標的でした。",
+      "tts": {
+        "text": "年に一度の巡礼船団は、あらゆる海洋で最も富裕な標的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "紅海は、インド洋とイスラムの聖地を結ぶ入口でした。",
+      "text_markdown": "紅海は、インド洋とイスラムの聖地を結ぶ入口でした。",
+      "tts": {
+        "text": "紅海は、インド洋とイスラムの聖地を結ぶ入口でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "インドからの船は紅海を北上し、メッカへの入口であるジェッダ港へ向かいました。",
+      "text_markdown": "インドからの船は紅海を北上し、メッカへの入口であるジェッダ港へ向かいました。",
+      "tts": {
+        "text": "インドからの船は紅海を北上し、メッカへの入口であるジェッダ港へ向かいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紅海の南端にある狭いバブ・エル・マンデブ海峡は、天然の要所でした。",
+      "text_markdown": "紅海の南端にある狭いバブ・エル・マンデブ海峡は、天然の要所でした。",
+      "tts": {
+        "text": "紅海の南端にある狭いバブ・エル・マンデブ海峡は、天然の要所でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その海峡で待ち伏せすれば、どんな海賊でも世界で最も裕福な船を拿捕できました。",
+      "text_markdown": "その海峡で待ち伏せすれば、どんな海賊でも世界で最も裕福な船を拿捕できました。",
+      "tts": {
+        "text": "その海峡で待ち伏せすれば、どんな海賊でも世界で最も裕福な船を拿捕できました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパ列強は、千四百年代後半からインド洋に進出していました。",
+      "text_markdown": "ヨーロッパ列強は、千四百年代後半からインド洋に進出していました。",
+      "tts": {
+        "text": "ヨーロッパ列強は、せんよんひゃくねんだいこうはんからインド洋に進出していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ポルトガルが最初で、次にオランダ、イングランド、フランスが続きました。",
+      "text_markdown": "ポルトガルが最初で、次にオランダ、イングランド、フランスが続きました。",
+      "tts": {
+        "text": "ポルトガルが最初で、次にオランダ、イングランド、フランスが続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはインドや東南アジアの沿岸に、ファクトリーと呼ばれる交易拠点を設けました。",
+      "text_markdown": "彼らはインドや東南アジアの沿岸に、ファクトリーと呼ばれる交易拠点を設けました。",
+      "tts": {
+        "text": "彼らはインドや東南アジアの沿岸に、ファクトリーと呼ばれる交易拠点を設けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの拠点は、将来の植民地帝国の基盤となりました。",
+      "text_markdown": "これらの拠点は、将来の植民地帝国の基盤となりました。",
+      "tts": {
+        "text": "これらの拠点は、将来の植民地帝国の基盤となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス東インド会社は、この地域で最も重要なイギリスの存在でした。",
+      "text_markdown": "イギリス東インド会社は、この地域で最も重要なイギリスの存在でした。",
+      "tts": {
+        "text": "イギリス東インド会社は、この地域で最も重要なイギリスの存在でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1600年にエリザベス女王一世から勅許状を授与されました。",
+      "text_markdown": "1600年にエリザベス女王一世から勅許状を授与されました。",
+      "tts": {
+        "text": "せんろっぴゃくねんにエリザベス女王いっせいからちょっきょじょうをじゅよされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この会社はアジアとの全イギリス貿易に対する法的独占権を持っていました。",
+      "text_markdown": "この会社はアジアとの全イギリス貿易に対する法的独占権を持っていました。",
+      "tts": {
+        "text": "この会社はアジアとの全イギリス貿易に対する法的独占権を持っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その利益は莫大で、株主にはイングランドで最も有力な人物が名を連ねていました。",
+      "text_markdown": "その利益は莫大で、株主にはイングランドで最も有力な人物が名を連ねていました。",
+      "tts": {
+        "text": "その利益は莫大で、株主にはイングランドで最も有力な人物が名を連ねていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東インド会社はムガル皇帝の許可のもとで活動していました。",
+      "text_markdown": "東インド会社はムガル皇帝の許可のもとで活動していました。",
+      "tts": {
+        "text": "東インド会社はムガル皇帝の許可のもとで活動していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ムガルの好意なしには、会社はインドの港で貿易を行うことができませんでした。",
+      "text_markdown": "ムガルの好意なしには、会社はインドの港で貿易を行うことができませんでした。",
+      "tts": {
+        "text": "ムガルの好意なしには、会社はインドの港で貿易を行うことができませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この関係は脆く、相互信頼に依存していました。",
+      "text_markdown": "この関係は脆く、相互信頼に依存していました。",
+      "tts": {
+        "text": "この関係は脆く、相互信頼に依存していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリスの海賊によるムガル船への攻撃は、この信頼を完全に破壊しかねませんでした。",
+      "text_markdown": "イギリスの海賊によるムガル船への攻撃は、この信頼を完全に破壊しかねませんでした。",
+      "tts": {
+        "text": "イギリスの海賊によるムガル船への攻撃は、この信頼を完全に破壊しかねませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの海賊は、数十年にわたってインド洋の船を襲撃していました。",
+      "text_markdown": "ヨーロッパの海賊は、数十年にわたってインド洋の船を襲撃していました。",
+      "tts": {
+        "text": "ヨーロッパの海賊は、数十年にわたってインド洋の船を襲撃していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アフリカ東海岸沖のマダガスカル島は、海賊の拠点として機能していました。",
+      "text_markdown": "アフリカ東海岸沖のマダガスカル島は、海賊の拠点として機能していました。",
+      "tts": {
+        "text": "アフリカ東海岸沖のマダガスカル島は、海賊の拠点として機能していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊はその多くの港に身を隠し、食料と水を補給し、獲物を待つことができました。",
+      "text_markdown": "海賊はその多くの港に身を隠し、食料と水を補給し、獲物を待つことができました。",
+      "tts": {
+        "text": "海賊はその多くの港に身を隠し、食料と水を補給し、獲物を待つことができました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マダガスカルからは、インド沿岸の繁忙な航路までわずかな航海距離でした。",
+      "text_markdown": "マダガスカルからは、インド沿岸の繁忙な航路までわずかな航海距離でした。",
+      "tts": {
+        "text": "マダガスカルからは、インド沿岸の繁忙な航路までわずかな航海距離でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インドと紅海の間のルートは、パイレーツ・ラウンドと呼ばれていました。",
+      "text_markdown": "インドと紅海の間のルートは、パイレーツ・ラウンドと呼ばれていました。",
+      "tts": {
+        "text": "インドと紅海の間のルートは、パイレーツ・ラウンドと呼ばれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスとアメリカの海賊は、この狩り場に到達するために地球の半分を航海しました。",
+      "text_markdown": "イギリスとアメリカの海賊は、この狩り場に到達するために地球の半分を航海しました。",
+      "tts": {
+        "text": "イギリスとアメリカの海賊は、この狩り場に到達するために地球の半分を航海しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "報酬は長い旅に見合うものでした。",
+      "text_markdown": "報酬は長い旅に見合うものでした。",
+      "tts": {
+        "text": "報酬は長い旅に見合うものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一隻のインドの宝船は、数十隻のカリブ海商船よりも多くの富を運ぶことができました。",
+      "text_markdown": "一隻のインドの宝船は、数十隻のカリブ海商船よりも多くの富を運ぶことができました。",
+      "tts": {
+        "text": "いっせきのインドの宝船は、数十隻のカリブ海商船よりも多くの富を運ぶことができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百九十年代、一般のイギリス船員の生活は過酷でした。",
+      "text_markdown": "千六百九十年代、一般のイギリス船員の生活は過酷でした。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうねんだい、一般のイギリス船員の生活は過酷でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "賃金は低く、規律は残酷で、病気が蔓延していました。",
+      "text_markdown": "賃金は低く、規律は残酷で、病気が蔓延していました。",
+      "tts": {
+        "text": "賃金は低く、規律は残酷で、病気が蔓延していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの船員はフランスとの戦争に従軍し、平和が訪れると失業しました。",
+      "text_markdown": "多くの船員はフランスとの戦争に従軍し、平和が訪れると失業しました。",
+      "tts": {
+        "text": "多くの船員はフランスとの戦争に従軍し、平和が訪れると失業しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インド洋は、貧困と抑圧からの魅力的な脱出口を提供していました。",
+      "text_markdown": "インド洋は、貧困と抑圧からの魅力的な脱出口を提供していました。",
+      "tts": {
+        "text": "インド洋は、貧困と抑圧からの魅力的な脱出口を提供していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカの植民地総督は、時にインド洋の海賊を密かに支援していました。",
+      "text_markdown": "アメリカの植民地総督は、時にインド洋の海賊を密かに支援していました。",
+      "tts": {
+        "text": "アメリカの植民地総督は、時にインド洋の海賊を密かに支援していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は盗んだ富を植民地の港に持ち込み、地元経済を潤しました。",
+      "text_markdown": "海賊は盗んだ富を植民地の港に持ち込み、地元経済を潤しました。",
+      "tts": {
+        "text": "海賊は盗んだ富を植民地の港に持ち込み、地元経済を潤しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ニューヨーク、ロードアイランド、カロライナの役人は見て見ぬふりをすることで知られていました。",
+      "text_markdown": "ニューヨーク、ロードアイランド、カロライナの役人は見て見ぬふりをすることで知られていました。",
+      "tts": {
+        "text": "ニューヨーク、ロードアイランド、カロライナの役人は見て見ぬふりをすることで知られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この腐敗により、海賊はほぼ処罰を受けることなく活動できました。",
+      "text_markdown": "この腐敗により、海賊はほぼ処罰を受けることなく活動できました。",
+      "tts": {
+        "text": "この腐敗により、海賊はほぼ処罰を受けることなく活動できました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これこそ、ヘンリー・エブリーが海賊に転じた時に足を踏み入れた世界でした。",
+      "text_markdown": "これこそ、ヘンリー・エブリーが海賊に転じた時に足を踏み入れた世界でした。",
+      "tts": {
+        "text": "これこそ、ヘンリー・エブリーが海賊に転じた時に足を踏み入れた世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帝国の富が最小限の護衛で大海原を渡る世界でした。",
+      "text_markdown": "帝国の富が最小限の護衛で大海原を渡る世界でした。",
+      "tts": {
+        "text": "帝国の富が最小限の護衛で大海原を渡る世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムガル皇帝は、ヨーロッパ諸国が自国民を制御すると信頼していました。",
+      "text_markdown": "ムガル皇帝は、ヨーロッパ諸国が自国民を制御すると信頼していました。",
+      "tts": {
+        "text": "ムガル皇帝は、ヨーロッパ諸国が自国民を制御すると信頼していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "インド洋貿易の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その信頼は、まもなく粉砕されることになります。",
+      "text_markdown": "その信頼は、まもなく粉砕されることになります。",
+      "tts": {
+        "text": "その信頼は、まもなく粉砕されることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "反乱者の誕生",
+      "text_markdown": "反乱者の誕生"
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・エブリーは、おそらく1659年頃にイングランド西部で生まれました。",
+      "text_markdown": "ヘンリー・エブリーは、おそらく1659年頃にイングランド西部で生まれました。",
+      "tts": {
+        "text": "ヘンリー・エブリーは、おそらくせんろっぴゃくごじゅうきゅうねんごろにイングランド西部で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デヴォンのニュートン・フェラーズ村の出身と考える歴史家もいます。",
+      "text_markdown": "デヴォンのニュートン・フェラーズ村の出身と考える歴史家もいます。",
+      "tts": {
+        "text": "デヴォンのニュートン・フェラーズ村の出身と考える歴史家もいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "デヴォンは海洋の郡で、多くの若者が海に出ました。",
+      "text_markdown": "デヴォンは海洋の郡で、多くの若者が海に出ました。",
+      "tts": {
+        "text": "デヴォンは海洋の郡で、多くの若者が海に出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の幼少期や家族についてはほとんど知られていません。",
+      "text_markdown": "彼の幼少期や家族についてはほとんど知られていません。",
+      "tts": {
+        "text": "彼の幼少期や家族についてはほとんど知られていません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史的記録には、彼の名前が多くの異なる綴りで登場します。",
+      "text_markdown": "歴史的記録には、彼の名前が多くの異なる綴りで登場します。",
+      "tts": {
+        "text": "歴史的記録には、彼の名前が多くの異なる綴りで登場します。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エブリー、エイヴリー、エヴォリー、アイヴォリーのすべてが当時の文書に見られます。",
+      "text_markdown": "エブリー、エイヴリー、エヴォリー、アイヴォリーのすべてが当時の文書に見られます。",
+      "tts": {
+        "text": "エブリー、エイヴリー、エヴォリー、アイヴォリーのすべてが当時の文書に見られます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "綴りが標準化されていない時代には、これは典型的なことでした。",
+      "text_markdown": "綴りが標準化されていない時代には、これは典型的なことでした。",
+      "tts": {
+        "text": "綴りが標準化されていない時代には、これは典型的なことでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ほとんどの歴史家は、最も公式な記録に現れるエブリーの綴りを使用しています。",
+      "text_markdown": "ほとんどの歴史家は、最も公式な記録に現れるエブリーの綴りを使用しています。",
+      "tts": {
+        "text": "ほとんどの歴史家は、最も公式な記録に現れるエブリーの綴りを使用しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーは、同時代のほとんどの船員と同様に、若い頃に海に出ました。",
+      "text_markdown": "エブリーは、同時代のほとんどの船員と同様に、若い頃に海に出ました。",
+      "tts": {
+        "text": "エブリーは、同時代のほとんどの船員と同様に、若い頃に海に出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "おそらく商船で、場合によっては王立海軍の艦船でも勤務したと考えられます。",
+      "text_markdown": "おそらく商船で、場合によっては王立海軍の艦船でも勤務したと考えられます。",
+      "tts": {
+        "text": "おそらく商船で、場合によっては王立海軍の艦船でも勤務したと考えられます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "千六百九十年代までに、彼は経験豊富で有能な船乗りになっていました。",
+      "text_markdown": "千六百九十年代までに、彼は経験豊富で有能な船乗りになっていました。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうねんだいまでに、彼は経験豊富で有能な船乗りになっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は航海術、船舶運用、乗組員の管理を理解していました。",
+      "text_markdown": "彼は航海術、船舶運用、乗組員の管理を理解していました。",
+      "tts": {
+        "text": "彼は航海術、船舶運用、乗組員の管理を理解していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊になる前、エブリーが奴隷貿易に関わっていた証拠があります。",
+      "text_markdown": "海賊になる前、エブリーが奴隷貿易に関わっていた証拠があります。",
+      "tts": {
+        "text": "海賊になる前、エブリーが奴隷貿易に関わっていた証拠があります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奴隷にされたアフリカ人を大西洋の向こうへ運ぶ船で勤務していた可能性があります。",
+      "text_markdown": "奴隷にされたアフリカ人を大西洋の向こうへ運ぶ船で勤務していた可能性があります。",
+      "tts": {
+        "text": "奴隷にされたアフリカ人を大西洋の向こうへ運ぶ船で勤務していた可能性があります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奴隷貿易は合法で利益をもたらしましたが、恐ろしく残酷なものでした。",
+      "text_markdown": "奴隷貿易は合法で利益をもたらしましたが、恐ろしく残酷なものでした。",
+      "tts": {
+        "text": "奴隷貿易は合法で利益をもたらしましたが、恐ろしく残酷なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは比較的高い報酬が得られる数少ない海上貿易の一つでした。",
+      "text_markdown": "それは比較的高い報酬が得られる数少ない海上貿易の一つでした。",
+      "tts": {
+        "text": "それは比較的高い報酬が得られる数少ない海上貿易のひとつでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1693年、エブリーはチャールズ二世号という私掠船に一等航海士として乗り込みました。",
+      "text_markdown": "1693年、エブリーはチャールズ二世号という私掠船に一等航海士として乗り込みました。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうさんねん、エブリーはチャールズにせいごうという私掠船にいっとうこうかいしとして乗り込みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その船はスペイン政府に雇われた小規模な船団の一部でした。",
+      "text_markdown": "その船はスペイン政府に雇われた小規模な船団の一部でした。",
+      "tts": {
+        "text": "その船はスペイン政府に雇われた小規模な船団の一部でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインは、イギリスの私掠船にカリブ海のフランス密輸業者を攻撃させたいと考えていました。",
+      "text_markdown": "スペインは、イギリスの私掠船にカリブ海のフランス密輸業者を攻撃させたいと考えていました。",
+      "tts": {
+        "text": "スペインは、イギリスの私掠船にカリブ海のフランス密輸業者を攻撃させたいと考えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは合法的で、利益の見込める事業に思えました。",
+      "text_markdown": "それは合法的で、利益の見込める事業に思えました。",
+      "tts": {
+        "text": "それは合法的で、利益の見込める事業に思えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チャールズ二世号はスペインの港ラ・コルーニャに停泊し、命令を待っていました。",
+      "text_markdown": "チャールズ二世号はスペインの港ラ・コルーニャに停泊し、命令を待っていました。",
+      "tts": {
+        "text": "チャールズにせいごうはスペインの港ラ・コルーニャに停泊し、命令を待っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員は給料も任務もないまま何か月も港に足止めされていました。",
+      "text_markdown": "乗組員は給料も任務もないまま何か月も港に足止めされていました。",
+      "tts": {
+        "text": "乗組員は給料も任務もないまま何か月も港に足止めされていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船員たちは落ち着きを失い、怒りを募らせました。",
+      "text_markdown": "船員たちは落ち着きを失い、怒りを募らせました。",
+      "tts": {
+        "text": "船員たちは落ち着きを失い、怒りを募らせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは素早い利益のために契約したのであり、終わりのない待機のためではありませんでした。",
+      "text_markdown": "彼らは素早い利益のために契約したのであり、終わりのない待機のためではありませんでした。",
+      "tts": {
+        "text": "彼らは素早い利益のために契約したのであり、終わりのない待機のためではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船長はチャールズ・ギブソンという人物でした。",
+      "text_markdown": "船長はチャールズ・ギブソンという人物でした。",
+      "tts": {
+        "text": "船長はチャールズ・ギブソンという人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は厳しい規律と破られた約束のために、乗組員から広く嫌われていました。",
+      "text_markdown": "彼は厳しい規律と破られた約束のために、乗組員から広く嫌われていました。",
+      "tts": {
+        "text": "彼は厳しい規律と破られた約束のために、乗組員から広く嫌われていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員たちは、勤務条件について騙されたと感じていました。",
+      "text_markdown": "乗組員たちは、勤務条件について騙されたと感じていました。",
+      "tts": {
+        "text": "乗組員たちは、勤務条件について騙されたと感じていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "不満と憤りが甲板の下でくすぶっていました。",
+      "text_markdown": "不満と憤りが甲板の下でくすぶっていました。",
+      "tts": {
+        "text": "不満と憤りが甲板の下でくすぶっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1694年6月6日の夜、ヘンリー・エブリーは反乱を率いました。",
+      "text_markdown": "1694年6月6日の夜、ヘンリー・エブリーは反乱を率いました。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうよねんろくがつむいかの夜、ヘンリー・エブリーは反乱を率いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ギブソン船長が船室で寝ている間に、エブリーと仲間たちは船を掌握しました。",
+      "text_markdown": "ギブソン船長が船室で寝ている間に、エブリーと仲間たちは船を掌握しました。",
+      "tts": {
+        "text": "ギブソン船長が船室で寝ている間に、エブリーと仲間たちは船を掌握しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "反乱は周到に計画され、最小限の暴力で実行されました。",
+      "text_markdown": "反乱は周到に計画され、最小限の暴力で実行されました。",
+      "tts": {
+        "text": "反乱は周到に計画され、最小限の暴力で実行されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "夜明けまでに、エブリーは船を完全に掌握していました。",
+      "text_markdown": "夜明けまでに、エブリーは船を完全に掌握していました。",
+      "tts": {
+        "text": "夜明けまでに、エブリーは船を完全に掌握していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーはギブソンと忠実な船員たちに選択肢を与えました。",
+      "text_markdown": "エブリーはギブソンと忠実な船員たちに選択肢を与えました。",
+      "tts": {
+        "text": "エブリーはギブソンと忠実な船員たちに選択肢を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "反乱に加わるか、陸に降ろされるかでした。",
+      "text_markdown": "反乱に加わるか、陸に降ろされるかでした。",
+      "tts": {
+        "text": "反乱に加わるか、陸に降ろされるかでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "約16人が離脱を選び、小型ボートで陸に降ろされました。",
+      "text_markdown": "約16人が離脱を選び、小型ボートで陸に降ろされました。",
+      "tts": {
+        "text": "約じゅうろくにんが離脱を選び、小型ボートで陸に降ろされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "残りの乗組員は、冒険と富を求めて、エブリーに運命を託しました。",
+      "text_markdown": "残りの乗組員は、冒険と富を求めて、エブリーに運命を託しました。",
+      "tts": {
+        "text": "残りの乗組員は、冒険と富を求めて、エブリーに運命を託しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーは船をファンシー号と改名しました。",
+      "text_markdown": "エブリーは船をファンシー号と改名しました。",
+      "tts": {
+        "text": "エブリーは船をファンシーごうと改名しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は一攫千金を求めてインド洋へ向かうと宣言しました。",
+      "text_markdown": "彼は一攫千金を求めてインド洋へ向かうと宣言しました。",
+      "tts": {
+        "text": "彼はいっかくせんきんを求めてインド洋へ向かうと宣言しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員はこの発表に歓声を上げました。",
+      "text_markdown": "乗組員はこの発表に歓声を上げました。",
+      "tts": {
+        "text": "乗組員はこの発表に歓声を上げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーは、歴史の流れを変える海賊行為を犯したのでした。",
+      "text_markdown": "エブリーは、歴史の流れを変える海賊行為を犯したのでした。",
+      "tts": {
+        "text": "エブリーは、歴史の流れを変える海賊行為を犯したのでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インド洋に向かう前に、エブリーはアフリカ海岸に沿って南下しました。",
+      "text_markdown": "インド洋に向かう前に、エブリーはアフリカ海岸に沿って南下しました。",
+      "tts": {
+        "text": "インド洋に向かう前に、エブリーはアフリカ海岸に沿って南下しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いくつかの港に立ち寄り、補給を行い、追加の乗組員を募りました。",
+      "text_markdown": "いくつかの港に立ち寄り、補給を行い、追加の乗組員を募りました。",
+      "tts": {
+        "text": "いくつかの港に立ち寄り、補給を行い、追加の乗組員を募りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他の船の海賊たちが、エブリーの高まる評判に引かれてファンシー号に合流しました。",
+      "text_markdown": "他の船の海賊たちが、エブリーの高まる評判に引かれてファンシー号に合流しました。",
+      "tts": {
+        "text": "他の船の海賊たちが、エブリーの高まる評判に引かれてファンシーごうに合流しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マダガスカルに到着する頃には、彼の乗組員は大規模で武装も万全でした。",
+      "text_markdown": "マダガスカルに到着する頃には、彼の乗組員は大規模で武装も万全でした。",
+      "tts": {
+        "text": "マダガスカルに到着する頃には、彼の乗組員は大規模で武装も万全でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーは卓越した指導者であり航海士であることを証明しました。",
+      "text_markdown": "エブリーは卓越した指導者であり航海士であることを証明しました。",
+      "tts": {
+        "text": "エブリーは卓越した指導者であり航海士であることを証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "残酷さに頼ることなく規律を維持しました。",
+      "text_markdown": "残酷さに頼ることなく規律を維持しました。",
+      "tts": {
+        "text": "残酷さに頼ることなく規律を維持しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "素早く決断を下し、部下と明確に意思疎通しました。",
+      "text_markdown": "素早く決断を下し、部下と明確に意思疎通しました。",
+      "tts": {
+        "text": "素早く決断を下し、部下と明確に意思疎通しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "反乱者の誕生",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "乗組員は彼を完全に信頼しており、その忠誠心は彼らの最も大きな夢をも超える形で報われることになります。",
+      "text_markdown": "乗組員は彼を完全に信頼しており、その忠誠心は彼らの最も大きな夢をも超える形で報われることになります。",
+      "tts": {
+        "text": "乗組員は彼を完全に信頼しており、その忠誠心は彼らの最も大きな夢をも超える形で報われることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "最大の獲物",
+      "text_markdown": "最大の獲物"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1695年、エブリーはファンシー号を紅海の入り口まで航行させました。",
+      "text_markdown": "1695年、エブリーはファンシー号を紅海の入り口まで航行させました。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうごねん、エブリーはファンシーごうを紅海の入り口まで航行させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年に一度のムガル巡礼船団がまもなく通過することを知っていました。",
+      "text_markdown": "年に一度のムガル巡礼船団がまもなく通過することを知っていました。",
+      "tts": {
+        "text": "年に一度のムガル巡礼船団がまもなく通過することを知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの船はメッカへの巡礼の後、インドへ帰還する途中でした。",
+      "text_markdown": "これらの船はメッカへの巡礼の後、インドへ帰還する途中でした。",
+      "tts": {
+        "text": "これらの船はメッカへの巡礼の後、インドへ帰還する途中でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船倉は財宝で溢れかえっていたはずです。",
+      "text_markdown": "船倉は財宝で溢れかえっていたはずです。",
+      "tts": {
+        "text": "船倉は財宝で溢れかえっていたはずです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海峡で待ち伏せしていた海賊はエブリーだけではありませんでした。",
+      "text_markdown": "海峡で待ち伏せしていた海賊はエブリーだけではありませんでした。",
+      "tts": {
+        "text": "海峡で待ち伏せしていた海賊はエブリーだけではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他の複数の海賊船が同じ要所に集結していました。",
+      "text_markdown": "他の複数の海賊船が同じ要所に集結していました。",
+      "tts": {
+        "text": "他の複数の海賊船が同じ要所に集結していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その中には、ロードアイランド出身の有名なアメリカ人海賊トマス・テューが指揮する船もありました。",
+      "text_markdown": "その中には、ロードアイランド出身の有名なアメリカ人海賊トマス・テューが指揮する船もありました。",
+      "tts": {
+        "text": "その中には、ロードアイランド出身の有名なアメリカ人海賊トマス・テューが指揮する船もありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーは他の船長たちを説得し、一時的な同盟を結びました。",
+      "text_markdown": "エブリーは他の船長たちを説得し、一時的な同盟を結びました。",
+      "tts": {
+        "text": "エブリーは他の船長たちを説得し、一時的な同盟を結びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちは、エブリーが小船団の提督を務めることに同意しました。",
+      "text_markdown": "海賊たちは、エブリーが小船団の提督を務めることに同意しました。",
+      "tts": {
+        "text": "海賊たちは、エブリーが小船団の提督を務めることに同意しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "わずか一年前に海賊に転じたばかりの男にとって、これは驚くべき功績でした。",
+      "text_markdown": "わずか一年前に海賊に転じたばかりの男にとって、これは驚くべき功績でした。",
+      "tts": {
+        "text": "わずかいちねんまえに海賊に転じたばかりの男にとって、これは驚くべき功績でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の生まれながらの権威と明晰な思考が、他の海賊指導者から際立たせていました。",
+      "text_markdown": "彼の生まれながらの権威と明晰な思考が、他の海賊指導者から際立たせていました。",
+      "tts": {
+        "text": "彼の生まれながらの権威と明晰な思考が、他の海賊指導者から際立たせていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他の船長たちは彼の判断を尊重し、戦闘で彼の信号に従うことに同意しました。",
+      "text_markdown": "他の船長たちは彼の判断を尊重し、戦闘で彼の信号に従うことに同意しました。",
+      "tts": {
+        "text": "他の船長たちは彼の判断を尊重し、戦闘で彼の信号に従うことに同意しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ムガル船団は1695年9月に姿を現しました。",
+      "text_markdown": "ムガル船団は1695年9月に姿を現しました。",
+      "tts": {
+        "text": "ムガル船団はせんろっぴゃくきゅうじゅうごねんくがつに姿を現しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "約25隻の船で構成され、複数の大型武装船が含まれていました。",
+      "text_markdown": "約25隻の船で構成され、複数の大型武装船が含まれていました。",
+      "tts": {
+        "text": "約にじゅうごせきの船で構成され、複数の大型武装船が含まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊たちは攻撃しましたが、ムガルの護衛船は激しく応戦しました。",
+      "text_markdown": "海賊たちは攻撃しましたが、ムガルの護衛船は激しく応戦しました。",
+      "tts": {
+        "text": "海賊たちは攻撃しましたが、ムガルの護衛船は激しく応戦しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "トマス・テューは最初の砲撃で命を落とし、砲弾に腹部を引き裂かれました。",
+      "text_markdown": "トマス・テューは最初の砲撃で命を落とし、砲弾に腹部を引き裂かれました。",
+      "tts": {
+        "text": "トマス・テューは最初の砲撃で命を落とし、砲弾に腹部を引き裂かれました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テューの死後、海賊船の大半は攻撃を中止しました。",
+      "text_markdown": "テューの死後、海賊船の大半は攻撃を中止しました。",
+      "tts": {
+        "text": "テューの死後、海賊船の大半は攻撃を中止しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ムガル船団は散り散りになり、個々の船がそれぞれ異なる方向へ逃げました。",
+      "text_markdown": "ムガル船団は散り散りになり、個々の船がそれぞれ異なる方向へ逃げました。",
+      "tts": {
+        "text": "ムガル船団は散り散りになり、個々の船がそれぞれ異なる方向へ逃げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしエブリーとファンシー号は単独で追撃を続けました。",
+      "text_markdown": "しかしエブリーとファンシー号は単独で追撃を続けました。",
+      "tts": {
+        "text": "しかしエブリーとファンシーごうは単独で追撃を続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "人生最大の獲物を逃すつもりはありませんでした。",
+      "text_markdown": "人生最大の獲物を逃すつもりはありませんでした。",
+      "tts": {
+        "text": "人生最大の獲物を逃すつもりはありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーは最初にファテフ・ムハンマド号という船を捕獲しました。",
+      "text_markdown": "エブリーは最初にファテフ・ムハンマド号という船を捕獲しました。",
+      "tts": {
+        "text": "エブリーは最初にファテフ・ムハンマドごうという船を捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その積荷は5万から6万ポンドの価値があり、莫大な財産でした。",
+      "text_markdown": "その積荷は5万から6万ポンドの価値があり、莫大な財産でした。",
+      "tts": {
+        "text": "その積荷はごまんからろくまんポンドの価値があり、莫大な財産でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エブリーの乗組員は船を略奪し、解放しました。",
+      "text_markdown": "エブリーの乗組員は船を略奪し、解放しました。",
+      "tts": {
+        "text": "エブリーの乗組員は船を略奪し、解放しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしエブリーは、さらに大きな獲物がまだ前方を逃げていることを知っていました。",
+      "text_markdown": "しかしエブリーは、さらに大きな獲物がまだ前方を逃げていることを知っていました。",
+      "tts": {
+        "text": "しかしエブリーは、さらに大きな獲物がまだ前方を逃げていることを知っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ガンジ・イ・サワーイー号はムガル船団で最大の船でした。",
+      "text_markdown": "ガンジ・イ・サワーイー号はムガル船団で最大の船でした。",
+      "tts": {
+        "text": "ガンジ・イ・サワーイーごうはムガル船団で最大の船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その名は「比類なき宝」を意味し、名前に恥じない船でした。",
+      "text_markdown": "その名は「比類なき宝」を意味し、名前に恥じない船でした。",
+      "tts": {
+        "text": "その名は「比類なき宝」を意味し、名前に恥じない船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムガル皇帝アウラングゼーブ自身の所有でした。",
+      "text_markdown": "ムガル皇帝アウラングゼーブ自身の所有でした。",
+      "tts": {
+        "text": "ムガル皇帝アウラングゼーブ自身の所有でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "62門の大砲と400人以上の兵士を搭載しており、エブリーの乗組員をはるかに上回っていました。",
+      "text_markdown": "62門の大砲と400人以上の兵士を搭載しており、エブリーの乗組員をはるかに上回っていました。",
+      "tts": {
+        "text": "ろくじゅうにもんの大砲とよんひゃくにん以上の兵士を搭載しており、エブリーの乗組員をはるかに上回っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ファンシー号は長い追跡の末、ガンジ・イ・サワーイー号に追いつきました。",
+      "text_markdown": "ファンシー号は長い追跡の末、ガンジ・イ・サワーイー号に追いつきました。",
+      "tts": {
+        "text": "ファンシーごうは長い追跡の末、ガンジ・イ・サワーイーごうに追いつきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "次に起きたことは、海賊史上最も重要な海戦の一つでした。",
+      "text_markdown": "次に起きたことは、海賊史上最も重要な海戦の一つでした。",
+      "tts": {
+        "text": "次に起きたことは、海賊史上最も重要な海戦のひとつでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エブリーは巨大なムガル船に砲撃を開始しました。",
+      "text_markdown": "エブリーは巨大なムガル船に砲撃を開始しました。",
+      "tts": {
+        "text": "エブリーは巨大なムガル船に砲撃を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "初期の砲弾がガンジ・イ・サワーイー号のメインマストに命中し、操縦能力を奪いました。",
+      "text_markdown": "初期の砲弾がガンジ・イ・サワーイー号のメインマストに命中し、操縦能力を奪いました。",
+      "tts": {
+        "text": "初期の砲弾がガンジ・イ・サワーイーごうのメインマストに命中し、操縦能力を奪いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "続いて、ガンジ・イ・サワーイー号自身の大砲の一門が甲板上で爆発しました。",
+      "text_markdown": "続いて、ガンジ・イ・サワーイー号自身の大砲の一門が甲板上で爆発しました。",
+      "tts": {
+        "text": "続いて、ガンジ・イ・サワーイーごう自身の大砲のいちもんが甲板上で爆発しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆発でムガルの砲手数名が死亡し、防御側は混乱に陥りました。",
+      "text_markdown": "爆発でムガルの砲手数名が死亡し、防御側は混乱に陥りました。",
+      "tts": {
+        "text": "爆発でムガルの砲手数名が死亡し、防御側は混乱に陥りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エブリーは好機を逃さず、部下に乗り込みを命じました。",
+      "text_markdown": "エブリーは好機を逃さず、部下に乗り込みを命じました。",
+      "tts": {
+        "text": "エブリーは好機を逃さず、部下に乗り込みを命じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊たちはムガル船の舷側を乗り越えて殺到しました。",
+      "text_markdown": "海賊たちはムガル船の舷側を乗り越えて殺到しました。",
+      "tts": {
+        "text": "海賊たちはムガル船の舷側を乗り越えて殺到しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦闘は激しかったものの、比較的短時間でした。",
+      "text_markdown": "戦闘は激しかったものの、比較的短時間でした。",
+      "tts": {
+        "text": "戦闘は激しかったものの、比較的短時間でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ムガルの兵士たちは数的優位にもかかわらず、大砲の爆発で士気を失っていました。",
+      "text_markdown": "ムガルの兵士たちは数的優位にもかかわらず、大砲の爆発で士気を失っていました。",
+      "tts": {
+        "text": "ムガルの兵士たちは数的優位にもかかわらず、大砲の爆発で士気を失っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船長は防御の指揮を執る代わりに、甲板の下に隠れていました。",
+      "text_markdown": "船長は防御の指揮を執る代わりに、甲板の下に隠れていました。",
+      "tts": {
+        "text": "船長は防御の指揮を執る代わりに、甲板の下に隠れていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数時間後、海賊たちは船を制圧しました。",
+      "text_markdown": "数時間後、海賊たちは船を制圧しました。",
+      "tts": {
+        "text": "数時間後、海賊たちは船を制圧しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ガンジ・イ・サワーイー号の船倉で海賊たちが発見したものに、彼らは驚愕しました。",
+      "text_markdown": "ガンジ・イ・サワーイー号の船倉で海賊たちが発見したものに、彼らは驚愕しました。",
+      "tts": {
+        "text": "ガンジ・イ・サワーイーごうの船倉で海賊たちが発見したものに、彼らは驚愕しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "金貨と銀貨が箱や樽に山積みされていました。",
+      "text_markdown": "金貨と銀貨が箱や樽に山積みされていました。",
+      "tts": {
+        "text": "金貨と銀貨が箱や樽に山積みされていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "宝石、上質な絹、象牙があらゆる空間を埋め尽くしていました。",
+      "text_markdown": "宝石、上質な絹、象牙があらゆる空間を埋め尽くしていました。",
+      "tts": {
+        "text": "宝石、上質な絹、象牙があらゆる空間を埋め尽くしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "総額は20万から60万ポンドと推定されています。",
+      "text_markdown": "総額は20万から60万ポンドと推定されています。",
+      "tts": {
+        "text": "総額はにじゅうまんからろくじゅうまんポンドと推定されています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "比較のために言えば、熟練したイギリス人労働者の年収は約10ポンドでした。",
+      "text_markdown": "比較のために言えば、熟練したイギリス人労働者の年収は約10ポンドでした。",
+      "tts": {
+        "text": "比較のために言えば、熟練したイギリス人労働者の年収は約じゅっポンドでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "各海賊の分け前は、残りの人生を暮らすのに十分な額でした。",
+      "text_markdown": "各海賊の分け前は、残りの人生を暮らすのに十分な額でした。",
+      "tts": {
+        "text": "各海賊の分け前は、残りの人生を暮らすのに十分な額でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヘンリー・エブリーは、海賊史上最も豊かな戦利品の一つを手にしたのでした。",
+      "text_markdown": "ヘンリー・エブリーは、海賊史上最も豊かな戦利品の一つを手にしたのでした。",
+      "tts": {
+        "text": "ヘンリー・エブリーは、海賊史上最も豊かな戦利品のひとつを手にしたのでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の前にも後にも、一度の襲撃でこれほど多くを奪った海賊はいません。",
+      "text_markdown": "彼の前にも後にも、一度の襲撃でこれほど多くを奪った海賊はいません。",
+      "tts": {
+        "text": "彼の前にも後にも、いちどの襲撃でこれほど多くを奪った海賊はいません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちはガンジ・イ・サワーイー号の略奪に数日を費やしました。",
+      "text_markdown": "海賊たちはガンジ・イ・サワーイー号の略奪に数日を費やしました。",
+      "tts": {
+        "text": "海賊たちはガンジ・イ・サワーイーごうの略奪に数日を費やしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗客と乗組員に対して凄惨な暴力が行われました。",
+      "text_markdown": "乗客と乗組員に対して凄惨な暴力が行われました。",
+      "tts": {
+        "text": "乗客と乗組員に対して凄惨な暴力が行われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "同時代の記録は、捕獲された船上での強盗、暴行、殺人を描写しています。",
+      "text_markdown": "同時代の記録は、捕獲された船上での強盗、暴行、殺人を描写しています。",
+      "tts": {
+        "text": "同時代の記録は、捕獲された船上での強盗、暴行、殺人を描写しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この攻撃の残虐さは、深刻な政治的結果をもたらすことになります。",
+      "text_markdown": "この攻撃の残虐さは、深刻な政治的結果をもたらすことになります。",
+      "tts": {
+        "text": "この攻撃の残虐さは、深刻な政治的結果をもたらすことになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船の貴重品を奪い尽くした後、エブリーはガンジ・イ・サワーイー号を解放しました。",
+      "text_markdown": "船の貴重品を奪い尽くした後、エブリーはガンジ・イ・サワーイー号を解放しました。",
+      "tts": {
+        "text": "船の貴重品を奪い尽くした後、エブリーはガンジ・イ・サワーイーごうを解放しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "損傷した船はインドの港町スーラトへよろめきながら帰還しました。",
+      "text_markdown": "損傷した船はインドの港町スーラトへよろめきながら帰還しました。",
+      "tts": {
+        "text": "損傷した船はインドの港町スーラトへよろめきながら帰還しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "生存者たちが事の顛末を語ると、反応は爆発的でした。",
+      "text_markdown": "生存者たちが事の顛末を語ると、反応は爆発的でした。",
+      "tts": {
+        "text": "生存者たちが事の顛末を語ると、反応は爆発的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大の獲物",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーは、インドとの英国貿易史上最悪の外交危機を引き起こしたのでした。",
+      "text_markdown": "エブリーは、インドとの英国貿易史上最悪の外交危機を引き起こしたのでした。",
+      "tts": {
+        "text": "エブリーは、インドとの英国貿易史上最悪の外交危機を引き起こしたのでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地球上で最も指名手配された男",
+      "text_markdown": "地球上で最も指名手配された男"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "攻撃の知らせがムガル皇帝アウラングゼーブに届いた時、彼の怒りは計り知れないものでした。",
+      "text_markdown": "攻撃の知らせがムガル皇帝アウラングゼーブに届いた時、彼の怒りは計り知れないものでした。",
+      "tts": {
+        "text": "攻撃の知らせがムガル皇帝アウラングゼーブに届いた時、彼の怒りは計り知れないものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ガンジ・イ・サワーイー号は彼の私有船であり、乗客には宮廷の成員が含まれていました。",
+      "text_markdown": "ガンジ・イ・サワーイー号は彼の私有船であり、乗客には宮廷の成員が含まれていました。",
+      "tts": {
+        "text": "ガンジ・イ・サワーイーごうは彼の私有船であり、乗客には宮廷の成員が含まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皇帝はこの攻撃をイスラムそのものへの侮辱と見なしました。なぜなら、船はメッカから帰還する巡礼者を乗せていたからです。",
+      "text_markdown": "皇帝はこの攻撃をイスラムそのものへの侮辱と見なしました。なぜなら、船はメッカから帰還する巡礼者を乗せていたからです。",
+      "tts": {
+        "text": "皇帝はこの攻撃をイスラムそのものへの侮辱と見なしました。なぜなら、船はメッカから帰還する巡礼者を乗せていたからです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はイギリス人に責任を取らせるよう要求しました。",
+      "text_markdown": "彼はイギリス人に責任を取らせるよう要求しました。",
+      "tts": {
+        "text": "彼はイギリス人に責任を取らせるよう要求しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アウラングゼーブはスーラト市のすべてのイギリス商人の逮捕を命じました。",
+      "text_markdown": "アウラングゼーブはスーラト市のすべてのイギリス商人の逮捕を命じました。",
+      "tts": {
+        "text": "アウラングゼーブはスーラト市のすべてのイギリス商人の逮捕を命じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "東インド会社の従業員は投獄されました。",
+      "text_markdown": "東インド会社の従業員は投獄されました。",
+      "tts": {
+        "text": "東インド会社の従業員は投獄されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの交易拠点はムガル兵に包囲されました。",
+      "text_markdown": "彼らの交易拠点はムガル兵に包囲されました。",
+      "tts": {
+        "text": "彼らの交易拠点はムガル兵に包囲されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インドにおけるすべてのイギリス貿易が無期限に停止されました。",
+      "text_markdown": "インドにおけるすべてのイギリス貿易が無期限に停止されました。",
+      "tts": {
+        "text": "インドにおけるすべてのイギリス貿易が無期限に停止されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東インド会社はパニック状態でした。",
+      "text_markdown": "東インド会社はパニック状態でした。",
+      "tts": {
+        "text": "東インド会社はパニック状態でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "たった一人の海賊船長のせいで、インドでの事業全体が危機に瀕していました。",
+      "text_markdown": "たった一人の海賊船長のせいで、インドでの事業全体が危機に瀕していました。",
+      "tts": {
+        "text": "たったひとりの海賊船長のせいで、インドでの事業全体が危機にひんしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "会社の利益はムガルの好意に依存しており、その好意は一夜にして消え去っていました。",
+      "text_markdown": "会社の利益はムガルの好意に依存しており、その好意は一夜にして消え去っていました。",
+      "tts": {
+        "text": "会社の利益はムガルの好意に依存しており、その好意はいちやにして消え去っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らはイギリス政府に即座の行動を迫りました。",
+      "text_markdown": "彼らはイギリス政府に即座の行動を迫りました。",
+      "tts": {
+        "text": "彼らはイギリス政府に即座の行動を迫りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス政府はヘンリー・エブリーの逮捕のため、世界規模の令状を発行しました。",
+      "text_markdown": "イギリス政府はヘンリー・エブリーの逮捕のため、世界規模の令状を発行しました。",
+      "tts": {
+        "text": "イギリス政府はヘンリー・エブリーの逮捕のため、世界規模の令状を発行しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "500ポンドという前例のない賞金が彼の首にかけられました。",
+      "text_markdown": "500ポンドという前例のない賞金が彼の首にかけられました。",
+      "tts": {
+        "text": "ごひゃくポンドという前例のない賞金が彼の首にかけられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これは記録に残る歴史上初の世界規模の人探しでした。",
+      "text_markdown": "これは記録に残る歴史上初の世界規模の人探しでした。",
+      "tts": {
+        "text": "これは記録に残る歴史上初の世界規模の人探しでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英語圏の世界のすべての港にエブリーと乗組員の人相書きが届けられました。",
+      "text_markdown": "英語圏の世界のすべての港にエブリーと乗組員の人相書きが届けられました。",
+      "tts": {
+        "text": "英語圏の世界のすべての港にエブリーと乗組員の人相書きが届けられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東インド会社は政府の懸賞金に加えて、独自の報奨金も追加しました。",
+      "text_markdown": "東インド会社は政府の懸賞金に加えて、独自の報奨金も追加しました。",
+      "tts": {
+        "text": "東インド会社は政府の懸賞金に加えて、独自の報奨金も追加しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "また、自首してエブリーに不利な証言をする乗組員には無条件の恩赦を約束しました。",
+      "text_markdown": "また、自首してエブリーに不利な証言をする乗組員には無条件の恩赦を約束しました。",
+      "tts": {
+        "text": "また、自首してエブリーに不利な証言をする乗組員には無条件の恩赦を約束しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "会社はエブリーを見つけ出し、ムガル皇帝に正義が行われることを示すために必死でした。",
+      "text_markdown": "会社はエブリーを見つけ出し、ムガル皇帝に正義が行われることを示すために必死でした。",
+      "tts": {
+        "text": "会社はエブリーを見つけ出し、ムガル皇帝に正義が行われることを示すために必死でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "企業としての存続がそれにかかっていました。",
+      "text_markdown": "企業としての存続がそれにかかっていました。",
+      "tts": {
+        "text": "企業としての存続がそれにかかっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その頃、エブリーは全速力でインド洋から離れつつありました。",
+      "text_markdown": "その頃、エブリーは全速力でインド洋から離れつつありました。",
+      "tts": {
+        "text": "その頃、エブリーは全速力でインド洋から離れつつありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "犯行現場の近くにとどまることが自殺行為であると分かっていました。",
+      "text_markdown": "犯行現場の近くにとどまることが自殺行為であると分かっていました。",
+      "tts": {
+        "text": "犯行現場の近くにとどまることが自殺行為であると分かっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西インド洋のレユニオン島へ向かいました。",
+      "text_markdown": "西インド洋のレユニオン島へ向かいました。",
+      "tts": {
+        "text": "西インド洋のレユニオン島へ向かいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこで乗組員の間で財宝を分配しました。",
+      "text_markdown": "そこで乗組員の間で財宝を分配しました。",
+      "tts": {
+        "text": "そこで乗組員の間で財宝を分配しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一般の海賊一人一人が数百ポンド相当の取り分を受け取りました。",
+      "text_markdown": "一般の海賊一人一人が数百ポンド相当の取り分を受け取りました。",
+      "tts": {
+        "text": "一般の海賊ひとりひとりが数百ポンド相当の取り分を受け取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エブリー自身は船長として、より大きな分け前を受け取りました。",
+      "text_markdown": "エブリー自身は船長として、より大きな分け前を受け取りました。",
+      "tts": {
+        "text": "エブリー自身は船長として、より大きな分け前を受け取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは今や想像を超える富を手にしていました。",
+      "text_markdown": "彼らは今や想像を超える富を手にしていました。",
+      "tts": {
+        "text": "彼らは今や想像を超える富を手にしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "問題は、それを使えるほど長く生き延びられるかどうかでした。",
+      "text_markdown": "問題は、それを使えるほど長く生き延びられるかどうかでした。",
+      "tts": {
+        "text": "問題は、それを使えるほど長く生き延びられるかどうかでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーはその後、ファンシー号で大西洋を渡り、バハマのニュー・プロヴィデンス島へ向かいました。",
+      "text_markdown": "エブリーはその後、ファンシー号で大西洋を渡り、バハマのニュー・プロヴィデンス島へ向かいました。",
+      "tts": {
+        "text": "エブリーはその後、ファンシーごうで大西洋を渡り、バハマのニュー・プロヴィデンス島へ向かいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1696年4月に到着しました。海賊人生の始まりとなった反乱からほぼ2年後のことでした。",
+      "text_markdown": "1696年4月に到着しました。海賊人生の始まりとなった反乱からほぼ2年後のことでした。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうろくねんしがつに到着しました。海賊人生の始まりとなった反乱からほぼにねんごのことでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バハマ総督ニコラス・トロットは海賊たちを匿うことに同意しました。",
+      "text_markdown": "バハマ総督ニコラス・トロットは海賊たちを匿うことに同意しました。",
+      "tts": {
+        "text": "バハマ総督ニコラス・トロットは海賊たちを匿うことに同意しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーは象牙、現金、そしてファンシー号そのものでトロットに賄賂を贈ったと伝えられています。",
+      "text_markdown": "エブリーは象牙、現金、そしてファンシー号そのものでトロットに賄賂を贈ったと伝えられています。",
+      "tts": {
+        "text": "エブリーは象牙、現金、そしてファンシーごうそのものでトロットに賄賂を贈ったと伝えられています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トロット総督はエブリーの乗組員に恩赦を発行し、無実の船員を装わせました。",
+      "text_markdown": "トロット総督はエブリーの乗組員に恩赦を発行し、無実の船員を装わせました。",
+      "tts": {
+        "text": "トロット総督はエブリーの乗組員に恩赦を発行し、無実の船員を装わせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちはカリブ海とアメリカ植民地全体に散らばりました。",
+      "text_markdown": "海賊たちはカリブ海とアメリカ植民地全体に散らばりました。",
+      "tts": {
+        "text": "海賊たちはカリブ海とアメリカ植民地全体に散らばりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ニューヨークへ向かう者、フィラデルフィアやチャールストンへ向かう者がいました。",
+      "text_markdown": "ニューヨークへ向かう者、フィラデルフィアやチャールストンへ向かう者がいました。",
+      "tts": {
+        "text": "ニューヨークへ向かう者、フィラデルフィアやチャールストンへ向かう者がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは盗んだムガルの財宝を持ち、できる限り隠しながら移動しました。",
+      "text_markdown": "彼らは盗んだムガルの財宝を持ち、できる限り隠しながら移動しました。",
+      "tts": {
+        "text": "彼らは盗んだムガルの財宝を持ち、できる限り隠しながら移動しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリー自身は姿を消しました。",
+      "text_markdown": "エブリー自身は姿を消しました。",
+      "tts": {
+        "text": "エブリー自身は姿を消しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これが彼の物語で最も驚くべき部分です。",
+      "text_markdown": "これが彼の物語で最も驚くべき部分です。",
+      "tts": {
+        "text": "これが彼の物語で最も驚くべき部分です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界がこれまでに経験した最も集中的な人探しの対象であったにもかかわらず、彼は決して見つかりませんでした。",
+      "text_markdown": "世界がこれまでに経験した最も集中的な人探しの対象であったにもかかわらず、彼は決して見つかりませんでした。",
+      "tts": {
+        "text": "世界がこれまでに経験した最も集中的な人探しの対象であったにもかかわらず、彼は決して見つかりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海が彼を飲み込んだかのように、完全に消え去りました。",
+      "text_markdown": "海が彼を飲み込んだかのように、完全に消え去りました。",
+      "tts": {
+        "text": "海が彼を飲み込んだかのように、完全に消え去りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乗組員の何人かは最終的に捕らえられ、ロンドンで裁判にかけられました。",
+      "text_markdown": "乗組員の何人かは最終的に捕らえられ、ロンドンで裁判にかけられました。",
+      "tts": {
+        "text": "乗組員の何人かは最終的に捕らえられ、ロンドンで裁判にかけられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1696年に6人が絞首刑に処され、遺体は見せしめとして晒されました。",
+      "text_markdown": "1696年に6人が絞首刑に処され、遺体は見せしめとして晒されました。",
+      "tts": {
+        "text": "せんろっぴゃくきゅうじゅうろくねんにろくにんが絞首刑に処され、遺体は見せしめとして晒されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし捕まった者たちは乗組員の下位のメンバーでした。",
+      "text_markdown": "しかし捕まった者たちは乗組員の下位のメンバーでした。",
+      "tts": {
+        "text": "しかし捕まった者たちは乗組員の下位のメンバーでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリー自身は自由の身のままでした。",
+      "text_markdown": "エブリー自身は自由の身のままでした。",
+      "tts": {
+        "text": "エブリー自身は自由の身のままでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロンドンでの裁判はイギリス国民を魅了した一大センセーションでした。",
+      "text_markdown": "ロンドンでの裁判はイギリス国民を魅了した一大センセーションでした。",
+      "tts": {
+        "text": "ロンドンでの裁判はイギリス国民を魅了したいちだいセンセーションでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "新聞は証言の詳細な記事を掲載しました。",
+      "text_markdown": "新聞は証言の詳細な記事を掲載しました。",
+      "tts": {
+        "text": "新聞は証言の詳細な記事を掲載しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皇帝の財宝を盗んだ一介の船員の物語は、あらゆる社会階層の人々を魅了しました。",
+      "text_markdown": "皇帝の財宝を盗んだ一介の船員の物語は、あらゆる社会階層の人々を魅了しました。",
+      "tts": {
+        "text": "皇帝の財宝を盗んだいっかいの船員の物語は、あらゆる社会階層の人々を魅了しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーは同時代で最も有名な犯罪者となりました。",
+      "text_markdown": "エブリーは同時代で最も有名な犯罪者となりました。",
+      "tts": {
+        "text": "エブリーは同時代で最も有名な犯罪者となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ムガル帝国との外交危機の解決には何年もかかりました。",
+      "text_markdown": "ムガル帝国との外交危機の解決には何年もかかりました。",
+      "tts": {
+        "text": "ムガル帝国との外交危機の解決には何年もかかりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "東インド会社は最終的に賠償金を支払い、海上パトロールを強化しました。",
+      "text_markdown": "東インド会社は最終的に賠償金を支払い、海上パトロールを強化しました。",
+      "tts": {
+        "text": "東インド会社は最終的に賠償金を支払い、海上パトロールを強化しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムガルとイギリスの貿易は再開されましたが、関係は永続的に損なわれていました。",
+      "text_markdown": "ムガルとイギリスの貿易は再開されましたが、関係は永続的に損なわれていました。",
+      "tts": {
+        "text": "ムガルとイギリスの貿易は再開されましたが、関係は永続的に損なわれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "地球上で最も指名手配された男",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この事件は、ヨーロッパの海賊が大帝国の安定を脅かし得ることを示しました。",
+      "text_markdown": "この事件は、ヨーロッパの海賊が大帝国の安定を脅かし得ることを示しました。",
+      "tts": {
+        "text": "この事件は、ヨーロッパの海賊が大帝国の安定を脅かし得ることを示しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "消失",
+      "text_markdown": "消失"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・エブリーの失踪は、海賊史上最大の未解決の謎の一つです。",
+      "text_markdown": "ヘンリー・エブリーの失踪は、海賊史上最大の未解決の謎の一つです。",
+      "tts": {
+        "text": "ヘンリー・エブリーの失踪は、海賊史上最大の未解決の謎のひとつです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バハマを去った後、彼が確実に目撃されたことは一度もありません。",
+      "text_markdown": "バハマを去った後、彼が確実に目撃されたことは一度もありません。",
+      "tts": {
+        "text": "バハマを去った後、彼が確実に目撃されたことはいちどもありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちは彼に何が起きたかについて多くの説を提唱していますが、どれも証明できません。",
+      "text_markdown": "歴史家たちは彼に何が起きたかについて多くの説を提唱していますが、どれも証明できません。",
+      "tts": {
+        "text": "歴史家たちは彼に何が起きたかについて多くの説を提唱していますが、どれも証明できません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある説では、エブリーは偽名でイングランドに戻ったとされています。",
+      "text_markdown": "ある説では、エブリーは偽名でイングランドに戻ったとされています。",
+      "tts": {
+        "text": "ある説では、エブリーは偽名でイングランドに戻ったとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドは大きな国であり、金のある男ならロンドンのような都市に容易に紛れ込めました。",
+      "text_markdown": "イングランドは大きな国であり、金のある男ならロンドンのような都市に容易に紛れ込めました。",
+      "tts": {
+        "text": "イングランドは大きな国であり、金のある男ならロンドンのような都市に容易に紛れ込めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "派手な消費を避ければ、静かな無名の生活を送れたかもしれません。",
+      "text_markdown": "派手な消費を避ければ、静かな無名の生活を送れたかもしれません。",
+      "tts": {
+        "text": "派手な消費を避ければ、静かな無名の生活を送れたかもしれません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これはより信憑性の高い説の一つとされています。",
+      "text_markdown": "これはより信憑性の高い説の一つとされています。",
+      "tts": {
+        "text": "これはより信憑性の高い説のひとつとされています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "別の説では、エブリーはアイルランドへ行ったとされています。",
+      "text_markdown": "別の説では、エブリーはアイルランドへ行ったとされています。",
+      "tts": {
+        "text": "別の説では、エブリーはアイルランドへ行ったとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイルランドはイングランドほど厳しく管理されておらず、港は大西洋横断航路で賑わっていました。",
+      "text_markdown": "アイルランドはイングランドほど厳しく管理されておらず、港は大西洋横断航路で賑わっていました。",
+      "tts": {
+        "text": "アイルランドはイングランドほど厳しく管理されておらず、港は大西洋横断航路で賑わっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "裕福な見知らぬ人は、そこではあまり注目を集めなかったでしょう。",
+      "text_markdown": "裕福な見知らぬ人は、そこではあまり注目を集めなかったでしょう。",
+      "tts": {
+        "text": "裕福な見知らぬ人は、そこではあまり注目を集めなかったでしょう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "いくつかの記録では、港町コークに彼がいたとされています。",
+      "text_markdown": "いくつかの記録では、港町コークに彼がいたとされています。",
+      "tts": {
+        "text": "いくつかの記録では、港町コークに彼がいたとされています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第三の説では、エブリーは東アフリカ沿岸かマダガスカルへ渡ったとされています。",
+      "text_markdown": "第三の説では、エブリーは東アフリカ沿岸かマダガスカルへ渡ったとされています。",
+      "tts": {
+        "text": "だいさんの説では、エブリーは東アフリカ沿岸かマダガスカルへ渡ったとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの海賊がマダガスカルに引退し、現地の住民の中で暮らしました。",
+      "text_markdown": "多くの海賊がマダガスカルに引退し、現地の住民の中で暮らしました。",
+      "tts": {
+        "text": "多くの海賊がマダガスカルに引退し、現地の住民の中で暮らしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "現地の女性と結婚し、小さな首長になった者もいました。",
+      "text_markdown": "現地の女性と結婚し、小さな首長になった者もいました。",
+      "tts": {
+        "text": "現地の女性と結婚し、小さな首長になった者もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーは巨額の富があれば、そのような場所で快適に暮らせたでしょう。",
+      "text_markdown": "エブリーは巨額の富があれば、そのような場所で快適に暮らせたでしょう。",
+      "tts": {
+        "text": "エブリーは巨額の富があれば、そのような場所で快適に暮らせたでしょう。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最もロマンチックな説では、エブリーは貧困のうちに死んだとされています。",
+      "text_markdown": "最もロマンチックな説では、エブリーは貧困のうちに死んだとされています。",
+      "tts": {
+        "text": "最もロマンチックな説では、エブリーは貧困のうちに死んだとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この説によると、盗んだ宝石を扱ったブリストルの商人たちに騙されたとのことです。",
+      "text_markdown": "この説によると、盗んだ宝石を扱ったブリストルの商人たちに騙されたとのことです。",
+      "tts": {
+        "text": "この説によると、盗んだ宝石を扱ったブリストルの商人たちに騙されたとのことです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "宝石の実際の価値よりはるかに少ない金額しか渡されず、法的手段もありませんでした。",
+      "text_markdown": "宝石の実際の価値よりはるかに少ない金額しか渡されず、法的手段もありませんでした。",
+      "tts": {
+        "text": "宝石の実際の価値よりはるかに少ない金額しか渡されず、法的手段もありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自ら盗んだ財宝にアクセスできないまま、無一文で死んだとされています。",
+      "text_markdown": "自ら盗んだ財宝にアクセスできないまま、無一文で死んだとされています。",
+      "tts": {
+        "text": "自ら盗んだ財宝にアクセスできないまま、無一文で死んだとされています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この貧困の話は、エブリーの失踪から数十年後に出版された本に初めて登場しました。",
+      "text_markdown": "この貧困の話は、エブリーの失踪から数十年後に出版された本に初めて登場しました。",
+      "tts": {
+        "text": "この貧困の話は、エブリーの失踪から数十年後に出版された本に初めて登場しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほとんどの歴史家はこれを信頼性が低いと考えています。",
+      "text_markdown": "ほとんどの歴史家はこれを信頼性が低いと考えています。",
+      "tts": {
+        "text": "ほとんどの歴史家はこれを信頼性が低いと考えています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "犯罪は割に合わないという教訓話として創作された可能性があります。",
+      "text_markdown": "犯罪は割に合わないという教訓話として創作された可能性があります。",
+      "tts": {
+        "text": "犯罪は割に合わないという教訓話として創作された可能性があります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "真実は、ヘンリー・エブリーに何が起きたか誰も知らないということです。",
+      "text_markdown": "真実は、ヘンリー・エブリーに何が起きたか誰も知らないということです。",
+      "tts": {
+        "text": "真実は、ヘンリー・エブリーに何が起きたか誰も知らないということです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "確かなのは、彼が完全に法の裁きを逃れたということです。",
+      "text_markdown": "確かなのは、彼が完全に法の裁きを逃れたということです。",
+      "tts": {
+        "text": "確かなのは、彼が完全に法の裁きを逃れたということです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は黄金時代の主要な海賊で唯一、捕らえられず、戦闘で殺されず、裁判にかけられなかった人物でした。",
+      "text_markdown": "彼は黄金時代の主要な海賊で唯一、捕らえられず、戦闘で殺されず、裁判にかけられなかった人物でした。",
+      "tts": {
+        "text": "彼は黄金時代の主要な海賊で唯一、捕らえられず、戦闘で殺されず、裁判にかけられなかった人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は制度を完全に打ち負かしたのです。",
+      "text_markdown": "彼は制度を完全に打ち負かしたのです。",
+      "tts": {
+        "text": "彼は制度を完全に打ち負かしたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス政府は最終的に捜索を断念しました。",
+      "text_markdown": "イギリス政府は最終的に捜索を断念しました。",
+      "tts": {
+        "text": "イギリス政府は最終的に捜索を断念しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他の海賊が台頭しては没落し、他の危機が注目を集めました。",
+      "text_markdown": "他の海賊が台頭しては没落し、他の危機が注目を集めました。",
+      "tts": {
+        "text": "他の海賊が台頭しては没落し、他の危機が注目を集めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エブリーは公的な関心から薄れていきましたが、彼の伝説は大きくなる一方でした。",
+      "text_markdown": "エブリーは公的な関心から薄れていきましたが、彼の伝説は大きくなる一方でした。",
+      "tts": {
+        "text": "エブリーは公的な関心から薄れていきましたが、彼の伝説は大きくなるいっぽうでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕らえられた乗組員は裁判中にいくらかの情報を提供しました。",
+      "text_markdown": "捕らえられた乗組員は裁判中にいくらかの情報を提供しました。",
+      "tts": {
+        "text": "捕らえられた乗組員は裁判中にいくらかの情報を提供しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ガンジ・イ・サワーイー号への攻撃と財宝の分配について証言しました。",
+      "text_markdown": "ガンジ・イ・サワーイー号への攻撃と財宝の分配について証言しました。",
+      "tts": {
+        "text": "ガンジ・イ・サワーイーごうへの攻撃と財宝の分配について証言しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし、バハマの後エブリーがどこへ行ったかは誰も知りませんでした。",
+      "text_markdown": "しかし、バハマの後エブリーがどこへ行ったかは誰も知りませんでした。",
+      "tts": {
+        "text": "しかし、バハマの後エブリーがどこへ行ったかは誰も知りませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "もし知っている者がいたとしても、その秘密を墓場まで持って行きました。",
+      "text_markdown": "もし知っている者がいたとしても、その秘密を墓場まで持って行きました。",
+      "tts": {
+        "text": "もし知っている者がいたとしても、その秘密を墓場まで持って行きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーの人探しは国際法における重要な先例を確立しました。",
+      "text_markdown": "エブリーの人探しは国際法における重要な先例を確立しました。",
+      "tts": {
+        "text": "エブリーの人探しは国際法における重要な先例を確立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府が犯罪者を追跡するために国境を越えて協力した最初の事例の一つでした。",
+      "text_markdown": "政府が犯罪者を追跡するために国境を越えて協力した最初の事例の一つでした。",
+      "tts": {
+        "text": "政府が犯罪者を追跡するために国境を越えて協力した最初の事例のひとつでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "報奨金制度、密告者への恩赦、指名手配通知の世界的配布はすべて革新でした。",
+      "text_markdown": "報奨金制度、密告者への恩赦、指名手配通知の世界的配布はすべて革新でした。",
+      "tts": {
+        "text": "報奨金制度、密告者への恩赦、指名手配通知の世界的配布はすべて革新でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ヘンリー・エブリーの犯罪は、国際刑事司法の近代的な枠組みの構築に貢献しました。",
+      "text_markdown": "ヘンリー・エブリーの犯罪は、国際刑事司法の近代的な枠組みの構築に貢献しました。",
+      "tts": {
+        "text": "ヘンリー・エブリーの犯罪は、国際刑事司法の近代的な枠組みの構築に貢献しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2023年、ロードアイランドの考古学者がアラビアの硬貨のコレクションを発見しました。",
+      "text_markdown": "2023年、ロードアイランドの考古学者がアラビアの硬貨のコレクションを発見しました。",
+      "tts": {
+        "text": "にせんにじゅうさんねん、ロードアイランドの考古学者がアラビアの硬貨のコレクションを発見しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "硬貨は正しい時代のもので、ムガル帝国のものと見られます。",
+      "text_markdown": "硬貨は正しい時代のもので、ムガル帝国のものと見られます。",
+      "tts": {
+        "text": "硬貨は正しい時代のもので、ムガル帝国のものと見られます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちは、ガンジ・イ・サワーイー号の財宝の一部である可能性があると考えています。",
+      "text_markdown": "歴史家たちは、ガンジ・イ・サワーイー号の財宝の一部である可能性があると考えています。",
+      "tts": {
+        "text": "歴史家たちは、ガンジ・イ・サワーイーごうの財宝の一部である可能性があると考えています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの硬貨は、エブリーの乗組員が盗んだ財産をアメリカ植民地に持ち込んだ物的証拠です。",
+      "text_markdown": "これらの硬貨は、エブリーの乗組員が盗んだ財産をアメリカ植民地に持ち込んだ物的証拠です。",
+      "tts": {
+        "text": "これらの硬貨は、エブリーの乗組員が盗んだ財産をアメリカ植民地に持ち込んだ物的証拠です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊王の遺産",
+      "text_markdown": "海賊王の遺産"
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・エブリーの物語はすぐに大衆の想像力を捉えました。",
+      "text_markdown": "ヘンリー・エブリーの物語はすぐに大衆の想像力を捉えました。",
+      "tts": {
+        "text": "ヘンリー・エブリーの物語はすぐに大衆の想像力を捉えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1713年にロンドンで『成功した海賊』という劇が上演されました。",
+      "text_markdown": "1713年にロンドンで『成功した海賊』という劇が上演されました。",
+      "tts": {
+        "text": "せんななひゃくじゅうさんねんにロンドンで「成功した海賊」という劇が上演されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エブリーの冒険を劇的に描き、彼をロマンチックな反逆者として表現しました。",
+      "text_markdown": "エブリーの冒険を劇的に描き、彼をロマンチックな反逆者として表現しました。",
+      "tts": {
+        "text": "エブリーの冒険を劇的に描き、彼をロマンチックな反逆者として表現しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この劇は大変な人気を博し、多くの公演が行われました。",
+      "text_markdown": "この劇は大変な人気を博し、多くの公演が行われました。",
+      "tts": {
+        "text": "この劇は大変な人気を博し、多くの公演が行われました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーは大衆の想像の中で民衆の英雄となりました。",
+      "text_markdown": "エブリーは大衆の想像の中で民衆の英雄となりました。",
+      "tts": {
+        "text": "エブリーは大衆の想像の中で民衆の英雄となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼について書かれたバラッドがイングランド中の酒場で歌われました。",
+      "text_markdown": "彼について書かれたバラッドがイングランド中の酒場で歌われました。",
+      "tts": {
+        "text": "彼について書かれたバラッドがイングランド中の酒場で歌われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ある有名なバラッドは、偉大な皇帝を屈服させた海賊の王として彼を描きました。",
+      "text_markdown": "ある有名なバラッドは、偉大な皇帝を屈服させた海賊の王として彼を描きました。",
+      "tts": {
+        "text": "ある有名なバラッドは、偉大な皇帝を屈服させた海賊の王として彼を描きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "厳格な身分制度の時代にあって、彼の物語は自由と富を夢見る庶民の心を捉えました。",
+      "text_markdown": "厳格な身分制度の時代にあって、彼の物語は自由と富を夢見る庶民の心を捉えました。",
+      "tts": {
+        "text": "厳格な身分制度の時代にあって、彼の物語は自由と富を夢見る庶民の心を捉えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーの成功は、彼の後を追う一世代の海賊たちにインスピレーションを与えました。",
+      "text_markdown": "エブリーの成功は、彼の後を追う一世代の海賊たちにインスピレーションを与えました。",
+      "tts": {
+        "text": "エブリーの成功は、彼の後を追ういっせだいの海賊たちにインスピレーションを与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の有名な襲撃の後、インド洋のパイレーツ・ラウンドはよく知られたルートとなりました。",
+      "text_markdown": "彼の有名な襲撃の後、インド洋のパイレーツ・ラウンドはよく知られたルートとなりました。",
+      "tts": {
+        "text": "彼の有名な襲撃の後、インド洋のパイレーツ・ラウンドはよく知られたルートとなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ウィリアム・キッド、ロバート・カリフォードらの海賊がエブリーの成功を再現しようとしました。",
+      "text_markdown": "ウィリアム・キッド、ロバート・カリフォードらの海賊がエブリーの成功を再現しようとしました。",
+      "tts": {
+        "text": "ウィリアム・キッド、ロバート・カリフォードらの海賊がエブリーの成功を再現しようとしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "誰も彼の偉業に匹敵することはなく、ほとんどが暴力的または不名誉な最期を迎えました。",
+      "text_markdown": "誰も彼の偉業に匹敵することはなく、ほとんどが暴力的または不名誉な最期を迎えました。",
+      "tts": {
+        "text": "誰も彼の偉業に匹敵することはなく、ほとんどが暴力的または不名誉な最期を迎えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーの襲撃の外交的影響は数十年にわたって続きました。",
+      "text_markdown": "エブリーの襲撃の外交的影響は数十年にわたって続きました。",
+      "tts": {
+        "text": "エブリーの襲撃の外交的影響は数十年にわたって続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "東インド会社は海賊鎮圧を真剣に受け止めざるを得なくなりました。",
+      "text_markdown": "東インド会社は海賊鎮圧を真剣に受け止めざるを得なくなりました。",
+      "tts": {
+        "text": "東インド会社は海賊鎮圧を真剣に受け止めざるを得なくなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "インド洋の船舶に対する海軍護衛の資金提供を開始しました。",
+      "text_markdown": "インド洋の船舶に対する海軍護衛の資金提供を開始しました。",
+      "tts": {
+        "text": "インド洋の船舶に対する海軍護衛の資金提供を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの海賊討伐作戦は、最終的にインド貿易に対する会社の支配を強化することに貢献しました。",
+      "text_markdown": "これらの海賊討伐作戦は、最終的にインド貿易に対する会社の支配を強化することに貢献しました。",
+      "tts": {
+        "text": "これらの海賊討伐作戦は、最終的にインド貿易に対する会社の支配を強化することに貢献しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーの襲撃が実際にインドにおけるイギリスの植民地化を加速させたと主張する歴史家もいます。",
+      "text_markdown": "エブリーの襲撃が実際にインドにおけるイギリスの植民地化を加速させたと主張する歴史家もいます。",
+      "tts": {
+        "text": "エブリーの襲撃が実際にインドにおけるイギリスの植民地化を加速させたと主張する歴史家もいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "危機は東インド会社にさらに強力な軍事力の構築を強いました。",
+      "text_markdown": "危機は東インド会社にさらに強力な軍事力の構築を強いました。",
+      "tts": {
+        "text": "危機は東インド会社にさらに強力な軍事力の構築を強いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの軍事力は後に海賊だけでなく、インドの諸国に対しても使用されました。",
+      "text_markdown": "これらの軍事力は後に海賊だけでなく、インドの諸国に対しても使用されました。",
+      "tts": {
+        "text": "これらの軍事力は後に海賊だけでなく、インドの諸国に対しても使用されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーの襲撃に始まる一連の出来事は、最終的なイギリスによるインド征服に貢献しました。",
+      "text_markdown": "エブリーの襲撃に始まる一連の出来事は、最終的なイギリスによるインド征服に貢献しました。",
+      "tts": {
+        "text": "エブリーの襲撃に始まるいちれんの出来事は、最終的なイギリスによるインド征服に貢献しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エブリーの物語は、史上最も有名な海賊小説にも影響を与えました。",
+      "text_markdown": "エブリーの物語は、史上最も有名な海賊小説にも影響を与えました。",
+      "tts": {
+        "text": "エブリーの物語は、史上最も有名な海賊小説にも影響を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ダニエル・デフォーは、自身の小説の一部にエブリーの人生からインスピレーションを得たと考えられています。",
+      "text_markdown": "ダニエル・デフォーは、自身の小説の一部にエブリーの人生からインスピレーションを得たと考えられています。",
+      "tts": {
+        "text": "ダニエル・デフォーは、自身の小説の一部にエブリーの人生からインスピレーションを得たと考えられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "財宝を持って逃げ永遠に姿を消す海賊という発想は、冒険文学の定番となりました。",
+      "text_markdown": "財宝を持って逃げ永遠に姿を消す海賊という発想は、冒険文学の定番となりました。",
+      "tts": {
+        "text": "財宝を持って逃げ永遠に姿を消す海賊という発想は、冒険文学の定番となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エブリーの実人生は、ほとんどの架空の海賊物語よりも劇的でした。",
+      "text_markdown": "エブリーの実人生は、ほとんどの架空の海賊物語よりも劇的でした。",
+      "tts": {
+        "text": "エブリーの実人生は、ほとんどの架空の海賊物語よりも劇的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・エブリーは海賊の歴史において唯一無二の存在であり続けています。",
+      "text_markdown": "ヘンリー・エブリーは海賊の歴史において唯一無二の存在であり続けています。",
+      "tts": {
+        "text": "ヘンリー・エブリーは海賊の歴史においてゆいいつむにの存在であり続けています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黄金時代における最も豊かな単独の海賊行為を成し遂げました。",
+      "text_markdown": "黄金時代における最も豊かな単独の海賊行為を成し遂げました。",
+      "tts": {
+        "text": "黄金時代における最も豊かな単独の海賊行為を成し遂げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二つの帝国を揺るがす国際的危機を引き起こしました。",
+      "text_markdown": "二つの帝国を揺るがす国際的危機を引き起こしました。",
+      "tts": {
+        "text": "ふたつの帝国を揺るがす国際的危機を引き起こしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "海賊王の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして、秘密を抱えたまま未知の世界へと消えていったのです。",
+      "text_markdown": "そして、秘密を抱えたまま未知の世界へと消えていったのです。",
+      "tts": {
+        "text": "そして、秘密を抱えたまま未知の世界へと消えていったのです。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

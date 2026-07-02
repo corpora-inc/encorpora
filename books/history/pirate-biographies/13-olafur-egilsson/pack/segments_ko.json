@@ -1,0 +1,4259 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_olafur_egilsson",
+  "language": "ko",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말씀",
+      "text_markdown": "독자에게 드리는 말씀"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 실화이지만, 해적의 관점에서 이야기되지는 않습니다.",
+      "text_markdown": "이것은 실화이지만, 해적의 관점에서 이야기되지는 않습니다.",
+      "tts": {
+        "text": "이것은 실화이지만, 해적의 관점에서 이야기되지는 않습니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "붙잡혀 간 사람들의 편에서 이야기됩니다.",
+      "text_markdown": "붙잡혀 간 사람들의 편에서 이야기됩니다.",
+      "tts": {
+        "text": "붙잡혀 간 사람들의 편에서 이야기됩니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대부분의 해적 이야기는 대담한 습격과 보물을 찬양합니다.",
+      "text_markdown": "대부분의 해적 이야기는 대담한 습격과 보물을 찬양합니다.",
+      "tts": {
+        "text": "대부분의 해적 이야기는 대담한 습격과 보물을 찬양합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 이야기는 연기 속에 남겨진 사람들에게 무슨 일이 일어났는지에 관한 것입니다.",
+      "text_markdown": "이 이야기는 연기 속에 남겨진 사람들에게 무슨 일이 일어났는지에 관한 것입니다.",
+      "tts": {
+        "text": "이 이야기는 연기 속에 남겨진 사람들에게 무슨 일이 일어났는지에 관한 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627년 여름, 북아프리카의 해적들이 아이슬란드까지 항해해 왔습니다.",
+      "text_markdown": "1627년 여름, 북아프리카의 해적들이 아이슬란드까지 항해해 왔습니다.",
+      "tts": {
+        "text": "천육백이십칠 년 여름, 북아프리카의 해적들이 아이슬란드까지 항해해 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 거의 사백 명을 붙잡아 노예로 팔기 위해 바다 건너로 끌고 갔습니다.",
+      "text_markdown": "그들은 거의 사백 명을 붙잡아 노예로 팔기 위해 바다 건너로 끌고 갔습니다.",
+      "tts": {
+        "text": "그들은 거의 사백 명을 붙잡아 노예로 팔기 위해 바다 건너로 끌고 갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 포로 중 한 명이 올라퓌르 에이일손이라는 목사였습니다.",
+      "text_markdown": "그 포로 중 한 명이 Ólafur Egilsson이라는 목사였습니다.",
+      "tts": {
+        "text": "그 포로 중 한 명이 올라퓌르 에이일손이라는 목사였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 자신이 본 것, 겪은 것, 잃은 것에 대한 책을 썼습니다.",
+      "text_markdown": "그는 자신이 본 것, 겪은 것, 잃은 것에 대한 책을 썼습니다.",
+      "tts": {
+        "text": "그는 자신이 본 것, 겪은 것, 잃은 것에 대한 책을 썼습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 그의 이야기입니다.",
+      "text_markdown": "이것은 그의 이야기입니다.",
+      "tts": {
+        "text": "이것은 그의 이야기입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적에 관한 책에 실릴 자격이 있는 이야기입니다. 해적 행위는 결코 해적만의 것이 아니었기 때문입니다.",
+      "text_markdown": "해적에 관한 책에 실릴 자격이 있는 이야기입니다. 해적 행위는 결코 해적만의 것이 아니었기 때문입니다.",
+      "tts": {
+        "text": "해적에 관한 책에 실릴 자격이 있는 이야기입니다. 해적 행위는 결코 해적만의 것이 아니었기 때문입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 언제나, 그들이 상처 입힌 사람들에 관한 것이기도 했습니다.",
+      "text_markdown": "그것은 언제나, 그들이 상처 입힌 사람들에 관한 것이기도 했습니다.",
+      "tts": {
+        "text": "그것은 언제나, 그들이 상처 입힌 사람들에 관한 것이기도 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "웨스트만 제도",
+      "text_markdown": "웨스트만 제도"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드 남쪽 해안에서 멀리 떨어진 곳에, 작은 화산 섬들이 북대서양에서 솟아올라 있습니다.",
+      "text_markdown": "아이슬란드 남쪽 해안에서 멀리 떨어진 곳에, 작은 화산 섬들이 북대서양에서 솟아올라 있습니다.",
+      "tts": {
+        "text": "아이슬란드 남쪽 해안에서 멀리 떨어진 곳에, 작은 화산 섬들이 북대서양에서 솟아올라 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아이슬란드인들은 이곳을 베스트만나에이야르, 즉 웨스트만 제도라고 부릅니다.",
+      "text_markdown": "아이슬란드인들은 이곳을 베스트만나에이야르, 즉 웨스트만 제도라고 부릅니다.",
+      "tts": {
+        "text": "아이슬란드인들은 이곳을 베스트만나에이야르, 즉 웨스트만 제도라고 부릅니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽에서 가장 고립된 공동체 중 하나입니다.",
+      "text_markdown": "유럽에서 가장 고립된 공동체 중 하나입니다.",
+      "tts": {
+        "text": "유럽에서 가장 고립된 공동체 중 하나입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 큰 섬은 헤이마에이라고 불리며, 영구적으로 사람이 정착한 유일한 섬입니다.",
+      "text_markdown": "가장 큰 섬은 헤이마에이라고 불리며, 영구적으로 사람이 정착한 유일한 섬입니다.",
+      "tts": {
+        "text": "가장 큰 섬은 헤이마에이라고 불리며, 영구적으로 사람이 정착한 유일한 섬입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "헤이마에이조차 작아서, 지름이 겨우 오 킬로미터에 불과하며, 거의 모든 면이 가파른 절벽으로 둘러싸여 있습니다.",
+      "text_markdown": "헤이마에이조차 작아서, 지름이 겨우 오 킬로미터에 불과하며, 거의 모든 면이 가파른 절벽으로 둘러싸여 있습니다.",
+      "tts": {
+        "text": "헤이마에이조차 작아서, 지름이 겨우 오 킬로미터에 불과하며, 거의 모든 면이 가파른 절벽으로 둘러싸여 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 섬들은 해저 화산 폭발로 형성되었습니다.",
+      "text_markdown": "이 섬들은 해저 화산 폭발로 형성되었습니다.",
+      "tts": {
+        "text": "이 섬들은 해저 화산 폭발로 형성되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바위는 어두운 현무암이며, 절벽은 거센 파도 속으로 곧장 떨어집니다.",
+      "text_markdown": "바위는 어두운 현무암이며, 절벽은 거센 파도 속으로 곧장 떨어집니다.",
+      "tts": {
+        "text": "바위는 어두운 현무암이며, 절벽은 거센 파도 속으로 곧장 떨어집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여름이면 수백만 마리의 바닷새가 절벽 턱에 둥지를 틉니다.",
+      "text_markdown": "여름이면 수백만 마리의 바닷새가 절벽 턱에 둥지를 틉니다.",
+      "tts": {
+        "text": "여름이면 수백만 마리의 바닷새가 절벽 턱에 둥지를 틉니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "겨울이면 폭풍이 몇 주 동안이나 섬을 두들겨 팹니다.",
+      "text_markdown": "겨울이면 폭풍이 몇 주 동안이나 섬을 두들겨 팹니다.",
+      "tts": {
+        "text": "겨울이면 폭풍이 몇 주 동안이나 섬을 두들겨 팹니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "세상 끝에서의 삶",
+      "text_markdown": "세상 끝에서의 삶"
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1600년대 초, 헤이마에이에는 약 오백 명이 살고 있었습니다.",
+      "text_markdown": "1600년대 초, 헤이마에이에는 약 오백 명이 살고 있었습니다.",
+      "tts": {
+        "text": "천육백년대 초, 헤이마에이에는 약 오백 명이 살고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 어업, 양 사육, 절벽에서의 바닷새 알 채집으로 생계를 이어갔습니다.",
+      "text_markdown": "그들은 어업, 양 사육, 절벽에서의 바닷새 알 채집으로 생계를 이어갔습니다.",
+      "tts": {
+        "text": "그들은 어업, 양 사육, 절벽에서의 바닷새 알 채집으로 생계를 이어갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "섬 주민들은 바이킹 시대 이래 거의 변하지 않은 아이슬란드어를 사용했습니다.",
+      "text_markdown": "섬 주민들은 바이킹 시대 이래 거의 변하지 않은 아이슬란드어를 사용했습니다.",
+      "tts": {
+        "text": "섬 주민들은 바이킹 시대 이래 거의 변하지 않은 아이슬란드어를 사용했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 루터교도였으며, 교회가 공동체 생활의 중심이었습니다.",
+      "text_markdown": "그들은 루터교도였으며, 교회가 공동체 생활의 중심이었습니다.",
+      "tts": {
+        "text": "그들은 루터교도였으며, 교회가 공동체 생활의 중심이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드는 덴마크 왕국의 지배를 받았으며, 덴마크는 엄격한 독점 체제로 모든 교역을 통제했습니다.",
+      "text_markdown": "아이슬란드는 덴마크 왕국의 지배를 받았으며, 덴마크는 엄격한 독점 체제로 모든 교역을 통제했습니다.",
+      "tts": {
+        "text": "아이슬란드는 덴마크 왕국의 지배를 받았으며, 덴마크는 엄격한 독점 체제로 모든 교역을 통제했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크 상인만이 물건을 사고팔 수 있었고, 아이슬란드인들은 외부 세계와 거의 접촉이 없었습니다.",
+      "text_markdown": "덴마크 상인만이 물건을 사고팔 수 있었고, 아이슬란드인들은 외부 세계와 거의 접촉이 없었습니다.",
+      "tts": {
+        "text": "덴마크 상인만이 물건을 사고팔 수 있었고, 아이슬란드인들은 외부 세계와 거의 접촉이 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "소빙하기",
+      "text_markdown": "소빙하기"
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1600년대는 역사가들이 소빙하기라고 부르는 긴 한랭기의 일부였습니다.",
+      "text_markdown": "1600년대는 역사가들이 소빙하기라고 부르는 긴 한랭기의 일부였습니다.",
+      "tts": {
+        "text": "천육백년대는 역사가들이 소빙하기라고 부르는 긴 한랭기의 일부였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아이슬란드에서는 해빙이 몇 달씩 섬을 둘러싸 배를 막고 가축을 죽이기도 했습니다.",
+      "text_markdown": "아이슬란드에서는 해빙이 몇 달씩 섬을 둘러싸 배를 막고 가축을 죽이기도 했습니다.",
+      "tts": {
+        "text": "아이슬란드에서는 해빙이 몇 달씩 섬을 둘러싸 배를 막고 가축을 죽이기도 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "웨스트만 제도에서는 곡물을 키우기에 생육 기간이 너무 짧았습니다.",
+      "text_markdown": "웨스트만 제도에서는 곡물을 키우기에 생육 기간이 너무 짧았습니다.",
+      "tts": {
+        "text": "웨스트만 제도에서는 곡물을 키우기에 생육 기간이 너무 짧았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들은 바다에 의지했고, 폭풍으로 어업이 불가능해지면 굶주렸습니다.",
+      "text_markdown": "사람들은 바다에 의지했고, 폭풍으로 어업이 불가능해지면 굶주렸습니다.",
+      "tts": {
+        "text": "사람들은 바다에 의지했고, 폭풍으로 어업이 불가능해지면 굶주렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "평화롭고 취약한 곳",
+      "text_markdown": "평화롭고 취약한 곳"
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이러한 어려움에도 불구하고, 웨스트만 제도는 평화로운 곳이었습니다.",
+      "text_markdown": "이러한 어려움에도 불구하고, 웨스트만 제도는 평화로운 곳이었습니다.",
+      "tts": {
+        "text": "이러한 어려움에도 불구하고, 웨스트만 제도는 평화로운 곳이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "군인도, 요새도, 성벽도, 항구 방어 시설도 없었습니다.",
+      "text_markdown": "군인도, 요새도, 성벽도, 항구 방어 시설도 없었습니다.",
+      "tts": {
+        "text": "군인도, 요새도, 성벽도, 항구 방어 시설도 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "섬 주민들은 칼과 생업 도구 외에는 아무런 무기도 갖고 있지 않았습니다.",
+      "text_markdown": "섬 주민들은 칼과 생업 도구 외에는 아무런 무기도 갖고 있지 않았습니다.",
+      "tts": {
+        "text": "섬 주민들은 칼과 생업 도구 외에는 아무런 무기도 갖고 있지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아무도 공격을 예상하지 못했습니다.",
+      "text_markdown": "아무도 공격을 예상하지 못했습니다.",
+      "tts": {
+        "text": "아무도 공격을 예상하지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적은 먼 바다의 이야기 속에나 있는 존재였습니다.",
+      "text_markdown": "해적은 먼 바다의 이야기 속에나 있는 존재였습니다.",
+      "tts": {
+        "text": "해적은 먼 바다의 이야기 속에나 있는 존재였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "북대서양은 너무 춥고, 너무 거칠고, 가치 있는 곳으로부터 너무 멀다고 여겨졌습니다.",
+      "text_markdown": "북대서양은 너무 춥고, 너무 거칠고, 가치 있는 곳으로부터 너무 멀다고 여겨졌습니다.",
+      "tts": {
+        "text": "북대서양은 너무 춥고, 너무 거칠고, 가치 있는 곳으로부터 너무 멀다고 여겨졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "섬의 유일한 방어는 그 외진 위치뿐이었습니다.",
+      "text_markdown": "섬의 유일한 방어는 그 외진 위치뿐이었습니다.",
+      "tts": {
+        "text": "섬의 유일한 방어는 그 외진 위치뿐이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 세상에서 무언가가 변하고 있었고, 이 잊힌 바다의 구석까지 위험을 가져올 참이었습니다.",
+      "text_markdown": "그러나 세상에서 무언가가 변하고 있었고, 이 잊힌 바다의 구석까지 위험을 가져올 참이었습니다.",
+      "tts": {
+        "text": "그러나 세상에서 무언가가 변하고 있었고, 이 잊힌 바다의 구석까지 위험을 가져올 참이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "바르바리 해적, 북으로 진출하다",
+      "text_markdown": "바르바리 해적, 북으로 진출하다"
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아프리카 해안을 따라, 강력한 항구 도시들이 해상 약탈로 번성했습니다.",
+      "text_markdown": "북아프리카 해안을 따라, 강력한 항구 도시들이 해상 약탈로 번성했습니다.",
+      "tts": {
+        "text": "북아프리카 해안을 따라, 강력한 항구 도시들이 해상 약탈로 번성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제, 튀니스, 살레는 바르바리 해적의 본거지였으며, 오스만 제국의 지원을 받아 활동했습니다.",
+      "text_markdown": "알제, 튀니스, 살레는 바르바리 해적의 본거지였으며, 오스만 제국의 지원을 받아 활동했습니다.",
+      "tts": {
+        "text": "알제, 튀니스, 살레는 바르바리 해적의 본거지였으며, 오스만 제국의 지원을 받아 활동했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수 세기 동안 해적들은 스페인, 이탈리아, 프랑스를 약탈하며 사람들을 붙잡아 노예로 팔았습니다.",
+      "text_markdown": "수 세기 동안 해적들은 스페인, 이탈리아, 프랑스를 약탈하며 사람들을 붙잡아 노예로 팔았습니다.",
+      "tts": {
+        "text": "수 세기 동안 해적들은 스페인, 이탈리아, 프랑스를 약탈하며 사람들을 붙잡아 노예로 팔았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제의 노예 시장은 지중해 전역에서 유명했습니다.",
+      "text_markdown": "알제의 노예 시장은 지중해 전역에서 유명했습니다.",
+      "tts": {
+        "text": "알제의 노예 시장은 지중해 전역에서 유명했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1600년대 초, 해적에 합류한 유럽의 배교자들이 새로운 배, 항해술, 북방 바다에 대한 지식을 가져왔습니다.",
+      "text_markdown": "1600년대 초, 해적에 합류한 유럽의 배교자들이 새로운 배, 항해술, 북방 바다에 대한 지식을 가져왔습니다.",
+      "tts": {
+        "text": "천육백년대 초, 해적에 합류한 유럽의 배교자들이 새로운 배, 항해술, 북방 바다에 대한 지식을 가져왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 대서양으로 진출하여 잉글랜드, 아일랜드, 심지어 아이슬란드까지 약탈하기 시작했습니다.",
+      "text_markdown": "해적들은 대서양으로 진출하여 잉글랜드, 아일랜드, 심지어 아이슬란드까지 약탈하기 시작했습니다.",
+      "tts": {
+        "text": "해적들은 대서양으로 진출하여 잉글랜드, 아일랜드, 심지어 아이슬란드까지 약탈하기 시작했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 중요한 배교자 중 하나는 바르바리 선장으로 변신한 네덜란드인이었습니다.",
+      "text_markdown": "가장 중요한 배교자 중 하나는 바르바리 선장으로 변신한 네덜란드인이었습니다.",
+      "tts": {
+        "text": "가장 중요한 배교자 중 하나는 바르바리 선장으로 변신한 네덜란드인이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "웨스트만 제도",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수 세기 동안 웨스트만 제도를 지켜주던 고립은 끝나려 하고 있었습니다.",
+      "text_markdown": "수 세기 동안 웨스트만 제도를 지켜주던 고립은 끝나려 하고 있었습니다.",
+      "tts": {
+        "text": "수 세기 동안 웨스트만 제도를 지켜주던 고립은 끝나려 하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적이 온 날",
+      "text_markdown": "해적이 온 날"
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627년 7월의 어느 여름날, 아이슬란드 남쪽 수평선에 선단이 나타났습니다.",
+      "text_markdown": "1627년 7월의 어느 여름날, 아이슬란드 남쪽 수평선에 선단이 나타났습니다.",
+      "tts": {
+        "text": "천육백이십칠 년 칠월의 어느 여름날, 아이슬란드 남쪽 수평선에 선단이 나타났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크 상선이 아니었습니다.",
+      "text_markdown": "덴마크 상선이 아니었습니다.",
+      "tts": {
+        "text": "덴마크 상선이 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바르바리 해안에서 온 군함이었습니다.",
+      "text_markdown": "바르바리 해안에서 온 군함이었습니다.",
+      "tts": {
+        "text": "바르바리 해안에서 온 군함이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선단을 이끈 사람은 유럽인들이 무라트 레이스 소장이라고 부른 인물이었습니다.",
+      "text_markdown": "선단을 이끈 사람은 유럽인들이 무라트 레이스 소장이라고 부른 인물이었습니다.",
+      "tts": {
+        "text": "선단을 이끈 사람은 유럽인들이 무라트 레이스 소장이라고 부른 인물이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 본명은 얀 얀스존 판 하를럼이며, 네덜란드 공화국에서 태어났습니다.",
+      "text_markdown": "그의 본명은 Jan Janszoon van Haarlem이며, 네덜란드 공화국에서 태어났습니다.",
+      "tts": {
+        "text": "그의 본명은 얀 얀스존 판 하를럼이며, 네덜란드 공화국에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 해적으로 전향한 선원으로, 이슬람으로 개종하고 대서양에서 가장 강력한 해적 선장 중 하나가 되었습니다.",
+      "text_markdown": "그는 해적으로 전향한 선원으로, 이슬람으로 개종하고 대서양에서 가장 강력한 해적 선장 중 하나가 되었습니다.",
+      "tts": {
+        "text": "그는 해적으로 전향한 선원으로, 이슬람으로 개종하고 대서양에서 가장 강력한 해적 선장 중 하나가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "네덜란드 배교자",
+      "text_markdown": "네덜란드 배교자"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "얀 얀스존은 1570년경 하를럼에서 태어났습니다.",
+      "text_markdown": "얀 얀스존은 1570년경 하를럼에서 태어났습니다.",
+      "tts": {
+        "text": "얀 얀스존은 천오백칠십 년경 하를럼에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 네덜란드 사략선원으로 출발하여, 네덜란드와 스페인 간의 긴 전쟁 중에 스페인 선박을 공격할 허가를 받았습니다.",
+      "text_markdown": "그는 네덜란드 사략선원으로 출발하여, 네덜란드와 스페인 간의 긴 전쟁 중에 스페인 선박을 공격할 허가를 받았습니다.",
+      "tts": {
+        "text": "그는 네덜란드 사략선원으로 출발하여, 네덜란드와 스페인 간의 긴 전쟁 중에 스페인 선박을 공격할 허가를 받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어느 시점에서 얀스존은 해적에게 붙잡혀 모로코의 살레 항구로 끌려갔습니다.",
+      "text_markdown": "어느 시점에서 얀스존은 해적에게 붙잡혀 모로코의 살레 항구로 끌려갔습니다.",
+      "tts": {
+        "text": "어느 시점에서 얀스존은 해적에게 붙잡혀 모로코의 살레 항구로 끌려갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로로 남는 대신 이슬람으로 개종하여 무라트 레이스라는 이름을 취하고, 냉혹한 지휘관임을 증명했습니다.",
+      "text_markdown": "포로로 남는 대신 이슬람으로 개종하여 무라트 레이스라는 이름을 취하고, 냉혹한 지휘관임을 증명했습니다.",
+      "tts": {
+        "text": "포로로 남는 대신 이슬람으로 개종하여 무라트 레이스라는 이름을 취하고, 냉혹한 지휘관임을 증명했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 모로코 해안의 해적 국가인 살레 공화국의 대통령까지 올라갔습니다.",
+      "text_markdown": "그는 모로코 해안의 해적 국가인 살레 공화국의 대통령까지 올라갔습니다.",
+      "tts": {
+        "text": "그는 모로코 해안의 해적 국가인 살레 공화국의 대통령까지 올라갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "살레에서, 그리고 나중에 알제에서 그는 대서양 전역에 걸쳐 습격을 이끌었습니다.",
+      "text_markdown": "살레에서, 그리고 나중에 알제에서 그는 대서양 전역에 걸쳐 습격을 이끌었습니다.",
+      "tts": {
+        "text": "살레에서, 그리고 나중에 알제에서 그는 대서양 전역에 걸쳐 습격을 이끌었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1631년에는 아일랜드의 볼티모어 마을까지 습격하여 백 명이 넘는 포로를 끌고 갔습니다.",
+      "text_markdown": "1631년에는 아일랜드의 볼티모어 마을까지 습격하여 백 명이 넘는 포로를 끌고 갔습니다.",
+      "tts": {
+        "text": "천육백삼십일 년에는 아일랜드의 볼티모어 마을까지 습격하여 백 명이 넘는 포로를 끌고 갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "북쪽으로의 항로",
+      "text_markdown": "북쪽으로의 항로"
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적에 합류한 잉글랜드인과 네덜란드인 배교자들은 대서양의 바람과 해류에 대한 지식을 가져왔습니다.",
+      "text_markdown": "해적에 합류한 잉글랜드인과 네덜란드인 배교자들은 대서양의 바람과 해류에 대한 지식을 가져왔습니다.",
+      "tts": {
+        "text": "해적에 합류한 잉글랜드인과 네덜란드인 배교자들은 대서양의 바람과 해류에 대한 지식을 가져왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 아이슬란드가 거의 완전히 무방비 상태임을 알고 있었습니다.",
+      "text_markdown": "그들은 아이슬란드가 거의 완전히 무방비 상태임을 알고 있었습니다.",
+      "tts": {
+        "text": "그들은 아이슬란드가 거의 완전히 무방비 상태임을 알고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제의 노예 시장은 포로의 끊임없는 공급을 필요로 했습니다.",
+      "text_markdown": "알제의 노예 시장은 포로의 끊임없는 공급을 필요로 했습니다.",
+      "tts": {
+        "text": "알제의 노예 시장은 포로의 끊임없는 공급을 필요로 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지중해의 약탈 지역은 점점 더 심하게 순찰되었고, 해적들은 새로운 사냥터가 필요했습니다.",
+      "text_markdown": "지중해의 약탈 지역은 점점 더 심하게 순찰되었고, 해적들은 새로운 사냥터가 필요했습니다.",
+      "tts": {
+        "text": "지중해의 약탈 지역은 점점 더 심하게 순찰되었고, 해적들은 새로운 사냥터가 필요했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드는 완벽했습니다. 고립되어 있고, 무방비 상태이며, 덴마크 당국에게도 무시당하고 있었습니다.",
+      "text_markdown": "아이슬란드는 완벽했습니다. 고립되어 있고, 무방비 상태이며, 덴마크 당국에게도 무시당하고 있었습니다.",
+      "tts": {
+        "text": "아이슬란드는 완벽했습니다. 고립되어 있고, 무방비 상태이며, 덴마크 당국에게도 무시당하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "습격의 시작",
+      "text_markdown": "습격의 시작"
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 선단은 먼저 아이슬란드 동해안을 공격하여 작은 정착지를 약탈했습니다.",
+      "text_markdown": "해적 선단은 먼저 아이슬란드 동해안을 공격하여 작은 정착지를 약탈했습니다.",
+      "tts": {
+        "text": "해적 선단은 먼저 아이슬란드 동해안을 공격하여 작은 정착지를 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 최초의 습격은 공포스러웠지만 규모는 작았습니다.",
+      "text_markdown": "이 최초의 습격은 공포스러웠지만 규모는 작았습니다.",
+      "tts": {
+        "text": "이 최초의 습격은 공포스러웠지만 규모는 작았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칠월 십육일, 해적들은 웨스트만 제도를 향했습니다.",
+      "text_markdown": "칠월 십육일, 해적들은 웨스트만 제도를 향했습니다.",
+      "tts": {
+        "text": "칠월 십육일, 해적들은 웨스트만 제도를 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 이른 아침 안개를 틈타 헤이마에이에 도착했습니다.",
+      "text_markdown": "그들은 이른 아침 안개를 틈타 헤이마에이에 도착했습니다.",
+      "tts": {
+        "text": "그들은 이른 아침 안개를 틈타 헤이마에이에 도착했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "섬 주민들은 습격 소문을 들었지만 대비할 방법이 없었습니다.",
+      "text_markdown": "섬 주민들은 습격 소문을 들었지만 대비할 방법이 없었습니다.",
+      "tts": {
+        "text": "섬 주민들은 습격 소문을 들었지만 대비할 방법이 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "헤이마에이 공격",
+      "text_markdown": "헤이마에이 공격"
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 절벽이 가장 낮은 동쪽 해안에 상륙했습니다.",
+      "text_markdown": "해적들은 절벽이 가장 낮은 동쪽 해안에 상륙했습니다.",
+      "tts": {
+        "text": "해적들은 절벽이 가장 낮은 동쪽 해안에 상륙했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 작은 배를 타고 해안에 올라왔으며, 칼, 머스킷 총, 횃불로 무장하고 있었습니다.",
+      "text_markdown": "그들은 작은 배를 타고 해안에 올라왔으며, 칼, 머스킷 총, 횃불로 무장하고 있었습니다.",
+      "tts": {
+        "text": "그들은 작은 배를 타고 해안에 올라왔으며, 칼, 머스킷 총, 횃불로 무장하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르 에이일손은 아내 아우스타, 아이들과 함께 집에 있었습니다.",
+      "text_markdown": "Ólafur Egilsson은 아내 Ásta, 아이들과 함께 집에 있었습니다.",
+      "tts": {
+        "text": "올라퓌르 에이일손은 아내 아우스타, 아이들과 함께 집에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 섬의 목사로, 학식과 신앙의 사람이었으며, 예순셋 살이었습니다.",
+      "text_markdown": "그는 섬의 목사로, 학식과 신앙의 사람이었으며, 예순셋 살이었습니다.",
+      "tts": {
+        "text": "그는 섬의 목사로, 학식과 신앙의 사람이었으며, 예순셋 살이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 빠르게 움직이며 문을 부수고 사람들을 집에서 끌어냈습니다.",
+      "text_markdown": "해적들은 빠르게 움직이며 문을 부수고 사람들을 집에서 끌어냈습니다.",
+      "tts": {
+        "text": "해적들은 빠르게 움직이며 문을 부수고 사람들을 집에서 끌어냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 섬 주민들은 절벽을 따라 있는 동굴에 숨으려 했습니다.",
+      "text_markdown": "일부 섬 주민들은 절벽을 따라 있는 동굴에 숨으려 했습니다.",
+      "tts": {
+        "text": "일부 섬 주민들은 절벽을 따라 있는 동굴에 숨으려 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 어둠 속에서 용암 지대를 기어서 도망쳤습니다.",
+      "text_markdown": "다른 이들은 어둠 속에서 용암 지대를 기어서 도망쳤습니다.",
+      "tts": {
+        "text": "다른 이들은 어둠 속에서 용암 지대를 기어서 도망쳤습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "약탈자들은 교회를 포함한 건물에 불을 질렀습니다.",
+      "text_markdown": "약탈자들은 교회를 포함한 건물에 불을 질렀습니다.",
+      "tts": {
+        "text": "약탈자들은 교회를 포함한 건물에 불을 질렀습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "올라퓌르는 나중에 자신의 교회가 불타는 것을 보는 것이 이 시련에서 가장 고통스러운 순간 중 하나였다고 기록했습니다.",
+      "text_markdown": "Ólafur는 나중에 자신의 교회가 불타는 것을 보는 것이 이 시련에서 가장 고통스러운 순간 중 하나였다고 기록했습니다.",
+      "tts": {
+        "text": "올라퓌르는 나중에 자신의 교회가 불타는 것을 보는 것이 이 시련에서 가장 고통스러운 순간 중 하나였다고 기록했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 그의 공동체의 심장이었습니다.",
+      "text_markdown": "그것은 그의 공동체의 심장이었습니다.",
+      "tts": {
+        "text": "그것은 그의 공동체의 심장이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "포획",
+      "text_markdown": "포획"
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "습격이 끝날 무렵, 해적들은 헤이마에이에서 약 이백사십 명을 붙잡았습니다.",
+      "text_markdown": "습격이 끝날 무렵, 해적들은 헤이마에이에서 약 이백사십 명을 붙잡았습니다.",
+      "tts": {
+        "text": "습격이 끝날 무렵, 해적들은 헤이마에이에서 약 이백사십 명을 붙잡았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남녀노소가 해안에 모아졌습니다.",
+      "text_markdown": "남녀노소가 해안에 모아졌습니다.",
+      "tts": {
+        "text": "남녀노소가 해안에 모아졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르, 아우스타, 그리고 그들의 아이들도 포로 중에 있었습니다.",
+      "text_markdown": "Ólafur, Ásta, 그리고 그들의 아이들도 포로 중에 있었습니다.",
+      "tts": {
+        "text": "올라퓌르, 아우스타, 그리고 그들의 아이들도 포로 중에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 이웃과 친구들과 함께 해적선에 강제로 실렸습니다.",
+      "text_markdown": "그들은 이웃과 친구들과 함께 해적선에 강제로 실렸습니다.",
+      "tts": {
+        "text": "그들은 이웃과 친구들과 함께 해적선에 강제로 실렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그해 여름의 모든 습격을 통틀어, 약 사백 명의 아이슬란드인이 끌려갔습니다.",
+      "text_markdown": "그해 여름의 모든 습격을 통틀어, 약 사백 명의 아이슬란드인이 끌려갔습니다.",
+      "tts": {
+        "text": "그해 여름의 모든 습격을 통틀어, 약 사백 명의 아이슬란드인이 끌려갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인구가 겨우 약 오만 명인 나라에게 이것은 참담한 일이었습니다.",
+      "text_markdown": "인구가 겨우 약 오만 명인 나라에게 이것은 참담한 일이었습니다.",
+      "tts": {
+        "text": "인구가 겨우 약 오만 명인 나라에게 이것은 참담한 일이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 남쪽을 향해 출항했습니다.",
+      "text_markdown": "해적들은 남쪽을 향해 출항했습니다.",
+      "tts": {
+        "text": "해적들은 남쪽을 향해 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "웨스트만 제도 주민들은 자신들의 집이 뒤로 사라지는 것을 지켜보았습니다.",
+      "text_markdown": "웨스트만 제도 주민들은 자신들의 집이 뒤로 사라지는 것을 지켜보았습니다.",
+      "tts": {
+        "text": "웨스트만 제도 주민들은 자신들의 집이 뒤로 사라지는 것을 지켜보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "해적이 온 날",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대부분은 두 번 다시 아이슬란드를 보지 못했습니다.",
+      "text_markdown": "대부분은 두 번 다시 아이슬란드를 보지 못했습니다.",
+      "tts": {
+        "text": "대부분은 두 번 다시 아이슬란드를 보지 못했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "알제로의 항해",
+      "text_markdown": "알제로의 항해"
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선단은 대서양을 남쪽으로 향했습니다.",
+      "text_markdown": "선단은 대서양을 남쪽으로 향했습니다.",
+      "tts": {
+        "text": "선단은 대서양을 남쪽으로 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "갑판 아래의 포로들에게는 새로운 종류의 고통이 시작되었습니다.",
+      "text_markdown": "갑판 아래의 포로들에게는 새로운 종류의 고통이 시작되었습니다.",
+      "tts": {
+        "text": "갑판 아래의 포로들에게는 새로운 종류의 고통이 시작되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 저서에서 이 항해를 상세히 묘사했습니다.",
+      "text_markdown": "Ólafur는 저서에서 이 항해를 상세히 묘사했습니다.",
+      "tts": {
+        "text": "올라퓌르는 저서에서 이 항해를 상세히 묘사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로들은 비좁고 어두운 공간에 갇혀, 음식도 물도 부족하고 사생활도 없었습니다.",
+      "text_markdown": "포로들은 비좁고 어두운 공간에 갇혀, 음식도 물도 부족하고 사생활도 없었습니다.",
+      "tts": {
+        "text": "포로들은 비좁고 어두운 공간에 갇혀, 음식도 물도 부족하고 사생활도 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배가 남쪽으로 갈수록 더위는 점점 심해졌습니다.",
+      "text_markdown": "배가 남쪽으로 갈수록 더위는 점점 심해졌습니다.",
+      "tts": {
+        "text": "배가 남쪽으로 갈수록 더위는 점점 심해졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "선상의 환경",
+      "text_markdown": "선상의 환경"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로들은 선창에 빽빽이 들어차 있었습니다.",
+      "text_markdown": "포로들은 선창에 빽빽이 들어차 있었습니다.",
+      "tts": {
+        "text": "포로들은 선창에 빽빽이 들어차 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 이들이 뱃멀미에 시달렸고, 공기는 악취가 났으며, 질병이 빠르게 퍼졌습니다.",
+      "text_markdown": "많은 이들이 뱃멀미에 시달렸고, 공기는 악취가 났으며, 질병이 빠르게 퍼졌습니다.",
+      "tts": {
+        "text": "많은 이들이 뱃멀미에 시달렸고, 공기는 악취가 났으며, 질병이 빠르게 퍼졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 포로를 화물처럼 취급했습니다.",
+      "text_markdown": "해적들은 포로를 화물처럼 취급했습니다.",
+      "tts": {
+        "text": "해적들은 포로를 화물처럼 취급했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "겨우 살아남을 정도의 음식만 주어졌습니다.",
+      "text_markdown": "겨우 살아남을 정도의 음식만 주어졌습니다.",
+      "tts": {
+        "text": "겨우 살아남을 정도의 음식만 주어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적들에게 이 사람들은 시장에 배달할 상품이었습니다.",
+      "text_markdown": "해적들에게 이 사람들은 시장에 배달할 상품이었습니다.",
+      "tts": {
+        "text": "해적들에게 이 사람들은 시장에 배달할 상품이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 목사로서 기도를 이끌며 사람들의 정신이 완전히 무너지지 않도록 애썼습니다.",
+      "text_markdown": "Ólafur는 목사로서 기도를 이끌며 사람들의 정신이 완전히 무너지지 않도록 애썼습니다.",
+      "tts": {
+        "text": "올라퓌르는 목사로서 기도를 이끌며 사람들의 정신이 완전히 무너지지 않도록 애썼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 절망은 압도적이었습니다.",
+      "text_markdown": "그러나 절망은 압도적이었습니다.",
+      "tts": {
+        "text": "그러나 절망은 압도적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "항해는 수 주간 계속되었으며, 유럽 해안을 따라 지브롤터 해협을 지나 지중해로 들어갔습니다.",
+      "text_markdown": "항해는 수 주간 계속되었으며, 유럽 해안을 따라 지브롤터 해협을 지나 지중해로 들어갔습니다.",
+      "tts": {
+        "text": "항해는 수 주간 계속되었으며, 유럽 해안을 따라 지브롤터 해협을 지나 지중해로 들어갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "알제 도착",
+      "text_markdown": "알제 도착"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "배가 알제에 도착하자 포로들은 갑판 위로 올려졌습니다.",
+      "text_markdown": "배가 알제에 도착하자 포로들은 갑판 위로 올려졌습니다.",
+      "tts": {
+        "text": "배가 알제에 도착하자 포로들은 갑판 위로 올려졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들이 목격한 광경은 놀라운 것이었습니다.",
+      "text_markdown": "그들이 목격한 광경은 놀라운 것이었습니다.",
+      "tts": {
+        "text": "그들이 목격한 광경은 놀라운 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제는 지중해 연안에서 가장 큰 도시 중 하나로, 흰 건물과 미나렛이 미로처럼 얽힌 가파른 언덕에 올라앉아 있었습니다.",
+      "text_markdown": "알제는 지중해 연안에서 가장 큰 도시 중 하나로, 흰 건물과 미나렛이 미로처럼 얽힌 가파른 언덕에 올라앉아 있었습니다.",
+      "tts": {
+        "text": "알제는 지중해 연안에서 가장 큰 도시 중 하나로, 흰 건물과 미나렛이 미로처럼 얽힌 가파른 언덕에 올라앉아 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아마도 십만 명이 살고 있었으며, 아이슬란드 전체 인구보다 훨씬 많았습니다.",
+      "text_markdown": "아마도 십만 명이 살고 있었으며, 아이슬란드 전체 인구보다 훨씬 많았습니다.",
+      "tts": {
+        "text": "아마도 십만 명이 살고 있었으며, 아이슬란드 전체 인구보다 훨씬 많았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "작은 화산 섬에서 평생을 보낸 사람들에게 그 광경은 이해할 수 없는 것이었습니다.",
+      "text_markdown": "작은 화산 섬에서 평생을 보낸 사람들에게 그 광경은 이해할 수 없는 것이었습니다.",
+      "tts": {
+        "text": "작은 화산 섬에서 평생을 보낸 사람들에게 그 광경은 이해할 수 없는 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "소음, 더위, 군중, 기도의 부름, 모든 것이 압도적이었습니다.",
+      "text_markdown": "소음, 더위, 군중, 기도의 부름 — 모든 것이 압도적이었습니다.",
+      "tts": {
+        "text": "소음, 더위, 군중, 기도의 부름, 모든 것이 압도적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "오스만 제국 하의 알제",
+      "text_markdown": "오스만 제국 하의 알제"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제는 명목상 오스만 제국의 일부였지만, 실제로는 지방 군사 지도자들이 통치했습니다.",
+      "text_markdown": "알제는 명목상 오스만 제국의 일부였지만, 실제로는 지방 군사 지도자들이 통치했습니다.",
+      "tts": {
+        "text": "알제는 명목상 오스만 제국의 일부였지만, 실제로는 지방 군사 지도자들이 통치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 경제는 해적 약탈과 노예 무역에 기반하고 있었습니다.",
+      "text_markdown": "그 경제는 해적 약탈과 노예 무역에 기반하고 있었습니다.",
+      "tts": {
+        "text": "그 경제는 해적 약탈과 노예 무역에 기반하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 어느 시기에나 수만 명의 노예화된 유럽인이 바르바리 국가에 살고 있었다고 추정합니다.",
+      "text_markdown": "역사가들은 어느 시기에나 수만 명의 노예화된 유럽인이 바르바리 국가에 살고 있었다고 추정합니다.",
+      "tts": {
+        "text": "역사가들은 어느 시기에나 수만 명의 노예화된 유럽인이 바르바리 국가에 살고 있었다고 추정합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로들은 스페인, 이탈리아, 프랑스, 포르투갈, 잉글랜드, 그리고 이제 아이슬란드에서 왔습니다.",
+      "text_markdown": "포로들은 스페인, 이탈리아, 프랑스, 포르투갈, 잉글랜드, 그리고 이제 아이슬란드에서 왔습니다.",
+      "tts": {
+        "text": "포로들은 스페인, 이탈리아, 프랑스, 포르투갈, 잉글랜드, 그리고 이제 아이슬란드에서 왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 도시는 유럽의 어떤 도시도 따라올 수 없을 만큼 국제적이었습니다.",
+      "text_markdown": "이 도시는 유럽의 어떤 도시도 따라올 수 없을 만큼 국제적이었습니다.",
+      "tts": {
+        "text": "이 도시는 유럽의 어떤 도시도 따라올 수 없을 만큼 국제적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무슬림, 유대인, 기독교인, 수십 개국에서 온 배교자들이 나란히 살았습니다.",
+      "text_markdown": "무슬림, 유대인, 기독교인, 수십 개국에서 온 배교자들이 나란히 살았습니다.",
+      "tts": {
+        "text": "무슬림, 유대인, 기독교인, 수십 개국에서 온 배교자들이 나란히 살았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "노예 시장",
+      "text_markdown": "노예 시장"
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르의 노예 시장 묘사는 그의 저서에서 가장 생생한 대목 중 하나입니다.",
+      "text_markdown": "Ólafur의 노예 시장 묘사는 그의 저서에서 가장 생생한 대목 중 하나입니다.",
+      "tts": {
+        "text": "올라퓌르의 노예 시장 묘사는 그의 저서에서 가장 생생한 대목 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로들은 항구 근처의 공터로 끌려가 이빨, 손, 건강 상태를 확인하는 구매자들에게 검사를 받았습니다.",
+      "text_markdown": "포로들은 항구 근처의 공터로 끌려가 이빨, 손, 건강 상태를 확인하는 구매자들에게 검사를 받았습니다.",
+      "tts": {
+        "text": "포로들은 항구 근처의 공터로 끌려가 이빨, 손, 건강 상태를 확인하는 구매자들에게 검사를 받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "젊고 건장한 자가 가장 높은 값을 받았습니다.",
+      "text_markdown": "젊고 건장한 자가 가장 높은 값을 받았습니다.",
+      "tts": {
+        "text": "젊고 건장한 자가 가장 높은 값을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여성과 어린이는 따로, 종종 다른 구매자에게 팔렸습니다.",
+      "text_markdown": "여성과 어린이는 따로, 종종 다른 구매자에게 팔렸습니다.",
+      "tts": {
+        "text": "여성과 어린이는 따로, 종종 다른 구매자에게 팔렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항해를 견뎌낸 가족들이 찢겨졌습니다.",
+      "text_markdown": "항해를 견뎌낸 가족들이 찢겨졌습니다.",
+      "tts": {
+        "text": "항해를 견뎌낸 가족들이 찢겨졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 남편이 아내로부터 끌려가고 부모가 자녀가 끌려가는 것을 보며 울부짖고 통곡하는 모습을 기록했습니다.",
+      "text_markdown": "Ólafur는 남편이 아내로부터 끌려가고 부모가 자녀가 끌려가는 것을 보며 울부짖고 통곡하는 모습을 기록했습니다.",
+      "tts": {
+        "text": "올라퓌르는 남편이 아내로부터 끌려가고 부모가 자녀가 끌려가는 것을 보며 울부짖고 통곡하는 모습을 기록했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그날의 공포는 어떤 말로도 담아낼 수 없다고 그는 썼습니다.",
+      "text_markdown": "그날의 공포는 어떤 말로도 담아낼 수 없다고 그는 썼습니다.",
+      "tts": {
+        "text": "그날의 공포는 어떤 말로도 담아낼 수 없다고 그는 썼습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "이별",
+      "text_markdown": "이별"
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르와 아내 아우스타는 시장에서 헤어졌습니다.",
+      "text_markdown": "Ólafur와 아내 Ásta는 시장에서 헤어졌습니다.",
+      "tts": {
+        "text": "올라퓌르와 아내 아우스타는 시장에서 헤어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아이들도 끌려갔습니다.",
+      "text_markdown": "아이들도 끌려갔습니다.",
+      "tts": {
+        "text": "아이들도 끌려갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르에게 이별은 포로 생활에서 가장 고통스러운 부분이었습니다.",
+      "text_markdown": "Ólafur에게 이별은 포로 생활에서 가장 고통스러운 부분이었습니다.",
+      "tts": {
+        "text": "올라퓌르에게 이별은 포로 생활에서 가장 고통스러운 부분이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아우스타가 어디로 끌려갔는지 그는 알지 못했습니다.",
+      "text_markdown": "Ásta가 어디로 끌려갔는지 그는 알지 못했습니다.",
+      "tts": {
+        "text": "아우스타가 어디로 끌려갔는지 그는 알지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 불확실함은 결코 끝나지 않는 고문과 같았습니다.",
+      "text_markdown": "그 불확실함은 결코 끝나지 않는 고문과 같았습니다.",
+      "tts": {
+        "text": "그 불확실함은 결코 끝나지 않는 고문과 같았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "인간의 경제",
+      "text_markdown": "인간의 경제"
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바르바리 노예 무역은 거대한 규모였습니다.",
+      "text_markdown": "바르바리 노예 무역은 거대한 규모였습니다.",
+      "tts": {
+        "text": "바르바리 노예 무역은 거대한 규모였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사가들은 1530년에서 1780년 사이에 해적들이 백만 명 이상의 유럽인을 노예로 삼았다고 추정합니다.",
+      "text_markdown": "역사가들은 1530년에서 1780년 사이에 해적들이 백만 명 이상의 유럽인을 노예로 삼았다고 추정합니다.",
+      "tts": {
+        "text": "역사가들은 천오백삼십 년에서 천칠백팔십 년 사이에 해적들이 백만 명 이상의 유럽인을 노예로 삼았다고 추정합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노예제는 다양한 형태를 취했습니다. 가사 노동, 건설, 농업, 또는 노에 사슬로 묶인 채 갤리선을 젓는 것 등이었습니다.",
+      "text_markdown": "노예제는 다양한 형태를 취했습니다. 가사 노동, 건설, 농업, 또는 노에 사슬로 묶인 채 갤리선을 젓는 것 등이었습니다.",
+      "tts": {
+        "text": "노예제는 다양한 형태를 취했습니다. 가사 노동, 건설, 농업, 또는 노에 사슬로 묶인 채 갤리선을 젓는 것 등이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이슬람으로 개종한 자는 더 많은 자유를 얻는 경우가 많았지만, 개종이 석방을 보장하지는 않았습니다.",
+      "text_markdown": "이슬람으로 개종한 자는 더 많은 자유를 얻는 경우가 많았지만, 개종이 석방을 보장하지는 않았습니다.",
+      "tts": {
+        "text": "이슬람으로 개종한 자는 더 많은 자유를 얻는 경우가 많았지만, 개종이 석방을 보장하지는 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대부분의 포로에게 유일한 현실적 희망은 몸값이었습니다.",
+      "text_markdown": "대부분의 포로에게 유일한 현실적 희망은 몸값이었습니다.",
+      "tts": {
+        "text": "대부분의 포로에게 유일한 현실적 희망은 몸값이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "삼위일체 수도회와 같은 수도회가 석방 협상을 전문으로 했지만, 그 과정은 느리고 비용이 많이 들었습니다.",
+      "text_markdown": "삼위일체 수도회와 같은 수도회가 석방 협상을 전문으로 했지만, 그 과정은 느리고 비용이 많이 들었습니다.",
+      "tts": {
+        "text": "삼위일체 수도회와 같은 수도회가 석방 협상을 전문으로 했지만, 그 과정은 느리고 비용이 많이 들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드인들에게 그 가능성은 희박했습니다.",
+      "text_markdown": "아이슬란드인들에게 그 가능성은 희박했습니다.",
+      "tts": {
+        "text": "아이슬란드인들에게 그 가능성은 희박했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "알제로의 항해",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아이슬란드는 가난했고, 덴마크는 긴급성을 보이지 않았으며, 통신만 해도 수개월이 걸렸습니다.",
+      "text_markdown": "아이슬란드는 가난했고, 덴마크는 긴급성을 보이지 않았으며, 통신만 해도 수개월이 걸렸습니다.",
+      "tts": {
+        "text": "아이슬란드는 가난했고, 덴마크는 긴급성을 보이지 않았으며, 통신만 해도 수개월이 걸렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "포로 생활과 사명",
+      "text_markdown": "포로 생활과 사명"
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 알제에서 수개월을 포로로 보냈습니다.",
+      "text_markdown": "Ólafur는 알제에서 수개월을 포로로 보냈습니다.",
+      "tts": {
+        "text": "올라퓌르는 알제에서 수개월을 포로로 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "예순셋 살로 중노동에 적합하지 않았고, 노예 시장에서의 가치는 낮았습니다.",
+      "text_markdown": "예순셋 살로 중노동에 적합하지 않았고, 노예 시장에서의 가치는 낮았습니다.",
+      "tts": {
+        "text": "예순셋 살로 중노동에 적합하지 않았고, 노예 시장에서의 가치는 낮았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 그는 교육을 받았고, 읽고 쓸 줄 알았으며, 교회의 사람이었습니다.",
+      "text_markdown": "그러나 그는 교육을 받았고, 읽고 쓸 줄 알았으며, 교회의 사람이었습니다.",
+      "tts": {
+        "text": "그러나 그는 교육을 받았고, 읽고 쓸 줄 알았으며, 교회의 사람이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것이 포로의 몸임에도 그에게 일정한 지위를 부여했습니다.",
+      "text_markdown": "그것이 포로의 몸임에도 그에게 일정한 지위를 부여했습니다.",
+      "tts": {
+        "text": "그것이 포로의 몸임에도 그에게 일정한 지위를 부여했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "교섭 대리인으로 선발되다",
+      "text_markdown": "교섭 대리인으로 선발되다"
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "누군가가 유럽으로 건너가 덴마크 왕 앞에서 포로들의 사정을 호소해야 했습니다.",
+      "text_markdown": "누군가가 유럽으로 건너가 덴마크 왕 앞에서 포로들의 사정을 호소해야 했습니다.",
+      "tts": {
+        "text": "누군가가 유럽으로 건너가 덴마크 왕 앞에서 포로들의 사정을 호소해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "올라퓌르가 이 사명에 선발되었습니다.",
+      "text_markdown": "Ólafur가 이 사명에 선발되었습니다.",
+      "tts": {
+        "text": "올라퓌르가 이 사명에 선발되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그것은 고통스러운 임무였습니다.",
+      "text_markdown": "그것은 고통스러운 임무였습니다.",
+      "tts": {
+        "text": "그것은 고통스러운 임무였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일종의 자유를 의미했지만, 사랑하는 모든 이를 남겨두고 다시 만날 수 있을지도 모른 채 떠나는 것이기도 했습니다.",
+      "text_markdown": "일종의 자유를 의미했지만, 사랑하는 모든 이를 남겨두고 다시 만날 수 있을지도 모른 채 떠나는 것이기도 했습니다.",
+      "tts": {
+        "text": "일종의 자유를 의미했지만, 사랑하는 모든 이를 남겨두고 다시 만날 수 있을지도 모른 채 떠나는 것이기도 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 동포를 구할 유일한 기회라 믿고 수락했습니다.",
+      "text_markdown": "그는 동포를 구할 유일한 기회라 믿고 수락했습니다.",
+      "tts": {
+        "text": "그는 동포를 구할 유일한 기회라 믿고 수락했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "성공하면 수백 명이 풀려날 수 있었습니다.",
+      "text_markdown": "성공하면 수백 명이 풀려날 수 있었습니다.",
+      "tts": {
+        "text": "성공하면 수백 명이 풀려날 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "실패하면 그들은 평생 노예로 남을 것이었습니다.",
+      "text_markdown": "실패하면 그들은 평생 노예로 남을 것이었습니다.",
+      "tts": {
+        "text": "실패하면 그들은 평생 노예로 남을 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "유럽을 횡단하는 여정",
+      "text_markdown": "유럽을 횡단하는 여정"
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르의 알제에서 코펜하겐까지의 여정은 길고 험난했습니다.",
+      "text_markdown": "Ólafur의 알제에서 코펜하겐까지의 여정은 길고 험난했습니다.",
+      "tts": {
+        "text": "올라퓌르의 알제에서 코펜하겐까지의 여정은 길고 험난했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 지중해와 북유럽을 배와 육로로 여행했습니다.",
+      "text_markdown": "그는 지중해와 북유럽을 배와 육로로 여행했습니다.",
+      "tts": {
+        "text": "그는 지중해와 북유럽을 배와 육로로 여행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 돈도, 인맥도, 영향력도 없는 늙은 목사였습니다.",
+      "text_markdown": "그는 돈도, 인맥도, 영향력도 없는 늙은 목사였습니다.",
+      "tts": {
+        "text": "그는 돈도, 인맥도, 영향력도 없는 늙은 목사였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지나가는 나라들의 언어를 할 줄 몰랐습니다.",
+      "text_markdown": "지나가는 나라들의 언어를 할 줄 몰랐습니다.",
+      "tts": {
+        "text": "지나가는 나라들의 언어를 할 줄 몰랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "낯선 사람들의 자선과 뜻을 같이하는 성직자들의 소개장에 의지했습니다.",
+      "text_markdown": "낯선 사람들의 자선과 뜻을 같이하는 성직자들의 소개장에 의지했습니다.",
+      "tts": {
+        "text": "낯선 사람들의 자선과 뜻을 같이하는 성직자들의 소개장에 의지했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여정 중에 그는 처음으로 아이슬란드 너머의 세계를 관찰했습니다.",
+      "text_markdown": "여정 중에 그는 처음으로 아이슬란드 너머의 세계를 관찰했습니다.",
+      "tts": {
+        "text": "여정 중에 그는 처음으로 아이슬란드 너머의 세계를 관찰했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 기술은 십칠 세기 유럽에 대한 외부인의 관점으로서 역사가들에게 귀중합니다.",
+      "text_markdown": "그의 기술은 십칠 세기 유럽에 대한 외부인의 관점으로서 역사가들에게 귀중합니다.",
+      "tts": {
+        "text": "그의 기술은 십칠 세기 유럽에 대한 외부인의 관점으로서 역사가들에게 귀중합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "코펜하겐과 덴마크 궁정",
+      "text_markdown": "코펜하겐과 덴마크 궁정"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르가 코펜하겐에 도착하자 습격, 포로 생활, 동포들의 고통에 대해 이야기했습니다.",
+      "text_markdown": "Ólafur가 코펜하겐에 도착하자 습격, 포로 생활, 동포들의 고통에 대해 이야기했습니다.",
+      "tts": {
+        "text": "올라퓌르가 코펜하겐에 도착하자 습격, 포로 생활, 동포들의 고통에 대해 이야기했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 몸값을 간곡히 청했습니다.",
+      "text_markdown": "그는 몸값을 간곡히 청했습니다.",
+      "tts": {
+        "text": "그는 몸값을 간곡히 청했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 대답은 실망스러웠습니다.",
+      "text_markdown": "그 대답은 실망스러웠습니다.",
+      "tts": {
+        "text": "그 대답은 실망스러웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크는 부유하지 않았고, 삼십 년 전쟁이 유럽을 소진시키고 있었으며, 아이슬란드는 먼 식민지였습니다.",
+      "text_markdown": "덴마크는 부유하지 않았고, 삼십 년 전쟁이 유럽을 소진시키고 있었으며, 아이슬란드는 먼 식민지였습니다.",
+      "tts": {
+        "text": "덴마크는 부유하지 않았고, 삼십 년 전쟁이 유럽을 소진시키고 있었으며, 아이슬란드는 먼 식민지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "왕에게는 왕 자신의 지출이 있었습니다.",
+      "text_markdown": "왕에게는 왕 자신의 지출이 있었습니다.",
+      "tts": {
+        "text": "왕에게는 왕 자신의 지출이 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위원회가 구성되고 서한이 작성되었지만, 자금은 약속만 되고 거의 전달되지 않았습니다.",
+      "text_markdown": "위원회가 구성되고 서한이 작성되었지만, 자금은 약속만 되고 거의 전달되지 않았습니다.",
+      "tts": {
+        "text": "위원회가 구성되고 서한이 작성되었지만, 자금은 약속만 되고 거의 전달되지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "관료 조직은 자체 속도로 움직였고, 수백 명은 여전히 노예 상태였습니다.",
+      "text_markdown": "관료 조직은 자체 속도로 움직였고, 수백 명은 여전히 노예 상태였습니다.",
+      "tts": {
+        "text": "관료 조직은 자체 속도로 움직였고, 수백 명은 여전히 노예 상태였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "교회의 대응",
+      "text_markdown": "교회의 대응"
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 루터교회에도 호소했습니다.",
+      "text_markdown": "Ólafur는 루터교회에도 호소했습니다.",
+      "tts": {
+        "text": "올라퓌르는 루터교회에도 호소했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "헌금이 모이고 설교가 행해졌지만, 모인 금액은 결코 충분하지 않았습니다.",
+      "text_markdown": "헌금이 모이고 설교가 행해졌지만, 모인 금액은 결코 충분하지 않았습니다.",
+      "tts": {
+        "text": "헌금이 모이고 설교가 행해졌지만, 모인 금액은 결코 충분하지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제에서의 몸값 요구는 높았고, 교회나 왕실이 지불할 수 있는 것을 훨씬 넘었습니다.",
+      "text_markdown": "알제에서의 몸값 요구는 높았고, 교회나 왕실이 지불할 수 있는 것을 훨씬 넘었습니다.",
+      "tts": {
+        "text": "알제에서의 몸값 요구는 높았고, 교회나 왕실이 지불할 수 있는 것을 훨씬 넘었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "협상은 여러 해 동안 질질 끌렸습니다.",
+      "text_markdown": "협상은 여러 해 동안 질질 끌렸습니다.",
+      "tts": {
+        "text": "협상은 여러 해 동안 질질 끌렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "몸값 네트워크",
+      "text_markdown": "몸값 네트워크"
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가톨릭 국가에서는 삼위일체 수도회 같은 수도회가 수 세기에 걸쳐 포로 몸값 협상 경험을 쌓아왔습니다.",
+      "text_markdown": "가톨릭 국가에서는 삼위일체 수도회 같은 수도회가 수 세기에 걸쳐 포로 몸값 협상 경험을 쌓아왔습니다.",
+      "tts": {
+        "text": "가톨릭 국가에서는 삼위일체 수도회 같은 수도회가 수 세기에 걸쳐 포로 몸값 협상 경험을 쌓아왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 개신교 북방에는 그에 상응하는 기관이 없었습니다.",
+      "text_markdown": "그러나 개신교 북방에는 그에 상응하는 기관이 없었습니다.",
+      "tts": {
+        "text": "그러나 개신교 북방에는 그에 상응하는 기관이 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "덴마크는 몸값 교섭 체계를 처음부터 구축해야 했습니다.",
+      "text_markdown": "덴마크는 몸값 교섭 체계를 처음부터 구축해야 했습니다.",
+      "tts": {
+        "text": "덴마크는 몸값 교섭 체계를 처음부터 구축해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자금은 국경을 넘고, 통화를 바꾸고, 알제의 적절한 사람에게 도달해야 했습니다.",
+      "text_markdown": "자금은 국경을 넘고, 통화를 바꾸고, 알제의 적절한 사람에게 도달해야 했습니다.",
+      "tts": {
+        "text": "자금은 국경을 넘고, 통화를 바꾸고, 알제의 적절한 사람에게 도달해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 과정은 지연, 부패, 그리고 깨진 약속으로 가득했습니다.",
+      "text_markdown": "그 과정은 지연, 부패, 그리고 깨진 약속으로 가득했습니다.",
+      "tts": {
+        "text": "그 과정은 지연, 부패, 그리고 깨진 약속으로 가득했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "기다림의 세월",
+      "text_markdown": "기다림의 세월"
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 여러 해 동안 몸값을 위해 탄원하며 서한을 쓰고 관리들을 방문했습니다.",
+      "text_markdown": "Ólafur는 여러 해 동안 몸값을 위해 탄원하며 서한을 쓰고 관리들을 방문했습니다.",
+      "tts": {
+        "text": "올라퓌르는 여러 해 동안 몸값을 위해 탄원하며 서한을 쓰고 관리들을 방문했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세월이 흘렀고, 포로들은 알제에 남아 있었습니다.",
+      "text_markdown": "세월이 흘렀고, 포로들은 알제에 남아 있었습니다.",
+      "tts": {
+        "text": "세월이 흘렀고, 포로들은 알제에 남아 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 기간 동안 그는 자신의 책을 집필했습니다.",
+      "text_markdown": "이 기간 동안 그는 자신의 책을 집필했습니다.",
+      "tts": {
+        "text": "이 기간 동안 그는 자신의 책을 집필했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "습격에서 노예 시장, 유럽 횡단 여정까지 목격한 모든 것을 기록했습니다.",
+      "text_markdown": "습격에서 노예 시장, 유럽 횡단 여정까지 목격한 모든 것을 기록했습니다.",
+      "tts": {
+        "text": "습격에서 노예 시장, 유럽 횡단 여정까지 목격한 모든 것을 기록했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 생전에 출판되지 않았지만 필사본으로 유통되었습니다.",
+      "text_markdown": "이 책은 생전에 출판되지 않았지만 필사본으로 유통되었습니다.",
+      "tts": {
+        "text": "이 책은 생전에 출판되지 않았지만 필사본으로 유통되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 사건 전체에서 가장 중요한 문서 중 하나가 되었습니다.",
+      "text_markdown": "이 사건 전체에서 가장 중요한 문서 중 하나가 되었습니다.",
+      "tts": {
+        "text": "이 사건 전체에서 가장 중요한 문서 중 하나가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "권력의 무관심",
+      "text_markdown": "권력의 무관심"
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르의 기록에서 가장 고통스러운 주제 중 하나는 권력자들의 무관심입니다.",
+      "text_markdown": "Ólafur의 기록에서 가장 고통스러운 주제 중 하나는 권력자들의 무관심입니다.",
+      "tts": {
+        "text": "올라퓌르의 기록에서 가장 고통스러운 주제 중 하나는 권력자들의 무관심입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크 관리들은 잔인하지 않았습니다. 단지 다른 우선순위가 있었을 뿐입니다.",
+      "text_markdown": "덴마크 관리들은 잔인하지 않았습니다. 단지 다른 우선순위가 있었을 뿐입니다.",
+      "tts": {
+        "text": "덴마크 관리들은 잔인하지 않았습니다. 단지 다른 우선순위가 있었을 뿐입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "고통받는 사람들은 가난하고, 멀리 있으며, 정치적으로 무의미한 존재였습니다.",
+      "text_markdown": "고통받는 사람들은 가난하고, 멀리 있으며, 정치적으로 무의미한 존재였습니다.",
+      "tts": {
+        "text": "고통받는 사람들은 가난하고, 멀리 있으며, 정치적으로 무의미한 존재였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 정부는 공개적으로는 애도했지만 사적으로는 방치했습니다.",
+      "text_markdown": "그들의 정부는 공개적으로는 애도했지만 사적으로는 방치했습니다.",
+      "tts": {
+        "text": "그들의 정부는 공개적으로는 애도했지만 사적으로는 방치했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르의 글에는 커져가는 씁쓸함이 반영되어 있습니다.",
+      "text_markdown": "Ólafur의 글에는 커져가는 씁쓸함이 반영되어 있습니다.",
+      "tts": {
+        "text": "올라퓌르의 글에는 커져가는 씁쓸함이 반영되어 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 동포의 메시지를 코펜하겐에 전하기 위해 모든 것을 걸었습니다.",
+      "text_markdown": "그는 동포의 메시지를 코펜하겐에 전하기 위해 모든 것을 걸었습니다.",
+      "tts": {
+        "text": "그는 동포의 메시지를 코펜하겐에 전하기 위해 모든 것을 걸었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활과 사명",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대답은, 그들은 빨리 구할 만큼 중요하지 않다는 것이었습니다.",
+      "text_markdown": "그 대답은, 그들은 빨리 구할 만큼 중요하지 않다는 것이었습니다.",
+      "tts": {
+        "text": "그 대답은, 그들은 빨리 구할 만큼 중요하지 않다는 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "돌아온 자와 돌아오지 못한 자",
+      "text_markdown": "돌아온 자와 돌아오지 못한 자"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627년에 붙잡힌 약 사백 명의 아이슬란드인 중, 돌아온 것은 극소수에 불과했습니다.",
+      "text_markdown": "1627년에 붙잡힌 약 사백 명의 아이슬란드인 중, 돌아온 것은 극소수에 불과했습니다.",
+      "tts": {
+        "text": "천육백이십칠 년에 붙잡힌 약 사백 명의 아이슬란드인 중, 돌아온 것은 극소수에 불과했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸값 교섭에 거의 십 년이 걸렸고, 돈이 도착했을 때 많은 이들이 이미 사망한 뒤였습니다.",
+      "text_markdown": "몸값 교섭에 거의 십 년이 걸렸고, 돈이 도착했을 때 많은 이들이 이미 사망한 뒤였습니다.",
+      "tts": {
+        "text": "몸값 교섭에 거의 십 년이 걸렸고, 돈이 도착했을 때 많은 이들이 이미 사망한 뒤였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "질병, 과로, 절망이 처음 몇 년 동안 많은 생명을 앗아갔습니다.",
+      "text_markdown": "질병, 과로, 절망이 처음 몇 년 동안 많은 생명을 앗아갔습니다.",
+      "tts": {
+        "text": "질병, 과로, 절망이 처음 몇 년 동안 많은 생명을 앗아갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아이슬란드의 차가운 공기에서 알제의 더위로의 전환은 참담했습니다.",
+      "text_markdown": "아이슬란드의 차가운 공기에서 알제의 더위로의 전환은 참담했습니다.",
+      "tts": {
+        "text": "아이슬란드의 차가운 공기에서 알제의 더위로의 전환은 참담했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "개종한 자들",
+      "text_markdown": "개종한 자들"
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 포로는 이슬람으로 개종했습니다.",
+      "text_markdown": "일부 포로는 이슬람으로 개종했습니다.",
+      "tts": {
+        "text": "일부 포로는 이슬람으로 개종했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "개종은 실질적 이점을 제공했습니다. 개종자는 더 이상 합법적으로 노예로 잡혀 있을 수 없었고, 일과 결혼의 길이 열렸습니다.",
+      "text_markdown": "개종은 실질적 이점을 제공했습니다. 개종자는 더 이상 합법적으로 노예로 잡혀 있을 수 없었고, 일과 결혼의 길이 열렸습니다.",
+      "tts": {
+        "text": "개종은 실질적 이점을 제공했습니다. 개종자는 더 이상 합법적으로 노예로 잡혀 있을 수 없었고, 일과 결혼의 길이 열렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부에게 개종은 신앙이 아닌 생존이었습니다.",
+      "text_markdown": "일부에게 개종은 신앙이 아닌 생존이었습니다.",
+      "tts": {
+        "text": "일부에게 개종은 신앙이 아닌 생존이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다른 이들은 진심으로 새 종교를 받아들이고 새로운 삶을 꾸렸습니다.",
+      "text_markdown": "다른 이들은 진심으로 새 종교를 받아들이고 새로운 삶을 꾸렸습니다.",
+      "tts": {
+        "text": "다른 이들은 진심으로 새 종교를 받아들이고 새로운 삶을 꾸렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드 교회는 이러한 개종을 공포의 눈으로 바라보았습니다.",
+      "text_markdown": "아이슬란드 교회는 이러한 개종을 공포의 눈으로 바라보았습니다.",
+      "tts": {
+        "text": "아이슬란드 교회는 이러한 개종을 공포의 눈으로 바라보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 포로의 입장에서 개종은 때때로 살아남는 유일한 방법이었습니다.",
+      "text_markdown": "그러나 포로의 입장에서 개종은 때때로 살아남는 유일한 방법이었습니다.",
+      "tts": {
+        "text": "그러나 포로의 입장에서 개종은 때때로 살아남는 유일한 방법이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "몸값으로 풀려난 소수",
+      "text_markdown": "몸값으로 풀려난 소수"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1636년, 습격 후 거의 구 년 만에 마침내 몸값이 지불되었습니다.",
+      "text_markdown": "1636년, 습격 후 거의 구 년 만에 마침내 몸값이 지불되었습니다.",
+      "tts": {
+        "text": "천육백삼십육 년, 습격 후 거의 구 년 만에 마침내 몸값이 지불되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "서른네 명의 포로가 풀려나 고향으로 보내졌습니다.",
+      "text_markdown": "서른네 명의 포로가 풀려나 고향으로 보내졌습니다.",
+      "tts": {
+        "text": "서른네 명의 포로가 풀려나 고향으로 보내졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사백 명 중 서른네 명.",
+      "text_markdown": "사백 명 중 서른네 명.",
+      "tts": {
+        "text": "사백 명 중 서른네 명.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사망한 이, 개종한 이, 그리고 찾을 수 없거나 주인이 매각을 거부한 이가 많았습니다.",
+      "text_markdown": "사망한 이, 개종한 이, 그리고 찾을 수 없거나 주인이 매각을 거부한 이가 많았습니다.",
+      "tts": {
+        "text": "사망한 이, 개종한 이, 그리고 찾을 수 없거나 주인이 매각을 거부한 이가 많았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "구드리두르 시모나르도티르",
+      "text_markdown": "Guðríður Símonardóttir"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "최종적으로 몸값이 지불되어 풀려난 이들 중에 구드리두르 시모나르도티르가 있었습니다.",
+      "text_markdown": "최종적으로 몸값이 지불되어 풀려난 이들 중에 Guðríður Símonardóttir가 있었습니다.",
+      "tts": {
+        "text": "최종적으로 몸값이 지불되어 풀려난 이들 중에 구드리두르 시모나르도티르가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 젊은 여성으로 붙잡혀 알제에서 거의 십 년간 노예 생활을 했습니다.",
+      "text_markdown": "그녀는 젊은 여성으로 붙잡혀 알제에서 거의 십 년간 노예 생활을 했습니다.",
+      "tts": {
+        "text": "그녀는 젊은 여성으로 붙잡혀 알제에서 거의 십 년간 노예 생활을 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드로 돌아왔을 때 그녀는 변해 있었습니다.",
+      "text_markdown": "아이슬란드로 돌아왔을 때 그녀는 변해 있었습니다.",
+      "tts": {
+        "text": "아이슬란드로 돌아왔을 때 그녀는 변해 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 아랍어를 구사했고, 끌려가기 전의 세계와는 완전히 다른 세계에서 살아왔습니다.",
+      "text_markdown": "그녀는 아랍어를 구사했고, 끌려가기 전의 세계와는 완전히 다른 세계에서 살아왔습니다.",
+      "tts": {
+        "text": "그녀는 아랍어를 구사했고, 끌려가기 전의 세계와는 완전히 다른 세계에서 살아왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "귀환 후, 그녀는 할그리무르 페투르손과 결혼했습니다. 그는 아이슬란드 역사상 가장 위대한 시인 중 한 명이 될 인물이었습니다.",
+      "text_markdown": "귀환 후, 그녀는 Hallgrímur Pétursson과 결혼했습니다. 그는 아이슬란드 역사상 가장 위대한 시인 중 한 명이 될 인물이었습니다.",
+      "tts": {
+        "text": "귀환 후, 그녀는 할그리무르 페투르손과 결혼했습니다. 그는 아이슬란드 역사상 가장 위대한 시인 중 한 명이 될 인물이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 수난 찬송가는 오늘날에도 아이슬란드 문학의 걸작으로 여겨집니다.",
+      "text_markdown": "그의 수난 찬송가는 오늘날에도 아이슬란드 문학의 걸작으로 여겨집니다.",
+      "tts": {
+        "text": "그의 수난 찬송가는 오늘날에도 아이슬란드 문학의 걸작으로 여겨집니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아프리카에서 노예가 된 여성이 아이슬란드에서 가장 사랑받는 종교 시인이 될 남성과 결혼한 것입니다.",
+      "text_markdown": "북아프리카에서 노예가 된 여성이 아이슬란드에서 가장 사랑받는 종교 시인이 될 남성과 결혼한 것입니다.",
+      "tts": {
+        "text": "북아프리카에서 노예가 된 여성이 아이슬란드에서 가장 사랑받는 종교 시인이 될 남성과 결혼한 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "둘은 함께 삶을 꾸렸지만, 포로 생활의 그림자는 그녀에게서 완전히 사라지지 않았습니다.",
+      "text_markdown": "둘은 함께 삶을 꾸렸지만, 포로 생활의 그림자는 그녀에게서 완전히 사라지지 않았습니다.",
+      "tts": {
+        "text": "둘은 함께 삶을 꾸렸지만, 포로 생활의 그림자는 그녀에게서 완전히 사라지지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "올라퓌르의 귀환",
+      "text_markdown": "Ólafur의 귀환"
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르 자신도 결국 아이슬란드로 돌아왔지만, 무너지고 지친 사람이었습니다.",
+      "text_markdown": "Ólafur 자신도 결국 아이슬란드로 돌아왔지만, 무너지고 지친 사람이었습니다.",
+      "tts": {
+        "text": "올라퓌르 자신도 결국 아이슬란드로 돌아왔지만, 무너지고 지친 사람이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p124",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가족 대부분을 잃었고, 맡았던 사명은 대부분 실패했습니다.",
+      "text_markdown": "가족 대부분을 잃었고, 맡았던 사명은 대부분 실패했습니다.",
+      "tts": {
+        "text": "가족 대부분을 잃었고, 맡았던 사명은 대부분 실패했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아내 아우스타의 운명은 불확실한 채로 남아 있습니다.",
+      "text_markdown": "아내 Ásta의 운명은 불확실한 채로 남아 있습니다.",
+      "tts": {
+        "text": "아내 아우스타의 운명은 불확실한 채로 남아 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p125",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사가들은 그녀가 포로 생활 중에 사망한 것으로 보지만, 정확한 상황은 알려져 있지 않습니다.",
+      "text_markdown": "역사가들은 그녀가 포로 생활 중에 사망한 것으로 보지만, 정확한 상황은 알려져 있지 않습니다.",
+      "tts": {
+        "text": "역사가들은 그녀가 포로 생활 중에 사망한 것으로 보지만, 정확한 상황은 알려져 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p125",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 기록에서의 침묵은 말보다 더 크게 이야기합니다.",
+      "text_markdown": "그의 기록에서의 침묵은 말보다 더 크게 이야기합니다.",
+      "tts": {
+        "text": "그의 기록에서의 침묵은 말보다 더 크게 이야기합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 1651년까지 살며 여든일곱 살에 이르렀습니다.",
+      "text_markdown": "Ólafur는 1651년까지 살며 여든일곱 살에 이르렀습니다.",
+      "tts": {
+        "text": "올라퓌르는 천육백오십일 년까지 살며 여든일곱 살에 이르렀습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p126",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 마지막 세월을 자신이 보고 잃은 모든 것의 무게를 짊어진 채 보냈습니다.",
+      "text_markdown": "그는 마지막 세월을 자신이 보고 잃은 모든 것의 무게를 짊어진 채 보냈습니다.",
+      "tts": {
+        "text": "그는 마지막 세월을 자신이 보고 잃은 모든 것의 무게를 짊어진 채 보냈습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "남은 트라우마",
+      "text_markdown": "남은 트라우마"
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "돌아온 포로들은 아이슬란드가 이미 앞으로 나아가 있음을 발견했습니다.",
+      "text_markdown": "돌아온 포로들은 아이슬란드가 이미 앞으로 나아가 있음을 발견했습니다.",
+      "tts": {
+        "text": "돌아온 포로들은 아이슬란드가 이미 앞으로 나아가 있음을 발견했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p128",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 집은 다른 사람에게 넘겨졌고, 재산은 사라져 있었습니다.",
+      "text_markdown": "그들의 집은 다른 사람에게 넘겨졌고, 재산은 사라져 있었습니다.",
+      "tts": {
+        "text": "그들의 집은 다른 사람에게 넘겨졌고, 재산은 사라져 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "교회는 귀환자들에게 개종하지 않았음을 증명하기 위한 공개 신앙 심문을 받도록 요구했습니다.",
+      "text_markdown": "교회는 귀환자들에게 개종하지 않았음을 증명하기 위한 공개 신앙 심문을 받도록 요구했습니다.",
+      "tts": {
+        "text": "교회는 귀환자들에게 개종하지 않았음을 증명하기 위한 공개 신앙 심문을 받도록 요구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p129",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상상을 초월하는 고통을 이미 겪은 사람들에게 이는 모욕적인 일이었습니다.",
+      "text_markdown": "상상을 초월하는 고통을 이미 겪은 사람들에게 이는 모욕적인 일이었습니다.",
+      "tts": {
+        "text": "상상을 초월하는 고통을 이미 겪은 사람들에게 이는 모욕적인 일이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 이들이 재적응에 어려움을 겪었습니다.",
+      "text_markdown": "많은 이들이 재적응에 어려움을 겪었습니다.",
+      "tts": {
+        "text": "많은 이들이 재적응에 어려움을 겪었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p130",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 이웃들이 이해할 수 없는 방식으로 변해 있었습니다.",
+      "text_markdown": "그들은 이웃들이 이해할 수 없는 방식으로 변해 있었습니다.",
+      "tts": {
+        "text": "그들은 이웃들이 이해할 수 없는 방식으로 변해 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이슬란드인들이 튀르캬라우니드, 즉 터키인의 약탈이라고 부르는 이 사건은 국민 기억에 상처를 남겼습니다.",
+      "text_markdown": "아이슬란드인들이 Tyrkjaránið, 즉 터키인의 약탈이라고 부르는 이 사건은 국민 기억에 상처를 남겼습니다.",
+      "tts": {
+        "text": "아이슬란드인들이 튀르캬라우니드, 즉 터키인의 약탈이라고 부르는 이 사건은 국민 기억에 상처를 남겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p131",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "습격에 관한 노래와 이야기가 세대를 거쳐 전해졌습니다.",
+      "text_markdown": "습격에 관한 노래와 이야기가 세대를 거쳐 전해졌습니다.",
+      "tts": {
+        "text": "습격에 관한 노래와 이야기가 세대를 거쳐 전해졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "돌아온 자와 돌아오지 못한 자",
+      "paragraph_id": "p131",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "웨스트만 제도는 결코 잊지 않았습니다.",
+      "text_markdown": "웨스트만 제도는 결코 잊지 않았습니다.",
+      "tts": {
+        "text": "웨스트만 제도는 결코 잊지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "살아남은 책",
+      "text_markdown": "살아남은 책"
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르의 저서 레이수보크는 생전에 출판되지 않았습니다.",
+      "text_markdown": "Ólafur의 저서 Reisubók는 생전에 출판되지 않았습니다.",
+      "tts": {
+        "text": "올라퓌르의 저서 레이수보크는 생전에 출판되지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "손으로 쓴 필사본으로 유통되며, 독자에서 독자로 베껴지고 전해졌습니다.",
+      "text_markdown": "손으로 쓴 필사본으로 유통되며, 독자에서 독자로 베껴지고 전해졌습니다.",
+      "tts": {
+        "text": "손으로 쓴 필사본으로 유통되며, 독자에서 독자로 베껴지고 전해졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p133",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세월이 흐르면서 아이슬란드 문학에서 가장 중요한 역사 문서 중 하나가 되었습니다.",
+      "text_markdown": "세월이 흐르면서 아이슬란드 문학에서 가장 중요한 역사 문서 중 하나가 되었습니다.",
+      "tts": {
+        "text": "세월이 흐르면서 아이슬란드 문학에서 가장 중요한 역사 문서 중 하나가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북유럽인이 쓴 바르바리 노예 무역의 극히 드문 일인칭 기록 중 하나입니다.",
+      "text_markdown": "북유럽인이 쓴 바르바리 노예 무역의 극히 드문 일인칭 기록 중 하나입니다.",
+      "tts": {
+        "text": "북유럽인이 쓴 바르바리 노예 무역의 극히 드문 일인칭 기록 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p134",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "작은 화산 섬 출신의 아이슬란드 목사로서의 올라퓌르의 시각은 유럽 문학 전체에서 유일무이합니다.",
+      "text_markdown": "작은 화산 섬 출신의 아이슬란드 목사로서의 Ólafur의 시각은 유럽 문학 전체에서 유일무이합니다.",
+      "tts": {
+        "text": "작은 화산 섬 출신의 아이슬란드 목사로서의 올라퓌르의 시각은 유럽 문학 전체에서 유일무이합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "이 책이 가르치는 것",
+      "text_markdown": "이 책이 가르치는 것"
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르는 학자의 세심한 눈으로 기록했습니다.",
+      "text_markdown": "Ólafur는 학자의 세심한 눈으로 기록했습니다.",
+      "tts": {
+        "text": "올라퓌르는 학자의 세심한 눈으로 기록했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p136",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제, 그 풍습, 노예 시장, 일상적 포로 생활을 과도한 과장 없이 묘사했습니다.",
+      "text_markdown": "알제, 그 풍습, 노예 시장, 일상적 포로 생활을 과도한 과장 없이 묘사했습니다.",
+      "tts": {
+        "text": "알제, 그 풍습, 노예 시장, 일상적 포로 생활을 과도한 과장 없이 묘사했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 책은 해적 행위가 해적만의 것이 아니었음을 우리에게 가르쳐줍니다.",
+      "text_markdown": "그의 책은 해적 행위가 해적만의 것이 아니었음을 우리에게 가르쳐줍니다.",
+      "tts": {
+        "text": "그의 책은 해적 행위가 해적만의 것이 아니었음을 우리에게 가르쳐줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모든 습격 뒤에는 삶이 파괴된 실제 사람들이 있었습니다.",
+      "text_markdown": "모든 습격 뒤에는 삶이 파괴된 실제 사람들이 있었습니다.",
+      "tts": {
+        "text": "모든 습격 뒤에는 삶이 파괴된 실제 사람들이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p137",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "올라퓌르는 자신의 이야기를 직접 전한 극소수의 피해자 중 한 명입니다.",
+      "text_markdown": "Ólafur는 자신의 이야기를 직접 전한 극소수의 피해자 중 한 명입니다.",
+      "tts": {
+        "text": "올라퓌르는 자신의 이야기를 직접 전한 극소수의 피해자 중 한 명입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "레이수보크는 또한 자국민을 보호하지 못한 유럽 열강의 실패를 드러냅니다.",
+      "text_markdown": "Reisubók는 또한 자국민을 보호하지 못한 유럽 열강의 실패를 드러냅니다.",
+      "tts": {
+        "text": "레이수보크는 또한 자국민을 보호하지 못한 유럽 열강의 실패를 드러냅니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p138",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크는 아이슬란드를 지배했지만 방어를 위해 거의 아무것도 하지 않았습니다.",
+      "text_markdown": "덴마크는 아이슬란드를 지배했지만 방어를 위해 거의 아무것도 하지 않았습니다.",
+      "tts": {
+        "text": "덴마크는 아이슬란드를 지배했지만 방어를 위해 거의 아무것도 하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로들은 자신들을 보호해야 할 정부에 의해 버려졌습니다.",
+      "text_markdown": "포로들은 자신들을 보호해야 할 정부에 의해 버려졌습니다.",
+      "tts": {
+        "text": "포로들은 자신들을 보호해야 할 정부에 의해 버려졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "이 이야기가 해적 시리즈에 속하는 이유",
+      "text_markdown": "이 이야기가 해적 시리즈에 속하는 이유"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 유명한 해적에 관한 시리즈의 일부입니다.",
+      "text_markdown": "이 책은 유명한 해적에 관한 시리즈의 일부입니다.",
+      "tts": {
+        "text": "이 책은 유명한 해적에 관한 시리즈의 일부입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p140",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "올라퓌르는 해적이 아니었습니다.",
+      "text_markdown": "Ólafur는 해적이 아니었습니다.",
+      "tts": {
+        "text": "올라퓌르는 해적이 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p140",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 해적 행위의 피해자였습니다.",
+      "text_markdown": "그는 해적 행위의 피해자였습니다.",
+      "tts": {
+        "text": "그는 해적 행위의 피해자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p140",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 해적 행위가 진정 무엇을 의미했는지 이해하기 위해 그의 이야기는 필수적입니다.",
+      "text_markdown": "그러나 해적 행위가 진정 무엇을 의미했는지 이해하기 위해 그의 이야기는 필수적입니다.",
+      "tts": {
+        "text": "그러나 해적 행위가 진정 무엇을 의미했는지 이해하기 위해 그의 이야기는 필수적입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 행위는 종종 미화됩니다.",
+      "text_markdown": "해적 행위는 종종 미화됩니다.",
+      "tts": {
+        "text": "해적 행위는 종종 미화됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p141",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 그 본질은 평범한 사람들에 대한 조직적 폭력이었습니다.",
+      "text_markdown": "그러나 그 본질은 평범한 사람들에 대한 조직적 폭력이었습니다.",
+      "tts": {
+        "text": "그러나 그 본질은 평범한 사람들에 대한 조직적 폭력이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p141",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바르바리 해적은 물건만 훔친 것이 아닙니다.",
+      "text_markdown": "바르바리 해적은 물건만 훔친 것이 아닙니다.",
+      "tts": {
+        "text": "바르바리 해적은 물건만 훔친 것이 아닙니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p141",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 사람을 훔쳤습니다.",
+      "text_markdown": "그들은 사람을 훔쳤습니다.",
+      "tts": {
+        "text": "그들은 사람을 훔쳤습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르의 이야기는 해적 행위를 반대편에서 보도록 우리에게 강요합니다.",
+      "text_markdown": "Ólafur의 이야기는 해적 행위를 반대편에서 보도록 우리에게 강요합니다.",
+      "tts": {
+        "text": "올라퓌르의 이야기는 해적 행위를 반대편에서 보도록 우리에게 강요합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "집에서 떨어져 나와, 가족과 헤어지고, 시장에서 팔리며, 정부에 잊혀지는 것을 상상해 보라고 요청합니다.",
+      "text_markdown": "집에서 떨어져 나와, 가족과 헤어지고, 시장에서 팔리며, 정부에 잊혀지는 것을 상상해 보라고 요청합니다.",
+      "tts": {
+        "text": "집에서 떨어져 나와, 가족과 헤어지고, 시장에서 팔리며, 정부에 잊혀지는 것을 상상해 보라고 요청합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "오늘날의 웨스트만 제도",
+      "text_markdown": "오늘날의 웨스트만 제도"
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "웨스트만 제도에는 여전히 사람이 살고 있으며, 오늘날 헤이마에이에는 약 사천 명이 거주합니다.",
+      "text_markdown": "웨스트만 제도에는 여전히 사람이 살고 있으며, 오늘날 헤이마에이에는 약 사천 명이 거주합니다.",
+      "tts": {
+        "text": "웨스트만 제도에는 여전히 사람이 살고 있으며, 오늘날 헤이마에이에는 약 사천 명이 거주합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p144",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 섬들은 자연의 아름다움, 퍼핀 서식지, 연례 축제로 유명합니다.",
+      "text_markdown": "이 섬들은 자연의 아름다움, 퍼핀 서식지, 연례 축제로 유명합니다.",
+      "tts": {
+        "text": "이 섬들은 자연의 아름다움, 퍼핀 서식지, 연례 축제로 유명합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627년 습격의 기억은 여전히 살아 있습니다.",
+      "text_markdown": "1627년 습격의 기억은 여전히 살아 있습니다.",
+      "tts": {
+        "text": "천육백이십칠 년 습격의 기억은 여전히 살아 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p145",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "헤이마에이의 기념비는 희생자들을 기리며, 지역 역사가들은 포로들을 이름으로 확인하는 작업을 해왔습니다.",
+      "text_markdown": "헤이마에이의 기념비는 희생자들을 기리며, 지역 역사가들은 포로들을 이름으로 확인하는 작업을 해왔습니다.",
+      "tts": {
+        "text": "헤이마에이의 기념비는 희생자들을 기리며, 지역 역사가들은 포로들을 이름으로 확인하는 작업을 해왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2009년, 끌려간 이들을 기리는 기념비가 세워졌습니다.",
+      "text_markdown": "2009년, 끌려간 이들을 기리는 기념비가 세워졌습니다.",
+      "tts": {
+        "text": "이천구 년, 끌려간 이들을 기리는 기념비가 세워졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p146",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 비문은 방문객들에게 한때 이곳에 평범한 사람들이 살았고, 강제로 세상 반대편으로 끌려갔음을 상기시킵니다.",
+      "text_markdown": "그 비문은 방문객들에게 한때 이곳에 평범한 사람들이 살았고, 강제로 세상 반대편으로 끌려갔음을 상기시킵니다.",
+      "tts": {
+        "text": "그 비문은 방문객들에게 한때 이곳에 평범한 사람들이 살았고, 강제로 세상 반대편으로 끌려갔음을 상기시킵니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "기억과 유산",
+      "text_markdown": "기억과 유산"
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올라퓌르가 세상을 떠난 지 거의 사백 년이 되었지만, 그의 말은 여전히 전해집니다.",
+      "text_markdown": "Ólafur가 세상을 떠난 지 거의 사백 년이 되었지만, 그의 말은 여전히 전해집니다.",
+      "tts": {
+        "text": "올라퓌르가 세상을 떠난 지 거의 사백 년이 되었지만, 그의 말은 여전히 전해집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p148",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 책은 역사가 왕과 정복자만이 만드는 것이 아님을 상기시켜 줍니다.",
+      "text_markdown": "그의 책은 역사가 왕과 정복자만이 만드는 것이 아님을 상기시켜 줍니다.",
+      "tts": {
+        "text": "그의 책은 역사가 왕과 정복자만이 만드는 것이 아님을 상기시켜 줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "비범한 고통을 견디며 증언의 방법을 찾아낸 평범한 사람들에 의해서도 만들어지는 것입니다.",
+      "text_markdown": "비범한 고통을 견디며 증언의 방법을 찾아낸 평범한 사람들에 의해서도 만들어지는 것입니다.",
+      "tts": {
+        "text": "비범한 고통을 견디며 증언의 방법을 찾아낸 평범한 사람들에 의해서도 만들어지는 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "레이수보크는 그의 증언입니다.",
+      "text_markdown": "Reisubók는 그의 증언입니다.",
+      "tts": {
+        "text": "레이수보크는 그의 증언입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p149",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거의 모든 것을 잃었지만 자신의 이야기가 사라지는 것을 거부한 한 사람의 목소리입니다.",
+      "text_markdown": "거의 모든 것을 잃었지만 자신의 이야기가 사라지는 것을 거부한 한 사람의 목소리입니다.",
+      "tts": {
+        "text": "거의 모든 것을 잃었지만 자신의 이야기가 사라지는 것을 거부한 한 사람의 목소리입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "살아남은 책",
+      "paragraph_id": "p149",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 책이 남아 있는 한, 1627년 웨스트만 제도에서 끌려간 사람들은 잊히지 않을 것입니다.",
+      "text_markdown": "그의 책이 남아 있는 한, 1627년 웨스트만 제도에서 끌려간 사람들은 잊히지 않을 것입니다.",
+      "tts": {
+        "text": "그의 책이 남아 있는 한, 천육백이십칠 년 웨스트만 제도에서 끌려간 사람들은 잊히지 않을 것입니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_grace_omalley",
+  "language": "ja",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのことば",
+      "text_markdown": "読者へのことば"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはアイルランド西海岸の海賊女王、グレース・オマリーの真実の物語です。",
+      "text_markdown": "これはアイルランド西海岸の海賊女王、グレース・オマリーの真実の物語です。",
+      "tts": {
+        "text": "これはアイルランド西海岸の海賊女王、グレース・オマリーの真実の物語です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はゲール族の族長たち、部族間の争い、そして大西洋の嵐の世界に生まれました。",
+      "text_markdown": "彼女はゲール族の族長たち、部族間の争い、そして大西洋の嵐の世界に生まれました。",
+      "tts": {
+        "text": "彼女はゲール族の族長たち、部族間の争い、そして大西洋の嵐の世界に生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女が亡くなった時、イングランド王室はその世界を征服し、見分けがつかないほどに変えてしまっていました。",
+      "text_markdown": "彼女が亡くなった時、イングランド王室はその世界を征服し、見分けがつかないほどに変えてしまっていました。",
+      "tts": {
+        "text": "彼女が亡くなった時、イングランド王室はその世界を征服し、見分けがつかないほどに変えてしまっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーはアイルランド史上最も激動の世紀を生き抜きました。",
+      "text_markdown": "グレース・オマリーはアイルランド史上最も激動の世紀を生き抜きました。",
+      "tts": {
+        "text": "グレース・オマリーはアイルランド史上最も激動の世紀を生き抜きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は船団を指揮し、イングランド軍と戦い、投獄を生き延び、三人の夫より長く生きました。",
+      "text_markdown": "彼女は船団を指揮し、イングランド軍と戦い、投獄を生き延び、三人の夫より長く生きました。",
+      "tts": {
+        "text": "彼女は船団を指揮し、イングランド軍と戦い、投獄を生き延び、三人の夫より長く生きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はかつてロンドンまで航海し、エリザベス一世女王と直接会見しました。",
+      "text_markdown": "彼女はかつてロンドンまで航海し、エリザベス一世女王と直接会見しました。",
+      "tts": {
+        "text": "彼女はかつてロンドンまで航海し、エリザベス一世女王と直接会見しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女のアイルランド名はグラニュアイルといい、今日のアイルランドでもこの名で知られています。",
+      "text_markdown": "彼女のアイルランド名はグラニュアイルといい、今日のアイルランドでもこの名で知られています。",
+      "tts": {
+        "text": "彼女のアイルランド名はグラニュアイルといい、今日のアイルランドでもこの名で知られています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "本書は歴史の記録が許す限りにおいて、彼女の物語を語ります。",
+      "text_markdown": "本書は歴史の記録が許す限りにおいて、彼女の物語を語ります。",
+      "tts": {
+        "text": "本書は歴史の記録が許す限りにおいて、彼女の物語を語ります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "記録が沈黙しているところでは、私たちは正直にそう述べます。",
+      "text_markdown": "記録が沈黙しているところでは、私たちは正直にそう述べます。",
+      "tts": {
+        "text": "記録が沈黙しているところでは、私たちは正直にそう述べます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の人生は、いかなる個人よりもはるかに大きな力によって形作られました。",
+      "text_markdown": "彼女の人生は、いかなる個人よりもはるかに大きな力によって形作られました。",
+      "tts": {
+        "text": "彼女の人生は、いかなる個人よりもはるかに大きな力によって形作られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "テューダー朝のアイルランド征服、ゲール族の部族制度の崩壊、そしてイングランド植民地権力の台頭が、彼女の物語の背景をなしています。",
+      "text_markdown": "テューダー朝のアイルランド征服、ゲール族の部族制度の崩壊、そしてイングランド植民地権力の台頭が、彼女の物語の背景をなしています。",
+      "tts": {
+        "text": "テューダー朝のアイルランド征服、ゲール族の部族制度の崩壊、そしてイングランド植民地権力の台頭が、彼女の物語の背景をなしています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "グレース・オマリーを理解するには、まず彼女が生まれた世界を理解しなければなりません。",
+      "text_markdown": "グレース・オマリーを理解するには、まず彼女が生まれた世界を理解しなければなりません。",
+      "tts": {
+        "text": "グレース・オマリーを理解するには、まず彼女が生まれた世界を理解しなければなりません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ゲール族アイルランドの世界",
+      "text_markdown": "ゲール族アイルランドの世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世紀のアイルランドは分裂した島でした。",
+      "text_markdown": "十六世紀のアイルランドは分裂した島でした。",
+      "tts": {
+        "text": "十六世紀のアイルランドは分裂した島でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ダブリンを中心とする東海岸はイングランド人入植者に支配され、イングランド法の下で統治されていました。",
+      "text_markdown": "ダブリンを中心とする東海岸はイングランド人入植者に支配され、イングランド法の下で統治されていました。",
+      "tts": {
+        "text": "ダブリンを中心とする東海岸はイングランド人入植者に支配され、イングランド法の下で統治されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この地域はペイルとして知られ、その向こうにはイングランド人がほとんど理解できない世界が広がっていました。",
+      "text_markdown": "この地域はペイルとして知られ、その向こうにはイングランド人がほとんど理解できない世界が広がっていました。",
+      "tts": {
+        "text": "この地域はペイルとして知られ、その向こうにはイングランド人がほとんど理解できない世界が広がっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペイルの西では、アイルランドはゲール族の族長たちによって統治されていました。",
+      "text_markdown": "ペイルの西では、アイルランドはゲール族の族長たちによって統治されていました。",
+      "tts": {
+        "text": "ペイルの西では、アイルランドはゲール族の族長たちによって統治されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの族長たちは古代のブレホン法に従って領地を治めていました。",
+      "text_markdown": "これらの族長たちは古代のブレホン法に従って領地を治めていました。",
+      "tts": {
+        "text": "これらの族長たちは古代のブレホン法に従って領地を治めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブレホン法はイングランドのコモン・ローよりも古い複雑な法体系で、土地所有から結婚まであらゆることを規定していました。",
+      "text_markdown": "ブレホン法はイングランドのコモン・ローよりも古い複雑な法体系で、土地所有から結婚まであらゆることを規定していました。",
+      "tts": {
+        "text": "ブレホン法はイングランドのコモン・ローよりも古い複雑な法体系で、土地所有から結婚まであらゆることを規定していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それはイングランドの法律とはまったく似ていませんでした。",
+      "text_markdown": "それはイングランドの法律とはまったく似ていませんでした。",
+      "tts": {
+        "text": "それはイングランドの法律とはまったく似ていませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブレホン法の下では、土地は個人ではなく部族のものでした。",
+      "text_markdown": "ブレホン法の下では、土地は個人ではなく部族のものでした。",
+      "tts": {
+        "text": "ブレホン法の下では、土地は個人ではなく部族のものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "族長は自動的にその地位を継承するわけではありませんでした。",
+      "text_markdown": "族長は自動的にその地位を継承するわけではありませんでした。",
+      "tts": {
+        "text": "族長は自動的にその地位を継承するわけではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "代わりに、部族の有力者たちが統治一族から最も有能な候補者を選びました。",
+      "text_markdown": "代わりに、部族の有力者たちが統治一族から最も有能な候補者を選びました。",
+      "tts": {
+        "text": "代わりに、部族の有力者たちが統治一族から最も有能な候補者を選びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この制度は、指導力は獲得するものであり、父から子へ単に受け継がれるものではないことを意味していました。",
+      "text_markdown": "この制度は、指導力は獲得するものであり、父から子へ単に受け継がれるものではないことを意味していました。",
+      "tts": {
+        "text": "この制度は、指導力は獲得するものであり、父から子へ単に受け継がれるものではないことを意味していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイルランドの西海岸は大西洋に支配されていました。",
+      "text_markdown": "アイルランドの西海岸は大西洋に支配されていました。",
+      "tts": {
+        "text": "アイルランドの西海岸は大西洋に支配されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海は沿岸の共同体の生活のあらゆる面を形作っていました。",
+      "text_markdown": "海は沿岸の共同体の生活のあらゆる面を形作っていました。",
+      "tts": {
+        "text": "海は沿岸の共同体の生活のあらゆる面を形作っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "漁業、交易、そして海賊行為が沿岸経済の基盤でした。",
+      "text_markdown": "漁業、交易、そして海賊行為が沿岸経済の基盤でした。",
+      "tts": {
+        "text": "漁業、交易、そして海賊行為が沿岸経済の基盤でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最良の港を支配する部族が最も裕福で強力でした。",
+      "text_markdown": "最良の港を支配する部族が最も裕福で強力でした。",
+      "tts": {
+        "text": "最良の港を支配する部族が最も裕福で強力でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイルランド西部のコノート州には、最も強力なゲール族の部族がいくつか住んでいました。",
+      "text_markdown": "アイルランド西部のコノート州には、最も強力なゲール族の部族がいくつか住んでいました。",
+      "tts": {
+        "text": "アイルランド西部のコノート州には、最も強力なゲール族の部族がいくつか住んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オフラハティ一族がコノート南部の大部分を支配していました。",
+      "text_markdown": "オフラハティ一族がコノート南部の大部分を支配していました。",
+      "tts": {
+        "text": "オフラハティ一族がコノート南部の大部分を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "完全にゲール化したノルマン人入植者の子孫であるバーク一族が北部の広大な領土を支配していました。",
+      "text_markdown": "完全にゲール化したノルマン人入植者の子孫であるバーク一族が北部の広大な領土を支配していました。",
+      "tts": {
+        "text": "完全にゲール化したノルマン人入植者の子孫であるバーク一族が北部の広大な領土を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そしてオマリー一族がクルー湾とその周辺の海岸線を支配していました。",
+      "text_markdown": "そしてオマリー一族がクルー湾とその周辺の海岸線を支配していました。",
+      "tts": {
+        "text": "そしてオマリー一族がクルー湾とその周辺の海岸線を支配していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クルー湾はヨーロッパで最も注目すべき天然の港の一つです。",
+      "text_markdown": "クルー湾はヨーロッパで最も注目すべき天然の港の一つです。",
+      "tts": {
+        "text": "クルー湾はヨーロッパで最も注目すべき天然の港の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数百の小島があり、クレア島の巨大な島影が大西洋の嵐から守っています。",
+      "text_markdown": "数百の小島があり、クレア島の巨大な島影が大西洋の嵐から守っています。",
+      "tts": {
+        "text": "数百の小島があり、クレア島の巨大な島影が大西洋の嵐から守っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この湾は船団にとって完璧な停泊地を提供しました。",
+      "text_markdown": "この湾は船団にとって完璧な停泊地を提供しました。",
+      "tts": {
+        "text": "この湾は船団にとって完璧な停泊地を提供しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "クルー湾を支配する者は、西海岸で最も豊かな漁場への入り口を支配しました。",
+      "text_markdown": "クルー湾を支配する者は、西海岸で最も豊かな漁場への入り口を支配しました。",
+      "tts": {
+        "text": "クルー湾を支配する者は、西海岸で最も豊かな漁場への入り口を支配しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オマリー一族は何世紀にもわたって海の民でした。",
+      "text_markdown": "オマリー一族は何世紀にもわたって海の民でした。",
+      "tts": {
+        "text": "オマリー一族は何世紀にもわたって海の民でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの家訓はアイルランド語から訳すと、陸においても海においても強しでした。",
+      "text_markdown": "彼らの家訓はアイルランド語から訳すと、陸においても海においても強しでした。",
+      "tts": {
+        "text": "彼らの家訓はアイルランド語から訳すと、陸においても海においても強しでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは自分たちの海域を利用する漁船に通行料を課しました。",
+      "text_markdown": "彼らは自分たちの海域を利用する漁船に通行料を課しました。",
+      "tts": {
+        "text": "彼らは自分たちの海域を利用する漁船に通行料を課しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らはスペイン、スコットランド、そしてフランス西部の港と交易していました。",
+      "text_markdown": "彼らはスペイン、スコットランド、そしてフランス西部の港と交易していました。",
+      "tts": {
+        "text": "彼らはスペイン、スコットランド、そしてフランス西部の港と交易していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランド王室は十二世紀以来、全アイルランドに対する宗主権を主張していました。",
+      "text_markdown": "イングランド王室は十二世紀以来、全アイルランドに対する宗主権を主張していました。",
+      "tts": {
+        "text": "イングランド王室は十二世紀以来、全アイルランドに対する宗主権を主張していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしその大半の期間、イングランドの支配はペイルといくつかの沿岸都市に限られていました。",
+      "text_markdown": "しかしその大半の期間、イングランドの支配はペイルといくつかの沿岸都市に限られていました。",
+      "tts": {
+        "text": "しかしその大半の期間、イングランドの支配はペイルといくつかの沿岸都市に限られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西部のゲール族の族長たちは何世代にもわたって事実上独立していました。",
+      "text_markdown": "西部のゲール族の族長たちは何世代にもわたって事実上独立していました。",
+      "tts": {
+        "text": "西部のゲール族の族長たちは何世代にもわたって事実上独立していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その独立は終わりを迎えようとしていました。",
+      "text_markdown": "その独立は終わりを迎えようとしていました。",
+      "tts": {
+        "text": "その独立は終わりを迎えようとしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー八世は全アイルランドに対するイングランドの直接統治という新政策を開始しました。",
+      "text_markdown": "ヘンリー八世は全アイルランドに対するイングランドの直接統治という新政策を開始しました。",
+      "tts": {
+        "text": "ヘンリー八世は全アイルランドに対するイングランドの直接統治という新政策を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はゲール族の族長たちにイングランド法への服従と、土地の王室への引き渡しを要求しました。",
+      "text_markdown": "彼はゲール族の族長たちにイングランド法への服従と、土地の王室への引き渡しを要求しました。",
+      "tts": {
+        "text": "彼はゲール族の族長たちにイングランド法への服従と、土地の王室への引き渡しを要求しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その代わりに、王室はイングランドの法的権原の下で土地を再授与するとしました。",
+      "text_markdown": "その代わりに、王室はイングランドの法的権原の下で土地を再授与するとしました。",
+      "tts": {
+        "text": "その代わりに、王室はイングランドの法的権原の下で土地を再授与するとしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この政策は降伏と再授与と呼ばれ、ゲール社会の根幹を揺るがしました。",
+      "text_markdown": "この政策は降伏と再授与と呼ばれ、ゲール社会の根幹を揺るがしました。",
+      "tts": {
+        "text": "この政策は降伏と再授与と呼ばれ、ゲール社会の根幹を揺るがしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの族長がこの政策に激しく抵抗しました。",
+      "text_markdown": "多くの族長がこの政策に激しく抵抗しました。",
+      "tts": {
+        "text": "多くの族長がこの政策に激しく抵抗しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはそれを、一族が何世紀も所有してきた土地の窃盗と見なしました。",
+      "text_markdown": "彼らはそれを、一族が何世紀も所有してきた土地の窃盗と見なしました。",
+      "tts": {
+        "text": "彼らはそれを、一族が何世紀も所有してきた土地の窃盗と見なしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他の者たちは新制度の下で権力を維持することを期待して、イングランドの称号を受け入れました。",
+      "text_markdown": "他の者たちは新制度の下で権力を維持することを期待して、イングランドの称号を受け入れました。",
+      "tts": {
+        "text": "他の者たちは新制度の下で権力を維持することを期待して、イングランドの称号を受け入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その結果、島全体で数十年にわたる紛争、交渉、そして裏切りが生じました。",
+      "text_markdown": "その結果、島全体で数十年にわたる紛争、交渉、そして裏切りが生じました。",
+      "tts": {
+        "text": "その結果、島全体で数十年にわたる紛争、交渉、そして裏切りが生じました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エリザベス一世女王は父の政策をアイルランドで継続し、強化しました。",
+      "text_markdown": "エリザベス一世女王は父の政策をアイルランドで継続し、強化しました。",
+      "tts": {
+        "text": "エリザベス一世女王は父の政策をアイルランドで継続し、強化しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は島全体にイングランド法を施行するため、総督と軍隊を派遣しました。",
+      "text_markdown": "彼女は島全体にイングランド法を施行するため、総督と軍隊を派遣しました。",
+      "tts": {
+        "text": "彼女は島全体にイングランド法を施行するため、総督と軍隊を派遣しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "テューダー朝の征服は残忍なもので、虐殺、強制移住、そしてゲール文化の意図的な破壊を伴いました。",
+      "text_markdown": "テューダー朝の征服は残忍なもので、虐殺、強制移住、そしてゲール文化の意図的な破壊を伴いました。",
+      "tts": {
+        "text": "テューダー朝の征服は残忍なもので、虐殺、強制移住、そしてゲール文化の意図的な破壊を伴いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレース・オマリーは、このゲール族の独立が消えゆく世界に生まれたのです。",
+      "text_markdown": "グレース・オマリーは、このゲール族の独立が消えゆく世界に生まれたのです。",
+      "tts": {
+        "text": "グレース・オマリーは、このゲール族の独立が消えゆく世界に生まれたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインもまたアイルランド沿岸に利害を持っていました。",
+      "text_markdown": "スペインもまたアイルランド沿岸に利害を持っていました。",
+      "tts": {
+        "text": "スペインもまたアイルランド沿岸に利害を持っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインはイングランド最大のライバルであり、アイルランドはスペインの侵攻の拠点となり得ました。",
+      "text_markdown": "スペインはイングランド最大のライバルであり、アイルランドはスペインの侵攻の拠点となり得ました。",
+      "tts": {
+        "text": "スペインはイングランド最大のライバルであり、アイルランドはスペインの侵攻の拠点となり得ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アイルランドの族長たちはスペインの商人と貿易関係を維持していました。",
+      "text_markdown": "アイルランドの族長たちはスペインの商人と貿易関係を維持していました。",
+      "tts": {
+        "text": "アイルランドの族長たちはスペインの商人と貿易関係を維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "ゲール族アイルランドの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらのつながりは世紀が進むにつれて政治的に危険なものとなっていきました。",
+      "text_markdown": "これらのつながりは世紀が進むにつれて政治的に危険なものとなっていきました。",
+      "tts": {
+        "text": "これらのつながりは世紀が進むにつれて政治的に危険なものとなっていきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーは1530年頃、クルー湾の入り口にあるクレア島で生まれました。",
+      "text_markdown": "グレース・オマリーは1530年頃、クルー湾の入り口にあるクレア島で生まれました。",
+      "tts": {
+        "text": "グレース・オマリーは千五百三十年頃、クルー湾の入り口にあるクレア島で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の父はオマリー一族の族長、ドゥーダラ・オマリーでした。",
+      "text_markdown": "彼女の父はオマリー一族の族長、ドゥーダラ・オマリーでした。",
+      "tts": {
+        "text": "彼女の父はオマリー一族の族長、ドゥーダラ・オマリーでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はその黒い髪と強さから黒い樫の木と呼ばれていました。",
+      "text_markdown": "彼はその黒い髪と強さから黒い樫の木と呼ばれていました。",
+      "tts": {
+        "text": "彼はその黒い髪と強さから黒い樫の木と呼ばれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "母の名前はマーガレットと記録されていますが、彼女についてはほとんど知られていません。",
+      "text_markdown": "母の名前はマーガレットと記録されていますが、彼女についてはほとんど知られていません。",
+      "tts": {
+        "text": "母の名前はマーガレットと記録されていますが、彼女についてはほとんど知られていません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは海に囲まれて育ちました。",
+      "text_markdown": "グレースは海に囲まれて育ちました。",
+      "tts": {
+        "text": "グレースは海に囲まれて育ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "クレア島はクルー湾の入り口に位置し、大西洋の全力にさらされています。",
+      "text_markdown": "クレア島はクルー湾の入り口に位置し、大西洋の全力にさらされています。",
+      "tts": {
+        "text": "クレア島はクルー湾の入り口に位置し、大西洋の全力にさらされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この島は小さく、風にさらされ、そして美しいところです。",
+      "text_markdown": "この島は小さく、風にさらされ、そして美しいところです。",
+      "tts": {
+        "text": "この島は小さく、風にさらされ、そして美しいところです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこはオマリー一族の拠点であり、海上作戦の基地でした。",
+      "text_markdown": "そこはオマリー一族の拠点であり、海上作戦の基地でした。",
+      "tts": {
+        "text": "そこはオマリー一族の拠点であり、海上作戦の基地でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "幼い頃から、グレースは航海の才能を見せました。",
+      "text_markdown": "幼い頃から、グレースは航海の才能を見せました。",
+      "tts": {
+        "text": "幼い頃から、グレースは航海の才能を見せました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "子供の頃、父の貿易航海に同行することを要求したと言われています。",
+      "text_markdown": "子供の頃、父の貿易航海に同行することを要求したと言われています。",
+      "tts": {
+        "text": "子供の頃、父の貿易航海に同行することを要求したと言われています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "長い髪が船の索具に絡まると言われると、彼女はそれを短く切りました。",
+      "text_markdown": "長い髪が船の索具に絡まると言われると、彼女はそれを短く切りました。",
+      "tts": {
+        "text": "長い髪が船の索具に絡まると言われると、彼女はそれを短く切りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この話が完全に真実かどうかはともかく、それが彼女にグラニュアイル、つまり禿げたグレースというあだ名をもたらしました。",
+      "text_markdown": "この話が完全に真実かどうかはともかく、それが彼女にグラニュアイル、つまり禿げたグレースというあだ名をもたらしました。",
+      "tts": {
+        "text": "この話が完全に真実かどうかはともかく、それが彼女にグラニュアイル、つまり禿げたグレースというあだ名をもたらしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は星、潮の満ち引き、海鳥の行動を観察して航海術を学びました。",
+      "text_markdown": "彼女は星、潮の満ち引き、海鳥の行動を観察して航海術を学びました。",
+      "tts": {
+        "text": "彼女は星、潮の満ち引き、海鳥の行動を観察して航海術を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "クルー湾周辺の危険な潮流とその先の外洋を学びました。",
+      "text_markdown": "クルー湾周辺の危険な潮流とその先の外洋を学びました。",
+      "tts": {
+        "text": "クルー湾周辺の危険な潮流とその先の外洋を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自分の船の二倍の大きさの船を破壊しうる嵐の中で船を操る方法を学びました。",
+      "text_markdown": "自分の船の二倍の大きさの船を破壊しうる嵐の中で船を操る方法を学びました。",
+      "tts": {
+        "text": "自分の船の二倍の大きさの船を破壊しうる嵐の中で船を操る方法を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは習得に何年もかかる技術でしたが、彼女は若くしてそれを身につけました。",
+      "text_markdown": "それは習得に何年もかかる技術でしたが、彼女は若くしてそれを身につけました。",
+      "tts": {
+        "text": "それは習得に何年もかかる技術でしたが、彼女は若くしてそれを身につけました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースの教育は航海に限られたものではありませんでした。",
+      "text_markdown": "グレースの教育は航海に限られたものではありませんでした。",
+      "tts": {
+        "text": "グレースの教育は航海に限られたものではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "族長の娘として、ゲール世界の政治的な技術を学んだことでしょう。",
+      "text_markdown": "族長の娘として、ゲール世界の政治的な技術を学んだことでしょう。",
+      "tts": {
+        "text": "族長の娘として、ゲール世界の政治的な技術を学んだことでしょう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は同盟、領土の主張、そして部族を結びつける複雑な義務の網を理解していました。",
+      "text_markdown": "彼女は同盟、領土の主張、そして部族を結びつける複雑な義務の網を理解していました。",
+      "tts": {
+        "text": "彼女は同盟、領土の主張、そして部族を結びつける複雑な義務の網を理解していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はアイルランド語を話し、おそらく英語も少し、そしてラテン語も学んだかもしれません。",
+      "text_markdown": "彼女はアイルランド語を話し、おそらく英語も少し、そしてラテン語も学んだかもしれません。",
+      "tts": {
+        "text": "彼女はアイルランド語を話し、おそらく英語も少し、そしてラテン語も学んだかもしれません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1546年頃、およそ十六歳の時、グレースはドナル・オフラハティと結婚しました。",
+      "text_markdown": "1546年頃、およそ十六歳の時、グレースはドナル・オフラハティと結婚しました。",
+      "tts": {
+        "text": "千五百四十六年頃、およそ十六歳の時、グレースはドナル・オフラハティと結婚しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ドナルはクルー湾の南、コネマラのオフラハティ一族の族長位の継承者でした。",
+      "text_markdown": "ドナルはクルー湾の南、コネマラのオフラハティ一族の族長位の継承者でした。",
+      "tts": {
+        "text": "ドナルはクルー湾の南、コネマラのオフラハティ一族の族長位の継承者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この結婚は二つの強力なゲール族部族間の政治的同盟でした。",
+      "text_markdown": "この結婚は二つの強力なゲール族部族間の政治的同盟でした。",
+      "tts": {
+        "text": "この結婚は二つの強力なゲール族部族間の政治的同盟でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それによりグレースはオフラハティ領の港と領土へのアクセスを得ました。",
+      "text_markdown": "それによりグレースはオフラハティ領の港と領土へのアクセスを得ました。",
+      "tts": {
+        "text": "それによりグレースはオフラハティ領の港と領土へのアクセスを得ました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドナル・オフラハティは戦いのドナルとして知られていました。",
+      "text_markdown": "ドナル・オフラハティは戦いのドナルとして知られていました。",
+      "tts": {
+        "text": "ドナル・オフラハティは戦いのドナルとして知られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は好戦的で、近隣の部族との争いに頻繁に巻き込まれていました。",
+      "text_markdown": "彼は好戦的で、近隣の部族との争いに頻繁に巻き込まれていました。",
+      "tts": {
+        "text": "彼は好戦的で、近隣の部族との争いに頻繁に巻き込まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "グレースは結婚期間中に三人の子供を産みました。",
+      "text_markdown": "グレースは結婚期間中に三人の子供を産みました。",
+      "tts": {
+        "text": "グレースは結婚期間中に三人の子供を産みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし伝承によれば、彼女はすぐに二人のうちより有能な指導者となりました。",
+      "text_markdown": "しかし伝承によれば、彼女はすぐに二人のうちより有能な指導者となりました。",
+      "tts": {
+        "text": "しかし伝承によれば、彼女はすぐに二人のうちより有能な指導者となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドナルが敵対する部族との小競り合いで殺されると、グレースは彼の船団と追随者たちの指揮を引き継ぎました。",
+      "text_markdown": "ドナルが敵対する部族との小競り合いで殺されると、グレースは彼の船団と追随者たちの指揮を引き継ぎました。",
+      "tts": {
+        "text": "ドナルが敵対する部族との小競り合いで殺されると、グレースは彼の船団と追随者たちの指揮を引き継ぎました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ブレホン法の下では、彼女には彼の財産に対する自動的な権利はありませんでした。",
+      "text_markdown": "ブレホン法の下では、彼女には彼の財産に対する自動的な権利はありませんでした。",
+      "tts": {
+        "text": "ブレホン法の下では、彼女には彼の財産に対する自動的な権利はありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼女は何年にもわたる航海の共有を通じて乗組員たちの忠誠を勝ち取っていました。",
+      "text_markdown": "しかし彼女は何年にもわたる航海の共有を通じて乗組員たちの忠誠を勝ち取っていました。",
+      "tts": {
+        "text": "しかし彼女は何年にもわたる航海の共有を通じて乗組員たちの忠誠を勝ち取っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "男たちは彼女に従うことを選び、彼女は独自の権限を持つ指揮官となりました。",
+      "text_markdown": "男たちは彼女に従うことを選び、彼女は独自の権限を持つ指揮官となりました。",
+      "tts": {
+        "text": "男たちは彼女に従うことを選び、彼女は独自の権限を持つ指揮官となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは追随者と船を連れてクルー湾に戻りました。",
+      "text_markdown": "グレースは追随者と船を連れてクルー湾に戻りました。",
+      "tts": {
+        "text": "グレースは追随者と船を連れてクルー湾に戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はクレア島に拠点を構え、船団の構築を始めました。",
+      "text_markdown": "彼女はクレア島に拠点を構え、船団の構築を始めました。",
+      "tts": {
+        "text": "彼女はクレア島に拠点を構え、船団の構築を始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "漁船に通行料を課し、外国の商人と交易し、敵対する部族の船を襲撃しました。",
+      "text_markdown": "漁船に通行料を課し、外国の商人と交易し、敵対する部族の船を襲撃しました。",
+      "tts": {
+        "text": "漁船に通行料を課し、外国の商人と交易し、敵対する部族の船を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数年のうちに、彼女はアイルランド西海岸で最も有力な人物の一人となりました。",
+      "text_markdown": "数年のうちに、彼女はアイルランド西海岸で最も有力な人物の一人となりました。",
+      "tts": {
+        "text": "数年のうちに、彼女はアイルランド西海岸で最も有力な人物の一人となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は1566年頃、鉄のリチャードとして知られるリチャード・バークと二度目の結婚をしました。",
+      "text_markdown": "彼女は1566年頃、鉄のリチャードとして知られるリチャード・バークと二度目の結婚をしました。",
+      "tts": {
+        "text": "彼女は千五百六十六年頃、鉄のリチャードとして知られるリチャード・バークと二度目の結婚をしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "リチャードはメイヨー郡のバーク一族の有力な分家の族長でした。",
+      "text_markdown": "リチャードはメイヨー郡のバーク一族の有力な分家の族長でした。",
+      "tts": {
+        "text": "リチャードはメイヨー郡のバーク一族の有力な分家の族長でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有名な話によると、グレースはブレホン法の下で一年間だけ彼と結婚し、その後彼を自分の城から締め出したとされています。",
+      "text_markdown": "有名な話によると、グレースはブレホン法の下で一年間だけ彼と結婚し、その後彼を自分の城から締め出したとされています。",
+      "tts": {
+        "text": "有名な話によると、グレースはブレホン法の下で一年間だけ彼と結婚し、その後彼を自分の城から締め出したとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この話が完全に正確かどうかはともかく、大胆で型破りな行動をとるという彼女の評判を反映しています。",
+      "text_markdown": "この話が完全に正確かどうかはともかく、大胆で型破りな行動をとるという彼女の評判を反映しています。",
+      "tts": {
+        "text": "この話が完全に正確かどうかはともかく、大胆で型破りな行動をとるという彼女の評判を反映しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "さまざまな逸話にもかかわらず、グレースとリチャードは実際には長年連れ添いました。",
+      "text_markdown": "さまざまな逸話にもかかわらず、グレースとリチャードは実際には長年連れ添いました。",
+      "tts": {
+        "text": "さまざまな逸話にもかかわらず、グレースとリチャードは実際には長年連れ添いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人にはティボットという息子が生まれ、彼は後にアイルランドの歴史で重要な役割を果たすことになります。",
+      "text_markdown": "二人にはティボットという息子が生まれ、彼は後にアイルランドの歴史で重要な役割を果たすことになります。",
+      "tts": {
+        "text": "二人にはティボットという息子が生まれ、彼は後にアイルランドの歴史で重要な役割を果たすことになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この結婚によりグレースはさらなる領土、船、そして政治的なつながりを得ました。",
+      "text_markdown": "この結婚によりグレースはさらなる領土、船、そして政治的なつながりを得ました。",
+      "tts": {
+        "text": "この結婚によりグレースはさらなる領土、船、そして政治的なつながりを得ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は今や西海岸で最も有力な女性となり、おそらくアイルランド全土でも最も有力な女性でした。",
+      "text_markdown": "彼女は今や西海岸で最も有力な女性となり、おそらくアイルランド全土でも最も有力な女性でした。",
+      "tts": {
+        "text": "彼女は今や西海岸で最も有力な女性となり、おそらくアイルランド全土でも最も有力な女性でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の船団は最盛期には二十隻にも達しました。",
+      "text_markdown": "彼女の船団は最盛期には二十隻にも達しました。",
+      "tts": {
+        "text": "彼女の船団は最盛期には二十隻にも達しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それらは大型の軍艦ではなく、荒れた大西洋の海に適した頑丈なガレー型の船でした。",
+      "text_markdown": "それらは大型の軍艦ではなく、荒れた大西洋の海に適した頑丈なガレー型の船でした。",
+      "tts": {
+        "text": "それらは大型の軍艦ではなく、荒れた大西洋の海に適した頑丈なガレー型の船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "交易品、戦士、そして急速に消えゆくゲール世界の希望を運んでいました。",
+      "text_markdown": "交易品、戦士、そして急速に消えゆくゲール世界の希望を運んでいました。",
+      "tts": {
+        "text": "交易品、戦士、そして急速に消えゆくゲール世界の希望を運んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレース・オマリーは、まさに彼女の知る世界が破壊されつつある時に海の帝国を築いていたのです。",
+      "text_markdown": "グレース・オマリーは、まさに彼女の知る世界が破壊されつつある時に海の帝国を築いていたのです。",
+      "tts": {
+        "text": "グレース・オマリーは、まさに彼女の知る世界が破壊されつつある時に海の帝国を築いていたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力への道",
+      "text_markdown": "権力への道"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーの権力は三つの基盤の上に成り立っていました。船、同盟、そして大胆さです。",
+      "text_markdown": "グレース・オマリーの権力は三つの基盤の上に成り立っていました。船、同盟、そして大胆さです。",
+      "tts": {
+        "text": "グレース・オマリーの権力は三つの基盤の上に成り立っていました。船、同盟、そして大胆さです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の船団は西海岸沿いの海上交通路の支配権を与えました。",
+      "text_markdown": "彼女の船団は西海岸沿いの海上交通路の支配権を与えました。",
+      "tts": {
+        "text": "彼女の船団は西海岸沿いの海上交通路の支配権を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の結婚と家族のつながりは、最も強力なゲール族の部族との同盟をもたらしました。",
+      "text_markdown": "彼女の結婚と家族のつながりは、最も強力なゲール族の部族との同盟をもたらしました。",
+      "tts": {
+        "text": "彼女の結婚と家族のつながりは、最も強力なゲール族の部族との同盟をもたらしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして彼女個人の勇気は、さもなければ決して女性に従わなかったであろう男たちの忠誠を勝ち取りました。",
+      "text_markdown": "そして彼女個人の勇気は、さもなければ決して女性に従わなかったであろう男たちの忠誠を勝ち取りました。",
+      "tts": {
+        "text": "そして彼女個人の勇気は、さもなければ決して女性に従わなかったであろう男たちの忠誠を勝ち取りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は通行料を払わずに自分の海域を通過する商船を襲撃しました。",
+      "text_markdown": "彼女は通行料を払わずに自分の海域を通過する商船を襲撃しました。",
+      "tts": {
+        "text": "彼女は通行料を払わずに自分の海域を通過する商船を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "領土を争う敵対部族の船を攻撃しました。",
+      "text_markdown": "領土を争う敵対部族の船を攻撃しました。",
+      "tts": {
+        "text": "領土を争う敵対部族の船を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインやスコットランドの商人と交易し、アイルランドの皮革、魚、羊毛をワイン、塩、武器と交換しました。",
+      "text_markdown": "スペインやスコットランドの商人と交易し、アイルランドの皮革、魚、羊毛をワイン、塩、武器と交換しました。",
+      "tts": {
+        "text": "スペインやスコットランドの商人と交易し、アイルランドの皮革、魚、羊毛をワイン、塩、武器と交換しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の活動は彼女を裕福にし、西海岸全域で政治的影響力を持たせました。",
+      "text_markdown": "彼女の活動は彼女を裕福にし、西海岸全域で政治的影響力を持たせました。",
+      "tts": {
+        "text": "彼女の活動は彼女を裕福にし、西海岸全域で政治的影響力を持たせました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コノートのイングランド当局は彼女を危険な反逆者と見なしていました。",
+      "text_markdown": "コノートのイングランド当局は彼女を危険な反逆者と見なしていました。",
+      "tts": {
+        "text": "コノートのイングランド当局は彼女を危険な反逆者と見なしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "リチャード・ビンガム卿は1584年にコノートのイングランド総督に任命されました。",
+      "text_markdown": "リチャード・ビンガム卿は1584年にコノートのイングランド総督に任命されました。",
+      "tts": {
+        "text": "リチャード・ビンガム卿は千五百八十四年にコノートのイングランド総督に任命されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ビンガムはゲール族の抵抗を粉砕することに決意した冷酷な行政官でした。",
+      "text_markdown": "ビンガムはゲール族の抵抗を粉砕することに決意した冷酷な行政官でした。",
+      "tts": {
+        "text": "ビンガムはゲール族の抵抗を粉砕することに決意した冷酷な行政官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はグレース・オマリーを主要な標的の一つと見なしていました。",
+      "text_markdown": "彼はグレース・オマリーを主要な標的の一つと見なしていました。",
+      "tts": {
+        "text": "彼はグレース・オマリーを主要な標的の一つと見なしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ビンガムは彼女の家畜を没収し、何度も彼女の逮捕を試みました。",
+      "text_markdown": "ビンガムは彼女の家畜を没収し、何度も彼女の逮捕を試みました。",
+      "tts": {
+        "text": "ビンガムは彼女の家畜を没収し、何度も彼女の逮捕を試みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は彼女の長男オーウェンを捕らえ、殺害させました。",
+      "text_markdown": "彼は彼女の長男オーウェンを捕らえ、殺害させました。",
+      "tts": {
+        "text": "彼は彼女の長男オーウェンを捕らえ、殺害させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の兄弟と複数の追随者を投獄しました。",
+      "text_markdown": "彼女の兄弟と複数の追随者を投獄しました。",
+      "tts": {
+        "text": "彼女の兄弟と複数の追随者を投獄しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の彼女に対する作戦は個人的で復讐的なものでした。",
+      "text_markdown": "彼の彼女に対する作戦は個人的で復讐的なものでした。",
+      "tts": {
+        "text": "彼の彼女に対する作戦は個人的で復讐的なものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースはあらゆる手段を使ってビンガムに抵抗しました。",
+      "text_markdown": "グレースはあらゆる手段を使ってビンガムに抵抗しました。",
+      "tts": {
+        "text": "グレースはあらゆる手段を使ってビンガムに抵抗しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドの補給船に対する襲撃を開始しました。",
+      "text_markdown": "イングランドの補給船に対する襲撃を開始しました。",
+      "tts": {
+        "text": "イングランドの補給船に対する襲撃を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ビンガムの軍から逃れてきたゲール族の反乱者をかくまいました。",
+      "text_markdown": "ビンガムの軍から逃れてきたゲール族の反乱者をかくまいました。",
+      "tts": {
+        "text": "ビンガムの軍から逃れてきたゲール族の反乱者をかくまいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海岸線に関する知識を活用してイングランドのパトロールを回避し、最も予想外の場所を攻撃しました。",
+      "text_markdown": "海岸線に関する知識を活用してイングランドのパトロールを回避し、最も予想外の場所を攻撃しました。",
+      "tts": {
+        "text": "海岸線に関する知識を活用してイングランドのパトロールを回避し、最も予想外の場所を攻撃しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしビンガムの資源は彼女のそれをはるかに上回っていました。",
+      "text_markdown": "しかしビンガムの資源は彼女のそれをはるかに上回っていました。",
+      "tts": {
+        "text": "しかしビンガムの資源は彼女のそれをはるかに上回っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はイングランドの兵士、大砲、そして王室の支援を指揮していました。",
+      "text_markdown": "彼はイングランドの兵士、大砲、そして王室の支援を指揮していました。",
+      "tts": {
+        "text": "彼はイングランドの兵士、大砲、そして王室の支援を指揮していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "グレースはヨーロッパで最も強力な王国を相手に、勝ち目のない戦争を戦っていました。",
+      "text_markdown": "グレースはヨーロッパで最も強力な王国を相手に、勝ち目のない戦争を戦っていました。",
+      "tts": {
+        "text": "グレースはヨーロッパで最も強力な王国を相手に、勝ち目のない戦争を戦っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "千五百九十年代の初めには、彼女の選択肢は尽きかけていました。",
+      "text_markdown": "千五百九十年代の初めには、彼女の選択肢は尽きかけていました。",
+      "tts": {
+        "text": "千五百九十年代の初めには、彼女の選択肢は尽きかけていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1593年、グレースはテューダー時代の歴史上最も並外れた決断の一つを下しました。",
+      "text_markdown": "1593年、グレースはテューダー時代の歴史上最も並外れた決断の一つを下しました。",
+      "tts": {
+        "text": "千五百九十三年、グレースはテューダー時代の歴史上最も並外れた決断の一つを下しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ビンガムを完全に迂回し、エリザベス一世女王に直接訴えることを決意したのです。",
+      "text_markdown": "ビンガムを完全に迂回し、エリザベス一世女王に直接訴えることを決意したのです。",
+      "tts": {
+        "text": "ビンガムを完全に迂回し、エリザベス一世女王に直接訴えることを決意したのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は女王に請願書を書き、ビンガムに対する不満を述べました。",
+      "text_markdown": "彼女は女王に請願書を書き、ビンガムに対する不満を述べました。",
+      "tts": {
+        "text": "彼女は女王に請願書を書き、ビンガムに対する不満を述べました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして自らイングランドへ航海し、直接訴えを届けました。",
+      "text_markdown": "そして自らイングランドへ航海し、直接訴えを届けました。",
+      "tts": {
+        "text": "そして自らイングランドへ航海し、直接訴えを届けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーとエリザベス女王の会見はロンドンのグリニッジ宮殿で行われました。",
+      "text_markdown": "グレース・オマリーとエリザベス女王の会見はロンドンのグリニッジ宮殿で行われました。",
+      "tts": {
+        "text": "グレース・オマリーとエリザベス女王の会見はロンドンのグリニッジ宮殿で行われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正確な日付は記録されていませんが、1593年九月のことでした。",
+      "text_markdown": "正確な日付は記録されていませんが、1593年九月のことでした。",
+      "tts": {
+        "text": "正確な日付は記録されていませんが、千五百九十三年九月のことでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "十六世紀を代表する二人の並外れた女性が向かい合いました。",
+      "text_markdown": "十六世紀を代表する二人の並外れた女性が向かい合いました。",
+      "tts": {
+        "text": "十六世紀を代表する二人の並外れた女性が向かい合いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一人はヨーロッパで最も強力な王国を統治し、もう一人は大西洋の端の船団を率いていました。",
+      "text_markdown": "一人はヨーロッパで最も強力な王国を統治し、もう一人は大西洋の端の船団を率いていました。",
+      "tts": {
+        "text": "一人はヨーロッパで最も強力な王国を統治し、もう一人は大西洋の端の船団を率いていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは二人とも話せたラテン語で会談を行いました。",
+      "text_markdown": "グレースは二人とも話せたラテン語で会談を行いました。",
+      "tts": {
+        "text": "グレースは二人とも話せたラテン語で会談を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はエリザベスに対して頭を下げることを拒否し、自分も対等な主権者であると主張しました。",
+      "text_markdown": "彼女はエリザベスに対して頭を下げることを拒否し、自分も対等な主権者であると主張しました。",
+      "tts": {
+        "text": "彼女はエリザベスに対して頭を下げることを拒否し、自分も対等な主権者であると主張しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は明快かつ力強く請願書を提出しました。",
+      "text_markdown": "彼女は明快かつ力強く請願書を提出しました。",
+      "tts": {
+        "text": "彼女は明快かつ力強く請願書を提出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エリザベスは彼女の勇気と振る舞いに感銘を受けたと伝えられています。",
+      "text_markdown": "エリザベスは彼女の勇気と振る舞いに感銘を受けたと伝えられています。",
+      "tts": {
+        "text": "エリザベスは彼女の勇気と振る舞いに感銘を受けたと伝えられています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エリザベスはグレースの要求のいくつかに同意しました。",
+      "text_markdown": "エリザベスはグレースの要求のいくつかに同意しました。",
+      "tts": {
+        "text": "エリザベスはグレースの要求のいくつかに同意しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ビンガムにグレースの投獄された家族を釈放するよう命じました。",
+      "text_markdown": "ビンガムにグレースの投獄された家族を釈放するよう命じました。",
+      "tts": {
+        "text": "ビンガムにグレースの投獄された家族を釈放するよう命じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "グレースに海上活動を続ける権利を認めました。",
+      "text_markdown": "グレースに海上活動を続ける権利を認めました。",
+      "tts": {
+        "text": "グレースに海上活動を続ける権利を認めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレースとその追随者たちのための保護状を書きました。",
+      "text_markdown": "グレースとその追随者たちのための保護状を書きました。",
+      "tts": {
+        "text": "グレースとその追随者たちのための保護状を書きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グリニッジでの会見はグレース・オマリーにとって外交的勝利でした。",
+      "text_markdown": "グリニッジでの会見はグレース・オマリーにとって外交的勝利でした。",
+      "tts": {
+        "text": "グリニッジでの会見はグレース・オマリーにとって外交的勝利でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はアイルランドにおけるイングランドの植民地行政の頭越しに行動したのです。",
+      "text_markdown": "彼女はアイルランドにおけるイングランドの植民地行政の頭越しに行動したのです。",
+      "tts": {
+        "text": "彼女はアイルランドにおけるイングランドの植民地行政の頭越しに行動したのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "君主と直接交渉し、実質的な譲歩を勝ち取りました。",
+      "text_markdown": "君主と直接交渉し、実質的な譲歩を勝ち取りました。",
+      "tts": {
+        "text": "君主と直接交渉し、実質的な譲歩を勝ち取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他のどのゲール族の族長もこれに匹敵することを成し遂げたことはありませんでした。",
+      "text_markdown": "他のどのゲール族の族長もこれに匹敵することを成し遂げたことはありませんでした。",
+      "tts": {
+        "text": "他のどのゲール族の族長もこれに匹敵することを成し遂げたことはありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしその勝利は脆く、一時的なものでした。",
+      "text_markdown": "しかしその勝利は脆く、一時的なものでした。",
+      "tts": {
+        "text": "しかしその勝利は脆く、一時的なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ビンガムは自分の女王に否定されたことに憤慨しました。",
+      "text_markdown": "ビンガムは自分の女王に否定されたことに憤慨しました。",
+      "tts": {
+        "text": "ビンガムは自分の女王に否定されたことに憤慨しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エリザベスの命令の実行を遅らせました。",
+      "text_markdown": "エリザベスの命令の実行を遅らせました。",
+      "tts": {
+        "text": "エリザベスの命令の実行を遅らせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ゲール族のアイルランドを破壊する構造的な力は、いかなる一つの交渉にも関係なく続きました。",
+      "text_markdown": "ゲール族のアイルランドを破壊する構造的な力は、いかなる一つの交渉にも関係なく続きました。",
+      "tts": {
+        "text": "ゲール族のアイルランドを破壊する構造的な力は、いかなる一つの交渉にも関係なく続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "グレースは一つの戦いに勝ちましたが、戦争はすでに負けていました。",
+      "text_markdown": "グレースは一つの戦いに勝ちましたが、戦争はすでに負けていました。",
+      "tts": {
+        "text": "グレースは一つの戦いに勝ちましたが、戦争はすでに負けていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "九年戦争が千五百九十年代にアイルランド全土で勃発しました。",
+      "text_markdown": "九年戦争が千五百九十年代にアイルランド全土で勃発しました。",
+      "tts": {
+        "text": "九年戦争が千五百九十年代にアイルランド全土で勃発しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ゲール族の族長たちがイングランドの支配に対する最後の絶望的な反乱に立ち上がりました。",
+      "text_markdown": "ゲール族の族長たちがイングランドの支配に対する最後の絶望的な反乱に立ち上がりました。",
+      "tts": {
+        "text": "ゲール族の族長たちがイングランドの支配に対する最後の絶望的な反乱に立ち上がりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦争はイングランドの勝利と旧ゲール秩序の完全な崩壊で終わりました。",
+      "text_markdown": "戦争はイングランドの勝利と旧ゲール秩序の完全な崩壊で終わりました。",
+      "tts": {
+        "text": "戦争はイングランドの勝利と旧ゲール秩序の完全な崩壊で終わりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレース・オマリーは、自分が戦ってきた世界が崩壊するのを目の当たりにして生き延びました。",
+      "text_markdown": "グレース・オマリーは、自分が戦ってきた世界が崩壊するのを目の当たりにして生き延びました。",
+      "tts": {
+        "text": "グレース・オマリーは、自分が戦ってきた世界が崩壊するのを目の当たりにして生き延びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百七十年代から千五百八十年代の権力の絶頂期に、グレース・オマリーは西の海を支配していました。",
+      "text_markdown": "千五百七十年代から千五百八十年代の権力の絶頂期に、グレース・オマリーは西の海を支配していました。",
+      "tts": {
+        "text": "千五百七十年代から千五百八十年代の権力の絶頂期に、グレース・オマリーは西の海を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の船団はゴールウェイ湾からドニゴールまでの海域を支配していました。",
+      "text_markdown": "彼女の船団はゴールウェイ湾からドニゴールまでの海域を支配していました。",
+      "tts": {
+        "text": "彼女の船団はゴールウェイ湾からドニゴールまでの海域を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の領海を通過する船で、彼女に知られずに、そしてたいていは通行料を払わずに通れるものはありませんでした。",
+      "text_markdown": "彼女の領海を通過する船で、彼女に知られずに、そしてたいていは通行料を払わずに通れるものはありませんでした。",
+      "tts": {
+        "text": "彼女の領海を通過する船で、彼女に知られずに、そしてたいていは通行料を払わずに通れるものはありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はアイルランド大西洋岸の誰もが認める海上の支配者でした。",
+      "text_markdown": "彼女はアイルランド大西洋岸の誰もが認める海上の支配者でした。",
+      "tts": {
+        "text": "彼女はアイルランド大西洋岸の誰もが認める海上の支配者でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の主な拠点はクレア島、ロックフリート城、そして海岸沿いのいくつかの要塞化された陣地でした。",
+      "text_markdown": "彼女の主な拠点はクレア島、ロックフリート城、そして海岸沿いのいくつかの要塞化された陣地でした。",
+      "tts": {
+        "text": "彼女の主な拠点はクレア島、ロックフリート城、そして海岸沿いのいくつかの要塞化された陣地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロックフリート城はキャリカハウリーとも呼ばれ、クルー湾の狭い入り江に立っています。",
+      "text_markdown": "ロックフリート城はキャリカハウリーとも呼ばれ、クルー湾の狭い入り江に立っています。",
+      "tts": {
+        "text": "ロックフリート城はキャリカハウリーとも呼ばれ、クルー湾の狭い入り江に立っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "小さいながらも堅固な塔の館で、三方を水に囲まれています。",
+      "text_markdown": "小さいながらも堅固な塔の館で、三方を水に囲まれています。",
+      "tts": {
+        "text": "小さいながらも堅固な塔の館で、三方を水に囲まれています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "伝承によると、グレースは夜間に水面の異変を感じ取れるよう、船の係留綱をベッドの柱に結んでいたそうです。",
+      "text_markdown": "伝承によると、グレースは夜間に水面の異変を感じ取れるよう、船の係留綱をベッドの柱に結んでいたそうです。",
+      "tts": {
+        "text": "伝承によると、グレースは夜間に水面の異変を感じ取れるよう、船の係留綱をベッドの柱に結んでいたそうです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは数百人の戦闘部隊を維持していました。",
+      "text_markdown": "グレースは数百人の戦闘部隊を維持していました。",
+      "tts": {
+        "text": "グレースは数百人の戦闘部隊を維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは職業軍人ではなく、忠誠心、血縁、そして自己利益から彼女に仕えた一族の者たちでした。",
+      "text_markdown": "彼らは職業軍人ではなく、忠誠心、血縁、そして自己利益から彼女に仕えた一族の者たちでした。",
+      "tts": {
+        "text": "彼らは職業軍人ではなく、忠誠心、血縁、そして自己利益から彼女に仕えた一族の者たちでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは彼女の船の乗組員を務め、城を守り、襲撃の際に彼女と共に戦いました。",
+      "text_markdown": "彼らは彼女の船の乗組員を務め、城を守り、襲撃の際に彼女と共に戦いました。",
+      "tts": {
+        "text": "彼らは彼女の船の乗組員を務め、城を守り、襲撃の際に彼女と共に戦いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は彼らを養い、報酬を与え、自ら危険の中へ導きました。",
+      "text_markdown": "彼女は彼らを養い、報酬を与え、自ら危険の中へ導きました。",
+      "tts": {
+        "text": "彼女は彼らを養い、報酬を与え、自ら危険の中へ導きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の船は大西洋沿岸に適した頑丈な浅吃水のガレー船でした。",
+      "text_markdown": "彼女の船は大西洋沿岸に適した頑丈な浅吃水のガレー船でした。",
+      "tts": {
+        "text": "彼女の船は大西洋沿岸に適した頑丈な浅吃水のガレー船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "吃水の深い船が入れないクルー湾周辺の危険な海域を航行できました。",
+      "text_markdown": "吃水の深い船が入れないクルー湾周辺の危険な海域を航行できました。",
+      "tts": {
+        "text": "吃水の深い船が入れないクルー湾周辺の危険な海域を航行できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船を追うのに十分な速さと、軍艦から逃れるのに十分な機動性がありました。",
+      "text_markdown": "商船を追うのに十分な速さと、軍艦から逃れるのに十分な機動性がありました。",
+      "tts": {
+        "text": "商船を追うのに十分な速さと、軍艦から逃れるのに十分な機動性がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その設計はオマリー一族によって何世代もかけて完成されたものでした。",
+      "text_markdown": "その設計はオマリー一族によって何世代もかけて完成されたものでした。",
+      "tts": {
+        "text": "その設計はオマリー一族によって何世代もかけて完成されたものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは外国の商人と広く交易しました。",
+      "text_markdown": "グレースは外国の商人と広く交易しました。",
+      "tts": {
+        "text": "グレースは外国の商人と広く交易しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの船がワイン、鉄、塩をアイルランド沿岸に運んできました。",
+      "text_markdown": "スペインの船がワイン、鉄、塩をアイルランド沿岸に運んできました。",
+      "tts": {
+        "text": "スペインの船がワイン、鉄、塩をアイルランド沿岸に運んできました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その見返りに、グレースは塩漬け魚、牛の皮革、羊毛を輸出しました。",
+      "text_markdown": "その見返りに、グレースは塩漬け魚、牛の皮革、羊毛を輸出しました。",
+      "tts": {
+        "text": "その見返りに、グレースは塩漬け魚、牛の皮革、羊毛を輸出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この交易はイングランド法の下では厳密には違法でしたが、荒涼たる大西洋沿岸ではイングランド法はほとんど意味を持ちませんでした。",
+      "text_markdown": "この交易はイングランド法の下では厳密には違法でしたが、荒涼たる大西洋沿岸ではイングランド法はほとんど意味を持ちませんでした。",
+      "tts": {
+        "text": "この交易はイングランド法の下では厳密には違法でしたが、荒涼たる大西洋沿岸ではイングランド法はほとんど意味を持ちませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女はまた、通行料の支払いを拒否する船も襲撃しました。",
+      "text_markdown": "彼女はまた、通行料の支払いを拒否する船も襲撃しました。",
+      "tts": {
+        "text": "彼女はまた、通行料の支払いを拒否する船も襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドの商人、ライバルのアイルランド部族、スコットランドの貿易商のすべてが彼女の手で損害を被りました。",
+      "text_markdown": "イングランドの商人、ライバルのアイルランド部族、スコットランドの貿易商のすべてが彼女の手で損害を被りました。",
+      "tts": {
+        "text": "イングランドの商人、ライバルのアイルランド部族、スコットランドの貿易商のすべてが彼女の手で損害を被りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の襲撃は無計画ではなく、計算されたものでした。",
+      "text_markdown": "彼女の襲撃は無計画ではなく、計算されたものでした。",
+      "tts": {
+        "text": "彼女の襲撃は無計画ではなく、計算されたものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "高価な貨物を積んでいると知っている船を狙い、防備が固すぎる船は避けました。",
+      "text_markdown": "高価な貨物を積んでいると知っている船を狙い、防備が固すぎる船は避けました。",
+      "tts": {
+        "text": "高価な貨物を積んでいると知っている船を狙い、防備が固すぎる船は避けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは二人の夫それぞれとの間に子供をもうけ、指導者となるよう育てました。",
+      "text_markdown": "グレースは二人の夫それぞれとの間に子供をもうけ、指導者となるよう育てました。",
+      "tts": {
+        "text": "グレースは二人の夫それぞれとの間に子供をもうけ、指導者となるよう育てました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の息子たちは船団の船長を務め、独自の政治的人物としても活動しました。",
+      "text_markdown": "彼女の息子たちは船団の船長を務め、独自の政治的人物としても活動しました。",
+      "tts": {
+        "text": "彼女の息子たちは船団の船長を務め、独自の政治的人物としても活動しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "義理の娘マーガレットが彼女に代わって領地を管理しました。",
+      "text_markdown": "義理の娘マーガレットが彼女に代わって領地を管理しました。",
+      "tts": {
+        "text": "義理の娘マーガレットが彼女に代わって領地を管理しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "オマリーのネットワークは家族の事業であり、血縁とグレースの人格の力によって結ばれていました。",
+      "text_markdown": "オマリーのネットワークは家族の事業であり、血縁とグレースの人格の力によって結ばれていました。",
+      "tts": {
+        "text": "オマリーのネットワークは家族の事業であり、血縁とグレースの人格の力によって結ばれていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋沿岸での生活は肉体的に過酷で、しばしば危険でした。",
+      "text_markdown": "大西洋沿岸での生活は肉体的に過酷で、しばしば危険でした。",
+      "tts": {
+        "text": "大西洋沿岸での生活は肉体的に過酷で、しばしば危険でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "天候は厳しく、年の大半は外洋から嵐が押し寄せてきました。",
+      "text_markdown": "天候は厳しく、年の大半は外洋から嵐が押し寄せてきました。",
+      "tts": {
+        "text": "天候は厳しく、年の大半は外洋から嵐が押し寄せてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船は開放型か半甲板で、風雨からの遮蔽はほとんどありませんでした。",
+      "text_markdown": "船は開放型か半甲板で、風雨からの遮蔽はほとんどありませんでした。",
+      "tts": {
+        "text": "船は開放型か半甲板で、風雨からの遮蔽はほとんどありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレースはこれらの条件に何十年も耐え、六十歳を過ぎても航海と戦闘を続けました。",
+      "text_markdown": "グレースはこれらの条件に何十年も耐え、六十歳を過ぎても航海と戦闘を続けました。",
+      "tts": {
+        "text": "グレースはこれらの条件に何十年も耐え、六十歳を過ぎても航海と戦闘を続けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は戦場での個人的な勇気で知られていました。",
+      "text_markdown": "彼女は戦場での個人的な勇気で知られていました。",
+      "tts": {
+        "text": "彼女は戦場での個人的な勇気で知られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有名な話では、息子ティボットを産んだ翌日に船への攻撃を撃退したとされています。",
+      "text_markdown": "有名な話では、息子ティボットを産んだ翌日に船への攻撃を撃退したとされています。",
+      "tts": {
+        "text": "有名な話では、息子ティボットを産んだ翌日に船への攻撃を撃退したとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はベッドから起き上がり、武器をつかみ、甲板から防衛を指揮したと言われています。",
+      "text_markdown": "彼女はベッドから起き上がり、武器をつかみ、甲板から防衛を指揮したと言われています。",
+      "tts": {
+        "text": "彼女はベッドから起き上がり、武器をつかみ、甲板から防衛を指揮したと言われています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この話の細部がすべて正確かどうかはともかく、彼女を伝説にした精神を捉えています。",
+      "text_markdown": "この話の細部がすべて正確かどうかはともかく、彼女を伝説にした精神を捉えています。",
+      "tts": {
+        "text": "この話の細部がすべて正確かどうかはともかく、彼女を伝説にした精神を捉えています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の権力を支えたゲール世界は、複雑で洗練された社会でした。",
+      "text_markdown": "彼女の権力を支えたゲール世界は、複雑で洗練された社会でした。",
+      "tts": {
+        "text": "彼女の権力を支えたゲール世界は、複雑で洗練された社会でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "独自の法体系、独自の文学、独自の音楽、そして独自の統治形態を持っていました。",
+      "text_markdown": "独自の法体系、独自の文学、独自の音楽、そして独自の統治形態を持っていました。",
+      "tts": {
+        "text": "独自の法体系、独自の文学、独自の音楽、そして独自の統治形態を持っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドの植民者たちはそれを野蛮だと一蹴しましたが、決して単純なものではありませんでした。",
+      "text_markdown": "イングランドの植民者たちはそれを野蛮だと一蹴しましたが、決して単純なものではありませんでした。",
+      "tts": {
+        "text": "イングランドの植民者たちはそれを野蛮だと一蹴しましたが、決して単純なものではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレース・オマリーはこの世界の産物であり、その独立と勇気という価値観を体現していました。",
+      "text_markdown": "グレース・オマリーはこの世界の産物であり、その独立と勇気という価値観を体現していました。",
+      "tts": {
+        "text": "グレース・オマリーはこの世界の産物であり、その独立と勇気という価値観を体現していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースは西海岸全域に情報網も維持していました。",
+      "text_markdown": "グレースは西海岸全域に情報網も維持していました。",
+      "tts": {
+        "text": "グレースは西海岸全域に情報網も維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ゴールウェイ、コノートの港、そしてイングランドの駐屯都市に密偵を置いていました。",
+      "text_markdown": "ゴールウェイ、コノートの港、そしてイングランドの駐屯都市に密偵を置いていました。",
+      "tts": {
+        "text": "ゴールウェイ、コノートの港、そしてイングランドの駐屯都市に密偵を置いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドの補給船がいつ到着し、何を積んでいるかを知っていました。",
+      "text_markdown": "イングランドの補給船がいつ到着し、何を積んでいるかを知っていました。",
+      "tts": {
+        "text": "イングランドの補給船がいつ到着し、何を積んでいるかを知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この知識は交易と襲撃の両方で決定的な優位性を与えました。",
+      "text_markdown": "この知識は交易と襲撃の両方で決定的な優位性を与えました。",
+      "tts": {
+        "text": "この知識は交易と襲撃の両方で決定的な優位性を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインとの貿易関係は特に貴重でした。",
+      "text_markdown": "スペインとの貿易関係は特に貴重でした。",
+      "tts": {
+        "text": "スペインとの貿易関係は特に貴重でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの商人はアイルランドの魚と皮革に高い値段を支払いました。",
+      "text_markdown": "スペインの商人はアイルランドの魚と皮革に高い値段を支払いました。",
+      "tts": {
+        "text": "スペインの商人はアイルランドの魚と皮革に高い値段を支払いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見返りに、アイルランド西部では乏しかったワイン、武器、鉄を供給しました。",
+      "text_markdown": "見返りに、アイルランド西部では乏しかったワイン、武器、鉄を供給しました。",
+      "tts": {
+        "text": "見返りに、アイルランド西部では乏しかったワイン、武器、鉄を供給しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの貿易のつながりにより、グレースはコノートで最も裕福な人物の一人となりました。",
+      "text_markdown": "これらの貿易のつながりにより、グレースはコノートで最も裕福な人物の一人となりました。",
+      "tts": {
+        "text": "これらの貿易のつながりにより、グレースはコノートで最も裕福な人物の一人となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "権力の絶頂期に、グレース・オマリーはアイルランドで最も強力な女性でした。",
+      "text_markdown": "権力の絶頂期に、グレース・オマリーはアイルランドで最も強力な女性でした。",
+      "tts": {
+        "text": "権力の絶頂期に、グレース・オマリーはアイルランドで最も強力な女性でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "どのイングランド総督にもゲール族の領主にも従いませんでした。",
+      "text_markdown": "どのイングランド総督にもゲール族の領主にも従いませんでした。",
+      "tts": {
+        "text": "どのイングランド総督にもゲール族の領主にも従いませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自らの同盟を結び、自らの戦争を戦い、自らの民を治めました。",
+      "text_markdown": "自らの同盟を結び、自らの戦争を戦い、自らの民を治めました。",
+      "tts": {
+        "text": "自らの同盟を結び、自らの戦争を戦い、自らの民を治めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あらゆる実質的な意味において、彼女は海の主権者でした。",
+      "text_markdown": "あらゆる実質的な意味において、彼女は海の主権者でした。",
+      "tts": {
+        "text": "あらゆる実質的な意味において、彼女は海の主権者でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーの人生最後の十年は、喪失と衰退に彩られました。",
+      "text_markdown": "グレース・オマリーの人生最後の十年は、喪失と衰退に彩られました。",
+      "tts": {
+        "text": "グレース・オマリーの人生最後の十年は、喪失と衰退に彩られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイルランドに対するイングランドの征服は千五百九十年代を通じて加速しました。",
+      "text_markdown": "アイルランドに対するイングランドの征服は千五百九十年代を通じて加速しました。",
+      "tts": {
+        "text": "アイルランドに対するイングランドの征服は千五百九十年代を通じて加速しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何世紀も権力を握っていたゲール族の族長たちが土地と称号を剥奪されました。",
+      "text_markdown": "何世紀も権力を握っていたゲール族の族長たちが土地と称号を剥奪されました。",
+      "tts": {
+        "text": "何世紀も権力を握っていたゲール族の族長たちが土地と称号を剥奪されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "グレースが生まれた時から知っていた世界が体系的に破壊されていました。",
+      "text_markdown": "グレースが生まれた時から知っていた世界が体系的に破壊されていました。",
+      "tts": {
+        "text": "グレースが生まれた時から知っていた世界が体系的に破壊されていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1594年から1603年まで続いた九年戦争は、ゲール族の抵抗の最後の幕でした。",
+      "text_markdown": "1594年から1603年まで続いた九年戦争は、ゲール族の抵抗の最後の幕でした。",
+      "tts": {
+        "text": "千五百九十四年から千六百三年まで続いた九年戦争は、ゲール族の抵抗の最後の幕でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ティロンのヒュー・オニール率いるアイルランドの族長たちがイングランド支配に対する大規模な反乱を起こしました。",
+      "text_markdown": "ティロンのヒュー・オニール率いるアイルランドの族長たちがイングランド支配に対する大規模な反乱を起こしました。",
+      "tts": {
+        "text": "ティロンのヒュー・オニール率いるアイルランドの族長たちがイングランド支配に対する大規模な反乱を起こしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一時、反乱は成功し、アイルランドの大部分でイングランドの権威が崩壊しました。",
+      "text_markdown": "一時、反乱は成功し、アイルランドの大部分でイングランドの権威が崩壊しました。",
+      "tts": {
+        "text": "一時、反乱は成功し、アイルランドの大部分でイングランドの権威が崩壊しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしイングランドは軍隊と資源をアイルランドに注ぎ込み、反乱は最終的に鎮圧されました。",
+      "text_markdown": "しかしイングランドは軍隊と資源をアイルランドに注ぎ込み、反乱は最終的に鎮圧されました。",
+      "tts": {
+        "text": "しかしイングランドは軍隊と資源をアイルランドに注ぎ込み、反乱は最終的に鎮圧されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "九年戦争におけるグレース・オマリーの役割は歴史の記録からは不明確です。",
+      "text_markdown": "九年戦争におけるグレース・オマリーの役割は歴史の記録からは不明確です。",
+      "tts": {
+        "text": "九年戦争におけるグレース・オマリーの役割は歴史の記録からは不明確です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦争中、彼女は六十代で、かつてのように船団を指揮する力がなかったかもしれません。",
+      "text_markdown": "戦争中、彼女は六十代で、かつてのように船団を指揮する力がなかったかもしれません。",
+      "tts": {
+        "text": "戦争中、彼女は六十代で、かつてのように船団を指揮する力がなかったかもしれません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "反乱を支持したという説もあれば、慎重な中立を保ったという説もあります。",
+      "text_markdown": "反乱を支持したという説もあれば、慎重な中立を保ったという説もあります。",
+      "tts": {
+        "text": "反乱を支持したという説もあれば、慎重な中立を保ったという説もあります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "確かなことは、イングランドの勝利がゲール族の独立のあらゆる可能性を終わらせたということです。",
+      "text_markdown": "確かなことは、イングランドの勝利がゲール族の独立のあらゆる可能性を終わらせたということです。",
+      "tts": {
+        "text": "確かなことは、イングランドの勝利がゲール族の独立のあらゆる可能性を終わらせたということです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の宿敵リチャード・ビンガムは1596年にイングランドに召還されていました。",
+      "text_markdown": "彼女の宿敵リチャード・ビンガムは1596年にイングランドに召還されていました。",
+      "tts": {
+        "text": "彼女の宿敵リチャード・ビンガムは千五百九十六年にイングランドに召還されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "後任者はグレースとその家族に対してやや敵意が薄い人物でした。",
+      "text_markdown": "後任者はグレースとその家族に対してやや敵意が薄い人物でした。",
+      "tts": {
+        "text": "後任者はグレースとその家族に対してやや敵意が薄い人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし構造的な現実は変わっていませんでした。",
+      "text_markdown": "しかし構造的な現実は変わっていませんでした。",
+      "tts": {
+        "text": "しかし構造的な現実は変わっていませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イングランド法がブレホン法に取って代わり、イングランド人の地主がゲール族の族長に取って代わっていました。",
+      "text_markdown": "イングランド法がブレホン法に取って代わり、イングランド人の地主がゲール族の族長に取って代わっていました。",
+      "tts": {
+        "text": "イングランド法がブレホン法に取って代わり、イングランド人の地主がゲール族の族長に取って代わっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースの息子ティボットは最終的にイングランドと和解しました。",
+      "text_markdown": "グレースの息子ティボットは最終的にイングランドと和解しました。",
+      "tts": {
+        "text": "グレースの息子ティボットは最終的にイングランドと和解しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドの権威に服従し、イングランドの称号を受けました。",
+      "text_markdown": "イングランドの権威に服従し、イングランドの称号を受けました。",
+      "tts": {
+        "text": "イングランドの権威に服従し、イングランドの称号を受けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "メイヨー子爵となり、生涯を通じてイングランド王室に忠実に仕えました。",
+      "text_markdown": "メイヨー子爵となり、生涯を通じてイングランド王室に忠実に仕えました。",
+      "tts": {
+        "text": "メイヨー子爵となり、生涯を通じてイングランド王室に忠実に仕えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは現実的な判断でしたが、母が戦ったすべてのものの死を意味していました。",
+      "text_markdown": "それは現実的な判断でしたが、母が戦ったすべてのものの死を意味していました。",
+      "tts": {
+        "text": "それは現実的な判断でしたが、母が戦ったすべてのものの死を意味していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーは1603年頃に亡くなりました。エリザベス一世女王も同じ年に亡くなっています。",
+      "text_markdown": "グレース・オマリーは1603年頃に亡くなりました。エリザベス一世女王も同じ年に亡くなっています。",
+      "tts": {
+        "text": "グレース・オマリーは千六百三年頃に亡くなりました。エリザベス一世女王も同じ年に亡くなっています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の死の正確な日付と状況は記録されていません。",
+      "text_markdown": "彼女の死の正確な日付と状況は記録されていません。",
+      "tts": {
+        "text": "彼女の死の正確な日付と状況は記録されていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何十年もの間彼女の拠点であったクルー湾のロックフリート城で亡くなったと考えられています。",
+      "text_markdown": "何十年もの間彼女の拠点であったクルー湾のロックフリート城で亡くなったと考えられています。",
+      "tts": {
+        "text": "何十年もの間彼女の拠点であったクルー湾のロックフリート城で亡くなったと考えられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はおよそ七十三歳でした。",
+      "text_markdown": "彼女はおよそ七十三歳でした。",
+      "tts": {
+        "text": "彼女はおよそ七十三歳でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーの生前の肖像画は残っていません。",
+      "text_markdown": "グレース・オマリーの生前の肖像画は残っていません。",
+      "tts": {
+        "text": "グレース・オマリーの生前の肖像画は残っていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私たちは彼女がどのような姿だったか知りません。",
+      "text_markdown": "私たちは彼女がどのような姿だったか知りません。",
+      "tts": {
+        "text": "私たちは彼女がどのような姿だったか知りません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女自身の手で書かれた手紙もありません。",
+      "text_markdown": "彼女自身の手で書かれた手紙もありません。",
+      "tts": {
+        "text": "彼女自身の手で書かれた手紙もありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "残っているのは、イングランドの国家文書、請願書、そしてアイルランド西部の口承伝統です。",
+      "text_markdown": "残っているのは、イングランドの国家文書、請願書、そしてアイルランド西部の口承伝統です。",
+      "tts": {
+        "text": "残っているのは、イングランドの国家文書、請願書、そしてアイルランド西部の口承伝統です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランドの記録は彼女を悪名高い反逆者であり、この地方のすべての反乱の養育者と記述しています。",
+      "text_markdown": "イングランドの記録は彼女を悪名高い反逆者であり、この地方のすべての反乱の養育者と記述しています。",
+      "tts": {
+        "text": "イングランドの記録は彼女を悪名高い反逆者であり、この地方のすべての反乱の養育者と記述しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらは彼女の敵の言葉であり、そのように読まれるべきです。",
+      "text_markdown": "これらは彼女の敵の言葉であり、そのように読まれるべきです。",
+      "tts": {
+        "text": "これらは彼女の敵の言葉であり、そのように読まれるべきです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼女の敵でさえ、彼女の力、知性、そして勇気を認めていました。",
+      "text_markdown": "しかし彼女の敵でさえ、彼女の力、知性、そして勇気を認めていました。",
+      "tts": {
+        "text": "しかし彼女の敵でさえ、彼女の力、知性、そして勇気を認めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は自分を滅ぼそうとする者たちをも感嘆させました。",
+      "text_markdown": "彼女は自分を滅ぼそうとする者たちをも感嘆させました。",
+      "tts": {
+        "text": "彼女は自分を滅ぼそうとする者たちをも感嘆させました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゲール族の秩序は彼女の死後わずか数年しか存続しませんでした。",
+      "text_markdown": "ゲール族の秩序は彼女の死後わずか数年しか存続しませんでした。",
+      "tts": {
+        "text": "ゲール族の秩序は彼女の死後わずか数年しか存続しませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1607年の伯爵逃亡はゲール族の貴族権力の最終的な崩壊を示しました。",
+      "text_markdown": "1607年の伯爵逃亡はゲール族の貴族権力の最終的な崩壊を示しました。",
+      "tts": {
+        "text": "千六百七年の伯爵逃亡はゲール族の貴族権力の最終的な崩壊を示しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アルスターの植民が始まり、没収されたアイルランドの土地がイングランドとスコットランドの入植者に与えられました。",
+      "text_markdown": "アルスターの植民が始まり、没収されたアイルランドの土地がイングランドとスコットランドの入植者に与えられました。",
+      "tts": {
+        "text": "アルスターの植民が始まり、没収されたアイルランドの土地がイングランドとスコットランドの入植者に与えられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこから生まれたアイルランドは、独立した部族の土地ではなく、植民地でした。",
+      "text_markdown": "そこから生まれたアイルランドは、独立した部族の土地ではなく、植民地でした。",
+      "tts": {
+        "text": "そこから生まれたアイルランドは、独立した部族の土地ではなく、植民地でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイルランドのイングランドによる植民地化は、プランテーションと呼ばれる制度を通じて進められました。",
+      "text_markdown": "アイルランドのイングランドによる植民地化は、プランテーションと呼ばれる制度を通じて進められました。",
+      "tts": {
+        "text": "アイルランドのイングランドによる植民地化は、プランテーションと呼ばれる制度を通じて進められました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この制度の下では、アイルランドの土地は没収され、イングランドとスコットランドの入植者に与えられました。",
+      "text_markdown": "この制度の下では、アイルランドの土地は没収され、イングランドとスコットランドの入植者に与えられました。",
+      "tts": {
+        "text": "この制度の下では、アイルランドの土地は没収され、イングランドとスコットランドの入植者に与えられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "先住民は追放されるか、一族が何世代も所有してきた土地の小作人にまで貶められました。",
+      "text_markdown": "先住民は追放されるか、一族が何世代も所有してきた土地の小作人にまで貶められました。",
+      "tts": {
+        "text": "先住民は追放されるか、一族が何世代も所有してきた土地の小作人にまで貶められました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この過程はグレースの死後も何十年も続き、島全体を変貌させました。",
+      "text_markdown": "この過程はグレースの死後も何十年も続き、島全体を変貌させました。",
+      "tts": {
+        "text": "この過程はグレースの死後も何十年も続き、島全体を変貌させました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーは一つの世界の終わりともう一つの世界の始まりに生きました。",
+      "text_markdown": "グレース・オマリーは一つの世界の終わりともう一つの世界の始まりに生きました。",
+      "tts": {
+        "text": "グレース・オマリーは一つの世界の終わりともう一つの世界の始まりに生きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は自分の世界を破壊する力を止めることはできませんでした。",
+      "text_markdown": "彼女は自分の世界を破壊する力を止めることはできませんでした。",
+      "tts": {
+        "text": "彼女は自分の世界を破壊する力を止めることはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼女はほぼ誰よりも長く、巧みに、そして気迫を持ってそれと戦いました。",
+      "text_markdown": "しかし彼女はほぼ誰よりも長く、巧みに、そして気迫を持ってそれと戦いました。",
+      "tts": {
+        "text": "しかし彼女はほぼ誰よりも長く、巧みに、そして気迫を持ってそれと戦いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の人生は、圧倒的な逆境に対して一人の決意ある人間が何を成し遂げられるかの証です。",
+      "text_markdown": "彼女の人生は、圧倒的な逆境に対して一人の決意ある人間が何を成し遂げられるかの証です。",
+      "tts": {
+        "text": "彼女の人生は、圧倒的な逆境に対して一人の決意ある人間が何を成し遂げられるかの証です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーはアイルランド史上最も称えられる人物の一人です。",
+      "text_markdown": "グレース・オマリーはアイルランド史上最も称えられる人物の一人です。",
+      "tts": {
+        "text": "グレース・オマリーはアイルランド史上最も称えられる人物の一人です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイルランドのすべての子供が彼女の名前を知っています。",
+      "text_markdown": "アイルランドのすべての子供が彼女の名前を知っています。",
+      "tts": {
+        "text": "アイルランドのすべての子供が彼女の名前を知っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はアイルランドの独立、女性の力、そして植民地主義への抵抗の象徴です。",
+      "text_markdown": "彼女はアイルランドの独立、女性の力、そして植民地主義への抵抗の象徴です。",
+      "tts": {
+        "text": "彼女はアイルランドの独立、女性の力、そして植民地主義への抵抗の象徴です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の物語は何世紀にもわたって歌、劇、小説、映画で語られてきました。",
+      "text_markdown": "彼女の物語は何世紀にもわたって歌、劇、小説、映画で語られてきました。",
+      "tts": {
+        "text": "彼女の物語は何世紀にもわたって歌、劇、小説、映画で語られてきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロックフリート城は今もクルー湾の岸辺に立っています。",
+      "text_markdown": "ロックフリート城は今もクルー湾の岸辺に立っています。",
+      "tts": {
+        "text": "ロックフリート城は今もクルー湾の岸辺に立っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女が生まれたクレア島は今も人が住んでおり、フェリーで訪れることができます。",
+      "text_markdown": "彼女が生まれたクレア島は今も人が住んでおり、フェリーで訪れることができます。",
+      "tts": {
+        "text": "彼女が生まれたクレア島は今も人が住んでおり、フェリーで訪れることができます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "クレア島にある彼女の修道院には、彼女の墓と信じられているものがあります。",
+      "text_markdown": "クレア島にある彼女の修道院には、彼女の墓と信じられているものがあります。",
+      "tts": {
+        "text": "クレア島にある彼女の修道院には、彼女の墓と信じられているものがあります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "世界中から訪問者が彼女が生き、統治した場所を見に来ます。",
+      "text_markdown": "世界中から訪問者が彼女が生き、統治した場所を見に来ます。",
+      "tts": {
+        "text": "世界中から訪問者が彼女が生き、統治した場所を見に来ます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイルランドの民間伝承において、グレース・オマリーはゲール族の西の精神を代表しています。",
+      "text_markdown": "アイルランドの民間伝承において、グレース・オマリーはゲール族の西の精神を代表しています。",
+      "tts": {
+        "text": "アイルランドの民間伝承において、グレース・オマリーはゲール族の西の精神を代表しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女についての物語は四百年以上にわたって口承で伝えられてきました。",
+      "text_markdown": "彼女についての物語は四百年以上にわたって口承で伝えられてきました。",
+      "tts": {
+        "text": "彼女についての物語は四百年以上にわたって口承で伝えられてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの物語の多くは脚色されたり伝説的なものです。",
+      "text_markdown": "これらの物語の多くは脚色されたり伝説的なものです。",
+      "tts": {
+        "text": "これらの物語の多くは脚色されたり伝説的なものです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしそれらは、影響が真実で深遠であった本物の歴史上の人物を反映しています。",
+      "text_markdown": "しかしそれらは、影響が真実で深遠であった本物の歴史上の人物を反映しています。",
+      "tts": {
+        "text": "しかしそれらは、影響が真実で深遠であった本物の歴史上の人物を反映しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エリザベス一世との会見は、テューダー時代の最も並外れた外交的出会いの一つとして今なお語り継がれています。",
+      "text_markdown": "エリザベス一世との会見は、テューダー時代の最も並外れた外交的出会いの一つとして今なお語り継がれています。",
+      "tts": {
+        "text": "エリザベス一世との会見は、テューダー時代の最も並外れた外交的出会いの一つとして今なお語り継がれています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ゲール族の族長、女性、海賊が、ヨーロッパで最も強力な宮廷に入り、対等な立場で交渉しました。",
+      "text_markdown": "ゲール族の族長、女性、海賊が、ヨーロッパで最も強力な宮廷に入り、対等な立場で交渉しました。",
+      "tts": {
+        "text": "ゲール族の族長、女性、海賊が、ヨーロッパで最も強力な宮廷に入り、対等な立場で交渉しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その行為の大胆さは何世紀も経った今なお響き渡っています。",
+      "text_markdown": "その行為の大胆さは何世紀も経った今なお響き渡っています。",
+      "tts": {
+        "text": "その行為の大胆さは何世紀も経った今なお響き渡っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは権力が必ずしも生まれや性別によって定義されない世界を物語っています。",
+      "text_markdown": "それは権力が必ずしも生まれや性別によって定義されない世界を物語っています。",
+      "tts": {
+        "text": "それは権力が必ずしも生まれや性別によって定義されない世界を物語っています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちは近世における女性の指導力の事例研究として、グレース・オマリーを研究し続けています。",
+      "text_markdown": "歴史家たちは近世における女性の指導力の事例研究として、グレース・オマリーを研究し続けています。",
+      "tts": {
+        "text": "歴史家たちは近世における女性の指導力の事例研究として、グレース・オマリーを研究し続けています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は男性が支配する世界で活動しながらも、戦場でも海上でも男性を指揮しました。",
+      "text_markdown": "彼女は男性が支配する世界で活動しながらも、戦場でも海上でも男性を指揮しました。",
+      "tts": {
+        "text": "彼女は男性が支配する世界で活動しながらも、戦場でも海上でも男性を指揮しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ゲールとイングランド双方の複雑な政治制度を、技量と策略をもって渡り歩きました。",
+      "text_markdown": "ゲールとイングランド双方の複雑な政治制度を、技量と策略をもって渡り歩きました。",
+      "tts": {
+        "text": "ゲールとイングランド双方の複雑な政治制度を、技量と策略をもって渡り歩きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の経歴は、深く家父長的な社会においてさえ、女性が真の権力を行使できたことを示しています。",
+      "text_markdown": "彼女の経歴は、深く家父長的な社会においてさえ、女性が真の権力を行使できたことを示しています。",
+      "tts": {
+        "text": "彼女の経歴は、深く家父長的な社会においてさえ、女性が真の権力を行使できたことを示しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレースが守ろうとしたゲール世界の破壊は、アイルランド史上最大の悲劇の一つです。",
+      "text_markdown": "グレースが守ろうとしたゲール世界の破壊は、アイルランド史上最大の悲劇の一つです。",
+      "tts": {
+        "text": "グレースが守ろうとしたゲール世界の破壊は、アイルランド史上最大の悲劇の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "独自の法律、文学、習慣を持つ文明全体が、植民地支配者によって意図的に解体されました。",
+      "text_markdown": "独自の法律、文学、習慣を持つ文明全体が、植民地支配者によって意図的に解体されました。",
+      "tts": {
+        "text": "独自の法律、文学、習慣を持つ文明全体が、植民地支配者によって意図的に解体されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "グレース・オマリーはその文明の最後の守護者の一人でした。",
+      "text_markdown": "グレース・オマリーはその文明の最後の守護者の一人でした。",
+      "tts": {
+        "text": "グレース・オマリーはその文明の最後の守護者の一人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の物語は、植民地主義とそのコストという、より大きな物語と切り離すことができません。",
+      "text_markdown": "彼女の物語は、植民地主義とそのコストという、より大きな物語と切り離すことができません。",
+      "tts": {
+        "text": "彼女の物語は、植民地主義とそのコストという、より大きな物語と切り離すことができません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グレース・オマリーの物語が語り継がれるのは、彼女が何をしたかだけでなく、彼女がどのような人物であったかによります。",
+      "text_markdown": "グレース・オマリーの物語が語り継がれるのは、彼女が何をしたかだけでなく、彼女がどのような人物であったかによります。",
+      "tts": {
+        "text": "グレース・オマリーの物語が語り継がれるのは、彼女が何をしたかだけでなく、彼女がどのような人物であったかによります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は母であり、妻であり、戦士であり、商人であり、外交官であり、そして海賊でした。",
+      "text_markdown": "彼女は母であり、妻であり、戦士であり、商人であり、外交官であり、そして海賊でした。",
+      "tts": {
+        "text": "彼女は母であり、妻であり、戦士であり、商人であり、外交官であり、そして海賊でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は自分の世界が彼女に課そうとしたあらゆる分類に反抗しました。",
+      "text_markdown": "彼女は自分の世界が彼女に課そうとしたあらゆる分類に反抗しました。",
+      "tts": {
+        "text": "彼女は自分の世界が彼女に課そうとしたあらゆる分類に反抗しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は自らの流儀で、荒々しい海岸で、知られた世界の果てで生きました。",
+      "text_markdown": "彼女は自らの流儀で、荒々しい海岸で、知られた世界の果てで生きました。",
+      "tts": {
+        "text": "彼女は自らの流儀で、荒々しい海岸で、知られた世界の果てで生きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is why her name is still spoken four centuries after her death.",
+      "text_markdown": "That is why her name is still spoken four centuries after her death.",
+      "tts": {
+        "text": "That is why her name is still spoken four centuries after her death.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

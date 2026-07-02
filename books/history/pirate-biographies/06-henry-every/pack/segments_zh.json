@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_every",
+  "language": "zh",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个海盗的真实故事，他完成了历史上最大的劫案，然后消失了。",
+      "text_markdown": "这是一个海盗的真实故事，他完成了历史上最大的劫案，然后消失了。",
+      "tts": {
+        "text": "这是一个海盗的真实故事，他完成了历史上最大的劫案，然后消失了。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字叫亨利·埃弗里，他曾是地球上被通缉的头号人物。",
+      "text_markdown": "他的名字叫亨利·埃弗里，他曾是地球上被通缉的头号人物。",
+      "tts": {
+        "text": "他的名字叫亨利·埃弗里，他曾是地球上被通缉的头号人物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有任何政府抓住过他，也没有人知道他是如何或在哪里死去的。",
+      "text_markdown": "没有任何政府抓住过他，也没有人知道他是如何或在哪里死去的。",
+      "tts": {
+        "text": "没有任何政府抓住过他，也没有人知道他是如何或在哪里死去的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一次攻击中，埃弗里夺取了价值数百万的宝藏。",
+      "text_markdown": "在一次攻击中，埃弗里夺取了价值数百万的宝藏。",
+      "tts": {
+        "text": "在一次攻击中，埃弗里夺取了价值数百万的宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的罪行引发了两个帝国之间的外交危机。",
+      "text_markdown": "他的罪行引发了两个帝国之间的外交危机。",
+      "tts": {
+        "text": "他的罪行引发了两个帝国之间的外交危机。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它几乎摧毁了东印度公司，这个世界上最强大的企业。",
+      "text_markdown": "它几乎摧毁了东印度公司，这个世界上最强大的企业。",
+      "tts": {
+        "text": "它几乎摧毁了东印度公司，这个世界上最强大的企业。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这本书将带你走进十七世纪末印度洋的贸易航线。",
+      "text_markdown": "这本书将带你走进十七世纪末印度洋的贸易航线。",
+      "tts": {
+        "text": "这本书将带你走进十七世纪末印度洋的贸易航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你将跟随埃弗里从英格兰的码头到马达加斯加的海岸。",
+      "text_markdown": "你将跟随埃弗里从英格兰的码头到马达加斯加的海岸。",
+      "tts": {
+        "text": "你将跟随埃弗里从英格兰的码头到马达加斯加的海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本书中的一切都基于历史记录、审判记录和目击者的证词。",
+      "text_markdown": "本书中的一切都基于历史记录、审判记录和目击者的证词。",
+      "tts": {
+        "text": "本书中的一切都基于历史记录、审判记录和目击者的证词。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当事实不确定时，我们会清楚地说明。",
+      "text_markdown": "当事实不确定时，我们会清楚地说明。",
+      "tts": {
+        "text": "当事实不确定时，我们会清楚地说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "印度洋贸易的世界",
+      "text_markdown": "印度洋贸易的世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪，印度洋是地球上最富有的贸易区域。",
+      "text_markdown": "十七世纪，印度洋是地球上最富有的贸易区域。",
+      "tts": {
+        "text": "十七世纪，印度洋是地球上最富有的贸易区域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船只在印度、阿拉伯、东非和东南亚之间运载丝绸、香料、珠宝和黄金。",
+      "text_markdown": "船只在印度、阿拉伯、东非和东南亚之间运载丝绸、香料、珠宝和黄金。",
+      "tts": {
+        "text": "船只在印度、阿拉伯、东非和东南亚之间运载丝绸、香料、珠宝和黄金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些贸易路线已经运作了数千年，远在欧洲人到来之前。",
+      "text_markdown": "这些贸易路线已经运作了数千年，远在欧洲人到来之前。",
+      "tts": {
+        "text": "这些贸易路线已经运作了数千年，远在欧洲人到来之前。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "流经这些水域的财富几乎超出想象。",
+      "text_markdown": "流经这些水域的财富几乎超出想象。",
+      "tts": {
+        "text": "流经这些水域的财富几乎超出想象。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "莫卧儿帝国在这一时期控制了印度次大陆的大部分地区。",
+      "text_markdown": "莫卧儿帝国在这一时期控制了印度次大陆的大部分地区。",
+      "tts": {
+        "text": "莫卧儿帝国在这一时期控制了印度次大陆的大部分地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是世界上最富有、最强大的帝国之一。",
+      "text_markdown": "它是世界上最富有、最强大的帝国之一。",
+      "tts": {
+        "text": "它是世界上最富有、最强大的帝国之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "莫卧儿皇帝指挥着庞大的军队，过着极尽奢华的生活。",
+      "text_markdown": "莫卧儿皇帝指挥着庞大的军队，过着极尽奢华的生活。",
+      "tts": {
+        "text": "莫卧儿皇帝指挥着庞大的军队，过着极尽奢华的生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们的宫殿装饰着黄金、宝石和世界上最精美的纺织品。",
+      "text_markdown": "他们的宫殿装饰着黄金、宝石和世界上最精美的纺织品。",
+      "tts": {
+        "text": "他们的宫殿装饰着黄金、宝石和世界上最精美的纺织品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每年，莫卧儿贵族都会派船前往麦加朝圣。",
+      "text_markdown": "每年，莫卧儿贵族都会派船前往麦加朝圣。",
+      "tts": {
+        "text": "每年，莫卧儿贵族都会派船前往麦加朝圣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些朝圣船还运载着大量的贸易货物。",
+      "text_markdown": "这些朝圣船还运载着大量的贸易货物。",
+      "tts": {
+        "text": "这些朝圣船还运载着大量的贸易货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黄金、白银、珠宝和丝绸装满了它们的货舱。",
+      "text_markdown": "黄金、白银、珠宝和丝绸装满了它们的货舱。",
+      "tts": {
+        "text": "黄金、白银、珠宝和丝绸装满了它们的货舱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "年度朝圣舰队是任何海洋上最有价值的目标。",
+      "text_markdown": "年度朝圣舰队是任何海洋上最有价值的目标。",
+      "tts": {
+        "text": "年度朝圣舰队是任何海洋上最有价值的目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "红海是印度洋和伊斯兰圣城之间的通道。",
+      "text_markdown": "红海是印度洋和伊斯兰圣城之间的通道。",
+      "tts": {
+        "text": "红海是印度洋和伊斯兰圣城之间的通道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "来自印度的船只沿红海航行到吉达港，那是通往麦加的大门。",
+      "text_markdown": "来自印度的船只沿红海航行到吉达港，那是通往麦加的大门。",
+      "tts": {
+        "text": "来自印度的船只沿红海航行到吉达港，那是通往麦加的大门。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "红海南端狭窄的曼德海峡是一个天然的咽喉要道。",
+      "text_markdown": "红海南端狭窄的曼德海峡是一个天然的咽喉要道。",
+      "tts": {
+        "text": "红海南端狭窄的曼德海峡是一个天然的咽喉要道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "任何在那个海峡等候的海盗都能截获世界上最富有的船只。",
+      "text_markdown": "任何在那个海峡等候的海盗都能截获世界上最富有的船只。",
+      "tts": {
+        "text": "任何在那个海峡等候的海盗都能截获世界上最富有的船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲列强自十五世纪末以来一直向印度洋扩张。",
+      "text_markdown": "欧洲列强自十五世纪末以来一直向印度洋扩张。",
+      "tts": {
+        "text": "欧洲列强自十五世纪末以来一直向印度洋扩张。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "葡萄牙人是最早的，随后是荷兰人、英国人和法国人。",
+      "text_markdown": "葡萄牙人是最早的，随后是荷兰人、英国人和法国人。",
+      "tts": {
+        "text": "葡萄牙人是最早的，随后是荷兰人、英国人和法国人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们沿着印度和东南亚的海岸建立了贸易站，称为商馆。",
+      "text_markdown": "他们沿着印度和东南亚的海岸建立了贸易站，称为商馆。",
+      "tts": {
+        "text": "他们沿着印度和东南亚的海岸建立了贸易站，称为商馆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些前哨站是未来殖民帝国的基础。",
+      "text_markdown": "这些前哨站是未来殖民帝国的基础。",
+      "tts": {
+        "text": "这些前哨站是未来殖民帝国的基础。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国东印度公司是该地区最重要的英国存在。",
+      "text_markdown": "英国东印度公司是该地区最重要的英国存在。",
+      "tts": {
+        "text": "英国东印度公司是该地区最重要的英国存在。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它于1600年获得了伊丽莎白一世女王颁发的皇家特许状。",
+      "text_markdown": "它于1600年获得了伊丽莎白一世女王颁发的皇家特许状。",
+      "tts": {
+        "text": "它于一千六百年获得了伊丽莎白一世女王颁发的皇家特许状。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "该公司拥有所有英国与亚洲贸易的合法垄断权。",
+      "text_markdown": "该公司拥有所有英国与亚洲贸易的合法垄断权。",
+      "tts": {
+        "text": "该公司拥有所有英国与亚洲贸易的合法垄断权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它的利润巨大，股东中包括英格兰最有权势的人物。",
+      "text_markdown": "它的利润巨大，股东中包括英格兰最有权势的人物。",
+      "tts": {
+        "text": "它的利润巨大，股东中包括英格兰最有权势的人物。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "东印度公司在莫卧儿皇帝的许可下运营。",
+      "text_markdown": "东印度公司在莫卧儿皇帝的许可下运营。",
+      "tts": {
+        "text": "东印度公司在莫卧儿皇帝的许可下运营。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有莫卧儿的善意，公司无法在印度港口进行贸易。",
+      "text_markdown": "没有莫卧儿的善意，公司无法在印度港口进行贸易。",
+      "tts": {
+        "text": "没有莫卧儿的善意，公司无法在印度港口进行贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种关系很脆弱，依赖于相互信任。",
+      "text_markdown": "这种关系很脆弱，依赖于相互信任。",
+      "tts": {
+        "text": "这种关系很脆弱，依赖于相互信任。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国海盗对莫卧儿船只的任何攻击都可能彻底摧毁这种信任。",
+      "text_markdown": "英国海盗对莫卧儿船只的任何攻击都可能彻底摧毁这种信任。",
+      "tts": {
+        "text": "英国海盗对莫卧儿船只的任何攻击都可能彻底摧毁这种信任。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲海盗已经劫掠印度洋航运数十年了。",
+      "text_markdown": "欧洲海盗已经劫掠印度洋航运数十年了。",
+      "tts": {
+        "text": "欧洲海盗已经劫掠印度洋航运数十年了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "非洲东海岸外的马达加斯加岛是海盗基地。",
+      "text_markdown": "非洲东海岸外的马达加斯加岛是海盗基地。",
+      "tts": {
+        "text": "非洲东海岸外的马达加斯加岛是海盗基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗可以藏身于岛上众多的港口，补充淡水和食物，等待猎物。",
+      "text_markdown": "海盗可以藏身于岛上众多的港口，补充淡水和食物，等待猎物。",
+      "tts": {
+        "text": "海盗可以藏身于岛上众多的港口，补充淡水和食物，等待猎物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从马达加斯加出发，到印度海岸繁忙的航线只是短短的一程。",
+      "text_markdown": "从马达加斯加出发，到印度海岸繁忙的航线只是短短的一程。",
+      "tts": {
+        "text": "从马达加斯加出发，到印度海岸繁忙的航线只是短短的一程。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "印度和红海之间的航线被称为海盗航线。",
+      "text_markdown": "印度和红海之间的航线被称为海盗航线。",
+      "tts": {
+        "text": "印度和红海之间的航线被称为海盗航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国和美国的海盗航行半个地球来到这些狩猎场。",
+      "text_markdown": "英国和美国的海盗航行半个地球来到这些狩猎场。",
+      "tts": {
+        "text": "英国和美国的海盗航行半个地球来到这些狩猎场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "回报值得这漫长的旅程。",
+      "text_markdown": "回报值得这漫长的旅程。",
+      "tts": {
+        "text": "回报值得这漫长的旅程。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一艘印度宝船所载的财富可能超过数十艘加勒比商船的总和。",
+      "text_markdown": "一艘印度宝船所载的财富可能超过数十艘加勒比商船的总和。",
+      "tts": {
+        "text": "一艘印度宝船所载的财富可能超过数十艘加勒比商船的总和。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪九十年代，普通英国水手的生活十分艰苦。",
+      "text_markdown": "十七世纪九十年代，普通英国水手的生活十分艰苦。",
+      "tts": {
+        "text": "十七世纪九十年代，普通英国水手的生活十分艰苦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "工资低，纪律残酷，疾病猖獗。",
+      "text_markdown": "工资低，纪律残酷，疾病猖獗。",
+      "tts": {
+        "text": "工资低，纪律残酷，疾病猖獗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多水手曾在对法战争中服役，和平来临后发现自己失了业。",
+      "text_markdown": "许多水手曾在对法战争中服役，和平来临后发现自己失了业。",
+      "tts": {
+        "text": "许多水手曾在对法战争中服役，和平来临后发现自己失了业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "印度洋提供了一条诱人的逃离贫穷和压迫的出路。",
+      "text_markdown": "印度洋提供了一条诱人的逃离贫穷和压迫的出路。",
+      "tts": {
+        "text": "印度洋提供了一条诱人的逃离贫穷和压迫的出路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "美洲的殖民地总督有时暗中支持印度洋海盗。",
+      "text_markdown": "美洲的殖民地总督有时暗中支持印度洋海盗。",
+      "tts": {
+        "text": "美洲的殖民地总督有时暗中支持印度洋海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗将抢来的财富带到殖民地港口，刺激了当地经济。",
+      "text_markdown": "海盗将抢来的财富带到殖民地港口，刺激了当地经济。",
+      "tts": {
+        "text": "海盗将抢来的财富带到殖民地港口，刺激了当地经济。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "纽约、罗德岛和卡罗来纳的官员以睁一只眼闭一只眼而闻名。",
+      "text_markdown": "纽约、罗德岛和卡罗来纳的官员以睁一只眼闭一只眼而闻名。",
+      "tts": {
+        "text": "纽约、罗德岛和卡罗来纳的官员以睁一只眼闭一只眼而闻名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种腐败使海盗几乎可以不受惩罚地活动。",
+      "text_markdown": "这种腐败使海盗几乎可以不受惩罚地活动。",
+      "tts": {
+        "text": "这种腐败使海盗几乎可以不受惩罚地活动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是亨利·埃弗里成为海盗时所进入的世界。",
+      "text_markdown": "这就是亨利·埃弗里成为海盗时所进入的世界。",
+      "tts": {
+        "text": "这就是亨利·埃弗里成为海盗时所进入的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那是一个帝国的财富在开阔水域上几乎毫无保护地流动的世界。",
+      "text_markdown": "那是一个帝国的财富在开阔水域上几乎毫无保护地流动的世界。",
+      "tts": {
+        "text": "那是一个帝国的财富在开阔水域上几乎毫无保护地流动的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "莫卧儿皇帝相信欧洲各国会管束好自己的臣民。",
+      "text_markdown": "莫卧儿皇帝相信欧洲各国会管束好自己的臣民。",
+      "tts": {
+        "text": "莫卧儿皇帝相信欧洲各国会管束好自己的臣民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "印度洋贸易的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这份信任即将被打碎。",
+      "text_markdown": "这份信任即将被打碎。",
+      "tts": {
+        "text": "这份信任即将被打碎。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "叛变者的诞生",
+      "text_markdown": "叛变者的诞生"
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·埃弗里大约于1659年出生在英格兰西部。",
+      "text_markdown": "亨利·埃弗里大约于1659年出生在英格兰西部。",
+      "tts": {
+        "text": "亨利·埃弗里大约于一千六百五十九年出生在英格兰西部。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些历史学家认为他来自德文郡的牛顿费勒斯村。",
+      "text_markdown": "一些历史学家认为他来自德文郡的牛顿费勒斯村。",
+      "tts": {
+        "text": "一些历史学家认为他来自德文郡的牛顿费勒斯村。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "德文郡是一个航海之地，许多年轻人都出海谋生。",
+      "text_markdown": "德文郡是一个航海之地，许多年轻人都出海谋生。",
+      "tts": {
+        "text": "德文郡是一个航海之地，许多年轻人都出海谋生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "关于他的童年或家庭，人们知之甚少。",
+      "text_markdown": "关于他的童年或家庭，人们知之甚少。",
+      "tts": {
+        "text": "关于他的童年或家庭，人们知之甚少。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的名字在历史记录中以许多不同的拼写出现。",
+      "text_markdown": "他的名字在历史记录中以许多不同的拼写出现。",
+      "tts": {
+        "text": "他的名字在历史记录中以许多不同的拼写出现。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "埃弗里、艾弗里、埃沃里和艾沃里都出现在那个时期的文件中。",
+      "text_markdown": "埃弗里、艾弗里、埃沃里和艾沃里都出现在那个时期的文件中。",
+      "tts": {
+        "text": "埃弗里、艾弗里、埃沃里和艾沃里都出现在那个时期的文件中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这在一个拼写尚未标准化的时代是很典型的。",
+      "text_markdown": "这在一个拼写尚未标准化的时代是很典型的。",
+      "tts": {
+        "text": "这在一个拼写尚未标准化的时代是很典型的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大多数历史学家使用埃弗里这个拼写，因为它出现在最正式的记录中。",
+      "text_markdown": "大多数历史学家使用埃弗里这个拼写，因为它出现在最正式的记录中。",
+      "tts": {
+        "text": "大多数历史学家使用埃弗里这个拼写，因为它出现在最正式的记录中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里年纪轻轻就出了海，和他那个时代的大多数水手一样。",
+      "text_markdown": "埃弗里年纪轻轻就出了海，和他那个时代的大多数水手一样。",
+      "tts": {
+        "text": "埃弗里年纪轻轻就出了海，和他那个时代的大多数水手一样。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他很可能在商船上服过役，也可能在皇家海军的船上服过役。",
+      "text_markdown": "他很可能在商船上服过役，也可能在皇家海军的船上服过役。",
+      "tts": {
+        "text": "他很可能在商船上服过役，也可能在皇家海军的船上服过役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到十七世纪九十年代，他已经是一名经验丰富、能力出众的水手。",
+      "text_markdown": "到十七世纪九十年代，他已经是一名经验丰富、能力出众的水手。",
+      "tts": {
+        "text": "到十七世纪九十年代，他已经是一名经验丰富、能力出众的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他精通航海、驾船和船员管理。",
+      "text_markdown": "他精通航海、驾船和船员管理。",
+      "tts": {
+        "text": "他精通航海、驾船和船员管理。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有证据表明埃弗里在成为海盗之前曾参与奴隶贸易。",
+      "text_markdown": "有证据表明埃弗里在成为海盗之前曾参与奴隶贸易。",
+      "tts": {
+        "text": "有证据表明埃弗里在成为海盗之前曾参与奴隶贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他可能曾在横渡大西洋运送被奴役非洲人的船上服役。",
+      "text_markdown": "他可能曾在横渡大西洋运送被奴役非洲人的船上服役。",
+      "tts": {
+        "text": "他可能曾在横渡大西洋运送被奴役非洲人的船上服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奴隶贸易是合法且有利可图的，尽管极其残忍。",
+      "text_markdown": "奴隶贸易是合法且有利可图的，尽管极其残忍。",
+      "tts": {
+        "text": "奴隶贸易是合法且有利可图的，尽管极其残忍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它是少数几种报酬相对较好的海上行业之一。",
+      "text_markdown": "它是少数几种报酬相对较好的海上行业之一。",
+      "tts": {
+        "text": "它是少数几种报酬相对较好的海上行业之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1693年，埃弗里以大副身份加入了一艘名为查理二世号的私掠船。",
+      "text_markdown": "1693年，埃弗里以大副身份加入了一艘名为查理二世号的私掠船。",
+      "tts": {
+        "text": "一千六百九十三年，埃弗里以大副身份加入了一艘名为查理二世号的私掠船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这艘船是西班牙政府雇用的一支小型舰队的一部分。",
+      "text_markdown": "这艘船是西班牙政府雇用的一支小型舰队的一部分。",
+      "tts": {
+        "text": "这艘船是西班牙政府雇用的一支小型舰队的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙希望英国私掠者攻击加勒比海的法国走私者。",
+      "text_markdown": "西班牙希望英国私掠者攻击加勒比海的法国走私者。",
+      "tts": {
+        "text": "西班牙希望英国私掠者攻击加勒比海的法国走私者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这看起来是一次合法且可能盈利的事业。",
+      "text_markdown": "这看起来是一次合法且可能盈利的事业。",
+      "tts": {
+        "text": "这看起来是一次合法且可能盈利的事业。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查理二世号停泊在西班牙的拉科鲁尼亚港，等待命令。",
+      "text_markdown": "查理二世号停泊在西班牙的拉科鲁尼亚港，等待命令。",
+      "tts": {
+        "text": "查理二世号停泊在西班牙的拉科鲁尼亚港，等待命令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船员们在港口被困了好几个月，既没有工资也没有行动。",
+      "text_markdown": "船员们在港口被困了好几个月，既没有工资也没有行动。",
+      "tts": {
+        "text": "船员们在港口被困了好几个月，既没有工资也没有行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "水手们变得焦躁不安，怒火中烧。",
+      "text_markdown": "水手们变得焦躁不安，怒火中烧。",
+      "tts": {
+        "text": "水手们变得焦躁不安，怒火中烧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们签约是为了快速获利，而不是无尽的等待。",
+      "text_markdown": "他们签约是为了快速获利，而不是无尽的等待。",
+      "tts": {
+        "text": "他们签约是为了快速获利，而不是无尽的等待。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船长是一个名叫查尔斯·吉布森的人。",
+      "text_markdown": "船长是一个名叫查尔斯·吉布森的人。",
+      "tts": {
+        "text": "船长是一个名叫查尔斯·吉布森的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他因严厉的纪律和食言而遭到船员的普遍厌恶。",
+      "text_markdown": "他因严厉的纪律和食言而遭到船员的普遍厌恶。",
+      "tts": {
+        "text": "他因严厉的纪律和食言而遭到船员的普遍厌恶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船员们觉得自己在服役条件上受了欺骗。",
+      "text_markdown": "船员们觉得自己在服役条件上受了欺骗。",
+      "tts": {
+        "text": "船员们觉得自己在服役条件上受了欺骗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "挫败感和怨恨在甲板下酝酿。",
+      "text_markdown": "挫败感和怨恨在甲板下酝酿。",
+      "tts": {
+        "text": "挫败感和怨恨在甲板下酝酿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1694年6月6日夜，亨利·埃弗里发动了叛变。",
+      "text_markdown": "1694年6月6日夜，亨利·埃弗里发动了叛变。",
+      "tts": {
+        "text": "一千六百九十四年六月六日夜，亨利·埃弗里发动了叛变。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当吉布森船长在舱中熟睡时，埃弗里和他的同伙夺取了船只。",
+      "text_markdown": "当吉布森船长在舱中熟睡时，埃弗里和他的同伙夺取了船只。",
+      "tts": {
+        "text": "当吉布森船长在舱中熟睡时，埃弗里和他的同伙夺取了船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这次叛变计划周密，以最小的暴力完成。",
+      "text_markdown": "这次叛变计划周密，以最小的暴力完成。",
+      "tts": {
+        "text": "这次叛变计划周密，以最小的暴力完成。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "天亮时，埃弗里已经完全控制了这艘船。",
+      "text_markdown": "天亮时，埃弗里已经完全控制了这艘船。",
+      "tts": {
+        "text": "天亮时，埃弗里已经完全控制了这艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里给了吉布森和忠诚的水手们一个选择。",
+      "text_markdown": "埃弗里给了吉布森和忠诚的水手们一个选择。",
+      "tts": {
+        "text": "埃弗里给了吉布森和忠诚的水手们一个选择。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们可以加入叛变，也可以被放到岸上。",
+      "text_markdown": "他们可以加入叛变，也可以被放到岸上。",
+      "tts": {
+        "text": "他们可以加入叛变，也可以被放到岸上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大约16人选择离开，被用小船送上了岸。",
+      "text_markdown": "大约16人选择离开，被用小船送上了岸。",
+      "tts": {
+        "text": "大约十六人选择离开，被用小船送上了岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其余渴望冒险和财富的船员将自己的命运与埃弗里绑在了一起。",
+      "text_markdown": "其余渴望冒险和财富的船员将自己的命运与埃弗里绑在了一起。",
+      "tts": {
+        "text": "其余渴望冒险和财富的船员将自己的命运与埃弗里绑在了一起。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里将船改名为花式号。",
+      "text_markdown": "埃弗里将船改名为花式号。",
+      "tts": {
+        "text": "埃弗里将船改名为花式号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他宣布他们将驶向印度洋去寻找财富。",
+      "text_markdown": "他宣布他们将驶向印度洋去寻找财富。",
+      "tts": {
+        "text": "他宣布他们将驶向印度洋去寻找财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船员们为这一宣布欢呼。",
+      "text_markdown": "船员们为这一宣布欢呼。",
+      "tts": {
+        "text": "船员们为这一宣布欢呼。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃弗里刚刚犯下了一项将改变历史进程的海盗行为。",
+      "text_markdown": "埃弗里刚刚犯下了一项将改变历史进程的海盗行为。",
+      "tts": {
+        "text": "埃弗里刚刚犯下了一项将改变历史进程的海盗行为。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在前往印度洋之前，埃弗里沿非洲海岸向南航行。",
+      "text_markdown": "在前往印度洋之前，埃弗里沿非洲海岸向南航行。",
+      "tts": {
+        "text": "在前往印度洋之前，埃弗里沿非洲海岸向南航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在多个港口停靠，补充物资并招募更多船员。",
+      "text_markdown": "他在多个港口停靠，补充物资并招募更多船员。",
+      "tts": {
+        "text": "他在多个港口停靠，补充物资并招募更多船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他船上的海盗被埃弗里日益增长的声望所吸引，纷纷加入花式号。",
+      "text_markdown": "其他船上的海盗被埃弗里日益增长的声望所吸引，纷纷加入花式号。",
+      "tts": {
+        "text": "其他船上的海盗被埃弗里日益增长的声望所吸引，纷纷加入花式号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当他到达马达加斯加时，他的船员已经人数众多且装备精良。",
+      "text_markdown": "当他到达马达加斯加时，他的船员已经人数众多且装备精良。",
+      "tts": {
+        "text": "当他到达马达加斯加时，他的船员已经人数众多且装备精良。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里证明了自己是一位出色的领导者和航海家。",
+      "text_markdown": "埃弗里证明了自己是一位出色的领导者和航海家。",
+      "tts": {
+        "text": "埃弗里证明了自己是一位出色的领导者和航海家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他维持纪律而不诉诸残忍。",
+      "text_markdown": "他维持纪律而不诉诸残忍。",
+      "tts": {
+        "text": "他维持纪律而不诉诸残忍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他迅速做出决定，与手下清晰沟通。",
+      "text_markdown": "他迅速做出决定，与手下清晰沟通。",
+      "tts": {
+        "text": "他迅速做出决定，与手下清晰沟通。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "叛变者的诞生",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船员们完全信任他，他们的忠诚将得到超乎想象的回报。",
+      "text_markdown": "船员们完全信任他，他们的忠诚将得到超乎想象的回报。",
+      "tts": {
+        "text": "船员们完全信任他，他们的忠诚将得到超乎想象的回报。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "最大的战利品",
+      "text_markdown": "最大的战利品"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1695年，埃弗里驾驶花式号驶向红海入口。",
+      "text_markdown": "1695年，埃弗里驾驶花式号驶向红海入口。",
+      "tts": {
+        "text": "一千六百九十五年，埃弗里驾驶花式号驶向红海入口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他知道年度莫卧儿朝圣舰队很快就会经过。",
+      "text_markdown": "他知道年度莫卧儿朝圣舰队很快就会经过。",
+      "tts": {
+        "text": "他知道年度莫卧儿朝圣舰队很快就会经过。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些船正在朝圣麦加后返回印度。",
+      "text_markdown": "这些船正在朝圣麦加后返回印度。",
+      "tts": {
+        "text": "这些船正在朝圣麦加后返回印度。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它们的货舱将满载宝藏。",
+      "text_markdown": "它们的货舱将满载宝藏。",
+      "tts": {
+        "text": "它们的货舱将满载宝藏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里并不是唯一在海峡等候的海盗。",
+      "text_markdown": "埃弗里并不是唯一在海峡等候的海盗。",
+      "tts": {
+        "text": "埃弗里并不是唯一在海峡等候的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其他几艘海盗船也聚集在同一个咽喉要道。",
+      "text_markdown": "其他几艘海盗船也聚集在同一个咽喉要道。",
+      "tts": {
+        "text": "其他几艘海盗船也聚集在同一个咽喉要道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其中有一艘船由托马斯·图指挥，他是来自罗德岛的著名美国海盗。",
+      "text_markdown": "其中有一艘船由托马斯·图指挥，他是来自罗德岛的著名美国海盗。",
+      "tts": {
+        "text": "其中有一艘船由托马斯·图指挥，他是来自罗德岛的著名美国海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃弗里说服了其他船长组成临时联盟。",
+      "text_markdown": "埃弗里说服了其他船长组成临时联盟。",
+      "tts": {
+        "text": "埃弗里说服了其他船长组成临时联盟。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗们同意让埃弗里担任他们小舰队的总指挥。",
+      "text_markdown": "海盗们同意让埃弗里担任他们小舰队的总指挥。",
+      "tts": {
+        "text": "海盗们同意让埃弗里担任他们小舰队的总指挥。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对于一个仅仅一年前才成为海盗的人来说，这是一项了不起的成就。",
+      "text_markdown": "对于一个仅仅一年前才成为海盗的人来说，这是一项了不起的成就。",
+      "tts": {
+        "text": "对于一个仅仅一年前才成为海盗的人来说，这是一项了不起的成就。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他天生的权威和清晰的思维使他有别于其他海盗首领。",
+      "text_markdown": "他天生的权威和清晰的思维使他有别于其他海盗首领。",
+      "tts": {
+        "text": "他天生的权威和清晰的思维使他有别于其他海盗首领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其他船长尊重他的判断，同意在战斗中服从他的信号。",
+      "text_markdown": "其他船长尊重他的判断，同意在战斗中服从他的信号。",
+      "tts": {
+        "text": "其他船长尊重他的判断，同意在战斗中服从他的信号。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "莫卧儿舰队在1695年9月出现。",
+      "text_markdown": "莫卧儿舰队在1695年9月出现。",
+      "tts": {
+        "text": "莫卧儿舰队在一千六百九十五年九月出现。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它由大约25艘船组成，其中包括几艘大型武装船只。",
+      "text_markdown": "它由大约25艘船组成，其中包括几艘大型武装船只。",
+      "tts": {
+        "text": "它由大约二十五艘船组成，其中包括几艘大型武装船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗发起了进攻，但莫卧儿护卫队猛烈反击。",
+      "text_markdown": "海盗发起了进攻，但莫卧儿护卫队猛烈反击。",
+      "tts": {
+        "text": "海盗发起了进攻，但莫卧儿护卫队猛烈反击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "托马斯·图在第一次交火中被杀，一颗炮弹撕开了他的腹部。",
+      "text_markdown": "托马斯·图在第一次交火中被杀，一颗炮弹撕开了他的腹部。",
+      "tts": {
+        "text": "托马斯·图在第一次交火中被杀，一颗炮弹撕开了他的腹部。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "图死后，大多数海盗船退出了攻击。",
+      "text_markdown": "图死后，大多数海盗船退出了攻击。",
+      "tts": {
+        "text": "图死后，大多数海盗船退出了攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莫卧儿舰队四散，各船朝不同方向逃去。",
+      "text_markdown": "莫卧儿舰队四散，各船朝不同方向逃去。",
+      "tts": {
+        "text": "莫卧儿舰队四散，各船朝不同方向逃去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但埃弗里和花式号独自追了上去。",
+      "text_markdown": "但埃弗里和花式号独自追了上去。",
+      "tts": {
+        "text": "但埃弗里和花式号独自追了上去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他不会让一生中最大的战利品逃脱。",
+      "text_markdown": "他不会让一生中最大的战利品逃脱。",
+      "tts": {
+        "text": "他不会让一生中最大的战利品逃脱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里首先追上了一艘名为法特赫·穆罕默德号的船。",
+      "text_markdown": "埃弗里首先追上了一艘名为法特赫·穆罕默德号的船。",
+      "tts": {
+        "text": "埃弗里首先追上了一艘名为法特赫·穆罕默德号的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的货物价值在50,000到60,000英镑之间，是一笔巨大的财富。",
+      "text_markdown": "它的货物价值在50,000到60,000英镑之间，是一笔巨大的财富。",
+      "tts": {
+        "text": "它的货物价值在五万到六万英镑之间，是一笔巨大的财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "埃弗里的船员洗劫了这艘船然后放它离开。",
+      "text_markdown": "埃弗里的船员洗劫了这艘船然后放它离开。",
+      "tts": {
+        "text": "埃弗里的船员洗劫了这艘船然后放它离开。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但埃弗里知道一个更大的战利品仍在前方逃跑。",
+      "text_markdown": "但埃弗里知道一个更大的战利品仍在前方逃跑。",
+      "tts": {
+        "text": "但埃弗里知道一个更大的战利品仍在前方逃跑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "甘吉·萨瓦伊号是莫卧儿舰队中最大的船。",
+      "text_markdown": "甘吉·萨瓦伊号是莫卧儿舰队中最大的船。",
+      "tts": {
+        "text": "甘吉·萨瓦伊号是莫卧儿舰队中最大的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的名字意为超凡宝藏，名副其实。",
+      "text_markdown": "它的名字意为超凡宝藏，名副其实。",
+      "tts": {
+        "text": "它的名字意为超凡宝藏，名副其实。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它属于莫卧儿皇帝本人——奥朗则布。",
+      "text_markdown": "它属于莫卧儿皇帝本人——奥朗则布。",
+      "tts": {
+        "text": "它属于莫卧儿皇帝本人——奥朗则布。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它载有62门大炮和400多名士兵，远超埃弗里的船员人数。",
+      "text_markdown": "它载有62门大炮和400多名士兵，远超埃弗里的船员人数。",
+      "tts": {
+        "text": "它载有六十二门大炮和四百多名士兵，远超埃弗里的船员人数。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "花式号经过长时间追逐后追上了甘吉·萨瓦伊号。",
+      "text_markdown": "花式号经过长时间追逐后追上了甘吉·萨瓦伊号。",
+      "tts": {
+        "text": "花式号经过长时间追逐后追上了甘吉·萨瓦伊号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "接下来发生的事是海盗史上最重要的海战之一。",
+      "text_markdown": "接下来发生的事是海盗史上最重要的海战之一。",
+      "tts": {
+        "text": "接下来发生的事是海盗史上最重要的海战之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "埃弗里向巨大的莫卧儿船只开火。",
+      "text_markdown": "埃弗里向巨大的莫卧儿船只开火。",
+      "tts": {
+        "text": "埃弗里向巨大的莫卧儿船只开火。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一发早期炮弹击中了甘吉·萨瓦伊号的主桅，使其丧失了机动能力。",
+      "text_markdown": "一发早期炮弹击中了甘吉·萨瓦伊号的主桅，使其丧失了机动能力。",
+      "tts": {
+        "text": "一发早期炮弹击中了甘吉·萨瓦伊号的主桅，使其丧失了机动能力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "接着甘吉·萨瓦伊号自己的一门大炮在甲板上爆炸了。",
+      "text_markdown": "接着甘吉·萨瓦伊号自己的一门大炮在甲板上爆炸了。",
+      "tts": {
+        "text": "接着甘吉·萨瓦伊号自己的一门大炮在甲板上爆炸了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆炸炸死了几名莫卧儿炮手，使守军陷入混乱。",
+      "text_markdown": "爆炸炸死了几名莫卧儿炮手，使守军陷入混乱。",
+      "tts": {
+        "text": "爆炸炸死了几名莫卧儿炮手，使守军陷入混乱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "埃弗里抓住时机，命令手下登船。",
+      "text_markdown": "埃弗里抓住时机，命令手下登船。",
+      "tts": {
+        "text": "埃弗里抓住时机，命令手下登船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗们翻过莫卧儿船的栏杆冲了上去。",
+      "text_markdown": "海盗们翻过莫卧儿船的栏杆冲了上去。",
+      "tts": {
+        "text": "海盗们翻过莫卧儿船的栏杆冲了上去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战斗激烈但相对短暂。",
+      "text_markdown": "战斗激烈但相对短暂。",
+      "tts": {
+        "text": "战斗激烈但相对短暂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莫卧儿士兵尽管在人数上占优势，却因大炮爆炸而士气低落。",
+      "text_markdown": "莫卧儿士兵尽管在人数上占优势，却因大炮爆炸而士气低落。",
+      "tts": {
+        "text": "莫卧儿士兵尽管在人数上占优势，却因大炮爆炸而士气低落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的船长躲在甲板下而不是领导防御。",
+      "text_markdown": "他们的船长躲在甲板下而不是领导防御。",
+      "tts": {
+        "text": "他们的船长躲在甲板下而不是领导防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "几个小时后，海盗控制了这艘船。",
+      "text_markdown": "几个小时后，海盗控制了这艘船。",
+      "tts": {
+        "text": "几个小时后，海盗控制了这艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗们在甘吉·萨瓦伊号的船舱中发现的东西令他们震惊。",
+      "text_markdown": "海盗们在甘吉·萨瓦伊号的船舱中发现的东西令他们震惊。",
+      "tts": {
+        "text": "海盗们在甘吉·萨瓦伊号的船舱中发现的东西令他们震惊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "金币和银币堆放在箱子和桶里。",
+      "text_markdown": "金币和银币堆放在箱子和桶里。",
+      "tts": {
+        "text": "金币和银币堆放在箱子和桶里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "宝石、精美丝绸和象牙填满了每一寸空间。",
+      "text_markdown": "宝石、精美丝绸和象牙填满了每一寸空间。",
+      "tts": {
+        "text": "宝石、精美丝绸和象牙填满了每一寸空间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "总价值估计在200,000到600,000英镑之间。",
+      "text_markdown": "总价值估计在200,000到600,000英镑之间。",
+      "tts": {
+        "text": "总价值估计在二十万到六十万英镑之间。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "作为参照，一名技术娴熟的英国工人一年大约挣十英镑。",
+      "text_markdown": "作为参照，一名技术娴熟的英国工人一年大约挣十英镑。",
+      "tts": {
+        "text": "作为参照，一名技术娴熟的英国工人一年大约挣十英镑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每个海盗分到的赃物足够他度过余生。",
+      "text_markdown": "每个海盗分到的赃物足够他度过余生。",
+      "tts": {
+        "text": "每个海盗分到的赃物足够他度过余生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "亨利·埃弗里刚刚夺取了整个海盗史上最丰厚的战利品之一。",
+      "text_markdown": "亨利·埃弗里刚刚夺取了整个海盗史上最丰厚的战利品之一。",
+      "tts": {
+        "text": "亨利·埃弗里刚刚夺取了整个海盗史上最丰厚的战利品之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在他之前或之后，没有任何海盗在一次劫掠中获得如此之多。",
+      "text_markdown": "在他之前或之后，没有任何海盗在一次劫掠中获得如此之多。",
+      "tts": {
+        "text": "在他之前或之后，没有任何海盗在一次劫掠中获得如此之多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗们花了好几天时间洗劫甘吉·萨瓦伊号。",
+      "text_markdown": "海盗们花了好几天时间洗劫甘吉·萨瓦伊号。",
+      "tts": {
+        "text": "海盗们花了好几天时间洗劫甘吉·萨瓦伊号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们对乘客和船员施加了可怕的暴力。",
+      "text_markdown": "他们对乘客和船员施加了可怕的暴力。",
+      "tts": {
+        "text": "他们对乘客和船员施加了可怕的暴力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当时的记载描述了在被俘船上发生的抢劫、袭击和谋杀。",
+      "text_markdown": "当时的记载描述了在被俘船上发生的抢劫、袭击和谋杀。",
+      "tts": {
+        "text": "当时的记载描述了在被俘船上发生的抢劫、袭击和谋杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这次袭击的残暴将产生严重的政治后果。",
+      "text_markdown": "这次袭击的残暴将产生严重的政治后果。",
+      "tts": {
+        "text": "这次袭击的残暴将产生严重的政治后果。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在剥夺了船上的贵重物品之后，埃弗里释放了甘吉·萨瓦伊号。",
+      "text_markdown": "在剥夺了船上的贵重物品之后，埃弗里释放了甘吉·萨瓦伊号。",
+      "tts": {
+        "text": "在剥夺了船上的贵重物品之后，埃弗里释放了甘吉·萨瓦伊号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这艘千疮百孔的船蹒跚地驶回了印度的苏拉特港。",
+      "text_markdown": "这艘千疮百孔的船蹒跚地驶回了印度的苏拉特港。",
+      "tts": {
+        "text": "这艘千疮百孔的船蹒跚地驶回了印度的苏拉特港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当幸存者讲述他们的故事时，反应是爆炸性的。",
+      "text_markdown": "当幸存者讲述他们的故事时，反应是爆炸性的。",
+      "tts": {
+        "text": "当幸存者讲述他们的故事时，反应是爆炸性的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "最大的战利品",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃弗里刚刚制造了英国与印度贸易史上最严重的外交危机。",
+      "text_markdown": "埃弗里刚刚制造了英国与印度贸易史上最严重的外交危机。",
+      "tts": {
+        "text": "埃弗里刚刚制造了英国与印度贸易史上最严重的外交危机。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "世界上最被通缉的人",
+      "text_markdown": "世界上最被通缉的人"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当袭击的消息传到莫卧儿皇帝奥朗则布耳中时，他怒不可遏。",
+      "text_markdown": "当袭击的消息传到莫卧儿皇帝奥朗则布耳中时，他怒不可遏。",
+      "tts": {
+        "text": "当袭击的消息传到莫卧儿皇帝奥朗则布耳中时，他怒不可遏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "甘吉·萨瓦伊号是他的私人船只，船上的乘客包括皇室成员。",
+      "text_markdown": "甘吉·萨瓦伊号是他的私人船只，船上的乘客包括皇室成员。",
+      "tts": {
+        "text": "甘吉·萨瓦伊号是他的私人船只，船上的乘客包括皇室成员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皇帝认为这次袭击是对伊斯兰教本身的侮辱，因为船上载有从麦加返回的朝圣者。",
+      "text_markdown": "皇帝认为这次袭击是对伊斯兰教本身的侮辱，因为船上载有从麦加返回的朝圣者。",
+      "tts": {
+        "text": "皇帝认为这次袭击是对伊斯兰教本身的侮辱，因为船上载有从麦加返回的朝圣者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他要求英国人承担责任。",
+      "text_markdown": "他要求英国人承担责任。",
+      "tts": {
+        "text": "他要求英国人承担责任。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥朗则布下令逮捕苏拉特城中所有的英国商人。",
+      "text_markdown": "奥朗则布下令逮捕苏拉特城中所有的英国商人。",
+      "tts": {
+        "text": "奥朗则布下令逮捕苏拉特城中所有的英国商人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "东印度公司的雇员被投入监狱。",
+      "text_markdown": "东印度公司的雇员被投入监狱。",
+      "tts": {
+        "text": "东印度公司的雇员被投入监狱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的贸易站被莫卧儿士兵包围。",
+      "text_markdown": "他们的贸易站被莫卧儿士兵包围。",
+      "tts": {
+        "text": "他们的贸易站被莫卧儿士兵包围。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "印度的所有英国贸易被无限期暂停。",
+      "text_markdown": "印度的所有英国贸易被无限期暂停。",
+      "tts": {
+        "text": "印度的所有英国贸易被无限期暂停。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "东印度公司陷入了恐慌。",
+      "text_markdown": "东印度公司陷入了恐慌。",
+      "tts": {
+        "text": "东印度公司陷入了恐慌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在印度的全部业务因为一个海盗船长而面临风险。",
+      "text_markdown": "他们在印度的全部业务因为一个海盗船长而面临风险。",
+      "tts": {
+        "text": "他们在印度的全部业务因为一个海盗船长而面临风险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "公司的利润依赖于莫卧儿的善意，而这份善意一夜之间化为乌有。",
+      "text_markdown": "公司的利润依赖于莫卧儿的善意，而这份善意一夜之间化为乌有。",
+      "tts": {
+        "text": "公司的利润依赖于莫卧儿的善意，而这份善意一夜之间化为乌有。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们向英国政府施压，要求立即采取行动。",
+      "text_markdown": "他们向英国政府施压，要求立即采取行动。",
+      "tts": {
+        "text": "他们向英国政府施压，要求立即采取行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国政府对亨利·埃弗里发出了全球通缉令。",
+      "text_markdown": "英国政府对亨利·埃弗里发出了全球通缉令。",
+      "tts": {
+        "text": "英国政府对亨利·埃弗里发出了全球通缉令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "悬赏500英镑捉拿他，这是前所未有的金额。",
+      "text_markdown": "悬赏500英镑捉拿他，这是前所未有的金额。",
+      "tts": {
+        "text": "悬赏五百英镑捉拿他，这是前所未有的金额。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是有记载以来的第一次全球性追捕。",
+      "text_markdown": "这是有记载以来的第一次全球性追捕。",
+      "tts": {
+        "text": "这是有记载以来的第一次全球性追捕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英语世界的每一个港口都收到了埃弗里及其船员的描述。",
+      "text_markdown": "英语世界的每一个港口都收到了埃弗里及其船员的描述。",
+      "tts": {
+        "text": "英语世界的每一个港口都收到了埃弗里及其船员的描述。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "东印度公司在政府悬赏的基础上增加了自己的赏金。",
+      "text_markdown": "东印度公司在政府悬赏的基础上增加了自己的赏金。",
+      "tts": {
+        "text": "东印度公司在政府悬赏的基础上增加了自己的赏金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们还承诺，埃弗里的任何船员只要自首并指证他，就可获得完全赦免。",
+      "text_markdown": "他们还承诺，埃弗里的任何船员只要自首并指证他，就可获得完全赦免。",
+      "tts": {
+        "text": "他们还承诺，埃弗里的任何船员只要自首并指证他，就可获得完全赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "公司迫切地想要找到埃弗里，向莫卧儿皇帝证明正义将会实现。",
+      "text_markdown": "公司迫切地想要找到埃弗里，向莫卧儿皇帝证明正义将会实现。",
+      "tts": {
+        "text": "公司迫切地想要找到埃弗里，向莫卧儿皇帝证明正义将会实现。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们作为一家企业的存亡取决于此。",
+      "text_markdown": "他们作为一家企业的存亡取决于此。",
+      "tts": {
+        "text": "他们作为一家企业的存亡取决于此。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与此同时，埃弗里正以最快的速度驶离印度洋。",
+      "text_markdown": "与此同时，埃弗里正以最快的速度驶离印度洋。",
+      "tts": {
+        "text": "与此同时，埃弗里正以最快的速度驶离印度洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他知道留在犯罪现场附近无异于自杀。",
+      "text_markdown": "他知道留在犯罪现场附近无异于自杀。",
+      "tts": {
+        "text": "他知道留在犯罪现场附近无异于自杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他前往西印度洋的留尼汪岛。",
+      "text_markdown": "他前往西印度洋的留尼汪岛。",
+      "tts": {
+        "text": "他前往西印度洋的留尼汪岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在那里，他将宝藏分给了船员。",
+      "text_markdown": "在那里，他将宝藏分给了船员。",
+      "tts": {
+        "text": "在那里，他将宝藏分给了船员。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每个普通海盗获得了价值数百英镑的份额。",
+      "text_markdown": "每个普通海盗获得了价值数百英镑的份额。",
+      "tts": {
+        "text": "每个普通海盗获得了价值数百英镑的份额。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "埃弗里本人作为船长获得了更大的份额。",
+      "text_markdown": "埃弗里本人作为船长获得了更大的份额。",
+      "tts": {
+        "text": "埃弗里本人作为船长获得了更大的份额。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些人现在的富有程度超出了他们的想象。",
+      "text_markdown": "这些人现在的富有程度超出了他们的想象。",
+      "tts": {
+        "text": "这些人现在的富有程度超出了他们的想象。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "问题是他们能否活得够久来花掉这笔钱。",
+      "text_markdown": "问题是他们能否活得够久来花掉这笔钱。",
+      "tts": {
+        "text": "问题是他们能否活得够久来花掉这笔钱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里随后驾驶花式号横渡大西洋，来到巴哈马的新普罗维登斯岛。",
+      "text_markdown": "埃弗里随后驾驶花式号横渡大西洋，来到巴哈马的新普罗维登斯岛。",
+      "tts": {
+        "text": "埃弗里随后驾驶花式号横渡大西洋，来到巴哈马的新普罗维登斯岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他于1696年4月到达，距开始他海盗生涯的叛变将近两年。",
+      "text_markdown": "他于1696年4月到达，距开始他海盗生涯的叛变将近两年。",
+      "tts": {
+        "text": "他于一千六百九十六年四月到达，距开始他海盗生涯的叛变将近两年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴哈马总督尼古拉斯·特罗特同意庇护这些海盗。",
+      "text_markdown": "巴哈马总督尼古拉斯·特罗特同意庇护这些海盗。",
+      "tts": {
+        "text": "巴哈马总督尼古拉斯·特罗特同意庇护这些海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "据说埃弗里用象牙、现金和花式号本身贿赂了特罗特。",
+      "text_markdown": "据说埃弗里用象牙、现金和花式号本身贿赂了特罗特。",
+      "tts": {
+        "text": "据说埃弗里用象牙、现金和花式号本身贿赂了特罗特。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "特罗特总督给埃弗里的船员签发了赦免令，假装他们是无辜的水手。",
+      "text_markdown": "特罗特总督给埃弗里的船员签发了赦免令，假装他们是无辜的水手。",
+      "tts": {
+        "text": "特罗特总督给埃弗里的船员签发了赦免令，假装他们是无辜的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们分散到加勒比海和美洲殖民地各处。",
+      "text_markdown": "海盗们分散到加勒比海和美洲殖民地各处。",
+      "tts": {
+        "text": "海盗们分散到加勒比海和美洲殖民地各处。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人前往纽约，另一些人前往费城或查尔斯顿。",
+      "text_markdown": "一些人前往纽约，另一些人前往费城或查尔斯顿。",
+      "tts": {
+        "text": "一些人前往纽约，另一些人前往费城或查尔斯顿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们带着偷来的莫卧儿宝藏，尽可能地隐藏起来。",
+      "text_markdown": "他们带着偷来的莫卧儿宝藏，尽可能地隐藏起来。",
+      "tts": {
+        "text": "他们带着偷来的莫卧儿宝藏，尽可能地隐藏起来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里本人消失了。",
+      "text_markdown": "埃弗里本人消失了。",
+      "tts": {
+        "text": "埃弗里本人消失了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是他故事中最引人注目的部分。",
+      "text_markdown": "这是他故事中最引人注目的部分。",
+      "tts": {
+        "text": "这是他故事中最引人注目的部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "尽管他是世界上有史以来最大规模搜捕的对象，他却从未被找到。",
+      "text_markdown": "尽管他是世界上有史以来最大规模搜捕的对象，他却从未被找到。",
+      "tts": {
+        "text": "尽管他是世界上有史以来最大规模搜捕的对象，他却从未被找到。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他消失得如此彻底，仿佛大海将他吞噬了。",
+      "text_markdown": "他消失得如此彻底，仿佛大海将他吞噬了。",
+      "tts": {
+        "text": "他消失得如此彻底，仿佛大海将他吞噬了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的几名船员最终被捕并在伦敦受审。",
+      "text_markdown": "他的几名船员最终被捕并在伦敦受审。",
+      "tts": {
+        "text": "他的几名船员最终被捕并在伦敦受审。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "六人于1696年被绞死，尸体被公示以儆效尤。",
+      "text_markdown": "六人于1696年被绞死，尸体被公示以儆效尤。",
+      "tts": {
+        "text": "六人于一千六百九十六年被绞死，尸体被公示以儆效尤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但被抓获的人都是船员中的低级成员。",
+      "text_markdown": "但被抓获的人都是船员中的低级成员。",
+      "tts": {
+        "text": "但被抓获的人都是船员中的低级成员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃弗里本人依然逍遥法外。",
+      "text_markdown": "埃弗里本人依然逍遥法外。",
+      "tts": {
+        "text": "埃弗里本人依然逍遥法外。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伦敦的审判是轰动一时的事件，吸引了英国公众的极大关注。",
+      "text_markdown": "伦敦的审判是轰动一时的事件，吸引了英国公众的极大关注。",
+      "tts": {
+        "text": "伦敦的审判是轰动一时的事件，吸引了英国公众的极大关注。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "报纸刊登了详细的证词报道。",
+      "text_markdown": "报纸刊登了详细的证词报道。",
+      "tts": {
+        "text": "报纸刊登了详细的证词报道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个普通水手偷走皇帝宝藏的故事令各阶层的人们着迷。",
+      "text_markdown": "一个普通水手偷走皇帝宝藏的故事令各阶层的人们着迷。",
+      "tts": {
+        "text": "一个普通水手偷走皇帝宝藏的故事令各阶层的人们着迷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃弗里成为他那个时代最著名的罪犯。",
+      "text_markdown": "埃弗里成为他那个时代最著名的罪犯。",
+      "tts": {
+        "text": "埃弗里成为他那个时代最著名的罪犯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与莫卧儿帝国的外交危机花了数年才得以解决。",
+      "text_markdown": "与莫卧儿帝国的外交危机花了数年才得以解决。",
+      "tts": {
+        "text": "与莫卧儿帝国的外交危机花了数年才得以解决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "东印度公司最终支付了赔偿金并加强了海上巡逻。",
+      "text_markdown": "东印度公司最终支付了赔偿金并加强了海上巡逻。",
+      "tts": {
+        "text": "东印度公司最终支付了赔偿金并加强了海上巡逻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "莫卧儿与英国之间的贸易恢复了，但关系遭到了永久性损害。",
+      "text_markdown": "莫卧儿与英国之间的贸易恢复了，但关系遭到了永久性损害。",
+      "tts": {
+        "text": "莫卧儿与英国之间的贸易恢复了，但关系遭到了永久性损害。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "世界上最被通缉的人",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一事件表明，欧洲海盗能够威胁到伟大帝国的稳定。",
+      "text_markdown": "这一事件表明，欧洲海盗能够威胁到伟大帝国的稳定。",
+      "tts": {
+        "text": "这一事件表明，欧洲海盗能够威胁到伟大帝国的稳定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "消失",
+      "text_markdown": "消失"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·埃弗里的消失是海盗史上最大的未解之谜之一。",
+      "text_markdown": "亨利·埃弗里的消失是海盗史上最大的未解之谜之一。",
+      "tts": {
+        "text": "亨利·埃弗里的消失是海盗史上最大的未解之谜之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "离开巴哈马后，再也没有人可靠地见过他。",
+      "text_markdown": "离开巴哈马后，再也没有人可靠地见过他。",
+      "tts": {
+        "text": "离开巴哈马后，再也没有人可靠地见过他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家提出了许多关于他去向的理论，但没有一个能够被证实。",
+      "text_markdown": "历史学家提出了许多关于他去向的理论，但没有一个能够被证实。",
+      "tts": {
+        "text": "历史学家提出了许多关于他去向的理论，但没有一个能够被证实。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一种理论认为埃弗里用假名回到了英格兰。",
+      "text_markdown": "一种理论认为埃弗里用假名回到了英格兰。",
+      "tts": {
+        "text": "一种理论认为埃弗里用假名回到了英格兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰是个大国，一个有钱人可以轻松融入伦敦这样的城市。",
+      "text_markdown": "英格兰是个大国，一个有钱人可以轻松融入伦敦这样的城市。",
+      "tts": {
+        "text": "英格兰是个大国，一个有钱人可以轻松融入伦敦这样的城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "如果他避免挥霍无度，也许能在默默无闻中度过余生。",
+      "text_markdown": "如果他避免挥霍无度，也许能在默默无闻中度过余生。",
+      "tts": {
+        "text": "如果他避免挥霍无度，也许能在默默无闻中度过余生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这被认为是较为可信的理论之一。",
+      "text_markdown": "这被认为是较为可信的理论之一。",
+      "tts": {
+        "text": "这被认为是较为可信的理论之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一种理论声称埃弗里去了爱尔兰。",
+      "text_markdown": "另一种理论声称埃弗里去了爱尔兰。",
+      "tts": {
+        "text": "另一种理论声称埃弗里去了爱尔兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爱尔兰的管控不如英格兰严格，港口繁忙着跨大西洋贸易。",
+      "text_markdown": "爱尔兰的管控不如英格兰严格，港口繁忙着跨大西洋贸易。",
+      "tts": {
+        "text": "爱尔兰的管控不如英格兰严格，港口繁忙着跨大西洋贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个富有的陌生人在那里不会引起太多注意。",
+      "text_markdown": "一个富有的陌生人在那里不会引起太多注意。",
+      "tts": {
+        "text": "一个富有的陌生人在那里不会引起太多注意。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一些记载将他置于港口城市科克。",
+      "text_markdown": "一些记载将他置于港口城市科克。",
+      "tts": {
+        "text": "一些记载将他置于港口城市科克。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第三种理论认为埃弗里航行到了东非海岸或马达加斯加。",
+      "text_markdown": "第三种理论认为埃弗里航行到了东非海岸或马达加斯加。",
+      "tts": {
+        "text": "第三种理论认为埃弗里航行到了东非海岸或马达加斯加。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多海盗退休后在马达加斯加定居，与当地人生活在一起。",
+      "text_markdown": "许多海盗退休后在马达加斯加定居，与当地人生活在一起。",
+      "tts": {
+        "text": "许多海盗退休后在马达加斯加定居，与当地人生活在一起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有些人甚至娶了当地妇女，成为小首领。",
+      "text_markdown": "有些人甚至娶了当地妇女，成为小首领。",
+      "tts": {
+        "text": "有些人甚至娶了当地妇女，成为小首领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "凭借他巨大的财富，埃弗里本可以在这样的环境中舒适地生活。",
+      "text_markdown": "凭借他巨大的财富，埃弗里本可以在这样的环境中舒适地生活。",
+      "tts": {
+        "text": "凭借他巨大的财富，埃弗里本可以在这样的环境中舒适地生活。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最浪漫的理论声称埃弗里死于贫困。",
+      "text_markdown": "最浪漫的理论声称埃弗里死于贫困。",
+      "tts": {
+        "text": "最浪漫的理论声称埃弗里死于贫困。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "根据这一说法，他被处理他偷来的宝石的布里斯托尔商人欺骗了。",
+      "text_markdown": "根据这一说法，他被处理他偷来的宝石的布里斯托尔商人欺骗了。",
+      "tts": {
+        "text": "根据这一说法，他被处理他偷来的宝石的布里斯托尔商人欺骗了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们给他的远少于珠宝的价值，而他没有法律途径追索。",
+      "text_markdown": "他们给他的远少于珠宝的价值，而他没有法律途径追索。",
+      "tts": {
+        "text": "他们给他的远少于珠宝的价值，而他没有法律途径追索。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "据说他身无分文地死去，无法动用自己偷来的财富。",
+      "text_markdown": "据说他身无分文地死去，无法动用自己偷来的财富。",
+      "tts": {
+        "text": "据说他身无分文地死去，无法动用自己偷来的财富。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个贫困故事最早出现在埃弗里失踪数十年后出版的一本书中。",
+      "text_markdown": "这个贫困故事最早出现在埃弗里失踪数十年后出版的一本书中。",
+      "tts": {
+        "text": "这个贫困故事最早出现在埃弗里失踪数十年后出版的一本书中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大多数历史学家认为它不可靠。",
+      "text_markdown": "大多数历史学家认为它不可靠。",
+      "tts": {
+        "text": "大多数历史学家认为它不可靠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它可能是被编造出来的道德故事，表明犯罪是没有好下场的。",
+      "text_markdown": "它可能是被编造出来的道德故事，表明犯罪是没有好下场的。",
+      "tts": {
+        "text": "它可能是被编造出来的道德故事，表明犯罪是没有好下场的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "真相是没有人知道亨利·埃弗里究竟发生了什么。",
+      "text_markdown": "真相是没有人知道亨利·埃弗里究竟发生了什么。",
+      "tts": {
+        "text": "真相是没有人知道亨利·埃弗里究竟发生了什么。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "可以确定的是，他完全逃脱了法律的制裁。",
+      "text_markdown": "可以确定的是，他完全逃脱了法律的制裁。",
+      "tts": {
+        "text": "可以确定的是，他完全逃脱了法律的制裁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是黄金时代唯一一位从未被捕、从未在战斗中阵亡、从未受审的重要海盗。",
+      "text_markdown": "他是黄金时代唯一一位从未被捕、从未在战斗中阵亡、从未受审的重要海盗。",
+      "tts": {
+        "text": "他是黄金时代唯一一位从未被捕、从未在战斗中阵亡、从未受审的重要海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他完全战胜了体制。",
+      "text_markdown": "他完全战胜了体制。",
+      "tts": {
+        "text": "他完全战胜了体制。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国政府最终放弃了搜索。",
+      "text_markdown": "英国政府最终放弃了搜索。",
+      "tts": {
+        "text": "英国政府最终放弃了搜索。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其他海盗起起落落，其他危机需要关注。",
+      "text_markdown": "其他海盗起起落落，其他危机需要关注。",
+      "tts": {
+        "text": "其他海盗起起落落，其他危机需要关注。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "埃弗里从官方的关注中消失了，尽管他的传奇仍在不断壮大。",
+      "text_markdown": "埃弗里从官方的关注中消失了，尽管他的传奇仍在不断壮大。",
+      "tts": {
+        "text": "埃弗里从官方的关注中消失了，尽管他的传奇仍在不断壮大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他被捕的船员在审判中提供了一些信息。",
+      "text_markdown": "他被捕的船员在审判中提供了一些信息。",
+      "tts": {
+        "text": "他被捕的船员在审判中提供了一些信息。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们描述了对甘吉·萨瓦伊号的攻击和宝藏的分配。",
+      "text_markdown": "他们描述了对甘吉·萨瓦伊号的攻击和宝藏的分配。",
+      "tts": {
+        "text": "他们描述了对甘吉·萨瓦伊号的攻击和宝藏的分配。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他们中没有人知道埃弗里在巴哈马之后去了哪里。",
+      "text_markdown": "但他们中没有人知道埃弗里在巴哈马之后去了哪里。",
+      "tts": {
+        "text": "但他们中没有人知道埃弗里在巴哈马之后去了哪里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "如果有人知道，他们也把这个秘密带进了坟墓。",
+      "text_markdown": "如果有人知道，他们也把这个秘密带进了坟墓。",
+      "tts": {
+        "text": "如果有人知道，他们也把这个秘密带进了坟墓。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对埃弗里的追捕在国际法中确立了重要的先例。",
+      "text_markdown": "对埃弗里的追捕在国际法中确立了重要的先例。",
+      "tts": {
+        "text": "对埃弗里的追捕在国际法中确立了重要的先例。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是政府跨国合作追捕罪犯的最早案例之一。",
+      "text_markdown": "这是政府跨国合作追捕罪犯的最早案例之一。",
+      "tts": {
+        "text": "这是政府跨国合作追捕罪犯的最早案例之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "悬赏制度、利用赦免换取线人信息以及全球分发通缉令都是创新之举。",
+      "text_markdown": "悬赏制度、利用赦免换取线人信息以及全球分发通缉令都是创新之举。",
+      "tts": {
+        "text": "悬赏制度、利用赦免换取线人信息以及全球分发通缉令都是创新之举。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "亨利·埃弗里的罪行帮助建立了现代国际刑事司法的框架。",
+      "text_markdown": "亨利·埃弗里的罪行帮助建立了现代国际刑事司法的框架。",
+      "tts": {
+        "text": "亨利·埃弗里的罪行帮助建立了现代国际刑事司法的框架。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2023年，考古学家在罗德岛发现了一批阿拉伯硬币。",
+      "text_markdown": "2023年，考古学家在罗德岛发现了一批阿拉伯硬币。",
+      "tts": {
+        "text": "二零二三年，考古学家在罗德岛发现了一批阿拉伯硬币。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些硬币年代正确，似乎来自莫卧儿帝国。",
+      "text_markdown": "这些硬币年代正确，似乎来自莫卧儿帝国。",
+      "tts": {
+        "text": "这些硬币年代正确，似乎来自莫卧儿帝国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家认为它们可能是甘吉·萨瓦伊号宝藏的一部分。",
+      "text_markdown": "历史学家认为它们可能是甘吉·萨瓦伊号宝藏的一部分。",
+      "tts": {
+        "text": "历史学家认为它们可能是甘吉·萨瓦伊号宝藏的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "消失",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些硬币是埃弗里的船员将偷来的财富带到美洲殖民地的实物证据。",
+      "text_markdown": "这些硬币是埃弗里的船员将偷来的财富带到美洲殖民地的实物证据。",
+      "tts": {
+        "text": "这些硬币是埃弗里的船员将偷来的财富带到美洲殖民地的实物证据。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海盗王的遗产",
+      "text_markdown": "海盗王的遗产"
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·埃弗里的故事立即抓住了公众的想象力。",
+      "text_markdown": "亨利·埃弗里的故事立即抓住了公众的想象力。",
+      "tts": {
+        "text": "亨利·埃弗里的故事立即抓住了公众的想象力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部名为《成功的海盗》的戏剧于1713年在伦敦上演。",
+      "text_markdown": "一部名为《成功的海盗》的戏剧于1713年在伦敦上演。",
+      "tts": {
+        "text": "一部名为《成功的海盗》的戏剧于一千七百一十三年在伦敦上演。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它将埃弗里的冒险故事搬上舞台，把他塑造成一个浪漫的反叛者。",
+      "text_markdown": "它将埃弗里的冒险故事搬上舞台，把他塑造成一个浪漫的反叛者。",
+      "tts": {
+        "text": "它将埃弗里的冒险故事搬上舞台，把他塑造成一个浪漫的反叛者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这部戏剧大受欢迎，演出了许多场。",
+      "text_markdown": "这部戏剧大受欢迎，演出了许多场。",
+      "tts": {
+        "text": "这部戏剧大受欢迎，演出了许多场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里在大众的想象中成为了民间英雄。",
+      "text_markdown": "埃弗里在大众的想象中成为了民间英雄。",
+      "tts": {
+        "text": "埃弗里在大众的想象中成为了民间英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们为他写了歌谣，在英格兰各地的酒馆里传唱。",
+      "text_markdown": "人们为他写了歌谣，在英格兰各地的酒馆里传唱。",
+      "tts": {
+        "text": "人们为他写了歌谣，在英格兰各地的酒馆里传唱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一首著名的歌谣把他描述为羞辱了强大皇帝的海盗之王。",
+      "text_markdown": "一首著名的歌谣把他描述为羞辱了强大皇帝的海盗之王。",
+      "tts": {
+        "text": "一首著名的歌谣把他描述为羞辱了强大皇帝的海盗之王。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在一个等级森严的时代，他的故事吸引了渴望自由和财富的普通人。",
+      "text_markdown": "在一个等级森严的时代，他的故事吸引了渴望自由和财富的普通人。",
+      "tts": {
+        "text": "在一个等级森严的时代，他的故事吸引了渴望自由和财富的普通人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里的成功激励了追随他脚步的一代海盗。",
+      "text_markdown": "埃弗里的成功激励了追随他脚步的一代海盗。",
+      "tts": {
+        "text": "埃弗里的成功激励了追随他脚步的一代海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在他著名的劫掠之后，通往印度洋的海盗航线成为一条繁忙的路线。",
+      "text_markdown": "在他著名的劫掠之后，通往印度洋的海盗航线成为一条繁忙的路线。",
+      "tts": {
+        "text": "在他著名的劫掠之后，通往印度洋的海盗航线成为一条繁忙的路线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "威廉·基德、罗伯特·卡利福德等海盗都试图复制埃弗里的成功。",
+      "text_markdown": "威廉·基德、罗伯特·卡利福德等海盗都试图复制埃弗里的成功。",
+      "tts": {
+        "text": "威廉·基德、罗伯特·卡利福德等海盗都试图复制埃弗里的成功。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们中没有一个能达到他的成就，大多数都以暴力或可耻的方式终结。",
+      "text_markdown": "他们中没有一个能达到他的成就，大多数都以暴力或可耻的方式终结。",
+      "tts": {
+        "text": "他们中没有一个能达到他的成就，大多数都以暴力或可耻的方式终结。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里劫掠的外交后果持续了数十年。",
+      "text_markdown": "埃弗里劫掠的外交后果持续了数十年。",
+      "tts": {
+        "text": "埃弗里劫掠的外交后果持续了数十年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "东印度公司被迫认真对待打击海盗。",
+      "text_markdown": "东印度公司被迫认真对待打击海盗。",
+      "tts": {
+        "text": "东印度公司被迫认真对待打击海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它开始为印度洋航运提供海军护航。",
+      "text_markdown": "它开始为印度洋航运提供海军护航。",
+      "tts": {
+        "text": "它开始为印度洋航运提供海军护航。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些反海盗行动最终帮助公司加强了对印度贸易的控制。",
+      "text_markdown": "这些反海盗行动最终帮助公司加强了对印度贸易的控制。",
+      "tts": {
+        "text": "这些反海盗行动最终帮助公司加强了对印度贸易的控制。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些历史学家认为埃弗里的劫掠实际上加速了英国在印度的殖民。",
+      "text_markdown": "一些历史学家认为埃弗里的劫掠实际上加速了英国在印度的殖民。",
+      "tts": {
+        "text": "一些历史学家认为埃弗里的劫掠实际上加速了英国在印度的殖民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这场危机迫使东印度公司建立更强大的军事力量。",
+      "text_markdown": "这场危机迫使东印度公司建立更强大的军事力量。",
+      "tts": {
+        "text": "这场危机迫使东印度公司建立更强大的军事力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些军事力量后来不仅用于对付海盗，还用于对付印度本土的邦国。",
+      "text_markdown": "这些军事力量后来不仅用于对付海盗，还用于对付印度本土的邦国。",
+      "tts": {
+        "text": "这些军事力量后来不仅用于对付海盗，还用于对付印度本土的邦国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "由埃弗里劫掠引发的一连串事件促成了英国最终对印度的征服。",
+      "text_markdown": "由埃弗里劫掠引发的一连串事件促成了英国最终对印度的征服。",
+      "tts": {
+        "text": "由埃弗里劫掠引发的一连串事件促成了英国最终对印度的征服。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃弗里的故事还影响了有史以来最著名的海盗小说。",
+      "text_markdown": "埃弗里的故事还影响了有史以来最著名的海盗小说。",
+      "tts": {
+        "text": "埃弗里的故事还影响了有史以来最著名的海盗小说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据信丹尼尔·笛福以埃弗里的生平为灵感创作了他的部分小说。",
+      "text_markdown": "据信丹尼尔·笛福以埃弗里的生平为灵感创作了他的部分小说。",
+      "tts": {
+        "text": "据信丹尼尔·笛福以埃弗里的生平为灵感创作了他的部分小说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个海盗带着宝藏逃走并永远消失的想法成为冒险文学的经典元素。",
+      "text_markdown": "一个海盗带着宝藏逃走并永远消失的想法成为冒险文学的经典元素。",
+      "tts": {
+        "text": "一个海盗带着宝藏逃走并永远消失的想法成为冒险文学的经典元素。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃弗里的真实生活比大多数虚构的海盗故事更加戏剧化。",
+      "text_markdown": "埃弗里的真实生活比大多数虚构的海盗故事更加戏剧化。",
+      "tts": {
+        "text": "埃弗里的真实生活比大多数虚构的海盗故事更加戏剧化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·埃弗里在海盗史上仍然是独一无二的。",
+      "text_markdown": "亨利·埃弗里在海盗史上仍然是独一无二的。",
+      "tts": {
+        "text": "亨利·埃弗里在海盗史上仍然是独一无二的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他实施了黄金时代最富有的单次海盗行为。",
+      "text_markdown": "他实施了黄金时代最富有的单次海盗行为。",
+      "tts": {
+        "text": "他实施了黄金时代最富有的单次海盗行为。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他引发了震动两个帝国的国际危机。",
+      "text_markdown": "他引发了震动两个帝国的国际危机。",
+      "tts": {
+        "text": "他引发了震动两个帝国的国际危机。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "海盗王的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "然后他就这样消失了，带着他的秘密走入未知。",
+      "text_markdown": "然后他就这样消失了，带着他的秘密走入未知。",
+      "tts": {
+        "text": "然后他就这样消失了，带着他的秘密走入未知。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

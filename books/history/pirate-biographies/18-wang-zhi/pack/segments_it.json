@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_wang_zhi",
+  "language": "it",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota per il lettore",
+      "text_markdown": "Una nota per il lettore"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la storia di un uomo che divenne pirata perché il suo governo rese illegale il commercio onesto.",
+      "text_markdown": "Questa è la storia di un uomo che divenne pirata perché il suo governo rese illegale il commercio onesto.",
+      "tts": {
+        "text": "Questa è la storia di un uomo che divenne pirata perché il suo governo rese illegale il commercio onesto.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi non nacque fuorilegge.",
+      "text_markdown": "Wang Zhi non nacque fuorilegge.",
+      "tts": {
+        "text": "Wang Zhi non nacque fuorilegge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fu trasformato in un fuorilegge dalle leggi del suo stesso paese.",
+      "text_markdown": "Fu trasformato in un fuorilegge dalle leggi del suo stesso paese.",
+      "tts": {
+        "text": "Fu trasformato in un fuorilegge dalle leggi del suo stesso paese.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante la dinastia Ming, la Cina vietò ai propri cittadini di navigare oltremare.",
+      "text_markdown": "Durante la dinastia Ming, la Cina vietò ai propri cittadini di navigare oltremare.",
+      "tts": {
+        "text": "Durante la dinastia Ming, la Cina vietò ai propri cittadini di navigare oltremare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il divieto si chiamava haijin.",
+      "text_markdown": "Il divieto si chiamava haijin.",
+      "tts": {
+        "text": "Il divieto si chiamava haijin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Doveva proteggere le coste, ma creò invece un vasto mondo criminale in mare.",
+      "text_markdown": "Doveva proteggere le coste, ma creò invece un vasto mondo criminale in mare.",
+      "tts": {
+        "text": "Doveva proteggere le coste, ma creò invece un vasto mondo criminale in mare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi ascese alla guida di quel mondo sotterraneo.",
+      "text_markdown": "Wang Zhi ascese alla guida di quel mondo sotterraneo.",
+      "tts": {
+        "text": "Wang Zhi ascese alla guida di quel mondo sotterraneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Comandava flotte, controllava rotte commerciali e costruì un regno su isole al largo del Giappone.",
+      "text_markdown": "Comandava flotte, controllava rotte commerciali e costruì un regno su isole al largo del Giappone.",
+      "tts": {
+        "text": "Comandava flotte, controllava rotte commerciali e costruì un regno su isole al largo del Giappone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le autorità lo chiamavano pirata.",
+      "text_markdown": "Le autorità lo chiamavano pirata.",
+      "tts": {
+        "text": "Le autorità lo chiamavano pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lui si definiva un mercante.",
+      "text_markdown": "Lui si definiva un mercante.",
+      "tts": {
+        "text": "Lui si definiva un mercante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La sua storia ci costringe a porci una domanda difficile.",
+      "text_markdown": "La sua storia ci costringe a porci una domanda difficile.",
+      "tts": {
+        "text": "La sua storia ci costringe a porci una domanda difficile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando un governo vieta ogni commercio, il contrabbandiere è un criminale o semplicemente un uomo d'affari a cui è stata negata ogni via legale?",
+      "text_markdown": "Quando un governo vieta ogni commercio, il contrabbandiere è un criminale o semplicemente un uomo d'affari a cui è stata negata ogni via legale?",
+      "tts": {
+        "text": "Quando un governo vieta ogni commercio, il contrabbandiere è un criminale o semplicemente un uomo d'affari a cui è stata negata ogni via legale?",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il mondo del divieto marittimo dei Ming",
+      "text_markdown": "Il mondo del divieto marittimo dei Ming"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All'inizio del XVI secolo, la Cina era la nazione più ricca e popolosa della Terra.",
+      "text_markdown": "All'inizio del XVI secolo, la Cina era la nazione più ricca e popolosa della Terra.",
+      "tts": {
+        "text": "All'inizio del sedicesimo secolo, la Cina era la nazione più ricca e popolosa della Terra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La dinastia Ming governava da oltre un secolo e mezzo.",
+      "text_markdown": "La dinastia Ming governava da oltre un secolo e mezzo.",
+      "tts": {
+        "text": "La dinastia Ming governava da oltre un secolo e mezzo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua capitale, Pechino, ospitava oltre un milione di persone.",
+      "text_markdown": "La sua capitale, Pechino, ospitava oltre un milione di persone.",
+      "tts": {
+        "text": "La sua capitale, Pechino, ospitava oltre un milione di persone.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Cina produceva seta, porcellana e tè desiderati dal mondo intero.",
+      "text_markdown": "La Cina produceva seta, porcellana e tè desiderati dal mondo intero.",
+      "tts": {
+        "text": "La Cina produceva seta, porcellana e tè desiderati dal mondo intero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Argento giapponese, spezie del sud-est asiatico e cotone indiano affluivano verso i porti cinesi.",
+      "text_markdown": "Argento giapponese, spezie del sud-est asiatico e cotone indiano affluivano verso i porti cinesi.",
+      "tts": {
+        "text": "Argento giapponese, spezie del sud-est asiatico e cotone indiano affluivano verso i porti cinesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il commercio marittimo avrebbe dovuto essere una fonte di enorme ricchezza per l'impero.",
+      "text_markdown": "Il commercio marittimo avrebbe dovuto essere una fonte di enorme ricchezza per l'impero.",
+      "tts": {
+        "text": "Il commercio marittimo avrebbe dovuto essere una fonte di enorme ricchezza per l'impero.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma la corte Ming temeva il mare.",
+      "text_markdown": "Ma la corte Ming temeva il mare.",
+      "tts": {
+        "text": "Ma la corte Ming temeva il mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pirati razziavano le coste da secoli.",
+      "text_markdown": "I pirati razziavano le coste da secoli.",
+      "tts": {
+        "text": "I pirati razziavano le coste da secoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I predoni giapponesi, noti come Wokou, attaccavano le coste cinesi e coreane dal XIV secolo.",
+      "text_markdown": "I predoni giapponesi, noti come Wokou, attaccavano le coste cinesi e coreane dal XIV secolo.",
+      "tts": {
+        "text": "I predoni giapponesi, noti come Wokou, attaccavano le coste cinesi e coreane dal quattordicesimo secolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La risposta del governo non fu costruire una marina più forte.",
+      "text_markdown": "La risposta del governo non fu costruire una marina più forte.",
+      "tts": {
+        "text": "La risposta del governo non fu costruire una marina più forte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La dinastia Ming impose invece lo haijin, un rigoroso divieto del commercio marittimo privato.",
+      "text_markdown": "La dinastia Ming impose invece lo haijin, un rigoroso divieto del commercio marittimo privato.",
+      "tts": {
+        "text": "La dinastia Ming impose invece lo haijin, un rigoroso divieto del commercio marittimo privato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A nessun cittadino cinese era permesso costruire una nave d'alto mare.",
+      "text_markdown": "A nessun cittadino cinese era permesso costruire una nave d'alto mare.",
+      "tts": {
+        "text": "A nessun cittadino cinese era permesso costruire una nave d'alto mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nessun mercante cinese poteva navigare verso terre straniere.",
+      "text_markdown": "Nessun mercante cinese poteva navigare verso terre straniere.",
+      "tts": {
+        "text": "Nessun mercante cinese poteva navigare verso terre straniere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chiunque fosse sorpreso a commerciare oltremare rischiava punizioni severe, compresa la morte.",
+      "text_markdown": "Chiunque fosse sorpreso a commerciare oltremare rischiava punizioni severe, compresa la morte.",
+      "tts": {
+        "text": "Chiunque fosse sorpreso a commerciare oltremare rischiava punizioni severe, compresa la morte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La logica dietro il divieto era semplice.",
+      "text_markdown": "La logica dietro il divieto era semplice.",
+      "tts": {
+        "text": "La logica dietro il divieto era semplice.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se nessuna nave cinese navigava, i pirati non avrebbero avuto né obiettivi né reclute.",
+      "text_markdown": "Se nessuna nave cinese navigava, i pirati non avrebbero avuto né obiettivi né reclute.",
+      "tts": {
+        "text": "Se nessuna nave cinese navigava, i pirati non avrebbero avuto né obiettivi né reclute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La costa sarebbe stata sicura.",
+      "text_markdown": "La costa sarebbe stata sicura.",
+      "tts": {
+        "text": "La costa sarebbe stata sicura.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La realtà fu esattamente l'opposto.",
+      "text_markdown": "La realtà fu esattamente l'opposto.",
+      "tts": {
+        "text": "La realtà fu esattamente l'opposto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lo haijin non fermò il commercio.",
+      "text_markdown": "Lo haijin non fermò il commercio.",
+      "tts": {
+        "text": "Lo haijin non fermò il commercio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spinse semplicemente tutto il commercio nelle mani dei contrabbandieri.",
+      "text_markdown": "Spinse semplicemente tutto il commercio nelle mani dei contrabbandieri.",
+      "tts": {
+        "text": "Spinse semplicemente tutto il commercio nelle mani dei contrabbandieri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I mercanti che un tempo operavano apertamente ora dovevano lavorare in segreto.",
+      "text_markdown": "I mercanti che un tempo operavano apertamente ora dovevano lavorare in segreto.",
+      "tts": {
+        "text": "I mercanti che un tempo operavano apertamente ora dovevano lavorare in segreto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le comunità costiere dipendevano dal mare per il loro sostentamento.",
+      "text_markdown": "Le comunità costiere dipendevano dal mare per il loro sostentamento.",
+      "tts": {
+        "text": "Le comunità costiere dipendevano dal mare per il loro sostentamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pescatori avevano bisogno di pescare.",
+      "text_markdown": "I pescatori avevano bisogno di pescare.",
+      "tts": {
+        "text": "I pescatori avevano bisogno di pescare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I commercianti avevano bisogno di commerciare.",
+      "text_markdown": "I commercianti avevano bisogno di commerciare.",
+      "tts": {
+        "text": "I commercianti avevano bisogno di commerciare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Quando il governo rese illegali queste attività, intere popolazioni divennero fuorilegge dall'oggi al domani.",
+      "text_markdown": "Quando il governo rese illegali queste attività, intere popolazioni divennero fuorilegge dall'oggi al domani.",
+      "tts": {
+        "text": "Quando il governo rese illegali queste attività, intere popolazioni divennero fuorilegge dall'oggi al domani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le province sudorientali del Fujian e dello Zhejiang furono le più colpite.",
+      "text_markdown": "Le province sudorientali del Fujian e dello Zhejiang furono le più colpite.",
+      "tts": {
+        "text": "Le province sudorientali del Fujian e dello Zhejiang furono le più colpite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Queste regioni avevano terreni sottili e rocciosi, poco adatti all'agricoltura.",
+      "text_markdown": "Queste regioni avevano terreni sottili e rocciosi, poco adatti all'agricoltura.",
+      "tts": {
+        "text": "Queste regioni avevano terreni sottili e rocciosi, poco adatti all'agricoltura.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli abitanti di queste province avevano sempre guardato all'oceano per sopravvivere.",
+      "text_markdown": "Gli abitanti di queste province avevano sempre guardato all'oceano per sopravvivere.",
+      "tts": {
+        "text": "Gli abitanti di queste province avevano sempre guardato all'oceano per sopravvivere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Con il commercio legale proibito, le reti di contrabbando crebbero rapidamente.",
+      "text_markdown": "Con il commercio legale proibito, le reti di contrabbando crebbero rapidamente.",
+      "tts": {
+        "text": "Con il commercio legale proibito, le reti di contrabbando crebbero rapidamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Porti segreti costellavano la costa.",
+      "text_markdown": "Porti segreti costellavano la costa.",
+      "tts": {
+        "text": "Porti segreti costellavano la costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Flotte armate proteggevano i contrabbandieri dalle pattuglie governative.",
+      "text_markdown": "Flotte armate proteggevano i contrabbandieri dalle pattuglie governative.",
+      "tts": {
+        "text": "Flotte armate proteggevano i contrabbandieri dalle pattuglie governative.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La parola Wokou originariamente significava pirati giapponesi.",
+      "text_markdown": "La parola Wokou originariamente significava pirati giapponesi.",
+      "tts": {
+        "text": "La parola Wokou originariamente significava pirati giapponesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma nel XVI secolo, i Wokou erano cambiati drasticamente.",
+      "text_markdown": "Ma nel XVI secolo, i Wokou erano cambiati drasticamente.",
+      "tts": {
+        "text": "Ma nel sedicesimo secolo, i Wokou erano cambiati drasticamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli storici stimano che nell'epoca di Wang Zhi, fino al 70 per cento dei cosiddetti pirati giapponesi fossero in realtà cinesi.",
+      "text_markdown": "Gli storici stimano che nell'epoca di Wang Zhi, fino al 70 per cento dei cosiddetti pirati giapponesi fossero in realtà cinesi.",
+      "tts": {
+        "text": "Gli storici stimano che nell'epoca di Wang Zhi, fino al settanta per cento dei cosiddetti pirati giapponesi fossero in realtà cinesi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Erano mercanti, marinai e pescatori cinesi costretti a vivere fuori dalla legge.",
+      "text_markdown": "Erano mercanti, marinai e pescatori cinesi costretti a vivere fuori dalla legge.",
+      "tts": {
+        "text": "Erano mercanti, marinai e pescatori cinesi costretti a vivere fuori dalla legge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Usavano basi giapponesi perché il Giappone era fuori dalla portata del governo Ming.",
+      "text_markdown": "Usavano basi giapponesi perché il Giappone era fuori dalla portata del governo Ming.",
+      "tts": {
+        "text": "Usavano basi giapponesi perché il Giappone era fuori dalla portata del governo Ming.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'etichetta di Wokou divenne una comoda finzione per la corte.",
+      "text_markdown": "L'etichetta di Wokou divenne una comoda finzione per la corte.",
+      "tts": {
+        "text": "L'etichetta di Wokou divenne una comoda finzione per la corte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Giappone stesso era in subbuglio in questo periodo.",
+      "text_markdown": "Il Giappone stesso era in subbuglio in questo periodo.",
+      "tts": {
+        "text": "Il Giappone stesso era in subbuglio in questo periodo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il paese era entrato nel periodo Sengoku, un'era di stati in guerra.",
+      "text_markdown": "Il paese era entrato nel periodo Sengoku, un'era di stati in guerra.",
+      "tts": {
+        "text": "Il paese era entrato nel periodo Sengoku, un'era di stati in guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'autorità centrale era crollata.",
+      "text_markdown": "L'autorità centrale era crollata.",
+      "tts": {
+        "text": "L'autorità centrale era crollata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Signori regionali, chiamati daimyo, combattevano tra loro per il territorio.",
+      "text_markdown": "Signori regionali, chiamati daimyo, combattevano tra loro per il territorio.",
+      "tts": {
+        "text": "Signori regionali, chiamati daimyo, combattevano tra loro per il territorio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni di questi signori giapponesi accolsero i contrabbandieri e i pirati cinesi.",
+      "text_markdown": "Alcuni di questi signori giapponesi accolsero i contrabbandieri e i pirati cinesi.",
+      "tts": {
+        "text": "Alcuni di questi signori giapponesi accolsero i contrabbandieri e i pirati cinesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I commercianti stranieri portavano ricchezza ai loro domini.",
+      "text_markdown": "I commercianti stranieri portavano ricchezza ai loro domini.",
+      "tts": {
+        "text": "I commercianti stranieri portavano ricchezza ai loro domini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In cambio, i pirati ricevevano porti sicuri e protezione.",
+      "text_markdown": "In cambio, i pirati ricevevano porti sicuri e protezione.",
+      "tts": {
+        "text": "In cambio, i pirati ricevevano porti sicuri e protezione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I portoghesi erano arrivati da poco nelle acque dell'Asia orientale.",
+      "text_markdown": "I portoghesi erano arrivati da poco nelle acque dell'Asia orientale.",
+      "tts": {
+        "text": "I portoghesi erano arrivati da poco nelle acque dell'Asia orientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Raggiunsero la Cina nel 1513 e il Giappone nel 1543.",
+      "text_markdown": "Raggiunsero la Cina nel 1513 e il Giappone nel 1543.",
+      "tts": {
+        "text": "Raggiunsero la Cina nel millecinquecentotredici e il Giappone nel millecinquecentoquarantatré.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portarono armi da fuoco, merci europee e una grande brama di seta cinese e argento giapponese.",
+      "text_markdown": "Portarono armi da fuoco, merci europee e una grande brama di seta cinese e argento giapponese.",
+      "tts": {
+        "text": "Portarono armi da fuoco, merci europee e una grande brama di seta cinese e argento giapponese.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo era il mondo in cui Wang Zhi entrò.",
+      "text_markdown": "Questo era il mondo in cui Wang Zhi entrò.",
+      "tts": {
+        "text": "Questo era il mondo in cui Wang Zhi entrò.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un mondo in cui il commercio onesto era un crimine.",
+      "text_markdown": "Un mondo in cui il commercio onesto era un crimine.",
+      "tts": {
+        "text": "Un mondo in cui il commercio onesto era un crimine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo del divieto marittimo dei Ming",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un mondo in cui il confine tra mercante e pirata era stato cancellato da un decreto governativo.",
+      "text_markdown": "Un mondo in cui il confine tra mercante e pirata era stato cancellato da un decreto governativo.",
+      "tts": {
+        "text": "Un mondo in cui il confine tra mercante e pirata era stato cancellato da un decreto governativo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le origini",
+      "text_markdown": "Le origini"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi nacque nella contea di She, nella provincia dell'Anhui, nell'entroterra cinese.",
+      "text_markdown": "Wang Zhi nacque nella contea di She, nella provincia dell'Anhui, nell'entroterra cinese.",
+      "tts": {
+        "text": "Wang Zhi nacque nella contea di She, nella provincia dell'Anhui, nell'entroterra cinese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'anno esatto della sua nascita è sconosciuto, ma fu probabilmente all'inizio del XVI secolo.",
+      "text_markdown": "L'anno esatto della sua nascita è sconosciuto, ma fu probabilmente all'inizio del XVI secolo.",
+      "tts": {
+        "text": "L'anno esatto della sua nascita è sconosciuto, ma fu probabilmente all'inizio del sedicesimo secolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua famiglia non era benestante.",
+      "text_markdown": "La sua famiglia non era benestante.",
+      "tts": {
+        "text": "La sua famiglia non era benestante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'Anhui era nota per i suoi mercanti.",
+      "text_markdown": "L'Anhui era nota per i suoi mercanti.",
+      "tts": {
+        "text": "L'Anhui era nota per i suoi mercanti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I mercanti di Huizhou di questa regione erano famosi in tutta la Cina per le loro abilità commerciali.",
+      "text_markdown": "I mercanti di Huizhou di questa regione erano famosi in tutta la Cina per le loro abilità commerciali.",
+      "tts": {
+        "text": "I mercanti di Huizhou di questa regione erano famosi in tutta la Cina per le loro abilità commerciali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Commerciavano in sale, tè, legname e altri prodotti in tutto l'impero.",
+      "text_markdown": "Commerciavano in sale, tè, legname e altri prodotti in tutto l'impero.",
+      "tts": {
+        "text": "Commerciavano in sale, tè, legname e altri prodotti in tutto l'impero.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi iniziò la sua carriera nel commercio del sale.",
+      "text_markdown": "Wang Zhi iniziò la sua carriera nel commercio del sale.",
+      "tts": {
+        "text": "Wang Zhi iniziò la sua carriera nel commercio del sale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il sale era una delle merci più preziose in Cina.",
+      "text_markdown": "Il sale era una delle merci più preziose in Cina.",
+      "tts": {
+        "text": "Il sale era una delle merci più preziose in Cina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il governo deteneva il monopolio della produzione e della vendita del sale.",
+      "text_markdown": "Il governo deteneva il monopolio della produzione e della vendita del sale.",
+      "tts": {
+        "text": "Il governo deteneva il monopolio della produzione e della vendita del sale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Commerciare sale senza licenza era un reato grave.",
+      "text_markdown": "Commerciare sale senza licenza era un reato grave.",
+      "tts": {
+        "text": "Commerciare sale senza licenza era un reato grave.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma il monopolio del sale era profondamente corrotto.",
+      "text_markdown": "Ma il monopolio del sale era profondamente corrotto.",
+      "tts": {
+        "text": "Ma il monopolio del sale era profondamente corrotto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le licenze governative andavano a chi aveva connessioni politiche.",
+      "text_markdown": "Le licenze governative andavano a chi aveva connessioni politiche.",
+      "tts": {
+        "text": "Le licenze governative andavano a chi aveva connessioni politiche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Piccoli commercianti come Wang Zhi erano esclusi dal mercato legale.",
+      "text_markdown": "Piccoli commercianti come Wang Zhi erano esclusi dal mercato legale.",
+      "tts": {
+        "text": "Piccoli commercianti come Wang Zhi erano esclusi dal mercato legale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Molti si rivolsero al contrabbando come unica opzione.",
+      "text_markdown": "Molti si rivolsero al contrabbando come unica opzione.",
+      "tts": {
+        "text": "Molti si rivolsero al contrabbando come unica opzione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi si trasferì sulla costa, attratto dalle opportunità del commercio marittimo.",
+      "text_markdown": "Wang Zhi si trasferì sulla costa, attratto dalle opportunità del commercio marittimo.",
+      "tts": {
+        "text": "Wang Zhi si trasferì sulla costa, attratto dalle opportunità del commercio marittimo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si stabilì nelle vivaci regioni portuali dello Zhejiang e del Fujian.",
+      "text_markdown": "Si stabilì nelle vivaci regioni portuali dello Zhejiang e del Fujian.",
+      "tts": {
+        "text": "Si stabilì nelle vivaci regioni portuali dello Zhejiang e del Fujian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Qui, nonostante lo haijin, prosperava un'economia sotterranea.",
+      "text_markdown": "Qui, nonostante lo haijin, prosperava un'economia sotterranea.",
+      "tts": {
+        "text": "Qui, nonostante lo haijin, prosperava un'economia sotterranea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Iniziò a lavorare con reti di contrabbando consolidate.",
+      "text_markdown": "Iniziò a lavorare con reti di contrabbando consolidate.",
+      "tts": {
+        "text": "Iniziò a lavorare con reti di contrabbando consolidate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si dimostrò intelligente, intraprendente e coraggioso.",
+      "text_markdown": "Si dimostrò intelligente, intraprendente e coraggioso.",
+      "tts": {
+        "text": "Si dimostrò intelligente, intraprendente e coraggioso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Imparò le rotte marittime, i porti nascosti e i modi per eludere le pattuglie governative.",
+      "text_markdown": "Imparò le rotte marittime, i porti nascosti e i modi per eludere le pattuglie governative.",
+      "tts": {
+        "text": "Imparò le rotte marittime, i porti nascosti e i modi per eludere le pattuglie governative.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi salì rapidamente nei ranghi del mondo del contrabbando.",
+      "text_markdown": "Wang Zhi salì rapidamente nei ranghi del mondo del contrabbando.",
+      "tts": {
+        "text": "Wang Zhi salì rapidamente nei ranghi del mondo del contrabbando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non era semplicemente un marinaio o un commerciante.",
+      "text_markdown": "Non era semplicemente un marinaio o un commerciante.",
+      "tts": {
+        "text": "Non era semplicemente un marinaio o un commerciante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era un organizzatore, un leader capace di gestire operazioni complesse su vaste distanze.",
+      "text_markdown": "Era un organizzatore, un leader capace di gestire operazioni complesse su vaste distanze.",
+      "tts": {
+        "text": "Era un organizzatore, un leader capace di gestire operazioni complesse su vaste distanze.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Negli anni Quaranta del Cinquecento, si legò a Xu Hai, un altro importante capo contrabbandiere e pirata.",
+      "text_markdown": "Negli anni Quaranta del Cinquecento, si legò a Xu Hai, un altro importante capo contrabbandiere e pirata.",
+      "tts": {
+        "text": "Negli anni quaranta del millecinquecento, si legò a Xu Hai, un altro importante capo contrabbandiere e pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Insieme, espansero notevolmente le loro operazioni.",
+      "text_markdown": "Insieme, espansero notevolmente le loro operazioni.",
+      "tts": {
+        "text": "Insieme, espansero notevolmente le loro operazioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Scambiavano seta cinese con argento giapponese, un commercio estremamente redditizio.",
+      "text_markdown": "Scambiavano seta cinese con argento giapponese, un commercio estremamente redditizio.",
+      "tts": {
+        "text": "Scambiavano seta cinese con argento giapponese, un commercio estremamente redditizio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La differenza di prezzo dell'argento tra Giappone e Cina era enorme.",
+      "text_markdown": "La differenza di prezzo dell'argento tra Giappone e Cina era enorme.",
+      "tts": {
+        "text": "La differenza di prezzo dell'argento tra Giappone e Cina era enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'argento era abbondante in Giappone ma scarso in Cina.",
+      "text_markdown": "L'argento era abbondante in Giappone ma scarso in Cina.",
+      "tts": {
+        "text": "L'argento era abbondante in Giappone ma scarso in Cina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un mercante che poteva trasportare argento dal Giappone alla Cina poteva raddoppiare o triplicare il suo investimento.",
+      "text_markdown": "Un mercante che poteva trasportare argento dal Giappone alla Cina poteva raddoppiare o triplicare il suo investimento.",
+      "tts": {
+        "text": "Un mercante che poteva trasportare argento dal Giappone alla Cina poteva raddoppiare o triplicare il suo investimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma questo commercio era completamente illegale sotto lo haijin.",
+      "text_markdown": "Ma questo commercio era completamente illegale sotto lo haijin.",
+      "tts": {
+        "text": "Ma questo commercio era completamente illegale sotto lo haijin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogni viaggio comportava il rischio di arresto ed esecuzione.",
+      "text_markdown": "Ogni viaggio comportava il rischio di arresto ed esecuzione.",
+      "tts": {
+        "text": "Ogni viaggio comportava il rischio di arresto ed esecuzione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi aveva bisogno di porti sicuri lontani dalla portata del governo Ming.",
+      "text_markdown": "Wang Zhi aveva bisogno di porti sicuri lontani dalla portata del governo Ming.",
+      "tts": {
+        "text": "Wang Zhi aveva bisogno di porti sicuri lontani dalla portata del governo Ming.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Li trovò in Giappone.",
+      "text_markdown": "Li trovò in Giappone.",
+      "tts": {
+        "text": "Li trovò in Giappone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le isole Goto, un arcipelago remoto al largo della costa occidentale del Kyushu, divennero la sua base principale.",
+      "text_markdown": "Le isole Goto, un arcipelago remoto al largo della costa occidentale del Kyushu, divennero la sua base principale.",
+      "tts": {
+        "text": "Le isole Goto, un arcipelago remoto al largo della costa occidentale del Kyushu, divennero la sua base principale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I signori giapponesi locali tolleravano o addirittura accoglievano la sua presenza.",
+      "text_markdown": "I signori giapponesi locali tolleravano o addirittura accoglievano la sua presenza.",
+      "tts": {
+        "text": "I signori giapponesi locali tolleravano o addirittura accoglievano la sua presenza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi stabilì anche contatti sull'isola di Hirado.",
+      "text_markdown": "Wang Zhi stabilì anche contatti sull'isola di Hirado.",
+      "tts": {
+        "text": "Wang Zhi stabilì anche contatti sull'isola di Hirado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hirado era già un centro commerciale internazionale.",
+      "text_markdown": "Hirado era già un centro commerciale internazionale.",
+      "tts": {
+        "text": "Hirado era già un centro commerciale internazionale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mercanti portoghesi avevano iniziato ad arrivarvi, creando un collegamento tra il commercio europeo e asiatico.",
+      "text_markdown": "Mercanti portoghesi avevano iniziato ad arrivarvi, creando un collegamento tra il commercio europeo e asiatico.",
+      "tts": {
+        "text": "Mercanti portoghesi avevano iniziato ad arrivarvi, creando un collegamento tra il commercio europeo e asiatico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da queste basi insulari, Wang Zhi costruì un impero commerciale.",
+      "text_markdown": "Da queste basi insulari, Wang Zhi costruì un impero commerciale.",
+      "tts": {
+        "text": "Da queste basi insulari, Wang Zhi costruì un impero commerciale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le sue navi trasportavano seta, porcellana e altre merci cinesi in Giappone.",
+      "text_markdown": "Le sue navi trasportavano seta, porcellana e altre merci cinesi in Giappone.",
+      "tts": {
+        "text": "Le sue navi trasportavano seta, porcellana e altre merci cinesi in Giappone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tornavano cariche di argento, spade e rame giapponese.",
+      "text_markdown": "Tornavano cariche di argento, spade e rame giapponese.",
+      "tts": {
+        "text": "Tornavano cariche di argento, spade e rame giapponese.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stava diventando più di un semplice contrabbandiere.",
+      "text_markdown": "Stava diventando più di un semplice contrabbandiere.",
+      "tts": {
+        "text": "Stava diventando più di un semplice contrabbandiere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Stava diventando una potenza a pieno titolo.",
+      "text_markdown": "Stava diventando una potenza a pieno titolo.",
+      "tts": {
+        "text": "Stava diventando una potenza a pieno titolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva navi, uomini, denaro e porti sicuri.",
+      "text_markdown": "Aveva navi, uomini, denaro e porti sicuri.",
+      "tts": {
+        "text": "Aveva navi, uomini, denaro e porti sicuri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Stava costruendo qualcosa che assomigliava molto a uno stato.",
+      "text_markdown": "Stava costruendo qualcosa che assomigliava molto a uno stato.",
+      "tts": {
+        "text": "Stava costruendo qualcosa che assomigliava molto a uno stato.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il re dei pirati",
+      "text_markdown": "Il re dei pirati"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alla fine degli anni Quaranta del Cinquecento, Wang Zhi era diventato la figura più potente del commercio marittimo nell'Asia orientale.",
+      "text_markdown": "Alla fine degli anni Quaranta del Cinquecento, Wang Zhi era diventato la figura più potente del commercio marittimo nell'Asia orientale.",
+      "tts": {
+        "text": "Alla fine degli anni quaranta del millecinquecento, Wang Zhi era diventato la figura più potente del commercio marittimo nell'Asia orientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Comandava centinaia di navi e migliaia di uomini.",
+      "text_markdown": "Comandava centinaia di navi e migliaia di uomini.",
+      "tts": {
+        "text": "Comandava centinaia di navi e migliaia di uomini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua rete commerciale si estendeva dal sud-est asiatico alla Corea.",
+      "text_markdown": "La sua rete commerciale si estendeva dal sud-est asiatico alla Corea.",
+      "tts": {
+        "text": "La sua rete commerciale si estendeva dal sud-est asiatico alla Corea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si autoproclamò re.",
+      "text_markdown": "Si autoproclamò re.",
+      "tts": {
+        "text": "Si autoproclamò re.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sulle isole Goto costruì una base fortificata che fungeva da capitale.",
+      "text_markdown": "Sulle isole Goto costruì una base fortificata che fungeva da capitale.",
+      "tts": {
+        "text": "Sulle isole Goto costruì una base fortificata che fungeva da capitale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Indossava vesti di seta e teneva corte come un signore feudale.",
+      "text_markdown": "Indossava vesti di seta e teneva corte come un signore feudale.",
+      "tts": {
+        "text": "Indossava vesti di seta e teneva corte come un signore feudale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I suoi seguaci lo chiamavano il Re di Huizhou.",
+      "text_markdown": "I suoi seguaci lo chiamavano il Re di Huizhou.",
+      "tts": {
+        "text": "I suoi seguaci lo chiamavano il Re di Huizhou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il nome rifletteva le sue origini nella provincia dell'Anhui.",
+      "text_markdown": "Il nome rifletteva le sue origini nella provincia dell'Anhui.",
+      "tts": {
+        "text": "Il nome rifletteva le sue origini nella provincia dell'Anhui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rifletteva anche la lealtà che le reti mercantili di Huizhou provavano verso uno dei loro.",
+      "text_markdown": "Rifletteva anche la lealtà che le reti mercantili di Huizhou provavano verso uno dei loro.",
+      "tts": {
+        "text": "Rifletteva anche la lealtà che le reti mercantili di Huizhou provavano verso uno dei loro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi non si considerava un pirata.",
+      "text_markdown": "Wang Zhi non si considerava un pirata.",
+      "tts": {
+        "text": "Wang Zhi non si considerava un pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si vedeva come un commerciante costretto a vivere fuori dalla legge.",
+      "text_markdown": "Si vedeva come un commerciante costretto a vivere fuori dalla legge.",
+      "tts": {
+        "text": "Si vedeva come un commerciante costretto a vivere fuori dalla legge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Espresse ripetutamente il desiderio di commerciare legalmente, se solo il governo lo avesse permesso.",
+      "text_markdown": "Espresse ripetutamente il desiderio di commerciare legalmente, se solo il governo lo avesse permesso.",
+      "tts": {
+        "text": "Espresse ripetutamente il desiderio di commerciare legalmente, se solo il governo lo avesse permesso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma la corte Ming vedeva solo un criminale.",
+      "text_markdown": "Ma la corte Ming vedeva solo un criminale.",
+      "tts": {
+        "text": "Ma la corte Ming vedeva solo un criminale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I rapporti sulle incursioni dei Wokou inondavano Pechino.",
+      "text_markdown": "I rapporti sulle incursioni dei Wokou inondavano Pechino.",
+      "tts": {
+        "text": "I rapporti sulle incursioni dei Wokou inondavano Pechino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le province costiere erano nel caos.",
+      "text_markdown": "Le province costiere erano nel caos.",
+      "tts": {
+        "text": "Le province costiere erano nel caos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Città venivano incendiate e persone uccise.",
+      "text_markdown": "Città venivano incendiate e persone uccise.",
+      "tts": {
+        "text": "Città venivano incendiate e persone uccise.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Non tutta questa violenza era opera di Wang Zhi.",
+      "text_markdown": "Non tutta questa violenza era opera di Wang Zhi.",
+      "tts": {
+        "text": "Non tutta questa violenza era opera di Wang Zhi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I Wokou non erano una forza unica e unificata.",
+      "text_markdown": "I Wokou non erano una forza unica e unificata.",
+      "tts": {
+        "text": "I Wokou non erano una forza unica e unificata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Decine di gruppi pirata indipendenti operavano lungo la costa.",
+      "text_markdown": "Decine di gruppi pirata indipendenti operavano lungo la costa.",
+      "tts": {
+        "text": "Decine di gruppi pirata indipendenti operavano lungo la costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alcuni erano commercianti come Wang Zhi, ma altri erano semplicemente predoni e banditi.",
+      "text_markdown": "Alcuni erano commercianti come Wang Zhi, ma altri erano semplicemente predoni e banditi.",
+      "tts": {
+        "text": "Alcuni erano commercianti come Wang Zhi, ma altri erano semplicemente predoni e banditi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuttavia, il governo attribuì tutto a Wang Zhi.",
+      "text_markdown": "Tuttavia, il governo attribuì tutto a Wang Zhi.",
+      "tts": {
+        "text": "Tuttavia, il governo attribuì tutto a Wang Zhi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Come il più eminente capo Wokou, divenne il volto della pirateria costiera.",
+      "text_markdown": "Come il più eminente capo Wokou, divenne il volto della pirateria costiera.",
+      "tts": {
+        "text": "Come il più eminente capo Wokou, divenne il volto della pirateria costiera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ogni incursione, ogni attacco, ogni villaggio bruciato veniva attribuito alla sua influenza.",
+      "text_markdown": "Ogni incursione, ogni attacco, ogni villaggio bruciato veniva attribuito alla sua influenza.",
+      "tts": {
+        "text": "Ogni incursione, ogni attacco, ogni villaggio bruciato veniva attribuito alla sua influenza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1553, un massiccio attacco Wokou colpì il delta del fiume Yangtze.",
+      "text_markdown": "Nel 1553, un massiccio attacco Wokou colpì il delta del fiume Yangtze.",
+      "tts": {
+        "text": "Nel millecinquecentocinquantatré, un massiccio attacco Wokou colpì il delta del fiume Yangtze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I predoni assediarono città e terrorizzarono la popolazione.",
+      "text_markdown": "I predoni assediarono città e terrorizzarono la popolazione.",
+      "tts": {
+        "text": "I predoni assediarono città e terrorizzarono la popolazione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'esercito Ming faticava a rispondere.",
+      "text_markdown": "L'esercito Ming faticava a rispondere.",
+      "tts": {
+        "text": "L'esercito Ming faticava a rispondere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le difese costiere erano state trascurate per decenni.",
+      "text_markdown": "Le difese costiere erano state trascurate per decenni.",
+      "tts": {
+        "text": "Le difese costiere erano state trascurate per decenni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La corte nominò nuovi comandanti militari per affrontare la crisi.",
+      "text_markdown": "La corte nominò nuovi comandanti militari per affrontare la crisi.",
+      "tts": {
+        "text": "La corte nominò nuovi comandanti militari per affrontare la crisi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tra loro c'erano due uomini che sarebbero diventati famosi nella storia cinese.",
+      "text_markdown": "Tra loro c'erano due uomini che sarebbero diventati famosi nella storia cinese.",
+      "tts": {
+        "text": "Tra loro c'erano due uomini che sarebbero diventati famosi nella storia cinese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Qi Jiguang era un brillante generale che avrebbe riorganizzato l'esercito costiero.",
+      "text_markdown": "Qi Jiguang era un brillante generale che avrebbe riorganizzato l'esercito costiero.",
+      "tts": {
+        "text": "Qi Jiguang era un brillante generale che avrebbe riorganizzato l'esercito costiero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hu Zongxian era un astuto stratega che avrebbe usato sia la forza che la diplomazia.",
+      "text_markdown": "Hu Zongxian era un astuto stratega che avrebbe usato sia la forza che la diplomazia.",
+      "tts": {
+        "text": "Hu Zongxian era un astuto stratega che avrebbe usato sia la forza che la diplomazia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian capì che la sola forza militare non poteva sconfiggere i Wokou.",
+      "text_markdown": "Hu Zongxian capì che la sola forza militare non poteva sconfiggere i Wokou.",
+      "tts": {
+        "text": "Hu Zongxian capì che la sola forza militare non poteva sconfiggere i Wokou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pirati avevano troppe navi, troppe basi e troppo sostegno dalle comunità costiere.",
+      "text_markdown": "I pirati avevano troppe navi, troppe basi e troppo sostegno dalle comunità costiere.",
+      "tts": {
+        "text": "I pirati avevano troppe navi, troppe basi e troppo sostegno dalle comunità costiere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva bisogno di un approccio diverso.",
+      "text_markdown": "Aveva bisogno di un approccio diverso.",
+      "tts": {
+        "text": "Aveva bisogno di un approccio diverso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian elaborò una strategia del divide et impera.",
+      "text_markdown": "Hu Zongxian elaborò una strategia del divide et impera.",
+      "tts": {
+        "text": "Hu Zongxian elaborò una strategia del divide et impera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrebbe messo i capi Wokou gli uni contro gli altri.",
+      "text_markdown": "Avrebbe messo i capi Wokou gli uni contro gli altri.",
+      "tts": {
+        "text": "Avrebbe messo i capi Wokou gli uni contro gli altri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrebbe offerto l'amnistia a chi si arrendeva e distrutto chi rifiutava.",
+      "text_markdown": "Avrebbe offerto l'amnistia a chi si arrendeva e distrutto chi rifiutava.",
+      "tts": {
+        "text": "Avrebbe offerto l'amnistia a chi si arrendeva e distrutto chi rifiutava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo obiettivo principale era Wang Zhi.",
+      "text_markdown": "Il suo obiettivo principale era Wang Zhi.",
+      "tts": {
+        "text": "Il suo obiettivo principale era Wang Zhi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se il più potente capo Wokou poteva essere neutralizzato, gli altri avrebbero potuto sgretolarsi.",
+      "text_markdown": "Se il più potente capo Wokou poteva essere neutralizzato, gli altri avrebbero potuto sgretolarsi.",
+      "tts": {
+        "text": "Se il più potente capo Wokou poteva essere neutralizzato, gli altri avrebbero potuto sgretolarsi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hu Zongxian iniziò a inviare messaggi segreti a Wang Zhi sulle isole Goto.",
+      "text_markdown": "Hu Zongxian iniziò a inviare messaggi segreti a Wang Zhi sulle isole Goto.",
+      "tts": {
+        "text": "Hu Zongxian iniziò a inviare messaggi segreti a Wang Zhi sulle isole Goto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I messaggi erano attentamente formulati.",
+      "text_markdown": "I messaggi erano attentamente formulati.",
+      "tts": {
+        "text": "I messaggi erano attentamente formulati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Offrivano a Wang Zhi ciò che aveva sempre desiderato: diritti commerciali legali.",
+      "text_markdown": "Offrivano a Wang Zhi ciò che aveva sempre desiderato: diritti commerciali legali.",
+      "tts": {
+        "text": "Offrivano a Wang Zhi ciò che aveva sempre desiderato, diritti commerciali legali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il governo avrebbe revocato il divieto marittimo per lui personalmente.",
+      "text_markdown": "Il governo avrebbe revocato il divieto marittimo per lui personalmente.",
+      "tts": {
+        "text": "Il governo avrebbe revocato il divieto marittimo per lui personalmente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avrebbe potuto commerciare apertamente e legalmente, con la benedizione dell'imperatore.",
+      "text_markdown": "Avrebbe potuto commerciare apertamente e legalmente, con la benedizione dell'imperatore.",
+      "tts": {
+        "text": "Avrebbe potuto commerciare apertamente e legalmente, con la benedizione dell'imperatore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi fu profondamente tentato.",
+      "text_markdown": "Wang Zhi fu profondamente tentato.",
+      "tts": {
+        "text": "Wang Zhi fu profondamente tentato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aveva trascorso anni a operare fuori dalla legge.",
+      "text_markdown": "Aveva trascorso anni a operare fuori dalla legge.",
+      "tts": {
+        "text": "Aveva trascorso anni a operare fuori dalla legge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il pericolo costante, la necessità di scorte armate e la minaccia dell'esecuzione gravavano su di lui.",
+      "text_markdown": "Il pericolo costante, la necessità di scorte armate e la minaccia dell'esecuzione gravavano su di lui.",
+      "tts": {
+        "text": "Il pericolo costante, la necessità di scorte armate e la minaccia dell'esecuzione gravavano su di lui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il commercio legale avrebbe significato pace e stabilità.",
+      "text_markdown": "Il commercio legale avrebbe significato pace e stabilità.",
+      "tts": {
+        "text": "Il commercio legale avrebbe significato pace e stabilità.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel frattempo, Hu Zongxian agì contro gli alleati di Wang Zhi.",
+      "text_markdown": "Nel frattempo, Hu Zongxian agì contro gli alleati di Wang Zhi.",
+      "tts": {
+        "text": "Nel frattempo, Hu Zongxian agì contro gli alleati di Wang Zhi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Usò corruzione, minacce e forza militare per neutralizzare Xu Hai e altri capi pirata.",
+      "text_markdown": "Usò corruzione, minacce e forza militare per neutralizzare Xu Hai e altri capi pirata.",
+      "tts": {
+        "text": "Usò corruzione, minacce e forza militare per neutralizzare Xu Hai e altri capi pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Xu Hai fu infine ucciso nel 1556, tradito, si dice, da uno dei suoi stessi seguaci.",
+      "text_markdown": "Xu Hai fu infine ucciso nel 1556, tradito, si dice, da uno dei suoi stessi seguaci.",
+      "tts": {
+        "text": "Xu Hai fu infine ucciso nel millecinquecentocinquantasei, tradito, si dice, da uno dei suoi stessi seguaci.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi vide i suoi alleati cadere uno dopo l'altro.",
+      "text_markdown": "Wang Zhi vide i suoi alleati cadere uno dopo l'altro.",
+      "tts": {
+        "text": "Wang Zhi vide i suoi alleati cadere uno dopo l'altro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua posizione, un tempo inattaccabile, diventava sempre più isolata.",
+      "text_markdown": "La sua posizione, un tempo inattaccabile, diventava sempre più isolata.",
+      "tts": {
+        "text": "La sua posizione, un tempo inattaccabile, diventava sempre più isolata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'offerta di amnistia iniziò a sembrare la sua migliore opzione.",
+      "text_markdown": "L'offerta di amnistia iniziò a sembrare la sua migliore opzione.",
+      "tts": {
+        "text": "L'offerta di amnistia iniziò a sembrare la sua migliore opzione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian inviò un emissario fidato in Giappone per incontrare Wang Zhi di persona.",
+      "text_markdown": "Hu Zongxian inviò un emissario fidato in Giappone per incontrare Wang Zhi di persona.",
+      "tts": {
+        "text": "Hu Zongxian inviò un emissario fidato in Giappone per incontrare Wang Zhi di persona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'emissario portava doni, documenti ufficiali e promesse elaborate.",
+      "text_markdown": "L'emissario portava doni, documenti ufficiali e promesse elaborate.",
+      "tts": {
+        "text": "L'emissario portava doni, documenti ufficiali e promesse elaborate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Assicurò a Wang Zhi che l'offerta era genuina.",
+      "text_markdown": "Assicurò a Wang Zhi che l'offerta era genuina.",
+      "tts": {
+        "text": "Assicurò a Wang Zhi che l'offerta era genuina.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le negoziazioni durarono mesi.",
+      "text_markdown": "Le negoziazioni durarono mesi.",
+      "tts": {
+        "text": "Le negoziazioni durarono mesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi era cauto.",
+      "text_markdown": "Wang Zhi era cauto.",
+      "tts": {
+        "text": "Wang Zhi era cauto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sapeva che il governo Ming aveva tradito promesse in passato.",
+      "text_markdown": "Sapeva che il governo Ming aveva tradito promesse in passato.",
+      "tts": {
+        "text": "Sapeva che il governo Ming aveva tradito promesse in passato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il re dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ma l'emissario era persuasivo e le condizioni sembravano generose.",
+      "text_markdown": "Ma l'emissario era persuasivo e le condizioni sembravano generose.",
+      "tts": {
+        "text": "Ma l'emissario era persuasivo e le condizioni sembravano generose.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La trappola",
+      "text_markdown": "La trappola"
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1557, Wang Zhi prese la decisione che gli sarebbe costata la vita.",
+      "text_markdown": "Nel 1557, Wang Zhi prese la decisione che gli sarebbe costata la vita.",
+      "tts": {
+        "text": "Nel millecinquecentocinquantasette, Wang Zhi prese la decisione che gli sarebbe costata la vita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Accettò di tornare in Cina.",
+      "text_markdown": "Accettò di tornare in Cina.",
+      "tts": {
+        "text": "Accettò di tornare in Cina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si sarebbe arreso a Hu Zongxian, avrebbe accettato l'amnistia e sarebbe diventato un commerciante legale.",
+      "text_markdown": "Si sarebbe arreso a Hu Zongxian, avrebbe accettato l'amnistia e sarebbe diventato un commerciante legale.",
+      "tts": {
+        "text": "Si sarebbe arreso a Hu Zongxian, avrebbe accettato l'amnistia e sarebbe diventato un commerciante legale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I suoi seguaci lo avvertirono di non farlo.",
+      "text_markdown": "I suoi seguaci lo avvertirono di non farlo.",
+      "tts": {
+        "text": "I suoi seguaci lo avvertirono di non farlo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Molti credevano che l'offerta fosse una trappola.",
+      "text_markdown": "Molti credevano che l'offerta fosse una trappola.",
+      "tts": {
+        "text": "Molti credevano che l'offerta fosse una trappola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lo esortarono a restare in Giappone, dove era al sicuro.",
+      "text_markdown": "Lo esortarono a restare in Giappone, dove era al sicuro.",
+      "tts": {
+        "text": "Lo esortarono a restare in Giappone, dove era al sicuro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma Wang Zhi era stanco dell'esilio.",
+      "text_markdown": "Ma Wang Zhi era stanco dell'esilio.",
+      "tts": {
+        "text": "Ma Wang Zhi era stanco dell'esilio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli mancava la sua patria.",
+      "text_markdown": "Gli mancava la sua patria.",
+      "tts": {
+        "text": "Gli mancava la sua patria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Credeva che un uomo del suo potere e della sua influenza meritasse riconoscimento, non la vita di un fuggiasco.",
+      "text_markdown": "Credeva che un uomo del suo potere e della sua influenza meritasse riconoscimento, non la vita di un fuggiasco.",
+      "tts": {
+        "text": "Credeva che un uomo del suo potere e della sua influenza meritasse riconoscimento, non la vita di un fuggiasco.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Salpò dalle isole Goto con una piccola flotta.",
+      "text_markdown": "Salpò dalle isole Goto con una piccola flotta.",
+      "tts": {
+        "text": "Salpò dalle isole Goto con una piccola flotta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portò doni per i funzionari cinesi.",
+      "text_markdown": "Portò doni per i funzionari cinesi.",
+      "tts": {
+        "text": "Portò doni per i funzionari cinesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Indossò le sue vesti più pregiate, come se si presentasse a un ricevimento di stato.",
+      "text_markdown": "Indossò le sue vesti più pregiate, come se si presentasse a un ricevimento di stato.",
+      "tts": {
+        "text": "Indossò le sue vesti più pregiate, come se si presentasse a un ricevimento di stato.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando arrivò sulla costa cinese, Hu Zongxian lo accolse con grande cerimonia.",
+      "text_markdown": "Quando arrivò sulla costa cinese, Hu Zongxian lo accolse con grande cerimonia.",
+      "tts": {
+        "text": "Quando arrivò sulla costa cinese, Hu Zongxian lo accolse con grande cerimonia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ci furono banchetti e conversazioni cortesi.",
+      "text_markdown": "Ci furono banchetti e conversazioni cortesi.",
+      "tts": {
+        "text": "Ci furono banchetti e conversazioni cortesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi fu trattato come un ospite d'onore, non come un criminale.",
+      "text_markdown": "Wang Zhi fu trattato come un ospite d'onore, non come un criminale.",
+      "tts": {
+        "text": "Wang Zhi fu trattato come un ospite d'onore, non come un criminale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian forse voleva genuinamente onorare l'accordo di amnistia.",
+      "text_markdown": "Hu Zongxian forse voleva genuinamente onorare l'accordo di amnistia.",
+      "tts": {
+        "text": "Hu Zongxian forse voleva genuinamente onorare l'accordo di amnistia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli storici discutono se il tradimento fu una sua idea o venne da funzionari superiori.",
+      "text_markdown": "Gli storici discutono se il tradimento fu una sua idea o venne da funzionari superiori.",
+      "tts": {
+        "text": "Gli storici discutono se il tradimento fu una sua idea o venne da funzionari superiori.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ciò che è chiaro è che voci potenti a Pechino chiedevano l'esecuzione di Wang Zhi.",
+      "text_markdown": "Ciò che è chiaro è che voci potenti a Pechino chiedevano l'esecuzione di Wang Zhi.",
+      "tts": {
+        "text": "Ciò che è chiaro è che voci potenti a Pechino chiedevano l'esecuzione di Wang Zhi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti funzionari di corte vedevano l'amnistia per un pirata come un segno inaccettabile di debolezza.",
+      "text_markdown": "Molti funzionari di corte vedevano l'amnistia per un pirata come un segno inaccettabile di debolezza.",
+      "tts": {
+        "text": "Molti funzionari di corte vedevano l'amnistia per un pirata come un segno inaccettabile di debolezza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sostenevano che perdonare Wang Zhi avrebbe incoraggiato altri a darsi alla pirateria.",
+      "text_markdown": "Sostenevano che perdonare Wang Zhi avrebbe incoraggiato altri a darsi alla pirateria.",
+      "tts": {
+        "text": "Sostenevano che perdonare Wang Zhi avrebbe incoraggiato altri a darsi alla pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La legge era la legge, e Wang Zhi l'aveva violata per decenni.",
+      "text_markdown": "La legge era la legge, e Wang Zhi l'aveva violata per decenni.",
+      "tts": {
+        "text": "La legge era la legge, e Wang Zhi l'aveva violata per decenni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi fu arrestato poco dopo il suo arrivo.",
+      "text_markdown": "Wang Zhi fu arrestato poco dopo il suo arrivo.",
+      "tts": {
+        "text": "Wang Zhi fu arrestato poco dopo il suo arrivo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I banchetti cessarono.",
+      "text_markdown": "I banchetti cessarono.",
+      "tts": {
+        "text": "I banchetti cessarono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le promesse svanirono.",
+      "text_markdown": "Le promesse svanirono.",
+      "tts": {
+        "text": "Le promesse svanirono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fu messo in catene e portato in prigione.",
+      "text_markdown": "Fu messo in catene e portato in prigione.",
+      "tts": {
+        "text": "Fu messo in catene e portato in prigione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fu tenuto in prigione per quasi due anni.",
+      "text_markdown": "Fu tenuto in prigione per quasi due anni.",
+      "tts": {
+        "text": "Fu tenuto in prigione per quasi due anni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Durante questo periodo, il suo destino fu dibattuto ai massimi livelli della corte Ming.",
+      "text_markdown": "Durante questo periodo, il suo destino fu dibattuto ai massimi livelli della corte Ming.",
+      "tts": {
+        "text": "Durante questo periodo, il suo destino fu dibattuto ai massimi livelli della corte Ming.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni funzionari invocarono clemenza, notando che si era arreso volontariamente.",
+      "text_markdown": "Alcuni funzionari invocarono clemenza, notando che si era arreso volontariamente.",
+      "tts": {
+        "text": "Alcuni funzionari invocarono clemenza, notando che si era arreso volontariamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altri esigevano la pena di morte.",
+      "text_markdown": "Altri esigevano la pena di morte.",
+      "tts": {
+        "text": "Altri esigevano la pena di morte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Indicarono le migliaia di morti nelle incursioni dei Wokou.",
+      "text_markdown": "Indicarono le migliaia di morti nelle incursioni dei Wokou.",
+      "tts": {
+        "text": "Indicarono le migliaia di morti nelle incursioni dei Wokou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sostenevano che Wang Zhi fosse responsabile di tutto.",
+      "text_markdown": "Sostenevano che Wang Zhi fosse responsabile di tutto.",
+      "tts": {
+        "text": "Sostenevano che Wang Zhi fosse responsabile di tutto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mentre Wang Zhi era in prigione, i suoi ex seguaci osservavano dal Giappone.",
+      "text_markdown": "Mentre Wang Zhi era in prigione, i suoi ex seguaci osservavano dal Giappone.",
+      "tts": {
+        "text": "Mentre Wang Zhi era in prigione, i suoi ex seguaci osservavano dal Giappone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erano furiosi per il tradimento.",
+      "text_markdown": "Erano furiosi per il tradimento.",
+      "tts": {
+        "text": "Erano furiosi per il tradimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il governo aveva mancato alla sua parola.",
+      "text_markdown": "Il governo aveva mancato alla sua parola.",
+      "tts": {
+        "text": "Il governo aveva mancato alla sua parola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ogni speranza di negoziato pacifico con i Wokou rimasti era ormai distrutta.",
+      "text_markdown": "Ogni speranza di negoziato pacifico con i Wokou rimasti era ormai distrutta.",
+      "tts": {
+        "text": "Ogni speranza di negoziato pacifico con i Wokou rimasti era ormai distrutta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si dice che Wang Zhi scrisse lettere dalla prigione implorando per la sua vita.",
+      "text_markdown": "Si dice che Wang Zhi scrisse lettere dalla prigione implorando per la sua vita.",
+      "tts": {
+        "text": "Si dice che Wang Zhi scrisse lettere dalla prigione implorando per la sua vita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Offrì di usare la sua influenza per convincere i Wokou rimasti ad arrendersi.",
+      "text_markdown": "Offrì di usare la sua influenza per convincere i Wokou rimasti ad arrendersi.",
+      "tts": {
+        "text": "Offrì di usare la sua influenza per convincere i Wokou rimasti ad arrendersi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sostenne che ucciderlo avrebbe solo peggiorato il problema della pirateria.",
+      "text_markdown": "Sostenne che ucciderlo avrebbe solo peggiorato il problema della pirateria.",
+      "tts": {
+        "text": "Sostenne che ucciderlo avrebbe solo peggiorato il problema della pirateria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo argomento era sia interessato che del tutto corretto.",
+      "text_markdown": "Il suo argomento era sia interessato che del tutto corretto.",
+      "tts": {
+        "text": "Il suo argomento era sia interessato che del tutto corretto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma la corte non era interessata a soluzioni pratiche.",
+      "text_markdown": "Ma la corte non era interessata a soluzioni pratiche.",
+      "tts": {
+        "text": "Ma la corte non era interessata a soluzioni pratiche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era interessata a dare un esempio.",
+      "text_markdown": "Era interessata a dare un esempio.",
+      "tts": {
+        "text": "Era interessata a dare un esempio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il dibattito alla corte Ming rivelò profonde divisioni sulla politica commerciale.",
+      "text_markdown": "Il dibattito alla corte Ming rivelò profonde divisioni sulla politica commerciale.",
+      "tts": {
+        "text": "Il dibattito alla corte Ming rivelò profonde divisioni sulla politica commerciale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni funzionari capivano che lo haijin era la causa principale della pirateria.",
+      "text_markdown": "Alcuni funzionari capivano che lo haijin era la causa principale della pirateria.",
+      "tts": {
+        "text": "Alcuni funzionari capivano che lo haijin era la causa principale della pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sostenevano l'allentamento delle restrizioni commerciali.",
+      "text_markdown": "Sostenevano l'allentamento delle restrizioni commerciali.",
+      "tts": {
+        "text": "Sostenevano l'allentamento delle restrizioni commerciali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altri si aggrappavano alla visione tradizionale secondo cui il commercio estero era corruttore e pericoloso.",
+      "text_markdown": "Altri si aggrappavano alla visione tradizionale secondo cui il commercio estero era corruttore e pericoloso.",
+      "tts": {
+        "text": "Altri si aggrappavano alla visione tradizionale secondo cui il commercio estero era corruttore e pericoloso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Credevano che il divieto marittimo dovesse essere applicato più rigorosamente, non allentato.",
+      "text_markdown": "Credevano che il divieto marittimo dovesse essere applicato più rigorosamente, non allentato.",
+      "tts": {
+        "text": "Credevano che il divieto marittimo dovesse essere applicato più rigorosamente, non allentato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "La trappola",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questi conservatori vinsero infine il dibattito sul destino di Wang Zhi.",
+      "text_markdown": "Questi conservatori vinsero infine il dibattito sul destino di Wang Zhi.",
+      "tts": {
+        "text": "Questi conservatori vinsero infine il dibattito sul destino di Wang Zhi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La fine",
+      "text_markdown": "La fine"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1559, arrivò l'ordine da Pechino.",
+      "text_markdown": "Nel 1559, arrivò l'ordine da Pechino.",
+      "tts": {
+        "text": "Nel millecinquecentocinquantanove, arrivò l'ordine da Pechino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi sarebbe stato giustiziato.",
+      "text_markdown": "Wang Zhi sarebbe stato giustiziato.",
+      "tts": {
+        "text": "Wang Zhi sarebbe stato giustiziato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Non ci sarebbe stato perdono, né amnistia, né clemenza.",
+      "text_markdown": "Non ci sarebbe stato perdono, né amnistia, né clemenza.",
+      "tts": {
+        "text": "Non ci sarebbe stato perdono, né amnistia, né clemenza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi fu portato al luogo dell'esecuzione a Hangzhou.",
+      "text_markdown": "Wang Zhi fu portato al luogo dell'esecuzione a Hangzhou.",
+      "tts": {
+        "text": "Wang Zhi fu portato al luogo dell'esecuzione a Hangzhou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu decapitato in pubblico, come monito per tutti coloro che avessero seguito il suo cammino.",
+      "text_markdown": "Fu decapitato in pubblico, come monito per tutti coloro che avessero seguito il suo cammino.",
+      "tts": {
+        "text": "Fu decapitato in pubblico, come monito per tutti coloro che avessero seguito il suo cammino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'uomo che si era proclamato re morì come un comune criminale.",
+      "text_markdown": "L'uomo che si era proclamato re morì come un comune criminale.",
+      "tts": {
+        "text": "L'uomo che si era proclamato re morì come un comune criminale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Secondo alcuni resoconti, Wang Zhi rimase sfidante fino alla fine.",
+      "text_markdown": "Secondo alcuni resoconti, Wang Zhi rimase sfidante fino alla fine.",
+      "tts": {
+        "text": "Secondo alcuni resoconti, Wang Zhi rimase sfidante fino alla fine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrebbe detto di non essersi mai considerato un pirata.",
+      "text_markdown": "Avrebbe detto di non essersi mai considerato un pirata.",
+      "tts": {
+        "text": "Avrebbe detto di non essersi mai considerato un pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva solo voluto commerciare.",
+      "text_markdown": "Aveva solo voluto commerciare.",
+      "tts": {
+        "text": "Aveva solo voluto commerciare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La corte Ming credette che la sua esecuzione avrebbe posto fine al problema dei Wokou.",
+      "text_markdown": "La corte Ming credette che la sua esecuzione avrebbe posto fine al problema dei Wokou.",
+      "tts": {
+        "text": "La corte Ming credette che la sua esecuzione avrebbe posto fine al problema dei Wokou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si sbagliavano catastroficamente.",
+      "text_markdown": "Si sbagliavano catastroficamente.",
+      "tts": {
+        "text": "Si sbagliavano catastroficamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Accadde l'opposto.",
+      "text_markdown": "Accadde l'opposto.",
+      "tts": {
+        "text": "Accadde l'opposto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi era stato, a modo suo, una forza moderatrice.",
+      "text_markdown": "Wang Zhi era stato, a modo suo, una forza moderatrice.",
+      "tts": {
+        "text": "Wang Zhi era stato, a modo suo, una forza moderatrice.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aveva mantenuto la disciplina tra i suoi seguaci.",
+      "text_markdown": "Aveva mantenuto la disciplina tra i suoi seguaci.",
+      "tts": {
+        "text": "Aveva mantenuto la disciplina tra i suoi seguaci.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva mantenuto aperti i canali di comunicazione con il governo.",
+      "text_markdown": "Aveva mantenuto aperti i canali di comunicazione con il governo.",
+      "tts": {
+        "text": "Aveva mantenuto aperti i canali di comunicazione con il governo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aveva tenuto a freno gli elementi più violenti dei Wokou.",
+      "text_markdown": "Aveva tenuto a freno gli elementi più violenti dei Wokou.",
+      "tts": {
+        "text": "Aveva tenuto a freno gli elementi più violenti dei Wokou.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Con la morte di Wang Zhi, quei vincoli scomparvero.",
+      "text_markdown": "Con la morte di Wang Zhi, quei vincoli scomparvero.",
+      "tts": {
+        "text": "Con la morte di Wang Zhi, quei vincoli scomparvero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I suoi ex seguaci, infuriati dal tradimento, lanciarono un'ondata di attacchi di rappresaglia contro la costa cinese.",
+      "text_markdown": "I suoi ex seguaci, infuriati dal tradimento, lanciarono un'ondata di attacchi di rappresaglia contro la costa cinese.",
+      "tts": {
+        "text": "I suoi ex seguaci, infuriati dal tradimento, lanciarono un'ondata di attacchi di rappresaglia contro la costa cinese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le incursioni che seguirono furono molto più distruttive di qualsiasi cosa fosse accaduta prima.",
+      "text_markdown": "Le incursioni che seguirono furono molto più distruttive di qualsiasi cosa fosse accaduta prima.",
+      "tts": {
+        "text": "Le incursioni che seguirono furono molto più distruttive di qualsiasi cosa fosse accaduta prima.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Emersero nuovi capi Wokou, molti dei quali molto più brutali di quanto Wang Zhi fosse mai stato.",
+      "text_markdown": "Emersero nuovi capi Wokou, molti dei quali molto più brutali di quanto Wang Zhi fosse mai stato.",
+      "tts": {
+        "text": "Emersero nuovi capi Wokou, molti dei quali molto più brutali di quanto Wang Zhi fosse mai stato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non avevano alcun interesse nella negoziazione.",
+      "text_markdown": "Non avevano alcun interesse nella negoziazione.",
+      "tts": {
+        "text": "Non avevano alcun interesse nella negoziazione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avevano visto cosa era successo all'uomo che si era fidato delle promesse del governo.",
+      "text_markdown": "Avevano visto cosa era successo all'uomo che si era fidato delle promesse del governo.",
+      "tts": {
+        "text": "Avevano visto cosa era successo all'uomo che si era fidato delle promesse del governo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'esercito Ming fu costretto ad anni di costose campagne per reprimere la rinnovata pirateria.",
+      "text_markdown": "L'esercito Ming fu costretto ad anni di costose campagne per reprimere la rinnovata pirateria.",
+      "tts": {
+        "text": "L'esercito Ming fu costretto ad anni di costose campagne per reprimere la rinnovata pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il generale Qi Jiguang trascorse quasi un decennio a combattere le incursioni dei Wokou lungo la costa sudorientale.",
+      "text_markdown": "Il generale Qi Jiguang trascorse quasi un decennio a combattere le incursioni dei Wokou lungo la costa sudorientale.",
+      "tts": {
+        "text": "Il generale Qi Jiguang trascorse quasi un decennio a combattere le incursioni dei Wokou lungo la costa sudorientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Migliaia di soldati e civili morirono nei combattimenti.",
+      "text_markdown": "Migliaia di soldati e civili morirono nei combattimenti.",
+      "tts": {
+        "text": "Migliaia di soldati e civili morirono nei combattimenti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian, il funzionario che aveva attirato Wang Zhi alla morte, cadde in disgrazia.",
+      "text_markdown": "Hu Zongxian, il funzionario che aveva attirato Wang Zhi alla morte, cadde in disgrazia.",
+      "tts": {
+        "text": "Hu Zongxian, il funzionario che aveva attirato Wang Zhi alla morte, cadde in disgrazia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu in seguito accusato di corruzione e altri reati.",
+      "text_markdown": "Fu in seguito accusato di corruzione e altri reati.",
+      "tts": {
+        "text": "Fu in seguito accusato di corruzione e altri reati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morì in prigione, un uomo distrutto.",
+      "text_markdown": "Morì in prigione, un uomo distrutto.",
+      "tts": {
+        "text": "Morì in prigione, un uomo distrutto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La storia lo ricorda con ambivalenza.",
+      "text_markdown": "La storia lo ricorda con ambivalenza.",
+      "tts": {
+        "text": "La storia lo ricorda con ambivalenza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Solo a metà degli anni Sessanta del Cinquecento il governo Ming riuscì infine a reprimere le peggiori incursioni dei Wokou.",
+      "text_markdown": "Solo a metà degli anni Sessanta del Cinquecento il governo Ming riuscì infine a reprimere le peggiori incursioni dei Wokou.",
+      "tts": {
+        "text": "Solo a metà degli anni sessanta del millecinquecento il governo Ming riuscì infine a reprimere le peggiori incursioni dei Wokou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La soluzione non fu più esecuzioni né un'applicazione più rigorosa del divieto marittimo.",
+      "text_markdown": "La soluzione non fu più esecuzioni né un'applicazione più rigorosa del divieto marittimo.",
+      "tts": {
+        "text": "La soluzione non fu più esecuzioni né un'applicazione più rigorosa del divieto marittimo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La soluzione fu esattamente ciò che Wang Zhi aveva sempre chiesto.",
+      "text_markdown": "La soluzione fu esattamente ciò che Wang Zhi aveva sempre chiesto.",
+      "tts": {
+        "text": "La soluzione fu esattamente ciò che Wang Zhi aveva sempre chiesto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1567, la corte Ming allentò finalmente lo haijin.",
+      "text_markdown": "Nel 1567, la corte Ming allentò finalmente lo haijin.",
+      "tts": {
+        "text": "Nel millecinquecentosessantasette, la corte Ming allentò finalmente lo haijin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ai mercanti cinesi fu permesso di navigare verso i porti del sud-est asiatico per commerciare.",
+      "text_markdown": "Ai mercanti cinesi fu permesso di navigare verso i porti del sud-est asiatico per commerciare.",
+      "tts": {
+        "text": "Ai mercanti cinesi fu permesso di navigare verso i porti del sud-est asiatico per commerciare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La misura fu parziale e cauta, ma rappresentò un'inversione fondamentale di politica.",
+      "text_markdown": "La misura fu parziale e cauta, ma rappresentò un'inversione fondamentale di politica.",
+      "tts": {
+        "text": "La misura fu parziale e cauta, ma rappresentò un'inversione fondamentale di politica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il risultato fu immediato e straordinario.",
+      "text_markdown": "Il risultato fu immediato e straordinario.",
+      "tts": {
+        "text": "Il risultato fu immediato e straordinario.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La pirateria lungo la costa diminuì drasticamente.",
+      "text_markdown": "La pirateria lungo la costa diminuì drasticamente.",
+      "tts": {
+        "text": "La pirateria lungo la costa diminuì drasticamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quando le persone potevano commerciare legalmente, non avevano motivo di diventare pirati.",
+      "text_markdown": "Quando le persone potevano commerciare legalmente, non avevano motivo di diventare pirati.",
+      "tts": {
+        "text": "Quando le persone potevano commerciare legalmente, non avevano motivo di diventare pirati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi aveva avuto ragione, ma non era vivo per vederlo.",
+      "text_markdown": "Wang Zhi aveva avuto ragione, ma non era vivo per vederlo.",
+      "tts": {
+        "text": "Wang Zhi aveva avuto ragione, ma non era vivo per vederlo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il governo aveva ucciso un uomo per aver fatto esattamente ciò che in seguito avrebbe permesso a tutti.",
+      "text_markdown": "Il governo aveva ucciso un uomo per aver fatto esattamente ciò che in seguito avrebbe permesso a tutti.",
+      "tts": {
+        "text": "Il governo aveva ucciso un uomo per aver fatto esattamente ciò che in seguito avrebbe permesso a tutti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua esecuzione fu sia una tragedia che uno spreco.",
+      "text_markdown": "La sua esecuzione fu sia una tragedia che uno spreco.",
+      "tts": {
+        "text": "La sua esecuzione fu sia una tragedia che uno spreco.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Eredità",
+      "text_markdown": "Eredità"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La storia di Wang Zhi è stata interpretata in molti modi diversi nel corso dei secoli.",
+      "text_markdown": "La storia di Wang Zhi è stata interpretata in molti modi diversi nel corso dei secoli.",
+      "tts": {
+        "text": "La storia di Wang Zhi è stata interpretata in molti modi diversi nel corso dei secoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Per la corte Ming, era un criminale che meritava la morte.",
+      "text_markdown": "Per la corte Ming, era un criminale che meritava la morte.",
+      "tts": {
+        "text": "Per la corte Ming, era un criminale che meritava la morte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Per gli storici successivi, fu il sintomo di una politica fallita.",
+      "text_markdown": "Per gli storici successivi, fu il sintomo di una politica fallita.",
+      "tts": {
+        "text": "Per gli storici successivi, fu il sintomo di una politica fallita.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella Cina moderna, la sua reputazione è stata rivalutata.",
+      "text_markdown": "Nella Cina moderna, la sua reputazione è stata rivalutata.",
+      "tts": {
+        "text": "Nella Cina moderna, la sua reputazione è stata rivalutata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni studiosi lo vedono come un pioniere del libero commercio, un uomo avanti rispetto al suo tempo.",
+      "text_markdown": "Alcuni studiosi lo vedono come un pioniere del libero commercio, un uomo avanti rispetto al suo tempo.",
+      "tts": {
+        "text": "Alcuni studiosi lo vedono come un pioniere del libero commercio, un uomo avanti rispetto al suo tempo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altri lo vedono ancora come un pirata che portò violenza sulle coste.",
+      "text_markdown": "Altri lo vedono ancora come un pirata che portò violenza sulle coste.",
+      "tts": {
+        "text": "Altri lo vedono ancora come un pirata che portò violenza sulle coste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Giappone, Wang Zhi è ricordato diversamente.",
+      "text_markdown": "In Giappone, Wang Zhi è ricordato diversamente.",
+      "tts": {
+        "text": "In Giappone, Wang Zhi è ricordato diversamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli viene attribuito il merito di aver portato la cultura cinese e le merci nelle isole dove visse.",
+      "text_markdown": "Gli viene attribuito il merito di aver portato la cultura cinese e le merci nelle isole dove visse.",
+      "tts": {
+        "text": "Gli viene attribuito il merito di aver portato la cultura cinese e le merci nelle isole dove visse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni resoconti dicono che introdusse nuovi mestieri e tecnologie presso i suoi vicini giapponesi.",
+      "text_markdown": "Alcuni resoconti dicono che introdusse nuovi mestieri e tecnologie presso i suoi vicini giapponesi.",
+      "tts": {
+        "text": "Alcuni resoconti dicono che introdusse nuovi mestieri e tecnologie presso i suoi vicini giapponesi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le isole Goto, dove costruì la sua base, conservano ancora il ricordo della sua presenza.",
+      "text_markdown": "Le isole Goto, dove costruì la sua base, conservano ancora il ricordo della sua presenza.",
+      "tts": {
+        "text": "Le isole Goto, dove costruì la sua base, conservano ancora il ricordo della sua presenza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le tradizioni locali associano alcuni templi e luoghi a questo re pirata cinese.",
+      "text_markdown": "Le tradizioni locali associano alcuni templi e luoghi a questo re pirata cinese.",
+      "tts": {
+        "text": "Le tradizioni locali associano alcuni templi e luoghi a questo re pirata cinese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lasciò un segno sul territorio che è sopravvissuto alla memoria della dinastia che lo uccise.",
+      "text_markdown": "Lasciò un segno sul territorio che è sopravvissuto alla memoria della dinastia che lo uccise.",
+      "tts": {
+        "text": "Lasciò un segno sul territorio che è sopravvissuto alla memoria della dinastia che lo uccise.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La storia di Wang Zhi riguarda fondamentalmente le conseguenze del proibizionismo.",
+      "text_markdown": "La storia di Wang Zhi riguarda fondamentalmente le conseguenze del proibizionismo.",
+      "tts": {
+        "text": "La storia di Wang Zhi riguarda fondamentalmente le conseguenze del proibizionismo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando i governi vietano un'attività da cui la gente dipende, non eliminano quell'attività.",
+      "text_markdown": "Quando i governi vietano un'attività da cui la gente dipende, non eliminano quell'attività.",
+      "tts": {
+        "text": "Quando i governi vietano un'attività da cui la gente dipende, non eliminano quell'attività.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La spingono semplicemente nella clandestinità e trasformano persone comuni in criminali.",
+      "text_markdown": "La spingono semplicemente nella clandestinità e trasformano persone comuni in criminali.",
+      "tts": {
+        "text": "La spingono semplicemente nella clandestinità e trasformano persone comuni in criminali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo haijin creò esattamente il problema che doveva prevenire.",
+      "text_markdown": "Lo haijin creò esattamente il problema che doveva prevenire.",
+      "tts": {
+        "text": "Lo haijin creò esattamente il problema che doveva prevenire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vietando il commercio, la dinastia Ming creò le più grandi flotte pirata nella storia dell'Asia orientale.",
+      "text_markdown": "Vietando il commercio, la dinastia Ming creò le più grandi flotte pirata nella storia dell'Asia orientale.",
+      "tts": {
+        "text": "Vietando il commercio, la dinastia Ming creò le più grandi flotte pirata nella storia dell'Asia orientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Giustiziando il pirata più potente, resero il problema incommensurabilmente peggiore.",
+      "text_markdown": "Giustiziando il pirata più potente, resero il problema incommensurabilmente peggiore.",
+      "tts": {
+        "text": "Giustiziando il pirata più potente, resero il problema incommensurabilmente peggiore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La soluzione, quando finalmente arrivò, fu legalizzare il commercio.",
+      "text_markdown": "La soluzione, quando finalmente arrivò, fu legalizzare il commercio.",
+      "tts": {
+        "text": "La soluzione, quando finalmente arrivò, fu legalizzare il commercio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu la risposta più semplice, e quella che avrebbe dovuto essere tentata per prima.",
+      "text_markdown": "Fu la risposta più semplice, e quella che avrebbe dovuto essere tentata per prima.",
+      "tts": {
+        "text": "Fu la risposta più semplice, e quella che avrebbe dovuto essere tentata per prima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi passò la sua vita a lottare per ciò che il governo alla fine concesse a tutti gli altri.",
+      "text_markdown": "Wang Zhi passò la sua vita a lottare per ciò che il governo alla fine concesse a tutti gli altri.",
+      "tts": {
+        "text": "Wang Zhi passò la sua vita a lottare per ciò che il governo alla fine concesse a tutti gli altri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La sua storia riecheggia attraverso la storia.",
+      "text_markdown": "La sua storia riecheggia attraverso la storia.",
+      "tts": {
+        "text": "La sua storia riecheggia attraverso la storia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogni volta che un governo criminalizza un'attività umana diffusa, il risultato è prevedibile.",
+      "text_markdown": "Ogni volta che un governo criminalizza un'attività umana diffusa, il risultato è prevedibile.",
+      "tts": {
+        "text": "Ogni volta che un governo criminalizza un'attività umana diffusa, il risultato è prevedibile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I contrabbandieri colmano il vuoto, la violenza segue, e il rimedio si rivela peggiore del male.",
+      "text_markdown": "I contrabbandieri colmano il vuoto, la violenza segue, e il rimedio si rivela peggiore del male.",
+      "tts": {
+        "text": "I contrabbandieri colmano il vuoto, la violenza segue, e il rimedio si rivela peggiore del male.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi morì nel 1559, un re dei pirati senza regno.",
+      "text_markdown": "Wang Zhi morì nel 1559, un re dei pirati senza regno.",
+      "tts": {
+        "text": "Wang Zhi morì nel millecinquecentocinquantanove, un re dei pirati senza regno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Otto anni dopo, il commercio per cui aveva combattuto divenne legale.",
+      "text_markdown": "Otto anni dopo, il commercio per cui aveva combattuto divenne legale.",
+      "tts": {
+        "text": "Otto anni dopo, il commercio per cui aveva combattuto divenne legale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva ragione, e gli uomini che lo uccisero lo sapevano.",
+      "text_markdown": "Aveva ragione, e gli uomini che lo uccisero lo sapevano.",
+      "tts": {
+        "text": "Aveva ragione, e gli uomini che lo uccisero lo sapevano.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

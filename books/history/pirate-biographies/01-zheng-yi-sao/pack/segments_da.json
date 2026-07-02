@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "da",
+  "total_segments": 310,
+  "segments": [
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 0,
+      "id": "ch00-001",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "En note til læseren",
+      "text_markdown": "En note til læseren",
+      "title": "En note til læseren"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "text": "Dette er en sand historie om den mest succesrige pirat i hele den nedskrevne historie.",
+      "text_markdown": "Dette er en sand historie om den mest succesrige pirat i hele den nedskrevne historie.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Dette er en sand historie om den mest succesrige pirat i hele den nedskrevne historie.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "text": "Hendes navn var Zheng Yi Sao, og hun kommanderede den største piratflåde, verden nogensinde har set.",
+      "text_markdown": "Hendes navn var Zheng Yi Sao, og hun kommanderede den største piratflåde, verden nogensinde har set.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Hendes navn var Zheng Yi Sao, og hun kommanderede den største piratflåde, verden nogensinde har set.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "text": "På højden af sin magt kontrollerede hun flere skibe, end de fleste nationer ejede.",
+      "text_markdown": "På højden af sin magt kontrollerede hun flere skibe, end de fleste nationer ejede.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "På højden af sin magt kontrollerede hun flere skibe, end de fleste nationer ejede.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "text": "Hun blev ikke født ind i rigdom eller privilegier.",
+      "text_markdown": "Hun blev ikke født ind i rigdom eller privilegier.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Hun blev ikke født ind i rigdom eller privilegier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "text": "Hun blev født i fattigdom i det sydlige Kina i slutningen af det attende århundrede.",
+      "text_markdown": "Hun blev født i fattigdom i det sydlige Kina i slutningen af det attende århundrede.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Hun blev født i fattigdom i det sydlige Kina i slutningen af det attende århundrede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "text": "Alt, hvad hun opnåede, byggede hun op gennem intelligens, hensynsløshed og en ekstraordinær evne til at organisere mennesker.",
+      "text_markdown": "Alt, hvad hun opnåede, byggede hun op gennem intelligens, hensynsløshed og en ekstraordinær evne til at organisere mennesker.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Alt, hvad hun opnåede, byggede hun op gennem intelligens, hensynsløshed og en ekstraordinær evne til at organisere mennesker.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "text": "Denne bog fortæller historien om, hvordan en kvinde uden noget blev den ubestridte hersker over Det Sydkinesiske Hav.",
+      "text_markdown": "Denne bog fortæller historien om, hvordan en kvinde uden noget blev den ubestridte hersker over Det Sydkinesiske Hav.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Denne bog fortæller historien om, hvordan en kvinde uden noget blev den ubestridte hersker over Det Sydkinesiske Hav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "text": "Det er en historie om krig, handel, lov og overlevelse.",
+      "text_markdown": "Det er en historie om krig, handel, lov og overlevelse.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Det er en historie om krig, handel, lov og overlevelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "text": "Det er også en historie om en verden, der ændrede sig hurtigt, da europæiske magter trængte dybere ind i Asien.",
+      "text_markdown": "Det er også en historie om en verden, der ændrede sig hurtigt, da europæiske magter trængte dybere ind i Asien.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Det er også en historie om en verden, der ændrede sig hurtigt, da europæiske magter trængte dybere ind i Asien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "text": "Hver eneste kendsgerning i denne bog stammer fra de historiske optegnelser.",
+      "text_markdown": "Hver eneste kendsgerning i denne bog stammer fra de historiske optegnelser.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Hver eneste kendsgerning i denne bog stammer fra de historiske optegnelser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "text": "Hvor optegnelserne er usikre, nævner vi det.",
+      "text_markdown": "Hvor optegnelserne er usikre, nævner vi det.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Hvor optegnelserne er usikre, nævner vi det.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "text": "Hvor historikere er uenige, præsenterer vi de stærkeste tilgængelige beviser.",
+      "text_markdown": "Hvor historikere er uenige, præsenterer vi de stærkeste tilgængelige beviser.",
+      "title": "En note til læseren",
+      "tts": {
+        "text": "Hvor historikere er uenige, præsenterer vi de stærkeste tilgængelige beviser.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 1,
+      "id": "ch01-014",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Det Sydkinesiske Havs Verden",
+      "text_markdown": "Det Sydkinesiske Havs Verden",
+      "title": "Det Sydkinesiske Havs Verden"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-015",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "text": "Det Sydkinesiske Hav er en af de travleste vandveje på Jorden.",
+      "text_markdown": "Det Sydkinesiske Hav er en af de travleste vandveje på Jorden.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Det Sydkinesiske Hav er en af de travleste vandveje på Jorden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "text": "Det strækker sig fra Vietnams kyst i vest til Filippinerne i øst.",
+      "text_markdown": "Det strækker sig fra Vietnams kyst i vest til Filippinerne i øst.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Det strækker sig fra Vietnams kyst i vest til Filippinerne i øst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-017",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "text": "Mod nord ligger Kinas kyst, og mod syd ligger øerne Borneo og Sumatra.",
+      "text_markdown": "Mod nord ligger Kinas kyst, og mod syd ligger øerne Borneo og Sumatra.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Mod nord ligger Kinas kyst, og mod syd ligger øerne Borneo og Sumatra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-018",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "text": "I tusinder af år har handelsfolk sejlet i disse farvande.",
+      "text_markdown": "I tusinder af år har handelsfolk sejlet i disse farvande.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "I tusinder af år har handelsfolk sejlet i disse farvande.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "text": "Kinesiske junks fragtede silke, porcelæn og te til havne i hele Sydøstasien.",
+      "text_markdown": "Kinesiske junks fragtede silke, porcelæn og te til havne i hele Sydøstasien.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Kinesiske junks fragtede silke, porcelæn og te til havne i hele Sydøstasien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "text": "Til gengæld strømmede krydderier, tropisk træ og eksotiske varer tilbage til Kina.",
+      "text_markdown": "Til gengæld strømmede krydderier, tropisk træ og eksotiske varer tilbage til Kina.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Til gengæld strømmede krydderier, tropisk træ og eksotiske varer tilbage til Kina.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-021",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "text": "Byen Canton, nu kaldet Guangzhou, lå i centrum af denne handel.",
+      "text_markdown": "Byen Canton, nu kaldet Guangzhou, lå i centrum af denne handel.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Byen Canton, nu kaldet Guangzhou, lå i centrum af denne handel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "text": "Canton var en af verdens rigeste byer i det attende århundrede.",
+      "text_markdown": "Canton var en af verdens rigeste byer i det attende århundrede.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Canton var en af verdens rigeste byer i det attende århundrede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-023",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "text": "Udenlandske købmænd fra Storbritannien, Frankrig, Portugal og Nederlandene konkurrerede alle om adgang til dets markeder.",
+      "text_markdown": "Udenlandske købmænd fra Storbritannien, Frankrig, Portugal og Nederlandene konkurrerede alle om adgang til dets markeder.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Udenlandske købmænd fra Storbritannien, Frankrig, Portugal og Nederlandene konkurrerede alle om adgang til dets markeder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-024",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "text": "Qing-dynastiet regerede Kina i denne periode.",
+      "text_markdown": "Qing-dynastiet regerede Kina i denne periode.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Qing-dynastiet regerede Kina i denne periode.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "text": "Qing-kejserne var manchuer, ikke Han-kinesere.",
+      "text_markdown": "Qing-kejserne var manchuer, ikke Han-kinesere.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Qing-kejserne var manchuer, ikke Han-kinesere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-026",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "text": "De havde erobret Kina i 1644 og bygget et af verdens største imperier.",
+      "text_markdown": "De havde erobret Kina i 1644 og bygget et af verdens største imperier.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "De havde erobret Kina i seksten fireogfyrre og bygget et af verdens største imperier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-027",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "text": "I slutningen af 1700-tallet begyndte Qing-dynastiet dog at svækkes.",
+      "text_markdown": "I slutningen af 1700-tallet begyndte Qing-dynastiet dog at svækkes.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "I slutningen af sytten hundrede, begyndte Qing-dynastiet dog at svækkes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-028",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "text": "Korruption spredte sig gennem det kejserlige bureaukrati.",
+      "text_markdown": "Korruption spredte sig gennem det kejserlige bureaukrati.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Korruption spredte sig gennem det kejserlige bureaukrati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "text": "Skatteopkrævere pressede bønder og fiskere for hver en mønt, de kunne få.",
+      "text_markdown": "Skatteopkrævere pressede bønder og fiskere for hver en mønt, de kunne få.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Skatteopkrævere pressede bønder og fiskere for hver en mønt, de kunne få.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-030",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "text": "Kløften mellem rig og fattig voksede år for år.",
+      "text_markdown": "Kløften mellem rig og fattig voksede år for år.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Kløften mellem rig og fattig voksede år for år.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-031",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "text": "I kystprovinserne levede mange mennesker i desperat fattigdom.",
+      "text_markdown": "I kystprovinserne levede mange mennesker i desperat fattigdom.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "I kystprovinserne levede mange mennesker i desperat fattigdom.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-032",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "text": "Fiskerisamfundene langs Guangdongs kyst var blandt de fattigste i Kina.",
+      "text_markdown": "Fiskerisamfundene langs Guangdongs kyst var blandt de fattigste i Kina.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Fiskerisamfundene langs Guangdongs kyst var blandt de fattigste i Kina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "text": "Hele familier boede på små både kaldet sampaner.",
+      "text_markdown": "Hele familier boede på små både kaldet sampaner.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Hele familier boede på små både kaldet sampaner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-034",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "text": "De blev født på vandet, arbejdede på vandet og døde på vandet.",
+      "text_markdown": "De blev født på vandet, arbejdede på vandet og døde på vandet.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "De blev født på vandet, arbejdede på vandet og døde på vandet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "text": "Den kejserlige regering kaldte dem Tanka-folket og behandlede dem som udstødte.",
+      "text_markdown": "Den kejserlige regering kaldte dem Tanka-folket og behandlede dem som udstødte.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Den kejserlige regering kaldte dem Tanka-folket og behandlede dem som udstødte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-036",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "text": "Tanka-familier var forbudt at bo på land i mange områder.",
+      "text_markdown": "Tanka-familier var forbudt at bo på land i mange områder.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Tanka-familier var forbudt at bo på land i mange områder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-037",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "text": "De kunne ikke tage de kejserlige eksamener, der førte til regeringsstillinger.",
+      "text_markdown": "De kunne ikke tage de kejserlige eksamener, der førte til regeringsstillinger.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "De kunne ikke tage de kejserlige eksamener, der førte til regeringsstillinger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-038",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "text": "De var udelukket fra det almindelige kinesiske samfund ved lov og sædvane.",
+      "text_markdown": "De var udelukket fra det almindelige kinesiske samfund ved lov og sædvane.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "De var udelukket fra det almindelige kinesiske samfund ved lov og sædvane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-039",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "text": "I generationer havde de ingen vej til et bedre liv.",
+      "text_markdown": "I generationer havde de ingen vej til et bedre liv.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "I generationer havde de ingen vej til et bedre liv.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-040",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "text": "Piratvirksomhed tilbød et alternativ.",
+      "text_markdown": "Piratvirksomhed tilbød et alternativ.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Piratvirksomhed tilbød et alternativ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-041",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "text": "Hvis man ikke kunne stige i samfundet ad lovlig vej, skabte havet sin egen økonomi.",
+      "text_markdown": "Hvis man ikke kunne stige i samfundet ad lovlig vej, skabte havet sin egen økonomi.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Hvis man ikke kunne stige i samfundet ad lovlig vej, skabte havet sin egen økonomi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-042",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "text": "Piratflåder plyndrede handelsskibe, afpressede fiskerlandsbyer og smuglede varer forbi kejserlige patruljer.",
+      "text_markdown": "Piratflåder plyndrede handelsskibe, afpressede fiskerlandsbyer og smuglede varer forbi kejserlige patruljer.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Piratflåder plyndrede handelsskibe, afpressede fiskerlandsbyer og smuglede varer forbi kejserlige patruljer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-043",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "text": "For mange fattige kystbeboere var det en rationel økonomisk beslutning at slutte sig til en piratbesætning.",
+      "text_markdown": "For mange fattige kystbeboere var det en rationel økonomisk beslutning at slutte sig til en piratbesætning.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "For mange fattige kystbeboere var det en rationel økonomisk beslutning at slutte sig til en piratbesætning.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-044",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "text": "Farvandene i Det Sydkinesiske Hav var ideelle for piratvirksomhed.",
+      "text_markdown": "Farvandene i Det Sydkinesiske Hav var ideelle for piratvirksomhed.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Farvandene i Det Sydkinesiske Hav var ideelle for piratvirksomhed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-045",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "text": "Tusindvis af øer, vige og flodmundinger udgjorde skjulesteder.",
+      "text_markdown": "Tusindvis af øer, vige og flodmundinger udgjorde skjulesteder.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Tusindvis af øer, vige og flodmundinger udgjorde skjulesteder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-046",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "text": "Tæt tåge og pludselige storme gjorde forfølgelse vanskelig.",
+      "text_markdown": "Tæt tåge og pludselige storme gjorde forfølgelse vanskelig.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Tæt tåge og pludselige storme gjorde forfølgelse vanskelig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-047",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "text": "En hurtig junk med en dygtig besætning kunne forsvinde ind i kystlinjen på få minutter.",
+      "text_markdown": "En hurtig junk med en dygtig besætning kunne forsvinde ind i kystlinjen på få minutter.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "En hurtig junk med en dygtig besætning kunne forsvinde ind i kystlinjen på få minutter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-048",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "text": "Imens begyndte opiumshandlen at omforme regionen.",
+      "text_markdown": "Imens begyndte opiumshandlen at omforme regionen.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Imens begyndte opiumshandlen at omforme regionen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-049",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "text": "Britiske købmænd fragtede opium fra Indien til Kina i enorme mængder.",
+      "text_markdown": "Britiske købmænd fragtede opium fra Indien til Kina i enorme mængder.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Britiske købmænd fragtede opium fra Indien til Kina i enorme mængder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-050",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "text": "Stoffet var ulovligt i Kina, men fortjenesten var så enorm, at handlen voksede hvert år.",
+      "text_markdown": "Stoffet var ulovligt i Kina, men fortjenesten var så enorm, at handlen voksede hvert år.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Stoffet var ulovligt i Kina, men fortjenesten var så enorm, at handlen voksede hvert år.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-051",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "text": "Smuglernetværk strakte sig langs hele sydkysten.",
+      "text_markdown": "Smuglernetværk strakte sig langs hele sydkysten.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Smuglernetværk strakte sig langs hele sydkysten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-052",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "text": "Dette var den verden, der frembragte Zheng Yi Sao.",
+      "text_markdown": "Dette var den verden, der frembragte Zheng Yi Sao.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Dette var den verden, der frembragte Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-053",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "text": "En verden af enorm rigdom og knugende fattigdom, adskilt af en tynd stribe hav.",
+      "text_markdown": "En verden af enorm rigdom og knugende fattigdom, adskilt af en tynd stribe hav.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "En verden af enorm rigdom og knugende fattigdom, adskilt af en tynd stribe hav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-054",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "text": "En verden hvor imperier konkurrerede, og havets lov tilhørte den, der var stærk nok til at håndhæve den.",
+      "text_markdown": "En verden hvor imperier konkurrerede, og havets lov tilhørte den, der var stærk nok til at håndhæve den.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "En verden hvor imperier konkurrerede, og havets lov tilhørte den, der var stærk nok til at håndhæve den.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-055",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "text": "De europæiske magter så Kina som et marked, der skulle åbnes.",
+      "text_markdown": "De europæiske magter så Kina som et marked, der skulle åbnes.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "De europæiske magter så Kina som et marked, der skulle åbnes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-056",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "text": "Qing-regeringen så europæerne som barbarer, der skulle styres.",
+      "text_markdown": "Qing-regeringen så europæerne som barbarer, der skulle styres.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Qing-regeringen så europæerne som barbarer, der skulle styres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-057",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "text": "Og piraterne i Det Sydkinesiske Hav så en mulighed i kaosset imellem dem.",
+      "text_markdown": "Og piraterne i Det Sydkinesiske Hav så en mulighed i kaosset imellem dem.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Og piraterne i Det Sydkinesiske Hav så en mulighed i kaosset imellem dem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-058",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "text": "I 1790 talte piratflåderne i Det Sydkinesiske Hav hundredvis af skibe.",
+      "text_markdown": "I 1790 talte piratflåderne i Det Sydkinesiske Hav hundredvis af skibe.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "I sytten halvfems, talte piratflåderne i Det Sydkinesiske Hav hundredvis af skibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-059",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "text": "De var ikke uorganiserede kriminelle.",
+      "text_markdown": "De var ikke uorganiserede kriminelle.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "De var ikke uorganiserede kriminelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-060",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "text": "Mange opererede som disciplinerede flådestyrker med hierarkier og adfærdskodekser.",
+      "text_markdown": "Mange opererede som disciplinerede flådestyrker med hierarkier og adfærdskodekser.",
+      "title": "Det Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Mange opererede som disciplinerede flådestyrker med hierarkier og adfærdskodekser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-061",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "text": "Den største af disse styrker var ved at blive historiens mægtigste piratflåde.",
+      "text_markdown": "Den største af disse styrker var ved at blive historiens mægtigste piratflåde.",
+      "title": "Sydkinesiske Havs Verden",
+      "tts": {
+        "text": "Den største af disse styrker var ved at blive historiens mægtigste piratflåde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 2,
+      "id": "ch02-062",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Oprindelse",
+      "text_markdown": "Oprindelse",
+      "title": "Oprindelse"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-063",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "text": "Kvinden, der skulle blive Zheng Yi Sao, blev født omkring 1775.",
+      "text_markdown": "Kvinden, der skulle blive Zheng Yi Sao, blev født omkring 1775.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Kvinden, der skulle blive Zheng Yi Sao, blev født omkring sytten hundrede femoghalvfjerds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-064",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "text": "Hun omtales oftest som Shi Xianggu i kinesiske kilder.",
+      "text_markdown": "Hun omtales oftest som Shi Xianggu i kinesiske kilder.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun omtales oftest som Shi Xianggu i kinesiske kilder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "text": "Navnet Zheng Yi Sao betyder simpelthen Zheng Yis hustru.",
+      "text_markdown": "Navnet Zheng Yi Sao betyder simpelthen Zheng Yis hustru.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Navnet Zheng Yi Sao betyder simpelthen Zheng Yis hustru.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "text": "Hun blev født ind i Tanka-bådboerfællesskabet i Guangdong-provinsen.",
+      "text_markdown": "Hun blev født ind i Tanka-bådboerfællesskabet i Guangdong-provinsen.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun blev født ind i Tanka-bådboerfællesskabet i Guangdong-provinsen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-067",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "text": "Hendes familie var fattig, ligesom næsten alle Tanka-familier.",
+      "text_markdown": "Hendes familie var fattig, ligesom næsten alle Tanka-familier.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hendes familie var fattig, ligesom næsten alle Tanka-familier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "text": "Hun tilbragte sine tidlige år på vandet og lærte kystens rytmer.",
+      "text_markdown": "Hun tilbragte sine tidlige år på vandet og lærte kystens rytmer.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun tilbragte sine tidlige år på vandet og lærte kystens rytmer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "text": "Som ung kvinde arbejdede hun på et flydende bordel i Canton-havnen.",
+      "text_markdown": "Som ung kvinde arbejdede hun på et flydende bordel i Canton-havnen.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Som ung kvinde arbejdede hun på et flydende bordel i Canton-havnen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-070",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "text": "De betjente sømænd, købmænd og fiskere, der passerede gennem den travle havn.",
+      "text_markdown": "De betjente sømænd, købmænd og fiskere, der passerede gennem den travle havn.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "De betjente sømænd, købmænd og fiskere, der passerede gennem den travle havn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "text": "Det var et vanskeligt og farligt arbejde, men det gav hende en viden om verden, som få kvinder af hendes klasse havde adgang til.",
+      "text_markdown": "Det var et vanskeligt og farligt arbejde, men det gav hende en viden om verden, som få kvinder af hendes klasse havde adgang til.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Det var et vanskeligt og farligt arbejde, men det gav hende en viden om verden, som få kvinder af hendes klasse havde adgang til.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-072",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "text": "Hun lærte at læse mennesker hurtigt og præcist.",
+      "text_markdown": "Hun lærte at læse mennesker hurtigt og præcist.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun lærte at læse mennesker hurtigt og præcist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "text": "Hun lærte handelens og forhandlingens sprog.",
+      "text_markdown": "Hun lærte handelens og forhandlingens sprog.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun lærte handelens og forhandlingens sprog.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "text": "Disse færdigheder ville vise sig at være langt mere værdifulde, end nogen kunne have forudsagt.",
+      "text_markdown": "Disse færdigheder ville vise sig at være langt mere værdifulde, end nogen kunne have forudsagt.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Disse færdigheder ville vise sig at være langt mere værdifulde, end nogen kunne have forudsagt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-075",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "text": "I 1798 erobrede en piratkaptajn ved navn Zheng Yi det fartøj, hun var om bord på.",
+      "text_markdown": "I 1798 erobrede en piratkaptajn ved navn Zheng Yi det fartøj, hun var om bord på.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "I sytten hundrede otteoghalvfems erobrede en piratkaptajn ved navn Zheng Yi det fartøj, hun var om bord på.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-076",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "text": "Han kom fra en lang række pirater, der strakte sig generationer tilbage.",
+      "text_markdown": "Han kom fra en lang række pirater, der strakte sig generationer tilbage.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Han kom fra en lang række pirater, der strakte sig generationer tilbage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-077",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "text": "Hans familie havde støttet resterne af Ming-dynastiet mod Qing-erobrerne.",
+      "text_markdown": "Hans familie havde støttet resterne af Ming-dynastiet mod Qing-erobrerne.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hans familie havde støttet resterne af Ming-dynastiet mod Qing-erobrerne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-078",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "text": "Zheng Yi friede til den unge kvinde.",
+      "text_markdown": "Zheng Yi friede til den unge kvinde.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Zheng Yi friede til den unge kvinde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-079",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "text": "Ifølge de fleste beretninger accepterede hun ikke bare.",
+      "text_markdown": "Ifølge de fleste beretninger accepterede hun ikke bare.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Ifølge de fleste beretninger accepterede hun ikke bare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-080",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "text": "Hun forhandlede vilkårene for deres partnerskab, før hun indvilligede i ægteskabet.",
+      "text_markdown": "Hun forhandlede vilkårene for deres partnerskab, før hun indvilligede i ægteskabet.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun forhandlede vilkårene for deres partnerskab, før hun indvilligede i ægteskabet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-081",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "text": "Hun krævede en lige andel af hans flåde og en lige stemme i kommando-beslutninger.",
+      "text_markdown": "Hun krævede en lige andel af hans flåde og en lige stemme i kommando-beslutninger.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun krævede en lige andel af hans flåde og en lige stemme i kommando-beslutninger.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-082",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "text": "Dette var ekstraordinært for tiden.",
+      "text_markdown": "Dette var ekstraordinært for tiden.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Dette var ekstraordinært for tiden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-083",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "text": "Kvinder i det sene Qing-Kina havde meget få juridiske rettigheder.",
+      "text_markdown": "Kvinder i det sene Qing-Kina havde meget få juridiske rettigheder.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Kvinder i det sene Qing-Kina havde meget få juridiske rettigheder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-084",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "text": "En hustru forventedes at adlyde sin mand uden spørgsmål.",
+      "text_markdown": "En hustru forventedes at adlyde sin mand uden spørgsmål.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "En hustru forventedes at adlyde sin mand uden spørgsmål.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-085",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "text": "Men dette var piratverdenen, og piratverdenen lavede sine egne regler.",
+      "text_markdown": "Men dette var piratverdenen, og piratverdenen lavede sine egne regler.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Men dette var piratverdenen, og piratverdenen lavede sine egne regler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-086",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "text": "Zheng Yi accepterede hendes betingelser.",
+      "text_markdown": "Zheng Yi accepterede hendes betingelser.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Zheng Yi accepterede hendes betingelser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-087",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "text": "Historikere mener, at han anerkendte hendes intelligens og hendes potentiale som leder.",
+      "text_markdown": "Historikere mener, at han anerkendte hendes intelligens og hendes potentiale som leder.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Historikere mener, at han anerkendte hendes intelligens og hendes potentiale som leder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-088",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "text": "Deres ægteskab var en strategisk alliance lige så meget som et personligt bånd.",
+      "text_markdown": "Deres ægteskab var en strategisk alliance lige så meget som et personligt bånd.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Deres ægteskab var en strategisk alliance lige så meget som et personligt bånd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-089",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "text": "Sammen ville de bygge noget uden fortilfælde.",
+      "text_markdown": "Sammen ville de bygge noget uden fortilfælde.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Sammen ville de bygge noget uden fortilfælde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-090",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "text": "Zheng Yi havde en dristig vision.",
+      "text_markdown": "Zheng Yi havde en dristig vision.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Zheng Yi havde en dristig vision.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-091",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "text": "Han ønskede at forene de spredte piratflåder i Det Sydkinesiske Hav til en enkelt konføderation.",
+      "text_markdown": "Han ønskede at forene de spredte piratflåder i Det Sydkinesiske Hav til en enkelt konføderation.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Han ønskede at forene de spredte piratflåder i Det Sydkinesiske Hav til en enkelt konføderation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-092",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "text": "Individuelle piratkaptajner havde altid konkurreret med hinanden.",
+      "text_markdown": "Individuelle piratkaptajner havde altid konkurreret med hinanden.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Individuelle piratkaptajner havde altid konkurreret med hinanden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-093",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "text": "Zheng Yi mente, at de ville være langt mægtigere, hvis de samarbejdede.",
+      "text_markdown": "Zheng Yi mente, at de ville være langt mægtigere, hvis de samarbejdede.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Zheng Yi mente, at de ville være langt mægtigere, hvis de samarbejdede.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-094",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "text": "Mellem 1798 og 1805 arbejdede Zheng Yi utrætteligt på at skabe alliancer.",
+      "text_markdown": "Mellem 1798 og 1805 arbejdede Zheng Yi utrætteligt på at skabe alliancer.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Mellem sytten hundrede otteoghalvfems og atten hundrede og fem arbejdede Zheng Yi utrætteligt på at skabe alliancer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-095",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "text": "Han overtalte rivaliserende kaptajner til at tilslutte sig hans konføderation gennem en blanding af diplomati og intimidering.",
+      "text_markdown": "Han overtalte rivaliserende kaptajner til at tilslutte sig hans konføderation gennem en blanding af diplomati og intimidering.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Han overtalte rivaliserende kaptajner til at tilslutte sig hans konføderation gennem en blanding af diplomati og intimidering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-096",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "text": "Hans hustru var dybt involveret i disse forhandlinger.",
+      "text_markdown": "Hans hustru var dybt involveret i disse forhandlinger.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hans hustru var dybt involveret i disse forhandlinger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-097",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "text": "Hun hjalp med at udforme de aftaler, der bandt flåden sammen.",
+      "text_markdown": "Hun hjalp med at udforme de aftaler, der bandt flåden sammen.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun hjalp med at udforme de aftaler, der bandt flåden sammen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-098",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "text": "I 1805 var konføderationen fuldendt.",
+      "text_markdown": "I 1805 var konføderationen fuldendt.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "I atten hundrede og fem var konføderationen fuldendt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-099",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "text": "Den bestod af seks flåder, hver identificeret ved farven på sit flag.",
+      "text_markdown": "Den bestod af seks flåder, hver identificeret ved farven på sit flag.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Den bestod af seks flåder, hver identificeret ved farven på sit flag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-100",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "text": "Den Røde Flag Flåde var den største og mægtigste.",
+      "text_markdown": "Den Røde Flag Flåde var den største og mægtigste.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Den Røde Flag Flåde var den største og mægtigste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-101",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "text": "Zheng Yi kommanderede personligt Den Røde Flag Flåde.",
+      "text_markdown": "Zheng Yi kommanderede personligt Den Røde Flag Flåde.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Zheng Yi kommanderede personligt Den Røde Flag Flåde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-102",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "text": "Konføderationen kontrollerede hundredvis af skibe og titusinder af pirater.",
+      "text_markdown": "Konføderationen kontrollerede hundredvis af skibe og titusinder af pirater.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Konføderationen kontrollerede hundredvis af skibe og titusinder af pirater.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-103",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "text": "Den dominerede hele Det Sydkinesiske Hav.",
+      "text_markdown": "Den dominerede hele Det Sydkinesiske Hav.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Den dominerede hele Det Sydkinesiske Hav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-104",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "text": "Intet handelsskib kunne passere gennem disse farvande uden at betale tribut eller risikere ødelæggelse.",
+      "text_markdown": "Intet handelsskib kunne passere gennem disse farvande uden at betale tribut eller risikere ødelæggelse.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Intet handelsskib kunne passere gennem disse farvande uden at betale tribut eller risikere ødelæggelse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-105",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "text": "Så, i november 1807, døde Zheng Yi.",
+      "text_markdown": "Så, i november 1807, døde Zheng Yi.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Så, i november atten hundrede og syv, døde Zheng Yi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-106",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "text": "Omstændighederne omkring hans død diskuteres af historikere.",
+      "text_markdown": "Omstændighederne omkring hans død diskuteres af historikere.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Omstændighederne omkring hans død diskuteres af historikere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-107",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "text": "Nogle beretninger siger, at han druknede i en storm.",
+      "text_markdown": "Nogle beretninger siger, at han druknede i en storm.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Nogle beretninger siger, at han druknede i en storm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-108",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "text": "Andre antyder, at han blev dræbt i kamp ud for Vietnams kyst.",
+      "text_markdown": "Andre antyder, at han blev dræbt i kamp ud for Vietnams kyst.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Andre antyder, at han blev dræbt i kamp ud for Vietnams kyst.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-109",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "text": "Hans død skabte en krise for hele konføderationen.",
+      "text_markdown": "Hans død skabte en krise for hele konføderationen.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hans død skabte en krise for hele konføderationen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-110",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "text": "Den alliance, han havde bygget, blev holdt sammen af hans personlige autoritet.",
+      "text_markdown": "Den alliance, han havde bygget, blev holdt sammen af hans personlige autoritet.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Den alliance, han havde bygget, blev holdt sammen af hans personlige autoritet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-111",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "text": "Uden en stærk leder ville den splittes tilbage til konkurrerende fraktioner.",
+      "text_markdown": "Uden en stærk leder ville den splittes tilbage til konkurrerende fraktioner.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Uden en stærk leder ville den splittes tilbage til konkurrerende fraktioner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-112",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "text": "Alt, hvad de havde bygget, var i fare.",
+      "text_markdown": "Alt, hvad de havde bygget, var i fare.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Alt, hvad de havde bygget, var i fare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-113",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "text": "Kaptajnerne fra de andre flåder forventede, at konføderationen ville kollapse.",
+      "text_markdown": "Kaptajnerne fra de andre flåder forventede, at konføderationen ville kollapse.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Kaptajnerne fra de andre flåder forventede, at konføderationen ville kollapse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-114",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "text": "De begyndte at manøvrere for position og forberedte sig på at erobre territorium.",
+      "text_markdown": "De begyndte at manøvrere for position og forberedte sig på at erobre territorium.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "De begyndte at manøvrere for position og forberedte sig på at erobre territorium.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-115",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "text": "Men de havde ikke taget højde for Zheng Yis enkes ambition og evner.",
+      "text_markdown": "Men de havde ikke taget højde for Zheng Yis enkes ambition og evner.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Men de havde ikke taget højde for Zheng Yis enkes ambition og evner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-116",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "text": "Hun havde ingen intention om at opgive det, hun havde hjulpet med at bygge.",
+      "text_markdown": "Hun havde ingen intention om at opgive det, hun havde hjulpet med at bygge.",
+      "title": "Oprindelse",
+      "tts": {
+        "text": "Hun havde ingen intention om at opgive det, hun havde hjulpet med at bygge.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 3,
+      "id": "ch03-117",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Vejen til Magten",
+      "text_markdown": "Vejen til Magten",
+      "title": "Vejen til Magten"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-118",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "text": "I dagene efter sin mands død handlede Zheng Yi Sao med beregnet hastighed.",
+      "text_markdown": "I dagene efter sin mands død handlede Zheng Yi Sao med beregnet hastighed.",
+      "title": "Vejen til Magten",
+      "tts": {
+        "text": "I dagene efter sin mands død handlede Zheng Yi Sao med beregnet hastighed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-119",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "text": "Hendes første handling var at sikre loyaliteten hos Zhang Bao, hendes mands mest betroede løjtnant.",
+      "text_markdown": "Hendes første handling var at sikre loyaliteten hos Zhang Bao, hendes mands mest betroede løjtnant.",
+      "title": "Vejen til Magten",
+      "tts": {
+        "text": "Hendes første handling var at sikre loyaliteten hos Zhang Bao, hendes mands mest betroede løjtnant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-120",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "text": "Zhang Bao var en fiskersøn, der var blevet fanget af pirater som dreng.",
+      "text_markdown": "Zhang Bao var en fiskersøn, der var blevet fanget af pirater som dreng.",
+      "title": "Vejen til Magten",
+      "tts": {
+        "text": "Zhang Bao var en fiskersøn, der var blevet fanget af pirater som dreng.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-121",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "text": "Zheng Yi havde adopteret ham, trænet ham og opdraget ham til at blive en militærkommandant.",
+      "text_markdown": "Zheng Yi havde adopteret ham, trænet ham og opdraget ham til at blive en militærkommandant.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi havde adopteret ham, trænet ham og opdraget ham til at blive en militærkommandant.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-122",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao dannede en alliance med Zhang Bao, der var både personlig og strategisk.",
+      "text_markdown": "Zheng Yi Sao dannede en alliance med Zhang Bao, der var både personlig og strategisk.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi Sao dannede en alliance med Zhang Bao, der var både personlig og strategisk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-123",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "text": "De to skulle til sidst gifte sig.",
+      "text_markdown": "De to skulle til sidst gifte sig.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "De to skulle til sidst gifte sig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-124",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "text": "Men i de første kritiske uger handlede partnerskabet om overlevelse.",
+      "text_markdown": "Men i de første kritiske uger handlede partnerskabet om overlevelse.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Men i de første kritiske uger handlede partnerskabet om overlevelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-125",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "text": "Sammen præsenterede de en samlet front over for de andre flådekommandanter.",
+      "text_markdown": "Sammen præsenterede de en samlet front over for de andre flådekommandanter.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Sammen præsenterede de en samlet front over for de andre flådekommandanter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-126",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "text": "Hun indkaldte et råd af de seks flådekaptajner.",
+      "text_markdown": "Hun indkaldte et råd af de seks flådekaptajner.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hun indkaldte et råd af de seks flådekaptajner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-127",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "text": "På det møde fremlagde hun sin sag for ledelsen af konføderationen.",
+      "text_markdown": "På det møde fremlagde hun sin sag for ledelsen af konføderationen.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "På det møde fremlagde hun sin sag for ledelsen af konføderationen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-128",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "text": "Hun argumenterede for, at hun havde været sin mands ligeværdige partner i opbygningen af denne alliance.",
+      "text_markdown": "Hun argumenterede for, at hun havde været sin mands ligeværdige partner i opbygningen af denne alliance.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hun argumenterede for, at hun havde været sin mands ligeværdige partner i opbygningen af denne alliance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-129",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "text": "Én efter én indvilligede kaptajnerne i at følge hendes kommando.",
+      "text_markdown": "Én efter én indvilligede kaptajnerne i at følge hendes kommando.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Én efter én indvilligede kaptajnerne i at følge hendes kommando.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-130",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "text": "Hendes første udfordring var at indføre disciplin i en styrke på 70.000 pirater.",
+      "text_markdown": "Hendes første udfordring var at indføre disciplin i en styrke på 70.000 pirater.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hendes første udfordring var at indføre disciplin i en styrke på halvfjerds tusind pirater.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-131",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "text": "Pirater var af natur uafhængige og mistroiske over for autoritet.",
+      "text_markdown": "Pirater var af natur uafhængige og mistroiske over for autoritet.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Pirater var af natur uafhængige og mistroiske over for autoritet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-132",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao forstod, at en flåde uden love ville rive sig selv i stykker.",
+      "text_markdown": "Zheng Yi Sao forstod, at en flåde uden love ville rive sig selv i stykker.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi Sao forstod, at en flåde uden love ville rive sig selv i stykker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-133",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "text": "Hun skabte en af de mest bemærkelsesværdige lovsamlinger i pirathistorien.",
+      "text_markdown": "Hun skabte en af de mest bemærkelsesværdige lovsamlinger i pirathistorien.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hun skabte en af de mest bemærkelsesværdige lovsamlinger i pirathistorien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-134",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "text": "Koden var streng og specifik.",
+      "text_markdown": "Koden var streng og specifik.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Koden var streng og specifik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-135",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "text": "Enhver pirat, der overtrådte en direkte ordre fra en overordnet, ville blive halshugget.",
+      "text_markdown": "Enhver pirat, der overtrådte en direkte ordre fra en overordnet, ville blive halshugget.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Enhver pirat, der overtrådte en direkte ordre fra en overordnet, ville blive halshugget.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-136",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "text": "Desertion blev straffet med døden.",
+      "text_markdown": "Desertion blev straffet med døden.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Desertion blev straffet med døden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-137",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "text": "Tyveri fra den fælles skattekiste blev straffet med døden.",
+      "text_markdown": "Tyveri fra den fælles skattekiste blev straffet med døden.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Tyveri fra den fælles skattekiste blev straffet med døden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-138",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "text": "Koden beskyttede også tilfangetagne mennesker på måder, der var usædvanlige for den tid.",
+      "text_markdown": "Koden beskyttede også tilfangetagne mennesker på måder, der var usædvanlige for den tid.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Koden beskyttede også tilfangetagne mennesker på måder, der var usædvanlige for den tid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-139",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "text": "Pirater, der overfaldt fanger, stod over for streng straf.",
+      "text_markdown": "Pirater, der overfaldt fanger, stod over for streng straf.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Pirater, der overfaldt fanger, stod over for streng straf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-140",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "text": "Hvis en pirat tog en fange som hustru, var han forpligtet til at være hende tro.",
+      "text_markdown": "Hvis en pirat tog en fange som hustru, var han forpligtet til at være hende tro.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hvis en pirat tog en fange som hustru, var han forpligtet til at være hende tro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-141",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "text": "Disse regler var ikke forslag; de blev håndhævet med jernhård konsekvens.",
+      "text_markdown": "Disse regler var ikke forslag; de blev håndhævet med jernhård konsekvens.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Disse regler var ikke forslag; de blev håndhævet med jernhård konsekvens.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-142",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "text": "Alt bytte blev registreret og fordelt efter et fast system.",
+      "text_markdown": "Alt bytte blev registreret og fordelt efter et fast system.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Alt bytte blev registreret og fordelt efter et fast system.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-143",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "text": "Piraten, der erobrede varerne, modtog 20 procent.",
+      "text_markdown": "Piraten, der erobrede varerne, modtog 20 procent.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Piraten, der erobrede varerne, modtog tyve procent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-144",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "text": "De resterende 80 procent gik ind i den fælles fond.",
+      "text_markdown": "De resterende 80 procent gik ind i den fælles fond.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "De resterende firs procent gik ind i den fælles fond.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-145",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "text": "Dette system forhindrede de interne stridigheder, der ødelagde de fleste piratorganisationer.",
+      "text_markdown": "Dette system forhindrede de interne stridigheder, der ødelagde de fleste piratorganisationer.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Dette system forhindrede de interne stridigheder, der ødelagde de fleste piratorganisationer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-146",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao opbyggede også et sofistikeret skattesystem.",
+      "text_markdown": "Zheng Yi Sao opbyggede også et sofistikeret skattesystem.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi Sao opbyggede også et sofistikeret skattesystem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-147",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "text": "Handelsskibe kunne købe sikker passage ved at betale et fast gebyr.",
+      "text_markdown": "Handelsskibe kunne købe sikker passage ved at betale et fast gebyr.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Handelsskibe kunne købe sikker passage ved at betale et fast gebyr.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-148",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "text": "Fiskerlandsbyer langs kysten betalte tribut i bytte for beskyttelse.",
+      "text_markdown": "Fiskerlandsbyer langs kysten betalte tribut i bytte for beskyttelse.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Fiskerlandsbyer langs kysten betalte tribut i bytte for beskyttelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-149",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "text": "Systemet fungerede som en parallel regering, der indsamlede indtægter i bytte for sikkerhed.",
+      "text_markdown": "Systemet fungerede som en parallel regering, der indsamlede indtægter i bytte for sikkerhed.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Systemet fungerede som en parallel regering, der indsamlede indtægter i bytte for sikkerhed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-150",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "text": "Qing-regeringen anerkendte truslen og sendte sin flåde for at knuse piraterne.",
+      "text_markdown": "Qing-regeringen anerkendte truslen og sendte sin flåde for at knuse piraterne.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Qing-regeringen anerkendte truslen og sendte sin flåde for at knuse piraterne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-151",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "text": "I 1808 sejlede en massiv kejserlig flåde ind i Det Sydkinesiske Hav.",
+      "text_markdown": "I 1808 sejlede en massiv kejserlig flåde ind i Det Sydkinesiske Hav.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "I atten hundrede og otte sejlede en massiv kejserlig flåde ind i Det Sydkinesiske Hav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-152",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "text": "Slaget var en katastrofe for regeringen.",
+      "text_markdown": "Slaget var en katastrofe for regeringen.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Slaget var en katastrofe for regeringen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-153",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "text": "Zheng Yi Saos styrker sænkede eller erobrede dusinvis af kejserlige krigsskibe.",
+      "text_markdown": "Zheng Yi Saos styrker sænkede eller erobrede dusinvis af kejserlige krigsskibe.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi Saos styrker sænkede eller erobrede dusinvis af kejserlige krigsskibe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-154",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "text": "Den besejrede admiral var så ydmyget, at han tog sit eget liv.",
+      "text_markdown": "Den besejrede admiral var så ydmyget, at han tog sit eget liv.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Den besejrede admiral var så ydmyget, at han tog sit eget liv.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-155",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "text": "Det kejserlige hof var lamslået over tabets omfang.",
+      "text_markdown": "Det kejserlige hof var lamslået over tabets omfang.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Det kejserlige hof var lamslået over tabets omfang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-156",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "text": "De havde sendt deres bedste skibe og deres mest erfarne kommandant, og de havde tabt.",
+      "text_markdown": "De havde sendt deres bedste skibe og deres mest erfarne kommandant, og de havde tabt.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "De havde sendt deres bedste skibe og deres mest erfarne kommandant, og de havde tabt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-157",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "text": "Piraterne var nu stærkere end regeringens egen flåde.",
+      "text_markdown": "Piraterne var nu stærkere end regeringens egen flåde.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Piraterne var nu stærkere end regeringens egen flåde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-158",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao udnyttede sin fordel ubarmhjertigt.",
+      "text_markdown": "Zheng Yi Sao udnyttede sin fordel ubarmhjertigt.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi Sao udnyttede sin fordel ubarmhjertigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-159",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "text": "Hendes flåde udvidede sit territorium langs hele Guangdongs kyst.",
+      "text_markdown": "Hendes flåde udvidede sit territorium langs hele Guangdongs kyst.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hendes flåde udvidede sit territorium langs hele Guangdongs kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-160",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "text": "Hun etablerede baser på øer og i skjulte flodmundinger.",
+      "text_markdown": "Hun etablerede baser på øer og i skjulte flodmundinger.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hun etablerede baser på øer og i skjulte flodmundinger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-161",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "text": "Hendes efterretningsnetværk strakte sig fra Canton til Vietnam.",
+      "text_markdown": "Hendes efterretningsnetværk strakte sig fra Canton til Vietnam.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hendes efterretningsnetværk strakte sig fra Canton til Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-162",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "text": "Qing-regeringen prøvede en ny strategi.",
+      "text_markdown": "Qing-regeringen prøvede en ny strategi.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Qing-regeringen prøvede en ny strategi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-163",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "text": "De hyrede portugisiske krigsskibe fra kolonien Macao til at bekæmpe piraterne.",
+      "text_markdown": "De hyrede portugisiske krigsskibe fra kolonien Macao til at bekæmpe piraterne.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "De hyrede portugisiske krigsskibe fra kolonien Macao til at bekæmpe piraterne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-164",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "text": "Portugiserne havde moderne europæiske kanoner og trænede flådeofficerer.",
+      "text_markdown": "Portugiserne havde moderne europæiske kanoner og trænede flådeofficerer.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Portugiserne havde moderne europæiske kanoner og trænede flådeofficerer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-165",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "text": "I en periode lagde denne alliance et reelt pres på piratflåden.",
+      "text_markdown": "I en periode lagde denne alliance et reelt pres på piratflåden.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "I en periode lagde denne alliance et reelt pres på piratflåden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-166",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "text": "Men Zheng Yi Sao tilpassede sig hurtigt.",
+      "text_markdown": "Men Zheng Yi Sao tilpassede sig hurtigt.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Men Zheng Yi Sao tilpassede sig hurtigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-167",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "text": "Hun undgik direkte konfrontation med de portugisiske krigsskibe.",
+      "text_markdown": "Hun undgik direkte konfrontation med de portugisiske krigsskibe.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hun undgik direkte konfrontation med de portugisiske krigsskibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-168",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "text": "I stedet målrettede hun deres forsyningslinjer og angreb deres handelsallierede.",
+      "text_markdown": "I stedet målrettede hun deres forsyningslinjer og angreb deres handelsallierede.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "I stedet målrettede hun deres forsyningslinjer og angreb deres handelsallierede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-169",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "text": "Hun forstod, at portugiserne kun ville kæmpe, så længe de blev betalt.",
+      "text_markdown": "Hun forstod, at portugiserne kun ville kæmpe, så længe de blev betalt.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Hun forstod, at portugiserne kun ville kæmpe, så længe de blev betalt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-170",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "text": "I 1809 havde Qing- og den portugisiske alliance ikke formået at besejre hende.",
+      "text_markdown": "I 1809 havde Qing- og den portugisiske alliance ikke formået at besejre hende.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "I atten hundrede og ni havde Qing- og den portugisiske alliance ikke formået at besejre hende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-171",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "text": "Regeringen havde brugt enorme summer og mistet dusinvis af skibe.",
+      "text_markdown": "Regeringen havde brugt enorme summer og mistet dusinvis af skibe.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Regeringen havde brugt enorme summer og mistet dusinvis af skibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-172",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "text": "Piraterne kontrollerede kysten fastere end nogensinde.",
+      "text_markdown": "Piraterne kontrollerede kysten fastere end nogensinde.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Piraterne kontrollerede kysten fastere end nogensinde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-173",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "text": "Zheng Yi Saos konføderation var på højdepunktet af sin magt.",
+      "text_markdown": "Zheng Yi Saos konføderation var på højdepunktet af sin magt.",
+      "title": "Opstigen til Magten",
+      "tts": {
+        "text": "Zheng Yi Saos konføderation var på højdepunktet af sin magt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 4,
+      "id": "ch04-174",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "På Højdepunktet",
+      "text_markdown": "På Højdepunktet",
+      "title": "På Højdepunktet"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-175",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "text": "På sit højdepunkt rådede piratkonføderationen over cirka 1.800 fartøjer.",
+      "text_markdown": "På sit højdepunkt rådede piratkonføderationen over cirka 1.800 fartøjer.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "På sit højdepunkt rådede piratkonføderationen over cirka atten hundrede fartøjer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-176",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "text": "Disse spændte fra små, hurtige plyndringsbåde til massive krigsjunkere med dusinvis af kanoner.",
+      "text_markdown": "Disse spændte fra små, hurtige plyndringsbåde til massive krigsjunkere med dusinvis af kanoner.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Disse spændte fra små, hurtige plyndringsbåde til massive krigsjunkere med dusinvis af kanoner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-177",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "text": "Den samlede kampstyrke talte mellem 70.000 og 80.000 mennesker.",
+      "text_markdown": "Den samlede kampstyrke talte mellem 70.000 og 80.000 mennesker.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Den samlede kampstyrke talte mellem halvfjerds tusind og firs tusind mennesker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-178",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "text": "Dette var større end flåderne i de fleste europæiske nationer på det tidspunkt.",
+      "text_markdown": "Dette var større end flåderne i de fleste europæiske nationer på det tidspunkt.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Dette var større end flåderne i de fleste europæiske nationer på det tidspunkt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-179",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "text": "Den Røde Flag Flåde alene havde mellem 600 og 800 skibe.",
+      "text_markdown": "Den Røde Flag Flåde alene havde mellem 600 og 800 skibe.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Den Røde Flag Flåde alene havde mellem seks hundrede og otte hundrede skibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-180",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "text": "Det var den største enkeltstående flåde i konføderationen.",
+      "text_markdown": "Det var den største enkeltstående flåde i konføderationen.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Det var den største enkeltstående flåde i konføderationen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-181",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao kommanderede den direkte, med Zhang Bao som sin øverste militærofficer.",
+      "text_markdown": "Zheng Yi Sao kommanderede den direkte, med Zhang Bao som sin øverste militærofficer.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Zheng Yi Sao kommanderede den direkte, med Zhang Bao som sin øverste militærofficer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-182",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "text": "De andre fem flåder opererede semi-uafhængigt, men fulgte hendes strategiske retning.",
+      "text_markdown": "De andre fem flåder opererede semi-uafhængigt, men fulgte hendes strategiske retning.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "De andre fem flåder opererede semi-uafhængigt, men fulgte hendes strategiske retning.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-183",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "text": "Konføderationens territorium strakte sig langs mere end 1.000 miles kystlinje.",
+      "text_markdown": "Konføderationens territorium strakte sig langs mere end 1.000 miles kystlinje.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Konføderationens territorium strakte sig langs mere end et tusind miles kystlinje.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-184",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "text": "Fra Vietnams grænse i syd til Fujian-kysten i nord var intet skib sikkert uden piratens tilladelse.",
+      "text_markdown": "Fra Vietnams grænse i syd til Fujian-kysten i nord var intet skib sikkert uden piratens tilladelse.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Fra Vietnams grænse i syd til Fujian-kysten i nord var intet skib sikkert uden piratens tilladelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-185",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "text": "Selv det mægtige Britiske Ostindiske Kompagni betalte tribut for at undgå at miste sin last.",
+      "text_markdown": "Selv det mægtige Britiske Ostindiske Kompagni betalte tribut for at undgå at miste sin last.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Selv det mægtige Britiske Ostindiske Kompagni betalte tribut for at undgå at miste sin last.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-186",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "text": "Livet om bord på en piratjunker var hårdt, men organiseret.",
+      "text_markdown": "Livet om bord på en piratjunker var hårdt, men organiseret.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Livet om bord på en piratjunker var hårdt, men organiseret.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-187",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "text": "Hvert skib havde et klart hierarki, fra kaptajn ned til den nyeste rekrut.",
+      "text_markdown": "Hvert skib havde et klart hierarki, fra kaptajn ned til den nyeste rekrut.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hvert skib havde et klart hierarki, fra kaptajn ned til den nyeste rekrut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-188",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "text": "Måltider var fælles, og rationer blev fordelt ligeligt.",
+      "text_markdown": "Måltider var fælles, og rationer blev fordelt ligeligt.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Måltider var fælles, og rationer blev fordelt ligeligt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-189",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "text": "Hvert besætningsmedlem modtog en andel af byttet baseret på deres rang og rolle.",
+      "text_markdown": "Hvert besætningsmedlem modtog en andel af byttet baseret på deres rang og rolle.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hvert besætningsmedlem modtog en andel af byttet baseret på deres rang og rolle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-190",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "text": "Kvinder tjente på mange piratskibe i flåden.",
+      "text_markdown": "Kvinder tjente på mange piratskibe i flåden.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Kvinder tjente på mange piratskibe i flåden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-191",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "text": "Nogle kæmpede sammen med mændene under togter.",
+      "text_markdown": "Nogle kæmpede sammen med mændene under togter.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Nogle kæmpede sammen med mændene under togter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-192",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "text": "Andre styrede forsyninger, navigation og kommunikation mellem skibene.",
+      "text_markdown": "Andre styrede forsyninger, navigation og kommunikation mellem skibene.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Andre styrede forsyninger, navigation og kommunikation mellem skibene.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-193",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "text": "Piratverdenen tilbød kvinder mere frihed, end det almindelige Qing-samfund gjorde.",
+      "text_markdown": "Piratverdenen tilbød kvinder mere frihed, end det almindelige Qing-samfund gjorde.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Piratverdenen tilbød kvinder mere frihed, end det almindelige Qing-samfund gjorde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-194",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "text": "Flådens krigsjunker var formidable kampmaskiner.",
+      "text_markdown": "Flådens krigsjunker var formidable kampmaskiner.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Flådens krigsjunker var formidable kampmaskiner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-195",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "text": "En stor juker kunne bære 30 eller flere kanoner.",
+      "text_markdown": "En stor juker kunne bære 30 eller flere kanoner.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "En stor juker kunne bære tredive eller flere kanoner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-196",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "text": "Skibene var bygget med forstærkede skrog og høje sider for at afvise bordere.",
+      "text_markdown": "Skibene var bygget med forstærkede skrog og høje sider for at afvise bordere.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Skibene var bygget med forstærkede skrog og høje sider for at afvise bordere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-197",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "text": "Deres flade bunde gjorde det muligt for dem at navigere i lavvandede kystfarvande, hvor dybere europæiske fartøjer ikke kunne følge efter.",
+      "text_markdown": "Deres flade bunde gjorde det muligt for dem at navigere i lavvandede kystfarvande, hvor dybere europæiske fartøjer ikke kunne følge efter.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Deres flade bunde gjorde det muligt for dem at navigere i lavvandede kystfarvande, hvor dybere europæiske fartøjer ikke kunne følge efter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-198",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "text": "Zheng Yi Saos efterretningsnetværk var et af hendes største våben.",
+      "text_markdown": "Zheng Yi Saos efterretningsnetværk var et af hendes største våben.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Zheng Yi Saos efterretningsnetværk var et af hendes største våben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-199",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "text": "Hun havde spioner i Canton, i Macao og i enhver større havn langs kysten.",
+      "text_markdown": "Hun havde spioner i Canton, i Macao og i enhver større havn langs kysten.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hun havde spioner i Canton, i Macao og i enhver større havn langs kysten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-200",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "text": "Hun vidste, hvornår værdifulde fragtskibe afgik, og hvilke ruter de ville tage.",
+      "text_markdown": "Hun vidste, hvornår værdifulde fragtskibe afgik, og hvilke ruter de ville tage.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hun vidste, hvornår værdifulde fragtskibe afgik, og hvilke ruter de ville tage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-201",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "text": "Denne information gjorde det muligt for hende at slå til med præcision i stedet for at stole på tilfældigheder.",
+      "text_markdown": "Denne information gjorde det muligt for hende at slå til med præcision i stedet for at stole på tilfældigheder.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Denne information gjorde det muligt for hende at slå til med præcision i stedet for at stole på tilfældigheder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-202",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "text": "Det skattesystem, hun opbyggede, var bemærkelsesværdigt sofistikeret.",
+      "text_markdown": "Det skattesystem, hun opbyggede, var bemærkelsesværdigt sofistikeret.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Det skattesystem, hun opbyggede, var bemærkelsesværdigt sofistikeret.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-203",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "text": "Forskellige satser gjaldt for forskellige typer last.",
+      "text_markdown": "Forskellige satser gjaldt for forskellige typer last.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Forskellige satser gjaldt for forskellige typer last.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-204",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "text": "Silkehandlere betalte mere end rishandlere.",
+      "text_markdown": "Silkehandlere betalte mere end rishandlere.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Silkehandlere betalte mere end rishandlere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-205",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "text": "Saltsmuglere betalte en merpris, fordi deres last allerede var ulovlig.",
+      "text_markdown": "Saltsmuglere betalte en merpris, fordi deres last allerede var ulovlig.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Saltsmuglere betalte en merpris, fordi deres last allerede var ulovlig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-206",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "text": "Hele systemet blev dokumenteret og håndhævet med bureaukratisk præcision.",
+      "text_markdown": "Hele systemet blev dokumenteret og håndhævet med bureaukratisk præcision.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hele systemet blev dokumenteret og håndhævet med bureaukratisk præcision.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-207",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "text": "Kystlandsbyer havde et komplekst forhold til piraterne.",
+      "text_markdown": "Kystlandsbyer havde et komplekst forhold til piraterne.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Kystlandsbyer havde et komplekst forhold til piraterne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-208",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "text": "Mange var utilfredse med de tributbetalinger, som piraterne krævede.",
+      "text_markdown": "Mange var utilfredse med de tributbetalinger, som piraterne krævede.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Mange var utilfredse med de tributbetalinger, som piraterne krævede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-209",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "text": "Men piraterne ydede også beskyttelse mod andre røvere og banditter.",
+      "text_markdown": "Men piraterne ydede også beskyttelse mod andre røvere og banditter.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Men piraterne ydede også beskyttelse mod andre røvere og banditter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-210",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "text": "I nogle områder var piraterne mere pålidelige end den kejserlige regering.",
+      "text_markdown": "I nogle områder var piraterne mere pålidelige end den kejserlige regering.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "I nogle områder var piraterne mere pålidelige end den kejserlige regering.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-211",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "text": "Qing-hoffet var dybt pinligt berørt over sin manglende evne til at kontrollere havet.",
+      "text_markdown": "Qing-hoffet var dybt pinligt berørt over sin manglende evne til at kontrollere havet.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Qing-hoffet var dybt pinligt berørt over sin manglende evne til at kontrollere havet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-212",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "text": "Kejserlige embedsmænd skrev ængstelige rapporter om piratdronningens voksende magt.",
+      "text_markdown": "Kejserlige embedsmænd skrev ængstelige rapporter om piratdronningens voksende magt.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Kejserlige embedsmænd skrev ængstelige rapporter om piratdronningens voksende magt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-213",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "text": "De frygtede, at piraterne kunne alliere sig med oprørsgrupper på land.",
+      "text_markdown": "De frygtede, at piraterne kunne alliere sig med oprørsgrupper på land.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "De frygtede, at piraterne kunne alliere sig med oprørsgrupper på land.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-214",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "text": "Et kombineret oprør til lands og til søs kunne true selve dynastiet.",
+      "text_markdown": "Et kombineret oprør til lands og til søs kunne true selve dynastiet.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Et kombineret oprør til lands og til søs kunne true selve dynastiet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-215",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "text": "Briterne observerede situationen med stor interesse.",
+      "text_markdown": "Briterne observerede situationen med stor interesse.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Briterne observerede situationen med stor interesse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-216",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "text": "De udvidede deres opiumshandel langs den kinesiske kyst.",
+      "text_markdown": "De udvidede deres opiumshandel langs den kinesiske kyst.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "De udvidede deres opiumshandel langs den kinesiske kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-217",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "text": "Piraterne forstyrrede denne handel, hvilket kostede britiske købmænd enorme summer.",
+      "text_markdown": "Piraterne forstyrrede denne handel, hvilket kostede britiske købmænd enorme summer.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Piraterne forstyrrede denne handel, hvilket kostede britiske købmænd enorme summer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-218",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "text": "For de mennesker, der sejlede under Zheng Yi Saos flag, var livet bedre end alternativet.",
+      "text_markdown": "For de mennesker, der sejlede under Zheng Yi Saos flag, var livet bedre end alternativet.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "For de mennesker, der sejlede under Zheng Yi Saos flag, var livet bedre end alternativet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-219",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "text": "En pirat modtog regelmæssig mad, en andel af byttet og en følelse af tilhørsforhold.",
+      "text_markdown": "En pirat modtog regelmæssig mad, en andel af byttet og en følelse af tilhørsforhold.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "En pirat modtog regelmæssig mad, en andel af byttet og en følelse af tilhørsforhold.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-220",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "text": "En Tanka-fisker modtog fattigdom, foragt og intet håb om fremskridt.",
+      "text_markdown": "En Tanka-fisker modtog fattigdom, foragt og intet håb om fremskridt.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "En Tanka-fisker modtog fattigdom, foragt og intet håb om fremskridt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-221",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao styrede dette samfund med absolut autoritet.",
+      "text_markdown": "Zheng Yi Sao styrede dette samfund med absolut autoritet.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Zheng Yi Sao styrede dette samfund med absolut autoritet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-222",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "text": "Hun traf de strategiske beslutninger, der formede flådens fremtid.",
+      "text_markdown": "Hun traf de strategiske beslutninger, der formede flådens fremtid.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hun traf de strategiske beslutninger, der formede flådens fremtid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-223",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "text": "Hun afgjorde stridigheder mellem kaptajner og håndhævede lovkodeksen.",
+      "text_markdown": "Hun afgjorde stridigheder mellem kaptajner og håndhævede lovkodeksen.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Hun afgjorde stridigheder mellem kaptajner og håndhævede lovkodeksen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-224",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "text": "Ingen større handling blev foretaget uden hendes godkendelse.",
+      "text_markdown": "Ingen større handling blev foretaget uden hendes godkendelse.",
+      "title": "På Højdepunktet",
+      "tts": {
+        "text": "Ingen større handling blev foretaget uden hendes godkendelse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 5,
+      "id": "ch05-225",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Slutningen",
+      "text_markdown": "Slutningen",
+      "title": "Slutningen"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-226",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "text": "I 1810 begyndte der at vise sig sprækker i konføderationen.",
+      "text_markdown": "I 1810 begyndte der at vise sig sprækker i konføderationen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "I atten hundrede og ti begyndte der at vise sig sprækker i konføderationen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-227",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "text": "Den konstante krigsførelse havde tæret på skibe og besætninger.",
+      "text_markdown": "Den konstante krigsførelse havde tæret på skibe og besætninger.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Den konstante krigsførelse havde tæret på skibe og besætninger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-228",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "text": "Qing-regeringens blokader forstyrrede forsyningslinjerne langs kysten.",
+      "text_markdown": "Qing-regeringens blokader forstyrrede forsyningslinjerne langs kysten.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Qing-regeringens blokader forstyrrede forsyningslinjerne langs kysten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-229",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "text": "Og interne rivaliseringer mellem flådekaptajner var blevet mere intense.",
+      "text_markdown": "Og interne rivaliseringer mellem flådekaptajner var blevet mere intense.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Og interne rivaliseringer mellem flådekaptajner var blevet mere intense.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-230",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "text": "Den farligste rivalisering var mellem Zhang Bao og en kaptajn ved navn Guo Podai.",
+      "text_markdown": "Den farligste rivalisering var mellem Zhang Bao og en kaptajn ved navn Guo Podai.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Den farligste rivalisering var mellem Zhang Bao og en kaptajn ved navn Guo Podai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-231",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "text": "Guo Podai kommanderede Den Sorte Flag Flåde, den næststørste i konføderationen.",
+      "text_markdown": "Guo Podai kommanderede Den Sorte Flag Flåde, den næststørste i konføderationen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Guo Podai kommanderede Den Sorte Flag Flåde, den næststørste i konføderationen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-232",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "text": "Han brød sig ikke om at modtage ordrer fra Zhang Bao og, i forlængelse heraf, fra Zheng Yi Sao.",
+      "text_markdown": "Han brød sig ikke om at modtage ordrer fra Zhang Bao og, i forlængelse heraf, fra Zheng Yi Sao.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Han brød sig ikke om at modtage ordrer fra Zhang Bao og, i forlængelse heraf, fra Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-233",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "text": "Spændingen mellem dem truede med at splitte konføderationen i to.",
+      "text_markdown": "Spændingen mellem dem truede med at splitte konføderationen i to.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Spændingen mellem dem truede med at splitte konføderationen i to.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-234",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "text": "I begyndelsen af 1810 traf Guo Podai en skæbnesvanger beslutning.",
+      "text_markdown": "I begyndelsen af 1810 traf Guo Podai en skæbnesvanger beslutning.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "I begyndelsen af atten hundrede og ti traf Guo Podai en skæbnesvanger beslutning.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-235",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "text": "Han indledte hemmelige forhandlinger med Qing-regeringen.",
+      "text_markdown": "Han indledte hemmelige forhandlinger med Qing-regeringen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Han indledte hemmelige forhandlinger med Qing-regeringen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-236",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "text": "Regeringen tilbød ham fuld benådning, en militær udnævnelse og en kontant betaling.",
+      "text_markdown": "Regeringen tilbød ham fuld benådning, en militær udnævnelse og en kontant betaling.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Regeringen tilbød ham fuld benådning, en militær udnævnelse og en kontant betaling.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-237",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "text": "Til gengæld skulle han vende sig mod sine tidligere allierede.",
+      "text_markdown": "Til gengæld skulle han vende sig mod sine tidligere allierede.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Til gengæld skulle han vende sig mod sine tidligere allierede.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-238",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "text": "Guo Podai accepterede aftalen og overgav hele sin flåde til regeringen.",
+      "text_markdown": "Guo Podai accepterede aftalen og overgav hele sin flåde til regeringen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Guo Podai accepterede aftalen og overgav hele sin flåde til regeringen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-239",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "text": "Over natten mistede konføderationen hundredvis af skibe og tusindvis af krigere.",
+      "text_markdown": "Over natten mistede konføderationen hundredvis af skibe og tusindvis af krigere.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Over natten mistede konføderationen hundredvis af skibe og tusindvis af krigere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-240",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "text": "Værre endnu, Guo Podai tjente nu som regeringskommandant og brugte sin viden om pirattaktikker mod dem.",
+      "text_markdown": "Værre endnu, Guo Podai tjente nu som regeringskommandant og brugte sin viden om pirattaktikker mod dem.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Værre endnu, Guo Podai tjente nu som regeringskommandant og brugte sin viden om pirattaktikker mod dem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-241",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "text": "Magtbalancen havde ændret sig dramatisk.",
+      "text_markdown": "Magtbalancen havde ændret sig dramatisk.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Magtbalancen havde ændret sig dramatisk.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-242",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao vurderede den nye situation med sin karakteristiske klarhed.",
+      "text_markdown": "Zheng Yi Sao vurderede den nye situation med sin karakteristiske klarhed.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Zheng Yi Sao vurderede den nye situation med sin karakteristiske klarhed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-243",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "text": "Konføderationen var svækket, men ikke ødelagt.",
+      "text_markdown": "Konføderationen var svækket, men ikke ødelagt.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Konføderationen var svækket, men ikke ødelagt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-244",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "text": "Hun kommanderede stadig Den Røde Flag-flåde og flere allierede flåder.",
+      "text_markdown": "Hun kommanderede stadig Den Røde Flag-flåde og flere allierede flåder.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun kommanderede stadig Den Røde Flag-flåde og flere allierede flåder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-245",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "text": "Men momentum var skiftet, og det vidste hun.",
+      "text_markdown": "Men momentum var skiftet, og det vidste hun.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Men momentum var skiftet, og det vidste hun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-246",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "text": "Hun traf en beslutning, der afslørede hendes strategiske geni.",
+      "text_markdown": "Hun traf en beslutning, der afslørede hendes strategiske geni.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun traf en beslutning, der afslørede hendes strategiske geni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-247",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "text": "I stedet for at kæmpe til døden valgte hun at forhandle ud fra en position af tilbageværende styrke.",
+      "text_markdown": "I stedet for at kæmpe til døden valgte hun at forhandle ud fra en position af tilbageværende styrke.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "I stedet for at kæmpe til døden valgte hun at forhandle ud fra en position af tilbageværende styrke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-248",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "text": "Hun indledte forhandlinger med Qing-regeringen gennem mellemmænd.",
+      "text_markdown": "Hun indledte forhandlinger med Qing-regeringen gennem mellemmænd.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun indledte forhandlinger med Qing-regeringen gennem mellemmænd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-249",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "text": "Hendes krav var dristige og specifikke.",
+      "text_markdown": "Hendes krav var dristige og specifikke.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hendes krav var dristige og specifikke.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-250",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "text": "Hun krævede fuld benådning for sig selv og for Zhang Bao.",
+      "text_markdown": "Hun krævede fuld benådning for sig selv og for Zhang Bao.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun krævede fuld benådning for sig selv og for Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-251",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "text": "Hun krævede, at hendes pirater fik lov til at beholde deres personlige rigdom.",
+      "text_markdown": "Hun krævede, at hendes pirater fik lov til at beholde deres personlige rigdom.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun krævede, at hendes pirater fik lov til at beholde deres personlige rigdom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-252",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "text": "Hun krævede, at Zhang Bao fik en udnævnelse i den kejserlige flåde.",
+      "text_markdown": "Hun krævede, at Zhang Bao fik en udnævnelse i den kejserlige flåde.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun krævede, at Zhang Bao fik en udnævnelse i den kejserlige flåde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-253",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "text": "Og hun krævede, at de almindelige pirater, der overgav sig, ikke skulle straffes.",
+      "text_markdown": "Og hun krævede, at de almindelige pirater, der overgav sig, ikke skulle straffes.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Og hun krævede, at de almindelige pirater, der overgav sig, ikke skulle straffes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-254",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "text": "Qing-regeringen var tilbageholdende med at acceptere så generøse betingelser.",
+      "text_markdown": "Qing-regeringen var tilbageholdende med at acceptere så generøse betingelser.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Qing-regeringen var tilbageholdende med at acceptere så generøse betingelser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-255",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "text": "At give pirater benådning føltes som en ydmygelse for imperiet.",
+      "text_markdown": "At give pirater benådning føltes som en ydmygelse for imperiet.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "At give pirater benådning føltes som en ydmygelse for imperiet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-256",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "text": "Men de havde forsøgt med magt og fejlet.",
+      "text_markdown": "Men de havde forsøgt med magt og fejlet.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Men de havde forsøgt med magt og fejlet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-257",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "text": "Forhandling var den eneste mulighed tilbage.",
+      "text_markdown": "Forhandling var den eneste mulighed tilbage.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Forhandling var den eneste mulighed tilbage.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-258",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "text": "I april 1810 blev aftalen afsluttet.",
+      "text_markdown": "I april 1810 blev aftalen afsluttet.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "I april atten hundrede og ti blev aftalen afsluttet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-259",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "text": "Zheng Yi Sao overgav sin flåde til regeringen.",
+      "text_markdown": "Zheng Yi Sao overgav sin flåde til regeringen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Zheng Yi Sao overgav sin flåde til regeringen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-260",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "text": "Til gengæld fik hun alt, hvad hun havde bedt om.",
+      "text_markdown": "Til gengæld fik hun alt, hvad hun havde bedt om.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Til gengæld fik hun alt, hvad hun havde bedt om.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-261",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "text": "Zhang Bao blev udnævnt til løjtnant i Qing-flåden med kommando over 20 skibe.",
+      "text_markdown": "Zhang Bao blev udnævnt til løjtnant i Qing-flåden med kommando over 20 skibe.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Zhang Bao blev udnævnt til løjtnant i Qing-flåden med kommando over tyve skibe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-262",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "text": "Piraterne fik lov til at beholde en del af deres skibe.",
+      "text_markdown": "Piraterne fik lov til at beholde en del af deres skibe.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Piraterne fik lov til at beholde en del af deres skibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-263",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "text": "De, der ønskede at vende tilbage til et civilt liv, stod frit til at gøre det.",
+      "text_markdown": "De, der ønskede at vende tilbage til et civilt liv, stod frit til at gøre det.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "De, der ønskede at vende tilbage til et civilt liv, stod frit til at gøre det.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-264",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "text": "De, der ønskede at slutte sig til den kejserlige flåde, blev budt velkommen.",
+      "text_markdown": "De, der ønskede at slutte sig til den kejserlige flåde, blev budt velkommen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "De, der ønskede at slutte sig til den kejserlige flåde, blev budt velkommen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-265",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "text": "Det var den mest favorable overgivelse i pirateriets historie.",
+      "text_markdown": "Det var den mest favorable overgivelse i pirateriets historie.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Det var den mest favorable overgivelse i pirateriets historie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-266",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao trak sig tilbage fra havet som en velhavende kvinde.",
+      "text_markdown": "Zheng Yi Sao trak sig tilbage fra havet som en velhavende kvinde.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Zheng Yi Sao trak sig tilbage fra havet som en velhavende kvinde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-267",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "text": "Hun bosatte sig i Canton med Zhang Bao.",
+      "text_markdown": "Hun bosatte sig i Canton med Zhang Bao.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun bosatte sig i Canton med Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-268",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "text": "Sammen åbnede de et spillehus, der blev et af de mest profitable i byen.",
+      "text_markdown": "Sammen åbnede de et spillehus, der blev et af de mest profitable i byen.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Sammen åbnede de et spillehus, der blev et af de mest profitable i byen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-269",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "text": "Hun investerede også i salthandlen, hvilket genererede en stabil indkomst i årevis.",
+      "text_markdown": "Hun investerede også i salthandlen, hvilket genererede en stabil indkomst i årevis.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun investerede også i salthandlen, hvilket genererede en stabil indkomst i årevis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-270",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "text": "Zhang Bao tjente i den kejserlige flåde med udmærkelse i flere år.",
+      "text_markdown": "Zhang Bao tjente i den kejserlige flåde med udmærkelse i flere år.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Zhang Bao tjente i den kejserlige flåde med udmærkelse i flere år.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-271",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "text": "Han døde i 1822, mens han stadig var i statens tjeneste.",
+      "text_markdown": "Han døde i 1822, mens han stadig var i statens tjeneste.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Han døde i atten hundrede og toogtyve, mens han stadig var i statens tjeneste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-272",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "text": "Hans død blev sørget med fuld militær ære.",
+      "text_markdown": "Hans død blev sørget med fuld militær ære.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hans død blev sørget med fuld militær ære.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-273",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao levede i mere end to årtier efter at have forladt pirateriet.",
+      "text_markdown": "Zheng Yi Sao levede i mere end to årtier efter at have forladt pirateriet.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Zheng Yi Sao levede i mere end to årtier efter at have forladt pirateriet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-274",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "text": "Hun styrede sine forretningsinteresser og stiftede familie i Canton.",
+      "text_markdown": "Hun styrede sine forretningsinteresser og stiftede familie i Canton.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun styrede sine forretningsinteresser og stiftede familie i Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-275",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "text": "Hun døde i 1844, i en alder af cirka 69 år.",
+      "text_markdown": "Hun døde i 1844, i en alder af cirka 69 år.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun døde i atten hundrede og fireogfyrre, i en alder af cirka niogtres år.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-276",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "text": "Hun døde i sin egen seng, omgivet af sin familie, som et respekteret medlem af Canton-samfundet.",
+      "text_markdown": "Hun døde i sin egen seng, omgivet af sin familie, som et respekteret medlem af Canton-samfundet.",
+      "title": "Slutningen",
+      "tts": {
+        "text": "Hun døde i sin egen seng, omgivet af sin familie, som et respekteret medlem af Canton-samfundet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 6,
+      "id": "ch06-277",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Eftermæle",
+      "text_markdown": "Eftermæle",
+      "title": "Eftermæle"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-278",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "text": "Zheng Yi Saos karriere er unik i pirateriets historie.",
+      "text_markdown": "Zheng Yi Saos karriere er unik i pirateriets historie.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Zheng Yi Saos karriere er unik i pirateriets historie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-279",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "text": "Ingen anden pirat, mand eller kvinde, har nogensinde kommanderet en styrke af sammenlignelig størrelse.",
+      "text_markdown": "Ingen anden pirat, mand eller kvinde, har nogensinde kommanderet en styrke af sammenlignelig størrelse.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Ingen anden pirat, mand eller kvinde, har nogensinde kommanderet en styrke af sammenlignelig størrelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-280",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "text": "Ingen anden pirat opbyggede et så sofistikeret system af lov og styring.",
+      "text_markdown": "Ingen anden pirat opbyggede et så sofistikeret system af lov og styring.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Ingen anden pirat opbyggede et så sofistikeret system af lov og styring.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-281",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "text": "Og ingen anden pirat forhandlede en pensionering på så favorable vilkår.",
+      "text_markdown": "Og ingen anden pirat forhandlede en pensionering på så favorable vilkår.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Og ingen anden pirat forhandlede en pensionering på så favorable vilkår.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-282",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "text": "Hendes succes udfordrer mange antagelser om kvinders rolle i historien.",
+      "text_markdown": "Hendes succes udfordrer mange antagelser om kvinders rolle i historien.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hendes succes udfordrer mange antagelser om kvinders rolle i historien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-283",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "text": "Hun steg til magten i et samfund, der tilbød kvinder næsten ingen juridiske rettigheder.",
+      "text_markdown": "Hun steg til magten i et samfund, der tilbød kvinder næsten ingen juridiske rettigheder.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hun steg til magten i et samfund, der tilbød kvinder næsten ingen juridiske rettigheder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-284",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "text": "Hun kommanderede titusinder af mænd i en verden, der betragtede kvinder som underlegne.",
+      "text_markdown": "Hun kommanderede titusinder af mænd i en verden, der betragtede kvinder som underlegne.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hun kommanderede titusinder af mænd i en verden, der betragtede kvinder som underlegne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-285",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "text": "Hendes historie er bevis på, at evner ikke har noget køn.",
+      "text_markdown": "Hendes historie er bevis på, at evner ikke har noget køn.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hendes historie er bevis på, at evner ikke har noget køn.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-286",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "text": "Historikere har diskuteret årsagerne til hendes ekstraordinære succes.",
+      "text_markdown": "Historikere har diskuteret årsagerne til hendes ekstraordinære succes.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Historikere har diskuteret årsagerne til hendes ekstraordinære succes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-287",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "text": "Nogle fremhæver hendes personlige egenskaber: hendes intelligens, hendes beslutsomhed, hendes evne til at inspirere loyalitet.",
+      "text_markdown": "Nogle fremhæver hendes personlige egenskaber: hendes intelligens, hendes beslutsomhed, hendes evne til at inspirere loyalitet.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Nogle fremhæver hendes personlige egenskaber: hendes intelligens, hendes beslutsomhed, hendes evne til at inspirere loyalitet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-288",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "text": "Andre peger på de strukturelle forhold, der gjorde hendes opstigen mulig: Qing-statens svaghed, kystbefolkningens fattigdom og det Sydkinesiske Havs geografi.",
+      "text_markdown": "Andre peger på de strukturelle forhold, der gjorde hendes opstigen mulig: Qing-statens svaghed, kystbefolkningens fattigdom og det Sydkinesiske Havs geografi.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Andre peger på de strukturelle forhold, der gjorde hendes opstigen mulig: Qing-statens svaghed, kystbefolkningens fattigdom og det Sydkinesiske Havs geografi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-289",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "text": "Sandheden omfatter næsten helt sikkert begge faktorer.",
+      "text_markdown": "Sandheden omfatter næsten helt sikkert begge faktorer.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Sandheden omfatter næsten helt sikkert begge faktorer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-290",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "text": "Uden betingelserne ville hendes talent ikke have haft en scene.",
+      "text_markdown": "Uden betingelserne ville hendes talent ikke have haft en scene.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Uden betingelserne ville hendes talent ikke have haft en scene.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-291",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "text": "Uden hendes talent ville forholdene kun have skabt kaos.",
+      "text_markdown": "Uden hendes talent ville forholdene kun have skabt kaos.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Uden hendes talent ville forholdene kun have skabt kaos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-292",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "text": "Hun var den rette person på det rette tidspunkt i historien.",
+      "text_markdown": "Hun var den rette person på det rette tidspunkt i historien.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hun var den rette person på det rette tidspunkt i historien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-293",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "text": "Hendes lovkode påvirkede piratstyring i årtier efter hendes pensionering.",
+      "text_markdown": "Hendes lovkode påvirkede piratstyring i årtier efter hendes pensionering.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hendes lovkode påvirkede piratstyring i årtier efter hendes pensionering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-294",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "text": "Senere piratledere i Det Sydkinesiske Hav indførte lignende systemer for beskatning og lovgivning.",
+      "text_markdown": "Senere piratledere i Det Sydkinesiske Hav indførte lignende systemer for beskatning og lovgivning.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Senere piratledere i Det Sydkinesiske Hav indførte lignende systemer for beskatning og lovgivning.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-295",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "text": "Hendes model viste, at piratflåder kunne organiseres lige så effektivt som nationale flåder.",
+      "text_markdown": "Hendes model viste, at piratflåder kunne organiseres lige så effektivt som nationale flåder.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hendes model viste, at piratflåder kunne organiseres lige så effektivt som nationale flåder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-296",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "text": "I moderne tid er Zheng Yi Sao blevet et kulturelt ikon.",
+      "text_markdown": "I moderne tid er Zheng Yi Sao blevet et kulturelt ikon.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "I moderne tid er Zheng Yi Sao blevet et kulturelt ikon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-297",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "text": "Hun har optrådt i romaner, film og videospil verden over.",
+      "text_markdown": "Hun har optrådt i romaner, film og videospil verden over.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hun har optrådt i romaner, film og videospil verden over.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-298",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "text": "Hendes historie er blevet oversat til snesevis af sprog.",
+      "text_markdown": "Hendes historie er blevet oversat til snesevis af sprog.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Hendes historie er blevet oversat til snesevis af sprog.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-299",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "text": "Alligevel forbliver meget om hendes liv ukendt.",
+      "text_markdown": "Alligevel forbliver meget om hendes liv ukendt.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Alligevel forbliver meget om hendes liv ukendt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-300",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "text": "Vi kender ikke hendes fødselsnavn med sikkerhed.",
+      "text_markdown": "Vi kender ikke hendes fødselsnavn med sikkerhed.",
+      "title": "Eftermæle",
+      "tts": {
+        "text": "Vi kender ikke hendes fødselsnavn med sikkerhed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-301",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "text": "Vi har ikke et eneste verificeret billede af hendes ansigt.",
+      "text_markdown": "Vi har ikke et eneste verificeret billede af hendes ansigt.",
+      "title": "Arv",
+      "tts": {
+        "text": "Vi har ikke et eneste verificeret billede af hendes ansigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-302",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "text": "Det meste af det, vi ved, stammer fra regeringsoptegnelser skrevet af hendes fjender.",
+      "text_markdown": "Det meste af det, vi ved, stammer fra regeringsoptegnelser skrevet af hendes fjender.",
+      "title": "Arv",
+      "tts": {
+        "text": "Det meste af det, vi ved, stammer fra regeringsoptegnelser skrevet af hendes fjender.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-303",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "text": "Qing-hoffet havde al mulig grund til at minimere hendes bedrifter.",
+      "text_markdown": "Qing-hoffet havde al mulig grund til at minimere hendes bedrifter.",
+      "title": "Arv",
+      "tts": {
+        "text": "Qing-hoffet havde al mulig grund til at minimere hendes bedrifter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-304",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "text": "Mange officielle optegnelser nedtoner hendes rolle eller tilskriver hendes succes Zhang Bao.",
+      "text_markdown": "Mange officielle optegnelser nedtoner hendes rolle eller tilskriver hendes succes Zhang Bao.",
+      "title": "Arv",
+      "tts": {
+        "text": "Mange officielle optegnelser nedtoner hendes rolle eller tilskriver hendes succes Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-305",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "text": "Historikere skal læse disse kilder omhyggeligt, velvidende at de blev skrevet med politiske motiver.",
+      "text_markdown": "Historikere skal læse disse kilder omhyggeligt, velvidende at de blev skrevet med politiske motiver.",
+      "title": "Arv",
+      "tts": {
+        "text": "Historikere skal læse disse kilder omhyggeligt, velvidende at de blev skrevet med politiske motiver.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-306",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "text": "Hvad optegnelserne ikke kan skjule, er omfanget af hendes bedrift.",
+      "text_markdown": "Hvad optegnelserne ikke kan skjule, er omfanget af hendes bedrift.",
+      "title": "Arv",
+      "tts": {
+        "text": "Hvad optegnelserne ikke kan skjule, er omfanget af hendes bedrift.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-307",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "text": "Hun byggede den største piratflåde i den nedskrevne historie.",
+      "text_markdown": "Hun byggede den største piratflåde i den nedskrevne historie.",
+      "title": "Arv",
+      "tts": {
+        "text": "Hun byggede den største piratflåde i den nedskrevne historie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-308",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "text": "Hun besejrede Qing-imperiets og den portugisiske flådes samlede styrker.",
+      "text_markdown": "Hun besejrede Qing-imperiets og den portugisiske flådes samlede styrker.",
+      "title": "Arv",
+      "tts": {
+        "text": "Hun besejrede Qing-imperiets og den portugisiske flådes samlede styrker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-309",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "text": "Hun trak sig tilbage rig, fri og ubesejret.",
+      "text_markdown": "Hun trak sig tilbage rig, fri og ubesejret.",
+      "title": "Arv",
+      "tts": {
+        "text": "Hun trak sig tilbage rig, fri og ubesejret.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-310",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "text": "I havets lange historie har ingen andre gjort det.",
+      "text_markdown": "I havets lange historie har ingen andre gjort det.",
+      "title": "Arv",
+      "tts": {
+        "text": "I havets lange historie har ingen andre gjort det.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

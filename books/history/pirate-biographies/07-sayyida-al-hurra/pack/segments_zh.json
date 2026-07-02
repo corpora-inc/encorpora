@@ -1,0 +1,4457 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sayyida_al_hurra",
+  "language": "zh",
+  "total_segments": 298,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一位成为海盗的女王的真实故事。",
+      "text_markdown": "这是一位成为海盗的女王的真实故事。",
+      "tts": {
+        "text": "这是一位成为海盗的女王的真实故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的名字叫赛伊达·阿尔胡拉，她统治着西地中海的水域。",
+      "text_markdown": "她的名字叫赛伊达·阿尔胡拉，她统治着西地中海的水域。",
+      "tts": {
+        "text": "她的名字叫赛伊达·阿尔胡拉，她统治着西地中海的水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她是伊斯兰世界中最后一位获得阿尔胡拉称号的女性，这个称号意为自由且拥有主权的人。",
+      "text_markdown": "她是伊斯兰世界中最后一位获得阿尔胡拉称号的女性，这个称号意为自由且拥有主权的人。",
+      "tts": {
+        "text": "她是伊斯兰世界中最后一位获得阿尔胡拉称号的女性，这个称号意为自由且拥有主权的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达的故事始于一场灾难。",
+      "text_markdown": "赛伊达的故事始于一场灾难。",
+      "tts": {
+        "text": "赛伊达的故事始于一场灾难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492年，西班牙最后一个穆斯林王国在费迪南德和伊莎贝拉的基督教军队面前沦陷。",
+      "text_markdown": "1492年，西班牙最后一个穆斯林王国在费迪南德和伊莎贝拉的基督教军队面前沦陷。",
+      "tts": {
+        "text": "一千四百九十二年，西班牙最后一个穆斯林王国在费迪南德和伊莎贝拉的基督教军队面前沦陷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数十万穆斯林被驱逐出他们的家族世代称之为家园的土地。",
+      "text_markdown": "数十万穆斯林被驱逐出他们的家族世代称之为家园的土地。",
+      "tts": {
+        "text": "数十万穆斯林被驱逐出他们的家族世代称之为家园的土地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达的家族也在其中。",
+      "text_markdown": "赛伊达的家族也在其中。",
+      "tts": {
+        "text": "赛伊达的家族也在其中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这本书将带您前往十六世纪西地中海的港口和要塞。",
+      "text_markdown": "这本书将带您前往十六世纪西地中海的港口和要塞。",
+      "tts": {
+        "text": "这本书将带您前往十六世纪西地中海的港口和要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "您将看到一个难民女孩如何成为女王、外交家和海盗首领。",
+      "text_markdown": "您将看到一个难民女孩如何成为女王、外交家和海盗首领。",
+      "tts": {
+        "text": "您将看到一个难民女孩如何成为女王、外交家和海盗首领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本书中的一切都基于历史记载，尽管关于她的史料比欧洲海盗的要少。",
+      "text_markdown": "本书中的一切都基于历史记载，尽管关于她的史料比欧洲海盗的要少。",
+      "tts": {
+        "text": "本书中的一切都基于历史记载，尽管关于她的史料比欧洲海盗的要少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当事实不确定时，我们会明确说明。",
+      "text_markdown": "当事实不确定时，我们会明确说明。",
+      "tts": {
+        "text": "当事实不确定时，我们会明确说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "两种信仰之间的世界",
+      "text_markdown": "两种信仰之间的世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西地中海是基督教欧洲与伊斯兰世界之间的战场。",
+      "text_markdown": "西地中海是基督教欧洲与伊斯兰世界之间的战场。",
+      "tts": {
+        "text": "西地中海是基督教欧洲与伊斯兰世界之间的战场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几个世纪以来，两种文明一直在争夺这片狭窄海域的控制权。",
+      "text_markdown": "几个世纪以来，两种文明一直在争夺这片狭窄海域的控制权。",
+      "tts": {
+        "text": "几个世纪以来，两种文明一直在争夺这片狭窄海域的控制权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "直布罗陀海峡最窄处仅九英里宽，将它们分隔开来。",
+      "text_markdown": "直布罗陀海峡最窄处仅九英里宽，将它们分隔开来。",
+      "tts": {
+        "text": "直布罗陀海峡最窄处仅九英里宽，将它们分隔开来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "控制海峡意味着控制大西洋与地中海之间的通道。",
+      "text_markdown": "控制海峡意味着控制大西洋与地中海之间的通道。",
+      "tts": {
+        "text": "控制海峡意味着控制大西洋与地中海之间的通道。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "近800年来，穆斯林统治着伊比利亚半岛的部分地区。",
+      "text_markdown": "近800年来，穆斯林统治着伊比利亚半岛的部分地区。",
+      "tts": {
+        "text": "近八百年来，穆斯林统治着伊比利亚半岛的部分地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们称自己的领土为安达卢斯，它是中世纪欧洲最先进的文明之一。",
+      "text_markdown": "他们称自己的领土为安达卢斯，它是中世纪欧洲最先进的文明之一。",
+      "tts": {
+        "text": "他们称自己的领土为安达卢斯，它是中世纪欧洲最先进的文明之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当欧洲大部分地区还在黑暗中时，它的城市已有图书馆、大学和医院。",
+      "text_markdown": "当欧洲大部分地区还在黑暗中时，它的城市已有图书馆、大学和医院。",
+      "tts": {
+        "text": "当欧洲大部分地区还在黑暗中时，它的城市已有图书馆、大学和医院。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "科尔多瓦、格拉纳达和塞维利亚是伊斯兰建筑和学术的瑰宝。",
+      "text_markdown": "科尔多瓦、格拉纳达和塞维利亚是伊斯兰建筑和学术的瑰宝。",
+      "tts": {
+        "text": "科尔多瓦、格拉纳达和塞维利亚是伊斯兰建筑和学术的瑰宝。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安达卢斯是知识成就的中心。",
+      "text_markdown": "安达卢斯是知识成就的中心。",
+      "tts": {
+        "text": "安达卢斯是知识成就的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "穆斯林、犹太和基督教学者曾并肩工作了数百年。",
+      "text_markdown": "穆斯林、犹太和基督教学者曾并肩工作了数百年。",
+      "tts": {
+        "text": "穆斯林、犹太和基督教学者曾并肩工作了数百年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们翻译了希腊哲学，推进了数学，并在医学和天文学方面取得了突破。",
+      "text_markdown": "他们翻译了希腊哲学，推进了数学，并在医学和天文学方面取得了突破。",
+      "tts": {
+        "text": "他们翻译了希腊哲学，推进了数学，并在医学和天文学方面取得了突破。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一学术传统将深刻影响欧洲文艺复兴。",
+      "text_markdown": "这一学术传统将深刻影响欧洲文艺复兴。",
+      "tts": {
+        "text": "这一学术传统将深刻影响欧洲文艺复兴。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙北部的基督教王国花了几个世纪向南推进，这场运动被称为收复失地运动。",
+      "text_markdown": "西班牙北部的基督教王国花了几个世纪向南推进，这场运动被称为收复失地运动。",
+      "tts": {
+        "text": "西班牙北部的基督教王国花了几个世纪向南推进，这场运动被称为收复失地运动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年复一年，十年又十年，他们征服了穆斯林领土。",
+      "text_markdown": "年复一年，十年又十年，他们征服了穆斯林领土。",
+      "tts": {
+        "text": "年复一年，十年又十年，他们征服了穆斯林领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到十五世纪末，只有小小的格拉纳达王国仍在穆斯林统治之下。",
+      "text_markdown": "到十五世纪末，只有小小的格拉纳达王国仍在穆斯林统治之下。",
+      "tts": {
+        "text": "到十五世纪末，只有小小的格拉纳达王国仍在穆斯林统治之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它的陷落只是时间问题。",
+      "text_markdown": "它的陷落只是时间问题。",
+      "tts": {
+        "text": "它的陷落只是时间问题。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格拉纳达于1492年1月陷落，结束了穆斯林在西班牙近8个世纪的存在。",
+      "text_markdown": "格拉纳达于1492年1月陷落，结束了穆斯林在西班牙近8个世纪的存在。",
+      "tts": {
+        "text": "格拉纳达于一千四百九十二年一月陷落，结束了穆斯林在西班牙近八个世纪的存在。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "费迪南德国王和伊莎贝拉女王凯旋进入阿尔罕布拉宫。",
+      "text_markdown": "费迪南德国王和伊莎贝拉女王凯旋进入阿尔罕布拉宫。",
+      "tts": {
+        "text": "费迪南德国王和伊莎贝拉女王凯旋进入阿尔罕布拉宫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙最后一位穆斯林统治者穆罕默德十二世流亡摩洛哥。",
+      "text_markdown": "西班牙最后一位穆斯林统治者穆罕默德十二世流亡摩洛哥。",
+      "tts": {
+        "text": "西班牙最后一位穆斯林统治者穆罕默德十二世流亡摩洛哥。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一整个文明被连根拔起。",
+      "text_markdown": "一整个文明被连根拔起。",
+      "tts": {
+        "text": "一整个文明被连根拔起。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格拉纳达的陷落对西班牙穆斯林人口是一场灾难。",
+      "text_markdown": "格拉纳达的陷落对西班牙穆斯林人口是一场灾难。",
+      "tts": {
+        "text": "格拉纳达的陷落对西班牙穆斯林人口是一场灾难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "起初，费迪南德和伊莎贝拉承诺穆斯林可以保留自己的宗教和习俗。",
+      "text_markdown": "起初，费迪南德和伊莎贝拉承诺穆斯林可以保留自己的宗教和习俗。",
+      "tts": {
+        "text": "起初，费迪南德和伊莎贝拉承诺穆斯林可以保留自己的宗教和习俗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些承诺很快就被打破了。",
+      "text_markdown": "这些承诺很快就被打破了。",
+      "tts": {
+        "text": "这些承诺很快就被打破了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "穆斯林被迫皈依基督教或完全离开西班牙。",
+      "text_markdown": "穆斯林被迫皈依基督教或完全离开西班牙。",
+      "tts": {
+        "text": "穆斯林被迫皈依基督教或完全离开西班牙。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拒绝皈依的人被驱逐。",
+      "text_markdown": "拒绝皈依的人被驱逐。",
+      "tts": {
+        "text": "拒绝皈依的人被驱逐。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们越过直布罗陀海峡逃往摩洛哥、阿尔及利亚和突尼斯。",
+      "text_markdown": "他们越过直布罗陀海峡逃往摩洛哥、阿尔及利亚和突尼斯。",
+      "tts": {
+        "text": "他们越过直布罗陀海峡逃往摩洛哥、阿尔及利亚和突尼斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们以难民身份到达，带着能带的一切，哀悼失去的一切。",
+      "text_markdown": "他们以难民身份到达，带着能带的一切，哀悼失去的一切。",
+      "tts": {
+        "text": "他们以难民身份到达，带着能带的一切，哀悼失去的一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们中许多人怀着对西班牙王室复仇的强烈愿望。",
+      "text_markdown": "他们中许多人怀着对西班牙王室复仇的强烈愿望。",
+      "tts": {
+        "text": "他们中许多人怀着对西班牙王室复仇的强烈愿望。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩洛哥是这些难民的主要目的地。",
+      "text_markdown": "摩洛哥是这些难民的主要目的地。",
+      "tts": {
+        "text": "摩洛哥是这些难民的主要目的地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩洛哥海岸就在海峡对面，与西班牙隔海相望。",
+      "text_markdown": "摩洛哥海岸就在海峡对面，与西班牙隔海相望。",
+      "tts": {
+        "text": "摩洛哥海岸就在海峡对面，与西班牙隔海相望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "非斯、丹吉尔和得土安等城市接纳了大量安达卢斯难民。",
+      "text_markdown": "非斯、丹吉尔和得土安等城市接纳了大量安达卢斯难民。",
+      "tts": {
+        "text": "非斯、丹吉尔和得土安等城市接纳了大量安达卢斯难民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些流离失所的家庭带来了他们的技能、学识和愤怒。",
+      "text_markdown": "这些流离失所的家庭带来了他们的技能、学识和愤怒。",
+      "tts": {
+        "text": "这些流离失所的家庭带来了他们的技能、学识和愤怒。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥斯曼帝国是这个时代最伟大的伊斯兰强国。",
+      "text_markdown": "奥斯曼帝国是这个时代最伟大的伊斯兰强国。",
+      "tts": {
+        "text": "奥斯曼帝国是这个时代最伟大的伊斯兰强国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从首都伊斯坦布尔出发，它控制着横跨三大洲的广袤领土。",
+      "text_markdown": "从首都伊斯坦布尔出发，它控制着横跨三大洲的广袤领土。",
+      "tts": {
+        "text": "从首都伊斯坦布尔出发，它控制着横跨三大洲的广袤领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奥斯曼海军主宰着东地中海。",
+      "text_markdown": "奥斯曼海军主宰着东地中海。",
+      "tts": {
+        "text": "奥斯曼海军主宰着东地中海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从北非港口出发的奥斯曼海盗袭击了欧洲的船只和海岸。",
+      "text_markdown": "从北非港口出发的奥斯曼海盗袭击了欧洲的船只和海岸。",
+      "tts": {
+        "text": "从北非港口出发的奥斯曼海盗袭击了欧洲的船只和海岸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最著名的奥斯曼海盗是海雷丁·巴巴罗萨。",
+      "text_markdown": "最著名的奥斯曼海盗是海雷丁·巴巴罗萨。",
+      "tts": {
+        "text": "最著名的奥斯曼海盗是海雷丁·巴巴罗萨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从阿尔及利亚海岸活动，指挥着一支强大的舰队。",
+      "text_markdown": "他从阿尔及利亚海岸活动，指挥着一支强大的舰队。",
+      "tts": {
+        "text": "他从阿尔及利亚海岸活动，指挥着一支强大的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴巴罗萨既是海盗，也是奥斯曼海军的将领。",
+      "text_markdown": "巴巴罗萨既是海盗，也是奥斯曼海军的将领。",
+      "tts": {
+        "text": "巴巴罗萨既是海盗，也是奥斯曼海军的将领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的袭击使西班牙、意大利和法国的海岸陷入恐慌。",
+      "text_markdown": "他的袭击使西班牙、意大利和法国的海岸陷入恐慌。",
+      "tts": {
+        "text": "他的袭击使西班牙、意大利和法国的海岸陷入恐慌。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与此同时，西班牙和葡萄牙正在建立庞大的海外帝国。",
+      "text_markdown": "与此同时，西班牙和葡萄牙正在建立庞大的海外帝国。",
+      "tts": {
+        "text": "与此同时，西班牙和葡萄牙正在建立庞大的海外帝国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们殖民了美洲，并在非洲和亚洲建立了贸易据点。",
+      "text_markdown": "他们殖民了美洲，并在非洲和亚洲建立了贸易据点。",
+      "tts": {
+        "text": "他们殖民了美洲，并在非洲和亚洲建立了贸易据点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的财富依赖于船只通过直布罗陀海峡的安全航行。",
+      "text_markdown": "他们的财富依赖于船只通过直布罗陀海峡的安全航行。",
+      "tts": {
+        "text": "他们的财富依赖于船只通过直布罗陀海峡的安全航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对这一航运的任何干扰都威胁着他们帝国的经济根基。",
+      "text_markdown": "对这一航运的任何干扰都威胁着他们帝国的经济根基。",
+      "tts": {
+        "text": "对这一航运的任何干扰都威胁着他们帝国的经济根基。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "因此直布罗陀海峡是一个具有巨大战略意义的地方。",
+      "text_markdown": "因此直布罗陀海峡是一个具有巨大战略意义的地方。",
+      "tts": {
+        "text": "因此直布罗陀海峡是一个具有巨大战略意义的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "谁控制了海峡，谁就控制了大西洋与地中海之间的财富流动。",
+      "text_markdown": "谁控制了海峡，谁就控制了大西洋与地中海之间的财富流动。",
+      "tts": {
+        "text": "谁控制了海峡，谁就控制了大西洋与地中海之间的财富流动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对任何足够大胆挑战大国的人来说，这是完美的狩猎场。",
+      "text_markdown": "对任何足够大胆挑战大国的人来说，这是完美的狩猎场。",
+      "tts": {
+        "text": "对任何足够大胆挑战大国的人来说，这是完美的狩猎场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达·阿尔胡拉将成为最大胆的人之一。",
+      "text_markdown": "赛伊达·阿尔胡拉将成为最大胆的人之一。",
+      "tts": {
+        "text": "赛伊达·阿尔胡拉将成为最大胆的人之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海的海盗活动不同于加勒比海的海盗活动。",
+      "text_markdown": "地中海的海盗活动不同于加勒比海的海盗活动。",
+      "tts": {
+        "text": "地中海的海盗活动不同于加勒比海的海盗活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它与基督徒和穆斯林之间的宗教冲突深深交织在一起。",
+      "text_markdown": "它与基督徒和穆斯林之间的宗教冲突深深交织在一起。",
+      "tts": {
+        "text": "它与基督徒和穆斯林之间的宗教冲突深深交织在一起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "穆斯林海盗袭击基督教船只，基督教海盗袭击穆斯林船只。",
+      "text_markdown": "穆斯林海盗袭击基督教船只，基督教海盗袭击穆斯林船只。",
+      "tts": {
+        "text": "穆斯林海盗袭击基督教船只，基督教海盗袭击穆斯林船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "两种信仰之间的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "双方都将自己的攻击辩护为圣战，即使他们追求的是个人利益。",
+      "text_markdown": "双方都将自己的攻击辩护为圣战，即使他们追求的是个人利益。",
+      "tts": {
+        "text": "双方都将自己的攻击辩护为圣战，即使他们追求的是个人利益。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "从格拉纳达到得土安",
+      "text_markdown": "从格拉纳达到得土安"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达·阿尔胡拉大约在1485年出生于格拉纳达王国。",
+      "text_markdown": "赛伊达·阿尔胡拉大约在1485年出生于格拉纳达王国。",
+      "tts": {
+        "text": "赛伊达·阿尔胡拉大约在一千四百八十五年出生于格拉纳达王国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的本名可能是拉拉·艾莎，但这并不确定。",
+      "text_markdown": "她的本名可能是拉拉·艾莎，但这并不确定。",
+      "tts": {
+        "text": "她的本名可能是拉拉·艾莎，但这并不确定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史上人们记住她的称号赛伊达·阿尔胡拉，是一个意为高贵夫人、自由者的荣誉称号。",
+      "text_markdown": "历史上人们记住她的称号赛伊达·阿尔胡拉，是一个意为高贵夫人、自由者的荣誉称号。",
+      "tts": {
+        "text": "历史上人们记住她的称号赛伊达·阿尔胡拉，是一个意为高贵夫人、自由者的荣誉称号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个称号是在她后来的生活中作为她权力和独立的标志而授予她的。",
+      "text_markdown": "这个称号是在她后来的生活中作为她权力和独立的标志而授予她的。",
+      "tts": {
+        "text": "这个称号是在她后来的生活中作为她权力和独立的标志而授予她的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的家族属于拉希德王朝，一个在安达卢斯社会有着深厚根基的贵族家族。",
+      "text_markdown": "她的家族属于拉希德王朝，一个在安达卢斯社会有着深厚根基的贵族家族。",
+      "tts": {
+        "text": "她的家族属于拉希德王朝，一个在安达卢斯社会有着深厚根基的贵族家族。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的父亲穆莱·阿里·伊本·拉希德是一个具有相当政治影响力的人。",
+      "text_markdown": "她的父亲穆莱·阿里·伊本·拉希德是一个具有相当政治影响力的人。",
+      "tts": {
+        "text": "她的父亲穆莱·阿里·伊本·拉希德是一个具有相当政治影响力的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在更早离开格拉纳达后，这个家族居住在里夫地区的山城舍夫沙万。",
+      "text_markdown": "在更早离开格拉纳达后，这个家族居住在里夫地区的山城舍夫沙万。",
+      "tts": {
+        "text": "在更早离开格拉纳达后，这个家族居住在里夫地区的山城舍夫沙万。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "舍夫沙万由收复失地运动的难民建立，作为抵抗葡萄牙人的基地。",
+      "text_markdown": "舍夫沙万由收复失地运动的难民建立，作为抵抗葡萄牙人的基地。",
+      "tts": {
+        "text": "舍夫沙万由收复失地运动的难民建立，作为抵抗葡萄牙人的基地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达在充满学习和政治意识的氛围中长大。",
+      "text_markdown": "赛伊达在充满学习和政治意识的氛围中长大。",
+      "tts": {
+        "text": "赛伊达在充满学习和政治意识的氛围中长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的家族重视教育，她接受了神学、语言和外交方面的全面训练。",
+      "text_markdown": "她的家族重视教育，她接受了神学、语言和外交方面的全面训练。",
+      "tts": {
+        "text": "她的家族重视教育，她接受了神学、语言和外交方面的全面训练。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她会说阿拉伯语，可能还由于家族的安达卢斯传承而懂得西班牙语。",
+      "text_markdown": "她会说阿拉伯语，可能还由于家族的安达卢斯传承而懂得西班牙语。",
+      "tts": {
+        "text": "她会说阿拉伯语，可能还由于家族的安达卢斯传承而懂得西班牙语。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种教育对于那个时代的女性来说是不寻常的，但拉希德家族不是普通家族。",
+      "text_markdown": "这种教育对于那个时代的女性来说是不寻常的，但拉希德家族不是普通家族。",
+      "tts": {
+        "text": "这种教育对于那个时代的女性来说是不寻常的，但拉希德家族不是普通家族。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "流亡的经历塑造了赛伊达的全部世界观。",
+      "text_markdown": "流亡的经历塑造了赛伊达的全部世界观。",
+      "tts": {
+        "text": "流亡的经历塑造了赛伊达的全部世界观。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在听着安达卢斯失落天堂的故事中长大。",
+      "text_markdown": "她在听着安达卢斯失落天堂的故事中长大。",
+      "tts": {
+        "text": "她在听着安达卢斯失落天堂的故事中长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "老一辈人带着深深的悲痛谈论他们美丽的房屋、果园和图书馆。",
+      "text_markdown": "老一辈人带着深深的悲痛谈论他们美丽的房屋、果园和图书馆。",
+      "tts": {
+        "text": "老一辈人带着深深的悲痛谈论他们美丽的房屋、果园和图书馆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种失去家园的集体创伤激起了强烈的报复欲望。",
+      "text_markdown": "这种失去家园的集体创伤激起了强烈的报复欲望。",
+      "tts": {
+        "text": "这种失去家园的集体创伤激起了强烈的报复欲望。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "舍夫沙万本身就是一个非凡的地方。",
+      "text_markdown": "舍夫沙万本身就是一个非凡的地方。",
+      "tts": {
+        "text": "舍夫沙万本身就是一个非凡的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "坐落在里夫山脉中，这是一座有着蓝色墙壁和狭窄街道的城市。",
+      "text_markdown": "坐落在里夫山脉中，这是一座有着蓝色墙壁和狭窄街道的城市。",
+      "tts": {
+        "text": "坐落在里夫山脉中，这是一座有着蓝色墙壁和狭窄街道的城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它的创建者选择这个位置是因为它便于防御葡萄牙人的袭击。",
+      "text_markdown": "它的创建者选择这个位置是因为它便于防御葡萄牙人的袭击。",
+      "tts": {
+        "text": "它的创建者选择这个位置是因为它便于防御葡萄牙人的袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这座城市成为安达卢斯难民的避难所和抵抗中心。",
+      "text_markdown": "这座城市成为安达卢斯难民的避难所和抵抗中心。",
+      "tts": {
+        "text": "这座城市成为安达卢斯难民的避难所和抵抗中心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在还很年轻的时候，赛伊达嫁给了得土安总督阿布·哈桑·曼德里。",
+      "text_markdown": "在还很年轻的时候，赛伊达嫁给了得土安总督阿布·哈桑·曼德里。",
+      "tts": {
+        "text": "在还很年轻的时候，赛伊达嫁给了得土安总督阿布·哈桑·曼德里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "曼德里是一位受人尊敬的领导者，他将得土安从废墟中重建。",
+      "text_markdown": "曼德里是一位受人尊敬的领导者，他将得土安从废墟中重建。",
+      "tts": {
+        "text": "曼德里是一位受人尊敬的领导者，他将得土安从废墟中重建。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城市几十年前被葡萄牙人摧毁，正在缓慢恢复。",
+      "text_markdown": "这座城市几十年前被葡萄牙人摧毁，正在缓慢恢复。",
+      "tts": {
+        "text": "这座城市几十年前被葡萄牙人摧毁，正在缓慢恢复。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这段婚姻是两个强大难民家族之间的政治联盟。",
+      "text_markdown": "这段婚姻是两个强大难民家族之间的政治联盟。",
+      "tts": {
+        "text": "这段婚姻是两个强大难民家族之间的政治联盟。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "得土安位于摩洛哥北部海岸，靠近直布罗陀海峡。",
+      "text_markdown": "得土安位于摩洛哥北部海岸，靠近直布罗陀海峡。",
+      "tts": {
+        "text": "得土安位于摩洛哥北部海岸，靠近直布罗陀海峡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的位置非常适合贸易和袭击欧洲船只。",
+      "text_markdown": "它的位置非常适合贸易和袭击欧洲船只。",
+      "tts": {
+        "text": "它的位置非常适合贸易和袭击欧洲船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城市成为一个繁荣的港口，主要由安达卢斯难民居住。",
+      "text_markdown": "这座城市成为一个繁荣的港口，主要由安达卢斯难民居住。",
+      "tts": {
+        "text": "这座城市成为一个繁荣的港口，主要由安达卢斯难民居住。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些难民带来了他们对西班牙港口、港湾和航线的了解。",
+      "text_markdown": "这些难民带来了他们对西班牙港口、港湾和航线的了解。",
+      "tts": {
+        "text": "这些难民带来了他们对西班牙港口、港湾和航线的了解。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达证明自己是丈夫治理得土安的得力伙伴。",
+      "text_markdown": "赛伊达证明自己是丈夫治理得土安的得力伙伴。",
+      "tts": {
+        "text": "赛伊达证明自己是丈夫治理得土安的得力伙伴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她参与政治决策，理解该地区复杂的外交关系。",
+      "text_markdown": "她参与政治决策，理解该地区复杂的外交关系。",
+      "tts": {
+        "text": "她参与政治决策，理解该地区复杂的外交关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当丈夫去世时，赛伊达没有退隐到私人生活中。",
+      "text_markdown": "当丈夫去世时，赛伊达没有退隐到私人生活中。",
+      "tts": {
+        "text": "当丈夫去世时，赛伊达没有退隐到私人生活中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "相反，她亲自接管了得土安的治理。",
+      "text_markdown": "相反，她亲自接管了得土安的治理。",
+      "tts": {
+        "text": "相反，她亲自接管了得土安的治理。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "成为一座城市的唯一统治者对于那个时代的女性来说是一项非凡的成就。",
+      "text_markdown": "成为一座城市的唯一统治者对于那个时代的女性来说是一项非凡的成就。",
+      "tts": {
+        "text": "成为一座城市的唯一统治者对于那个时代的女性来说是一项非凡的成就。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "赛伊达拥有维持权力所需的政治技能、家族关系和个人权威。",
+      "text_markdown": "赛伊达拥有维持权力所需的政治技能、家族关系和个人权威。",
+      "tts": {
+        "text": "赛伊达拥有维持权力所需的政治技能、家族关系和个人权威。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "得土安的人民接受了她的统治，因为她有能力，也因为她已故的丈夫信任她。",
+      "text_markdown": "得土安的人民接受了她的统治，因为她有能力，也因为她已故的丈夫信任她。",
+      "tts": {
+        "text": "得土安的人民接受了她的统治，因为她有能力，也因为她已故的丈夫信任她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她现在是摩洛哥海岸最有权势的人之一。",
+      "text_markdown": "她现在是摩洛哥海岸最有权势的人之一。",
+      "tts": {
+        "text": "她现在是摩洛哥海岸最有权势的人之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达还有强大的盟友。",
+      "text_markdown": "赛伊达还有强大的盟友。",
+      "tts": {
+        "text": "赛伊达还有强大的盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在舍夫沙万的家族关系使她在里夫山脉拥有支持网络。",
+      "text_markdown": "她在舍夫沙万的家族关系使她在里夫山脉拥有支持网络。",
+      "tts": {
+        "text": "她在舍夫沙万的家族关系使她在里夫山脉拥有支持网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她与从非斯统治摩洛哥的瓦塔斯王朝保持着良好关系。",
+      "text_markdown": "她与从非斯统治摩洛哥的瓦塔斯王朝保持着良好关系。",
+      "tts": {
+        "text": "她与从非斯统治摩洛哥的瓦塔斯王朝保持着良好关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些联盟保护她免受可能挑战女性统治者的对手的威胁。",
+      "text_markdown": "这些联盟保护她免受可能挑战女性统治者的对手的威胁。",
+      "tts": {
+        "text": "这些联盟保护她免受可能挑战女性统治者的对手的威胁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在赛伊达的统治下，得土安繁荣起来。",
+      "text_markdown": "在赛伊达的统治下，得土安繁荣起来。",
+      "tts": {
+        "text": "在赛伊达的统治下，得土安繁荣起来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "贸易通过它的港口流通，人口不断增长。",
+      "text_markdown": "贸易通过它的港口流通，人口不断增长。",
+      "tts": {
+        "text": "贸易通过它的港口流通，人口不断增长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但赛伊达有着超越简单治理的雄心。",
+      "text_markdown": "但赛伊达有着超越简单治理的雄心。",
+      "tts": {
+        "text": "但赛伊达有着超越简单治理的雄心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她将目光投向大海和每天穿越直布罗陀海峡的欧洲船只。",
+      "text_markdown": "她将目光投向大海和每天穿越直布罗陀海峡的欧洲船只。",
+      "tts": {
+        "text": "她将目光投向大海和每天穿越直布罗陀海峡的欧洲船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙人和葡萄牙人占领了摩洛哥几个沿海城市。",
+      "text_markdown": "西班牙人和葡萄牙人占领了摩洛哥几个沿海城市。",
+      "tts": {
+        "text": "西班牙人和葡萄牙人占领了摩洛哥几个沿海城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "休达、丹吉尔和其他港口都在欧洲人控制之下。",
+      "text_markdown": "休达、丹吉尔和其他港口都在欧洲人控制之下。",
+      "tts": {
+        "text": "休达、丹吉尔和其他港口都在欧洲人控制之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些占领对摩洛哥人民来说是持续的屈辱。",
+      "text_markdown": "这些占领对摩洛哥人民来说是持续的屈辱。",
+      "tts": {
+        "text": "这些占领对摩洛哥人民来说是持续的屈辱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "从格拉纳达到得土安",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达将海盗活动视为抵抗这些外国占领者的合法形式。",
+      "text_markdown": "赛伊达将海盗活动视为抵抗这些外国占领者的合法形式。",
+      "tts": {
+        "text": "赛伊达将海盗活动视为抵抗这些外国占领者的合法形式。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海盗女王",
+      "text_markdown": "海盗女王"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达·阿尔胡拉建立了一支在整个西地中海活动的海盗舰队。",
+      "text_markdown": "赛伊达·阿尔胡拉建立了一支在整个西地中海活动的海盗舰队。",
+      "tts": {
+        "text": "赛伊达·阿尔胡拉建立了一支在整个西地中海活动的海盗舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的船只袭击通过直布罗陀海峡的西班牙和葡萄牙商船。",
+      "text_markdown": "她的船只袭击通过直布罗陀海峡的西班牙和葡萄牙商船。",
+      "tts": {
+        "text": "她的船只袭击通过直布罗陀海峡的西班牙和葡萄牙商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她以军事指挥官的精确度组织这些袭击。",
+      "text_markdown": "她以军事指挥官的精确度组织这些袭击。",
+      "tts": {
+        "text": "她以军事指挥官的精确度组织这些袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每次攻击都经过规划，以最大限度地提高利润，同时将她的船只和船员的风险降到最低。",
+      "text_markdown": "每次攻击都经过规划，以最大限度地提高利润，同时将她的船只和船员的风险降到最低。",
+      "tts": {
+        "text": "每次攻击都经过规划，以最大限度地提高利润，同时将她的船只和船员的风险降到最低。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "为赛伊达航行的海盗是摩洛哥水手和安达卢斯难民的混合体。",
+      "text_markdown": "为赛伊达航行的海盗是摩洛哥水手和安达卢斯难民的混合体。",
+      "tts": {
+        "text": "为赛伊达航行的海盗是摩洛哥水手和安达卢斯难民的混合体。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多难民是熟悉西班牙海岸的前水手。",
+      "text_markdown": "许多难民是熟悉西班牙海岸的前水手。",
+      "tts": {
+        "text": "许多难民是熟悉西班牙海岸的前水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们了解港口、航线和商船队的时间表。",
+      "text_markdown": "他们了解港口、航线和商船队的时间表。",
+      "tts": {
+        "text": "他们了解港口、航线和商船队的时间表。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些情报给了赛伊达的舰队决定性的优势。",
+      "text_markdown": "这些情报给了赛伊达的舰队决定性的优势。",
+      "tts": {
+        "text": "这些情报给了赛伊达的舰队决定性的优势。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达与著名的奥斯曼海盗海雷丁·巴巴罗萨结盟。",
+      "text_markdown": "赛伊达与著名的奥斯曼海盗海雷丁·巴巴罗萨结盟。",
+      "tts": {
+        "text": "赛伊达与著名的奥斯曼海盗海雷丁·巴巴罗萨结盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "巴巴罗萨从他在阿尔及尔的基地控制着东地中海。",
+      "text_markdown": "巴巴罗萨从他在阿尔及尔的基地控制着东地中海。",
+      "tts": {
+        "text": "巴巴罗萨从他在阿尔及尔的基地控制着东地中海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们一起瓜分了西地中海。",
+      "text_markdown": "他们一起瓜分了西地中海。",
+      "tts": {
+        "text": "他们一起瓜分了西地中海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达控制直布罗陀海峡附近的水域，而巴巴罗萨主宰更东边的区域。",
+      "text_markdown": "赛伊达控制直布罗陀海峡附近的水域，而巴巴罗萨主宰更东边的区域。",
+      "tts": {
+        "text": "赛伊达控制直布罗陀海峡附近的水域，而巴巴罗萨主宰更东边的区域。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一联盟使赛伊达成为地中海海盗活动中最重要的人物之一。",
+      "text_markdown": "这一联盟使赛伊达成为地中海海盗活动中最重要的人物之一。",
+      "tts": {
+        "text": "这一联盟使赛伊达成为地中海海盗活动中最重要的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她是已知唯一与巴巴罗萨建立这种伙伴关系的女性。",
+      "text_markdown": "她是已知唯一与巴巴罗萨建立这种伙伴关系的女性。",
+      "tts": {
+        "text": "她是已知唯一与巴巴罗萨建立这种伙伴关系的女性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的联合力量使西地中海对欧洲航运极其危险。",
+      "text_markdown": "他们的联合力量使西地中海对欧洲航运极其危险。",
+      "tts": {
+        "text": "他们的联合力量使西地中海对欧洲航运极其危险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西班牙和葡萄牙难以保护自己的商船队免受这种协调威胁。",
+      "text_markdown": "西班牙和葡萄牙难以保护自己的商船队免受这种协调威胁。",
+      "tts": {
+        "text": "西班牙和葡萄牙难以保护自己的商船队免受这种协调威胁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达的海盗不仅仅是抢劫船只然后放行。",
+      "text_markdown": "赛伊达的海盗不仅仅是抢劫船只然后放行。",
+      "tts": {
+        "text": "赛伊达的海盗不仅仅是抢劫船只然后放行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们同时俘获货物和乘客。",
+      "text_markdown": "他们同时俘获货物和乘客。",
+      "tts": {
+        "text": "他们同时俘获货物和乘客。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "欧洲俘虏被扣押以索取赎金，这成为主要收入来源。",
+      "text_markdown": "欧洲俘虏被扣押以索取赎金，这成为主要收入来源。",
+      "tts": {
+        "text": "欧洲俘虏被扣押以索取赎金，这成为主要收入来源。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "富有的俘虏能带来巨额赎金，由他们的家人或政府支付。",
+      "text_markdown": "富有的俘虏能带来巨额赎金，由他们的家人或政府支付。",
+      "tts": {
+        "text": "富有的俘虏能带来巨额赎金，由他们的家人或政府支付。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赎金贸易是一项复杂的业务，有自己的规则和中间人。",
+      "text_markdown": "赎金贸易是一项复杂的业务，有自己的规则和中间人。",
+      "tts": {
+        "text": "赎金贸易是一项复杂的业务，有自己的规则和中间人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "来自西班牙和葡萄牙的宗教团体专门负责谈判释放俘虏。",
+      "text_markdown": "来自西班牙和葡萄牙的宗教团体专门负责谈判释放俘虏。",
+      "tts": {
+        "text": "来自西班牙和葡萄牙的宗教团体专门负责谈判释放俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赛伊达以国家元首而非仅仅海盗的身份与这些中间人打交道。",
+      "text_markdown": "赛伊达以国家元首而非仅仅海盗的身份与这些中间人打交道。",
+      "tts": {
+        "text": "赛伊达以国家元首而非仅仅海盗的身份与这些中间人打交道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她与欧洲政府的外交通信保存在西班牙和葡萄牙的档案中。",
+      "text_markdown": "她与欧洲政府的外交通信保存在西班牙和葡萄牙的档案中。",
+      "tts": {
+        "text": "她与欧洲政府的外交通信保存在西班牙和葡萄牙的档案中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲文献以恐惧和不情愿的敬意描述赛伊达。",
+      "text_markdown": "欧洲文献以恐惧和不情愿的敬意描述赛伊达。",
+      "tts": {
+        "text": "欧洲文献以恐惧和不情愿的敬意描述赛伊达。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们称她为海盗女王，尽管她认为自己是一个进行战争的合法统治者。",
+      "text_markdown": "他们称她为海盗女王，尽管她认为自己是一个进行战争的合法统治者。",
+      "tts": {
+        "text": "他们称她为海盗女王，尽管她认为自己是一个进行战争的合法统治者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在她看来，西班牙人和葡萄牙人才是掠夺穆斯林土地的侵略者。",
+      "text_markdown": "在她看来，西班牙人和葡萄牙人才是掠夺穆斯林土地的侵略者。",
+      "tts": {
+        "text": "在她看来，西班牙人和葡萄牙人才是掠夺穆斯林土地的侵略者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的袭击是正义之举，而非简单的强盗行为。",
+      "text_markdown": "她的袭击是正义之举，而非简单的强盗行为。",
+      "tts": {
+        "text": "她的袭击是正义之举，而非简单的强盗行为。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达从海盗和赎金中获得的财富使得土安成为摩洛哥最富裕的城市之一。",
+      "text_markdown": "赛伊达从海盗和赎金中获得的财富使得土安成为摩洛哥最富裕的城市之一。",
+      "tts": {
+        "text": "赛伊达从海盗和赎金中获得的财富使得土安成为摩洛哥最富裕的城市之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她投资于城市基础设施，扩建港口并加强防御。",
+      "text_markdown": "她投资于城市基础设施，扩建港口并加强防御。",
+      "tts": {
+        "text": "她投资于城市基础设施，扩建港口并加强防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "用她的海盗舰队利润建造了新的清真寺、市场和房屋。",
+      "text_markdown": "用她的海盗舰队利润建造了新的清真寺、市场和房屋。",
+      "tts": {
+        "text": "用她的海盗舰队利润建造了新的清真寺、市场和房屋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "得土安成为繁荣的贸易和文化中心。",
+      "text_markdown": "得土安成为繁荣的贸易和文化中心。",
+      "tts": {
+        "text": "得土安成为繁荣的贸易和文化中心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的船长们是技艺精湛的航海者，了解海峡中的每一个海湾和水流。",
+      "text_markdown": "她的船长们是技艺精湛的航海者，了解海峡中的每一个海湾和水流。",
+      "tts": {
+        "text": "她的船长们是技艺精湛的航海者，了解海峡中的每一个海湾和水流。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们使用能够超越较重的欧洲军舰的快速灵活船只。",
+      "text_markdown": "他们使用能够超越较重的欧洲军舰的快速灵活船只。",
+      "tts": {
+        "text": "他们使用能够超越较重的欧洲军舰的快速灵活船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在能见度较差的黎明或黄昏时发动攻击。",
+      "text_markdown": "他们在能见度较差的黎明或黄昏时发动攻击。",
+      "tts": {
+        "text": "他们在能见度较差的黎明或黄昏时发动攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "出其不意是他们最强大的武器。",
+      "text_markdown": "出其不意是他们最强大的武器。",
+      "tts": {
+        "text": "出其不意是他们最强大的武器。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的声誉不断增长，直到引起瓦塔斯苏丹本人的注意。",
+      "text_markdown": "她的声誉不断增长，直到引起瓦塔斯苏丹本人的注意。",
+      "tts": {
+        "text": "她的声誉不断增长，直到引起瓦塔斯苏丹本人的注意。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏丹艾哈迈德·瓦塔斯大约在1515年向赛伊达求婚。",
+      "text_markdown": "苏丹艾哈迈德·瓦塔斯大约在1515年向赛伊达求婚。",
+      "tts": {
+        "text": "苏丹艾哈迈德·瓦塔斯大约在一千五百一十五年向赛伊达求婚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对于那个时代的任何女性来说，这都是一项非凡的荣誉。",
+      "text_markdown": "对于那个时代的任何女性来说，这都是一项非凡的荣誉。",
+      "tts": {
+        "text": "对于那个时代的任何女性来说，这都是一项非凡的荣誉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这也反映了赛伊达所积累的政治和经济权力。",
+      "text_markdown": "这也反映了赛伊达所积累的政治和经济权力。",
+      "tts": {
+        "text": "这也反映了赛伊达所积累的政治和经济权力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达同意了婚姻，但有自己的条件。",
+      "text_markdown": "赛伊达同意了婚姻，但有自己的条件。",
+      "tts": {
+        "text": "赛伊达同意了婚姻，但有自己的条件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她坚持婚礼在得土安举行，而不是在苏丹设朝的非斯。",
+      "text_markdown": "她坚持婚礼在得土安举行，而不是在苏丹设朝的非斯。",
+      "tts": {
+        "text": "她坚持婚礼在得土安举行，而不是在苏丹设朝的非斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是一个非凡的条件，因为惯例要求新娘前往新郎那里。",
+      "text_markdown": "这是一个非凡的条件，因为惯例要求新娘前往新郎那里。",
+      "tts": {
+        "text": "这是一个非凡的条件，因为惯例要求新娘前往新郎那里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "苏丹同意了，并前往得土安参加婚礼。",
+      "text_markdown": "苏丹同意了，并前往得土安参加婚礼。",
+      "tts": {
+        "text": "苏丹同意了，并前往得土安参加婚礼。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是摩洛哥历史上唯一一次国王前往新娘处举行婚礼的记录。",
+      "text_markdown": "这是摩洛哥历史上唯一一次国王前往新娘处举行婚礼的记录。",
+      "tts": {
+        "text": "这是摩洛哥历史上唯一一次国王前往新娘处举行婚礼的记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这显示了赛伊达所取得的巨大权力和威望。",
+      "text_markdown": "这显示了赛伊达所取得的巨大权力和威望。",
+      "tts": {
+        "text": "这显示了赛伊达所取得的巨大权力和威望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "即使在婚后，她仍然独立地统治得土安。",
+      "text_markdown": "即使在婚后，她仍然独立地统治得土安。",
+      "tts": {
+        "text": "即使在婚后，她仍然独立地统治得土安。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她是一位拥有自身权力的女王，而不仅仅是苏丹的妻子。",
+      "text_markdown": "她是一位拥有自身权力的女王，而不仅仅是苏丹的妻子。",
+      "tts": {
+        "text": "她是一位拥有自身权力的女王，而不仅仅是苏丹的妻子。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "婚姻给了赛伊达额外的政治保护。",
+      "text_markdown": "婚姻给了赛伊达额外的政治保护。",
+      "tts": {
+        "text": "婚姻给了赛伊达额外的政治保护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作为苏丹的妻子，当地的竞争对手无法动她。",
+      "text_markdown": "作为苏丹的妻子，当地的竞争对手无法动她。",
+      "tts": {
+        "text": "作为苏丹的妻子，当地的竞争对手无法动她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的海盗行动以更大的信心继续进行。",
+      "text_markdown": "她的海盗行动以更大的信心继续进行。",
+      "tts": {
+        "text": "她的海盗行动以更大的信心继续进行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西地中海仍然是她的领地。",
+      "text_markdown": "西地中海仍然是她的领地。",
+      "tts": {
+        "text": "西地中海仍然是她的领地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙多次试图与赛伊达谈判以阻止她的袭击。",
+      "text_markdown": "西班牙多次试图与赛伊达谈判以阻止她的袭击。",
+      "tts": {
+        "text": "西班牙多次试图与赛伊达谈判以阻止她的袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙特使前往得土安讨论释放囚犯和和平的可能性。",
+      "text_markdown": "西班牙特使前往得土安讨论释放囚犯和和平的可能性。",
+      "tts": {
+        "text": "西班牙特使前往得土安讨论释放囚犯和和平的可能性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赛伊达进行强硬谈判，从未同意完全停止海盗行动。",
+      "text_markdown": "赛伊达进行强硬谈判，从未同意完全停止海盗行动。",
+      "tts": {
+        "text": "赛伊达进行强硬谈判，从未同意完全停止海盗行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她明白自己的海上力量是政治影响力的来源。",
+      "text_markdown": "她明白自己的海上力量是政治影响力的来源。",
+      "tts": {
+        "text": "她明白自己的海上力量是政治影响力的来源。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葡萄牙也难以应对她构成的威胁。",
+      "text_markdown": "葡萄牙也难以应对她构成的威胁。",
+      "tts": {
+        "text": "葡萄牙也难以应对她构成的威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "试图前往非洲和亚洲殖民地的葡萄牙船只必须通过直布罗陀海峡。",
+      "text_markdown": "试图前往非洲和亚洲殖民地的葡萄牙船只必须通过直布罗陀海峡。",
+      "tts": {
+        "text": "试图前往非洲和亚洲殖民地的葡萄牙船只必须通过直布罗陀海峡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赛伊达的海盗使这条航道变得危险且代价高昂。",
+      "text_markdown": "赛伊达的海盗使这条航道变得危险且代价高昂。",
+      "tts": {
+        "text": "赛伊达的海盗使这条航道变得危险且代价高昂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗女王",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "葡萄牙政府曾考虑对得土安采取军事行动，但从未付诸实施。",
+      "text_markdown": "葡萄牙政府曾考虑对得土安采取军事行动，但从未付诸实施。",
+      "tts": {
+        "text": "葡萄牙政府曾考虑对得土安采取军事行动，但从未付诸实施。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "主权女性",
+      "text_markdown": "主权女性"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在权力巅峰时期，赛伊达·阿尔胡拉控制着世界上最具战略意义的水道之一。",
+      "text_markdown": "在权力巅峰时期，赛伊达·阿尔胡拉控制着世界上最具战略意义的水道之一。",
+      "tts": {
+        "text": "在权力巅峰时期，赛伊达·阿尔胡拉控制着世界上最具战略意义的水道之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的海盗舰队主宰着直布罗陀海峡的西部入口。",
+      "text_markdown": "她的海盗舰队主宰着直布罗陀海峡的西部入口。",
+      "tts": {
+        "text": "她的海盗舰队主宰着直布罗陀海峡的西部入口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有任何欧洲船只能在不冒被攻击风险的情况下通过这些水域。",
+      "text_markdown": "没有任何欧洲船只能在不冒被攻击风险的情况下通过这些水域。",
+      "tts": {
+        "text": "没有任何欧洲船只能在不冒被攻击风险的情况下通过这些水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对西班牙和葡萄牙贸易的损害是严重的。",
+      "text_markdown": "对西班牙和葡萄牙贸易的损害是严重的。",
+      "tts": {
+        "text": "对西班牙和葡萄牙贸易的损害是严重的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达以军事力量和政治技巧的结合来治理得土安。",
+      "text_markdown": "赛伊达以军事力量和政治技巧的结合来治理得土安。",
+      "tts": {
+        "text": "赛伊达以军事力量和政治技巧的结合来治理得土安。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她维持着一个追踪欧洲船只动向的情报网络。",
+      "text_markdown": "她维持着一个追踪欧洲船只动向的情报网络。",
+      "tts": {
+        "text": "她维持着一个追踪欧洲船只动向的情报网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她以平等的身份与欧洲政府谈判赎金协议。",
+      "text_markdown": "她以平等的身份与欧洲政府谈判赎金协议。",
+      "tts": {
+        "text": "她以平等的身份与欧洲政府谈判赎金协议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她在得土安的宫廷是政治活动和外交阴谋的中心。",
+      "text_markdown": "她在得土安的宫廷是政治活动和外交阴谋的中心。",
+      "tts": {
+        "text": "她在得土安的宫廷是政治活动和外交阴谋的中心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔胡拉这个称号在伊斯兰世界具有深远意义。",
+      "text_markdown": "阿尔胡拉这个称号在伊斯兰世界具有深远意义。",
+      "tts": {
+        "text": "阿尔胡拉这个称号在伊斯兰世界具有深远意义。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它意味着赛伊达不听命于任何男人，以自己的名义统治。",
+      "text_markdown": "它意味着赛伊达不听命于任何男人，以自己的名义统治。",
+      "tts": {
+        "text": "它意味着赛伊达不听命于任何男人，以自己的名义统治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她是伊斯兰历史上最后一位拥有这一称号的女性。",
+      "text_markdown": "她是伊斯兰历史上最后一位拥有这一称号的女性。",
+      "tts": {
+        "text": "她是伊斯兰历史上最后一位拥有这一称号的女性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在她之前或之后，没有任何女性在该地区取得过同样的政治和军事权力组合。",
+      "text_markdown": "在她之前或之后，没有任何女性在该地区取得过同样的政治和军事权力组合。",
+      "tts": {
+        "text": "在她之前或之后，没有任何女性在该地区取得过同样的政治和军事权力组合。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的成功建立在居住在得土安的安达卢斯难民社区之上。",
+      "text_markdown": "她的成功建立在居住在得土安的安达卢斯难民社区之上。",
+      "tts": {
+        "text": "她的成功建立在居住在得土安的安达卢斯难民社区之上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些难民提供了源源不断的受过教育的管理者和经验丰富的水手。",
+      "text_markdown": "这些难民提供了源源不断的受过教育的管理者和经验丰富的水手。",
+      "tts": {
+        "text": "这些难民提供了源源不断的受过教育的管理者和经验丰富的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们对西班牙语言和文化的了解对情报收集来说是无价的。",
+      "text_markdown": "他们对西班牙语言和文化的了解对情报收集来说是无价的。",
+      "tts": {
+        "text": "他们对西班牙语言和文化的了解对情报收集来说是无价的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达治下的得土安是一座由安达卢斯的记忆和复仇的希望所定义的城市。",
+      "text_markdown": "赛伊达治下的得土安是一座由安达卢斯的记忆和复仇的希望所定义的城市。",
+      "tts": {
+        "text": "赛伊达治下的得土安是一座由安达卢斯的记忆和复仇的希望所定义的城市。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达还与其他北非港口保持着关系。",
+      "text_markdown": "赛伊达还与其他北非港口保持着关系。",
+      "tts": {
+        "text": "赛伊达还与其他北非港口保持着关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔、突尼斯和萨累都是海盗活动的中心。",
+      "text_markdown": "阿尔及尔、突尼斯和萨累都是海盗活动的中心。",
+      "tts": {
+        "text": "阿尔及尔、突尼斯和萨累都是海盗活动的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她与这些城市的领导人协调行动，以避免冲突并共享情报。",
+      "text_markdown": "她与这些城市的领导人协调行动，以避免冲突并共享情报。",
+      "tts": {
+        "text": "她与这些城市的领导人协调行动，以避免冲突并共享情报。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个联盟网络使她的海盗行动更加有效。",
+      "text_markdown": "这个联盟网络使她的海盗行动更加有效。",
+      "tts": {
+        "text": "这个联盟网络使她的海盗行动更加有效。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一时期的欧洲记述充满了对赛伊达海盗的投诉。",
+      "text_markdown": "这一时期的欧洲记述充满了对赛伊达海盗的投诉。",
+      "tts": {
+        "text": "这一时期的欧洲记述充满了对赛伊达海盗的投诉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙大使写信要求对得土安的海盗采取行动。",
+      "text_markdown": "西班牙大使写信要求对得土安的海盗采取行动。",
+      "tts": {
+        "text": "西班牙大使写信要求对得土安的海盗采取行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "葡萄牙商人向国王请愿要求军事保护。",
+      "text_markdown": "葡萄牙商人向国王请愿要求军事保护。",
+      "tts": {
+        "text": "葡萄牙商人向国王请愿要求军事保护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的舰队造成的经济损失足以影响欧洲政策。",
+      "text_markdown": "她的舰队造成的经济损失足以影响欧洲政策。",
+      "tts": {
+        "text": "她的舰队造成的经济损失足以影响欧洲政策。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达本人既令人畏惧又令人钦佩。",
+      "text_markdown": "赛伊达本人既令人畏惧又令人钦佩。",
+      "tts": {
+        "text": "赛伊达本人既令人畏惧又令人钦佩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她代表着欧洲列强深感不安的东西。",
+      "text_markdown": "她代表着欧洲列强深感不安的东西。",
+      "tts": {
+        "text": "她代表着欧洲列强深感不安的东西。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一位拥有真正政治和军事权力的穆斯林女性挑战了他们所有的假设。",
+      "text_markdown": "一位拥有真正政治和军事权力的穆斯林女性挑战了他们所有的假设。",
+      "tts": {
+        "text": "一位拥有真正政治和军事权力的穆斯林女性挑战了他们所有的假设。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的存在本身就是对欧洲秩序的挑衅。",
+      "text_markdown": "她的存在本身就是对欧洲秩序的挑衅。",
+      "tts": {
+        "text": "她的存在本身就是对欧洲秩序的挑衅。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达统治下的得土安生活反映了安达卢斯的世界主义遗产。",
+      "text_markdown": "赛伊达统治下的得土安生活反映了安达卢斯的世界主义遗产。",
+      "tts": {
+        "text": "赛伊达统治下的得土安生活反映了安达卢斯的世界主义遗产。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这座城市有美丽的花园、流淌的喷泉和安达卢斯风格的白色房屋。",
+      "text_markdown": "这座城市有美丽的花园、流淌的喷泉和安达卢斯风格的白色房屋。",
+      "tts": {
+        "text": "这座城市有美丽的花园、流淌的喷泉和安达卢斯风格的白色房屋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "工匠们生产精美的陶瓷、纺织品和金属制品。",
+      "text_markdown": "工匠们生产精美的陶瓷、纺织品和金属制品。",
+      "tts": {
+        "text": "工匠们生产精美的陶瓷、纺织品和金属制品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这座城市的文化富裕与资助它的海盗贸易的暴力形成了鲜明对比。",
+      "text_markdown": "这座城市的文化富裕与资助它的海盗贸易的暴力形成了鲜明对比。",
+      "tts": {
+        "text": "这座城市的文化富裕与资助它的海盗贸易的暴力形成了鲜明对比。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达的舰队发展到包括数十艘船只。",
+      "text_markdown": "赛伊达的舰队发展到包括数十艘船只。",
+      "tts": {
+        "text": "赛伊达的舰队发展到包括数十艘船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些是被俘获的欧洲船只，被转而对付它们的前主人。",
+      "text_markdown": "有些是被俘获的欧洲船只，被转而对付它们的前主人。",
+      "tts": {
+        "text": "有些是被俘获的欧洲船只，被转而对付它们的前主人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他的则是在得土安自己的造船厂建造的。",
+      "text_markdown": "其他的则是在得土安自己的造船厂建造的。",
+      "tts": {
+        "text": "其他的则是在得土安自己的造船厂建造的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这支舰队维护良好，由了解海峡中每一处水流和浅滩的经验丰富的水手操作。",
+      "text_markdown": "这支舰队维护良好，由了解海峡中每一处水流和浅滩的经验丰富的水手操作。",
+      "tts": {
+        "text": "这支舰队维护良好，由了解海峡中每一处水流和浅滩的经验丰富的水手操作。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的统治代表了西地中海力量平衡受到挑战的短暂时期。",
+      "text_markdown": "她的统治代表了西地中海力量平衡受到挑战的短暂时期。",
+      "tts": {
+        "text": "她的统治代表了西地中海力量平衡受到挑战的短暂时期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙和葡萄牙拥有更大的海军，但无法同时出现在所有地方。",
+      "text_markdown": "西班牙和葡萄牙拥有更大的海军，但无法同时出现在所有地方。",
+      "tts": {
+        "text": "西班牙和葡萄牙拥有更大的海军，但无法同时出现在所有地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赛伊达的海盗精确地利用了欧洲海军覆盖范围的空白。",
+      "text_markdown": "赛伊达的海盗精确地利用了欧洲海军覆盖范围的空白。",
+      "tts": {
+        "text": "赛伊达的海盗精确地利用了欧洲海军覆盖范围的空白。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "近三十年来，她是她那片海域的主导力量。",
+      "text_markdown": "近三十年来，她是她那片海域的主导力量。",
+      "tts": {
+        "text": "近三十年来，她是她那片海域的主导力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她管理的赎金经济是精密且组织良好的。",
+      "text_markdown": "她管理的赎金经济是精密且组织良好的。",
+      "tts": {
+        "text": "她管理的赎金经济是精密且组织良好的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "价格根据俘虏的社会地位和家庭的支付能力来设定。",
+      "text_markdown": "价格根据俘虏的社会地位和家庭的支付能力来设定。",
+      "tts": {
+        "text": "价格根据俘虏的社会地位和家庭的支付能力来设定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "谈判可能持续数月甚至数年。",
+      "text_markdown": "谈判可能持续数月甚至数年。",
+      "tts": {
+        "text": "谈判可能持续数月甚至数年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一些俘虏在被俘期间得到善待，而另一些则忍受着严酷的条件。",
+      "text_markdown": "一些俘虏在被俘期间得到善待，而另一些则忍受着严酷的条件。",
+      "tts": {
+        "text": "一些俘虏在被俘期间得到善待，而另一些则忍受着严酷的条件。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达将她的海盗活动不视为海盗行为，而是对抗收复失地运动的斗争的延续。",
+      "text_markdown": "赛伊达将她的海盗活动不视为海盗行为，而是对抗收复失地运动的斗争的延续。",
+      "tts": {
+        "text": "赛伊达将她的海盗活动不视为海盗行为，而是对抗收复失地运动的斗争的延续。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙人通过武力从穆斯林手中夺取了安达卢斯。",
+      "text_markdown": "西班牙人通过武力从穆斯林手中夺取了安达卢斯。",
+      "tts": {
+        "text": "西班牙人通过武力从穆斯林手中夺取了安达卢斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在赛伊达看来，她只是以不同的方式进行反击。",
+      "text_markdown": "在赛伊达看来，她只是以不同的方式进行反击。",
+      "tts": {
+        "text": "在赛伊达看来，她只是以不同的方式进行反击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "主权女性",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种框架赋予了她的行为在社区眼中的道德合法性。",
+      "text_markdown": "这种框架赋予了她的行为在社区眼中的道德合法性。",
+      "tts": {
+        "text": "这种框架赋予了她的行为在社区眼中的道德合法性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "女王的陨落",
+      "text_markdown": "女王的陨落"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达·阿尔胡拉的权力虽然强大，但并非无懈可击。",
+      "text_markdown": "赛伊达·阿尔胡拉的权力虽然强大，但并非无懈可击。",
+      "tts": {
+        "text": "赛伊达·阿尔胡拉的权力虽然强大，但并非无懈可击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它依赖于联盟、军事力量和政治技巧的微妙平衡。",
+      "text_markdown": "它依赖于联盟、军事力量和政治技巧的微妙平衡。",
+      "tts": {
+        "text": "它依赖于联盟、军事力量和政治技巧的微妙平衡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当这种平衡发生变化时，她的地位变得岌岌可危。",
+      "text_markdown": "当这种平衡发生变化时，她的地位变得岌岌可危。",
+      "tts": {
+        "text": "当这种平衡发生变化时，她的地位变得岌岌可危。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "将要打倒她的力量不是来自欧洲，而是来自她自己的家族内部。",
+      "text_markdown": "将要打倒她的力量不是来自欧洲，而是来自她自己的家族内部。",
+      "tts": {
+        "text": "将要打倒她的力量不是来自欧洲，而是来自她自己的家族内部。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她与瓦塔斯苏丹的婚姻为她提供了政治保护。",
+      "text_markdown": "她与瓦塔斯苏丹的婚姻为她提供了政治保护。",
+      "tts": {
+        "text": "她与瓦塔斯苏丹的婚姻为她提供了政治保护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但瓦塔斯王朝本身正在衰落。",
+      "text_markdown": "但瓦塔斯王朝本身正在衰落。",
+      "tts": {
+        "text": "但瓦塔斯王朝本身正在衰落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对立派系在摩洛哥内部争夺权力。",
+      "text_markdown": "对立派系在摩洛哥内部争夺权力。",
+      "tts": {
+        "text": "对立派系在摩洛哥内部争夺权力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "苏丹对得土安等边远省份的权威日益薄弱。",
+      "text_markdown": "苏丹对得土安等边远省份的权威日益薄弱。",
+      "tts": {
+        "text": "苏丹对得土安等边远省份的权威日益薄弱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达的继子穆莱·艾哈迈德·哈桑·曼德里有自己的野心。",
+      "text_markdown": "赛伊达的继子穆莱·艾哈迈德·哈桑·曼德里有自己的野心。",
+      "tts": {
+        "text": "赛伊达的继子穆莱·艾哈迈德·哈桑·曼德里有自己的野心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他认为得土安应该由男人统治，具体来说就是他自己。",
+      "text_markdown": "他认为得土安应该由男人统治，具体来说就是他自己。",
+      "tts": {
+        "text": "他认为得土安应该由男人统治，具体来说就是他自己。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他对继母长期掌权心怀怨恨。",
+      "text_markdown": "他对继母长期掌权心怀怨恨。",
+      "tts": {
+        "text": "他对继母长期掌权心怀怨恨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他开始策划推翻她。",
+      "text_markdown": "他开始策划推翻她。",
+      "tts": {
+        "text": "他开始策划推翻她。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "穆莱·艾哈迈德在对赛伊达统治不满的人中召集支持者。",
+      "text_markdown": "穆莱·艾哈迈德在对赛伊达统治不满的人中召集支持者。",
+      "tts": {
+        "text": "穆莱·艾哈迈德在对赛伊达统治不满的人中召集支持者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "得土安的一些男性对被女性统治感到不舒服，不管她多么有能力。",
+      "text_markdown": "得土安的一些男性对被女性统治感到不舒服，不管她多么有能力。",
+      "tts": {
+        "text": "得土安的一些男性对被女性统治感到不舒服，不管她多么有能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他人看到了为自己获取权力和财富的机会。",
+      "text_markdown": "其他人看到了为自己获取权力和财富的机会。",
+      "tts": {
+        "text": "其他人看到了为自己获取权力和财富的机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "阴谋在暗中滋长。",
+      "text_markdown": "阴谋在暗中滋长。",
+      "tts": {
+        "text": "阴谋在暗中滋长。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约在1542年，穆莱·艾哈迈德发动了宫廷政变反对赛伊达。",
+      "text_markdown": "大约在1542年，穆莱·艾哈迈德发动了宫廷政变反对赛伊达。",
+      "tts": {
+        "text": "大约在一千五百四十二年，穆莱·艾哈迈德发动了宫廷政变反对赛伊达。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政变的细节在现存史料中记载不详。",
+      "text_markdown": "政变的细节在现存史料中记载不详。",
+      "tts": {
+        "text": "政变的细节在现存史料中记载不详。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "已知的是他控制了得土安并将赛伊达赶下了台。",
+      "text_markdown": "已知的是他控制了得土安并将赛伊达赶下了台。",
+      "tts": {
+        "text": "已知的是他控制了得土安并将赛伊达赶下了台。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她持续了大约三十年的统治结束了。",
+      "text_markdown": "她持续了大约三十年的统治结束了。",
+      "tts": {
+        "text": "她持续了大约三十年的统治结束了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达被剥夺了她的头衔、权力和财富。",
+      "text_markdown": "赛伊达被剥夺了她的头衔、权力和财富。",
+      "tts": {
+        "text": "赛伊达被剥夺了她的头衔、权力和财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她建立的海盗舰队被从她手中夺走。",
+      "text_markdown": "她建立的海盗舰队被从她手中夺走。",
+      "tts": {
+        "text": "她建立的海盗舰队被从她手中夺走。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她从摩洛哥最有权势的人之一变成了一个没有影响力的普通公民。",
+      "text_markdown": "她从摩洛哥最有权势的人之一变成了一个没有影响力的普通公民。",
+      "tts": {
+        "text": "她从摩洛哥最有权势的人之一变成了一个没有影响力的普通公民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "陨落迅速而彻底。",
+      "text_markdown": "陨落迅速而彻底。",
+      "tts": {
+        "text": "陨落迅速而彻底。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "失去权力后，赛伊达几乎完全从历史记录中消失。",
+      "text_markdown": "失去权力后，赛伊达几乎完全从历史记录中消失。",
+      "tts": {
+        "text": "失去权力后，赛伊达几乎完全从历史记录中消失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有可靠的资料描述她政变后的生活。",
+      "text_markdown": "没有可靠的资料描述她政变后的生活。",
+      "tts": {
+        "text": "没有可靠的资料描述她政变后的生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她可能退隐到了舍夫沙万，那个她家族扎根的山城。",
+      "text_markdown": "她可能退隐到了舍夫沙万，那个她家族扎根的山城。",
+      "tts": {
+        "text": "她可能退隐到了舍夫沙万，那个她家族扎根的山城。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她可能在默默无闻中度过了余生。",
+      "text_markdown": "她可能在默默无闻中度过了余生。",
+      "tts": {
+        "text": "她可能在默默无闻中度过了余生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家估计赛伊达大约在1561年去世，但日期不确定。",
+      "text_markdown": "历史学家估计赛伊达大约在1561年去世，但日期不确定。",
+      "tts": {
+        "text": "历史学家估计赛伊达大约在一千五百六十一年去世，但日期不确定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果这一估计正确，她活到了大约七十六岁。",
+      "text_markdown": "如果这一估计正确，她活到了大约七十六岁。",
+      "tts": {
+        "text": "如果这一估计正确，她活到了大约七十六岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在那个时代，这是一段异常漫长的生命。",
+      "text_markdown": "在那个时代，这是一段异常漫长的生命。",
+      "tts": {
+        "text": "在那个时代，这是一段异常漫长的生命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但关于她的最后岁月无人知晓。",
+      "text_markdown": "但关于她的最后岁月无人知晓。",
+      "tts": {
+        "text": "但关于她的最后岁月无人知晓。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达失势后，得土安城继续是海盗活动的中心。",
+      "text_markdown": "赛伊达失势后，得土安城继续是海盗活动的中心。",
+      "tts": {
+        "text": "赛伊达失势后，得土安城继续是海盗活动的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但它再也没有出现过她那样级别的领袖。",
+      "text_markdown": "但它再也没有出现过她那样级别的领袖。",
+      "tts": {
+        "text": "但它再也没有出现过她那样级别的领袖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的继承者们缺乏她的政治技巧和国际联盟网络。",
+      "text_markdown": "她的继承者们缺乏她的政治技巧和国际联盟网络。",
+      "tts": {
+        "text": "她的继承者们缺乏她的政治技巧和国际联盟网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "得土安作为海盗强权的黄金时代随她而终。",
+      "text_markdown": "得土安作为海盗强权的黄金时代随她而终。",
+      "tts": {
+        "text": "得土安作为海盗强权的黄金时代随她而终。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "更广泛的政治背景也转向了不利于地中海海盗活动的方向。",
+      "text_markdown": "更广泛的政治背景也转向了不利于地中海海盗活动的方向。",
+      "tts": {
+        "text": "更广泛的政治背景也转向了不利于地中海海盗活动的方向。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙正在建造越来越庞大的海军来保护其大西洋贸易航线。",
+      "text_markdown": "西班牙正在建造越来越庞大的海军来保护其大西洋贸易航线。",
+      "tts": {
+        "text": "西班牙正在建造越来越庞大的海军来保护其大西洋贸易航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "曾经支持北非海盗的奥斯曼帝国开始了漫长的衰落。",
+      "text_markdown": "曾经支持北非海盗的奥斯曼帝国开始了漫长的衰落。",
+      "tts": {
+        "text": "曾经支持北非海盗的奥斯曼帝国开始了漫长的衰落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "使赛伊达的事业成为可能的世界正在缓慢消失。",
+      "text_markdown": "使赛伊达的事业成为可能的世界正在缓慢消失。",
+      "tts": {
+        "text": "使赛伊达的事业成为可能的世界正在缓慢消失。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的陨落提醒人们前现代世界中权力的脆弱。",
+      "text_markdown": "她的陨落提醒人们前现代世界中权力的脆弱。",
+      "tts": {
+        "text": "她的陨落提醒人们前现代世界中权力的脆弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "即使像赛伊达这样有能力的统治者也可能被拥有恰当关系的坚定对手推翻。",
+      "text_markdown": "即使像赛伊达这样有能力的统治者也可能被拥有恰当关系的坚定对手推翻。",
+      "tts": {
+        "text": "即使像赛伊达这样有能力的统治者也可能被拥有恰当关系的坚定对手推翻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在一个没有宪法保护的世界里，权力完全取决于个人联盟和军事力量。",
+      "text_markdown": "在一个没有宪法保护的世界里，权力完全取决于个人联盟和军事力量。",
+      "tts": {
+        "text": "在一个没有宪法保护的世界里，权力完全取决于个人联盟和军事力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王的陨落",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当这些失败时，即使是女王也会陨落。",
+      "text_markdown": "当这些失败时，即使是女王也会陨落。",
+      "tts": {
+        "text": "当这些失败时，即使是女王也会陨落。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "自由女性的遗产",
+      "text_markdown": "自由女性的遗产"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "近几十年来，赛伊达·阿尔胡拉的遗产显著增长。",
+      "text_markdown": "近几十年来，赛伊达·阿尔胡拉的遗产显著增长。",
+      "tts": {
+        "text": "近几十年来，赛伊达·阿尔胡拉的遗产显著增长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几个世纪以来，她在摩洛哥以外基本上被遗忘了。",
+      "text_markdown": "几个世纪以来，她在摩洛哥以外基本上被遗忘了。",
+      "tts": {
+        "text": "几个世纪以来，她在摩洛哥以外基本上被遗忘了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "欧洲的海盗史几乎完全集中于加勒比海的男性海盗。",
+      "text_markdown": "欧洲的海盗史几乎完全集中于加勒比海的男性海盗。",
+      "tts": {
+        "text": "欧洲的海盗史几乎完全集中于加勒比海的男性海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达的故事主要保存在摩洛哥口头传统和阿拉伯语史书中。",
+      "text_markdown": "赛伊达的故事主要保存在摩洛哥口头传统和阿拉伯语史书中。",
+      "tts": {
+        "text": "赛伊达的故事主要保存在摩洛哥口头传统和阿拉伯语史书中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现代历史学家已开始重新发现和颂扬她的故事。",
+      "text_markdown": "现代历史学家已开始重新发现和颂扬她的故事。",
+      "tts": {
+        "text": "现代历史学家已开始重新发现和颂扬她的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她现在被认为是地中海海盗时代最杰出的人物之一。",
+      "text_markdown": "她现在被认为是地中海海盗时代最杰出的人物之一。",
+      "tts": {
+        "text": "她现在被认为是地中海海盗时代最杰出的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她保持独立权力三十年的成就被视为非凡的。",
+      "text_markdown": "她保持独立权力三十年的成就被视为非凡的。",
+      "tts": {
+        "text": "她保持独立权力三十年的成就被视为非凡的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她被作为女性领导力的范例进行研究，因为在那个时期这种领导力极为罕见。",
+      "text_markdown": "她被作为女性领导力的范例进行研究，因为在那个时期这种领导力极为罕见。",
+      "tts": {
+        "text": "她被作为女性领导力的范例进行研究，因为在那个时期这种领导力极为罕见。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在摩洛哥，赛伊达被视为民族英雄。",
+      "text_markdown": "在摩洛哥，赛伊达被视为民族英雄。",
+      "tts": {
+        "text": "在摩洛哥，赛伊达被视为民族英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她代表着拒绝接受流离失所命运的安达卢斯难民的抵抗精神。",
+      "text_markdown": "她代表着拒绝接受流离失所命运的安达卢斯难民的抵抗精神。",
+      "tts": {
+        "text": "她代表着拒绝接受流离失所命运的安达卢斯难民的抵抗精神。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "得土安城至今仍在纪念她。",
+      "text_markdown": "得土安城至今仍在纪念她。",
+      "tts": {
+        "text": "得土安城至今仍在纪念她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的故事在摩洛哥学校作为勇气和独立的榜样被讲授。",
+      "text_markdown": "她的故事在摩洛哥学校作为勇气和独立的榜样被讲授。",
+      "tts": {
+        "text": "她的故事在摩洛哥学校作为勇气和独立的榜样被讲授。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赛伊达与巴巴罗萨的联盟具有重要的历史意义。",
+      "text_markdown": "赛伊达与巴巴罗萨的联盟具有重要的历史意义。",
+      "tts": {
+        "text": "赛伊达与巴巴罗萨的联盟具有重要的历史意义。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它表明地中海海盗世界不仅仅是个别掠夺者的集合。",
+      "text_markdown": "它表明地中海海盗世界不仅仅是个别掠夺者的集合。",
+      "tts": {
+        "text": "它表明地中海海盗世界不仅仅是个别掠夺者的集合。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是一个跨越广阔距离协调运作的战略网络。",
+      "text_markdown": "它是一个跨越广阔距离协调运作的战略网络。",
+      "tts": {
+        "text": "它是一个跨越广阔距离协调运作的战略网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在地中海是世界上最具争议的海域时，赛伊达在这个网络中发挥了核心作用。",
+      "text_markdown": "在地中海是世界上最具争议的海域时，赛伊达在这个网络中发挥了核心作用。",
+      "tts": {
+        "text": "在地中海是世界上最具争议的海域时，赛伊达在这个网络中发挥了核心作用。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的故事也揭示了海盗行为与治国之术之间的复杂关系。",
+      "text_markdown": "她的故事也揭示了海盗行为与治国之术之间的复杂关系。",
+      "tts": {
+        "text": "她的故事也揭示了海盗行为与治国之术之间的复杂关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "赛伊达同时是女王、海盗和外交家。",
+      "text_markdown": "赛伊达同时是女王、海盗和外交家。",
+      "tts": {
+        "text": "赛伊达同时是女王、海盗和外交家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她将海盗活动作为外交政策工具，而不仅仅是致富手段。",
+      "text_markdown": "她将海盗活动作为外交政策工具，而不仅仅是致富手段。",
+      "tts": {
+        "text": "她将海盗活动作为外交政策工具，而不仅仅是致富手段。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的生涯表明，海盗行为与合法战争之间的界限在地中海与加勒比海一样模糊。",
+      "text_markdown": "她的生涯表明，海盗行为与合法战争之间的界限在地中海与加勒比海一样模糊。",
+      "tts": {
+        "text": "她的生涯表明，海盗行为与合法战争之间的界限在地中海与加勒比海一样模糊。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔胡拉这一称号仍是她最持久的象征。",
+      "text_markdown": "阿尔胡拉这一称号仍是她最持久的象征。",
+      "tts": {
+        "text": "阿尔胡拉这一称号仍是她最持久的象征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它意味着自由的女人、拥有主权的女人、不向任何人屈服的女人。",
+      "text_markdown": "它意味着自由的女人、拥有主权的女人、不向任何人屈服的女人。",
+      "tts": {
+        "text": "它意味着自由的女人、拥有主权的女人、不向任何人屈服的女人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "此后伊斯兰世界再没有女性拥有过这一称号。",
+      "text_markdown": "此后伊斯兰世界再没有女性拥有过这一称号。",
+      "tts": {
+        "text": "此后伊斯兰世界再没有女性拥有过这一称号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达·阿尔胡拉独立于历史之中，是她那个类别中的最后一人。",
+      "text_markdown": "赛伊达·阿尔胡拉独立于历史之中，是她那个类别中的最后一人。",
+      "tts": {
+        "text": "赛伊达·阿尔胡拉独立于历史之中，是她那个类别中的最后一人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天，学者们继续寻找可能揭示她更多生平的新文献。",
+      "text_markdown": "今天，学者们继续寻找可能揭示她更多生平的新文献。",
+      "tts": {
+        "text": "今天，学者们继续寻找可能揭示她更多生平的新文献。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩洛哥、西班牙和葡萄牙的档案馆可能仍保存着未被发现的信件、条约和记述。",
+      "text_markdown": "摩洛哥、西班牙和葡萄牙的档案馆可能仍保存着未被发现的信件、条约和记述。",
+      "tts": {
+        "text": "摩洛哥、西班牙和葡萄牙的档案馆可能仍保存着未被发现的信件、条约和记述。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每一个新发现都为这位非凡女性的拼图增添了又一块碎片。",
+      "text_markdown": "每一个新发现都为这位非凡女性的拼图增添了又一块碎片。",
+      "tts": {
+        "text": "每一个新发现都为这位非凡女性的拼图增添了又一块碎片。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由女性的遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赛伊达·阿尔胡拉的完整故事尚待书写。",
+      "text_markdown": "赛伊达·阿尔胡拉的完整故事尚待书写。",
+      "tts": {
+        "text": "赛伊达·阿尔胡拉的完整故事尚待书写。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

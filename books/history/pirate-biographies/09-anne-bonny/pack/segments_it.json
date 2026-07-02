@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_anne_bonny",
+  "language": "it",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota al lettore",
+      "text_markdown": "Una nota al lettore"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la storia vera di una donna che terrorizzò i Caraibi.",
+      "text_markdown": "Questa è la storia vera di una donna che terrorizzò i Caraibi.",
+      "tts": {
+        "text": "Questa è la storia vera di una donna che terrorizzò i Caraibi.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo nome era Anne Bonny, ed era una delle piratesse più famose della storia.",
+      "text_markdown": "Il suo nome era Anne Bonny, ed era una delle piratesse più famose della storia.",
+      "tts": {
+        "text": "Il suo nome era Anne Bonny, ed era una delle piratesse più famose della storia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nacque in Irlanda intorno al 1697 e crebbe nella colonia della Carolina del Sud.",
+      "text_markdown": "Nacque in Irlanda intorno al 1697 e crebbe nella colonia della Carolina del Sud.",
+      "tts": {
+        "text": "Nacque in Irlanda intorno al milleseicentonovantasette e crebbe nella colonia della Carolina del Sud.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny infranse ogni regola che il suo mondo cercava di imporre alle donne.",
+      "text_markdown": "Anne Bonny infranse ogni regola che il suo mondo cercava di imporre alle donne.",
+      "tts": {
+        "text": "Anne Bonny infranse ogni regola che il suo mondo cercava di imporre alle donne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Abbandonò una vita rispettabile per navigare con i pirati.",
+      "text_markdown": "Abbandonò una vita rispettabile per navigare con i pirati.",
+      "tts": {
+        "text": "Abbandonò una vita rispettabile per navigare con i pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Combatté in battaglia e guadagnò il rispetto di marinai esperti.",
+      "text_markdown": "Combatté in battaglia e guadagnò il rispetto di marinai esperti.",
+      "tts": {
+        "text": "Combatté in battaglia e guadagnò il rispetto di marinai esperti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La sua storia ci giunge principalmente da un'unica fonte, pubblicata nel 1724.",
+      "text_markdown": "La sua storia ci giunge principalmente da un'unica fonte, pubblicata nel 1724.",
+      "tts": {
+        "text": "La sua storia ci giunge principalmente da un'unica fonte, pubblicata nel millesettecentoventiquattro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quella fonte è il libro del capitano Charles Johnson sui pirati più famigerati.",
+      "text_markdown": "Quella fonte è il libro del capitano Charles Johnson sui pirati più famigerati.",
+      "tts": {
+        "text": "Quella fonte è il libro del capitano Charles Johnson sui pirati più famigerati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Non possiamo essere certi di quanto della storia di Anne sia realtà e quanto sia leggenda.",
+      "text_markdown": "Non possiamo essere certi di quanto della storia di Anne sia realtà e quanto sia leggenda.",
+      "tts": {
+        "text": "Non possiamo essere certi di quanto della storia di Anne sia realtà e quanto sia leggenda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quello che sappiamo è già abbastanza straordinario.",
+      "text_markdown": "Quello che sappiamo è già abbastanza straordinario.",
+      "tts": {
+        "text": "Quello che sappiamo è già abbastanza straordinario.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Questa è la sua storia, raccontata con tutta l'onestà che il registro storico consente.",
+      "text_markdown": "Questa è la sua storia, raccontata con tutta l'onestà che il registro storico consente.",
+      "tts": {
+        "text": "Questa è la sua storia, raccontata con tutta l'onestà che il registro storico consente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il mondo che Anne Bonny conosceva",
+      "text_markdown": "Il mondo che Anne Bonny conosceva"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny visse durante un periodo che gli storici chiamano l'Età d'oro della pirateria.",
+      "text_markdown": "Anne Bonny visse durante un periodo che gli storici chiamano l'Età d'oro della pirateria.",
+      "tts": {
+        "text": "Anne Bonny visse durante un periodo che gli storici chiamano l'Età d'oro della pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quest'era durò all'incirca dal 1680 al 1730.",
+      "text_markdown": "Quest'era durò all'incirca dal 1680 al 1730.",
+      "tts": {
+        "text": "Quest'era durò all'incirca dal milleseicentottanta al millesettecentotrenta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Migliaia di pirati percorrevano i Caraibi, l'Atlantico e l'Oceano Indiano.",
+      "text_markdown": "Migliaia di pirati percorrevano i Caraibi, l'Atlantico e l'Oceano Indiano.",
+      "tts": {
+        "text": "Migliaia di pirati percorrevano i Caraibi, l'Atlantico e l'Oceano Indiano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Mar dei Caraibi si trova tra il Nord America e il Sud America.",
+      "text_markdown": "Il Mar dei Caraibi si trova tra il Nord America e il Sud America.",
+      "tts": {
+        "text": "Il Mar dei Caraibi si trova tra il Nord America e il Sud America.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "È costellato di centinaia di isole, grandi e piccole.",
+      "text_markdown": "È costellato di centinaia di isole, grandi e piccole.",
+      "tts": {
+        "text": "È costellato di centinaia di isole, grandi e piccole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "All'inizio del XVIII secolo, gli imperi europei si contendevano queste isole continuamente.",
+      "text_markdown": "All'inizio del XVIII secolo, gli imperi europei si contendevano queste isole continuamente.",
+      "tts": {
+        "text": "All'inizio del diciottesimo secolo, gli imperi europei si contendevano queste isole continuamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spagna, Inghilterra, Francia e Paesi Bassi rivendicavano tutti territori lì.",
+      "text_markdown": "Spagna, Inghilterra, Francia e Paesi Bassi rivendicavano tutti territori lì.",
+      "tts": {
+        "text": "Spagna, Inghilterra, Francia e Paesi Bassi rivendicavano tutti territori lì.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'economia dei Caraibi dipendeva dallo zucchero, dal tabacco e dal lavoro degli schiavi.",
+      "text_markdown": "L'economia dei Caraibi dipendeva dallo zucchero, dal tabacco e dal lavoro degli schiavi.",
+      "tts": {
+        "text": "L'economia dei Caraibi dipendeva dallo zucchero, dal tabacco e dal lavoro degli schiavi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enormi piantagioni di zucchero su isole come la Giamaica e le Barbados generavano immense ricchezze.",
+      "text_markdown": "Enormi piantagioni di zucchero su isole come la Giamaica e le Barbados generavano immense ricchezze.",
+      "tts": {
+        "text": "Enormi piantagioni di zucchero su isole come la Giamaica e le Barbados generavano immense ricchezze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quella ricchezza viaggiava via mare, rendendo i Caraibi irresistibili per i pirati.",
+      "text_markdown": "Quella ricchezza viaggiava via mare, rendendo i Caraibi irresistibili per i pirati.",
+      "tts": {
+        "text": "Quella ricchezza viaggiava via mare, rendendo i Caraibi irresistibili per i pirati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo zucchero era la merce più preziosa del mondo atlantico.",
+      "text_markdown": "Lo zucchero era la merce più preziosa del mondo atlantico.",
+      "tts": {
+        "text": "Lo zucchero era la merce più preziosa del mondo atlantico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua produzione richiedeva enormi quantità di manodopera in condizioni brutali.",
+      "text_markdown": "La sua produzione richiedeva enormi quantità di manodopera in condizioni brutali.",
+      "tts": {
+        "text": "La sua produzione richiedeva enormi quantità di manodopera in condizioni brutali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Milioni di africani ridotti in schiavitù furono portati ai Caraibi per lavorare nelle piantagioni.",
+      "text_markdown": "Milioni di africani ridotti in schiavitù furono portati ai Caraibi per lavorare nelle piantagioni.",
+      "tts": {
+        "text": "Milioni di africani ridotti in schiavitù furono portati ai Caraibi per lavorare nelle piantagioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I profitti dello zucchero finanziarono imperi e costruirono grandi città in Europa.",
+      "text_markdown": "I profitti dello zucchero finanziarono imperi e costruirono grandi città in Europa.",
+      "tts": {
+        "text": "I profitti dello zucchero finanziarono imperi e costruirono grandi città in Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Guerra di successione spagnola terminò nel 1713.",
+      "text_markdown": "La Guerra di successione spagnola terminò nel 1713.",
+      "tts": {
+        "text": "La Guerra di successione spagnola terminò nel millesettecentotredici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Durante quella guerra, i governi ingaggiarono capitani privati chiamati corsari.",
+      "text_markdown": "Durante quella guerra, i governi ingaggiarono capitani privati chiamati corsari.",
+      "tts": {
+        "text": "Durante quella guerra, i governi ingaggiarono capitani privati chiamati corsari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I corsari portavano documenti ufficiali chiamati lettere di corsa.",
+      "text_markdown": "I corsari portavano documenti ufficiali chiamati lettere di corsa.",
+      "tts": {
+        "text": "I corsari portavano documenti ufficiali chiamati lettere di corsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Queste lettere davano loro il permesso legale di attaccare le navi nemiche.",
+      "text_markdown": "Queste lettere davano loro il permesso legale di attaccare le navi nemiche.",
+      "tts": {
+        "text": "Queste lettere davano loro il permesso legale di attaccare le navi nemiche.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando la guerra finì, migliaia di corsari persero improvvisamente il loro lavoro.",
+      "text_markdown": "Quando la guerra finì, migliaia di corsari persero improvvisamente il loro lavoro.",
+      "tts": {
+        "text": "Quando la guerra finì, migliaia di corsari persero improvvisamente il loro lavoro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Molti di loro non avevano altre competenze oltre alla navigazione e al combattimento.",
+      "text_markdown": "Molti di loro non avevano altre competenze oltre alla navigazione e al combattimento.",
+      "tts": {
+        "text": "Molti di loro non avevano altre competenze oltre alla navigazione e al combattimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni si diedero alla pirateria perché non vedevano altro modo di sopravvivere.",
+      "text_markdown": "Alcuni si diedero alla pirateria perché non vedevano altro modo di sopravvivere.",
+      "tts": {
+        "text": "Alcuni si diedero alla pirateria perché non vedevano altro modo di sopravvivere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Altri divennero pirati perché preferivano la libertà alla povertà.",
+      "text_markdown": "Altri divennero pirati perché preferivano la libertà alla povertà.",
+      "tts": {
+        "text": "Altri divennero pirati perché preferivano la libertà alla povertà.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau, sull'isola di New Providence nelle Bahamas, divenne un rifugio per pirati.",
+      "text_markdown": "Nassau, sull'isola di New Providence nelle Bahamas, divenne un rifugio per pirati.",
+      "tts": {
+        "text": "Nassau, sull'isola di New Providence nelle Bahamas, divenne un rifugio per pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Entro il 1716, centinaia di pirati si erano radunati lì.",
+      "text_markdown": "Entro il 1716, centinaia di pirati si erano radunati lì.",
+      "tts": {
+        "text": "Entro il millesettecentosedici, centinaia di pirati si erano radunati lì.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Crearono quella che alcuni storici chiamano una repubblica dei pirati.",
+      "text_markdown": "Crearono quella che alcuni storici chiamano una repubblica dei pirati.",
+      "tts": {
+        "text": "Crearono quella che alcuni storici chiamano una repubblica dei pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nassau aveva un buon porto, acqua dolce ed era difficile da attaccare per le marine.",
+      "text_markdown": "Nassau aveva un buon porto, acqua dolce ed era difficile da attaccare per le marine.",
+      "tts": {
+        "text": "Nassau aveva un buon porto, acqua dolce ed era difficile da attaccare per le marine.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La repubblica dei pirati a Nassau non aveva un governo formale.",
+      "text_markdown": "La repubblica dei pirati a Nassau non aveva un governo formale.",
+      "tts": {
+        "text": "La repubblica dei pirati a Nassau non aveva un governo formale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pirati eleggevano i propri capi e risolvevano le dispute tra di loro.",
+      "text_markdown": "I pirati eleggevano i propri capi e risolvevano le dispute tra di loro.",
+      "tts": {
+        "text": "I pirati eleggevano i propri capi e risolvevano le dispute tra di loro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Taverne, bordelli e mercati prosperavano con merci rubate.",
+      "text_markdown": "Taverne, bordelli e mercati prosperavano con merci rubate.",
+      "tts": {
+        "text": "Taverne, bordelli e mercati prosperavano con merci rubate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era uno dei luoghi più anarchici dell'emisfero occidentale.",
+      "text_markdown": "Era uno dei luoghi più anarchici dell'emisfero occidentale.",
+      "tts": {
+        "text": "Era uno dei luoghi più anarchici dell'emisfero occidentale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1718, la Corona britannica inviò Woodes Rogers a Nassau come nuovo governatore.",
+      "text_markdown": "Nel 1718, la Corona britannica inviò Woodes Rogers a Nassau come nuovo governatore.",
+      "tts": {
+        "text": "Nel millesettecentodiciotto, la Corona britannica inviò Woodes Rogers a Nassau come nuovo governatore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rogers era un ex corsaro che comprendeva bene i pirati.",
+      "text_markdown": "Rogers era un ex corsaro che comprendeva bene i pirati.",
+      "tts": {
+        "text": "Rogers era un ex corsaro che comprendeva bene i pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Offrì il perdono reale a qualsiasi pirata che si fosse arreso e avesse abbandonato il mestiere.",
+      "text_markdown": "Offrì il perdono reale a qualsiasi pirata che si fosse arreso e avesse abbandonato il mestiere.",
+      "tts": {
+        "text": "Offrì il perdono reale a qualsiasi pirata che si fosse arreso e avesse abbandonato il mestiere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Molti pirati accettarono l'offerta, ma non tutti erano sinceri.",
+      "text_markdown": "Molti pirati accettarono l'offerta, ma non tutti erano sinceri.",
+      "tts": {
+        "text": "Molti pirati accettarono l'offerta, ma non tutti erano sinceri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rogers chiarì anche che i pirati che avessero rifiutato il perdono sarebbero stati impiccati.",
+      "text_markdown": "Rogers chiarì anche che i pirati che avessero rifiutato il perdono sarebbero stati impiccati.",
+      "tts": {
+        "text": "Rogers chiarì anche che i pirati che avessero rifiutato il perdono sarebbero stati impiccati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fece giustiziare pubblicamente diversi pirati per dimostrare che faceva sul serio.",
+      "text_markdown": "Fece giustiziare pubblicamente diversi pirati per dimostrare che faceva sul serio.",
+      "tts": {
+        "text": "Fece giustiziare pubblicamente diversi pirati per dimostrare che faceva sul serio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'era della repubblica dei pirati a Nassau stava volgendo al termine.",
+      "text_markdown": "L'era della repubblica dei pirati a Nassau stava volgendo al termine.",
+      "tts": {
+        "text": "L'era della repubblica dei pirati a Nassau stava volgendo al termine.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel frattempo, le colonie britanniche in Nord America crescevano rapidamente.",
+      "text_markdown": "Nel frattempo, le colonie britanniche in Nord America crescevano rapidamente.",
+      "tts": {
+        "text": "Nel frattempo, le colonie britanniche in Nord America crescevano rapidamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charleston, nella colonia della Carolina del Sud, era uno dei porti più ricchi.",
+      "text_markdown": "Charleston, nella colonia della Carolina del Sud, era uno dei porti più ricchi.",
+      "tts": {
+        "text": "Charleston, nella colonia della Carolina del Sud, era uno dei porti più ricchi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era un centro per il commercio di riso, indaco e persone ridotte in schiavitù.",
+      "text_markdown": "Era un centro per il commercio di riso, indaco e persone ridotte in schiavitù.",
+      "tts": {
+        "text": "Era un centro per il commercio di riso, indaco e persone ridotte in schiavitù.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I mercanti di Charleston erano ambiziosi e spesso spietati.",
+      "text_markdown": "I mercanti di Charleston erano ambiziosi e spesso spietati.",
+      "tts": {
+        "text": "I mercanti di Charleston erano ambiziosi e spesso spietati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All'inizio del XVIII secolo, le donne avevano pochissime opzioni nella società britannica.",
+      "text_markdown": "All'inizio del XVIII secolo, le donne avevano pochissime opzioni nella società britannica.",
+      "tts": {
+        "text": "All'inizio del diciottesimo secolo, le donne avevano pochissime opzioni nella società britannica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non potevano possedere proprietà, votare o ricoprire cariche pubbliche.",
+      "text_markdown": "Non potevano possedere proprietà, votare o ricoprire cariche pubbliche.",
+      "tts": {
+        "text": "Non potevano possedere proprietà, votare o ricoprire cariche pubbliche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'identità legale di una donna veniva assorbita in quella del marito al momento del matrimonio.",
+      "text_markdown": "L'identità legale di una donna veniva assorbita in quella del marito al momento del matrimonio.",
+      "tts": {
+        "text": "L'identità legale di una donna veniva assorbita in quella del marito al momento del matrimonio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'idea che una donna combattesse al fianco dei pirati era quasi impensabile.",
+      "text_markdown": "L'idea che una donna combattesse al fianco dei pirati era quasi impensabile.",
+      "tts": {
+        "text": "L'idea che una donna combattesse al fianco dei pirati era quasi impensabile.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eppure il mare aveva sempre attirato persone che rifiutavano di seguire le regole della società.",
+      "text_markdown": "Eppure il mare aveva sempre attirato persone che rifiutavano di seguire le regole della società.",
+      "tts": {
+        "text": "Eppure il mare aveva sempre attirato persone che rifiutavano di seguire le regole della società.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le navi pirata operavano secondo i propri codici, e alcuni equipaggi erano sorprendentemente democratici.",
+      "text_markdown": "Le navi pirata operavano secondo i propri codici, e alcuni equipaggi erano sorprendentemente democratici.",
+      "tts": {
+        "text": "Le navi pirata operavano secondo i propri codici, e alcuni equipaggi erano sorprendentemente democratici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I capitani venivano eletti e potevano essere destituiti con un voto.",
+      "text_markdown": "I capitani venivano eletti e potevano essere destituiti con un voto.",
+      "tts": {
+        "text": "I capitani venivano eletti e potevano essere destituiti con un voto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il bottino veniva diviso secondo quote concordate.",
+      "text_markdown": "Il bottino veniva diviso secondo quote concordate.",
+      "tts": {
+        "text": "Il bottino veniva diviso secondo quote concordate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo era il mondo in cui Anne Bonny entrò quando arrivò a Nassau.",
+      "text_markdown": "Questo era il mondo in cui Anne Bonny entrò quando arrivò a Nassau.",
+      "tts": {
+        "text": "Questo era il mondo in cui Anne Bonny entrò quando arrivò a Nassau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un mondo di violenza, opportunità e libertà radicale.",
+      "text_markdown": "Era un mondo di violenza, opportunità e libertà radicale.",
+      "tts": {
+        "text": "Era un mondo di violenza, opportunità e libertà radicale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che Anne Bonny conosceva",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era anche un mondo che stava rapidamente scomparendo.",
+      "text_markdown": "Era anche un mondo che stava rapidamente scomparendo.",
+      "tts": {
+        "text": "Era anche un mondo che stava rapidamente scomparendo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origini",
+      "text_markdown": "Origini"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny nacque intorno al 1697 a Kinsale, una piccola città portuale nella contea di Cork, in Irlanda.",
+      "text_markdown": "Anne Bonny nacque intorno al 1697 a Kinsale, una piccola città portuale nella contea di Cork, in Irlanda.",
+      "tts": {
+        "text": "Anne Bonny nacque intorno al milleseicentonovantasette a Kinsale, una piccola città portuale nella contea di Cork, in Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcune fonti collocano la sua nascita nel 1698 o 1700, ma la maggior parte degli storici preferisce il 1697.",
+      "text_markdown": "Alcune fonti collocano la sua nascita nel 1698 o 1700, ma la maggior parte degli storici preferisce il 1697.",
+      "tts": {
+        "text": "Alcune fonti collocano la sua nascita nel milleseicentonovantotto o nel millesettecento, ma la maggior parte degli storici preferisce il milleseicentonovantasette.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suo padre era William Cormac, un avvocato di successo a Kinsale.",
+      "text_markdown": "Suo padre era William Cormac, un avvocato di successo a Kinsale.",
+      "tts": {
+        "text": "Suo padre era William Cormac, un avvocato di successo a Kinsale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sua madre era Mary Brennan, una domestica nella casa dei Cormac.",
+      "text_markdown": "Sua madre era Mary Brennan, una domestica nella casa dei Cormac.",
+      "tts": {
+        "text": "Sua madre era Mary Brennan, una domestica nella casa dei Cormac.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne era la loro figlia illegittima, nata fuori dal matrimonio.",
+      "text_markdown": "Anne era la loro figlia illegittima, nata fuori dal matrimonio.",
+      "tts": {
+        "text": "Anne era la loro figlia illegittima, nata fuori dal matrimonio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nell'Irlanda del XVIII secolo, questo era uno scandalo grave.",
+      "text_markdown": "Nell'Irlanda del XVIII secolo, questo era uno scandalo grave.",
+      "tts": {
+        "text": "Nell'Irlanda del diciottesimo secolo, questo era uno scandalo grave.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La moglie di William Cormac scoprì la relazione e lo lasciò.",
+      "text_markdown": "La moglie di William Cormac scoprì la relazione e lo lasciò.",
+      "tts": {
+        "text": "La moglie di William Cormac scoprì la relazione e lo lasciò.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lo scandalo distrusse il suo studio legale a Kinsale.",
+      "text_markdown": "Lo scandalo distrusse il suo studio legale a Kinsale.",
+      "tts": {
+        "text": "Lo scandalo distrusse il suo studio legale a Kinsale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I suoi clienti lo abbandonarono e la sua reputazione fu rovinata.",
+      "text_markdown": "I suoi clienti lo abbandonarono e la sua reputazione fu rovinata.",
+      "tts": {
+        "text": "I suoi clienti lo abbandonarono e la sua reputazione fu rovinata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cormac decise di ricominciare nelle colonie americane.",
+      "text_markdown": "Cormac decise di ricominciare nelle colonie americane.",
+      "tts": {
+        "text": "Cormac decise di ricominciare nelle colonie americane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portò Mary Brennan e la giovane Anne con sé a Charleston, nella Carolina del Sud.",
+      "text_markdown": "Portò Mary Brennan e la giovane Anne con sé a Charleston, nella Carolina del Sud.",
+      "tts": {
+        "text": "Portò Mary Brennan e la giovane Anne con sé a Charleston, nella Carolina del Sud.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "All'inizio, vestì Anne da ragazzo e la chiamò Andy.",
+      "text_markdown": "All'inizio, vestì Anne da ragazzo e la chiamò Andy.",
+      "tts": {
+        "text": "All'inizio, vestì Anne da ragazzo e la chiamò Andy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Disse alla gente che il bambino era il figlio di un parente che stava formando come praticante legale.",
+      "text_markdown": "Disse alla gente che il bambino era il figlio di un parente che stava formando come praticante legale.",
+      "tts": {
+        "text": "Disse alla gente che il bambino era il figlio di un parente che stava formando come praticante legale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'inganno non durò, ma Cormac prosperò comunque a Charleston.",
+      "text_markdown": "L'inganno non durò, ma Cormac prosperò comunque a Charleston.",
+      "tts": {
+        "text": "L'inganno non durò, ma Cormac prosperò comunque a Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Divenne un mercante di successo e alla fine acquisì una piantagione.",
+      "text_markdown": "Divenne un mercante di successo e alla fine acquisì una piantagione.",
+      "tts": {
+        "text": "Divenne un mercante di successo e alla fine acquisì una piantagione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La piantagione probabilmente coltivava riso o indaco, le principali colture commerciali della regione.",
+      "text_markdown": "La piantagione probabilmente coltivava riso o indaco, le principali colture commerciali della regione.",
+      "tts": {
+        "text": "La piantagione probabilmente coltivava riso o indaco, le principali colture commerciali della regione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anne crebbe in relativo agio rispetto alla maggior parte dei bambini coloniali.",
+      "text_markdown": "Anne crebbe in relativo agio rispetto alla maggior parte dei bambini coloniali.",
+      "tts": {
+        "text": "Anne crebbe in relativo agio rispetto alla maggior parte dei bambini coloniali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kinsale, la città che Anne si lasciò alle spalle, era un porto trafficato sulla costa meridionale dell'Irlanda.",
+      "text_markdown": "Kinsale, la città che Anne si lasciò alle spalle, era un porto trafficato sulla costa meridionale dell'Irlanda.",
+      "tts": {
+        "text": "Kinsale, la città che Anne si lasciò alle spalle, era un porto trafficato sulla costa meridionale dell'Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era stata teatro di una famosa battaglia tra forze inglesi e spagnole.",
+      "text_markdown": "Era stata teatro di una famosa battaglia tra forze inglesi e spagnole.",
+      "tts": {
+        "text": "Era stata teatro di una famosa battaglia tra forze inglesi e spagnole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La popolazione della città era un misto di coloni irlandesi e inglesi.",
+      "text_markdown": "La popolazione della città era un misto di coloni irlandesi e inglesi.",
+      "tts": {
+        "text": "La popolazione della città era un misto di coloni irlandesi e inglesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anne non sarebbe mai tornata nella terra in cui era nata.",
+      "text_markdown": "Anne non sarebbe mai tornata nella terra in cui era nata.",
+      "tts": {
+        "text": "Anne non sarebbe mai tornata nella terra in cui era nata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Secondo il racconto del capitano Johnson, Anne aveva un temperamento feroce fin dall'infanzia.",
+      "text_markdown": "Secondo il racconto del capitano Johnson, Anne aveva un temperamento feroce fin dall'infanzia.",
+      "tts": {
+        "text": "Secondo il racconto del capitano Johnson, Anne aveva un temperamento feroce fin dall'infanzia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una storia afferma che pugnalò una domestica con un coltello da tavola in un accesso d'ira.",
+      "text_markdown": "Una storia afferma che pugnalò una domestica con un coltello da tavola in un accesso d'ira.",
+      "tts": {
+        "text": "Una storia afferma che pugnalò una domestica con un coltello da tavola in un accesso d'ira.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Che questa storia sia vera o esagerata, stabilì la sua reputazione di violenza.",
+      "text_markdown": "Che questa storia sia vera o esagerata, stabilì la sua reputazione di violenza.",
+      "tts": {
+        "text": "Che questa storia sia vera o esagerata, stabilì la sua reputazione di violenza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La madre di Anne, Mary Brennan, morì quando Anne era ancora giovane.",
+      "text_markdown": "La madre di Anne, Mary Brennan, morì quando Anne era ancora giovane.",
+      "tts": {
+        "text": "La madre di Anne, Mary Brennan, morì quando Anne era ancora giovane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La data esatta e la causa della morte di Mary sono sconosciute.",
+      "text_markdown": "La data esatta e la causa della morte di Mary sono sconosciute.",
+      "tts": {
+        "text": "La data esatta e la causa della morte di Mary sono sconosciute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dopo di ciò, Anne fu cresciuta principalmente dal padre.",
+      "text_markdown": "Dopo di ciò, Anne fu cresciuta principalmente dal padre.",
+      "tts": {
+        "text": "Dopo di ciò, Anne fu cresciuta principalmente dal padre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da adolescente, Anne aveva i capelli rossi ed era considerata attraente.",
+      "text_markdown": "Da adolescente, Anne aveva i capelli rossi ed era considerata attraente.",
+      "tts": {
+        "text": "Da adolescente, Anne aveva i capelli rossi ed era considerata attraente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si diceva anche che fosse volitiva e difficile da controllare.",
+      "text_markdown": "Si diceva anche che fosse volitiva e difficile da controllare.",
+      "tts": {
+        "text": "Si diceva anche che fosse volitiva e difficile da controllare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suo padre sperava che sposasse un uomo ricco e migliorasse la posizione della famiglia.",
+      "text_markdown": "Suo padre sperava che sposasse un uomo ricco e migliorasse la posizione della famiglia.",
+      "tts": {
+        "text": "Suo padre sperava che sposasse un uomo ricco e migliorasse la posizione della famiglia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Charleston all'inizio del XVIII secolo era una ruvida città di frontiera.",
+      "text_markdown": "Charleston all'inizio del XVIII secolo era una ruvida città di frontiera.",
+      "tts": {
+        "text": "Charleston all'inizio del diciottesimo secolo era una ruvida città di frontiera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ricchi piantatori vivevano accanto a marinai, soldati e commercianti.",
+      "text_markdown": "Ricchi piantatori vivevano accanto a marinai, soldati e commercianti.",
+      "tts": {
+        "text": "Ricchi piantatori vivevano accanto a marinai, soldati e commercianti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il porto accoglieva navi da tutto il mondo atlantico.",
+      "text_markdown": "Il porto accoglieva navi da tutto il mondo atlantico.",
+      "tts": {
+        "text": "Il porto accoglieva navi da tutto il mondo atlantico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anne crebbe circondata da storie di mare.",
+      "text_markdown": "Anne crebbe circondata da storie di mare.",
+      "tts": {
+        "text": "Anne crebbe circondata da storie di mare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Invece, intorno al 1718, Anne sposò James Bonny.",
+      "text_markdown": "Invece, intorno al 1718, Anne sposò James Bonny.",
+      "tts": {
+        "text": "Invece, intorno al millesettecentodiciotto, Anne sposò James Bonny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "James Bonny era un piccolo pirata senza soldi né prospettive.",
+      "text_markdown": "James Bonny era un piccolo pirata senza soldi né prospettive.",
+      "tts": {
+        "text": "James Bonny era un piccolo pirata senza soldi né prospettive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni storici credono che sposò Anne sperando di ottenere la piantagione del padre.",
+      "text_markdown": "Alcuni storici credono che sposò Anne sperando di ottenere la piantagione del padre.",
+      "tts": {
+        "text": "Alcuni storici credono che sposò Anne sperando di ottenere la piantagione del padre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "William Cormac era furioso per il matrimonio.",
+      "text_markdown": "William Cormac era furioso per il matrimonio.",
+      "tts": {
+        "text": "William Cormac era furioso per il matrimonio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diseredò completamente Anne e rifiutò di darle qualsiasi eredità.",
+      "text_markdown": "Diseredò completamente Anne e rifiutò di darle qualsiasi eredità.",
+      "tts": {
+        "text": "Diseredò completamente Anne e rifiutò di darle qualsiasi eredità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una leggenda dice che Anne diede fuoco alla piantagione del padre per vendetta.",
+      "text_markdown": "Una leggenda dice che Anne diede fuoco alla piantagione del padre per vendetta.",
+      "tts": {
+        "text": "Una leggenda dice che Anne diede fuoco alla piantagione del padre per vendetta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gli storici non possono confermare se ciò sia realmente accaduto.",
+      "text_markdown": "Gli storici non possono confermare se ciò sia realmente accaduto.",
+      "tts": {
+        "text": "Gli storici non possono confermare se ciò sia realmente accaduto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne e James Bonny si recarono a Nassau nelle Bahamas.",
+      "text_markdown": "Anne e James Bonny si recarono a Nassau nelle Bahamas.",
+      "tts": {
+        "text": "Anne e James Bonny si recarono a Nassau nelle Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nassau era ancora un rifugio pirata senza legge quando arrivarono.",
+      "text_markdown": "Nassau era ancora un rifugio pirata senza legge quando arrivarono.",
+      "tts": {
+        "text": "Nassau era ancora un rifugio pirata senza legge quando arrivarono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "James Bonny iniziò a lavorare come informatore per il governatore Woodes Rogers.",
+      "text_markdown": "James Bonny iniziò a lavorare come informatore per il governatore Woodes Rogers.",
+      "tts": {
+        "text": "James Bonny iniziò a lavorare come informatore per il governatore Woodes Rogers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Riferiva sulle attività dei pirati in cambio di denaro.",
+      "text_markdown": "Riferiva sulle attività dei pirati in cambio di denaro.",
+      "tts": {
+        "text": "Riferiva sulle attività dei pirati in cambio di denaro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne disprezzava il lavoro del marito come informatore.",
+      "text_markdown": "Anne disprezzava il lavoro del marito come informatore.",
+      "tts": {
+        "text": "Anne disprezzava il lavoro del marito come informatore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trovava i pirati molto più interessanti delle autorità.",
+      "text_markdown": "Trovava i pirati molto più interessanti delle autorità.",
+      "tts": {
+        "text": "Trovava i pirati molto più interessanti delle autorità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iniziò a trascorrere il tempo nelle taverne e sui moli di Nassau.",
+      "text_markdown": "Iniziò a trascorrere il tempo nelle taverne e sui moli di Nassau.",
+      "tts": {
+        "text": "Iniziò a trascorrere il tempo nelle taverne e sui moli di Nassau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origini",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fu lì che la sua vita cambiò per sempre.",
+      "text_markdown": "Fu lì che la sua vita cambiò per sempre.",
+      "tts": {
+        "text": "Fu lì che la sua vita cambiò per sempre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ascesa al potere",
+      "text_markdown": "Ascesa al potere"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Nassau, Anne Bonny incontrò un capitano pirata di nome John Rackham.",
+      "text_markdown": "A Nassau, Anne Bonny incontrò un capitano pirata di nome John Rackham.",
+      "tts": {
+        "text": "A Nassau, Anne Bonny incontrò un capitano pirata di nome John Rackham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rackham era conosciuto come Calico Jack per i colorati vestiti di calicò che indossava.",
+      "text_markdown": "Rackham era conosciuto come Calico Jack per i colorati vestiti di calicò che indossava.",
+      "tts": {
+        "text": "Rackham era conosciuto come Calico Jack per i colorati vestiti di calicò che indossava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era affascinante, audace e completamente diverso da James Bonny.",
+      "text_markdown": "Era affascinante, audace e completamente diverso da James Bonny.",
+      "tts": {
+        "text": "Era affascinante, audace e completamente diverso da James Bonny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne e Calico Jack iniziarono una relazione appassionata.",
+      "text_markdown": "Anne e Calico Jack iniziarono una relazione appassionata.",
+      "tts": {
+        "text": "Anne e Calico Jack iniziarono una relazione appassionata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rackham offrì di comprare Anne dal marito in una transazione chiamata vendita della moglie.",
+      "text_markdown": "Rackham offrì di comprare Anne dal marito in una transazione chiamata vendita della moglie.",
+      "tts": {
+        "text": "Rackham offrì di comprare Anne dal marito in una transazione chiamata vendita della moglie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le vendite di mogli erano un'usanza rozza ma riconosciuta in alcune parti del mondo coloniale.",
+      "text_markdown": "Le vendite di mogli erano un'usanza rozza ma riconosciuta in alcune parti del mondo coloniale.",
+      "tts": {
+        "text": "Le vendite di mogli erano un'usanza rozza ma riconosciuta in alcune parti del mondo coloniale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "James Bonny rifiutò l'offerta e si lamentò con il governatore Rogers.",
+      "text_markdown": "James Bonny rifiutò l'offerta e si lamentò con il governatore Rogers.",
+      "tts": {
+        "text": "James Bonny rifiutò l'offerta e si lamentò con il governatore Rogers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rogers minacciò di far frustare pubblicamente Anne se non fosse tornata dal marito.",
+      "text_markdown": "Rogers minacciò di far frustare pubblicamente Anne se non fosse tornata dal marito.",
+      "tts": {
+        "text": "Rogers minacciò di far frustare pubblicamente Anne se non fosse tornata dal marito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne non aveva alcuna intenzione di obbedire.",
+      "text_markdown": "Anne non aveva alcuna intenzione di obbedire.",
+      "tts": {
+        "text": "Anne non aveva alcuna intenzione di obbedire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Invece, lei e Calico Jack rubarono uno sloop dal porto di Nassau e salparono.",
+      "text_markdown": "Invece, lei e Calico Jack rubarono uno sloop dal porto di Nassau e salparono.",
+      "tts": {
+        "text": "Invece, lei e Calico Jack rubarono uno sloop dal porto di Nassau e salparono.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham aveva precedentemente accettato il Perdono Reale da Rogers.",
+      "text_markdown": "Rackham aveva precedentemente accettato il Perdono Reale da Rogers.",
+      "tts": {
+        "text": "Rackham aveva precedentemente accettato il Perdono Reale da Rogers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tornando alla pirateria, si rese di nuovo un fuorilegge.",
+      "text_markdown": "Tornando alla pirateria, si rese di nuovo un fuorilegge.",
+      "tts": {
+        "text": "Tornando alla pirateria, si rese di nuovo un fuorilegge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne Bonny navigò con lui come membro a pieno titolo dell'equipaggio.",
+      "text_markdown": "Anne Bonny navigò con lui come membro a pieno titolo dell'equipaggio.",
+      "tts": {
+        "text": "Anne Bonny navigò con lui come membro a pieno titolo dell'equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Da quel momento in poi, era una pirata.",
+      "text_markdown": "Da quel momento in poi, era una pirata.",
+      "tts": {
+        "text": "Da quel momento in poi, era una pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se Anne si travestisse da uomo è un argomento dibattuto dagli storici.",
+      "text_markdown": "Se Anne si travestisse da uomo è un argomento dibattuto dagli storici.",
+      "tts": {
+        "text": "Se Anne si travestisse da uomo è un argomento dibattuto dagli storici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni resoconti dicono che si vestiva e combatteva come un uomo per evitare problemi.",
+      "text_markdown": "Alcuni resoconti dicono che si vestiva e combatteva come un uomo per evitare problemi.",
+      "tts": {
+        "text": "Alcuni resoconti dicono che si vestiva e combatteva come un uomo per evitare problemi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altri resoconti suggeriscono che l'equipaggio sapeva fin dall'inizio che era una donna.",
+      "text_markdown": "Altri resoconti suggeriscono che l'equipaggio sapeva fin dall'inizio che era una donna.",
+      "tts": {
+        "text": "Altri resoconti suggeriscono che l'equipaggio sapeva fin dall'inizio che era una donna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In ogni caso, fu accettata come combattente e marinaia.",
+      "text_markdown": "In ogni caso, fu accettata come combattente e marinaia.",
+      "tts": {
+        "text": "In ogni caso, fu accettata come combattente e marinaia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'equipaggio di Rackham operava un piccolo sloop, veloce e facile da manovrare.",
+      "text_markdown": "L'equipaggio di Rackham operava un piccolo sloop, veloce e facile da manovrare.",
+      "tts": {
+        "text": "L'equipaggio di Rackham operava un piccolo sloop, veloce e facile da manovrare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Prendevano di mira pescherecci, navi mercantili e piccole imbarcazioni commerciali.",
+      "text_markdown": "Prendevano di mira pescherecci, navi mercantili e piccole imbarcazioni commerciali.",
+      "tts": {
+        "text": "Prendevano di mira pescherecci, navi mercantili e piccole imbarcazioni commerciali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Razziavano lungo le coste della Giamaica, di Hispaniola e di Cuba.",
+      "text_markdown": "Razziavano lungo le coste della Giamaica, di Hispaniola e di Cuba.",
+      "tts": {
+        "text": "Razziavano lungo le coste della Giamaica, di Hispaniola e di Cuba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le loro zone di caccia si estendevano attraverso i Caraibi occidentali.",
+      "text_markdown": "Le loro zone di caccia si estendevano attraverso i Caraibi occidentali.",
+      "tts": {
+        "text": "Le loro zone di caccia si estendevano attraverso i Caraibi occidentali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham non era uno dei grandi capitani pirata in termini di ricchezza o potere.",
+      "text_markdown": "Rackham non era uno dei grandi capitani pirata in termini di ricchezza o potere.",
+      "tts": {
+        "text": "Rackham non era uno dei grandi capitani pirata in termini di ricchezza o potere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo equipaggio era piccolo, forse da una dozzina a venti uomini.",
+      "text_markdown": "Il suo equipaggio era piccolo, forse da una dozzina a venti uomini.",
+      "tts": {
+        "text": "Il suo equipaggio era piccolo, forse da una dozzina a venti uomini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le loro prede erano modeste rispetto a quelle di pirati come Barbanera.",
+      "text_markdown": "Le loro prede erano modeste rispetto a quelle di pirati come Barbanera.",
+      "tts": {
+        "text": "Le loro prede erano modeste rispetto a quelle di pirati come Barbanera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ma la presenza di Anne Bonny rese l'equipaggio leggendario.",
+      "text_markdown": "Ma la presenza di Anne Bonny rese l'equipaggio leggendario.",
+      "tts": {
+        "text": "Ma la presenza di Anne Bonny rese l'equipaggio leggendario.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fu durante questo periodo che Anne incontrò Mary Read.",
+      "text_markdown": "Fu durante questo periodo che Anne incontrò Mary Read.",
+      "tts": {
+        "text": "Fu durante questo periodo che Anne incontrò Mary Read.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mary Read era un'altra donna che navigava a bordo della nave di Rackham.",
+      "text_markdown": "Mary Read era un'altra donna che navigava a bordo della nave di Rackham.",
+      "tts": {
+        "text": "Mary Read era un'altra donna che navigava a bordo della nave di Rackham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mary aveva trascorso gran parte della sua vita travestita da uomo.",
+      "text_markdown": "Mary aveva trascorso gran parte della sua vita travestita da uomo.",
+      "tts": {
+        "text": "Mary aveva trascorso gran parte della sua vita travestita da uomo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary Read era nata in Inghilterra ed era stata cresciuta come un ragazzo dalla madre.",
+      "text_markdown": "Mary Read era nata in Inghilterra ed era stata cresciuta come un ragazzo dalla madre.",
+      "tts": {
+        "text": "Mary Read era nata in Inghilterra ed era stata cresciuta come un ragazzo dalla madre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La madre la travestì per riscuotere un'eredità destinata a un figlio maschio.",
+      "text_markdown": "La madre la travestì per riscuotere un'eredità destinata a un figlio maschio.",
+      "tts": {
+        "text": "La madre la travestì per riscuotere un'eredità destinata a un figlio maschio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mary prestò servizio nell'esercito britannico travestita da uomo prima di andare per mare.",
+      "text_markdown": "Mary prestò servizio nell'esercito britannico travestita da uomo prima di andare per mare.",
+      "tts": {
+        "text": "Mary prestò servizio nell'esercito britannico travestita da uomo prima di andare per mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aveva combattuto nelle Fiandre durante la Guerra di successione spagnola.",
+      "text_markdown": "Aveva combattuto nelle Fiandre durante la Guerra di successione spagnola.",
+      "tts": {
+        "text": "Aveva combattuto nelle Fiandre durante la Guerra di successione spagnola.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary aveva anche sposato un commilitone nelle Fiandre.",
+      "text_markdown": "Mary aveva anche sposato un commilitone nelle Fiandre.",
+      "tts": {
+        "text": "Mary aveva anche sposato un commilitone nelle Fiandre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando suo marito morì, tornò alla vita di mare.",
+      "text_markdown": "Quando suo marito morì, tornò alla vita di mare.",
+      "tts": {
+        "text": "Quando suo marito morì, tornò alla vita di mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Finì su una nave diretta ai Caraibi che fu catturata dai pirati.",
+      "text_markdown": "Finì su una nave diretta ai Caraibi che fu catturata dai pirati.",
+      "tts": {
+        "text": "Finì su una nave diretta ai Caraibi che fu catturata dai pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fu così che si unì all'equipaggio di Rackham.",
+      "text_markdown": "Fu così che si unì all'equipaggio di Rackham.",
+      "tts": {
+        "text": "Fu così che si unì all'equipaggio di Rackham.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Secondo il racconto di Johnson, Anne fu inizialmente attratta da Mary, pensando fosse un uomo.",
+      "text_markdown": "Secondo il racconto di Johnson, Anne fu inizialmente attratta da Mary, pensando fosse un uomo.",
+      "tts": {
+        "text": "Secondo il racconto di Johnson, Anne fu inizialmente attratta da Mary, pensando fosse un uomo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando Anne scoprì la vera identità di Mary, divennero amiche intime e alleate.",
+      "text_markdown": "Quando Anne scoprì la vera identità di Mary, divennero amiche intime e alleate.",
+      "tts": {
+        "text": "Quando Anne scoprì la vera identità di Mary, divennero amiche intime e alleate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si dice che Calico Jack fosse geloso prima di scoprire la verità.",
+      "text_markdown": "Si dice che Calico Jack fosse geloso prima di scoprire la verità.",
+      "tts": {
+        "text": "Si dice che Calico Jack fosse geloso prima di scoprire la verità.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne e Mary dimostrarono entrambe il loro valore in battaglia ripetutamente.",
+      "text_markdown": "Anne e Mary dimostrarono entrambe il loro valore in battaglia ripetutamente.",
+      "tts": {
+        "text": "Anne e Mary dimostrarono entrambe il loro valore in battaglia ripetutamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Testimoni dichiararono in seguito che le due donne erano le combattenti più feroci a bordo.",
+      "text_markdown": "Testimoni dichiararono in seguito che le due donne erano le combattenti più feroci a bordo.",
+      "tts": {
+        "text": "Testimoni dichiararono in seguito che le due donne erano le combattenti più feroci a bordo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Brandivano sciabole e pistole con abilità e ferocia.",
+      "text_markdown": "Brandivano sciabole e pistole con abilità e ferocia.",
+      "tts": {
+        "text": "Brandivano sciabole e pistole con abilità e ferocia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'equipaggio razziava piccole imbarcazioni nelle acque vicino alla Giamaica.",
+      "text_markdown": "L'equipaggio razziava piccole imbarcazioni nelle acque vicino alla Giamaica.",
+      "tts": {
+        "text": "L'equipaggio razziava piccole imbarcazioni nelle acque vicino alla Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sequestravano carichi, cibo, armi e occasionalmente reclutavano nuovi membri.",
+      "text_markdown": "Sequestravano carichi, cibo, armi e occasionalmente reclutavano nuovi membri.",
+      "tts": {
+        "text": "Sequestravano carichi, cibo, armi e occasionalmente reclutavano nuovi membri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni marinai catturati scelsero di unirsi ai pirati piuttosto che essere abbandonati in mare.",
+      "text_markdown": "Alcuni marinai catturati scelsero di unirsi ai pirati piuttosto che essere abbandonati in mare.",
+      "tts": {
+        "text": "Alcuni marinai catturati scelsero di unirsi ai pirati piuttosto che essere abbandonati in mare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pirateria nei Caraibi stava diventando sempre più pericolosa nel 1720.",
+      "text_markdown": "La pirateria nei Caraibi stava diventando sempre più pericolosa nel 1720.",
+      "tts": {
+        "text": "La pirateria nei Caraibi stava diventando sempre più pericolosa nel millesettecentoventi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Marina Reale britannica aveva intensificato le pattuglie e la caccia ai pirati.",
+      "text_markdown": "La Marina Reale britannica aveva intensificato le pattuglie e la caccia ai pirati.",
+      "tts": {
+        "text": "La Marina Reale britannica aveva intensificato le pattuglie e la caccia ai pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il governatore Rogers aveva autorizzato cacciatori di pirati a catturare o uccidere i pirati a vista.",
+      "text_markdown": "Il governatore Rogers aveva autorizzato cacciatori di pirati a catturare o uccidere i pirati a vista.",
+      "tts": {
+        "text": "Il governatore Rogers aveva autorizzato cacciatori di pirati a catturare o uccidere i pirati a vista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il cappio si stringeva attorno a ogni equipaggio pirata della regione.",
+      "text_markdown": "Il cappio si stringeva attorno a ogni equipaggio pirata della regione.",
+      "tts": {
+        "text": "Il cappio si stringeva attorno a ogni equipaggio pirata della regione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nonostante il pericolo, l'equipaggio di Rackham continuò a razziare nell'estate e nell'autunno del 1720.",
+      "text_markdown": "Nonostante il pericolo, l'equipaggio di Rackham continuò a razziare nell'estate e nell'autunno del 1720.",
+      "tts": {
+        "text": "Nonostante il pericolo, l'equipaggio di Rackham continuò a razziare nell'estate e nell'autunno del millesettecentoventi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sembravano incapaci o non disposti a rinunciare alla vita da pirati.",
+      "text_markdown": "Sembravano incapaci o non disposti a rinunciare alla vita da pirati.",
+      "tts": {
+        "text": "Sembravano incapaci o non disposti a rinunciare alla vita da pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascesa al potere",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La loro fortuna stava per esaurirsi.",
+      "text_markdown": "La loro fortuna stava per esaurirsi.",
+      "tts": {
+        "text": "La loro fortuna stava per esaurirsi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "All'apice",
+      "text_markdown": "All'apice"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vita a bordo di una nave pirata non aveva nulla a che fare con ciò che suggeriscono le storie romantiche.",
+      "text_markdown": "La vita a bordo di una nave pirata non aveva nulla a che fare con ciò che suggeriscono le storie romantiche.",
+      "tts": {
+        "text": "La vita a bordo di una nave pirata non aveva nulla a che fare con ciò che suggeriscono le storie romantiche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era angusta, sporca e spesso noiosa.",
+      "text_markdown": "Era angusta, sporca e spesso noiosa.",
+      "tts": {
+        "text": "Era angusta, sporca e spesso noiosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I marinai mangiavano gallette, carne salata e qualsiasi cibo fresco riuscissero a trovare.",
+      "text_markdown": "I marinai mangiavano gallette, carne salata e qualsiasi cibo fresco riuscissero a trovare.",
+      "tts": {
+        "text": "I marinai mangiavano gallette, carne salata e qualsiasi cibo fresco riuscissero a trovare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'acqua dolce era sempre scarsa durante i lunghi viaggi.",
+      "text_markdown": "L'acqua dolce era sempre scarsa durante i lunghi viaggi.",
+      "tts": {
+        "text": "L'acqua dolce era sempre scarsa durante i lunghi viaggi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pirati bevevano rum, birra o una miscela di acqua e alcol per restare idratati.",
+      "text_markdown": "I pirati bevevano rum, birra o una miscela di acqua e alcol per restare idratati.",
+      "tts": {
+        "text": "I pirati bevevano rum, birra o una miscela di acqua e alcol per restare idratati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le malattie uccidevano molti più marinai dei combattimenti.",
+      "text_markdown": "Le malattie uccidevano molti più marinai dei combattimenti.",
+      "tts": {
+        "text": "Le malattie uccidevano molti più marinai dei combattimenti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lo scorbuto, la dissenteria e le febbri tropicali erano minacce costanti.",
+      "text_markdown": "Lo scorbuto, la dissenteria e le febbri tropicali erano minacce costanti.",
+      "tts": {
+        "text": "Lo scorbuto, la dissenteria e le febbri tropicali erano minacce costanti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo sloop di Rackham era una piccola imbarcazione a un albero progettata per la velocità.",
+      "text_markdown": "Lo sloop di Rackham era una piccola imbarcazione a un albero progettata per la velocità.",
+      "tts": {
+        "text": "Lo sloop di Rackham era una piccola imbarcazione a un albero progettata per la velocità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non poteva trasportare molti membri dell'equipaggio né carichi pesanti.",
+      "text_markdown": "Non poteva trasportare molti membri dell'equipaggio né carichi pesanti.",
+      "tts": {
+        "text": "Non poteva trasportare molti membri dell'equipaggio né carichi pesanti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma era abbastanza veloce da raggiungere le navi mercantili e abbastanza agile da sfuggire alle navi da guerra.",
+      "text_markdown": "Ma era abbastanza veloce da raggiungere le navi mercantili e abbastanza agile da sfuggire alle navi da guerra.",
+      "tts": {
+        "text": "Ma era abbastanza veloce da raggiungere le navi mercantili e abbastanza agile da sfuggire alle navi da guerra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uno sloop poteva essere manovrato da un piccolo equipaggio, il che si adattava perfettamente a Rackham.",
+      "text_markdown": "Uno sloop poteva essere manovrato da un piccolo equipaggio, il che si adattava perfettamente a Rackham.",
+      "tts": {
+        "text": "Uno sloop poteva essere manovrato da un piccolo equipaggio, il che si adattava perfettamente a Rackham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Meno membri dell'equipaggio significava quote di bottino maggiori per ciascuno.",
+      "text_markdown": "Meno membri dell'equipaggio significava quote di bottino maggiori per ciascuno.",
+      "tts": {
+        "text": "Meno membri dell'equipaggio significava quote di bottino maggiori per ciascuno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il pescaggio ridotto di uno sloop gli permetteva anche di nascondersi in baie e insenature inaccessibili alle navi più grandi.",
+      "text_markdown": "Il pescaggio ridotto di uno sloop gli permetteva anche di nascondersi in baie e insenature inaccessibili alle navi più grandi.",
+      "tts": {
+        "text": "Il pescaggio ridotto di uno sloop gli permetteva anche di nascondersi in baie e insenature inaccessibili alle navi più grandi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli equipaggi pirata si governavano attraverso un insieme di regole scritte chiamate articoli.",
+      "text_markdown": "Gli equipaggi pirata si governavano attraverso un insieme di regole scritte chiamate articoli.",
+      "tts": {
+        "text": "Gli equipaggi pirata si governavano attraverso un insieme di regole scritte chiamate articoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogni membro dell'equipaggio firmava o segnava gli articoli prima di unirsi.",
+      "text_markdown": "Ogni membro dell'equipaggio firmava o segnava gli articoli prima di unirsi.",
+      "tts": {
+        "text": "Ogni membro dell'equipaggio firmava o segnava gli articoli prima di unirsi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli articoli specificavano come sarebbe stato diviso il bottino.",
+      "text_markdown": "Gli articoli specificavano come sarebbe stato diviso il bottino.",
+      "tts": {
+        "text": "Gli articoli specificavano come sarebbe stato diviso il bottino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Stabilivano anche regole per i combattimenti, il gioco d'azzardo e la risoluzione delle dispute.",
+      "text_markdown": "Stabilivano anche regole per i combattimenti, il gioco d'azzardo e la risoluzione delle dispute.",
+      "tts": {
+        "text": "Stabilivano anche regole per i combattimenti, il gioco d'azzardo e la risoluzione delle dispute.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il capitano veniva eletto con un voto dell'equipaggio.",
+      "text_markdown": "Il capitano veniva eletto con un voto dell'equipaggio.",
+      "tts": {
+        "text": "Il capitano veniva eletto con un voto dell'equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Poteva essere destituito in qualsiasi momento se l'equipaggio perdeva fiducia in lui.",
+      "text_markdown": "Poteva essere destituito in qualsiasi momento se l'equipaggio perdeva fiducia in lui.",
+      "tts": {
+        "text": "Poteva essere destituito in qualsiasi momento se l'equipaggio perdeva fiducia in lui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il quartiermastro serviva come una sorta di primo ufficiale e mediatore.",
+      "text_markdown": "Il quartiermastro serviva come una sorta di primo ufficiale e mediatore.",
+      "tts": {
+        "text": "Il quartiermastro serviva come una sorta di primo ufficiale e mediatore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questo sistema democratico era notevole per la sua epoca.",
+      "text_markdown": "Questo sistema democratico era notevole per la sua epoca.",
+      "tts": {
+        "text": "Questo sistema democratico era notevole per la sua epoca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny e Mary Read operavano all'interno di questo sistema come pari.",
+      "text_markdown": "Anne Bonny e Mary Read operavano all'interno di questo sistema come pari.",
+      "tts": {
+        "text": "Anne Bonny e Mary Read operavano all'interno di questo sistema come pari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ricevevano quote di bottino proprio come i membri maschili dell'equipaggio.",
+      "text_markdown": "Ricevevano quote di bottino proprio come i membri maschili dell'equipaggio.",
+      "tts": {
+        "text": "Ricevevano quote di bottino proprio come i membri maschili dell'equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La loro abilità nel combattimento guadagnò loro il rispetto a bordo della nave.",
+      "text_markdown": "La loro abilità nel combattimento guadagnò loro il rispetto a bordo della nave.",
+      "tts": {
+        "text": "La loro abilità nel combattimento guadagnò loro il rispetto a bordo della nave.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le armi dei pirati caraibici erano varie e letali.",
+      "text_markdown": "Le armi dei pirati caraibici erano varie e letali.",
+      "tts": {
+        "text": "Le armi dei pirati caraibici erano varie e letali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le sciabole d'arrembaggio erano l'arma preferita per il combattimento ravvicinato in mare.",
+      "text_markdown": "Le sciabole d'arrembaggio erano l'arma preferita per il combattimento ravvicinato in mare.",
+      "tts": {
+        "text": "Le sciabole d'arrembaggio erano l'arma preferita per il combattimento ravvicinato in mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le pistole a pietra focaia venivano portate ma potevano sparare un solo colpo prima di essere ricaricate.",
+      "text_markdown": "Le pistole a pietra focaia venivano portate ma potevano sparare un solo colpo prima di essere ricaricate.",
+      "tts": {
+        "text": "Le pistole a pietra focaia venivano portate ma potevano sparare un solo colpo prima di essere ricaricate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Asce d'arrembaggio, pugnali e granate chiamate vasi di fuoco erano anch'esse comuni.",
+      "text_markdown": "Asce d'arrembaggio, pugnali e granate chiamate vasi di fuoco erano anch'esse comuni.",
+      "tts": {
+        "text": "Asce d'arrembaggio, pugnali e granate chiamate vasi di fuoco erano anch'esse comuni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando i pirati attaccavano una nave, il primo obiettivo era intimidire l'equipaggio perché si arrendesse.",
+      "text_markdown": "Quando i pirati attaccavano una nave, il primo obiettivo era intimidire l'equipaggio perché si arrendesse.",
+      "tts": {
+        "text": "Quando i pirati attaccavano una nave, il primo obiettivo era intimidire l'equipaggio perché si arrendesse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Issare la bandiera Jolly Roger era un'arma psicologica.",
+      "text_markdown": "Issare la bandiera Jolly Roger era un'arma psicologica.",
+      "tts": {
+        "text": "Issare la bandiera Jolly Roger era un'arma psicologica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La maggior parte degli equipaggi mercantili si arrendeva senza combattere perché la resistenza significava morte.",
+      "text_markdown": "La maggior parte degli equipaggi mercantili si arrendeva senza combattere perché la resistenza significava morte.",
+      "tts": {
+        "text": "La maggior parte degli equipaggi mercantili si arrendeva senza combattere perché la resistenza significava morte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La bandiera di Calico Jack era distintiva.",
+      "text_markdown": "La bandiera di Calico Jack era distintiva.",
+      "tts": {
+        "text": "La bandiera di Calico Jack era distintiva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mostrava un teschio bianco sopra due spade incrociate su sfondo nero.",
+      "text_markdown": "Mostrava un teschio bianco sopra due spade incrociate su sfondo nero.",
+      "tts": {
+        "text": "Mostrava un teschio bianco sopra due spade incrociate su sfondo nero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questo disegno è una delle bandiere pirata più riconoscibili della storia.",
+      "text_markdown": "Questo disegno è una delle bandiere pirata più riconoscibili della storia.",
+      "tts": {
+        "text": "Questo disegno è una delle bandiere pirata più riconoscibili della storia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Molte raffigurazioni moderne di bandiere pirata si basano sul disegno di Rackham.",
+      "text_markdown": "Molte raffigurazioni moderne di bandiere pirata si basano sul disegno di Rackham.",
+      "tts": {
+        "text": "Molte raffigurazioni moderne di bandiere pirata si basano sul disegno di Rackham.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La reputazione di violenza di Anne Bonny era ben consolidata nella comunità pirata.",
+      "text_markdown": "La reputazione di violenza di Anne Bonny era ben consolidata nella comunità pirata.",
+      "tts": {
+        "text": "La reputazione di violenza di Anne Bonny era ben consolidata nella comunità pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I testimoni al suo successivo processo la descrissero come desiderosa di combattere.",
+      "text_markdown": "I testimoni al suo successivo processo la descrissero come desiderosa di combattere.",
+      "tts": {
+        "text": "I testimoni al suo successivo processo la descrissero come desiderosa di combattere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si dice che maledicesse e minacciasse i marinai catturati che resistevano.",
+      "text_markdown": "Si dice che maledicesse e minacciasse i marinai catturati che resistevano.",
+      "tts": {
+        "text": "Si dice che maledicesse e minacciasse i marinai catturati che resistevano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary Read era altrettanto formidabile.",
+      "text_markdown": "Mary Read era altrettanto formidabile.",
+      "tts": {
+        "text": "Mary Read era altrettanto formidabile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una storia racconta che Mary sfidò a duello un compagno pirata per proteggere un uomo a cui teneva.",
+      "text_markdown": "Una storia racconta che Mary sfidò a duello un compagno pirata per proteggere un uomo a cui teneva.",
+      "tts": {
+        "text": "Una storia racconta che Mary sfidò a duello un compagno pirata per proteggere un uomo a cui teneva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uccise l'altro pirata in combattimento singolo.",
+      "text_markdown": "Uccise l'altro pirata in combattimento singolo.",
+      "tts": {
+        "text": "Uccise l'altro pirata in combattimento singolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Che questa storia sia vera o meno, riflette quanto fosse considerata pericolosa.",
+      "text_markdown": "Che questa storia sia vera o meno, riflette quanto fosse considerata pericolosa.",
+      "tts": {
+        "text": "Che questa storia sia vera o meno, riflette quanto fosse considerata pericolosa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante l'estate del 1720, l'equipaggio navigò lungo la costa settentrionale della Giamaica.",
+      "text_markdown": "Durante l'estate del 1720, l'equipaggio navigò lungo la costa settentrionale della Giamaica.",
+      "tts": {
+        "text": "Durante l'estate del millesettecentoventi, l'equipaggio navigò lungo la costa settentrionale della Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sequestrarono diversi pescherecci e una goletta mercantile.",
+      "text_markdown": "Sequestrarono diversi pescherecci e una goletta mercantile.",
+      "tts": {
+        "text": "Sequestrarono diversi pescherecci e una goletta mercantile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le prede erano piccole, ma mantenevano l'equipaggio nutrito e rifornito.",
+      "text_markdown": "Le prede erano piccole, ma mantenevano l'equipaggio nutrito e rifornito.",
+      "tts": {
+        "text": "Le prede erano piccole, ma mantenevano l'equipaggio nutrito e rifornito.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il governatore della Giamaica, Sir Nicholas Lawes, emanò un proclama contro Rackham.",
+      "text_markdown": "Il governatore della Giamaica, Sir Nicholas Lawes, emanò un proclama contro Rackham.",
+      "tts": {
+        "text": "Il governatore della Giamaica, Sir Nicholas Lawes, emanò un proclama contro Rackham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il proclama nominava specificamente Rackham e due donne senza nome nel suo equipaggio.",
+      "text_markdown": "Il proclama nominava specificamente Rackham e due donne senza nome nel suo equipaggio.",
+      "tts": {
+        "text": "Il proclama nominava specificamente Rackham e due donne senza nome nel suo equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questo fu uno dei pochi documenti ufficiali che riconosceva l'esistenza di donne pirata.",
+      "text_markdown": "Questo fu uno dei pochi documenti ufficiali che riconosceva l'esistenza di donne pirata.",
+      "tts": {
+        "text": "Questo fu uno dei pochi documenti ufficiali che riconosceva l'esistenza di donne pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le autorità ingaggiarono marinai esperti per dare la caccia all'equipaggio di Rackham.",
+      "text_markdown": "Le autorità ingaggiarono marinai esperti per dare la caccia all'equipaggio di Rackham.",
+      "tts": {
+        "text": "Le autorità ingaggiarono marinai esperti per dare la caccia all'equipaggio di Rackham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il capitano Jonathan Barnet fu incaricato come cacciatore di pirati.",
+      "text_markdown": "Il capitano Jonathan Barnet fu incaricato come cacciatore di pirati.",
+      "tts": {
+        "text": "Il capitano Jonathan Barnet fu incaricato come cacciatore di pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barnet conosceva bene le acque intorno alla Giamaica ed era determinato a trovarli.",
+      "text_markdown": "Barnet conosceva bene le acque intorno alla Giamaica ed era determinato a trovarli.",
+      "tts": {
+        "text": "Barnet conosceva bene le acque intorno alla Giamaica ed era determinato a trovarli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La caccia si stava avvicinando a Calico Jack e al suo equipaggio.",
+      "text_markdown": "La caccia si stava avvicinando a Calico Jack e al suo equipaggio.",
+      "tts": {
+        "text": "La caccia si stava avvicinando a Calico Jack e al suo equipaggio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La fine",
+      "text_markdown": "La fine"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nell'ottobre 1720, il capitano Jonathan Barnet trovò lo sloop di Rackham all'ancora al largo della punta occidentale della Giamaica.",
+      "text_markdown": "Nell'ottobre 1720, il capitano Jonathan Barnet trovò lo sloop di Rackham all'ancora al largo della punta occidentale della Giamaica.",
+      "tts": {
+        "text": "Nell'ottobre millesettecentoventi, il capitano Jonathan Barnet trovò lo sloop di Rackham all'ancora al largo della punta occidentale della Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pirati erano all'ancora vicino a Negril Point, in una piccola baia.",
+      "text_markdown": "I pirati erano all'ancora vicino a Negril Point, in una piccola baia.",
+      "tts": {
+        "text": "I pirati erano all'ancora vicino a Negril Point, in una piccola baia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era notte quando la nave di Barnet si avvicinò.",
+      "text_markdown": "Era notte quando la nave di Barnet si avvicinò.",
+      "tts": {
+        "text": "Era notte quando la nave di Barnet si avvicinò.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte dell'equipaggio di Rackham era ubriaca o addormentata sotto coperta.",
+      "text_markdown": "La maggior parte dell'equipaggio di Rackham era ubriaca o addormentata sotto coperta.",
+      "tts": {
+        "text": "La maggior parte dell'equipaggio di Rackham era ubriaca o addormentata sotto coperta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avevano festeggiato dopo aver catturato un piccolo peschereccio quello stesso giorno.",
+      "text_markdown": "Avevano festeggiato dopo aver catturato un piccolo peschereccio quello stesso giorno.",
+      "tts": {
+        "text": "Avevano festeggiato dopo aver catturato un piccolo peschereccio quello stesso giorno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'equipaggio era completamente impreparato a un attacco.",
+      "text_markdown": "L'equipaggio era completamente impreparato a un attacco.",
+      "tts": {
+        "text": "L'equipaggio era completamente impreparato a un attacco.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando gli uomini di Barnet aprirono il fuoco, la maggior parte dei pirati si nascose sotto coperta.",
+      "text_markdown": "Quando gli uomini di Barnet aprirono il fuoco, la maggior parte dei pirati si nascose sotto coperta.",
+      "tts": {
+        "text": "Quando gli uomini di Barnet aprirono il fuoco, la maggior parte dei pirati si nascose sotto coperta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Secondo la testimonianza processuale, Anne Bonny e Mary Read furono tra i pochi che combatterono.",
+      "text_markdown": "Secondo la testimonianza processuale, Anne Bonny e Mary Read furono tra i pochi che combatterono.",
+      "tts": {
+        "text": "Secondo la testimonianza processuale, Anne Bonny e Mary Read furono tra i pochi che combatterono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spararono con le pistole e brandirono sciabole contro gli aggressori.",
+      "text_markdown": "Spararono con le pistole e brandirono sciabole contro gli aggressori.",
+      "tts": {
+        "text": "Spararono con le pistole e brandirono sciabole contro gli aggressori.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si dice che Anne urlò agli uomini nascosti sotto di salire a combattere.",
+      "text_markdown": "Si dice che Anne urlò agli uomini nascosti sotto di salire a combattere.",
+      "tts": {
+        "text": "Si dice che Anne urlò agli uomini nascosti sotto di salire a combattere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando rifiutarono, sparò con la pistola nella stiva in un accesso di rabbia.",
+      "text_markdown": "Quando rifiutarono, sparò con la pistola nella stiva in un accesso di rabbia.",
+      "tts": {
+        "text": "Quando rifiutarono, sparò con la pistola nella stiva in un accesso di rabbia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nonostante il coraggio di Anne e Mary, i pirati furono rapidamente sopraffatti.",
+      "text_markdown": "Nonostante il coraggio di Anne e Mary, i pirati furono rapidamente sopraffatti.",
+      "tts": {
+        "text": "Nonostante il coraggio di Anne e Mary, i pirati furono rapidamente sopraffatti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'equipaggio di Barnet catturò l'intera nave.",
+      "text_markdown": "L'equipaggio di Barnet catturò l'intera nave.",
+      "tts": {
+        "text": "L'equipaggio di Barnet catturò l'intera nave.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pirati catturati furono portati a Spanish Town, in Giamaica, per il processo.",
+      "text_markdown": "I pirati catturati furono portati a Spanish Town, in Giamaica, per il processo.",
+      "tts": {
+        "text": "I pirati catturati furono portati a Spanish Town, in Giamaica, per il processo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanish Town era la capitale della Giamaica a quel tempo.",
+      "text_markdown": "Spanish Town era la capitale della Giamaica a quel tempo.",
+      "tts": {
+        "text": "Spanish Town era la capitale della Giamaica a quel tempo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il processo ebbe luogo nel novembre 1720 davanti a un tribunale del Vice Ammiragliato.",
+      "text_markdown": "Il processo ebbe luogo nel novembre 1720 davanti a un tribunale del Vice Ammiragliato.",
+      "tts": {
+        "text": "Il processo ebbe luogo nel novembre millesettecentoventi davanti a un tribunale del Vice Ammiragliato.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Calico Jack Rackham fu processato per primo, il 16 novembre 1720.",
+      "text_markdown": "Calico Jack Rackham fu processato per primo, il 16 novembre 1720.",
+      "tts": {
+        "text": "Calico Jack Rackham fu processato per primo, il sedici novembre millesettecentoventi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu riconosciuto colpevole di pirateria e condannato a morte per impiccagione.",
+      "text_markdown": "Fu riconosciuto colpevole di pirateria e condannato a morte per impiccagione.",
+      "tts": {
+        "text": "Fu riconosciuto colpevole di pirateria e condannato a morte per impiccagione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il suo corpo fu esposto in una gabbia di metallo chiamata forca come monito per gli altri.",
+      "text_markdown": "Il suo corpo fu esposto in una gabbia di metallo chiamata forca come monito per gli altri.",
+      "tts": {
+        "text": "Il suo corpo fu esposto in una gabbia di metallo chiamata forca come monito per gli altri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La forca fu collocata su una piccola isola visibile dalle navi di passaggio.",
+      "text_markdown": "La forca fu collocata su una piccola isola visibile dalle navi di passaggio.",
+      "tts": {
+        "text": "La forca fu collocata su una piccola isola visibile dalle navi di passaggio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prima della sua esecuzione, Anne Bonny fu autorizzata a visitare Calico Jack nella sua cella.",
+      "text_markdown": "Prima della sua esecuzione, Anne Bonny fu autorizzata a visitare Calico Jack nella sua cella.",
+      "tts": {
+        "text": "Prima della sua esecuzione, Anne Bonny fu autorizzata a visitare Calico Jack nella sua cella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Secondo il racconto di Johnson, non gli mostrò alcuna compassione.",
+      "text_markdown": "Secondo il racconto di Johnson, non gli mostrò alcuna compassione.",
+      "tts": {
+        "text": "Secondo il racconto di Johnson, non gli mostrò alcuna compassione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si dice che gli disse che se avesse combattuto come un uomo, non avrebbe dovuto essere impiccato come un cane.",
+      "text_markdown": "Si dice che gli disse che se avesse combattuto come un uomo, non avrebbe dovuto essere impiccato come un cane.",
+      "tts": {
+        "text": "Si dice che gli disse che se avesse combattuto come un uomo, non avrebbe dovuto essere impiccato come un cane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questa divenne una delle frasi più celebri della storia della pirateria.",
+      "text_markdown": "Questa divenne una delle frasi più celebri della storia della pirateria.",
+      "tts": {
+        "text": "Questa divenne una delle frasi più celebri della storia della pirateria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny e Mary Read furono processate il 28 novembre 1720.",
+      "text_markdown": "Anne Bonny e Mary Read furono processate il 28 novembre 1720.",
+      "tts": {
+        "text": "Anne Bonny e Mary Read furono processate il ventotto novembre millesettecentoventi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diversi testimoni deposero contro di loro.",
+      "text_markdown": "Diversi testimoni deposero contro di loro.",
+      "tts": {
+        "text": "Diversi testimoni deposero contro di loro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pescatori e marinai catturati descrissero come le donne li avessero attaccati con le armi.",
+      "text_markdown": "Pescatori e marinai catturati descrissero come le donne li avessero attaccati con le armi.",
+      "tts": {
+        "text": "Pescatori e marinai catturati descrissero come le donne li avessero attaccati con le armi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Entrambe le donne furono riconosciute colpevoli e condannate all'impiccagione.",
+      "text_markdown": "Entrambe le donne furono riconosciute colpevoli e condannate all'impiccagione.",
+      "tts": {
+        "text": "Entrambe le donne furono riconosciute colpevoli e condannate all'impiccagione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma sia Anne che Mary avevano una via d'uscita legale.",
+      "text_markdown": "Ma sia Anne che Mary avevano una via d'uscita legale.",
+      "tts": {
+        "text": "Ma sia Anne che Mary avevano una via d'uscita legale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ciascuna donna dichiarò di essere incinta.",
+      "text_markdown": "Ciascuna donna dichiarò di essere incinta.",
+      "tts": {
+        "text": "Ciascuna donna dichiarò di essere incinta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Secondo la legge inglese, una donna incinta non poteva essere giustiziata.",
+      "text_markdown": "Secondo la legge inglese, una donna incinta non poteva essere giustiziata.",
+      "tts": {
+        "text": "Secondo la legge inglese, una donna incinta non poteva essere giustiziata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questa protezione legale si chiamava invocare la gravidanza.",
+      "text_markdown": "Questa protezione legale si chiamava invocare la gravidanza.",
+      "tts": {
+        "text": "Questa protezione legale si chiamava invocare la gravidanza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entrambe le donne furono esaminate e la loro gravidanza confermata.",
+      "text_markdown": "Entrambe le donne furono esaminate e la loro gravidanza confermata.",
+      "tts": {
+        "text": "Entrambe le donne furono esaminate e la loro gravidanza confermata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le loro esecuzioni furono rinviate a tempo indeterminato.",
+      "text_markdown": "Le loro esecuzioni furono rinviate a tempo indeterminato.",
+      "tts": {
+        "text": "Le loro esecuzioni furono rinviate a tempo indeterminato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Furono rimandate in prigione in attesa della nascita dei loro figli.",
+      "text_markdown": "Furono rimandate in prigione in attesa della nascita dei loro figli.",
+      "tts": {
+        "text": "Furono rimandate in prigione in attesa della nascita dei loro figli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary Read non lasciò mai la prigione viva.",
+      "text_markdown": "Mary Read non lasciò mai la prigione viva.",
+      "tts": {
+        "text": "Mary Read non lasciò mai la prigione viva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si ammalò, probabilmente di una febbre comune nelle prigioni giamaicane.",
+      "text_markdown": "Si ammalò, probabilmente di una febbre comune nelle prigioni giamaicane.",
+      "tts": {
+        "text": "Si ammalò, probabilmente di una febbre comune nelle prigioni giamaicane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mary Read morì in prigione nell'aprile 1721.",
+      "text_markdown": "Mary Read morì in prigione nell'aprile 1721.",
+      "tts": {
+        "text": "Mary Read morì in prigione nell'aprile millesettecentoventuno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fu sepolta nella parrocchia di Saint Catherine in Giamaica.",
+      "text_markdown": "Fu sepolta nella parrocchia di Saint Catherine in Giamaica.",
+      "tts": {
+        "text": "Fu sepolta nella parrocchia di Saint Catherine in Giamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il destino di Anne Bonny è uno dei grandi misteri della storia della pirateria.",
+      "text_markdown": "Il destino di Anne Bonny è uno dei grandi misteri della storia della pirateria.",
+      "tts": {
+        "text": "Il destino di Anne Bonny è uno dei grandi misteri della storia della pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non c'è traccia della sua esecuzione.",
+      "text_markdown": "Non c'è traccia della sua esecuzione.",
+      "tts": {
+        "text": "Non c'è traccia della sua esecuzione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Non c'è traccia del suo rilascio.",
+      "text_markdown": "Non c'è traccia del suo rilascio.",
+      "tts": {
+        "text": "Non c'è traccia del suo rilascio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Semplicemente scompare dai documenti storici dopo il processo.",
+      "text_markdown": "Semplicemente scompare dai documenti storici dopo il processo.",
+      "tts": {
+        "text": "Semplicemente scompare dai documenti storici dopo il processo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La teoria più comune è che il padre la riscattò dalla prigione.",
+      "text_markdown": "La teoria più comune è che il padre la riscattò dalla prigione.",
+      "tts": {
+        "text": "La teoria più comune è che il padre la riscattò dalla prigione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "William Cormac era ancora un uomo ricco a Charleston.",
+      "text_markdown": "William Cormac era ancora un uomo ricco a Charleston.",
+      "tts": {
+        "text": "William Cormac era ancora un uomo ricco a Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva i mezzi e le conoscenze per organizzare il suo rilascio discreto.",
+      "text_markdown": "Aveva i mezzi e le conoscenze per organizzare il suo rilascio discreto.",
+      "tts": {
+        "text": "Aveva i mezzi e le conoscenze per organizzare il suo rilascio discreto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni storici credono che Anne tornò a Charleston e visse con un altro nome.",
+      "text_markdown": "Alcuni storici credono che Anne tornò a Charleston e visse con un altro nome.",
+      "tts": {
+        "text": "Alcuni storici credono che Anne tornò a Charleston e visse con un altro nome.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una teoria la identifica come una donna di nome Anne Burleigh che si sposò ed ebbe figli.",
+      "text_markdown": "Una teoria la identifica come una donna di nome Anne Burleigh che si sposò ed ebbe figli.",
+      "tts": {
+        "text": "Una teoria la identifica come una donna di nome Anne Burleigh che si sposò ed ebbe figli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se questa teoria è corretta, Anne Bonny visse fino a circa 82 anni.",
+      "text_markdown": "Se questa teoria è corretta, Anne Bonny visse fino a circa 82 anni.",
+      "tts": {
+        "text": "Se questa teoria è corretta, Anne Bonny visse fino a circa ottantadue anni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sarebbe morta intorno al 1782, molto dopo la fine dell'Età d'oro della pirateria.",
+      "text_markdown": "Sarebbe morta intorno al 1782, molto dopo la fine dell'Età d'oro della pirateria.",
+      "tts": {
+        "text": "Sarebbe morta intorno al millesettecentottantadue, molto dopo la fine dell'Età d'oro della pirateria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Eredità",
+      "text_markdown": "Eredità"
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny è una delle piratesse più famose della storia.",
+      "text_markdown": "Anne Bonny è una delle piratesse più famose della storia.",
+      "tts": {
+        "text": "Anne Bonny è una delle piratesse più famose della storia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "È famosa non per la portata della sua pirateria, ma per chi era.",
+      "text_markdown": "È famosa non per la portata della sua pirateria, ma per chi era.",
+      "tts": {
+        "text": "È famosa non per la portata della sua pirateria, ma per chi era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una donna che combatteva al fianco degli uomini su una nave pirata era straordinaria in qualsiasi epoca.",
+      "text_markdown": "Una donna che combatteva al fianco degli uomini su una nave pirata era straordinaria in qualsiasi epoca.",
+      "tts": {
+        "text": "Una donna che combatteva al fianco degli uomini su una nave pirata era straordinaria in qualsiasi epoca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La sua storia sfida l'idea che la pirateria fosse un'attività esclusivamente maschile.",
+      "text_markdown": "La sua storia sfida l'idea che la pirateria fosse un'attività esclusivamente maschile.",
+      "tts": {
+        "text": "La sua storia sfida l'idea che la pirateria fosse un'attività esclusivamente maschile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne e Mary Read dimostrarono che le donne potevano essere altrettanto formidabili in combattimento.",
+      "text_markdown": "Anne e Mary Read dimostrarono che le donne potevano essere altrettanto formidabili in combattimento.",
+      "tts": {
+        "text": "Anne e Mary Read dimostrarono che le donne potevano essere altrettanto formidabili in combattimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il loro esempio ispirò generazioni di scrittori, artisti e storici.",
+      "text_markdown": "Il loro esempio ispirò generazioni di scrittori, artisti e storici.",
+      "tts": {
+        "text": "Il loro esempio ispirò generazioni di scrittori, artisti e storici.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il libro del capitano Charles Johnson, pubblicato nel 1724, è la fonte principale della storia di Anne.",
+      "text_markdown": "Il libro del capitano Charles Johnson, pubblicato nel 1724, è la fonte principale della storia di Anne.",
+      "tts": {
+        "text": "Il libro del capitano Charles Johnson, pubblicato nel millesettecentoventiquattro, è la fonte principale della storia di Anne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il titolo completo è Una storia generale delle rapine e degli omicidi dei pirati più famigerati.",
+      "text_markdown": "Il titolo completo è Una storia generale delle rapine e degli omicidi dei pirati più famigerati.",
+      "tts": {
+        "text": "Il titolo completo è Una storia generale delle rapine e degli omicidi dei pirati più famigerati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Divenne un bestseller e plasmò il modo in cui il mondo immaginava i pirati per secoli.",
+      "text_markdown": "Divenne un bestseller e plasmò il modo in cui il mondo immaginava i pirati per secoli.",
+      "tts": {
+        "text": "Divenne un bestseller e plasmò il modo in cui il mondo immaginava i pirati per secoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli storici discutono sull'effettiva affidabilità del racconto di Johnson.",
+      "text_markdown": "Gli storici discutono sull'effettiva affidabilità del racconto di Johnson.",
+      "tts": {
+        "text": "Gli storici discutono sull'effettiva affidabilità del racconto di Johnson.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni dettagli corrispondono ai documenti giudiziari e ad altri archivi.",
+      "text_markdown": "Alcuni dettagli corrispondono ai documenti giudiziari e ad altri archivi.",
+      "tts": {
+        "text": "Alcuni dettagli corrispondono ai documenti giudiziari e ad altri archivi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altri dettagli sembrano abbelliti o inventati per effetto drammatico.",
+      "text_markdown": "Altri dettagli sembrano abbelliti o inventati per effetto drammatico.",
+      "tts": {
+        "text": "Altri dettagli sembrano abbelliti o inventati per effetto drammatico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Separare i fatti dalla leggenda è una delle sfide continue della storia della pirateria.",
+      "text_markdown": "Separare i fatti dalla leggenda è una delle sfide continue della storia della pirateria.",
+      "tts": {
+        "text": "Separare i fatti dalla leggenda è una delle sfide continue della storia della pirateria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I documenti processuali di Spanish Town, in Giamaica, forniscono le prove più attendibili.",
+      "text_markdown": "I documenti processuali di Spanish Town, in Giamaica, forniscono le prove più attendibili.",
+      "tts": {
+        "text": "I documenti processuali di Spanish Town, in Giamaica, forniscono le prove più attendibili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Confermano che due donne combatterono a bordo della nave di Rackham.",
+      "text_markdown": "Confermano che due donne combatterono a bordo della nave di Rackham.",
+      "tts": {
+        "text": "Confermano che due donne combatterono a bordo della nave di Rackham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Confermano la testimonianza di testimoni che videro Anne e Mary in combattimento.",
+      "text_markdown": "Confermano la testimonianza di testimoni che videro Anne e Mary in combattimento.",
+      "tts": {
+        "text": "Confermano la testimonianza di testimoni che videro Anne e Mary in combattimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questi documenti sono tra i più importanti negli studi sulla pirateria.",
+      "text_markdown": "Questi documenti sono tra i più importanti negli studi sulla pirateria.",
+      "tts": {
+        "text": "Questi documenti sono tra i più importanti negli studi sulla pirateria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny compare in centinaia di romanzi, film, programmi televisivi e videogiochi.",
+      "text_markdown": "Anne Bonny compare in centinaia di romanzi, film, programmi televisivi e videogiochi.",
+      "tts": {
+        "text": "Anne Bonny compare in centinaia di romanzi, film, programmi televisivi e videogiochi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "È diventata un simbolo di ribellione contro l'autorità ingiusta.",
+      "text_markdown": "È diventata un simbolo di ribellione contro l'autorità ingiusta.",
+      "tts": {
+        "text": "È diventata un simbolo di ribellione contro l'autorità ingiusta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il suo rifiuto di accettare il ruolo che la società le aveva assegnato risuona attraverso i secoli.",
+      "text_markdown": "Il suo rifiuto di accettare il ruolo che la società le aveva assegnato risuona attraverso i secoli.",
+      "tts": {
+        "text": "Il suo rifiuto di accettare il ruolo che la società le aveva assegnato risuona attraverso i secoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il mistero della sua scomparsa non fa che accrescere la sua leggenda.",
+      "text_markdown": "Il mistero della sua scomparsa non fa che accrescere la sua leggenda.",
+      "tts": {
+        "text": "Il mistero della sua scomparsa non fa che accrescere la sua leggenda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non sappiamo se sia morta in prigione, abbia vissuto tranquillamente o sia tornata a navigare con un altro nome.",
+      "text_markdown": "Non sappiamo se sia morta in prigione, abbia vissuto tranquillamente o sia tornata a navigare con un altro nome.",
+      "tts": {
+        "text": "Non sappiamo se sia morta in prigione, abbia vissuto tranquillamente o sia tornata a navigare con un altro nome.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'incertezza permette a ogni generazione di immaginare il proprio finale per la sua storia.",
+      "text_markdown": "L'incertezza permette a ogni generazione di immaginare il proprio finale per la sua storia.",
+      "tts": {
+        "text": "L'incertezza permette a ogni generazione di immaginare il proprio finale per la sua storia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ciò che rimane fuori da ogni dubbio è il suo coraggio.",
+      "text_markdown": "Ciò che rimane fuori da ogni dubbio è il suo coraggio.",
+      "tts": {
+        "text": "Ciò che rimane fuori da ogni dubbio è il suo coraggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando gli uomini intorno a lei si nascosero per paura, Anne Bonny si alzò e combatté.",
+      "text_markdown": "Quando gli uomini intorno a lei si nascosero per paura, Anne Bonny si alzò e combatté.",
+      "tts": {
+        "text": "Quando gli uomini intorno a lei si nascosero per paura, Anne Bonny si alzò e combatté.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Eredità",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quel singolo fatto, confermato da testimoni sotto giuramento, è la sua eredità più vera.",
+      "text_markdown": "Quel singolo fatto, confermato da testimoni sotto giuramento, è la sua eredità più vera.",
+      "tts": {
+        "text": "Quel singolo fatto, confermato da testimoni sotto giuramento, è la sua eredità più vera.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

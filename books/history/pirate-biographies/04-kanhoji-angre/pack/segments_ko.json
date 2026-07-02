@@ -1,0 +1,4397 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_kanhoji_angre",
+  "language": "ko",
+  "total_segments": 294,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 글",
+      "text_markdown": "독자에게 드리는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 인도 콘칸 해안의 불패 제독 칸호지 앙그레의 실화이다.",
+      "text_markdown": "이것은 인도 콘칸 해안의 불패 제독 칸호지 앙그레의 실화이다.",
+      "tts": {
+        "text": "이것은 인도 콘칸 해안의 불패 제독 칸호지 앙그레의 실화이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 마라타 제국을 섬기며 약 삼십 년간 인도 서해안을 지배했다.",
+      "text_markdown": "그는 마라타 제국을 섬기며 약 삼십 년간 인도 서해안을 지배했다.",
+      "tts": {
+        "text": "그는 마라타 제국을 섬기며 약 삼십 년간 인도 서해안을 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국 동인도 회사, 포르투갈 제국, 네덜란드 공화국 모두 그를 물리치는 데 실패했다.",
+      "text_markdown": "영국 동인도 회사, 포르투갈 제국, 네덜란드 공화국 모두 그를 물리치는 데 실패했다.",
+      "tts": {
+        "text": "영국 동인도 회사, 포르투갈 제국, 네덜란드 공화국 모두 그를 물리치는 데 실패했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지 앙그레는 인도 밖에서는 잘 알려져 있지 않다.",
+      "text_markdown": "칸호지 앙그레는 인도 밖에서는 잘 알려져 있지 않다.",
+      "tts": {
+        "text": "칸호지 앙그레는 인도 밖에서는 잘 알려져 있지 않다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 역사에서 그는 흔히 해적으로 치부된다.",
+      "text_markdown": "유럽 역사에서 그는 흔히 해적으로 치부된다.",
+      "tts": {
+        "text": "유럽 역사에서 그는 흔히 해적으로 치부된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "인도 역사에서 그는 외국 식민지 지배자들로부터 조국을 지킨 애국자로 기려진다.",
+      "text_markdown": "인도 역사에서 그는 외국 식민지 지배자들로부터 조국을 지킨 애국자로 기려진다.",
+      "tts": {
+        "text": "인도 역사에서 그는 외국 식민지 지배자들로부터 조국을 지킨 애국자로 기려진다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "진실은 언제나 그렇듯 어느 쪽 서술보다 더 복잡하다.",
+      "text_markdown": "진실은 언제나 그렇듯 어느 쪽 서술보다 더 복잡하다.",
+      "tts": {
+        "text": "진실은 언제나 그렇듯 어느 쪽 서술보다 더 복잡하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "칸호지 앙그레는 해적 행위, 해전, 합법적 통치의 경계선이 식별 불가능할 정도로 흐려진 세계에서 활동했다.",
+      "text_markdown": "칸호지 앙그레는 해적 행위, 해전, 합법적 통치의 경계선이 식별 불가능할 정도로 흐려진 세계에서 활동했다.",
+      "tts": {
+        "text": "칸호지 앙그레는 해적 행위, 해전, 합법적 통치의 경계선이 식별 불가능할 정도로 흐려진 세계에서 활동했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 책은 역사 기록이 허용하는 한 최대한의 정확성과 깊이로 그의 이야기를 전한다.",
+      "text_markdown": "이 책은 역사 기록이 허용하는 한 최대한의 정확성과 깊이로 그의 이야기를 전한다.",
+      "tts": {
+        "text": "이 책은 역사 기록이 허용하는 한 최대한의 정확성과 깊이로 그의 이야기를 전한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책의 모든 주장은 마라타, 영국, 포르투갈, 네덜란드 자료의 증거에 기반한다.",
+      "text_markdown": "이 책의 모든 주장은 마라타, 영국, 포르투갈, 네덜란드 자료의 증거에 기반한다.",
+      "tts": {
+        "text": "이 책의 모든 주장은 마라타, 영국, 포르투갈, 네덜란드 자료의 증거에 기반한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 자료들이 서로 모순되는 곳에서는 그 불일치를 명시한다.",
+      "text_markdown": "이 자료들이 서로 모순되는 곳에서는 그 불일치를 명시한다.",
+      "tts": {
+        "text": "이 자료들이 서로 모순되는 곳에서는 그 불일치를 명시한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기록이 침묵하는 곳에서는 추측하지 않는다.",
+      "text_markdown": "기록이 침묵하는 곳에서는 추측하지 않는다.",
+      "tts": {
+        "text": "기록이 침묵하는 곳에서는 추측하지 않는다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "콘칸 해안의 세계",
+      "text_markdown": "콘칸 해안의 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "콘칸 해안은 인도 서쪽 가장자리를 따라 이어지는 좁은 땅의 띠이다.",
+      "text_markdown": "콘칸 해안은 인도 서쪽 가장자리를 따라 이어지는 좁은 땅의 띠이다.",
+      "tts": {
+        "text": "콘칸 해안은 인도 서쪽 가장자리를 따라 이어지는 좁은 땅의 띠이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북쪽의 오늘날 뭄바이에서 남쪽의 고아까지 뻗어 있다.",
+      "text_markdown": "북쪽의 오늘날 뭄바이에서 남쪽의 고아까지 뻗어 있다.",
+      "tts": {
+        "text": "북쪽의 오늘날 뭄바이에서 남쪽의 고아까지 뻗어 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "서쪽에는 아라비아해가, 동쪽에는 해안을 데칸 고원과 분리하는 서고츠 산맥이 솟아 있다.",
+      "text_markdown": "서쪽에는 아라비아해가, 동쪽에는 해안을 데칸 고원과 분리하는 서고츠 산맥이 솟아 있다.",
+      "tts": {
+        "text": "서쪽에는 아라비아해가, 동쪽에는 해안을 데칸 고원과 분리하는 서고츠 산맥이 솟아 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해안선은 험준하고 깊이 파여 있다.",
+      "text_markdown": "해안선은 험준하고 깊이 파여 있다.",
+      "tts": {
+        "text": "해안선은 험준하고 깊이 파여 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바위 곶, 보호된 만, 조수 개울이 해전에 완벽하게 적합한 지형을 만든다.",
+      "text_markdown": "바위 곶, 보호된 만, 조수 개울이 해전에 완벽하게 적합한 지형을 만든다.",
+      "tts": {
+        "text": "바위 곶, 보호된 만, 조수 개울이 해전에 완벽하게 적합한 지형을 만든다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아라비아해를 건너 부는 몬순 바람이 이 해안의 생활 리듬을 결정한다.",
+      "text_markdown": "아라비아해를 건너 부는 몬순 바람이 이 해안의 생활 리듬을 결정한다.",
+      "tts": {
+        "text": "아라비아해를 건너 부는 몬순 바람이 이 해안의 생활 리듬을 결정한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "배는 특정 달에만 항해할 수 있으며, 몬순의 시기가 교역과 전쟁이 가능한 때를 결정한다.",
+      "text_markdown": "배는 특정 달에만 항해할 수 있으며, 몬순의 시기가 교역과 전쟁이 가능한 때를 결정한다.",
+      "tts": {
+        "text": "배는 특정 달에만 항해할 수 있으며, 몬순의 시기가 교역과 전쟁이 가능한 때를 결정한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수세기 동안 콘칸 해안은 세계에서 가장 바쁜 해상 통로 중 하나였다.",
+      "text_markdown": "수세기 동안 콘칸 해안은 세계에서 가장 바쁜 해상 통로 중 하나였다.",
+      "tts": {
+        "text": "수세기 동안 콘칸 해안은 세계에서 가장 바쁜 해상 통로 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아랍 다우선이 인도와 페르시아만 및 동아프리카 항구 사이에서 향신료, 직물, 보석을 운반했다.",
+      "text_markdown": "아랍 다우선이 인도와 페르시아만 및 동아프리카 항구 사이에서 향신료, 직물, 보석을 운반했다.",
+      "tts": {
+        "text": "아랍 다우선이 인도와 페르시아만 및 동아프리카 항구 사이에서 향신료, 직물, 보석을 운반했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "인도 상인들은 아시아 전역의 구매자들과 후추, 카다몬, 계피, 면화를 거래했다.",
+      "text_markdown": "인도 상인들은 아시아 전역의 구매자들과 후추, 카다몬, 계피, 면화를 거래했다.",
+      "tts": {
+        "text": "인도 상인들은 아시아 전역의 구매자들과 후추, 카다몬, 계피, 면화를 거래했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 교역이 창출한 부는 먼 제국들의 관심을 끌었다.",
+      "text_markdown": "이 교역이 창출한 부는 먼 제국들의 관심을 끌었다.",
+      "tts": {
+        "text": "이 교역이 창출한 부는 먼 제국들의 관심을 끌었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포르투갈인들은 1498년 바스코 다 가마가 캘리컷 항에 도착했을 때 인도 해안에 도달했다.",
+      "text_markdown": "포르투갈인들은 1498년 바스코 다 가마가 캘리컷 항에 도착했을 때 인도 해안에 도달했다.",
+      "tts": {
+        "text": "포르투갈인들은 천사백구십팔 년에 바스코 다 가마가 캘리컷 항에 도착했을 때 인도 해안에 도달했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몇 년 안에 포르투갈인들은 인도 서해안 전체에 요새화된 교역 거점을 세웠다.",
+      "text_markdown": "몇 년 안에 포르투갈인들은 인도 서해안 전체에 요새화된 교역 거점을 세웠다.",
+      "tts": {
+        "text": "몇 년 안에 포르투갈인들은 인도 서해안 전체에 요새화된 교역 거점을 세웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고아는 모잠비크에서 마카오까지 뻗은 식민 제국인 포르투갈령 인도의 수도가 되었다.",
+      "text_markdown": "고아는 모잠비크에서 마카오까지 뻗은 식민 제국인 포르투갈령 인도의 수도가 되었다.",
+      "tts": {
+        "text": "고아는 모잠비크에서 마카오까지 뻗은 식민 제국인 포르투갈령 인도의 수도가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "포르투갈인들은 우월한 해군 화력을 이용해 인도양 교역을 지배했다.",
+      "text_markdown": "포르투갈인들은 우월한 해군 화력을 이용해 인도양 교역을 지배했다.",
+      "tts": {
+        "text": "포르투갈인들은 우월한 해군 화력을 이용해 인도양 교역을 지배했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포르투갈인들은 카르타스라는 통행증 제도를 도입했다.",
+      "text_markdown": "포르투갈인들은 카르타스라는 통행증 제도를 도입했다.",
+      "tts": {
+        "text": "포르투갈인들은 카르타스라는 통행증 제도를 도입했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아라비아해에서 교역을 원하는 모든 인도 선박은 포르투갈인에게서 카르타스를 구매해야 했다.",
+      "text_markdown": "아라비아해에서 교역을 원하는 모든 인도 선박은 포르투갈인에게서 카르타스를 구매해야 했다.",
+      "tts": {
+        "text": "아라비아해에서 교역을 원하는 모든 인도 선박은 포르투갈인에게서 카르타스를 구매해야 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "카르타스가 없는 선박은 나포될 수 있었고, 선원들은 투옥되거나 살해될 수 있었다.",
+      "text_markdown": "카르타스가 없는 선박은 나포될 수 있었고, 선원들은 투옥되거나 살해될 수 있었다.",
+      "tts": {
+        "text": "카르타스가 없는 선박은 나포될 수 있었고, 선원들은 투옥되거나 살해될 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 제도는 포르투갈인에게 인도양 무역의 실효적 지배권을 부여했다.",
+      "text_markdown": "이 제도는 포르투갈인에게 인도양 무역의 실효적 지배권을 부여했다.",
+      "tts": {
+        "text": "이 제도는 포르투갈인에게 인도양 무역의 실효적 지배권을 부여했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "네덜란드인들은 십칠 세기 초에 도착했다.",
+      "text_markdown": "네덜란드인들은 십칠 세기 초에 도착했다.",
+      "tts": {
+        "text": "네덜란드인들은 십칠 세기 초에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "네덜란드 동인도 회사는 인도 해안에 교역 거점을 세우고 포르투갈인과 공격적으로 경쟁했다.",
+      "text_markdown": "네덜란드 동인도 회사는 인도 해안에 교역 거점을 세우고 포르투갈인과 공격적으로 경쟁했다.",
+      "tts": {
+        "text": "네덜란드 동인도 회사는 인도 해안에 교역 거점을 세우고 포르투갈인과 공격적으로 경쟁했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국 동인도 회사가 곧이어 뒤따랐다.",
+      "text_markdown": "영국 동인도 회사가 곧이어 뒤따랐다.",
+      "tts": {
+        "text": "영국 동인도 회사가 곧이어 뒤따랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "십칠 세기 말에는 세 유럽 강국이 인도 해상 무역의 지배권을 놓고 경쟁하고 있었다.",
+      "text_markdown": "십칠 세기 말에는 세 유럽 강국이 인도 해상 무역의 지배권을 놓고 경쟁하고 있었다.",
+      "tts": {
+        "text": "십칠 세기 말에는 세 유럽 강국이 인도 해상 무역의 지배권을 놓고 경쟁하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한편 콘칸 해안 위 데칸 고원에서는 새로운 인도 세력이 부상하고 있었다.",
+      "text_markdown": "한편 콘칸 해안 위 데칸 고원에서는 새로운 인도 세력이 부상하고 있었다.",
+      "tts": {
+        "text": "한편 콘칸 해안 위 데칸 고원에서는 새로운 인도 세력이 부상하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마라타 제국은 천육백육십 년대에 시바지 본슬레가 세웠다.",
+      "text_markdown": "마라타 제국은 천육백육십 년대에 시바지 본슬레가 세웠다.",
+      "tts": {
+        "text": "마라타 제국은 천육백육십 년대에 시바지 본슬레가 세웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시바지는 무너져가는 무굴 제국에서 독립 왕국을 개척한 군사 천재였다.",
+      "text_markdown": "시바지는 무너져가는 무굴 제국에서 독립 왕국을 개척한 군사 천재였다.",
+      "tts": {
+        "text": "시바지는 무너져가는 무굴 제국에서 독립 왕국을 개척한 군사 천재였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 해안 지배가 제국의 존속에 필수적임을 인식했다.",
+      "text_markdown": "그는 해안 지배가 제국의 존속에 필수적임을 인식했다.",
+      "tts": {
+        "text": "그는 해안 지배가 제국의 존속에 필수적임을 인식했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시바지는 처음부터 해군을 건설했다.",
+      "text_markdown": "시바지는 처음부터 해군을 건설했다.",
+      "tts": {
+        "text": "시바지는 처음부터 해군을 건설했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콘칸 해안을 따라 요새를 건설하고 해역을 순찰할 군함을 건조하도록 명령했다.",
+      "text_markdown": "콘칸 해안을 따라 요새를 건설하고 해역을 순찰할 군함을 건조하도록 명령했다.",
+      "tts": {
+        "text": "콘칸 해안을 따라 요새를 건설하고 해역을 순찰할 군함을 건조하도록 명령했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해군 지휘관을 임명하고 사르켈, 즉 대제독의 직위를 설치했다.",
+      "text_markdown": "해군 지휘관을 임명하고 사르켈, 즉 대제독의 직위를 설치했다.",
+      "tts": {
+        "text": "해군 지휘관을 임명하고 사르켈, 즉 대제독의 직위를 설치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마라타 해군은 마라타 교역을 보호하고 유럽의 침입에 저항하기 위한 것이었다.",
+      "text_markdown": "마라타 해군은 마라타 교역을 보호하고 유럽의 침입에 저항하기 위한 것이었다.",
+      "tts": {
+        "text": "마라타 해군은 마라타 교역을 보호하고 유럽의 침입에 저항하기 위한 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1680년 시바지의 사후, 마라타 제국은 혼란의 시기를 겪었다.",
+      "text_markdown": "1680년 시바지의 사후, 마라타 제국은 혼란의 시기를 겪었다.",
+      "tts": {
+        "text": "천육백팔십 년 시바지의 사후, 마라타 제국은 혼란의 시기를 겪었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "후계자들은 내부 대립과 외부 위협으로 어려움을 겪었다.",
+      "text_markdown": "후계자들은 내부 대립과 외부 위협으로 어려움을 겪었다.",
+      "tts": {
+        "text": "후계자들은 내부 대립과 외부 위협으로 어려움을 겪었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무굴 황제 아우랑제브는 수십 년에 걸친 데칸 대규모 침공을 개시했다.",
+      "text_markdown": "무굴 황제 아우랑제브는 수십 년에 걸친 데칸 대규모 침공을 개시했다.",
+      "tts": {
+        "text": "무굴 황제 아우랑제브는 수십 년에 걸친 데칸 대규모 침공을 개시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 혼란기에도 마라타 해군은 임명된 제독들의 지휘 아래 해안에서 계속 활동했다.",
+      "text_markdown": "이 혼란기에도 마라타 해군은 임명된 제독들의 지휘 아래 해안에서 계속 활동했다.",
+      "tts": {
+        "text": "이 혼란기에도 마라타 해군은 임명된 제독들의 지휘 아래 해안에서 계속 활동했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 무역 회사들은 이 불안정을 이용해 영향력을 확대했다.",
+      "text_markdown": "유럽 무역 회사들은 이 불안정을 이용해 영향력을 확대했다.",
+      "tts": {
+        "text": "유럽 무역 회사들은 이 불안정을 이용해 영향력을 확대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 동인도 회사는 콘칸 해안 북부의 섬 집단인 봄베이에 본부를 설치했다.",
+      "text_markdown": "영국 동인도 회사는 콘칸 해안 북부의 섬 집단인 봄베이에 본부를 설치했다.",
+      "tts": {
+        "text": "영국 동인도 회사는 콘칸 해안 북부의 섬 집단인 봄베이에 본부를 설치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포르투갈인들은 고아와 여러 소규모 거류지를 유지했다.",
+      "text_markdown": "포르투갈인들은 고아와 여러 소규모 거류지를 유지했다.",
+      "tts": {
+        "text": "포르투갈인들은 고아와 여러 소규모 거류지를 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "네덜란드인들은 해안 곳곳에 교역 거점을 유지했다.",
+      "text_markdown": "네덜란드인들은 해안 곳곳에 교역 거점을 유지했다.",
+      "tts": {
+        "text": "네덜란드인들은 해안 곳곳에 교역 거점을 유지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "무굴 제국은 한 세기 이상 인도의 지배적 세력이었다.",
+      "text_markdown": "무굴 제국은 한 세기 이상 인도의 지배적 세력이었다.",
+      "tts": {
+        "text": "무굴 제국은 한 세기 이상 인도의 지배적 세력이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아크바르 황제 아래 전성기에 무굴 제국은 인도 아대륙의 대부분을 지배했다.",
+      "text_markdown": "아크바르 황제 아래 전성기에 무굴 제국은 인도 아대륙의 대부분을 지배했다.",
+      "tts": {
+        "text": "아크바르 황제 아래 전성기에 무굴 제국은 인도 아대륙의 대부분을 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 십칠 세기 말 제국은 데칸에서의 아우랑제브의 끝없는 전쟁의 무게 아래 무너지고 있었다.",
+      "text_markdown": "그러나 십칠 세기 말 제국은 데칸에서의 아우랑제브의 끝없는 전쟁의 무게 아래 무너지고 있었다.",
+      "tts": {
+        "text": "그러나 십칠 세기 말 제국은 데칸에서의 아우랑제브의 끝없는 전쟁의 무게 아래 무너지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 쇠퇴는 마라타와 같은 지역 세력이 독립을 주장할 기회를 만들었다.",
+      "text_markdown": "이 쇠퇴는 마라타와 같은 지역 세력이 독립을 주장할 기회를 만들었다.",
+      "tts": {
+        "text": "이 쇠퇴는 마라타와 같은 지역 세력이 독립을 주장할 기회를 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "향신료 무역은 인도 해안을 유럽 상인들에게 엄청나게 가치 있게 만들었다.",
+      "text_markdown": "향신료 무역은 인도 해안을 유럽 상인들에게 엄청나게 가치 있게 만들었다.",
+      "tts": {
+        "text": "향신료 무역은 인도 해안을 유럽 상인들에게 엄청나게 가치 있게 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "말라바르 해안의 후추, 카다몬, 계피는 유럽 시장에서 은과 같은 무게의 가치를 지녔다.",
+      "text_markdown": "말라바르 해안의 후추, 카다몬, 계피는 유럽 시장에서 은과 같은 무게의 가치를 지녔다.",
+      "tts": {
+        "text": "말라바르 해안의 후추, 카다몬, 계피는 유럽 시장에서 은과 같은 무게의 가치를 지녔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 향신료의 지배권이 인도양으로의 유럽 전체 팽창을 주도했다.",
+      "text_markdown": "이 향신료의 지배권이 인도양으로의 유럽 전체 팽창을 주도했다.",
+      "tts": {
+        "text": "이 향신료의 지배권이 인도양으로의 유럽 전체 팽창을 주도했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "콘칸 해안의 모든 요새, 교역 거점, 해전은 궁극적으로 이 교역에서 누가 이익을 얻느냐에 관한 것이었다.",
+      "text_markdown": "콘칸 해안의 모든 요새, 교역 거점, 해전은 궁극적으로 이 교역에서 누가 이익을 얻느냐에 관한 것이었다.",
+      "tts": {
+        "text": "콘칸 해안의 모든 요새, 교역 거점, 해전은 궁극적으로 이 교역에서 누가 이익을 얻느냐에 관한 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "경쟁하는 제국들, 식민지 야망, 해전의 이 세계에서 칸호지 앙그레가 태어났다.",
+      "text_markdown": "경쟁하는 제국들, 식민지 야망, 해전의 이 세계에서 칸호지 앙그레가 태어났다.",
+      "tts": {
+        "text": "경쟁하는 제국들, 식민지 야망, 해전의 이 세계에서 칸호지 앙그레가 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 콘칸 해안을 지배하려는 세력들에 맞서 해안을 방어하는 데 전 경력을 바치게 된다.",
+      "text_markdown": "그는 콘칸 해안을 지배하려는 세력들에 맞서 해안을 방어하는 데 전 경력을 바치게 된다.",
+      "tts": {
+        "text": "그는 콘칸 해안을 지배하려는 세력들에 맞서 해안을 방어하는 데 전 경력을 바치게 된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "콘칸 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 인도가 배출한 가장 효과적인 해군 지휘관이 될 것이었다.",
+      "text_markdown": "그는 인도가 배출한 가장 효과적인 해군 지휘관이 될 것이었다.",
+      "tts": {
+        "text": "그는 인도가 배출한 가장 효과적인 해군 지휘관이 될 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지 앙그레는 1669년 봄베이 남쪽 콘칸 해안의 알리바그 마을에서 태어났다.",
+      "text_markdown": "칸호지 앙그레는 1669년 봄베이 남쪽 콘칸 해안의 알리바그 마을에서 태어났다.",
+      "tts": {
+        "text": "칸호지 앙그레는 천육백육십구 년 봄베이 남쪽 콘칸 해안의 알리바그 마을에서 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 가문은 마라타 전사 카스트에 속했다.",
+      "text_markdown": "그의 가문은 마라타 전사 카스트에 속했다.",
+      "tts": {
+        "text": "그의 가문은 마라타 전사 카스트에 속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들에게는 군 복무와 마라타 통치자에 대한 충성의 오랜 전통이 있었다.",
+      "text_markdown": "그들에게는 군 복무와 마라타 통치자에 대한 충성의 오랜 전통이 있었다.",
+      "tts": {
+        "text": "그들에게는 군 복무와 마라타 통치자에 대한 충성의 오랜 전통이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 전쟁, 해상 무역, 외세 저항으로 형성된 세계에서 성장했다.",
+      "text_markdown": "칸호지는 전쟁, 해상 무역, 외세 저항으로 형성된 세계에서 성장했다.",
+      "tts": {
+        "text": "칸호지는 전쟁, 해상 무역, 외세 저항으로 형성된 세계에서 성장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 아버지 투코지 앙그레는 마라타 군대에서 복무했다.",
+      "text_markdown": "그의 아버지 투코지 앙그레는 마라타 군대에서 복무했다.",
+      "tts": {
+        "text": "그의 아버지 투코지 앙그레는 마라타 군대에서 복무했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "앙그레 가문은 마라타 궁정과 시바지가 건설한 해안 요새 네트워크에 연결되어 있었다.",
+      "text_markdown": "앙그레 가문은 마라타 궁정과 시바지가 건설한 해안 요새 네트워크에 연결되어 있었다.",
+      "tts": {
+        "text": "앙그레 가문은 마라타 궁정과 시바지가 건설한 해안 요새 네트워크에 연결되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어린 칸호지는 자신도 마라타 대의에 봉사할 것이라는 기대 속에서 자랐다.",
+      "text_markdown": "어린 칸호지는 자신도 마라타 대의에 봉사할 것이라는 기대 속에서 자랐다.",
+      "tts": {
+        "text": "어린 칸호지는 자신도 마라타 대의에 봉사할 것이라는 기대 속에서 자랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어린 나이부터 육전과 해전 모두의 훈련을 받았다.",
+      "text_markdown": "어린 나이부터 육전과 해전 모두의 훈련을 받았다.",
+      "tts": {
+        "text": "어린 나이부터 육전과 해전 모두의 훈련을 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "콘칸 해안은 혹독한 훈련장이었다.",
+      "text_markdown": "콘칸 해안은 혹독한 훈련장이었다.",
+      "tts": {
+        "text": "콘칸 해안은 혹독한 훈련장이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해역은 강한 해류, 숨겨진 암초, 예측 불가능한 몬순 폭풍으로 위험했다.",
+      "text_markdown": "해역은 강한 해류, 숨겨진 암초, 예측 불가능한 몬순 폭풍으로 위험했다.",
+      "tts": {
+        "text": "해역은 강한 해류, 숨겨진 암초, 예측 불가능한 몬순 폭풍으로 위험했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 해역을 항해하려면 모든 만, 곶, 조수 패턴에 대한 면밀한 지식이 필요했다.",
+      "text_markdown": "이 해역을 항해하려면 모든 만, 곶, 조수 패턴에 대한 면밀한 지식이 필요했다.",
+      "tts": {
+        "text": "이 해역을 항해하려면 모든 만, 곶, 조수 패턴에 대한 면밀한 지식이 필요했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 청년 시절 작은 배로 해안을 항해하며 이 지식을 익혔다.",
+      "text_markdown": "칸호지는 청년 시절 작은 배로 해안을 항해하며 이 지식을 익혔다.",
+      "tts": {
+        "text": "칸호지는 청년 시절 작은 배로 해안을 항해하며 이 지식을 익혔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "젊은 장교로서 마라타 해군에 입대했다.",
+      "text_markdown": "젊은 장교로서 마라타 해군에 입대했다.",
+      "tts": {
+        "text": "젊은 장교로서 마라타 해군에 입대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "당시 마라타 해군은 비자이두르그, 신두두르그, 콜라바를 포함한 일련의 해안 요새를 거점으로 했다.",
+      "text_markdown": "당시 마라타 해군은 비자이두르그, 신두두르그, 콜라바를 포함한 일련의 해안 요새를 거점으로 했다.",
+      "tts": {
+        "text": "당시 마라타 해군은 비자이두르그, 신두두르그, 콜라바를 포함한 일련의 해안 요새를 거점으로 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 요새들은 바위 섬과 곶 위에 지어져 바다에서의 공격이 거의 불가능했다.",
+      "text_markdown": "이 요새들은 바위 섬과 곶 위에 지어져 바다에서의 공격이 거의 불가능했다.",
+      "tts": {
+        "text": "이 요새들은 바위 섬과 곶 위에 지어져 바다에서의 공격이 거의 불가능했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "시바지는 해군 포격을 견디도록 특별히 설계했다.",
+      "text_markdown": "시바지는 해군 포격을 견디도록 특별히 설계했다.",
+      "tts": {
+        "text": "시바지는 해군 포격을 견디도록 특별히 설계했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지는 마라타 해군에서 빠르게 승진했다.",
+      "text_markdown": "칸호지는 마라타 해군에서 빠르게 승진했다.",
+      "tts": {
+        "text": "칸호지는 마라타 해군에서 빠르게 승진했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무굴과 시디 해군 모두와의 교전에서 두각을 나타냈다.",
+      "text_markdown": "무굴과 시디 해군 모두와의 교전에서 두각을 나타냈다.",
+      "tts": {
+        "text": "무굴과 시디 해군 모두와의 교전에서 두각을 나타냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시디는 봄베이 남쪽의 잔지라 요새에 거점을 둔 아비시니아계 공동체였다.",
+      "text_markdown": "시디는 봄베이 남쪽의 잔지라 요새에 거점을 둔 아비시니아계 공동체였다.",
+      "tts": {
+        "text": "시디는 봄베이 남쪽의 잔지라 요새에 거점을 둔 아비시니아계 공동체였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 수십 년간 해안 지배권을 놓고 마라타의 경쟁자였다.",
+      "text_markdown": "그들은 수십 년간 해안 지배권을 놓고 마라타의 경쟁자였다.",
+      "tts": {
+        "text": "그들은 수십 년간 해안 지배권을 놓고 마라타의 경쟁자였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1698년, 칸호지는 마라타 해군의 대제독인 사르켈에 임명되었다.",
+      "text_markdown": "1698년, 칸호지는 마라타 해군의 대제독인 사르켈에 임명되었다.",
+      "tts": {
+        "text": "천육백구십팔 년, 칸호지는 마라타 해군의 대제독인 사르켈에 임명되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 나이 약 스물아홉이었다.",
+      "text_markdown": "그의 나이 약 스물아홉이었다.",
+      "tts": {
+        "text": "그의 나이 약 스물아홉이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 임명은 칸호지의 탁월한 해군 능력을 인정한 마라타 왕 라자람에게서 비롯되었다.",
+      "text_markdown": "이 임명은 칸호지의 탁월한 해군 능력을 인정한 마라타 왕 라자람에게서 비롯되었다.",
+      "tts": {
+        "text": "이 임명은 칸호지의 탁월한 해군 능력을 인정한 마라타 왕 라자람에게서 비롯되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 칸호지가 평생 유지할 직위였다.",
+      "text_markdown": "이것은 칸호지가 평생 유지할 직위였다.",
+      "tts": {
+        "text": "이것은 칸호지가 평생 유지할 직위였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사르켈로서 칸호지는 콘칸 해안의 모든 마라타 해군을 지휘했다.",
+      "text_markdown": "사르켈로서 칸호지는 콘칸 해안의 모든 마라타 해군을 지휘했다.",
+      "tts": {
+        "text": "사르켈로서 칸호지는 콘칸 해안의 모든 마라타 해군을 지휘했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "군함 함대와 요새화된 기지 네트워크를 관할했다.",
+      "text_markdown": "군함 함대와 요새화된 기지 네트워크를 관할했다.",
+      "tts": {
+        "text": "군함 함대와 요새화된 기지 네트워크를 관할했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해안 방어, 마라타 교역 보호, 유럽 침입 저항의 책임을 맡았다.",
+      "text_markdown": "해안 방어, 마라타 교역 보호, 유럽 침입 저항의 책임을 맡았다.",
+      "tts": {
+        "text": "해안 방어, 마라타 교역 보호, 유럽 침입 저항의 책임을 맡았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그것은 막중한 책임이었고, 그는 완전한 헌신으로 이를 받아들였다.",
+      "text_markdown": "그것은 막중한 책임이었고, 그는 완전한 헌신으로 이를 받아들였다.",
+      "tts": {
+        "text": "그것은 막중한 책임이었고, 그는 완전한 헌신으로 이를 받아들였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 임명은 결정적인 시기에 이루어졌다.",
+      "text_markdown": "이 임명은 결정적인 시기에 이루어졌다.",
+      "tts": {
+        "text": "이 임명은 결정적인 시기에 이루어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "데칸에 대한 무굴의 침공은 절정에 달해 있었다.",
+      "text_markdown": "데칸에 대한 무굴의 침공은 절정에 달해 있었다.",
+      "tts": {
+        "text": "데칸에 대한 무굴의 침공은 절정에 달해 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마라타 왕국은 육지에서 생존을 위해 싸우고 있었다.",
+      "text_markdown": "마라타 왕국은 육지에서 생존을 위해 싸우고 있었다.",
+      "tts": {
+        "text": "마라타 왕국은 육지에서 생존을 위해 싸우고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바다는 마라타가 여전히 힘을 투사할 수 있는 유일한 영역이었고, 칸호지는 이를 최대한 활용할 결심이었다.",
+      "text_markdown": "바다는 마라타가 여전히 힘을 투사할 수 있는 유일한 영역이었고, 칸호지는 이를 최대한 활용할 결심이었다.",
+      "tts": {
+        "text": "바다는 마라타가 여전히 힘을 투사할 수 있는 유일한 영역이었고, 칸호지는 이를 최대한 활용할 결심이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지는 알리바그 인근 콜라바 섬 요새에 주요 기지를 설치했다.",
+      "text_markdown": "칸호지는 알리바그 인근 콜라바 섬 요새에 주요 기지를 설치했다.",
+      "tts": {
+        "text": "칸호지는 알리바그 인근 콜라바 섬 요새에 주요 기지를 설치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콜라바에서 봄베이로의 해상 접근로와 해안의 주요 무역로를 통제할 수 있었다.",
+      "text_markdown": "콜라바에서 봄베이로의 해상 접근로와 해안의 주요 무역로를 통제할 수 있었다.",
+      "tts": {
+        "text": "콜라바에서 봄베이로의 해상 접근로와 해안의 주요 무역로를 통제할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "추가 포대로 섬을 요새화하고 성장하는 함대를 수용하기 위해 항구를 확장했다.",
+      "text_markdown": "추가 포대로 섬을 요새화하고 성장하는 함대를 수용하기 위해 항구를 확장했다.",
+      "tts": {
+        "text": "추가 포대로 섬을 요새화하고 성장하는 함대를 수용하기 위해 항구를 확장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "콜라바는 이후 삼십 년간 그의 본부로 남게 된다.",
+      "text_markdown": "콜라바는 이후 삼십 년간 그의 본부로 남게 된다.",
+      "tts": {
+        "text": "콜라바는 이후 삼십 년간 그의 본부로 남게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또한 해안에서 가장 강력한 마라타 해군 기지인 비자이두르그 요새를 강화했다.",
+      "text_markdown": "또한 해안에서 가장 강력한 마라타 해군 기지인 비자이두르그 요새를 강화했다.",
+      "tts": {
+        "text": "또한 해안에서 가장 강력한 마라타 해군 기지인 비자이두르그 요새를 강화했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비자이두르그는 아라비아해로 돌출한 바위 곶 위에 건설되었다.",
+      "text_markdown": "비자이두르그는 아라비아해로 돌출한 바위 곶 위에 건설되었다.",
+      "tts": {
+        "text": "비자이두르그는 아라비아해로 돌출한 바위 곶 위에 건설되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "삼중 성벽, 지하 통로, 함대 전체를 수용할 수 있는 방호 항구를 갖추고 있었다.",
+      "text_markdown": "삼중 성벽, 지하 통로, 함대 전체를 수용할 수 있는 방호 항구를 갖추고 있었다.",
+      "tts": {
+        "text": "삼중 성벽, 지하 통로, 함대 전체를 수용할 수 있는 방호 항구를 갖추고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지의 지휘 아래 비자이두르그는 거의 난공불락이 되었다.",
+      "text_markdown": "칸호지의 지휘 아래 비자이두르그는 거의 난공불락이 되었다.",
+      "tts": {
+        "text": "칸호지의 지휘 아래 비자이두르그는 거의 난공불락이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "콘칸의 해안 공동체는 어부, 상인, 전사의 혼합이었다.",
+      "text_markdown": "콘칸의 해안 공동체는 어부, 상인, 전사의 혼합이었다.",
+      "tts": {
+        "text": "콘칸의 해안 공동체는 어부, 상인, 전사의 혼합이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 가문이 다중 역할을 수행해, 평시에는 고기를 잡고 소집되면 싸웠다.",
+      "text_markdown": "많은 가문이 다중 역할을 수행해, 평시에는 고기를 잡고 소집되면 싸웠다.",
+      "tts": {
+        "text": "많은 가문이 다중 역할을 수행해, 평시에는 고기를 잡고 소집되면 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 해양 기술과 군사적 준비태세의 결합은 그들을 해군력의 이상적 병사로 만들었다.",
+      "text_markdown": "이러한 해양 기술과 군사적 준비태세의 결합은 그들을 해군력의 이상적 병사로 만들었다.",
+      "tts": {
+        "text": "이러한 해양 기술과 군사적 준비태세의 결합은 그들을 해군력의 이상적 병사로 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 가장 충성스럽고 유능한 수병들을 이 공동체에서 모집했다.",
+      "text_markdown": "칸호지는 가장 충성스럽고 유능한 수병들을 이 공동체에서 모집했다.",
+      "tts": {
+        "text": "칸호지는 가장 충성스럽고 유능한 수병들을 이 공동체에서 모집했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 기지들에서 칸호지는 인도양에서 가장 효과적인 해군력 건설에 착수했다.",
+      "text_markdown": "이 기지들에서 칸호지는 인도양에서 가장 효과적인 해군력 건설에 착수했다.",
+      "tts": {
+        "text": "이 기지들에서 칸호지는 인도양에서 가장 효과적인 해군력 건설에 착수했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콘칸 해안 공동체에서 숙련된 수병을 모집했다.",
+      "text_markdown": "콘칸 해안 공동체에서 숙련된 수병을 모집했다.",
+      "tts": {
+        "text": "콘칸 해안 공동체에서 숙련된 수병을 모집했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "인도 해안의 특수 조건에 맞게 설계된 새 군함을 건조하도록 했다.",
+      "text_markdown": "인도 해안의 특수 조건에 맞게 설계된 새 군함을 건조하도록 했다.",
+      "tts": {
+        "text": "인도 해안의 특수 조건에 맞게 설계된 새 군함을 건조하도록 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 앞으로 수년간 유럽 해군 지휘관들을 좌절시킬 전술을 개발했다.",
+      "text_markdown": "그리고 앞으로 수년간 유럽 해군 지휘관들을 좌절시킬 전술을 개발했다.",
+      "tts": {
+        "text": "그리고 앞으로 수년간 유럽 해군 지휘관들을 좌절시킬 전술을 개발했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력의 부상",
+      "text_markdown": "권력의 부상"
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "콘칸 해안에 대한 칸호지 앙그레의 패권 장악은 체계적이고 가차 없었다.",
+      "text_markdown": "콘칸 해안에 대한 칸호지 앙그레의 패권 장악은 체계적이고 가차 없었다.",
+      "tts": {
+        "text": "콘칸 해안에 대한 칸호지 앙그레의 패권 장악은 체계적이고 가차 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 단일한 극적 승리를 추구하지 않았다.",
+      "text_markdown": "그는 단일한 극적 승리를 추구하지 않았다.",
+      "tts": {
+        "text": "그는 단일한 극적 승리를 추구하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신 해군 기술, 전략적 축성, 영리한 외교의 조합을 통해 점진적으로 권력을 쌓았다.",
+      "text_markdown": "대신 해군 기술, 전략적 축성, 영리한 외교의 조합을 통해 점진적으로 권력을 쌓았다.",
+      "tts": {
+        "text": "대신 해군 기술, 전략적 축성, 영리한 외교의 조합을 통해 점진적으로 권력을 쌓았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사르켈 임명 후 십 년 이내에 그는 인도 서해안의 논쟁의 여지 없는 지배자가 되었다.",
+      "text_markdown": "사르켈 임명 후 십 년 이내에 그는 인도 서해안의 논쟁의 여지 없는 지배자가 되었다.",
+      "tts": {
+        "text": "사르켈 임명 후 십 년 이내에 그는 인도 서해안의 논쟁의 여지 없는 지배자가 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "초기의 주요 적수는 잔지라 기반의 시디 함대였다.",
+      "text_markdown": "초기의 주요 적수는 잔지라 기반의 시디 함대였다.",
+      "tts": {
+        "text": "초기의 주요 적수는 잔지라 기반의 시디 함대였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "시디는 무굴 제국과 동맹을 맺었고 마라타 해안 정착지에 지속적인 위협이 되었다.",
+      "text_markdown": "시디는 무굴 제국과 동맹을 맺었고 마라타 해안 정착지에 지속적인 위협이 되었다.",
+      "tts": {
+        "text": "시디는 무굴 제국과 동맹을 맺었고 마라타 해안 정착지에 지속적인 위협이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칸호지는 시디에 대한 장기 작전을 수행해, 점차 그들의 힘을 약화시키고 섬 요새로 밀어냈다.",
+      "text_markdown": "칸호지는 시디에 대한 장기 작전을 수행해, 점차 그들의 힘을 약화시키고 섬 요새로 밀어냈다.",
+      "tts": {
+        "text": "칸호지는 시디에 대한 장기 작전을 수행해, 점차 그들의 힘을 약화시키고 섬 요새로 밀어냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잔지라 자체를 함락할 수는 없었지만, 시디 함대를 중대한 위협에서 제거했다.",
+      "text_markdown": "잔지라 자체를 함락할 수는 없었지만, 시디 함대를 중대한 위협에서 제거했다.",
+      "tts": {
+        "text": "잔지라 자체를 함락할 수는 없었지만, 시디 함대를 중대한 위협에서 제거했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 무역 회사와의 관계는 더 복잡했다.",
+      "text_markdown": "유럽 무역 회사와의 관계는 더 복잡했다.",
+      "tts": {
+        "text": "유럽 무역 회사와의 관계는 더 복잡했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 동인도 회사는 콜라바의 칸호지 본부 바로 북쪽인 봄베이에 거점을 두고 있었다.",
+      "text_markdown": "영국 동인도 회사는 콜라바의 칸호지 본부 바로 북쪽인 봄베이에 거점을 두고 있었다.",
+      "tts": {
+        "text": "영국 동인도 회사는 콜라바의 칸호지 본부 바로 북쪽인 봄베이에 거점을 두고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "회사는 인도 연안 무역에 대한 무제한 접근을 원했다.",
+      "text_markdown": "회사는 인도 연안 무역에 대한 무제한 접근을 원했다.",
+      "tts": {
+        "text": "회사는 인도 연안 무역에 대한 무제한 접근을 원했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 마라타 해역의 모든 선박이 마라타 통행증을 소지하지 않으면 나포에 직면할 것이라고 주장했다.",
+      "text_markdown": "칸호지는 마라타 해역의 모든 선박이 마라타 통행증을 소지하지 않으면 나포에 직면할 것이라고 주장했다.",
+      "tts": {
+        "text": "칸호지는 마라타 해역의 모든 선박이 마라타 통행증을 소지하지 않으면 나포에 직면할 것이라고 주장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 요구는 포르투갈의 카르타스 제도의 거울상이었다.",
+      "text_markdown": "이 요구는 포르투갈의 카르타스 제도의 거울상이었다.",
+      "tts": {
+        "text": "이 요구는 포르투갈의 카르타스 제도의 거울상이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽인들은 이백 년간 인도 선박에 통행증을 부과해왔다.",
+      "text_markdown": "유럽인들은 이백 년간 인도 선박에 통행증을 부과해왔다.",
+      "tts": {
+        "text": "유럽인들은 이백 년간 인도 선박에 통행증을 부과해왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이제 인도의 지휘관이 유럽 선박에 같은 요건을 부과하고 있었다.",
+      "text_markdown": "이제 인도의 지휘관이 유럽 선박에 같은 요건을 부과하고 있었다.",
+      "tts": {
+        "text": "이제 인도의 지휘관이 유럽 선박에 같은 요건을 부과하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국인들은 이를 참을 수 없다고 여겼지만, 막을 수는 없었다.",
+      "text_markdown": "영국인들은 이를 참을 수 없다고 여겼지만, 막을 수는 없었다.",
+      "tts": {
+        "text": "영국인들은 이를 참을 수 없다고 여겼지만, 막을 수는 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국과의 첫 번째 주요 충돌은 1702년에 일어났다.",
+      "text_markdown": "영국과의 첫 번째 주요 충돌은 1702년에 일어났다.",
+      "tts": {
+        "text": "영국과의 첫 번째 주요 충돌은 천칠백이 년에 일어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "칸호지의 함대가 마라타 통행증 없이 항해하던 영국 상선을 나포했다.",
+      "text_markdown": "칸호지의 함대가 마라타 통행증 없이 항해하던 영국 상선을 나포했다.",
+      "tts": {
+        "text": "칸호지의 함대가 마라타 통행증 없이 항해하던 영국 상선을 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "봄베이의 영국 총독이 선박 반환을 요구했다.",
+      "text_markdown": "봄베이의 영국 총독이 선박 반환을 요구했다.",
+      "tts": {
+        "text": "봄베이의 영국 총독이 선박 반환을 요구했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 마라타 해역의 모든 선박은 마라타 당국에 복종해야 한다며 거부했다.",
+      "text_markdown": "칸호지는 마라타 해역의 모든 선박은 마라타 당국에 복종해야 한다며 거부했다.",
+      "tts": {
+        "text": "칸호지는 마라타 해역의 모든 선박은 마라타 당국에 복종해야 한다며 거부했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국은 칸호지를 응징하기 위해 해군 원정대를 보냈다.",
+      "text_markdown": "영국은 칸호지를 응징하기 위해 해군 원정대를 보냈다.",
+      "tts": {
+        "text": "영국은 칸호지를 응징하기 위해 해군 원정대를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콜라바 기지에 대한 공격은 완전한 실패였다.",
+      "text_markdown": "콜라바 기지에 대한 공격은 완전한 실패였다.",
+      "tts": {
+        "text": "콜라바 기지에 대한 공격은 완전한 실패였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칸호지의 해안 포대가 영국 함선을 큰 피해를 입히며 격퇴했다.",
+      "text_markdown": "칸호지의 해안 포대가 영국 함선을 큰 피해를 입히며 격퇴했다.",
+      "tts": {
+        "text": "칸호지의 해안 포대가 영국 함선을 큰 피해를 입히며 격퇴했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국은 이 교전에서 병사, 함선, 체면을 잃었다.",
+      "text_markdown": "영국은 이 교전에서 병사, 함선, 체면을 잃었다.",
+      "tts": {
+        "text": "영국은 이 교전에서 병사, 함선, 체면을 잃었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 패턴은 이후 수십 년간 여러 차례 반복되었다.",
+      "text_markdown": "이 패턴은 이후 수십 년간 여러 차례 반복되었다.",
+      "tts": {
+        "text": "이 패턴은 이후 수십 년간 여러 차례 반복되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 칸호지의 기지 중 하나를 공격하기 위해 함대를 보냈다.",
+      "text_markdown": "영국은 칸호지의 기지 중 하나를 공격하기 위해 함대를 보냈다.",
+      "tts": {
+        "text": "영국은 칸호지의 기지 중 하나를 공격하기 위해 함대를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칸호지는 해안 지식, 요새, 더 빠른 선박을 활용해 그들을 능가했다.",
+      "text_markdown": "칸호지는 해안 지식, 요새, 더 빠른 선박을 활용해 그들을 능가했다.",
+      "tts": {
+        "text": "칸호지는 해안 지식, 요새, 더 빠른 선박을 활용해 그들을 능가했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국은 아무것도 달성하지 못한 채 철수했다.",
+      "text_markdown": "영국은 아무것도 달성하지 못한 채 철수했다.",
+      "tts": {
+        "text": "영국은 아무것도 달성하지 못한 채 철수했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포르투갈의 결과도 마찬가지였다.",
+      "text_markdown": "포르투갈의 결과도 마찬가지였다.",
+      "tts": {
+        "text": "포르투갈의 결과도 마찬가지였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 이백 년간 인도 해안의 지배적 유럽 세력이었다.",
+      "text_markdown": "그들은 이백 년간 인도 해안의 지배적 유럽 세력이었다.",
+      "tts": {
+        "text": "그들은 이백 년간 인도 해안의 지배적 유럽 세력이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 해군력은 쇠퇴하고 수비대는 인원 부족이었다.",
+      "text_markdown": "그러나 해군력은 쇠퇴하고 수비대는 인원 부족이었다.",
+      "tts": {
+        "text": "그러나 해군력은 쇠퇴하고 수비대는 인원 부족이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 포르투갈 선박을 습격하고 해안의 여러 소규모 전초기지를 점령했다.",
+      "text_markdown": "칸호지는 포르투갈 선박을 습격하고 해안의 여러 소규모 전초기지를 점령했다.",
+      "tts": {
+        "text": "칸호지는 포르투갈 선박을 습격하고 해안의 여러 소규모 전초기지를 점령했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "네덜란드 동인도 회사도 칸호지와 충돌했다.",
+      "text_markdown": "네덜란드 동인도 회사도 칸호지와 충돌했다.",
+      "tts": {
+        "text": "네덜란드 동인도 회사도 칸호지와 충돌했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "통행증 없이 마라타 해역에 진입한 네덜란드 선박이 나포되었다.",
+      "text_markdown": "통행증 없이 마라타 해역에 진입한 네덜란드 선박이 나포되었다.",
+      "tts": {
+        "text": "통행증 없이 마라타 해역에 진입한 네덜란드 선박이 나포되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "네덜란드인들은 협상을 시도하고, 위협하고, 공격했다.",
+      "text_markdown": "네덜란드인들은 협상을 시도하고, 위협하고, 공격했다.",
+      "tts": {
+        "text": "네덜란드인들은 협상을 시도하고, 위협하고, 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국과 포르투갈처럼 칸호지를 해안 거점에서 몰아내지 못했다.",
+      "text_markdown": "영국과 포르투갈처럼 칸호지를 해안 거점에서 몰아내지 못했다.",
+      "tts": {
+        "text": "영국과 포르투갈처럼 칸호지를 해안 거점에서 몰아내지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1712년, 영국과 포르투갈은 콜라바의 칸호지 기지를 공격하기 위해 연합 함대를 구성했다.",
+      "text_markdown": "1712년, 영국과 포르투갈은 콜라바의 칸호지 기지를 공격하기 위해 연합 함대를 구성했다.",
+      "tts": {
+        "text": "천칠백십이 년, 영국과 포르투갈은 콜라바의 칸호지 기지를 공격하기 위해 연합 함대를 구성했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 열강이 공동의 적에 맞서 협력한 드문 사례 중 하나였다.",
+      "text_markdown": "유럽 열강이 공동의 적에 맞서 협력한 드문 사례 중 하나였다.",
+      "tts": {
+        "text": "유럽 열강이 공동의 적에 맞서 협력한 드문 사례 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "연합 함대가 며칠간 콜라바를 포격했다.",
+      "text_markdown": "연합 함대가 며칠간 콜라바를 포격했다.",
+      "tts": {
+        "text": "연합 함대가 며칠간 콜라바를 포격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지의 방어선이 유지되었고, 동맹군은 상당한 손실을 입고 철수했다.",
+      "text_markdown": "칸호지의 방어선이 유지되었고, 동맹군은 상당한 손실을 입고 철수했다.",
+      "tts": {
+        "text": "칸호지의 방어선이 유지되었고, 동맹군은 상당한 손실을 입고 철수했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718년 두 번째 합동 공격도 같은 운명을 맞았다.",
+      "text_markdown": "1718년 두 번째 합동 공격도 같은 운명을 맞았다.",
+      "tts": {
+        "text": "천칠백십팔 년 두 번째 합동 공격도 같은 운명을 맞았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국과 포르투갈이 다시 콜라바에 전력을 결집했다.",
+      "text_markdown": "영국과 포르투갈이 다시 콜라바에 전력을 결집했다.",
+      "tts": {
+        "text": "영국과 포르투갈이 다시 콜라바에 전력을 결집했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또다시 칸호지의 해안 포대와 해군 전술이 그들을 격파했다.",
+      "text_markdown": "또다시 칸호지의 해안 포대와 해군 전술이 그들을 격파했다.",
+      "tts": {
+        "text": "또다시 칸호지의 해안 포대와 해군 전술이 그들을 격파했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "유럽 열강은 칸호지를 무력으로 제거할 수 없다는 것을 받아들여야 했다.",
+      "text_markdown": "유럽 열강은 칸호지를 무력으로 제거할 수 없다는 것을 받아들여야 했다.",
+      "tts": {
+        "text": "유럽 열강은 칸호지를 무력으로 제거할 수 없다는 것을 받아들여야 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지의 성공은 방어전에만 기반한 것이 아니었다.",
+      "text_markdown": "칸호지의 성공은 방어전에만 기반한 것이 아니었다.",
+      "tts": {
+        "text": "칸호지의 성공은 방어전에만 기반한 것이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "경력 전반에 걸쳐 유럽 선박을 적극적으로 습격했다.",
+      "text_markdown": "경력 전반에 걸쳐 유럽 선박을 적극적으로 습격했다.",
+      "tts": {
+        "text": "경력 전반에 걸쳐 유럽 선박을 적극적으로 습격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 빠르고 날렵한 배들이 상선을 가로채 화물을 탈취하고 해안의 수로와 만의 미로 속으로 사라졌다.",
+      "text_markdown": "그의 빠르고 날렵한 배들이 상선을 가로채 화물을 탈취하고 해안의 수로와 만의 미로 속으로 사라졌다.",
+      "tts": {
+        "text": "그의 빠르고 날렵한 배들이 상선을 가로채 화물을 탈취하고 해안의 수로와 만의 미로 속으로 사라졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "유럽 회사들은 매년 그의 습격으로 막대한 금액을 잃었다.",
+      "text_markdown": "유럽 회사들은 매년 그의 습격으로 막대한 금액을 잃었다.",
+      "tts": {
+        "text": "유럽 회사들은 매년 그의 습격으로 막대한 금액을 잃었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기 영국 동인도 회사의 기록은 칸호지 앙그레에 대한 불만으로 가득하다.",
+      "text_markdown": "이 시기 영국 동인도 회사의 기록은 칸호지 앙그레에 대한 불만으로 가득하다.",
+      "tts": {
+        "text": "이 시기 영국 동인도 회사의 기록은 칸호지 앙그레에 대한 불만으로 가득하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 그를 해적, 위험, 합법적 교역에 대한 위협이라 불렀다.",
+      "text_markdown": "그들은 그를 해적, 위험, 합법적 교역에 대한 위협이라 불렀다.",
+      "tts": {
+        "text": "그들은 그를 해적, 위험, 합법적 교역에 대한 위협이라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 마라타의 관점에서 칸호지는 유럽인들이 수세기 동안 해온 것과 정확히 같은 일을 하고 있었다.",
+      "text_markdown": "그러나 마라타의 관점에서 칸호지는 유럽인들이 수세기 동안 해온 것과 정확히 같은 일을 하고 있었다.",
+      "tts": {
+        "text": "그러나 마라타의 관점에서 칸호지는 유럽인들이 수세기 동안 해온 것과 정확히 같은 일을 하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바다를 지배하고, 교역에 세금을 부과하고, 군주의 이익을 보호하기 위해 해군력을 사용하고 있었다.",
+      "text_markdown": "바다를 지배하고, 교역에 세금을 부과하고, 군주의 이익을 보호하기 위해 해군력을 사용하고 있었다.",
+      "tts": {
+        "text": "바다를 지배하고, 교역에 세금을 부과하고, 군주의 이익을 보호하기 위해 해군력을 사용하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백이십 년대에 이르러 칸호지는 봄베이에서 라트나기리 남쪽까지 콘칸 해안 전체를 지배했다.",
+      "text_markdown": "천칠백이십 년대에 이르러 칸호지는 봄베이에서 라트나기리 남쪽까지 콘칸 해안 전체를 지배했다.",
+      "tts": {
+        "text": "천칠백이십 년대에 이르러 칸호지는 봄베이에서 라트나기리 남쪽까지 콘칸 해안 전체를 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 함대는 수십 척의 군함과 수백 척의 소형 선박으로 구성되었다.",
+      "text_markdown": "그의 함대는 수십 척의 군함과 수백 척의 소형 선박으로 구성되었다.",
+      "tts": {
+        "text": "그의 함대는 수십 척의 군함과 수백 척의 소형 선박으로 구성되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "요새화된 기지의 연쇄는 해안을 그의 허가 없이는 어떤 배도 통과할 수 없는 통로로 만들었다.",
+      "text_markdown": "요새화된 기지의 연쇄는 해안을 그의 허가 없이는 어떤 배도 통과할 수 없는 통로로 만들었다.",
+      "tts": {
+        "text": "요새화된 기지의 연쇄는 해안을 그의 허가 없이는 어떤 배도 통과할 수 없는 통로로 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 사실상 인도 서해의 군주였다.",
+      "text_markdown": "그는 사실상 인도 서해의 군주였다.",
+      "tts": {
+        "text": "그는 사실상 인도 서해의 군주였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "전성기",
+      "text_markdown": "전성기"
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "권력의 정점에서 칸호지 앙그레는 인도양에서 가장 중요한 해군 지휘관이었다.",
+      "text_markdown": "권력의 정점에서 칸호지 앙그레는 인도양에서 가장 중요한 해군 지휘관이었다.",
+      "tts": {
+        "text": "권력의 정점에서 칸호지 앙그레는 인도양에서 가장 중요한 해군 지휘관이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 함대는 봄베이와 고아 사이의 해로를 지배했다. 아시아에서 가장 바쁜 교역로 중 하나였다.",
+      "text_markdown": "그의 함대는 봄베이와 고아 사이의 해로를 지배했다. 아시아에서 가장 바쁜 교역로 중 하나였다.",
+      "tts": {
+        "text": "그의 함대는 봄베이와 고아 사이의 해로를 지배했다. 아시아에서 가장 바쁜 교역로 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "인도 서해안에서 활동하는 모든 유럽 무역 회사가 그의 힘을 고려해야 했다.",
+      "text_markdown": "인도 서해안에서 활동하는 모든 유럽 무역 회사가 그의 힘을 고려해야 했다.",
+      "tts": {
+        "text": "인도 서해안에서 활동하는 모든 유럽 무역 회사가 그의 힘을 고려해야 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 동의 없이는 어떤 화물도 안전하지 않았다.",
+      "text_markdown": "그의 동의 없이는 어떤 화물도 안전하지 않았다.",
+      "tts": {
+        "text": "그의 동의 없이는 어떤 화물도 안전하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지의 함대는 콘칸 해안의 특수 조건에 맞게 설계되었다.",
+      "text_markdown": "칸호지의 함대는 콘칸 해안의 특수 조건에 맞게 설계되었다.",
+      "tts": {
+        "text": "칸호지의 함대는 콘칸 해안의 특수 조건에 맞게 설계되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가장 큰 선박은 그랍으로, 얕은 흘수의 이중 돛대 군함으로 해안 가까이 항해할 수 있었다.",
+      "text_markdown": "가장 큰 선박은 그랍으로, 얕은 흘수의 이중 돛대 군함으로 해안 가까이 항해할 수 있었다.",
+      "tts": {
+        "text": "가장 큰 선박은 그랍으로, 얕은 흘수의 이중 돛대 군함으로 해안 가까이 항해할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "갈리밧이라는 소형 노 추진 배도 운용했는데, 빠르고 기동성이 매우 뛰어났다.",
+      "text_markdown": "갈리밧이라는 소형 노 추진 배도 운용했는데, 빠르고 기동성이 매우 뛰어났다.",
+      "tts": {
+        "text": "갈리밧이라는 소형 노 추진 배도 운용했는데, 빠르고 기동성이 매우 뛰어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 갈리밧은 유럽 선박이 따라올 수 없는 조수 수로와 얕은 물에서 작전할 수 있었다.",
+      "text_markdown": "이 갈리밧은 유럽 선박이 따라올 수 없는 조수 수로와 얕은 물에서 작전할 수 있었다.",
+      "tts": {
+        "text": "이 갈리밧은 유럽 선박이 따라올 수 없는 조수 수로와 얕은 물에서 작전할 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그랍과 갈리밧의 조합은 파괴적으로 효과적이었다.",
+      "text_markdown": "그랍과 갈리밧의 조합은 파괴적으로 효과적이었다.",
+      "tts": {
+        "text": "그랍과 갈리밧의 조합은 파괴적으로 효과적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그랍이 대포 사거리에서 적함과 교전해 지속적 포격으로 약화시켰다.",
+      "text_markdown": "그랍이 대포 사거리에서 적함과 교전해 지속적 포격으로 약화시켰다.",
+      "tts": {
+        "text": "그랍이 대포 사거리에서 적함과 교전해 지속적 포격으로 약화시켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그런 다음 갈리밧이 떼 지어 몰려들어 여러 방향에서 동시에 적함에 승선했다.",
+      "text_markdown": "그런 다음 갈리밧이 떼 지어 몰려들어 여러 방향에서 동시에 적함에 승선했다.",
+      "tts": {
+        "text": "그런 다음 갈리밧이 떼 지어 몰려들어 여러 방향에서 동시에 적함에 승선했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대형 선박 간 현측 포격 교환에 훈련된 유럽 함장들은 이 군집 전술에 대한 답이 없었다.",
+      "text_markdown": "대형 선박 간 현측 포격 교환에 훈련된 유럽 함장들은 이 군집 전술에 대한 답이 없었다.",
+      "tts": {
+        "text": "대형 선박 간 현측 포격 교환에 훈련된 유럽 함장들은 이 군집 전술에 대한 답이 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지의 해안 요새도 마찬가지로 강력했다.",
+      "text_markdown": "칸호지의 해안 요새도 마찬가지로 강력했다.",
+      "tts": {
+        "text": "칸호지의 해안 요새도 마찬가지로 강력했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "요새는 바위 섬과 곶 위에 지어져 바다에서 강습하기 거의 불가능했다.",
+      "text_markdown": "요새는 바위 섬과 곶 위에 지어져 바다에서 강습하기 거의 불가능했다.",
+      "tts": {
+        "text": "요새는 바위 섬과 곶 위에 지어져 바다에서 강습하기 거의 불가능했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "성벽은 유럽 군함의 포격을 견딜 만큼 두꺼웠다.",
+      "text_markdown": "성벽은 유럽 군함의 포격을 견딜 만큼 두꺼웠다.",
+      "tts": {
+        "text": "성벽은 유럽 군함의 포격을 견딜 만큼 두꺼웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지하 통로가 요새의 각 부분을 연결해 방어자들이 보이지 않게 이동할 수 있게 했다.",
+      "text_markdown": "지하 통로가 요새의 각 부분을 연결해 방어자들이 보이지 않게 이동할 수 있게 했다.",
+      "tts": {
+        "text": "지하 통로가 요새의 각 부분을 연결해 방어자들이 보이지 않게 이동할 수 있게 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비자이두르그는 그의 방어 네트워크의 최고 보석이었다.",
+      "text_markdown": "비자이두르그는 그의 방어 네트워크의 최고 보석이었다.",
+      "tts": {
+        "text": "비자이두르그는 그의 방어 네트워크의 최고 보석이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "요새는 삼면이 바다로 둘러싸인 바위 곶 위에 우뚝 서 있었다.",
+      "text_markdown": "요새는 삼면이 바다로 둘러싸인 바위 곶 위에 우뚝 서 있었다.",
+      "tts": {
+        "text": "요새는 삼면이 바다로 둘러싸인 바위 곶 위에 우뚝 서 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "삼중 성벽은 몬순 기간 동안 함대 전체를 수용할 수 있는 충분한 면적을 둘러쌌다.",
+      "text_markdown": "삼중 성벽은 몬순 기간 동안 함대 전체를 수용할 수 있는 충분한 면적을 둘러쌌다.",
+      "tts": {
+        "text": "삼중 성벽은 몬순 기간 동안 함대 전체를 수용할 수 있는 충분한 면적을 둘러쌌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이를 본 유럽 해군 장교들은 그들이 만난 가장 견고한 요새 중 하나라고 묘사했다.",
+      "text_markdown": "이를 본 유럽 해군 장교들은 그들이 만난 가장 견고한 요새 중 하나라고 묘사했다.",
+      "tts": {
+        "text": "이를 본 유럽 해군 장교들은 그들이 만난 가장 견고한 요새 중 하나라고 묘사했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지는 과세, 교역, 전리품의 조합으로 함대를 유지했다.",
+      "text_markdown": "칸호지는 과세, 교역, 전리품의 조합으로 함대를 유지했다.",
+      "tts": {
+        "text": "칸호지는 과세, 교역, 전리품의 조합으로 함대를 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마라타 통행증을 소지한 선박은 해군 재정에 충당되는 수수료를 지불했다.",
+      "text_markdown": "마라타 통행증을 소지한 선박은 해군 재정에 충당되는 수수료를 지불했다.",
+      "tts": {
+        "text": "마라타 통행증을 소지한 선박은 해군 재정에 충당되는 수수료를 지불했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "통행증 없는 선박은 나포되고 화물이 매각되었다.",
+      "text_markdown": "통행증 없는 선박은 나포되고 화물이 매각되었다.",
+      "tts": {
+        "text": "통행증 없는 선박은 나포되고 화물이 매각되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 수입 체계는 효율적이고 자립적이었다.",
+      "text_markdown": "이 수입 체계는 효율적이고 자립적이었다.",
+      "tts": {
+        "text": "이 수입 체계는 효율적이고 자립적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사타라의 마라타 정부는 칸호지의 가치를 인정했다.",
+      "text_markdown": "사타라의 마라타 정부는 칸호지의 가치를 인정했다.",
+      "tts": {
+        "text": "사타라의 마라타 정부는 칸호지의 가치를 인정했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 유럽 해군력에 대한 제국의 방패였다.",
+      "text_markdown": "그는 유럽 해군력에 대한 제국의 방패였다.",
+      "tts": {
+        "text": "그는 유럽 해군력에 대한 제국의 방패였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 함대 없이는 마라타 해안이 봉쇄와 침공에 취약했을 것이다.",
+      "text_markdown": "그의 함대 없이는 마라타 해안이 봉쇄와 침공에 취약했을 것이다.",
+      "tts": {
+        "text": "그의 함대 없이는 마라타 해안이 봉쇄와 침공에 취약했을 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마라타 제국의 수상인 페시와는 칸호지의 경력 전반에 걸쳐 긴밀한 관계를 유지했다.",
+      "text_markdown": "마라타 제국의 수상인 페시와는 칸호지의 경력 전반에 걸쳐 긴밀한 관계를 유지했다.",
+      "tts": {
+        "text": "마라타 제국의 수상인 페시와는 칸호지의 경력 전반에 걸쳐 긴밀한 관계를 유지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지는 정교한 첩보 네트워크도 유지했다.",
+      "text_markdown": "칸호지는 정교한 첩보 네트워크도 유지했다.",
+      "tts": {
+        "text": "칸호지는 정교한 첩보 네트워크도 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "봄베이, 고아, 해안의 주요 무역항에 첩보원이 있었다.",
+      "text_markdown": "봄베이, 고아, 해안의 주요 무역항에 첩보원이 있었다.",
+      "tts": {
+        "text": "봄베이, 고아, 해안의 주요 무역항에 첩보원이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "귀중한 화물선이 언제 출항하고 어떤 항로를 택할 계획인지 알고 있었다.",
+      "text_markdown": "귀중한 화물선이 언제 출항하고 어떤 항로를 택할 계획인지 알고 있었다.",
+      "tts": {
+        "text": "귀중한 화물선이 언제 출항하고 어떤 항로를 택할 계획인지 알고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 정보는 유럽 적수들에 대한 결정적 이점을 제공했다.",
+      "text_markdown": "이 정보는 유럽 적수들에 대한 결정적 이점을 제공했다.",
+      "tts": {
+        "text": "이 정보는 유럽 적수들에 대한 결정적 이점을 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 동인도 회사는 칸호지와의 협상을 여러 차례 시도했다.",
+      "text_markdown": "영국 동인도 회사는 칸호지와의 협상을 여러 차례 시도했다.",
+      "tts": {
+        "text": "영국 동인도 회사는 칸호지와의 협상을 여러 차례 시도했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무역 양보, 금전 지불, 외교적 인정을 제안했다.",
+      "text_markdown": "무역 양보, 금전 지불, 외교적 인정을 제안했다.",
+      "tts": {
+        "text": "무역 양보, 금전 지불, 외교적 인정을 제안했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칸호지는 모든 제안에 귀를 기울였지만 근본적 입장은 양보하지 않았다.",
+      "text_markdown": "칸호지는 모든 제안에 귀를 기울였지만 근본적 입장은 양보하지 않았다.",
+      "tts": {
+        "text": "칸호지는 모든 제안에 귀를 기울였지만 근본적 입장은 양보하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "콘칸 해안은 마라타 영토이며 마라타 해역의 모든 선박은 마라타 법에 복종해야 했다.",
+      "text_markdown": "콘칸 해안은 마라타 영토이며 마라타 해역의 모든 선박은 마라타 법에 복종해야 했다.",
+      "tts": {
+        "text": "콘칸 해안은 마라타 영토이며 마라타 해역의 모든 선박은 마라타 법에 복종해야 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 사생활은 가족과 신앙을 중심으로 했다.",
+      "text_markdown": "그의 사생활은 가족과 신앙을 중심으로 했다.",
+      "tts": {
+        "text": "그의 사생활은 가족과 신앙을 중심으로 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "독실한 힌두교도로서 해안의 사원과 종교 기관을 후원했다.",
+      "text_markdown": "독실한 힌두교도로서 해안의 사원과 종교 기관을 후원했다.",
+      "tts": {
+        "text": "독실한 힌두교도로서 해안의 사원과 종교 기관을 후원했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해전과 행정에서 훈련시킨 여러 아들이 있었다.",
+      "text_markdown": "해전과 행정에서 훈련시킨 여러 아들이 있었다.",
+      "tts": {
+        "text": "해전과 행정에서 훈련시킨 여러 아들이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사후에 가족이 자신의 사업을 이어가기를 의도했다.",
+      "text_markdown": "사후에 가족이 자신의 사업을 이어가기를 의도했다.",
+      "tts": {
+        "text": "사후에 가족이 자신의 사업을 이어가기를 의도했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지는 지배 아래의 해안 공동체를 엄격함과 공정의 조합으로 통치했다.",
+      "text_markdown": "칸호지는 지배 아래의 해안 공동체를 엄격함과 공정의 조합으로 통치했다.",
+      "tts": {
+        "text": "칸호지는 지배 아래의 해안 공동체를 엄격함과 공정의 조합으로 통치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어업 공동체를 유럽의 침입으로부터 보호했다.",
+      "text_markdown": "어업 공동체를 유럽의 침입으로부터 보호했다.",
+      "tts": {
+        "text": "어업 공동체를 유럽의 침입으로부터 보호했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해안의 항구와 시장에서 질서를 유지했다.",
+      "text_markdown": "해안의 항구와 시장에서 질서를 유지했다.",
+      "tts": {
+        "text": "해안의 항구와 시장에서 질서를 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "많은 해안 공동체가 그를 통치자가 아닌 보호자로 여겼다.",
+      "text_markdown": "많은 해안 공동체가 그를 통치자가 아닌 보호자로 여겼다.",
+      "tts": {
+        "text": "많은 해안 공동체가 그를 통치자가 아닌 보호자로 여겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "경력의 정점에서 칸호지 앙그레는 놀라운 업적을 달성했다.",
+      "text_markdown": "경력의 정점에서 칸호지 앙그레는 놀라운 업적을 달성했다.",
+      "tts": {
+        "text": "경력의 정점에서 칸호지 앙그레는 놀라운 업적을 달성했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아시아에서 가장 강력한 세 유럽 해군에 저항할 수 있는 해군력을 건설한 것이다.",
+      "text_markdown": "아시아에서 가장 강력한 세 유럽 해군에 저항할 수 있는 해군력을 건설한 것이다.",
+      "tts": {
+        "text": "아시아에서 가장 강력한 세 유럽 해군에 저항할 수 있는 해군력을 건설한 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것을 지역 자원, 지역 지식, 지역 전술로 이루어냈다.",
+      "text_markdown": "그것을 지역 자원, 지역 지식, 지역 전술로 이루어냈다.",
+      "tts": {
+        "text": "그것을 지역 자원, 지역 지식, 지역 전술로 이루어냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "인도의 해군력이 자체 조건으로 유럽 패권에 도전할 수 있음을 증명했다.",
+      "text_markdown": "인도의 해군력이 자체 조건으로 유럽 패권에 도전할 수 있음을 증명했다.",
+      "tts": {
+        "text": "인도의 해군력이 자체 조건으로 유럽 패권에 도전할 수 있음을 증명했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최후",
+      "text_markdown": "최후"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "말년에도 칸호지 앙그레는 활동적이었고 지휘권을 유지했다.",
+      "text_markdown": "말년에도 칸호지 앙그레는 활동적이었고 지휘권을 유지했다.",
+      "tts": {
+        "text": "말년에도 칸호지 앙그레는 활동적이었고 지휘권을 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사망 전에 권력이 쇠퇴한 많은 역사적 인물과 달리 칸호지는 마지막까지 지위를 유지했다.",
+      "text_markdown": "사망 전에 권력이 쇠퇴한 많은 역사적 인물과 달리 칸호지는 마지막까지 지위를 유지했다.",
+      "tts": {
+        "text": "사망 전에 권력이 쇠퇴한 많은 역사적 인물과 달리 칸호지는 마지막까지 지위를 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함대는 해안 순찰을 계속했고, 요새는 완전한 수비 병력을 유지했으며, 그의 권위는 도전받지 않았다.",
+      "text_markdown": "함대는 해안 순찰을 계속했고, 요새는 완전한 수비 병력을 유지했으며, 그의 권위는 도전받지 않았다.",
+      "tts": {
+        "text": "함대는 해안 순찰을 계속했고, 요새는 완전한 수비 병력을 유지했으며, 그의 권위는 도전받지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전 경력 동안 전투에서 단 한 번도 패배하지 않았다.",
+      "text_markdown": "전 경력 동안 전투에서 단 한 번도 패배하지 않았다.",
+      "tts": {
+        "text": "전 경력 동안 전투에서 단 한 번도 패배하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백이십 년대에 마라타 제국 내 정치 상황은 더 복잡해졌다.",
+      "text_markdown": "천칠백이십 년대에 마라타 제국 내 정치 상황은 더 복잡해졌다.",
+      "tts": {
+        "text": "천칠백이십 년대에 마라타 제국 내 정치 상황은 더 복잡해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페시와 발라지 비시와나트가 권력을 중앙집권화하고 마라타 왕의 권한을 축소했다.",
+      "text_markdown": "페시와 발라지 비시와나트가 권력을 중앙집권화하고 마라타 왕의 권한을 축소했다.",
+      "tts": {
+        "text": "페시와 발라지 비시와나트가 권력을 중앙집권화하고 마라타 왕의 권한을 축소했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "발라지의 사후 그의 아들 바지 라오가 페시와가 되었다.",
+      "text_markdown": "발라지의 사후 그의 아들 바지 라오가 페시와가 되었다.",
+      "tts": {
+        "text": "발라지의 사후 그의 아들 바지 라오가 페시와가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바지 라오는 육상에서 뛰어난 군사 지휘관이었지만 해군 방어는 칸호지에게 크게 의존했다.",
+      "text_markdown": "바지 라오는 육상에서 뛰어난 군사 지휘관이었지만 해군 방어는 칸호지에게 크게 의존했다.",
+      "tts": {
+        "text": "바지 라오는 육상에서 뛰어난 군사 지휘관이었지만 해군 방어는 칸호지에게 크게 의존했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지는 마라타 국가에 대한 충성과 작전 독립성 사이에서 신중한 균형을 유지했다.",
+      "text_markdown": "칸호지는 마라타 국가에 대한 충성과 작전 독립성 사이에서 신중한 균형을 유지했다.",
+      "tts": {
+        "text": "칸호지는 마라타 국가에 대한 충성과 작전 독립성 사이에서 신중한 균형을 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "원칙적으로 왕과 페시와의 권위를 수용했다.",
+      "text_markdown": "원칙적으로 왕과 페시와의 권위를 수용했다.",
+      "tts": {
+        "text": "원칙적으로 왕과 페시와의 권위를 수용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 실제로는 해군을 자율적 조직으로 운영했다.",
+      "text_markdown": "그러나 실제로는 해군을 자율적 조직으로 운영했다.",
+      "tts": {
+        "text": "그러나 실제로는 해군을 자율적 조직으로 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마라타 정부는 칸호지가 필수 불가결했기에 이 체제를 용인했다.",
+      "text_markdown": "마라타 정부는 칸호지가 필수 불가결했기에 이 체제를 용인했다.",
+      "tts": {
+        "text": "마라타 정부는 칸호지가 필수 불가결했기에 이 체제를 용인했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 열강은 그에 대한 다양한 전략을 계속 시도했다.",
+      "text_markdown": "유럽 열강은 그에 대한 다양한 전략을 계속 시도했다.",
+      "tts": {
+        "text": "유럽 열강은 그에 대한 다양한 전략을 계속 시도했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 칸호지와 거래하는 인도 상인을 제한하는 경제 압박을 시도했다.",
+      "text_markdown": "영국은 칸호지와 거래하는 인도 상인을 제한하는 경제 압박을 시도했다.",
+      "tts": {
+        "text": "영국은 칸호지와 거래하는 인도 상인을 제한하는 경제 압박을 시도했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포르투갈은 시디와 다른 현지 세력과의 동맹 구축을 시도했다.",
+      "text_markdown": "포르투갈은 시디와 다른 현지 세력과의 동맹 구축을 시도했다.",
+      "tts": {
+        "text": "포르투갈은 시디와 다른 현지 세력과의 동맹 구축을 시도했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 전략들 중 어느 것도 해안에 대한 칸호지의 지배를 줄이는 데 성공하지 못했다.",
+      "text_markdown": "이 전략들 중 어느 것도 해안에 대한 칸호지의 지배를 줄이는 데 성공하지 못했다.",
+      "tts": {
+        "text": "이 전략들 중 어느 것도 해안에 대한 칸호지의 지배를 줄이는 데 성공하지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720년, 영국은 칸호지의 기지에 대한 또 다른 해군 원정을 개시했다.",
+      "text_markdown": "1720년, 영국은 칸호지의 기지에 대한 또 다른 해군 원정을 개시했다.",
+      "tts": {
+        "text": "천칠백이십 년, 영국은 칸호지의 기지에 대한 또 다른 해군 원정을 개시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "원정대는 여러 군함과 대규모 병력을 포함했다.",
+      "text_markdown": "원정대는 여러 군함과 대규모 병력을 포함했다.",
+      "tts": {
+        "text": "원정대는 여러 군함과 대규모 병력을 포함했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다시 한번 칸호지의 방어가 유지되었고 영국은 후퇴할 수밖에 없었다.",
+      "text_markdown": "다시 한번 칸호지의 방어가 유지되었고 영국은 후퇴할 수밖에 없었다.",
+      "tts": {
+        "text": "다시 한번 칸호지의 방어가 유지되었고 영국은 후퇴할 수밖에 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 생전 영국이 시도한 마지막 주요 공격 중 하나였다.",
+      "text_markdown": "그의 생전 영국이 시도한 마지막 주요 공격 중 하나였다.",
+      "tts": {
+        "text": "그의 생전 영국이 시도한 마지막 주요 공격 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지 앙그레는 1729년 7월 4일 알리바그의 기지에서 사망했다.",
+      "text_markdown": "칸호지 앙그레는 1729년 7월 4일 알리바그의 기지에서 사망했다.",
+      "tts": {
+        "text": "칸호지 앙그레는 천칠백이십구 년 칠월 사일에 알리바그의 기지에서 사망했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "향년 약 육십 세였다.",
+      "text_markdown": "향년 약 육십 세였다.",
+      "tts": {
+        "text": "향년 약 육십 세였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전장이 아닌 자연사였다.",
+      "text_markdown": "전장이 아닌 자연사였다.",
+      "tts": {
+        "text": "전장이 아닌 자연사였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마라타 해군의 사르켈로서 삼십일 년간 복무했다.",
+      "text_markdown": "마라타 해군의 사르켈로서 삼십일 년간 복무했다.",
+      "tts": {
+        "text": "마라타 해군의 사르켈로서 삼십일 년간 복무했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 죽음은 즉각적인 권력 공백을 만들었다.",
+      "text_markdown": "그의 죽음은 즉각적인 권력 공백을 만들었다.",
+      "tts": {
+        "text": "그의 죽음은 즉각적인 권력 공백을 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아들들이 영토와 함대를 나누어 가졌다.",
+      "text_markdown": "아들들이 영토와 함대를 나누어 가졌다.",
+      "tts": {
+        "text": "아들들이 영토와 함대를 나누어 가졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칸호지가 개인적 권위로 유지하던 통합이 균열되기 시작했다.",
+      "text_markdown": "칸호지가 개인적 권위로 유지하던 통합이 균열되기 시작했다.",
+      "tts": {
+        "text": "칸호지가 개인적 권위로 유지하던 통합이 균열되기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 지도력 없이 마라타 해군 사령부는 내부 경쟁으로 약화되었다.",
+      "text_markdown": "그의 지도력 없이 마라타 해군 사령부는 내부 경쟁으로 약화되었다.",
+      "tts": {
+        "text": "그의 지도력 없이 마라타 해군 사령부는 내부 경쟁으로 약화되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아들 삼바지 앙그레가 처음에 함대를 인수했다.",
+      "text_markdown": "아들 삼바지 앙그레가 처음에 함대를 인수했다.",
+      "tts": {
+        "text": "아들 삼바지 앙그레가 처음에 함대를 인수했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 형제간 경쟁이 갈등으로 이어졌다.",
+      "text_markdown": "그러나 형제간 경쟁이 갈등으로 이어졌다.",
+      "tts": {
+        "text": "그러나 형제간 경쟁이 갈등으로 이어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마라타 정부가 개입했고, 앙그레 가문의 권력은 점차 축소되었다.",
+      "text_markdown": "마라타 정부가 개입했고, 앙그레 가문의 권력은 점차 축소되었다.",
+      "tts": {
+        "text": "마라타 정부가 개입했고, 앙그레 가문의 권력은 점차 축소되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "유럽 회사들은 이 전개를 큰 관심으로 지켜보았다.",
+      "text_markdown": "유럽 회사들은 이 전개를 큰 관심으로 지켜보았다.",
+      "tts": {
+        "text": "유럽 회사들은 이 전개를 큰 관심으로 지켜보았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1756년, 칸호지 사후 거의 삼십 년 만에 영국과 마라타가 공동으로 비자이두르그의 앙그레 거점을 공격했다.",
+      "text_markdown": "1756년, 칸호지 사후 거의 삼십 년 만에 영국과 마라타가 공동으로 비자이두르그의 앙그레 거점을 공격했다.",
+      "tts": {
+        "text": "천칠백오십육 년, 칸호지 사후 거의 삼십 년 만에 영국과 마라타가 공동으로 비자이두르그의 앙그레 거점을 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "칸호지 아래 난공불락이던 요새가 마침내 함락되었다.",
+      "text_markdown": "칸호지 아래 난공불락이던 요새가 마침내 함락되었다.",
+      "tts": {
+        "text": "칸호지 아래 난공불락이던 요새가 마침내 함락되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 함락으로 인도 해안에서 영국 해군 패권에 대한 마지막 주요 장애물이 제거되었다.",
+      "text_markdown": "그 함락으로 인도 해안에서 영국 해군 패권에 대한 마지막 주요 장애물이 제거되었다.",
+      "tts": {
+        "text": "그 함락으로 인도 해안에서 영국 해군 패권에 대한 마지막 주요 장애물이 제거되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지가 정의한 시대가 끝났다.",
+      "text_markdown": "칸호지가 정의한 시대가 끝났다.",
+      "tts": {
+        "text": "칸호지가 정의한 시대가 끝났다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마라타 제국은 해군 지도부가 전환기에 있는 동안에도 육지에서는 계속 성장했다.",
+      "text_markdown": "마라타 제국은 해군 지도부가 전환기에 있는 동안에도 육지에서는 계속 성장했다.",
+      "tts": {
+        "text": "마라타 제국은 해군 지도부가 전환기에 있는 동안에도 육지에서는 계속 성장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페시와 바지 라오는 마라타 영토를 중부와 북부 인도로 확장했다.",
+      "text_markdown": "페시와 바지 라오는 마라타 영토를 중부와 북부 인도로 확장했다.",
+      "tts": {
+        "text": "페시와 바지 라오는 마라타 영토를 중부와 북부 인도로 확장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 칸호지의 통합된 해군 지휘 없이 해안은 점점 취약해졌다.",
+      "text_markdown": "그러나 칸호지의 통합된 해군 지휘 없이 해안은 점점 취약해졌다.",
+      "tts": {
+        "text": "그러나 칸호지의 통합된 해군 지휘 없이 해안은 점점 취약해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국 동인도 회사는 이 취약성을 인식하고 그에 따라 계획을 세우기 시작했다.",
+      "text_markdown": "영국 동인도 회사는 이 취약성을 인식하고 그에 따라 계획을 세우기 시작했다.",
+      "tts": {
+        "text": "영국 동인도 회사는 이 취약성을 인식하고 그에 따라 계획을 세우기 시작했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지 앙그레의 무패 기록은 인도 군사 역사에서 가장 주목할 만한 성과 중 하나이다.",
+      "text_markdown": "칸호지 앙그레의 무패 기록은 인도 군사 역사에서 가장 주목할 만한 성과 중 하나이다.",
+      "tts": {
+        "text": "칸호지 앙그레의 무패 기록은 인도 군사 역사에서 가장 주목할 만한 성과 중 하나이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "삼십 년간 세계에서 가장 강력한 해군에 맞서 해안을 지켜냈다.",
+      "text_markdown": "삼십 년간 세계에서 가장 강력한 해군에 맞서 해안을 지켜냈다.",
+      "tts": {
+        "text": "삼십 년간 세계에서 가장 강력한 해군에 맞서 해안을 지켜냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지역 선박, 지역 승무원, 지역 전술로 그것을 이루어냈다.",
+      "text_markdown": "지역 선박, 지역 승무원, 지역 전술로 그것을 이루어냈다.",
+      "tts": {
+        "text": "지역 선박, 지역 승무원, 지역 전술로 그것을 이루어냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 유럽 지휘관도 그를 이길 방법을 찾지 못했다.",
+      "text_markdown": "어떤 유럽 지휘관도 그를 이길 방법을 찾지 못했다.",
+      "tts": {
+        "text": "어떤 유럽 지휘관도 그를 이길 방법을 찾지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지 앙그레의 유산은 누가 해적 행위를 정의할 권리를 갖느냐는 문제와 깊이 얽혀 있다.",
+      "text_markdown": "칸호지 앙그레의 유산은 누가 해적 행위를 정의할 권리를 갖느냐는 문제와 깊이 얽혀 있다.",
+      "tts": {
+        "text": "칸호지 앙그레의 유산은 누가 해적 행위를 정의할 권리를 갖느냐는 문제와 깊이 얽혀 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 동인도 회사는 그를 해적이라 불렀다. 자신들의 교역을 방해했기 때문이다.",
+      "text_markdown": "영국 동인도 회사는 그를 해적이라 불렀다. 자신들의 교역을 방해했기 때문이다.",
+      "tts": {
+        "text": "영국 동인도 회사는 그를 해적이라 불렀다. 자신들의 교역을 방해했기 때문이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마라타 제국은 그를 제독이라 불렀다. 자신들의 해안을 방어했기 때문이다.",
+      "text_markdown": "마라타 제국은 그를 제독이라 불렀다. 자신들의 해안을 방어했기 때문이다.",
+      "tts": {
+        "text": "마라타 제국은 그를 제독이라 불렀다. 자신들의 해안을 방어했기 때문이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "두 묘사 모두 진실의 일부를 담고 있다.",
+      "text_markdown": "두 묘사 모두 진실의 일부를 담고 있다.",
+      "tts": {
+        "text": "두 묘사 모두 진실의 일부를 담고 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적이라는 딱지는 정치적 무기이지, 중립적 서술이 아니었다.",
+      "text_markdown": "해적이라는 딱지는 정치적 무기이지, 중립적 서술이 아니었다.",
+      "tts": {
+        "text": "해적이라는 딱지는 정치적 무기이지, 중립적 서술이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 무역 회사들은 인도양에 자체 규칙을 부과하고 그 규칙에 저항하는 자를 범죄자라 불렀다.",
+      "text_markdown": "유럽 무역 회사들은 인도양에 자체 규칙을 부과하고 그 규칙에 저항하는 자를 범죄자라 불렀다.",
+      "tts": {
+        "text": "유럽 무역 회사들은 인도양에 자체 규칙을 부과하고 그 규칙에 저항하는 자를 범죄자라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 정의에 따르면, 인도 해역에 대한 주권을 주장하는 모든 인도 통치자가 해적이었다.",
+      "text_markdown": "이 정의에 따르면, 인도 해역에 대한 주권을 주장하는 모든 인도 통치자가 해적이었다.",
+      "tts": {
+        "text": "이 정의에 따르면, 인도 해역에 대한 주권을 주장하는 모든 인도 통치자가 해적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칸호지는 이 논리를 완전히 거부했으며, 역사는 대체로 그의 정당함을 입증했다.",
+      "text_markdown": "칸호지는 이 논리를 완전히 거부했으며, 역사는 대체로 그의 정당함을 입증했다.",
+      "tts": {
+        "text": "칸호지는 이 논리를 완전히 거부했으며, 역사는 대체로 그의 정당함을 입증했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현대 인도에서 칸호지 앙그레는 국가 영웅으로 인정받고 있다.",
+      "text_markdown": "현대 인도에서 칸호지 앙그레는 국가 영웅으로 인정받고 있다.",
+      "tts": {
+        "text": "현대 인도에서 칸호지 앙그레는 국가 영웅으로 인정받고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인도 해군은 뭄바이의 해안 시설에 그의 이름을 붙였다.",
+      "text_markdown": "인도 해군은 뭄바이의 해안 시설에 그의 이름을 붙였다.",
+      "tts": {
+        "text": "인도 해군은 뭄바이의 해안 시설에 그의 이름을 붙였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "콘칸 해안의 눈에 띄는 곳에 그의 동상이 서 있다.",
+      "text_markdown": "콘칸 해안의 눈에 띄는 곳에 그의 동상이 서 있다.",
+      "tts": {
+        "text": "콘칸 해안의 눈에 띄는 곳에 그의 동상이 서 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "인도 해군력의 선구자이자 인도 주권의 수호자로 기억된다.",
+      "text_markdown": "인도 해군력의 선구자이자 인도 주권의 수호자로 기억된다.",
+      "tts": {
+        "text": "인도 해군력의 선구자이자 인도 주권의 수호자로 기억된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 군사적 혁신은 여러 세대에 걸쳐 인도 해군 사상에 영향을 미쳤다.",
+      "text_markdown": "그의 군사적 혁신은 여러 세대에 걸쳐 인도 해군 사상에 영향을 미쳤다.",
+      "tts": {
+        "text": "그의 군사적 혁신은 여러 세대에 걸쳐 인도 해군 사상에 영향을 미쳤다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "빠른 소형 선박과 요새화된 해안 기지의 조합은 후대 인도 해군 지휘관들이 연구하고 적용한 교리였다.",
+      "text_markdown": "빠른 소형 선박과 요새화된 해안 기지의 조합은 후대 인도 해군 지휘관들이 연구하고 적용한 교리였다.",
+      "tts": {
+        "text": "빠른 소형 선박과 요새화된 해안 기지의 조합은 후대 인도 해군 지휘관들이 연구하고 적용한 교리였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "순수한 화력보다 조류, 해류, 해안 지리에 대한 지역 지식을 강조한 그의 접근법은 오늘날의 해군 전략에도 여전히 유효하다.",
+      "text_markdown": "순수한 화력보다 조류, 해류, 해안 지리에 대한 지역 지식을 강조한 그의 접근법은 오늘날의 해군 전략에도 여전히 유효하다.",
+      "tts": {
+        "text": "순수한 화력보다 조류, 해류, 해안 지리에 대한 지역 지식을 강조한 그의 접근법은 오늘날의 해군 전략에도 여전히 유효하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지역적 이점을 가진 소규모 세력이 기술적으로 우세한 적에 저항할 수 있음을 입증했다.",
+      "text_markdown": "지역적 이점을 가진 소규모 세력이 기술적으로 우세한 적에 저항할 수 있음을 입증했다.",
+      "tts": {
+        "text": "지역적 이점을 가진 소규모 세력이 기술적으로 우세한 적에 저항할 수 있음을 입증했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비자이두르그 요새는 오늘날에도 콘칸 해안에 서 있다.",
+      "text_markdown": "비자이두르그 요새는 오늘날에도 콘칸 해안에 서 있다.",
+      "tts": {
+        "text": "비자이두르그 요새는 오늘날에도 콘칸 해안에 서 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거대한 성벽과 방호 항구는 칸호지가 건설한 해군력의 기념비이다.",
+      "text_markdown": "거대한 성벽과 방호 항구는 칸호지가 건설한 해군력의 기념비이다.",
+      "tts": {
+        "text": "거대한 성벽과 방호 항구는 칸호지가 건설한 해군력의 기념비이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "방문객들은 여전히 포대, 지하 통로, 한때 함대가 피난하던 항구를 볼 수 있다.",
+      "text_markdown": "방문객들은 여전히 포대, 지하 통로, 한때 함대가 피난하던 항구를 볼 수 있다.",
+      "tts": {
+        "text": "방문객들은 여전히 포대, 지하 통로, 한때 함대가 피난하던 항구를 볼 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마라타 군사 건축의 가장 뛰어난 현존 사례 중 하나이다.",
+      "text_markdown": "마라타 군사 건축의 가장 뛰어난 현존 사례 중 하나이다.",
+      "tts": {
+        "text": "마라타 군사 건축의 가장 뛰어난 현존 사례 중 하나이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지 앙그레의 경력은 아시아 식민주의 역사에 대한 중요한 질문을 제기한다.",
+      "text_markdown": "칸호지 앙그레의 경력은 아시아 식민주의 역사에 대한 중요한 질문을 제기한다.",
+      "tts": {
+        "text": "칸호지 앙그레의 경력은 아시아 식민주의 역사에 대한 중요한 질문을 제기한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 무역 회사들은 자신들의 팽창을 문명과 합법적 교역의 진보로 제시했다.",
+      "text_markdown": "유럽 무역 회사들은 자신들의 팽창을 문명과 합법적 교역의 진보로 제시했다.",
+      "tts": {
+        "text": "유럽 무역 회사들은 자신들의 팽창을 문명과 합법적 교역의 진보로 제시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 칸호지와 같은 인도 통치자의 관점에서 유럽인들은 침입자였다.",
+      "text_markdown": "그러나 칸호지와 같은 인도 통치자의 관점에서 유럽인들은 침입자였다.",
+      "tts": {
+        "text": "그러나 칸호지와 같은 인도 통치자의 관점에서 유럽인들은 침입자였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 무력으로 규칙을 부과하고 그 규칙에 대한 저항을 범죄라 불렀다.",
+      "text_markdown": "그들은 무력으로 규칙을 부과하고 그 규칙에 대한 저항을 범죄라 불렀다.",
+      "tts": {
+        "text": "그들은 무력으로 규칙을 부과하고 그 규칙에 대한 저항을 범죄라 불렀다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칸호지가 이룬 것은 해적 행위가 아니라 주권이었다.",
+      "text_markdown": "칸호지가 이룬 것은 해적 행위가 아니라 주권이었다.",
+      "tts": {
+        "text": "칸호지가 이룬 것은 해적 행위가 아니라 주권이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자신의 해역을 지배하고 통과하는 교역에 세금을 부과하고 외국의 침략으로부터 자국민을 보호했다.",
+      "text_markdown": "자신의 해역을 지배하고 통과하는 교역에 세금을 부과하고 외국의 침략으로부터 자국민을 보호했다.",
+      "tts": {
+        "text": "자신의 해역을 지배하고 통과하는 교역에 세금을 부과하고 외국의 침략으로부터 자국민을 보호했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "삼십일 년간 단 한 번의 전투도 지지 않으며 그것을 해냈다.",
+      "text_markdown": "삼십일 년간 단 한 번의 전투도 지지 않으며 그것을 해냈다.",
+      "tts": {
+        "text": "삼십일 년간 단 한 번의 전투도 지지 않으며 그것을 해냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "인도양의 긴 역사에서 그 기록에 필적한 자는 아무도 없다.",
+      "text_markdown": "인도양의 긴 역사에서 그 기록에 필적한 자는 아무도 없다.",
+      "tts": {
+        "text": "인도양의 긴 역사에서 그 기록에 필적한 자는 아무도 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그의 삶은 바다의 역사가 그곳을 항해한 모든 나라의 것이라는 증거이다.",
+      "text_markdown": "그의 삶은 바다의 역사가 그곳을 항해한 모든 나라의 것이라는 증거이다.",
+      "tts": {
+        "text": "그의 삶은 바다의 역사가 그곳을 항해한 모든 나라의 것이라는 증거이다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

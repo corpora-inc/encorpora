@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "vi",
+  "total_segments": 310,
+  "segments": [
+    {
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch00-001",
+      "chapter": 0,
+      "part": 0,
+      "text": "Lời nhắn gửi độc giả",
+      "text_markdown": "Lời nhắn gửi độc giả",
+      "title": "Lời nhắn gửi độc giả"
+    },
+    {
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch00-002",
+      "chapter": 0,
+      "part": 0,
+      "text": "Đây là câu chuyện có thật về nữ hải tặc thành công nhất trong toàn bộ lịch sử được ghi lại.",
+      "text_markdown": "Đây là câu chuyện có thật về nữ hải tặc thành công nhất trong toàn bộ lịch sử được ghi lại.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Đây là câu chuyện có thật về nữ hải tặc thành công nhất trong toàn bộ lịch sử được ghi lại.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch00-003",
+      "chapter": 0,
+      "part": 0,
+      "text": "Tên bà là Trịnh Nhất Tẩu, và bà đã chỉ huy hạm đội hải tặc lớn nhất mà thế giới từng chứng kiến.",
+      "text_markdown": "Tên bà là Trịnh Nhất Tẩu, và bà đã chỉ huy hạm đội hải tặc lớn nhất mà thế giới từng chứng kiến.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Tên bà là Trịnh Nhất Tẩu, và bà đã chỉ huy hạm đội hải tặc lớn nhất mà thế giới từng chứng kiến.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch00-004",
+      "chapter": 0,
+      "part": 0,
+      "text": "Ở đỉnh cao quyền lực, bà kiểm soát nhiều tàu thuyền hơn hầu hết các quốc gia sở hữu.",
+      "text_markdown": "Ở đỉnh cao quyền lực, bà kiểm soát nhiều tàu thuyền hơn hầu hết các quốc gia sở hữu.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Ở đỉnh cao quyền lực, bà kiểm soát nhiều tàu thuyền hơn hầu hết các quốc gia sở hữu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch00-005",
+      "chapter": 0,
+      "part": 0,
+      "text": "Bà không sinh ra trong giàu sang hay đặc quyền.",
+      "text_markdown": "Bà không sinh ra trong giàu sang hay đặc quyền.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Bà không sinh ra trong giàu sang hay đặc quyền.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch00-006",
+      "chapter": 0,
+      "part": 0,
+      "text": "Bà sinh ra trong nghèo khó ở miền nam Trung Quốc, vào cuối thế kỷ mười tám.",
+      "text_markdown": "Bà sinh ra trong nghèo khó ở miền nam Trung Quốc, vào cuối thế kỷ mười tám.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Bà sinh ra trong nghèo khó ở miền nam Trung Quốc, vào cuối thế kỷ mười tám.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch00-007",
+      "chapter": 0,
+      "part": 0,
+      "text": "Mọi thứ bà đạt được đều nhờ vào trí thông minh, sự tàn nhẫn và khả năng phi thường trong việc tổ chức con người.",
+      "text_markdown": "Mọi thứ bà đạt được đều nhờ vào trí thông minh, sự tàn nhẫn và khả năng phi thường trong việc tổ chức con người.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Mọi thứ bà đạt được đều nhờ vào trí thông minh, sự tàn nhẫn và khả năng phi thường trong việc tổ chức con người.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch00-008",
+      "chapter": 0,
+      "part": 0,
+      "text": "Cuốn sách này kể câu chuyện về cách một người phụ nữ không có gì trở thành người cai trị không thể tranh cãi của Biển Đông.",
+      "text_markdown": "Cuốn sách này kể câu chuyện về cách một người phụ nữ không có gì trở thành người cai trị không thể tranh cãi của Biển Đông.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Cuốn sách này kể câu chuyện về cách một người phụ nữ không có gì trở thành người cai trị không thể tranh cãi của Biển Đông.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch00-009",
+      "chapter": 0,
+      "part": 0,
+      "text": "Đó là câu chuyện về chiến tranh, thương mại, luật pháp và sự sinh tồn.",
+      "text_markdown": "Đó là câu chuyện về chiến tranh, thương mại, luật pháp và sự sinh tồn.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Đó là câu chuyện về chiến tranh, thương mại, luật pháp và sự sinh tồn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch00-010",
+      "chapter": 0,
+      "part": 0,
+      "text": "Đó cũng là câu chuyện về một thế giới đang thay đổi nhanh chóng, khi các cường quốc châu Âu tiến sâu hơn vào châu Á.",
+      "text_markdown": "Đó cũng là câu chuyện về một thế giới đang thay đổi nhanh chóng, khi các cường quốc châu Âu tiến sâu hơn vào châu Á.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Đó cũng là câu chuyện về một thế giới đang thay đổi nhanh chóng, khi các cường quốc châu Âu tiến sâu hơn vào châu Á.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch00-011",
+      "chapter": 0,
+      "part": 0,
+      "text": "Mọi sự thật trong cuốn sách này đều đến từ các ghi chép lịch sử.",
+      "text_markdown": "Mọi sự thật trong cuốn sách này đều đến từ các ghi chép lịch sử.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Mọi sự thật trong cuốn sách này đều đến từ các ghi chép lịch sử.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch00-012",
+      "chapter": 0,
+      "part": 0,
+      "text": "Ở những chỗ ghi chép không chắc chắn, chúng tôi sẽ nói rõ.",
+      "text_markdown": "Ở những chỗ ghi chép không chắc chắn, chúng tôi sẽ nói rõ.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Ở những chỗ ghi chép không chắc chắn, chúng tôi sẽ nói rõ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch00-013",
+      "chapter": 0,
+      "part": 0,
+      "text": "Ở những chỗ các nhà sử học bất đồng, chúng tôi trình bày bằng chứng mạnh mẽ nhất hiện có.",
+      "text_markdown": "Ở những chỗ các nhà sử học bất đồng, chúng tôi trình bày bằng chứng mạnh mẽ nhất hiện có.",
+      "title": "Lời nhắn gửi độc giả",
+      "tts": {
+        "text": "Ở những chỗ các nhà sử học bất đồng, chúng tôi trình bày bằng chứng mạnh mẽ nhất hiện có.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch01-014",
+      "chapter": 1,
+      "part": 0,
+      "text": "Thế giới Biển Đông",
+      "text_markdown": "Thế giới Biển Đông",
+      "title": "Thế giới Biển Đông"
+    },
+    {
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "chapter": 1,
+      "part": 0,
+      "text": "Biển Đông là một trong những tuyến đường thủy tấp nập nhất trên Trái Đất.",
+      "text_markdown": "Biển Đông là một trong những tuyến đường thủy tấp nập nhất trên Trái Đất.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Biển Đông là một trong những tuyến đường thủy tấp nập nhất trên Trái Đất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "chapter": 1,
+      "part": 0,
+      "text": "Nó trải dài từ bờ biển Việt Nam ở phía tây đến Philippines ở phía đông.",
+      "text_markdown": "Nó trải dài từ bờ biển Việt Nam ở phía tây đến Philippines ở phía đông.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Nó trải dài từ bờ biển Việt Nam ở phía tây đến Philippines ở phía đông.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "chapter": 1,
+      "part": 0,
+      "text": "Phía bắc là bờ biển Trung Quốc, và phía nam là các đảo Borneo và Sumatra.",
+      "text_markdown": "Phía bắc là bờ biển Trung Quốc, và phía nam là các đảo Borneo và Sumatra.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Phía bắc là bờ biển Trung Quốc, và phía nam là các đảo Borneo và Sumatra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-018",
+      "chapter": 1,
+      "part": 0,
+      "text": "Trong hàng ngàn năm, các thương nhân đã đi thuyền trên những vùng biển này.",
+      "text_markdown": "Trong hàng ngàn năm, các thương nhân đã đi thuyền trên những vùng biển này.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Trong hàng ngàn năm, các thương nhân đã đi thuyền trên những vùng biển này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-019",
+      "chapter": 1,
+      "part": 0,
+      "text": "Thuyền buồm Trung Quốc đã chở lụa, sứ và trà đến các cảng trên khắp Đông Nam Á.",
+      "text_markdown": "Thuyền buồm Trung Quốc đã chở lụa, sứ và trà đến các cảng trên khắp Đông Nam Á.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Thuyền buồm Trung Quốc đã chở lụa, sứ và trà đến các cảng trên khắp Đông Nam Á.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-020",
+      "chapter": 1,
+      "part": 0,
+      "text": "Đổi lại, gia vị, gỗ nhiệt đới và hàng hóa kỳ lạ đã chảy ngược về Trung Quốc.",
+      "text_markdown": "Đổi lại, gia vị, gỗ nhiệt đới và hàng hóa kỳ lạ đã chảy ngược về Trung Quốc.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Đổi lại, gia vị, gỗ nhiệt đới và hàng hóa kỳ lạ đã chảy ngược về Trung Quốc.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-021",
+      "chapter": 1,
+      "part": 0,
+      "text": "Thành phố Canton, nay gọi là Quảng Châu, nằm ở trung tâm của hoạt động thương mại này.",
+      "text_markdown": "Thành phố Canton, nay gọi là Quảng Châu, nằm ở trung tâm của hoạt động thương mại này.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Thành phố Canton, nay gọi là Quảng Châu, nằm ở trung tâm của hoạt động thương mại này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-022",
+      "chapter": 1,
+      "part": 0,
+      "text": "Canton là một trong những thành phố giàu có nhất thế giới vào thế kỷ mười tám.",
+      "text_markdown": "Canton là một trong những thành phố giàu có nhất thế giới vào thế kỷ mười tám.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Canton là một trong những thành phố giàu có nhất thế giới vào thế kỷ mười tám.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-023",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các thương nhân nước ngoài từ Anh, Pháp, Bồ Đào Nha và Hà Lan đều cạnh tranh để tiếp cận thị trường của nó.",
+      "text_markdown": "Các thương nhân nước ngoài từ Anh, Pháp, Bồ Đào Nha và Hà Lan đều cạnh tranh để tiếp cận thị trường của nó.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các thương nhân nước ngoài từ Anh, Pháp, Bồ Đào Nha và Hà Lan đều cạnh tranh để tiếp cận thị trường của nó.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "chapter": 1,
+      "part": 0,
+      "text": "Nhà Thanh đã cai trị Trung Quốc trong giai đoạn này.",
+      "text_markdown": "Nhà Thanh đã cai trị Trung Quốc trong giai đoạn này.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Nhà Thanh đã cai trị Trung Quốc trong giai đoạn này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các hoàng đế nhà Thanh là người Mãn Châu, không phải người Hán.",
+      "text_markdown": "Các hoàng đế nhà Thanh là người Mãn Châu, không phải người Hán.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các hoàng đế nhà Thanh là người Mãn Châu, không phải người Hán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "chapter": 1,
+      "part": 0,
+      "text": "Họ đã chinh phục Trung Quốc vào năm 1644 và xây dựng một trong những đế chế lớn nhất thế giới.",
+      "text_markdown": "Họ đã chinh phục Trung Quốc vào năm 1644 và xây dựng một trong những đế chế lớn nhất thế giới.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Họ đã chinh phục Trung Quốc vào năm một ngàn sáu trăm bốn mươi bốn và xây dựng một trong những đế chế lớn nhất thế giới.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "chapter": 1,
+      "part": 0,
+      "text": "Tuy nhiên, vào cuối những năm 1700, nhà Thanh bắt đầu suy yếu.",
+      "text_markdown": "Tuy nhiên, vào cuối những năm 1700, nhà Thanh bắt đầu suy yếu.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Tuy nhiên, vào cuối những năm một ngàn bảy trăm, nhà Thanh bắt đầu suy yếu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "chapter": 1,
+      "part": 0,
+      "text": "Tham nhũng lan rộng khắp bộ máy quan liêu của triều đình.",
+      "text_markdown": "Tham nhũng lan rộng khắp bộ máy quan liêu của triều đình.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Tham nhũng lan rộng khắp bộ máy quan liêu của triều đình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "chapter": 1,
+      "part": 0,
+      "text": "Những người thu thuế đã vắt kiệt nông dân và ngư dân từng đồng xu họ có thể lấy được.",
+      "text_markdown": "Những người thu thuế đã vắt kiệt nông dân và ngư dân từng đồng xu họ có thể lấy được.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Những người thu thuế đã vắt kiệt nông dân và ngư dân từng đồng xu họ có thể lấy được.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "chapter": 1,
+      "part": 0,
+      "text": "Khoảng cách giữa người giàu và người nghèo ngày càng nới rộng theo từng năm.",
+      "text_markdown": "Khoảng cách giữa người giàu và người nghèo ngày càng nới rộng theo từng năm.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Khoảng cách giữa người giàu và người nghèo ngày càng nới rộng theo từng năm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "chapter": 1,
+      "part": 0,
+      "text": "Tại các tỉnh ven biển, nhiều người sống trong cảnh nghèo đói cùng cực.",
+      "text_markdown": "Tại các tỉnh ven biển, nhiều người sống trong cảnh nghèo đói cùng cực.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Tại các tỉnh ven biển, nhiều người sống trong cảnh nghèo đói cùng cực.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-032",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các cộng đồng ngư dân dọc bờ biển Quảng Đông nằm trong số những người nghèo nhất Trung Quốc.",
+      "text_markdown": "Các cộng đồng ngư dân dọc bờ biển Quảng Đông nằm trong số những người nghèo nhất Trung Quốc.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các cộng đồng ngư dân dọc bờ biển Quảng Đông nằm trong số những người nghèo nhất Trung Quốc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-033",
+      "chapter": 1,
+      "part": 0,
+      "text": "Toàn bộ gia đình sống trên những chiếc thuyền nhỏ gọi là sampan.",
+      "text_markdown": "Toàn bộ gia đình sống trên những chiếc thuyền nhỏ gọi là sampan.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Toàn bộ gia đình sống trên những chiếc thuyền nhỏ gọi là sampan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-034",
+      "chapter": 1,
+      "part": 0,
+      "text": "Họ sinh ra trên mặt nước, làm việc trên mặt nước và chết trên mặt nước.",
+      "text_markdown": "Họ sinh ra trên mặt nước, làm việc trên mặt nước và chết trên mặt nước.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Họ sinh ra trên mặt nước, làm việc trên mặt nước và chết trên mặt nước.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-035",
+      "chapter": 1,
+      "part": 0,
+      "text": "Chính quyền đế quốc gọi họ là người Tanka và đối xử với họ như những kẻ bị ruồng bỏ.",
+      "text_markdown": "Chính quyền đế quốc gọi họ là người Tanka và đối xử với họ như những kẻ bị ruồng bỏ.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Chính quyền đế quốc gọi họ là người Tanka và đối xử với họ như những kẻ bị ruồng bỏ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-036",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các gia đình Tanka bị cấm sống trên đất liền ở nhiều khu vực.",
+      "text_markdown": "Các gia đình Tanka bị cấm sống trên đất liền ở nhiều khu vực.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các gia đình Tanka bị cấm sống trên đất liền ở nhiều khu vực.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-037",
+      "chapter": 1,
+      "part": 0,
+      "text": "Họ không thể tham gia các kỳ thi tuyển quan lại để có được các công việc trong chính phủ.",
+      "text_markdown": "Họ không thể tham gia các kỳ thi tuyển quan lại để có được các công việc trong chính phủ.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Họ không thể tham gia các kỳ thi tuyển quan lại để có được các công việc trong chính phủ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-038",
+      "chapter": 1,
+      "part": 0,
+      "text": "Họ bị loại khỏi xã hội Trung Quốc chính thống bởi luật pháp và phong tục.",
+      "text_markdown": "Họ bị loại khỏi xã hội Trung Quốc chính thống bởi luật pháp và phong tục.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Họ bị loại khỏi xã hội Trung Quốc chính thống bởi luật pháp và phong tục.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-039",
+      "chapter": 1,
+      "part": 0,
+      "text": "Trong nhiều thế hệ, họ không có con đường nào để có một cuộc sống tốt đẹp hơn.",
+      "text_markdown": "Trong nhiều thế hệ, họ không có con đường nào để có một cuộc sống tốt đẹp hơn.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Trong nhiều thế hệ, họ không có con đường nào để có một cuộc sống tốt đẹp hơn.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-040",
+      "chapter": 1,
+      "part": 0,
+      "text": "Hải tặc mang đến một lựa chọn khác.",
+      "text_markdown": "Hải tặc mang đến một lựa chọn khác.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Hải tặc mang đến một lựa chọn khác.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-041",
+      "chapter": 1,
+      "part": 0,
+      "text": "Nếu không thể vươn lên bằng con đường hợp pháp, biển cả sẽ cung cấp một nền kinh tế riêng.",
+      "text_markdown": "Nếu không thể vươn lên bằng con đường hợp pháp, biển cả sẽ cung cấp một nền kinh tế riêng.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Nếu không thể vươn lên bằng con đường hợp pháp, biển cả sẽ cung cấp một nền kinh tế riêng.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-042",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các hạm đội hải tặc cướp bóc tàu buôn, tống tiền các làng chài và buôn lậu hàng hóa qua các cuộc tuần tra của đế quốc.",
+      "text_markdown": "Các hạm đội hải tặc cướp bóc tàu buôn, tống tiền các làng chài và buôn lậu hàng hóa qua các cuộc tuần tra của đế quốc.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các hạm đội hải tặc cướp bóc tàu buôn, tống tiền các làng chài và buôn lậu hàng hóa qua các cuộc tuần tra của đế quốc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-043",
+      "chapter": 1,
+      "part": 0,
+      "text": "Đối với nhiều người nghèo ven biển, việc gia nhập một băng hải tặc là một quyết định kinh tế hợp lý.",
+      "text_markdown": "Đối với nhiều người nghèo ven biển, việc gia nhập một băng hải tặc là một quyết định kinh tế hợp lý.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Đối với nhiều người nghèo ven biển, việc gia nhập một băng hải tặc là một quyết định kinh tế hợp lý.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-044",
+      "chapter": 1,
+      "part": 0,
+      "text": "Vùng biển Biển Đông là nơi lý tưởng cho hoạt động cướp biển.",
+      "text_markdown": "Vùng biển Biển Đông là nơi lý tưởng cho hoạt động cướp biển.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Vùng biển Biển Đông là nơi lý tưởng cho hoạt động cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-045",
+      "chapter": 1,
+      "part": 0,
+      "text": "Hàng ngàn hòn đảo, lạch biển và cửa sông đã cung cấp nơi ẩn náu.",
+      "text_markdown": "Hàng ngàn hòn đảo, lạch biển và cửa sông đã cung cấp nơi ẩn náu.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Hàng ngàn hòn đảo, lạch biển và cửa sông đã cung cấp nơi ẩn náu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-046",
+      "chapter": 1,
+      "part": 0,
+      "text": "Sương mù dày đặc và bão tố bất ngờ khiến việc truy đuổi trở nên khó khăn.",
+      "text_markdown": "Sương mù dày đặc và bão tố bất ngờ khiến việc truy đuổi trở nên khó khăn.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Sương mù dày đặc và bão tố bất ngờ khiến việc truy đuổi trở nên khó khăn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-047",
+      "chapter": 1,
+      "part": 0,
+      "text": "Một chiếc thuyền buồm nhanh với thủy thủ đoàn lành nghề có thể biến mất vào bờ biển chỉ trong vài phút.",
+      "text_markdown": "Một chiếc thuyền buồm nhanh với thủy thủ đoàn lành nghề có thể biến mất vào bờ biển chỉ trong vài phút.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Một chiếc thuyền buồm nhanh với thủy thủ đoàn lành nghề có thể biến mất vào bờ biển chỉ trong vài phút.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-048",
+      "chapter": 1,
+      "part": 0,
+      "text": "Trong khi đó, buôn bán thuốc phiện bắt đầu định hình lại khu vực này.",
+      "text_markdown": "Trong khi đó, buôn bán thuốc phiện bắt đầu định hình lại khu vực này.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Trong khi đó, buôn bán thuốc phiện bắt đầu định hình lại khu vực này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-049",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các thương nhân Anh đã vận chuyển thuốc phiện từ Ấn Độ sang Trung Quốc với số lượng khổng lồ.",
+      "text_markdown": "Các thương nhân Anh đã vận chuyển thuốc phiện từ Ấn Độ sang Trung Quốc với số lượng khổng lồ.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các thương nhân Anh đã vận chuyển thuốc phiện từ Ấn Độ sang Trung Quốc với số lượng khổng lồ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-050",
+      "chapter": 1,
+      "part": 0,
+      "text": "Thuốc phiện là bất hợp pháp ở Trung Quốc, nhưng lợi nhuận quá lớn khiến hoạt động buôn bán này tăng trưởng hàng năm.",
+      "text_markdown": "Thuốc phiện là bất hợp pháp ở Trung Quốc, nhưng lợi nhuận quá lớn khiến hoạt động buôn bán này tăng trưởng hàng năm.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Thuốc phiện là bất hợp pháp ở Trung Quốc, nhưng lợi nhuận quá lớn khiến hoạt động buôn bán này tăng trưởng hàng năm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-051",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các mạng lưới buôn lậu trải dài dọc theo toàn bộ bờ biển phía nam.",
+      "text_markdown": "Các mạng lưới buôn lậu trải dài dọc theo toàn bộ bờ biển phía nam.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các mạng lưới buôn lậu trải dài dọc theo toàn bộ bờ biển phía nam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-052",
+      "chapter": 1,
+      "part": 0,
+      "text": "Đây là thế giới đã sản sinh ra Trịnh Nhất Tẩu.",
+      "text_markdown": "Đây là thế giới đã sản sinh ra Trịnh Nhất Tẩu.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Đây là thế giới đã sản sinh ra Trịnh Nhất Tẩu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-053",
+      "chapter": 1,
+      "part": 0,
+      "text": "Một thế giới của sự giàu có tột bậc và nghèo đói cùng cực, được ngăn cách bởi một dải biển mỏng.",
+      "text_markdown": "Một thế giới của sự giàu có tột bậc và nghèo đói cùng cực, được ngăn cách bởi một dải biển mỏng.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Một thế giới của sự giàu có tột bậc và nghèo đói cùng cực, được ngăn cách bởi một dải biển mỏng.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-054",
+      "chapter": 1,
+      "part": 0,
+      "text": "Một thế giới nơi các đế chế cạnh tranh, và luật biển thuộc về bất cứ ai đủ mạnh để thực thi nó.",
+      "text_markdown": "Một thế giới nơi các đế chế cạnh tranh, và luật biển thuộc về bất cứ ai đủ mạnh để thực thi nó.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Một thế giới nơi các đế chế cạnh tranh, và luật biển thuộc về bất cứ ai đủ mạnh để thực thi nó.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-055",
+      "chapter": 1,
+      "part": 0,
+      "text": "Các cường quốc châu Âu coi Trung Quốc là một thị trường cần được mở cửa.",
+      "text_markdown": "Các cường quốc châu Âu coi Trung Quốc là một thị trường cần được mở cửa.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Các cường quốc châu Âu coi Trung Quốc là một thị trường cần được mở cửa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-056",
+      "chapter": 1,
+      "part": 0,
+      "text": "Chính phủ nhà Thanh coi người châu Âu là những kẻ man rợ cần được quản lý.",
+      "text_markdown": "Chính phủ nhà Thanh coi người châu Âu là những kẻ man rợ cần được quản lý.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Chính phủ nhà Thanh coi người châu Âu là những kẻ man rợ cần được quản lý.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-057",
+      "chapter": 1,
+      "part": 0,
+      "text": "Và những tên cướp biển Biển Đông đã nhìn thấy cơ hội trong sự hỗn loạn giữa họ.",
+      "text_markdown": "Và những tên cướp biển Biển Đông đã nhìn thấy cơ hội trong sự hỗn loạn giữa họ.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Và những tên cướp biển Biển Đông đã nhìn thấy cơ hội trong sự hỗn loạn giữa họ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-058",
+      "chapter": 1,
+      "part": 0,
+      "text": "Đến năm 1790, các hạm đội hải tặc ở Biển Đông đã lên tới hàng trăm tàu.",
+      "text_markdown": "Đến năm 1790, các hạm đội hải tặc ở Biển Đông đã lên tới hàng trăm tàu.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Đến năm một nghìn bảy trăm chín mươi, các hạm đội hải tặc ở Biển Đông đã lên tới hàng trăm tàu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-059",
+      "chapter": 1,
+      "part": 0,
+      "text": "Họ không phải là những tên tội phạm vô tổ chức.",
+      "text_markdown": "Họ không phải là những tên tội phạm vô tổ chức.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Họ không phải là những tên tội phạm vô tổ chức.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-060",
+      "chapter": 1,
+      "part": 0,
+      "text": "Nhiều người hoạt động như các lực lượng hải quân có kỷ luật với hệ thống cấp bậc và quy tắc ứng xử.",
+      "text_markdown": "Nhiều người hoạt động như các lực lượng hải quân có kỷ luật với hệ thống cấp bậc và quy tắc ứng xử.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Nhiều người hoạt động như các lực lượng hải quân có kỷ luật với hệ thống cấp bậc và quy tắc ứng xử.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-061",
+      "chapter": 1,
+      "part": 0,
+      "text": "Lực lượng lớn nhất trong số này sắp trở thành hạm đội cướp biển hùng mạnh nhất trong lịch sử.",
+      "text_markdown": "Lực lượng lớn nhất trong số này sắp trở thành hạm đội cướp biển hùng mạnh nhất trong lịch sử.",
+      "title": "Thế giới Biển Đông",
+      "tts": {
+        "text": "Lực lượng lớn nhất trong số này sắp trở thành hạm đội cướp biển hùng mạnh nhất trong lịch sử.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch02-062",
+      "chapter": 2,
+      "part": 0,
+      "text": "Nguồn gốc",
+      "text_markdown": "Nguồn gốc",
+      "title": "Nguồn gốc"
+    },
+    {
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-063",
+      "chapter": 2,
+      "part": 0,
+      "text": "Người phụ nữ sau này trở thành Trịnh Nhất Tẩu sinh vào khoảng năm 1775.",
+      "text_markdown": "Người phụ nữ sau này trở thành Trịnh Nhất Tẩu sinh vào khoảng năm 1775.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Người phụ nữ sau này trở thành Trịnh Nhất Tẩu sinh vào khoảng năm một nghìn bảy trăm bảy mươi lăm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-064",
+      "chapter": 2,
+      "part": 0,
+      "text": "Trong các nguồn tài liệu Trung Quốc, bà thường được gọi là Thạch Hương Cô.",
+      "text_markdown": "Trong các nguồn tài liệu Trung Quốc, bà thường được gọi là Thạch Hương Cô.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Trong các nguồn tài liệu Trung Quốc, bà thường được gọi là Thạch Hương Cô.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-065",
+      "chapter": 2,
+      "part": 0,
+      "text": "Cái tên Trịnh Nhất Tẩu đơn giản có nghĩa là vợ của Trịnh Nhất.",
+      "text_markdown": "Cái tên Trịnh Nhất Tẩu đơn giản có nghĩa là vợ của Trịnh Nhất.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Cái tên Trịnh Nhất Tẩu đơn giản có nghĩa là vợ của Trịnh Nhất.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-066",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà sinh ra trong cộng đồng người Đản (Tanka) sống trên thuyền ở tỉnh Quảng Đông.",
+      "text_markdown": "Bà sinh ra trong cộng đồng người Đản (Tanka) sống trên thuyền ở tỉnh Quảng Đông.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà sinh ra trong cộng đồng người Đản (Tanka) sống trên thuyền ở tỉnh Quảng Đông.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-067",
+      "chapter": 2,
+      "part": 0,
+      "text": "Gia đình bà nghèo khó, giống như hầu hết các gia đình người Đản khác.",
+      "text_markdown": "Gia đình bà nghèo khó, giống như hầu hết các gia đình người Đản khác.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Gia đình bà nghèo khó, giống như hầu hết các gia đình người Đản khác.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-068",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà đã trải qua những năm đầu đời trên mặt nước, học hỏi nhịp điệu của vùng duyên hải.",
+      "text_markdown": "Bà đã trải qua những năm đầu đời trên mặt nước, học hỏi nhịp điệu của vùng duyên hải.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà đã trải qua những năm đầu đời trên mặt nước, học hỏi nhịp điệu của vùng duyên hải.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-069",
+      "chapter": 2,
+      "part": 0,
+      "text": "Khi còn trẻ, bà làm việc tại một nhà thổ nổi ở cảng Quảng Châu.",
+      "text_markdown": "Khi còn trẻ, bà làm việc tại một nhà thổ nổi ở cảng Quảng Châu.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Khi còn trẻ, bà làm việc tại một nhà thổ nổi ở cảng Quảng Châu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-070",
+      "chapter": 2,
+      "part": 0,
+      "text": "Họ phục vụ thủy thủ, thương nhân và ngư dân đi qua cảng sầm uất này.",
+      "text_markdown": "Họ phục vụ thủy thủ, thương nhân và ngư dân đi qua cảng sầm uất này.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Họ phục vụ thủy thủ, thương nhân và ngư dân đi qua cảng sầm uất này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-071",
+      "chapter": 2,
+      "part": 0,
+      "text": "Đó là một công việc khó khăn và nguy hiểm, nhưng nó mang lại cho bà kiến thức về thế giới mà ít phụ nữ cùng tầng lớp có thể tiếp cận.",
+      "text_markdown": "Đó là một công việc khó khăn và nguy hiểm, nhưng nó mang lại cho bà kiến thức về thế giới mà ít phụ nữ cùng tầng lớp có thể tiếp cận.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Đó là một công việc khó khăn và nguy hiểm, nhưng nó mang lại cho bà kiến thức về thế giới mà ít phụ nữ cùng tầng lớp có thể tiếp cận.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-072",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà học cách nhìn nhận con người một cách nhanh chóng và chính xác.",
+      "text_markdown": "Bà học cách nhìn nhận con người một cách nhanh chóng và chính xác.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà học cách nhìn nhận con người một cách nhanh chóng và chính xác.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-073",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà học được ngôn ngữ của thương mại và đàm phán.",
+      "text_markdown": "Bà học được ngôn ngữ của thương mại và đàm phán.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà học được ngôn ngữ của thương mại và đàm phán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-074",
+      "chapter": 2,
+      "part": 0,
+      "text": "Những kỹ năng này sau này đã chứng tỏ giá trị hơn nhiều so với bất kỳ ai có thể dự đoán.",
+      "text_markdown": "Những kỹ năng này sau này đã chứng tỏ giá trị hơn nhiều so với bất kỳ ai có thể dự đoán.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Những kỹ năng này sau này đã chứng tỏ giá trị hơn nhiều so với bất kỳ ai có thể dự đoán.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-075",
+      "chapter": 2,
+      "part": 0,
+      "text": "Năm 1798, một thuyền trưởng cướp biển tên Trịnh Nhất đã chiếm giữ con tàu bà đang ở.",
+      "text_markdown": "Năm 1798, một thuyền trưởng cướp biển tên Trịnh Nhất đã chiếm giữ con tàu bà đang ở.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Năm một nghìn bảy trăm chín mươi tám, một thuyền trưởng cướp biển tên Trịnh Nhất đã chiếm giữ con tàu bà đang ở.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-076",
+      "chapter": 2,
+      "part": 0,
+      "text": "Ông xuất thân từ một dòng dõi cướp biển lâu đời, kéo dài qua nhiều thế hệ.",
+      "text_markdown": "Ông xuất thân từ một dòng dõi cướp biển lâu đời, kéo dài qua nhiều thế hệ.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Ông xuất thân từ một dòng dõi cướp biển lâu đời, kéo dài qua nhiều thế hệ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-077",
+      "chapter": 2,
+      "part": 0,
+      "text": "Gia đình ông đã ủng hộ tàn dư của nhà Minh chống lại những kẻ chinh phục nhà Thanh.",
+      "text_markdown": "Gia đình ông đã ủng hộ tàn dư của nhà Minh chống lại những kẻ chinh phục nhà Thanh.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Gia đình ông đã ủng hộ tàn dư của nhà Minh chống lại những kẻ chinh phục nhà Thanh.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-078",
+      "chapter": 2,
+      "part": 0,
+      "text": "Trịnh Nhất đã cầu hôn người phụ nữ trẻ.",
+      "text_markdown": "Trịnh Nhất đã cầu hôn người phụ nữ trẻ.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Trịnh Nhất đã cầu hôn người phụ nữ trẻ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-079",
+      "chapter": 2,
+      "part": 0,
+      "text": "Theo hầu hết các ghi chép, bà không đơn thuần chấp nhận.",
+      "text_markdown": "Theo hầu hết các ghi chép, bà không đơn thuần chấp nhận.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Theo hầu hết các ghi chép, bà không đơn thuần chấp nhận.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-080",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà đã đàm phán các điều khoản hợp tác trước khi đồng ý kết hôn.",
+      "text_markdown": "Bà đã đàm phán các điều khoản hợp tác trước khi đồng ý kết hôn.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà đã đàm phán các điều khoản hợp tác trước khi đồng ý kết hôn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-081",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà yêu cầu được chia đều hạm đội của ông và có tiếng nói ngang bằng trong các quyết định chỉ huy.",
+      "text_markdown": "Bà yêu cầu được chia đều hạm đội của ông và có tiếng nói ngang bằng trong các quyết định chỉ huy.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà yêu cầu được chia đều hạm đội của ông và có tiếng nói ngang bằng trong các quyết định chỉ huy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-082",
+      "chapter": 2,
+      "part": 0,
+      "text": "Điều này là phi thường vào thời điểm đó.",
+      "text_markdown": "Điều này là phi thường vào thời điểm đó.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Điều này là phi thường vào thời điểm đó.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-083",
+      "chapter": 2,
+      "part": 0,
+      "text": "Phụ nữ ở Trung Quốc thời Thanh mạt có rất ít quyền pháp lý.",
+      "text_markdown": "Phụ nữ ở Trung Quốc thời Thanh mạt có rất ít quyền pháp lý.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Phụ nữ ở Trung Quốc thời Thanh mạt có rất ít quyền pháp lý.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-084",
+      "chapter": 2,
+      "part": 0,
+      "text": "Một người vợ được mong đợi phải vâng lời chồng mình mà không thắc mắc.",
+      "text_markdown": "Một người vợ được mong đợi phải vâng lời chồng mình mà không thắc mắc.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Một người vợ được mong đợi phải vâng lời chồng mình mà không thắc mắc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-085",
+      "chapter": 2,
+      "part": 0,
+      "text": "Nhưng đây là thế giới cướp biển, và thế giới cướp biển có những quy tắc riêng của nó.",
+      "text_markdown": "Nhưng đây là thế giới cướp biển, và thế giới cướp biển có những quy tắc riêng của nó.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Nhưng đây là thế giới cướp biển, và thế giới cướp biển có những quy tắc riêng của nó.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-086",
+      "chapter": 2,
+      "part": 0,
+      "text": "Trịnh Nhất đã đồng ý với các điều khoản của bà.",
+      "text_markdown": "Trịnh Nhất đã đồng ý với các điều khoản của bà.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Trịnh Nhất đã đồng ý với các điều khoản của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-087",
+      "chapter": 2,
+      "part": 0,
+      "text": "Các nhà sử học tin rằng ông đã nhận ra trí thông minh và tiềm năng lãnh đạo của bà.",
+      "text_markdown": "Các nhà sử học tin rằng ông đã nhận ra trí thông minh và tiềm năng lãnh đạo của bà.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Các nhà sử học tin rằng ông đã nhận ra trí thông minh và tiềm năng lãnh đạo của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-088",
+      "chapter": 2,
+      "part": 0,
+      "text": "Cuộc hôn nhân của họ là một liên minh chiến lược cũng như một mối ràng buộc cá nhân.",
+      "text_markdown": "Cuộc hôn nhân của họ là một liên minh chiến lược cũng như một mối ràng buộc cá nhân.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Cuộc hôn nhân của họ là một liên minh chiến lược cũng như một mối ràng buộc cá nhân.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-089",
+      "chapter": 2,
+      "part": 0,
+      "text": "Cùng nhau, họ sẽ xây dựng một điều gì đó chưa từng có tiền lệ.",
+      "text_markdown": "Cùng nhau, họ sẽ xây dựng một điều gì đó chưa từng có tiền lệ.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Cùng nhau, họ sẽ xây dựng một điều gì đó chưa từng có tiền lệ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-090",
+      "chapter": 2,
+      "part": 0,
+      "text": "Trịnh Nhất có một tầm nhìn táo bạo.",
+      "text_markdown": "Trịnh Nhất có một tầm nhìn táo bạo.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Trịnh Nhất có một tầm nhìn táo bạo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-091",
+      "chapter": 2,
+      "part": 0,
+      "text": "Ông ta muốn thống nhất các hạm đội cướp biển rải rác ở Biển Đông thành một liên minh duy nhất.",
+      "text_markdown": "Ông ta muốn thống nhất các hạm đội cướp biển rải rác ở Biển Đông thành một liên minh duy nhất.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Ông ta muốn thống nhất các hạm đội cướp biển rải rác ở Biển Đông thành một liên minh duy nhất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-092",
+      "chapter": 2,
+      "part": 0,
+      "text": "Các thuyền trưởng cướp biển riêng lẻ luôn cạnh tranh với nhau.",
+      "text_markdown": "Các thuyền trưởng cướp biển riêng lẻ luôn cạnh tranh với nhau.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Các thuyền trưởng cướp biển riêng lẻ luôn cạnh tranh với nhau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-093",
+      "chapter": 2,
+      "part": 0,
+      "text": "Trịnh Nhất tin rằng họ sẽ mạnh hơn rất nhiều nếu hợp tác.",
+      "text_markdown": "Trịnh Nhất tin rằng họ sẽ mạnh hơn rất nhiều nếu hợp tác.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Trịnh Nhất tin rằng họ sẽ mạnh hơn rất nhiều nếu hợp tác.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-094",
+      "chapter": 2,
+      "part": 0,
+      "text": "Từ năm 1798 đến năm 1805, Trịnh Nhất đã làm việc không mệt mỏi để xây dựng các liên minh.",
+      "text_markdown": "Từ năm 1798 đến năm 1805, Trịnh Nhất đã làm việc không mệt mỏi để xây dựng các liên minh.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Từ năm một bảy chín tám đến năm một tám không năm, Trịnh Nhất đã làm việc không mệt mỏi để xây dựng các liên minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-095",
+      "chapter": 2,
+      "part": 0,
+      "text": "Ông ta đã thuyết phục các thuyền trưởng đối địch gia nhập liên minh của mình bằng sự kết hợp giữa ngoại giao và đe dọa.",
+      "text_markdown": "Ông ta đã thuyết phục các thuyền trưởng đối địch gia nhập liên minh của mình bằng sự kết hợp giữa ngoại giao và đe dọa.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Ông ta đã thuyết phục các thuyền trưởng đối địch gia nhập liên minh của mình bằng sự kết hợp giữa ngoại giao và đe dọa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-096",
+      "chapter": 2,
+      "part": 0,
+      "text": "Vợ ông ta đã tham gia sâu vào các cuộc đàm phán này.",
+      "text_markdown": "Vợ ông ta đã tham gia sâu vào các cuộc đàm phán này.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Vợ ông ta đã tham gia sâu vào các cuộc đàm phán này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-097",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà đã giúp soạn thảo các thỏa thuận ràng buộc hạm đội lại với nhau.",
+      "text_markdown": "Bà đã giúp soạn thảo các thỏa thuận ràng buộc hạm đội lại với nhau.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà đã giúp soạn thảo các thỏa thuận ràng buộc hạm đội lại với nhau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-098",
+      "chapter": 2,
+      "part": 0,
+      "text": "Đến năm 1805, liên minh đã hoàn thành.",
+      "text_markdown": "Đến năm 1805, liên minh đã hoàn thành.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Đến năm một tám không năm, liên minh đã hoàn thành.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-099",
+      "chapter": 2,
+      "part": 0,
+      "text": "Nó bao gồm sáu hạm đội, mỗi hạm đội được nhận diện bằng màu cờ của mình.",
+      "text_markdown": "Nó bao gồm sáu hạm đội, mỗi hạm đội được nhận diện bằng màu cờ của mình.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Nó bao gồm sáu hạm đội, mỗi hạm đội được nhận diện bằng màu cờ của mình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-100",
+      "chapter": 2,
+      "part": 0,
+      "text": "Hạm đội Cờ Đỏ là hạm đội lớn nhất và mạnh nhất.",
+      "text_markdown": "Hạm đội Cờ Đỏ là hạm đội lớn nhất và mạnh nhất.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Hạm đội Cờ Đỏ là hạm đội lớn nhất và mạnh nhất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-101",
+      "chapter": 2,
+      "part": 0,
+      "text": "Trịnh Nhất đích thân chỉ huy Hạm đội Cờ Đỏ.",
+      "text_markdown": "Trịnh Nhất đích thân chỉ huy Hạm đội Cờ Đỏ.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Trịnh Nhất đích thân chỉ huy Hạm đội Cờ Đỏ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-102",
+      "chapter": 2,
+      "part": 0,
+      "text": "Liên minh kiểm soát hàng trăm tàu và hàng chục nghìn cướp biển.",
+      "text_markdown": "Liên minh kiểm soát hàng trăm tàu và hàng chục nghìn cướp biển.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Liên minh kiểm soát hàng trăm tàu và hàng chục nghìn cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-103",
+      "chapter": 2,
+      "part": 0,
+      "text": "Nó thống trị toàn bộ Biển Đông.",
+      "text_markdown": "Nó thống trị toàn bộ Biển Đông.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Nó thống trị toàn bộ Biển Đông.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-104",
+      "chapter": 2,
+      "part": 0,
+      "text": "Không một tàu buôn nào có thể đi qua vùng biển này mà không phải cống nạp hoặc đối mặt với nguy cơ bị phá hủy.",
+      "text_markdown": "Không một tàu buôn nào có thể đi qua vùng biển này mà không phải cống nạp hoặc đối mặt với nguy cơ bị phá hủy.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Không một tàu buôn nào có thể đi qua vùng biển này mà không phải cống nạp hoặc đối mặt với nguy cơ bị phá hủy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-105",
+      "chapter": 2,
+      "part": 0,
+      "text": "Sau đó, vào tháng 11 năm 1807, Trịnh Nhất qua đời.",
+      "text_markdown": "Sau đó, vào tháng 11 năm 1807, Trịnh Nhất qua đời.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Sau đó, vào tháng mười một năm một tám không bảy, Trịnh Nhất qua đời.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-106",
+      "chapter": 2,
+      "part": 0,
+      "text": "Hoàn cảnh cái chết của ông ta vẫn còn được các nhà sử học tranh cãi.",
+      "text_markdown": "Hoàn cảnh cái chết của ông ta vẫn còn được các nhà sử học tranh cãi.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Hoàn cảnh cái chết của ông ta vẫn còn được các nhà sử học tranh cãi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-107",
+      "chapter": 2,
+      "part": 0,
+      "text": "Một số ghi chép nói rằng ông ta chết đuối trong một cơn bão.",
+      "text_markdown": "Một số ghi chép nói rằng ông ta chết đuối trong một cơn bão.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Một số ghi chép nói rằng ông ta chết đuối trong một cơn bão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-108",
+      "chapter": 2,
+      "part": 0,
+      "text": "Những người khác cho rằng ông ta bị giết trong trận chiến ngoài khơi Việt Nam.",
+      "text_markdown": "Những người khác cho rằng ông ta bị giết trong trận chiến ngoài khơi Việt Nam.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Những người khác cho rằng ông ta bị giết trong trận chiến ngoài khơi Việt Nam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-109",
+      "chapter": 2,
+      "part": 0,
+      "text": "Cái chết của ông ta đã tạo ra một cuộc khủng hoảng cho toàn bộ liên minh.",
+      "text_markdown": "Cái chết của ông ta đã tạo ra một cuộc khủng hoảng cho toàn bộ liên minh.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Cái chết của ông ta đã tạo ra một cuộc khủng hoảng cho toàn bộ liên minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-110",
+      "chapter": 2,
+      "part": 0,
+      "text": "Liên minh mà ông ta đã xây dựng được duy trì nhờ uy quyền cá nhân của ông ta.",
+      "text_markdown": "Liên minh mà ông ta đã xây dựng được duy trì nhờ uy quyền cá nhân của ông ta.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Liên minh mà ông ta đã xây dựng được duy trì nhờ uy quyền cá nhân của ông ta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-111",
+      "chapter": 2,
+      "part": 0,
+      "text": "Nếu không có một nhà lãnh đạo mạnh mẽ, nó sẽ tan rã trở lại thành các phe phái đối địch.",
+      "text_markdown": "Nếu không có một nhà lãnh đạo mạnh mẽ, nó sẽ tan rã trở lại thành các phe phái đối địch.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Nếu không có một nhà lãnh đạo mạnh mẽ, nó sẽ tan rã trở lại thành các phe phái đối địch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-112",
+      "chapter": 2,
+      "part": 0,
+      "text": "Mọi thứ họ đã xây dựng đều gặp nguy hiểm.",
+      "text_markdown": "Mọi thứ họ đã xây dựng đều gặp nguy hiểm.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Mọi thứ họ đã xây dựng đều gặp nguy hiểm.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-113",
+      "chapter": 2,
+      "part": 0,
+      "text": "Các thuyền trưởng của các hạm đội khác dự đoán liên minh sẽ sụp đổ.",
+      "text_markdown": "Các thuyền trưởng của các hạm đội khác dự đoán liên minh sẽ sụp đổ.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Các thuyền trưởng của các hạm đội khác dự đoán liên minh sẽ sụp đổ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-114",
+      "chapter": 2,
+      "part": 0,
+      "text": "Họ bắt đầu điều động để giành vị trí, chuẩn bị chiếm đoạt lãnh thổ.",
+      "text_markdown": "Họ bắt đầu điều động để giành vị trí, chuẩn bị chiếm đoạt lãnh thổ.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Họ bắt đầu điều động để giành vị trí, chuẩn bị chiếm đoạt lãnh thổ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-115",
+      "chapter": 2,
+      "part": 0,
+      "text": "Nhưng họ đã không tính đến tham vọng và năng lực của góa phụ Trịnh Nhất.",
+      "text_markdown": "Nhưng họ đã không tính đến tham vọng và năng lực của góa phụ Trịnh Nhất.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Nhưng họ đã không tính đến tham vọng và năng lực của góa phụ Trịnh Nhất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-116",
+      "chapter": 2,
+      "part": 0,
+      "text": "Bà không có ý định từ bỏ những gì mình đã giúp xây dựng.",
+      "text_markdown": "Bà không có ý định từ bỏ những gì mình đã giúp xây dựng.",
+      "title": "Nguồn gốc",
+      "tts": {
+        "text": "Bà không có ý định từ bỏ những gì mình đã giúp xây dựng.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch03-117",
+      "chapter": 3,
+      "part": 0,
+      "text": "Vươn lên nắm quyền",
+      "text_markdown": "Vươn lên nắm quyền",
+      "title": "Vươn lên nắm quyền"
+    },
+    {
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-118",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trong những ngày sau cái chết của chồng, Trịnh Nhất Tẩu đã hành động với tốc độ có tính toán.",
+      "text_markdown": "Trong những ngày sau cái chết của chồng, Trịnh Nhất Tẩu đã hành động với tốc độ có tính toán.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trong những ngày sau cái chết của chồng, Trịnh Nhất Tẩu đã hành động với tốc độ có tính toán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-119",
+      "chapter": 3,
+      "part": 0,
+      "text": "Hành động đầu tiên của bà là đảm bảo lòng trung thành của Trương Bảo, phó tướng đáng tin cậy nhất của chồng bà.",
+      "text_markdown": "Hành động đầu tiên của bà là đảm bảo lòng trung thành của Trương Bảo, phó tướng đáng tin cậy nhất của chồng bà.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Hành động đầu tiên của bà là đảm bảo lòng trung thành của Trương Bảo, phó tướng đáng tin cậy nhất của chồng bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-120",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trương Bảo là con trai của một ngư dân, người đã bị cướp biển bắt khi còn nhỏ.",
+      "text_markdown": "Trương Bảo là con trai của một ngư dân, người đã bị cướp biển bắt khi còn nhỏ.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trương Bảo là con trai của một ngư dân, người đã bị cướp biển bắt khi còn nhỏ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-121",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trịnh Nhất đã nhận nuôi, huấn luyện và nuôi dạy anh ta trở thành một chỉ huy quân sự.",
+      "text_markdown": "Trịnh Nhất đã nhận nuôi, huấn luyện và nuôi dạy anh ta trở thành một chỉ huy quân sự.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trịnh Nhất đã nhận nuôi, huấn luyện và nuôi dạy anh ta trở thành một chỉ huy quân sự.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-122",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu đã thành lập một liên minh với Trương Bảo, vừa mang tính cá nhân vừa mang tính chiến lược.",
+      "text_markdown": "Trịnh Nhất Tẩu đã thành lập một liên minh với Trương Bảo, vừa mang tính cá nhân vừa mang tính chiến lược.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu đã thành lập một liên minh với Trương Bảo, vừa mang tính cá nhân vừa mang tính chiến lược.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-123",
+      "chapter": 3,
+      "part": 0,
+      "text": "Hai người cuối cùng đã kết hôn.",
+      "text_markdown": "Hai người cuối cùng đã kết hôn.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Hai người cuối cùng đã kết hôn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-124",
+      "chapter": 3,
+      "part": 0,
+      "text": "Nhưng trong những tuần đầu tiên đầy thử thách đó, mối quan hệ đối tác này là để sinh tồn.",
+      "text_markdown": "Nhưng trong những tuần đầu tiên đầy thử thách đó, mối quan hệ đối tác này là để sinh tồn.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Nhưng trong những tuần đầu tiên đầy thử thách đó, mối quan hệ đối tác này là để sinh tồn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-125",
+      "chapter": 3,
+      "part": 0,
+      "text": "Cùng nhau, họ đã thể hiện một mặt trận thống nhất trước các chỉ huy hạm đội khác.",
+      "text_markdown": "Cùng nhau, họ đã thể hiện một mặt trận thống nhất trước các chỉ huy hạm đội khác.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Cùng nhau, họ đã thể hiện một mặt trận thống nhất trước các chỉ huy hạm đội khác.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-126",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bà đã triệu tập một hội đồng gồm sáu thuyền trưởng hạm đội.",
+      "text_markdown": "Bà đã triệu tập một hội đồng gồm sáu thuyền trưởng hạm đội.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bà đã triệu tập một hội đồng gồm sáu thuyền trưởng hạm đội.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-127",
+      "chapter": 3,
+      "part": 0,
+      "text": "Tại cuộc họp đó, bà đã trình bày lập luận của mình để giành quyền lãnh đạo liên minh.",
+      "text_markdown": "Tại cuộc họp đó, bà đã trình bày lập luận của mình để giành quyền lãnh đạo liên minh.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Tại cuộc họp đó, bà đã trình bày lập luận của mình để giành quyền lãnh đạo liên minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-128",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bà lập luận rằng mình là đối tác bình đẳng với chồng trong việc xây dựng liên minh này.",
+      "text_markdown": "Bà lập luận rằng mình là đối tác bình đẳng với chồng trong việc xây dựng liên minh này.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bà lập luận rằng mình là đối tác bình đẳng với chồng trong việc xây dựng liên minh này.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-129",
+      "chapter": 3,
+      "part": 0,
+      "text": "Từng người một, các thuyền trưởng đã đồng ý tuân theo lệnh của bà.",
+      "text_markdown": "Từng người một, các thuyền trưởng đã đồng ý tuân theo lệnh của bà.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Từng người một, các thuyền trưởng đã đồng ý tuân theo lệnh của bà.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-130",
+      "chapter": 3,
+      "part": 0,
+      "text": "Thử thách đầu tiên của bà là áp đặt kỷ luật lên một lực lượng gồm 70.000 cướp biển.",
+      "text_markdown": "Thử thách đầu tiên của bà là áp đặt kỷ luật lên một lực lượng gồm 70.000 cướp biển.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Thử thách đầu tiên của bà là áp đặt kỷ luật lên một lực lượng gồm bảy mươi nghìn cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-131",
+      "chapter": 3,
+      "part": 0,
+      "text": "Cướp biển, về bản chất, là những người độc lập và không tin tưởng vào quyền lực.",
+      "text_markdown": "Cướp biển, về bản chất, là những người độc lập và không tin tưởng vào quyền lực.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Cướp biển, về bản chất, là những người độc lập và không tin tưởng vào quyền lực.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-132",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu hiểu rằng một hạm đội không có luật lệ sẽ tự tan rã.",
+      "text_markdown": "Trịnh Nhất Tẩu hiểu rằng một hạm đội không có luật lệ sẽ tự tan rã.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu hiểu rằng một hạm đội không có luật lệ sẽ tự tan rã.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-133",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bà đã tạo ra một trong những bộ luật đáng chú ý nhất trong lịch sử cướp biển.",
+      "text_markdown": "Bà đã tạo ra một trong những bộ luật đáng chú ý nhất trong lịch sử cướp biển.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bà đã tạo ra một trong những bộ luật đáng chú ý nhất trong lịch sử cướp biển.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-134",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bộ luật này rất nghiêm khắc và cụ thể.",
+      "text_markdown": "Bộ luật này rất nghiêm khắc và cụ thể.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bộ luật này rất nghiêm khắc và cụ thể.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-135",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bất kỳ tên cướp biển nào không tuân lệnh trực tiếp từ cấp trên sẽ bị chặt đầu.",
+      "text_markdown": "Bất kỳ tên cướp biển nào không tuân lệnh trực tiếp từ cấp trên sẽ bị chặt đầu.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bất kỳ tên cướp biển nào không tuân lệnh trực tiếp từ cấp trên sẽ bị chặt đầu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-136",
+      "chapter": 3,
+      "part": 0,
+      "text": "Tội đào ngũ sẽ bị xử tử.",
+      "text_markdown": "Tội đào ngũ sẽ bị xử tử.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Tội đào ngũ sẽ bị xử tử.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-137",
+      "chapter": 3,
+      "part": 0,
+      "text": "Tội trộm cắp từ kho bạc chung sẽ bị xử tử.",
+      "text_markdown": "Tội trộm cắp từ kho bạc chung sẽ bị xử tử.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Tội trộm cắp từ kho bạc chung sẽ bị xử tử.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-138",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bộ luật cũng bảo vệ những người bị bắt theo những cách bất thường so với thời đại đó.",
+      "text_markdown": "Bộ luật cũng bảo vệ những người bị bắt theo những cách bất thường so với thời đại đó.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bộ luật cũng bảo vệ những người bị bắt theo những cách bất thường so với thời đại đó.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-139",
+      "chapter": 3,
+      "part": 0,
+      "text": "Những tên cướp biển tấn công tù binh phải đối mặt với hình phạt nghiêm khắc.",
+      "text_markdown": "Những tên cướp biển tấn công tù binh phải đối mặt với hình phạt nghiêm khắc.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Những tên cướp biển tấn công tù binh phải đối mặt với hình phạt nghiêm khắc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-140",
+      "chapter": 3,
+      "part": 0,
+      "text": "Nếu một tên cướp biển lấy tù binh làm vợ, hắn ta phải chung thủy với cô ấy.",
+      "text_markdown": "Nếu một tên cướp biển lấy tù binh làm vợ, hắn ta phải chung thủy với cô ấy.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Nếu một tên cướp biển lấy tù binh làm vợ, hắn ta phải chung thủy với cô ấy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-141",
+      "chapter": 3,
+      "part": 0,
+      "text": "Những quy tắc này không phải là gợi ý; chúng được thực thi một cách nhất quán như sắt.",
+      "text_markdown": "Những quy tắc này không phải là gợi ý; chúng được thực thi một cách nhất quán như sắt.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Những quy tắc này không phải là gợi ý; chúng được thực thi một cách nhất quán như sắt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-142",
+      "chapter": 3,
+      "part": 0,
+      "text": "Tất cả chiến lợi phẩm đều được đăng ký và chia theo một hệ thống cố định.",
+      "text_markdown": "Tất cả chiến lợi phẩm đều được đăng ký và chia theo một hệ thống cố định.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Tất cả chiến lợi phẩm đều được đăng ký và chia theo một hệ thống cố định.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-143",
+      "chapter": 3,
+      "part": 0,
+      "text": "Tên cướp biển thu giữ hàng hóa nhận được 20 phần trăm.",
+      "text_markdown": "Tên cướp biển thu giữ hàng hóa nhận được 20 phần trăm.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Tên cướp biển thu giữ hàng hóa nhận được hai mươi phần trăm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-144",
+      "chapter": 3,
+      "part": 0,
+      "text": "80 phần trăm còn lại được đưa vào quỹ chung.",
+      "text_markdown": "80 phần trăm còn lại được đưa vào quỹ chung.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Tám mươi phần trăm còn lại được đưa vào quỹ chung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-145",
+      "chapter": 3,
+      "part": 0,
+      "text": "Hệ thống này đã ngăn chặn các mối thù nội bộ làm tan rã hầu hết các tổ chức cướp biển.",
+      "text_markdown": "Hệ thống này đã ngăn chặn các mối thù nội bộ làm tan rã hầu hết các tổ chức cướp biển.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Hệ thống này đã ngăn chặn các mối thù nội bộ làm tan rã hầu hết các tổ chức cướp biển.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-146",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu cũng xây dựng một hệ thống thuế tinh vi.",
+      "text_markdown": "Trịnh Nhất Tẩu cũng xây dựng một hệ thống thuế tinh vi.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu cũng xây dựng một hệ thống thuế tinh vi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-147",
+      "chapter": 3,
+      "part": 0,
+      "text": "Các tàu buôn có thể mua quyền đi lại an toàn bằng cách trả một khoản phí định kỳ.",
+      "text_markdown": "Các tàu buôn có thể mua quyền đi lại an toàn bằng cách trả một khoản phí định kỳ.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Các tàu buôn có thể mua quyền đi lại an toàn bằng cách trả một khoản phí định kỳ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-148",
+      "chapter": 3,
+      "part": 0,
+      "text": "Các làng chài ven biển đã cống nạp để đổi lấy sự bảo vệ.",
+      "text_markdown": "Các làng chài ven biển đã cống nạp để đổi lấy sự bảo vệ.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Các làng chài ven biển đã cống nạp để đổi lấy sự bảo vệ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-149",
+      "chapter": 3,
+      "part": 0,
+      "text": "Hệ thống này hoạt động như một chính phủ song song, thu thuế để đổi lấy an ninh.",
+      "text_markdown": "Hệ thống này hoạt động như một chính phủ song song, thu thuế để đổi lấy an ninh.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Hệ thống này hoạt động như một chính phủ song song, thu thuế để đổi lấy an ninh.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-150",
+      "chapter": 3,
+      "part": 0,
+      "text": "Chính phủ nhà Thanh nhận ra mối đe dọa và cử hải quân của mình đi trấn áp cướp biển.",
+      "text_markdown": "Chính phủ nhà Thanh nhận ra mối đe dọa và cử hải quân của mình đi trấn áp cướp biển.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Chính phủ nhà Thanh nhận ra mối đe dọa và cử hải quân của mình đi trấn áp cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-151",
+      "chapter": 3,
+      "part": 0,
+      "text": "Năm 1808, một hạm đội hoàng gia khổng lồ đã tiến vào Biển Đông.",
+      "text_markdown": "Năm 1808, một hạm đội hoàng gia khổng lồ đã tiến vào Biển Đông.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Vào năm một nghìn tám trăm linh tám, một hạm đội hoàng gia khổng lồ đã tiến vào Biển Đông.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-152",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trận chiến đó là một thảm họa đối với chính phủ.",
+      "text_markdown": "Trận chiến đó là một thảm họa đối với chính phủ.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trận chiến đó là một thảm họa đối với chính phủ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-153",
+      "chapter": 3,
+      "part": 0,
+      "text": "Lực lượng của Trịnh Nhất Tẩu đã đánh chìm hoặc bắt giữ hàng chục chiến thuyền hoàng gia.",
+      "text_markdown": "Lực lượng của Trịnh Nhất Tẩu đã đánh chìm hoặc bắt giữ hàng chục chiến thuyền hoàng gia.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Lực lượng của Trịnh Nhất Tẩu đã đánh chìm hoặc bắt giữ hàng chục chiến thuyền hoàng gia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-154",
+      "chapter": 3,
+      "part": 0,
+      "text": "Vị đô đốc bại trận đã quá nhục nhã đến mức tự kết liễu đời mình.",
+      "text_markdown": "Vị đô đốc bại trận đã quá nhục nhã đến mức tự kết liễu đời mình.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Vị đô đốc bại trận đã quá nhục nhã đến mức tự kết liễu đời mình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-155",
+      "chapter": 3,
+      "part": 0,
+      "text": "Triều đình kinh hoàng trước quy mô tổn thất.",
+      "text_markdown": "Triều đình kinh hoàng trước quy mô tổn thất.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Triều đình kinh hoàng trước quy mô tổn thất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-156",
+      "chapter": 3,
+      "part": 0,
+      "text": "Họ đã cử những con tàu tốt nhất và vị chỉ huy giàu kinh nghiệm nhất của mình, nhưng họ đã thất bại.",
+      "text_markdown": "Họ đã cử những con tàu tốt nhất và vị chỉ huy giàu kinh nghiệm nhất của mình, nhưng họ đã thất bại.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Họ đã cử những con tàu tốt nhất và vị chỉ huy giàu kinh nghiệm nhất của mình, nhưng họ đã thất bại.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-157",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bọn cướp biển giờ đây mạnh hơn cả hải quân của chính phủ.",
+      "text_markdown": "Bọn cướp biển giờ đây mạnh hơn cả hải quân của chính phủ.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bọn cướp biển giờ đây mạnh hơn cả hải quân của chính phủ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-158",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu không ngừng tận dụng lợi thế của mình.",
+      "text_markdown": "Trịnh Nhất Tẩu không ngừng tận dụng lợi thế của mình.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu không ngừng tận dụng lợi thế của mình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-159",
+      "chapter": 3,
+      "part": 0,
+      "text": "Hạm đội của bà đã mở rộng lãnh thổ dọc theo toàn bộ bờ biển Quảng Đông.",
+      "text_markdown": "Hạm đội của bà đã mở rộng lãnh thổ dọc theo toàn bộ bờ biển Quảng Đông.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Hạm đội của bà đã mở rộng lãnh thổ dọc theo toàn bộ bờ biển Quảng Đông.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-160",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bà đã thiết lập các căn cứ trên các hòn đảo và ở các cửa sông ẩn mình.",
+      "text_markdown": "Bà đã thiết lập các căn cứ trên các hòn đảo và ở các cửa sông ẩn mình.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bà đã thiết lập các căn cứ trên các hòn đảo và ở các cửa sông ẩn mình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-161",
+      "chapter": 3,
+      "part": 0,
+      "text": "Mạng lưới tình báo của bà trải dài từ Quảng Châu đến Việt Nam.",
+      "text_markdown": "Mạng lưới tình báo của bà trải dài từ Quảng Châu đến Việt Nam.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Mạng lưới tình báo của bà trải dài từ Quảng Châu đến Việt Nam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-162",
+      "chapter": 3,
+      "part": 0,
+      "text": "Chính phủ nhà Thanh đã thử một chiến lược mới.",
+      "text_markdown": "Chính phủ nhà Thanh đã thử một chiến lược mới.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Chính phủ nhà Thanh đã thử một chiến lược mới.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-163",
+      "chapter": 3,
+      "part": 0,
+      "text": "Họ đã thuê các chiến thuyền Bồ Đào Nha từ thuộc địa Ma Cao để chống lại bọn cướp biển.",
+      "text_markdown": "Họ đã thuê các chiến thuyền Bồ Đào Nha từ thuộc địa Ma Cao để chống lại bọn cướp biển.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Họ đã thuê các chiến thuyền Bồ Đào Nha từ thuộc địa Ma Cao để chống lại bọn cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-164",
+      "chapter": 3,
+      "part": 0,
+      "text": "Người Bồ Đào Nha có những khẩu pháo châu Âu hiện đại và các sĩ quan hải quân được huấn luyện.",
+      "text_markdown": "Người Bồ Đào Nha có những khẩu pháo châu Âu hiện đại và các sĩ quan hải quân được huấn luyện.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Người Bồ Đào Nha có những khẩu pháo châu Âu hiện đại và các sĩ quan hải quân được huấn luyện.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-165",
+      "chapter": 3,
+      "part": 0,
+      "text": "Trong một thời gian, liên minh này đã gây áp lực đáng kể lên hạm đội cướp biển.",
+      "text_markdown": "Trong một thời gian, liên minh này đã gây áp lực đáng kể lên hạm đội cướp biển.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Trong một thời gian, liên minh này đã gây áp lực đáng kể lên hạm đội cướp biển.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-166",
+      "chapter": 3,
+      "part": 0,
+      "text": "Nhưng Trịnh Nhất Tẩu đã thích nghi nhanh chóng.",
+      "text_markdown": "Nhưng Trịnh Nhất Tẩu đã thích nghi nhanh chóng.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Nhưng Trịnh Nhất Tẩu đã thích nghi nhanh chóng.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-167",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bà tránh đối đầu trực tiếp với các chiến thuyền Bồ Đào Nha.",
+      "text_markdown": "Bà tránh đối đầu trực tiếp với các chiến thuyền Bồ Đào Nha.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bà tránh đối đầu trực tiếp với các chiến thuyền Bồ Đào Nha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-168",
+      "chapter": 3,
+      "part": 0,
+      "text": "Thay vào đó, bà nhắm vào các tuyến đường tiếp tế của họ và tấn công các đồng minh thương nhân của họ.",
+      "text_markdown": "Thay vào đó, bà nhắm vào các tuyến đường tiếp tế của họ và tấn công các đồng minh thương nhân của họ.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Thay vào đó, bà nhắm vào các tuyến đường tiếp tế của họ và tấn công các đồng minh thương nhân của họ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-169",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bà hiểu rằng người Bồ Đào Nha sẽ chỉ chiến đấu chừng nào họ còn được trả tiền.",
+      "text_markdown": "Bà hiểu rằng người Bồ Đào Nha sẽ chỉ chiến đấu chừng nào họ còn được trả tiền.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bà hiểu rằng người Bồ Đào Nha sẽ chỉ chiến đấu chừng nào họ còn được trả tiền.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-170",
+      "chapter": 3,
+      "part": 0,
+      "text": "Đến năm 1809, liên minh nhà Thanh và Bồ Đào Nha đã không thể đánh bại bà.",
+      "text_markdown": "Đến năm 1809, liên minh nhà Thanh và Bồ Đào Nha đã không thể đánh bại bà.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Đến năm một nghìn tám trăm linh chín, liên minh nhà Thanh và Bồ Đào Nha đã không thể đánh bại bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-171",
+      "chapter": 3,
+      "part": 0,
+      "text": "Chính phủ đã chi những khoản tiền khổng lồ và mất hàng chục con tàu.",
+      "text_markdown": "Chính phủ đã chi những khoản tiền khổng lồ và mất hàng chục con tàu.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Chính phủ đã chi những khoản tiền khổng lồ và mất hàng chục con tàu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-172",
+      "chapter": 3,
+      "part": 0,
+      "text": "Bọn cướp biển kiểm soát bờ biển vững chắc hơn bao giờ hết.",
+      "text_markdown": "Bọn cướp biển kiểm soát bờ biển vững chắc hơn bao giờ hết.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Bọn cướp biển kiểm soát bờ biển vững chắc hơn bao giờ hết.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-173",
+      "chapter": 3,
+      "part": 0,
+      "text": "Liên minh của Trịnh Nhất Tẩu đang ở đỉnh cao quyền lực.",
+      "text_markdown": "Liên minh của Trịnh Nhất Tẩu đang ở đỉnh cao quyền lực.",
+      "title": "Vươn lên nắm quyền",
+      "tts": {
+        "text": "Liên minh của Trịnh Nhất Tẩu đang ở đỉnh cao quyền lực.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch04-174",
+      "chapter": 4,
+      "part": 0,
+      "text": "Ở đỉnh cao",
+      "text_markdown": "Ở đỉnh cao",
+      "title": "Ở đỉnh cao"
+    },
+    {
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-175",
+      "chapter": 4,
+      "part": 0,
+      "text": "Ở đỉnh cao, liên minh cướp biển chỉ huy khoảng 1.800 tàu thuyền.",
+      "text_markdown": "Ở đỉnh cao, liên minh cướp biển chỉ huy khoảng 1.800 tàu thuyền.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Ở đỉnh cao, liên minh cướp biển chỉ huy khoảng một nghìn tám trăm tàu thuyền.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-176",
+      "chapter": 4,
+      "part": 0,
+      "text": "Chúng bao gồm từ những chiếc thuyền cướp biển nhỏ, nhanh nhẹn đến những chiếc thuyền chiến lớn chở hàng chục khẩu pháo.",
+      "text_markdown": "Chúng bao gồm từ những chiếc thuyền cướp biển nhỏ, nhanh nhẹn đến những chiếc thuyền chiến lớn chở hàng chục khẩu pháo.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Chúng bao gồm từ những chiếc thuyền cướp biển nhỏ, nhanh nhẹn đến những chiếc thuyền chiến lớn chở hàng chục khẩu pháo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-177",
+      "chapter": 4,
+      "part": 0,
+      "text": "Tổng lực lượng chiến đấu lên tới từ 70.000 đến 80.000 người.",
+      "text_markdown": "Tổng lực lượng chiến đấu lên tới từ 70.000 đến 80.000 người.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Tổng lực lượng chiến đấu lên tới từ bảy mươi nghìn đến tám mươi nghìn người.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-178",
+      "chapter": 4,
+      "part": 0,
+      "text": "Con số này lớn hơn hải quân của hầu hết các quốc gia châu Âu vào thời điểm đó.",
+      "text_markdown": "Con số này lớn hơn hải quân của hầu hết các quốc gia châu Âu vào thời điểm đó.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Con số này lớn hơn hải quân của hầu hết các quốc gia châu Âu vào thời điểm đó.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-179",
+      "chapter": 4,
+      "part": 0,
+      "text": "Riêng Hạm đội Cờ Đỏ đã có từ 600 đến 800 tàu.",
+      "text_markdown": "Riêng Hạm đội Cờ Đỏ đã có từ 600 đến 800 tàu.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Riêng Hạm đội Cờ Đỏ đã có từ sáu trăm đến tám trăm tàu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-180",
+      "chapter": 4,
+      "part": 0,
+      "text": "Đây là hạm đội đơn lẻ lớn nhất trong liên minh.",
+      "text_markdown": "Đây là hạm đội đơn lẻ lớn nhất trong liên minh.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Đây là hạm đội đơn lẻ lớn nhất trong liên minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-181",
+      "chapter": 4,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu trực tiếp chỉ huy hạm đội này, với Trương Bảo là sĩ quan quân sự cấp cao nhất của bà.",
+      "text_markdown": "Trịnh Nhất Tẩu trực tiếp chỉ huy hạm đội này, với Trương Bảo là sĩ quan quân sự cấp cao nhất của bà.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu trực tiếp chỉ huy hạm đội này, với Trương Bảo là sĩ quan quân sự cấp cao nhất của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-182",
+      "chapter": 4,
+      "part": 0,
+      "text": "Năm hạm đội khác hoạt động bán độc lập nhưng tuân theo chỉ đạo chiến lược của bà.",
+      "text_markdown": "Năm hạm đội khác hoạt động bán độc lập nhưng tuân theo chỉ đạo chiến lược của bà.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Năm hạm đội khác hoạt động bán độc lập nhưng tuân theo chỉ đạo chiến lược của bà.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-183",
+      "chapter": 4,
+      "part": 0,
+      "text": "Lãnh thổ của liên minh trải dài hơn 1.000 dặm bờ biển.",
+      "text_markdown": "Lãnh thổ của liên minh trải dài hơn 1.000 dặm bờ biển.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Lãnh thổ của liên minh trải dài hơn một nghìn dặm bờ biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-184",
+      "chapter": 4,
+      "part": 0,
+      "text": "Từ biên giới Việt Nam ở phía nam đến bờ biển Phúc Kiến ở phía bắc, không tàu nào an toàn nếu không có sự cho phép của hải tặc.",
+      "text_markdown": "Từ biên giới Việt Nam ở phía nam đến bờ biển Phúc Kiến ở phía bắc, không tàu nào an toàn nếu không có sự cho phép của hải tặc.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Từ biên giới Việt Nam ở phía nam đến bờ biển Phúc Kiến ở phía bắc, không tàu nào an toàn nếu không có sự cho phép của hải tặc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-185",
+      "chapter": 4,
+      "part": 0,
+      "text": "Ngay cả Công ty Đông Ấn Anh hùng mạnh cũng phải nộp cống để tránh mất hàng hóa.",
+      "text_markdown": "Ngay cả Công ty Đông Ấn Anh hùng mạnh cũng phải nộp cống để tránh mất hàng hóa.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Ngay cả Công ty Đông Ấn Anh hùng mạnh cũng phải nộp cống để tránh mất hàng hóa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-186",
+      "chapter": 4,
+      "part": 0,
+      "text": "Cuộc sống trên thuyền cướp biển khắc nghiệt nhưng có tổ chức.",
+      "text_markdown": "Cuộc sống trên thuyền cướp biển khắc nghiệt nhưng có tổ chức.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Cuộc sống trên thuyền cướp biển khắc nghiệt nhưng có tổ chức.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-187",
+      "chapter": 4,
+      "part": 0,
+      "text": "Mỗi con tàu có một hệ thống cấp bậc rõ ràng, từ thuyền trưởng đến tân binh mới nhất.",
+      "text_markdown": "Mỗi con tàu có một hệ thống cấp bậc rõ ràng, từ thuyền trưởng đến tân binh mới nhất.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Mỗi con tàu có một hệ thống cấp bậc rõ ràng, từ thuyền trưởng đến tân binh mới nhất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-188",
+      "chapter": 4,
+      "part": 0,
+      "text": "Các bữa ăn là chung, và khẩu phần được phân phát đều.",
+      "text_markdown": "Các bữa ăn là chung, và khẩu phần được phân phát đều.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Các bữa ăn là chung, và khẩu phần được phân phát đều.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-189",
+      "chapter": 4,
+      "part": 0,
+      "text": "Mọi thành viên thủy thủ đoàn đều nhận được phần chia từ chiến lợi phẩm dựa trên cấp bậc và vai trò của họ.",
+      "text_markdown": "Mọi thành viên thủy thủ đoàn đều nhận được phần chia từ chiến lợi phẩm dựa trên cấp bậc và vai trò của họ.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Mọi thành viên thủy thủ đoàn đều nhận được phần chia từ chiến lợi phẩm dựa trên cấp bậc và vai trò của họ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-190",
+      "chapter": 4,
+      "part": 0,
+      "text": "Phụ nữ phục vụ trên nhiều tàu cướp biển trong hạm đội.",
+      "text_markdown": "Phụ nữ phục vụ trên nhiều tàu cướp biển trong hạm đội.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Phụ nữ phục vụ trên nhiều tàu cướp biển trong hạm đội.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-191",
+      "chapter": 4,
+      "part": 0,
+      "text": "Một số chiến đấu cùng với đàn ông trong các cuộc đột kích.",
+      "text_markdown": "Một số chiến đấu cùng với đàn ông trong các cuộc đột kích.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Một số chiến đấu cùng với đàn ông trong các cuộc đột kích.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-192",
+      "chapter": 4,
+      "part": 0,
+      "text": "Những người khác quản lý vật tư, định vị và liên lạc giữa các tàu.",
+      "text_markdown": "Những người khác quản lý vật tư, định vị và liên lạc giữa các tàu.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Những người khác quản lý vật tư, định vị và liên lạc giữa các tàu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-193",
+      "chapter": 4,
+      "part": 0,
+      "text": "Thế giới hải tặc mang lại cho phụ nữ nhiều tự do hơn so với xã hội nhà Thanh chính thống.",
+      "text_markdown": "Thế giới hải tặc mang lại cho phụ nữ nhiều tự do hơn so với xã hội nhà Thanh chính thống.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Thế giới hải tặc mang lại cho phụ nữ nhiều tự do hơn so với xã hội nhà Thanh chính thống.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-194",
+      "chapter": 4,
+      "part": 0,
+      "text": "Những thuyền chiến của hạm đội là những cỗ máy chiến đấu đáng gờm.",
+      "text_markdown": "Những thuyền chiến của hạm đội là những cỗ máy chiến đấu đáng gờm.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Những thuyền chiến của hạm đội là những cỗ máy chiến đấu đáng gờm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-195",
+      "chapter": 4,
+      "part": 0,
+      "text": "Một chiếc thuyền buồm lớn có thể chở 30 khẩu pháo trở lên.",
+      "text_markdown": "Một chiếc thuyền buồm lớn có thể chở 30 khẩu pháo trở lên.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Một chiếc thuyền buồm lớn có thể chở ba mươi khẩu pháo trở lên.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-196",
+      "chapter": 4,
+      "part": 0,
+      "text": "Các con tàu được đóng với thân tàu được gia cố và thành tàu cao để đẩy lùi những kẻ tấn công.",
+      "text_markdown": "Các con tàu được đóng với thân tàu được gia cố và thành tàu cao để đẩy lùi những kẻ tấn công.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Các con tàu được đóng với thân tàu được gia cố và thành tàu cao để đẩy lùi những kẻ tấn công.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-197",
+      "chapter": 4,
+      "part": 0,
+      "text": "Đáy phẳng của chúng cho phép chúng di chuyển ở vùng nước ven biển nông, nơi các tàu châu Âu có mớn nước sâu hơn không thể theo kịp.",
+      "text_markdown": "Đáy phẳng của chúng cho phép chúng di chuyển ở vùng nước ven biển nông, nơi các tàu châu Âu có mớn nước sâu hơn không thể theo kịp.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Đáy phẳng của chúng cho phép chúng di chuyển ở vùng nước ven biển nông, nơi các tàu châu Âu có mớn nước sâu hơn không thể theo kịp.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-198",
+      "chapter": 4,
+      "part": 0,
+      "text": "Mạng lưới tình báo của Trịnh Nhất Tẩu là một trong những vũ khí lợi hại nhất của bà.",
+      "text_markdown": "Mạng lưới tình báo của Trịnh Nhất Tẩu là một trong những vũ khí lợi hại nhất của bà.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Mạng lưới tình báo của Trịnh Nhất Tẩu là một trong những vũ khí lợi hại nhất của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-199",
+      "chapter": 4,
+      "part": 0,
+      "text": "Bà có gián điệp ở Quảng Châu, ở Ma Cao và ở mọi cảng lớn dọc bờ biển.",
+      "text_markdown": "Bà có gián điệp ở Quảng Châu, ở Ma Cao và ở mọi cảng lớn dọc bờ biển.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Bà có gián điệp ở Quảng Châu, ở Ma Cao và ở mọi cảng lớn dọc bờ biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-200",
+      "chapter": 4,
+      "part": 0,
+      "text": "Bà biết khi nào các tàu chở hàng giá trị khởi hành và những tuyến đường chúng sẽ đi.",
+      "text_markdown": "Bà biết khi nào các tàu chở hàng giá trị khởi hành và những tuyến đường chúng sẽ đi.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Bà biết khi nào các tàu chở hàng giá trị khởi hành và những tuyến đường chúng sẽ đi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-201",
+      "chapter": 4,
+      "part": 0,
+      "text": "Thông tin này cho phép bà tấn công chính xác thay vì dựa vào may rủi.",
+      "text_markdown": "Thông tin này cho phép bà tấn công chính xác thay vì dựa vào may rủi.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Thông tin này cho phép bà tấn công chính xác thay vì dựa vào may rủi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-202",
+      "chapter": 4,
+      "part": 0,
+      "text": "Hệ thống thuế mà bà xây dựng tinh vi đáng kể.",
+      "text_markdown": "Hệ thống thuế mà bà xây dựng tinh vi đáng kể.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Hệ thống thuế mà bà xây dựng tinh vi đáng kể.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-203",
+      "chapter": 4,
+      "part": 0,
+      "text": "Các mức thuế khác nhau áp dụng cho các loại hàng hóa khác nhau.",
+      "text_markdown": "Các mức thuế khác nhau áp dụng cho các loại hàng hóa khác nhau.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Các mức thuế khác nhau áp dụng cho các loại hàng hóa khác nhau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-204",
+      "chapter": 4,
+      "part": 0,
+      "text": "Thương nhân buôn lụa trả nhiều hơn thương nhân buôn gạo.",
+      "text_markdown": "Thương nhân buôn lụa trả nhiều hơn thương nhân buôn gạo.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Thương nhân buôn lụa trả nhiều hơn thương nhân buôn gạo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-205",
+      "chapter": 4,
+      "part": 0,
+      "text": "Những kẻ buôn lậu muối phải trả phí cao hơn vì hàng hóa của họ vốn đã bất hợp pháp.",
+      "text_markdown": "Những kẻ buôn lậu muối phải trả phí cao hơn vì hàng hóa của họ vốn đã bất hợp pháp.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Những kẻ buôn lậu muối phải trả phí cao hơn vì hàng hóa của họ vốn đã bất hợp pháp.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-206",
+      "chapter": 4,
+      "part": 0,
+      "text": "Toàn bộ hệ thống được ghi chép và thực thi với sự chính xác của bộ máy hành chính.",
+      "text_markdown": "Toàn bộ hệ thống được ghi chép và thực thi với sự chính xác của bộ máy hành chính.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Toàn bộ hệ thống được ghi chép và thực thi với sự chính xác của bộ máy hành chính.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-207",
+      "chapter": 4,
+      "part": 0,
+      "text": "Các làng ven biển có mối quan hệ phức tạp với hải tặc.",
+      "text_markdown": "Các làng ven biển có mối quan hệ phức tạp với hải tặc.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Các làng ven biển có mối quan hệ phức tạp với hải tặc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-208",
+      "chapter": 4,
+      "part": 0,
+      "text": "Nhiều người oán giận các khoản cống nạp mà hải tặc yêu cầu.",
+      "text_markdown": "Nhiều người oán giận các khoản cống nạp mà hải tặc yêu cầu.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Nhiều người oán giận các khoản cống nạp mà hải tặc yêu cầu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-209",
+      "chapter": 4,
+      "part": 0,
+      "text": "Nhưng hải tặc cũng cung cấp sự bảo vệ chống lại những kẻ cướp và cường đạo khác.",
+      "text_markdown": "Nhưng hải tặc cũng cung cấp sự bảo vệ chống lại những kẻ cướp và cường đạo khác.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Nhưng hải tặc cũng cung cấp sự bảo vệ chống lại những kẻ cướp và cường đạo khác.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-210",
+      "chapter": 4,
+      "part": 0,
+      "text": "Ở một số khu vực, hải tặc đáng tin cậy hơn chính quyền đế quốc.",
+      "text_markdown": "Ở một số khu vực, hải tặc đáng tin cậy hơn chính quyền đế quốc.",
+      "title": "Thời Kỳ Đỉnh Cao",
+      "tts": {
+        "text": "Ở một số khu vực, hải tặc đáng tin cậy hơn chính quyền đế quốc.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-211",
+      "chapter": 4,
+      "part": 0,
+      "text": "Triều đình nhà Thanh vô cùng xấu hổ vì không thể kiểm soát biển cả.",
+      "text_markdown": "Triều đình nhà Thanh vô cùng xấu hổ vì không thể kiểm soát biển cả.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Triều đình nhà Thanh vô cùng xấu hổ vì không thể kiểm soát biển cả.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-212",
+      "chapter": 4,
+      "part": 0,
+      "text": "Các quan lại triều đình đã viết những báo cáo đầy lo lắng về sức mạnh ngày càng tăng của nữ hải tặc.",
+      "text_markdown": "Các quan lại triều đình đã viết những báo cáo đầy lo lắng về sức mạnh ngày càng tăng của nữ hải tặc.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Các quan lại triều đình đã viết những báo cáo đầy lo lắng về sức mạnh ngày càng tăng của nữ hải tặc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-213",
+      "chapter": 4,
+      "part": 0,
+      "text": "Họ lo ngại rằng những tên cướp biển có thể liên minh với các nhóm nổi dậy trên đất liền.",
+      "text_markdown": "Họ lo ngại rằng những tên cướp biển có thể liên minh với các nhóm nổi dậy trên đất liền.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Họ lo ngại rằng những tên cướp biển có thể liên minh với các nhóm nổi dậy trên đất liền.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-214",
+      "chapter": 4,
+      "part": 0,
+      "text": "Một cuộc nổi dậy kết hợp trên bộ và trên biển có thể đe dọa chính triều đại.",
+      "text_markdown": "Một cuộc nổi dậy kết hợp trên bộ và trên biển có thể đe dọa chính triều đại.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Một cuộc nổi dậy kết hợp trên bộ và trên biển có thể đe dọa chính triều đại.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-215",
+      "chapter": 4,
+      "part": 0,
+      "text": "Người Anh đã quan sát tình hình với sự quan tâm sâu sắc.",
+      "text_markdown": "Người Anh đã quan sát tình hình với sự quan tâm sâu sắc.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Người Anh đã quan sát tình hình với sự quan tâm sâu sắc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-216",
+      "chapter": 4,
+      "part": 0,
+      "text": "Họ đang mở rộng hoạt động buôn bán thuốc phiện dọc bờ biển Trung Quốc.",
+      "text_markdown": "Họ đang mở rộng hoạt động buôn bán thuốc phiện dọc bờ biển Trung Quốc.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Họ đang mở rộng hoạt động buôn bán thuốc phiện dọc bờ biển Trung Quốc.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-217",
+      "chapter": 4,
+      "part": 0,
+      "text": "Những tên cướp biển đã làm gián đoạn hoạt động thương mại này, khiến các thương nhân Anh thiệt hại những khoản tiền khổng lồ.",
+      "text_markdown": "Những tên cướp biển đã làm gián đoạn hoạt động thương mại này, khiến các thương nhân Anh thiệt hại những khoản tiền khổng lồ.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Những tên cướp biển đã làm gián đoạn hoạt động thương mại này, khiến các thương nhân Anh thiệt hại những khoản tiền khổng lồ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-218",
+      "chapter": 4,
+      "part": 0,
+      "text": "Đối với những người đi thuyền dưới lá cờ của Trịnh Nhất Tẩu, cuộc sống tốt hơn so với lựa chọn khác.",
+      "text_markdown": "Đối với những người đi thuyền dưới lá cờ của Trịnh Nhất Tẩu, cuộc sống tốt hơn so với lựa chọn khác.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Đối với những người đi thuyền dưới lá cờ của Trịnh Nhất Tẩu, cuộc sống tốt hơn so với lựa chọn khác.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-219",
+      "chapter": 4,
+      "part": 0,
+      "text": "Một tên cướp biển nhận được thức ăn đều đặn, một phần chiến lợi phẩm và cảm giác thuộc về.",
+      "text_markdown": "Một tên cướp biển nhận được thức ăn đều đặn, một phần chiến lợi phẩm và cảm giác thuộc về.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Một tên cướp biển nhận được thức ăn đều đặn, một phần chiến lợi phẩm và cảm giác thuộc về.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-220",
+      "chapter": 4,
+      "part": 0,
+      "text": "Một ngư dân Tanka nhận được sự nghèo đói, khinh miệt và không có hy vọng thăng tiến.",
+      "text_markdown": "Một ngư dân Tanka nhận được sự nghèo đói, khinh miệt và không có hy vọng thăng tiến.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Một ngư dân Tanka nhận được sự nghèo đói, khinh miệt và không có hy vọng thăng tiến.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-221",
+      "chapter": 4,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu cai trị xã hội này với quyền lực tuyệt đối.",
+      "text_markdown": "Trịnh Nhất Tẩu cai trị xã hội này với quyền lực tuyệt đối.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu cai trị xã hội này với quyền lực tuyệt đối.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-222",
+      "chapter": 4,
+      "part": 0,
+      "text": "Bà đã đưa ra những quyết định chiến lược định hình tương lai của hạm đội.",
+      "text_markdown": "Bà đã đưa ra những quyết định chiến lược định hình tương lai của hạm đội.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Bà đã đưa ra những quyết định chiến lược định hình tương lai của hạm đội.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-223",
+      "chapter": 4,
+      "part": 0,
+      "text": "Bà đã giải quyết tranh chấp giữa các thuyền trưởng và thực thi bộ luật.",
+      "text_markdown": "Bà đã giải quyết tranh chấp giữa các thuyền trưởng và thực thi bộ luật.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Bà đã giải quyết tranh chấp giữa các thuyền trưởng và thực thi bộ luật.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-224",
+      "chapter": 4,
+      "part": 0,
+      "text": "Không có hành động lớn nào được thực hiện mà không có sự chấp thuận của bà.",
+      "text_markdown": "Không có hành động lớn nào được thực hiện mà không có sự chấp thuận của bà.",
+      "title": "Ở đỉnh cao",
+      "tts": {
+        "text": "Không có hành động lớn nào được thực hiện mà không có sự chấp thuận của bà.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch05-225",
+      "chapter": 5,
+      "part": 0,
+      "text": "Kết thúc",
+      "text_markdown": "Kết thúc",
+      "title": "Kết thúc"
+    },
+    {
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-226",
+      "chapter": 5,
+      "part": 0,
+      "text": "Đến năm 1810, những rạn nứt bắt đầu xuất hiện trong liên minh.",
+      "text_markdown": "Đến năm 1810, những rạn nứt bắt đầu xuất hiện trong liên minh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Đến năm một nghìn tám trăm mười, những rạn nứt bắt đầu xuất hiện trong liên minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-227",
+      "chapter": 5,
+      "part": 0,
+      "text": "Cuộc chiến tranh liên miên đã gây thiệt hại nặng nề cho tàu thuyền và thủy thủ đoàn.",
+      "text_markdown": "Cuộc chiến tranh liên miên đã gây thiệt hại nặng nề cho tàu thuyền và thủy thủ đoàn.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Cuộc chiến tranh liên miên đã gây thiệt hại nặng nề cho tàu thuyền và thủy thủ đoàn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-228",
+      "chapter": 5,
+      "part": 0,
+      "text": "Các cuộc phong tỏa của chính quyền nhà Thanh đã làm gián đoạn các tuyến tiếp tế dọc bờ biển.",
+      "text_markdown": "Các cuộc phong tỏa của chính quyền nhà Thanh đã làm gián đoạn các tuyến tiếp tế dọc bờ biển.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Các cuộc phong tỏa của chính quyền nhà Thanh đã làm gián đoạn các tuyến tiếp tế dọc bờ biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-229",
+      "chapter": 5,
+      "part": 0,
+      "text": "Và những mối kình địch nội bộ giữa các thuyền trưởng hạm đội đã trở nên gay gắt hơn.",
+      "text_markdown": "Và những mối kình địch nội bộ giữa các thuyền trưởng hạm đội đã trở nên gay gắt hơn.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Và những mối kình địch nội bộ giữa các thuyền trưởng hạm đội đã trở nên gay gắt hơn.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-230",
+      "chapter": 5,
+      "part": 0,
+      "text": "Mối kình địch nguy hiểm nhất là giữa Trương Bảo và một thuyền trưởng tên là Quách Phối Đại.",
+      "text_markdown": "Mối kình địch nguy hiểm nhất là giữa Trương Bảo và một thuyền trưởng tên là Quách Phối Đại.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Mối kình địch nguy hiểm nhất là giữa Trương Bảo và một thuyền trưởng tên là Quách Phối Đại.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-231",
+      "chapter": 5,
+      "part": 0,
+      "text": "Quách Phối Đại chỉ huy Hạm đội Cờ Đen, lớn thứ hai trong liên minh.",
+      "text_markdown": "Quách Phối Đại chỉ huy Hạm đội Cờ Đen, lớn thứ hai trong liên minh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Quách Phối Đại chỉ huy Hạm đội Cờ Đen, lớn thứ hai trong liên minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-232",
+      "chapter": 5,
+      "part": 0,
+      "text": "Ông ta bực bội khi phải nhận lệnh từ Trương Bảo và, rộng hơn là từ Trịnh Nhất Tẩu.",
+      "text_markdown": "Ông ta bực bội khi phải nhận lệnh từ Trương Bảo và, rộng hơn là từ Trịnh Nhất Tẩu.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Ông ta bực bội khi phải nhận lệnh từ Trương Bảo và, rộng hơn là từ Trịnh Nhất Tẩu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-233",
+      "chapter": 5,
+      "part": 0,
+      "text": "Căng thẳng giữa họ đe dọa chia cắt liên minh thành hai.",
+      "text_markdown": "Căng thẳng giữa họ đe dọa chia cắt liên minh thành hai.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Căng thẳng giữa họ đe dọa chia cắt liên minh thành hai.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-234",
+      "chapter": 5,
+      "part": 0,
+      "text": "Vào đầu năm 1810, Quách Phối Đại đã đưa ra một quyết định định mệnh.",
+      "text_markdown": "Vào đầu năm 1810, Quách Phối Đại đã đưa ra một quyết định định mệnh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Vào đầu năm một nghìn tám trăm mười, Quách Phối Đại đã đưa ra một quyết định định mệnh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-235",
+      "chapter": 5,
+      "part": 0,
+      "text": "Ông ta mở các cuộc đàm phán bí mật với chính quyền nhà Thanh.",
+      "text_markdown": "Ông ta mở các cuộc đàm phán bí mật với chính quyền nhà Thanh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Ông ta mở các cuộc đàm phán bí mật với chính quyền nhà Thanh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-236",
+      "chapter": 5,
+      "part": 0,
+      "text": "Chính quyền đã đề nghị ông ta một sự ân xá hoàn toàn, một chức vụ quân sự và một khoản tiền mặt.",
+      "text_markdown": "Chính quyền đã đề nghị ông ta một sự ân xá hoàn toàn, một chức vụ quân sự và một khoản tiền mặt.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Chính quyền đã đề nghị ông ta một sự ân xá hoàn toàn, một chức vụ quân sự và một khoản tiền mặt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-237",
+      "chapter": 5,
+      "part": 0,
+      "text": "Đổi lại, ông ta sẽ chống lại các đồng minh cũ của mình.",
+      "text_markdown": "Đổi lại, ông ta sẽ chống lại các đồng minh cũ của mình.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Đổi lại, ông ta sẽ chống lại các đồng minh cũ của mình.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-238",
+      "chapter": 5,
+      "part": 0,
+      "text": "Quách Phối Đại chấp nhận thỏa thuận và giao nộp toàn bộ hạm đội của mình cho chính quyền.",
+      "text_markdown": "Quách Phối Đại chấp nhận thỏa thuận và giao nộp toàn bộ hạm đội của mình cho chính quyền.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Quách Phối Đại chấp nhận thỏa thuận và giao nộp toàn bộ hạm đội của mình cho chính quyền.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-239",
+      "chapter": 5,
+      "part": 0,
+      "text": "Chỉ sau một đêm, liên minh đã mất hàng trăm tàu thuyền và hàng ngàn chiến binh.",
+      "text_markdown": "Chỉ sau một đêm, liên minh đã mất hàng trăm tàu thuyền và hàng ngàn chiến binh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Chỉ sau một đêm, liên minh đã mất hàng trăm tàu thuyền và hàng ngàn chiến binh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-240",
+      "chapter": 5,
+      "part": 0,
+      "text": "Tệ hơn nữa, Quách Phối Đại giờ đây phục vụ với tư cách là một chỉ huy của chính quyền, sử dụng kiến thức của mình về chiến thuật cướp biển để chống lại họ.",
+      "text_markdown": "Tệ hơn nữa, Quách Phối Đại giờ đây phục vụ với tư cách là một chỉ huy của chính quyền, sử dụng kiến thức của mình về chiến thuật cướp biển để chống lại họ.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Tệ hơn nữa, Quách Phối Đại giờ đây phục vụ với tư cách là một chỉ huy của chính quyền, sử dụng kiến thức của mình về chiến thuật cướp biển để chống lại họ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-241",
+      "chapter": 5,
+      "part": 0,
+      "text": "Cán cân quyền lực đã thay đổi đáng kể.",
+      "text_markdown": "Cán cân quyền lực đã thay đổi đáng kể.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Cán cân quyền lực đã thay đổi đáng kể.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-242",
+      "chapter": 5,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu đánh giá tình hình mới với sự minh mẫn đặc trưng của bà.",
+      "text_markdown": "Trịnh Nhất Tẩu đánh giá tình hình mới với sự minh mẫn đặc trưng của bà.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu đánh giá tình hình mới với sự minh mẫn đặc trưng của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-243",
+      "chapter": 5,
+      "part": 0,
+      "text": "Liên minh đã suy yếu nhưng chưa bị tiêu diệt.",
+      "text_markdown": "Liên minh đã suy yếu nhưng chưa bị tiêu diệt.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Liên minh đã suy yếu nhưng chưa bị tiêu diệt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-244",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà vẫn chỉ huy Hạm đội Cờ Đỏ và một số hạm đội đồng minh.",
+      "text_markdown": "Bà vẫn chỉ huy Hạm đội Cờ Đỏ và một số hạm đội đồng minh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà vẫn chỉ huy Hạm đội Cờ Đỏ và một số hạm đội đồng minh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-245",
+      "chapter": 5,
+      "part": 0,
+      "text": "Nhưng cục diện đã thay đổi, và bà biết điều đó.",
+      "text_markdown": "Nhưng cục diện đã thay đổi, và bà biết điều đó.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Nhưng cục diện đã thay đổi, và bà biết điều đó.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-246",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà đưa ra một quyết định cho thấy tài năng chiến lược thiên bẩm của mình.",
+      "text_markdown": "Bà đưa ra một quyết định cho thấy tài năng chiến lược thiên bẩm của mình.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà đưa ra một quyết định cho thấy tài năng chiến lược thiên bẩm của mình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-247",
+      "chapter": 5,
+      "part": 0,
+      "text": "Thay vì chiến đấu đến cùng, bà chọn đàm phán từ vị thế còn lại của sức mạnh.",
+      "text_markdown": "Thay vì chiến đấu đến cùng, bà chọn đàm phán từ vị thế còn lại của sức mạnh.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Thay vì chiến đấu đến cùng, bà chọn đàm phán từ vị thế còn lại của sức mạnh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-248",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà mở các cuộc đàm phán với chính quyền nhà Thanh thông qua các trung gian.",
+      "text_markdown": "Bà mở các cuộc đàm phán với chính quyền nhà Thanh thông qua các trung gian.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà mở các cuộc đàm phán với chính quyền nhà Thanh thông qua các trung gian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-249",
+      "chapter": 5,
+      "part": 0,
+      "text": "Những yêu sách của bà rất táo bạo và cụ thể.",
+      "text_markdown": "Những yêu sách của bà rất táo bạo và cụ thể.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Những yêu sách của bà rất táo bạo và cụ thể.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-250",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà yêu cầu một lệnh ân xá hoàn toàn cho bản thân và cho Trương Bảo.",
+      "text_markdown": "Bà yêu cầu một lệnh ân xá hoàn toàn cho bản thân và cho Trương Bảo.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà yêu cầu một lệnh ân xá hoàn toàn cho bản thân và cho Trương Bảo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-251",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà yêu cầu các cướp biển của mình được phép giữ lại tài sản cá nhân.",
+      "text_markdown": "Bà yêu cầu các cướp biển của mình được phép giữ lại tài sản cá nhân.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà yêu cầu các cướp biển của mình được phép giữ lại tài sản cá nhân.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-252",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà yêu cầu Trương Bảo được phong chức trong hải quân triều đình.",
+      "text_markdown": "Bà yêu cầu Trương Bảo được phong chức trong hải quân triều đình.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà yêu cầu Trương Bảo được phong chức trong hải quân triều đình.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-253",
+      "chapter": 5,
+      "part": 0,
+      "text": "Và bà yêu cầu những cướp biển thông thường đầu hàng sẽ không phải chịu bất kỳ hình phạt nào.",
+      "text_markdown": "Và bà yêu cầu những cướp biển thông thường đầu hàng sẽ không phải chịu bất kỳ hình phạt nào.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Và bà yêu cầu những cướp biển thông thường đầu hàng sẽ không phải chịu bất kỳ hình phạt nào.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-254",
+      "chapter": 5,
+      "part": 0,
+      "text": "Chính quyền nhà Thanh miễn cưỡng chấp nhận những điều khoản hào phóng như vậy.",
+      "text_markdown": "Chính quyền nhà Thanh miễn cưỡng chấp nhận những điều khoản hào phóng như vậy.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Chính quyền nhà Thanh miễn cưỡng chấp nhận những điều khoản hào phóng như vậy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-255",
+      "chapter": 5,
+      "part": 0,
+      "text": "Việc ân xá cho cướp biển dường như là một sự sỉ nhục đối với đế chế.",
+      "text_markdown": "Việc ân xá cho cướp biển dường như là một sự sỉ nhục đối với đế chế.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Việc ân xá cho cướp biển dường như là một sự sỉ nhục đối với đế chế.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-256",
+      "chapter": 5,
+      "part": 0,
+      "text": "Nhưng họ đã thử dùng vũ lực và thất bại.",
+      "text_markdown": "Nhưng họ đã thử dùng vũ lực và thất bại.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Nhưng họ đã thử dùng vũ lực và thất bại.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-257",
+      "chapter": 5,
+      "part": 0,
+      "text": "Đàm phán là lựa chọn duy nhất còn lại.",
+      "text_markdown": "Đàm phán là lựa chọn duy nhất còn lại.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Đàm phán là lựa chọn duy nhất còn lại.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-258",
+      "chapter": 5,
+      "part": 0,
+      "text": "Vào tháng 4 năm 1810, thỏa thuận đã được hoàn tất.",
+      "text_markdown": "Vào tháng 4 năm 1810, thỏa thuận đã được hoàn tất.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Vào tháng tư năm một nghìn tám trăm mười, thỏa thuận đã được hoàn tất.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-259",
+      "chapter": 5,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu đã đầu hàng hạm đội của mình cho chính phủ.",
+      "text_markdown": "Trịnh Nhất Tẩu đã đầu hàng hạm đội của mình cho chính phủ.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu đã đầu hàng hạm đội của mình cho chính phủ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-260",
+      "chapter": 5,
+      "part": 0,
+      "text": "Đổi lại, bà nhận được mọi thứ mình đã yêu cầu.",
+      "text_markdown": "Đổi lại, bà nhận được mọi thứ mình đã yêu cầu.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Đổi lại, bà nhận được mọi thứ mình đã yêu cầu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-261",
+      "chapter": 5,
+      "part": 0,
+      "text": "Trương Bảo được bổ nhiệm làm trung úy trong hải quân nhà Thanh với quyền chỉ huy 20 tàu.",
+      "text_markdown": "Trương Bảo được bổ nhiệm làm trung úy trong hải quân nhà Thanh với quyền chỉ huy 20 tàu.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Trương Bảo được bổ nhiệm làm trung úy trong hải quân nhà Thanh với quyền chỉ huy hai mươi tàu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-262",
+      "chapter": 5,
+      "part": 0,
+      "text": "Các cướp biển được phép giữ lại một phần tàu của họ.",
+      "text_markdown": "Các cướp biển được phép giữ lại một phần tàu của họ.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Các cướp biển được phép giữ lại một phần tàu của họ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-263",
+      "chapter": 5,
+      "part": 0,
+      "text": "Những người muốn trở lại cuộc sống dân thường đều được tự do làm như vậy.",
+      "text_markdown": "Những người muốn trở lại cuộc sống dân thường đều được tự do làm như vậy.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Những người muốn trở lại cuộc sống dân thường đều được tự do làm như vậy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-264",
+      "chapter": 5,
+      "part": 0,
+      "text": "Những người muốn gia nhập hải quân triều đình đều được chào đón.",
+      "text_markdown": "Những người muốn gia nhập hải quân triều đình đều được chào đón.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Những người muốn gia nhập hải quân triều đình đều được chào đón.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-265",
+      "chapter": 5,
+      "part": 0,
+      "text": "Đây là cuộc đầu hàng thuận lợi nhất trong lịch sử cướp biển.",
+      "text_markdown": "Đây là cuộc đầu hàng thuận lợi nhất trong lịch sử cướp biển.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Đây là cuộc đầu hàng thuận lợi nhất trong lịch sử cướp biển.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-266",
+      "chapter": 5,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu giải nghệ khỏi biển cả với tư cách một phụ nữ giàu có.",
+      "text_markdown": "Trịnh Nhất Tẩu giải nghệ khỏi biển cả với tư cách một phụ nữ giàu có.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu giải nghệ khỏi biển cả với tư cách một phụ nữ giàu có.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-267",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà định cư ở Quảng Châu cùng Trương Bảo.",
+      "text_markdown": "Bà định cư ở Quảng Châu cùng Trương Bảo.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà định cư ở Quảng Châu cùng Trương Bảo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-268",
+      "chapter": 5,
+      "part": 0,
+      "text": "Cùng nhau, họ mở một sòng bạc trở thành một trong những nơi sinh lợi nhất thành phố.",
+      "text_markdown": "Cùng nhau, họ mở một sòng bạc trở thành một trong những nơi sinh lợi nhất thành phố.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Cùng nhau, họ mở một sòng bạc trở thành một trong những nơi sinh lợi nhất thành phố.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-269",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà cũng đầu tư vào ngành buôn bán muối, mang lại thu nhập ổn định trong nhiều năm.",
+      "text_markdown": "Bà cũng đầu tư vào ngành buôn bán muối, mang lại thu nhập ổn định trong nhiều năm.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà cũng đầu tư vào ngành buôn bán muối, mang lại thu nhập ổn định trong nhiều năm.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-270",
+      "chapter": 5,
+      "part": 0,
+      "text": "Trương Bảo phục vụ trong hải quân triều đình với thành tích xuất sắc trong nhiều năm.",
+      "text_markdown": "Trương Bảo phục vụ trong hải quân triều đình với thành tích xuất sắc trong nhiều năm.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Trương Bảo phục vụ trong hải quân triều đình với thành tích xuất sắc trong nhiều năm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-271",
+      "chapter": 5,
+      "part": 0,
+      "text": "Ông mất năm 1822, khi vẫn còn phục vụ trong chính quyền.",
+      "text_markdown": "Ông mất năm 1822, khi vẫn còn phục vụ trong chính quyền.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Ông mất năm một nghìn tám trăm hai mươi hai, khi vẫn còn phục vụ trong chính quyền.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-272",
+      "chapter": 5,
+      "part": 0,
+      "text": "Cái chết của ông được tưởng niệm với đầy đủ nghi thức quân đội.",
+      "text_markdown": "Cái chết của ông được tưởng niệm với đầy đủ nghi thức quân đội.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Cái chết của ông được tưởng niệm với đầy đủ nghi thức quân đội.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-273",
+      "chapter": 5,
+      "part": 0,
+      "text": "Trịnh Nhất Tẩu sống thêm hơn hai thập kỷ sau khi rời bỏ nghề cướp biển.",
+      "text_markdown": "Trịnh Nhất Tẩu sống thêm hơn hai thập kỷ sau khi rời bỏ nghề cướp biển.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Trịnh Nhất Tẩu sống thêm hơn hai thập kỷ sau khi rời bỏ nghề cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-274",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà quản lý công việc kinh doanh và nuôi dạy gia đình ở Quảng Châu.",
+      "text_markdown": "Bà quản lý công việc kinh doanh và nuôi dạy gia đình ở Quảng Châu.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà quản lý công việc kinh doanh và nuôi dạy gia đình ở Quảng Châu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-275",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà mất năm 1844, hưởng thọ khoảng 69 tuổi.",
+      "text_markdown": "Bà mất năm 1844, hưởng thọ khoảng 69 tuổi.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà mất năm một nghìn tám trăm bốn mươi bốn, hưởng thọ khoảng sáu mươi chín tuổi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-276",
+      "chapter": 5,
+      "part": 0,
+      "text": "Bà mất trên giường của mình, được bao bọc bởi gia đình, với tư cách là một thành viên được kính trọng của xã hội Quảng Châu.",
+      "text_markdown": "Bà mất trên giường của mình, được bao bọc bởi gia đình, với tư cách là một thành viên được kính trọng của xã hội Quảng Châu.",
+      "title": "Kết thúc",
+      "tts": {
+        "text": "Bà mất trên giường của mình, được bao bọc bởi gia đình, với tư cách là một thành viên được kính trọng của xã hội Quảng Châu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p79",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "id": "ch06-277",
+      "chapter": 6,
+      "part": 0,
+      "text": "Di sản",
+      "text_markdown": "Di sản",
+      "title": "Di sản"
+    },
+    {
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-278",
+      "chapter": 6,
+      "part": 0,
+      "text": "Sự nghiệp của Trịnh Nhất Tẩu là độc nhất vô nhị trong lịch sử cướp biển.",
+      "text_markdown": "Sự nghiệp của Trịnh Nhất Tẩu là độc nhất vô nhị trong lịch sử cướp biển.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Sự nghiệp của Trịnh Nhất Tẩu là độc nhất vô nhị trong lịch sử cướp biển.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-279",
+      "chapter": 6,
+      "part": 0,
+      "text": "Không có tên cướp biển nào khác, dù nam hay nữ, từng chỉ huy một lực lượng có quy mô tương đương.",
+      "text_markdown": "Không có tên cướp biển nào khác, dù nam hay nữ, từng chỉ huy một lực lượng có quy mô tương đương.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Không có tên cướp biển nào khác, dù nam hay nữ, từng chỉ huy một lực lượng có quy mô tương đương.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-280",
+      "chapter": 6,
+      "part": 0,
+      "text": "Không có tên cướp biển nào khác xây dựng một hệ thống luật pháp và quản trị tinh vi đến vậy.",
+      "text_markdown": "Không có tên cướp biển nào khác xây dựng một hệ thống luật pháp và quản trị tinh vi đến vậy.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Không có tên cướp biển nào khác xây dựng một hệ thống luật pháp và quản trị tinh vi đến vậy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-281",
+      "chapter": 6,
+      "part": 0,
+      "text": "Và không có tên cướp biển nào khác đàm phán một cuộc nghỉ hưu với những điều khoản thuận lợi đến thế.",
+      "text_markdown": "Và không có tên cướp biển nào khác đàm phán một cuộc nghỉ hưu với những điều khoản thuận lợi đến thế.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Và không có tên cướp biển nào khác đàm phán một cuộc nghỉ hưu với những điều khoản thuận lợi đến thế.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-282",
+      "chapter": 6,
+      "part": 0,
+      "text": "Thành công của bà thách thức nhiều giả định về vai trò của phụ nữ trong lịch sử.",
+      "text_markdown": "Thành công của bà thách thức nhiều giả định về vai trò của phụ nữ trong lịch sử.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Thành công của bà thách thức nhiều giả định về vai trò của phụ nữ trong lịch sử.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-283",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà vươn lên nắm quyền trong một xã hội mà phụ nữ gần như không có quyền pháp lý.",
+      "text_markdown": "Bà vươn lên nắm quyền trong một xã hội mà phụ nữ gần như không có quyền pháp lý.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà vươn lên nắm quyền trong một xã hội mà phụ nữ gần như không có quyền pháp lý.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-284",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà chỉ huy hàng chục nghìn người trong một thế giới coi phụ nữ là thấp kém.",
+      "text_markdown": "Bà chỉ huy hàng chục nghìn người trong một thế giới coi phụ nữ là thấp kém.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà chỉ huy hàng chục nghìn người trong một thế giới coi phụ nữ là thấp kém.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-285",
+      "chapter": 6,
+      "part": 0,
+      "text": "Câu chuyện của bà là bằng chứng cho thấy năng lực không có giới tính.",
+      "text_markdown": "Câu chuyện của bà là bằng chứng cho thấy năng lực không có giới tính.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Câu chuyện của bà là bằng chứng cho thấy năng lực không có giới tính.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-286",
+      "chapter": 6,
+      "part": 0,
+      "text": "Các nhà sử học đã tranh luận về những lý do dẫn đến thành công phi thường của bà.",
+      "text_markdown": "Các nhà sử học đã tranh luận về những lý do dẫn đến thành công phi thường của bà.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Các nhà sử học đã tranh luận về những lý do dẫn đến thành công phi thường của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-287",
+      "chapter": 6,
+      "part": 0,
+      "text": "Một số nhấn mạnh phẩm chất cá nhân của bà: trí thông minh, sự quyết đoán, khả năng truyền cảm hứng trung thành.",
+      "text_markdown": "Một số nhấn mạnh phẩm chất cá nhân của bà: trí thông minh, sự quyết đoán, khả năng truyền cảm hứng trung thành.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Một số nhấn mạnh phẩm chất cá nhân của bà: trí thông minh, sự quyết đoán, khả năng truyền cảm hứng trung thành.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-288",
+      "chapter": 6,
+      "part": 0,
+      "text": "Những người khác chỉ ra các điều kiện cấu trúc đã tạo điều kiện cho sự vươn lên của bà: sự yếu kém của nhà Thanh, sự nghèo đói của dân cư ven biển, và địa lý của Biển Đông.",
+      "text_markdown": "Những người khác chỉ ra các điều kiện cấu trúc đã tạo điều kiện cho sự vươn lên của bà: sự yếu kém của nhà Thanh, sự nghèo đói của dân cư ven biển, và địa lý của Biển Đông.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Những người khác chỉ ra các điều kiện cấu trúc đã tạo điều kiện cho sự vươn lên của bà: sự yếu kém của nhà Thanh, sự nghèo đói của dân cư ven biển, và địa lý của Biển Đông.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-289",
+      "chapter": 6,
+      "part": 0,
+      "text": "Sự thật gần như chắc chắn bao gồm cả hai yếu tố.",
+      "text_markdown": "Sự thật gần như chắc chắn bao gồm cả hai yếu tố.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Sự thật gần như chắc chắn bao gồm cả hai yếu tố.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-290",
+      "chapter": 6,
+      "part": 0,
+      "text": "Nếu không có các điều kiện, tài năng của bà đã không có đất dụng võ.",
+      "text_markdown": "Nếu không có các điều kiện, tài năng của bà đã không có đất dụng võ.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Nếu không có các điều kiện, tài năng của bà đã không có đất dụng võ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-291",
+      "chapter": 6,
+      "part": 0,
+      "text": "Nếu không có tài năng của bà, các điều kiện đã chỉ tạo ra sự hỗn loạn.",
+      "text_markdown": "Nếu không có tài năng của bà, các điều kiện đã chỉ tạo ra sự hỗn loạn.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Nếu không có tài năng của bà, các điều kiện đã chỉ tạo ra sự hỗn loạn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-292",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà là người phù hợp vào đúng thời điểm trong lịch sử.",
+      "text_markdown": "Bà là người phù hợp vào đúng thời điểm trong lịch sử.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà là người phù hợp vào đúng thời điểm trong lịch sử.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-293",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bộ luật của bà đã ảnh hưởng đến việc quản lý cướp biển trong nhiều thập kỷ sau khi bà nghỉ hưu.",
+      "text_markdown": "Bộ luật của bà đã ảnh hưởng đến việc quản lý cướp biển trong nhiều thập kỷ sau khi bà nghỉ hưu.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bộ luật của bà đã ảnh hưởng đến việc quản lý cướp biển trong nhiều thập kỷ sau khi bà nghỉ hưu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-294",
+      "chapter": 6,
+      "part": 0,
+      "text": "Các thủ lĩnh cướp biển sau này ở Biển Đông đã áp dụng các hệ thống thuế và luật pháp tương tự.",
+      "text_markdown": "Các thủ lĩnh cướp biển sau này ở Biển Đông đã áp dụng các hệ thống thuế và luật pháp tương tự.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Các thủ lĩnh cướp biển sau này ở Biển Đông đã áp dụng các hệ thống thuế và luật pháp tương tự.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-295",
+      "chapter": 6,
+      "part": 0,
+      "text": "Mô hình của bà cho thấy các hạm đội cướp biển có thể được tổ chức hiệu quả như hải quân quốc gia.",
+      "text_markdown": "Mô hình của bà cho thấy các hạm đội cướp biển có thể được tổ chức hiệu quả như hải quân quốc gia.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Mô hình của bà cho thấy các hạm đội cướp biển có thể được tổ chức hiệu quả như hải quân quốc gia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-296",
+      "chapter": 6,
+      "part": 0,
+      "text": "Trong thời hiện đại, Trịnh Nhất Tẩu đã trở thành một biểu tượng văn hóa.",
+      "text_markdown": "Trong thời hiện đại, Trịnh Nhất Tẩu đã trở thành một biểu tượng văn hóa.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Trong thời hiện đại, Trịnh Nhất Tẩu đã trở thành một biểu tượng văn hóa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-297",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà đã xuất hiện trong tiểu thuyết, phim ảnh và trò chơi điện tử trên khắp thế giới.",
+      "text_markdown": "Bà đã xuất hiện trong tiểu thuyết, phim ảnh và trò chơi điện tử trên khắp thế giới.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà đã xuất hiện trong tiểu thuyết, phim ảnh và trò chơi điện tử trên khắp thế giới.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-298",
+      "chapter": 6,
+      "part": 0,
+      "text": "Câu chuyện của bà đã được dịch ra hàng chục ngôn ngữ.",
+      "text_markdown": "Câu chuyện của bà đã được dịch ra hàng chục ngôn ngữ.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Câu chuyện của bà đã được dịch ra hàng chục ngôn ngữ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-299",
+      "chapter": 6,
+      "part": 0,
+      "text": "Tuy nhiên, nhiều điều về cuộc đời bà vẫn còn là ẩn số.",
+      "text_markdown": "Tuy nhiên, nhiều điều về cuộc đời bà vẫn còn là ẩn số.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Tuy nhiên, nhiều điều về cuộc đời bà vẫn còn là ẩn số.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-300",
+      "chapter": 6,
+      "part": 0,
+      "text": "Chúng ta không biết chắc chắn tên khai sinh của bà.",
+      "text_markdown": "Chúng ta không biết chắc chắn tên khai sinh của bà.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Chúng ta không biết chắc chắn tên khai sinh của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-301",
+      "chapter": 6,
+      "part": 0,
+      "text": "Chúng ta không có bất kỳ hình ảnh xác thực nào về khuôn mặt bà.",
+      "text_markdown": "Chúng ta không có bất kỳ hình ảnh xác thực nào về khuôn mặt bà.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Chúng ta không có bất kỳ hình ảnh xác thực nào về khuôn mặt bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-302",
+      "chapter": 6,
+      "part": 0,
+      "text": "Hầu hết những gì chúng ta biết đều đến từ các tài liệu chính phủ do kẻ thù của bà viết.",
+      "text_markdown": "Hầu hết những gì chúng ta biết đều đến từ các tài liệu chính phủ do kẻ thù của bà viết.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Hầu hết những gì chúng ta biết đều đến từ các tài liệu chính phủ do kẻ thù của bà viết.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-303",
+      "chapter": 6,
+      "part": 0,
+      "text": "Triều đình nhà Thanh có mọi lý do để hạ thấp thành tựu của bà.",
+      "text_markdown": "Triều đình nhà Thanh có mọi lý do để hạ thấp thành tựu của bà.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Triều đình nhà Thanh có mọi lý do để hạ thấp thành tựu của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-304",
+      "chapter": 6,
+      "part": 0,
+      "text": "Nhiều tài liệu chính thức đã hạ thấp vai trò của bà hoặc gán thành công của bà cho Trương Bảo.",
+      "text_markdown": "Nhiều tài liệu chính thức đã hạ thấp vai trò của bà hoặc gán thành công của bà cho Trương Bảo.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Nhiều tài liệu chính thức đã hạ thấp vai trò của bà hoặc gán thành công của bà cho Trương Bảo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-305",
+      "chapter": 6,
+      "part": 0,
+      "text": "Các nhà sử học phải đọc kỹ các nguồn tài liệu này, biết rằng chúng được viết với động cơ chính trị.",
+      "text_markdown": "Các nhà sử học phải đọc kỹ các nguồn tài liệu này, biết rằng chúng được viết với động cơ chính trị.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Các nhà sử học phải đọc kỹ các nguồn tài liệu này, biết rằng chúng được viết với động cơ chính trị.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-306",
+      "chapter": 6,
+      "part": 0,
+      "text": "Điều mà các tài liệu không thể che giấu là quy mô thành tựu của bà.",
+      "text_markdown": "Điều mà các tài liệu không thể che giấu là quy mô thành tựu của bà.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Điều mà các tài liệu không thể che giấu là quy mô thành tựu của bà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-307",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà đã xây dựng hạm đội cướp biển lớn nhất trong lịch sử được ghi nhận.",
+      "text_markdown": "Bà đã xây dựng hạm đội cướp biển lớn nhất trong lịch sử được ghi nhận.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà đã xây dựng hạm đội cướp biển lớn nhất trong lịch sử được ghi nhận.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-308",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà đã đánh bại liên quân của Đế quốc Thanh và hải quân Bồ Đào Nha.",
+      "text_markdown": "Bà đã đánh bại liên quân của Đế quốc Thanh và hải quân Bồ Đào Nha.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà đã đánh bại liên quân của Đế quốc Thanh và hải quân Bồ Đào Nha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-309",
+      "chapter": 6,
+      "part": 0,
+      "text": "Bà về hưu giàu có, tự do và bất bại.",
+      "text_markdown": "Bà về hưu giàu có, tự do và bất bại.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Bà về hưu giàu có, tự do và bất bại.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-310",
+      "chapter": 6,
+      "part": 0,
+      "text": "Trong lịch sử hàng hải lâu dài, chưa từng có ai khác làm được điều đó.",
+      "text_markdown": "Trong lịch sử hàng hải lâu dài, chưa từng có ai khác làm được điều đó.",
+      "title": "Di sản",
+      "tts": {
+        "text": "Trong lịch sử hàng hải lâu dài, chưa từng có ai khác làm được điều đó.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

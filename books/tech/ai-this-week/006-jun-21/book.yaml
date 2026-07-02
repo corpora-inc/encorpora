@@ -1,0 +1,32 @@
+book:
+  issue: 6
+  title: "AI This Week — June 21, 2026"
+  subtitle: "Megawatts and Market Caps"
+  date: 2026-06-21
+  target_segments: 110
+
+  audience: "Listeners who want the macro picture under the AI noise — power, policy, capital, silicon — with real figures and a skeptical voice."
+  primary_language: en
+  pack_id: ai_this_week_2026_06_21
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  episode_shape: ep2_open_first
+
+  spine:
+    lead: "Anthropic Mythos 5 + Fable 5 withdrawal on June 12 after Commerce Dept export-controls directive; Anthropic publicly disputes"
+    buildout: "Stargate PR vs ground truth — 11 GW announced, 200 MW operational; Doña Ana $18B with zero shovels; Oracle as bag-holder ($553B RPO / $134B debt / one customer)"
+    us_china: "Cliché-killer — HBM is the binding constraint, not logic; 13M stacks → 1.6M chips ceiling; China $295B NDRC draft plan with 80% domestic silicon mandate; TSMC die-bank 2.9M Huawei chips"
+    headlines: "Broadcom $2T cap / $100B FY27 AI target; ASML High-NA at $370M/unit, <20/yr; Commerce 72-hr asymmetry vs 380-day enforcement gap; SE Asia smuggling corridor"
+    concept: "Remaining Performance Obligations — the balance-sheet line that reveals the bag-holder"
+
+  pacing:
+    - 5 sections + cold open + sign-off, dialog format
+    - ~110-130 segments, ~12 minutes
+    - One sentence per segment
+    - Numbers spelled in tts.text; display uses numerals
+    - NO 1-word HOST counter segments (feedback_no_one_word_host_segments.md)
+    - NO "flagging" / "worth flagging" (feedback_avoid_flagging_word.md)
+    - NO PR-voice; skeptical-not-cynical; real figures only

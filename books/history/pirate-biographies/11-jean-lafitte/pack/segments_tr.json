@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jean_lafitte",
+  "language": "tr",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, bir savaş kazanmaya yardım eden bir kaçakçının gerçek hikâyesidir.",
+      "text_markdown": "Bu, bir savaş kazanmaya yardım eden bir kaçakçının gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, bir savaş kazanmaya yardım eden bir kaçakçının gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Jean Lafitte'di ve Amerikan tarihinin en büyüleyici kanun kaçaklarından biriydi.",
+      "text_markdown": "Adı Jean Lafitte'di ve Amerikan tarihinin en büyüleyici kanun kaçaklarından biriydi.",
+      "tts": {
+        "text": "Adı Jean Lafitte'di ve Amerikan tarihinin en büyüleyici kanun kaçaklarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendisine korsan diyordu, ama Birleşik Devletler hükümeti onu deniz haydutluğuyla suçluyordu.",
+      "text_markdown": "Kendisine korsan diyordu, ama Birleşik Devletler hükümeti onu deniz haydutluğuyla suçluyordu.",
+      "tts": {
+        "text": "Kendisine korsan diyordu, ama Birleşik Devletler hükümeti onu deniz haydutluğuyla suçluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, Louisiana bataklıklarından bir kaçakçılık imparatorluğu yönetiyordu.",
+      "text_markdown": "Lafitte, Louisiana bataklıklarından bir kaçakçılık imparatorluğu yönetiyordu.",
+      "tts": {
+        "text": "Lafitte, Louisiana bataklıklarından bir kaçakçılık imparatorluğu yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler New Orleans'ı ele geçirmeye çalıştığında, bunun yerine Amerika için savaşmayı seçti.",
+      "text_markdown": "İngilizler New Orleans'ı ele geçirmeye çalıştığında, bunun yerine Amerika için savaşmayı seçti.",
+      "tts": {
+        "text": "İngilizler New Orleans'ı ele geçirmeye çalıştığında, bunun yerine Amerika için savaşmayı seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kararı, bin sekiz yüz on iki Savaşı'nın gidişatını değiştirmeye yardımcı oldu.",
+      "text_markdown": "Bu kararı, bin sekiz yüz on iki Savaşı'nın gidişatını değiştirmeye yardımcı oldu.",
+      "tts": {
+        "text": "Bu kararı, bin sekiz yüz on iki Savaşı'nın gidişatını değiştirmeye yardımcı oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte hakkındaki hemen her şey gizemle kaplıdır.",
+      "text_markdown": "Lafitte hakkındaki hemen her şey gizemle kaplıdır.",
+      "tts": {
+        "text": "Lafitte hakkındaki hemen her şey gizemle kaplıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nerede doğduğunu tam olarak bilmiyoruz.",
+      "text_markdown": "Nerede doğduğunu tam olarak bilmiyoruz.",
+      "tts": {
+        "text": "Nerede doğduğunu tam olarak bilmiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ne zaman veya nasıl öldüğünü tam olarak bilmiyoruz.",
+      "text_markdown": "Ne zaman veya nasıl öldüğünü tam olarak bilmiyoruz.",
+      "tts": {
+        "text": "Ne zaman veya nasıl öldüğünü tam olarak bilmiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Adı bile farklı kaynaklarda farklı şekillerde yazılmaktadır.",
+      "text_markdown": "Adı bile farklı kaynaklarda farklı şekillerde yazılmaktadır.",
+      "tts": {
+        "text": "Adı bile farklı kaynaklarda farklı şekillerde yazılmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap, mevcut en iyi kanıtları kullanarak onun hikâyesini anlatmaktadır.",
+      "text_markdown": "Bu kitap, mevcut en iyi kanıtları kullanarak onun hikâyesini anlatmaktadır.",
+      "tts": {
+        "text": "Bu kitap, mevcut en iyi kanıtları kullanarak onun hikâyesini anlatmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kayıtların belirsiz olduğu yerlerde bunu belirtiyoruz.",
+      "text_markdown": "Kayıtların belirsiz olduğu yerlerde bunu belirtiyoruz.",
+      "tts": {
+        "text": "Kayıtların belirsiz olduğu yerlerde bunu belirtiyoruz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Körfez Kıyısının Dünyası",
+      "text_markdown": "Körfez Kıyısının Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte, Kuzey Amerika tarihinin en çalkantılı dönemlerinden birinde yaşadı.",
+      "text_markdown": "Jean Lafitte, Kuzey Amerika tarihinin en çalkantılı dönemlerinden birinde yaşadı.",
+      "tts": {
+        "text": "Jean Lafitte, Kuzey Amerika tarihinin en çalkantılı dönemlerinden birinde yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İmparatorluklar çöküyor, yeni uluslar doğuyor ve Meksika Körfezi tüm bunların merkezinde yer alıyordu.",
+      "text_markdown": "İmparatorluklar çöküyor, yeni uluslar doğuyor ve Meksika Körfezi tüm bunların merkezinde yer alıyordu.",
+      "tts": {
+        "text": "İmparatorluklar çöküyor, yeni uluslar doğuyor ve Meksika Körfezi tüm bunların merkezinde yer alıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meksika Körfezi, ABD, Meksika ve Küba ile çevrili geniş ve ılık bir su kütlesidir.",
+      "text_markdown": "Meksika Körfezi, ABD, Meksika ve Küba ile çevrili geniş ve ılık bir su kütlesidir.",
+      "tts": {
+        "text": "Meksika Körfezi, ABD, Meksika ve Küba ile çevrili geniş ve ılık bir su kütlesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kıyı şeridi Florida'nın ucundan Yucatan Yarımadası'na kadar uzanmaktadır.",
+      "text_markdown": "Kıyı şeridi Florida'nın ucundan Yucatan Yarımadası'na kadar uzanmaktadır.",
+      "tts": {
+        "text": "Kıyı şeridi Florida'nın ucundan Yucatan Yarımadası'na kadar uzanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca Körfez, ticaretin, kaçakçılığın ve çatışmaların kavşak noktası olmuştur.",
+      "text_markdown": "Yüzyıllar boyunca Körfez, ticaretin, kaçakçılığın ve çatışmaların kavşak noktası olmuştur.",
+      "tts": {
+        "text": "Yüzyıllar boyunca Körfez, ticaretin, kaçakçılığın ve çatışmaların kavşak noktası olmuştur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New Orleans, Kuzey Amerika'nın en büyük su yolu olan Mississippi Nehri'nin ağzında yer alıyordu.",
+      "text_markdown": "New Orleans, Kuzey Amerika'nın en büyük su yolu olan Mississippi Nehri'nin ağzında yer alıyordu.",
+      "tts": {
+        "text": "New Orleans, Kuzey Amerika'nın en büyük su yolu olan Mississippi Nehri'nin ağzında yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New Orleans'ı kontrol eden, devasa bir bölgenin ticaretini kontrol ediyordu.",
+      "text_markdown": "New Orleans'ı kontrol eden, devasa bir bölgenin ticaretini kontrol ediyordu.",
+      "tts": {
+        "text": "New Orleans'ı kontrol eden, devasa bir bölgenin ticaretini kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir, bin yedi yüz on sekiz yılında Fransızlar tarafından kurulmuştu.",
+      "text_markdown": "Şehir, bin yedi yüz on sekiz yılında Fransızlar tarafından kurulmuştu.",
+      "tts": {
+        "text": "Şehir, bin yedi yüz on sekiz yılında Fransızlar tarafından kurulmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonra İspanya'ya devredilmiş, Fransa'ya geri dönmüş ve nihayetinde ABD'ye satılmıştı.",
+      "text_markdown": "Sonra İspanya'ya devredilmiş, Fransa'ya geri dönmüş ve nihayetinde ABD'ye satılmıştı.",
+      "tts": {
+        "text": "Sonra İspanya'ya devredilmiş, Fransa'ya geri dönmüş ve nihayetinde ABD'ye satılmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1803 Louisiana Satın Alımı, Amerikan tarihinin en önemli olaylarından biriydi.",
+      "text_markdown": "1803 Louisiana Satın Alımı, Amerikan tarihinin en önemli olaylarından biriydi.",
+      "tts": {
+        "text": "Bin sekiz yüz üç Louisiana Satın Alımı, Amerikan tarihinin en önemli olaylarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ABD, Louisiana Bölgesi'ni Fransa'dan yaklaşık on beş milyon dolara satın aldı.",
+      "text_markdown": "ABD, Louisiana Bölgesi'ni Fransa'dan yaklaşık on beş milyon dolara satın aldı.",
+      "tts": {
+        "text": "ABD, Louisiana Bölgesi'ni Fransa'dan yaklaşık on beş milyon dolara satın aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu tek işlem genç ulusun boyutunu ikiye katladı.",
+      "text_markdown": "Bu tek işlem genç ulusun boyutunu ikiye katladı.",
+      "tts": {
+        "text": "Bu tek işlem genç ulusun boyutunu ikiye katladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bölgenin incisi olan New Orleans, bir gecede Amerikan şehri oldu.",
+      "text_markdown": "Bölgenin incisi olan New Orleans, bir gecede Amerikan şehri oldu.",
+      "tts": {
+        "text": "Bölgenin incisi olan New Orleans, bir gecede Amerikan şehri oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak New Orleans, diğer tüm Amerikan şehirlerinden farklıydı.",
+      "text_markdown": "Ancak New Orleans, diğer tüm Amerikan şehirlerinden farklıydı.",
+      "tts": {
+        "text": "Ancak New Orleans, diğer tüm Amerikan şehirlerinden farklıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kültürü; Fransız, İspanyol, Afrika, Karayip ve Yerli Amerikan etkilerinin bir karışımıydı.",
+      "text_markdown": "Kültürü; Fransız, İspanyol, Afrika, Karayip ve Yerli Amerikan etkilerinin bir karışımıydı.",
+      "tts": {
+        "text": "Kültürü; Fransız, İspanyol, Afrika, Karayip ve Yerli Amerikan etkilerinin bir karışımıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fransızca ve İspanyolca, İngilizce kadar yaygın konuşuluyordu.",
+      "text_markdown": "Fransızca ve İspanyolca, İngilizce kadar yaygın konuşuluyordu.",
+      "tts": {
+        "text": "Fransızca ve İspanyolca, İngilizce kadar yaygın konuşuluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şehrin yemekleri, müziği, mimarisi ve gelenekleri bu olağanüstü karışımı yansıtıyordu.",
+      "text_markdown": "Şehrin yemekleri, müziği, mimarisi ve gelenekleri bu olağanüstü karışımı yansıtıyordu.",
+      "tts": {
+        "text": "Şehrin yemekleri, müziği, mimarisi ve gelenekleri bu olağanüstü karışımı yansıtıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz doksan bir yılında başlayan Haiti Devrimi, Körfez Kıyısı'nı derinden etkiledi.",
+      "text_markdown": "Bin yedi yüz doksan bir yılında başlayan Haiti Devrimi, Körfez Kıyısı'nı derinden etkiledi.",
+      "tts": {
+        "text": "Bin yedi yüz doksan bir yılında başlayan Haiti Devrimi, Körfez Kıyısı'nı derinden etkiledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransız kolonisi Saint-Domingue'deki köleleştirilmiş insanlar, efendilerine karşı ayaklandı.",
+      "text_markdown": "Fransız kolonisi Saint-Domingue'deki köleleştirilmiş insanlar, efendilerine karşı ayaklandı.",
+      "tts": {
+        "text": "Fransız kolonisi Saint-Domingue'deki köleleştirilmiş insanlar, efendilerine karşı ayaklandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yıllar süren acımasız savaşın ardından bağımsız Haiti devletini kurdular.",
+      "text_markdown": "Yıllar süren acımasız savaşın ardından bağımsız Haiti devletini kurdular.",
+      "tts": {
+        "text": "Yıllar süren acımasız savaşın ardından bağımsız Haiti devletini kurdular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haiti'den binlerce mülteci, kültürlerini de yanlarında getirerek New Orleans'a sığındı.",
+      "text_markdown": "Haiti'den binlerce mülteci, kültürlerini de yanlarında getirerek New Orleans'a sığındı.",
+      "tts": {
+        "text": "Haiti'den binlerce mülteci, kültürlerini de yanlarında getirerek New Orleans'a sığındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Köle ticareti, Körfez Kıyısı ekonomisinin merkezinde yer alıyordu.",
+      "text_markdown": "Köle ticareti, Körfez Kıyısı ekonomisinin merkezinde yer alıyordu.",
+      "tts": {
+        "text": "Köle ticareti, Körfez Kıyısı ekonomisinin merkezinde yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Louisiana'daki şeker plantasyonları köle emeğine bağımlıydı.",
+      "text_markdown": "Louisiana'daki şeker plantasyonları köle emeğine bağımlıydı.",
+      "tts": {
+        "text": "Louisiana'daki şeker plantasyonları köle emeğine bağımlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pamuk, Amerikan Güneyi'nde kral olmaya başlıyordu.",
+      "text_markdown": "Pamuk, Amerikan Güneyi'nde kral olmaya başlıyordu.",
+      "tts": {
+        "text": "Pamuk, Amerikan Güneyi'nde kral olmaya başlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Köleleştirilmiş insanlara olan talep, muazzam ve korkunç bir pazar yarattı.",
+      "text_markdown": "Köleleştirilmiş insanlara olan talep, muazzam ve korkunç bir pazar yarattı.",
+      "tts": {
+        "text": "Köleleştirilmiş insanlara olan talep, muazzam ve korkunç bir pazar yarattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Louisiana bayou'larında kaçakçılık bir yaşam biçimiydi.",
+      "text_markdown": "Güney Louisiana bayou'larında kaçakçılık bir yaşam biçimiydi.",
+      "tts": {
+        "text": "Güney Louisiana bayou'larında kaçakçılık bir yaşam biçimiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bayou'lar, yavaş akan su yolları, bataklıklar ve sazlıklardan oluşan bir ağdır.",
+      "text_markdown": "Bayou'lar, yavaş akan su yolları, bataklıklar ve sazlıklardan oluşan bir ağdır.",
+      "tts": {
+        "text": "Bayou'lar, yavaş akan su yolları, bataklıklar ve sazlıklardan oluşan bir ağdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "New Orleans'ın güneyinde yüzlerce mil boyunca uzanırlar.",
+      "text_markdown": "New Orleans'ın güneyinde yüzlerce mil boyunca uzanırlar.",
+      "tts": {
+        "text": "New Orleans'ın güneyinde yüzlerce mil boyunca uzanırlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Arazi o kadar karmaşıktı ki, yabancılar günlerce kaybolabilirdi.",
+      "text_markdown": "Arazi o kadar karmaşıktı ki, yabancılar günlerce kaybolabilirdi.",
+      "tts": {
+        "text": "Arazi o kadar karmaşıktı ki, yabancılar günlerce kaybolabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ABD hükümeti, ülkeye giren mallar üzerine ithalat vergileri koydu.",
+      "text_markdown": "ABD hükümeti, ülkeye giren mallar üzerine ithalat vergileri koydu.",
+      "tts": {
+        "text": "ABD hükümeti, ülkeye giren mallar üzerine ithalat vergileri koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaçakçılar, gizli su yollarından mal getirerek bu vergilerden kaçındılar.",
+      "text_markdown": "Kaçakçılar, gizli su yollarından mal getirerek bu vergilerden kaçındılar.",
+      "tts": {
+        "text": "Kaçakçılar, gizli su yollarından mal getirerek bu vergilerden kaçındılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "New Orleans'taki tüccarlar, kaçak malları düşük fiyatlarla hevesle satın aldılar.",
+      "text_markdown": "New Orleans'taki tüccarlar, kaçak malları düşük fiyatlarla hevesle satın aldılar.",
+      "tts": {
+        "text": "New Orleans'taki tüccarlar, kaçak malları düşük fiyatlarla hevesle satın aldılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yetkililer, uçsuz bucaksız ve geçit vermez bayou bölgesini devriye gezme konusunda zorlanıyorlardı.",
+      "text_markdown": "Yetkililer, uçsuz bucaksız ve geçit vermez bayou bölgesini devriye gezme konusunda zorlanıyorlardı.",
+      "tts": {
+        "text": "Yetkililer, uçsuz bucaksız ve geçit vermez bayou bölgesini devriye gezme konusunda zorlanıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On dokuzuncu yüzyılın başlarında korsanlık hâlâ yaygındı.",
+      "text_markdown": "On dokuzuncu yüzyılın başlarında korsanlık hâlâ yaygındı.",
+      "tts": {
+        "text": "On dokuzuncu yüzyılın başlarında korsanlık hâlâ yaygındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan, bir hükümet tarafından düşman gemilerine saldırma yetkisi verilen özel bir gemi kaptanıydı.",
+      "text_markdown": "Korsan, bir hükümet tarafından düşman gemilerine saldırma yetkisi verilen özel bir gemi kaptanıydı.",
+      "tts": {
+        "text": "Korsan, bir hükümet tarafından düşman gemilerine saldırma yetkisi verilen özel bir gemi kaptanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan ile deniz haydudu arasındaki fark tamamen evrak işine bağlıydı.",
+      "text_markdown": "Korsan ile deniz haydudu arasındaki fark tamamen evrak işine bağlıydı.",
+      "tts": {
+        "text": "Korsan ile deniz haydudu arasındaki fark tamamen evrak işine bağlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Geçerli belgeleri olan bir korsan yasaldı; onlar olmadan deniz haydutuydu.",
+      "text_markdown": "Geçerli belgeleri olan bir korsan yasaldı; onlar olmadan deniz haydutuydu.",
+      "tts": {
+        "text": "Geçerli belgeleri olan bir korsan yasaldı; onlar olmadan deniz haydutuydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayipler ve Güney Amerika'daki birçok küçük ulus, korsanlık beratı veriyordu.",
+      "text_markdown": "Karayipler ve Güney Amerika'daki birçok küçük ulus, korsanlık beratı veriyordu.",
+      "tts": {
+        "text": "Karayipler ve Güney Amerika'daki birçok küçük ulus, korsanlık beratı veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu uluslardan bazıları kâğıt üzerinde bile zar zor var oluyordu.",
+      "text_markdown": "Bu uluslardan bazıları kâğıt üzerinde bile zar zor var oluyordu.",
+      "tts": {
+        "text": "Bu uluslardan bazıları kâğıt üzerinde bile zar zor var oluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kurnaz bir korsan, her zaman baskınlarını yetkilendirecek bir hükümet bulabilirdi.",
+      "text_markdown": "Kurnaz bir korsan, her zaman baskınlarını yetkilendirecek bir hükümet bulabilirdi.",
+      "tts": {
+        "text": "Kurnaz bir korsan, her zaman baskınlarını yetkilendirecek bir hükümet bulabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu yasal gri alan tam da Jean Lafitte'in faaliyet gösterdiği yerdi.",
+      "text_markdown": "Bu yasal gri alan tam da Jean Lafitte'in faaliyet gösterdiği yerdi.",
+      "tts": {
+        "text": "Bu yasal gri alan tam da Jean Lafitte'in faaliyet gösterdiği yerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde İspanya'nın Amerika kıtasındaki imparatorluğu çökmekteydi.",
+      "text_markdown": "Bu dönemde İspanya'nın Amerika kıtasındaki imparatorluğu çökmekteydi.",
+      "tts": {
+        "text": "Bu dönemde İspanya'nın Amerika kıtasındaki imparatorluğu çökmekteydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Latin Amerika genelinde devrimler patlak veriyordu.",
+      "text_markdown": "Latin Amerika genelinde devrimler patlak veriyordu.",
+      "tts": {
+        "text": "Latin Amerika genelinde devrimler patlak veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol ticaret gemileri, korsanlar için savunmasız hedeflerdi.",
+      "text_markdown": "İspanyol ticaret gemileri, korsanlar için savunmasız hedeflerdi.",
+      "tts": {
+        "text": "İspanyol ticaret gemileri, korsanlar için savunmasız hedeflerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Meksika Körfezi, cesur ve vicdansız adamlar için fırsatlarla doluydu.",
+      "text_markdown": "Meksika Körfezi, cesur ve vicdansız adamlar için fırsatlarla doluydu.",
+      "tts": {
+        "text": "Meksika Körfezi, cesur ve vicdansız adamlar için fırsatlarla doluydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ABD ile Büyük Britanya arasındaki 1812 Savaşı o yılın Haziran ayında patlak verdi.",
+      "text_markdown": "ABD ile Büyük Britanya arasındaki 1812 Savaşı o yılın Haziran ayında patlak verdi.",
+      "tts": {
+        "text": "ABD ile Büyük Britanya arasındaki bin sekiz yüz on iki Savaşı o yılın Haziran ayında patlak verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler, Amerikan deniz ticaretine müdahale ediyor ve Amerikan denizcilerini Kraliyet Donanması'na zorla alıyorlardı.",
+      "text_markdown": "İngilizler, Amerikan deniz ticaretine müdahale ediyor ve Amerikan denizcilerini Kraliyet Donanması'na zorla alıyorlardı.",
+      "tts": {
+        "text": "İngilizler, Amerikan deniz ticaretine müdahale ediyor ve Amerikan denizcilerini Kraliyet Donanması'na zorla alıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş iki yıldan fazla sürecekti.",
+      "text_markdown": "Savaş iki yıldan fazla sürecekti.",
+      "tts": {
+        "text": "Savaş iki yıldan fazla sürecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En dramatik anı New Orleans'ta yaşanacaktı.",
+      "text_markdown": "En dramatik anı New Orleans'ta yaşanacaktı.",
+      "tts": {
+        "text": "En dramatik anı New Orleans'ta yaşanacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bayou bölgesi, olağanüstü yaban hayatı çeşitliliğine ev sahipliği yapıyordu.",
+      "text_markdown": "Bayou bölgesi, olağanüstü yaban hayatı çeşitliliğine ev sahipliği yapıyordu.",
+      "tts": {
+        "text": "Bayou bölgesi, olağanüstü yaban hayatı çeşitliliğine ev sahipliği yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Körfez Kıyısının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Timsahlar, yılanlar ve sayısız kuş türü bataklıklarda yaşıyordu.",
+      "text_markdown": "Timsahlar, yılanlar ve sayısız kuş türü bataklıklarda yaşıyordu.",
+      "tts": {
+        "text": "Timsahlar, yılanlar ve sayısız kuş türü bataklıklarda yaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenleri",
+      "text_markdown": "Kökenleri"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte yaklaşık 1780'de doğdu, ancak doğum yeri tartışmalıdır.",
+      "text_markdown": "Jean Lafitte yaklaşık 1780'de doğdu, ancak doğum yeri tartışmalıdır.",
+      "tts": {
+        "text": "Jean Lafitte yaklaşık bin yedi yüz seksen yılında doğdu, ancak doğum yeri tartışmalıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı kaynaklar, güneybatı Fransa'da bir liman kenti olan Bayonne'da doğduğunu söyler.",
+      "text_markdown": "Bazı kaynaklar, güneybatı Fransa'da bir liman kenti olan Bayonne'da doğduğunu söyler.",
+      "tts": {
+        "text": "Bazı kaynaklar, güneybatı Fransa'da bir liman kenti olan Bayonne'da doğduğunu söyler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri, Fransız kolonisi Saint-Domingue'de, yani bugünkü Haiti'de doğduğuna inanır.",
+      "text_markdown": "Diğerleri, Fransız kolonisi Saint-Domingue'de, yani bugünkü Haiti'de doğduğuna inanır.",
+      "tts": {
+        "text": "Diğerleri, Fransız kolonisi Saint-Domingue'de, yani bugünkü Haiti'de doğduğuna inanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte bu gizemi kasıtlı olarak besledi.",
+      "text_markdown": "Lafitte bu gizemi kasıtlı olarak besledi.",
+      "tts": {
+        "text": "Lafitte bu gizemi kasıtlı olarak besledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kökenleri hakkında nadiren konuşurdu ve farklı insanlara farklı hikâyeler anlatırdı.",
+      "text_markdown": "Kökenleri hakkında nadiren konuşurdu ve farklı insanlara farklı hikâyeler anlatırdı.",
+      "tts": {
+        "text": "Kökenleri hakkında nadiren konuşurdu ve farklı insanlara farklı hikâyeler anlatırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geçmişi belirsiz bir adamı yetkililer için takip etmek daha zordu.",
+      "text_markdown": "Geçmişi belirsiz bir adamı yetkililer için takip etmek daha zordu.",
+      "tts": {
+        "text": "Geçmişi belirsiz bir adamı yetkililer için takip etmek daha zordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşi Pierre Lafitte, hayatı boyunca en yakın ortağıydı.",
+      "text_markdown": "Kardeşi Pierre Lafitte, hayatı boyunca en yakın ortağıydı.",
+      "tts": {
+        "text": "Kardeşi Pierre Lafitte, hayatı boyunca en yakın ortağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pierre, Jean'dan büyüktü ve muhtemelen ilk girişimlerine öncülük ediyordu.",
+      "text_markdown": "Pierre, Jean'dan büyüktü ve muhtemelen ilk girişimlerine öncülük ediyordu.",
+      "tts": {
+        "text": "Pierre, Jean'dan büyüktü ve muhtemelen ilk girişimlerine öncülük ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki kardeş hem iş hem de bela konusunda ayrılmazdı.",
+      "text_markdown": "İki kardeş hem iş hem de bela konusunda ayrılmazdı.",
+      "tts": {
+        "text": "İki kardeş hem iş hem de bela konusunda ayrılmazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte kardeşler, 1803 ile 1805 arasında bir zamanda New Orleans'a vardılar.",
+      "text_markdown": "Lafitte kardeşler, 1803 ile 1805 arasında bir zamanda New Orleans'a vardılar.",
+      "tts": {
+        "text": "Lafitte kardeşler, bin sekiz yüz üç ile bin sekiz yüz beş arasında bir zamanda New Orleans'a vardılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehir tam da Fransız kontrolünden Amerikan kontrolüne geçiyordu.",
+      "text_markdown": "Şehir tam da Fransız kontrolünden Amerikan kontrolüne geçiyordu.",
+      "tts": {
+        "text": "Şehir tam da Fransız kontrolünden Amerikan kontrolüne geçiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atmosfer kaotik ve fırsatlarla doluydu.",
+      "text_markdown": "Atmosfer kaotik ve fırsatlarla doluydu.",
+      "tts": {
+        "text": "Atmosfer kaotik ve fırsatlarla doluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yasalar belirsizdi, uygulamalar zayıftı ve servetler kazanılıyordu.",
+      "text_markdown": "Yasalar belirsizdi, uygulamalar zayıftı ve servetler kazanılıyordu.",
+      "tts": {
+        "text": "Yasalar belirsizdi, uygulamalar zayıftı ve servetler kazanılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşler başlangıçta tüccar ve tacir olarak yerleştiler.",
+      "text_markdown": "Kardeşler başlangıçta tüccar ve tacir olarak yerleştiler.",
+      "tts": {
+        "text": "Kardeşler başlangıçta tüccar ve tacir olarak yerleştiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransız Mahallesi'nde bir depo ve bir demirci dükkânı işlettiler.",
+      "text_markdown": "Fransız Mahallesi'nde bir depo ve bir demirci dükkânı işlettiler.",
+      "tts": {
+        "text": "Fransız Mahallesi'nde bir depo ve bir demirci dükkânı işlettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Demirci dükkânı, kaçak mal satışı için bir paravan olabilirdi.",
+      "text_markdown": "Demirci dükkânı, kaçak mal satışı için bir paravan olabilirdi.",
+      "tts": {
+        "text": "Demirci dükkânı, kaçak mal satışı için bir paravan olabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "New Orleans'taki bir bina hâlâ Lafitte'in orijinal demirci dükkânı olduğunu iddia etmektedir.",
+      "text_markdown": "New Orleans'taki bir bina hâlâ Lafitte'in orijinal demirci dükkânı olduğunu iddia etmektedir.",
+      "tts": {
+        "text": "New Orleans'taki bir bina hâlâ Lafitte'in orijinal demirci dükkânı olduğunu iddia etmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte uzun boylu, yakışıklı ve çekici biri olarak tanımlanıyordu.",
+      "text_markdown": "Jean Lafitte uzun boylu, yakışıklı ve çekici biri olarak tanımlanıyordu.",
+      "tts": {
+        "text": "Jean Lafitte uzun boylu, yakışıklı ve çekici biri olarak tanımlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akıcı Fransızca, İngilizce, İspanyolca ve muhtemelen İtalyanca konuşurdu.",
+      "text_markdown": "Akıcı Fransızca, İngilizce, İspanyolca ve muhtemelen İtalyanca konuşurdu.",
+      "tts": {
+        "text": "Akıcı Fransızca, İngilizce, İspanyolca ve muhtemelen İtalyanca konuşurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şık giyinirdi ve bir beyefendi tavrıyla davranırdı.",
+      "text_markdown": "Şık giyinirdi ve bir beyefendi tavrıyla davranırdı.",
+      "tts": {
+        "text": "Şık giyinirdi ve bir beyefendi tavrıyla davranırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tüccarlar, politikacılar ve kanun kaçakları arasında eşit rahatlıkla hareket edebilirdi.",
+      "text_markdown": "Tüccarlar, politikacılar ve kanun kaçakları arasında eşit rahatlıkla hareket edebilirdi.",
+      "tts": {
+        "text": "Tüccarlar, politikacılar ve kanun kaçakları arasında eşit rahatlıkla hareket edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, Körfez Kıyısı boyunca bir ilişkiler ağı kurdu.",
+      "text_markdown": "Lafitte, Körfez Kıyısı boyunca bir ilişkiler ağı kurdu.",
+      "tts": {
+        "text": "Lafitte, Körfez Kıyısı boyunca bir ilişkiler ağı kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemi kaptanlarını, depo sahiplerini, plantasyon sahiplerini ve devlet yetkililerini tanıyordu.",
+      "text_markdown": "Gemi kaptanlarını, depo sahiplerini, plantasyon sahiplerini ve devlet yetkililerini tanıyordu.",
+      "tts": {
+        "text": "Gemi kaptanlarını, depo sahiplerini, plantasyon sahiplerini ve devlet yetkililerini tanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu bağlantılardan bazıları meşru iş insanlarıydı.",
+      "text_markdown": "Bu bağlantılardan bazıları meşru iş insanlarıydı.",
+      "tts": {
+        "text": "Bu bağlantılardan bazıları meşru iş insanlarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğerleri kaçakçı, deniz haydutu ve hırsızdı.",
+      "text_markdown": "Diğerleri kaçakçı, deniz haydutu ve hırsızdı.",
+      "tts": {
+        "text": "Diğerleri kaçakçı, deniz haydutu ve hırsızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşler kısa sürede basit ticaretten büyük çaplı kaçakçılığa geçtiler.",
+      "text_markdown": "Kardeşler kısa sürede basit ticaretten büyük çaplı kaçakçılığa geçtiler.",
+      "tts": {
+        "text": "Kardeşler kısa sürede basit ticaretten büyük çaplı kaçakçılığa geçtiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol ticaret gemilerinin ve yüklerinin ele geçirilip satılmasını organize ettiler.",
+      "text_markdown": "İspanyol ticaret gemilerinin ve yüklerinin ele geçirilip satılmasını organize ettiler.",
+      "tts": {
+        "text": "İspanyol ticaret gemilerinin ve yüklerinin ele geçirilip satılmasını organize ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayrıca son derece kârlı olan köleleştirilmiş insan ticareti de yapıyorlardı.",
+      "text_markdown": "Ayrıca son derece kârlı olan köleleştirilmiş insan ticareti de yapıyorlardı.",
+      "tts": {
+        "text": "Ayrıca son derece kârlı olan köleleştirilmiş insan ticareti de yapıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bin sekiz yüz sekiz yılında çıkarılan köleleştirilmiş insan ithalatı yasağı yalnızca fiyatları artırdı.",
+      "text_markdown": "Bin sekiz yüz sekiz yılında çıkarılan köleleştirilmiş insan ithalatı yasağı yalnızca fiyatları artırdı.",
+      "tts": {
+        "text": "Bin sekiz yüz sekiz yılında çıkarılan köleleştirilmiş insan ithalatı yasağı yalnızca fiyatları artırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, faaliyetlerini Cartagena Cumhuriyeti'nden aldığı korsanlık beratlarıyla meşrulaştırıyordu.",
+      "text_markdown": "Lafitte, faaliyetlerini Cartagena Cumhuriyeti'nden aldığı korsanlık beratlarıyla meşrulaştırıyordu.",
+      "tts": {
+        "text": "Lafitte, faaliyetlerini Cartagena Cumhuriyeti'nden aldığı korsanlık beratlarıyla meşrulaştırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cartagena, bugünkü Kolombiya'da İspanya'dan bağımsızlığını ilan etmiş bir şehirdi.",
+      "text_markdown": "Cartagena, bugünkü Kolombiya'da İspanya'dan bağımsızlığını ilan etmiş bir şehirdi.",
+      "tts": {
+        "text": "Cartagena, bugünkü Kolombiya'da İspanya'dan bağımsızlığını ilan etmiş bir şehirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlık beratları, İspanyol gemilerine saldırıları yetkilendiriyordu.",
+      "text_markdown": "Korsanlık beratları, İspanyol gemilerine saldırıları yetkilendiriyordu.",
+      "tts": {
+        "text": "Korsanlık beratları, İspanyol gemilerine saldırıları yetkilendiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, Lafitte'e ince bir yasal görüntü sağlıyordu.",
+      "text_markdown": "Bu, Lafitte'e ince bir yasal görüntü sağlıyordu.",
+      "tts": {
+        "text": "Bu, Lafitte'e ince bir yasal görüntü sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte'in korsan mı yoksa deniz haydutu mu olduğu kime sorduğunuza bağlıydı.",
+      "text_markdown": "Lafitte'in korsan mı yoksa deniz haydutu mu olduğu kime sorduğunuza bağlıydı.",
+      "tts": {
+        "text": "Lafitte'in korsan mı yoksa deniz haydutu mu olduğu kime sorduğunuza bağlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ucuz mallarını alan New Orleans'lı tüccarlar ona korsan diyordu.",
+      "text_markdown": "Ucuz mallarını alan New Orleans'lı tüccarlar ona korsan diyordu.",
+      "tts": {
+        "text": "Ucuz mallarını alan New Orleans'lı tüccarlar ona korsan diyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol hükümeti ve Amerikan yetkilileri ona deniz haydutu diyordu.",
+      "text_markdown": "İspanyol hükümeti ve Amerikan yetkilileri ona deniz haydutu diyordu.",
+      "tts": {
+        "text": "İspanyol hükümeti ve Amerikan yetkilileri ona deniz haydutu diyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte her zaman meşru bir iş insanı olduğu konusunda ısrar etti.",
+      "text_markdown": "Lafitte her zaman meşru bir iş insanı olduğu konusunda ısrar etti.",
+      "tts": {
+        "text": "Lafitte her zaman meşru bir iş insanı olduğu konusunda ısrar etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barataria Körfezi, Lafitte'in kaçakçılık imparatorluğunun merkezi oldu.",
+      "text_markdown": "Barataria Körfezi, Lafitte'in kaçakçılık imparatorluğunun merkezi oldu.",
+      "tts": {
+        "text": "Barataria Körfezi, Lafitte'in kaçakçılık imparatorluğunun merkezi oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu körfez, New Orleans'ın yaklaşık elli mil güneyinde yer alıyordu.",
+      "text_markdown": "Bu körfez, New Orleans'ın yaklaşık elli mil güneyinde yer alıyordu.",
+      "tts": {
+        "text": "Bu körfez, New Orleans'ın yaklaşık elli mil güneyinde yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adalardan, bayou'lardan ve gizli kanallardan oluşan bir labirentti.",
+      "text_markdown": "Adalardan, bayou'lardan ve gizli kanallardan oluşan bir labirentti.",
+      "tts": {
+        "text": "Adalardan, bayou'lardan ve gizli kanallardan oluşan bir labirentti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Körfezdeki büyük bir ada olan Grand Terre, Lafitte'in karargâhı oldu.",
+      "text_markdown": "Körfezdeki büyük bir ada olan Grand Terre, Lafitte'in karargâhı oldu.",
+      "tts": {
+        "text": "Körfezdeki büyük bir ada olan Grand Terre, Lafitte'in karargâhı oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grand Terre'den Lafitte, operasyonunu olağanüstü bir verimlilikle yürüttü.",
+      "text_markdown": "Grand Terre'den Lafitte, operasyonunu olağanüstü bir verimlilikle yürüttü.",
+      "tts": {
+        "text": "Grand Terre'den Lafitte, operasyonunu olağanüstü bir verimlilikle yürüttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele geçirilen mallar adadaki depolarda saklanıyordu.",
+      "text_markdown": "Ele geçirilen mallar adadaki depolarda saklanıyordu.",
+      "tts": {
+        "text": "Ele geçirilen mallar adadaki depolarda saklanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Düzenli açık artırmalar, New Orleans'tan ve ötesinden alıcıları çekiyordu.",
+      "text_markdown": "Düzenli açık artırmalar, New Orleans'tan ve ötesinden alıcıları çekiyordu.",
+      "tts": {
+        "text": "Düzenli açık artırmalar, New Orleans'tan ve ötesinden alıcıları çekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zirve noktasında Lafitte'in operasyonu yüzlerce kişi istihdam ediyordu.",
+      "text_markdown": "Zirve noktasında Lafitte'in operasyonu yüzlerce kişi istihdam ediyordu.",
+      "tts": {
+        "text": "Zirve noktasında Lafitte'in operasyonu yüzlerce kişi istihdam ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New Orleans'ın Fransız Mahallesi, şehrin sosyal yaşamının kalbiydi.",
+      "text_markdown": "New Orleans'ın Fransız Mahallesi, şehrin sosyal yaşamının kalbiydi.",
+      "tts": {
+        "text": "New Orleans'ın Fransız Mahallesi, şehrin sosyal yaşamının kalbiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dar sokakları dükkânlar, tavernalar ve demir balkonlu evlerle kaplıydı.",
+      "text_markdown": "Dar sokakları dükkânlar, tavernalar ve demir balkonlu evlerle kaplıydı.",
+      "tts": {
+        "text": "Dar sokakları dükkânlar, tavernalar ve demir balkonlu evlerle kaplıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte bu dünyada rahatlıkla dolaşıyor, her köşede müttefikler ediniyordu.",
+      "text_markdown": "Lafitte bu dünyada rahatlıkla dolaşıyor, her köşede müttefikler ediniyordu.",
+      "tts": {
+        "text": "Lafitte bu dünyada rahatlıkla dolaşıyor, her köşede müttefikler ediniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenleri",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toplumun her kesiminden insanları cezbetme yeteneği, en güçlü silahıydı.",
+      "text_markdown": "Toplumun her kesiminden insanları cezbetme yeteneği, en güçlü silahıydı.",
+      "tts": {
+        "text": "Toplumun her kesiminden insanları cezbetme yeteneği, en güçlü silahıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İktidarın Yükselişi",
+      "text_markdown": "İktidarın Yükselişi"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz on yılına gelindiğinde Jean Lafitte, Barataria Körfezi'nin tartışmasız hâkimiydi.",
+      "text_markdown": "Bin sekiz yüz on yılına gelindiğinde Jean Lafitte, Barataria Körfezi'nin tartışmasız hâkimiydi.",
+      "tts": {
+        "text": "Bin sekiz yüz on yılına gelindiğinde Jean Lafitte, Barataria Körfezi'nin tartışmasız hâkimiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemi filosu düzinelerce gemiden oluşuyordu.",
+      "text_markdown": "Gemi filosu düzinelerce gemiden oluşuyordu.",
+      "tts": {
+        "text": "Gemi filosu düzinelerce gemiden oluşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Meksika Körfezi'nin her yerinde İspanyol ticaret gemilerini ele geçiriyorlardı.",
+      "text_markdown": "Meksika Körfezi'nin her yerinde İspanyol ticaret gemilerini ele geçiriyorlardı.",
+      "tts": {
+        "text": "Meksika Körfezi'nin her yerinde İspanyol ticaret gemilerini ele geçiriyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yağma, satış için Grand Terre'ye geri getiriliyordu.",
+      "text_markdown": "Yağma, satış için Grand Terre'ye geri getiriliyordu.",
+      "tts": {
+        "text": "Yağma, satış için Grand Terre'ye geri getiriliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, sofistike bir dağıtım ağı aracılığıyla malların satışını organize ediyordu.",
+      "text_markdown": "Lafitte, sofistike bir dağıtım ağı aracılığıyla malların satışını organize ediyordu.",
+      "tts": {
+        "text": "Lafitte, sofistike bir dağıtım ağı aracılığıyla malların satışını organize ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Küçük tekneler, bayou'lardan geçerek New Orleans yakınlarındaki pazarlara kaçak mal taşıyordu.",
+      "text_markdown": "Küçük tekneler, bayou'lardan geçerek New Orleans yakınlarındaki pazarlara kaçak mal taşıyordu.",
+      "tts": {
+        "text": "Küçük tekneler, bayou'lardan geçerek New Orleans yakınlarındaki pazarlara kaçak mal taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mallar yasal piyasa fiyatının çok altında fiyatlarla geliyordu.",
+      "text_markdown": "Mallar yasal piyasa fiyatının çok altında fiyatlarla geliyordu.",
+      "tts": {
+        "text": "Mallar yasal piyasa fiyatının çok altında fiyatlarla geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, Lafitte'i hem tüccarlar hem de sıradan tüketiciler arasında popüler kılıyordu.",
+      "text_markdown": "Bu, Lafitte'i hem tüccarlar hem de sıradan tüketiciler arasında popüler kılıyordu.",
+      "tts": {
+        "text": "Bu, Lafitte'i hem tüccarlar hem de sıradan tüketiciler arasında popüler kılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte'in sattığı köleleştirilmiş insanlar özellikle kârlı bir emtiaydı.",
+      "text_markdown": "Lafitte'in sattığı köleleştirilmiş insanlar özellikle kârlı bir emtiaydı.",
+      "tts": {
+        "text": "Lafitte'in sattığı köleleştirilmiş insanlar özellikle kârlı bir emtiaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Federal yasa, bin sekiz yüz sekiz yılından sonra ABD'ye köleleştirilmiş insan ithalatını yasaklamıştı.",
+      "text_markdown": "Federal yasa, bin sekiz yüz sekiz yılından sonra ABD'ye köleleştirilmiş insan ithalatını yasaklamıştı.",
+      "tts": {
+        "text": "Federal yasa, bin sekiz yüz sekiz yılından sonra ABD'ye köleleştirilmiş insan ithalatını yasaklamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak talep, özellikle pamuk yetiştirilen bölgelerde, muazzam boyutlarda kalmaya devam ediyordu.",
+      "text_markdown": "Ancak talep, özellikle pamuk yetiştirilen bölgelerde, muazzam boyutlarda kalmaya devam ediyordu.",
+      "tts": {
+        "text": "Ancak talep, özellikle pamuk yetiştirilen bölgelerde, muazzam boyutlarda kalmaya devam ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte gibi kaçakçılar arz ile talep arasındaki boşluğu dolduruyordu.",
+      "text_markdown": "Lafitte gibi kaçakçılar arz ile talep arasındaki boşluğu dolduruyordu.",
+      "tts": {
+        "text": "Lafitte gibi kaçakçılar arz ile talep arasındaki boşluğu dolduruyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Louisiana Valisi William Claiborne, Lafitte'i durdurmaya kararlıydı.",
+      "text_markdown": "Louisiana Valisi William Claiborne, Lafitte'i durdurmaya kararlıydı.",
+      "tts": {
+        "text": "Louisiana Valisi William Claiborne, Lafitte'i durdurmaya kararlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Claiborne, Lafitte'in başına $500 ödül koydu.",
+      "text_markdown": "Claiborne, Lafitte'in başına $500 ödül koydu.",
+      "tts": {
+        "text": "Claiborne, Lafitte'in başına beş yüz dolar ödül koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Federal hükümetten Barataria operasyonunu yok etmek için deniz kuvvetleri göndermesini istedi.",
+      "text_markdown": "Federal hükümetten Barataria operasyonunu yok etmek için deniz kuvvetleri göndermesini istedi.",
+      "tts": {
+        "text": "Federal hükümetten Barataria operasyonunu yok etmek için deniz kuvvetleri göndermesini istedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ünlü bir efsaneye göre Lafitte, ödüle kendi ödülüyle karşılık verdi.",
+      "text_markdown": "Ünlü bir efsaneye göre Lafitte, ödüle kendi ödülüyle karşılık verdi.",
+      "tts": {
+        "text": "Ünlü bir efsaneye göre Lafitte, ödüle kendi ödülüyle karşılık verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İddiaya göre Vali Claiborne'un yakalanması için $5,000 ödül ilan etti.",
+      "text_markdown": "İddiaya göre Vali Claiborne'un yakalanması için $5,000 ödül ilan etti.",
+      "tts": {
+        "text": "İddiaya göre Vali Claiborne'un yakalanması için beş bin dolar ödül ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hikâye uydurma olabilir, ama Lafitte'in cüretini mükemmel şekilde yansıtır.",
+      "text_markdown": "Hikâye uydurma olabilir, ama Lafitte'in cüretini mükemmel şekilde yansıtır.",
+      "tts": {
+        "text": "Hikâye uydurma olabilir, ama Lafitte'in cüretini mükemmel şekilde yansıtır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onu tutuklamaya çalışan adamla açıkça alay ediyordu.",
+      "text_markdown": "Onu tutuklamaya çalışan adamla açıkça alay ediyordu.",
+      "tts": {
+        "text": "Onu tutuklamaya çalışan adamla açıkça alay ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte'in New Orleans halkıyla ilişkisi karmaşıktı.",
+      "text_markdown": "Lafitte'in New Orleans halkıyla ilişkisi karmaşıktı.",
+      "tts": {
+        "text": "Lafitte'in New Orleans halkıyla ilişkisi karmaşıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok varlıklı vatandaş mallarını satın alıyor ve kaçakçılığından faydalanıyordu.",
+      "text_markdown": "Birçok varlıklı vatandaş mallarını satın alıyor ve kaçakçılığından faydalanıyordu.",
+      "tts": {
+        "text": "Birçok varlıklı vatandaş mallarını satın alıyor ve kaçakçılığından faydalanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı avukatlar ve politikacılar gizlice onun maaş bordrosundaydı.",
+      "text_markdown": "Bazı avukatlar ve politikacılar gizlice onun maaş bordrosundaydı.",
+      "tts": {
+        "text": "Bazı avukatlar ve politikacılar gizlice onun maaş bordrosundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak açıkça bilinen bir suçluyu destekledikleri görülemezdi.",
+      "text_markdown": "Ancak açıkça bilinen bir suçluyu destekledikleri görülemezdi.",
+      "tts": {
+        "text": "Ancak açıkça bilinen bir suçluyu destekledikleri görülemezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierre Lafitte bin sekiz yüz on üç yılında korsanlık suçlamasıyla tutuklandı.",
+      "text_markdown": "Pierre Lafitte bin sekiz yüz on üç yılında korsanlık suçlamasıyla tutuklandı.",
+      "tts": {
+        "text": "Pierre Lafitte bin sekiz yüz on üç yılında korsanlık suçlamasıyla tutuklandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New Orleans'ın ana hükümet binası olan Cabildo'da tutuldu.",
+      "text_markdown": "New Orleans'ın ana hükümet binası olan Cabildo'da tutuldu.",
+      "tts": {
+        "text": "New Orleans'ın ana hükümet binası olan Cabildo'da tutuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jean Lafitte, kardeşinin serbest bırakılması için yorulmak bilmeden çalıştı.",
+      "text_markdown": "Jean Lafitte, kardeşinin serbest bırakılması için yorulmak bilmeden çalıştı.",
+      "tts": {
+        "text": "Jean Lafitte, kardeşinin serbest bırakılması için yorulmak bilmeden çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pierre sonunda gizemli koşullar altında gözaltından kaçtı.",
+      "text_markdown": "Pierre sonunda gizemli koşullar altında gözaltından kaçtı.",
+      "tts": {
+        "text": "Pierre sonunda gizemli koşullar altında gözaltından kaçtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz on dört yılına gelindiğinde bin sekiz yüz on iki Savaşı kritik bir aşamaya ulaşmıştı.",
+      "text_markdown": "Bin sekiz yüz on dört yılına gelindiğinde bin sekiz yüz on iki Savaşı kritik bir aşamaya ulaşmıştı.",
+      "tts": {
+        "text": "Bin sekiz yüz on dört yılına gelindiğinde bin sekiz yüz on iki Savaşı kritik bir aşamaya ulaşmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler Avrupa'da Napolyon'u yenmişti ve artık tüm askeri güçlerini Amerika'ya yönlendirebilirdi.",
+      "text_markdown": "İngilizler Avrupa'da Napolyon'u yenmişti ve artık tüm askeri güçlerini Amerika'ya yönlendirebilirdi.",
+      "tts": {
+        "text": "İngilizler Avrupa'da Napolyon'u yenmişti ve artık tüm askeri güçlerini Amerika'ya yönlendirebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mississippi Nehri'nin kontrolünü ele geçirmek için New Orleans'a büyük bir saldırı planladılar.",
+      "text_markdown": "Mississippi Nehri'nin kontrolünü ele geçirmek için New Orleans'a büyük bir saldırı planladılar.",
+      "tts": {
+        "text": "Mississippi Nehri'nin kontrolünü ele geçirmek için New Orleans'a büyük bir saldırı planladılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "New Orleans düşerse, batı ABD'nin tamamı kopmuş olacaktı.",
+      "text_markdown": "New Orleans düşerse, batı ABD'nin tamamı kopmuş olacaktı.",
+      "tts": {
+        "text": "New Orleans düşerse, batı ABD'nin tamamı kopmuş olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz subayları Jean Lafitte'e olağanüstü bir teklifle yaklaştılar.",
+      "text_markdown": "İngiliz subayları Jean Lafitte'e olağanüstü bir teklifle yaklaştılar.",
+      "tts": {
+        "text": "İngiliz subayları Jean Lafitte'e olağanüstü bir teklifle yaklaştılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ona $30,000, Kraliyet Donanması'nda bir rütbe ve İngiliz topraklarında arazi vaat ettiler.",
+      "text_markdown": "Ona $30,000, Kraliyet Donanması'nda bir rütbe ve İngiliz topraklarında arazi vaat ettiler.",
+      "tts": {
+        "text": "Ona otuz bin dolar, Kraliyet Donanması'nda bir rütbe ve İngiliz topraklarında arazi vaat ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında bayou su yolları hakkındaki bilgisini ve gemi filosunu istiyorlardı.",
+      "text_markdown": "Karşılığında bayou su yolları hakkındaki bilgisini ve gemi filosunu istiyorlardı.",
+      "tts": {
+        "text": "Karşılığında bayou su yolları hakkındaki bilgisini ve gemi filosunu istiyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizler, istila kuvvetlerini New Orleans'a yönlendirmesinde Lafitte'in yardımına ihtiyaç duyuyordu.",
+      "text_markdown": "İngilizler, istila kuvvetlerini New Orleans'a yönlendirmesinde Lafitte'in yardımına ihtiyaç duyuyordu.",
+      "tts": {
+        "text": "İngilizler, istila kuvvetlerini New Orleans'a yönlendirmesinde Lafitte'in yardımına ihtiyaç duyuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, İngiliz teklifini dikkatle değerlendiriyormuş gibi göründü.",
+      "text_markdown": "Lafitte, İngiliz teklifini dikkatle değerlendiriyormuş gibi göründü.",
+      "tts": {
+        "text": "Lafitte, İngiliz teklifini dikkatle değerlendiriyormuş gibi göründü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düşünmek için zaman istedi ve iki hafta kazandı.",
+      "text_markdown": "Düşünmek için zaman istedi ve iki hafta kazandı.",
+      "tts": {
+        "text": "Düşünmek için zaman istedi ve iki hafta kazandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak gizlice kararını çoktan vermişti.",
+      "text_markdown": "Ancak gizlice kararını çoktan vermişti.",
+      "tts": {
+        "text": "Ancak gizlice kararını çoktan vermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiliz planlarını ve belgelerini Vali Claiborne'a gönderdi.",
+      "text_markdown": "İngiliz planlarını ve belgelerini Vali Claiborne'a gönderdi.",
+      "tts": {
+        "text": "İngiliz planlarını ve belgelerini Vali Claiborne'a gönderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte'in Claiborne'a yazdığı mektup, ikna sanatının bir şaheseriydi.",
+      "text_markdown": "Lafitte'in Claiborne'a yazdığı mektup, ikna sanatının bir şaheseriydi.",
+      "tts": {
+        "text": "Lafitte'in Claiborne'a yazdığı mektup, ikna sanatının bir şaheseriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adamlarını, silahlarını ve bayou bilgisini Amerikan davasına sundu.",
+      "text_markdown": "Adamlarını, silahlarını ve bayou bilgisini Amerikan davasına sundu.",
+      "tts": {
+        "text": "Adamlarını, silahlarını ve bayou bilgisini Amerikan davasına sundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında kendisi ve adamları için tam af istedi.",
+      "text_markdown": "Karşılığında kendisi ve adamları için tam af istedi.",
+      "tts": {
+        "text": "Karşılığında kendisi ve adamları için tam af istedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kendisini anlaşma arayan bir suçlu olarak değil, hizmetlerini sunan bir vatansever olarak konumlandırdı.",
+      "text_markdown": "Kendisini anlaşma arayan bir suçlu olarak değil, hizmetlerini sunan bir vatansever olarak konumlandırdı.",
+      "tts": {
+        "text": "Kendisini anlaşma arayan bir suçlu olarak değil, hizmetlerini sunan bir vatansever olarak konumlandırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Claiborne kuşkuluydu ama Lafitte'in bilgilerini askeri yetkililere iletti.",
+      "text_markdown": "Claiborne kuşkuluydu ama Lafitte'in bilgilerini askeri yetkililere iletti.",
+      "tts": {
+        "text": "Claiborne kuşkuluydu ama Lafitte'in bilgilerini askeri yetkililere iletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı yetkililer bunun bir tuzak olduğuna inandı.",
+      "text_markdown": "Bazı yetkililer bunun bir tuzak olduğuna inandı.",
+      "tts": {
+        "text": "Bazı yetkililer bunun bir tuzak olduğuna inandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte'in uyarısına rağmen Amerikan Donanması, bin sekiz yüz on dört yılının Eylül ayında Barataria Körfezi'ne saldırdı.",
+      "text_markdown": "Lafitte'in uyarısına rağmen Amerikan Donanması, bin sekiz yüz on dört yılının Eylül ayında Barataria Körfezi'ne saldırdı.",
+      "tts": {
+        "text": "Lafitte'in uyarısına rağmen Amerikan Donanması, bin sekiz yüz on dört yılının Eylül ayında Barataria Körfezi'ne saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte'in üssünü yıktılar ve adamlarının çoğunu yakaladılar.",
+      "text_markdown": "Lafitte'in üssünü yıktılar ve adamlarının çoğunu yakaladılar.",
+      "tts": {
+        "text": "Lafitte'in üssünü yıktılar ve adamlarının çoğunu yakaladılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, Barataria baskını sırasında yakalanmaktan kurtuldu.",
+      "text_markdown": "Lafitte, Barataria baskını sırasında yakalanmaktan kurtuldu.",
+      "tts": {
+        "text": "Lafitte, Barataria baskını sırasında yakalanmaktan kurtuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Depoları yakıldı ve gemileri ele geçirildi.",
+      "text_markdown": "Depoları yakıldı ve gemileri ele geçirildi.",
+      "tts": {
+        "text": "Depoları yakıldı ve gemileri ele geçirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yıllarca inşa ettiği operasyon tek bir günde yıkıldı.",
+      "text_markdown": "Yıllarca inşa ettiği operasyon tek bir günde yıkıldı.",
+      "tts": {
+        "text": "Yıllarca inşa ettiği operasyon tek bir günde yıkıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak İngiliz istilası hâlâ geliyordu ve New Orleans hazırlıksızdı.",
+      "text_markdown": "Ancak İngiliz istilası hâlâ geliyordu ve New Orleans hazırlıksızdı.",
+      "tts": {
+        "text": "Ancak İngiliz istilası hâlâ geliyordu ve New Orleans hazırlıksızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "General Andrew Jackson, bin sekiz yüz on dört yılının Aralık ayında New Orleans'a geldi.",
+      "text_markdown": "General Andrew Jackson, bin sekiz yüz on dört yılının Aralık ayında New Orleans'a geldi.",
+      "tts": {
+        "text": "General Andrew Jackson, bin sekiz yüz on dört yılının Aralık ayında New Orleans'a geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kararlı eylemiyle tanınan sert bir sınır askeriydi.",
+      "text_markdown": "Kararlı eylemiyle tanınan sert bir sınır askeriydi.",
+      "tts": {
+        "text": "Kararlı eylemiyle tanınan sert bir sınır askeriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehrin savunmasının son derece yetersiz olduğunu gördü.",
+      "text_markdown": "Şehrin savunmasının son derece yetersiz olduğunu gördü.",
+      "tts": {
+        "text": "Şehrin savunmasının son derece yetersiz olduğunu gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bulabildiği her adama, her silaha ve her fıçı baruta ihtiyacı vardı.",
+      "text_markdown": "Bulabildiği her adama, her silaha ve her fıçı baruta ihtiyacı vardı.",
+      "tts": {
+        "text": "Bulabildiği her adama, her silaha ve her fıçı baruta ihtiyacı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, Jackson'a yaklaşıp Baratarialılarının hizmetlerini sundu.",
+      "text_markdown": "Lafitte, Jackson'a yaklaşıp Baratarialılarının hizmetlerini sundu.",
+      "tts": {
+        "text": "Lafitte, Jackson'a yaklaşıp Baratarialılarının hizmetlerini sundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jackson başlangıçta Baratarialıları cehennemlik haydutlar olarak nitelendirmişti.",
+      "text_markdown": "Jackson başlangıçta Baratarialıları cehennemlik haydutlar olarak nitelendirmişti.",
+      "tts": {
+        "text": "Jackson başlangıçta Baratarialıları cehennemlik haydutlar olarak nitelendirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak İngiliz tehdidinin gerçekliğiyle yüzleşince Lafitte'in teklifini kabul etti.",
+      "text_markdown": "Ancak İngiliz tehdidinin gerçekliğiyle yüzleşince Lafitte'in teklifini kabul etti.",
+      "tts": {
+        "text": "Ancak İngiliz tehdidinin gerçekliğiyle yüzleşince Lafitte'in teklifini kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte'in adamları kritik çakmaktaşı, barut ve topçuluk uzmanlığı tedarik etti.",
+      "text_markdown": "Lafitte'in adamları kritik çakmaktaşı, barut ve topçuluk uzmanlığı tedarik etti.",
+      "tts": {
+        "text": "Lafitte'in adamları kritik çakmaktaşı, barut ve topçuluk uzmanlığı tedarik etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvede",
+      "text_markdown": "Zirvede"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New Orleans Muharebesi, 8 Ocak 1815 tarihinde gerçekleşti.",
+      "text_markdown": "New Orleans Muharebesi, 8 Ocak 1815 tarihinde gerçekleşti.",
+      "tts": {
+        "text": "New Orleans Muharebesi, sekiz Ocak bin sekiz yüz on beş tarihinde gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, bin sekiz yüz on iki Savaşı'nın son büyük çatışmasıydı.",
+      "text_markdown": "Bu, bin sekiz yüz on iki Savaşı'nın son büyük çatışmasıydı.",
+      "tts": {
+        "text": "Bu, bin sekiz yüz on iki Savaşı'nın son büyük çatışmasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İronik bir şekilde, Avrupa'da bir barış antlaşması zaten imzalanmıştı, ancak haber henüz Amerika'ya ulaşmamıştı.",
+      "text_markdown": "İronik bir şekilde, Avrupa'da bir barış antlaşması zaten imzalanmıştı, ancak haber henüz Amerika'ya ulaşmamıştı.",
+      "tts": {
+        "text": "İronik bir şekilde, Avrupa'da bir barış antlaşması zaten imzalanmıştı, ancak haber henüz Amerika'ya ulaşmamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler yaklaşık sekiz bin deneyimli askerlik kuvvetiyle saldırdı.",
+      "text_markdown": "İngilizler yaklaşık sekiz bin deneyimli askerlik kuvvetiyle saldırdı.",
+      "tts": {
+        "text": "İngilizler yaklaşık sekiz bin deneyimli askerlik kuvvetiyle saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu adamların çoğu Avrupa'da Napolyon'un ordularına karşı savaşmıştı.",
+      "text_markdown": "Bu adamların çoğu Avrupa'da Napolyon'un ordularına karşı savaşmıştı.",
+      "tts": {
+        "text": "Bu adamların çoğu Avrupa'da Napolyon'un ordularına karşı savaşmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın en iyi askerleri arasında kabul ediliyorlardı.",
+      "text_markdown": "Dünyanın en iyi askerleri arasında kabul ediliyorlardı.",
+      "tts": {
+        "text": "Dünyanın en iyi askerleri arasında kabul ediliyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Komutanları Tümgeneral Sir Edward Pakenham'dı.",
+      "text_markdown": "Komutanları Tümgeneral Sir Edward Pakenham'dı.",
+      "tts": {
+        "text": "Komutanları Tümgeneral Sir Edward Pakenham'dı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jackson'ın savunma hattı, New Orleans'ın güneyindeki Chalmette Plantasyonu boyunca uzanıyordu.",
+      "text_markdown": "Jackson'ın savunma hattı, New Orleans'ın güneyindeki Chalmette Plantasyonu boyunca uzanıyordu.",
+      "tts": {
+        "text": "Jackson'ın savunma hattı, New Orleans'ın güneyindeki Chalmette Plantasyonu boyunca uzanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuvvetleri bir kanal ve toprak siperlerini savunma mevzileri olarak kullandı.",
+      "text_markdown": "Kuvvetleri bir kanal ve toprak siperlerini savunma mevzileri olarak kullandı.",
+      "tts": {
+        "text": "Kuvvetleri bir kanal ve toprak siperlerini savunma mevzileri olarak kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikan hattında düzenli ordu askerleri, milis, özgür siyahi askerler, Choctaw savaşçıları ve Baratarialı korsanlar yer alıyordu.",
+      "text_markdown": "Amerikan hattında düzenli ordu askerleri, milis, özgür siyahi askerler, Choctaw savaşçıları ve Baratarialı korsanlar yer alıyordu.",
+      "tts": {
+        "text": "Amerikan hattında düzenli ordu askerleri, milis, özgür siyahi askerler, Choctaw savaşçıları ve Baratarialı korsanlar yer alıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte'in Baratarialıları, savunma hattı boyunca kilit topçu bataryalarını üstlendi.",
+      "text_markdown": "Lafitte'in Baratarialıları, savunma hattı boyunca kilit topçu bataryalarını üstlendi.",
+      "tts": {
+        "text": "Lafitte'in Baratarialıları, savunma hattı boyunca kilit topçu bataryalarını üstlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Topları hassas bir şekilde kullanmayı bilen deneyimli topçulardı.",
+      "text_markdown": "Topları hassas bir şekilde kullanmayı bilen deneyimli topçulardı.",
+      "tts": {
+        "text": "Topları hassas bir şekilde kullanmayı bilen deneyimli topçulardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte bizzat danışman olarak görev yaptı, topların ve malzemelerin yerleşimini yönetti.",
+      "text_markdown": "Lafitte bizzat danışman olarak görev yaptı, topların ve malzemelerin yerleşimini yönetti.",
+      "tts": {
+        "text": "Lafitte bizzat danışman olarak görev yaptı, topların ve malzemelerin yerleşimini yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Arazi bilgisi savunma için paha biçilmezdi.",
+      "text_markdown": "Arazi bilgisi savunma için paha biçilmezdi.",
+      "tts": {
+        "text": "Arazi bilgisi savunma için paha biçilmezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler, Amerikan siperlerine karşı açık arazide cepheden saldırı başlattı.",
+      "text_markdown": "İngilizler, Amerikan siperlerine karşı açık arazide cepheden saldırı başlattı.",
+      "tts": {
+        "text": "İngilizler, Amerikan siperlerine karşı açık arazide cepheden saldırı başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amerikan top ve tüfek ateşi ilerleyen sütunları tahrip etti.",
+      "text_markdown": "Amerikan top ve tüfek ateşi ilerleyen sütunları tahrip etti.",
+      "tts": {
+        "text": "Amerikan top ve tüfek ateşi ilerleyen sütunları tahrip etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz askerleri olağanüstü cesaretle ilerledi ancak dalga dalga biçildi.",
+      "text_markdown": "İngiliz askerleri olağanüstü cesaretle ilerledi ancak dalga dalga biçildi.",
+      "tts": {
+        "text": "İngiliz askerleri olağanüstü cesaretle ilerledi ancak dalga dalga biçildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "General Pakenham, hücuma liderlik ederken öldürüldü.",
+      "text_markdown": "General Pakenham, hücuma liderlik ederken öldürüldü.",
+      "tts": {
+        "text": "General Pakenham, hücuma liderlik ederken öldürüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muharebe iki saatten kısa sürede sona erdi.",
+      "text_markdown": "Muharebe iki saatten kısa sürede sona erdi.",
+      "tts": {
+        "text": "Muharebe iki saatten kısa sürede sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler, ölü, yaralı ve esir dahil yaklaşık 2,000 kayıp verdi.",
+      "text_markdown": "İngilizler, ölü, yaralı ve esir dahil yaklaşık 2,000 kayıp verdi.",
+      "tts": {
+        "text": "İngilizler, ölü, yaralı ve esir dahil yaklaşık iki bin kayıp verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikan kayıpları 100'den azdı.",
+      "text_markdown": "Amerikan kayıpları 100'den azdı.",
+      "tts": {
+        "text": "Amerikan kayıpları yüzden azdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Askeri tarihin en tek taraflı zaferlerinden biriydi.",
+      "text_markdown": "Askeri tarihin en tek taraflı zaferlerinden biriydi.",
+      "tts": {
+        "text": "Askeri tarihin en tek taraflı zaferlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baratarialılar, muharebedeki performanslarıyla övüldü.",
+      "text_markdown": "Baratarialılar, muharebedeki performanslarıyla övüldü.",
+      "tts": {
+        "text": "Baratarialılar, muharebedeki performanslarıyla övüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Topçu ateşleri yıkıcı ve isabetliydi.",
+      "text_markdown": "Topçu ateşleri yıkıcı ve isabetliydi.",
+      "tts": {
+        "text": "Topçu ateşleri yıkıcı ve isabetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jackson bizzat onların cesaretini ve becerisini açıkça takdir etti.",
+      "text_markdown": "Jackson bizzat onların cesaretini ve becerisini açıkça takdir etti.",
+      "tts": {
+        "text": "Jackson bizzat onların cesaretini ve becerisini açıkça takdir etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birkaç ay önce korsan olarak adlandırılan adamlar artık kahraman olarak kutlanıyordu.",
+      "text_markdown": "Birkaç ay önce korsan olarak adlandırılan adamlar artık kahraman olarak kutlanıyordu.",
+      "tts": {
+        "text": "Birkaç ay önce korsan olarak adlandırılan adamlar artık kahraman olarak kutlanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New Orleans'taki zafer, Andrew Jackson'ı ulusal bir kahraman yaptı.",
+      "text_markdown": "New Orleans'taki zafer, Andrew Jackson'ı ulusal bir kahraman yaptı.",
+      "tts": {
+        "text": "New Orleans'taki zafer, Andrew Jackson'ı ulusal bir kahraman yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aynı zamanda Jean Lafitte'i aranan bir suçludan vatansevere dönüştürdü.",
+      "text_markdown": "Aynı zamanda Jean Lafitte'i aranan bir suçludan vatansevere dönüştürdü.",
+      "tts": {
+        "text": "Aynı zamanda Jean Lafitte'i aranan bir suçludan vatansevere dönüştürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muharebe, Lafitte'in Amerika'nın tarafını tutma kararının doğru olduğunu kanıtladı.",
+      "text_markdown": "Muharebe, Lafitte'in Amerika'nın tarafını tutma kararının doğru olduğunu kanıtladı.",
+      "tts": {
+        "text": "Muharebe, Lafitte'in Amerika'nın tarafını tutma kararının doğru olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ittifaka her şeyini yatırmıştı ve kazanmıştı.",
+      "text_markdown": "Bu ittifaka her şeyini yatırmıştı ve kazanmıştı.",
+      "tts": {
+        "text": "Bu ittifaka her şeyini yatırmıştı ve kazanmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başkan James Madison, Lafitte ve tüm Baratarialılarına tam af çıkardı.",
+      "text_markdown": "Başkan James Madison, Lafitte ve tüm Baratarialılarına tam af çıkardı.",
+      "tts": {
+        "text": "Başkan James Madison, Lafitte ve tüm Baratarialılarına tam af çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Af, önceki tüm korsanlık ve kaçakçılık suçlamalarını sildi.",
+      "text_markdown": "Af, önceki tüm korsanlık ve kaçakçılık suçlamalarını sildi.",
+      "tts": {
+        "text": "Af, önceki tüm korsanlık ve kaçakçılık suçlamalarını sildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte hem hukuki hem de siyasi olarak özgür bir adamdı.",
+      "text_markdown": "Lafitte hem hukuki hem de siyasi olarak özgür bir adamdı.",
+      "tts": {
+        "text": "Lafitte hem hukuki hem de siyasi olarak özgür bir adamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kısa bir süreliğine New Orleans'ın en popüler insanlarından biriydi.",
+      "text_markdown": "Kısa bir süreliğine New Orleans'ın en popüler insanlarından biriydi.",
+      "tts": {
+        "text": "Kısa bir süreliğine New Orleans'ın en popüler insanlarından biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Af, Lafitte'e meşru yeni bir hayat başlatma fırsatı verdi.",
+      "text_markdown": "Af, Lafitte'e meşru yeni bir hayat başlatma fırsatı verdi.",
+      "tts": {
+        "text": "Af, Lafitte'e meşru yeni bir hayat başlatma fırsatı verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her alanda başarılı olmak için bağlantılara, zekâya ve kaizmaya sahipti.",
+      "text_markdown": "Her alanda başarılı olmak için bağlantılara, zekâya ve kaizmaya sahipti.",
+      "tts": {
+        "text": "Her alanda başarılı olmak için bağlantılara, zekâya ve karizmaya sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onun yerinde birçok adam bu fırsatı değerlendirirdi.",
+      "text_markdown": "Onun yerinde birçok adam bu fırsatı değerlendirirdi.",
+      "tts": {
+        "text": "Onun yerinde birçok adam bu fırsatı değerlendirirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Jean Lafitte çoğu adam gibi değildi.",
+      "text_markdown": "Ama Jean Lafitte çoğu adam gibi değildi.",
+      "tts": {
+        "text": "Ama Jean Lafitte çoğu adam gibi değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denizin ve kanun kaçağı yaşamın cazibesi çok güçlü olduğunu kanıtladı.",
+      "text_markdown": "Denizin ve kanun kaçağı yaşamın cazibesi çok güçlü olduğunu kanıtladı.",
+      "tts": {
+        "text": "Denizin ve kanun kaçağı yaşamın cazibesi çok güçlü olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muharebeden iki yıl içinde Lafitte kaçakçılık ve korsanlığa geri dönmüştü.",
+      "text_markdown": "Muharebeden iki yıl içinde Lafitte kaçakçılık ve korsanlığa geri dönmüştü.",
+      "tts": {
+        "text": "Muharebeden iki yıl içinde Lafitte kaçakçılık ve korsanlığa geri dönmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eski mesleğinin özgürlüğüne ve kârlarına karşı koyamadı.",
+      "text_markdown": "Eski mesleğinin özgürlüğüne ve kârlarına karşı koyamadı.",
+      "tts": {
+        "text": "Eski mesleğinin özgürlüğüne ve kârlarına karşı koyamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Af hayatını kurtarmıştı ama doğasını değiştirmemişti.",
+      "text_markdown": "Af hayatını kurtarmıştı ama doğasını değiştirmemişti.",
+      "tts": {
+        "text": "Af hayatını kurtarmıştı ama doğasını değiştirmemişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jackson'ın New Orleans'taki savunma stratejisi parlak bir şekilde tasarlanmıştı.",
+      "text_markdown": "Jackson'ın New Orleans'taki savunma stratejisi parlak bir şekilde tasarlanmıştı.",
+      "tts": {
+        "text": "Jackson'ın New Orleans'taki savunma stratejisi parlak bir şekilde tasarlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bayou'nun doğal arazisini, İngilizleri dar bir ölüm bölgesine yönlendirmek için kullandı.",
+      "text_markdown": "Bayou'nun doğal arazisini, İngilizleri dar bir ölüm bölgesine yönlendirmek için kullandı.",
+      "tts": {
+        "text": "Bayou'nun doğal arazisini, İngilizleri dar bir ölüm bölgesine yönlendirmek için kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikan hattının önündeki çamurlu tarlalar, ilerleyen İngilizler için bir ölüm tuzağına dönüştü.",
+      "text_markdown": "Amerikan hattının önündeki çamurlu tarlalar, ilerleyen İngilizler için bir ölüm tuzağına dönüştü.",
+      "tts": {
+        "text": "Amerikan hattının önündeki çamurlu tarlalar, ilerleyen İngilizler için bir ölüm tuzağına dönüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zafer haberi ABD genelinde büyük bir coşkuyla yayıldı.",
+      "text_markdown": "Zafer haberi ABD genelinde büyük bir coşkuyla yayıldı.",
+      "tts": {
+        "text": "Zafer haberi ABD genelinde büyük bir coşkuyla yayıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amerikalılar bu muharebeyi, genç uluslarının her güce karşı durabildiğinin kanıtı olarak kutladı.",
+      "text_markdown": "Amerikalılar bu muharebeyi, genç uluslarının her güce karşı durabildiğinin kanıtı olarak kutladı.",
+      "tts": {
+        "text": "Amerikalılar bu muharebeyi, genç uluslarının her güce karşı durabildiğinin kanıtı olarak kutladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1817 yılına gelindiğinde Lafitte, Galveston Adası'nda yeni bir üs kurmuştu.",
+      "text_markdown": "1817 yılına gelindiğinde Lafitte, Galveston Adası'nda yeni bir üs kurmuştu.",
+      "tts": {
+        "text": "Bin sekiz yüz on yedi yılına gelindiğinde Lafitte, Galveston Adası'nda yeni bir üs kurmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galveston, o dönemde İspanyol Teksası olan bölgenin kıyısında yer alıyordu.",
+      "text_markdown": "Galveston, o dönemde İspanyol Teksası olan bölgenin kıyısında yer alıyordu.",
+      "tts": {
+        "text": "Galveston, o dönemde İspanyol Teksası olan bölgenin kıyısında yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikan yargı yetkisinden uzak ve Körfez operasyonları için mükemmel bir konumdaydı.",
+      "text_markdown": "Amerikan yargı yetkisinden uzak ve Körfez operasyonları için mükemmel bir konumdaydı.",
+      "tts": {
+        "text": "Amerikan yargı yetkisinden uzak ve Körfez operasyonları için mükemmel bir konumdaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte yeni yerleşim yerine Campeche adını verdi.",
+      "text_markdown": "Lafitte yeni yerleşim yerine Campeche adını verdi.",
+      "tts": {
+        "text": "Lafitte yeni yerleşim yerine Campeche adını verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kısa sürede gelişen bir korsan topluluğuna dönüştü.",
+      "text_markdown": "Kısa sürede gelişen bir korsan topluluğuna dönüştü.",
+      "tts": {
+        "text": "Kısa sürede gelişen bir korsan topluluğuna dönüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zirve noktasında Campeche'de 1,000'den fazla kişi yaşıyordu.",
+      "text_markdown": "Zirve noktasında Campeche'de 1,000'den fazla kişi yaşıyordu.",
+      "tts": {
+        "text": "Zirve noktasında Campeche'de binden fazla kişi yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kendi hükümeti, mahkemeleri ve sosyal hiyerarşisi vardı.",
+      "text_markdown": "Kendi hükümeti, mahkemeleri ve sosyal hiyerarşisi vardı.",
+      "tts": {
+        "text": "Kendi hükümeti, mahkemeleri ve sosyal hiyerarşisi vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte kendini Galveston'ın sivil ve askeri valisi ilan etti.",
+      "text_markdown": "Lafitte kendini Galveston'ın sivil ve askeri valisi ilan etti.",
+      "tts": {
+        "text": "Lafitte kendini Galveston'ın sivil ve askeri valisi ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yerleşim yerinde katı kurallar uyguladı.",
+      "text_markdown": "Yerleşim yerinde katı kurallar uyguladı.",
+      "tts": {
+        "text": "Yerleşim yerinde katı kurallar uyguladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlarının yalnızca geçerli korsanlık beratlarıyla İspanyol gemilerine saldırmasında ısrar etti.",
+      "text_markdown": "Adamlarının yalnızca geçerli korsanlık beratlarıyla İspanyol gemilerine saldırmasında ısrar etti.",
+      "tts": {
+        "text": "Adamlarının yalnızca geçerli korsanlık beratlarıyla İspanyol gemilerine saldırmasında ısrar etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Amerikan gemileri rahat bırakılmalıydı.",
+      "text_markdown": "Amerikan gemileri rahat bırakılmalıydı.",
+      "tts": {
+        "text": "Amerikan gemileri rahat bırakılmalıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pratikte bu kuralı uygulamak zordu.",
+      "text_markdown": "Pratikte bu kuralı uygulamak zordu.",
+      "tts": {
+        "text": "Pratikte bu kuralı uygulamak zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lafitte'in bazı kaptanları emirlerine rağmen Amerikan gemilerine saldırdı.",
+      "text_markdown": "Lafitte'in bazı kaptanları emirlerine rağmen Amerikan gemilerine saldırdı.",
+      "tts": {
+        "text": "Lafitte'in bazı kaptanları emirlerine rağmen Amerikan gemilerine saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu izinsiz baskınlar, ABD hükümetinin istenmeyen dikkatini çekti.",
+      "text_markdown": "Bu izinsiz baskınlar, ABD hükümetinin istenmeyen dikkatini çekti.",
+      "tts": {
+        "text": "Bu izinsiz baskınlar, ABD hükümetinin istenmeyen dikkatini çekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte kurallarını ihlal eden kaptanları cezalandırdı, ama zarar verilmişti.",
+      "text_markdown": "Lafitte kurallarını ihlal eden kaptanları cezalandırdı, ama zarar verilmişti.",
+      "tts": {
+        "text": "Lafitte kurallarını ihlal eden kaptanları cezalandırdı, ama zarar verilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Körfez'deki siyasi durum hızla değişiyordu.",
+      "text_markdown": "Körfez'deki siyasi durum hızla değişiyordu.",
+      "tts": {
+        "text": "Körfez'deki siyasi durum hızla değişiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Latin Amerika devrimleri bölgeyi yeniden şekillendiriyordu.",
+      "text_markdown": "Latin Amerika devrimleri bölgeyi yeniden şekillendiriyordu.",
+      "tts": {
+        "text": "Latin Amerika devrimleri bölgeyi yeniden şekillendiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yeni uluslar doğuyor, eski imparatorluklar ölüyordu.",
+      "text_markdown": "Yeni uluslar doğuyor, eski imparatorluklar ölüyordu.",
+      "tts": {
+        "text": "Yeni uluslar doğuyor, eski imparatorluklar ölüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte'i koruyan korsanlık beratlarını elde etmek giderek zorlaşıyordu.",
+      "text_markdown": "Lafitte'i koruyan korsanlık beratlarını elde etmek giderek zorlaşıyordu.",
+      "tts": {
+        "text": "Lafitte'i koruyan korsanlık beratlarını elde etmek giderek zorlaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ABD de Körfez'deki deniz varlığını artırıyordu.",
+      "text_markdown": "ABD de Körfez'deki deniz varlığını artırıyordu.",
+      "tts": {
+        "text": "ABD de Körfez'deki deniz varlığını artırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Donanma, korsanlığı bastırmak ve Amerikan denizciliğini korumakla görevlendirilmişti.",
+      "text_markdown": "Donanma, korsanlığı bastırmak ve Amerikan denizciliğini korumakla görevlendirilmişti.",
+      "tts": {
+        "text": "Donanma, korsanlığı bastırmak ve Amerikan denizciliğini korumakla görevlendirilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte'in Galveston'daki yerleşimi hükümet için bir utanç kaynağı olmaya başlıyordu.",
+      "text_markdown": "Lafitte'in Galveston'daki yerleşimi hükümet için bir utanç kaynağı olmaya başlıyordu.",
+      "tts": {
+        "text": "Lafitte'in Galveston'daki yerleşimi hükümet için bir utanç kaynağı olmaya başlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savunmasına yardım ettiği aynı ulus, onu artık bir sorun olarak görüyordu.",
+      "text_markdown": "Savunmasına yardım ettiği aynı ulus, onu artık bir sorun olarak görüyordu.",
+      "tts": {
+        "text": "Savunmasına yardım ettiği aynı ulus, onu artık bir sorun olarak görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz on sekiz yılında yıkıcı bir kasırga Galveston'ı vurdu.",
+      "text_markdown": "Bin sekiz yüz on sekiz yılında yıkıcı bir kasırga Galveston'ı vurdu.",
+      "tts": {
+        "text": "Bin sekiz yüz on sekiz yılında yıkıcı bir kasırga Galveston'ı vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fırtına yerleşimin büyük bölümünü yıktı ve Lafitte'in birkaç gemisini batırdı.",
+      "text_markdown": "Fırtına yerleşimin büyük bölümünü yıktı ve Lafitte'in birkaç gemisini batırdı.",
+      "tts": {
+        "text": "Fırtına yerleşimin büyük bölümünü yıktı ve Lafitte'in birkaç gemisini batırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yeniden inşa yavaş ve pahalıydı.",
+      "text_markdown": "Yeniden inşa yavaş ve pahalıydı.",
+      "tts": {
+        "text": "Yeniden inşa yavaş ve pahalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kasırga, Campeche'nin asla tam olarak toparlanamayacağı bir darbe oldu.",
+      "text_markdown": "Kasırga, Campeche'nin asla tam olarak toparlanamayacağı bir darbe oldu.",
+      "tts": {
+        "text": "Kasırga, Campeche'nin asla tam olarak toparlanamayacağı bir darbe oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1821'de bir ABD savaş gemisi bir ültimatom ile Galveston'a geldi.",
+      "text_markdown": "1821'de bir ABD savaş gemisi bir ültimatom ile Galveston'a geldi.",
+      "tts": {
+        "text": "Bin sekiz yüz yirmi bir yılında bir ABD savaş gemisi bir ültimatom ile Galveston'a geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lafitte'e adayı derhal terk etmesi emredildi.",
+      "text_markdown": "Lafitte'e adayı derhal terk etmesi emredildi.",
+      "tts": {
+        "text": "Lafitte'e adayı derhal terk etmesi emredildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Reddederse donanmanın onu zorla çıkaracağı söylendi.",
+      "text_markdown": "Reddederse donanmanın onu zorla çıkaracağı söylendi.",
+      "tts": {
+        "text": "Reddederse donanmanın onu zorla çıkaracağı söylendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte, ABD ile ikinci kez savaşmamayı tercih etti.",
+      "text_markdown": "Lafitte, ABD ile ikinci kez savaşmamayı tercih etti.",
+      "tts": {
+        "text": "Lafitte, ABD ile ikinci kez savaşmamayı tercih etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Campeche yerleşimini teslim etmektense yakarak küle çevirdi.",
+      "text_markdown": "Campeche yerleşimini teslim etmektense yakarak küle çevirdi.",
+      "tts": {
+        "text": "Campeche yerleşimini teslim etmektense yakarak küle çevirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alevler suyun üzerinde kilometrelerce öteden görülebiliyordu.",
+      "text_markdown": "Alevler suyun üzerinde kilometrelerce öteden görülebiliyordu.",
+      "tts": {
+        "text": "Alevler suyun üzerinde kilometrelerce öteden görülebiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonra Meksika Körfezi'ne yelken açtı ve ortadan kayboldu.",
+      "text_markdown": "Sonra Meksika Körfezi'ne yelken açtı ve ortadan kayboldu.",
+      "tts": {
+        "text": "Sonra Meksika Körfezi'ne yelken açtı ve ortadan kayboldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Galveston'u terk ettikten sonra Jean Lafitte'e ne olduğu, tarihin büyük gizemlerinden biridir.",
+      "text_markdown": "Galveston'u terk ettikten sonra Jean Lafitte'e ne olduğu, tarihin büyük gizemlerinden biridir.",
+      "tts": {
+        "text": "Galveston'u terk ettikten sonra Jean Lafitte'e ne olduğu, tarihin büyük gizemlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı kaynaklara göre Küba ve Yucatan çevresindeki sularda korsanlığa devam etti.",
+      "text_markdown": "Bazı kaynaklara göre Küba ve Yucatan çevresindeki sularda korsanlığa devam etti.",
+      "tts": {
+        "text": "Bazı kaynaklara göre Küba ve Yucatan çevresindeki sularda korsanlığa devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri, takma bir isimle küçük bir kasabaya sessizce yerleştiğini söyler.",
+      "text_markdown": "Diğerleri, takma bir isimle küçük bir kasabaya sessizce yerleştiğini söyler.",
+      "tts": {
+        "text": "Diğerleri, takma bir isimle küçük bir kasabaya sessizce yerleştiğini söyler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte'in yaklaşık 1823'te öldüğüne inanılmaktadır, ancak bu bile kesin değildir.",
+      "text_markdown": "Lafitte'in yaklaşık 1823'te öldüğüne inanılmaktadır, ancak bu bile kesin değildir.",
+      "tts": {
+        "text": "Lafitte'in yaklaşık bin sekiz yüz yirmi üç yılında öldüğüne inanılmaktadır, ancak bu bile kesin değildir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı tarihçiler Yucatan Yarımadası'nda ateşli bir hastalıktan öldüğünü düşünmektedir.",
+      "text_markdown": "Bazı tarihçiler Yucatan Yarımadası'nda ateşli bir hastalıktan öldüğünü düşünmektedir.",
+      "tts": {
+        "text": "Bazı tarihçiler Yucatan Yarımadası'nda ateşli bir hastalıktan öldüğünü düşünmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri ölümünü bin sekiz yüz ellili yıllara kadar tarihlendirmiştir.",
+      "text_markdown": "Diğerleri ölümünü bin sekiz yüz ellili yıllara kadar tarihlendirmiştir.",
+      "tts": {
+        "text": "Diğerleri ölümünü bin sekiz yüz ellili yıllara kadar tarihlendirmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hiçbir mezar kesin olarak ona ait olarak tespit edilememiştir.",
+      "text_markdown": "Hiçbir mezar kesin olarak ona ait olarak tespit edilememiştir.",
+      "tts": {
+        "text": "Hiçbir mezar kesin olarak ona ait olarak tespit edilememiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşi Pierre Lafitte muhtemelen aynı dönemde öldü.",
+      "text_markdown": "Kardeşi Pierre Lafitte muhtemelen aynı dönemde öldü.",
+      "tts": {
+        "text": "Kardeşi Pierre Lafitte muhtemelen aynı dönemde öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pierre'in akıbeti de bir o kadar belirsizdir.",
+      "text_markdown": "Pierre'in akıbeti de bir o kadar belirsizdir.",
+      "tts": {
+        "text": "Pierre'in akıbeti de bir o kadar belirsizdir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birlikte bir imparatorluk kuran kardeşler birlikte ortadan kayboldular.",
+      "text_markdown": "Birlikte bir imparatorluk kuran kardeşler birlikte ortadan kayboldular.",
+      "tts": {
+        "text": "Birlikte bir imparatorluk kuran kardeşler birlikte ortadan kayboldular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hikâyeleri başladığı gibi sona erdi, gizemle sarılı.",
+      "text_markdown": "Hikâyeleri başladığı gibi sona erdi, gizemle sarılı.",
+      "tts": {
+        "text": "Hikâyeleri başladığı gibi sona erdi, gizemle sarılı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı efsaneler, Lafitte'in Körfez Kıyısı boyunca hazine gömdüğünü iddia eder.",
+      "text_markdown": "Bazı efsaneler, Lafitte'in Körfez Kıyısı boyunca hazine gömdüğünü iddia eder.",
+      "tts": {
+        "text": "Bazı efsaneler, Lafitte'in Körfez Kıyısı boyunca hazine gömdüğünü iddia eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hazine avcıları yaklaşık iki yüz yıldır başarısızca altınını aramaktadır.",
+      "text_markdown": "Hazine avcıları yaklaşık iki yüz yıldır başarısızca altınını aramaktadır.",
+      "tts": {
+        "text": "Hazine avcıları yaklaşık iki yüz yıldır başarısızca altınını aramaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte, Amerikan tarihinin en romantize edilen figürlerinden biridir.",
+      "text_markdown": "Jean Lafitte, Amerikan tarihinin en romantize edilen figürlerinden biridir.",
+      "tts": {
+        "text": "Jean Lafitte, Amerikan tarihinin en romantize edilen figürlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New Orleans'ın centilmen korsanı olarak hatırlanır.",
+      "text_markdown": "New Orleans'ın centilmen korsanı olarak hatırlanır.",
+      "tts": {
+        "text": "New Orleans'ın centilmen korsanı olarak hatırlanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Louisiana'da bir ulusal tarih parkı onun adını taşımaktadır.",
+      "text_markdown": "Louisiana'da bir ulusal tarih parkı onun adını taşımaktadır.",
+      "tts": {
+        "text": "Louisiana'da bir ulusal tarih parkı onun adını taşımaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New Orleans Muharebesi'ndeki rolü, Amerikan hikâyesindeki yerini sağlamlaştırdı.",
+      "text_markdown": "New Orleans Muharebesi'ndeki rolü, Amerikan hikâyesindeki yerini sağlamlaştırdı.",
+      "tts": {
+        "text": "New Orleans Muharebesi'ndeki rolü, Amerikan hikâyesindeki yerini sağlamlaştırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir kanun kaçağının aynı zamanda vatansever olabileceğini kanıtladı.",
+      "text_markdown": "Bir kanun kaçağının aynı zamanda vatansever olabileceğini kanıtladı.",
+      "tts": {
+        "text": "Bir kanun kaçağının aynı zamanda vatansever olabileceğini kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Topçuları bir şehri kurtarmaya ve dünyanın en güçlü donanmasını utandırmaya yardım etti.",
+      "text_markdown": "Topçuları bir şehri kurtarmaya ve dünyanın en güçlü donanmasını utandırmaya yardım etti.",
+      "tts": {
+        "text": "Topçuları bir şehri kurtarmaya ve dünyanın en güçlü donanmasını utandırmaya yardım etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte sayısız roman, film ve televizyon programında yer almıştır.",
+      "text_markdown": "Lafitte sayısız roman, film ve televizyon programında yer almıştır.",
+      "tts": {
+        "text": "Lafitte sayısız roman, film ve televizyon programında yer almıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lord Byron'ın Korsan şiiri kısmen Lafitte'den esinlenmiş olabilir.",
+      "text_markdown": "Lord Byron'ın Korsan şiiri kısmen Lafitte'den esinlenmiş olabilir.",
+      "tts": {
+        "text": "Lord Byron'ın Korsan şiiri kısmen Lafitte'den esinlenmiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çekici bir kahramandan soğukkanlı bir suçluya kadar her şekilde tasvir edilmiştir.",
+      "text_markdown": "Çekici bir kahramandan soğukkanlı bir suçluya kadar her şekilde tasvir edilmiştir.",
+      "tts": {
+        "text": "Çekici bir kahramandan soğukkanlı bir suçluya kadar her şekilde tasvir edilmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gerçek, her zamanki gibi, arada bir yerdedir.",
+      "text_markdown": "Gerçek, her zamanki gibi, arada bir yerdedir.",
+      "tts": {
+        "text": "Gerçek, her zamanki gibi, arada bir yerdedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Lafitte'in karakteri ve güdüleri üzerine tartışmaya devam etmektedir.",
+      "text_markdown": "Tarihçiler Lafitte'in karakteri ve güdüleri üzerine tartışmaya devam etmektedir.",
+      "tts": {
+        "text": "Tarihçiler Lafitte'in karakteri ve güdüleri üzerine tartışmaya devam etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Evlat edindiği ülkesini seven bir vatansever miydi, yoksa kendini kurtarmak için anlaşma yapan bir suçlu mu?",
+      "text_markdown": "Evlat edindiği ülkesini seven bir vatansever miydi, yoksa kendini kurtarmak için anlaşma yapan bir suçlu mu?",
+      "tts": {
+        "text": "Evlat edindiği ülkesini seven bir vatansever miydi, yoksa kendini kurtarmak için anlaşma yapan bir suçlu mu?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanıtlar her iki yorumu da desteklemektedir.",
+      "text_markdown": "Kanıtlar her iki yorumu da desteklemektedir.",
+      "tts": {
+        "text": "Kanıtlar her iki yorumu da desteklemektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Basit etiketlere direnen, çelişkilerle dolu bir adamdı.",
+      "text_markdown": "Basit etiketlere direnen, çelişkilerle dolu bir adamdı.",
+      "tts": {
+        "text": "Basit etiketlere direnen, çelişkilerle dolu bir adamdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Köle ticaretine karışması, mirasının en karanlık yönüdür.",
+      "text_markdown": "Köle ticaretine karışması, mirasının en karanlık yönüdür.",
+      "tts": {
+        "text": "Köle ticaretine karışması, mirasının en karanlık yönüdür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lafitte, kâr için insanları alıp sattı.",
+      "text_markdown": "Lafitte, kâr için insanları alıp sattı.",
+      "tts": {
+        "text": "Lafitte, kâr için insanları alıp sattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu gerçek, hikâyesinden ayrılamaz, geri kalanı ne kadar romantik olursa olsun.",
+      "text_markdown": "Bu gerçek, hikâyesinden ayrılamaz, geri kalanı ne kadar romantik olursa olsun.",
+      "tts": {
+        "text": "Bu gerçek, hikâyesinden ayrılamaz, geri kalanı ne kadar romantik olursa olsun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kökenlerinin ve ölümünün gizemi, kalıcı çekiciliğini artırmaktadır.",
+      "text_markdown": "Kökenlerinin ve ölümünün gizemi, kalıcı çekiciliğini artırmaktadır.",
+      "tts": {
+        "text": "Kökenlerinin ve ölümünün gizemi, kalıcı çekiciliğini artırmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir yerden ortaya çıkıp hiçliğe kaybolan bir adam, hikâye anlatıcıları için karşı konulamaz.",
+      "text_markdown": "Hiçbir yerden ortaya çıkıp hiçliğe kaybolan bir adam, hikâye anlatıcıları için karşı konulamaz.",
+      "tts": {
+        "text": "Hiçbir yerden ortaya çıkıp hiçliğe kaybolan bir adam, hikâye anlatıcıları için karşı konulamaz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jean Lafitte bunu herkesten daha iyi anlıyordu.",
+      "text_markdown": "Jean Lafitte bunu herkesten daha iyi anlıyordu.",
+      "tts": {
+        "text": "Jean Lafitte bunu herkesten daha iyi anlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efsanesini, baskınlarını planladığı kadar özenle işledi.",
+      "text_markdown": "Efsanesini, baskınlarını planladığı kadar özenle işledi.",
+      "tts": {
+        "text": "Efsanesini, baskınlarını planladığı kadar özenle işledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Görüntü ustasıydı; bir balo salonunda da bir korsan gemisinde de eşit derecede rahat.",
+      "text_markdown": "Görüntü ustasıydı; bir balo salonunda da bir korsan gemisinde de eşit derecede rahat.",
+      "tts": {
+        "text": "Görüntü ustasıydı; bir balo salonunda da bir korsan gemisinde de eşit derecede rahat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gerçek Lafitte ile yarattığı efsane arasındaki çizgi muhtemelen hiçbir zaman tam olarak çözülemeyecektir.",
+      "text_markdown": "Gerçek Lafitte ile yarattığı efsane arasındaki çizgi muhtemelen hiçbir zaman tam olarak çözülemeyecektir.",
+      "tts": {
+        "text": "Gerçek Lafitte ile yarattığı efsane arasındaki çizgi muhtemelen hiçbir zaman tam olarak çözülemeyecektir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Açık olan şey, Körfez Kıyısı'nın tarihini şekillendirdiğidir.",
+      "text_markdown": "Açık olan şey, Körfez Kıyısı'nın tarihini şekillendirdiğidir.",
+      "tts": {
+        "text": "Açık olan şey, Körfez Kıyısı'nın tarihini şekillendirdiğidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kritik bir anda oradaydı ve harekete geçmeyi seçti.",
+      "text_markdown": "Kritik bir anda oradaydı ve harekete geçmeyi seçti.",
+      "tts": {
+        "text": "Kritik bir anda oradaydı ve harekete geçmeyi seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İyi ya da kötü, Jean Lafitte Amerikan hikâyesine damgasını vurdu.",
+      "text_markdown": "İyi ya da kötü, Jean Lafitte Amerikan hikâyesine damgasını vurdu.",
+      "tts": {
+        "text": "İyi ya da kötü, Jean Lafitte Amerikan hikâyesine damgasını vurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yirminci yüzyılda Jean Laffite'in Günlüğü olarak bilinen bir belge ortaya çıktı.",
+      "text_markdown": "Yirminci yüzyılda Jean Laffite'in Günlüğü olarak bilinen bir belge ortaya çıktı.",
+      "tts": {
+        "text": "Yirminci yüzyılda Jean Laffite'in Günlüğü olarak bilinen bir belge ortaya çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçilerin çoğu günlüğü sahte kabul etmektedir, ancak tartışma devam etmektedir.",
+      "text_markdown": "Tarihçilerin çoğu günlüğü sahte kabul etmektedir, ancak tartışma devam etmektedir.",
+      "tts": {
+        "text": "Tarihçilerin çoğu günlüğü sahte kabul etmektedir, ancak tartışma devam etmektedir.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

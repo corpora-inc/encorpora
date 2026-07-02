@@ -2119,10 +2119,10 @@
       "paragraph_id": "p144",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Det er tundraen.",
-      "text_markdown": "Det er tundraen.",
+      "text": "Det er tundraen, helt enkelt.",
+      "text_markdown": "Det er tundraen, helt enkelt.",
       "tts": {
-        "text": "Det er tundraen.",
+        "text": "Det er tundraen, helt enkelt.",
         "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }

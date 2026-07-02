@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_samuel_bellamy",
+  "language": "ja",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのメモ",
+      "text_markdown": "読者へのメモ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはサミュエル・ベラミーの物語である。彼は自らを海のロビン・フッドと呼んだ海賊だった。",
+      "text_markdown": "これはサミュエル・ベラミーの物語である。彼は自らを海のロビン・フッドと呼んだ海賊だった。",
+      "tts": {
+        "text": "これはサミュエル・ベラミーの物語である。彼は自らを海のロビン・フッドと呼んだ海賊だった。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の活動はわずか一年にも満たなかったが、今日まで残る歴史の痕跡を刻んだ。",
+      "text_markdown": "彼の活動はわずか一年にも満たなかったが、今日まで残る歴史の痕跡を刻んだ。",
+      "tts": {
+        "text": "彼の活動はわずか一年にも満たなかったが、今日まで残る歴史の痕跡を刻んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは黄金時代で最も成功した海賊の一人だった。",
+      "text_markdown": "ベラミーは黄金時代で最も成功した海賊の一人だった。",
+      "tts": {
+        "text": "ベラミーは黄金時代で最も成功した海賊の一人だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はわずか十一か月で五十隻以上の船を拿捕した。",
+      "text_markdown": "彼はわずか十一か月で五十隻以上の船を拿捕した。",
+      "tts": {
+        "text": "彼はわずか十一か月で五十隻以上の船を拿捕した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は正義、不平等、そして支配階級の偽善について演説した。",
+      "text_markdown": "彼は正義、不平等、そして支配階級の偽善について演説した。",
+      "tts": {
+        "text": "彼は正義、不平等、そして支配階級の偽善について演説した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は28歳でケープコッド沖の嵐で命を落とした。",
+      "text_markdown": "彼は28歳でケープコッド沖の嵐で命を落とした。",
+      "tts": {
+        "text": "彼は二十八歳でケープコッド沖の嵐で命を落とした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の旗艦ウィダー号は彼と共に沈み、260年以上にわたり海底に眠っていた。",
+      "text_markdown": "彼の旗艦ウィダー号は彼と共に沈み、260年以上にわたり海底に眠っていた。",
+      "tts": {
+        "text": "彼の旗艦ウィダー号は彼と共に沈み、二百六十年以上にわたり海底に眠っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984年、バリー・クリフォードという探検家がその残骸を発見した。",
+      "text_markdown": "1984年、バリー・クリフォードという探検家がその残骸を発見した。",
+      "tts": {
+        "text": "千九百八十四年、バリー・クリフォードという探検家がその残骸を発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは今日まで発見された唯一の認証された海賊船の残骸である。",
+      "text_markdown": "これは今日まで発見された唯一の認証された海賊船の残骸である。",
+      "tts": {
+        "text": "これは今日まで発見された唯一の認証された海賊船の残骸である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号から回収された遺物は、海賊の生活に対する我々の理解を一変させた。",
+      "text_markdown": "ウィダー号から回収された遺物は、海賊の生活に対する我々の理解を一変させた。",
+      "tts": {
+        "text": "ウィダー号から回収された遺物は、海賊の生活に対する我々の理解を一変させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これはそれらの遺物と、その船と共にそれらを海底へ運んだ男の物語である。",
+      "text_markdown": "これはそれらの遺物と、その船と共にそれらを海底へ運んだ男の物語である。",
+      "tts": {
+        "text": "これはそれらの遺物と、その船と共にそれらを海底へ運んだ男の物語である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊の黄金時代",
+      "text_markdown": "海賊の黄金時代"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700年代初頭は海賊の黄金時代として知られている。",
+      "text_markdown": "1700年代初頭は海賊の黄金時代として知られている。",
+      "tts": {
+        "text": "千七百年代初頭は海賊の黄金時代として知られている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この時代、数千人の男たちが大西洋とカリブ海で海賊に転じた。",
+      "text_markdown": "この時代、数千人の男たちが大西洋とカリブ海で海賊に転じた。",
+      "tts": {
+        "text": "この時代、数千人の男たちが大西洋とカリブ海で海賊に転じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは砂糖、タバコ、布、そして奴隷にされた人々を運ぶ商船を襲った。",
+      "text_markdown": "彼らは砂糖、タバコ、布、そして奴隷にされた人々を運ぶ商船を襲った。",
+      "tts": {
+        "text": "彼らは砂糖、タバコ、布、そして奴隷にされた人々を運ぶ商船を襲った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黄金時代はおよそ1715年頃に始まり、1720年代半ばまで続いた。",
+      "text_markdown": "黄金時代はおよそ1715年頃に始まり、1720年代半ばまで続いた。",
+      "tts": {
+        "text": "黄金時代はおよそ千七百十五年頃に始まり、千七百二十年代半ばまで続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはスペイン継承戦争の終結がきっかけだった。",
+      "text_markdown": "それはスペイン継承戦争の終結がきっかけだった。",
+      "tts": {
+        "text": "それはスペイン継承戦争の終結がきっかけだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦争が終わると、数千人の船乗りが突然職を失った。",
+      "text_markdown": "戦争が終わると、数千人の船乗りが突然職を失った。",
+      "tts": {
+        "text": "戦争が終わると、数千人の船乗りが突然職を失った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン継承戦争は十年以上続いた。",
+      "text_markdown": "スペイン継承戦争は十年以上続いた。",
+      "tts": {
+        "text": "スペイン継承戦争は十年以上続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほぼすべてのヨーロッパの主要国がスペイン王位の継承をめぐって争った。",
+      "text_markdown": "ほぼすべてのヨーロッパの主要国がスペイン王位の継承をめぐって争った。",
+      "tts": {
+        "text": "ほぼすべてのヨーロッパの主要国がスペイン王位の継承をめぐって争った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この紛争は植民地にまで及び、陸上と同様に海上でも戦われた。",
+      "text_markdown": "この紛争は植民地にまで及び、陸上と同様に海上でも戦われた。",
+      "tts": {
+        "text": "この紛争は植民地にまで及び、陸上と同様に海上でも戦われた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦争中、多くの船乗りが私掠船員として政府のために敵船を襲撃した。",
+      "text_markdown": "戦争中、多くの船乗りが私掠船員として政府のために敵船を襲撃した。",
+      "tts": {
+        "text": "戦争中、多くの船乗りが私掠船員として政府のために敵船を襲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "平和が訪れた今、私掠免許状はもう存在しなかった。",
+      "text_markdown": "平和が訪れた今、私掠免許状はもう存在しなかった。",
+      "tts": {
+        "text": "平和が訪れた今、私掠免許状はもう存在しなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦争で身につけた技術は平時には合法的な用途がなかった。",
+      "text_markdown": "戦争で身につけた技術は平時には合法的な用途がなかった。",
+      "tts": {
+        "text": "戦争で身につけた技術は平時には合法的な用途がなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700年代初頭の一般の船乗りの生活は過酷で賃金も低かった。",
+      "text_markdown": "1700年代初頭の一般の船乗りの生活は過酷で賃金も低かった。",
+      "tts": {
+        "text": "千七百年代初頭の一般の船乗りの生活は過酷で賃金も低かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船の船長たちは暴君のように船を支配した。",
+      "text_markdown": "商船の船長たちは暴君のように船を支配した。",
+      "tts": {
+        "text": "商船の船長たちは暴君のように船を支配した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鞭打ち、飢餓賃金、そして危険な労働条件が当たり前だった。",
+      "text_markdown": "鞭打ち、飢餓賃金、そして危険な労働条件が当たり前だった。",
+      "tts": {
+        "text": "鞭打ち、飢餓賃金、そして危険な労働条件が当たり前だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一般の船乗りは月にわずか約一ポンドを稼いだ。",
+      "text_markdown": "一般の船乗りは月にわずか約一ポンドを稼いだ。",
+      "tts": {
+        "text": "一般の船乗りは月にわずか約一ポンドを稼いだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "成功した海賊は一日でそれだけ稼ぐことができた。",
+      "text_markdown": "成功した海賊は一日でそれだけ稼ぐことができた。",
+      "tts": {
+        "text": "成功した海賊は一日でそれだけ稼ぐことができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "失うものが何もない男たちにとって、海賊になる経済的動機は圧倒的だった。",
+      "text_markdown": "失うものが何もない男たちにとって、海賊になる経済的動機は圧倒的だった。",
+      "tts": {
+        "text": "失うものが何もない男たちにとって、海賊になる経済的動機は圧倒的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの船乗りが海賊行為をこの残酷さからの逃避と見なした。",
+      "text_markdown": "多くの船乗りが海賊行為をこの残酷さからの逃避と見なした。",
+      "tts": {
+        "text": "多くの船乗りが海賊行為をこの残酷さからの逃避と見なした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊船では、船長は乗組員によって選出された。",
+      "text_markdown": "海賊船では、船長は乗組員によって選出された。",
+      "tts": {
+        "text": "海賊船では、船長は乗組員によって選出された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "略奪品は合意された規則に従って分配され、全員に投票権があった。",
+      "text_markdown": "略奪品は合意された規則に従って分配され、全員に投票権があった。",
+      "tts": {
+        "text": "略奪品は合意された規則に従って分配され、全員に投票権があった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊船は多くの点で小さな浮かぶ民主主義だった。",
+      "text_markdown": "海賊船は多くの点で小さな浮かぶ民主主義だった。",
+      "tts": {
+        "text": "海賊船は多くの点で小さな浮かぶ民主主義だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らには成文化された行動規範、選出された役員、負傷した乗組員への補償制度があった。",
+      "text_markdown": "彼らには成文化された行動規範、選出された役員、負傷した乗組員への補償制度があった。",
+      "tts": {
+        "text": "彼らには成文化された行動規範、選出された役員、負傷した乗組員への補償制度があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの慣行は、一般の人々にほとんど政治的権利がなかった時代としては驚くべきものだった。",
+      "text_markdown": "これらの慣行は、一般の人々にほとんど政治的権利がなかった時代としては驚くべきものだった。",
+      "tts": {
+        "text": "これらの慣行は、一般の人々にほとんど政治的権利がなかった時代としては驚くべきものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バハマは海賊世界の非公式な首都となった。",
+      "text_markdown": "バハマは海賊世界の非公式な首都となった。",
+      "tts": {
+        "text": "バハマは海賊世界の非公式な首都となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ニュープロビデンス島のナッソーの町は無法の避難所だった。",
+      "text_markdown": "ニュープロビデンス島のナッソーの町は無法の避難所だった。",
+      "tts": {
+        "text": "ニュープロビデンス島のナッソーの町は無法の避難所だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何百人もの海賊がそこに公然と暮らし、彼らを止める総督も守備隊もいなかった。",
+      "text_markdown": "何百人もの海賊がそこに公然と暮らし、彼らを止める総督も守備隊もいなかった。",
+      "tts": {
+        "text": "何百人もの海賊がそこに公然と暮らし、彼らを止める総督も守備隊もいなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "植民地列強は海賊行為を根絶する決意を固めていた。",
+      "text_markdown": "植民地列強は海賊行為を根絶する決意を固めていた。",
+      "tts": {
+        "text": "植民地列強は海賊行為を根絶する決意を固めていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊の攻撃は貿易を混乱させ、商人たちに莫大な損害を与えた。",
+      "text_markdown": "海賊の攻撃は貿易を混乱させ、商人たちに莫大な損害を与えた。",
+      "tts": {
+        "text": "海賊の攻撃は貿易を混乱させ、商人たちに莫大な損害を与えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "各国政府は海賊の捕獲に懸賞金を出し、軍艦を送って彼らを追い詰めた。",
+      "text_markdown": "各国政府は海賊の捕獲に懸賞金を出し、軍艦を送って彼らを追い詰めた。",
+      "tts": {
+        "text": "各国政府は海賊の捕獲に懸賞金を出し、軍艦を送って彼らを追い詰めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "特にイングランドは海賊の訴追に積極的だった。",
+      "text_markdown": "特にイングランドは海賊の訴追に積極的だった。",
+      "tts": {
+        "text": "特にイングランドは海賊の訴追に積極的だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕らえられた海賊は海事裁判所で裁かれ、ほぼ必ず絞首刑に処された。",
+      "text_markdown": "捕らえられた海賊は海事裁判所で裁かれ、ほぼ必ず絞首刑に処された。",
+      "tts": {
+        "text": "捕らえられた海賊は海事裁判所で裁かれ、ほぼ必ず絞首刑に処された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの遺体は時に港の入口で鉄の檻に入れて晒され、他の者への警告とされた。",
+      "text_markdown": "彼らの遺体は時に港の入口で鉄の檻に入れて晒され、他の者への警告とされた。",
+      "tts": {
+        "text": "彼らの遺体は時に港の入口で鉄の檻に入れて晒され、他の者への警告とされた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時代、大西洋奴隷貿易は最盛期を迎えていた。",
+      "text_markdown": "この時代、大西洋奴隷貿易は最盛期を迎えていた。",
+      "tts": {
+        "text": "この時代、大西洋奴隷貿易は最盛期を迎えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船は西アフリカから奴隷にされたアフリカ人をカリブ海やアメリカの植民地へ運んだ。",
+      "text_markdown": "船は西アフリカから奴隷にされたアフリカ人をカリブ海やアメリカの植民地へ運んだ。",
+      "tts": {
+        "text": "船は西アフリカから奴隷にされたアフリカ人をカリブ海やアメリカの植民地へ運んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの奴隷船は貴重な積荷を運んでいたため、海賊の格好の標的だった。",
+      "text_markdown": "これらの奴隷船は貴重な積荷を運んでいたため、海賊の格好の標的だった。",
+      "tts": {
+        "text": "これらの奴隷船は貴重な積荷を運んでいたため、海賊の格好の標的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの旗艦となる船も、そのような船の一隻だった。",
+      "text_markdown": "ベラミーの旗艦となる船も、そのような船の一隻だった。",
+      "tts": {
+        "text": "ベラミーの旗艦となる船も、そのような船の一隻だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウィダー・ガリー号はロンドンで建造された奴隷船で、西アフリカの交易所ウィダーにちなんで名付けられた。",
+      "text_markdown": "ウィダー・ガリー号はロンドンで建造された奴隷船で、西アフリカの交易所ウィダーにちなんで名付けられた。",
+      "tts": {
+        "text": "ウィダー・ガリー号はロンドンで建造された奴隷船で、西アフリカの交易所ウィダーにちなんで名付けられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューイングランド沖の海域は意外にも活発な海賊の狩場だった。",
+      "text_markdown": "ニューイングランド沖の海域は意外にも活発な海賊の狩場だった。",
+      "tts": {
+        "text": "ニューイングランド沖の海域は意外にも活発な海賊の狩場だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "植民地とヨーロッパの間を航行する船は絶えずこの海域を通過した。",
+      "text_markdown": "植民地とヨーロッパの間を航行する船は絶えずこの海域を通過した。",
+      "tts": {
+        "text": "植民地とヨーロッパの間を航行する船は絶えずこの海域を通過した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ケープコッドは危険な浅瀬と移動する砂州を持ち、あらゆる種類の船の墓場だった。",
+      "text_markdown": "ケープコッドは危険な浅瀬と移動する砂州を持ち、あらゆる種類の船の墓場だった。",
+      "tts": {
+        "text": "ケープコッドは危険な浅瀬と移動する砂州を持ち、あらゆる種類の船の墓場だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700年代初頭にケープコッドに住む人々は難破船をよく知っていた。",
+      "text_markdown": "1700年代初頭にケープコッドに住む人々は難破船をよく知っていた。",
+      "tts": {
+        "text": "千七百年代初頭にケープコッドに住む人々は難破船をよく知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは難破した船から木材、積荷、索具を引き揚げることを日常的に行っていた。",
+      "text_markdown": "彼らは難破した船から木材、積荷、索具を引き揚げることを日常的に行っていた。",
+      "tts": {
+        "text": "彼らは難破した船から木材、積荷、索具を引き揚げることを日常的に行っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "偽の信号火で船を岩礁に誘い込むという噂のある者もいた。",
+      "text_markdown": "偽の信号火で船を岩礁に誘い込むという噂のある者もいた。",
+      "tts": {
+        "text": "偽の信号火で船を岩礁に誘い込むという噂のある者もいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "貧困、不平等、そして海上の暴力というこの世界がサミュエル・ベラミーを生み出した。",
+      "text_markdown": "貧困、不平等、そして海上の暴力というこの世界がサミュエル・ベラミーを生み出した。",
+      "tts": {
+        "text": "貧困、不平等、そして海上の暴力というこの世界がサミュエル・ベラミーを生み出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "海賊の黄金時代",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は無一文から身を起こし、短い一年の間にできる限りのすべてを手に入れた。",
+      "text_markdown": "彼は無一文から身を起こし、短い一年の間にできる限りのすべてを手に入れた。",
+      "tts": {
+        "text": "彼は無一文から身を起こし、短い一年の間にできる限りのすべてを手に入れた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "デヴォンの少年",
+      "text_markdown": "デヴォンの少年"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サミュエル・ベラミーはイングランド南西部のデヴォン州で生まれた。",
+      "text_markdown": "サミュエル・ベラミーはイングランド南西部のデヴォン州で生まれた。",
+      "tts": {
+        "text": "サミュエル・ベラミーはイングランド南西部のデヴォン州で生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の生まれた年は1689年が最も有力だが、洗礼記録は見つかっていない。",
+      "text_markdown": "彼の生まれた年は1689年が最も有力だが、洗礼記録は見つかっていない。",
+      "tts": {
+        "text": "彼の生まれた年は千六百八十九年が最も有力だが、洗礼記録は見つかっていない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "デヴォンは船乗り、漁師、船長を輩出してきた長い歴史を持つ海洋州だった。",
+      "text_markdown": "デヴォンは船乗り、漁師、船長を輩出してきた長い歴史を持つ海洋州だった。",
+      "tts": {
+        "text": "デヴォンは船乗り、漁師、船長を輩出してきた長い歴史を持つ海洋州だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も有名なイングランドの船乗りの一人であるフランシス・ドレーク卿は、一世紀以上前にそこで生まれていた。",
+      "text_markdown": "最も有名なイングランドの船乗りの一人であるフランシス・ドレーク卿は、一世紀以上前にそこで生まれていた。",
+      "tts": {
+        "text": "最も有名なイングランドの船乗りの一人であるフランシス・ドレーク卿は、一世紀以上前にそこで生まれていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海はこの地域のアイデンティティに織り込まれていた。",
+      "text_markdown": "海はこの地域のアイデンティティに織り込まれていた。",
+      "tts": {
+        "text": "海はこの地域のアイデンティティに織り込まれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "デヴォンの沿岸の町は漁船、貿易船、海軍の船で賑わっていた。",
+      "text_markdown": "デヴォンの沿岸の町は漁船、貿易船、海軍の船で賑わっていた。",
+      "tts": {
+        "text": "デヴォンの沿岸の町は漁船、貿易船、海軍の船で賑わっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "少年たちは港から船が出入りするのを見て育った。",
+      "text_markdown": "少年たちは港から船が出入りするのを見て育った。",
+      "tts": {
+        "text": "少年たちは港から船が出入りするのを見て育った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの者が自ら海に出ることを夢見た。",
+      "text_markdown": "多くの者が自ら海に出ることを夢見た。",
+      "tts": {
+        "text": "多くの者が自ら海に出ることを夢見た。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの家族や子供時代についてはほとんど知られていない。",
+      "text_markdown": "ベラミーの家族や子供時代についてはほとんど知られていない。",
+      "tts": {
+        "text": "ベラミーの家族や子供時代についてはほとんど知られていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家たちは彼の家族が貧しかったと考えている。",
+      "text_markdown": "歴史家たちは彼の家族が貧しかったと考えている。",
+      "tts": {
+        "text": "歴史家たちは彼の家族が貧しかったと考えている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はおそらく少年時代に海に出た。デヴォンの貧しい子供たちの多くがそうしたように。",
+      "text_markdown": "彼はおそらく少年時代に海に出た。デヴォンの貧しい子供たちの多くがそうしたように。",
+      "tts": {
+        "text": "彼はおそらく少年時代に海に出た。デヴォンの貧しい子供たちの多くがそうしたように。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある時期、ベラミーはイギリス海軍に所属した。",
+      "text_markdown": "ある時期、ベラミーはイギリス海軍に所属した。",
+      "tts": {
+        "text": "ある時期、ベラミーはイギリス海軍に所属した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は1713年に終結したスペイン継承戦争で戦った可能性がある。",
+      "text_markdown": "彼は1713年に終結したスペイン継承戦争で戦った可能性がある。",
+      "tts": {
+        "text": "彼は千七百十三年に終結したスペイン継承戦争で戦った可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦後、彼は年金も将来の見通しもなく除隊された。",
+      "text_markdown": "戦後、彼は年金も将来の見通しもなく除隊された。",
+      "tts": {
+        "text": "戦後、彼は年金も将来の見通しもなく除隊された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス海軍は不要になった船乗りを粗末に扱った。",
+      "text_markdown": "イギリス海軍は不要になった船乗りを粗末に扱った。",
+      "tts": {
+        "text": "イギリス海軍は不要になった船乗りを粗末に扱った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王室のために命を懸けた者たちが補償なしに捨てられた。",
+      "text_markdown": "王室のために命を懸けた者たちが補償なしに捨てられた。",
+      "tts": {
+        "text": "王室のために命を懸けた者たちが補償なしに捨てられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この不正義はベラミーに深い痕跡を残した。",
+      "text_markdown": "この不正義はベラミーに深い痕跡を残した。",
+      "tts": {
+        "text": "この不正義はベラミーに深い痕跡を残した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の何千人もの元船乗りと同様、ベラミーは自分を必要としない世界に放り出された。",
+      "text_markdown": "他の何千人もの元船乗りと同様、ベラミーは自分を必要としない世界に放り出された。",
+      "tts": {
+        "text": "他の何千人もの元船乗りと同様、ベラミーは自分を必要としない世界に放り出された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海軍で身につけた技術は陸上では何の役にも立たなかった。",
+      "text_markdown": "海軍で身につけた技術は陸上では何の役にも立たなかった。",
+      "tts": {
+        "text": "海軍で身につけた技術は陸上では何の役にも立たなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1714年か1715年頃、ベラミーはアメリカ植民地へ渡った。",
+      "text_markdown": "1714年か1715年頃、ベラミーはアメリカ植民地へ渡った。",
+      "tts": {
+        "text": "千七百十四年か千七百十五年頃、ベラミーはアメリカ植民地へ渡った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はマサチューセッツ植民地のケープコッドに到着した。",
+      "text_markdown": "彼はマサチューセッツ植民地のケープコッドに到着した。",
+      "tts": {
+        "text": "彼はマサチューセッツ植民地のケープコッドに到着した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700年代初頭のケープコッドは辺鄙な風の強い場所だった。",
+      "text_markdown": "1700年代初頭のケープコッドは辺鄙な風の強い場所だった。",
+      "tts": {
+        "text": "千七百年代初頭のケープコッドは辺鄙な風の強い場所だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "砂地の土壌は農業に適さず、ほとんどの人が海で生計を立てていた。",
+      "text_markdown": "砂地の土壌は農業に適さず、ほとんどの人が海で生計を立てていた。",
+      "tts": {
+        "text": "砂地の土壌は農業に適さず、ほとんどの人が海で生計を立てていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "集落は小さく、信仰深く、よそ者に対して疑り深かった。",
+      "text_markdown": "集落は小さく、信仰深く、よそ者に対して疑り深かった。",
+      "tts": {
+        "text": "集落は小さく、信仰深く、よそ者に対して疑り深かった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地元の伝説によると、ベラミーはイーストハムの町でマリア・ハレットという若い女性と出会った。",
+      "text_markdown": "地元の伝説によると、ベラミーはイーストハムの町でマリア・ハレットという若い女性と出会った。",
+      "tts": {
+        "text": "地元の伝説によると、ベラミーはイーストハムの町でマリア・ハレットという若い女性と出会った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マリアはケープコッドの名家の出身だった。",
+      "text_markdown": "マリアはケープコッドの名家の出身だった。",
+      "tts": {
+        "text": "マリアはケープコッドの名家の出身だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "物語によると、ベラミーは彼女に恋をし、裕福な男になって戻ると約束した。",
+      "text_markdown": "物語によると、ベラミーは彼女に恋をし、裕福な男になって戻ると約束した。",
+      "tts": {
+        "text": "物語によると、ベラミーは彼女に恋をし、裕福な男になって戻ると約束した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この恋物語が真実なのか、それとも単なる伝承なのかは確かめようがない。",
+      "text_markdown": "この恋物語が真実なのか、それとも単なる伝承なのかは確かめようがない。",
+      "tts": {
+        "text": "この恋物語が真実なのか、それとも単なる伝承なのかは確かめようがない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは三世紀にわたって語り継がれ、ケープコッドの伝統に深く根付いている。",
+      "text_markdown": "それは三世紀にわたって語り継がれ、ケープコッドの伝統に深く根付いている。",
+      "tts": {
+        "text": "それは三世紀にわたって語り継がれ、ケープコッドの伝統に深く根付いている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "確かなことは、ベラミーが財宝の可能性に引きつけられたということだ。",
+      "text_markdown": "確かなことは、ベラミーが財宝の可能性に引きつけられたということだ。",
+      "tts": {
+        "text": "確かなことは、ベラミーが財宝の可能性に引きつけられたということだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715年、スペインの財宝船団がフロリダ沖のハリケーンで壊滅した。",
+      "text_markdown": "1715年、スペインの財宝船団がフロリダ沖のハリケーンで壊滅した。",
+      "tts": {
+        "text": "千七百十五年、スペインの財宝船団がフロリダ沖のハリケーンで壊滅した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "十一隻の船が沈み、数百万ペソ相当の銀と金が海底に散らばった。",
+      "text_markdown": "十一隻の船が沈み、数百万ペソ相当の銀と金が海底に散らばった。",
+      "tts": {
+        "text": "十一隻の船が沈み、数百万ペソ相当の銀と金が海底に散らばった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "難破の知らせは植民地中に急速に広まった。",
+      "text_markdown": "難破の知らせは植民地中に急速に広まった。",
+      "tts": {
+        "text": "難破の知らせは植民地中に急速に広まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何百人もの男たちが財宝の引き揚げを期待してフロリダに殺到した。",
+      "text_markdown": "何百人もの男たちが財宝の引き揚げを期待してフロリダに殺到した。",
+      "tts": {
+        "text": "何百人もの男たちが財宝の引き揚げを期待してフロリダに殺到した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベラミーもその中にいた。",
+      "text_markdown": "ベラミーもその中にいた。",
+      "tts": {
+        "text": "ベラミーもその中にいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はポールズグレイヴ・ウィリアムズという年上で裕福な男と手を組んだ。",
+      "text_markdown": "彼はポールズグレイヴ・ウィリアムズという年上で裕福な男と手を組んだ。",
+      "tts": {
+        "text": "彼はポールズグレイヴ・ウィリアムズという年上で裕福な男と手を組んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウィリアムズはロードアイランドの元司法長官の息子だった。",
+      "text_markdown": "ウィリアムズはロードアイランドの元司法長官の息子だった。",
+      "tts": {
+        "text": "ウィリアムズはロードアイランドの元司法長官の息子だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は小さな船に資金を出し、二人はフロリダへ南下した。",
+      "text_markdown": "彼は小さな船に資金を出し、二人はフロリダへ南下した。",
+      "tts": {
+        "text": "彼は小さな船に資金を出し、二人はフロリダへ南下した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "引き揚げ作業は失敗に終わった。",
+      "text_markdown": "引き揚げ作業は失敗に終わった。",
+      "tts": {
+        "text": "引き揚げ作業は失敗に終わった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン人はすでに財宝の大部分を回収し、残りを警備していた。",
+      "text_markdown": "スペイン人はすでに財宝の大部分を回収し、残りを警備していた。",
+      "tts": {
+        "text": "スペイン人はすでに財宝の大部分を回収し、残りを警備していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベラミーとウィリアムズは手ぶらで帰ることになった。",
+      "text_markdown": "ベラミーとウィリアムズは手ぶらで帰ることになった。",
+      "tts": {
+        "text": "ベラミーとウィリアムズは手ぶらで帰ることになった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "無一文で挫折した二人は海賊の仲間に入り込んだ。",
+      "text_markdown": "無一文で挫折した二人は海賊の仲間に入り込んだ。",
+      "tts": {
+        "text": "無一文で挫折した二人は海賊の仲間に入り込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはバハマを拠点とするベンジャミン・ホーニゴールドという海賊の船長と出会った。",
+      "text_markdown": "彼らはバハマを拠点とするベンジャミン・ホーニゴールドという海賊の船長と出会った。",
+      "tts": {
+        "text": "彼らはバハマを拠点とするベンジャミン・ホーニゴールドという海賊の船長と出会った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ホーニゴールドは彼らを乗組員に招いた。",
+      "text_markdown": "ホーニゴールドは彼らを乗組員に招いた。",
+      "tts": {
+        "text": "ホーニゴールドは彼らを乗組員に招いた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ホーニゴールドは経験豊富な海賊だったが、多くの部下を怒らせる規則があった。",
+      "text_markdown": "ホーニゴールドは経験豊富な海賊だったが、多くの部下を怒らせる規則があった。",
+      "tts": {
+        "text": "ホーニゴールドは経験豊富な海賊だったが、多くの部下を怒らせる規則があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はイングランドの船を攻撃することを拒否した。",
+      "text_markdown": "彼はイングランドの船を攻撃することを拒否した。",
+      "tts": {
+        "text": "彼はイングランドの船を攻撃することを拒否した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は自らを愛国者であり一般の犯罪者ではないと見なし、他国の船だけを襲撃した。",
+      "text_markdown": "彼は自らを愛国者であり一般の犯罪者ではないと見なし、他国の船だけを襲撃した。",
+      "tts": {
+        "text": "彼は自らを愛国者であり一般の犯罪者ではないと見なし、他国の船だけを襲撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーにはそのような躊躇はなかった。",
+      "text_markdown": "ベラミーにはそのような躊躇はなかった。",
+      "tts": {
+        "text": "ベラミーにはそのような躊躇はなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は国籍に関係なく、金持ちの船はすべて正当な標的だと信じていた。",
+      "text_markdown": "彼は国籍に関係なく、金持ちの船はすべて正当な標的だと信じていた。",
+      "tts": {
+        "text": "彼は国籍に関係なく、金持ちの船はすべて正当な標的だと信じていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の考えは乗組員の大多数に支持された。",
+      "text_markdown": "彼の考えは乗組員の大多数に支持された。",
+      "tts": {
+        "text": "彼の考えは乗組員の大多数に支持された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1716年の終わり頃、乗組員はホーニゴールドを船長から解任する投票を行った。",
+      "text_markdown": "1716年の終わり頃、乗組員はホーニゴールドを船長から解任する投票を行った。",
+      "tts": {
+        "text": "千七百十六年の終わり頃、乗組員はホーニゴールドを船長から解任する投票を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはその代わりにサミュエル・ベラミーを選出した。",
+      "text_markdown": "彼らはその代わりにサミュエル・ベラミーを選出した。",
+      "tts": {
+        "text": "彼らはその代わりにサミュエル・ベラミーを選出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "およそ27歳で、ベラミーは自分自身の海賊船の船長となった。",
+      "text_markdown": "およそ27歳で、ベラミーは自分自身の海賊船の船長となった。",
+      "tts": {
+        "text": "およそ二十七歳で、ベラミーは自分自身の海賊船の船長となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ホーニゴールドは少数の忠実な部下と共に平和的に去った。",
+      "text_markdown": "ホーニゴールドは少数の忠実な部下と共に平和的に去った。",
+      "tts": {
+        "text": "ホーニゴールドは少数の忠実な部下と共に平和的に去った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "デヴォンの少年",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は後に国王の恩赦を受け、自ら海賊狩りとなった。",
+      "text_markdown": "彼は後に国王の恩赦を受け、自ら海賊狩りとなった。",
+      "tts": {
+        "text": "彼は後に国王の恩赦を受け、自ら海賊狩りとなった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊の王子",
+      "text_markdown": "海賊の王子"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは指揮を執るとすぐに行動を開始した。",
+      "text_markdown": "ベラミーは指揮を執るとすぐに行動を開始した。",
+      "tts": {
+        "text": "ベラミーは指揮を執るとすぐに行動を開始した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はカリブ海と大西洋沿岸を航行し、次々と船を拿捕していった。",
+      "text_markdown": "彼はカリブ海と大西洋沿岸を航行し、次々と船を拿捕していった。",
+      "tts": {
+        "text": "彼はカリブ海と大西洋沿岸を航行し、次々と船を拿捕していった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拿捕した船が艦隊に加わり、彼の船団は急速に拡大した。",
+      "text_markdown": "拿捕した船が艦隊に加わり、彼の船団は急速に拡大した。",
+      "tts": {
+        "text": "拿捕した船が艦隊に加わり、彼の船団は急速に拡大した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーはそのカリスマ性と雄弁な演説で知られていた。",
+      "text_markdown": "ベラミーはそのカリスマ性と雄弁な演説で知られていた。",
+      "tts": {
+        "text": "ベラミーはそのカリスマ性と雄弁な演説で知られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は少数の者がすべてを所有し、残りの者が何も持たない世界の不正義について語った。",
+      "text_markdown": "彼は少数の者がすべてを所有し、残りの者が何も持たない世界の不正義について語った。",
+      "tts": {
+        "text": "彼は少数の者がすべてを所有し、残りの者が何も持たない世界の不正義について語った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チャールズ・ジョンソン船長の有名な海賊についての書物によると、ベラミーはかつて捕らえた商船の船長に語りかけた。",
+      "text_markdown": "チャールズ・ジョンソン船長の有名な海賊についての書物によると、ベラミーはかつて捕らえた商船の船長に語りかけた。",
+      "tts": {
+        "text": "チャールズ・ジョンソン船長の有名な海賊についての書物によると、ベラミーはかつて捕らえた商船の船長に語りかけた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はその男に、海賊と商人の唯一の違いは、商人が法の庇護の下で略奪するということだと語った。",
+      "text_markdown": "彼はその男に、海賊と商人の唯一の違いは、商人が法の庇護の下で略奪するということだと語った。",
+      "tts": {
+        "text": "彼はその男に、海賊と商人の唯一の違いは、商人が法の庇護の下で略奪するということだと語った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは、自分と部下たちは自らの勇気で必要なものを取る正直な男たちだと宣言した。",
+      "text_markdown": "ベラミーは、自分と部下たちは自らの勇気で必要なものを取る正直な男たちだと宣言した。",
+      "tts": {
+        "text": "ベラミーは、自分と部下たちは自らの勇気で必要なものを取る正直な男たちだと宣言した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は富者の奴隷であるより自由な海賊でいたいと語った。",
+      "text_markdown": "彼は富者の奴隷であるより自由な海賊でいたいと語った。",
+      "tts": {
+        "text": "彼は富者の奴隷であるより自由な海賊でいたいと語った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの言葉は、正確かどうかにかかわらず、海賊の反乱精神を体現していた。",
+      "text_markdown": "これらの言葉は、正確かどうかにかかわらず、海賊の反乱精神を体現していた。",
+      "tts": {
+        "text": "これらの言葉は、正確かどうかにかかわらず、海賊の反乱精神を体現していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは黒い髪にちなんでブラック・サムというあだ名を得たとされている。",
+      "text_markdown": "ベラミーは黒い髪にちなんでブラック・サムというあだ名を得たとされている。",
+      "tts": {
+        "text": "ベラミーは黒い髪にちなんでブラック・サムというあだ名を得たとされている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "同時代の多くの男たちとは異なり、彼は粉をつけたかつらを着用することを拒否した。",
+      "text_markdown": "同時代の多くの男たちとは異なり、彼は粉をつけたかつらを着用することを拒否した。",
+      "tts": {
+        "text": "同時代の多くの男たちとは異なり、彼は粉をつけたかつらを着用することを拒否した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は長い黒髪をシンプルなリボンで後ろに束ねていた。",
+      "text_markdown": "彼は長い黒髪をシンプルなリボンで後ろに束ねていた。",
+      "tts": {
+        "text": "彼は長い黒髪をシンプルなリボンで後ろに束ねていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の外見は伝説の一部となった。",
+      "text_markdown": "彼の外見は伝説の一部となった。",
+      "tts": {
+        "text": "彼の外見は伝説の一部となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "かつらが富と地位を象徴する時代に、ベラミーのかつらなしの頭は反抗の表明だった。",
+      "text_markdown": "かつらが富と地位を象徴する時代に、ベラミーのかつらなしの頭は反抗の表明だった。",
+      "tts": {
+        "text": "かつらが富と地位を象徴する時代に、ベラミーのかつらなしの頭は反抗の表明だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の乗組員はどんな基準から見ても多様だった。",
+      "text_markdown": "彼の乗組員はどんな基準から見ても多様だった。",
+      "tts": {
+        "text": "彼の乗組員はどんな基準から見ても多様だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランド人、アイルランド人、スコットランド人、フランス人、オランダ人、ネイティブ・アメリカン、アフリカ人がすべて彼の船に乗り組んでいた。",
+      "text_markdown": "イングランド人、アイルランド人、スコットランド人、フランス人、オランダ人、ネイティブ・アメリカン、アフリカ人がすべて彼の船に乗り組んでいた。",
+      "tts": {
+        "text": "イングランド人、アイルランド人、スコットランド人、フランス人、オランダ人、ネイティブ・アメリカン、アフリカ人がすべて彼の船に乗り組んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちは乗組員のおよそ半数がアフリカ系であったと推定している。",
+      "text_markdown": "歴史家たちは乗組員のおよそ半数がアフリカ系であったと推定している。",
+      "tts": {
+        "text": "歴史家たちは乗組員のおよそ半数がアフリカ系であったと推定している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの男たちの中には拿捕した奴隷船から解放された者もいた。",
+      "text_markdown": "これらの男たちの中には拿捕した奴隷船から解放された者もいた。",
+      "tts": {
+        "text": "これらの男たちの中には拿捕した奴隷船から解放された者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カリブ海各地の港から自発的に加わった者もいた。",
+      "text_markdown": "カリブ海各地の港から自発的に加わった者もいた。",
+      "tts": {
+        "text": "カリブ海各地の港から自発的に加わった者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベラミーの船では黒人と白人が肩を並べて働き、略奪品を平等に分け合った。",
+      "text_markdown": "ベラミーの船では黒人と白人が肩を並べて働き、略奪品を平等に分け合った。",
+      "tts": {
+        "text": "ベラミーの船では黒人と白人が肩を並べて働き、略奪品を平等に分け合った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この人種的平等は当時としては異例だった。",
+      "text_markdown": "この人種的平等は当時としては異例だった。",
+      "tts": {
+        "text": "この人種的平等は当時としては異例だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "植民地世界では黒人の圧倒的多数が奴隷にされていた。",
+      "text_markdown": "植民地世界では黒人の圧倒的多数が奴隷にされていた。",
+      "tts": {
+        "text": "植民地世界では黒人の圧倒的多数が奴隷にされていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊船はプランテーション制度の残酷な階層秩序に対する稀有な選択肢を提供した。",
+      "text_markdown": "海賊船はプランテーション制度の残酷な階層秩序に対する稀有な選択肢を提供した。",
+      "tts": {
+        "text": "海賊船はプランテーション制度の残酷な階層秩序に対する稀有な選択肢を提供した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの僚船の船長は、財宝引き揚げ時代からの元の相棒であるポールズグレイヴ・ウィリアムズだった。",
+      "text_markdown": "ベラミーの僚船の船長は、財宝引き揚げ時代からの元の相棒であるポールズグレイヴ・ウィリアムズだった。",
+      "tts": {
+        "text": "ベラミーの僚船の船長は、財宝引き揚げ時代からの元の相棒であるポールズグレイヴ・ウィリアムズだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウィリアムズは別の船を指揮し、ベラミーの艦隊の一部として共に航行した。",
+      "text_markdown": "ウィリアムズは別の船を指揮し、ベラミーの艦隊の一部として共に航行した。",
+      "tts": {
+        "text": "ウィリアムズは別の船を指揮し、ベラミーの艦隊の一部として共に航行した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二人は互いを完全に信頼していた。",
+      "text_markdown": "二人は互いを完全に信頼していた。",
+      "tts": {
+        "text": "二人は互いを完全に信頼していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年2月、ベラミーは最大の戦利品を手に入れた。",
+      "text_markdown": "1717年2月、ベラミーは最大の戦利品を手に入れた。",
+      "tts": {
+        "text": "千七百十七年二月、ベラミーは最大の戦利品を手に入れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の艦隊はキューバとイスパニョーラ島の間のウィンドワード海峡でウィダー・ガリー号と遭遇した。",
+      "text_markdown": "彼の艦隊はキューバとイスパニョーラ島の間のウィンドワード海峡でウィダー・ガリー号と遭遇した。",
+      "tts": {
+        "text": "彼の艦隊はキューバとイスパニョーラ島の間のウィンドワード海峡でウィダー・ガリー号と遭遇した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号は三本マストのガレー船で、高速かつ重武装だった。",
+      "text_markdown": "ウィダー号は三本マストのガレー船で、高速かつ重武装だった。",
+      "tts": {
+        "text": "ウィダー号は三本マストのガレー船で、高速かつ重武装だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715年にロンドンで建造され、全長は102フィートだった。",
+      "text_markdown": "1715年にロンドンで建造され、全長は102フィートだった。",
+      "tts": {
+        "text": "千七百十五年にロンドンで建造され、全長は百二フィートだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奴隷貿易用に設計され、つい最近処女航海を終えたばかりだった。",
+      "text_markdown": "奴隷貿易用に設計され、つい最近処女航海を終えたばかりだった。",
+      "tts": {
+        "text": "奴隷貿易用に設計され、つい最近処女航海を終えたばかりだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号は現在のベナンの海岸からジャマイカまで300人以上の奴隷にされたアフリカ人を運んでいた。",
+      "text_markdown": "ウィダー号は現在のベナンの海岸からジャマイカまで300人以上の奴隷にされたアフリカ人を運んでいた。",
+      "tts": {
+        "text": "ウィダー号は現在のベナンの海岸からジャマイカまで三百人以上の奴隷にされたアフリカ人を運んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その人間の積荷を売却し、今は奴隷貿易の利益を積んでいた。",
+      "text_markdown": "その人間の積荷を売却し、今は奴隷貿易の利益を積んでいた。",
+      "tts": {
+        "text": "その人間の積荷を売却し、今は奴隷貿易の利益を積んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船倉にはインディゴ、砂糖、そして銀貨と金貨の箱が収められていた。",
+      "text_markdown": "船倉にはインディゴ、砂糖、そして銀貨と金貨の箱が収められていた。",
+      "tts": {
+        "text": "船倉にはインディゴ、砂糖、そして銀貨と金貨の箱が収められていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは三日間ウィダー号を追跡した。",
+      "text_markdown": "ベラミーは三日間ウィダー号を追跡した。",
+      "tts": {
+        "text": "ベラミーは三日間ウィダー号を追跡した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船長のローレンス・プリンスは海賊から逃れようとしたが、ウィダー号は積荷で重かった。",
+      "text_markdown": "船長のローレンス・プリンスは海賊から逃れようとしたが、ウィダー号は積荷で重かった。",
+      "tts": {
+        "text": "船長のローレンス・プリンスは海賊から逃れようとしたが、ウィダー号は積荷で重かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベラミーの軽量な船は着実に距離を詰めた。",
+      "text_markdown": "ベラミーの軽量な船は着実に距離を詰めた。",
+      "tts": {
+        "text": "ベラミーの軽量な船は着実に距離を詰めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの船がついに横付けすると、プリンス船長は戦わずして降伏した。",
+      "text_markdown": "ベラミーの船がついに横付けすると、プリンス船長は戦わずして降伏した。",
+      "tts": {
+        "text": "ベラミーの船がついに横付けすると、プリンス船長は戦わずして降伏した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊艦隊への抵抗は自分と乗組員の死を意味すると彼は知っていた。",
+      "text_markdown": "海賊艦隊への抵抗は自分と乗組員の死を意味すると彼は知っていた。",
+      "tts": {
+        "text": "海賊艦隊への抵抗は自分と乗組員の死を意味すると彼は知っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーはいつもの公平さで捕らえた乗組員を扱った。",
+      "text_markdown": "ベラミーはいつもの公平さで捕らえた乗組員を扱った。",
+      "tts": {
+        "text": "ベラミーはいつもの公平さで捕らえた乗組員を扱った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はプリンス船長に小さな船を与え、出航を許した。",
+      "text_markdown": "彼はプリンス船長に小さな船を与え、出航を許した。",
+      "tts": {
+        "text": "彼はプリンス船長に小さな船を与え、出航を許した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ウィダー号の元の乗組員の何人かは去るよりも海賊に加わることを選んだ。",
+      "text_markdown": "ウィダー号の元の乗組員の何人かは去るよりも海賊に加わることを選んだ。",
+      "tts": {
+        "text": "ウィダー号の元の乗組員の何人かは去るよりも海賊に加わることを選んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは直ちにウィダー号を旗艦にした。",
+      "text_markdown": "ベラミーは直ちにウィダー号を旗艦にした。",
+      "tts": {
+        "text": "ベラミーは直ちにウィダー号を旗艦にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は甲板に追加の大砲を据え付け、総武装を28門にした。",
+      "text_markdown": "彼は甲板に追加の大砲を据え付け、総武装を28門にした。",
+      "tts": {
+        "text": "彼は甲板に追加の大砲を据え付け、総武装を二十八門にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これで大西洋上で最も強力な海賊船の一隻となった。",
+      "text_markdown": "これで大西洋上で最も強力な海賊船の一隻となった。",
+      "tts": {
+        "text": "これで大西洋上で最も強力な海賊船の一隻となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号の船倉には20,000から30,000ポンド相当の財宝が収められていたと推定される。",
+      "text_markdown": "ウィダー号の船倉には20,000から30,000ポンド相当の財宝が収められていたと推定される。",
+      "tts": {
+        "text": "ウィダー号の船倉には二万から三万ポンド相当の財宝が収められていたと推定される。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "現代の価値に換算すると数百万ドルに相当する。",
+      "text_markdown": "現代の価値に換算すると数百万ドルに相当する。",
+      "tts": {
+        "text": "現代の価値に換算すると数百万ドルに相当する。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これは大西洋で奪われた海賊の戦利品の中で最大のものの一つだった。",
+      "text_markdown": "これは大西洋で奪われた海賊の戦利品の中で最大のものの一つだった。",
+      "tts": {
+        "text": "これは大西洋で奪われた海賊の戦利品の中で最大のものの一つだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号を奪った後、ベラミーはアメリカ沿岸に沿って北上した。",
+      "text_markdown": "ウィダー号を奪った後、ベラミーはアメリカ沿岸に沿って北上した。",
+      "tts": {
+        "text": "ウィダー号を奪った後、ベラミーはアメリカ沿岸に沿って北上した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は航行しながら船の拿捕を続けた。",
+      "text_markdown": "彼は航行しながら船の拿捕を続けた。",
+      "tts": {
+        "text": "彼は航行しながら船の拿捕を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1717年の春までに、彼は海賊船の小艦隊を率いていた。",
+      "text_markdown": "1717年の春までに、彼は海賊船の小艦隊を率いていた。",
+      "tts": {
+        "text": "千七百十七年の春までに、彼は海賊船の小艦隊を率いていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちはベラミーがケープコッドに向かっていたと考えている。",
+      "text_markdown": "歴史家たちはベラミーがケープコッドに向かっていたと考えている。",
+      "tts": {
+        "text": "歴史家たちはベラミーがケープコッドに向かっていたと考えている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マリア・ハレットの伝説が本当なら、彼は戻ると約束した女性のもとへ帰る途中だったのかもしれない。",
+      "text_markdown": "マリア・ハレットの伝説が本当なら、彼は戻ると約束した女性のもとへ帰る途中だったのかもしれない。",
+      "tts": {
+        "text": "マリア・ハレットの伝説が本当なら、彼は戻ると約束した女性のもとへ帰る途中だったのかもしれない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の王子",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "また、船の修繕と略奪品の分配のための静かな港を探していたのかもしれない。",
+      "text_markdown": "また、船の修繕と略奪品の分配のための静かな港を探していたのかもしれない。",
+      "tts": {
+        "text": "また、船の修繕と略奪品の分配のための静かな港を探していたのかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ウィダー号の王",
+      "text_markdown": "ウィダー号の王"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年4月、サミュエル・ベラミーは権勢の頂点にあった。",
+      "text_markdown": "1717年4月、サミュエル・ベラミーは権勢の頂点にあった。",
+      "tts": {
+        "text": "千七百十七年四月、サミュエル・ベラミーは権勢の頂点にあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は船団、約150人の乗組員、そして莫大な略奪品を擁していた。",
+      "text_markdown": "彼は船団、約150人の乗組員、そして莫大な略奪品を擁していた。",
+      "tts": {
+        "text": "彼は船団、約百五十人の乗組員、そして莫大な略奪品を擁していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は一年足らずで五十隻以上の船を拿捕していた。",
+      "text_markdown": "彼は一年足らずで五十隻以上の船を拿捕していた。",
+      "tts": {
+        "text": "彼は一年足らずで五十隻以上の船を拿捕していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大西洋においてこれほど短期間にこれほど活発で成功した海賊はいなかった。",
+      "text_markdown": "大西洋においてこれほど短期間にこれほど活発で成功した海賊はいなかった。",
+      "tts": {
+        "text": "大西洋においてこれほど短期間にこれほど活発で成功した海賊はいなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの指揮下でウィダー号は恐るべき軍船だった。",
+      "text_markdown": "ベラミーの指揮下でウィダー号は恐るべき軍船だった。",
+      "tts": {
+        "text": "ベラミーの指揮下でウィダー号は恐るべき軍船だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "28門の大砲は抵抗する愚かな商船を壊滅させることができた。",
+      "text_markdown": "28門の大砲は抵抗する愚かな商船を壊滅させることができた。",
+      "tts": {
+        "text": "二十八門の大砲は抵抗する愚かな商船を壊滅させることができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほとんどの船は海賊旗を見ただけで降伏した。",
+      "text_markdown": "ほとんどの船は海賊旗を見ただけで降伏した。",
+      "tts": {
+        "text": "ほとんどの船は海賊旗を見ただけで降伏した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは民主的な原則に従って船を運営した。",
+      "text_markdown": "ベラミーは民主的な原則に従って船を運営した。",
+      "tts": {
+        "text": "ベラミーは民主的な原則に従って船を運営した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "重要な決定は投票にかけられた。",
+      "text_markdown": "重要な決定は投票にかけられた。",
+      "tts": {
+        "text": "重要な決定は投票にかけられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員が船長への信頼を失えば、いつでも解任できた。",
+      "text_markdown": "乗組員が船長への信頼を失えば、いつでも解任できた。",
+      "tts": {
+        "text": "乗組員が船長への信頼を失えば、いつでも解任できた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乗組員には乗船時に全員が署名または印をつける協定書があった。",
+      "text_markdown": "乗組員には乗船時に全員が署名または印をつける協定書があった。",
+      "tts": {
+        "text": "乗組員には乗船時に全員が署名または印をつける協定書があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この協定書は略奪品の分配、行動規範、負傷に対する補償を定めていた。",
+      "text_markdown": "この協定書は略奪品の分配、行動規範、負傷に対する補償を定めていた。",
+      "tts": {
+        "text": "この協定書は略奪品の分配、行動規範、負傷に対する補償を定めていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦闘で手足を失った者は補償として略奪品の追加分を受け取った。",
+      "text_markdown": "戦闘で手足を失った者は補償として略奪品の追加分を受け取った。",
+      "tts": {
+        "text": "戦闘で手足を失った者は補償として略奪品の追加分を受け取った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは1700年代の労働世界のどこにも存在しなかった障害保険の一形態だった。",
+      "text_markdown": "これは1700年代の労働世界のどこにも存在しなかった障害保険の一形態だった。",
+      "tts": {
+        "text": "これは千七百年代の労働世界のどこにも存在しなかった障害保険の一形態だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの掌砲長はアフリカ系の男で、当時としては極めて異例だった。",
+      "text_markdown": "ベラミーの掌砲長はアフリカ系の男で、当時としては極めて異例だった。",
+      "tts": {
+        "text": "ベラミーの掌砲長はアフリカ系の男で、当時としては極めて異例だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "掌砲長は海賊船で二番目に権力のある役職だった。",
+      "text_markdown": "掌砲長は海賊船で二番目に権力のある役職だった。",
+      "tts": {
+        "text": "掌砲長は海賊船で二番目に権力のある役職だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は食料、水、略奪品の分配を管理した。",
+      "text_markdown": "彼は食料、水、略奪品の分配を管理した。",
+      "tts": {
+        "text": "彼は食料、水、略奪品の分配を管理した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号での生活は楽園ではなかった。",
+      "text_markdown": "ウィダー号での生活は楽園ではなかった。",
+      "tts": {
+        "text": "ウィダー号での生活は楽園ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船は窮屈で、食事はしばしば腐っており、病気の脅威は絶えなかった。",
+      "text_markdown": "船は窮屈で、食事はしばしば腐っており、病気の脅威は絶えなかった。",
+      "tts": {
+        "text": "船は窮屈で、食事はしばしば腐っており、病気の脅威は絶えなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし当時の貧しい男たちに用意されていた選択肢と比べれば、ある程度の自由と尊厳を与えてくれた。",
+      "text_markdown": "しかし当時の貧しい男たちに用意されていた選択肢と比べれば、ある程度の自由と尊厳を与えてくれた。",
+      "tts": {
+        "text": "しかし当時の貧しい男たちに用意されていた選択肢と比べれば、ある程度の自由と尊厳を与えてくれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーは捕らえた乗組員に比較的慈悲をもって接する慣行を続けた。",
+      "text_markdown": "ベラミーは捕らえた乗組員に比較的慈悲をもって接する慣行を続けた。",
+      "tts": {
+        "text": "ベラミーは捕らえた乗組員に比較的慈悲をもって接する慣行を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "平和的に降伏した者に対して暴力を用いることはめったになかった。",
+      "text_markdown": "平和的に降伏した者に対して暴力を用いることはめったになかった。",
+      "tts": {
+        "text": "平和的に降伏した者に対して暴力を用いることはめったになかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕らえた船乗りを港に到着するのに十分な食料とともに解放することが多かった。",
+      "text_markdown": "捕らえた船乗りを港に到着するのに十分な食料とともに解放することが多かった。",
+      "tts": {
+        "text": "捕らえた船乗りを港に到着するのに十分な食料とともに解放することが多かった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この公平さの評判は戦略的に有用だった。",
+      "text_markdown": "この公平さの評判は戦略的に有用だった。",
+      "tts": {
+        "text": "この公平さの評判は戦略的に有用だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丁重に扱われることを知っている商船の船長には戦う理由がほとんどなかった。",
+      "text_markdown": "丁重に扱われることを知っている商船の船長には戦う理由がほとんどなかった。",
+      "tts": {
+        "text": "丁重に扱われることを知っている商船の船長には戦う理由がほとんどなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベラミーの砲門を前にして降伏は単に合理的な選択だった。",
+      "text_markdown": "ベラミーの砲門を前にして降伏は単に合理的な選択だった。",
+      "tts": {
+        "text": "ベラミーの砲門を前にして降伏は単に合理的な選択だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし捕らえた船乗り全員が丁重に扱われたわけではなかった。",
+      "text_markdown": "しかし捕らえた船乗り全員が丁重に扱われたわけではなかった。",
+      "tts": {
+        "text": "しかし捕らえた船乗り全員が丁重に扱われたわけではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "抵抗した者は時に殴られたり、船を焼かれたりした。",
+      "text_markdown": "抵抗した者は時に殴られたり、船を焼かれたりした。",
+      "tts": {
+        "text": "抵抗した者は時に殴られたり、船を焼かれたりした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベラミーは必要と判断した場合、暴力について現実的だった。",
+      "text_markdown": "ベラミーは必要と判断した場合、暴力について現実的だった。",
+      "tts": {
+        "text": "ベラミーは必要と判断した場合、暴力について現実的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四月初旬、ベラミーの艦隊はヴァージニアとカロライナの海岸沿いを北上していた。",
+      "text_markdown": "四月初旬、ベラミーの艦隊はヴァージニアとカロライナの海岸沿いを北上していた。",
+      "tts": {
+        "text": "四月初旬、ベラミーの艦隊はヴァージニアとカロライナの海岸沿いを北上していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は途中でさらにいくつかの戦利品を拿捕した。",
+      "text_markdown": "彼は途中でさらにいくつかの戦利品を拿捕した。",
+      "tts": {
+        "text": "彼は途中でさらにいくつかの戦利品を拿捕した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の最後の拿捕の一つはメアリー・アン号という商船だった。",
+      "text_markdown": "彼の最後の拿捕の一つはメアリー・アン号という商船だった。",
+      "tts": {
+        "text": "彼の最後の拿捕の一つはメアリー・アン号という商船だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はマデイラワインの積荷を奪い、乗組員の数人を強制的に自分の仲間に加えた。",
+      "text_markdown": "彼はマデイラワインの積荷を奪い、乗組員の数人を強制的に自分の仲間に加えた。",
+      "tts": {
+        "text": "彼はマデイラワインの積荷を奪い、乗組員の数人を強制的に自分の仲間に加えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの強制徴募された者たちは後に難破後の裁判で重要な役割を果たすことになる。",
+      "text_markdown": "これらの強制徴募された者たちは後に難破後の裁判で重要な役割を果たすことになる。",
+      "tts": {
+        "text": "これらの強制徴募された者たちは後に難破後の裁判で重要な役割を果たすことになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はまたフィッシャー号というスループ船を拿捕し、その食料と乗組員の一部を取った。",
+      "text_markdown": "彼はまたフィッシャー号というスループ船を拿捕し、その食料と乗組員の一部を取った。",
+      "tts": {
+        "text": "彼はまたフィッシャー号というスループ船を拿捕し、その食料と乗組員の一部を取った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕らえられた男たちは抗議したが、ベラミーは彼らの不満を無視した。",
+      "text_markdown": "捕らえられた男たちは抗議したが、ベラミーは彼らの不満を無視した。",
+      "tts": {
+        "text": "捕らえられた男たちは抗議したが、ベラミーは彼らの不満を無視した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四月が進むにつれ、天候はますます不安定になった。",
+      "text_markdown": "四月が進むにつれ、天候はますます不安定になった。",
+      "tts": {
+        "text": "四月が進むにつれ、天候はますます不安定になった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ニューイングランド沿岸の春の嵐は悪名高いほど危険だった。",
+      "text_markdown": "ニューイングランド沿岸の春の嵐は悪名高いほど危険だった。",
+      "tts": {
+        "text": "ニューイングランド沿岸の春の嵐は悪名高いほど危険だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ケープコッド沖の海域は西大西洋で最も危険な場所の一つだった。",
+      "text_markdown": "ケープコッド沖の海域は西大西洋で最も危険な場所の一つだった。",
+      "tts": {
+        "text": "ケープコッド沖の海域は西大西洋で最も危険な場所の一つだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年4月26日、ベラミーの艦隊は南からケープコッドに接近していた。",
+      "text_markdown": "1717年4月26日、ベラミーの艦隊は南からケープコッドに接近していた。",
+      "tts": {
+        "text": "千七百十七年四月二十六日、ベラミーの艦隊は南からケープコッドに接近していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "水平線上に強力な嵐が発生しつつあった。",
+      "text_markdown": "水平線上に強力な嵐が発生しつつあった。",
+      "tts": {
+        "text": "水平線上に強力な嵐が発生しつつあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海は荒れ始め、風は北東に変わりつつあった。",
+      "text_markdown": "海は荒れ始め、風は北東に変わりつつあった。",
+      "tts": {
+        "text": "海は荒れ始め、風は北東に変わりつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ケープコッド沖の北東の嵐は大西洋沿岸で最も恐れられた気象現象の一つだった。",
+      "text_markdown": "ケープコッド沖の北東の嵐は大西洋沿岸で最も恐れられた気象現象の一つだった。",
+      "tts": {
+        "text": "ケープコッド沖の北東の嵐は大西洋沿岸で最も恐れられた気象現象の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは波を外岸に連なる浅い砂州に直接打ちつけた。",
+      "text_markdown": "それは波を外岸に連なる浅い砂州に直接打ちつけた。",
+      "tts": {
+        "text": "それは波を外岸に連なる浅い砂州に直接打ちつけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーには二つの選択肢があった。",
+      "text_markdown": "ベラミーには二つの選択肢があった。",
+      "tts": {
+        "text": "ベラミーには二つの選択肢があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "艦隊を外洋に向けて深い海で嵐をやり過ごすか。",
+      "text_markdown": "艦隊を外洋に向けて深い海で嵐をやり過ごすか。",
+      "tts": {
+        "text": "艦隊を外洋に向けて深い海で嵐をやり過ごすか。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あるいは前進して嵐が来る前にケープの先端を回ろうとするか。",
+      "text_markdown": "あるいは前進して嵐が来る前にケープの先端を回ろうとするか。",
+      "tts": {
+        "text": "あるいは前進して嵐が来る前にケープの先端を回ろうとするか。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は前進することを選んだ。",
+      "text_markdown": "彼は前進することを選んだ。",
+      "tts": {
+        "text": "彼は前進することを選んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "ウィダー号の王",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは彼が下す最後の決断となった。",
+      "text_markdown": "それは彼が下す最後の決断となった。",
+      "tts": {
+        "text": "それは彼が下す最後の決断となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "嵐",
+      "text_markdown": "嵐"
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年4月26日の夜、嵐が襲った。",
+      "text_markdown": "1717年4月26日の夜、嵐が襲った。",
+      "tts": {
+        "text": "千七百十七年四月二十六日の夜、嵐が襲った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "激しい北東の暴風雨で、叩きつける雨とそびえ立つ波が押し寄せた。",
+      "text_markdown": "激しい北東の暴風雨で、叩きつける雨とそびえ立つ波が押し寄せた。",
+      "tts": {
+        "text": "激しい北東の暴風雨で、叩きつける雨とそびえ立つ波が押し寄せた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "視界はほぼゼロになった。",
+      "text_markdown": "視界はほぼゼロになった。",
+      "tts": {
+        "text": "視界はほぼゼロになった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウィダー号の乗組員は岸も星も、艦隊の他の船さえも見ることができなかった。",
+      "text_markdown": "ウィダー号の乗組員は岸も星も、艦隊の他の船さえも見ることができなかった。",
+      "tts": {
+        "text": "ウィダー号の乗組員は岸も星も、艦隊の他の船さえも見ることができなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは沿岸で最も危険な海域を盲目的に航行していた。",
+      "text_markdown": "彼らは沿岸で最も危険な海域を盲目的に航行していた。",
+      "tts": {
+        "text": "彼らは沿岸で最も危険な海域を盲目的に航行していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風は叫び声のような音を立てて索具の間を吹き抜けた。",
+      "text_markdown": "風は叫び声のような音を立てて索具の間を吹き抜けた。",
+      "tts": {
+        "text": "風は叫び声のような音を立てて索具の間を吹き抜けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波が船首を越えて砕け、甲板を洗い流した。",
+      "text_markdown": "波が船首を越えて砕け、甲板を洗い流した。",
+      "tts": {
+        "text": "波が船首を越えて砕け、甲板を洗い流した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "男たちは海に流されないようにロープや手すりにしがみついた。",
+      "text_markdown": "男たちは海に流されないようにロープや手すりにしがみついた。",
+      "tts": {
+        "text": "男たちは海に流されないようにロープや手すりにしがみついた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真夜中過ぎのある時、ウィダー号はウェルフリート沖の砂州に衝突した。",
+      "text_markdown": "真夜中過ぎのある時、ウィダー号はウェルフリート沖の砂州に衝突した。",
+      "tts": {
+        "text": "真夜中過ぎのある時、ウィダー号はウェルフリート沖の砂州に衝突した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "衝撃は突然で激烈だった。",
+      "text_markdown": "衝撃は突然で激烈だった。",
+      "tts": {
+        "text": "衝撃は突然で激烈だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船は横に傾き、打ちつける波の中で崩壊し始めた。",
+      "text_markdown": "船は横に傾き、打ちつける波の中で崩壊し始めた。",
+      "tts": {
+        "text": "船は横に傾き、打ちつける波の中で崩壊し始めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波は巨大で、30フィートに達するものもあった。",
+      "text_markdown": "波は巨大で、30フィートに達するものもあった。",
+      "tts": {
+        "text": "波は巨大で、三十フィートに達するものもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それらは恐ろしい力で難破した船の上に崩れ落ちた。",
+      "text_markdown": "それらは恐ろしい力で難破した船の上に崩れ落ちた。",
+      "tts": {
+        "text": "それらは恐ろしい力で難破した船の上に崩れ落ちた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マストが折れて海に落ち、索具と人を引きずり込んだ。",
+      "text_markdown": "マストが折れて海に落ち、索具と人を引きずり込んだ。",
+      "tts": {
+        "text": "マストが折れて海に落ち、索具と人を引きずり込んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号の重い大砲が台座から引きちぎれた。",
+      "text_markdown": "ウィダー号の重い大砲が台座から引きちぎれた。",
+      "tts": {
+        "text": "ウィダー号の重い大砲が台座から引きちぎれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大砲は甲板を転がり、行く手にあるすべてを押しつぶした。",
+      "text_markdown": "大砲は甲板を転がり、行く手にあるすべてを押しつぶした。",
+      "tts": {
+        "text": "大砲は甲板を転がり、行く手にあるすべてを押しつぶした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船倉の財宝が移動し、船は転覆した。",
+      "text_markdown": "船倉の財宝が移動し、船は転覆した。",
+      "tts": {
+        "text": "船倉の財宝が移動し、船は転覆した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号が座礁した砂州は岸からわずか500フィートだった。",
+      "text_markdown": "ウィダー号が座礁した砂州は岸からわずか500フィートだった。",
+      "tts": {
+        "text": "ウィダー号が座礁した砂州は岸からわずか五百フィートだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしあの状況では、500フィートの波浪は外洋と同じくらい致命的だった。",
+      "text_markdown": "しかしあの状況では、500フィートの波浪は外洋と同じくらい致命的だった。",
+      "tts": {
+        "text": "しかしあの状況では、五百フィートの波浪は外洋と同じくらい致命的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号に乗っていた約146人のうち、生き残ったのはわずか二人だった。",
+      "text_markdown": "ウィダー号に乗っていた約146人のうち、生き残ったのはわずか二人だった。",
+      "tts": {
+        "text": "ウィダー号に乗っていた約百四十六人のうち、生き残ったのはわずか二人だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはトーマス・デイヴィスという強制的に乗組員にされた大工と、ジョン・ジュリアンというミスキート人とヨーロッパ人の混血の水先案内人だった。",
+      "text_markdown": "それはトーマス・デイヴィスという強制的に乗組員にされた大工と、ジョン・ジュリアンというミスキート人とヨーロッパ人の混血の水先案内人だった。",
+      "tts": {
+        "text": "それはトーマス・デイヴィスという強制的に乗組員にされた大工と、ジョン・ジュリアンというミスキート人とヨーロッパ人の混血の水先案内人だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サミュエル・ベラミーは死者の中にいた。",
+      "text_markdown": "サミュエル・ベラミーは死者の中にいた。",
+      "tts": {
+        "text": "サミュエル・ベラミーは死者の中にいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の遺体は決して特定されなかった。",
+      "text_markdown": "彼の遺体は決して特定されなかった。",
+      "tts": {
+        "text": "彼の遺体は決して特定されなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は28歳だった。",
+      "text_markdown": "彼は28歳だった。",
+      "tts": {
+        "text": "彼は二十八歳だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベラミーの艦隊の他の船も嵐に巻き込まれた。",
+      "text_markdown": "ベラミーの艦隊の他の船も嵐に巻き込まれた。",
+      "tts": {
+        "text": "ベラミーの艦隊の他の船も嵐に巻き込まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "メアリー・アン号は同じ海岸の近くで座礁した。",
+      "text_markdown": "メアリー・アン号は同じ海岸の近くで座礁した。",
+      "tts": {
+        "text": "メアリー・アン号は同じ海岸の近くで座礁した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員のうち七人が生き残り、地元当局に捕らえられた。",
+      "text_markdown": "乗組員のうち七人が生き残り、地元当局に捕らえられた。",
+      "tts": {
+        "text": "乗組員のうち七人が生き残り、地元当局に捕らえられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "朝になると、ウェルフリートの人々は海岸が残骸で覆われているのを発見した。",
+      "text_markdown": "朝になると、ウェルフリートの人々は海岸が残骸で覆われているのを発見した。",
+      "tts": {
+        "text": "朝になると、ウェルフリートの人々は海岸が残骸で覆われているのを発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "木材、ロープ、布、そして遺体が砂浜に散乱していた。",
+      "text_markdown": "木材、ロープ、布、そして遺体が砂浜に散乱していた。",
+      "tts": {
+        "text": "木材、ロープ、布、そして遺体が砂浜に散乱していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "波が来るたびに硬貨や宝飾品の破片が打ち上げられた。",
+      "text_markdown": "波が来るたびに硬貨や宝飾品の破片が打ち上げられた。",
+      "tts": {
+        "text": "波が来るたびに硬貨や宝飾品の破片が打ち上げられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地元の人々はすぐに拾えるものを拾い始めた。",
+      "text_markdown": "地元の人々はすぐに拾えるものを拾い始めた。",
+      "tts": {
+        "text": "地元の人々はすぐに拾えるものを拾い始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは残骸から硬貨、武器、価値のあるものを集めた。",
+      "text_markdown": "彼らは残骸から硬貨、武器、価値のあるものを集めた。",
+      "tts": {
+        "text": "彼らは残骸から硬貨、武器、価値のあるものを集めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "植民地総督は現場を確保するために兵士を派遣したが、すでに多くが持ち去られていた。",
+      "text_markdown": "植民地総督は現場を確保するために兵士を派遣したが、すでに多くが持ち去られていた。",
+      "tts": {
+        "text": "植民地総督は現場を確保するために兵士を派遣したが、すでに多くが持ち去られていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号とメアリー・アン号から生き残った九人の海賊は逮捕されてボストンに連行された。",
+      "text_markdown": "ウィダー号とメアリー・アン号から生き残った九人の海賊は逮捕されてボストンに連行された。",
+      "tts": {
+        "text": "ウィダー号とメアリー・アン号から生き残った九人の海賊は逮捕されてボストンに連行された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1717年10月に裁判にかけられた。",
+      "text_markdown": "1717年10月に裁判にかけられた。",
+      "tts": {
+        "text": "千七百十七年十月に裁判にかけられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この裁判はアメリカ植民地史上で最もセンセーショナルなものの一つだった。",
+      "text_markdown": "この裁判はアメリカ植民地史上で最もセンセーショナルなものの一つだった。",
+      "tts": {
+        "text": "この裁判はアメリカ植民地史上で最もセンセーショナルなものの一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有名な清教徒の牧師コットン・マザーが囚人を訪れ、悔い改めについて説教した。",
+      "text_markdown": "有名な清教徒の牧師コットン・マザーが囚人を訪れ、悔い改めについて説教した。",
+      "tts": {
+        "text": "有名な清教徒の牧師コットン・マザーが囚人を訪れ、悔い改めについて説教した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・デイヴィスは強制的に乗組員にされたことを証明できたため無罪となった。",
+      "text_markdown": "トーマス・デイヴィスは強制的に乗組員にされたことを証明できたため無罪となった。",
+      "tts": {
+        "text": "トーマス・デイヴィスは強制的に乗組員にされたことを証明できたため無罪となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "もう一人の男も同様の理由で無罪となった。",
+      "text_markdown": "もう一人の男も同様の理由で無罪となった。",
+      "tts": {
+        "text": "もう一人の男も同様の理由で無罪となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "六人の男が有罪とされ死刑を宣告された。",
+      "text_markdown": "六人の男が有罪とされ死刑を宣告された。",
+      "tts": {
+        "text": "六人の男が有罪とされ死刑を宣告された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは1717年11月15日にボストン港のチャールズタウン・フェリーで絞首刑に処された。",
+      "text_markdown": "彼らは1717年11月15日にボストン港のチャールズタウン・フェリーで絞首刑に処された。",
+      "tts": {
+        "text": "彼らは千七百十七年十一月十五日にボストン港のチャールズタウン・フェリーで絞首刑に処された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "コットン・マザーは処刑の場で説教を行った。",
+      "text_markdown": "コットン・マザーは処刑の場で説教を行った。",
+      "tts": {
+        "text": "コットン・マザーは処刑の場で説教を行った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミスキート人の水先案内人ジョン・ジュリアンは絞首刑にはならなかった。",
+      "text_markdown": "ミスキート人の水先案内人ジョン・ジュリアンは絞首刑にはならなかった。",
+      "tts": {
+        "text": "ミスキート人の水先案内人ジョン・ジュリアンは絞首刑にはならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は代わりに奴隷として売られた。",
+      "text_markdown": "彼は代わりに奴隷として売られた。",
+      "tts": {
+        "text": "彼は代わりに奴隷として売られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その後の彼の運命は不明だが、脱走を試みて死亡したことを示す記録もある。",
+      "text_markdown": "その後の彼の運命は不明だが、脱走を試みて死亡したことを示す記録もある。",
+      "tts": {
+        "text": "その後の彼の運命は不明だが、脱走を試みて死亡したことを示す記録もある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号の残骸はウェルフリート沖の砂の中に沈み込んだ。",
+      "text_markdown": "ウィダー号の残骸はウェルフリート沖の砂の中に沈み込んだ。",
+      "tts": {
+        "text": "ウィダー号の残骸はウェルフリート沖の砂の中に沈み込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数年のうちに移動する砂が完全に埋めてしまった。",
+      "text_markdown": "数年のうちに移動する砂が完全に埋めてしまった。",
+      "tts": {
+        "text": "数年のうちに移動する砂が完全に埋めてしまった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "嵐",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二世紀半以上にわたり、ウィダー号は海底の下に隠されていた。",
+      "text_markdown": "二世紀半以上にわたり、ウィダー号は海底の下に隠されていた。",
+      "tts": {
+        "text": "二世紀半以上にわたり、ウィダー号は海底の下に隠されていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "時が忘れた船",
+      "text_markdown": "時が忘れた船"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "267年間、ウィダー号の残骸は地元の伝説にすぎなかった。",
+      "text_markdown": "267年間、ウィダー号の残骸は地元の伝説にすぎなかった。",
+      "tts": {
+        "text": "二百六十七年間、ウィダー号の残骸は地元の伝説にすぎなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ケープコッドの人々は海岸のどこかに埋もれた海賊船の話を語り継いだ。",
+      "text_markdown": "ケープコッドの人々は海岸のどこかに埋もれた海賊船の話を語り継いだ。",
+      "tts": {
+        "text": "ケープコッドの人々は海岸のどこかに埋もれた海賊船の話を語り継いだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし正確な場所を知る者はいなかった。",
+      "text_markdown": "しかし正確な場所を知る者はいなかった。",
+      "tts": {
+        "text": "しかし正確な場所を知る者はいなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1980年代、バリー・クリフォードという水中探検家がウィダー号の発見に取り憑かれた。",
+      "text_markdown": "1980年代、バリー・クリフォードという水中探検家がウィダー号の発見に取り憑かれた。",
+      "tts": {
+        "text": "千九百八十年代、バリー・クリフォードという水中探検家がウィダー号の発見に取り憑かれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "クリフォードはケープコッドで叔父から海賊船の話を聞いて育った。",
+      "text_markdown": "クリフォードはケープコッドで叔父から海賊船の話を聞いて育った。",
+      "tts": {
+        "text": "クリフォードはケープコッドで叔父から海賊船の話を聞いて育った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は残骸の場所を絞り込むために何年も歴史的記録を調査した。",
+      "text_markdown": "彼は残骸の場所を絞り込むために何年も歴史的記録を調査した。",
+      "tts": {
+        "text": "彼は残骸の場所を絞り込むために何年も歴史的記録を調査した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984年、クリフォードと彼のダイビングチームが残骸を発見した。",
+      "text_markdown": "1984年、クリフォードと彼のダイビングチームが残骸を発見した。",
+      "tts": {
+        "text": "千九百八十四年、クリフォードと彼のダイビングチームが残骸を発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "決定的な証拠は船の鐘で、そこには「ザ・ウィダー・ガリー 1716」と刻まれていた。",
+      "text_markdown": "決定的な証拠は船の鐘で、そこには「ザ・ウィダー・ガリー 1716」と刻まれていた。",
+      "tts": {
+        "text": "決定的な証拠は船の鐘で、そこには「ザ・ウィダー・ガリー 千七百十六」と刻まれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この鐘によって残骸がウィダー号であることが疑いなく証明された。",
+      "text_markdown": "この鐘によって残骸がウィダー号であることが疑いなく証明された。",
+      "tts": {
+        "text": "この鐘によって残骸がウィダー号であることが疑いなく証明された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "物理的証拠によって海賊船の残骸が確実に特定されたのは、これが最初で唯一の事例である。",
+      "text_markdown": "物理的証拠によって海賊船の残骸が確実に特定されたのは、これが最初で唯一の事例である。",
+      "tts": {
+        "text": "物理的証拠によって海賊船の残骸が確実に特定されたのは、これが最初で唯一の事例である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その後の数十年間で、クリフォードのチームは残骸から200,000点以上の遺物を回収した。",
+      "text_markdown": "その後の数十年間で、クリフォードのチームは残骸から200,000点以上の遺物を回収した。",
+      "tts": {
+        "text": "その後の数十年間で、クリフォードのチームは残骸から二十万点以上の遺物を回収した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それらには金貨、銀塊、武器、航海器具、衣服の断片、そして個人的な品々が含まれていた。",
+      "text_markdown": "それらには金貨、銀塊、武器、航海器具、衣服の断片、そして個人的な品々が含まれていた。",
+      "tts": {
+        "text": "それらには金貨、銀塊、武器、航海器具、衣服の断片、そして個人的な品々が含まれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遺物はいかなる文書も提供できなかった海賊の生活の詳細を明らかにした。",
+      "text_markdown": "遺物はいかなる文書も提供できなかった海賊の生活の詳細を明らかにした。",
+      "tts": {
+        "text": "遺物はいかなる文書も提供できなかった海賊の生活の詳細を明らかにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "考古学者たちは西アフリカの金の宝飾品をヨーロッパの銀貨と共に発見した。",
+      "text_markdown": "考古学者たちは西アフリカの金の宝飾品をヨーロッパの銀貨と共に発見した。",
+      "tts": {
+        "text": "考古学者たちは西アフリカの金の宝飾品をヨーロッパの銀貨と共に発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "絹のリボン、カフスボタン、ピストルの弾丸も発見された。",
+      "text_markdown": "絹のリボン、カフスボタン、ピストルの弾丸も発見された。",
+      "tts": {
+        "text": "絹のリボン、カフスボタン、ピストルの弾丸も発見された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遺物の多様性は乗組員が多民族であったことを裏付けた。",
+      "text_markdown": "遺物の多様性は乗組員が多民族であったことを裏付けた。",
+      "tts": {
+        "text": "遺物の多様性は乗組員が多民族であったことを裏付けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパ、アフリカ、アメリカ大陸の品物がすべて混在して発見された。",
+      "text_markdown": "ヨーロッパ、アフリカ、アメリカ大陸の品物がすべて混在して発見された。",
+      "tts": {
+        "text": "ヨーロッパ、アフリカ、アメリカ大陸の品物がすべて混在して発見された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ウィダー号の乗組員は大西洋世界の縮図だった。",
+      "text_markdown": "ウィダー号の乗組員は大西洋世界の縮図だった。",
+      "tts": {
+        "text": "ウィダー号の乗組員は大西洋世界の縮図だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィダー号に特化した博物館がケープコッドに設立された。",
+      "text_markdown": "ウィダー号に特化した博物館がケープコッドに設立された。",
+      "tts": {
+        "text": "ウィダー号に特化した博物館がケープコッドに設立された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "残骸から回収された遺物を展示し、サミュエル・ベラミーと乗組員の物語を伝えている。",
+      "text_markdown": "残骸から回収された遺物を展示し、サミュエル・ベラミーと乗組員の物語を伝えている。",
+      "tts": {
+        "text": "残骸から回収された遺物を展示し、サミュエル・ベラミーと乗組員の物語を伝えている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "毎年何千人もの来館者が訪れる。",
+      "text_markdown": "毎年何千人もの来館者が訪れる。",
+      "tts": {
+        "text": "毎年何千人もの来館者が訪れる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サミュエル・ベラミーの海賊としての活動はわずか十一か月だった。",
+      "text_markdown": "サミュエル・ベラミーの海賊としての活動はわずか十一か月だった。",
+      "tts": {
+        "text": "サミュエル・ベラミーの海賊としての活動はわずか十一か月だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その間に彼はほとんどの海賊が一生をかけて奪う以上の船を拿捕した。",
+      "text_markdown": "その間に彼はほとんどの海賊が一生をかけて奪う以上の船を拿捕した。",
+      "tts": {
+        "text": "その間に彼はほとんどの海賊が一生をかけて奪う以上の船を拿捕した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は不平等と束縛の時代に正義と自由を語った。",
+      "text_markdown": "彼は不平等と束縛の時代に正義と自由を語った。",
+      "tts": {
+        "text": "彼は不平等と束縛の時代に正義と自由を語った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "民主主義そのものが急進的な思想だった時代に、彼は船を民主的に運営した。",
+      "text_markdown": "民主主義そのものが急進的な思想だった時代に、彼は船を民主的に運営した。",
+      "tts": {
+        "text": "民主主義そのものが急進的な思想だった時代に、彼は船を民主的に運営した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p115",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界が肌の色で人を分けていた時代に、彼はあらゆる人種の者を迎え入れた。",
+      "text_markdown": "世界が肌の色で人を分けていた時代に、彼はあらゆる人種の者を迎え入れた。",
+      "tts": {
+        "text": "世界が肌の色で人を分けていた時代に、彼はあらゆる人種の者を迎え入れた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし彼は働く人々から盗み、誠実な船乗りの生活を脅かす泥棒でもあった。",
+      "text_markdown": "しかし彼は働く人々から盗み、誠実な船乗りの生活を脅かす泥棒でもあった。",
+      "tts": {
+        "text": "しかし彼は働く人々から盗み、誠実な船乗りの生活を脅かす泥棒でもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "平等についての彼の理想は銃口を向けて略奪した商人たちには及ばなかった。",
+      "text_markdown": "平等についての彼の理想は銃口を向けて略奪した商人たちには及ばなかった。",
+      "tts": {
+        "text": "平等についての彼の理想は銃口を向けて略奪した商人たちには及ばなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "誰も彼を裁く前に海がサミュエル・ベラミーを奪い去った。",
+      "text_markdown": "誰も彼を裁く前に海がサミュエル・ベラミーを奪い去った。",
+      "tts": {
+        "text": "誰も彼を裁く前に海がサミュエル・ベラミーを奪い去った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし彼の船は砂に埋もれて生き残り、その物語を語る時を待っていた。",
+      "text_markdown": "しかし彼の船は砂に埋もれて生き残り、その物語を語る時を待っていた。",
+      "tts": {
+        "text": "しかし彼の船は砂に埋もれて生き残り、その物語を語る時を待っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "時が忘れた船",
+      "paragraph_id": "p117",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ウィダー号は彼らの声が途絶えた遥か後も、この船を操った男たちのために語り続けている。",
+      "text_markdown": "ウィダー号は彼らの声が途絶えた遥か後も、この船を操った男たちのために語り続けている。",
+      "tts": {
+        "text": "ウィダー号は彼らの声が途絶えた遥か後も、この船を操った男たちのために語り続けている。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

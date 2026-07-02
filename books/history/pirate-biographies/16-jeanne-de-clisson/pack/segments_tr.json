@@ -1,0 +1,4427 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jeanne_de_clisson",
+  "language": "tr",
+  "total_segments": 296,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Jeanne de Clisson'un hikâyesidir. O, Ortaçağ Avrupa'sının en korkulan korsanlarından biri olan bir Breton asil kadındı.",
+      "text_markdown": "Bu, Jeanne de Clisson'un hikâyesidir. O, Ortaçağ Avrupa'sının en korkulan korsanlarından biri olan bir Breton asil kadındı.",
+      "tts": {
+        "text": "Bu, Jeanne de Clisson'un hikâyesidir. O, Ortaçağ Avrupa'sının en korkulan korsanlarından biri olan bir Breton asil kadındı.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihte Bretanya'nın Dişi Aslanı olarak bilinir.",
+      "text_markdown": "Tarihte Bretanya'nın Dişi Aslanı olarak bilinir.",
+      "tts": {
+        "text": "Tarihte Bretanya'nın Dişi Aslanı olarak bilinir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in hikâyesi macerayla değil, ihanetle başlar.",
+      "text_markdown": "Jeanne'in hikâyesi macerayla değil, ihanetle başlar.",
+      "tts": {
+        "text": "Jeanne'in hikâyesi macerayla değil, ihanetle başlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa Kralı kocasını sahte ihanet suçlamalarıyla idam ettirdiğinde, Jeanne intikam yemini etti.",
+      "text_markdown": "Fransa Kralı kocasını sahte ihanet suçlamalarıyla idam ettirdiğinde, Jeanne intikam yemini etti.",
+      "tts": {
+        "text": "Fransa Kralı kocasını sahte ihanet suçlamalarıyla idam ettirdiğinde, Jeanne intikam yemini etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sahip olduğu her şeyi sattı, savaş gemileri satın aldı ve on üç yıl boyunca Manş Denizi'nde Fransız gemilerini avladı.",
+      "text_markdown": "Sahip olduğu her şeyi sattı, savaş gemileri satın aldı ve on üç yıl boyunca Manş Denizi'nde Fransız gemilerini avladı.",
+      "tts": {
+        "text": "Sahip olduğu her şeyi sattı, savaş gemileri satın aldı ve on üç yıl boyunca Manş Denizi'nde Fransız gemilerini avladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemilerinin siyah gövdeleri ve kırmızı yelkenleri vardı; mürettebatı neredeyse hiç hayatta kalan bırakmıyordu.",
+      "text_markdown": "Gemilerinin siyah gövdeleri ve kırmızı yelkenleri vardı; mürettebatı neredeyse hiç hayatta kalan bırakmıyordu.",
+      "tts": {
+        "text": "Gemilerinin siyah gövdeleri ve kırmızı yelkenleri vardı; mürettebatı neredeyse hiç hayatta kalan bırakmıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi, Avrupa tarihinin en uzun ve en kanlı çatışmalarından biri olan Yüzyıl Savaşları döneminde geçer.",
+      "text_markdown": "Hikâyesi, Avrupa tarihinin en uzun ve en kanlı çatışmalarından biri olan Yüzyıl Savaşları döneminde geçer.",
+      "tts": {
+        "text": "Hikâyesi, Avrupa tarihinin en uzun ve en kanlı çatışmalarından biri olan Yüzyıl Savaşları döneminde geçer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, sadakat, yas ve bir insanın intikam uğruna ne kadar ileri gidebileceği hakkında bir hikâyedir.",
+      "text_markdown": "Bu, sadakat, yas ve bir insanın intikam uğruna ne kadar ileri gidebileceği hakkında bir hikâyedir.",
+      "tts": {
+        "text": "Bu, sadakat, yas ve bir insanın intikam uğruna ne kadar ileri gidebileceği hakkında bir hikâyedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada anlatılan olaylar Ortaçağ vakayinamelerine ve tarihî kaynaklara dayanmaktadır.",
+      "text_markdown": "Burada anlatılan olaylar Ortaçağ vakayinamelerine ve tarihî kaynaklara dayanmaktadır.",
+      "tts": {
+        "text": "Burada anlatılan olaylar Ortaçağ vakayinamelerine ve tarihî kaynaklara dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı ayrıntılar zamanla kaybolmuştur ve metin, belirsizliğin sürdüğü yerleri belirtmektedir.",
+      "text_markdown": "Bazı ayrıntılar zamanla kaybolmuştur ve metin, belirsizliğin sürdüğü yerleri belirtmektedir.",
+      "tts": {
+        "text": "Bazı ayrıntılar zamanla kaybolmuştur ve metin, belirsizliğin sürdüğü yerleri belirtmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ortaçağ Bretanya Dünyası",
+      "text_markdown": "Ortaçağ Bretanya Dünyası"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On dördüncü yüzyılın başlarında Avrupa, krallıklar, düklükler ve feodal topraklardan oluşan bir yama bohçasıydı.",
+      "text_markdown": "On dördüncü yüzyılın başlarında Avrupa, krallıklar, düklükler ve feodal topraklardan oluşan bir yama bohçasıydı.",
+      "tts": {
+        "text": "On dördüncü yüzyılın başlarında Avrupa, krallıklar, düklükler ve feodal topraklardan oluşan bir yama bohçasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İktidar kralların, düklerin ve Katolik Kilisesi'nin elindeydi.",
+      "text_markdown": "İktidar kralların, düklerin ve Katolik Kilisesi'nin elindeydi.",
+      "tts": {
+        "text": "İktidar kralların, düklerin ve Katolik Kilisesi'nin elindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sıradan insanların neredeyse hiçbir hakkı yoktu ve efendilerinin merhametine muhtaç yaşarlardı.",
+      "text_markdown": "Sıradan insanların neredeyse hiçbir hakkı yoktu ve efendilerinin merhametine muhtaç yaşarlardı.",
+      "tts": {
+        "text": "Sıradan insanların neredeyse hiçbir hakkı yoktu ve efendilerinin merhametine muhtaç yaşarlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bretanya, Fransa'nın kuzeybatı kıyısında bir düklüktü.",
+      "text_markdown": "Bretanya, Fransa'nın kuzeybatı kıyısında bir düklüktü.",
+      "tts": {
+        "text": "Bretanya, Fransa'nın kuzeybatı kıyısında bir düklüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atlantik Okyanusu'na ve Manş Denizi'ne uzanan büyük bir yarımadayı kaplıyordu.",
+      "text_markdown": "Atlantik Okyanusu'na ve Manş Denizi'ne uzanan büyük bir yarımadayı kaplıyordu.",
+      "tts": {
+        "text": "Atlantik Okyanusu'na ve Manş Denizi'ne uzanan büyük bir yarımadayı kaplıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bretonların kendi dilleri, gelenekleri ve güçlü bir bağımsızlık duygusu vardı.",
+      "text_markdown": "Bretonların kendi dilleri, gelenekleri ve güçlü bir bağımsızlık duygusu vardı.",
+      "tts": {
+        "text": "Bretonların kendi dilleri, gelenekleri ve güçlü bir bağımsızlık duygusu vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bretanya teknik olarak Fransa'nın bir parçasıydı, ancak dükleri çoğu zaman bağımsız hareket ediyordu.",
+      "text_markdown": "Bretanya teknik olarak Fransa'nın bir parçasıydı, ancak dükleri çoğu zaman bağımsız hareket ediyordu.",
+      "tts": {
+        "text": "Bretanya teknik olarak Fransa'nın bir parçasıydı, ancak dükleri çoğu zaman bağımsız hareket ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi saraylarını, ordularını ve yabancı ittifaklarını sürdürüyorlardı.",
+      "text_markdown": "Kendi saraylarını, ordularını ve yabancı ittifaklarını sürdürüyorlardı.",
+      "tts": {
+        "text": "Kendi saraylarını, ordularını ve yabancı ittifaklarını sürdürüyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bretanya ile Fransız tahtı arasındaki ilişki her zaman gergin olmuştur.",
+      "text_markdown": "Bretanya ile Fransız tahtı arasındaki ilişki her zaman gergin olmuştur.",
+      "tts": {
+        "text": "Bretanya ile Fransız tahtı arasındaki ilişki her zaman gergin olmuştur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manş Denizi, Ortaçağ Avrupa'sının en işlek ve en tehlikeli su yollarından biriydi.",
+      "text_markdown": "Manş Denizi, Ortaçağ Avrupa'sının en işlek ve en tehlikeli su yollarından biriydi.",
+      "tts": {
+        "text": "Manş Denizi, Ortaçağ Avrupa'sının en işlek ve en tehlikeli su yollarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret gemileri, balıkçı tekneleri ve savaş gemileri sürekli olarak onu geçiyordu.",
+      "text_markdown": "Ticaret gemileri, balıkçı tekneleri ve savaş gemileri sürekli olarak onu geçiyordu.",
+      "tts": {
+        "text": "Ticaret gemileri, balıkçı tekneleri ve savaş gemileri sürekli olarak onu geçiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlık yaygındı ve korsan ile deniz savaşçısı arasındaki çizgi çoğu zaman belirsizdi.",
+      "text_markdown": "Korsanlık yaygındı ve korsan ile deniz savaşçısı arasındaki çizgi çoğu zaman belirsizdi.",
+      "tts": {
+        "text": "Korsanlık yaygındı ve korsan ile deniz savaşçısı arasındaki çizgi çoğu zaman belirsizdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On dördüncü yüzyılın başlarında Fransa, giderek güçlenen bir dizi kral tarafından yönetiliyordu.",
+      "text_markdown": "On dördüncü yüzyılın başlarında Fransa, giderek güçlenen bir dizi kral tarafından yönetiliyordu.",
+      "tts": {
+        "text": "On dördüncü yüzyılın başlarında Fransa, giderek güçlenen bir dizi kral tarafından yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capetian hanedanının son doğrudan erkek varisi öldükten sonra VI. Philippe 1328'de tahta çıktı.",
+      "text_markdown": "Capetian hanedanının son doğrudan erkek varisi öldükten sonra VI. Philippe 1328'de tahta çıktı.",
+      "tts": {
+        "text": "Capetian hanedanının son doğrudan erkek varisi öldükten sonra Altıncı Philippe bin üç yüz yirmi sekiz yılında tahta çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Taht üzerindeki iddiası İngiltere'nin III. Edward'ı tarafından derhal itiraz edildi.",
+      "text_markdown": "Taht üzerindeki iddiası İngiltere'nin III. Edward'ı tarafından derhal itiraz edildi.",
+      "tts": {
+        "text": "Taht üzerindeki iddiası İngiltere'nin Üçüncü Edward'ı tarafından derhal itiraz edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "III. Edward, annesi aracılığıyla Fransız tahtı üzerinde daha güçlü bir hakkı olduğunu savunuyordu.",
+      "text_markdown": "III. Edward, annesi aracılığıyla Fransız tahtı üzerinde daha güçlü bir hakkı olduğunu savunuyordu.",
+      "tts": {
+        "text": "Üçüncü Edward, annesi aracılığıyla Fransız tahtı üzerinde daha güçlü bir hakkı olduğunu savunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "VI. Philippe bu iddiayı reddetti ve anlaşmazlık sonunda açık savaşa dönüştü.",
+      "text_markdown": "VI. Philippe bu iddiayı reddetti ve anlaşmazlık sonunda açık savaşa dönüştü.",
+      "tts": {
+        "text": "Altıncı Philippe bu iddiayı reddetti ve anlaşmazlık sonunda açık savaşa dönüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu çatışma Yüzyıl Savaşları olarak bilinir hâle geldi.",
+      "text_markdown": "Bu çatışma Yüzyıl Savaşları olarak bilinir hâle geldi.",
+      "tts": {
+        "text": "Bu çatışma Yüzyıl Savaşları olarak bilinir hâle geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzyıl Savaşları 1337'den 1453'e kadar sürdü.",
+      "text_markdown": "Yüzyıl Savaşları 1337'den 1453'e kadar sürdü.",
+      "tts": {
+        "text": "Yüzyıl Savaşları bin üç yüz otuz yediden bin dört yüz elli üçe kadar sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başlıca İngiltere ve Fransa arasında yapılmış, ancak Avrupa genelinden müttefikleri ve vasalları da içine çekmiştir.",
+      "text_markdown": "Başlıca İngiltere ve Fransa arasında yapılmış, ancak Avrupa genelinden müttefikleri ve vasalları da içine çekmiştir.",
+      "tts": {
+        "text": "Başlıca İngiltere ve Fransa arasında yapılmış, ancak Avrupa genelinden müttefikleri ve vasalları da içine çekmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bretanya başlıca savaş alanlarından biri hâline geldi.",
+      "text_markdown": "Bretanya başlıca savaş alanlarından biri hâline geldi.",
+      "tts": {
+        "text": "Bretanya başlıca savaş alanlarından biri hâline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bretanya içinde düklüğü kimin yöneteceğine dair ayrı bir çatışma patlak verdi.",
+      "text_markdown": "Bretanya içinde düklüğü kimin yöneteceğine dair ayrı bir çatışma patlak verdi.",
+      "tts": {
+        "text": "Bretanya içinde düklüğü kimin yöneteceğine dair ayrı bir çatışma patlak verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buna Breton Veraset Savaşı denildi.",
+      "text_markdown": "Buna Breton Veraset Savaşı denildi.",
+      "tts": {
+        "text": "Buna Breton Veraset Savaşı denildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1341'den 1365'e kadar sürdü ve korkunç bir vahşetle yapıldı.",
+      "text_markdown": "1341'den 1365'e kadar sürdü ve korkunç bir vahşetle yapıldı.",
+      "tts": {
+        "text": "Bin üç yüz kırk birden bin üç yüz altmış beşe kadar sürdü ve korkunç bir vahşetle yapıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İki rakip hak iddia eden, Bretanya'nın kontrolü için savaştı.",
+      "text_markdown": "İki rakip hak iddia eden, Bretanya'nın kontrolü için savaştı.",
+      "tts": {
+        "text": "İki rakip hak iddia eden, Bretanya'nın kontrolü için savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles de Blois, Fransa tarafından destekleniyordu.",
+      "text_markdown": "Charles de Blois, Fransa tarafından destekleniyordu.",
+      "tts": {
+        "text": "Charles de Blois, Fransa tarafından destekleniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jean de Montfort, İngiltere tarafından destekleniyordu.",
+      "text_markdown": "Jean de Montfort, İngiltere tarafından destekleniyordu.",
+      "tts": {
+        "text": "Jean de Montfort, İngiltere tarafından destekleniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Breton soyluları taraf seçmek zorunda bırakıldı.",
+      "text_markdown": "Breton soyluları taraf seçmek zorunda bırakıldı.",
+      "tts": {
+        "text": "Breton soyluları taraf seçmek zorunda bırakıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yanlış seçim, toprak, unvan ve hatta hayat kaybı anlamına gelebilirdi.",
+      "text_markdown": "Yanlış seçim, toprak, unvan ve hatta hayat kaybı anlamına gelebilirdi.",
+      "tts": {
+        "text": "Yanlış seçim, toprak, unvan ve hatta hayat kaybı anlamına gelebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Değişen sadakatlerin ve ölümcül sonuçların bu dünyasında Jeanne de Clisson kendini tuzağa düşmüş bulacaktı.",
+      "text_markdown": "Değişen sadakatlerin ve ölümcül sonuçların bu dünyasında Jeanne de Clisson kendini tuzağa düşmüş bulacaktı.",
+      "tts": {
+        "text": "Değişen sadakatlerin ve ölümcül sonuçların bu dünyasında Jeanne de Clisson kendini tuzağa düşmüş bulacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ortaçağ savaşı acımasızdı ve sıklıkla sivilleri hedef alırdı.",
+      "text_markdown": "Ortaçağ savaşı acımasızdı ve sıklıkla sivilleri hedef alırdı.",
+      "tts": {
+        "text": "Ortaçağ savaşı acımasızdı ve sıklıkla sivilleri hedef alırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordular ekinleri yakar, hayvanları keser ve düşmanlarını zayıflatmak için köyleri yıkardı.",
+      "text_markdown": "Ordular ekinleri yakar, hayvanları keser ve düşmanlarını zayıflatmak için köyleri yıkardı.",
+      "tts": {
+        "text": "Ordular ekinleri yakar, hayvanları keser ve düşmanlarını zayıflatmak için köyleri yıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuşatmalar aylarca sürebilir ve savunucular çoğu zaman açlıktan ölürdü.",
+      "text_markdown": "Kuşatmalar aylarca sürebilir ve savunucular çoğu zaman açlıktan ölürdü.",
+      "tts": {
+        "text": "Kuşatmalar aylarca sürebilir ve savunucular çoğu zaman açlıktan ölürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deniz savaşı da aynı derecede vahşiydi.",
+      "text_markdown": "Deniz savaşı da aynı derecede vahşiydi.",
+      "tts": {
+        "text": "Deniz savaşı da aynı derecede vahşiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemiler birbirlerine çarpar, mürettebatlar kılıç ve baltalarla göğüs göğüse savaşırdı.",
+      "text_markdown": "Gemiler birbirlerine çarpar, mürettebatlar kılıç ve baltalarla göğüs göğüse savaşırdı.",
+      "tts": {
+        "text": "Gemiler birbirlerine çarpar, mürettebatlar kılıç ve baltalarla göğüs göğüse savaşırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizde nadiren tutsak alınırdı çünkü onları tutacak yer yoktu.",
+      "text_markdown": "Denizde nadiren tutsak alınırdı çünkü onları tutacak yer yoktu.",
+      "tts": {
+        "text": "Denizde nadiren tutsak alınırdı çünkü onları tutacak yer yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ortaçağ Avrupa'sında kadınlardan ev idaresi yapmaları, çocuk doğurmaları ve kocalarına itaat etmeleri beklenirdi.",
+      "text_markdown": "Ortaçağ Avrupa'sında kadınlardan ev idaresi yapmaları, çocuk doğurmaları ve kocalarına itaat etmeleri beklenirdi.",
+      "tts": {
+        "text": "Ortaçağ Avrupa'sında kadınlardan ev idaresi yapmaları, çocuk doğurmaları ve kocalarına itaat etmeleri beklenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soylu kadınlar halktan daha fazla güce sahipti, ancak hukuken hâlâ erkeklere tabiydi.",
+      "text_markdown": "Soylu kadınlar halktan daha fazla güce sahipti, ancak hukuken hâlâ erkeklere tabiydi.",
+      "tts": {
+        "text": "Soylu kadınlar halktan daha fazla güce sahipti, ancak hukuken hâlâ erkeklere tabiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yine de Ortaçağ tarihi, bu beklentilere meydan okuyan birçok kadın örneğini içerir.",
+      "text_markdown": "Yine de Ortaçağ tarihi, bu beklentilere meydan okuyan birçok kadın örneğini içerir.",
+      "tts": {
+        "text": "Yine de Ortaçağ tarihi, bu beklentilere meydan okuyan birçok kadın örneğini içerir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları ordulara komuta etti, bazıları toprakları yönetti ve bazıları denize açıldı.",
+      "text_markdown": "Bazıları ordulara komuta etti, bazıları toprakları yönetti ve bazıları denize açıldı.",
+      "tts": {
+        "text": "Bazıları ordulara komuta etti, bazıları toprakları yönetti ve bazıları denize açıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne de Clisson, kendisine biçilen rolü kabul etmeyi reddeden bir kadının en çarpıcı örneklerinden biri oldu.",
+      "text_markdown": "Jeanne de Clisson, kendisine biçilen rolü kabul etmeyi reddeden bir kadının en çarpıcı örneklerinden biri oldu.",
+      "tts": {
+        "text": "Jeanne de Clisson, kendisine biçilen rolü kabul etmeyi reddeden bir kadının en çarpıcı örneklerinden biri oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Feodal sistem, lordlar ve vasalları arasındaki sadakate dayanıyordu.",
+      "text_markdown": "Feodal sistem, lordlar ve vasalları arasındaki sadakate dayanıyordu.",
+      "tts": {
+        "text": "Feodal sistem, lordlar ve vasalları arasındaki sadakate dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir soylu, toprak ve koruma karşılığında krala veya düke bağlılık yemini ederdi.",
+      "text_markdown": "Bir soylu, toprak ve koruma karşılığında krala veya düke bağlılık yemini ederdi.",
+      "tts": {
+        "text": "Bir soylu, toprak ve koruma karşılığında krala veya düke bağlılık yemini ederdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu yemini bozmak, ölümle cezalandırılan ihanet suçuydu.",
+      "text_markdown": "Bu yemini bozmak, ölümle cezalandırılan ihanet suçuydu.",
+      "tts": {
+        "text": "Bu yemini bozmak, ölümle cezalandırılan ihanet suçuydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak ihanet suçlamaları çoğu zaman siyasi silahlardı.",
+      "text_markdown": "Ancak ihanet suçlamaları çoğu zaman siyasi silahlardı.",
+      "tts": {
+        "text": "Ancak ihanet suçlamaları çoğu zaman siyasi silahlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Krallar bunları rakiplerini yok etmek, toprak ele geçirmek ve potansiyel muhalifleri sindirmek için kullanırdı.",
+      "text_markdown": "Krallar bunları rakiplerini yok etmek, toprak ele geçirmek ve potansiyel muhalifleri sindirmek için kullanırdı.",
+      "tts": {
+        "text": "Krallar bunları rakiplerini yok etmek, toprak ele geçirmek ve potansiyel muhalifleri sindirmek için kullanırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir ihanet suçlaması kanıt gerektirmezdi, yalnızca kralın şüphesi yeterliydi.",
+      "text_markdown": "Bir ihanet suçlaması kanıt gerektirmezdi, yalnızca kralın şüphesi yeterliydi.",
+      "tts": {
+        "text": "Bir ihanet suçlaması kanıt gerektirmezdi, yalnızca kralın şüphesi yeterliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manş Denizi, Dover ile Calais arasındaki en dar noktasında yalnızca otuz dört kilometre genişliğindedir.",
+      "text_markdown": "Manş Denizi, Dover ile Calais arasındaki en dar noktasında yalnızca otuz dört kilometre genişliğindedir.",
+      "tts": {
+        "text": "Manş Denizi, Dover ile Calais arasındaki en dar noktasında yalnızca otuz dört kilometre genişliğindedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İyi koşullarda gemiler birkaç saat içinde geçebilirdi.",
+      "text_markdown": "İyi koşullarda gemiler birkaç saat içinde geçebilirdi.",
+      "tts": {
+        "text": "İyi koşullarda gemiler birkaç saat içinde geçebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ortaçağ Bretanya Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak fırtınalar, sis ve güçlü akıntılar her geçişi tehlikeli kılıyordu.",
+      "text_markdown": "Ancak fırtınalar, sis ve güçlü akıntılar her geçişi tehlikeli kılıyordu.",
+      "tts": {
+        "text": "Ancak fırtınalar, sis ve güçlü akıntılar her geçişi tehlikeli kılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Clisson'un Soylu Kadını",
+      "text_markdown": "Clisson'un Soylu Kadını"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson, yaklaşık 1300 yılında Bretanya'nın en güçlü ailelerinden birinde doğdu.",
+      "text_markdown": "Jeanne de Clisson, yaklaşık 1300 yılında Bretanya'nın en güçlü ailelerinden birinde doğdu.",
+      "tts": {
+        "text": "Jeanne de Clisson, yaklaşık bin üç yüz yılında Bretanya'nın en güçlü ailelerinden birinde doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğum adı Jeanne de Belleville idi.",
+      "text_markdown": "Doğum adı Jeanne de Belleville idi.",
+      "tts": {
+        "text": "Doğum adı Jeanne de Belleville idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Belleville ailesi, Bretanya ile Poitou arasındaki sınır bölgesinde geniş topraklara sahipti.",
+      "text_markdown": "Belleville ailesi, Bretanya ile Poitou arasındaki sınır bölgesinde geniş topraklara sahipti.",
+      "tts": {
+        "text": "Belleville ailesi, Bretanya ile Poitou arasındaki sınır bölgesinde geniş topraklara sahipti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne, dönemin soylu kadınları arasında yaygın olduğu üzere on iki yaşında ilk kez evlendi.",
+      "text_markdown": "Jeanne, dönemin soylu kadınları arasında yaygın olduğu üzere on iki yaşında ilk kez evlendi.",
+      "tts": {
+        "text": "Jeanne, dönemin soylu kadınları arasında yaygın olduğu üzere on iki yaşında ilk kez evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk kocası zengin bir Breton lordu olan Geoffrey de Châteaubriant idi.",
+      "text_markdown": "İlk kocası zengin bir Breton lordu olan Geoffrey de Châteaubriant idi.",
+      "tts": {
+        "text": "İlk kocası zengin bir Breton lordu olan Geoffrey de Châteaubriant idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilik, siyasi ittifakları güçlendirmek için aileleri tarafından düzenlenmişti.",
+      "text_markdown": "Evlilik, siyasi ittifakları güçlendirmek için aileleri tarafından düzenlenmişti.",
+      "tts": {
+        "text": "Evlilik, siyasi ittifakları güçlendirmek için aileleri tarafından düzenlenmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geoffrey 1326'da öldü ve Jeanne'i iki çocuğuyla genç bir dul olarak bıraktı.",
+      "text_markdown": "Geoffrey 1326'da öldü ve Jeanne'i iki çocuğuyla genç bir dul olarak bıraktı.",
+      "tts": {
+        "text": "Geoffrey bin üç yüz yirmi altıda öldü ve Jeanne'i iki çocuğuyla genç bir dul olarak bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Henüz yaklaşık yirmi altı yaşındaydı.",
+      "text_markdown": "Henüz yaklaşık yirmi altı yaşındaydı.",
+      "tts": {
+        "text": "Henüz yaklaşık yirmi altı yaşındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1330'da Jeanne yeniden evlendi.",
+      "text_markdown": "1330'da Jeanne yeniden evlendi.",
+      "tts": {
+        "text": "Bin üç yüz otuzda Jeanne yeniden evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İkinci kocası, Bretanya'nın en önde gelen lordlarından biri olan Olivier de Clisson'du.",
+      "text_markdown": "İkinci kocası, Bretanya'nın en önde gelen lordlarından biri olan Olivier de Clisson'du.",
+      "tts": {
+        "text": "İkinci kocası, Bretanya'nın en önde gelen lordlarından biri olan Olivier de Clisson'du.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zengin, iyi ilişkilere sahip ve yetenekli bir askerî komutandı.",
+      "text_markdown": "Zengin, iyi ilişkilere sahip ve yetenekli bir askerî komutandı.",
+      "tts": {
+        "text": "Zengin, iyi ilişkilere sahip ve yetenekli bir askerî komutandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çift, Bretanya'nın güneydoğusundaki Clisson mülklerinde yaşadı.",
+      "text_markdown": "Çift, Bretanya'nın güneydoğusundaki Clisson mülklerinde yaşadı.",
+      "tts": {
+        "text": "Çift, Bretanya'nın güneydoğusundaki Clisson mülklerinde yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birlikte beş çocukları oldu.",
+      "text_markdown": "Birlikte beş çocukları oldu.",
+      "tts": {
+        "text": "Birlikte beş çocukları oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüm anlatımlara göre, güçlü ve sevgi dolu bir evlilikti.",
+      "text_markdown": "Tüm anlatımlara göre, güçlü ve sevgi dolu bir evlilikti.",
+      "tts": {
+        "text": "Tüm anlatımlara göre, güçlü ve sevgi dolu bir evlilikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olivier de Clisson, Bretanya Dükü'nün sadık bir hizmetkârıydı.",
+      "text_markdown": "Olivier de Clisson, Bretanya Dükü'nün sadık bir hizmetkârıydı.",
+      "tts": {
+        "text": "Olivier de Clisson, Bretanya Dükü'nün sadık bir hizmetkârıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok askerî sefere katıldı ve akranları arasında büyük saygı gördü.",
+      "text_markdown": "Birçok askerî sefere katıldı ve akranları arasında büyük saygı gördü.",
+      "tts": {
+        "text": "Birçok askerî sefere katıldı ve akranları arasında büyük saygı gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onurlu ve sağduyulu bir adam olarak kabul edilirdi.",
+      "text_markdown": "Onurlu ve sağduyulu bir adam olarak kabul edilirdi.",
+      "tts": {
+        "text": "Onurlu ve sağduyulu bir adam olarak kabul edilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1341'de Breton Veraset Savaşı patlak verdiğinde, Olivier başlangıçta Fransa destekli aday Charles de Blois'yı destekledi.",
+      "text_markdown": "1341'de Breton Veraset Savaşı patlak verdiğinde, Olivier başlangıçta Fransa destekli aday Charles de Blois'yı destekledi.",
+      "tts": {
+        "text": "Bin üç yüz kırk birde Breton Veraset Savaşı patlak verdiğinde, Olivier başlangıçta Fransa destekli aday Charles de Blois'yı destekledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Breton soylularının büyük çoğunluğu aynı seçimi yaptı.",
+      "text_markdown": "Breton soylularının büyük çoğunluğu aynı seçimi yaptı.",
+      "tts": {
+        "text": "Breton soylularının büyük çoğunluğu aynı seçimi yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olivier, 1342'de Vannes kuşatmasında savaştı.",
+      "text_markdown": "Olivier, 1342'de Vannes kuşatmasında savaştı.",
+      "tts": {
+        "text": "Olivier, bin üç yüz kırk ikide Vannes kuşatmasında savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaş sırasında İngilizler tarafından esir alındı ve fidye karşılığı tutuldu.",
+      "text_markdown": "Savaş sırasında İngilizler tarafından esir alındı ve fidye karşılığı tutuldu.",
+      "tts": {
+        "text": "Savaş sırasında İngilizler tarafından esir alındı ve fidye karşılığı tutuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fidyesi belirlendi ve sonunda serbest bırakıldı.",
+      "text_markdown": "Fidyesi belirlendi ve sonunda serbest bırakıldı.",
+      "tts": {
+        "text": "Fidyesi belirlendi ve sonunda serbest bırakıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak serbest bırakılması şüphe uyandırdı.",
+      "text_markdown": "Ancak serbest bırakılması şüphe uyandırdı.",
+      "tts": {
+        "text": "Ancak serbest bırakılması şüphe uyandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı Fransız soylular fidyesinin çok düşük olduğunu fısıldadı.",
+      "text_markdown": "Bazı Fransız soylular fidyesinin çok düşük olduğunu fısıldadı.",
+      "tts": {
+        "text": "Bazı Fransız soylular fidyesinin çok düşük olduğunu fısıldadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngilizlerin onu ucuza bıraktıkları söylendi çünkü onlar için casusluk yapmayı kabul etmişti.",
+      "text_markdown": "İngilizlerin onu ucuza bıraktıkları söylendi çünkü onlar için casusluk yapmayı kabul etmişti.",
+      "tts": {
+        "text": "İngilizlerin onu ucuza bıraktıkları söylendi çünkü onlar için casusluk yapmayı kabul etmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olivier'nin Fransa'ya ihanet ettiğine dair hiçbir kanıt yoktur.",
+      "text_markdown": "Olivier'nin Fransa'ya ihanet ettiğine dair hiçbir kanıt yoktur.",
+      "tts": {
+        "text": "Olivier'nin Fransa'ya ihanet ettiğine dair hiçbir kanıt yoktur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler, suçlamanın siyasi olduğuna, topraklarını ve unvanlarını isteyen rakipler tarafından kışkırtıldığına inanmaktadır.",
+      "text_markdown": "Tarihçiler, suçlamanın siyasi olduğuna, topraklarını ve unvanlarını isteyen rakipler tarafından kışkırtıldığına inanmaktadır.",
+      "tts": {
+        "text": "Tarihçiler, suçlamanın siyasi olduğuna, topraklarını ve unvanlarını isteyen rakipler tarafından kışkırtıldığına inanmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1343'te Olivier, Paris'te bir turnuvaya çağrıldı.",
+      "text_markdown": "1343'te Olivier, Paris'te bir turnuvaya çağrıldı.",
+      "tts": {
+        "text": "Bin üç yüz kırk üçte Olivier, Paris'te bir turnuvaya çağrıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir şeyden şüphelenmeden isteyerek gitti.",
+      "text_markdown": "Hiçbir şeyden şüphelenmeden isteyerek gitti.",
+      "tts": {
+        "text": "Hiçbir şeyden şüphelenmeden isteyerek gitti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vardığında tutuklandı ve Kral VI. Philippe'e ihanet suçlamasıyla karşı karşıya kaldı.",
+      "text_markdown": "Vardığında tutuklandı ve Kral VI. Philippe'e ihanet suçlamasıyla karşı karşıya kaldı.",
+      "tts": {
+        "text": "Vardığında tutuklandı ve Kral Altıncı Philippe'e ihanet suçlamasıyla karşı karşıya kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düzgün bir yargılama yapılmadı.",
+      "text_markdown": "Düzgün bir yargılama yapılmadı.",
+      "tts": {
+        "text": "Düzgün bir yargılama yapılmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suçlamalar şüphelere ve Olivier'nin siyasi düşmanlarının sözlerine dayanıyordu.",
+      "text_markdown": "Suçlamalar şüphelere ve Olivier'nin siyasi düşmanlarının sözlerine dayanıyordu.",
+      "tts": {
+        "text": "Suçlamalar şüphelere ve Olivier'nin siyasi düşmanlarının sözlerine dayanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2 Ağustos 1343'te Olivier de Clisson, Paris'teki Les Halles'da başı kesildi.",
+      "text_markdown": "2 Ağustos 1343'te Olivier de Clisson, Paris'teki Les Halles'da başı kesildi.",
+      "tts": {
+        "text": "İki Ağustos bin üç yüz kırk üç tarihinde Olivier de Clisson, Paris'teki Les Halles'da başı kesildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başı Nantes'a gönderildi ve bir uyarı olarak şehir kapısının üzerinde bir mızrağa asıldı.",
+      "text_markdown": "Başı Nantes'a gönderildi ve bir uyarı olarak şehir kapısının üzerinde bir mızrağa asıldı.",
+      "tts": {
+        "text": "Başı Nantes'a gönderildi ve bir uyarı olarak şehir kapısının üzerinde bir mızrağa asıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne kocasının idamını öğrendiğinde, yıkıldı.",
+      "text_markdown": "Jeanne kocasının idamını öğrendiğinde, yıkıldı.",
+      "tts": {
+        "text": "Jeanne kocasının idamını öğrendiğinde, yıkıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vakayinamelere göre, en küçük iki oğluyla birlikte Nantes'a gitti.",
+      "text_markdown": "Vakayinamelere göre, en küçük iki oğluyla birlikte Nantes'a gitti.",
+      "tts": {
+        "text": "Vakayinamelere göre, en küçük iki oğluyla birlikte Nantes'a gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çocuklara kapıdaki babalarının başını gösterdi ve Fransa Kralı'nın ne yaptığını hatırlamalarını söyledi.",
+      "text_markdown": "Çocuklara kapıdaki babalarının başını gösterdi ve Fransa Kralı'nın ne yaptığını hatırlamalarını söyledi.",
+      "tts": {
+        "text": "Çocuklara kapıdaki babalarının başını gösterdi ve Fransa Kralı'nın ne yaptığını hatırlamalarını söyledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O andan itibaren Jeanne de Clisson hayatını tek bir amaca adadı.",
+      "text_markdown": "O andan itibaren Jeanne de Clisson hayatını tek bir amaca adadı.",
+      "tts": {
+        "text": "O andan itibaren Jeanne de Clisson hayatını tek bir amaca adadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa Kralı'na ve destekçilerine, kocasına yaptıklarının bedelini ödetecekti.",
+      "text_markdown": "Fransa Kralı'na ve destekçilerine, kocasına yaptıklarının bedelini ödetecekti.",
+      "tts": {
+        "text": "Fransa Kralı'na ve destekçilerine, kocasına yaptıklarının bedelini ödetecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Clisson mülklerini satarak başladı.",
+      "text_markdown": "Clisson mülklerini satarak başladı.",
+      "tts": {
+        "text": "Clisson mülklerini satarak başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Topraklarını, mücevherlerini ve mallarını altına çevirdi.",
+      "text_markdown": "Topraklarını, mücevherlerini ve mallarını altına çevirdi.",
+      "tts": {
+        "text": "Topraklarını, mücevherlerini ve mallarını altına çevirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu parayla sadık adamlardan küçük bir ordu kurdu.",
+      "text_markdown": "Bu parayla sadık adamlardan küçük bir ordu kurdu.",
+      "tts": {
+        "text": "Bu parayla sadık adamlardan küçük bir ordu kurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bretanya'daki Fransa yanlısı kalelere ve garnizonlara saldırdı.",
+      "text_markdown": "Bretanya'daki Fransa yanlısı kalelere ve garnizonlara saldırdı.",
+      "tts": {
+        "text": "Bretanya'daki Fransa yanlısı kalelere ve garnizonlara saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baskınları hızlı, şiddetli ve acımasızdı.",
+      "text_markdown": "Baskınları hızlı, şiddetli ve acımasızdı.",
+      "tts": {
+        "text": "Baskınları hızlı, şiddetli ve acımasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fransız tahtını destekleyen her askeri öldürdü ve surları alevler içinde bıraktı.",
+      "text_markdown": "Fransız tahtını destekleyen her askeri öldürdü ve surları alevler içinde bıraktı.",
+      "tts": {
+        "text": "Fransız tahtını destekleyen her askeri öldürdü ve surları alevler içinde bıraktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak kara savaşı Jeanne için yeterli değildi.",
+      "text_markdown": "Ancak kara savaşı Jeanne için yeterli değildi.",
+      "tts": {
+        "text": "Ancak kara savaşı Jeanne için yeterli değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa'ya en çok acıtacak yerde vurmak istiyordu.",
+      "text_markdown": "Fransa'ya en çok acıtacak yerde vurmak istiyordu.",
+      "tts": {
+        "text": "Fransa'ya en çok acıtacak yerde vurmak istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Clisson'un Soylu Kadını",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşını denize taşımaya karar verdi.",
+      "text_markdown": "Savaşını denize taşımaya karar verdi.",
+      "tts": {
+        "text": "Savaşını denize taşımaya karar verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kara Filo",
+      "text_markdown": "Kara Filo"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson üç savaş gemisi satın aldı.",
+      "text_markdown": "Jeanne de Clisson üç savaş gemisi satın aldı.",
+      "tts": {
+        "text": "Jeanne de Clisson üç savaş gemisi satın aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gövdelerini siyaha boyanmasını emretti.",
+      "text_markdown": "Gövdelerini siyaha boyanmasını emretti.",
+      "tts": {
+        "text": "Gövdelerini siyaha boyanmasını emretti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yelkenlerinin kırmızıya boyanmasını istedi.",
+      "text_markdown": "Yelkenlerinin kırmızıya boyanmasını istedi.",
+      "tts": {
+        "text": "Yelkenlerinin kırmızıya boyanmasını istedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siyah gövdeler ve kırmızı yelkenler uzaktan tanınacak şekilde tasarlanmıştı.",
+      "text_markdown": "Siyah gövdeler ve kırmızı yelkenler uzaktan tanınacak şekilde tasarlanmıştı.",
+      "tts": {
+        "text": "Siyah gövdeler ve kırmızı yelkenler uzaktan tanınacak şekilde tasarlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeanne, Fransızların kimin geldiğini bilmesini istiyordu.",
+      "text_markdown": "Jeanne, Fransızların kimin geldiğini bilmesini istiyordu.",
+      "tts": {
+        "text": "Jeanne, Fransızların kimin geldiğini bilmesini istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kocasının hissettiği aynı dehşeti onların da hissetmesini istiyordu.",
+      "text_markdown": "Kocasının hissettiği aynı dehşeti onların da hissetmesini istiyordu.",
+      "tts": {
+        "text": "Kocasının hissettiği aynı dehşeti onların da hissetmesini istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manş Denizi'ne açılarak Fransız ticaret gemilerine ve savaş gemilerine saldırmaya başladı.",
+      "text_markdown": "Manş Denizi'ne açılarak Fransız ticaret gemilerine ve savaş gemilerine saldırmaya başladı.",
+      "tts": {
+        "text": "Manş Denizi'ne açılarak Fransız ticaret gemilerine ve savaş gemilerine saldırmaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu, Fransız bayrağı taşıyan her gemiyi hedef aldı.",
+      "text_markdown": "Filosu, Fransız bayrağı taşıyan her gemiyi hedef aldı.",
+      "tts": {
+        "text": "Filosu, Fransız bayrağı taşıyan her gemiyi hedef aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne, adamlarını bizzat savaşa yönetti.",
+      "text_markdown": "Jeanne, adamlarını bizzat savaşa yönetti.",
+      "tts": {
+        "text": "Jeanne, adamlarını bizzat savaşa yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vakayinamelere göre savaşta balta kullanıyor ve mürettebatıyla birlikte savaşıyordu.",
+      "text_markdown": "Vakayinamelere göre savaşta balta kullanıyor ve mürettebatıyla birlikte savaşıyordu.",
+      "tts": {
+        "text": "Vakayinamelere göre savaşta balta kullanıyor ve mürettebatıyla birlikte savaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korkusuz ve tamamen acımasız olduğu söylenirdi.",
+      "text_markdown": "Korkusuz ve tamamen acımasız olduğu söylenirdi.",
+      "tts": {
+        "text": "Korkusuz ve tamamen acımasız olduğu söylenirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemileri bir Fransız gemisini ele geçirdiğinde mürettebat öldürülürdü.",
+      "text_markdown": "Gemileri bir Fransız gemisini ele geçirdiğinde mürettebat öldürülürdü.",
+      "tts": {
+        "text": "Gemileri bir Fransız gemisini ele geçirdiğinde mürettebat öldürülürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak Jeanne her zaman iki ya da üç hayatta kalan bırakırdı.",
+      "text_markdown": "Ancak Jeanne her zaman iki ya da üç hayatta kalan bırakırdı.",
+      "tts": {
+        "text": "Ancak Jeanne her zaman iki ya da üç hayatta kalan bırakırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onları Fransa'ya geri göndererek krala ne olduğunu anlatmalarını sağlardı.",
+      "text_markdown": "Onları Fransa'ya geri göndererek krala ne olduğunu anlatmalarını sağlardı.",
+      "tts": {
+        "text": "Onları Fransa'ya geri göndererek krala ne olduğunu anlatmalarını sağlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, kasıtlı bir psikolojik savaş stratejisiydi.",
+      "text_markdown": "Bu, kasıtlı bir psikolojik savaş stratejisiydi.",
+      "tts": {
+        "text": "Bu, kasıtlı bir psikolojik savaş stratejisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayatta kalanlar, kırmızı yelkenli siyah gemilerin hikâyelerini yayarlardı.",
+      "text_markdown": "Hayatta kalanlar, kırmızı yelkenli siyah gemilerin hikâyelerini yayarlardı.",
+      "tts": {
+        "text": "Hayatta kalanlar, kırmızı yelkenli siyah gemilerin hikâyelerini yayarlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bretanya'nın Dişi Aslanı korkusu tüm Fransız kıyısı boyunca büyüdü.",
+      "text_markdown": "Bretanya'nın Dişi Aslanı korkusu tüm Fransız kıyısı boyunca büyüdü.",
+      "tts": {
+        "text": "Bretanya'nın Dişi Aslanı korkusu tüm Fransız kıyısı boyunca büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne, Fransız soylularına karşı özellikle acımasızdı.",
+      "text_markdown": "Jeanne, Fransız soylularına karşı özellikle acımasızdı.",
+      "tts": {
+        "text": "Jeanne, Fransız soylularına karşı özellikle acımasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "VI. Philippe'i destekleyen bir lord veya şövalye ele geçirirse, idamını bizzat denetlerdi.",
+      "text_markdown": "VI. Philippe'i destekleyen bir lord veya şövalye ele geçirirse, idamını bizzat denetlerdi.",
+      "tts": {
+        "text": "Altıncı Philippe'i destekleyen bir lord veya şövalye ele geçirirse, idamını bizzat denetlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fransız aristokrasisinin, kocasına yapılan aynı adaletsizliği hissetmesini istiyordu.",
+      "text_markdown": "Fransız aristokrasisinin, kocasına yapılan aynı adaletsizliği hissetmesini istiyordu.",
+      "tts": {
+        "text": "Fransız aristokrasisinin, kocasına yapılan aynı adaletsizliği hissetmesini istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere ile ittifak kurdu.",
+      "text_markdown": "İngiltere ile ittifak kurdu.",
+      "tts": {
+        "text": "İngiltere ile ittifak kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kral III. Edward, Fransız deniz ticaretine saldıran herkesi desteklemekten memnundu.",
+      "text_markdown": "Kral III. Edward, Fransız deniz ticaretine saldıran herkesi desteklemekten memnundu.",
+      "tts": {
+        "text": "Kral Üçüncü Edward, Fransız deniz ticaretine saldıran herkesi desteklemekten memnundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne'in baskınları Fransız ticaretini bozuyor ve Fransız savaş çabasını zayıflatıyordu.",
+      "text_markdown": "Jeanne'in baskınları Fransız ticaretini bozuyor ve Fransız savaş çabasını zayıflatıyordu.",
+      "tts": {
+        "text": "Jeanne'in baskınları Fransız ticaretini bozuyor ve Fransız savaş çabasını zayıflatıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler Jeanne'e erzak, güvenli limanlar ve Fransız gemi hareketleri hakkında istihbarat sağladı.",
+      "text_markdown": "İngilizler Jeanne'e erzak, güvenli limanlar ve Fransız gemi hareketleri hakkında istihbarat sağladı.",
+      "tts": {
+        "text": "İngilizler Jeanne'e erzak, güvenli limanlar ve Fransız gemi hareketleri hakkında istihbarat sağladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karşılığında Jeanne, baskınlarının kârını paylaştı ve İngiliz gemilerine asla zarar verilmemesini sağladı.",
+      "text_markdown": "Karşılığında Jeanne, baskınlarının kârını paylaştı ve İngiliz gemilerine asla zarar verilmemesini sağladı.",
+      "tts": {
+        "text": "Karşılığında Jeanne, baskınlarının kârını paylaştı ve İngiliz gemilerine asla zarar verilmemesini sağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fransız tahtı Jeanne'in saldırılarına öfkeliydi ama onu durdurmakta zorlanıyordu.",
+      "text_markdown": "Fransız tahtı Jeanne'in saldırılarına öfkeliydi ama onu durdurmakta zorlanıyordu.",
+      "tts": {
+        "text": "Fransız tahtı Jeanne'in saldırılarına öfkeliydi ama onu durdurmakta zorlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Manş Denizi genişti ve Jeanne'in gemileri hızlıydı.",
+      "text_markdown": "Manş Denizi genişti ve Jeanne'in gemileri hızlıydı.",
+      "tts": {
+        "text": "Manş Denizi genişti ve Jeanne'in gemileri hızlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uyarı vermeden saldırır ve Fransız savaş gemileri tepki vermeden önce kaybolurdu.",
+      "text_markdown": "Uyarı vermeden saldırır ve Fransız savaş gemileri tepki vermeden önce kaybolurdu.",
+      "tts": {
+        "text": "Uyarı vermeden saldırır ve Fransız savaş gemileri tepki vermeden önce kaybolurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "VI. Philippe, Clisson'ların kalan topraklarına el koydu ve Jeanne'i kanun dışı ilan etti.",
+      "text_markdown": "VI. Philippe, Clisson'ların kalan topraklarına el koydu ve Jeanne'i kanun dışı ilan etti.",
+      "tts": {
+        "text": "Altıncı Philippe, Clisson'ların kalan topraklarına el koydu ve Jeanne'i kanun dışı ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başına ödül koydu.",
+      "text_markdown": "Başına ödül koydu.",
+      "tts": {
+        "text": "Başına ödül koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Jeanne, deniz ve İngiliz müttefikleri tarafından korunarak onun erişiminin dışındaydı.",
+      "text_markdown": "Ancak Jeanne, deniz ve İngiliz müttefikleri tarafından korunarak onun erişiminin dışındaydı.",
+      "tts": {
+        "text": "Ancak Jeanne, deniz ve İngiliz müttefikleri tarafından korunarak onun erişiminin dışındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in seferi, tek başına hareket eden öfkeli bir kadının eseri değildi.",
+      "text_markdown": "Jeanne'in seferi, tek başına hareket eden öfkeli bir kadının eseri değildi.",
+      "tts": {
+        "text": "Jeanne'in seferi, tek başına hareket eden öfkeli bir kadının eseri değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deneyimli denizciler ve askerlerden oluşan bir filo ve mürettebata komuta ediyordu.",
+      "text_markdown": "Deneyimli denizciler ve askerlerden oluşan bir filo ve mürettebata komuta ediyordu.",
+      "tts": {
+        "text": "Deneyimli denizciler ve askerlerden oluşan bir filo ve mürettebata komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saldırılarını dikkatle planlıyor ve hedeflerini stratejik hassasiyetle seçiyordu.",
+      "text_markdown": "Saldırılarını dikkatle planlıyor ve hedeflerini stratejik hassasiyetle seçiyordu.",
+      "tts": {
+        "text": "Saldırılarını dikkatle planlıyor ve hedeflerini stratejik hassasiyetle seçiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denizcileri ona sadıktı.",
+      "text_markdown": "Denizcileri ona sadıktı.",
+      "tts": {
+        "text": "Denizcileri ona sadıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kadınlardan erkekleri savaşa yönetmelerinin beklenmediği bir çağda, Jeanne'in mürettebatı tereddüt etmeden onu izledi.",
+      "text_markdown": "Kadınlardan erkekleri savaşa yönetmelerinin beklenmediği bir çağda, Jeanne'in mürettebatı tereddüt etmeden onu izledi.",
+      "tts": {
+        "text": "Kadınlardan erkekleri savaşa yönetmelerinin beklenmediği bir çağda, Jeanne'in mürettebatı tereddüt etmeden onu izledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kişisel cesareti ve davasının haklılığı onların saygısını kazandı.",
+      "text_markdown": "Kişisel cesareti ve davasının haklılığı onların saygısını kazandı.",
+      "tts": {
+        "text": "Kişisel cesareti ve davasının haklılığı onların saygısını kazandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca Normandiya kıyısı boyunca faaliyet göstererek Fransız tahtını destekleyen balıkçı köylerini ve kıyı kasabalarını yağmaladı.",
+      "text_markdown": "Ayrıca Normandiya kıyısı boyunca faaliyet göstererek Fransız tahtını destekleyen balıkçı köylerini ve kıyı kasabalarını yağmaladı.",
+      "tts": {
+        "text": "Ayrıca Normandiya kıyısı boyunca faaliyet göstererek Fransız tahtını destekleyen balıkçı köylerini ve kıyı kasabalarını yağmaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransız ordusuna yönelik erzakları yaktı.",
+      "text_markdown": "Fransız ordusuna yönelik erzakları yaktı.",
+      "tts": {
+        "text": "Fransız ordusuna yönelik erzakları yaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fransız savaş makinesini ayakta tutan tedarik zincirlerini bozdu.",
+      "text_markdown": "Fransız savaş makinesini ayakta tutan tedarik zincirlerini bozdu.",
+      "tts": {
+        "text": "Fransız savaş makinesini ayakta tutan tedarik zincirlerini bozdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıl yıl Jeanne, Fransa'ya karşı savaşını sürdürdü.",
+      "text_markdown": "Yıl yıl Jeanne, Fransa'ya karşı savaşını sürdürdü.",
+      "tts": {
+        "text": "Yıl yıl Jeanne, Fransa'ya karşı savaşını sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başka korsanlar yorulur ya da af kabul ederdi.",
+      "text_markdown": "Başka korsanlar yorulur ya da af kabul ederdi.",
+      "tts": {
+        "text": "Başka korsanlar yorulur ya da af kabul ederdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne asla pes etmedi.",
+      "text_markdown": "Jeanne asla pes etmedi.",
+      "tts": {
+        "text": "Jeanne asla pes etmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "VI. Philippe'e olan nefreti mutlaktı.",
+      "text_markdown": "VI. Philippe'e olan nefreti mutlaktı.",
+      "tts": {
+        "text": "Altıncı Philippe'e olan nefreti mutlaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Philippe 1350'de öldüğünde, oğlu II. Jean tahtı ve savaşı devraldı.",
+      "text_markdown": "Philippe 1350'de öldüğünde, oğlu II. Jean tahtı ve savaşı devraldı.",
+      "tts": {
+        "text": "Philippe bin üç yüz ellide öldüğünde, oğlu İkinci Jean tahtı ve savaşı devraldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne'in yeni kralın kuvvetlerine saldırıları durmaksızın sürdü.",
+      "text_markdown": "Jeanne'in yeni kralın kuvvetlerine saldırıları durmaksızın sürdü.",
+      "tts": {
+        "text": "Jeanne'in yeni kralın kuvvetlerine saldırıları durmaksızın sürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in mürettebatı, kocasına hizmet etmiş ve Clisson adına sadık kalmış Breton denizcileri içeriyordu.",
+      "text_markdown": "Jeanne'in mürettebatı, kocasına hizmet etmiş ve Clisson adına sadık kalmış Breton denizcileri içeriyordu.",
+      "tts": {
+        "text": "Jeanne'in mürettebatı, kocasına hizmet etmiş ve Clisson adına sadık kalmış Breton denizcileri içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu adamlar kanalın sularını ve Bretanya kıyılarını çok iyi biliyordu.",
+      "text_markdown": "Bu adamlar kanalın sularını ve Bretanya kıyılarını çok iyi biliyordu.",
+      "tts": {
+        "text": "Bu adamlar kanalın sularını ve Bretanya kıyılarını çok iyi biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yerel bilgileri Jeanne'e önemli bir taktik avantaj sağlıyordu.",
+      "text_markdown": "Yerel bilgileri Jeanne'e önemli bir taktik avantaj sağlıyordu.",
+      "tts": {
+        "text": "Yerel bilgileri Jeanne'e önemli bir taktik avantaj sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On dördüncü yüzyılın kırklı yıllarının Ortaçağ savaş gemileri, sonraki yüzyılların büyük kalyonları değildi.",
+      "text_markdown": "On dördüncü yüzyılın kırklı yıllarının Ortaçağ savaş gemileri, sonraki yüzyılların büyük kalyonları değildi.",
+      "tts": {
+        "text": "On dördüncü yüzyılın kırklı yıllarının Ortaçağ savaş gemileri, sonraki yüzyılların büyük kalyonları değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret gemilerinden uyarlanan daha küçük teknelerdi.",
+      "text_markdown": "Ticaret gemilerinden uyarlanan daha küçük teknelerdi.",
+      "tts": {
+        "text": "Ticaret gemilerinden uyarlanan daha küçük teknelerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hem kürek hem yelken kullanıyorlardı ve sığ kıyı sularında manevra yapabiliyorlardı.",
+      "text_markdown": "Hem kürek hem yelken kullanıyorlardı ve sığ kıyı sularında manevra yapabiliyorlardı.",
+      "tts": {
+        "text": "Hem kürek hem yelken kullanıyorlardı ve sığ kıyı sularında manevra yapabiliyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Düşman gemilerine abordaj, bu dönemde deniz savaşının başlıca yöntemiydi.",
+      "text_markdown": "Düşman gemilerine abordaj, bu dönemde deniz savaşının başlıca yöntemiydi.",
+      "tts": {
+        "text": "Düşman gemilerine abordaj, bu dönemde deniz savaşının başlıca yöntemiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebatlar düşman gemisini kancalarla yakalayıp yanına çeker, sonra kılıç ve baltalarla üzerine akardı.",
+      "text_markdown": "Mürettebatlar düşman gemisini kancalarla yakalayıp yanına çeker, sonra kılıç ve baltalarla üzerine akardı.",
+      "tts": {
+        "text": "Mürettebatlar düşman gemisini kancalarla yakalayıp yanına çeker, sonra kılıç ve baltalarla üzerine akardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Filo",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yakın mesafeli ve acımasız bir savaştı.",
+      "text_markdown": "Yakın mesafeli ve acımasız bir savaştı.",
+      "tts": {
+        "text": "Yakın mesafeli ve acımasız bir savaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Manş'ta On Üç Yıl",
+      "text_markdown": "Manş'ta On Üç Yıl"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson'un intikam seferi yaklaşık on üç yıl sürdü.",
+      "text_markdown": "Jeanne de Clisson'un intikam seferi yaklaşık on üç yıl sürdü.",
+      "tts": {
+        "text": "Jeanne de Clisson'un intikam seferi yaklaşık on üç yıl sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1343'ten yaklaşık 1356'ya kadar Manş Denizi'nde Fransız deniz ticaretini dehşete düşürdü.",
+      "text_markdown": "1343'ten yaklaşık 1356'ya kadar Manş Denizi'nde Fransız deniz ticaretini dehşete düşürdü.",
+      "tts": {
+        "text": "Bin üç yüz kırk üçten yaklaşık bin üç yüz elli altıya kadar Manş Denizi'nde Fransız deniz ticaretini dehşete düşürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu süre zarfında denizlerin en ünlü ve en korkulan şahsiyetlerinden biri oldu.",
+      "text_markdown": "Bu süre zarfında denizlerin en ünlü ve en korkulan şahsiyetlerinden biri oldu.",
+      "tts": {
+        "text": "Bu süre zarfında denizlerin en ünlü ve en korkulan şahsiyetlerinden biri oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransız denizciler ufukta siyah gövdeler görmeyi dehşetle karşılardı.",
+      "text_markdown": "Fransız denizciler ufukta siyah gövdeler görmeyi dehşetle karşılardı.",
+      "tts": {
+        "text": "Fransız denizciler ufukta siyah gövdeler görmeyi dehşetle karşılardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne'in filosunun kırmızı yelkenleri ölümün yaklaştığı anlamına geliyordu.",
+      "text_markdown": "Jeanne'in filosunun kırmızı yelkenleri ölümün yaklaştığı anlamına geliyordu.",
+      "tts": {
+        "text": "Jeanne'in filosunun kırmızı yelkenleri ölümün yaklaştığı anlamına geliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fransız gemilerini ele geçirip kargolarını satarak filosunu sürdürdü.",
+      "text_markdown": "Fransız gemilerini ele geçirip kargolarını satarak filosunu sürdürdü.",
+      "tts": {
+        "text": "Fransız gemilerini ele geçirip kargolarını satarak filosunu sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baskınlardan elde edilen ganimet yeni gemileri, silahları ve mürettebatı finanse etti.",
+      "text_markdown": "Baskınlardan elde edilen ganimet yeni gemileri, silahları ve mürettebatı finanse etti.",
+      "tts": {
+        "text": "Baskınlardan elde edilen ganimet yeni gemileri, silahları ve mürettebatı finanse etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendi kendine yeterliydi, kimseye borçlu değildi.",
+      "text_markdown": "Kendi kendine yeterliydi, kimseye borçlu değildi.",
+      "tts": {
+        "text": "Kendi kendine yeterliydi, kimseye borçlu değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On dördüncü yüzyılın kırklı ve ellili yıllarında Manş Denizi bir savaş bölgesiydi.",
+      "text_markdown": "On dördüncü yüzyılın kırklı ve ellili yıllarında Manş Denizi bir savaş bölgesiydi.",
+      "tts": {
+        "text": "On dördüncü yüzyılın kırklı ve ellili yıllarında Manş Denizi bir savaş bölgesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz ve Fransız filoları düzenli olarak çatışıyordu.",
+      "text_markdown": "İngiliz ve Fransız filoları düzenli olarak çatışıyordu.",
+      "tts": {
+        "text": "İngiliz ve Fransız filoları düzenli olarak çatışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret gemileri korunma amacıyla konvoylarla seyahat ediyordu, ancak konvoylar bile Jeanne'den güvende değildi.",
+      "text_markdown": "Ticaret gemileri korunma amacıyla konvoylarla seyahat ediyordu, ancak konvoylar bile Jeanne'den güvende değildi.",
+      "tts": {
+        "text": "Ticaret gemileri korunma amacıyla konvoylarla seyahat ediyordu, ancak konvoylar bile Jeanne'den güvende değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in ünü Bretanya'nın çok ötesine yayıldı.",
+      "text_markdown": "Jeanne'in ünü Bretanya'nın çok ötesine yayıldı.",
+      "tts": {
+        "text": "Jeanne'in ünü Bretanya'nın çok ötesine yayıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bretanya'nın Dişi Aslanı hakkındaki hikâyeler Fransa, İngiltere ve Alçak Ülkelere yayıldı.",
+      "text_markdown": "Bretanya'nın Dişi Aslanı hakkındaki hikâyeler Fransa, İngiltere ve Alçak Ülkelere yayıldı.",
+      "tts": {
+        "text": "Bretanya'nın Dişi Aslanı hakkındaki hikâyeler Fransa, İngiltere ve Alçak Ülkelere yayıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kraliyet adaletsizliğine karşı direnişin simgesi hâline geldi.",
+      "text_markdown": "Kraliyet adaletsizliğine karşı direnişin simgesi hâline geldi.",
+      "tts": {
+        "text": "Kraliyet adaletsizliğine karşı direnişin simgesi hâline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüm bu yıllar boyunca çocukları hayatının merkezinde kaldı.",
+      "text_markdown": "Tüm bu yıllar boyunca çocukları hayatının merkezinde kaldı.",
+      "tts": {
+        "text": "Tüm bu yıllar boyunca çocukları hayatının merkezinde kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deniz seferlerinin tehlikelerinden uzakta güvenle yetiştirilmelerini sağladı.",
+      "text_markdown": "Deniz seferlerinin tehlikelerinden uzakta güvenle yetiştirilmelerini sağladı.",
+      "tts": {
+        "text": "Deniz seferlerinin tehlikelerinden uzakta güvenle yetiştirilmelerini sağladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İlk evliliğinden olan en büyük oğlu İngiliz müttefiklerin bakımına verildi.",
+      "text_markdown": "İlk evliliğinden olan en büyük oğlu İngiliz müttefiklerin bakımına verildi.",
+      "tts": {
+        "text": "İlk evliliğinden olan en büyük oğlu İngiliz müttefiklerin bakımına verildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oğlu genç Olivier de Clisson, Fransa'nın en güçlü adamlarından biri olacaktı.",
+      "text_markdown": "Oğlu genç Olivier de Clisson, Fransa'nın en güçlü adamlarından biri olacaktı.",
+      "tts": {
+        "text": "Oğlu genç Olivier de Clisson, Fransa'nın en güçlü adamlarından biri olacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonunda krallığın en yüksek askerî makamı olan Fransa Konnetablı oldu.",
+      "text_markdown": "Sonunda krallığın en yüksek askerî makamı olan Fransa Konnetablı oldu.",
+      "tts": {
+        "text": "Sonunda krallığın en yüksek askerî makamı olan Fransa Konnetablı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hain damgası yemiş bir aile için şaşırtıcı bir tersine dönüştü.",
+      "text_markdown": "Hain damgası yemiş bir aile için şaşırtıcı bir tersine dönüştü.",
+      "tts": {
+        "text": "Hain damgası yemiş bir aile için şaşırtıcı bir tersine dönüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in taktikleri yıllar içinde gelişti.",
+      "text_markdown": "Jeanne'in taktikleri yıllar içinde gelişti.",
+      "tts": {
+        "text": "Jeanne'in taktikleri yıllar içinde gelişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanalın havasını ve gelgitlerini okumayı öğrendi.",
+      "text_markdown": "Kanalın havasını ve gelgitlerini okumayı öğrendi.",
+      "tts": {
+        "text": "Kanalın havasını ve gelgitlerini okumayı öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hangi limanların güvenli, hangilerinin Fransız savaş gemileri tarafından devriye gezildiğini biliyordu.",
+      "text_markdown": "Hangi limanların güvenli, hangilerinin Fransız savaş gemileri tarafından devriye gezildiğini biliyordu.",
+      "tts": {
+        "text": "Hangi limanların güvenli, hangilerinin Fransız savaş gemileri tarafından devriye gezildiğini biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Görüş mesafesinin kötü ve kaçışın daha kolay olduğu geceleri saldırıyordu.",
+      "text_markdown": "Görüş mesafesinin kötü ve kaçışın daha kolay olduğu geceleri saldırıyordu.",
+      "tts": {
+        "text": "Görüş mesafesinin kötü ve kaçışın daha kolay olduğu geceleri saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İyi korunan konvoylar yerine yalnız gemileri hedef alıyordu.",
+      "text_markdown": "İyi korunan konvoylar yerine yalnız gemileri hedef alıyordu.",
+      "tts": {
+        "text": "İyi korunan konvoylar yerine yalnız gemileri hedef alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her zaman bir geri çekilme planı vardı.",
+      "text_markdown": "Her zaman bir geri çekilme planı vardı.",
+      "tts": {
+        "text": "Her zaman bir geri çekilme planı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fransızlar onu avlamak için filolar gönderdi ama hiçbir zaman yakalayamadı.",
+      "text_markdown": "Fransızlar onu avlamak için filolar gönderdi ama hiçbir zaman yakalayamadı.",
+      "tts": {
+        "text": "Fransızlar onu avlamak için filolar gönderdi ama hiçbir zaman yakalayamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeanne kanal sularını çoğu deniz komutanından daha iyi biliyordu.",
+      "text_markdown": "Jeanne kanal sularını çoğu deniz komutanından daha iyi biliyordu.",
+      "tts": {
+        "text": "Jeanne kanal sularını çoğu deniz komutanından daha iyi biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siste kaybolabilir, kıyı girintilerine saklanabilir veya açık denizde takipçilerini geçebilirdi.",
+      "text_markdown": "Siste kaybolabilir, kıyı girintilerine saklanabilir veya açık denizde takipçilerini geçebilirdi.",
+      "tts": {
+        "text": "Siste kaybolabilir, kıyı girintilerine saklanabilir veya açık denizde takipçilerini geçebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kıl payı atlatılan anlar da oldu.",
+      "text_markdown": "Kıl payı atlatılan anlar da oldu.",
+      "tts": {
+        "text": "Kıl payı atlatılan anlar da oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir anlatıma göre Jeanne'in filosu bir keresinde kanaldaki bir fırtınayla dağıtıldı.",
+      "text_markdown": "Bir anlatıma göre Jeanne'in filosu bir keresinde kanaldaki bir fırtınayla dağıtıldı.",
+      "tts": {
+        "text": "Bir anlatıma göre Jeanne'in filosu bir keresinde kanaldaki bir fırtınayla dağıtıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oğullarıyla birlikte İngiliz kıyılarına ulaşmadan önce birkaç gün sürüklendi.",
+      "text_markdown": "Oğullarıyla birlikte İngiliz kıyılarına ulaşmadan önce birkaç gün sürüklendi.",
+      "tts": {
+        "text": "Oğullarıyla birlikte İngiliz kıyılarına ulaşmadan önce birkaç gün sürüklendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu çile sırasında küçük oğullarından birinin soğuk ve bitkinlikten öldüğü söylenir.",
+      "text_markdown": "Bu çile sırasında küçük oğullarından birinin soğuk ve bitkinlikten öldüğü söylenir.",
+      "tts": {
+        "text": "Bu çile sırasında küçük oğullarından birinin soğuk ve bitkinlikten öldüğü söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kayıp acısını derinleştirdi ama kararlılığını zayıflatmadı.",
+      "text_markdown": "Bu kayıp acısını derinleştirdi ama kararlılığını zayıflatmadı.",
+      "tts": {
+        "text": "Bu kayıp acısını derinleştirdi ama kararlılığını zayıflatmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in savaşı kişiseldi ama daha büyük bir amaca hizmet ediyordu.",
+      "text_markdown": "Jeanne'in savaşı kişiseldi ama daha büyük bir amaca hizmet ediyordu.",
+      "tts": {
+        "text": "Jeanne'in savaşı kişiseldi ama daha büyük bir amaca hizmet ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransız deniz ticaretine saldırarak Fransa'nın İngiltere ve müttefiklerine karşı savaşma kapasitesini zayıflattı.",
+      "text_markdown": "Fransız deniz ticaretine saldırarak Fransa'nın İngiltere ve müttefiklerine karşı savaşma kapasitesini zayıflattı.",
+      "tts": {
+        "text": "Fransız deniz ticaretine saldırarak Fransa'nın İngiltere ve müttefiklerine karşı savaşma kapasitesini zayıflattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz savaş çabası için değerli bir varlıktı.",
+      "text_markdown": "İngiliz savaş çabası için değerli bir varlıktı.",
+      "tts": {
+        "text": "İngiliz savaş çabası için değerli bir varlıktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler onu onurlu bir müttefik olarak gördü.",
+      "text_markdown": "İngilizler onu onurlu bir müttefik olarak gördü.",
+      "tts": {
+        "text": "İngilizler onu onurlu bir müttefik olarak gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz sarayında kabul edildi ve koruma ile destek sağlandı.",
+      "text_markdown": "İngiliz sarayında kabul edildi ve koruma ile destek sağlandı.",
+      "tts": {
+        "text": "İngiliz sarayında kabul edildi ve koruma ile destek sağlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngilizler davasını haklı buluyordu; Fransa kralını küçümsemek için kendi sebepleri vardı.",
+      "text_markdown": "İngilizler davasını haklı buluyordu; Fransa kralını küçümsemek için kendi sebepleri vardı.",
+      "tts": {
+        "text": "İngilizler davasını haklı buluyordu; Fransa kralını küçümsemek için kendi sebepleri vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıllar geçtikçe Yüzyıl Savaşları sonu görünmeden devam etti.",
+      "text_markdown": "Yıllar geçtikçe Yüzyıl Savaşları sonu görünmeden devam etti.",
+      "tts": {
+        "text": "Yıllar geçtikçe Yüzyıl Savaşları sonu görünmeden devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kara Veba 1348 ve 1349'da Avrupa'yı kasıp kavurarak nüfusun belki de üçte birini öldürdü.",
+      "text_markdown": "Kara Veba 1348 ve 1349'da Avrupa'yı kasıp kavurarak nüfusun belki de üçte birini öldürdü.",
+      "tts": {
+        "text": "Kara Veba bin üç yüz kırk sekiz ve bin üç yüz kırk dokuzda Avrupa'yı kasıp kavurarak nüfusun belki de üçte birini öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Veba, orduları, ticareti ve toplumsal düzenin kendisini altüst etti.",
+      "text_markdown": "Veba, orduları, ticareti ve toplumsal düzenin kendisini altüst etti.",
+      "tts": {
+        "text": "Veba, orduları, ticareti ve toplumsal düzenin kendisini altüst etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu korkunç zamanlarda bile Jeanne baskınlarını sürdürdü.",
+      "text_markdown": "Bu korkunç zamanlarda bile Jeanne baskınlarını sürdürdü.",
+      "tts": {
+        "text": "Bu korkunç zamanlarda bile Jeanne baskınlarını sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Denizdeki savaş, kış fırtınaları için durmadığı gibi veba için de durmadı.",
+      "text_markdown": "Denizdeki savaş, kış fırtınaları için durmadığı gibi veba için de durmadı.",
+      "tts": {
+        "text": "Denizdeki savaş, kış fırtınaları için durmadığı gibi veba için de durmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson sadece kâr peşinde koşan bir korsan değildi.",
+      "text_markdown": "Jeanne de Clisson sadece kâr peşinde koşan bir korsan değildi.",
+      "tts": {
+        "text": "Jeanne de Clisson sadece kâr peşinde koşan bir korsan değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kocasını öldürdüğüne inandığı bir krala karşı özel bir savaş yürüten bir kadındı.",
+      "text_markdown": "Kocasını öldürdüğüne inandığı bir krala karşı özel bir savaş yürüten bir kadındı.",
+      "tts": {
+        "text": "Kocasını öldürdüğüne inandığı bir krala karşı özel bir savaş yürüten bir kadındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batırdığı her Fransız gemisi onun gözünde bir adalet eylemiydi.",
+      "text_markdown": "Batırdığı her Fransız gemisi onun gözünde bir adalet eylemiydi.",
+      "tts": {
+        "text": "Batırdığı her Fransız gemisi onun gözünde bir adalet eylemiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bretanya'daki Fransız ordularını besleyen ikmal gemileri özellikle değerli hedeflerdi.",
+      "text_markdown": "Bretanya'daki Fransız ordularını besleyen ikmal gemileri özellikle değerli hedeflerdi.",
+      "tts": {
+        "text": "Bretanya'daki Fransız ordularını besleyen ikmal gemileri özellikle değerli hedeflerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu gemileri ele geçirerek veya batırarak düşman garnizonlarını yiyecek, silah ve takviyeden mahrum bıraktı.",
+      "text_markdown": "Bu gemileri ele geçirerek veya batırarak düşman garnizonlarını yiyecek, silah ve takviyeden mahrum bıraktı.",
+      "tts": {
+        "text": "Bu gemileri ele geçirerek veya batırarak düşman garnizonlarını yiyecek, silah ve takviyeden mahrum bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baskınları Bretanya'daki savaşın seyri üzerinde doğrudan etkili oldu.",
+      "text_markdown": "Baskınları Bretanya'daki savaşın seyri üzerinde doğrudan etkili oldu.",
+      "tts": {
+        "text": "Baskınları Bretanya'daki savaşın seyri üzerinde doğrudan etkili oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denizde yaşam gemidekilerin hepsi için zorlu bir sınavdı.",
+      "text_markdown": "Denizde yaşam gemidekilerin hepsi için zorlu bir sınavdı.",
+      "tts": {
+        "text": "Denizde yaşam gemidekilerin hepsi için zorlu bir sınavdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemiler soğuk, nemli ve dardı.",
+      "text_markdown": "Gemiler soğuk, nemli ve dardı.",
+      "tts": {
+        "text": "Gemiler soğuk, nemli ve dardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yiyecek çabuk bozulurdu ve tatlı su her zaman kıttı.",
+      "text_markdown": "Yiyecek çabuk bozulurdu ve tatlı su her zaman kıttı.",
+      "tts": {
+        "text": "Yiyecek çabuk bozulurdu ve tatlı su her zaman kıttı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne bu güçlüklere mürettebatıyla birlikte katlandı.",
+      "text_markdown": "Jeanne bu güçlüklere mürettebatıyla birlikte katlandı.",
+      "tts": {
+        "text": "Jeanne bu güçlüklere mürettebatıyla birlikte katlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kıyının güvenliğinden komuta etmiyordu.",
+      "text_markdown": "Kıyının güvenliğinden komuta etmiyordu.",
+      "tts": {
+        "text": "Kıyının güvenliğinden komuta etmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Manş'ta On Üç Yıl",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemileriyle birlikte seyrediyor, savaşlarda dövüşüyor ve denizin tehlikelerini paylaşıyordu.",
+      "text_markdown": "Gemileriyle birlikte seyrediyor, savaşlarda dövüşüyor ve denizin tehlikelerini paylaşıyordu.",
+      "tts": {
+        "text": "Gemileriyle birlikte seyrediyor, savaşlarda dövüşüyor ve denizin tehlikelerini paylaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Sessiz Kıyı",
+      "text_markdown": "Sessiz Kıyı"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaklaşık 1356'da Jeanne de Clisson denizden çekildi.",
+      "text_markdown": "Yaklaşık 1356'da Jeanne de Clisson denizden çekildi.",
+      "tts": {
+        "text": "Yaklaşık bin üç yüz elli altıda Jeanne de Clisson denizden çekildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık on üç yıldır savaştaydı.",
+      "text_markdown": "Yaklaşık on üç yıldır savaştaydı.",
+      "tts": {
+        "text": "Yaklaşık on üç yıldır savaştaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Emekliliğinin kesin nedenleri tam olarak bilinmemektedir.",
+      "text_markdown": "Emekliliğinin kesin nedenleri tam olarak bilinmemektedir.",
+      "tts": {
+        "text": "Emekliliğinin kesin nedenleri tam olarak bilinmemektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler yaş, bitkinlik ve değişen siyasi koşulların hepsinin rol oynadığına inanmaktadır.",
+      "text_markdown": "Tarihçiler yaş, bitkinlik ve değişen siyasi koşulların hepsinin rol oynadığına inanmaktadır.",
+      "tts": {
+        "text": "Tarihçiler yaş, bitkinlik ve değişen siyasi koşulların hepsinin rol oynadığına inanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeanne bu sırada elli beş yaşlarındaydı, Ortaçağ için ileri bir yaş.",
+      "text_markdown": "Jeanne bu sırada elli beş yaşlarındaydı, Ortaçağ için ileri bir yaş.",
+      "tts": {
+        "text": "Jeanne bu sırada elli beş yaşlarındaydı, Ortaçağ için ileri bir yaş.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Üçüncü kez evlendi.",
+      "text_markdown": "Üçüncü kez evlendi.",
+      "tts": {
+        "text": "Üçüncü kez evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yeni kocası bir İngiliz şövalye ve askerî komutan olan Walter Bentley'di.",
+      "text_markdown": "Yeni kocası bir İngiliz şövalye ve askerî komutan olan Walter Bentley'di.",
+      "tts": {
+        "text": "Yeni kocası bir İngiliz şövalye ve askerî komutan olan Walter Bentley'di.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bentley, Bretanya'da İngiliz temsilcisi olarak görev yapmıştı.",
+      "text_markdown": "Bentley, Bretanya'da İngiliz temsilcisi olarak görev yapmıştı.",
+      "tts": {
+        "text": "Bentley, Bretanya'da İngiliz temsilcisi olarak görev yapmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bentley ile evlilik, Jeanne'in hayatında yeni bir sayfa açtı.",
+      "text_markdown": "Bentley ile evlilik, Jeanne'in hayatında yeni bir sayfa açtı.",
+      "tts": {
+        "text": "Bentley ile evlilik, Jeanne'in hayatında yeni bir sayfa açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yıllarca süren şiddet ve yasın ardından yerleşmeyi seçti.",
+      "text_markdown": "Yıllarca süren şiddet ve yasın ardından yerleşmeyi seçti.",
+      "tts": {
+        "text": "Yıllarca süren şiddet ve yasın ardından yerleşmeyi seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kocasının öldürülmesi için korkunç bir bedel ödetmişti.",
+      "text_markdown": "Kocasının öldürülmesi için korkunç bir bedel ödetmişti.",
+      "tts": {
+        "text": "Kocasının öldürülmesi için korkunç bir bedel ödetmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne ve Walter Bentley, Bretanya'daki mülklerde yaşadılar.",
+      "text_markdown": "Jeanne ve Walter Bentley, Bretanya'daki mülklerde yaşadılar.",
+      "tts": {
+        "text": "Jeanne ve Walter Bentley, Bretanya'daki mülklerde yaşadılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa ile İngiltere arasındaki savaş devam ediyordu, ancak Jeanne artık bunun bir parçası değildi.",
+      "text_markdown": "Fransa ile İngiltere arasındaki savaş devam ediyordu, ancak Jeanne artık bunun bir parçası değildi.",
+      "tts": {
+        "text": "Fransa ile İngiltere arasındaki savaş devam ediyordu, ancak Jeanne artık bunun bir parçası değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son yıllarını bir soylu kadın olarak, evini ve kalan topraklarını yöneterek geçirdi.",
+      "text_markdown": "Son yıllarını bir soylu kadın olarak, evini ve kalan topraklarını yöneterek geçirdi.",
+      "tts": {
+        "text": "Son yıllarını bir soylu kadın olarak, evini ve kalan topraklarını yöneterek geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Manş Denizi'nin azılı korsanı bir kez daha Breton aristokrasisinin bir hanımefendisi olmuştu.",
+      "text_markdown": "Manş Denizi'nin azılı korsanı bir kez daha Breton aristokrasisinin bir hanımefendisi olmuştu.",
+      "tts": {
+        "text": "Manş Denizi'nin azılı korsanı bir kez daha Breton aristokrasisinin bir hanımefendisi olmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson 1359'da öldü.",
+      "text_markdown": "Jeanne de Clisson 1359'da öldü.",
+      "tts": {
+        "text": "Jeanne de Clisson bin üç yüz elli dokuzda öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık elli dokuz yaşındaydı.",
+      "text_markdown": "Yaklaşık elli dokuz yaşındaydı.",
+      "tts": {
+        "text": "Yaklaşık elli dokuz yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ölüm nedeni kayıtlara geçmemiştir.",
+      "text_markdown": "Ölüm nedeni kayıtlara geçmemiştir.",
+      "tts": {
+        "text": "Ölüm nedeni kayıtlara geçmemiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Breton kırsalındaki Jacobinler Kilisesi'ne defnedildi.",
+      "text_markdown": "Breton kırsalındaki Jacobinler Kilisesi'ne defnedildi.",
+      "tts": {
+        "text": "Breton kırsalındaki Jacobinler Kilisesi'ne defnedildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mezarının tam yeri yüzyıllar içinde kaybolmuştur.",
+      "text_markdown": "Mezarının tam yeri yüzyıllar içinde kaybolmuştur.",
+      "tts": {
+        "text": "Mezarının tam yeri yüzyıllar içinde kaybolmuştur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oğlu genç Olivier de Clisson hayatta kaldı ve başarılı oldu.",
+      "text_markdown": "Oğlu genç Olivier de Clisson hayatta kaldı ve başarılı oldu.",
+      "tts": {
+        "text": "Oğlu genç Olivier de Clisson hayatta kaldı ve başarılı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babasının hain olarak idam edilmesine rağmen, genç Olivier Fransız askerî komutanlığının en üst kademelerine yükseldi.",
+      "text_markdown": "Babasının hain olarak idam edilmesine rağmen, genç Olivier Fransız askerî komutanlığının en üst kademelerine yükseldi.",
+      "tts": {
+        "text": "Babasının hain olarak idam edilmesine rağmen, genç Olivier Fransız askerî komutanlığının en üst kademelerine yükseldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1380'de Fransa Konnetablı olarak atandı ve bu görevi on yıldan fazla sürdürdü.",
+      "text_markdown": "1380'de Fransa Konnetablı olarak atandı ve bu görevi on yıldan fazla sürdürdü.",
+      "tts": {
+        "text": "Bin üç yüz seksende Fransa Konnetablı olarak atandı ve bu görevi on yıldan fazla sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konnetabl, Fransız ordusunun en üst komutanıydı.",
+      "text_markdown": "Konnetabl, Fransız ordusunun en üst komutanıydı.",
+      "tts": {
+        "text": "Konnetabl, Fransız ordusunun en üst komutanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Krallıktaki en güçlü mevkilerden biriydi.",
+      "text_markdown": "Krallıktaki en güçlü mevkilerden biriydi.",
+      "tts": {
+        "text": "Krallıktaki en güçlü mevkilerden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Clisson ailesi hain olarak mahkûm edilmiş ve her şeyden mahrum bırakılmıştı.",
+      "text_markdown": "Clisson ailesi hain olarak mahkûm edilmiş ve her şeyden mahrum bırakılmıştı.",
+      "tts": {
+        "text": "Clisson ailesi hain olarak mahkûm edilmiş ve her şeyden mahrum bırakılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tek bir nesil içinde Fransız iktidarının zirvesine geri dönmüşlerdi.",
+      "text_markdown": "Tek bir nesil içinde Fransız iktidarının zirvesine geri dönmüşlerdi.",
+      "tts": {
+        "text": "Tek bir nesil içinde Fransız iktidarının zirvesine geri dönmüşlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne'in mücadelesi boşuna olmamıştı.",
+      "text_markdown": "Jeanne'in mücadelesi boşuna olmamıştı.",
+      "tts": {
+        "text": "Jeanne'in mücadelesi boşuna olmamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walter Bentley, Jeanne'den birkaç yıl sonra hayata veda etti.",
+      "text_markdown": "Walter Bentley, Jeanne'den birkaç yıl sonra hayata veda etti.",
+      "tts": {
+        "text": "Walter Bentley, Jeanne'den birkaç yıl sonra hayata veda etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi ölümüne kadar Bretanya'da İngiliz çıkarlarına hizmet etmeye devam etti.",
+      "text_markdown": "Kendi ölümüne kadar Bretanya'da İngiliz çıkarlarına hizmet etmeye devam etti.",
+      "tts": {
+        "text": "Kendi ölümüne kadar Bretanya'da İngiliz çıkarlarına hizmet etmeye devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzyıl Savaşları, Jeanne'in ölümünden sonra yaklaşık bir yüzyıl daha sürecekti.",
+      "text_markdown": "Yüzyıl Savaşları, Jeanne'in ölümünden sonra yaklaşık bir yüzyıl daha sürecekti.",
+      "tts": {
+        "text": "Yüzyıl Savaşları, Jeanne'in ölümünden sonra yaklaşık bir yüzyıl daha sürecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bretanya, onlarca yıl boyunca Fransa ile İngiltere arasında bir savaş alanı olmaya devam edecekti.",
+      "text_markdown": "Bretanya, onlarca yıl boyunca Fransa ile İngiltere arasında bir savaş alanı olmaya devam edecekti.",
+      "tts": {
+        "text": "Bretanya, onlarca yıl boyunca Fransa ile İngiltere arasında bir savaş alanı olmaya devam edecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaşçıdan eşe geçiş göründüğü kadar ani değildi.",
+      "text_markdown": "Savaşçıdan eşe geçiş göründüğü kadar ani değildi.",
+      "tts": {
+        "text": "Savaşçıdan eşe geçiş göründüğü kadar ani değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ortaçağ'da soylu kadınlar çoğu zaman kocalarının yokluğunda mülkleri yönetir, anlaşmazlıkları çözer ve adaleti sağlardı.",
+      "text_markdown": "Ortaçağ'da soylu kadınlar çoğu zaman kocalarının yokluğunda mülkleri yönetir, anlaşmazlıkları çözer ve adaleti sağlardı.",
+      "tts": {
+        "text": "Ortaçağ'da soylu kadınlar çoğu zaman kocalarının yokluğunda mülkleri yönetir, anlaşmazlıkları çözer ve adaleti sağlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne her zaman bir korsandan çok daha fazlasıydı.",
+      "text_markdown": "Jeanne her zaman bir korsandan çok daha fazlasıydı.",
+      "tts": {
+        "text": "Jeanne her zaman bir korsandan çok daha fazlasıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne'in son yıllarını geçirdiği Breton kırsalı on yıllarca süren savaşın izlerini taşıyordu.",
+      "text_markdown": "Jeanne'in son yıllarını geçirdiği Breton kırsalı on yıllarca süren savaşın izlerini taşıyordu.",
+      "tts": {
+        "text": "Jeanne'in son yıllarını geçirdiği Breton kırsalı on yıllarca süren savaşın izlerini taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yanmış köyler, terk edilmiş çiftlikler ve harap olmuş kaleler manzarayı kaplıyordu.",
+      "text_markdown": "Yanmış köyler, terk edilmiş çiftlikler ve harap olmuş kaleler manzarayı kaplıyordu.",
+      "tts": {
+        "text": "Yanmış köyler, terk edilmiş çiftlikler ve harap olmuş kaleler manzarayı kaplıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sessiz Kıyı",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşmaya yardım ettiği savaş, sevdiği topraktan korkunç bir bedel almıştı.",
+      "text_markdown": "Savaşmaya yardım ettiği savaş, sevdiği topraktan korkunç bir bedel almıştı.",
+      "tts": {
+        "text": "Savaşmaya yardım ettiği savaş, sevdiği topraktan korkunç bir bedel almıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hatırlanan Dişi Aslan",
+      "text_markdown": "Hatırlanan Dişi Aslan"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson'un hikâyesi yaklaşık yedi yüz yıldır anlatılmaktadır.",
+      "text_markdown": "Jeanne de Clisson'un hikâyesi yaklaşık yedi yüz yıldır anlatılmaktadır.",
+      "tts": {
+        "text": "Jeanne de Clisson'un hikâyesi yaklaşık yedi yüz yıldır anlatılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ortaçağ vakayinamelerinde, Fransız tarihlerinde ve kadın savaşçılar hakkındaki modern kitaplarda yer almaktadır.",
+      "text_markdown": "Ortaçağ vakayinamelerinde, Fransız tarihlerinde ve kadın savaşçılar hakkındaki modern kitaplarda yer almaktadır.",
+      "tts": {
+        "text": "Ortaçağ vakayinamelerinde, Fransız tarihlerinde ve kadın savaşçılar hakkındaki modern kitaplarda yer almaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ortaçağ Avrupa tarihinde savaş gemilerine komuta ettiği bilinen çok az kadından biridir.",
+      "text_markdown": "Ortaçağ Avrupa tarihinde savaş gemilerine komuta ettiği bilinen çok az kadından biridir.",
+      "tts": {
+        "text": "Ortaçağ Avrupa tarihinde savaş gemilerine komuta ettiği bilinen çok az kadından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On üç yıllık seferi her açıdan olağanüstüdür.",
+      "text_markdown": "On üç yıllık seferi her açıdan olağanüstüdür.",
+      "tts": {
+        "text": "On üç yıllık seferi her açıdan olağanüstüdür.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı tarihçiler hikâyesinin tüm ayrıntılarının doğru olup olmadığını sorgulamıştır.",
+      "text_markdown": "Bazı tarihçiler hikâyesinin tüm ayrıntılarının doğru olup olmadığını sorgulamıştır.",
+      "tts": {
+        "text": "Bazı tarihçiler hikâyesinin tüm ayrıntılarının doğru olup olmadığını sorgulamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ortaçağ vakayinameleri her zaman güvenilir değildi ve hikâyeler zamanla daha dramatik hâle gelme eğilimindeydi.",
+      "text_markdown": "Ortaçağ vakayinameleri her zaman güvenilir değildi ve hikâyeler zamanla daha dramatik hâle gelme eğilimindeydi.",
+      "tts": {
+        "text": "Ortaçağ vakayinameleri her zaman güvenilir değildi ve hikâyeler zamanla daha dramatik hâle gelme eğilimindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak temel gerçekler birden fazla kaynak tarafından desteklenmektedir.",
+      "text_markdown": "Ancak temel gerçekler birden fazla kaynak tarafından desteklenmektedir.",
+      "tts": {
+        "text": "Ancak temel gerçekler birden fazla kaynak tarafından desteklenmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Olivier de Clisson ihanet suçlamasıyla idam edildi.",
+      "text_markdown": "Olivier de Clisson ihanet suçlamasıyla idam edildi.",
+      "tts": {
+        "text": "Olivier de Clisson ihanet suçlamasıyla idam edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p105",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne de Clisson gerçekten denize açıldı ve Fransız deniz ticaretine saldırdı.",
+      "text_markdown": "Jeanne de Clisson gerçekten denize açıldı ve Fransız deniz ticaretine saldırdı.",
+      "tts": {
+        "text": "Jeanne de Clisson gerçekten denize açıldı ve Fransız deniz ticaretine saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p105",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yüzyıl Savaşları sırasında gerçekten İngiltere ile ittifak kurdu.",
+      "text_markdown": "Yüzyıl Savaşları sırasında gerçekten İngiltere ile ittifak kurdu.",
+      "tts": {
+        "text": "Yüzyıl Savaşları sırasında gerçekten İngiltere ile ittifak kurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi adalet ve intikam hakkında sorular ortaya koyar.",
+      "text_markdown": "Hikâyesi adalet ve intikam hakkında sorular ortaya koyar.",
+      "tts": {
+        "text": "Hikâyesi adalet ve intikam hakkında sorular ortaya koyar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Olivier de Clisson'un idamı neredeyse kesinlikle haksızdı.",
+      "text_markdown": "Olivier de Clisson'un idamı neredeyse kesinlikle haksızdı.",
+      "tts": {
+        "text": "Olivier de Clisson'un idamı neredeyse kesinlikle haksızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne'in tepkisi aşırıydı, ancak kışkırtma da aşırıydı.",
+      "text_markdown": "Jeanne'in tepkisi aşırıydı, ancak kışkırtma da aşırıydı.",
+      "tts": {
+        "text": "Jeanne'in tepkisi aşırıydı, ancak kışkırtma da aşırıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kocasının ölümüyle hiçbir ilgisi olmayan masum denizcileri ve balıkçıları öldürdü.",
+      "text_markdown": "Kocasının ölümüyle hiçbir ilgisi olmayan masum denizcileri ve balıkçıları öldürdü.",
+      "tts": {
+        "text": "Kocasının ölümüyle hiçbir ilgisi olmayan masum denizcileri ve balıkçıları öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaşı kişiseldi, ancak kurbanları çoğu zaman masumlardı.",
+      "text_markdown": "Savaşı kişiseldi, ancak kurbanları çoğu zaman masumlardı.",
+      "tts": {
+        "text": "Savaşı kişiseldi, ancak kurbanları çoğu zaman masumlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yine de hikâyesini anlatan pek çok kişi tarafından kınanmak yerine yüceltilmiştir.",
+      "text_markdown": "Yine de hikâyesini anlatan pek çok kişi tarafından kınanmak yerine yüceltilmiştir.",
+      "tts": {
+        "text": "Yine de hikâyesini anlatan pek çok kişi tarafından kınanmak yerine yüceltilmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adaletsizliği kabul etmeyi reddeden ve sahip olduğu her şeyle savaşan bir kadın olarak hatırlanmaktadır.",
+      "text_markdown": "Adaletsizliği kabul etmeyi reddeden ve sahip olduğu her şeyle savaşan bir kadın olarak hatırlanmaktadır.",
+      "tts": {
+        "text": "Adaletsizliği kabul etmeyi reddeden ve sahip olduğu her şeyle savaşan bir kadın olarak hatırlanmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bretanya'da hâlâ bir halk kahramanıdır.",
+      "text_markdown": "Bretanya'da hâlâ bir halk kahramanıdır.",
+      "tts": {
+        "text": "Bretanya'da hâlâ bir halk kahramanıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı cesaret, başkaldırı ve Breton halkının azimli bağımsızlığıyla özdeşleşmiştir.",
+      "text_markdown": "Adı cesaret, başkaldırı ve Breton halkının azimli bağımsızlığıyla özdeşleşmiştir.",
+      "tts": {
+        "text": "Adı cesaret, başkaldırı ve Breton halkının azimli bağımsızlığıyla özdeşleşmiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kırmızı yelkenli siyah gemiler kayboldu.",
+      "text_markdown": "Kırmızı yelkenli siyah gemiler kayboldu.",
+      "tts": {
+        "text": "Kırmızı yelkenli siyah gemiler kayboldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Manş Denizi çoktan bir savaş alanı olmaktan çıktı.",
+      "text_markdown": "Manş Denizi çoktan bir savaş alanı olmaktan çıktı.",
+      "tts": {
+        "text": "Manş Denizi çoktan bir savaş alanı olmaktan çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p110",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Bretanya'nın Dişi Aslanı'nın hikâyesi sürüyor; bazı haksızlıkların bir karşılık gerektirdiğine inananlar tarafından taşınıyor.",
+      "text_markdown": "Ancak Bretanya'nın Dişi Aslanı'nın hikâyesi sürüyor; bazı haksızlıkların bir karşılık gerektirdiğine inananlar tarafından taşınıyor.",
+      "tts": {
+        "text": "Ancak Bretanya'nın Dişi Aslanı'nın hikâyesi sürüyor; bazı haksızlıkların bir karşılık gerektirdiğine inananlar tarafından taşınıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern tarihçiler, Jeanne de Clisson'u Ortaçağ döneminde askerî güç kullanan kadınların daha geniş bağlamına yerleştirmiştir.",
+      "text_markdown": "Modern tarihçiler, Jeanne de Clisson'u Ortaçağ döneminde askerî güç kullanan kadınların daha geniş bağlamına yerleştirmiştir.",
+      "tts": {
+        "text": "Modern tarihçiler, Jeanne de Clisson'u Ortaçağ döneminde askerî güç kullanan kadınların daha geniş bağlamına yerleştirmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Biricik değildi, ama olağanüstüydü.",
+      "text_markdown": "Biricik değildi, ama olağanüstüydü.",
+      "tts": {
+        "text": "Biricik değildi, ama olağanüstüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çok az kadın bu kadar uzun süre veya bu kadar yıkıcı bir etkiyle askerî bir sefer sürdürmüştür.",
+      "text_markdown": "Çok az kadın bu kadar uzun süre veya bu kadar yıkıcı bir etkiyle askerî bir sefer sürdürmüştür.",
+      "tts": {
+        "text": "Çok az kadın bu kadar uzun süre veya bu kadar yıkıcı bir etkiyle askerî bir sefer sürdürmüştür.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Clisson Kalesi, Fransa'nın Loire Vadisi'ndeki Clisson kasabasında hâlâ ayakta durmaktadır.",
+      "text_markdown": "Clisson Kalesi, Fransa'nın Loire Vadisi'ndeki Clisson kasabasında hâlâ ayakta durmaktadır.",
+      "tts": {
+        "text": "Clisson Kalesi, Fransa'nın Loire Vadisi'ndeki Clisson kasabasında hâlâ ayakta durmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ortaçağ kalıntıları, bir zamanlar orada hüküm süren aileyi hatırlatır.",
+      "text_markdown": "Ortaçağ kalıntıları, bir zamanlar orada hüküm süren aileyi hatırlatır.",
+      "tts": {
+        "text": "Ortaçağ kalıntıları, bir zamanlar orada hüküm süren aileyi hatırlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ziyaretçiler, Jeanne ve Olivier'nin bir zamanlar yaşadığı aynı taş salonlarda yürüyebilir.",
+      "text_markdown": "Ziyaretçiler, Jeanne ve Olivier'nin bir zamanlar yaşadığı aynı taş salonlarda yürüyebilir.",
+      "tts": {
+        "text": "Ziyaretçiler, Jeanne ve Olivier'nin bir zamanlar yaşadığı aynı taş salonlarda yürüyebilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzyıl Savaşları nihayet 1453'te, Jeanne'in ölümünden yaklaşık bir yüzyıl sonra sona erdi.",
+      "text_markdown": "Yüzyıl Savaşları nihayet 1453'te, Jeanne'in ölümünden yaklaşık bir yüzyıl sonra sona erdi.",
+      "tts": {
+        "text": "Yüzyıl Savaşları nihayet bin dört yüz elli üçte, Jeanne'in ölümünden yaklaşık bir yüzyıl sonra sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa savaşı kazandı ve İngiltere kıtadaki neredeyse tüm topraklarını kaybetti.",
+      "text_markdown": "Fransa savaşı kazandı ve İngiltere kıtadaki neredeyse tüm topraklarını kaybetti.",
+      "tts": {
+        "text": "Fransa savaşı kazandı ve İngiltere kıtadaki neredeyse tüm topraklarını kaybetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hatırlanan Dişi Aslan",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bretanya sonunda fetihle değil, evlilik yoluyla Fransa'nın bir parçası oldu.",
+      "text_markdown": "Bretanya sonunda fetihle değil, evlilik yoluyla Fransa'nın bir parçası oldu.",
+      "tts": {
+        "text": "Bretanya sonunda fetihle değil, evlilik yoluyla Fransa'nın bir parçası oldu.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

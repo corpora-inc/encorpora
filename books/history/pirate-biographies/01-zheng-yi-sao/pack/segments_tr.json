@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "tr",
+  "total_segments": 310,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Bir Not",
+      "text_markdown": "Okuyucuya Bir Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, kayıtlı tarihin en başarılı korsanının gerçek hikâyesidir.",
+      "text_markdown": "Bu, kayıtlı tarihin en başarılı korsanının gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, kayıtlı tarihin en başarılı korsanının gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Zheng Yi Sao'ydu ve dünyanın gördüğü en büyük korsan filosuna komuta ediyordu.",
+      "text_markdown": "Adı Zheng Yi Sao'ydu ve dünyanın gördüğü en büyük korsan filosuna komuta ediyordu.",
+      "tts": {
+        "text": "Adı Zheng Yi Sao'ydu ve dünyanın gördüğü en büyük korsan filosuna komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gücünün zirvesinde, çoğu ulusun sahip olduğundan daha fazla gemiyi kontrol ediyordu.",
+      "text_markdown": "Gücünün zirvesinde, çoğu ulusun sahip olduğundan daha fazla gemiyi kontrol ediyordu.",
+      "tts": {
+        "text": "Gücünün zirvesinde, çoğu ulusun sahip olduğundan daha fazla gemiyi kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zenginlik ya da ayrıcalık içinde doğmamıştı.",
+      "text_markdown": "Zenginlik ya da ayrıcalık içinde doğmamıştı.",
+      "tts": {
+        "text": "Zenginlik ya da ayrıcalık içinde doğmamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On sekizinci yüzyılın sonlarında güney Çin'de yoksulluk içinde doğdu.",
+      "text_markdown": "On sekizinci yüzyılın sonlarında güney Çin'de yoksulluk içinde doğdu.",
+      "tts": {
+        "text": "On sekizinci yüzyılın sonlarında güney Çin'de yoksulluk içinde doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elde ettiği her şeyi zekâsı, acımasızlığı ve insanları örgütlemedeki olağanüstü yeteneğiyle inşa etti.",
+      "text_markdown": "Elde ettiği her şeyi zekâsı, acımasızlığı ve insanları örgütlemedeki olağanüstü yeteneğiyle inşa etti.",
+      "tts": {
+        "text": "Elde ettiği her şeyi zekâsı, acımasızlığı ve insanları örgütlemedeki olağanüstü yeteneğiyle inşa etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap, hiçbir şeyi olmayan bir kadının Güney Çin Denizi'nin tartışmasız hâkimi hâline gelişinin hikâyesini anlatır.",
+      "text_markdown": "Bu kitap, hiçbir şeyi olmayan bir kadının Güney Çin Denizi'nin tartışmasız hâkimi hâline gelişinin hikâyesini anlatır.",
+      "tts": {
+        "text": "Bu kitap, hiçbir şeyi olmayan bir kadının Güney Çin Denizi'nin tartışmasız hâkimi hâline gelişinin hikâyesini anlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, savaş, ticaret, hukuk ve hayatta kalma hakkında bir hikâyedir.",
+      "text_markdown": "Bu, savaş, ticaret, hukuk ve hayatta kalma hakkında bir hikâyedir.",
+      "tts": {
+        "text": "Bu, savaş, ticaret, hukuk ve hayatta kalma hakkında bir hikâyedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aynı zamanda Avrupa güçlerinin Asya'nın derinliklerine doğru ilerlediği, hızla değişen bir dünyanın hikâyesidir.",
+      "text_markdown": "Aynı zamanda Avrupa güçlerinin Asya'nın derinliklerine doğru ilerlediği, hızla değişen bir dünyanın hikâyesidir.",
+      "tts": {
+        "text": "Aynı zamanda Avrupa güçlerinin Asya'nın derinliklerine doğru ilerlediği, hızla değişen bir dünyanın hikâyesidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitaptaki her bilgi tarihî kayıtlara dayanmaktadır.",
+      "text_markdown": "Bu kitaptaki her bilgi tarihî kayıtlara dayanmaktadır.",
+      "tts": {
+        "text": "Bu kitaptaki her bilgi tarihî kayıtlara dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kayıtların belirsiz olduğu yerlerde bunu belirtiyoruz.",
+      "text_markdown": "Kayıtların belirsiz olduğu yerlerde bunu belirtiyoruz.",
+      "tts": {
+        "text": "Kayıtların belirsiz olduğu yerlerde bunu belirtiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçilerin anlaşamadığı noktalarda mevcut en güçlü kanıtları sunuyoruz.",
+      "text_markdown": "Tarihçilerin anlaşamadığı noktalarda mevcut en güçlü kanıtları sunuyoruz.",
+      "tts": {
+        "text": "Tarihçilerin anlaşamadığı noktalarda mevcut en güçlü kanıtları sunuyoruz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Güney Çin Denizi Dünyası",
+      "text_markdown": "Güney Çin Denizi Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Çin Denizi, dünyanın en işlek su yollarından biridir.",
+      "text_markdown": "Güney Çin Denizi, dünyanın en işlek su yollarından biridir.",
+      "tts": {
+        "text": "Güney Çin Denizi, dünyanın en işlek su yollarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Batıda Vietnam kıyılarından doğuda Filipinler'e kadar uzanır.",
+      "text_markdown": "Batıda Vietnam kıyılarından doğuda Filipinler'e kadar uzanır.",
+      "tts": {
+        "text": "Batıda Vietnam kıyılarından doğuda Filipinler'e kadar uzanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuzeyde Çin kıyıları, güneyde ise Borneo ve Sumatra adaları yer alır.",
+      "text_markdown": "Kuzeyde Çin kıyıları, güneyde ise Borneo ve Sumatra adaları yer alır.",
+      "tts": {
+        "text": "Kuzeyde Çin kıyıları, güneyde ise Borneo ve Sumatra adaları yer alır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Binlerce yıldır tüccarlar bu sularda yelken açmıştır.",
+      "text_markdown": "Binlerce yıldır tüccarlar bu sularda yelken açmıştır.",
+      "tts": {
+        "text": "Binlerce yıldır tüccarlar bu sularda yelken açmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çin tekneleri ipek, porselen ve çayı Güneydoğu Asya'daki limanlara taşırdı.",
+      "text_markdown": "Çin tekneleri ipek, porselen ve çayı Güneydoğu Asya'daki limanlara taşırdı.",
+      "tts": {
+        "text": "Çin tekneleri ipek, porselen ve çayı Güneydoğu Asya'daki limanlara taşırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında baharatlar, tropikal keresteler ve egzotik mallar Çin'e akardı.",
+      "text_markdown": "Karşılığında baharatlar, tropikal keresteler ve egzotik mallar Çin'e akardı.",
+      "tts": {
+        "text": "Karşılığında baharatlar, tropikal keresteler ve egzotik mallar Çin'e akardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün Guangzhou olarak bilinen Canton şehri, bu ticaretin merkezinde yer alıyordu.",
+      "text_markdown": "Bugün Guangzhou olarak bilinen Canton şehri, bu ticaretin merkezinde yer alıyordu.",
+      "tts": {
+        "text": "Bugün Guangzhou olarak bilinen Canton şehri, bu ticaretin merkezinde yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Canton, on sekizinci yüzyılda dünyanın en zengin şehirlerinden biriydi.",
+      "text_markdown": "Canton, on sekizinci yüzyılda dünyanın en zengin şehirlerinden biriydi.",
+      "tts": {
+        "text": "Canton, on sekizinci yüzyılda dünyanın en zengin şehirlerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiltere, Fransa, Portekiz ve Hollanda'dan gelen yabancı tüccarlar pazarlarına erişim için yarışıyordu.",
+      "text_markdown": "İngiltere, Fransa, Portekiz ve Hollanda'dan gelen yabancı tüccarlar pazarlarına erişim için yarışıyordu.",
+      "tts": {
+        "text": "İngiltere, Fransa, Portekiz ve Hollanda'dan gelen yabancı tüccarlar pazarlarına erişim için yarışıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde Çin'i Qing hanedanı yönetiyordu.",
+      "text_markdown": "Bu dönemde Çin'i Qing hanedanı yönetiyordu.",
+      "tts": {
+        "text": "Bu dönemde Çin'i Qing hanedanı yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Qing imparatorları Han Çinlisi değil, Mançu'ydu.",
+      "text_markdown": "Qing imparatorları Han Çinlisi değil, Mançu'ydu.",
+      "tts": {
+        "text": "Qing imparatorları Han Çinlisi değil, Mançu'ydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bin altı yüz kırk dörtte Çin'i fethederek dünyanın en büyük imparatorluklarından birini kurmuşlardı.",
+      "text_markdown": "Bin altı yüz kırk dörtte Çin'i fethederek dünyanın en büyük imparatorluklarından birini kurmuşlardı.",
+      "tts": {
+        "text": "Bin altı yüz kırk dörtte Çin'i fethederek dünyanın en büyük imparatorluklarından birini kurmuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak bin yedi yüzlü yılların sonlarında Qing hanedanı zayıflamaya başlamıştı.",
+      "text_markdown": "Ancak bin yedi yüzlü yılların sonlarında Qing hanedanı zayıflamaya başlamıştı.",
+      "tts": {
+        "text": "Ancak bin yedi yüzlü yılların sonlarında Qing hanedanı zayıflamaya başlamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yolsuzluk imparatorluk bürokrasisine yayılmıştı.",
+      "text_markdown": "Yolsuzluk imparatorluk bürokrasisine yayılmıştı.",
+      "tts": {
+        "text": "Yolsuzluk imparatorluk bürokrasisine yayılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vergi tahsildarları köylüleri ve balıkçıları son kuruşlarına kadar sıkıştırıyordu.",
+      "text_markdown": "Vergi tahsildarları köylüleri ve balıkçıları son kuruşlarına kadar sıkıştırıyordu.",
+      "tts": {
+        "text": "Vergi tahsildarları köylüleri ve balıkçıları son kuruşlarına kadar sıkıştırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zenginler ve yoksullar arasındaki uçurum yıldan yıla büyüyordu.",
+      "text_markdown": "Zenginler ve yoksullar arasındaki uçurum yıldan yıla büyüyordu.",
+      "tts": {
+        "text": "Zenginler ve yoksullar arasındaki uçurum yıldan yıla büyüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kıyı illerinde pek çok insan aşırı yoksulluk içinde yaşıyordu.",
+      "text_markdown": "Kıyı illerinde pek çok insan aşırı yoksulluk içinde yaşıyordu.",
+      "tts": {
+        "text": "Kıyı illerinde pek çok insan aşırı yoksulluk içinde yaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guangdong kıyısı boyunca uzanan balıkçı toplulukları Çin'in en yoksulları arasındaydı.",
+      "text_markdown": "Guangdong kıyısı boyunca uzanan balıkçı toplulukları Çin'in en yoksulları arasındaydı.",
+      "tts": {
+        "text": "Guangdong kıyısı boyunca uzanan balıkçı toplulukları Çin'in en yoksulları arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bütün aileler sampan adı verilen küçük teknelerde yaşıyordu.",
+      "text_markdown": "Bütün aileler sampan adı verilen küçük teknelerde yaşıyordu.",
+      "tts": {
+        "text": "Bütün aileler sampan adı verilen küçük teknelerde yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suda doğuyor, suda çalışıyor ve suda ölüyorlardı.",
+      "text_markdown": "Suda doğuyor, suda çalışıyor ve suda ölüyorlardı.",
+      "tts": {
+        "text": "Suda doğuyor, suda çalışıyor ve suda ölüyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İmparatorluk hükûmeti onlara Tanka halkı diyordu ve onlara dışlanmış muamelesi yapıyordu.",
+      "text_markdown": "İmparatorluk hükûmeti onlara Tanka halkı diyordu ve onlara dışlanmış muamelesi yapıyordu.",
+      "tts": {
+        "text": "İmparatorluk hükûmeti onlara Tanka halkı diyordu ve onlara dışlanmış muamelesi yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanka aileleri birçok bölgede karada yaşamaktan men edilmişti.",
+      "text_markdown": "Tanka aileleri birçok bölgede karada yaşamaktan men edilmişti.",
+      "tts": {
+        "text": "Tanka aileleri birçok bölgede karada yaşamaktan men edilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Devlet memurluğuna giden imparatorluk sınavlarına giremezlerdi.",
+      "text_markdown": "Devlet memurluğuna giden imparatorluk sınavlarına giremezlerdi.",
+      "tts": {
+        "text": "Devlet memurluğuna giden imparatorluk sınavlarına giremezlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hem yasalar hem de gelenekler yüzünden ana akım Çin toplumunun dışında bırakılmışlardı.",
+      "text_markdown": "Hem yasalar hem de gelenekler yüzünden ana akım Çin toplumunun dışında bırakılmışlardı.",
+      "tts": {
+        "text": "Hem yasalar hem de gelenekler yüzünden ana akım Çin toplumunun dışında bırakılmışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nesiller boyunca daha iyi bir yaşama giden yolları yoktu.",
+      "text_markdown": "Nesiller boyunca daha iyi bir yaşama giden yolları yoktu.",
+      "tts": {
+        "text": "Nesiller boyunca daha iyi bir yaşama giden yolları yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlık bir alternatif sunuyordu.",
+      "text_markdown": "Korsanlık bir alternatif sunuyordu.",
+      "tts": {
+        "text": "Korsanlık bir alternatif sunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yasal yollarla yükselemediyseniz deniz kendi ekonomisini sunuyordu.",
+      "text_markdown": "Yasal yollarla yükselemediyseniz deniz kendi ekonomisini sunuyordu.",
+      "tts": {
+        "text": "Yasal yollarla yükselemediyseniz deniz kendi ekonomisini sunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan filoları ticaret gemilerini yağmalıyor, balıkçı köylerinden haraç topluyor ve imparatorluk devriyelerini atlatarak kaçak mal taşıyordu.",
+      "text_markdown": "Korsan filoları ticaret gemilerini yağmalıyor, balıkçı köylerinden haraç topluyor ve imparatorluk devriyelerini atlatarak kaçak mal taşıyordu.",
+      "tts": {
+        "text": "Korsan filoları ticaret gemilerini yağmalıyor, balıkçı köylerinden haraç topluyor ve imparatorluk devriyelerini atlatarak kaçak mal taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kıyıdaki birçok yoksul için bir korsan mürettebatına katılmak akılcı bir ekonomik karardı.",
+      "text_markdown": "Kıyıdaki birçok yoksul için bir korsan mürettebatına katılmak akılcı bir ekonomik karardı.",
+      "tts": {
+        "text": "Kıyıdaki birçok yoksul için bir korsan mürettebatına katılmak akılcı bir ekonomik karardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Çin Denizi'nin suları korsanlık için biçilmiş kaftandı.",
+      "text_markdown": "Güney Çin Denizi'nin suları korsanlık için biçilmiş kaftandı.",
+      "tts": {
+        "text": "Güney Çin Denizi'nin suları korsanlık için biçilmiş kaftandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Binlerce ada, koy ve nehir ağzı saklanacak yerler sağlıyordu.",
+      "text_markdown": "Binlerce ada, koy ve nehir ağzı saklanacak yerler sağlıyordu.",
+      "tts": {
+        "text": "Binlerce ada, koy ve nehir ağzı saklanacak yerler sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoğun sis ve ani fırtınalar takibi zorlaştırıyordu.",
+      "text_markdown": "Yoğun sis ve ani fırtınalar takibi zorlaştırıyordu.",
+      "tts": {
+        "text": "Yoğun sis ve ani fırtınalar takibi zorlaştırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Usta bir mürettebata sahip hızlı bir tekne dakikalar içinde kıyı şeridinde kaybolabilirdi.",
+      "text_markdown": "Usta bir mürettebata sahip hızlı bir tekne dakikalar içinde kıyı şeridinde kaybolabilirdi.",
+      "tts": {
+        "text": "Usta bir mürettebata sahip hızlı bir tekne dakikalar içinde kıyı şeridinde kaybolabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu sırada afyon ticareti bölgeyi yeniden şekillendirmeye başlıyordu.",
+      "text_markdown": "Bu sırada afyon ticareti bölgeyi yeniden şekillendirmeye başlıyordu.",
+      "tts": {
+        "text": "Bu sırada afyon ticareti bölgeyi yeniden şekillendirmeye başlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz tüccarlar Hindistan'dan Çin'e muazzam miktarda afyon sevk ediyordu.",
+      "text_markdown": "İngiliz tüccarlar Hindistan'dan Çin'e muazzam miktarda afyon sevk ediyordu.",
+      "tts": {
+        "text": "İngiliz tüccarlar Hindistan'dan Çin'e muazzam miktarda afyon sevk ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu uyuşturucu Çin'de yasaktı, ancak kârlar o kadar büyüktü ki ticaret her yıl büyüyordu.",
+      "text_markdown": "Bu uyuşturucu Çin'de yasaktı, ancak kârlar o kadar büyüktü ki ticaret her yıl büyüyordu.",
+      "tts": {
+        "text": "Bu uyuşturucu Çin'de yasaktı, ancak kârlar o kadar büyüktü ki ticaret her yıl büyüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaçakçılık ağları güney kıyısı boyunca uzanıyordu.",
+      "text_markdown": "Kaçakçılık ağları güney kıyısı boyunca uzanıyordu.",
+      "tts": {
+        "text": "Kaçakçılık ağları güney kıyısı boyunca uzanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao'yu yaratan dünya buydu.",
+      "text_markdown": "Zheng Yi Sao'yu yaratan dünya buydu.",
+      "tts": {
+        "text": "Zheng Yi Sao'yu yaratan dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uçsuz bucaksız zenginliğin ve ezici yoksulluğun ince bir okyanus şeridiyle ayrıldığı bir dünya.",
+      "text_markdown": "Uçsuz bucaksız zenginliğin ve ezici yoksulluğun ince bir okyanus şeridiyle ayrıldığı bir dünya.",
+      "tts": {
+        "text": "Uçsuz bucaksız zenginliğin ve ezici yoksulluğun ince bir okyanus şeridiyle ayrıldığı bir dünya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İmparatorlukların yarıştığı ve denizin hukukunun onu dayatacak kadar güçlü olanlara ait olduğu bir dünya.",
+      "text_markdown": "İmparatorlukların yarıştığı ve denizin hukukunun onu dayatacak kadar güçlü olanlara ait olduğu bir dünya.",
+      "tts": {
+        "text": "İmparatorlukların yarıştığı ve denizin hukukunun onu dayatacak kadar güçlü olanlara ait olduğu bir dünya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa güçleri Çin'i açılması gereken bir pazar olarak görüyordu.",
+      "text_markdown": "Avrupa güçleri Çin'i açılması gereken bir pazar olarak görüyordu.",
+      "tts": {
+        "text": "Avrupa güçleri Çin'i açılması gereken bir pazar olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Qing hükûmeti Avrupalıları idare edilmesi gereken barbarlar olarak görüyordu.",
+      "text_markdown": "Qing hükûmeti Avrupalıları idare edilmesi gereken barbarlar olarak görüyordu.",
+      "tts": {
+        "text": "Qing hükûmeti Avrupalıları idare edilmesi gereken barbarlar olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güney Çin Denizi'nin korsanları ise ikisi arasındaki kaosta fırsat görüyordu.",
+      "text_markdown": "Güney Çin Denizi'nin korsanları ise ikisi arasındaki kaosta fırsat görüyordu.",
+      "tts": {
+        "text": "Güney Çin Denizi'nin korsanları ise ikisi arasındaki kaosta fırsat görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz doksana gelindiğinde Güney Çin Denizi'ndeki korsan filoları yüzlerce gemiyi bulmuştu.",
+      "text_markdown": "Bin yedi yüz doksana gelindiğinde Güney Çin Denizi'ndeki korsan filoları yüzlerce gemiyi bulmuştu.",
+      "tts": {
+        "text": "Bin yedi yüz doksana gelindiğinde Güney Çin Denizi'ndeki korsan filoları yüzlerce gemiyi bulmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düzensiz suçlular değillerdi.",
+      "text_markdown": "Düzensiz suçlular değillerdi.",
+      "tts": {
+        "text": "Düzensiz suçlular değillerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pek çoğu, hiyerarşileri ve davranış kuralları olan disiplinli deniz kuvvetleri gibi faaliyet gösteriyordu.",
+      "text_markdown": "Pek çoğu, hiyerarşileri ve davranış kuralları olan disiplinli deniz kuvvetleri gibi faaliyet gösteriyordu.",
+      "tts": {
+        "text": "Pek çoğu, hiyerarşileri ve davranış kuralları olan disiplinli deniz kuvvetleri gibi faaliyet gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Güney Çin Denizi Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu kuvvetlerin en büyüğü tarihin en güçlü korsan filosu olmak üzereydi.",
+      "text_markdown": "Bu kuvvetlerin en büyüğü tarihin en güçlü korsan filosu olmak üzereydi.",
+      "tts": {
+        "text": "Bu kuvvetlerin en büyüğü tarihin en güçlü korsan filosu olmak üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlerinde Zheng Yi Sao olarak tanınacak kadın bin yedi yüz yetmiş beş civarında doğdu.",
+      "text_markdown": "İlerinde Zheng Yi Sao olarak tanınacak kadın bin yedi yüz yetmiş beş civarında doğdu.",
+      "tts": {
+        "text": "İlerinde Zheng Yi Sao olarak tanınacak kadın bin yedi yüz yetmiş beş civarında doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çin kaynaklarında en yaygın olarak Shi Xianggu olarak anılır.",
+      "text_markdown": "Çin kaynaklarında en yaygın olarak Shi Xianggu olarak anılır.",
+      "tts": {
+        "text": "Çin kaynaklarında en yaygın olarak Shi Xianggu olarak anılır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zheng Yi Sao ismi basitçe Zheng Yi'nin karısı anlamına gelir.",
+      "text_markdown": "Zheng Yi Sao ismi basitçe Zheng Yi'nin karısı anlamına gelir.",
+      "tts": {
+        "text": "Zheng Yi Sao ismi basitçe Zheng Yi'nin karısı anlamına gelir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guangdong Eyaleti'nde teknelerde yaşayan Tanka topluluğunda dünyaya geldi.",
+      "text_markdown": "Guangdong Eyaleti'nde teknelerde yaşayan Tanka topluluğunda dünyaya geldi.",
+      "tts": {
+        "text": "Guangdong Eyaleti'nde teknelerde yaşayan Tanka topluluğunda dünyaya geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ailesi, neredeyse tüm Tanka aileleri gibi yoksuldu.",
+      "text_markdown": "Ailesi, neredeyse tüm Tanka aileleri gibi yoksuldu.",
+      "tts": {
+        "text": "Ailesi, neredeyse tüm Tanka aileleri gibi yoksuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İlk yıllarını suda geçirdi, kıyının ritimlerini öğrendi.",
+      "text_markdown": "İlk yıllarını suda geçirdi, kıyının ritimlerini öğrendi.",
+      "tts": {
+        "text": "İlk yıllarını suda geçirdi, kıyının ritimlerini öğrendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Genç bir kadın olarak Canton limanında yüzen bir genelevde çalıştı.",
+      "text_markdown": "Genç bir kadın olarak Canton limanında yüzen bir genelevde çalıştı.",
+      "tts": {
+        "text": "Genç bir kadın olarak Canton limanında yüzen bir genelevde çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yoğun limandan geçen denizcilere, tüccarlara ve balıkçılara hizmet veriyorlardı.",
+      "text_markdown": "Yoğun limandan geçen denizcilere, tüccarlara ve balıkçılara hizmet veriyorlardı.",
+      "tts": {
+        "text": "Yoğun limandan geçen denizcilere, tüccarlara ve balıkçılara hizmet veriyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zor ve tehlikeli bir işti, ancak ona kendi sınıfındaki çok az kadının erişebildiği bir dünya bilgisi kazandırdı.",
+      "text_markdown": "Zor ve tehlikeli bir işti, ancak ona kendi sınıfındaki çok az kadının erişebildiği bir dünya bilgisi kazandırdı.",
+      "tts": {
+        "text": "Zor ve tehlikeli bir işti, ancak ona kendi sınıfındaki çok az kadının erişebildiği bir dünya bilgisi kazandırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanları çabucak ve doğru bir şekilde okumayı öğrendi.",
+      "text_markdown": "İnsanları çabucak ve doğru bir şekilde okumayı öğrendi.",
+      "tts": {
+        "text": "İnsanları çabucak ve doğru bir şekilde okumayı öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaretin ve müzakerenin dillerini öğrendi.",
+      "text_markdown": "Ticaretin ve müzakerenin dillerini öğrendi.",
+      "tts": {
+        "text": "Ticaretin ve müzakerenin dillerini öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu beceriler kimsenin tahmin edemeyeceği kadar değerli çıkacaktı.",
+      "text_markdown": "Bu beceriler kimsenin tahmin edemeyeceği kadar değerli çıkacaktı.",
+      "tts": {
+        "text": "Bu beceriler kimsenin tahmin edemeyeceği kadar değerli çıkacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz doksan sekizde Zheng Yi adında bir korsan kaptanı onun bulunduğu tekneyi ele geçirdi.",
+      "text_markdown": "Bin yedi yüz doksan sekizde Zheng Yi adında bir korsan kaptanı onun bulunduğu tekneyi ele geçirdi.",
+      "tts": {
+        "text": "Bin yedi yüz doksan sekizde Zheng Yi adında bir korsan kaptanı onun bulunduğu tekneyi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nesiller öncesine uzanan uzun bir korsan soyundan geliyordu.",
+      "text_markdown": "Nesiller öncesine uzanan uzun bir korsan soyundan geliyordu.",
+      "tts": {
+        "text": "Nesiller öncesine uzanan uzun bir korsan soyundan geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ailesi Qing fatihlerine karşı Ming hanedanının kalıntılarını desteklemişti.",
+      "text_markdown": "Ailesi Qing fatihlerine karşı Ming hanedanının kalıntılarını desteklemişti.",
+      "tts": {
+        "text": "Ailesi Qing fatihlerine karşı Ming hanedanının kalıntılarını desteklemişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi genç kadına evlenme teklif etti.",
+      "text_markdown": "Zheng Yi genç kadına evlenme teklif etti.",
+      "tts": {
+        "text": "Zheng Yi genç kadına evlenme teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu kaynağa göre basitçe kabul etmedi.",
+      "text_markdown": "Çoğu kaynağa göre basitçe kabul etmedi.",
+      "tts": {
+        "text": "Çoğu kaynağa göre basitçe kabul etmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evliliği kabul etmeden önce ortaklığın şartlarını müzakere etti.",
+      "text_markdown": "Evliliği kabul etmeden önce ortaklığın şartlarını müzakere etti.",
+      "tts": {
+        "text": "Evliliği kabul etmeden önce ortaklığın şartlarını müzakere etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Filonun eşit payını ve komuta kararlarında eşit söz hakkını talep etti.",
+      "text_markdown": "Filonun eşit payını ve komuta kararlarında eşit söz hakkını talep etti.",
+      "tts": {
+        "text": "Filonun eşit payını ve komuta kararlarında eşit söz hakkını talep etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu o dönem için olağanüstü bir durumdu.",
+      "text_markdown": "Bu o dönem için olağanüstü bir durumdu.",
+      "tts": {
+        "text": "Bu o dönem için olağanüstü bir durumdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geç dönem Qing Çin'inde kadınların yasal hakları son derece azdı.",
+      "text_markdown": "Geç dönem Qing Çin'inde kadınların yasal hakları son derece azdı.",
+      "tts": {
+        "text": "Geç dönem Qing Çin'inde kadınların yasal hakları son derece azdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir eşin kocasına sorgulamadan itaat etmesi beklenirdi.",
+      "text_markdown": "Bir eşin kocasına sorgulamadan itaat etmesi beklenirdi.",
+      "tts": {
+        "text": "Bir eşin kocasına sorgulamadan itaat etmesi beklenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama burası korsan dünyasıydı ve korsan dünyası kendi kurallarını koyuyordu.",
+      "text_markdown": "Ama burası korsan dünyasıydı ve korsan dünyası kendi kurallarını koyuyordu.",
+      "tts": {
+        "text": "Ama burası korsan dünyasıydı ve korsan dünyası kendi kurallarını koyuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi onun şartlarını kabul etti.",
+      "text_markdown": "Zheng Yi onun şartlarını kabul etti.",
+      "tts": {
+        "text": "Zheng Yi onun şartlarını kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler onun zekâsını ve liderlik potansiyelini fark ettiğine inanır.",
+      "text_markdown": "Tarihçiler onun zekâsını ve liderlik potansiyelini fark ettiğine inanır.",
+      "tts": {
+        "text": "Tarihçiler onun zekâsını ve liderlik potansiyelini fark ettiğine inanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilikleri kişisel bir bağ olduğu kadar stratejik bir ittifaktı da.",
+      "text_markdown": "Evlilikleri kişisel bir bağ olduğu kadar stratejik bir ittifaktı da.",
+      "tts": {
+        "text": "Evlilikleri kişisel bir bağ olduğu kadar stratejik bir ittifaktı da.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birlikte benzeri görülmemiş bir şey inşa edeceklerdi.",
+      "text_markdown": "Birlikte benzeri görülmemiş bir şey inşa edeceklerdi.",
+      "tts": {
+        "text": "Birlikte benzeri görülmemiş bir şey inşa edeceklerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi'nin cesur bir vizyonu vardı.",
+      "text_markdown": "Zheng Yi'nin cesur bir vizyonu vardı.",
+      "tts": {
+        "text": "Zheng Yi'nin cesur bir vizyonu vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güney Çin Denizi'nin dağınık korsan filolarını tek bir konfederasyon altında birleştirmek istiyordu.",
+      "text_markdown": "Güney Çin Denizi'nin dağınık korsan filolarını tek bir konfederasyon altında birleştirmek istiyordu.",
+      "tts": {
+        "text": "Güney Çin Denizi'nin dağınık korsan filolarını tek bir konfederasyon altında birleştirmek istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bireysel korsan kaptanları her zaman birbirleriyle rekabet etmişti.",
+      "text_markdown": "Bireysel korsan kaptanları her zaman birbirleriyle rekabet etmişti.",
+      "tts": {
+        "text": "Bireysel korsan kaptanları her zaman birbirleriyle rekabet etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi iş birliği yaparlarsa çok daha güçlü olacaklarına inanıyordu.",
+      "text_markdown": "Zheng Yi iş birliği yaparlarsa çok daha güçlü olacaklarına inanıyordu.",
+      "tts": {
+        "text": "Zheng Yi iş birliği yaparlarsa çok daha güçlü olacaklarına inanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz doksan sekiz ile bin sekiz yüz beş yılları arasında Zheng Yi ittifaklar kurmak için yorulmadan çalıştı.",
+      "text_markdown": "Bin yedi yüz doksan sekiz ile bin sekiz yüz beş yılları arasında Zheng Yi ittifaklar kurmak için yorulmadan çalıştı.",
+      "tts": {
+        "text": "Bin yedi yüz doksan sekiz ile bin sekiz yüz beş yılları arasında Zheng Yi ittifaklar kurmak için yorulmadan çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rakip kaptanları diplomasi ve gözdağı karışımıyla konfederasyonuna katılmaya ikna etti.",
+      "text_markdown": "Rakip kaptanları diplomasi ve gözdağı karışımıyla konfederasyonuna katılmaya ikna etti.",
+      "tts": {
+        "text": "Rakip kaptanları diplomasi ve gözdağı karışımıyla konfederasyonuna katılmaya ikna etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karısı bu müzakerelere derinden dahil olmuştu.",
+      "text_markdown": "Karısı bu müzakerelere derinden dahil olmuştu.",
+      "tts": {
+        "text": "Karısı bu müzakerelere derinden dahil olmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Filoyu bir arada tutan anlaşmaları hazırlamaya yardım etti.",
+      "text_markdown": "Filoyu bir arada tutan anlaşmaları hazırlamaya yardım etti.",
+      "tts": {
+        "text": "Filoyu bir arada tutan anlaşmaları hazırlamaya yardım etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz beşe gelindiğinde konfederasyon tamamlanmıştı.",
+      "text_markdown": "Bin sekiz yüz beşe gelindiğinde konfederasyon tamamlanmıştı.",
+      "tts": {
+        "text": "Bin sekiz yüz beşe gelindiğinde konfederasyon tamamlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her biri bayrağının rengiyle tanımlanan altı filodan oluşuyordu.",
+      "text_markdown": "Her biri bayrağının rengiyle tanımlanan altı filodan oluşuyordu.",
+      "tts": {
+        "text": "Her biri bayrağının rengiyle tanımlanan altı filodan oluşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kızıl Bayrak Filosu en büyüğü ve en güçlüsüydü.",
+      "text_markdown": "Kızıl Bayrak Filosu en büyüğü ve en güçlüsüydü.",
+      "tts": {
+        "text": "Kızıl Bayrak Filosu en büyüğü ve en güçlüsüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi Kızıl Bayrak Filosu'na bizzat komuta ediyordu.",
+      "text_markdown": "Zheng Yi Kızıl Bayrak Filosu'na bizzat komuta ediyordu.",
+      "tts": {
+        "text": "Zheng Yi Kızıl Bayrak Filosu'na bizzat komuta ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konfederasyon yüzlerce gemiyi ve on binlerce korsanı kontrol ediyordu.",
+      "text_markdown": "Konfederasyon yüzlerce gemiyi ve on binlerce korsanı kontrol ediyordu.",
+      "tts": {
+        "text": "Konfederasyon yüzlerce gemiyi ve on binlerce korsanı kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüm Güney Çin Denizi'ne hâkimdi.",
+      "text_markdown": "Tüm Güney Çin Denizi'ne hâkimdi.",
+      "tts": {
+        "text": "Tüm Güney Çin Denizi'ne hâkimdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir ticaret gemisi haraç ödemeden ya da yıkımı göze almadan bu sulardan geçemezdi.",
+      "text_markdown": "Hiçbir ticaret gemisi haraç ödemeden ya da yıkımı göze almadan bu sulardan geçemezdi.",
+      "tts": {
+        "text": "Hiçbir ticaret gemisi haraç ödemeden ya da yıkımı göze almadan bu sulardan geçemezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra bin sekiz yüz yedinin Kasım ayında Zheng Yi öldü.",
+      "text_markdown": "Sonra bin sekiz yüz yedinin Kasım ayında Zheng Yi öldü.",
+      "tts": {
+        "text": "Sonra bin sekiz yüz yedinin Kasım ayında Zheng Yi öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ölümünün koşulları tarihçiler arasında tartışmalıdır.",
+      "text_markdown": "Ölümünün koşulları tarihçiler arasında tartışmalıdır.",
+      "tts": {
+        "text": "Ölümünün koşulları tarihçiler arasında tartışmalıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı kaynaklar fırtınada boğulduğunu söyler.",
+      "text_markdown": "Bazı kaynaklar fırtınada boğulduğunu söyler.",
+      "tts": {
+        "text": "Bazı kaynaklar fırtınada boğulduğunu söyler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğerleri Vietnam kıyılarında bir savaşta öldürüldüğünü ileri sürer.",
+      "text_markdown": "Diğerleri Vietnam kıyılarında bir savaşta öldürüldüğünü ileri sürer.",
+      "tts": {
+        "text": "Diğerleri Vietnam kıyılarında bir savaşta öldürüldüğünü ileri sürer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ölümü tüm konfederasyon için bir kriz yarattı.",
+      "text_markdown": "Ölümü tüm konfederasyon için bir kriz yarattı.",
+      "tts": {
+        "text": "Ölümü tüm konfederasyon için bir kriz yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kurduğu ittifak kişisel otoritesiyle ayakta duruyordu.",
+      "text_markdown": "Kurduğu ittifak kişisel otoritesiyle ayakta duruyordu.",
+      "tts": {
+        "text": "Kurduğu ittifak kişisel otoritesiyle ayakta duruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güçlü bir lider olmadan rakip hiziplere geri bölünecekti.",
+      "text_markdown": "Güçlü bir lider olmadan rakip hiziplere geri bölünecekti.",
+      "tts": {
+        "text": "Güçlü bir lider olmadan rakip hiziplere geri bölünecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnşa ettikleri her şey tehlike altındaydı.",
+      "text_markdown": "İnşa ettikleri her şey tehlike altındaydı.",
+      "tts": {
+        "text": "İnşa ettikleri her şey tehlike altındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diğer filoların kaptanları konfederasyonun çökmesini bekliyordu.",
+      "text_markdown": "Diğer filoların kaptanları konfederasyonun çökmesini bekliyordu.",
+      "tts": {
+        "text": "Diğer filoların kaptanları konfederasyonun çökmesini bekliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mevzi edinmek ve toprak ele geçirmek için manevraya başladılar.",
+      "text_markdown": "Mevzi edinmek ve toprak ele geçirmek için manevraya başladılar.",
+      "tts": {
+        "text": "Mevzi edinmek ve toprak ele geçirmek için manevraya başladılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Zheng Yi'nin dul eşinin hırsını ve yeteneğini hesaba katmamışlardı.",
+      "text_markdown": "Ancak Zheng Yi'nin dul eşinin hırsını ve yeteneğini hesaba katmamışlardı.",
+      "tts": {
+        "text": "Ancak Zheng Yi'nin dul eşinin hırsını ve yeteneğini hesaba katmamışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnşa etmeye yardım ettiği şeyi teslim etmeye niyeti yoktu.",
+      "text_markdown": "İnşa etmeye yardım ettiği şeyi teslim etmeye niyeti yoktu.",
+      "tts": {
+        "text": "İnşa etmeye yardım ettiği şeyi teslim etmeye niyeti yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İktidara Yükseliş",
+      "text_markdown": "İktidara Yükseliş"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kocasının ölümünü takip eden günlerde Zheng Yi Sao hesaplı bir hızla hareket etti.",
+      "text_markdown": "Kocasının ölümünü takip eden günlerde Zheng Yi Sao hesaplı bir hızla hareket etti.",
+      "tts": {
+        "text": "Kocasının ölümünü takip eden günlerde Zheng Yi Sao hesaplı bir hızla hareket etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk hamlesi kocasının en güvendiği yardımcısı Zhang Bao'nun sadakatini güvence altına almak oldu.",
+      "text_markdown": "İlk hamlesi kocasının en güvendiği yardımcısı Zhang Bao'nun sadakatini güvence altına almak oldu.",
+      "tts": {
+        "text": "İlk hamlesi kocasının en güvendiği yardımcısı Zhang Bao'nun sadakatini güvence altına almak oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zhang Bao çocukken korsanlar tarafından esir alınmış bir balıkçının oğluydu.",
+      "text_markdown": "Zhang Bao çocukken korsanlar tarafından esir alınmış bir balıkçının oğluydu.",
+      "tts": {
+        "text": "Zhang Bao çocukken korsanlar tarafından esir alınmış bir balıkçının oğluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi onu evlat edinmiş, eğitmiş ve askerî bir komutan olarak yetiştirmişti.",
+      "text_markdown": "Zheng Yi onu evlat edinmiş, eğitmiş ve askerî bir komutan olarak yetiştirmişti.",
+      "tts": {
+        "text": "Zheng Yi onu evlat edinmiş, eğitmiş ve askerî bir komutan olarak yetiştirmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao Zhang Bao ile hem kişisel hem stratejik bir ittifak kurdu.",
+      "text_markdown": "Zheng Yi Sao Zhang Bao ile hem kişisel hem stratejik bir ittifak kurdu.",
+      "tts": {
+        "text": "Zheng Yi Sao Zhang Bao ile hem kişisel hem stratejik bir ittifak kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İkisi sonunda evlendi.",
+      "text_markdown": "İkisi sonunda evlendi.",
+      "tts": {
+        "text": "İkisi sonunda evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak o ilk kritik haftalarda ortaklık hayatta kalma meselesiydi.",
+      "text_markdown": "Ancak o ilk kritik haftalarda ortaklık hayatta kalma meselesiydi.",
+      "tts": {
+        "text": "Ancak o ilk kritik haftalarda ortaklık hayatta kalma meselesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birlikte diğer filo komutanlarına birleşik bir cephe sundular.",
+      "text_markdown": "Birlikte diğer filo komutanlarına birleşik bir cephe sundular.",
+      "tts": {
+        "text": "Birlikte diğer filo komutanlarına birleşik bir cephe sundular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altı filo kaptanının katıldığı bir konsey topladı.",
+      "text_markdown": "Altı filo kaptanının katıldığı bir konsey topladı.",
+      "tts": {
+        "text": "Altı filo kaptanının katıldığı bir konsey topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu toplantıda konfederasyonun liderliği için gerekçesini sundu.",
+      "text_markdown": "Bu toplantıda konfederasyonun liderliği için gerekçesini sundu.",
+      "tts": {
+        "text": "Bu toplantıda konfederasyonun liderliği için gerekçesini sundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kocasının bu ittifakı kurmada eşit ortağı olduğunu savundu.",
+      "text_markdown": "Kocasının bu ittifakı kurmada eşit ortağı olduğunu savundu.",
+      "tts": {
+        "text": "Kocasının bu ittifakı kurmada eşit ortağı olduğunu savundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birer birer kaptanlar onun komutasını takip etmeyi kabul etti.",
+      "text_markdown": "Birer birer kaptanlar onun komutasını takip etmeyi kabul etti.",
+      "tts": {
+        "text": "Birer birer kaptanlar onun komutasını takip etmeyi kabul etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk görevi yetmiş bin korsandan oluşan bir kuvvete disiplin dayatmaktı.",
+      "text_markdown": "İlk görevi yetmiş bin korsandan oluşan bir kuvvete disiplin dayatmaktı.",
+      "tts": {
+        "text": "İlk görevi yetmiş bin korsandan oluşan bir kuvvete disiplin dayatmaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar doğası gereği bağımsız ve otoriteye güvensizdi.",
+      "text_markdown": "Korsanlar doğası gereği bağımsız ve otoriteye güvensizdi.",
+      "tts": {
+        "text": "Korsanlar doğası gereği bağımsız ve otoriteye güvensizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zheng Yi Sao yasasız bir filonun kendini yok edeceğini biliyordu.",
+      "text_markdown": "Zheng Yi Sao yasasız bir filonun kendini yok edeceğini biliyordu.",
+      "tts": {
+        "text": "Zheng Yi Sao yasasız bir filonun kendini yok edeceğini biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan tarihinin en dikkat çekici yasa kümelerinden birini oluşturdu.",
+      "text_markdown": "Korsan tarihinin en dikkat çekici yasa kümelerinden birini oluşturdu.",
+      "tts": {
+        "text": "Korsan tarihinin en dikkat çekici yasa kümelerinden birini oluşturdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yasa katı ve ayrıntılıydı.",
+      "text_markdown": "Yasa katı ve ayrıntılıydı.",
+      "tts": {
+        "text": "Yasa katı ve ayrıntılıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir üstünün doğrudan emrine uymayan herhangi bir korsan kafası kesilerek cezalandırılırdı.",
+      "text_markdown": "Bir üstünün doğrudan emrine uymayan herhangi bir korsan kafası kesilerek cezalandırılırdı.",
+      "tts": {
+        "text": "Bir üstünün doğrudan emrine uymayan herhangi bir korsan kafası kesilerek cezalandırılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Firar ölümle cezalandırılırdı.",
+      "text_markdown": "Firar ölümle cezalandırılırdı.",
+      "tts": {
+        "text": "Firar ölümle cezalandırılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ortak hazineden çalmak ölümle cezalandırılırdı.",
+      "text_markdown": "Ortak hazineden çalmak ölümle cezalandırılırdı.",
+      "tts": {
+        "text": "Ortak hazineden çalmak ölümle cezalandırılırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yasa ayrıca dönemine göre alışılmadık biçimlerde esirleri de koruyordu.",
+      "text_markdown": "Yasa ayrıca dönemine göre alışılmadık biçimlerde esirleri de koruyordu.",
+      "tts": {
+        "text": "Yasa ayrıca dönemine göre alışılmadık biçimlerde esirleri de koruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirlere saldıran korsanlar ağır cezalarla karşı karşıya kalırdı.",
+      "text_markdown": "Esirlere saldıran korsanlar ağır cezalarla karşı karşıya kalırdı.",
+      "tts": {
+        "text": "Esirlere saldıran korsanlar ağır cezalarla karşı karşıya kalırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir korsan bir esiri eş olarak alırsa ona sadık kalması zorunluydu.",
+      "text_markdown": "Bir korsan bir esiri eş olarak alırsa ona sadık kalması zorunluydu.",
+      "tts": {
+        "text": "Bir korsan bir esiri eş olarak alırsa ona sadık kalması zorunluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu kurallar öneri değildi; demir bir tutarlılıkla uygulanıyordu.",
+      "text_markdown": "Bu kurallar öneri değildi; demir bir tutarlılıkla uygulanıyordu.",
+      "tts": {
+        "text": "Bu kurallar öneri değildi; demir bir tutarlılıkla uygulanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüm ganimet kaydedilir ve sabit bir sisteme göre paylaştırılırdı.",
+      "text_markdown": "Tüm ganimet kaydedilir ve sabit bir sisteme göre paylaştırılırdı.",
+      "tts": {
+        "text": "Tüm ganimet kaydedilir ve sabit bir sisteme göre paylaştırılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Malları ele geçiren korsan yüzde yirmisini alırdı.",
+      "text_markdown": "Malları ele geçiren korsan yüzde yirmisini alırdı.",
+      "tts": {
+        "text": "Malları ele geçiren korsan yüzde yirmisini alırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kalan yüzde sekseni ortak fona giderdi.",
+      "text_markdown": "Kalan yüzde sekseni ortak fona giderdi.",
+      "tts": {
+        "text": "Kalan yüzde sekseni ortak fona giderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu sistem çoğu korsan örgütünü yok eden iç çekişmeleri önlüyordu.",
+      "text_markdown": "Bu sistem çoğu korsan örgütünü yok eden iç çekişmeleri önlüyordu.",
+      "tts": {
+        "text": "Bu sistem çoğu korsan örgütünü yok eden iç çekişmeleri önlüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao ayrıca gelişmiş bir vergilendirme sistemi kurdu.",
+      "text_markdown": "Zheng Yi Sao ayrıca gelişmiş bir vergilendirme sistemi kurdu.",
+      "tts": {
+        "text": "Zheng Yi Sao ayrıca gelişmiş bir vergilendirme sistemi kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret gemileri düzenli bir ücret ödeyerek güvenli geçiş satın alabilirdi.",
+      "text_markdown": "Ticaret gemileri düzenli bir ücret ödeyerek güvenli geçiş satın alabilirdi.",
+      "tts": {
+        "text": "Ticaret gemileri düzenli bir ücret ödeyerek güvenli geçiş satın alabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyı boyunca balıkçı köyleri koruma karşılığında haraç ödüyordu.",
+      "text_markdown": "Kıyı boyunca balıkçı köyleri koruma karşılığında haraç ödüyordu.",
+      "tts": {
+        "text": "Kıyı boyunca balıkçı köyleri koruma karşılığında haraç ödüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sistem güvenlik karşılığında gelir toplayan paralel bir hükûmet gibi işliyordu.",
+      "text_markdown": "Sistem güvenlik karşılığında gelir toplayan paralel bir hükûmet gibi işliyordu.",
+      "tts": {
+        "text": "Sistem güvenlik karşılığında gelir toplayan paralel bir hükûmet gibi işliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qing hükûmeti tehdidi fark etti ve korsanları ezmek için donanmasını gönderdi.",
+      "text_markdown": "Qing hükûmeti tehdidi fark etti ve korsanları ezmek için donanmasını gönderdi.",
+      "tts": {
+        "text": "Qing hükûmeti tehdidi fark etti ve korsanları ezmek için donanmasını gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bin sekiz yüz sekizde devasa bir imparatorluk filosu Güney Çin Denizi'ne açıldı.",
+      "text_markdown": "Bin sekiz yüz sekizde devasa bir imparatorluk filosu Güney Çin Denizi'ne açıldı.",
+      "tts": {
+        "text": "Bin sekiz yüz sekizde devasa bir imparatorluk filosu Güney Çin Denizi'ne açıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş hükûmet için bir felaketti.",
+      "text_markdown": "Savaş hükûmet için bir felaketti.",
+      "tts": {
+        "text": "Savaş hükûmet için bir felaketti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi Sao'nun kuvvetleri düzinelerce imparatorluk savaş gemisini batırdı ya da ele geçirdi.",
+      "text_markdown": "Zheng Yi Sao'nun kuvvetleri düzinelerce imparatorluk savaş gemisini batırdı ya da ele geçirdi.",
+      "tts": {
+        "text": "Zheng Yi Sao'nun kuvvetleri düzinelerce imparatorluk savaş gemisini batırdı ya da ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yenilen amiral o kadar aşağılanmıştı ki kendi canına kıydı.",
+      "text_markdown": "Yenilen amiral o kadar aşağılanmıştı ki kendi canına kıydı.",
+      "tts": {
+        "text": "Yenilen amiral o kadar aşağılanmıştı ki kendi canına kıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saray kaybın büyüklüğü karşısında sarsıldı.",
+      "text_markdown": "Saray kaybın büyüklüğü karşısında sarsıldı.",
+      "tts": {
+        "text": "Saray kaybın büyüklüğü karşısında sarsıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En iyi gemilerini ve en deneyimli komutanlarını göndermişlerdi ama kaybetmişlerdi.",
+      "text_markdown": "En iyi gemilerini ve en deneyimli komutanlarını göndermişlerdi ama kaybetmişlerdi.",
+      "tts": {
+        "text": "En iyi gemilerini ve en deneyimli komutanlarını göndermişlerdi ama kaybetmişlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar artık hükûmetin kendi donanmasından daha güçlüydü.",
+      "text_markdown": "Korsanlar artık hükûmetin kendi donanmasından daha güçlüydü.",
+      "tts": {
+        "text": "Korsanlar artık hükûmetin kendi donanmasından daha güçlüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao üstünlüğünü acımasızca kullandı.",
+      "text_markdown": "Zheng Yi Sao üstünlüğünü acımasızca kullandı.",
+      "tts": {
+        "text": "Zheng Yi Sao üstünlüğünü acımasızca kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu tüm Guangdong kıyısı boyunca topraklarını genişletti.",
+      "text_markdown": "Filosu tüm Guangdong kıyısı boyunca topraklarını genişletti.",
+      "tts": {
+        "text": "Filosu tüm Guangdong kıyısı boyunca topraklarını genişletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adalarda ve gizli nehir ağızlarında üsler kurdu.",
+      "text_markdown": "Adalarda ve gizli nehir ağızlarında üsler kurdu.",
+      "tts": {
+        "text": "Adalarda ve gizli nehir ağızlarında üsler kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İstihbarat ağı Canton'dan Vietnam'a kadar uzanıyordu.",
+      "text_markdown": "İstihbarat ağı Canton'dan Vietnam'a kadar uzanıyordu.",
+      "tts": {
+        "text": "İstihbarat ağı Canton'dan Vietnam'a kadar uzanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qing hükûmeti yeni bir strateji denedi.",
+      "text_markdown": "Qing hükûmeti yeni bir strateji denedi.",
+      "tts": {
+        "text": "Qing hükûmeti yeni bir strateji denedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlarla savaşmak için Makao kolonisinden Portekiz savaş gemileri tuttular.",
+      "text_markdown": "Korsanlarla savaşmak için Makao kolonisinden Portekiz savaş gemileri tuttular.",
+      "tts": {
+        "text": "Korsanlarla savaşmak için Makao kolonisinden Portekiz savaş gemileri tuttular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portekizliler modern Avrupa toplarına ve eğitimli deniz subaylarına sahipti.",
+      "text_markdown": "Portekizliler modern Avrupa toplarına ve eğitimli deniz subaylarına sahipti.",
+      "tts": {
+        "text": "Portekizliler modern Avrupa toplarına ve eğitimli deniz subaylarına sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir süreliğine bu ittifak korsan filosu üzerinde gerçek bir baskı oluşturdu.",
+      "text_markdown": "Bir süreliğine bu ittifak korsan filosu üzerinde gerçek bir baskı oluşturdu.",
+      "tts": {
+        "text": "Bir süreliğine bu ittifak korsan filosu üzerinde gerçek bir baskı oluşturdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak Zheng Yi Sao çabucak uyum sağladı.",
+      "text_markdown": "Ancak Zheng Yi Sao çabucak uyum sağladı.",
+      "tts": {
+        "text": "Ancak Zheng Yi Sao çabucak uyum sağladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portekiz savaş gemileriyle doğrudan çatışmadan kaçındı.",
+      "text_markdown": "Portekiz savaş gemileriyle doğrudan çatışmadan kaçındı.",
+      "tts": {
+        "text": "Portekiz savaş gemileriyle doğrudan çatışmadan kaçındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine onların ikmal hatlarını ve ticari müttefiklerini hedef aldı.",
+      "text_markdown": "Bunun yerine onların ikmal hatlarını ve ticari müttefiklerini hedef aldı.",
+      "tts": {
+        "text": "Bunun yerine onların ikmal hatlarını ve ticari müttefiklerini hedef aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Portekizlilerin ancak para aldıkları sürece savaşacaklarını biliyordu.",
+      "text_markdown": "Portekizlilerin ancak para aldıkları sürece savaşacaklarını biliyordu.",
+      "tts": {
+        "text": "Portekizlilerin ancak para aldıkları sürece savaşacaklarını biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz dokuza gelindiğinde Qing-Portekiz ittifakı onu yenmeyi başaramamıştı.",
+      "text_markdown": "Bin sekiz yüz dokuza gelindiğinde Qing-Portekiz ittifakı onu yenmeyi başaramamıştı.",
+      "tts": {
+        "text": "Bin sekiz yüz dokuza gelindiğinde Qing-Portekiz ittifakı onu yenmeyi başaramamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hükûmet muazzam meblağlar harcamış ve düzinelerce gemi kaybetmişti.",
+      "text_markdown": "Hükûmet muazzam meblağlar harcamış ve düzinelerce gemi kaybetmişti.",
+      "tts": {
+        "text": "Hükûmet muazzam meblağlar harcamış ve düzinelerce gemi kaybetmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar kıyıyı her zamankinden daha sıkı kontrol ediyordu.",
+      "text_markdown": "Korsanlar kıyıyı her zamankinden daha sıkı kontrol ediyordu.",
+      "tts": {
+        "text": "Korsanlar kıyıyı her zamankinden daha sıkı kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi Sao'nun konfederasyonu gücünün zirvesindeydi.",
+      "text_markdown": "Zheng Yi Sao'nun konfederasyonu gücünün zirvesindeydi.",
+      "tts": {
+        "text": "Zheng Yi Sao'nun konfederasyonu gücünün zirvesindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvedeyken",
+      "text_markdown": "Zirvedeyken"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zirvesinde korsan konfederasyonu yaklaşık bin sekiz yüz gemiye komuta ediyordu.",
+      "text_markdown": "Zirvesinde korsan konfederasyonu yaklaşık bin sekiz yüz gemiye komuta ediyordu.",
+      "tts": {
+        "text": "Zirvesinde korsan konfederasyonu yaklaşık bin sekiz yüz gemiye komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar küçük, hızlı baskın teknelerinden düzinelerce top taşıyan devasa savaş gemilerine kadar uzanıyordu.",
+      "text_markdown": "Bunlar küçük, hızlı baskın teknelerinden düzinelerce top taşıyan devasa savaş gemilerine kadar uzanıyordu.",
+      "tts": {
+        "text": "Bunlar küçük, hızlı baskın teknelerinden düzinelerce top taşıyan devasa savaş gemilerine kadar uzanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toplam savaş gücü yetmiş bin ile seksen bin kişi arasındaydı.",
+      "text_markdown": "Toplam savaş gücü yetmiş bin ile seksen bin kişi arasındaydı.",
+      "tts": {
+        "text": "Toplam savaş gücü yetmiş bin ile seksen bin kişi arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, o dönemde çoğu Avrupa ulusunun donanmasından daha büyüktü.",
+      "text_markdown": "Bu, o dönemde çoğu Avrupa ulusunun donanmasından daha büyüktü.",
+      "tts": {
+        "text": "Bu, o dönemde çoğu Avrupa ulusunun donanmasından daha büyüktü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yalnızca Kızıl Bayrak Filosu'nun altı yüz ile sekiz yüz arasında gemisi vardı.",
+      "text_markdown": "Yalnızca Kızıl Bayrak Filosu'nun altı yüz ile sekiz yüz arasında gemisi vardı.",
+      "tts": {
+        "text": "Yalnızca Kızıl Bayrak Filosu'nun altı yüz ile sekiz yüz arasında gemisi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konfederasyondaki en büyük tek filoydu.",
+      "text_markdown": "Konfederasyondaki en büyük tek filoydu.",
+      "tts": {
+        "text": "Konfederasyondaki en büyük tek filoydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zheng Yi Sao doğrudan komuta ediyordu; Zhang Bao ise baş askerî subayıydı.",
+      "text_markdown": "Zheng Yi Sao doğrudan komuta ediyordu; Zhang Bao ise baş askerî subayıydı.",
+      "tts": {
+        "text": "Zheng Yi Sao doğrudan komuta ediyordu; Zhang Bao ise baş askerî subayıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğer beş filo yarı bağımsız faaliyet gösteriyor, ancak onun stratejik yönlendirmesini takip ediyordu.",
+      "text_markdown": "Diğer beş filo yarı bağımsız faaliyet gösteriyor, ancak onun stratejik yönlendirmesini takip ediyordu.",
+      "tts": {
+        "text": "Diğer beş filo yarı bağımsız faaliyet gösteriyor, ancak onun stratejik yönlendirmesini takip ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konfederasyonun toprakları bin milden fazla kıyı şeridine yayılıyordu.",
+      "text_markdown": "Konfederasyonun toprakları bin milden fazla kıyı şeridine yayılıyordu.",
+      "tts": {
+        "text": "Konfederasyonun toprakları bin milden fazla kıyı şeridine yayılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güneyde Vietnam sınırından kuzeyde Fujian kıyılarına kadar hiçbir gemi korsanların izni olmadan güvende değildi.",
+      "text_markdown": "Güneyde Vietnam sınırından kuzeyde Fujian kıyılarına kadar hiçbir gemi korsanların izni olmadan güvende değildi.",
+      "tts": {
+        "text": "Güneyde Vietnam sınırından kuzeyde Fujian kıyılarına kadar hiçbir gemi korsanların izni olmadan güvende değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güçlü İngiliz Doğu Hindistan Şirketi bile kargosunu kaybetmemek için haraç ödüyordu.",
+      "text_markdown": "Güçlü İngiliz Doğu Hindistan Şirketi bile kargosunu kaybetmemek için haraç ödüyordu.",
+      "tts": {
+        "text": "Güçlü İngiliz Doğu Hindistan Şirketi bile kargosunu kaybetmemek için haraç ödüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir korsan gemisindeki yaşam sert ama düzenliydi.",
+      "text_markdown": "Bir korsan gemisindeki yaşam sert ama düzenliydi.",
+      "tts": {
+        "text": "Bir korsan gemisindeki yaşam sert ama düzenliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her geminin, kaptandan en yeni erin kadar uzanan net bir hiyerarşisi vardı.",
+      "text_markdown": "Her geminin, kaptandan en yeni erin kadar uzanan net bir hiyerarşisi vardı.",
+      "tts": {
+        "text": "Her geminin, kaptandan en yeni erin kadar uzanan net bir hiyerarşisi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yemekler ortak yenir, tayınlar eşit olarak dağıtılırdı.",
+      "text_markdown": "Yemekler ortak yenir, tayınlar eşit olarak dağıtılırdı.",
+      "tts": {
+        "text": "Yemekler ortak yenir, tayınlar eşit olarak dağıtılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her mürettebat üyesi, rütbesine ve görevine göre ganimetin bir payını alırdı.",
+      "text_markdown": "Her mürettebat üyesi, rütbesine ve görevine göre ganimetin bir payını alırdı.",
+      "tts": {
+        "text": "Her mürettebat üyesi, rütbesine ve görevine göre ganimetin bir payını alırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filodaki birçok korsan gemisinde kadınlar da görev yapıyordu.",
+      "text_markdown": "Filodaki birçok korsan gemisinde kadınlar da görev yapıyordu.",
+      "tts": {
+        "text": "Filodaki birçok korsan gemisinde kadınlar da görev yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları baskınlarda erkeklerle birlikte savaşıyordu.",
+      "text_markdown": "Bazıları baskınlarda erkeklerle birlikte savaşıyordu.",
+      "tts": {
+        "text": "Bazıları baskınlarda erkeklerle birlikte savaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri ikmal, seyrüsefer ve gemiler arası iletişimi yönetiyordu.",
+      "text_markdown": "Diğerleri ikmal, seyrüsefer ve gemiler arası iletişimi yönetiyordu.",
+      "tts": {
+        "text": "Diğerleri ikmal, seyrüsefer ve gemiler arası iletişimi yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan dünyası kadınlara ana akım Qing toplumundan daha fazla özgürlük sunuyordu.",
+      "text_markdown": "Korsan dünyası kadınlara ana akım Qing toplumundan daha fazla özgürlük sunuyordu.",
+      "tts": {
+        "text": "Korsan dünyası kadınlara ana akım Qing toplumundan daha fazla özgürlük sunuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filonun savaş gemileri müthiş savaş makineleriydi.",
+      "text_markdown": "Filonun savaş gemileri müthiş savaş makineleriydi.",
+      "tts": {
+        "text": "Filonun savaş gemileri müthiş savaş makineleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyük bir gemi otuz veya daha fazla top taşıyabilirdi.",
+      "text_markdown": "Büyük bir gemi otuz veya daha fazla top taşıyabilirdi.",
+      "tts": {
+        "text": "Büyük bir gemi otuz veya daha fazla top taşıyabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemiler, istilacıları püskürtmek için güçlendirilmiş tekne gövdeleri ve yüksek bordallarla inşa edilmişti.",
+      "text_markdown": "Gemiler, istilacıları püskürtmek için güçlendirilmiş tekne gövdeleri ve yüksek bordallarla inşa edilmişti.",
+      "tts": {
+        "text": "Gemiler, istilacıları püskürtmek için güçlendirilmiş tekne gövdeleri ve yüksek bordallarla inşa edilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Düz dipli yapıları, daha derin Avrupa gemilerinin giremediği sığ kıyı sularında seyretmelerini sağlıyordu.",
+      "text_markdown": "Düz dipli yapıları, daha derin Avrupa gemilerinin giremediği sığ kıyı sularında seyretmelerini sağlıyordu.",
+      "tts": {
+        "text": "Düz dipli yapıları, daha derin Avrupa gemilerinin giremediği sığ kıyı sularında seyretmelerini sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao'nun istihbarat ağı en büyük silahlarından biriydi.",
+      "text_markdown": "Zheng Yi Sao'nun istihbarat ağı en büyük silahlarından biriydi.",
+      "tts": {
+        "text": "Zheng Yi Sao'nun istihbarat ağı en büyük silahlarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Canton'da, Makao'da ve kıyı boyunca her büyük limanda casusları vardı.",
+      "text_markdown": "Canton'da, Makao'da ve kıyı boyunca her büyük limanda casusları vardı.",
+      "tts": {
+        "text": "Canton'da, Makao'da ve kıyı boyunca her büyük limanda casusları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Değerli yük gemilerinin ne zaman hareket ettiğini ve hangi rotaları izleyeceğini biliyordu.",
+      "text_markdown": "Değerli yük gemilerinin ne zaman hareket ettiğini ve hangi rotaları izleyeceğini biliyordu.",
+      "tts": {
+        "text": "Değerli yük gemilerinin ne zaman hareket ettiğini ve hangi rotaları izleyeceğini biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bilgi, şansa güvenmek yerine hassas saldırılar düzenlemesini sağlıyordu.",
+      "text_markdown": "Bu bilgi, şansa güvenmek yerine hassas saldırılar düzenlemesini sağlıyordu.",
+      "tts": {
+        "text": "Bu bilgi, şansa güvenmek yerine hassas saldırılar düzenlemesini sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurduğu vergilendirme sistemi son derece gelişmişti.",
+      "text_markdown": "Kurduğu vergilendirme sistemi son derece gelişmişti.",
+      "tts": {
+        "text": "Kurduğu vergilendirme sistemi son derece gelişmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farklı kargo türlerine farklı oranlar uygulanırdı.",
+      "text_markdown": "Farklı kargo türlerine farklı oranlar uygulanırdı.",
+      "tts": {
+        "text": "Farklı kargo türlerine farklı oranlar uygulanırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İpek tüccarları, pirinç tüccarlarından daha fazla ödüyordu.",
+      "text_markdown": "İpek tüccarları, pirinç tüccarlarından daha fazla ödüyordu.",
+      "tts": {
+        "text": "İpek tüccarları, pirinç tüccarlarından daha fazla ödüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tuz kaçakçıları, kargoları zaten yasadışı olduğu için daha yüksek ücret ödüyordu.",
+      "text_markdown": "Tuz kaçakçıları, kargoları zaten yasadışı olduğu için daha yüksek ücret ödüyordu.",
+      "tts": {
+        "text": "Tuz kaçakçıları, kargoları zaten yasadışı olduğu için daha yüksek ücret ödüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tüm sistem belgeleniyor ve bürokratik bir titizlikle uygulanıyordu.",
+      "text_markdown": "Tüm sistem belgeleniyor ve bürokratik bir titizlikle uygulanıyordu.",
+      "tts": {
+        "text": "Tüm sistem belgeleniyor ve bürokratik bir titizlikle uygulanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kıyı köylerinin korsanlarla karmaşık bir ilişkisi vardı.",
+      "text_markdown": "Kıyı köylerinin korsanlarla karmaşık bir ilişkisi vardı.",
+      "tts": {
+        "text": "Kıyı köylerinin korsanlarla karmaşık bir ilişkisi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pek çoğu korsanların talep ettiği haraç ödemelerinden hoşlanmıyordu.",
+      "text_markdown": "Pek çoğu korsanların talep ettiği haraç ödemelerinden hoşlanmıyordu.",
+      "tts": {
+        "text": "Pek çoğu korsanların talep ettiği haraç ödemelerinden hoşlanmıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak korsanlar diğer yağmacılara ve haydutlara karşı da koruma sağlıyordu.",
+      "text_markdown": "Ancak korsanlar diğer yağmacılara ve haydutlara karşı da koruma sağlıyordu.",
+      "tts": {
+        "text": "Ancak korsanlar diğer yağmacılara ve haydutlara karşı da koruma sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı bölgelerde korsanlar imparatorluk hükûmetinden daha güvenilirdi.",
+      "text_markdown": "Bazı bölgelerde korsanlar imparatorluk hükûmetinden daha güvenilirdi.",
+      "tts": {
+        "text": "Bazı bölgelerde korsanlar imparatorluk hükûmetinden daha güvenilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qing sarayı denizi kontrol edememenin derin utancını yaşıyordu.",
+      "text_markdown": "Qing sarayı denizi kontrol edememenin derin utancını yaşıyordu.",
+      "tts": {
+        "text": "Qing sarayı denizi kontrol edememenin derin utancını yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İmparatorluk yetkilileri korsan kraliçesinin artan gücü hakkında kaygılı raporlar yazıyordu.",
+      "text_markdown": "İmparatorluk yetkilileri korsan kraliçesinin artan gücü hakkında kaygılı raporlar yazıyordu.",
+      "tts": {
+        "text": "İmparatorluk yetkilileri korsan kraliçesinin artan gücü hakkında kaygılı raporlar yazıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanların karadaki isyancı gruplarla ittifak kurabileceğinden endişeleniyorlardı.",
+      "text_markdown": "Korsanların karadaki isyancı gruplarla ittifak kurabileceğinden endişeleniyorlardı.",
+      "tts": {
+        "text": "Korsanların karadaki isyancı gruplarla ittifak kurabileceğinden endişeleniyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kara ve denizin birleştiği bir isyan, hanedanın kendisini tehdit edebilirdi.",
+      "text_markdown": "Kara ve denizin birleştiği bir isyan, hanedanın kendisini tehdit edebilirdi.",
+      "tts": {
+        "text": "Kara ve denizin birleştiği bir isyan, hanedanın kendisini tehdit edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler durumu büyük bir ilgiyle izliyordu.",
+      "text_markdown": "İngilizler durumu büyük bir ilgiyle izliyordu.",
+      "tts": {
+        "text": "İngilizler durumu büyük bir ilgiyle izliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çin kıyısı boyunca afyon ticaretlerini genişletiyorlardı.",
+      "text_markdown": "Çin kıyısı boyunca afyon ticaretlerini genişletiyorlardı.",
+      "tts": {
+        "text": "Çin kıyısı boyunca afyon ticaretlerini genişletiyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar bu ticareti aksatıyor, bu da İngiliz tüccarlara büyük kayıplara mal oluyordu.",
+      "text_markdown": "Korsanlar bu ticareti aksatıyor, bu da İngiliz tüccarlara büyük kayıplara mal oluyordu.",
+      "tts": {
+        "text": "Korsanlar bu ticareti aksatıyor, bu da İngiliz tüccarlara büyük kayıplara mal oluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao'nun bayrağı altında seyreden insanlar için hayat, alternatiflere kıyasla daha iyiydi.",
+      "text_markdown": "Zheng Yi Sao'nun bayrağı altında seyreden insanlar için hayat, alternatiflere kıyasla daha iyiydi.",
+      "tts": {
+        "text": "Zheng Yi Sao'nun bayrağı altında seyreden insanlar için hayat, alternatiflere kıyasla daha iyiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir korsan düzenli yemek, ganimetten pay ve aidiyet duygusu elde ediyordu.",
+      "text_markdown": "Bir korsan düzenli yemek, ganimetten pay ve aidiyet duygusu elde ediyordu.",
+      "tts": {
+        "text": "Bir korsan düzenli yemek, ganimetten pay ve aidiyet duygusu elde ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir Tanka balıkçısı ise yoksulluk, aşağılanma ve hiçbir ilerleme umudu elde ediyordu.",
+      "text_markdown": "Bir Tanka balıkçısı ise yoksulluk, aşağılanma ve hiçbir ilerleme umudu elde ediyordu.",
+      "tts": {
+        "text": "Bir Tanka balıkçısı ise yoksulluk, aşağılanma ve hiçbir ilerleme umudu elde ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao bu toplumu mutlak bir otoriteyle yönetiyordu.",
+      "text_markdown": "Zheng Yi Sao bu toplumu mutlak bir otoriteyle yönetiyordu.",
+      "tts": {
+        "text": "Zheng Yi Sao bu toplumu mutlak bir otoriteyle yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filonun geleceğini şekillendiren stratejik kararları o veriyordu.",
+      "text_markdown": "Filonun geleceğini şekillendiren stratejik kararları o veriyordu.",
+      "tts": {
+        "text": "Filonun geleceğini şekillendiren stratejik kararları o veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaptanlar arasındaki anlaşmazlıkları çözüyor ve yasa kurallarını uyguluyordu.",
+      "text_markdown": "Kaptanlar arasındaki anlaşmazlıkları çözüyor ve yasa kurallarını uyguluyordu.",
+      "tts": {
+        "text": "Kaptanlar arasındaki anlaşmazlıkları çözüyor ve yasa kurallarını uyguluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onun onayı olmadan hiçbir önemli hamle yapılmazdı.",
+      "text_markdown": "Onun onayı olmadan hiçbir önemli hamle yapılmazdı.",
+      "tts": {
+        "text": "Onun onayı olmadan hiçbir önemli hamle yapılmazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz ona gelindiğinde konfederasyonda çatlaklar belirmeye başlamıştı.",
+      "text_markdown": "Bin sekiz yüz ona gelindiğinde konfederasyonda çatlaklar belirmeye başlamıştı.",
+      "tts": {
+        "text": "Bin sekiz yüz ona gelindiğinde konfederasyonda çatlaklar belirmeye başlamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Süregelen savaş gemiler ve mürettebat üzerinde ağır izler bırakmıştı.",
+      "text_markdown": "Süregelen savaş gemiler ve mürettebat üzerinde ağır izler bırakmıştı.",
+      "tts": {
+        "text": "Süregelen savaş gemiler ve mürettebat üzerinde ağır izler bırakmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Qing hükûmetinin ablukası kıyı boyunca ikmal hatlarını kesintiye uğrattı.",
+      "text_markdown": "Qing hükûmetinin ablukası kıyı boyunca ikmal hatlarını kesintiye uğrattı.",
+      "tts": {
+        "text": "Qing hükûmetinin ablukası kıyı boyunca ikmal hatlarını kesintiye uğrattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve filo kaptanları arasındaki iç rekabet giderek şiddetlenmişti.",
+      "text_markdown": "Ve filo kaptanları arasındaki iç rekabet giderek şiddetlenmişti.",
+      "tts": {
+        "text": "Ve filo kaptanları arasındaki iç rekabet giderek şiddetlenmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En tehlikeli rekabet, Zhang Bao ile Guo Podai adında bir kaptan arasındaydı.",
+      "text_markdown": "En tehlikeli rekabet, Zhang Bao ile Guo Podai adında bir kaptan arasındaydı.",
+      "tts": {
+        "text": "En tehlikeli rekabet, Zhang Bao ile Guo Podai adında bir kaptan arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Guo Podai, konfederasyondaki ikinci en büyük filo olan Kara Bayrak Filosu'na komuta ediyordu.",
+      "text_markdown": "Guo Podai, konfederasyondaki ikinci en büyük filo olan Kara Bayrak Filosu'na komuta ediyordu.",
+      "tts": {
+        "text": "Guo Podai, konfederasyondaki ikinci en büyük filo olan Kara Bayrak Filosu'na komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zhang Bao'dan ve dolayısıyla Zheng Yi Sao'dan emir almaktan rahatsızdı.",
+      "text_markdown": "Zhang Bao'dan ve dolayısıyla Zheng Yi Sao'dan emir almaktan rahatsızdı.",
+      "tts": {
+        "text": "Zhang Bao'dan ve dolayısıyla Zheng Yi Sao'dan emir almaktan rahatsızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aralarındaki gerilim konfederasyonu ikiye bölmekle tehdit ediyordu.",
+      "text_markdown": "Aralarındaki gerilim konfederasyonu ikiye bölmekle tehdit ediyordu.",
+      "tts": {
+        "text": "Aralarındaki gerilim konfederasyonu ikiye bölmekle tehdit ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz onun başlarında Guo Podai kaderini belirleyecek bir karar verdi.",
+      "text_markdown": "Bin sekiz yüz onun başlarında Guo Podai kaderini belirleyecek bir karar verdi.",
+      "tts": {
+        "text": "Bin sekiz yüz onun başlarında Guo Podai kaderini belirleyecek bir karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Qing hükûmetiyle gizli müzakereler başlattı.",
+      "text_markdown": "Qing hükûmetiyle gizli müzakereler başlattı.",
+      "tts": {
+        "text": "Qing hükûmetiyle gizli müzakereler başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükûmet ona tam bir af, askerî bir görev ve nakit ödeme teklif etti.",
+      "text_markdown": "Hükûmet ona tam bir af, askerî bir görev ve nakit ödeme teklif etti.",
+      "tts": {
+        "text": "Hükûmet ona tam bir af, askerî bir görev ve nakit ödeme teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karşılığında, eski müttefiklerine sırtını dönecekti.",
+      "text_markdown": "Karşılığında, eski müttefiklerine sırtını dönecekti.",
+      "tts": {
+        "text": "Karşılığında, eski müttefiklerine sırtını dönecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guo Podai anlaşmayı kabul etti ve tüm filosunu hükûmete teslim etti.",
+      "text_markdown": "Guo Podai anlaşmayı kabul etti ve tüm filosunu hükûmete teslim etti.",
+      "tts": {
+        "text": "Guo Podai anlaşmayı kabul etti ve tüm filosunu hükûmete teslim etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir gecede konfederasyon yüzlerce gemiyi ve binlerce savaşçıyı kaybetti.",
+      "text_markdown": "Bir gecede konfederasyon yüzlerce gemiyi ve binlerce savaşçıyı kaybetti.",
+      "tts": {
+        "text": "Bir gecede konfederasyon yüzlerce gemiyi ve binlerce savaşçıyı kaybetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha da kötüsü, Guo Podai artık korsan taktikleri bilgisini onlara karşı kullanan bir hükûmet komutanı olarak görev yapıyordu.",
+      "text_markdown": "Daha da kötüsü, Guo Podai artık korsan taktikleri bilgisini onlara karşı kullanan bir hükûmet komutanı olarak görev yapıyordu.",
+      "tts": {
+        "text": "Daha da kötüsü, Guo Podai artık korsan taktikleri bilgisini onlara karşı kullanan bir hükûmet komutanı olarak görev yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Güç dengesi çarpıcı biçimde değişmişti.",
+      "text_markdown": "Güç dengesi çarpıcı biçimde değişmişti.",
+      "tts": {
+        "text": "Güç dengesi çarpıcı biçimde değişmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao yeni durumu kendine özgü berraklığıyla değerlendirdi.",
+      "text_markdown": "Zheng Yi Sao yeni durumu kendine özgü berraklığıyla değerlendirdi.",
+      "tts": {
+        "text": "Zheng Yi Sao yeni durumu kendine özgü berraklığıyla değerlendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konfederasyon zayıflamıştı ama yok edilmemişti.",
+      "text_markdown": "Konfederasyon zayıflamıştı ama yok edilmemişti.",
+      "tts": {
+        "text": "Konfederasyon zayıflamıştı ama yok edilmemişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hâlâ Kızıl Bayrak Filosu'na ve birkaç müttefik filoya komuta ediyordu.",
+      "text_markdown": "Hâlâ Kızıl Bayrak Filosu'na ve birkaç müttefik filoya komuta ediyordu.",
+      "tts": {
+        "text": "Hâlâ Kızıl Bayrak Filosu'na ve birkaç müttefik filoya komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama ivme değişmişti ve o bunu biliyordu.",
+      "text_markdown": "Ama ivme değişmişti ve o bunu biliyordu.",
+      "tts": {
+        "text": "Ama ivme değişmişti ve o bunu biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stratejik dehasını ortaya koyan bir karar verdi.",
+      "text_markdown": "Stratejik dehasını ortaya koyan bir karar verdi.",
+      "tts": {
+        "text": "Stratejik dehasını ortaya koyan bir karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ölümüne savaşmak yerine, kalan gücünden aldığı konumla müzakere etmeyi seçti.",
+      "text_markdown": "Ölümüne savaşmak yerine, kalan gücünden aldığı konumla müzakere etmeyi seçti.",
+      "tts": {
+        "text": "Ölümüne savaşmak yerine, kalan gücünden aldığı konumla müzakere etmeyi seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aracılar vasıtasıyla Qing hükûmetiyle görüşmeler başlattı.",
+      "text_markdown": "Aracılar vasıtasıyla Qing hükûmetiyle görüşmeler başlattı.",
+      "tts": {
+        "text": "Aracılar vasıtasıyla Qing hükûmetiyle görüşmeler başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Talepleri cesur ve netti.",
+      "text_markdown": "Talepleri cesur ve netti.",
+      "tts": {
+        "text": "Talepleri cesur ve netti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kendisi ve Zhang Bao için tam af talep etti.",
+      "text_markdown": "Kendisi ve Zhang Bao için tam af talep etti.",
+      "tts": {
+        "text": "Kendisi ve Zhang Bao için tam af talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlarının kişisel servetlerini korumalarına izin verilmesini istedi.",
+      "text_markdown": "Korsanlarının kişisel servetlerini korumalarına izin verilmesini istedi.",
+      "tts": {
+        "text": "Korsanlarının kişisel servetlerini korumalarına izin verilmesini istedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zhang Bao'ya imparatorluk donanmasında bir görev verilmesini talep etti.",
+      "text_markdown": "Zhang Bao'ya imparatorluk donanmasında bir görev verilmesini talep etti.",
+      "tts": {
+        "text": "Zhang Bao'ya imparatorluk donanmasında bir görev verilmesini talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve teslim olan sıradan korsanların cezalandırılmamasını talep etti.",
+      "text_markdown": "Ve teslim olan sıradan korsanların cezalandırılmamasını talep etti.",
+      "tts": {
+        "text": "Ve teslim olan sıradan korsanların cezalandırılmamasını talep etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qing hükûmeti bu kadar cömert koşulları kabul etmeye isteksizdi.",
+      "text_markdown": "Qing hükûmeti bu kadar cömert koşulları kabul etmeye isteksizdi.",
+      "tts": {
+        "text": "Qing hükûmeti bu kadar cömert koşulları kabul etmeye isteksizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanları affetmek imparatorluk için bir aşağılanma gibi geliyordu.",
+      "text_markdown": "Korsanları affetmek imparatorluk için bir aşağılanma gibi geliyordu.",
+      "tts": {
+        "text": "Korsanları affetmek imparatorluk için bir aşağılanma gibi geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak güç kullanmayı denemişler ve başarısız olmuşlardı.",
+      "text_markdown": "Ancak güç kullanmayı denemişler ve başarısız olmuşlardı.",
+      "tts": {
+        "text": "Ancak güç kullanmayı denemişler ve başarısız olmuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Müzakere geriye kalan tek seçenekti.",
+      "text_markdown": "Müzakere geriye kalan tek seçenekti.",
+      "tts": {
+        "text": "Müzakere geriye kalan tek seçenekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin sekiz yüz on yılının Nisan ayında anlaşma sonuçlandırıldı.",
+      "text_markdown": "Bin sekiz yüz on yılının Nisan ayında anlaşma sonuçlandırıldı.",
+      "tts": {
+        "text": "Bin sekiz yüz on yılının Nisan ayında anlaşma sonuçlandırıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zheng Yi Sao filosunu hükûmete teslim etti.",
+      "text_markdown": "Zheng Yi Sao filosunu hükûmete teslim etti.",
+      "tts": {
+        "text": "Zheng Yi Sao filosunu hükûmete teslim etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında, istediği her şeyi elde etti.",
+      "text_markdown": "Karşılığında, istediği her şeyi elde etti.",
+      "tts": {
+        "text": "Karşılığında, istediği her şeyi elde etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zhang Bao, yirmi geminin komutasıyla Qing donanmasında yüzbaşı olarak atandı.",
+      "text_markdown": "Zhang Bao, yirmi geminin komutasıyla Qing donanmasında yüzbaşı olarak atandı.",
+      "tts": {
+        "text": "Zhang Bao, yirmi geminin komutasıyla Qing donanmasında yüzbaşı olarak atandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanların gemilerinin bir kısmını tutmasına izin verildi.",
+      "text_markdown": "Korsanların gemilerinin bir kısmını tutmasına izin verildi.",
+      "tts": {
+        "text": "Korsanların gemilerinin bir kısmını tutmasına izin verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sivil hayata dönmek isteyenler bunu yapmakta serbestti.",
+      "text_markdown": "Sivil hayata dönmek isteyenler bunu yapmakta serbestti.",
+      "tts": {
+        "text": "Sivil hayata dönmek isteyenler bunu yapmakta serbestti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İmparatorluk donanmasına katılmak isteyenler de hoş karşılandı.",
+      "text_markdown": "İmparatorluk donanmasına katılmak isteyenler de hoş karşılandı.",
+      "tts": {
+        "text": "İmparatorluk donanmasına katılmak isteyenler de hoş karşılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlık tarihinin en avantajlı teslimiyetiydi.",
+      "text_markdown": "Korsanlık tarihinin en avantajlı teslimiyetiydi.",
+      "tts": {
+        "text": "Korsanlık tarihinin en avantajlı teslimiyetiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao denizden zengin bir kadın olarak emekli oldu.",
+      "text_markdown": "Zheng Yi Sao denizden zengin bir kadın olarak emekli oldu.",
+      "tts": {
+        "text": "Zheng Yi Sao denizden zengin bir kadın olarak emekli oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zhang Bao ile birlikte Canton'a yerleşti.",
+      "text_markdown": "Zhang Bao ile birlikte Canton'a yerleşti.",
+      "tts": {
+        "text": "Zhang Bao ile birlikte Canton'a yerleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birlikte, şehrin en kârlı kumarhanelerinden biri hâline gelen bir kumarhane açtılar.",
+      "text_markdown": "Birlikte, şehrin en kârlı kumarhanelerinden biri hâline gelen bir kumarhane açtılar.",
+      "tts": {
+        "text": "Birlikte, şehrin en kârlı kumarhanelerinden biri hâline gelen bir kumarhane açtılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ayrıca yıllarca düzenli gelir getiren tuz ticaretine yatırım yaptı.",
+      "text_markdown": "Ayrıca yıllarca düzenli gelir getiren tuz ticaretine yatırım yaptı.",
+      "tts": {
+        "text": "Ayrıca yıllarca düzenli gelir getiren tuz ticaretine yatırım yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zhang Bao birkaç yıl boyunca imparatorluk donanmasında üstün başarıyla görev yaptı.",
+      "text_markdown": "Zhang Bao birkaç yıl boyunca imparatorluk donanmasında üstün başarıyla görev yaptı.",
+      "tts": {
+        "text": "Zhang Bao birkaç yıl boyunca imparatorluk donanmasında üstün başarıyla görev yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bin sekiz yüz yirmi ikide hâlâ devlet hizmetindeyken öldü.",
+      "text_markdown": "Bin sekiz yüz yirmi ikide hâlâ devlet hizmetindeyken öldü.",
+      "tts": {
+        "text": "Bin sekiz yüz yirmi ikide hâlâ devlet hizmetindeyken öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ölümü tam askerî törenlerle anıldı.",
+      "text_markdown": "Ölümü tam askerî törenlerle anıldı.",
+      "tts": {
+        "text": "Ölümü tam askerî törenlerle anıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao korsanlığı bıraktıktan sonra yirmi yıldan fazla yaşadı.",
+      "text_markdown": "Zheng Yi Sao korsanlığı bıraktıktan sonra yirmi yıldan fazla yaşadı.",
+      "tts": {
+        "text": "Zheng Yi Sao korsanlığı bıraktıktan sonra yirmi yıldan fazla yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Canton'da iş çıkarlarını yönetti ve bir aile kurdu.",
+      "text_markdown": "Canton'da iş çıkarlarını yönetti ve bir aile kurdu.",
+      "tts": {
+        "text": "Canton'da iş çıkarlarını yönetti ve bir aile kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bin sekiz yüz kırk dörtte yaklaşık altmış dokuz yaşında öldü.",
+      "text_markdown": "Bin sekiz yüz kırk dörtte yaklaşık altmış dokuz yaşında öldü.",
+      "tts": {
+        "text": "Bin sekiz yüz kırk dörtte yaklaşık altmış dokuz yaşında öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kendi yatağında, ailesiyle çevrili, Canton toplumunun saygın bir üyesi olarak öldü.",
+      "text_markdown": "Kendi yatağında, ailesiyle çevrili, Canton toplumunun saygın bir üyesi olarak öldü.",
+      "tts": {
+        "text": "Kendi yatağında, ailesiyle çevrili, Canton toplumunun saygın bir üyesi olarak öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao'nun kariyeri korsanlık tarihinde eşsizdir.",
+      "text_markdown": "Zheng Yi Sao'nun kariyeri korsanlık tarihinde eşsizdir.",
+      "tts": {
+        "text": "Zheng Yi Sao'nun kariyeri korsanlık tarihinde eşsizdir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kadın ya da erkek, başka hiçbir korsan karşılaştırılabilir büyüklükte bir kuvvete komuta etmemiştir.",
+      "text_markdown": "Kadın ya da erkek, başka hiçbir korsan karşılaştırılabilir büyüklükte bir kuvvete komuta etmemiştir.",
+      "tts": {
+        "text": "Kadın ya da erkek, başka hiçbir korsan karşılaştırılabilir büyüklükte bir kuvvete komuta etmemiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başka hiçbir korsan bu kadar gelişmiş bir hukuk ve yönetim sistemi kurmamıştır.",
+      "text_markdown": "Başka hiçbir korsan bu kadar gelişmiş bir hukuk ve yönetim sistemi kurmamıştır.",
+      "tts": {
+        "text": "Başka hiçbir korsan bu kadar gelişmiş bir hukuk ve yönetim sistemi kurmamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve başka hiçbir korsan bu kadar avantajlı koşullarda emekliliğini müzakere etmemiştir.",
+      "text_markdown": "Ve başka hiçbir korsan bu kadar avantajlı koşullarda emekliliğini müzakere etmemiştir.",
+      "tts": {
+        "text": "Ve başka hiçbir korsan bu kadar avantajlı koşullarda emekliliğini müzakere etmemiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başarısı, kadınların tarihteki rolüne dair birçok varsayımı sorgulatır.",
+      "text_markdown": "Başarısı, kadınların tarihteki rolüne dair birçok varsayımı sorgulatır.",
+      "tts": {
+        "text": "Başarısı, kadınların tarihteki rolüne dair birçok varsayımı sorgulatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kadınlara neredeyse hiç yasal hak tanımayan bir toplumda iktidara yükseldi.",
+      "text_markdown": "Kadınlara neredeyse hiç yasal hak tanımayan bir toplumda iktidara yükseldi.",
+      "tts": {
+        "text": "Kadınlara neredeyse hiç yasal hak tanımayan bir toplumda iktidara yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kadınları aşağı gören bir dünyada on binlerce erkeğe komuta etti.",
+      "text_markdown": "Kadınları aşağı gören bir dünyada on binlerce erkeğe komuta etti.",
+      "tts": {
+        "text": "Kadınları aşağı gören bir dünyada on binlerce erkeğe komuta etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hikâyesi, yetkinliğin cinsiyeti olmadığının kanıtıdır.",
+      "text_markdown": "Hikâyesi, yetkinliğin cinsiyeti olmadığının kanıtıdır.",
+      "tts": {
+        "text": "Hikâyesi, yetkinliğin cinsiyeti olmadığının kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler olağanüstü başarısının nedenlerini tartışmaktadır.",
+      "text_markdown": "Tarihçiler olağanüstü başarısının nedenlerini tartışmaktadır.",
+      "tts": {
+        "text": "Tarihçiler olağanüstü başarısının nedenlerini tartışmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları kişisel niteliklerini vurgular: zekâsı, kararlılığı, sadakat ilham etme yeteneği.",
+      "text_markdown": "Bazıları kişisel niteliklerini vurgular: zekâsı, kararlılığı, sadakat ilham etme yeteneği.",
+      "tts": {
+        "text": "Bazıları kişisel niteliklerini vurgular: zekâsı, kararlılığı, sadakat ilham etme yeteneği.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri yükselişini mümkün kılan yapısal koşullara işaret eder: Qing devletinin zayıflığı, kıyı nüfusunun yoksulluğu ve Güney Çin Denizi'nin coğrafyası.",
+      "text_markdown": "Diğerleri yükselişini mümkün kılan yapısal koşullara işaret eder: Qing devletinin zayıflığı, kıyı nüfusunun yoksulluğu ve Güney Çin Denizi'nin coğrafyası.",
+      "tts": {
+        "text": "Diğerleri yükselişini mümkün kılan yapısal koşullara işaret eder: Qing devletinin zayıflığı, kıyı nüfusunun yoksulluğu ve Güney Çin Denizi'nin coğrafyası.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gerçek neredeyse kesinlikle her iki faktörü de içerir.",
+      "text_markdown": "Gerçek neredeyse kesinlikle her iki faktörü de içerir.",
+      "tts": {
+        "text": "Gerçek neredeyse kesinlikle her iki faktörü de içerir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Koşullar olmadan yeteneğinin bir sahnesi olmazdı.",
+      "text_markdown": "Koşullar olmadan yeteneğinin bir sahnesi olmazdı.",
+      "tts": {
+        "text": "Koşullar olmadan yeteneğinin bir sahnesi olmazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yeteneği olmadan koşullar yalnızca kaos üretirdi.",
+      "text_markdown": "Yeteneği olmadan koşullar yalnızca kaos üretirdi.",
+      "tts": {
+        "text": "Yeteneği olmadan koşullar yalnızca kaos üretirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarihin doğru anında doğru kişiydi.",
+      "text_markdown": "Tarihin doğru anında doğru kişiydi.",
+      "tts": {
+        "text": "Tarihin doğru anında doğru kişiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yasa kuralları, emekliliğinden onlarca yıl sonra bile korsan yönetimini etkiledi.",
+      "text_markdown": "Yasa kuralları, emekliliğinden onlarca yıl sonra bile korsan yönetimini etkiledi.",
+      "tts": {
+        "text": "Yasa kuralları, emekliliğinden onlarca yıl sonra bile korsan yönetimini etkiledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güney Çin Denizi'ndeki sonraki korsan liderler benzer vergilendirme ve hukuk sistemlerini benimsedi.",
+      "text_markdown": "Güney Çin Denizi'ndeki sonraki korsan liderler benzer vergilendirme ve hukuk sistemlerini benimsedi.",
+      "tts": {
+        "text": "Güney Çin Denizi'ndeki sonraki korsan liderler benzer vergilendirme ve hukuk sistemlerini benimsedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Modeli, korsan filolarının ulusal donanmalar kadar etkili bir şekilde örgütlenebileceğini gösterdi.",
+      "text_markdown": "Modeli, korsan filolarının ulusal donanmalar kadar etkili bir şekilde örgütlenebileceğini gösterdi.",
+      "tts": {
+        "text": "Modeli, korsan filolarının ulusal donanmalar kadar etkili bir şekilde örgütlenebileceğini gösterdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern zamanlarda Zheng Yi Sao bir kültürel ikon hâline gelmiştir.",
+      "text_markdown": "Modern zamanlarda Zheng Yi Sao bir kültürel ikon hâline gelmiştir.",
+      "tts": {
+        "text": "Modern zamanlarda Zheng Yi Sao bir kültürel ikon hâline gelmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünya genelinde romanlarda, filmlerde ve video oyunlarında yer almıştır.",
+      "text_markdown": "Dünya genelinde romanlarda, filmlerde ve video oyunlarında yer almıştır.",
+      "tts": {
+        "text": "Dünya genelinde romanlarda, filmlerde ve video oyunlarında yer almıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hikâyesi onlarca dile çevrilmiştir.",
+      "text_markdown": "Hikâyesi onlarca dile çevrilmiştir.",
+      "tts": {
+        "text": "Hikâyesi onlarca dile çevrilmiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yine de hayatıyla ilgili pek çok şey bilinmemektedir.",
+      "text_markdown": "Yine de hayatıyla ilgili pek çok şey bilinmemektedir.",
+      "tts": {
+        "text": "Yine de hayatıyla ilgili pek çok şey bilinmemektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğum adını kesin olarak bilmiyoruz.",
+      "text_markdown": "Doğum adını kesin olarak bilmiyoruz.",
+      "tts": {
+        "text": "Doğum adını kesin olarak bilmiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzünün tek bir doğrulanmış görüntüsüne sahip değiliz.",
+      "text_markdown": "Yüzünün tek bir doğrulanmış görüntüsüne sahip değiliz.",
+      "tts": {
+        "text": "Yüzünün tek bir doğrulanmış görüntüsüne sahip değiliz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bildiklerimizin çoğu, düşmanları tarafından yazılmış hükûmet kayıtlarından gelir.",
+      "text_markdown": "Bildiklerimizin çoğu, düşmanları tarafından yazılmış hükûmet kayıtlarından gelir.",
+      "tts": {
+        "text": "Bildiklerimizin çoğu, düşmanları tarafından yazılmış hükûmet kayıtlarından gelir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qing sarayının onun başarılarını küçümsemek için her türlü nedeni vardı.",
+      "text_markdown": "Qing sarayının onun başarılarını küçümsemek için her türlü nedeni vardı.",
+      "tts": {
+        "text": "Qing sarayının onun başarılarını küçümsemek için her türlü nedeni vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pek çok resmî kayıt onun rolünü küçümser ya da başarısını Zhang Bao'ya atfeder.",
+      "text_markdown": "Pek çok resmî kayıt onun rolünü küçümser ya da başarısını Zhang Bao'ya atfeder.",
+      "tts": {
+        "text": "Pek çok resmî kayıt onun rolünü küçümser ya da başarısını Zhang Bao'ya atfeder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler bu kaynakları siyasi motivasyonlarla yazıldığını bilerek dikkatle okumalıdır.",
+      "text_markdown": "Tarihçiler bu kaynakları siyasi motivasyonlarla yazıldığını bilerek dikkatle okumalıdır.",
+      "tts": {
+        "text": "Tarihçiler bu kaynakları siyasi motivasyonlarla yazıldığını bilerek dikkatle okumalıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kayıtların gizleyemediği şey, başarısının boyutudur.",
+      "text_markdown": "Kayıtların gizleyemediği şey, başarısının boyutudur.",
+      "tts": {
+        "text": "Kayıtların gizleyemediği şey, başarısının boyutudur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kayıtlı tarihin en büyük korsan filosunu kurdu.",
+      "text_markdown": "Kayıtlı tarihin en büyük korsan filosunu kurdu.",
+      "tts": {
+        "text": "Kayıtlı tarihin en büyük korsan filosunu kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Qing İmparatorluğu ve Portekiz donanmasının birleşik kuvvetlerini yendi.",
+      "text_markdown": "Qing İmparatorluğu ve Portekiz donanmasının birleşik kuvvetlerini yendi.",
+      "tts": {
+        "text": "Qing İmparatorluğu ve Portekiz donanmasının birleşik kuvvetlerini yendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zengin, özgür ve yenilmemiş olarak emekli oldu.",
+      "text_markdown": "Zengin, özgür ve yenilmemiş olarak emekli oldu.",
+      "tts": {
+        "text": "Zengin, özgür ve yenilmemiş olarak emekli oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-310",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Denizin uzun tarihinde bunu başka kimse başaramamıştır.",
+      "text_markdown": "Denizin uzun tarihinde bunu başka kimse başaramamıştır.",
+      "tts": {
+        "text": "Denizin uzun tarihinde bunu başka kimse başaramamıştır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

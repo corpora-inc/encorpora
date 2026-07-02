@@ -1,0 +1,4457 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sayyida_al_hurra",
+  "language": "ja",
+  "total_segments": 298,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への覚え書き",
+      "text_markdown": "読者への覚え書き"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは海賊になった女王の実話です。",
+      "text_markdown": "これは海賊になった女王の実話です。",
+      "tts": {
+        "text": "これは海賊になった女王の実話です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の名はサイーダ・アル＝フッラ。西地中海の海域を支配しました。",
+      "text_markdown": "彼女の名はサイーダ・アル＝フッラ。西地中海の海域を支配しました。",
+      "tts": {
+        "text": "彼女の名はサイーダ・アル＝フッラ。西地中海の海域を支配しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はイスラム世界でアル＝フッラ、すなわち自由にして主権ある者の称号を得た最後の女性でした。",
+      "text_markdown": "彼女はイスラム世界でアル＝フッラ、すなわち自由にして主権ある者の称号を得た最後の女性でした。",
+      "tts": {
+        "text": "彼女はイスラム世界でアル＝フッラ、すなわち自由にして主権ある者の称号を得た最後の女性でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダの物語は大惨事から始まります。",
+      "text_markdown": "サイーダの物語は大惨事から始まります。",
+      "tts": {
+        "text": "サイーダの物語は大惨事から始まります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492年、スペイン最後のイスラム王国がフェルディナンドとイサベラのキリスト教軍に陥落しました。",
+      "text_markdown": "1492年、スペイン最後のイスラム王国がフェルディナンドとイサベラのキリスト教軍に陥落しました。",
+      "tts": {
+        "text": "千四百九十二年、スペイン最後のイスラム王国がフェルディナンドとイサベラのキリスト教軍に陥落しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何十万人ものムスリムが、何世紀もの間故郷と呼んできた土地から追放されました。",
+      "text_markdown": "何十万人ものムスリムが、何世紀もの間故郷と呼んできた土地から追放されました。",
+      "tts": {
+        "text": "何十万人ものムスリムが、何世紀もの間故郷と呼んできた土地から追放されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダの家族もその中にいました。",
+      "text_markdown": "サイーダの家族もその中にいました。",
+      "tts": {
+        "text": "サイーダの家族もその中にいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本は十六世紀の西地中海の港と要塞へとあなたをお連れします。",
+      "text_markdown": "この本は十六世紀の西地中海の港と要塞へとあなたをお連れします。",
+      "tts": {
+        "text": "この本は十六世紀の西地中海の港と要塞へとあなたをお連れします。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "難民の少女がいかにして女王、外交官、そして海賊の首領となったかをご覧いただけます。",
+      "text_markdown": "難民の少女がいかにして女王、外交官、そして海賊の首領となったかをご覧いただけます。",
+      "tts": {
+        "text": "難民の少女がいかにして女王、外交官、そして海賊の首領となったかをご覧いただけます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本書のすべては歴史的記録に基づいていますが、ヨーロッパの海賊に比べて史料は少ないです。",
+      "text_markdown": "本書のすべては歴史的記録に基づいていますが、ヨーロッパの海賊に比べて史料は少ないです。",
+      "tts": {
+        "text": "本書のすべては歴史的記録に基づいていますが、ヨーロッパの海賊に比べて史料は少ないです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "事実が不確かな場合は、はっきりとそう述べます。",
+      "text_markdown": "事実が不確かな場合は、はっきりとそう述べます。",
+      "tts": {
+        "text": "事実が不確かな場合は、はっきりとそう述べます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "二つの信仰の間の世界",
+      "text_markdown": "二つの信仰の間の世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西地中海はキリスト教ヨーロッパとイスラム世界の戦場でした。",
+      "text_markdown": "西地中海はキリスト教ヨーロッパとイスラム世界の戦場でした。",
+      "tts": {
+        "text": "西地中海はキリスト教ヨーロッパとイスラム世界の戦場でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何世紀にもわたり、二つの文明はこの狭い海の支配権を争ってきました。",
+      "text_markdown": "何世紀にもわたり、二つの文明はこの狭い海の支配権を争ってきました。",
+      "tts": {
+        "text": "何世紀にもわたり、二つの文明はこの狭い海の支配権を争ってきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も狭い地点でわずか九マイルの幅のジブラルタル海峡が両者を隔てていました。",
+      "text_markdown": "最も狭い地点でわずか九マイルの幅のジブラルタル海峡が両者を隔てていました。",
+      "tts": {
+        "text": "最も狭い地点でわずか九マイルの幅のジブラルタル海峡が両者を隔てていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海峡を制する者は大西洋と地中海を結ぶ航路を制することになります。",
+      "text_markdown": "海峡を制する者は大西洋と地中海を結ぶ航路を制することになります。",
+      "tts": {
+        "text": "海峡を制する者は大西洋と地中海を結ぶ航路を制することになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "およそ800年間、ムスリムはイベリア半島の一部を統治していました。",
+      "text_markdown": "およそ800年間、ムスリムはイベリア半島の一部を統治していました。",
+      "tts": {
+        "text": "およそ八百年間、ムスリムはイベリア半島の一部を統治していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはその領土をアル＝アンダルスと呼び、中世ヨーロッパで最も先進的な文明の一つでした。",
+      "text_markdown": "彼らはその領土をアル＝アンダルスと呼び、中世ヨーロッパで最も先進的な文明の一つでした。",
+      "tts": {
+        "text": "彼らはその領土をアル＝アンダルスと呼び、中世ヨーロッパで最も先進的な文明の一つでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパの大部分がまだ暗黒の時代にあった頃、その都市には図書館、大学、病院がありました。",
+      "text_markdown": "ヨーロッパの大部分がまだ暗黒の時代にあった頃、その都市には図書館、大学、病院がありました。",
+      "tts": {
+        "text": "ヨーロッパの大部分がまだ暗黒の時代にあった頃、その都市には図書館、大学、病院がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "コルドバ、グラナダ、セビリアはイスラム建築と学問の宝石でした。",
+      "text_markdown": "コルドバ、グラナダ、セビリアはイスラム建築と学問の宝石でした。",
+      "tts": {
+        "text": "コルドバ、グラナダ、セビリアはイスラム建築と学問の宝石でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アル＝アンダルスは知的業績の中心地でした。",
+      "text_markdown": "アル＝アンダルスは知的業績の中心地でした。",
+      "tts": {
+        "text": "アル＝アンダルスは知的業績の中心地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イスラム教徒、ユダヤ教徒、キリスト教徒の学者たちが何世紀にもわたり肩を並べて研究していました。",
+      "text_markdown": "イスラム教徒、ユダヤ教徒、キリスト教徒の学者たちが何世紀にもわたり肩を並べて研究していました。",
+      "tts": {
+        "text": "イスラム教徒、ユダヤ教徒、キリスト教徒の学者たちが何世紀にもわたり肩を並べて研究していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはギリシャ哲学を翻訳し、数学を発展させ、医学と天文学で画期的な成果を上げました。",
+      "text_markdown": "彼らはギリシャ哲学を翻訳し、数学を発展させ、医学と天文学で画期的な成果を上げました。",
+      "tts": {
+        "text": "彼らはギリシャ哲学を翻訳し、数学を発展させ、医学と天文学で画期的な成果を上げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この学問の伝統はヨーロッパのルネサンスに深い影響を与えることになります。",
+      "text_markdown": "この学問の伝統はヨーロッパのルネサンスに深い影響を与えることになります。",
+      "tts": {
+        "text": "この学問の伝統はヨーロッパのルネサンスに深い影響を与えることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン北部のキリスト教王国はレコンキスタと呼ばれる運動で何世紀も南下を続けました。",
+      "text_markdown": "スペイン北部のキリスト教王国はレコンキスタと呼ばれる運動で何世紀も南下を続けました。",
+      "tts": {
+        "text": "スペイン北部のキリスト教王国はレコンキスタと呼ばれる運動で何世紀も南下を続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年ごとに、十年ごとに、ムスリムの領土を征服しました。",
+      "text_markdown": "年ごとに、十年ごとに、ムスリムの領土を征服しました。",
+      "tts": {
+        "text": "年ごとに、十年ごとに、ムスリムの領土を征服しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "十五世紀末には、ムスリムの支配下にあったのは小さなグラナダ王国だけでした。",
+      "text_markdown": "十五世紀末には、ムスリムの支配下にあったのは小さなグラナダ王国だけでした。",
+      "tts": {
+        "text": "十五世紀末には、ムスリムの支配下にあったのは小さなグラナダ王国だけでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その陥落は時間の問題に過ぎませんでした。",
+      "text_markdown": "その陥落は時間の問題に過ぎませんでした。",
+      "tts": {
+        "text": "その陥落は時間の問題に過ぎませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グラナダは1492年1月に陥落し、スペインにおけるおよそ8世紀のムスリムの存在に終止符を打ちました。",
+      "text_markdown": "グラナダは1492年1月に陥落し、スペインにおけるおよそ8世紀のムスリムの存在に終止符を打ちました。",
+      "tts": {
+        "text": "グラナダは千四百九十二年一月に陥落し、スペインにおけるおよそ八世紀のムスリムの存在に終止符を打ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フェルディナンド王とイサベラ女王はアルハンブラ宮殿に凱旋入城しました。",
+      "text_markdown": "フェルディナンド王とイサベラ女王はアルハンブラ宮殿に凱旋入城しました。",
+      "tts": {
+        "text": "フェルディナンド王とイサベラ女王はアルハンブラ宮殿に凱旋入城しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペイン最後のムスリム統治者ムハンマド十二世はモロッコへ亡命しました。",
+      "text_markdown": "スペイン最後のムスリム統治者ムハンマド十二世はモロッコへ亡命しました。",
+      "tts": {
+        "text": "スペイン最後のムスリム統治者ムハンマド十二世はモロッコへ亡命しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一つの文明が丸ごと根こそぎにされたのです。",
+      "text_markdown": "一つの文明が丸ごと根こそぎにされたのです。",
+      "tts": {
+        "text": "一つの文明が丸ごと根こそぎにされたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グラナダの陥落はスペインのムスリム住民にとって大惨事でした。",
+      "text_markdown": "グラナダの陥落はスペインのムスリム住民にとって大惨事でした。",
+      "tts": {
+        "text": "グラナダの陥落はスペインのムスリム住民にとって大惨事でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当初、フェルディナンドとイサベラはムスリムが宗教と慣習を守れると約束しました。",
+      "text_markdown": "当初、フェルディナンドとイサベラはムスリムが宗教と慣習を守れると約束しました。",
+      "tts": {
+        "text": "当初、フェルディナンドとイサベラはムスリムが宗教と慣習を守れると約束しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし、これらの約束はすぐに破られました。",
+      "text_markdown": "しかし、これらの約束はすぐに破られました。",
+      "tts": {
+        "text": "しかし、これらの約束はすぐに破られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ムスリムはキリスト教への改宗かスペインからの完全な退去を強制されました。",
+      "text_markdown": "ムスリムはキリスト教への改宗かスペインからの完全な退去を強制されました。",
+      "tts": {
+        "text": "ムスリムはキリスト教への改宗かスペインからの完全な退去を強制されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "改宗を拒否した者は追放されました。",
+      "text_markdown": "改宗を拒否した者は追放されました。",
+      "tts": {
+        "text": "改宗を拒否した者は追放されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはジブラルタル海峡を渡り、モロッコ、アルジェリア、チュニジアへ逃れました。",
+      "text_markdown": "彼らはジブラルタル海峡を渡り、モロッコ、アルジェリア、チュニジアへ逃れました。",
+      "tts": {
+        "text": "彼らはジブラルタル海峡を渡り、モロッコ、アルジェリア、チュニジアへ逃れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "難民として到着し、持てるものだけを携え、失ったすべてを嘆きました。",
+      "text_markdown": "難民として到着し、持てるものだけを携え、失ったすべてを嘆きました。",
+      "tts": {
+        "text": "難民として到着し、持てるものだけを携え、失ったすべてを嘆きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの多くはスペイン王室への復讐への渇望に燃えていました。",
+      "text_markdown": "彼らの多くはスペイン王室への復讐への渇望に燃えていました。",
+      "tts": {
+        "text": "彼らの多くはスペイン王室への復讐への渇望に燃えていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコはこれらの難民の主な目的地でした。",
+      "text_markdown": "モロッコはこれらの難民の主な目的地でした。",
+      "tts": {
+        "text": "モロッコはこれらの難民の主な目的地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モロッコ沿岸はスペインから海峡を挟んですぐ向かいに位置していました。",
+      "text_markdown": "モロッコ沿岸はスペインから海峡を挟んですぐ向かいに位置していました。",
+      "tts": {
+        "text": "モロッコ沿岸はスペインから海峡を挟んですぐ向かいに位置していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フェズ、タンジール、テトゥアンなどの都市が多数のアンダルシア難民を受け入れました。",
+      "text_markdown": "フェズ、タンジール、テトゥアンなどの都市が多数のアンダルシア難民を受け入れました。",
+      "tts": {
+        "text": "フェズ、タンジール、テトゥアンなどの都市が多数のアンダルシア難民を受け入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの追放された家族は技術、学識、そして怒りを携えてきました。",
+      "text_markdown": "これらの追放された家族は技術、学識、そして怒りを携えてきました。",
+      "tts": {
+        "text": "これらの追放された家族は技術、学識、そして怒りを携えてきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オスマン帝国はこの時代最大のイスラム強国でした。",
+      "text_markdown": "オスマン帝国はこの時代最大のイスラム強国でした。",
+      "tts": {
+        "text": "オスマン帝国はこの時代最大のイスラム強国でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "首都イスタンブールから三大陸にまたがる広大な領土を支配していました。",
+      "text_markdown": "首都イスタンブールから三大陸にまたがる広大な領土を支配していました。",
+      "tts": {
+        "text": "首都イスタンブールから三大陸にまたがる広大な領土を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オスマン海軍は東地中海を制していました。",
+      "text_markdown": "オスマン海軍は東地中海を制していました。",
+      "tts": {
+        "text": "オスマン海軍は東地中海を制していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "北アフリカの港を拠点とするオスマンの海賊がヨーロッパの船舶と沿岸を襲撃していました。",
+      "text_markdown": "北アフリカの港を拠点とするオスマンの海賊がヨーロッパの船舶と沿岸を襲撃していました。",
+      "tts": {
+        "text": "北アフリカの港を拠点とするオスマンの海賊がヨーロッパの船舶と沿岸を襲撃していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も有名なオスマンの海賊はハイレッディン・バルバロッサでした。",
+      "text_markdown": "最も有名なオスマンの海賊はハイレッディン・バルバロッサでした。",
+      "tts": {
+        "text": "最も有名なオスマンの海賊はハイレッディン・バルバロッサでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はアルジェリア沿岸を拠点に強力な艦隊を率いていました。",
+      "text_markdown": "彼はアルジェリア沿岸を拠点に強力な艦隊を率いていました。",
+      "tts": {
+        "text": "彼はアルジェリア沿岸を拠点に強力な艦隊を率いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バルバロッサは海賊であると同時にオスマン海軍の提督でもありました。",
+      "text_markdown": "バルバロッサは海賊であると同時にオスマン海軍の提督でもありました。",
+      "tts": {
+        "text": "バルバロッサは海賊であると同時にオスマン海軍の提督でもありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の襲撃はスペイン、イタリア、フランスの沿岸を恐怖に陥れました。",
+      "text_markdown": "彼の襲撃はスペイン、イタリア、フランスの沿岸を恐怖に陥れました。",
+      "tts": {
+        "text": "彼の襲撃はスペイン、イタリア、フランスの沿岸を恐怖に陥れました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一方、スペインとポルトガルは広大な海外帝国を築いていました。",
+      "text_markdown": "一方、スペインとポルトガルは広大な海外帝国を築いていました。",
+      "tts": {
+        "text": "一方、スペインとポルトガルは広大な海外帝国を築いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アメリカ大陸を植民地化し、アフリカとアジアに交易拠点を設けていました。",
+      "text_markdown": "アメリカ大陸を植民地化し、アフリカとアジアに交易拠点を設けていました。",
+      "tts": {
+        "text": "アメリカ大陸を植民地化し、アフリカとアジアに交易拠点を設けていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの富はジブラルタル海峡を安全に通過できる船舶に依存していました。",
+      "text_markdown": "彼らの富はジブラルタル海峡を安全に通過できる船舶に依存していました。",
+      "tts": {
+        "text": "彼らの富はジブラルタル海峡を安全に通過できる船舶に依存していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この航路のいかなる妨害も帝国の経済的基盤を脅かしました。",
+      "text_markdown": "この航路のいかなる妨害も帝国の経済的基盤を脅かしました。",
+      "tts": {
+        "text": "この航路のいかなる妨害も帝国の経済的基盤を脅かしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "したがってジブラルタル海峡は計り知れない戦略的重要性を持つ場所でした。",
+      "text_markdown": "したがってジブラルタル海峡は計り知れない戦略的重要性を持つ場所でした。",
+      "tts": {
+        "text": "したがってジブラルタル海峡は計り知れない戦略的重要性を持つ場所でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海峡を制する者が大西洋と地中海の間の富の流れを制しました。",
+      "text_markdown": "海峡を制する者が大西洋と地中海の間の富の流れを制しました。",
+      "tts": {
+        "text": "海峡を制する者が大西洋と地中海の間の富の流れを制しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大国に挑む勇気を持つ者にとって、完璧な狩場でした。",
+      "text_markdown": "大国に挑む勇気を持つ者にとって、完璧な狩場でした。",
+      "tts": {
+        "text": "大国に挑む勇気を持つ者にとって、完璧な狩場でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラはその中でも最も大胆な一人となるのです。",
+      "text_markdown": "サイーダ・アル＝フッラはその中でも最も大胆な一人となるのです。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラはその中でも最も大胆な一人となるのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海の海賊行為はカリブ海の海賊行為とは異なっていました。",
+      "text_markdown": "地中海の海賊行為はカリブ海の海賊行為とは異なっていました。",
+      "tts": {
+        "text": "地中海の海賊行為はカリブ海の海賊行為とは異なっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "キリスト教徒とムスリムの間の宗教的対立と深く結びついていました。",
+      "text_markdown": "キリスト教徒とムスリムの間の宗教的対立と深く結びついていました。",
+      "tts": {
+        "text": "キリスト教徒とムスリムの間の宗教的対立と深く結びついていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムスリムの海賊はキリスト教の船を、キリスト教の海賊はムスリムの船を襲撃しました。",
+      "text_markdown": "ムスリムの海賊はキリスト教の船を、キリスト教の海賊はムスリムの船を襲撃しました。",
+      "tts": {
+        "text": "ムスリムの海賊はキリスト教の船を、キリスト教の海賊はムスリムの船を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "二つの信仰の間の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "両者とも私的な利益を追求しながらも、自らの攻撃を聖戦として正当化しました。",
+      "text_markdown": "両者とも私的な利益を追求しながらも、自らの攻撃を聖戦として正当化しました。",
+      "tts": {
+        "text": "両者とも私的な利益を追求しながらも、自らの攻撃を聖戦として正当化しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "グラナダからテトゥアンへ",
+      "text_markdown": "グラナダからテトゥアンへ"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラはおよそ1485年にグラナダ王国で生まれました。",
+      "text_markdown": "サイーダ・アル＝フッラはおよそ1485年にグラナダ王国で生まれました。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラはおよそ千四百八十五年にグラナダ王国で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の本名はラッラ・アイシャだったかもしれませんが、これは定かではありません。",
+      "text_markdown": "彼女の本名はラッラ・アイシャだったかもしれませんが、これは定かではありません。",
+      "tts": {
+        "text": "彼女の本名はラッラ・アイシャだったかもしれませんが、これは定かではありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史が彼女を記憶する称号サイーダ・アル＝フッラは、高貴な婦人、自由なる者を意味する敬称でした。",
+      "text_markdown": "歴史が彼女を記憶する称号サイーダ・アル＝フッラは、高貴な婦人、自由なる者を意味する敬称でした。",
+      "tts": {
+        "text": "歴史が彼女を記憶する称号サイーダ・アル＝フッラは、高貴な婦人、自由なる者を意味する敬称でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは彼女の権力と独立の証として、後年に与えられたものです。",
+      "text_markdown": "それは彼女の権力と独立の証として、後年に与えられたものです。",
+      "tts": {
+        "text": "それは彼女の権力と独立の証として、後年に与えられたものです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の家族はアンダルシア社会に深く根ざした名門、ラシード王朝に属していました。",
+      "text_markdown": "彼女の家族はアンダルシア社会に深く根ざした名門、ラシード王朝に属していました。",
+      "tts": {
+        "text": "彼女の家族はアンダルシア社会に深く根ざした名門、ラシード王朝に属していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "父のムーライ・アリー・イブン・ラシードは相当な政治的影響力を持つ人物でした。",
+      "text_markdown": "父のムーライ・アリー・イブン・ラシードは相当な政治的影響力を持つ人物でした。",
+      "tts": {
+        "text": "父のムーライ・アリー・イブン・ラシードは相当な政治的影響力を持つ人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一家はグラナダからの先の移住後、リフ地方の山間の町シェフシャウエンに住んでいました。",
+      "text_markdown": "一家はグラナダからの先の移住後、リフ地方の山間の町シェフシャウエンに住んでいました。",
+      "tts": {
+        "text": "一家はグラナダからの先の移住後、リフ地方の山間の町シェフシャウエンに住んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "シェフシャウエンはレコンキスタの難民によって建設され、ポルトガルに対する抵抗の拠点として機能しました。",
+      "text_markdown": "シェフシャウエンはレコンキスタの難民によって建設され、ポルトガルに対する抵抗の拠点として機能しました。",
+      "tts": {
+        "text": "シェフシャウエンはレコンキスタの難民によって建設され、ポルトガルに対する抵抗の拠点として機能しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは学問と政治意識に満ちた環境で育ちました。",
+      "text_markdown": "サイーダは学問と政治意識に満ちた環境で育ちました。",
+      "tts": {
+        "text": "サイーダは学問と政治意識に満ちた環境で育ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家族は教育を重視し、彼女は神学、言語、外交の徹底した教育を受けました。",
+      "text_markdown": "家族は教育を重視し、彼女は神学、言語、外交の徹底した教育を受けました。",
+      "tts": {
+        "text": "家族は教育を重視し、彼女は神学、言語、外交の徹底した教育を受けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アラビア語を話し、家族のアンダルシアの伝統からスペイン語も理解していたと思われます。",
+      "text_markdown": "アラビア語を話し、家族のアンダルシアの伝統からスペイン語も理解していたと思われます。",
+      "tts": {
+        "text": "アラビア語を話し、家族のアンダルシアの伝統からスペイン語も理解していたと思われます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この教育は当時の女性には珍しいものでしたが、ラシード家は普通の家族ではありませんでした。",
+      "text_markdown": "この教育は当時の女性には珍しいものでしたが、ラシード家は普通の家族ではありませんでした。",
+      "tts": {
+        "text": "この教育は当時の女性には珍しいものでしたが、ラシード家は普通の家族ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亡命の経験がサイーダの世界観全体を形成しました。",
+      "text_markdown": "亡命の経験がサイーダの世界観全体を形成しました。",
+      "tts": {
+        "text": "亡命の経験がサイーダの世界観全体を形成しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アル＝アンダルスの失われた楽園の物語を聞いて育ちました。",
+      "text_markdown": "アル＝アンダルスの失われた楽園の物語を聞いて育ちました。",
+      "tts": {
+        "text": "アル＝アンダルスの失われた楽園の物語を聞いて育ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "上の世代は美しい家々、果樹園、図書館のことを深い悲しみとともに語りました。",
+      "text_markdown": "上の世代は美しい家々、果樹園、図書館のことを深い悲しみとともに語りました。",
+      "tts": {
+        "text": "上の世代は美しい家々、果樹園、図書館のことを深い悲しみとともに語りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この集団的な故郷喪失のトラウマは、報復への強い欲求を燃え立たせました。",
+      "text_markdown": "この集団的な故郷喪失のトラウマは、報復への強い欲求を燃え立たせました。",
+      "tts": {
+        "text": "この集団的な故郷喪失のトラウマは、報復への強い欲求を燃え立たせました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シェフシャウエン自体が注目に値する場所でした。",
+      "text_markdown": "シェフシャウエン自体が注目に値する場所でした。",
+      "tts": {
+        "text": "シェフシャウエン自体が注目に値する場所でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "リフ山脈に抱かれた、青く塗られた壁と狭い路地の町でした。",
+      "text_markdown": "リフ山脈に抱かれた、青く塗られた壁と狭い路地の町でした。",
+      "tts": {
+        "text": "リフ山脈に抱かれた、青く塗られた壁と狭い路地の町でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "創設者たちはポルトガルの襲撃に対する防御力のためにこの場所を選びました。",
+      "text_markdown": "創設者たちはポルトガルの襲撃に対する防御力のためにこの場所を選びました。",
+      "tts": {
+        "text": "創設者たちはポルトガルの襲撃に対する防御力のためにこの場所を選びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "町はアンダルシア難民の避難所であり抵抗の中心となりました。",
+      "text_markdown": "町はアンダルシア難民の避難所であり抵抗の中心となりました。",
+      "tts": {
+        "text": "町はアンダルシア難民の避難所であり抵抗の中心となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "まだ若い頃、サイーダはテトゥアンの総督アブ・アル＝ハサン・アル＝マンドリと結婚しました。",
+      "text_markdown": "まだ若い頃、サイーダはテトゥアンの総督アブ・アル＝ハサン・アル＝マンドリと結婚しました。",
+      "tts": {
+        "text": "まだ若い頃、サイーダはテトゥアンの総督アブ・アル＝ハサン・アル＝マンドリと結婚しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アル＝マンドリは廃墟からテトゥアンを再建した尊敬される指導者でした。",
+      "text_markdown": "アル＝マンドリは廃墟からテトゥアンを再建した尊敬される指導者でした。",
+      "tts": {
+        "text": "アル＝マンドリは廃墟からテトゥアンを再建した尊敬される指導者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この町は数十年前にポルトガル人に破壊され、ゆっくりと回復していました。",
+      "text_markdown": "この町は数十年前にポルトガル人に破壊され、ゆっくりと回復していました。",
+      "tts": {
+        "text": "この町は数十年前にポルトガル人に破壊され、ゆっくりと回復していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この結婚は二つの有力な難民家族間の政治的同盟でした。",
+      "text_markdown": "この結婚は二つの有力な難民家族間の政治的同盟でした。",
+      "tts": {
+        "text": "この結婚は二つの有力な難民家族間の政治的同盟でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テトゥアンはモロッコ北部の海岸、ジブラルタル海峡の近くに位置していました。",
+      "text_markdown": "テトゥアンはモロッコ北部の海岸、ジブラルタル海峡の近くに位置していました。",
+      "tts": {
+        "text": "テトゥアンはモロッコ北部の海岸、ジブラルタル海峡の近くに位置していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "交易にもヨーロッパ船舶への襲撃にも理想的な位置にありました。",
+      "text_markdown": "交易にもヨーロッパ船舶への襲撃にも理想的な位置にありました。",
+      "tts": {
+        "text": "交易にもヨーロッパ船舶への襲撃にも理想的な位置にありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "町は主にアンダルシア難民が住む繁栄した港となりました。",
+      "text_markdown": "町は主にアンダルシア難民が住む繁栄した港となりました。",
+      "tts": {
+        "text": "町は主にアンダルシア難民が住む繁栄した港となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの難民はスペインの港、停泊地、航路の知識を持ち込みました。",
+      "text_markdown": "これらの難民はスペインの港、停泊地、航路の知識を持ち込みました。",
+      "tts": {
+        "text": "これらの難民はスペインの港、停泊地、航路の知識を持ち込みました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダはテトゥアン統治において夫の有能な伴侶であることを証明しました。",
+      "text_markdown": "サイーダはテトゥアン統治において夫の有能な伴侶であることを証明しました。",
+      "tts": {
+        "text": "サイーダはテトゥアン統治において夫の有能な伴侶であることを証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政治的決定に関与し、地域の複雑な外交を理解していました。",
+      "text_markdown": "政治的決定に関与し、地域の複雑な外交を理解していました。",
+      "tts": {
+        "text": "政治的決定に関与し、地域の複雑な外交を理解していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夫が亡くなった時、サイーダは私生活に退くことはありませんでした。",
+      "text_markdown": "夫が亡くなった時、サイーダは私生活に退くことはありませんでした。",
+      "tts": {
+        "text": "夫が亡くなった時、サイーダは私生活に退くことはありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "代わりに、自らテトゥアンの統治を引き継ぎました。",
+      "text_markdown": "代わりに、自らテトゥアンの統治を引き継ぎました。",
+      "tts": {
+        "text": "代わりに、自らテトゥアンの統治を引き継ぎました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "都市の唯一の統治者となることは、この時代の女性にとって並外れた偉業でした。",
+      "text_markdown": "都市の唯一の統治者となることは、この時代の女性にとって並外れた偉業でした。",
+      "tts": {
+        "text": "都市の唯一の統治者となることは、この時代の女性にとって並外れた偉業でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サイーダには権力を維持するための政治的手腕、家族のつながり、個人的な権威がありました。",
+      "text_markdown": "サイーダには権力を維持するための政治的手腕、家族のつながり、個人的な権威がありました。",
+      "tts": {
+        "text": "サイーダには権力を維持するための政治的手腕、家族のつながり、個人的な権威がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "テトゥアンの人々は、彼女の能力と亡き夫が彼女を信頼していたことから、その統治を受け入れました。",
+      "text_markdown": "テトゥアンの人々は、彼女の能力と亡き夫が彼女を信頼していたことから、その統治を受け入れました。",
+      "tts": {
+        "text": "テトゥアンの人々は、彼女の能力と亡き夫が彼女を信頼していたことから、その統治を受け入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は今やモロッコ沿岸で最も有力な人物の一人でした。",
+      "text_markdown": "彼女は今やモロッコ沿岸で最も有力な人物の一人でした。",
+      "tts": {
+        "text": "彼女は今やモロッコ沿岸で最も有力な人物の一人でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダには強力な同盟者もいました。",
+      "text_markdown": "サイーダには強力な同盟者もいました。",
+      "tts": {
+        "text": "サイーダには強力な同盟者もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シェフシャウエンの家族関係がリフ山脈での支援ネットワークを与えていました。",
+      "text_markdown": "シェフシャウエンの家族関係がリフ山脈での支援ネットワークを与えていました。",
+      "tts": {
+        "text": "シェフシャウエンの家族関係がリフ山脈での支援ネットワークを与えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フェズからモロッコを統治するワッタース朝と良好な関係を維持していました。",
+      "text_markdown": "フェズからモロッコを統治するワッタース朝と良好な関係を維持していました。",
+      "tts": {
+        "text": "フェズからモロッコを統治するワッタース朝と良好な関係を維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの同盟が、女性統治者に異議を唱えかねない対抗者から彼女を守りました。",
+      "text_markdown": "これらの同盟が、女性統治者に異議を唱えかねない対抗者から彼女を守りました。",
+      "tts": {
+        "text": "これらの同盟が、女性統治者に異議を唱えかねない対抗者から彼女を守りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダの統治の下、テトゥアンは繁栄しました。",
+      "text_markdown": "サイーダの統治の下、テトゥアンは繁栄しました。",
+      "tts": {
+        "text": "サイーダの統治の下、テトゥアンは繁栄しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "交易が港を通じて流れ、人口が増加しました。",
+      "text_markdown": "交易が港を通じて流れ、人口が増加しました。",
+      "tts": {
+        "text": "交易が港を通じて流れ、人口が増加しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしサイーダには単なる統治を超える野心がありました。",
+      "text_markdown": "しかしサイーダには単なる統治を超える野心がありました。",
+      "tts": {
+        "text": "しかしサイーダには単なる統治を超える野心がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は海に、そして毎日ジブラルタル海峡を通過するヨーロッパの船に目を向けました。",
+      "text_markdown": "彼女は海に、そして毎日ジブラルタル海峡を通過するヨーロッパの船に目を向けました。",
+      "tts": {
+        "text": "彼女は海に、そして毎日ジブラルタル海峡を通過するヨーロッパの船に目を向けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインとポルトガルはモロッコのいくつかの沿岸都市を占領していました。",
+      "text_markdown": "スペインとポルトガルはモロッコのいくつかの沿岸都市を占領していました。",
+      "tts": {
+        "text": "スペインとポルトガルはモロッコのいくつかの沿岸都市を占領していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "セウタ、タンジール、その他の港がヨーロッパの支配下にありました。",
+      "text_markdown": "セウタ、タンジール、その他の港がヨーロッパの支配下にありました。",
+      "tts": {
+        "text": "セウタ、タンジール、その他の港がヨーロッパの支配下にありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの占領はモロッコの人々にとって絶え間ない屈辱でした。",
+      "text_markdown": "これらの占領はモロッコの人々にとって絶え間ない屈辱でした。",
+      "tts": {
+        "text": "これらの占領はモロッコの人々にとって絶え間ない屈辱でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "グラナダからテトゥアンへ",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダは海賊活動をこれらの外国占領者に対する正当な抵抗の形と見なしました。",
+      "text_markdown": "サイーダは海賊活動をこれらの外国占領者に対する正当な抵抗の形と見なしました。",
+      "tts": {
+        "text": "サイーダは海賊活動をこれらの外国占領者に対する正当な抵抗の形と見なしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊の女王",
+      "text_markdown": "海賊の女王"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラは西地中海全域で活動する海賊艦隊を築きました。",
+      "text_markdown": "サイーダ・アル＝フッラは西地中海全域で活動する海賊艦隊を築きました。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラは西地中海全域で活動する海賊艦隊を築きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の船はジブラルタル海峡を通過するスペインとポルトガルの商船を攻撃しました。",
+      "text_markdown": "彼女の船はジブラルタル海峡を通過するスペインとポルトガルの商船を攻撃しました。",
+      "tts": {
+        "text": "彼女の船はジブラルタル海峡を通過するスペインとポルトガルの商船を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は軍事指揮官の精密さでこれらの襲撃を組織しました。",
+      "text_markdown": "彼女は軍事指揮官の精密さでこれらの襲撃を組織しました。",
+      "tts": {
+        "text": "彼女は軍事指揮官の精密さでこれらの襲撃を組織しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "各攻撃は船と乗組員のリスクを最小限に抑えつつ利益を最大化するよう計画されていました。",
+      "text_markdown": "各攻撃は船と乗組員のリスクを最小限に抑えつつ利益を最大化するよう計画されていました。",
+      "tts": {
+        "text": "各攻撃は船と乗組員のリスクを最小限に抑えつつ利益を最大化するよう計画されていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダのもとで航海した海賊たちはモロッコの船乗りとアンダルシア難民の混成でした。",
+      "text_markdown": "サイーダのもとで航海した海賊たちはモロッコの船乗りとアンダルシア難民の混成でした。",
+      "tts": {
+        "text": "サイーダのもとで航海した海賊たちはモロッコの船乗りとアンダルシア難民の混成でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "難民の多くはスペインの海岸を熟知する元船乗りでした。",
+      "text_markdown": "難民の多くはスペインの海岸を熟知する元船乗りでした。",
+      "tts": {
+        "text": "難民の多くはスペインの海岸を熟知する元船乗りでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは港、航路、商船団の運航スケジュールを知っていました。",
+      "text_markdown": "彼らは港、航路、商船団の運航スケジュールを知っていました。",
+      "tts": {
+        "text": "彼らは港、航路、商船団の運航スケジュールを知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この情報がサイーダの艦隊に決定的な優位を与えました。",
+      "text_markdown": "この情報がサイーダの艦隊に決定的な優位を与えました。",
+      "tts": {
+        "text": "この情報がサイーダの艦隊に決定的な優位を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは有名なオスマンの海賊ハイレッディン・バルバロッサと同盟を結びました。",
+      "text_markdown": "サイーダは有名なオスマンの海賊ハイレッディン・バルバロッサと同盟を結びました。",
+      "tts": {
+        "text": "サイーダは有名なオスマンの海賊ハイレッディン・バルバロッサと同盟を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルバロッサはアルジェの拠点から東地中海を支配していました。",
+      "text_markdown": "バルバロッサはアルジェの拠点から東地中海を支配していました。",
+      "tts": {
+        "text": "バルバロッサはアルジェの拠点から東地中海を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二人は西地中海を分け合いました。",
+      "text_markdown": "二人は西地中海を分け合いました。",
+      "tts": {
+        "text": "二人は西地中海を分け合いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダがジブラルタル海峡付近を支配し、バルバロッサがさらに東を支配しました。",
+      "text_markdown": "サイーダがジブラルタル海峡付近を支配し、バルバロッサがさらに東を支配しました。",
+      "tts": {
+        "text": "サイーダがジブラルタル海峡付近を支配し、バルバロッサがさらに東を支配しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この同盟はサイーダを地中海海賊史上最も重要な人物の一人にしました。",
+      "text_markdown": "この同盟はサイーダを地中海海賊史上最も重要な人物の一人にしました。",
+      "tts": {
+        "text": "この同盟はサイーダを地中海海賊史上最も重要な人物の一人にしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルバロッサとこのような協力関係を持った唯一の知られた女性でした。",
+      "text_markdown": "バルバロッサとこのような協力関係を持った唯一の知られた女性でした。",
+      "tts": {
+        "text": "バルバロッサとこのような協力関係を持った唯一の知られた女性でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "両者の連合軍は西地中海をヨーロッパの航海にとって極めて危険なものにしました。",
+      "text_markdown": "両者の連合軍は西地中海をヨーロッパの航海にとって極めて危険なものにしました。",
+      "tts": {
+        "text": "両者の連合軍は西地中海をヨーロッパの航海にとって極めて危険なものにしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペインとポルトガルはこの協調的な脅威から商船隊を守るのに苦労しました。",
+      "text_markdown": "スペインとポルトガルはこの協調的な脅威から商船隊を守るのに苦労しました。",
+      "tts": {
+        "text": "スペインとポルトガルはこの協調的な脅威から商船隊を守るのに苦労しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダの海賊は単に船を略奪して解放するだけではありませんでした。",
+      "text_markdown": "サイーダの海賊は単に船を略奪して解放するだけではありませんでした。",
+      "tts": {
+        "text": "サイーダの海賊は単に船を略奪して解放するだけではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "積荷と乗客の両方を捕らえました。",
+      "text_markdown": "積荷と乗客の両方を捕らえました。",
+      "tts": {
+        "text": "積荷と乗客の両方を捕らえました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパの捕虜は身代金のために拘束され、これが主要な収入源となりました。",
+      "text_markdown": "ヨーロッパの捕虜は身代金のために拘束され、これが主要な収入源となりました。",
+      "tts": {
+        "text": "ヨーロッパの捕虜は身代金のために拘束され、これが主要な収入源となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "裕福な捕虜は家族や政府が支払う莫大な金額をもたらすことができました。",
+      "text_markdown": "裕福な捕虜は家族や政府が支払う莫大な金額をもたらすことができました。",
+      "tts": {
+        "text": "裕福な捕虜は家族や政府が支払う莫大な金額をもたらすことができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "身代金取引は独自のルールと仲介者を持つ複雑なビジネスでした。",
+      "text_markdown": "身代金取引は独自のルールと仲介者を持つ複雑なビジネスでした。",
+      "tts": {
+        "text": "身代金取引は独自のルールと仲介者を持つ複雑なビジネスでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインとポルトガルの修道会が捕虜解放の交渉を専門としていました。",
+      "text_markdown": "スペインとポルトガルの修道会が捕虜解放の交渉を専門としていました。",
+      "tts": {
+        "text": "スペインとポルトガルの修道会が捕虜解放の交渉を専門としていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サイーダは単なる海賊としてではなく国家元首としてこれらの仲介者と交渉しました。",
+      "text_markdown": "サイーダは単なる海賊としてではなく国家元首としてこれらの仲介者と交渉しました。",
+      "tts": {
+        "text": "サイーダは単なる海賊としてではなく国家元首としてこれらの仲介者と交渉しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ヨーロッパ政府との外交書簡はスペインとポルトガルの公文書館に残されています。",
+      "text_markdown": "ヨーロッパ政府との外交書簡はスペインとポルトガルの公文書館に残されています。",
+      "tts": {
+        "text": "ヨーロッパ政府との外交書簡はスペインとポルトガルの公文書館に残されています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの資料はサイーダを恐れと不承不承の敬意の入り混じった筆致で描いています。",
+      "text_markdown": "ヨーロッパの資料はサイーダを恐れと不承不承の敬意の入り混じった筆致で描いています。",
+      "tts": {
+        "text": "ヨーロッパの資料はサイーダを恐れと不承不承の敬意の入り混じった筆致で描いています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは彼女を海賊の女王と呼びましたが、彼女自身は戦争を行う正当な主権者と見ていました。",
+      "text_markdown": "彼らは彼女を海賊の女王と呼びましたが、彼女自身は戦争を行う正当な主権者と見ていました。",
+      "tts": {
+        "text": "彼らは彼女を海賊の女王と呼びましたが、彼女自身は戦争を行う正当な主権者と見ていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の目には、スペイン人とポルトガル人こそがムスリムの土地を奪った侵略者でした。",
+      "text_markdown": "彼女の目には、スペイン人とポルトガル人こそがムスリムの土地を奪った侵略者でした。",
+      "tts": {
+        "text": "彼女の目には、スペイン人とポルトガル人こそがムスリムの土地を奪った侵略者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の襲撃は正義の行為であり、単なる強盗ではありませんでした。",
+      "text_markdown": "彼女の襲撃は正義の行為であり、単なる強盗ではありませんでした。",
+      "tts": {
+        "text": "彼女の襲撃は正義の行為であり、単なる強盗ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊行為と身代金から得たサイーダの富はテトゥアンをモロッコで最も豊かな都市の一つにしました。",
+      "text_markdown": "海賊行為と身代金から得たサイーダの富はテトゥアンをモロッコで最も豊かな都市の一つにしました。",
+      "tts": {
+        "text": "海賊行為と身代金から得たサイーダの富はテトゥアンをモロッコで最も豊かな都市の一つにしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は都市のインフラに投資し、港を拡張し防衛を強化しました。",
+      "text_markdown": "彼女は都市のインフラに投資し、港を拡張し防衛を強化しました。",
+      "tts": {
+        "text": "彼女は都市のインフラに投資し、港を拡張し防衛を強化しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊艦隊の利益で新しいモスク、市場、住宅が建設されました。",
+      "text_markdown": "海賊艦隊の利益で新しいモスク、市場、住宅が建設されました。",
+      "tts": {
+        "text": "海賊艦隊の利益で新しいモスク、市場、住宅が建設されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "テトゥアンは繁栄する商業と文化の中心地となりました。",
+      "text_markdown": "テトゥアンは繁栄する商業と文化の中心地となりました。",
+      "tts": {
+        "text": "テトゥアンは繁栄する商業と文化の中心地となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の船長たちは海峡のすべての入り江と潮流を知る熟練した航海者でした。",
+      "text_markdown": "彼女の船長たちは海峡のすべての入り江と潮流を知る熟練した航海者でした。",
+      "tts": {
+        "text": "彼女の船長たちは海峡のすべての入り江と潮流を知る熟練した航海者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "より重いヨーロッパの軍艦を振り切れる高速で機動力のある船を使用しました。",
+      "text_markdown": "より重いヨーロッパの軍艦を振り切れる高速で機動力のある船を使用しました。",
+      "tts": {
+        "text": "より重いヨーロッパの軍艦を振り切れる高速で機動力のある船を使用しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "視界の悪い夜明けや黄昏時に攻撃しました。",
+      "text_markdown": "視界の悪い夜明けや黄昏時に攻撃しました。",
+      "tts": {
+        "text": "視界の悪い夜明けや黄昏時に攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奇襲こそが最大の武器でした。",
+      "text_markdown": "奇襲こそが最大の武器でした。",
+      "tts": {
+        "text": "奇襲こそが最大の武器でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の名声はワッタース朝のスルタン自身の注目を集めるまでに成長しました。",
+      "text_markdown": "彼女の名声はワッタース朝のスルタン自身の注目を集めるまでに成長しました。",
+      "tts": {
+        "text": "彼女の名声はワッタース朝のスルタン自身の注目を集めるまでに成長しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタン・アフマド・アル＝ワッタースィーは1515年頃サイーダに求婚しました。",
+      "text_markdown": "スルタン・アフマド・アル＝ワッタースィーは1515年頃サイーダに求婚しました。",
+      "tts": {
+        "text": "スルタン・アフマド・アル＝ワッタースィーは千五百十五年頃サイーダに求婚しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これは当時のいかなる女性にとっても並外れた栄誉でした。",
+      "text_markdown": "これは当時のいかなる女性にとっても並外れた栄誉でした。",
+      "tts": {
+        "text": "これは当時のいかなる女性にとっても並外れた栄誉でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダが蓄積した政治的・経済的権力の反映でもありました。",
+      "text_markdown": "サイーダが蓄積した政治的・経済的権力の反映でもありました。",
+      "tts": {
+        "text": "サイーダが蓄積した政治的・経済的権力の反映でもありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは婚姻を承諾しましたが、自らの条件で。",
+      "text_markdown": "サイーダは婚姻を承諾しましたが、自らの条件で。",
+      "tts": {
+        "text": "サイーダは婚姻を承諾しましたが、自らの条件で。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンが宮廷を置くフェズではなくテトゥアンで式を挙げることを主張しました。",
+      "text_markdown": "スルタンが宮廷を置くフェズではなくテトゥアンで式を挙げることを主張しました。",
+      "tts": {
+        "text": "スルタンが宮廷を置くフェズではなくテトゥアンで式を挙げることを主張しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "花嫁が花婿のもとへ行くのが慣例だったため、これは異例の条件でした。",
+      "text_markdown": "花嫁が花婿のもとへ行くのが慣例だったため、これは異例の条件でした。",
+      "tts": {
+        "text": "花嫁が花婿のもとへ行くのが慣例だったため、これは異例の条件でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スルタンは承諾し、式のためにテトゥアンへ旅しました。",
+      "text_markdown": "スルタンは承諾し、式のためにテトゥアンへ旅しました。",
+      "tts": {
+        "text": "スルタンは承諾し、式のためにテトゥアンへ旅しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコ史上、王が花嫁のもとへ婚礼に赴いた唯一の記録例でした。",
+      "text_markdown": "モロッコ史上、王が花嫁のもとへ婚礼に赴いた唯一の記録例でした。",
+      "tts": {
+        "text": "モロッコ史上、王が花嫁のもとへ婚礼に赴いた唯一の記録例でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サイーダが達成した絶大な権力と威信を示すものでした。",
+      "text_markdown": "サイーダが達成した絶大な権力と威信を示すものでした。",
+      "tts": {
+        "text": "サイーダが達成した絶大な権力と威信を示すものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "婚姻後も、彼女は引き続きテトゥアンを独自に統治しました。",
+      "text_markdown": "婚姻後も、彼女は引き続きテトゥアンを独自に統治しました。",
+      "tts": {
+        "text": "婚姻後も、彼女は引き続きテトゥアンを独自に統治しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は自らの権利において女王であり、単なるスルタンの妻ではありませんでした。",
+      "text_markdown": "彼女は自らの権利において女王であり、単なるスルタンの妻ではありませんでした。",
+      "tts": {
+        "text": "彼女は自らの権利において女王であり、単なるスルタンの妻ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "婚姻はサイーダにさらなる政治的保護を与えました。",
+      "text_markdown": "婚姻はサイーダにさらなる政治的保護を与えました。",
+      "tts": {
+        "text": "婚姻はサイーダにさらなる政治的保護を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンの妻として、地元の競争者から手出しできない存在でした。",
+      "text_markdown": "スルタンの妻として、地元の競争者から手出しできない存在でした。",
+      "tts": {
+        "text": "スルタンの妻として、地元の競争者から手出しできない存在でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊活動はさらなる自信をもって継続されました。",
+      "text_markdown": "海賊活動はさらなる自信をもって継続されました。",
+      "tts": {
+        "text": "海賊活動はさらなる自信をもって継続されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西地中海は引き続き彼女の領域でした。",
+      "text_markdown": "西地中海は引き続き彼女の領域でした。",
+      "tts": {
+        "text": "西地中海は引き続き彼女の領域でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインはサイーダに襲撃をやめさせるべく繰り返し交渉を試みました。",
+      "text_markdown": "スペインはサイーダに襲撃をやめさせるべく繰り返し交渉を試みました。",
+      "tts": {
+        "text": "スペインはサイーダに襲撃をやめさせるべく繰り返し交渉を試みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの使節がテトゥアンを訪れ、捕虜の釈放と和平の可能性を議論しました。",
+      "text_markdown": "スペインの使節がテトゥアンを訪れ、捕虜の釈放と和平の可能性を議論しました。",
+      "tts": {
+        "text": "スペインの使節がテトゥアンを訪れ、捕虜の釈放と和平の可能性を議論しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サイーダは厳しい交渉をし、海賊活動の完全停止には決して同意しませんでした。",
+      "text_markdown": "サイーダは厳しい交渉をし、海賊活動の完全停止には決して同意しませんでした。",
+      "tts": {
+        "text": "サイーダは厳しい交渉をし、海賊活動の完全停止には決して同意しませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海上の力こそが政治的影響力の源であることを理解していました。",
+      "text_markdown": "海上の力こそが政治的影響力の源であることを理解していました。",
+      "tts": {
+        "text": "海上の力こそが政治的影響力の源であることを理解していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトガルも彼女がもたらす脅威への対処に苦慮しました。",
+      "text_markdown": "ポルトガルも彼女がもたらす脅威への対処に苦慮しました。",
+      "tts": {
+        "text": "ポルトガルも彼女がもたらす脅威への対処に苦慮しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アフリカとアジアの植民地を目指すポルトガル船はジブラルタル海峡を通らねばなりませんでした。",
+      "text_markdown": "アフリカとアジアの植民地を目指すポルトガル船はジブラルタル海峡を通らねばなりませんでした。",
+      "tts": {
+        "text": "アフリカとアジアの植民地を目指すポルトガル船はジブラルタル海峡を通らねばなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サイーダの海賊がこの航路を危険かつ高価なものにしました。",
+      "text_markdown": "サイーダの海賊がこの航路を危険かつ高価なものにしました。",
+      "tts": {
+        "text": "サイーダの海賊がこの航路を危険かつ高価なものにしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊の女王",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ポルトガル政府はテトゥアンへの軍事行動を検討しましたが実行には至りませんでした。",
+      "text_markdown": "ポルトガル政府はテトゥアンへの軍事行動を検討しましたが実行には至りませんでした。",
+      "tts": {
+        "text": "ポルトガル政府はテトゥアンへの軍事行動を検討しましたが実行には至りませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "主権を持つ女性",
+      "text_markdown": "主権を持つ女性"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "権力の絶頂期、サイーダ・アル＝フッラは世界で最も戦略的な水路の一つを支配していました。",
+      "text_markdown": "権力の絶頂期、サイーダ・アル＝フッラは世界で最も戦略的な水路の一つを支配していました。",
+      "tts": {
+        "text": "権力の絶頂期、サイーダ・アル＝フッラは世界で最も戦略的な水路の一つを支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の海賊艦隊はジブラルタル海峡の西側入口を制していました。",
+      "text_markdown": "彼女の海賊艦隊はジブラルタル海峡の西側入口を制していました。",
+      "tts": {
+        "text": "彼女の海賊艦隊はジブラルタル海峡の西側入口を制していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いかなるヨーロッパ船もこの海域を攻撃の危険なく通過することはできませんでした。",
+      "text_markdown": "いかなるヨーロッパ船もこの海域を攻撃の危険なく通過することはできませんでした。",
+      "tts": {
+        "text": "いかなるヨーロッパ船もこの海域を攻撃の危険なく通過することはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペインとポルトガルの貿易への打撃は深刻でした。",
+      "text_markdown": "スペインとポルトガルの貿易への打撃は深刻でした。",
+      "tts": {
+        "text": "スペインとポルトガルの貿易への打撃は深刻でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは軍事力と政治的手腕の組み合わせでテトゥアンを統治しました。",
+      "text_markdown": "サイーダは軍事力と政治的手腕の組み合わせでテトゥアンを統治しました。",
+      "tts": {
+        "text": "サイーダは軍事力と政治的手腕の組み合わせでテトゥアンを統治しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパ船舶の動きを追跡する情報員のネットワークを維持しました。",
+      "text_markdown": "ヨーロッパ船舶の動きを追跡する情報員のネットワークを維持しました。",
+      "tts": {
+        "text": "ヨーロッパ船舶の動きを追跡する情報員のネットワークを維持しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパ政府と対等に身代金交渉を行いました。",
+      "text_markdown": "ヨーロッパ政府と対等に身代金交渉を行いました。",
+      "tts": {
+        "text": "ヨーロッパ政府と対等に身代金交渉を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "テトゥアンの宮廷は政治活動と外交的策謀の中心でした。",
+      "text_markdown": "テトゥアンの宮廷は政治活動と外交的策謀の中心でした。",
+      "tts": {
+        "text": "テトゥアンの宮廷は政治活動と外交的策謀の中心でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アル＝フッラの称号はイスラム世界で深い意味を持っていました。",
+      "text_markdown": "アル＝フッラの称号はイスラム世界で深い意味を持っていました。",
+      "tts": {
+        "text": "アル＝フッラの称号はイスラム世界で深い意味を持っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サイーダがいかなる男性にも従わず、自らの名において統治することを意味しました。",
+      "text_markdown": "サイーダがいかなる男性にも従わず、自らの名において統治することを意味しました。",
+      "tts": {
+        "text": "サイーダがいかなる男性にも従わず、自らの名において統治することを意味しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はイスラム史上この称号を持った最後の女性でした。",
+      "text_markdown": "彼女はイスラム史上この称号を持った最後の女性でした。",
+      "tts": {
+        "text": "彼女はイスラム史上この称号を持った最後の女性でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の前にも後にも、この地域で同じ政治的・軍事的権力の組み合わせを達成した女性はいません。",
+      "text_markdown": "彼女の前にも後にも、この地域で同じ政治的・軍事的権力の組み合わせを達成した女性はいません。",
+      "tts": {
+        "text": "彼女の前にも後にも、この地域で同じ政治的・軍事的権力の組み合わせを達成した女性はいません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の成功はテトゥアンに住むアンダルシア難民の共同体の上に築かれていました。",
+      "text_markdown": "彼女の成功はテトゥアンに住むアンダルシア難民の共同体の上に築かれていました。",
+      "tts": {
+        "text": "彼女の成功はテトゥアンに住むアンダルシア難民の共同体の上に築かれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの難民は教養ある行政官と経験豊富な船乗りの絶え間ない供給源でした。",
+      "text_markdown": "これらの難民は教養ある行政官と経験豊富な船乗りの絶え間ない供給源でした。",
+      "tts": {
+        "text": "これらの難民は教養ある行政官と経験豊富な船乗りの絶え間ない供給源でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らのスペイン語とスペイン文化の知識は情報収集に計り知れない価値がありました。",
+      "text_markdown": "彼らのスペイン語とスペイン文化の知識は情報収集に計り知れない価値がありました。",
+      "tts": {
+        "text": "彼らのスペイン語とスペイン文化の知識は情報収集に計り知れない価値がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダ治下のテトゥアンはアル＝アンダルスの記憶と復讐の希望に特徴づけられた都市でした。",
+      "text_markdown": "サイーダ治下のテトゥアンはアル＝アンダルスの記憶と復讐の希望に特徴づけられた都市でした。",
+      "tts": {
+        "text": "サイーダ治下のテトゥアンはアル＝アンダルスの記憶と復讐の希望に特徴づけられた都市でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは他の北アフリカの港ともまた関係を維持していました。",
+      "text_markdown": "サイーダは他の北アフリカの港ともまた関係を維持していました。",
+      "tts": {
+        "text": "サイーダは他の北アフリカの港ともまた関係を維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェ、チュニス、サレはすべて海賊活動の中心地でした。",
+      "text_markdown": "アルジェ、チュニス、サレはすべて海賊活動の中心地でした。",
+      "tts": {
+        "text": "アルジェ、チュニス、サレはすべて海賊活動の中心地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紛争を避け情報を共有するため、これらの都市の指導者と連携しました。",
+      "text_markdown": "紛争を避け情報を共有するため、これらの都市の指導者と連携しました。",
+      "tts": {
+        "text": "紛争を避け情報を共有するため、これらの都市の指導者と連携しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この同盟ネットワークが海賊作戦をより効果的にしました。",
+      "text_markdown": "この同盟ネットワークが海賊作戦をより効果的にしました。",
+      "tts": {
+        "text": "この同盟ネットワークが海賊作戦をより効果的にしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時期のヨーロッパの記録はサイーダの海賊に対する苦情で満ちています。",
+      "text_markdown": "この時期のヨーロッパの記録はサイーダの海賊に対する苦情で満ちています。",
+      "tts": {
+        "text": "この時期のヨーロッパの記録はサイーダの海賊に対する苦情で満ちています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの大使はテトゥアンの海賊に対する措置を求める書簡を書きました。",
+      "text_markdown": "スペインの大使はテトゥアンの海賊に対する措置を求める書簡を書きました。",
+      "tts": {
+        "text": "スペインの大使はテトゥアンの海賊に対する措置を求める書簡を書きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ポルトガルの商人は国王に軍事的保護を請願しました。",
+      "text_markdown": "ポルトガルの商人は国王に軍事的保護を請願しました。",
+      "tts": {
+        "text": "ポルトガルの商人は国王に軍事的保護を請願しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の艦隊が引き起こした経済的損害はヨーロッパの政策に影響するほど大きいものでした。",
+      "text_markdown": "彼女の艦隊が引き起こした経済的損害はヨーロッパの政策に影響するほど大きいものでした。",
+      "tts": {
+        "text": "彼女の艦隊が引き起こした経済的損害はヨーロッパの政策に影響するほど大きいものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダ自身は恐れられると同時に敬服もされていました。",
+      "text_markdown": "サイーダ自身は恐れられると同時に敬服もされていました。",
+      "tts": {
+        "text": "サイーダ自身は恐れられると同時に敬服もされていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はヨーロッパ列強が深く不穏に感じる何かを体現していました。",
+      "text_markdown": "彼女はヨーロッパ列強が深く不穏に感じる何かを体現していました。",
+      "tts": {
+        "text": "彼女はヨーロッパ列強が深く不穏に感じる何かを体現していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真の政治的・軍事的権力を持つムスリム女性は彼らのあらゆる前提に異を唱えました。",
+      "text_markdown": "真の政治的・軍事的権力を持つムスリム女性は彼らのあらゆる前提に異を唱えました。",
+      "tts": {
+        "text": "真の政治的・軍事的権力を持つムスリム女性は彼らのあらゆる前提に異を唱えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の存在そのものがヨーロッパの秩序への挑発でした。",
+      "text_markdown": "彼女の存在そのものがヨーロッパの秩序への挑発でした。",
+      "tts": {
+        "text": "彼女の存在そのものがヨーロッパの秩序への挑発でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダ治下のテトゥアンの暮らしはアル＝アンダルスの国際的な遺産を映し出していました。",
+      "text_markdown": "サイーダ治下のテトゥアンの暮らしはアル＝アンダルスの国際的な遺産を映し出していました。",
+      "tts": {
+        "text": "サイーダ治下のテトゥアンの暮らしはアル＝アンダルスの国際的な遺産を映し出していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "美しい庭園、流れ出る噴水、アンダルシア様式の白壁の家々がありました。",
+      "text_markdown": "美しい庭園、流れ出る噴水、アンダルシア様式の白壁の家々がありました。",
+      "tts": {
+        "text": "美しい庭園、流れ出る噴水、アンダルシア様式の白壁の家々がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "職人たちが精緻な陶磁器、織物、金属細工を生み出していました。",
+      "text_markdown": "職人たちが精緻な陶磁器、織物、金属細工を生み出していました。",
+      "tts": {
+        "text": "職人たちが精緻な陶磁器、織物、金属細工を生み出していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "都市の文化的豊かさはそれを資金面で支えた海賊貿易の暴力と鮮やかな対照をなしていました。",
+      "text_markdown": "都市の文化的豊かさはそれを資金面で支えた海賊貿易の暴力と鮮やかな対照をなしていました。",
+      "tts": {
+        "text": "都市の文化的豊かさはそれを資金面で支えた海賊貿易の暴力と鮮やかな対照をなしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダの艦隊は数十隻の船を擁するまでに成長しました。",
+      "text_markdown": "サイーダの艦隊は数十隻の船を擁するまでに成長しました。",
+      "tts": {
+        "text": "サイーダの艦隊は数十隻の船を擁するまでに成長しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部は捕獲したヨーロッパ船で、元の所有者に向けて使われました。",
+      "text_markdown": "一部は捕獲したヨーロッパ船で、元の所有者に向けて使われました。",
+      "tts": {
+        "text": "一部は捕獲したヨーロッパ船で、元の所有者に向けて使われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その他はテトゥアン自前の造船所で建造されました。",
+      "text_markdown": "その他はテトゥアン自前の造船所で建造されました。",
+      "tts": {
+        "text": "その他はテトゥアン自前の造船所で建造されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "艦隊は十分に整備され、海峡のあらゆる潮流と浅瀬を知る熟練の船乗りが操りました。",
+      "text_markdown": "艦隊は十分に整備され、海峡のあらゆる潮流と浅瀬を知る熟練の船乗りが操りました。",
+      "tts": {
+        "text": "艦隊は十分に整備され、海峡のあらゆる潮流と浅瀬を知る熟練の船乗りが操りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の統治は西地中海の勢力均衡が争われた短い時代を象徴しました。",
+      "text_markdown": "彼女の統治は西地中海の勢力均衡が争われた短い時代を象徴しました。",
+      "tts": {
+        "text": "彼女の統治は西地中海の勢力均衡が争われた短い時代を象徴しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインとポルトガルはより大きな海軍を持っていましたが、あらゆる場所に同時に展開はできませんでした。",
+      "text_markdown": "スペインとポルトガルはより大きな海軍を持っていましたが、あらゆる場所に同時に展開はできませんでした。",
+      "tts": {
+        "text": "スペインとポルトガルはより大きな海軍を持っていましたが、あらゆる場所に同時に展開はできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サイーダの海賊はヨーロッパ海軍の隙を精確に突きました。",
+      "text_markdown": "サイーダの海賊はヨーロッパ海軍の隙を精確に突きました。",
+      "tts": {
+        "text": "サイーダの海賊はヨーロッパ海軍の隙を精確に突きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "約三十年間、彼女はその海域の支配的な力でした。",
+      "text_markdown": "約三十年間、彼女はその海域の支配的な力でした。",
+      "tts": {
+        "text": "約三十年間、彼女はその海域の支配的な力でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女が管理した身代金経済は洗練され、よく組織されていました。",
+      "text_markdown": "彼女が管理した身代金経済は洗練され、よく組織されていました。",
+      "tts": {
+        "text": "彼女が管理した身代金経済は洗練され、よく組織されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "価格は捕虜の社会的地位と家族の支払い能力に応じて設定されました。",
+      "text_markdown": "価格は捕虜の社会的地位と家族の支払い能力に応じて設定されました。",
+      "tts": {
+        "text": "価格は捕虜の社会的地位と家族の支払い能力に応じて設定されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "交渉は数か月、あるいは数年に及ぶこともありました。",
+      "text_markdown": "交渉は数か月、あるいは数年に及ぶこともありました。",
+      "tts": {
+        "text": "交渉は数か月、あるいは数年に及ぶこともありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "捕虜の中には丁重に扱われた者もいれば、過酷な条件に耐えた者もいました。",
+      "text_markdown": "捕虜の中には丁重に扱われた者もいれば、過酷な条件に耐えた者もいました。",
+      "tts": {
+        "text": "捕虜の中には丁重に扱われた者もいれば、過酷な条件に耐えた者もいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは自らの海賊活動を海賊行為ではなく、レコンキスタに対する闘争の継続と見なしました。",
+      "text_markdown": "サイーダは自らの海賊活動を海賊行為ではなく、レコンキスタに対する闘争の継続と見なしました。",
+      "tts": {
+        "text": "サイーダは自らの海賊活動を海賊行為ではなく、レコンキスタに対する闘争の継続と見なしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン人はアル＝アンダルスを力ずくでムスリムから奪いました。",
+      "text_markdown": "スペイン人はアル＝アンダルスを力ずくでムスリムから奪いました。",
+      "tts": {
+        "text": "スペイン人はアル＝アンダルスを力ずくでムスリムから奪いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サイーダの見方では、彼女は異なる手段で反撃しているに過ぎませんでした。",
+      "text_markdown": "サイーダの見方では、彼女は異なる手段で反撃しているに過ぎませんでした。",
+      "tts": {
+        "text": "サイーダの見方では、彼女は異なる手段で反撃しているに過ぎませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "主権を持つ女性",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この枠組みが、共同体の目に彼女の行動の道徳的正当性を与えました。",
+      "text_markdown": "この枠組みが、共同体の目に彼女の行動の道徳的正当性を与えました。",
+      "tts": {
+        "text": "この枠組みが、共同体の目に彼女の行動の道徳的正当性を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "女王の没落",
+      "text_markdown": "女王の没落"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラの権力は強大ではありましたが、無敵ではありませんでした。",
+      "text_markdown": "サイーダ・アル＝フッラの権力は強大ではありましたが、無敵ではありませんでした。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラの権力は強大ではありましたが、無敵ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "同盟、軍事力、政治的手腕の繊細なバランスに依存していました。",
+      "text_markdown": "同盟、軍事力、政治的手腕の繊細なバランスに依存していました。",
+      "tts": {
+        "text": "同盟、軍事力、政治的手腕の繊細なバランスに依存していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのバランスが崩れた時、彼女の地位は危うくなりました。",
+      "text_markdown": "そのバランスが崩れた時、彼女の地位は危うくなりました。",
+      "tts": {
+        "text": "そのバランスが崩れた時、彼女の地位は危うくなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女を倒す力はヨーロッパからではなく、自身の家族の中から来ました。",
+      "text_markdown": "彼女を倒す力はヨーロッパからではなく、自身の家族の中から来ました。",
+      "tts": {
+        "text": "彼女を倒す力はヨーロッパからではなく、自身の家族の中から来ました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ワッタース朝のスルタンとの結婚は政治的保護を与えていました。",
+      "text_markdown": "ワッタース朝のスルタンとの結婚は政治的保護を与えていました。",
+      "tts": {
+        "text": "ワッタース朝のスルタンとの結婚は政治的保護を与えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしワッタース朝自体が弱体化していました。",
+      "text_markdown": "しかしワッタース朝自体が弱体化していました。",
+      "tts": {
+        "text": "しかしワッタース朝自体が弱体化していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ライバル派閥がモロッコ国内で権力を争っていました。",
+      "text_markdown": "ライバル派閥がモロッコ国内で権力を争っていました。",
+      "tts": {
+        "text": "ライバル派閥がモロッコ国内で権力を争っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "テトゥアンのような遠方の州に対するスルタンの権威は薄れつつありました。",
+      "text_markdown": "テトゥアンのような遠方の州に対するスルタンの権威は薄れつつありました。",
+      "tts": {
+        "text": "テトゥアンのような遠方の州に対するスルタンの権威は薄れつつありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダの継子ムーライ・アフマド・アル＝ハサン・アル＝マンドリには独自の野心がありました。",
+      "text_markdown": "サイーダの継子ムーライ・アフマド・アル＝ハサン・アル＝マンドリには独自の野心がありました。",
+      "tts": {
+        "text": "サイーダの継子ムーライ・アフマド・アル＝ハサン・アル＝マンドリには独自の野心がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "テトゥアンは男、すなわち自分自身が統治すべきだと信じていました。",
+      "text_markdown": "テトゥアンは男、すなわち自分自身が統治すべきだと信じていました。",
+      "tts": {
+        "text": "テトゥアンは男、すなわち自分自身が統治すべきだと信じていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "義母の長期にわたる権力掌握を恨んでいました。",
+      "text_markdown": "義母の長期にわたる権力掌握を恨んでいました。",
+      "tts": {
+        "text": "義母の長期にわたる権力掌握を恨んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は彼女を打倒する計画を始めました。",
+      "text_markdown": "彼は彼女を打倒する計画を始めました。",
+      "tts": {
+        "text": "彼は彼女を打倒する計画を始めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ムーライ・アフマドはサイーダの統治に不満を持つ者の中から支持者を集めました。",
+      "text_markdown": "ムーライ・アフマドはサイーダの統治に不満を持つ者の中から支持者を集めました。",
+      "tts": {
+        "text": "ムーライ・アフマドはサイーダの統治に不満を持つ者の中から支持者を集めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "テトゥアンの一部の男性は、能力に関係なく女性に統治されることに不快感を覚えていました。",
+      "text_markdown": "テトゥアンの一部の男性は、能力に関係なく女性に統治されることに不快感を覚えていました。",
+      "tts": {
+        "text": "テトゥアンの一部の男性は、能力に関係なく女性に統治されることに不快感を覚えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他の者は自分たちのために権力と富を得る機会を見出しました。",
+      "text_markdown": "他の者は自分たちのために権力と富を得る機会を見出しました。",
+      "tts": {
+        "text": "他の者は自分たちのために権力と富を得る機会を見出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "陰謀は密かに成長しました。",
+      "text_markdown": "陰謀は密かに成長しました。",
+      "tts": {
+        "text": "陰謀は密かに成長しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1542年頃、ムーライ・アフマドはサイーダに対して宮廷クーデターを起こしました。",
+      "text_markdown": "1542年頃、ムーライ・アフマドはサイーダに対して宮廷クーデターを起こしました。",
+      "tts": {
+        "text": "千五百四十二年頃、ムーライ・アフマドはサイーダに対して宮廷クーデターを起こしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "クーデターの詳細は現存する資料では十分に記録されていません。",
+      "text_markdown": "クーデターの詳細は現存する資料では十分に記録されていません。",
+      "tts": {
+        "text": "クーデターの詳細は現存する資料では十分に記録されていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "分かっていることは、彼がテトゥアンの支配権を奪い、サイーダを権力の座から退けたということです。",
+      "text_markdown": "分かっていることは、彼がテトゥアンの支配権を奪い、サイーダを権力の座から退けたということです。",
+      "tts": {
+        "text": "分かっていることは、彼がテトゥアンの支配権を奪い、サイーダを権力の座から退けたということです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "およそ三十年に及んだ彼女の統治は終わりを迎えました。",
+      "text_markdown": "およそ三十年に及んだ彼女の統治は終わりを迎えました。",
+      "tts": {
+        "text": "およそ三十年に及んだ彼女の統治は終わりを迎えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダは称号、権力、そして財産を剥奪されました。",
+      "text_markdown": "サイーダは称号、権力、そして財産を剥奪されました。",
+      "tts": {
+        "text": "サイーダは称号、権力、そして財産を剥奪されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女が築き上げた海賊艦隊は取り上げられました。",
+      "text_markdown": "彼女が築き上げた海賊艦隊は取り上げられました。",
+      "tts": {
+        "text": "彼女が築き上げた海賊艦隊は取り上げられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モロッコで最も強大な人物の一人から、何の影響力もない一市民となりました。",
+      "text_markdown": "モロッコで最も強大な人物の一人から、何の影響力もない一市民となりました。",
+      "tts": {
+        "text": "モロッコで最も強大な人物の一人から、何の影響力もない一市民となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没落は迅速かつ完全でした。",
+      "text_markdown": "没落は迅速かつ完全でした。",
+      "tts": {
+        "text": "没落は迅速かつ完全でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "権力を失った後、サイーダは歴史の記録からほぼ完全に姿を消しました。",
+      "text_markdown": "権力を失った後、サイーダは歴史の記録からほぼ完全に姿を消しました。",
+      "tts": {
+        "text": "権力を失った後、サイーダは歴史の記録からほぼ完全に姿を消しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "クーデター後の彼女の生涯を記した信頼できる資料はありません。",
+      "text_markdown": "クーデター後の彼女の生涯を記した信頼できる資料はありません。",
+      "tts": {
+        "text": "クーデター後の彼女の生涯を記した信頼できる資料はありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "家族のルーツがある山間の町シェフシャウエンに隠棲したかもしれません。",
+      "text_markdown": "家族のルーツがある山間の町シェフシャウエンに隠棲したかもしれません。",
+      "tts": {
+        "text": "家族のルーツがある山間の町シェフシャウエンに隠棲したかもしれません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "残りの年月を無名のうちに過ごしたかもしれません。",
+      "text_markdown": "残りの年月を無名のうちに過ごしたかもしれません。",
+      "tts": {
+        "text": "残りの年月を無名のうちに過ごしたかもしれません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家はサイーダが1561年頃に亡くなったと推定していますが、日付は不確かです。",
+      "text_markdown": "歴史家はサイーダが1561年頃に亡くなったと推定していますが、日付は不確かです。",
+      "tts": {
+        "text": "歴史家はサイーダが千五百六十一年頃に亡くなったと推定していますが、日付は不確かです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この推定が正しければ、彼女はおよそ七十六歳まで生きたことになります。",
+      "text_markdown": "この推定が正しければ、彼女はおよそ七十六歳まで生きたことになります。",
+      "tts": {
+        "text": "この推定が正しければ、彼女はおよそ七十六歳まで生きたことになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当時としては異例の長寿でした。",
+      "text_markdown": "当時としては異例の長寿でした。",
+      "tts": {
+        "text": "当時としては異例の長寿でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし晩年については何も分かっていません。",
+      "text_markdown": "しかし晩年については何も分かっていません。",
+      "tts": {
+        "text": "しかし晩年については何も分かっていません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テトゥアンの町はサイーダの失脚後も海賊活動の中心であり続けました。",
+      "text_markdown": "テトゥアンの町はサイーダの失脚後も海賊活動の中心であり続けました。",
+      "tts": {
+        "text": "テトゥアンの町はサイーダの失脚後も海賊活動の中心であり続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし二度と彼女ほどの指導者を持つことはありませんでした。",
+      "text_markdown": "しかし二度と彼女ほどの指導者を持つことはありませんでした。",
+      "tts": {
+        "text": "しかし二度と彼女ほどの指導者を持つことはありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "後継者たちには彼女の政治的手腕と国際的同盟ネットワークが欠けていました。",
+      "text_markdown": "後継者たちには彼女の政治的手腕と国際的同盟ネットワークが欠けていました。",
+      "tts": {
+        "text": "後継者たちには彼女の政治的手腕と国際的同盟ネットワークが欠けていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊勢力としてのテトゥアンの黄金時代は彼女とともに終わりました。",
+      "text_markdown": "海賊勢力としてのテトゥアンの黄金時代は彼女とともに終わりました。",
+      "tts": {
+        "text": "海賊勢力としてのテトゥアンの黄金時代は彼女とともに終わりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "より広い政治的背景もまた地中海海賊に不利に転じました。",
+      "text_markdown": "より広い政治的背景もまた地中海海賊に不利に転じました。",
+      "tts": {
+        "text": "より広い政治的背景もまた地中海海賊に不利に転じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインは大西洋の通商路を守るためにますます大きな海軍を建設していました。",
+      "text_markdown": "スペインは大西洋の通商路を守るためにますます大きな海軍を建設していました。",
+      "tts": {
+        "text": "スペインは大西洋の通商路を守るためにますます大きな海軍を建設していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北アフリカの海賊を支援していたオスマン帝国は長い衰退を始めていました。",
+      "text_markdown": "北アフリカの海賊を支援していたオスマン帝国は長い衰退を始めていました。",
+      "tts": {
+        "text": "北アフリカの海賊を支援していたオスマン帝国は長い衰退を始めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダの経歴を可能にした世界はゆっくりと消えていきました。",
+      "text_markdown": "サイーダの経歴を可能にした世界はゆっくりと消えていきました。",
+      "tts": {
+        "text": "サイーダの経歴を可能にした世界はゆっくりと消えていきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の没落は前近代世界における権力の脆さを思い起こさせるものでした。",
+      "text_markdown": "彼女の没落は前近代世界における権力の脆さを思い起こさせるものでした。",
+      "tts": {
+        "text": "彼女の没落は前近代世界における権力の脆さを思い起こさせるものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サイーダほど有能な統治者でさえ、適切なコネを持つ決然たる対抗者によって打倒されうるのです。",
+      "text_markdown": "サイーダほど有能な統治者でさえ、適切なコネを持つ決然たる対抗者によって打倒されうるのです。",
+      "tts": {
+        "text": "サイーダほど有能な統治者でさえ、適切なコネを持つ決然たる対抗者によって打倒されうるのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "憲法的保障のない世界では、権力は個人的な同盟と軍事力のみに依存していました。",
+      "text_markdown": "憲法的保障のない世界では、権力は個人的な同盟と軍事力のみに依存していました。",
+      "tts": {
+        "text": "憲法的保障のない世界では、権力は個人的な同盟と軍事力のみに依存していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "女王の没落",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それらが崩れた時、女王でさえ倒れ得たのです。",
+      "text_markdown": "それらが崩れた時、女王でさえ倒れ得たのです。",
+      "tts": {
+        "text": "それらが崩れた時、女王でさえ倒れ得たのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "自由な女性の遺産",
+      "text_markdown": "自由な女性の遺産"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラの遺産は近年大きく成長しました。",
+      "text_markdown": "サイーダ・アル＝フッラの遺産は近年大きく成長しました。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラの遺産は近年大きく成長しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何世紀もの間、彼女はモロッコ以外ではほとんど忘れ去られていました。",
+      "text_markdown": "何世紀もの間、彼女はモロッコ以外ではほとんど忘れ去られていました。",
+      "tts": {
+        "text": "何世紀もの間、彼女はモロッコ以外ではほとんど忘れ去られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパの海賊史はほぼ専らカリブ海の男性海賊に焦点を当てていました。",
+      "text_markdown": "ヨーロッパの海賊史はほぼ専らカリブ海の男性海賊に焦点を当てていました。",
+      "tts": {
+        "text": "ヨーロッパの海賊史はほぼ専らカリブ海の男性海賊に焦点を当てていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダの物語は主にモロッコの口伝とアラビア語の歴史書に保存されていました。",
+      "text_markdown": "サイーダの物語は主にモロッコの口伝とアラビア語の歴史書に保存されていました。",
+      "tts": {
+        "text": "サイーダの物語は主にモロッコの口伝とアラビア語の歴史書に保存されていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代の歴史家が彼女の物語を再発見し称賛し始めました。",
+      "text_markdown": "現代の歴史家が彼女の物語を再発見し称賛し始めました。",
+      "tts": {
+        "text": "現代の歴史家が彼女の物語を再発見し称賛し始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今では地中海海賊時代の最も注目すべき人物の一人として認められています。",
+      "text_markdown": "今では地中海海賊時代の最も注目すべき人物の一人として認められています。",
+      "tts": {
+        "text": "今では地中海海賊時代の最も注目すべき人物の一人として認められています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三十年にわたって独立した権力を保持した業績は非凡なものと見なされています。",
+      "text_markdown": "三十年にわたって独立した権力を保持した業績は非凡なものと見なされています。",
+      "tts": {
+        "text": "三十年にわたって独立した権力を保持した業績は非凡なものと見なされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そうした指導力が極めて稀だった時代の女性のリーダーシップの実例として研究されています。",
+      "text_markdown": "そうした指導力が極めて稀だった時代の女性のリーダーシップの実例として研究されています。",
+      "tts": {
+        "text": "そうした指導力が極めて稀だった時代の女性のリーダーシップの実例として研究されています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコではサイーダは国民的英雄として記憶されています。",
+      "text_markdown": "モロッコではサイーダは国民的英雄として記憶されています。",
+      "tts": {
+        "text": "モロッコではサイーダは国民的英雄として記憶されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "故郷喪失を受け入れることを拒んだアンダルシア難民の抵抗を体現しています。",
+      "text_markdown": "故郷喪失を受け入れることを拒んだアンダルシア難民の抵抗を体現しています。",
+      "tts": {
+        "text": "故郷喪失を受け入れることを拒んだアンダルシア難民の抵抗を体現しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "テトゥアンの町は今日に至るまで彼女の記憶を讃えています。",
+      "text_markdown": "テトゥアンの町は今日に至るまで彼女の記憶を讃えています。",
+      "tts": {
+        "text": "テトゥアンの町は今日に至るまで彼女の記憶を讃えています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の物語はモロッコの学校で勇気と独立の実例として教えられています。",
+      "text_markdown": "彼女の物語はモロッコの学校で勇気と独立の実例として教えられています。",
+      "tts": {
+        "text": "彼女の物語はモロッコの学校で勇気と独立の実例として教えられています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイーダとバルバロッサの同盟は歴史的に重要です。",
+      "text_markdown": "サイーダとバルバロッサの同盟は歴史的に重要です。",
+      "tts": {
+        "text": "サイーダとバルバロッサの同盟は歴史的に重要です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地中海の海賊世界が単なる個別の略奪者の集まりではなかったことを示しています。",
+      "text_markdown": "地中海の海賊世界が単なる個別の略奪者の集まりではなかったことを示しています。",
+      "tts": {
+        "text": "地中海の海賊世界が単なる個別の略奪者の集まりではなかったことを示しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは広大な距離にわたって調整された戦略的ネットワークでした。",
+      "text_markdown": "それは広大な距離にわたって調整された戦略的ネットワークでした。",
+      "tts": {
+        "text": "それは広大な距離にわたって調整された戦略的ネットワークでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地中海が世界で最も争われた海だった時代に、サイーダはそのネットワークで中心的役割を果たしました。",
+      "text_markdown": "地中海が世界で最も争われた海だった時代に、サイーダはそのネットワークで中心的役割を果たしました。",
+      "tts": {
+        "text": "地中海が世界で最も争われた海だった時代に、サイーダはそのネットワークで中心的役割を果たしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の物語はまた、海賊行為と国家運営の複雑な関係を照らし出します。",
+      "text_markdown": "彼女の物語はまた、海賊行為と国家運営の複雑な関係を照らし出します。",
+      "tts": {
+        "text": "彼女の物語はまた、海賊行為と国家運営の複雑な関係を照らし出します。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サイーダは同時に女王であり、海賊であり、外交官でした。",
+      "text_markdown": "サイーダは同時に女王であり、海賊であり、外交官でした。",
+      "tts": {
+        "text": "サイーダは同時に女王であり、海賊であり、外交官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊活動を単なる富の手段ではなく外交政策のツールとして活用しました。",
+      "text_markdown": "海賊活動を単なる富の手段ではなく外交政策のツールとして活用しました。",
+      "tts": {
+        "text": "海賊活動を単なる富の手段ではなく外交政策のツールとして活用しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の経歴は海賊行為と正当な戦争の境界が、地中海でもカリブ海と同様に曖昧だったことを示しています。",
+      "text_markdown": "彼女の経歴は海賊行為と正当な戦争の境界が、地中海でもカリブ海と同様に曖昧だったことを示しています。",
+      "tts": {
+        "text": "彼女の経歴は海賊行為と正当な戦争の境界が、地中海でもカリブ海と同様に曖昧だったことを示しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アル＝フッラの称号は彼女の最も永続的な象徴であり続けています。",
+      "text_markdown": "アル＝フッラの称号は彼女の最も永続的な象徴であり続けています。",
+      "tts": {
+        "text": "アル＝フッラの称号は彼女の最も永続的な象徴であり続けています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは自由な女性、主権を持つ女性、誰にも従わない女性を意味しました。",
+      "text_markdown": "それは自由な女性、主権を持つ女性、誰にも従わない女性を意味しました。",
+      "tts": {
+        "text": "それは自由な女性、主権を持つ女性、誰にも従わない女性を意味しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "以来、イスラム世界でこの称号を持った女性はいません。",
+      "text_markdown": "以来、イスラム世界でこの称号を持った女性はいません。",
+      "tts": {
+        "text": "以来、イスラム世界でこの称号を持った女性はいません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラは歴史の中に孤高に立つ、その類の最後の存在です。",
+      "text_markdown": "サイーダ・アル＝フッラは歴史の中に孤高に立つ、その類の最後の存在です。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラは歴史の中に孤高に立つ、その類の最後の存在です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日、学者たちは彼女の生涯についてさらに明らかにする新しい文書の探索を続けています。",
+      "text_markdown": "今日、学者たちは彼女の生涯についてさらに明らかにする新しい文書の探索を続けています。",
+      "tts": {
+        "text": "今日、学者たちは彼女の生涯についてさらに明らかにする新しい文書の探索を続けています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モロッコ、スペイン、ポルトガルの公文書館にはまだ発見されていない手紙、条約、記録が眠っているかもしれません。",
+      "text_markdown": "モロッコ、スペイン、ポルトガルの公文書館にはまだ発見されていない手紙、条約、記録が眠っているかもしれません。",
+      "tts": {
+        "text": "モロッコ、スペイン、ポルトガルの公文書館にはまだ発見されていない手紙、条約、記録が眠っているかもしれません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "新たな発見の一つ一つが、この並外れた女性のパズルにもう一つのピースを加えます。",
+      "text_markdown": "新たな発見の一つ一つが、この並外れた女性のパズルにもう一つのピースを加えます。",
+      "tts": {
+        "text": "新たな発見の一つ一つが、この並外れた女性のパズルにもう一つのピースを加えます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "自由な女性の遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サイーダ・アル＝フッラの完全な物語はまだ書かれていません。",
+      "text_markdown": "サイーダ・アル＝フッラの完全な物語はまだ書かれていません。",
+      "tts": {
+        "text": "サイーダ・アル＝フッラの完全な物語はまだ書かれていません。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4622 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_rahmah_ibn_jabir",
+  "language": "zh",
+  "total_segments": 309,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个一生都在战斗的人的故事。",
+      "text_markdown": "这是一个一生都在战斗的人的故事。",
+      "tts": {
+        "text": "这是一个一生都在战斗的人的故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔·贾拉希马是一名海盗、一个战士，也是一个被持续四十多年的世仇所吞噬的人。",
+      "text_markdown": "拉赫马·本·贾比尔·贾拉希马是一名海盗、一个战士，也是一个被持续四十多年的世仇所吞噬的人。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔·贾拉希马是一名海盗、一个战士，也是一个被持续四十多年的世仇所吞噬的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在波斯湾的水域上战斗，那时这片水域是地球上最具争议的地方之一。",
+      "text_markdown": "他在波斯湾的水域上战斗，那时这片水域是地球上最具争议的地方之一。",
+      "tts": {
+        "text": "他在波斯湾的水域上战斗，那时这片水域是地球上最具争议的地方之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "珍珠、贸易和部落荣誉驱使人们在这些浅浅的碧绿海域中杀戮和死去。",
+      "text_markdown": "珍珠、贸易和部落荣誉驱使人们在这些浅浅的碧绿海域中杀戮和死去。",
+      "tts": {
+        "text": "珍珠、贸易和部落荣誉驱使人们在这些浅浅的碧绿海域中杀戮和死去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人称这个地区为海盗海岸。",
+      "text_markdown": "英国人称这个地区为海盗海岸。",
+      "tts": {
+        "text": "英国人称这个地区为海盗海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们将其视为一种谴责。",
+      "text_markdown": "他们将其视为一种谴责。",
+      "tts": {
+        "text": "他们将其视为一种谴责。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "住在那里的人却有不同的看法。",
+      "text_markdown": "住在那里的人却有不同的看法。",
+      "tts": {
+        "text": "住在那里的人却有不同的看法。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对他们来说，大海是战场，控制水域意味着生存。",
+      "text_markdown": "对他们来说，大海是战场，控制水域意味着生存。",
+      "tts": {
+        "text": "对他们来说，大海是战场，控制水域意味着生存。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔比任何人都更理解这一点。",
+      "text_markdown": "拉赫马·本·贾比尔比任何人都更理解这一点。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔比任何人都更理解这一点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他战斗到无物可战。",
+      "text_markdown": "他战斗到无物可战。",
+      "tts": {
+        "text": "他战斗到无物可战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的死亡，当它来临时，是海湾海盗史上最戏剧性的退场。",
+      "text_markdown": "他的死亡，当它来临时，是海湾海盗史上最戏剧性的退场。",
+      "tts": {
+        "text": "他的死亡，当它来临时，是海湾海盗史上最戏剧性的退场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他选择以自己的方式死去，在烈火与雷鸣中，带着他的敌人一同赴死。",
+      "text_markdown": "他选择以自己的方式死去，在烈火与雷鸣中，带着他的敌人一同赴死。",
+      "tts": {
+        "text": "他选择以自己的方式死去，在烈火与雷鸣中，带着他的敌人一同赴死。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "波斯湾的世界",
+      "text_markdown": "波斯湾的世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯湾是一片浅水水域，大约绵延600英里，横跨阿拉伯半岛和伊朗海岸之间。",
+      "text_markdown": "波斯湾是一片浅水水域，大约绵延600英里，横跨阿拉伯半岛和伊朗海岸之间。",
+      "tts": {
+        "text": "波斯湾是一片浅水水域，大约绵延六百英里，横跨阿拉伯半岛和伊朗海岸之间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其深度很少超过200英尺。",
+      "text_markdown": "其深度很少超过200英尺。",
+      "tts": {
+        "text": "其深度很少超过两百英尺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在许多地方，船只可以透过清澈的水看到沙质海底。",
+      "text_markdown": "在许多地方，船只可以透过清澈的水看到沙质海底。",
+      "tts": {
+        "text": "在许多地方，船只可以透过清澈的水看到沙质海底。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管面积不大，波斯湾数千年来一直是贸易的十字路口。",
+      "text_markdown": "尽管面积不大，波斯湾数千年来一直是贸易的十字路口。",
+      "tts": {
+        "text": "尽管面积不大，波斯湾数千年来一直是贸易的十字路口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "自古以来，船只就通过这些水域在美索不达米亚、印度和非洲之间运送货物。",
+      "text_markdown": "自古以来，船只就通过这些水域在美索不达米亚、印度和非洲之间运送货物。",
+      "tts": {
+        "text": "自古以来，船只就通过这些水域在美索不达米亚、印度和非洲之间运送货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "波斯湾将印度洋与地球上一些最古老的文明连接在一起。",
+      "text_markdown": "波斯湾将印度洋与地球上一些最古老的文明连接在一起。",
+      "tts": {
+        "text": "波斯湾将印度洋与地球上一些最古老的文明连接在一起。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在十八世纪，波斯湾最宝贵的资源不是石油。",
+      "text_markdown": "在十八世纪，波斯湾最宝贵的资源不是石油。",
+      "tts": {
+        "text": "在十八世纪，波斯湾最宝贵的资源不是石油。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "石油要再过一个世纪才会被发现。",
+      "text_markdown": "石油要再过一个世纪才会被发现。",
+      "tts": {
+        "text": "石油要再过一个世纪才会被发现。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "波斯湾的宝藏是珍珠。",
+      "text_markdown": "波斯湾的宝藏是珍珠。",
+      "tts": {
+        "text": "波斯湾的宝藏是珍珠。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯湾的珍珠滩是世界上最丰富的之一。",
+      "text_markdown": "波斯湾的珍珠滩是世界上最丰富的之一。",
+      "tts": {
+        "text": "波斯湾的珍珠滩是世界上最丰富的之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "潜水者仅凭一个鼻夹和一块石头重物潜入海底，每次屏住呼吸数分钟。",
+      "text_markdown": "潜水者仅凭一个鼻夹和一块石头重物潜入海底，每次屏住呼吸数分钟。",
+      "tts": {
+        "text": "潜水者仅凭一个鼻夹和一块石头重物潜入海底，每次屏住呼吸数分钟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们捞上来的珍珠在亚洲和欧洲各地备受珍视。",
+      "text_markdown": "他们捞上来的珍珠在亚洲和欧洲各地备受珍视。",
+      "tts": {
+        "text": "他们捞上来的珍珠在亚洲和欧洲各地备受珍视。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "控制珍珠滩意味着财富和权力。",
+      "text_markdown": "控制珍珠滩意味着财富和权力。",
+      "tts": {
+        "text": "控制珍珠滩意味着财富和权力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿拉伯海岸的部落不断争夺最佳潜水场的使用权。",
+      "text_markdown": "阿拉伯海岸的部落不断争夺最佳潜水场的使用权。",
+      "tts": {
+        "text": "阿拉伯海岸的部落不断争夺最佳潜水场的使用权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "控制了一个富饶珍珠滩的部落可以主宰其邻居。",
+      "text_markdown": "控制了一个富饶珍珠滩的部落可以主宰其邻居。",
+      "tts": {
+        "text": "控制了一个富饶珍珠滩的部落可以主宰其邻居。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯湾的阿拉伯一侧是数十个阿拉伯部落的家园。",
+      "text_markdown": "波斯湾的阿拉伯一侧是数十个阿拉伯部落的家园。",
+      "tts": {
+        "text": "波斯湾的阿拉伯一侧是数十个阿拉伯部落的家园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些部落松散地组织成随时间变化的联盟。",
+      "text_markdown": "这些部落松散地组织成随时间变化的联盟。",
+      "tts": {
+        "text": "这些部落松散地组织成随时间变化的联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "联盟随着形势的变化而形成和瓦解。",
+      "text_markdown": "联盟随着形势的变化而形成和瓦解。",
+      "tts": {
+        "text": "联盟随着形势的变化而形成和瓦解。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最重要的联盟之一是乌图布联盟。",
+      "text_markdown": "最重要的联盟之一是乌图布联盟。",
+      "tts": {
+        "text": "最重要的联盟之一是乌图布联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乌图布联盟最初来自内志，即阿拉伯半岛的中央沙漠。",
+      "text_markdown": "乌图布联盟最初来自内志，即阿拉伯半岛的中央沙漠。",
+      "tts": {
+        "text": "乌图布联盟最初来自内志，即阿拉伯半岛的中央沙漠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们为寻找更好的机会而迁移到海岸。",
+      "text_markdown": "他们为寻找更好的机会而迁移到海岸。",
+      "tts": {
+        "text": "他们为寻找更好的机会而迁移到海岸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌图布联盟最终分裂为几个强大的家族。",
+      "text_markdown": "乌图布联盟最终分裂为几个强大的家族。",
+      "tts": {
+        "text": "乌图布联盟最终分裂为几个强大的家族。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "哈利法家族控制了巴林。",
+      "text_markdown": "哈利法家族控制了巴林。",
+      "tts": {
+        "text": "哈利法家族控制了巴林。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "萨巴赫家族在科威特建立了自己的地位。",
+      "text_markdown": "萨巴赫家族在科威特建立了自己的地位。",
+      "tts": {
+        "text": "萨巴赫家族在科威特建立了自己的地位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "贾拉希马部落——拉赫马的族人——沿着今天的卡塔尔海岸定居。",
+      "text_markdown": "贾拉希马部落——拉赫马的族人——沿着今天的卡塔尔海岸定居。",
+      "tts": {
+        "text": "贾拉希马部落——拉赫马的族人——沿着今天的卡塔尔海岸定居。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴林是波斯湾最大的奖赏。",
+      "text_markdown": "巴林是波斯湾最大的奖赏。",
+      "tts": {
+        "text": "巴林是波斯湾最大的奖赏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的珍珠滩是所有珍珠滩中最丰富的。",
+      "text_markdown": "它的珍珠滩是所有珍珠滩中最丰富的。",
+      "tts": {
+        "text": "它的珍珠滩是所有珍珠滩中最丰富的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "谁控制了巴林，谁就控制了该地区最宝贵的资源。",
+      "text_markdown": "谁控制了巴林，谁就控制了该地区最宝贵的资源。",
+      "tts": {
+        "text": "谁控制了巴林，谁就控制了该地区最宝贵的资源。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "哈利法家族在1783年夺取了巴林，从波斯人手中将其夺走。",
+      "text_markdown": "哈利法家族在1783年夺取了巴林，从波斯人手中将其夺走。",
+      "tts": {
+        "text": "哈利法家族在一千七百八十三年夺取了巴林，从波斯人手中将其夺走。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这次征服将产生巨大的后果。",
+      "text_markdown": "这次征服将产生巨大的后果。",
+      "tts": {
+        "text": "这次征服将产生巨大的后果。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它造成了权力失衡，助长了数十年的冲突。",
+      "text_markdown": "它造成了权力失衡，助长了数十年的冲突。",
+      "tts": {
+        "text": "它造成了权力失衡，助长了数十年的冲突。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贾拉希马部落认为他们应得巴林财富的一份。",
+      "text_markdown": "贾拉希马部落认为他们应得巴林财富的一份。",
+      "tts": {
+        "text": "贾拉希马部落认为他们应得巴林财富的一份。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们曾是乌图布联盟的一部分。",
+      "text_markdown": "他们曾是乌图布联盟的一部分。",
+      "tts": {
+        "text": "他们曾是乌图布联盟的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们曾与哈利法家族并肩作战。",
+      "text_markdown": "他们曾与哈利法家族并肩作战。",
+      "tts": {
+        "text": "他们曾与哈利法家族并肩作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但哈利法家族将巴林据为己有。",
+      "text_markdown": "但哈利法家族将巴林据为己有。",
+      "tts": {
+        "text": "但哈利法家族将巴林据为己有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种被感知到的背叛是点燃拉赫马·本·贾比尔终生战争之火的火花。",
+      "text_markdown": "这种被感知到的背叛是点燃拉赫马·本·贾比尔终生战争之火的火花。",
+      "tts": {
+        "text": "这种被感知到的背叛是点燃拉赫马·本·贾比尔终生战争之火的火花。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将用余生试图从哈利法家族手中夺回他认为理应属于自己的东西。",
+      "text_markdown": "他将用余生试图从哈利法家族手中夺回他认为理应属于自己的东西。",
+      "tts": {
+        "text": "他将用余生试图从哈利法家族手中夺回他认为理应属于自己的东西。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "除了部落冲突之外，更大的强权也在觊觎波斯湾。",
+      "text_markdown": "除了部落冲突之外，更大的强权也在觊觎波斯湾。",
+      "tts": {
+        "text": "除了部落冲突之外，更大的强权也在觊觎波斯湾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "以马斯喀特为基地的阿曼帝国是印度洋上的一个主要海上强国。",
+      "text_markdown": "以马斯喀特为基地的阿曼帝国是印度洋上的一个主要海上强国。",
+      "tts": {
+        "text": "以马斯喀特为基地的阿曼帝国是印度洋上的一个主要海上强国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "阿曼人在波斯湾的贸易和政治中有着自己的利益。",
+      "text_markdown": "阿曼人在波斯湾的贸易和政治中有着自己的利益。",
+      "tts": {
+        "text": "阿曼人在波斯湾的贸易和政治中有着自己的利益。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "瓦哈比运动正从内陆向阿拉伯半岛各地蔓延。",
+      "text_markdown": "瓦哈比运动正从内陆向阿拉伯半岛各地蔓延。",
+      "tts": {
+        "text": "瓦哈比运动正从内陆向阿拉伯半岛各地蔓延。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "沙特-瓦哈比联盟试图将沿海部落纳入其宗教和政治权威之下。",
+      "text_markdown": "沙特-瓦哈比联盟试图将沿海部落纳入其宗教和政治权威之下。",
+      "tts": {
+        "text": "沙特-瓦哈比联盟试图将沿海部落纳入其宗教和政治权威之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的扩张为这个本已动荡的地区增添了又一层冲突。",
+      "text_markdown": "他们的扩张为这个本已动荡的地区增添了又一层冲突。",
+      "tts": {
+        "text": "他们的扩张为这个本已动荡的地区增添了又一层冲突。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后还有英国人。",
+      "text_markdown": "然后还有英国人。",
+      "tts": {
+        "text": "然后还有英国人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国东印度公司控制着印度与波斯湾之间的贸易。",
+      "text_markdown": "英国东印度公司控制着印度与波斯湾之间的贸易。",
+      "tts": {
+        "text": "英国东印度公司控制着印度与波斯湾之间的贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国军舰巡逻水域，英国政治代理人干涉部落事务。",
+      "text_markdown": "英国军舰巡逻水域，英国政治代理人干涉部落事务。",
+      "tts": {
+        "text": "英国军舰巡逻水域，英国政治代理人干涉部落事务。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人最想要的是稳定。",
+      "text_markdown": "英国人最想要的是稳定。",
+      "tts": {
+        "text": "英国人最想要的是稳定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗活动扰乱了贸易，而贸易中断意味着利润损失。",
+      "text_markdown": "海盗活动扰乱了贸易，而贸易中断意味着利润损失。",
+      "tts": {
+        "text": "海盗活动扰乱了贸易，而贸易中断意味着利润损失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们最终将以武力将自己的意志强加于波斯湾，签订的条约阿拉伯人称为休战，英国人称为投降。",
+      "text_markdown": "他们最终将以武力将自己的意志强加于波斯湾，签订的条约阿拉伯人称为休战，英国人称为投降。",
+      "tts": {
+        "text": "他们最终将以武力将自己的意志强加于波斯湾，签订的条约阿拉伯人称为休战，英国人称为投降。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是拉赫马·本·贾比尔的世界。",
+      "text_markdown": "这就是拉赫马·本·贾比尔的世界。",
+      "tts": {
+        "text": "这就是拉赫马·本·贾比尔的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个充满珍珠与鲜血、部落荣誉与无情复仇的世界。",
+      "text_markdown": "一个充满珍珠与鲜血、部落荣誉与无情复仇的世界。",
+      "tts": {
+        "text": "一个充满珍珠与鲜血、部落荣誉与无情复仇的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-066",
+      "part": 0,
+      "chapter": 1,
+      "title": "波斯湾的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个独眼海盗能让整个波斯湾恐惧的世界。",
+      "text_markdown": "一个独眼海盗能让整个波斯湾恐惧的世界。",
+      "tts": {
+        "text": "一个独眼海盗能让整个波斯湾恐惧的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔·贾拉希马大约在1760年出生在阿拉伯半岛海岸。",
+      "text_markdown": "拉赫马·本·贾比尔·贾拉希马大约在1760年出生在阿拉伯半岛海岸。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔·贾拉希马大约在一千七百六十年出生在阿拉伯半岛海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他出生的确切日期没有被记录下来。",
+      "text_markdown": "他出生的确切日期没有被记录下来。",
+      "tts": {
+        "text": "他出生的确切日期没有被记录下来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的部落贾拉希马生活在今天的卡塔尔地区。",
+      "text_markdown": "他的部落贾拉希马生活在今天的卡塔尔地区。",
+      "tts": {
+        "text": "他的部落贾拉希马生活在今天的卡塔尔地区。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贾拉希马是一个航海民族。",
+      "text_markdown": "贾拉希马是一个航海民族。",
+      "tts": {
+        "text": "贾拉希马是一个航海民族。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们捕鱼、潜水采珠、沿海岸进行贸易。",
+      "text_markdown": "他们捕鱼、潜水采珠、沿海岸进行贸易。",
+      "tts": {
+        "text": "他们捕鱼、潜水采珠、沿海岸进行贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大海是他们的生计和身份。",
+      "text_markdown": "大海是他们的生计和身份。",
+      "tts": {
+        "text": "大海是他们的生计和身份。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马在一个以部落忠诚为核心的世界中长大。",
+      "text_markdown": "拉赫马在一个以部落忠诚为核心的世界中长大。",
+      "tts": {
+        "text": "拉赫马在一个以部落忠诚为核心的世界中长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个人的部落就是他的家庭、他的军队和他的国家。",
+      "text_markdown": "一个人的部落就是他的家庭、他的军队和他的国家。",
+      "tts": {
+        "text": "一个人的部落就是他的家庭、他的军队和他的国家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "背叛自己的部落是最大的罪恶。",
+      "text_markdown": "背叛自己的部落是最大的罪恶。",
+      "tts": {
+        "text": "背叛自己的部落是最大的罪恶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "为部落所遭受的不公进行复仇是最崇高的职责。",
+      "text_markdown": "为部落所遭受的不公进行复仇是最崇高的职责。",
+      "tts": {
+        "text": "为部落所遭受的不公进行复仇是最崇高的职责。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他从小就学会了航海，驾驶着波斯湾的主力——三角帆船。",
+      "text_markdown": "他从小就学会了航海，驾驶着波斯湾的主力——三角帆船。",
+      "tts": {
+        "text": "他从小就学会了航海，驾驶着波斯湾的主力——三角帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三角帆船是带有三角形拉丁帆的木质帆船。",
+      "text_markdown": "三角帆船是带有三角形拉丁帆的木质帆船。",
+      "tts": {
+        "text": "三角帆船是带有三角形拉丁帆的木质帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们在这些水域中已经使用了几个世纪。",
+      "text_markdown": "它们在这些水域中已经使用了几个世纪。",
+      "tts": {
+        "text": "它们在这些水域中已经使用了几个世纪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马也学会了战斗。",
+      "text_markdown": "拉赫马也学会了战斗。",
+      "tts": {
+        "text": "拉赫马也学会了战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波斯湾海岸的每个男人都被期望既是战士又是水手。",
+      "text_markdown": "波斯湾海岸的每个男人都被期望既是战士又是水手。",
+      "tts": {
+        "text": "波斯湾海岸的每个男人都被期望既是战士又是水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "敌对部落之间的袭击十分常见。",
+      "text_markdown": "敌对部落之间的袭击十分常见。",
+      "tts": {
+        "text": "敌对部落之间的袭击十分常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一个不会使用刀剑和火枪的男孩是累赘。",
+      "text_markdown": "一个不会使用刀剑和火枪的男孩是累赘。",
+      "tts": {
+        "text": "一个不会使用刀剑和火枪的男孩是累赘。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马早年生活中的决定性事件是哈利法家族对巴林的征服。",
+      "text_markdown": "拉赫马早年生活中的决定性事件是哈利法家族对巴林的征服。",
+      "tts": {
+        "text": "拉赫马早年生活中的决定性事件是哈利法家族对巴林的征服。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "贾拉希马期望分享这次胜利的战利品。",
+      "text_markdown": "贾拉希马期望分享这次胜利的战利品。",
+      "tts": {
+        "text": "贾拉希马期望分享这次胜利的战利品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "然而，哈利法家族将巴林完全据为己有。",
+      "text_markdown": "然而，哈利法家族将巴林完全据为己有。",
+      "tts": {
+        "text": "然而，哈利法家族将巴林完全据为己有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贾拉希马被排挤。",
+      "text_markdown": "贾拉希马被排挤。",
+      "tts": {
+        "text": "贾拉希马被排挤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们没有得到珍珠财富的任何份额。",
+      "text_markdown": "他们没有得到珍珠财富的任何份额。",
+      "tts": {
+        "text": "他们没有得到珍珠财富的任何份额。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们被拒绝进入最丰富的潜水区。",
+      "text_markdown": "他们被拒绝进入最丰富的潜水区。",
+      "tts": {
+        "text": "他们被拒绝进入最丰富的潜水区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对拉赫马来说，这是一个他永远不会接受的不公。",
+      "text_markdown": "对拉赫马来说，这是一个他永远不会接受的不公。",
+      "tts": {
+        "text": "对拉赫马来说，这是一个他永远不会接受的不公。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他还是年轻人时就开始袭击哈利法家族的船只。",
+      "text_markdown": "他还是年轻人时就开始袭击哈利法家族的船只。",
+      "tts": {
+        "text": "他还是年轻人时就开始袭击哈利法家族的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "起初，这些是小规模的攻击。",
+      "text_markdown": "起初，这些是小规模的攻击。",
+      "tts": {
+        "text": "起初，这些是小规模的攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他会伏击一艘采珠船或拦截一艘商船。",
+      "text_markdown": "他会伏击一艘采珠船或拦截一艘商船。",
+      "tts": {
+        "text": "他会伏击一艘采珠船或拦截一艘商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些攻击既是复仇行为，也是海盗行为。",
+      "text_markdown": "这些攻击既是复仇行为，也是海盗行为。",
+      "tts": {
+        "text": "这些攻击既是复仇行为，也是海盗行为。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马证明自己是一个天生的领袖。",
+      "text_markdown": "拉赫马证明自己是一个天生的领袖。",
+      "tts": {
+        "text": "拉赫马证明自己是一个天生的领袖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在战斗中无所畏惧，对追随者慷慨大方。",
+      "text_markdown": "他在战斗中无所畏惧，对追随者慷慨大方。",
+      "tts": {
+        "text": "他在战斗中无所畏惧，对追随者慷慨大方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人们纷纷投奔他的旗帜，被他的声誉和掠夺的承诺所吸引。",
+      "text_markdown": "人们纷纷投奔他的旗帜，被他的声誉和掠夺的承诺所吸引。",
+      "tts": {
+        "text": "人们纷纷投奔他的旗帜，被他的声誉和掠夺的承诺所吸引。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在卡塔尔海岸一个名为霍尔哈桑的隐蔽入海口建立了基地。",
+      "text_markdown": "他在卡塔尔海岸一个名为霍尔哈桑的隐蔽入海口建立了基地。",
+      "tts": {
+        "text": "他在卡塔尔海岸一个名为霍尔哈桑的隐蔽入海口建立了基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从这个港口，他可以攻击通过波斯湾的船只。",
+      "text_markdown": "从这个港口，他可以攻击通过波斯湾的船只。",
+      "tts": {
+        "text": "从这个港口，他可以攻击通过波斯湾的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "该位置战略地位极佳，靠近主要航道。",
+      "text_markdown": "该位置战略地位极佳，靠近主要航道。",
+      "tts": {
+        "text": "该位置战略地位极佳，靠近主要航道。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的舰队稳步壮大。",
+      "text_markdown": "他的舰队稳步壮大。",
+      "tts": {
+        "text": "他的舰队稳步壮大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他获得了更大、装备更好的船只。",
+      "text_markdown": "他获得了更大、装备更好的船只。",
+      "tts": {
+        "text": "他获得了更大、装备更好的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他从波斯湾各地招募追随者，包括对哈利法家族有怨恨的部落的人。",
+      "text_markdown": "他从波斯湾各地招募追随者，包括对哈利法家族有怨恨的部落的人。",
+      "tts": {
+        "text": "他从波斯湾各地招募追随者，包括对哈利法家族有怨恨的部落的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到十八世纪九十年代，拉赫马·本·贾比尔是波斯湾最令人恐惧的海盗。",
+      "text_markdown": "到十八世纪九十年代，拉赫马·本·贾比尔是波斯湾最令人恐惧的海盗。",
+      "tts": {
+        "text": "到十八世纪九十年代，拉赫马·本·贾比尔是波斯湾最令人恐惧的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从巴林到马斯喀特的商人都对他的名字心怀恐惧。",
+      "text_markdown": "从巴林到马斯喀特的商人都对他的名字心怀恐惧。",
+      "tts": {
+        "text": "从巴林到马斯喀特的商人都对他的名字心怀恐惧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "哈利法家族视他为最危险的敌人。",
+      "text_markdown": "哈利法家族视他为最危险的敌人。",
+      "tts": {
+        "text": "哈利法家族视他为最危险的敌人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在他的众多战斗中的一次，拉赫马失去了一只眼睛。",
+      "text_markdown": "在他的众多战斗中的一次，拉赫马失去了一只眼睛。",
+      "tts": {
+        "text": "在他的众多战斗中的一次，拉赫马失去了一只眼睛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个伤势会结束一个平庸之人的生涯。",
+      "text_markdown": "这个伤势会结束一个平庸之人的生涯。",
+      "tts": {
+        "text": "这个伤势会结束一个平庸之人的生涯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对拉赫马来说，这不过是一个荣誉的标志。",
+      "text_markdown": "对拉赫马来说，这不过是一个荣誉的标志。",
+      "tts": {
+        "text": "对拉赫马来说，这不过是一个荣誉的标志。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他继续以同样的凶猛战斗。",
+      "text_markdown": "他继续以同样的凶猛战斗。",
+      "tts": {
+        "text": "他继续以同样的凶猛战斗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "见过他的欧洲观察者描述了一个令人恐惧的人物。",
+      "text_markdown": "见过他的欧洲观察者描述了一个令人恐惧的人物。",
+      "tts": {
+        "text": "见过他的欧洲观察者描述了一个令人恐惧的人物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他身材高大而瘦削，有一只燃烧的眼睛和一张布满多年战斗伤疤的脸。",
+      "text_markdown": "他身材高大而瘦削，有一只燃烧的眼睛和一张布满多年战斗伤疤的脸。",
+      "tts": {
+        "text": "他身材高大而瘦削，有一只燃烧的眼睛和一张布满多年战斗伤疤的脸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说他的声音可以穿过水面，即使在战斗的混乱中也能召集他的部下。",
+      "text_markdown": "据说他的声音可以穿过水面，即使在战斗的混乱中也能召集他的部下。",
+      "tts": {
+        "text": "据说他的声音可以穿过水面，即使在战斗的混乱中也能召集他的部下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "无尽的战争",
+      "text_markdown": "无尽的战争"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马对哈利法家族的战争不是一系列孤立的袭击。",
+      "text_markdown": "拉赫马对哈利法家族的战争不是一系列孤立的袭击。",
+      "tts": {
+        "text": "拉赫马对哈利法家族的战争不是一系列孤立的袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一场持续数十年的无情侵略行动。",
+      "text_markdown": "这是一场持续数十年的无情侵略行动。",
+      "tts": {
+        "text": "这是一场持续数十年的无情侵略行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他以同样的决心攻击他们的船只、港口和盟友。",
+      "text_markdown": "他以同样的决心攻击他们的船只、港口和盟友。",
+      "tts": {
+        "text": "他以同样的决心攻击他们的船只、港口和盟友。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的战术简单但有效。",
+      "text_markdown": "他的战术简单但有效。",
+      "tts": {
+        "text": "他的战术简单但有效。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他使用快速、机动灵活的三角帆船拦截较慢的商船。",
+      "text_markdown": "他使用快速、机动灵活的三角帆船拦截较慢的商船。",
+      "tts": {
+        "text": "他使用快速、机动灵活的三角帆船拦截较慢的商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的手下用刀剑、匕首和火枪登上敌船。",
+      "text_markdown": "他的手下用刀剑、匕首和火枪登上敌船。",
+      "tts": {
+        "text": "他的手下用刀剑、匕首和火枪登上敌船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "战斗是残酷的近身战。",
+      "text_markdown": "战斗是残酷的近身战。",
+      "tts": {
+        "text": "战斗是残酷的近身战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马对抵抗者几乎不留情面。",
+      "text_markdown": "拉赫马对抵抗者几乎不留情面。",
+      "tts": {
+        "text": "拉赫马对抵抗者几乎不留情面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "被俘的哈利法家族水手经常被杀或被奴役。",
+      "text_markdown": "被俘的哈利法家族水手经常被杀或被奴役。",
+      "tts": {
+        "text": "被俘的哈利法家族水手经常被杀或被奴役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他想让哈利法家族惧怕大海本身。",
+      "text_markdown": "他想让哈利法家族惧怕大海本身。",
+      "tts": {
+        "text": "他想让哈利法家族惧怕大海本身。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "哈利法家族用自己的舰队进行反击。",
+      "text_markdown": "哈利法家族用自己的舰队进行反击。",
+      "tts": {
+        "text": "哈利法家族用自己的舰队进行反击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们对拉赫马的基地发动了多次攻击。",
+      "text_markdown": "他们对拉赫马的基地发动了多次攻击。",
+      "tts": {
+        "text": "他们对拉赫马的基地发动了多次攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几次迫使他放弃阵地，撤退到新的港口。",
+      "text_markdown": "几次迫使他放弃阵地，撤退到新的港口。",
+      "tts": {
+        "text": "几次迫使他放弃阵地，撤退到新的港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但拉赫马总是卷土重来。",
+      "text_markdown": "但拉赫马总是卷土重来。",
+      "tts": {
+        "text": "但拉赫马总是卷土重来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他重新集结，招募新的追随者，然后重返战斗。",
+      "text_markdown": "他重新集结，招募新的追随者，然后重返战斗。",
+      "tts": {
+        "text": "他重新集结，招募新的追随者，然后重返战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的韧性非凡。",
+      "text_markdown": "他的韧性非凡。",
+      "tts": {
+        "text": "他的韧性非凡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有任何失败对他来说是最终的。",
+      "text_markdown": "没有任何失败对他来说是最终的。",
+      "tts": {
+        "text": "没有任何失败对他来说是最终的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他与任何反对哈利法家族的人结盟。",
+      "text_markdown": "他与任何反对哈利法家族的人结盟。",
+      "tts": {
+        "text": "他与任何反对哈利法家族的人结盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当对他有利时，他与瓦哈比派结盟。",
+      "text_markdown": "当对他有利时，他与瓦哈比派结盟。",
+      "tts": {
+        "text": "当对他有利时，他与瓦哈比派结盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当阿曼人有用时，他与阿曼人结盟。",
+      "text_markdown": "当阿曼人有用时，他与阿曼人结盟。",
+      "tts": {
+        "text": "当阿曼人有用时，他与阿曼人结盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他甚至偶尔与英国人合作。",
+      "text_markdown": "他甚至偶尔与英国人合作。",
+      "tts": {
+        "text": "他甚至偶尔与英国人合作。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些联盟总是临时的，总是战略性的。",
+      "text_markdown": "这些联盟总是临时的，总是战略性的。",
+      "tts": {
+        "text": "这些联盟总是临时的，总是战略性的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马唯一真正的忠诚是对他的部落和他的复仇。",
+      "text_markdown": "拉赫马唯一真正的忠诚是对他的部落和他的复仇。",
+      "tts": {
+        "text": "拉赫马唯一真正的忠诚是对他的部落和他的复仇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他会与任何能帮助他伤害哈利法家族的人合作。",
+      "text_markdown": "他会与任何能帮助他伤害哈利法家族的人合作。",
+      "tts": {
+        "text": "他会与任何能帮助他伤害哈利法家族的人合作。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "瓦哈比派在一段时间内是特别重要的盟友。",
+      "text_markdown": "瓦哈比派在一段时间内是特别重要的盟友。",
+      "tts": {
+        "text": "瓦哈比派在一段时间内是特别重要的盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "沙特-瓦哈比国家在十八世纪末和十九世纪初在阿拉伯半岛扩张。",
+      "text_markdown": "沙特-瓦哈比国家在十八世纪末和十九世纪初在阿拉伯半岛扩张。",
+      "tts": {
+        "text": "沙特-瓦哈比国家在十八世纪末和十九世纪初在阿拉伯半岛扩张。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们将哈利法家族视为对手，乐于支持拉赫马的攻击。",
+      "text_markdown": "他们将哈利法家族视为对手，乐于支持拉赫马的攻击。",
+      "tts": {
+        "text": "他们将哈利法家族视为对手，乐于支持拉赫马的攻击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在瓦哈比派的支持下，拉赫马发动了一些最雄心勃勃的行动。",
+      "text_markdown": "在瓦哈比派的支持下，拉赫马发动了一些最雄心勃勃的行动。",
+      "tts": {
+        "text": "在瓦哈比派的支持下，拉赫马发动了一些最雄心勃勃的行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他封锁了巴林的港口，切断了该岛的贸易。",
+      "text_markdown": "他封锁了巴林的港口，切断了该岛的贸易。",
+      "tts": {
+        "text": "他封锁了巴林的港口，切断了该岛的贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他攻击从珍珠滩返回的采珠人船队。",
+      "text_markdown": "他攻击从珍珠滩返回的采珠人船队。",
+      "tts": {
+        "text": "他攻击从珍珠滩返回的采珠人船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他使巴林周围的水域对任何忠于哈利法家族的人都变得危险。",
+      "text_markdown": "他使巴林周围的水域对任何忠于哈利法家族的人都变得危险。",
+      "tts": {
+        "text": "他使巴林周围的水域对任何忠于哈利法家族的人都变得危险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "珍珠贸易是巴林的命脉。",
+      "text_markdown": "珍珠贸易是巴林的命脉。",
+      "tts": {
+        "text": "珍珠贸易是巴林的命脉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "通过扰乱它，拉赫马打击了哈利法家族权力的根基。",
+      "text_markdown": "通过扰乱它，拉赫马打击了哈利法家族权力的根基。",
+      "tts": {
+        "text": "通过扰乱它，拉赫马打击了哈利法家族权力的根基。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个珍珠收入损失的季节能比一场军事失败更严重地削弱一个统治家族。",
+      "text_markdown": "一个珍珠收入损失的季节能比一场军事失败更严重地削弱一个统治家族。",
+      "tts": {
+        "text": "一个珍珠收入损失的季节能比一场军事失败更严重地削弱一个统治家族。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人以日益增长的担忧关注着这些冲突。",
+      "text_markdown": "英国人以日益增长的担忧关注着这些冲突。",
+      "tts": {
+        "text": "英国人以日益增长的担忧关注着这些冲突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一场部落战争都扰乱了流经波斯湾的贸易。",
+      "text_markdown": "每一场部落战争都扰乱了流经波斯湾的贸易。",
+      "tts": {
+        "text": "每一场部落战争都扰乱了流经波斯湾的贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国商人亏损，英国官员失去耐心。",
+      "text_markdown": "英国商人亏损，英国官员失去耐心。",
+      "tts": {
+        "text": "英国商人亏损，英国官员失去耐心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国代理人多次试图在拉赫马和哈利法家族之间进行调解。",
+      "text_markdown": "英国代理人多次试图在拉赫马和哈利法家族之间进行调解。",
+      "tts": {
+        "text": "英国代理人多次试图在拉赫马和哈利法家族之间进行调解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们提出谈判休战和解决争端。",
+      "text_markdown": "他们提出谈判休战和解决争端。",
+      "tts": {
+        "text": "他们提出谈判休战和解决争端。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉赫马拒绝了每一个提议。",
+      "text_markdown": "拉赫马拒绝了每一个提议。",
+      "tts": {
+        "text": "拉赫马拒绝了每一个提议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他对和平不感兴趣。",
+      "text_markdown": "他对和平不感兴趣。",
+      "tts": {
+        "text": "他对和平不感兴趣。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一位名叫弗朗西斯·沃登的英国政治代理人见到了拉赫马，并留下了详细的描述。",
+      "text_markdown": "一位名叫弗朗西斯·沃登的英国政治代理人见到了拉赫马，并留下了详细的描述。",
+      "tts": {
+        "text": "一位名叫弗朗西斯·沃登的英国政治代理人见到了拉赫马，并留下了详细的描述。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将这位海盗描述为有礼貌但不可动摇。",
+      "text_markdown": "他将这位海盗描述为有礼貌但不可动摇。",
+      "tts": {
+        "text": "他将这位海盗描述为有礼貌但不可动摇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉赫马清楚地阐述了自己的立场：哈利法家族偷走了属于他的族人的东西，他将战斗到这些东西被归还。",
+      "text_markdown": "拉赫马清楚地阐述了自己的立场：哈利法家族偷走了属于他的族人的东西，他将战斗到这些东西被归还。",
+      "tts": {
+        "text": "拉赫马清楚地阐述了自己的立场：哈利法家族偷走了属于他的族人的东西，他将战斗到这些东西被归还。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人对他的顽固感到沮丧。",
+      "text_markdown": "英国人对他的顽固感到沮丧。",
+      "tts": {
+        "text": "英国人对他的顽固感到沮丧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们既不能贿赂他，也不能威胁他，也不能说服他。",
+      "text_markdown": "他们既不能贿赂他，也不能威胁他，也不能说服他。",
+      "tts": {
+        "text": "他们既不能贿赂他，也不能威胁他，也不能说服他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他对哈利法家族的仇恨是绝对的，超越了任何谈判。",
+      "text_markdown": "他对哈利法家族的仇恨是绝对的，超越了任何谈判。",
+      "tts": {
+        "text": "他对哈利法家族的仇恨是绝对的，超越了任何谈判。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马在其漫长的生涯中多次转移基地。",
+      "text_markdown": "拉赫马在其漫长的生涯中多次转移基地。",
+      "tts": {
+        "text": "拉赫马在其漫长的生涯中多次转移基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当霍尔哈桑变得太危险时，他搬到了阿拉伯海岸的达曼。",
+      "text_markdown": "当霍尔哈桑变得太危险时，他搬到了阿拉伯海岸的达曼。",
+      "tts": {
+        "text": "当霍尔哈桑变得太危险时，他搬到了阿拉伯海岸的达曼。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "达曼让他获得了沙特-瓦哈比的支持和一组新的港口。",
+      "text_markdown": "达曼让他获得了沙特-瓦哈比的支持和一组新的港口。",
+      "tts": {
+        "text": "达曼让他获得了沙特-瓦哈比的支持和一组新的港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从达曼出发，他不间断地继续他的袭击。",
+      "text_markdown": "从达曼出发，他不间断地继续他的袭击。",
+      "tts": {
+        "text": "从达曼出发，他不间断地继续他的袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的舰队现在已经相当可观，拥有数十艘武装三角帆船。",
+      "text_markdown": "他的舰队现在已经相当可观，拥有数十艘武装三角帆船。",
+      "tts": {
+        "text": "他的舰队现在已经相当可观，拥有数十艘武装三角帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "无尽的战争",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他不仅仅是一个海盗，已经成为一个地区性的力量。",
+      "text_markdown": "他不仅仅是一个海盗，已经成为一个地区性的力量。",
+      "tts": {
+        "text": "他不仅仅是一个海盗，已经成为一个地区性的力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "鼎盛时期",
+      "text_markdown": "鼎盛时期"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到十九世纪初，拉赫马·本·贾比尔处于权力的巅峰。",
+      "text_markdown": "到十九世纪初，拉赫马·本·贾比尔处于权力的巅峰。",
+      "tts": {
+        "text": "到十九世纪初，拉赫马·本·贾比尔处于权力的巅峰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他控制着一支庞大的舰队，拥有遍布波斯湾的联盟。",
+      "text_markdown": "他控制着一支庞大的舰队，拥有遍布波斯湾的联盟。",
+      "tts": {
+        "text": "他控制着一支庞大的舰队，拥有遍布波斯湾的联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从霍尔木兹海峡到科威特海岸，他的名声令人畏惧。",
+      "text_markdown": "从霍尔木兹海峡到科威特海岸，他的名声令人畏惧。",
+      "tts": {
+        "text": "从霍尔木兹海峡到科威特海岸，他的名声令人畏惧。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "按照他那个时代和地方的标准，他已经是个老人了。",
+      "text_markdown": "按照他那个时代和地方的标准，他已经是个老人了。",
+      "tts": {
+        "text": "按照他那个时代和地方的标准，他已经是个老人了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多年的战斗使他的身体伤痕累累、疲惫不堪。",
+      "text_markdown": "多年的战斗使他的身体伤痕累累、疲惫不堪。",
+      "tts": {
+        "text": "多年的战斗使他的身体伤痕累累、疲惫不堪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他失去了一只眼睛，遭受了无数的伤口。",
+      "text_markdown": "他失去了一只眼睛，遭受了无数的伤口。",
+      "tts": {
+        "text": "他失去了一只眼睛，遭受了无数的伤口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他的精神不屈不挠。",
+      "text_markdown": "但他的精神不屈不挠。",
+      "tts": {
+        "text": "但他的精神不屈不挠。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他继续亲自率领袭击，站在旗舰的船首。",
+      "text_markdown": "他继续亲自率领袭击，站在旗舰的船首。",
+      "tts": {
+        "text": "他继续亲自率领袭击，站在旗舰的船首。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说他剩余的那只眼睛在战斗中闪耀着凶猛的光芒。",
+      "text_markdown": "据说他剩余的那只眼睛在战斗中闪耀着凶猛的光芒。",
+      "tts": {
+        "text": "据说他剩余的那只眼睛在战斗中闪耀着凶猛的光芒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的手下相信他受到上天的庇佑，不会被杀死。",
+      "text_markdown": "他的手下相信他受到上天的庇佑，不会被杀死。",
+      "tts": {
+        "text": "他的手下相信他受到上天的庇佑，不会被杀死。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一时期遇到他的欧洲访客们都为之着迷。",
+      "text_markdown": "这一时期遇到他的欧洲访客们都为之着迷。",
+      "tts": {
+        "text": "这一时期遇到他的欧洲访客们都为之着迷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他与他们以前遇到的任何海盗都不同。",
+      "text_markdown": "他与他们以前遇到的任何海盗都不同。",
+      "tts": {
+        "text": "他与他们以前遇到的任何海盗都不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他不是普通的强盗，而是一个有智慧和目标的人。",
+      "text_markdown": "他不是普通的强盗，而是一个有智慧和目标的人。",
+      "tts": {
+        "text": "他不是普通的强盗，而是一个有智慧和目标的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一位英国军官描述了在拉赫马的船上与他会面的情景。",
+      "text_markdown": "一位英国军官描述了在拉赫马的船上与他会面的情景。",
+      "tts": {
+        "text": "一位英国军官描述了在拉赫马的船上与他会面的情景。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这位海盗以礼相待，奉上咖啡和椰枣。",
+      "text_markdown": "这位海盗以礼相待，奉上咖啡和椰枣。",
+      "tts": {
+        "text": "这位海盗以礼相待，奉上咖啡和椰枣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们以平等的身份讨论政治和贸易。",
+      "text_markdown": "他们以平等的身份讨论政治和贸易。",
+      "tts": {
+        "text": "他们以平等的身份讨论政治和贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这位军官注意到拉赫马说话时带着统治者而非罪犯的权威。",
+      "text_markdown": "这位军官注意到拉赫马说话时带着统治者而非罪犯的权威。",
+      "tts": {
+        "text": "这位军官注意到拉赫马说话时带着统治者而非罪犯的权威。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马的家庭包括他的妻子、孩子和大家族。",
+      "text_markdown": "拉赫马的家庭包括他的妻子、孩子和大家族。",
+      "tts": {
+        "text": "拉赫马的家庭包括他的妻子、孩子和大家族。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们住在他的船上或岸上的设防营地中。",
+      "text_markdown": "他们住在他的船上或岸上的设防营地中。",
+      "tts": {
+        "text": "他们住在他的船上或岸上的设防营地中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的家人不断迁移，跟随他从一个基地到另一个基地。",
+      "text_markdown": "他的家人不断迁移，跟随他从一个基地到另一个基地。",
+      "tts": {
+        "text": "他的家人不断迁移，跟随他从一个基地到另一个基地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的儿子比什尔正被培养来继续战斗。",
+      "text_markdown": "他的儿子比什尔正被培养来继续战斗。",
+      "tts": {
+        "text": "他的儿子比什尔正被培养来继续战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马从小就带比什尔参加袭击。",
+      "text_markdown": "拉赫马从小就带比什尔参加袭击。",
+      "tts": {
+        "text": "拉赫马从小就带比什尔参加袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他想让这个男孩学习大海、战斗，以及对哈利法家族的仇恨。",
+      "text_markdown": "他想让这个男孩学习大海、战斗，以及对哈利法家族的仇恨。",
+      "tts": {
+        "text": "他想让这个男孩学习大海、战斗，以及对哈利法家族的仇恨。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马与哈利法家族之间的冲突继续升级。",
+      "text_markdown": "拉赫马与哈利法家族之间的冲突继续升级。",
+      "tts": {
+        "text": "拉赫马与哈利法家族之间的冲突继续升级。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "双方都建造了更大的舰队，寻求更强大的盟友。",
+      "text_markdown": "双方都建造了更大的舰队，寻求更强大的盟友。",
+      "tts": {
+        "text": "双方都建造了更大的舰队，寻求更强大的盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "波斯湾日益军事化。",
+      "text_markdown": "波斯湾日益军事化。",
+      "tts": {
+        "text": "波斯湾日益军事化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1809年，英国人对波斯湾的海盗发动了一次大规模海上远征。",
+      "text_markdown": "1809年，英国人对波斯湾的海盗发动了一次大规模海上远征。",
+      "tts": {
+        "text": "一千八百零九年，英国人对波斯湾的海盗发动了一次大规模海上远征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的主要目标是以拉斯海马为基地的卡西米舰队。",
+      "text_markdown": "他们的主要目标是以拉斯海马为基地的卡西米舰队。",
+      "tts": {
+        "text": "他们的主要目标是以拉斯海马为基地的卡西米舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "卡西米是另一个强大的海盗联盟，与拉赫马分开。",
+      "text_markdown": "卡西米是另一个强大的海盗联盟，与拉赫马分开。",
+      "tts": {
+        "text": "卡西米是另一个强大的海盗联盟，与拉赫马分开。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国对拉斯海马的轰炸摧毁了卡西米舰队的大部分。",
+      "text_markdown": "英国对拉斯海马的轰炸摧毁了卡西米舰队的大部分。",
+      "tts": {
+        "text": "英国对拉斯海马的轰炸摧毁了卡西米舰队的大部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但这并没有结束波斯湾的海盗活动。",
+      "text_markdown": "但这并没有结束波斯湾的海盗活动。",
+      "tts": {
+        "text": "但这并没有结束波斯湾的海盗活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔几乎没有停顿地继续他的行动。",
+      "text_markdown": "拉赫马·本·贾比尔几乎没有停顿地继续他的行动。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔几乎没有停顿地继续他的行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人发现很难给拉赫马归类。",
+      "text_markdown": "英国人发现很难给拉赫马归类。",
+      "tts": {
+        "text": "英国人发现很难给拉赫马归类。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他显然是一个海盗，但从未直接攻击过英国船只。",
+      "text_markdown": "他显然是一个海盗，但从未直接攻击过英国船只。",
+      "tts": {
+        "text": "他显然是一个海盗，但从未直接攻击过英国船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的战争完全集中在哈利法家族及其盟友身上。",
+      "text_markdown": "他的战争完全集中在哈利法家族及其盟友身上。",
+      "tts": {
+        "text": "他的战争完全集中在哈利法家族及其盟友身上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在英国人眼中，这使他成为一个麻烦而非直接威胁。",
+      "text_markdown": "在英国人眼中，这使他成为一个麻烦而非直接威胁。",
+      "tts": {
+        "text": "在英国人眼中，这使他成为一个麻烦而非直接威胁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马利用这种模糊性为自己谋利。",
+      "text_markdown": "拉赫马利用这种模糊性为自己谋利。",
+      "tts": {
+        "text": "拉赫马利用这种模糊性为自己谋利。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他与英国人保持着谨慎的关系。",
+      "text_markdown": "他与英国人保持着谨慎的关系。",
+      "tts": {
+        "text": "他与英国人保持着谨慎的关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他从未挑衅他们采取行动对付他。",
+      "text_markdown": "他从未挑衅他们采取行动对付他。",
+      "tts": {
+        "text": "他从未挑衅他们采取行动对付他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他甚至向他们提供关于其他海盗集团的情报。",
+      "text_markdown": "他甚至向他们提供关于其他海盗集团的情报。",
+      "tts": {
+        "text": "他甚至向他们提供关于其他海盗集团的情报。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1820年，英国人对波斯湾部落强加了《总和平条约》。",
+      "text_markdown": "1820年，英国人对波斯湾部落强加了《总和平条约》。",
+      "tts": {
+        "text": "一千八百二十年，英国人对波斯湾部落强加了《总和平条约》。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "该条约旨在终结海盗活动并为贸易创造稳定。",
+      "text_markdown": "该条约旨在终结海盗活动并为贸易创造稳定。",
+      "tts": {
+        "text": "该条约旨在终结海盗活动并为贸易创造稳定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数沿海统治者在压力下签了字。",
+      "text_markdown": "大多数沿海统治者在压力下签了字。",
+      "tts": {
+        "text": "大多数沿海统治者在压力下签了字。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马拒绝签署。",
+      "text_markdown": "拉赫马拒绝签署。",
+      "tts": {
+        "text": "拉赫马拒绝签署。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他不会接受任何承认哈利法家族对巴林控制权的协议。",
+      "text_markdown": "他不会接受任何承认哈利法家族对巴林控制权的协议。",
+      "tts": {
+        "text": "他不会接受任何承认哈利法家族对巴林控制权的协议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国人注意到了他的拒绝，但没有立即对他采取行动。",
+      "text_markdown": "英国人注意到了他的拒绝，但没有立即对他采取行动。",
+      "tts": {
+        "text": "英国人注意到了他的拒绝，但没有立即对他采取行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他现在已经六十多岁了。",
+      "text_markdown": "他现在已经六十多岁了。",
+      "tts": {
+        "text": "他现在已经六十多岁了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的身体在衰弱，但意志没有。",
+      "text_markdown": "他的身体在衰弱，但意志没有。",
+      "tts": {
+        "text": "他的身体在衰弱，但意志没有。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他继续航行和战斗，被时间无法消减的仇恨所驱使。",
+      "text_markdown": "他继续航行和战斗，被时间无法消减的仇恨所驱使。",
+      "tts": {
+        "text": "他继续航行和战斗，被时间无法消减的仇恨所驱使。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终局",
+      "text_markdown": "终局"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到1826年，拉赫马·本·贾比尔知道他的时间不多了。",
+      "text_markdown": "到1826年，拉赫马·本·贾比尔知道他的时间不多了。",
+      "tts": {
+        "text": "到一千八百二十六年，拉赫马·本·贾比尔知道他的时间不多了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他年老、一只眼失明，且越来越孤立。",
+      "text_markdown": "他年老、一只眼失明，且越来越孤立。",
+      "tts": {
+        "text": "他年老、一只眼失明，且越来越孤立。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的瓦哈比盟友几年前就被埃及军队击败了。",
+      "text_markdown": "他的瓦哈比盟友几年前就被埃及军队击败了。",
+      "tts": {
+        "text": "他的瓦哈比盟友几年前就被埃及军队击败了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的舰队比鼎盛时期要小。",
+      "text_markdown": "他的舰队比鼎盛时期要小。",
+      "tts": {
+        "text": "他的舰队比鼎盛时期要小。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但他拒绝停止战斗。",
+      "text_markdown": "但他拒绝停止战斗。",
+      "tts": {
+        "text": "但他拒绝停止战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "投降是不可想象的。",
+      "text_markdown": "投降是不可想象的。",
+      "tts": {
+        "text": "投降是不可想象的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "哈利法家族仍然控制着巴林。",
+      "text_markdown": "哈利法家族仍然控制着巴林。",
+      "tts": {
+        "text": "哈利法家族仍然控制着巴林。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "不公没有被纠正。",
+      "text_markdown": "不公没有被纠正。",
+      "tts": {
+        "text": "不公没有被纠正。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "对拉赫马来说，这是唯一重要的事实。",
+      "text_markdown": "对拉赫马来说，这是唯一重要的事实。",
+      "tts": {
+        "text": "对拉赫马来说，这是唯一重要的事实。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "哈利法家族和他们的盟友集结了一支庞大的舰队，要彻底消灭拉赫马。",
+      "text_markdown": "哈利法家族和他们的盟友集结了一支庞大的舰队，要彻底消灭拉赫马。",
+      "tts": {
+        "text": "哈利法家族和他们的盟友集结了一支庞大的舰队，要彻底消灭拉赫马。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们得到了来自巴林和阿曼支持的军队的援助。",
+      "text_markdown": "他们得到了来自巴林和阿曼支持的军队的援助。",
+      "tts": {
+        "text": "他们得到了来自巴林和阿曼支持的军队的援助。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "联合舰队远远大于拉赫马能集结的任何力量。",
+      "text_markdown": "联合舰队远远大于拉赫马能集结的任何力量。",
+      "tts": {
+        "text": "联合舰队远远大于拉赫马能集结的任何力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最后一战在卡塔尔和巴林之间的水域进行。",
+      "text_markdown": "最后一战在卡塔尔和巴林之间的水域进行。",
+      "tts": {
+        "text": "最后一战在卡塔尔和巴林之间的水域进行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马率领一小队三角帆船出海迎敌。",
+      "text_markdown": "拉赫马率领一小队三角帆船出海迎敌。",
+      "tts": {
+        "text": "拉赫马率领一小队三角帆船出海迎敌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他知道自己寡不敌众。",
+      "text_markdown": "他知道自己寡不敌众。",
+      "tts": {
+        "text": "他知道自己寡不敌众。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他不在乎。",
+      "text_markdown": "他不在乎。",
+      "tts": {
+        "text": "他不在乎。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他年幼的儿子比什尔在旗舰上陪伴着他。",
+      "text_markdown": "他年幼的儿子比什尔在旗舰上陪伴着他。",
+      "tts": {
+        "text": "他年幼的儿子比什尔在旗舰上陪伴着他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马每次重大战役都带着这个男孩。",
+      "text_markdown": "拉赫马每次重大战役都带着这个男孩。",
+      "tts": {
+        "text": "拉赫马每次重大战役都带着这个男孩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这次也不会有什么不同。",
+      "text_markdown": "这次也不会有什么不同。",
+      "tts": {
+        "text": "这次也不会有什么不同。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战斗在清晨开始。",
+      "text_markdown": "战斗在清晨开始。",
+      "tts": {
+        "text": "战斗在清晨开始。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "两支舰队在波斯湾平坦明亮的水面上相互逼近。",
+      "text_markdown": "两支舰队在波斯湾平坦明亮的水面上相互逼近。",
+      "tts": {
+        "text": "两支舰队在波斯湾平坦明亮的水面上相互逼近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "空气中充满了火枪声和船体碰撞声。",
+      "text_markdown": "空气中充满了火枪声和船体碰撞声。",
+      "tts": {
+        "text": "空气中充满了火枪声和船体碰撞声。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马的船只以绝望的勇气战斗。",
+      "text_markdown": "拉赫马的船只以绝望的勇气战斗。",
+      "tts": {
+        "text": "拉赫马的船只以绝望的勇气战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在武器和人数上都处于劣势，但他们没有逃跑。",
+      "text_markdown": "他们在武器和人数上都处于劣势，但他们没有逃跑。",
+      "tts": {
+        "text": "他们在武器和人数上都处于劣势，但他们没有逃跑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的船长不会允许这样做，他们也不会以此请求来羞辱他。",
+      "text_markdown": "他们的船长不会允许这样做，他们也不会以此请求来羞辱他。",
+      "tts": {
+        "text": "他们的船长不会允许这样做，他们也不会以此请求来羞辱他。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马的船只一艘接一艘地被击毁或俘获。",
+      "text_markdown": "拉赫马的船只一艘接一艘地被击毁或俘获。",
+      "tts": {
+        "text": "拉赫马的船只一艘接一艘地被击毁或俘获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "敌方舰队合围了他的旗舰。",
+      "text_markdown": "敌方舰队合围了他的旗舰。",
+      "tts": {
+        "text": "敌方舰队合围了他的旗舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "登船部队准备强攻他的船只。",
+      "text_markdown": "登船部队准备强攻他的船只。",
+      "tts": {
+        "text": "登船部队准备强攻他的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "末日即将来临。",
+      "text_markdown": "末日即将来临。",
+      "tts": {
+        "text": "末日即将来临。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "接下来发生的事已成为波斯湾历史上最著名的故事之一。",
+      "text_markdown": "接下来发生的事已成为波斯湾历史上最著名的故事之一。",
+      "tts": {
+        "text": "接下来发生的事已成为波斯湾历史上最著名的故事之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔看到失败已成定局，做出了他最后的决定。",
+      "text_markdown": "拉赫马·本·贾比尔看到失败已成定局，做出了他最后的决定。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔看到失败已成定局，做出了他最后的决定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他把儿子抱在怀中。",
+      "text_markdown": "他把儿子抱在怀中。",
+      "tts": {
+        "text": "他把儿子抱在怀中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他走到甲板下方的火药库，那里存放着船上的火药。",
+      "text_markdown": "他走到甲板下方的火药库，那里存放着船上的火药。",
+      "tts": {
+        "text": "他走到甲板下方的火药库，那里存放着船上的火药。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他手持一支燃烧的火把。",
+      "text_markdown": "他手持一支燃烧的火把。",
+      "tts": {
+        "text": "他手持一支燃烧的火把。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些记载说他停下来祈祷了一下。",
+      "text_markdown": "有些记载说他停下来祈祷了一下。",
+      "tts": {
+        "text": "有些记载说他停下来祈祷了一下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "另一些则说他一言不发地走了进去。",
+      "text_markdown": "另一些则说他一言不发地走了进去。",
+      "tts": {
+        "text": "另一些则说他一言不发地走了进去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "细节各有不同，但结果没有。",
+      "text_markdown": "细节各有不同，但结果没有。",
+      "tts": {
+        "text": "细节各有不同，但结果没有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔将火把触及火药。",
+      "text_markdown": "拉赫马·本·贾比尔将火把触及火药。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔将火把触及火药。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆炸瞬间摧毁了他的船。",
+      "text_markdown": "爆炸瞬间摧毁了他的船。",
+      "tts": {
+        "text": "爆炸瞬间摧毁了他的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "爆炸杀死了拉赫马、他的儿子比什尔以及登上船的敌方水手。",
+      "text_markdown": "爆炸杀死了拉赫马、他的儿子比什尔以及登上船的敌方水手。",
+      "tts": {
+        "text": "爆炸杀死了拉赫马、他的儿子比什尔以及登上船的敌方水手。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冲击波震动了附近的每一艘船。",
+      "text_markdown": "冲击波震动了附近的每一艘船。",
+      "tts": {
+        "text": "冲击波震动了附近的每一艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一柱烟火从水中升起。",
+      "text_markdown": "一柱烟火从水中升起。",
+      "tts": {
+        "text": "一柱烟火从水中升起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "旗舰曾经所在的地方，只剩下燃烧的残骸。",
+      "text_markdown": "旗舰曾经所在的地方，只剩下燃烧的残骸。",
+      "tts": {
+        "text": "旗舰曾经所在的地方，只剩下燃烧的残骸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔选择了死亡而非投降。",
+      "text_markdown": "拉赫马·本·贾比尔选择了死亡而非投降。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔选择了死亡而非投降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他选择带着敌人一起赴死，而不是让他们享有俘获他的满足感。",
+      "text_markdown": "他选择带着敌人一起赴死，而不是让他们享有俘获他的满足感。",
+      "tts": {
+        "text": "他选择带着敌人一起赴死，而不是让他们享有俘获他的满足感。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他选择以自己的方式结束他的战争。",
+      "text_markdown": "他选择以自己的方式结束他的战争。",
+      "tts": {
+        "text": "他选择以自己的方式结束他的战争。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他儿子比什尔的死亡是这个故事中最黑暗的部分。",
+      "text_markdown": "他儿子比什尔的死亡是这个故事中最黑暗的部分。",
+      "tts": {
+        "text": "他儿子比什尔的死亡是这个故事中最黑暗的部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马带着一个孩子进入了火药库。",
+      "text_markdown": "拉赫马带着一个孩子进入了火药库。",
+      "tts": {
+        "text": "拉赫马带着一个孩子进入了火药库。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他决定他的儿子不会作为哈利法家族的俘虏而活着。",
+      "text_markdown": "他决定他的儿子不会作为哈利法家族的俘虏而活着。",
+      "tts": {
+        "text": "他决定他的儿子不会作为哈利法家族的俘虏而活着。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一个让现代人感到震惊的行为。",
+      "text_markdown": "这是一个让现代人感到震惊的行为。",
+      "tts": {
+        "text": "这是一个让现代人感到震惊的行为。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在拉赫马的世界里，被俘意味着奴役或死亡。",
+      "text_markdown": "在拉赫马的世界里，被俘意味着奴役或死亡。",
+      "tts": {
+        "text": "在拉赫马的世界里，被俘意味着奴役或死亡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他可能将火药库视为一种仁慈。",
+      "text_markdown": "他可能将火药库视为一种仁慈。",
+      "tts": {
+        "text": "他可能将火药库视为一种仁慈。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔壮烈的死亡确保了他永远不会被遗忘。",
+      "text_markdown": "拉赫马·本·贾比尔壮烈的死亡确保了他永远不会被遗忘。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔壮烈的死亡确保了他永远不会被遗忘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆炸被双方数百名水手目睹。",
+      "text_markdown": "爆炸被双方数百名水手目睹。",
+      "tts": {
+        "text": "爆炸被双方数百名水手目睹。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个故事几天之内就传遍了整个波斯湾。",
+      "text_markdown": "这个故事几天之内就传遍了整个波斯湾。",
+      "tts": {
+        "text": "这个故事几天之内就传遍了整个波斯湾。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在阿拉伯部落中，他成为了传奇。",
+      "text_markdown": "在阿拉伯部落中，他成为了传奇。",
+      "tts": {
+        "text": "在阿拉伯部落中，他成为了传奇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被视为反抗精神的最高典范。",
+      "text_markdown": "他被视为反抗精神的最高典范。",
+      "tts": {
+        "text": "他被视为反抗精神的最高典范。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他为自己的权利战斗到了最后一刻，宁死不屈。",
+      "text_markdown": "他为自己的权利战斗到了最后一刻，宁死不屈。",
+      "tts": {
+        "text": "他为自己的权利战斗到了最后一刻，宁死不屈。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人在官方文件中记录了他的死亡。",
+      "text_markdown": "英国人在官方文件中记录了他的死亡。",
+      "tts": {
+        "text": "英国人在官方文件中记录了他的死亡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们以既释然又尊敬的心情记下了波斯湾最顽强海盗的离去。",
+      "text_markdown": "他们以既释然又尊敬的心情记下了波斯湾最顽强海盗的离去。",
+      "tts": {
+        "text": "他们以既释然又尊敬的心情记下了波斯湾最顽强海盗的离去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他一直是他们控制波斯湾计划的一个持续性问题。",
+      "text_markdown": "他一直是他们控制波斯湾计划的一个持续性问题。",
+      "tts": {
+        "text": "他一直是他们控制波斯湾计划的一个持续性问题。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "哈利法家族将他的死亡作为胜利来庆祝。",
+      "text_markdown": "哈利法家族将他的死亡作为胜利来庆祝。",
+      "tts": {
+        "text": "哈利法家族将他的死亡作为胜利来庆祝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们最危险的敌人已经消失了。",
+      "text_markdown": "他们最危险的敌人已经消失了。",
+      "tts": {
+        "text": "他们最危险的敌人已经消失了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴林现在比几十年来都更加安全。",
+      "text_markdown": "巴林现在比几十年来都更加安全。",
+      "tts": {
+        "text": "巴林现在比几十年来都更加安全。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p94",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "贾拉希马的威胁随着他们最伟大的冠军一起消亡了。",
+      "text_markdown": "贾拉希马的威胁随着他们最伟大的冠军一起消亡了。",
+      "tts": {
+        "text": "贾拉希马的威胁随着他们最伟大的冠军一起消亡了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贾拉希马部落再也没有恢复过去的力量。",
+      "text_markdown": "贾拉希马部落再也没有恢复过去的力量。",
+      "tts": {
+        "text": "贾拉希马部落再也没有恢复过去的力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有拉赫马凶猛的领导，他们逐渐作为一支政治力量消失了。",
+      "text_markdown": "没有拉赫马凶猛的领导，他们逐渐作为一支政治力量消失了。",
+      "tts": {
+        "text": "没有拉赫马凶猛的领导，他们逐渐作为一支政治力量消失了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人融入了其他部落。",
+      "text_markdown": "一些人融入了其他部落。",
+      "tts": {
+        "text": "一些人融入了其他部落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p95",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其他人在海岸沿线过上了平静的生活。",
+      "text_markdown": "其他人在海岸沿线过上了平静的生活。",
+      "tts": {
+        "text": "其他人在海岸沿线过上了平静的生活。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉赫马去世后，波斯湾在数十年内继续是一条有争议的水道。",
+      "text_markdown": "拉赫马去世后，波斯湾在数十年内继续是一条有争议的水道。",
+      "tts": {
+        "text": "拉赫马去世后，波斯湾在数十年内继续是一条有争议的水道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国人最终在1853年施加了持久的休战，给该地区取了殖民名称：休战诸国。",
+      "text_markdown": "英国人最终在1853年施加了持久的休战，给该地区取了殖民名称：休战诸国。",
+      "tts": {
+        "text": "英国人最终在一千八百五十三年施加了持久的休战，给该地区取了殖民名称：休战诸国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那些国家就是今天的阿拉伯联合酋长国。",
+      "text_markdown": "那些国家就是今天的阿拉伯联合酋长国。",
+      "tts": {
+        "text": "那些国家就是今天的阿拉伯联合酋长国。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴林仍在哈利法家族的统治之下。",
+      "text_markdown": "巴林仍在哈利法家族的统治之下。",
+      "tts": {
+        "text": "巴林仍在哈利法家族的统治之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马用一生与之战斗的那个家族至今仍统治着这个岛国。",
+      "text_markdown": "拉赫马用一生与之战斗的那个家族至今仍统治着这个岛国。",
+      "tts": {
+        "text": "拉赫马用一生与之战斗的那个家族至今仍统治着这个岛国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的战争，最终没有改变政治版图上的任何东西。",
+      "text_markdown": "他的战争，最终没有改变政治版图上的任何东西。",
+      "tts": {
+        "text": "他的战争，最终没有改变政治版图上的任何东西。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但拉赫马·本·贾比尔的故事作为部落荣誉如何能将一个人推向超越理性之境的有力例证而长存。",
+      "text_markdown": "但拉赫马·本·贾比尔的故事作为部落荣誉如何能将一个人推向超越理性之境的有力例证而长存。",
+      "tts": {
+        "text": "但拉赫马·本·贾比尔的故事作为部落荣誉如何能将一个人推向超越理性之境的有力例证而长存。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他才华横溢且勇敢，但他也被仇恨所吞噬。",
+      "text_markdown": "他才华横溢且勇敢，但他也被仇恨所吞噬。",
+      "tts": {
+        "text": "他才华横溢且勇敢，但他也被仇恨所吞噬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的战争摧毁了他的部落，杀死了他的儿子，没有取得任何持久的成就。",
+      "text_markdown": "他的战争摧毁了他的部落，杀死了他的儿子，没有取得任何持久的成就。",
+      "tts": {
+        "text": "他的战争摧毁了他的部落，杀死了他的儿子，没有取得任何持久的成就。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他最后的行为仍然是他遗产中最具争议的部分。",
+      "text_markdown": "他最后的行为仍然是他遗产中最具争议的部分。",
+      "tts": {
+        "text": "他最后的行为仍然是他遗产中最具争议的部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是勇气还是疯狂？",
+      "text_markdown": "这是勇气还是疯狂？",
+      "tts": {
+        "text": "这是勇气还是疯狂？",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是反抗的最高表达，还是一个杀害自己孩子的自私行为？",
+      "text_markdown": "这是反抗的最高表达，还是一个杀害自己孩子的自私行为？",
+      "tts": {
+        "text": "这是反抗的最高表达，还是一个杀害自己孩子的自私行为？",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些问题没有简单的答案。",
+      "text_markdown": "这些问题没有简单的答案。",
+      "tts": {
+        "text": "这些问题没有简单的答案。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉赫马·本·贾比尔生活在一个与我们价值观不同的世界里。",
+      "text_markdown": "拉赫马·本·贾比尔生活在一个与我们价值观不同的世界里。",
+      "tts": {
+        "text": "拉赫马·本·贾比尔生活在一个与我们价值观不同的世界里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "被俘意味着屈辱、奴役或更糟。",
+      "text_markdown": "被俘意味着屈辱、奴役或更糟。",
+      "tts": {
+        "text": "被俘意味着屈辱、奴役或更糟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p100",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在他的世界里，爆炸可能看起来是唯一体面的选择。",
+      "text_markdown": "在他的世界里，爆炸可能看起来是唯一体面的选择。",
+      "tts": {
+        "text": "在他的世界里，爆炸可能看起来是唯一体面的选择。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他仍然是波斯湾历史上最杰出的人物之一。",
+      "text_markdown": "他仍然是波斯湾历史上最杰出的人物之一。",
+      "tts": {
+        "text": "他仍然是波斯湾历史上最杰出的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个独眼海盗，让整个地区恐惧了四十多年。",
+      "text_markdown": "一个独眼海盗，让整个地区恐惧了四十多年。",
+      "tts": {
+        "text": "一个独眼海盗，让整个地区恐惧了四十多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个选择烈火而非投降的人。",
+      "text_markdown": "一个选择烈火而非投降的人。",
+      "tts": {
+        "text": "一个选择烈火而非投降的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p101",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "波斯湾从此再没有见过像他一样的人。",
+      "text_markdown": "波斯湾从此再没有见过像他一样的人。",
+      "tts": {
+        "text": "波斯湾从此再没有见过像他一样的人。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

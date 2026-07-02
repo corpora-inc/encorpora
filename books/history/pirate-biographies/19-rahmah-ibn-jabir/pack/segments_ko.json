@@ -1,0 +1,4622 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_rahmah_ibn_jabir",
+  "language": "ko",
+  "total_segments": 309,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게",
+      "text_markdown": "독자에게"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 평생을 전쟁으로 보낸 한 남자의 이야기이다.",
+      "text_markdown": "이것은 평생을 전쟁으로 보낸 한 남자의 이야기이다.",
+      "tts": {
+        "text": "이것은 평생을 전쟁으로 보낸 한 남자의 이야기이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르 알잘라히마는 해적이자 전사이며, 사십 년 이상 지속된 하나의 원한에 소진된 남자였다.",
+      "text_markdown": "라흐마 이븐 자비르 알잘라히마는 해적이자 전사이며, 사십 년 이상 지속된 하나의 원한에 소진된 남자였다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르 알잘라히마는 해적이자 전사이며, 사십 년 이상 지속된 하나의 원한에 소진된 남자였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 페르시아만의 바다에서 싸웠다. 그 수역이 지구상에서 가장 치열하게 다투는 곳 중 하나였던 시대에.",
+      "text_markdown": "그는 페르시아만의 바다에서 싸웠다. 그 수역이 지구상에서 가장 치열하게 다투는 곳 중 하나였던 시대에.",
+      "tts": {
+        "text": "그는 페르시아만의 바다에서 싸웠다. 그 수역이 지구상에서 가장 치열하게 다투는 곳 중 하나였던 시대에.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "진주, 무역, 그리고 부족의 자존심이 사람들을 이 얕고 청록색 바다에서 죽이고 죽게 만들었다.",
+      "text_markdown": "진주, 무역, 그리고 부족의 자존심이 사람들을 이 얕고 청록색 바다에서 죽이고 죽게 만들었다.",
+      "tts": {
+        "text": "진주, 무역, 그리고 부족의 자존심이 사람들을 이 얕고 청록색 바다에서 죽이고 죽게 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국인들은 이 지역을 해적 해안이라 불렀다.",
+      "text_markdown": "영국인들은 이 지역을 해적 해안이라 불렀다.",
+      "tts": {
+        "text": "영국인들은 이 지역을 해적 해안이라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 비난의 의미였다.",
+      "text_markdown": "그것은 비난의 의미였다.",
+      "tts": {
+        "text": "그것은 비난의 의미였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그곳에 사는 사람들은 다르게 보았다.",
+      "text_markdown": "그곳에 사는 사람들은 다르게 보았다.",
+      "tts": {
+        "text": "그곳에 사는 사람들은 다르게 보았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그들에게 바다는 전장이었고, 물의 지배는 생존을 의미했다.",
+      "text_markdown": "그들에게 바다는 전장이었고, 물의 지배는 생존을 의미했다.",
+      "tts": {
+        "text": "그들에게 바다는 전장이었고, 물의 지배는 생존을 의미했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르는 누구보다 이것을 잘 이해했다.",
+      "text_markdown": "라흐마 이븐 자비르는 누구보다 이것을 잘 이해했다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르는 누구보다 이것을 잘 이해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 싸울 것이 아무것도 남지 않을 때까지 싸웠다.",
+      "text_markdown": "그는 싸울 것이 아무것도 남지 않을 때까지 싸웠다.",
+      "tts": {
+        "text": "그는 싸울 것이 아무것도 남지 않을 때까지 싸웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 죽음은, 그것이 왔을 때, 만 해적 역사상 가장 극적인 퇴장이었다.",
+      "text_markdown": "그의 죽음은, 그것이 왔을 때, 만 해적 역사상 가장 극적인 퇴장이었다.",
+      "tts": {
+        "text": "그의 죽음은, 그것이 왔을 때, 만 해적 역사상 가장 극적인 퇴장이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 자신의 조건으로, 불과 천둥 속에서, 적들을 함께 데리고 죽기를 택했다.",
+      "text_markdown": "그는 자신의 조건으로, 불과 천둥 속에서, 적들을 함께 데리고 죽기를 택했다.",
+      "tts": {
+        "text": "그는 자신의 조건으로, 불과 천둥 속에서, 적들을 함께 데리고 죽기를 택했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "페르시아만의 세계",
+      "text_markdown": "페르시아만의 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아만은 아라비아 반도와 이란 해안 사이에 약 600마일에 걸쳐 펼쳐진 얕은 수역이다.",
+      "text_markdown": "페르시아만은 아라비아 반도와 이란 해안 사이에 약 600마일에 걸쳐 펼쳐진 얕은 수역이다.",
+      "tts": {
+        "text": "페르시아만은 아라비아 반도와 이란 해안 사이에 약 육백 마일에 걸쳐 펼쳐진 얕은 수역이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 깊이가 200피트를 넘는 경우는 드물다.",
+      "text_markdown": "그 깊이가 200피트를 넘는 경우는 드물다.",
+      "tts": {
+        "text": "그 깊이가 이백 피트를 넘는 경우는 드물다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 곳에서 배는 맑은 물을 통해 모래 바닥을 볼 수 있다.",
+      "text_markdown": "많은 곳에서 배는 맑은 물을 통해 모래 바닥을 볼 수 있다.",
+      "tts": {
+        "text": "많은 곳에서 배는 맑은 물을 통해 모래 바닥을 볼 수 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 겸손한 크기에도 불구하고, 만은 수천 년 동안 무역의 교차로였다.",
+      "text_markdown": "그 겸손한 크기에도 불구하고, 만은 수천 년 동안 무역의 교차로였다.",
+      "tts": {
+        "text": "그 겸손한 크기에도 불구하고, 만은 수천 년 동안 무역의 교차로였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "고대부터 이 수역을 통해 메소포타미아, 인도, 아프리카 사이에 상품을 실어 나르는 배들이 있었다.",
+      "text_markdown": "고대부터 이 수역을 통해 메소포타미아, 인도, 아프리카 사이에 상품을 실어 나르는 배들이 있었다.",
+      "tts": {
+        "text": "고대부터 이 수역을 통해 메소포타미아, 인도, 아프리카 사이에 상품을 실어 나르는 배들이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "만은 인도양을 지구상에서 가장 오래된 문명들과 연결한다.",
+      "text_markdown": "만은 인도양을 지구상에서 가장 오래된 문명들과 연결한다.",
+      "tts": {
+        "text": "만은 인도양을 지구상에서 가장 오래된 문명들과 연결한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십팔 세기에 만에서 가장 가치 있는 자원은 석유가 아니었다.",
+      "text_markdown": "십팔 세기에 만에서 가장 가치 있는 자원은 석유가 아니었다.",
+      "tts": {
+        "text": "십팔 세기에 만에서 가장 가치 있는 자원은 석유가 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "석유는 또 한 세기가 지나야 발견될 것이었다.",
+      "text_markdown": "석유는 또 한 세기가 지나야 발견될 것이었다.",
+      "tts": {
+        "text": "석유는 또 한 세기가 지나야 발견될 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "만의 보물은 진주였다.",
+      "text_markdown": "만의 보물은 진주였다.",
+      "tts": {
+        "text": "만의 보물은 진주였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "만의 진주 밭은 세계에서 가장 풍요로운 곳 중 하나였다.",
+      "text_markdown": "만의 진주 밭은 세계에서 가장 풍요로운 곳 중 하나였다.",
+      "tts": {
+        "text": "만의 진주 밭은 세계에서 가장 풍요로운 곳 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잠수부들은 코집게와 돌 추만으로 해저에 뛰어들어 몇 분씩 숨을 참았다.",
+      "text_markdown": "잠수부들은 코집게와 돌 추만으로 해저에 뛰어들어 몇 분씩 숨을 참았다.",
+      "tts": {
+        "text": "잠수부들은 코집게와 돌 추만으로 해저에 뛰어들어 몇 분씩 숨을 참았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들이 건져 올린 진주는 아시아와 유럽 전역에서 귀하게 여겨졌다.",
+      "text_markdown": "그들이 건져 올린 진주는 아시아와 유럽 전역에서 귀하게 여겨졌다.",
+      "tts": {
+        "text": "그들이 건져 올린 진주는 아시아와 유럽 전역에서 귀하게 여겨졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "진주 밭의 지배는 부와 권력을 의미했다.",
+      "text_markdown": "진주 밭의 지배는 부와 권력을 의미했다.",
+      "tts": {
+        "text": "진주 밭의 지배는 부와 권력을 의미했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아라비아 해안의 부족들은 최고의 잠수터 접근을 놓고 끊임없이 싸웠다.",
+      "text_markdown": "아라비아 해안의 부족들은 최고의 잠수터 접근을 놓고 끊임없이 싸웠다.",
+      "tts": {
+        "text": "아라비아 해안의 부족들은 최고의 잠수터 접근을 놓고 끊임없이 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "풍요로운 진주 밭을 지배하는 부족은 이웃을 지배할 수 있었다.",
+      "text_markdown": "풍요로운 진주 밭을 지배하는 부족은 이웃을 지배할 수 있었다.",
+      "tts": {
+        "text": "풍요로운 진주 밭을 지배하는 부족은 이웃을 지배할 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "만의 아라비아 쪽은 수십 개의 아랍 부족의 고향이었다.",
+      "text_markdown": "만의 아라비아 쪽은 수십 개의 아랍 부족의 고향이었다.",
+      "tts": {
+        "text": "만의 아라비아 쪽은 수십 개의 아랍 부족의 고향이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 부족들은 시간이 지남에 따라 변화하는 느슨한 연합으로 조직되어 있었다.",
+      "text_markdown": "이 부족들은 시간이 지남에 따라 변화하는 느슨한 연합으로 조직되어 있었다.",
+      "tts": {
+        "text": "이 부족들은 시간이 지남에 따라 변화하는 느슨한 연합으로 조직되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동맹은 상황이 변함에 따라 형성되고 해체되었다.",
+      "text_markdown": "동맹은 상황이 변함에 따라 형성되고 해체되었다.",
+      "tts": {
+        "text": "동맹은 상황이 변함에 따라 형성되고 해체되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 중요한 연합 중 하나는 알우투브 연맹이었다.",
+      "text_markdown": "가장 중요한 연합 중 하나는 알우투브 연맹이었다.",
+      "tts": {
+        "text": "가장 중요한 연합 중 하나는 알우투브 연맹이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알우투브 연맹은 원래 아라비아 반도 중앙 사막인 나즈드 출신이었다.",
+      "text_markdown": "알우투브 연맹은 원래 아라비아 반도 중앙 사막인 나즈드 출신이었다.",
+      "tts": {
+        "text": "알우투브 연맹은 원래 아라비아 반도 중앙 사막인 나즈드 출신이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "더 나은 기회를 찾아 해안으로 이주했었다.",
+      "text_markdown": "더 나은 기회를 찾아 해안으로 이주했었다.",
+      "tts": {
+        "text": "더 나은 기회를 찾아 해안으로 이주했었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알우투브 연맹은 결국 몇몇 강력한 가문으로 분열되었다.",
+      "text_markdown": "알우투브 연맹은 결국 몇몇 강력한 가문으로 분열되었다.",
+      "tts": {
+        "text": "알우투브 연맹은 결국 몇몇 강력한 가문으로 분열되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알할리파 가문이 바레인의 지배권을 장악했다.",
+      "text_markdown": "알할리파 가문이 바레인의 지배권을 장악했다.",
+      "tts": {
+        "text": "알할리파 가문이 바레인의 지배권을 장악했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알사바 가문이 쿠웨이트에 자리 잡았다.",
+      "text_markdown": "알사바 가문이 쿠웨이트에 자리 잡았다.",
+      "tts": {
+        "text": "알사바 가문이 쿠웨이트에 자리 잡았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잘라히마 부족, 라흐마의 백성은 오늘날의 카타르 해안을 따라 정착했다.",
+      "text_markdown": "잘라히마 부족, 라흐마의 백성은 오늘날의 카타르 해안을 따라 정착했다.",
+      "tts": {
+        "text": "잘라히마 부족, 라흐마의 백성은 오늘날의 카타르 해안을 따라 정착했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바레인은 만에서 가장 큰 상이었다.",
+      "text_markdown": "바레인은 만에서 가장 큰 상이었다.",
+      "tts": {
+        "text": "바레인은 만에서 가장 큰 상이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 진주 밭은 모든 것 중 가장 풍요로웠다.",
+      "text_markdown": "그 진주 밭은 모든 것 중 가장 풍요로웠다.",
+      "tts": {
+        "text": "그 진주 밭은 모든 것 중 가장 풍요로웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바레인을 지배하는 자가 이 지역에서 가장 가치 있는 자원을 지배했다.",
+      "text_markdown": "바레인을 지배하는 자가 이 지역에서 가장 가치 있는 자원을 지배했다.",
+      "tts": {
+        "text": "바레인을 지배하는 자가 이 지역에서 가장 가치 있는 자원을 지배했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알할리파 가문은 1783년에 바레인을 페르시아인에게서 빼앗았다.",
+      "text_markdown": "알할리파 가문은 1783년에 바레인을 페르시아인에게서 빼앗았다.",
+      "tts": {
+        "text": "알할리파 가문은 천칠백팔십삼 년에 바레인을 페르시아인에게서 빼앗았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 정복은 엄청난 결과를 가져올 것이었다.",
+      "text_markdown": "이 정복은 엄청난 결과를 가져올 것이었다.",
+      "tts": {
+        "text": "이 정복은 엄청난 결과를 가져올 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 수십 년의 갈등을 부추길 힘의 불균형을 만들었다.",
+      "text_markdown": "그것은 수십 년의 갈등을 부추길 힘의 불균형을 만들었다.",
+      "tts": {
+        "text": "그것은 수십 년의 갈등을 부추길 힘의 불균형을 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잘라히마는 바레인 부의 몫을 받을 자격이 있다고 믿었다.",
+      "text_markdown": "잘라히마는 바레인 부의 몫을 받을 자격이 있다고 믿었다.",
+      "tts": {
+        "text": "잘라히마는 바레인 부의 몫을 받을 자격이 있다고 믿었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 알우투브 연맹의 일원이었다.",
+      "text_markdown": "그들은 알우투브 연맹의 일원이었다.",
+      "tts": {
+        "text": "그들은 알우투브 연맹의 일원이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알할리파와 함께 싸웠었다.",
+      "text_markdown": "알할리파와 함께 싸웠었다.",
+      "tts": {
+        "text": "알할리파와 함께 싸웠었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 알할리파는 바레인을 독차지했다.",
+      "text_markdown": "하지만 알할리파는 바레인을 독차지했다.",
+      "tts": {
+        "text": "하지만 알할리파는 바레인을 독차지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 배신으로 인식된 사건이 라흐마 이븐 자비르의 평생 전쟁에 불을 붙인 불꽃이었다.",
+      "text_markdown": "이 배신으로 인식된 사건이 라흐마 이븐 자비르의 평생 전쟁에 불을 붙인 불꽃이었다.",
+      "tts": {
+        "text": "이 배신으로 인식된 사건이 라흐마 이븐 자비르의 평생 전쟁에 불을 붙인 불꽃이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 남은 생을 알할리파로부터 자신의 것이라 믿는 것을 되찾으려 보낼 것이었다.",
+      "text_markdown": "그는 남은 생을 알할리파로부터 자신의 것이라 믿는 것을 되찾으려 보낼 것이었다.",
+      "tts": {
+        "text": "그는 남은 생을 알할리파로부터 자신의 것이라 믿는 것을 되찾으려 보낼 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "부족 간 갈등 너머에 더 큰 강대국들이 만 주변을 맴돌고 있었다.",
+      "text_markdown": "부족 간 갈등 너머에 더 큰 강대국들이 만 주변을 맴돌고 있었다.",
+      "tts": {
+        "text": "부족 간 갈등 너머에 더 큰 강대국들이 만 주변을 맴돌고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무스카트에 기반을 둔 오만 제국은 인도양의 주요 해상 강국이었다.",
+      "text_markdown": "무스카트에 기반을 둔 오만 제국은 인도양의 주요 해상 강국이었다.",
+      "tts": {
+        "text": "무스카트에 기반을 둔 오만 제국은 인도양의 주요 해상 강국이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오만인들은 만의 무역과 정치에 자신들만의 이해관계를 가지고 있었다.",
+      "text_markdown": "오만인들은 만의 무역과 정치에 자신들만의 이해관계를 가지고 있었다.",
+      "tts": {
+        "text": "오만인들은 만의 무역과 정치에 자신들만의 이해관계를 가지고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "와하비 운동이 내륙에서 아라비아 전역으로 퍼지고 있었다.",
+      "text_markdown": "와하비 운동이 내륙에서 아라비아 전역으로 퍼지고 있었다.",
+      "tts": {
+        "text": "와하비 운동이 내륙에서 아라비아 전역으로 퍼지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사우디-와하비 동맹은 해안 부족들을 자신들의 종교적, 정치적 권위 아래 두려 했다.",
+      "text_markdown": "사우디-와하비 동맹은 해안 부족들을 자신들의 종교적, 정치적 권위 아래 두려 했다.",
+      "tts": {
+        "text": "사우디-와하비 동맹은 해안 부족들을 자신들의 종교적, 정치적 권위 아래 두려 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 팽창은 이미 불안정한 지역에 또 다른 갈등의 층을 추가했다.",
+      "text_markdown": "그들의 팽창은 이미 불안정한 지역에 또 다른 갈등의 층을 추가했다.",
+      "tts": {
+        "text": "그들의 팽창은 이미 불안정한 지역에 또 다른 갈등의 층을 추가했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그리고 영국인들이 있었다.",
+      "text_markdown": "그리고 영국인들이 있었다.",
+      "tts": {
+        "text": "그리고 영국인들이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 동인도 회사가 인도와 만 사이의 무역을 통제했다.",
+      "text_markdown": "영국 동인도 회사가 인도와 만 사이의 무역을 통제했다.",
+      "tts": {
+        "text": "영국 동인도 회사가 인도와 만 사이의 무역을 통제했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국 전함이 수역을 순찰했고, 영국 정치 요원들이 부족 문제에 간섭했다.",
+      "text_markdown": "영국 전함이 수역을 순찰했고, 영국 정치 요원들이 부족 문제에 간섭했다.",
+      "tts": {
+        "text": "영국 전함이 수역을 순찰했고, 영국 정치 요원들이 부족 문제에 간섭했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국인들은 무엇보다 안정을 원했다.",
+      "text_markdown": "영국인들은 무엇보다 안정을 원했다.",
+      "tts": {
+        "text": "영국인들은 무엇보다 안정을 원했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적 행위가 무역을 방해했고, 방해된 무역은 손실된 이익을 의미했다.",
+      "text_markdown": "해적 행위가 무역을 방해했고, 방해된 무역은 손실된 이익을 의미했다.",
+      "tts": {
+        "text": "해적 행위가 무역을 방해했고, 방해된 무역은 손실된 이익을 의미했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 결국 무력으로 만에 자신들의 의지를 관철시키며, 아랍인들이 휴전이라 부르고 영국인들이 항복이라 부르는 조약을 체결할 것이었다.",
+      "text_markdown": "그들은 결국 무력으로 만에 자신들의 의지를 관철시키며, 아랍인들이 휴전이라 부르고 영국인들이 항복이라 부르는 조약을 체결할 것이었다.",
+      "tts": {
+        "text": "그들은 결국 무력으로 만에 자신들의 의지를 관철시키며, 아랍인들이 휴전이라 부르고 영국인들이 항복이라 부르는 조약을 체결할 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 라흐마 이븐 자비르의 세계였다.",
+      "text_markdown": "이것이 라흐마 이븐 자비르의 세계였다.",
+      "tts": {
+        "text": "이것이 라흐마 이븐 자비르의 세계였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "진주와 피의 세계, 부족의 명예와 가차 없는 복수의 세계.",
+      "text_markdown": "진주와 피의 세계, 부족의 명예와 가차 없는 복수의 세계.",
+      "tts": {
+        "text": "진주와 피의 세계, 부족의 명예와 가차 없는 복수의 세계.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-066",
+      "part": 0,
+      "chapter": 1,
+      "title": "페르시아만의 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "외눈의 해적이 만 전체를 공포에 떨게 할 수 있는 세계.",
+      "text_markdown": "외눈의 해적이 만 전체를 공포에 떨게 할 수 있는 세계.",
+      "tts": {
+        "text": "외눈의 해적이 만 전체를 공포에 떨게 할 수 있는 세계.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르 알잘라히마는 약 1760년에 아라비아 반도 해안에서 태어났다.",
+      "text_markdown": "라흐마 이븐 자비르 알잘라히마는 약 1760년에 아라비아 반도 해안에서 태어났다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르 알잘라히마는 약 천칠백육십 년에 아라비아 반도 해안에서 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 출생의 정확한 날짜는 기록되지 않았다.",
+      "text_markdown": "그의 출생의 정확한 날짜는 기록되지 않았다.",
+      "tts": {
+        "text": "그의 출생의 정확한 날짜는 기록되지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 부족 잘라히마는 오늘날의 카타르 지역에 살았다.",
+      "text_markdown": "그의 부족 잘라히마는 오늘날의 카타르 지역에 살았다.",
+      "tts": {
+        "text": "그의 부족 잘라히마는 오늘날의 카타르 지역에 살았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잘라히마는 바다의 민족이었다.",
+      "text_markdown": "잘라히마는 바다의 민족이었다.",
+      "tts": {
+        "text": "잘라히마는 바다의 민족이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 물고기를 잡고, 진주를 찾아 잠수하고, 해안을 따라 무역했다.",
+      "text_markdown": "그들은 물고기를 잡고, 진주를 찾아 잠수하고, 해안을 따라 무역했다.",
+      "tts": {
+        "text": "그들은 물고기를 잡고, 진주를 찾아 잠수하고, 해안을 따라 무역했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바다는 그들의 생계이자 정체성이었다.",
+      "text_markdown": "바다는 그들의 생계이자 정체성이었다.",
+      "tts": {
+        "text": "바다는 그들의 생계이자 정체성이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 부족 충성으로 정의되는 세계에서 자랐다.",
+      "text_markdown": "라흐마는 부족 충성으로 정의되는 세계에서 자랐다.",
+      "tts": {
+        "text": "라흐마는 부족 충성으로 정의되는 세계에서 자랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남자의 부족은 그의 가족이자 군대이자 국가였다.",
+      "text_markdown": "남자의 부족은 그의 가족이자 군대이자 국가였다.",
+      "tts": {
+        "text": "남자의 부족은 그의 가족이자 군대이자 국가였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자기 부족을 배신하는 것은 모든 죄 중 최악이었다.",
+      "text_markdown": "자기 부족을 배신하는 것은 모든 죄 중 최악이었다.",
+      "tts": {
+        "text": "자기 부족을 배신하는 것은 모든 죄 중 최악이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "부족에 가해진 잘못을 복수하는 것은 가장 높은 의무였다.",
+      "text_markdown": "부족에 가해진 잘못을 복수하는 것은 가장 높은 의무였다.",
+      "tts": {
+        "text": "부족에 가해진 잘못을 복수하는 것은 가장 높은 의무였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 소년 시절에 항해를 배우며 만의 일꾼인 다우선을 다루었다.",
+      "text_markdown": "그는 소년 시절에 항해를 배우며 만의 일꾼인 다우선을 다루었다.",
+      "tts": {
+        "text": "그는 소년 시절에 항해를 배우며 만의 일꾼인 다우선을 다루었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다우선은 삼각 라틴 돛을 단 목조 범선이었다.",
+      "text_markdown": "다우선은 삼각 라틴 돛을 단 목조 범선이었다.",
+      "tts": {
+        "text": "다우선은 삼각 라틴 돛을 단 목조 범선이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것들은 이 수역에서 수세기 동안 사용되었다.",
+      "text_markdown": "그것들은 이 수역에서 수세기 동안 사용되었다.",
+      "tts": {
+        "text": "그것들은 이 수역에서 수세기 동안 사용되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 싸우는 것도 배웠다.",
+      "text_markdown": "라흐마는 싸우는 것도 배웠다.",
+      "tts": {
+        "text": "라흐마는 싸우는 것도 배웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "만 해안의 모든 남자는 전사이자 선원이어야 했다.",
+      "text_markdown": "만 해안의 모든 남자는 전사이자 선원이어야 했다.",
+      "tts": {
+        "text": "만 해안의 모든 남자는 전사이자 선원이어야 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "적대 부족 간의 습격은 흔했다.",
+      "text_markdown": "적대 부족 간의 습격은 흔했다.",
+      "tts": {
+        "text": "적대 부족 간의 습격은 흔했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "칼과 머스킷을 다루지 못하는 소년은 짐이었다.",
+      "text_markdown": "칼과 머스킷을 다루지 못하는 소년은 짐이었다.",
+      "tts": {
+        "text": "칼과 머스킷을 다루지 못하는 소년은 짐이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마의 초기 생애에서 결정적인 사건은 알할리파의 바레인 정복이었다.",
+      "text_markdown": "라흐마의 초기 생애에서 결정적인 사건은 알할리파의 바레인 정복이었다.",
+      "tts": {
+        "text": "라흐마의 초기 생애에서 결정적인 사건은 알할리파의 바레인 정복이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잘라히마는 이 승리의 전리품을 나눌 것으로 기대했다.",
+      "text_markdown": "잘라히마는 이 승리의 전리품을 나눌 것으로 기대했다.",
+      "tts": {
+        "text": "잘라히마는 이 승리의 전리품을 나눌 것으로 기대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신 알할리파는 바레인 전체를 자신들의 것으로 주장했다.",
+      "text_markdown": "대신 알할리파는 바레인 전체를 자신들의 것으로 주장했다.",
+      "tts": {
+        "text": "대신 알할리파는 바레인 전체를 자신들의 것으로 주장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잘라히마는 밀려났다.",
+      "text_markdown": "잘라히마는 밀려났다.",
+      "tts": {
+        "text": "잘라히마는 밀려났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "진주 부의 어떤 몫도 받지 못했다.",
+      "text_markdown": "진주 부의 어떤 몫도 받지 못했다.",
+      "tts": {
+        "text": "진주 부의 어떤 몫도 받지 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 풍요로운 잠수터에 대한 접근이 거부되었다.",
+      "text_markdown": "가장 풍요로운 잠수터에 대한 접근이 거부되었다.",
+      "tts": {
+        "text": "가장 풍요로운 잠수터에 대한 접근이 거부되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라흐마에게 이것은 결코 받아들이지 않을 불의였다.",
+      "text_markdown": "라흐마에게 이것은 결코 받아들이지 않을 불의였다.",
+      "tts": {
+        "text": "라흐마에게 이것은 결코 받아들이지 않을 불의였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 아직 젊을 때부터 알할리파의 배를 약탈하기 시작했다.",
+      "text_markdown": "그는 아직 젊을 때부터 알할리파의 배를 약탈하기 시작했다.",
+      "tts": {
+        "text": "그는 아직 젊을 때부터 알할리파의 배를 약탈하기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "처음에는 소규모 공격이었다.",
+      "text_markdown": "처음에는 소규모 공격이었다.",
+      "tts": {
+        "text": "처음에는 소규모 공격이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "진주 다우선을 매복하거나 무역선을 가로챘다.",
+      "text_markdown": "진주 다우선을 매복하거나 무역선을 가로챘다.",
+      "tts": {
+        "text": "진주 다우선을 매복하거나 무역선을 가로챘다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 공격들은 복수 행위인 동시에 해적 행위였다.",
+      "text_markdown": "그 공격들은 복수 행위인 동시에 해적 행위였다.",
+      "tts": {
+        "text": "그 공격들은 복수 행위인 동시에 해적 행위였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 타고난 지도자임을 증명했다.",
+      "text_markdown": "라흐마는 타고난 지도자임을 증명했다.",
+      "tts": {
+        "text": "라흐마는 타고난 지도자임을 증명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 전투에서 두려움이 없었고 추종자들에게 관대했다.",
+      "text_markdown": "그는 전투에서 두려움이 없었고 추종자들에게 관대했다.",
+      "tts": {
+        "text": "그는 전투에서 두려움이 없었고 추종자들에게 관대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들이 그의 깃발 아래로 모여들었고, 그의 명성과 약탈의 약속에 이끌렸다.",
+      "text_markdown": "사람들이 그의 깃발 아래로 모여들었고, 그의 명성과 약탈의 약속에 이끌렸다.",
+      "tts": {
+        "text": "사람들이 그의 깃발 아래로 모여들었고, 그의 명성과 약탈의 약속에 이끌렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 카타르 해안의 보호된 만인 호르하산에 기지를 세웠다.",
+      "text_markdown": "그는 카타르 해안의 보호된 만인 호르하산에 기지를 세웠다.",
+      "tts": {
+        "text": "그는 카타르 해안의 보호된 만인 호르하산에 기지를 세웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 항구에서 그는 만을 지나는 배들을 공격할 수 있었다.",
+      "text_markdown": "이 항구에서 그는 만을 지나는 배들을 공격할 수 있었다.",
+      "tts": {
+        "text": "이 항구에서 그는 만을 지나는 배들을 공격할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 위치는 주요 항로에 가까워 전략적으로 탁월했다.",
+      "text_markdown": "그 위치는 주요 항로에 가까워 전략적으로 탁월했다.",
+      "tts": {
+        "text": "그 위치는 주요 항로에 가까워 전략적으로 탁월했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 함대는 꾸준히 성장했다.",
+      "text_markdown": "그의 함대는 꾸준히 성장했다.",
+      "tts": {
+        "text": "그의 함대는 꾸준히 성장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "더 크고 더 잘 무장된 선박을 확보했다.",
+      "text_markdown": "더 크고 더 잘 무장된 선박을 확보했다.",
+      "tts": {
+        "text": "더 크고 더 잘 무장된 선박을 확보했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알할리파에 대해 자체적인 불만을 가진 부족의 사람들을 포함해 만 전역에서 추종자를 모았다.",
+      "text_markdown": "알할리파에 대해 자체적인 불만을 가진 부족의 사람들을 포함해 만 전역에서 추종자를 모았다.",
+      "tts": {
+        "text": "알할리파에 대해 자체적인 불만을 가진 부족의 사람들을 포함해 만 전역에서 추종자를 모았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백구십 년대에 라흐마 이븐 자비르는 페르시아만에서 가장 두려운 해적이었다.",
+      "text_markdown": "천칠백구십 년대에 라흐마 이븐 자비르는 페르시아만에서 가장 두려운 해적이었다.",
+      "tts": {
+        "text": "천칠백구십 년대에 라흐마 이븐 자비르는 페르시아만에서 가장 두려운 해적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 바레인에서 무스카트에 이르는 상인들에 의해 공포와 함께 언급되었다.",
+      "text_markdown": "그의 이름은 바레인에서 무스카트에 이르는 상인들에 의해 공포와 함께 언급되었다.",
+      "tts": {
+        "text": "그의 이름은 바레인에서 무스카트에 이르는 상인들에 의해 공포와 함께 언급되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알할리파는 그를 가장 위험한 적으로 여겼다.",
+      "text_markdown": "알할리파는 그를 가장 위험한 적으로 여겼다.",
+      "tts": {
+        "text": "알할리파는 그를 가장 위험한 적으로 여겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 전투 중 하나에서 라흐마는 한쪽 눈을 잃었다.",
+      "text_markdown": "많은 전투 중 하나에서 라흐마는 한쪽 눈을 잃었다.",
+      "tts": {
+        "text": "많은 전투 중 하나에서 라흐마는 한쪽 눈을 잃었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 부상은 보통 사람의 경력을 끝냈을 것이다.",
+      "text_markdown": "그 부상은 보통 사람의 경력을 끝냈을 것이다.",
+      "tts": {
+        "text": "그 부상은 보통 사람의 경력을 끝냈을 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라흐마에게 그것은 단지 명예의 표식이었다.",
+      "text_markdown": "라흐마에게 그것은 단지 명예의 표식이었다.",
+      "tts": {
+        "text": "라흐마에게 그것은 단지 명예의 표식이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 이전과 같은 맹렬함으로 계속 싸웠다.",
+      "text_markdown": "그는 이전과 같은 맹렬함으로 계속 싸웠다.",
+      "tts": {
+        "text": "그는 이전과 같은 맹렬함으로 계속 싸웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그를 만난 유럽 관찰자들은 두려운 인물을 묘사했다.",
+      "text_markdown": "그를 만난 유럽 관찰자들은 두려운 인물을 묘사했다.",
+      "tts": {
+        "text": "그를 만난 유럽 관찰자들은 두려운 인물을 묘사했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 키가 크고 마른 체구에, 타오르는 한쪽 눈과 수년간의 전투로 상처 투성이인 얼굴을 가졌다.",
+      "text_markdown": "그는 키가 크고 마른 체구에, 타오르는 한쪽 눈과 수년간의 전투로 상처 투성이인 얼굴을 가졌다.",
+      "tts": {
+        "text": "그는 키가 크고 마른 체구에, 타오르는 한쪽 눈과 수년간의 전투로 상처 투성이인 얼굴을 가졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 목소리는 물 위로 퍼져 전투의 혼란 속에서도 부하들을 결집시켰다고 한다.",
+      "text_markdown": "그의 목소리는 물 위로 퍼져 전투의 혼란 속에서도 부하들을 결집시켰다고 한다.",
+      "tts": {
+        "text": "그의 목소리는 물 위로 퍼져 전투의 혼란 속에서도 부하들을 결집시켰다고 한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "끝없는 전쟁",
+      "text_markdown": "끝없는 전쟁"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마의 알할리파에 대한 전쟁은 고립된 습격의 연속이 아니었다.",
+      "text_markdown": "라흐마의 알할리파에 대한 전쟁은 고립된 습격의 연속이 아니었다.",
+      "tts": {
+        "text": "라흐마의 알할리파에 대한 전쟁은 고립된 습격의 연속이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수십 년에 걸친 가차 없는 공격의 지속적인 작전이었다.",
+      "text_markdown": "수십 년에 걸친 가차 없는 공격의 지속적인 작전이었다.",
+      "tts": {
+        "text": "수십 년에 걸친 가차 없는 공격의 지속적인 작전이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 같은 결의로 그들의 배, 항구, 동맹을 공격했다.",
+      "text_markdown": "그는 같은 결의로 그들의 배, 항구, 동맹을 공격했다.",
+      "tts": {
+        "text": "그는 같은 결의로 그들의 배, 항구, 동맹을 공격했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 전술은 단순하지만 효과적이었다.",
+      "text_markdown": "그의 전술은 단순하지만 효과적이었다.",
+      "tts": {
+        "text": "그의 전술은 단순하지만 효과적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "빠르고 기동성 있는 다우선으로 느린 상선을 요격했다.",
+      "text_markdown": "빠르고 기동성 있는 다우선으로 느린 상선을 요격했다.",
+      "tts": {
+        "text": "빠르고 기동성 있는 다우선으로 느린 상선을 요격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부하들은 칼, 단검, 머스킷으로 적선에 올라탔다.",
+      "text_markdown": "부하들은 칼, 단검, 머스킷으로 적선에 올라탔다.",
+      "tts": {
+        "text": "부하들은 칼, 단검, 머스킷으로 적선에 올라탔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전투는 잔인하고 근접전이었다.",
+      "text_markdown": "전투는 잔인하고 근접전이었다.",
+      "tts": {
+        "text": "전투는 잔인하고 근접전이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 저항하는 자들에게 거의 자비를 베풀지 않았다.",
+      "text_markdown": "라흐마는 저항하는 자들에게 거의 자비를 베풀지 않았다.",
+      "tts": {
+        "text": "라흐마는 저항하는 자들에게 거의 자비를 베풀지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로로 잡힌 알할리파 선원들은 종종 죽거나 노예가 되었다.",
+      "text_markdown": "포로로 잡힌 알할리파 선원들은 종종 죽거나 노예가 되었다.",
+      "tts": {
+        "text": "포로로 잡힌 알할리파 선원들은 종종 죽거나 노예가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 알할리파가 바다 자체를 두려워하기를 원했다.",
+      "text_markdown": "그는 알할리파가 바다 자체를 두려워하기를 원했다.",
+      "tts": {
+        "text": "그는 알할리파가 바다 자체를 두려워하기를 원했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알할리파는 자체 함대로 반격했다.",
+      "text_markdown": "알할리파는 자체 함대로 반격했다.",
+      "tts": {
+        "text": "알할리파는 자체 함대로 반격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마의 기지에 반복적인 공격을 가했다.",
+      "text_markdown": "라흐마의 기지에 반복적인 공격을 가했다.",
+      "tts": {
+        "text": "라흐마의 기지에 반복적인 공격을 가했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러 번 그를 위치를 포기하고 새로운 항구로 후퇴하도록 강요했다.",
+      "text_markdown": "여러 번 그를 위치를 포기하고 새로운 항구로 후퇴하도록 강요했다.",
+      "tts": {
+        "text": "여러 번 그를 위치를 포기하고 새로운 항구로 후퇴하도록 강요했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 라흐마는 항상 돌아왔다.",
+      "text_markdown": "하지만 라흐마는 항상 돌아왔다.",
+      "tts": {
+        "text": "하지만 라흐마는 항상 돌아왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "재편성하고, 새로운 추종자를 모으고, 전투에 복귀했다.",
+      "text_markdown": "재편성하고, 새로운 추종자를 모으고, 전투에 복귀했다.",
+      "tts": {
+        "text": "재편성하고, 새로운 추종자를 모으고, 전투에 복귀했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 회복력은 비범했다.",
+      "text_markdown": "그의 회복력은 비범했다.",
+      "tts": {
+        "text": "그의 회복력은 비범했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 패배도 그에게 결정적이지 않았다.",
+      "text_markdown": "어떤 패배도 그에게 결정적이지 않았다.",
+      "tts": {
+        "text": "어떤 패배도 그에게 결정적이지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알할리파에 반대하는 누구와도 동맹을 맺었다.",
+      "text_markdown": "알할리파에 반대하는 누구와도 동맹을 맺었다.",
+      "tts": {
+        "text": "알할리파에 반대하는 누구와도 동맹을 맺었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "편리할 때는 와하비파와 동맹했다.",
+      "text_markdown": "편리할 때는 와하비파와 동맹했다.",
+      "tts": {
+        "text": "편리할 때는 와하비파와 동맹했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유용할 때는 오만인들과 동맹했다.",
+      "text_markdown": "유용할 때는 오만인들과 동맹했다.",
+      "tts": {
+        "text": "유용할 때는 오만인들과 동맹했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "때로는 영국인들과도 협력했다.",
+      "text_markdown": "때로는 영국인들과도 협력했다.",
+      "tts": {
+        "text": "때로는 영국인들과도 협력했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 동맹은 항상 일시적이었고 항상 전략적이었다.",
+      "text_markdown": "이 동맹은 항상 일시적이었고 항상 전략적이었다.",
+      "tts": {
+        "text": "이 동맹은 항상 일시적이었고 항상 전략적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마의 유일한 진정한 충성은 자기 부족과 복수에 대한 것이었다.",
+      "text_markdown": "라흐마의 유일한 진정한 충성은 자기 부족과 복수에 대한 것이었다.",
+      "tts": {
+        "text": "라흐마의 유일한 진정한 충성은 자기 부족과 복수에 대한 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알할리파를 해칠 수 있도록 도와줄 수 있는 누구와도 협력했다.",
+      "text_markdown": "알할리파를 해칠 수 있도록 도와줄 수 있는 누구와도 협력했다.",
+      "tts": {
+        "text": "알할리파를 해칠 수 있도록 도와줄 수 있는 누구와도 협력했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "와하비파는 한동안 특히 중요한 동맹이었다.",
+      "text_markdown": "와하비파는 한동안 특히 중요한 동맹이었다.",
+      "tts": {
+        "text": "와하비파는 한동안 특히 중요한 동맹이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사우디-와하비 국가는 십팔 세기 말과 십구 세기 초에 아라비아 전역으로 확장하고 있었다.",
+      "text_markdown": "사우디-와하비 국가는 십팔 세기 말과 십구 세기 초에 아라비아 전역으로 확장하고 있었다.",
+      "tts": {
+        "text": "사우디-와하비 국가는 십팔 세기 말과 십구 세기 초에 아라비아 전역으로 확장하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 알할리파를 경쟁자로 보았고 라흐마의 공격을 기꺼이 지원했다.",
+      "text_markdown": "그들은 알할리파를 경쟁자로 보았고 라흐마의 공격을 기꺼이 지원했다.",
+      "tts": {
+        "text": "그들은 알할리파를 경쟁자로 보았고 라흐마의 공격을 기꺼이 지원했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "와하비파의 지원으로 라흐마는 가장 야심 찬 작전 중 일부를 수행했다.",
+      "text_markdown": "와하비파의 지원으로 라흐마는 가장 야심 찬 작전 중 일부를 수행했다.",
+      "tts": {
+        "text": "와하비파의 지원으로 라흐마는 가장 야심 찬 작전 중 일부를 수행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바레인의 항구를 봉쇄하여 섬의 무역을 차단했다.",
+      "text_markdown": "바레인의 항구를 봉쇄하여 섬의 무역을 차단했다.",
+      "tts": {
+        "text": "바레인의 항구를 봉쇄하여 섬의 무역을 차단했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "진주 밭에서 돌아오는 잠수부 호송대를 공격했다.",
+      "text_markdown": "진주 밭에서 돌아오는 잠수부 호송대를 공격했다.",
+      "tts": {
+        "text": "진주 밭에서 돌아오는 잠수부 호송대를 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바레인 주변의 바다를 알할리파에 충성하는 누구에게든 위험하게 만들었다.",
+      "text_markdown": "바레인 주변의 바다를 알할리파에 충성하는 누구에게든 위험하게 만들었다.",
+      "tts": {
+        "text": "바레인 주변의 바다를 알할리파에 충성하는 누구에게든 위험하게 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "진주 무역은 바레인의 생명줄이었다.",
+      "text_markdown": "진주 무역은 바레인의 생명줄이었다.",
+      "tts": {
+        "text": "진주 무역은 바레인의 생명줄이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것을 방해함으로써 라흐마는 알할리파 권력의 기반 자체를 타격했다.",
+      "text_markdown": "그것을 방해함으로써 라흐마는 알할리파 권력의 기반 자체를 타격했다.",
+      "tts": {
+        "text": "그것을 방해함으로써 라흐마는 알할리파 권력의 기반 자체를 타격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "진주 수입이 손실된 한 시즌은 군사적 패배보다 지배 가문을 더 약화시킬 수 있었다.",
+      "text_markdown": "진주 수입이 손실된 한 시즌은 군사적 패배보다 지배 가문을 더 약화시킬 수 있었다.",
+      "tts": {
+        "text": "진주 수입이 손실된 한 시즌은 군사적 패배보다 지배 가문을 더 약화시킬 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국인들은 이 갈등을 점점 더 우려하며 지켜보았다.",
+      "text_markdown": "영국인들은 이 갈등을 점점 더 우려하며 지켜보았다.",
+      "tts": {
+        "text": "영국인들은 이 갈등을 점점 더 우려하며 지켜보았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모든 부족 전쟁이 만을 통해 흐르는 무역을 방해했다.",
+      "text_markdown": "모든 부족 전쟁이 만을 통해 흐르는 무역을 방해했다.",
+      "tts": {
+        "text": "모든 부족 전쟁이 만을 통해 흐르는 무역을 방해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국 상인들은 돈을 잃었고, 영국 관리들은 인내심을 잃었다.",
+      "text_markdown": "영국 상인들은 돈을 잃었고, 영국 관리들은 인내심을 잃었다.",
+      "tts": {
+        "text": "영국 상인들은 돈을 잃었고, 영국 관리들은 인내심을 잃었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 요원들은 라흐마와 알할리파 사이를 중재하려고 반복적으로 시도했다.",
+      "text_markdown": "영국 요원들은 라흐마와 알할리파 사이를 중재하려고 반복적으로 시도했다.",
+      "tts": {
+        "text": "영국 요원들은 라흐마와 알할리파 사이를 중재하려고 반복적으로 시도했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 휴전 협상과 분쟁 해결을 제안했다.",
+      "text_markdown": "그들은 휴전 협상과 분쟁 해결을 제안했다.",
+      "tts": {
+        "text": "그들은 휴전 협상과 분쟁 해결을 제안했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라흐마는 모든 제안을 거부했다.",
+      "text_markdown": "라흐마는 모든 제안을 거부했다.",
+      "tts": {
+        "text": "라흐마는 모든 제안을 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 평화에 관심이 없었다.",
+      "text_markdown": "그는 평화에 관심이 없었다.",
+      "tts": {
+        "text": "그는 평화에 관심이 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프란시스 워든이라는 영국 정치 요원이 라흐마를 만나 상세한 기술을 남겼다.",
+      "text_markdown": "프란시스 워든이라는 영국 정치 요원이 라흐마를 만나 상세한 기술을 남겼다.",
+      "tts": {
+        "text": "프란시스 워든이라는 영국 정치 요원이 라흐마를 만나 상세한 기술을 남겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 해적을 예의 바르지만 단호한 사람으로 묘사했다.",
+      "text_markdown": "그는 해적을 예의 바르지만 단호한 사람으로 묘사했다.",
+      "tts": {
+        "text": "그는 해적을 예의 바르지만 단호한 사람으로 묘사했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라흐마는 자신의 입장을 분명히 설명했다. 알할리파가 자기 백성의 것을 훔쳤으며 돌려줄 때까지 싸울 것이라고.",
+      "text_markdown": "라흐마는 자신의 입장을 분명히 설명했다. 알할리파가 자기 백성의 것을 훔쳤으며 돌려줄 때까지 싸울 것이라고.",
+      "tts": {
+        "text": "라흐마는 자신의 입장을 분명히 설명했다. 알할리파가 자기 백성의 것을 훔쳤으며 돌려줄 때까지 싸울 것이라고.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국인들은 그의 고집에 좌절했다.",
+      "text_markdown": "영국인들은 그의 고집에 좌절했다.",
+      "tts": {
+        "text": "영국인들은 그의 고집에 좌절했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그를 매수하거나, 위협하거나, 설득할 수 없었다.",
+      "text_markdown": "그를 매수하거나, 위협하거나, 설득할 수 없었다.",
+      "tts": {
+        "text": "그를 매수하거나, 위협하거나, 설득할 수 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알할리파에 대한 그의 증오는 절대적이며 어떤 협상의 여지도 없었다.",
+      "text_markdown": "알할리파에 대한 그의 증오는 절대적이며 어떤 협상의 여지도 없었다.",
+      "tts": {
+        "text": "알할리파에 대한 그의 증오는 절대적이며 어떤 협상의 여지도 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 긴 경력 동안 여러 번 기지를 옮겼다.",
+      "text_markdown": "라흐마는 긴 경력 동안 여러 번 기지를 옮겼다.",
+      "tts": {
+        "text": "라흐마는 긴 경력 동안 여러 번 기지를 옮겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "호르하산이 너무 위험해지자 아라비아 해안의 담맘으로 이전했다.",
+      "text_markdown": "호르하산이 너무 위험해지자 아라비아 해안의 담맘으로 이전했다.",
+      "tts": {
+        "text": "호르하산이 너무 위험해지자 아라비아 해안의 담맘으로 이전했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "담맘은 그에게 사우디-와하비 지원과 새로운 항구에 대한 접근을 제공했다.",
+      "text_markdown": "담맘은 그에게 사우디-와하비 지원과 새로운 항구에 대한 접근을 제공했다.",
+      "tts": {
+        "text": "담맘은 그에게 사우디-와하비 지원과 새로운 항구에 대한 접근을 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "담맘에서 그는 중단 없이 습격을 계속했다.",
+      "text_markdown": "담맘에서 그는 중단 없이 습격을 계속했다.",
+      "tts": {
+        "text": "담맘에서 그는 중단 없이 습격을 계속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 함대는 이제 수십 척의 무장 다우선을 갖춘 상당한 규모였다.",
+      "text_markdown": "그의 함대는 이제 수십 척의 무장 다우선을 갖춘 상당한 규모였다.",
+      "tts": {
+        "text": "그의 함대는 이제 수십 척의 무장 다우선을 갖춘 상당한 규모였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "끝없는 전쟁",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 단순한 해적이 아니라 독자적인 지역 세력이 되었다.",
+      "text_markdown": "그는 단순한 해적이 아니라 독자적인 지역 세력이 되었다.",
+      "tts": {
+        "text": "그는 단순한 해적이 아니라 독자적인 지역 세력이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "전성기",
+      "text_markdown": "전성기"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십구 세기 초에 라흐마 이븐 자비르는 권력의 정점에 있었다.",
+      "text_markdown": "십구 세기 초에 라흐마 이븐 자비르는 권력의 정점에 있었다.",
+      "tts": {
+        "text": "십구 세기 초에 라흐마 이븐 자비르는 권력의 정점에 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 상당한 함대를 통제했고 만 전체에 걸친 동맹을 가지고 있었다.",
+      "text_markdown": "그는 상당한 함대를 통제했고 만 전체에 걸친 동맹을 가지고 있었다.",
+      "tts": {
+        "text": "그는 상당한 함대를 통제했고 만 전체에 걸친 동맹을 가지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 명성은 호르무즈 해협에서 쿠웨이트 해안까지 두려움의 대상이었다.",
+      "text_markdown": "그의 명성은 호르무즈 해협에서 쿠웨이트 해안까지 두려움의 대상이었다.",
+      "tts": {
+        "text": "그의 명성은 호르무즈 해협에서 쿠웨이트 해안까지 두려움의 대상이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 시대와 장소의 기준으로 그는 이미 노인이었다.",
+      "text_markdown": "그의 시대와 장소의 기준으로 그는 이미 노인이었다.",
+      "tts": {
+        "text": "그의 시대와 장소의 기준으로 그는 이미 노인이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수년간의 전투는 그의 몸에 상처와 피로를 남겼다.",
+      "text_markdown": "수년간의 전투는 그의 몸에 상처와 피로를 남겼다.",
+      "tts": {
+        "text": "수년간의 전투는 그의 몸에 상처와 피로를 남겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "한쪽 눈을 잃었고 수많은 부상을 입었다.",
+      "text_markdown": "한쪽 눈을 잃었고 수많은 부상을 입었다.",
+      "tts": {
+        "text": "한쪽 눈을 잃었고 수많은 부상을 입었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 그의 정신은 꺾이지 않았다.",
+      "text_markdown": "하지만 그의 정신은 꺾이지 않았다.",
+      "tts": {
+        "text": "하지만 그의 정신은 꺾이지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기함의 뱃머리에 서서 직접 습격을 지휘했다.",
+      "text_markdown": "기함의 뱃머리에 서서 직접 습격을 지휘했다.",
+      "tts": {
+        "text": "기함의 뱃머리에 서서 직접 습격을 지휘했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남은 한쪽 눈이 전투에서 사나운 빛을 발했다고 한다.",
+      "text_markdown": "남은 한쪽 눈이 전투에서 사나운 빛을 발했다고 한다.",
+      "tts": {
+        "text": "남은 한쪽 눈이 전투에서 사나운 빛을 발했다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부하들은 그가 신의 축복을 받아 죽일 수 없다고 믿었다.",
+      "text_markdown": "부하들은 그가 신의 축복을 받아 죽일 수 없다고 믿었다.",
+      "tts": {
+        "text": "부하들은 그가 신의 축복을 받아 죽일 수 없다고 믿었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기에 그를 만난 유럽 방문객들은 매료되었다.",
+      "text_markdown": "이 시기에 그를 만난 유럽 방문객들은 매료되었다.",
+      "tts": {
+        "text": "이 시기에 그를 만난 유럽 방문객들은 매료되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 그들이 전에 만난 어떤 해적과도 달랐다.",
+      "text_markdown": "그는 그들이 전에 만난 어떤 해적과도 달랐다.",
+      "tts": {
+        "text": "그는 그들이 전에 만난 어떤 해적과도 달랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 평범한 도적이 아니라 지성과 목적을 가진 사람이었다.",
+      "text_markdown": "그는 평범한 도적이 아니라 지성과 목적을 가진 사람이었다.",
+      "tts": {
+        "text": "그는 평범한 도적이 아니라 지성과 목적을 가진 사람이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한 영국 장교가 라흐마의 배에서 그와의 만남을 묘사했다.",
+      "text_markdown": "한 영국 장교가 라흐마의 배에서 그와의 만남을 묘사했다.",
+      "tts": {
+        "text": "한 영국 장교가 라흐마의 배에서 그와의 만남을 묘사했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적은 그를 예의 바르게 맞으며 커피와 대추야자를 대접했다.",
+      "text_markdown": "해적은 그를 예의 바르게 맞으며 커피와 대추야자를 대접했다.",
+      "tts": {
+        "text": "해적은 그를 예의 바르게 맞으며 커피와 대추야자를 대접했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 동등한 입장에서 정치와 무역을 논의했다.",
+      "text_markdown": "그들은 동등한 입장에서 정치와 무역을 논의했다.",
+      "tts": {
+        "text": "그들은 동등한 입장에서 정치와 무역을 논의했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "장교는 라흐마가 범죄자가 아닌 통치자의 권위로 말했음을 주목했다.",
+      "text_markdown": "장교는 라흐마가 범죄자가 아닌 통치자의 권위로 말했음을 주목했다.",
+      "tts": {
+        "text": "장교는 라흐마가 범죄자가 아닌 통치자의 권위로 말했음을 주목했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마의 가정에는 아내들, 자녀들, 대가족이 포함되었다.",
+      "text_markdown": "라흐마의 가정에는 아내들, 자녀들, 대가족이 포함되었다.",
+      "tts": {
+        "text": "라흐마의 가정에는 아내들, 자녀들, 대가족이 포함되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 그의 배 위나 육지의 요새화된 거처에서 살았다.",
+      "text_markdown": "그들은 그의 배 위나 육지의 요새화된 거처에서 살았다.",
+      "tts": {
+        "text": "그들은 그의 배 위나 육지의 요새화된 거처에서 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 가족은 끊임없이 이동하며 기지에서 기지로 그를 따랐다.",
+      "text_markdown": "그의 가족은 끊임없이 이동하며 기지에서 기지로 그를 따랐다.",
+      "tts": {
+        "text": "그의 가족은 끊임없이 이동하며 기지에서 기지로 그를 따랐다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 아들 비시르는 전투를 이어가도록 키워지고 있었다.",
+      "text_markdown": "그의 아들 비시르는 전투를 이어가도록 키워지고 있었다.",
+      "tts": {
+        "text": "그의 아들 비시르는 전투를 이어가도록 키워지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마는 어린 나이부터 비시르를 습격에 데려갔다.",
+      "text_markdown": "라흐마는 어린 나이부터 비시르를 습격에 데려갔다.",
+      "tts": {
+        "text": "라흐마는 어린 나이부터 비시르를 습격에 데려갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 소년이 바다, 전투, 그리고 알할리파에 대한 증오를 배우기를 원했다.",
+      "text_markdown": "그는 소년이 바다, 전투, 그리고 알할리파에 대한 증오를 배우기를 원했다.",
+      "tts": {
+        "text": "그는 소년이 바다, 전투, 그리고 알할리파에 대한 증오를 배우기를 원했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마와 알할리파 사이의 갈등은 계속 격화되었다.",
+      "text_markdown": "라흐마와 알할리파 사이의 갈등은 계속 격화되었다.",
+      "tts": {
+        "text": "라흐마와 알할리파 사이의 갈등은 계속 격화되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "양측 모두 더 큰 함대를 건조하고 더 강력한 동맹을 구했다.",
+      "text_markdown": "양측 모두 더 큰 함대를 건조하고 더 강력한 동맹을 구했다.",
+      "tts": {
+        "text": "양측 모두 더 큰 함대를 건조하고 더 강력한 동맹을 구했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "만은 점점 더 군사화되고 있었다.",
+      "text_markdown": "만은 점점 더 군사화되고 있었다.",
+      "tts": {
+        "text": "만은 점점 더 군사화되고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1809년, 영국은 만의 해적에 대한 대규모 해군 원정을 시작했다.",
+      "text_markdown": "1809년, 영국은 만의 해적에 대한 대규모 해군 원정을 시작했다.",
+      "tts": {
+        "text": "천팔백구 년, 영국은 만의 해적에 대한 대규모 해군 원정을 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 주요 목표는 라스알카이마에 기반을 둔 카시미 함대였다.",
+      "text_markdown": "그들의 주요 목표는 라스알카이마에 기반을 둔 카시미 함대였다.",
+      "tts": {
+        "text": "그들의 주요 목표는 라스알카이마에 기반을 둔 카시미 함대였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "카시미는 라흐마와는 별개의 또 다른 강력한 해적 연합이었다.",
+      "text_markdown": "카시미는 라흐마와는 별개의 또 다른 강력한 해적 연합이었다.",
+      "tts": {
+        "text": "카시미는 라흐마와는 별개의 또 다른 강력한 해적 연합이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국의 라스알카이마 포격은 카시미 함대의 대부분을 파괴했다.",
+      "text_markdown": "영국의 라스알카이마 포격은 카시미 함대의 대부분을 파괴했다.",
+      "tts": {
+        "text": "영국의 라스알카이마 포격은 카시미 함대의 대부분을 파괴했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 만에서의 해적 행위를 끝내지는 못했다.",
+      "text_markdown": "하지만 만에서의 해적 행위를 끝내지는 못했다.",
+      "tts": {
+        "text": "하지만 만에서의 해적 행위를 끝내지는 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르는 거의 멈추지 않고 작전을 계속했다.",
+      "text_markdown": "라흐마 이븐 자비르는 거의 멈추지 않고 작전을 계속했다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르는 거의 멈추지 않고 작전을 계속했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국인들은 라흐마를 분류하기 어려웠다.",
+      "text_markdown": "영국인들은 라흐마를 분류하기 어려웠다.",
+      "tts": {
+        "text": "영국인들은 라흐마를 분류하기 어려웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 분명히 해적이었지만 영국 선박을 직접 공격한 적은 없었다.",
+      "text_markdown": "그는 분명히 해적이었지만 영국 선박을 직접 공격한 적은 없었다.",
+      "tts": {
+        "text": "그는 분명히 해적이었지만 영국 선박을 직접 공격한 적은 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 전쟁은 오로지 알할리파와 그 동맹에 집중되어 있었다.",
+      "text_markdown": "그의 전쟁은 오로지 알할리파와 그 동맹에 집중되어 있었다.",
+      "tts": {
+        "text": "그의 전쟁은 오로지 알할리파와 그 동맹에 집중되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국인의 눈에 이것은 그를 직접적인 위협이 아닌 성가신 존재로 만들었다.",
+      "text_markdown": "영국인의 눈에 이것은 그를 직접적인 위협이 아닌 성가신 존재로 만들었다.",
+      "tts": {
+        "text": "영국인의 눈에 이것은 그를 직접적인 위협이 아닌 성가신 존재로 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 이 모호함을 자신에게 유리하게 이용했다.",
+      "text_markdown": "라흐마는 이 모호함을 자신에게 유리하게 이용했다.",
+      "tts": {
+        "text": "라흐마는 이 모호함을 자신에게 유리하게 이용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국인들과 신중한 관계를 유지했다.",
+      "text_markdown": "영국인들과 신중한 관계를 유지했다.",
+      "tts": {
+        "text": "영국인들과 신중한 관계를 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들이 자신에게 불리한 행동을 취하도록 자극한 적이 없었다.",
+      "text_markdown": "그들이 자신에게 불리한 행동을 취하도록 자극한 적이 없었다.",
+      "tts": {
+        "text": "그들이 자신에게 불리한 행동을 취하도록 자극한 적이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 해적 집단에 대한 정보까지 제공했다.",
+      "text_markdown": "다른 해적 집단에 대한 정보까지 제공했다.",
+      "tts": {
+        "text": "다른 해적 집단에 대한 정보까지 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1820년, 영국은 만 부족들에게 일반 평화 조약을 부과했다.",
+      "text_markdown": "1820년, 영국은 만 부족들에게 일반 평화 조약을 부과했다.",
+      "tts": {
+        "text": "천팔백이십 년, 영국은 만 부족들에게 일반 평화 조약을 부과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 조약은 해적 행위를 끝내고 무역을 위한 안정을 만들기 위해 설계되었다.",
+      "text_markdown": "그 조약은 해적 행위를 끝내고 무역을 위한 안정을 만들기 위해 설계되었다.",
+      "tts": {
+        "text": "그 조약은 해적 행위를 끝내고 무역을 위한 안정을 만들기 위해 설계되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대부분의 해안 통치자들이 압박 하에 서명했다.",
+      "text_markdown": "대부분의 해안 통치자들이 압박 하에 서명했다.",
+      "tts": {
+        "text": "대부분의 해안 통치자들이 압박 하에 서명했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마는 서명을 거부했다.",
+      "text_markdown": "라흐마는 서명을 거부했다.",
+      "tts": {
+        "text": "라흐마는 서명을 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알할리파의 바레인 지배를 인정하는 어떤 협정도 받아들이지 않을 것이었다.",
+      "text_markdown": "알할리파의 바레인 지배를 인정하는 어떤 협정도 받아들이지 않을 것이었다.",
+      "tts": {
+        "text": "알할리파의 바레인 지배를 인정하는 어떤 협정도 받아들이지 않을 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국인들은 그의 거부를 기록했지만 즉각적인 조치를 취하지는 않았다.",
+      "text_markdown": "영국인들은 그의 거부를 기록했지만 즉각적인 조치를 취하지는 않았다.",
+      "tts": {
+        "text": "영국인들은 그의 거부를 기록했지만 즉각적인 조치를 취하지는 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 이제 육십 세가 넘었다.",
+      "text_markdown": "그는 이제 육십 세가 넘었다.",
+      "tts": {
+        "text": "그는 이제 육십 세가 넘었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸은 쇠약해졌지만 의지는 그렇지 않았다.",
+      "text_markdown": "몸은 쇠약해졌지만 의지는 그렇지 않았다.",
+      "tts": {
+        "text": "몸은 쇠약해졌지만 의지는 그렇지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "전성기",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시간이 줄일 수 없는 증오에 이끌려 항해하고 싸우는 것을 계속했다.",
+      "text_markdown": "시간이 줄일 수 없는 증오에 이끌려 항해하고 싸우는 것을 계속했다.",
+      "tts": {
+        "text": "시간이 줄일 수 없는 증오에 이끌려 항해하고 싸우는 것을 계속했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최후",
+      "text_markdown": "최후"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1826년까지 라흐마 이븐 자비르는 자신의 시간이 다해가고 있음을 알았다.",
+      "text_markdown": "1826년까지 라흐마 이븐 자비르는 자신의 시간이 다해가고 있음을 알았다.",
+      "tts": {
+        "text": "천팔백이십육 년까지 라흐마 이븐 자비르는 자신의 시간이 다해가고 있음을 알았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 늙었고, 한쪽 눈이 먼 상태였으며, 점점 더 고립되어 갔다.",
+      "text_markdown": "그는 늙었고, 한쪽 눈이 먼 상태였으며, 점점 더 고립되어 갔다.",
+      "tts": {
+        "text": "그는 늙었고, 한쪽 눈이 먼 상태였으며, 점점 더 고립되어 갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 와하비 동맹은 수년 전에 이집트군에 패배했다.",
+      "text_markdown": "그의 와하비 동맹은 수년 전에 이집트군에 패배했다.",
+      "tts": {
+        "text": "그의 와하비 동맹은 수년 전에 이집트군에 패배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 함대는 전성기보다 작았다.",
+      "text_markdown": "그의 함대는 전성기보다 작았다.",
+      "tts": {
+        "text": "그의 함대는 전성기보다 작았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 그는 싸우는 것을 멈추기를 거부했다.",
+      "text_markdown": "하지만 그는 싸우는 것을 멈추기를 거부했다.",
+      "tts": {
+        "text": "하지만 그는 싸우는 것을 멈추기를 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "항복은 생각할 수 없는 일이었다.",
+      "text_markdown": "항복은 생각할 수 없는 일이었다.",
+      "tts": {
+        "text": "항복은 생각할 수 없는 일이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알할리파는 여전히 바레인을 점유하고 있었다.",
+      "text_markdown": "알할리파는 여전히 바레인을 점유하고 있었다.",
+      "tts": {
+        "text": "알할리파는 여전히 바레인을 점유하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잘못은 바로잡히지 않았다.",
+      "text_markdown": "잘못은 바로잡히지 않았다.",
+      "tts": {
+        "text": "잘못은 바로잡히지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "라흐마에게 그것만이 중요한 유일한 사실이었다.",
+      "text_markdown": "라흐마에게 그것만이 중요한 유일한 사실이었다.",
+      "tts": {
+        "text": "라흐마에게 그것만이 중요한 유일한 사실이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알할리파와 그 동맹은 라흐마를 완전히 파괴하기 위해 대규모 함대를 모았다.",
+      "text_markdown": "알할리파와 그 동맹은 라흐마를 완전히 파괴하기 위해 대규모 함대를 모았다.",
+      "tts": {
+        "text": "알할리파와 그 동맹은 라흐마를 완전히 파괴하기 위해 대규모 함대를 모았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바레인과 오만 지원군의 선박들이 그들을 지원했다.",
+      "text_markdown": "바레인과 오만 지원군의 선박들이 그들을 지원했다.",
+      "tts": {
+        "text": "바레인과 오만 지원군의 선박들이 그들을 지원했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "연합 함대는 라흐마가 모을 수 있는 어떤 것보다 훨씬 컸다.",
+      "text_markdown": "연합 함대는 라흐마가 모을 수 있는 어떤 것보다 훨씬 컸다.",
+      "tts": {
+        "text": "연합 함대는 라흐마가 모을 수 있는 어떤 것보다 훨씬 컸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마지막 전투는 카타르와 바레인 사이의 바다에서 벌어졌다.",
+      "text_markdown": "마지막 전투는 카타르와 바레인 사이의 바다에서 벌어졌다.",
+      "tts": {
+        "text": "마지막 전투는 카타르와 바레인 사이의 바다에서 벌어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마는 소규모 다우선 편대로 적을 맞으러 출항했다.",
+      "text_markdown": "라흐마는 소규모 다우선 편대로 적을 맞으러 출항했다.",
+      "tts": {
+        "text": "라흐마는 소규모 다우선 편대로 적을 맞으러 출항했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수적으로 열세임을 알았다.",
+      "text_markdown": "수적으로 열세임을 알았다.",
+      "tts": {
+        "text": "수적으로 열세임을 알았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "상관하지 않았다.",
+      "text_markdown": "상관하지 않았다.",
+      "tts": {
+        "text": "상관하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어린 아들 비시르가 기함에서 그와 함께였다.",
+      "text_markdown": "어린 아들 비시르가 기함에서 그와 함께였다.",
+      "tts": {
+        "text": "어린 아들 비시르가 기함에서 그와 함께였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마는 모든 주요 전투에 소년을 데려갔었다.",
+      "text_markdown": "라흐마는 모든 주요 전투에 소년을 데려갔었다.",
+      "tts": {
+        "text": "라흐마는 모든 주요 전투에 소년을 데려갔었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이번에도 다르지 않을 것이었다.",
+      "text_markdown": "이번에도 다르지 않을 것이었다.",
+      "tts": {
+        "text": "이번에도 다르지 않을 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투는 이른 아침에 시작되었다.",
+      "text_markdown": "전투는 이른 아침에 시작되었다.",
+      "tts": {
+        "text": "전투는 이른 아침에 시작되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "두 함대가 만의 평평하고 밝은 수면 위로 서로에게 다가갔다.",
+      "text_markdown": "두 함대가 만의 평평하고 밝은 수면 위로 서로에게 다가갔다.",
+      "tts": {
+        "text": "두 함대가 만의 평평하고 밝은 수면 위로 서로에게 다가갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "머스킷 사격 소리와 선체 충돌 소리로 공기가 가득 찼다.",
+      "text_markdown": "머스킷 사격 소리와 선체 충돌 소리로 공기가 가득 찼다.",
+      "tts": {
+        "text": "머스킷 사격 소리와 선체 충돌 소리로 공기가 가득 찼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마의 배들은 필사적인 용기로 싸웠다.",
+      "text_markdown": "라흐마의 배들은 필사적인 용기로 싸웠다.",
+      "tts": {
+        "text": "라흐마의 배들은 필사적인 용기로 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "화력과 수에서 열세였지만 도주하지 않았다.",
+      "text_markdown": "화력과 수에서 열세였지만 도주하지 않았다.",
+      "tts": {
+        "text": "화력과 수에서 열세였지만 도주하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선장이 허락하지 않을 것이고, 그들도 그것을 요청하여 그를 모욕하지 않을 것이었다.",
+      "text_markdown": "선장이 허락하지 않을 것이고, 그들도 그것을 요청하여 그를 모욕하지 않을 것이었다.",
+      "tts": {
+        "text": "선장이 허락하지 않을 것이고, 그들도 그것을 요청하여 그를 모욕하지 않을 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하나씩 라흐마의 배들이 무력화되거나 나포되었다.",
+      "text_markdown": "하나씩 라흐마의 배들이 무력화되거나 나포되었다.",
+      "tts": {
+        "text": "하나씩 라흐마의 배들이 무력화되거나 나포되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "적 함대가 그의 기함을 포위했다.",
+      "text_markdown": "적 함대가 그의 기함을 포위했다.",
+      "tts": {
+        "text": "적 함대가 그의 기함을 포위했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "등선 부대가 그의 배를 강습할 준비를 했다.",
+      "text_markdown": "등선 부대가 그의 배를 강습할 준비를 했다.",
+      "tts": {
+        "text": "등선 부대가 그의 배를 강습할 준비를 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "최후가 다가오고 있었다.",
+      "text_markdown": "최후가 다가오고 있었다.",
+      "tts": {
+        "text": "최후가 다가오고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그다음에 일어난 일은 페르시아만 역사에서 가장 유명한 이야기 중 하나가 되었다.",
+      "text_markdown": "그다음에 일어난 일은 페르시아만 역사에서 가장 유명한 이야기 중 하나가 되었다.",
+      "tts": {
+        "text": "그다음에 일어난 일은 페르시아만 역사에서 가장 유명한 이야기 중 하나가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르는 패배가 확실함을 보고 마지막 결정을 내렸다.",
+      "text_markdown": "라흐마 이븐 자비르는 패배가 확실함을 보고 마지막 결정을 내렸다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르는 패배가 확실함을 보고 마지막 결정을 내렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아들을 품에 안았다.",
+      "text_markdown": "아들을 품에 안았다.",
+      "tts": {
+        "text": "아들을 품에 안았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "갑판 아래 화약고로 내려갔다. 배의 화약이 저장된 곳이었다.",
+      "text_markdown": "갑판 아래 화약고로 내려갔다. 배의 화약이 저장된 곳이었다.",
+      "tts": {
+        "text": "갑판 아래 화약고로 내려갔다. 배의 화약이 저장된 곳이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "불붙은 횃불을 들고 있었다.",
+      "text_markdown": "불붙은 횃불을 들고 있었다.",
+      "tts": {
+        "text": "불붙은 횃불을 들고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 기록에 따르면 그는 기도하기 위해 멈추었다고 한다.",
+      "text_markdown": "일부 기록에 따르면 그는 기도하기 위해 멈추었다고 한다.",
+      "tts": {
+        "text": "일부 기록에 따르면 그는 기도하기 위해 멈추었다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다른 기록에 따르면 한마디도 없이 그냥 들어갔다고 한다.",
+      "text_markdown": "다른 기록에 따르면 한마디도 없이 그냥 들어갔다고 한다.",
+      "tts": {
+        "text": "다른 기록에 따르면 한마디도 없이 그냥 들어갔다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세부 사항은 다르지만 결과는 같다.",
+      "text_markdown": "세부 사항은 다르지만 결과는 같다.",
+      "tts": {
+        "text": "세부 사항은 다르지만 결과는 같다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르는 횃불을 화약에 갖다 댔다.",
+      "text_markdown": "라흐마 이븐 자비르는 횃불을 화약에 갖다 댔다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르는 횃불을 화약에 갖다 댔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "폭발이 그의 배를 순식간에 파괴했다.",
+      "text_markdown": "폭발이 그의 배를 순식간에 파괴했다.",
+      "tts": {
+        "text": "폭발이 그의 배를 순식간에 파괴했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "폭발로 라흐마, 그의 아들 비시르, 그리고 배에 올라탄 적 선원들이 죽었다.",
+      "text_markdown": "폭발로 라흐마, 그의 아들 비시르, 그리고 배에 올라탄 적 선원들이 죽었다.",
+      "tts": {
+        "text": "폭발로 라흐마, 그의 아들 비시르, 그리고 배에 올라탄 적 선원들이 죽었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "충격파가 부근의 모든 배를 흔들었다.",
+      "text_markdown": "충격파가 부근의 모든 배를 흔들었다.",
+      "tts": {
+        "text": "충격파가 부근의 모든 배를 흔들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "물에서 연기와 불기둥이 솟아올랐다.",
+      "text_markdown": "물에서 연기와 불기둥이 솟아올랐다.",
+      "tts": {
+        "text": "물에서 연기와 불기둥이 솟아올랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기함이 있던 곳에는 타는 잔해밖에 남지 않았다.",
+      "text_markdown": "기함이 있던 곳에는 타는 잔해밖에 남지 않았다.",
+      "tts": {
+        "text": "기함이 있던 곳에는 타는 잔해밖에 남지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르는 항복 대신 죽음을 택했다.",
+      "text_markdown": "라흐마 이븐 자비르는 항복 대신 죽음을 택했다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르는 항복 대신 죽음을 택했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "적에게 자신을 사로잡는 만족을 주기보다 그들을 함께 데려가기를 선택했다.",
+      "text_markdown": "적에게 자신을 사로잡는 만족을 주기보다 그들을 함께 데려가기를 선택했다.",
+      "tts": {
+        "text": "적에게 자신을 사로잡는 만족을 주기보다 그들을 함께 데려가기를 선택했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자신의 조건으로 전쟁을 끝내기를 선택했다.",
+      "text_markdown": "자신의 조건으로 전쟁을 끝내기를 선택했다.",
+      "tts": {
+        "text": "자신의 조건으로 전쟁을 끝내기를 선택했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 아들 비시르의 죽음은 이 이야기의 가장 어두운 부분이다.",
+      "text_markdown": "그의 아들 비시르의 죽음은 이 이야기의 가장 어두운 부분이다.",
+      "tts": {
+        "text": "그의 아들 비시르의 죽음은 이 이야기의 가장 어두운 부분이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마는 아이를 화약고에 데려갔다.",
+      "text_markdown": "라흐마는 아이를 화약고에 데려갔다.",
+      "tts": {
+        "text": "라흐마는 아이를 화약고에 데려갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 아들이 알할리파의 포로로 살지 않을 것이라 결정했다.",
+      "text_markdown": "그의 아들이 알할리파의 포로로 살지 않을 것이라 결정했다.",
+      "tts": {
+        "text": "그의 아들이 알할리파의 포로로 살지 않을 것이라 결정했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "현대의 감성을 경악시키는 행위이다.",
+      "text_markdown": "현대의 감성을 경악시키는 행위이다.",
+      "tts": {
+        "text": "현대의 감성을 경악시키는 행위이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마의 세계에서 포로는 어차피 노예나 죽음을 의미했다.",
+      "text_markdown": "라흐마의 세계에서 포로는 어차피 노예나 죽음을 의미했다.",
+      "tts": {
+        "text": "라흐마의 세계에서 포로는 어차피 노예나 죽음을 의미했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 화약고를 자비로 보았을지도 모른다.",
+      "text_markdown": "그는 화약고를 자비로 보았을지도 모른다.",
+      "tts": {
+        "text": "그는 화약고를 자비로 보았을지도 모른다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르의 장엄한 죽음은 그가 결코 잊히지 않을 것임을 보장했다.",
+      "text_markdown": "라흐마 이븐 자비르의 장엄한 죽음은 그가 결코 잊히지 않을 것임을 보장했다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르의 장엄한 죽음은 그가 결코 잊히지 않을 것임을 보장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "폭발은 양쪽의 수백 명의 선원이 목격했다.",
+      "text_markdown": "폭발은 양쪽의 수백 명의 선원이 목격했다.",
+      "tts": {
+        "text": "폭발은 양쪽의 수백 명의 선원이 목격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이야기는 며칠 만에 만 전역에 퍼졌다.",
+      "text_markdown": "이야기는 며칠 만에 만 전역에 퍼졌다.",
+      "tts": {
+        "text": "이야기는 며칠 만에 만 전역에 퍼졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아랍 부족들 사이에서 그는 전설이 되었다.",
+      "text_markdown": "아랍 부족들 사이에서 그는 전설이 되었다.",
+      "tts": {
+        "text": "아랍 부족들 사이에서 그는 전설이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 반항의 궁극적 본보기로 여겨졌다.",
+      "text_markdown": "그는 반항의 궁극적 본보기로 여겨졌다.",
+      "tts": {
+        "text": "그는 반항의 궁극적 본보기로 여겨졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마지막 순간까지 자신의 권리를 위해 싸웠고 굴복하기보다 죽었다.",
+      "text_markdown": "마지막 순간까지 자신의 권리를 위해 싸웠고 굴복하기보다 죽었다.",
+      "tts": {
+        "text": "마지막 순간까지 자신의 권리를 위해 싸웠고 굴복하기보다 죽었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국인들은 그의 죽음을 공식 문서에 기록했다.",
+      "text_markdown": "영국인들은 그의 죽음을 공식 문서에 기록했다.",
+      "tts": {
+        "text": "영국인들은 그의 죽음을 공식 문서에 기록했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "만에서 가장 끈질긴 해적의 죽음을 안도와 존경이 섞인 감정으로 기록했다.",
+      "text_markdown": "만에서 가장 끈질긴 해적의 죽음을 안도와 존경이 섞인 감정으로 기록했다.",
+      "tts": {
+        "text": "만에서 가장 끈질긴 해적의 죽음을 안도와 존경이 섞인 감정으로 기록했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 만을 통제하려는 그들의 계획에 끊임없는 문제였다.",
+      "text_markdown": "그는 만을 통제하려는 그들의 계획에 끊임없는 문제였다.",
+      "tts": {
+        "text": "그는 만을 통제하려는 그들의 계획에 끊임없는 문제였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알할리파는 그의 죽음을 승리로 축하했다.",
+      "text_markdown": "알할리파는 그의 죽음을 승리로 축하했다.",
+      "tts": {
+        "text": "알할리파는 그의 죽음을 승리로 축하했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 가장 위험한 적이 사라졌다.",
+      "text_markdown": "그들의 가장 위험한 적이 사라졌다.",
+      "tts": {
+        "text": "그들의 가장 위험한 적이 사라졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바레인은 수십 년 만에 가장 안전해졌다.",
+      "text_markdown": "바레인은 수십 년 만에 가장 안전해졌다.",
+      "tts": {
+        "text": "바레인은 수십 년 만에 가장 안전해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p94",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잘라히마의 위협은 그들의 가장 위대한 영웅과 함께 소멸했다.",
+      "text_markdown": "잘라히마의 위협은 그들의 가장 위대한 영웅과 함께 소멸했다.",
+      "tts": {
+        "text": "잘라히마의 위협은 그들의 가장 위대한 영웅과 함께 소멸했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잘라히마 부족은 이전의 세력을 결코 회복하지 못했다.",
+      "text_markdown": "잘라히마 부족은 이전의 세력을 결코 회복하지 못했다.",
+      "tts": {
+        "text": "잘라히마 부족은 이전의 세력을 결코 회복하지 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마의 맹렬한 지도력 없이 그들은 정치적 세력으로서 점차 사라졌다.",
+      "text_markdown": "라흐마의 맹렬한 지도력 없이 그들은 정치적 세력으로서 점차 사라졌다.",
+      "tts": {
+        "text": "라흐마의 맹렬한 지도력 없이 그들은 정치적 세력으로서 점차 사라졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 다른 부족에 통합되었다.",
+      "text_markdown": "일부는 다른 부족에 통합되었다.",
+      "tts": {
+        "text": "일부는 다른 부족에 통합되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p95",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 이들은 해안을 따라 평화로운 삶에 정착했다.",
+      "text_markdown": "다른 이들은 해안을 따라 평화로운 삶에 정착했다.",
+      "tts": {
+        "text": "다른 이들은 해안을 따라 평화로운 삶에 정착했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아만은 라흐마의 죽음 이후 수십 년 동안 분쟁 수역으로 남았다.",
+      "text_markdown": "페르시아만은 라흐마의 죽음 이후 수십 년 동안 분쟁 수역으로 남았다.",
+      "tts": {
+        "text": "페르시아만은 라흐마의 죽음 이후 수십 년 동안 분쟁 수역으로 남았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 마침내 1853년에 항구적인 휴전을 부과했고, 이로 인해 이 지역은 식민지 이름을 얻었다: 휴전 제국.",
+      "text_markdown": "영국은 마침내 1853년에 항구적인 휴전을 부과했고, 이로 인해 이 지역은 식민지 이름을 얻었다: 휴전 제국.",
+      "tts": {
+        "text": "영국은 마침내 천팔백오십삼 년에 항구적인 휴전을 부과했고, 이로 인해 이 지역은 식민지 이름을 얻었다: 휴전 제국.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 국가들은 오늘날의 아랍에미리트이다.",
+      "text_markdown": "그 국가들은 오늘날의 아랍에미리트이다.",
+      "tts": {
+        "text": "그 국가들은 오늘날의 아랍에미리트이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바레인은 알할리파 통치 하에 남았다.",
+      "text_markdown": "바레인은 알할리파 통치 하에 남았다.",
+      "tts": {
+        "text": "바레인은 알할리파 통치 하에 남았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마가 평생 싸운 그 가문이 오늘날에도 여전히 이 섬나라를 다스리고 있다.",
+      "text_markdown": "라흐마가 평생 싸운 그 가문이 오늘날에도 여전히 이 섬나라를 다스리고 있다.",
+      "tts": {
+        "text": "라흐마가 평생 싸운 그 가문이 오늘날에도 여전히 이 섬나라를 다스리고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 전쟁은 결국 정치 지도에서 아무것도 바꾸지 못했다.",
+      "text_markdown": "그의 전쟁은 결국 정치 지도에서 아무것도 바꾸지 못했다.",
+      "tts": {
+        "text": "그의 전쟁은 결국 정치 지도에서 아무것도 바꾸지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 라흐마 이븐 자비르의 이야기는 부족의 명예가 어떻게 한 남자를 모든 이성 너머로 몰아갈 수 있는지를 보여주는 강력한 사례로 남아 있다.",
+      "text_markdown": "하지만 라흐마 이븐 자비르의 이야기는 부족의 명예가 어떻게 한 남자를 모든 이성 너머로 몰아갈 수 있는지를 보여주는 강력한 사례로 남아 있다.",
+      "tts": {
+        "text": "하지만 라흐마 이븐 자비르의 이야기는 부족의 명예가 어떻게 한 남자를 모든 이성 너머로 몰아갈 수 있는지를 보여주는 강력한 사례로 남아 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 총명하고 용감했지만, 증오에 의해서도 소진되었다.",
+      "text_markdown": "그는 총명하고 용감했지만, 증오에 의해서도 소진되었다.",
+      "tts": {
+        "text": "그는 총명하고 용감했지만, 증오에 의해서도 소진되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 전쟁은 부족을 파괴하고, 아들을 죽이고, 지속적인 것은 아무것도 이루지 못했다.",
+      "text_markdown": "그의 전쟁은 부족을 파괴하고, 아들을 죽이고, 지속적인 것은 아무것도 이루지 못했다.",
+      "tts": {
+        "text": "그의 전쟁은 부족을 파괴하고, 아들을 죽이고, 지속적인 것은 아무것도 이루지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 마지막 행위는 그의 유산에서 가장 논쟁이 되는 부분으로 남아 있다.",
+      "text_markdown": "그의 마지막 행위는 그의 유산에서 가장 논쟁이 되는 부분으로 남아 있다.",
+      "tts": {
+        "text": "그의 마지막 행위는 그의 유산에서 가장 논쟁이 되는 부분으로 남아 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 용기였는가 광기였는가?",
+      "text_markdown": "그것은 용기였는가 광기였는가?",
+      "tts": {
+        "text": "그것은 용기였는가 광기였는가?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 반항의 궁극적 표현이었는가, 아니면 자신의 아이를 살해한 이기적인 행위였는가?",
+      "text_markdown": "그것은 반항의 궁극적 표현이었는가, 아니면 자신의 아이를 살해한 이기적인 행위였는가?",
+      "tts": {
+        "text": "그것은 반항의 궁극적 표현이었는가, 아니면 자신의 아이를 살해한 이기적인 행위였는가?",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 질문들에 쉬운 답은 없다.",
+      "text_markdown": "이 질문들에 쉬운 답은 없다.",
+      "tts": {
+        "text": "이 질문들에 쉬운 답은 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라흐마 이븐 자비르는 우리와는 다른 가치관을 가진 세계에서 살았다.",
+      "text_markdown": "라흐마 이븐 자비르는 우리와는 다른 가치관을 가진 세계에서 살았다.",
+      "tts": {
+        "text": "라흐마 이븐 자비르는 우리와는 다른 가치관을 가진 세계에서 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로는 굴욕, 노예화 또는 그 이상을 의미했다.",
+      "text_markdown": "포로는 굴욕, 노예화 또는 그 이상을 의미했다.",
+      "tts": {
+        "text": "포로는 굴욕, 노예화 또는 그 이상을 의미했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p100",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 세계에서 폭발은 유일한 명예로운 선택으로 보였을 수 있다.",
+      "text_markdown": "그의 세계에서 폭발은 유일한 명예로운 선택으로 보였을 수 있다.",
+      "tts": {
+        "text": "그의 세계에서 폭발은 유일한 명예로운 선택으로 보였을 수 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 페르시아만 역사에서 가장 주목할 만한 인물 중 하나로 남아 있다.",
+      "text_markdown": "그는 페르시아만 역사에서 가장 주목할 만한 인물 중 하나로 남아 있다.",
+      "tts": {
+        "text": "그는 페르시아만 역사에서 가장 주목할 만한 인물 중 하나로 남아 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사십 년 넘게 전 지역을 공포에 떨게 한 외눈의 해적.",
+      "text_markdown": "사십 년 넘게 전 지역을 공포에 떨게 한 외눈의 해적.",
+      "tts": {
+        "text": "사십 년 넘게 전 지역을 공포에 떨게 한 외눈의 해적.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항복 대신 불을 택한 남자.",
+      "text_markdown": "항복 대신 불을 택한 남자.",
+      "tts": {
+        "text": "항복 대신 불을 택한 남자.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p101",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "만은 그 이후로 그와 같은 자를 본 적이 없다.",
+      "text_markdown": "만은 그 이후로 그와 같은 자를 본 적이 없다.",
+      "tts": {
+        "text": "만은 그 이후로 그와 같은 자를 본 적이 없다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

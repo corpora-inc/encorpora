@@ -1,0 +1,4622 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_rahmah_ibn_jabir",
+  "language": "tr",
+  "total_segments": 309,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, tüm hayatını savaşarak geçirmiş bir adamın hikâyesidir.",
+      "text_markdown": "Bu, tüm hayatını savaşarak geçirmiş bir adamın hikâyesidir.",
+      "tts": {
+        "text": "Bu, tüm hayatını savaşarak geçirmiş bir adamın hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir al-Jalahimah bir korsan, bir savaşçı ve kırk yıldan fazla süren tek bir husumet tarafından tüketilen bir adamdı.",
+      "text_markdown": "Rahmah ibn Jabir al-Jalahimah bir korsan, bir savaşçı ve kırk yıldan fazla süren tek bir husumet tarafından tüketilen bir adamdı.",
+      "tts": {
+        "text": "Rahmah ibn Jabir al-Jalahimah bir korsan, bir savaşçı ve kırk yıldan fazla süren tek bir husumet tarafından tüketilen bir adamdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Basra Körfezi'nin sularında, bu su kütlesinin dünyanın en çekişmeli yerlerinden biri olduğu bir dönemde savaştı.",
+      "text_markdown": "Basra Körfezi'nin sularında, bu su kütlesinin dünyanın en çekişmeli yerlerinden biri olduğu bir dönemde savaştı.",
+      "tts": {
+        "text": "Basra Körfezi'nin sularında, bu su kütlesinin dünyanın en çekişmeli yerlerinden biri olduğu bir dönemde savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnciler, ticaret ve kabile gururu, insanları bu sığ, turkuaz denizlerde öldürmeye ve ölmeye itti.",
+      "text_markdown": "İnciler, ticaret ve kabile gururu, insanları bu sığ, turkuaz denizlerde öldürmeye ve ölmeye itti.",
+      "tts": {
+        "text": "İnciler, ticaret ve kabile gururu, insanları bu sığ, turkuaz denizlerde öldürmeye ve ölmeye itti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler bölgeye Korsan Kıyısı adını verdi.",
+      "text_markdown": "İngilizler bölgeye Korsan Kıyısı adını verdi.",
+      "tts": {
+        "text": "İngilizler bölgeye Korsan Kıyısı adını verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunu bir kınama olarak kastediyorlardı.",
+      "text_markdown": "Bunu bir kınama olarak kastediyorlardı.",
+      "tts": {
+        "text": "Bunu bir kınama olarak kastediyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orada yaşayan insanlar bunu farklı görüyordu.",
+      "text_markdown": "Orada yaşayan insanlar bunu farklı görüyordu.",
+      "tts": {
+        "text": "Orada yaşayan insanlar bunu farklı görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onlar için deniz bir savaş alanıydı ve suyun kontrolü hayatta kalmak demekti.",
+      "text_markdown": "Onlar için deniz bir savaş alanıydı ve suyun kontrolü hayatta kalmak demekti.",
+      "tts": {
+        "text": "Onlar için deniz bir savaş alanıydı ve suyun kontrolü hayatta kalmak demekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir bunu herkesten daha iyi anlıyordu.",
+      "text_markdown": "Rahmah ibn Jabir bunu herkesten daha iyi anlıyordu.",
+      "tts": {
+        "text": "Rahmah ibn Jabir bunu herkesten daha iyi anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşacak hiçbir şey kalmayana kadar savaştı.",
+      "text_markdown": "Savaşacak hiçbir şey kalmayana kadar savaştı.",
+      "tts": {
+        "text": "Savaşacak hiçbir şey kalmayana kadar savaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ölümü, geldiğinde, Körfez korsanlığı tarihindeki en dramatik çıkış oldu.",
+      "text_markdown": "Ölümü, geldiğinde, Körfez korsanlığı tarihindeki en dramatik çıkış oldu.",
+      "tts": {
+        "text": "Ölümü, geldiğinde, Körfez korsanlığı tarihindeki en dramatik çıkış oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi şartlarında, ateş ve gök gürültüsü içinde, düşmanlarını da yanında götürerek ölmeyi seçti.",
+      "text_markdown": "Kendi şartlarında, ateş ve gök gürültüsü içinde, düşmanlarını da yanında götürerek ölmeyi seçti.",
+      "tts": {
+        "text": "Kendi şartlarında, ateş ve gök gürültüsü içinde, düşmanlarını da yanında götürerek ölmeyi seçti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Basra Körfezi'nin Dünyası",
+      "text_markdown": "Basra Körfezi'nin Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Basra Körfezi, Arap Yarımadası ile İran kıyısı arasında yaklaşık 600 mil uzanan sığ bir su kütlesidir.",
+      "text_markdown": "Basra Körfezi, Arap Yarımadası ile İran kıyısı arasında yaklaşık 600 mil uzanan sığ bir su kütlesidir.",
+      "tts": {
+        "text": "Basra Körfezi, Arap Yarımadası ile İran kıyısı arasında yaklaşık altı yüz mil uzanan sığ bir su kütlesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Derinliği nadiren 200 fiti aşar.",
+      "text_markdown": "Derinliği nadiren 200 fiti aşar.",
+      "tts": {
+        "text": "Derinliği nadiren iki yüz fiti aşar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok yerde bir gemi, berrak suyun içinden kumlu dibi görebilir.",
+      "text_markdown": "Birçok yerde bir gemi, berrak suyun içinden kumlu dibi görebilir.",
+      "tts": {
+        "text": "Birçok yerde bir gemi, berrak suyun içinden kumlu dibi görebilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mütevazı boyutuna rağmen Körfez, binlerce yıldır bir ticaret kavşağı olmuştur.",
+      "text_markdown": "Mütevazı boyutuna rağmen Körfez, binlerce yıldır bir ticaret kavşağı olmuştur.",
+      "tts": {
+        "text": "Mütevazı boyutuna rağmen Körfez, binlerce yıldır bir ticaret kavşağı olmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemiler, antik çağlardan beri bu sulardan Mezopotamya, Hindistan ve Afrika arasında mal taşımaktadır.",
+      "text_markdown": "Gemiler, antik çağlardan beri bu sulardan Mezopotamya, Hindistan ve Afrika arasında mal taşımaktadır.",
+      "tts": {
+        "text": "Gemiler, antik çağlardan beri bu sulardan Mezopotamya, Hindistan ve Afrika arasında mal taşımaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Körfez, Hint Okyanusu'nu dünyanın en eski medeniyetlerinden bazılarına bağlar.",
+      "text_markdown": "Körfez, Hint Okyanusu'nu dünyanın en eski medeniyetlerinden bazılarına bağlar.",
+      "tts": {
+        "text": "Körfez, Hint Okyanusu'nu dünyanın en eski medeniyetlerinden bazılarına bağlar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On sekizinci yüzyılda Körfez'in en değerli kaynağı petrol değildi.",
+      "text_markdown": "On sekizinci yüzyılda Körfez'in en değerli kaynağı petrol değildi.",
+      "tts": {
+        "text": "On sekizinci yüzyılda Körfez'in en değerli kaynağı petrol değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Petrol bir yüzyıl daha keşfedilmeyecekti.",
+      "text_markdown": "Petrol bir yüzyıl daha keşfedilmeyecekti.",
+      "tts": {
+        "text": "Petrol bir yüzyıl daha keşfedilmeyecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Körfez'in hazinesi incilerdi.",
+      "text_markdown": "Körfez'in hazinesi incilerdi.",
+      "tts": {
+        "text": "Körfez'in hazinesi incilerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Körfez'in inci yatakları dünyanın en zenginleri arasındaydı.",
+      "text_markdown": "Körfez'in inci yatakları dünyanın en zenginleri arasındaydı.",
+      "tts": {
+        "text": "Körfez'in inci yatakları dünyanın en zenginleri arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dalgıçlar, yalnızca bir burun mandalı ve bir taş ağırlıkla deniz tabanına dalıyor, dakikalarca nefeslerini tutuyorlardı.",
+      "text_markdown": "Dalgıçlar, yalnızca bir burun mandalı ve bir taş ağırlıkla deniz tabanına dalıyor, dakikalarca nefeslerini tutuyorlardı.",
+      "tts": {
+        "text": "Dalgıçlar, yalnızca bir burun mandalı ve bir taş ağırlıkla deniz tabanına dalıyor, dakikalarca nefeslerini tutuyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çıkardıkları inciler Asya ve Avrupa genelinde değerliydi.",
+      "text_markdown": "Çıkardıkları inciler Asya ve Avrupa genelinde değerliydi.",
+      "tts": {
+        "text": "Çıkardıkları inciler Asya ve Avrupa genelinde değerliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnci yataklarının kontrolü, zenginlik ve güç demekti.",
+      "text_markdown": "İnci yataklarının kontrolü, zenginlik ve güç demekti.",
+      "tts": {
+        "text": "İnci yataklarının kontrolü, zenginlik ve güç demekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arap kıyısındaki kabileler, en iyi dalış alanlarına erişim için sürekli savaşıyordu.",
+      "text_markdown": "Arap kıyısındaki kabileler, en iyi dalış alanlarına erişim için sürekli savaşıyordu.",
+      "tts": {
+        "text": "Arap kıyısındaki kabileler, en iyi dalış alanlarına erişim için sürekli savaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zengin bir inci yatağını kontrol eden kabile, komşularına hükmedebilirdi.",
+      "text_markdown": "Zengin bir inci yatağını kontrol eden kabile, komşularına hükmedebilirdi.",
+      "tts": {
+        "text": "Zengin bir inci yatağını kontrol eden kabile, komşularına hükmedebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Körfez'in Arap tarafı düzinelerce Arap kabilesine ev sahipliği yapıyordu.",
+      "text_markdown": "Körfez'in Arap tarafı düzinelerce Arap kabilesine ev sahipliği yapıyordu.",
+      "tts": {
+        "text": "Körfez'in Arap tarafı düzinelerce Arap kabilesine ev sahipliği yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kabileler, zamanla değişen konfederasyonlar halinde gevşekçe örgütlenmişti.",
+      "text_markdown": "Bu kabileler, zamanla değişen konfederasyonlar halinde gevşekçe örgütlenmişti.",
+      "tts": {
+        "text": "Bu kabileler, zamanla değişen konfederasyonlar halinde gevşekçe örgütlenmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İttifaklar, koşullar değiştikçe kurulup dağılıyordu.",
+      "text_markdown": "İttifaklar, koşullar değiştikçe kurulup dağılıyordu.",
+      "tts": {
+        "text": "İttifaklar, koşullar değiştikçe kurulup dağılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En önemli konfederasyonlardan biri Al Utoob idi.",
+      "text_markdown": "En önemli konfederasyonlardan biri Al Utoob idi.",
+      "tts": {
+        "text": "En önemli konfederasyonlardan biri Al Utoob idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al Utoob aslen Arap Yarımadası'nın merkezi çölü Necid'dendi.",
+      "text_markdown": "Al Utoob aslen Arap Yarımadası'nın merkezi çölü Necid'dendi.",
+      "tts": {
+        "text": "Al Utoob aslen Arap Yarımadası'nın merkezi çölü Necid'dendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha iyi fırsatlar arayışıyla kıyıya göç etmişlerdi.",
+      "text_markdown": "Daha iyi fırsatlar arayışıyla kıyıya göç etmişlerdi.",
+      "tts": {
+        "text": "Daha iyi fırsatlar arayışıyla kıyıya göç etmişlerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Utoob sonunda birkaç güçlü aileye bölündü.",
+      "text_markdown": "Al Utoob sonunda birkaç güçlü aileye bölündü.",
+      "tts": {
+        "text": "Al Utoob sonunda birkaç güçlü aileye bölündü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al Khalifa ailesi Bahreyn'in kontrolünü ele geçirdi.",
+      "text_markdown": "Al Khalifa ailesi Bahreyn'in kontrolünü ele geçirdi.",
+      "tts": {
+        "text": "Al Khalifa ailesi Bahreyn'in kontrolünü ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Sabah ailesi Kuveyt'te yerleşti.",
+      "text_markdown": "Al Sabah ailesi Kuveyt'te yerleşti.",
+      "tts": {
+        "text": "Al Sabah ailesi Kuveyt'te yerleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jalahimah kabilesi, Rahmah'ın halkı, bugünkü Katar kıyısı boyunca yerleşti.",
+      "text_markdown": "Jalahimah kabilesi, Rahmah'ın halkı, bugünkü Katar kıyısı boyunca yerleşti.",
+      "tts": {
+        "text": "Jalahimah kabilesi, Rahmah'ın halkı, bugünkü Katar kıyısı boyunca yerleşti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahreyn, Körfez'deki en büyük ödüldü.",
+      "text_markdown": "Bahreyn, Körfez'deki en büyük ödüldü.",
+      "tts": {
+        "text": "Bahreyn, Körfez'deki en büyük ödüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnci yatakları hepsinin en zengini idi.",
+      "text_markdown": "İnci yatakları hepsinin en zengini idi.",
+      "tts": {
+        "text": "İnci yatakları hepsinin en zengini idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bahreyn'i kontrol eden, bölgenin en değerli kaynağını kontrol ediyordu.",
+      "text_markdown": "Bahreyn'i kontrol eden, bölgenin en değerli kaynağını kontrol ediyordu.",
+      "tts": {
+        "text": "Bahreyn'i kontrol eden, bölgenin en değerli kaynağını kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Khalifa ailesi 1783'te Bahreyn'i Perslerden alarak ele geçirdi.",
+      "text_markdown": "Al Khalifa ailesi 1783'te Bahreyn'i Perslerden alarak ele geçirdi.",
+      "tts": {
+        "text": "Al Khalifa ailesi bin yedi yüz seksen üç yılında Bahreyn'i Perslerden alarak ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu fethin muazzam sonuçları olacaktı.",
+      "text_markdown": "Bu fethin muazzam sonuçları olacaktı.",
+      "tts": {
+        "text": "Bu fethin muazzam sonuçları olacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onlarca yıllık çatışmayı besleyecek bir güç dengesizliği yarattı.",
+      "text_markdown": "Onlarca yıllık çatışmayı besleyecek bir güç dengesizliği yarattı.",
+      "tts": {
+        "text": "Onlarca yıllık çatışmayı besleyecek bir güç dengesizliği yarattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalahimah, Bahreyn zenginliğinden pay almayı hak ettiklerine inanıyordu.",
+      "text_markdown": "Jalahimah, Bahreyn zenginliğinden pay almayı hak ettiklerine inanıyordu.",
+      "tts": {
+        "text": "Jalahimah, Bahreyn zenginliğinden pay almayı hak ettiklerine inanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al Utoob konfederasyonunun parçası olmuşlardı.",
+      "text_markdown": "Al Utoob konfederasyonunun parçası olmuşlardı.",
+      "tts": {
+        "text": "Al Utoob konfederasyonunun parçası olmuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa'nın yanında savaşmışlardı.",
+      "text_markdown": "Al Khalifa'nın yanında savaşmışlardı.",
+      "tts": {
+        "text": "Al Khalifa'nın yanında savaşmışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Al Khalifa Bahreyn'i kendileri için sakladı.",
+      "text_markdown": "Ama Al Khalifa Bahreyn'i kendileri için sakladı.",
+      "tts": {
+        "text": "Ama Al Khalifa Bahreyn'i kendileri için sakladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu algılanan ihanet, Rahmah ibn Jabir'in ömür boyu sürecek savaşının ateşini yakan kıvılcımdı.",
+      "text_markdown": "Bu algılanan ihanet, Rahmah ibn Jabir'in ömür boyu sürecek savaşının ateşini yakan kıvılcımdı.",
+      "tts": {
+        "text": "Bu algılanan ihanet, Rahmah ibn Jabir'in ömür boyu sürecek savaşının ateşini yakan kıvılcımdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geri kalan günlerini, haklı olarak kendisine ait olduğuna inandığı şeyi Al Khalifa'dan almaya çalışarak geçirecekti.",
+      "text_markdown": "Geri kalan günlerini, haklı olarak kendisine ait olduğuna inandığı şeyi Al Khalifa'dan almaya çalışarak geçirecekti.",
+      "tts": {
+        "text": "Geri kalan günlerini, haklı olarak kendisine ait olduğuna inandığı şeyi Al Khalifa'dan almaya çalışarak geçirecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kabile çatışmalarının ötesinde, daha büyük güçler Körfez'in etrafında dönüyordu.",
+      "text_markdown": "Kabile çatışmalarının ötesinde, daha büyük güçler Körfez'in etrafında dönüyordu.",
+      "tts": {
+        "text": "Kabile çatışmalarının ötesinde, daha büyük güçler Körfez'in etrafında dönüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maskat merkezli Umman İmparatorluğu, Hint Okyanusu'nda önemli bir deniz gücüydü.",
+      "text_markdown": "Maskat merkezli Umman İmparatorluğu, Hint Okyanusu'nda önemli bir deniz gücüydü.",
+      "tts": {
+        "text": "Maskat merkezli Umman İmparatorluğu, Hint Okyanusu'nda önemli bir deniz gücüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ummanlıların Körfez ticareti ve siyasetinde kendi çıkarları vardı.",
+      "text_markdown": "Ummanlıların Körfez ticareti ve siyasetinde kendi çıkarları vardı.",
+      "tts": {
+        "text": "Ummanlıların Körfez ticareti ve siyasetinde kendi çıkarları vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vehhabi hareketi Arabistan'ın iç kesimlerinden yayılıyordu.",
+      "text_markdown": "Vehhabi hareketi Arabistan'ın iç kesimlerinden yayılıyordu.",
+      "tts": {
+        "text": "Vehhabi hareketi Arabistan'ın iç kesimlerinden yayılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suudi-Vehhabi ittifakı, kıyı kabilelerini dini ve siyasi otoriteleri altına almaya çalışıyordu.",
+      "text_markdown": "Suudi-Vehhabi ittifakı, kıyı kabilelerini dini ve siyasi otoriteleri altına almaya çalışıyordu.",
+      "tts": {
+        "text": "Suudi-Vehhabi ittifakı, kıyı kabilelerini dini ve siyasi otoriteleri altına almaya çalışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Genişlemeleri, zaten değişken bir bölgeye başka bir çatışma katmanı ekledi.",
+      "text_markdown": "Genişlemeleri, zaten değişken bir bölgeye başka bir çatışma katmanı ekledi.",
+      "tts": {
+        "text": "Genişlemeleri, zaten değişken bir bölgeye başka bir çatışma katmanı ekledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ve sonra İngilizler vardı.",
+      "text_markdown": "Ve sonra İngilizler vardı.",
+      "tts": {
+        "text": "Ve sonra İngilizler vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi, Hindistan ile Körfez arasındaki ticareti kontrol ediyordu.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi, Hindistan ile Körfez arasındaki ticareti kontrol ediyordu.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi, Hindistan ile Körfez arasındaki ticareti kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz savaş gemileri suları devriye geziyordu ve İngiliz siyasi ajanlar kabile işlerine karışıyordu.",
+      "text_markdown": "İngiliz savaş gemileri suları devriye geziyordu ve İngiliz siyasi ajanlar kabile işlerine karışıyordu.",
+      "tts": {
+        "text": "İngiliz savaş gemileri suları devriye geziyordu ve İngiliz siyasi ajanlar kabile işlerine karışıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler her şeyden önce istikrar istiyordu.",
+      "text_markdown": "İngilizler her şeyden önce istikrar istiyordu.",
+      "tts": {
+        "text": "İngilizler her şeyden önce istikrar istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlık ticareti aksatıyordu ve aksayan ticaret kayıp kâr demekti.",
+      "text_markdown": "Korsanlık ticareti aksatıyordu ve aksayan ticaret kayıp kâr demekti.",
+      "tts": {
+        "text": "Korsanlık ticareti aksatıyordu ve aksayan ticaret kayıp kâr demekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonunda iradelelerini Körfez'e zorla dayatacaklar, Arapların ateşkes, İngilizlerin teslim olma dediği antlaşmalar imzalayacaklardı.",
+      "text_markdown": "Sonunda iradelelerini Körfez'e zorla dayatacaklar, Arapların ateşkes, İngilizlerin teslim olma dediği antlaşmalar imzalayacaklardı.",
+      "tts": {
+        "text": "Sonunda iradelelerini Körfez'e zorla dayatacaklar, Arapların ateşkes, İngilizlerin teslim olma dediği antlaşmalar imzalayacaklardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Rahmah ibn Jabir'in dünyasıydı.",
+      "text_markdown": "Bu, Rahmah ibn Jabir'in dünyasıydı.",
+      "tts": {
+        "text": "Bu, Rahmah ibn Jabir'in dünyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İncilerin ve kanın, kabile onurunun ve amansız intikamın dünyası.",
+      "text_markdown": "İncilerin ve kanın, kabile onurunun ve amansız intikamın dünyası.",
+      "tts": {
+        "text": "İncilerin ve kanın, kabile onurunun ve amansız intikamın dünyası.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-066",
+      "part": 0,
+      "chapter": 1,
+      "title": "Basra Körfezi'nin Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tek gözlü bir korsanın tüm Körfez'i korku içinde tutabildiği bir dünya.",
+      "text_markdown": "Tek gözlü bir korsanın tüm Körfez'i korku içinde tutabildiği bir dünya.",
+      "tts": {
+        "text": "Tek gözlü bir korsanın tüm Körfez'i korku içinde tutabildiği bir dünya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir al-Jalahimah, yaklaşık 1760 yılında Arap Yarımadası kıyısında doğdu.",
+      "text_markdown": "Rahmah ibn Jabir al-Jalahimah, yaklaşık 1760 yılında Arap Yarımadası kıyısında doğdu.",
+      "tts": {
+        "text": "Rahmah ibn Jabir al-Jalahimah, yaklaşık bin yedi yüz altmış yılında Arap Yarımadası kıyısında doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğumunun kesin tarihi kayıtlara geçmedi.",
+      "text_markdown": "Doğumunun kesin tarihi kayıtlara geçmedi.",
+      "tts": {
+        "text": "Doğumunun kesin tarihi kayıtlara geçmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kabilesi Jalahimah, bugünkü Katar bölgesinde yaşıyordu.",
+      "text_markdown": "Kabilesi Jalahimah, bugünkü Katar bölgesinde yaşıyordu.",
+      "tts": {
+        "text": "Kabilesi Jalahimah, bugünkü Katar bölgesinde yaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalahimah, denizci bir halktı.",
+      "text_markdown": "Jalahimah, denizci bir halktı.",
+      "tts": {
+        "text": "Jalahimah, denizci bir halktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Balık tutuyorlar, inci arıyorlar ve kıyı boyunca ticaret yapıyorlardı.",
+      "text_markdown": "Balık tutuyorlar, inci arıyorlar ve kıyı boyunca ticaret yapıyorlardı.",
+      "tts": {
+        "text": "Balık tutuyorlar, inci arıyorlar ve kıyı boyunca ticaret yapıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz onların geçim kaynağı ve kimliğiydi.",
+      "text_markdown": "Deniz onların geçim kaynağı ve kimliğiydi.",
+      "tts": {
+        "text": "Deniz onların geçim kaynağı ve kimliğiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah, kabile sadakatiyle tanımlanan bir dünyada büyüdü.",
+      "text_markdown": "Rahmah, kabile sadakatiyle tanımlanan bir dünyada büyüdü.",
+      "tts": {
+        "text": "Rahmah, kabile sadakatiyle tanımlanan bir dünyada büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir adamın kabilesi onun ailesi, ordusu ve ulusuydu.",
+      "text_markdown": "Bir adamın kabilesi onun ailesi, ordusu ve ulusuydu.",
+      "tts": {
+        "text": "Bir adamın kabilesi onun ailesi, ordusu ve ulusuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kabilene ihanet etmek günahların en büyüğüydü.",
+      "text_markdown": "Kabilene ihanet etmek günahların en büyüğüydü.",
+      "tts": {
+        "text": "Kabilene ihanet etmek günahların en büyüğüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kabilene yapılan bir haksızlığı öcünü almak en yüce görevdi.",
+      "text_markdown": "Kabilene yapılan bir haksızlığı öcünü almak en yüce görevdi.",
+      "tts": {
+        "text": "Kabilene yapılan bir haksızlığı öcünü almak en yüce görevdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha çocukken yelken açmayı, Körfez'in iş atları olan kalyonları kullanmayı öğrendi.",
+      "text_markdown": "Daha çocukken yelken açmayı, Körfez'in iş atları olan kalyonları kullanmayı öğrendi.",
+      "tts": {
+        "text": "Daha çocukken yelken açmayı, Körfez'in iş atları olan kalyonları kullanmayı öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kalyonlar, üçgen latin yelkenli ahşap yelkenli teknelerdi.",
+      "text_markdown": "Kalyonlar, üçgen latin yelkenli ahşap yelkenli teknelerdi.",
+      "tts": {
+        "text": "Kalyonlar, üçgen latin yelkenli ahşap yelkenli teknelerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu sularda yüzyıllardır kullanılıyorlardı.",
+      "text_markdown": "Bu sularda yüzyıllardır kullanılıyorlardı.",
+      "tts": {
+        "text": "Bu sularda yüzyıllardır kullanılıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ayrıca dövüşmeyi de öğrendi.",
+      "text_markdown": "Rahmah ayrıca dövüşmeyi de öğrendi.",
+      "tts": {
+        "text": "Rahmah ayrıca dövüşmeyi de öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Körfez kıyısındaki her erkeğin hem savaşçı hem de denizci olması beklenirdi.",
+      "text_markdown": "Körfez kıyısındaki her erkeğin hem savaşçı hem de denizci olması beklenirdi.",
+      "tts": {
+        "text": "Körfez kıyısındaki her erkeğin hem savaşçı hem de denizci olması beklenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rakip kabileler arasındaki baskınlar yaygındı.",
+      "text_markdown": "Rakip kabileler arasındaki baskınlar yaygındı.",
+      "tts": {
+        "text": "Rakip kabileler arasındaki baskınlar yaygındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kılıç ve tüfek kullanamayan bir çocuk bir yüktü.",
+      "text_markdown": "Kılıç ve tüfek kullanamayan bir çocuk bir yüktü.",
+      "tts": {
+        "text": "Kılıç ve tüfek kullanamayan bir çocuk bir yüktü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah'ın gençliğinin belirleyici olayı, Al Khalifa'nın Bahreyn'i fethetmesiydi.",
+      "text_markdown": "Rahmah'ın gençliğinin belirleyici olayı, Al Khalifa'nın Bahreyn'i fethetmesiydi.",
+      "tts": {
+        "text": "Rahmah'ın gençliğinin belirleyici olayı, Al Khalifa'nın Bahreyn'i fethetmesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jalahimah bu zaferin ganimetlerinden pay almayı bekliyordu.",
+      "text_markdown": "Jalahimah bu zaferin ganimetlerinden pay almayı bekliyordu.",
+      "tts": {
+        "text": "Jalahimah bu zaferin ganimetlerinden pay almayı bekliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine Al Khalifa, Bahreyn'i tamamen kendileri için aldı.",
+      "text_markdown": "Bunun yerine Al Khalifa, Bahreyn'i tamamen kendileri için aldı.",
+      "tts": {
+        "text": "Bunun yerine Al Khalifa, Bahreyn'i tamamen kendileri için aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalahimah bir kenara itildi.",
+      "text_markdown": "Jalahimah bir kenara itildi.",
+      "tts": {
+        "text": "Jalahimah bir kenara itildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnci zenginliğinden hiçbir pay almadılar.",
+      "text_markdown": "İnci zenginliğinden hiçbir pay almadılar.",
+      "tts": {
+        "text": "İnci zenginliğinden hiçbir pay almadılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En zengin dalış alanlarına erişimleri engellendi.",
+      "text_markdown": "En zengin dalış alanlarına erişimleri engellendi.",
+      "tts": {
+        "text": "En zengin dalış alanlarına erişimleri engellendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rahmah için bu, asla kabul etmeyeceği bir adaletsizlikti.",
+      "text_markdown": "Rahmah için bu, asla kabul etmeyeceği bir adaletsizlikti.",
+      "tts": {
+        "text": "Rahmah için bu, asla kabul etmeyeceği bir adaletsizlikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha genç bir adamken Al Khalifa gemilerine saldırmaya başladı.",
+      "text_markdown": "Daha genç bir adamken Al Khalifa gemilerine saldırmaya başladı.",
+      "tts": {
+        "text": "Daha genç bir adamken Al Khalifa gemilerine saldırmaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başlangıçta bunlar küçük çaplı saldırılardı.",
+      "text_markdown": "Başlangıçta bunlar küçük çaplı saldırılardı.",
+      "tts": {
+        "text": "Başlangıçta bunlar küçük çaplı saldırılardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir inci kalyonuna pusu kuruyor ya da bir ticaret gemisini yakalıyordu.",
+      "text_markdown": "Bir inci kalyonuna pusu kuruyor ya da bir ticaret gemisini yakalıyordu.",
+      "tts": {
+        "text": "Bir inci kalyonuna pusu kuruyor ya da bir ticaret gemisini yakalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saldırılar intikam eylemleri olduğu kadar korsanlık eylemleriydi.",
+      "text_markdown": "Saldırılar intikam eylemleri olduğu kadar korsanlık eylemleriydi.",
+      "tts": {
+        "text": "Saldırılar intikam eylemleri olduğu kadar korsanlık eylemleriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah doğal bir lider olduğunu kanıtladı.",
+      "text_markdown": "Rahmah doğal bir lider olduğunu kanıtladı.",
+      "tts": {
+        "text": "Rahmah doğal bir lider olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaşta korkusuz ve takipçilerine cömert idi.",
+      "text_markdown": "Savaşta korkusuz ve takipçilerine cömert idi.",
+      "tts": {
+        "text": "Savaşta korkusuz ve takipçilerine cömert idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlar, ünü ve yağma vaadi tarafından çekilerek sancağına akın etti.",
+      "text_markdown": "Adamlar, ünü ve yağma vaadi tarafından çekilerek sancağına akın etti.",
+      "tts": {
+        "text": "Adamlar, ünü ve yağma vaadi tarafından çekilerek sancağına akın etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Üssünü Katar kıyısındaki korunaklı bir koy olan Khor Hassan'da kurdu.",
+      "text_markdown": "Üssünü Katar kıyısındaki korunaklı bir koy olan Khor Hassan'da kurdu.",
+      "tts": {
+        "text": "Üssünü Katar kıyısındaki korunaklı bir koy olan Khor Hassan'da kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu limandan Körfez'den geçen gemilere saldırabiliyordu.",
+      "text_markdown": "Bu limandan Körfez'den geçen gemilere saldırabiliyordu.",
+      "tts": {
+        "text": "Bu limandan Körfez'den geçen gemilere saldırabiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Konum, ana deniz yollarına yakın, stratejik olarak mükemmeldi.",
+      "text_markdown": "Konum, ana deniz yollarına yakın, stratejik olarak mükemmeldi.",
+      "tts": {
+        "text": "Konum, ana deniz yollarına yakın, stratejik olarak mükemmeldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filosu istikrarlı bir şekilde büyüdü.",
+      "text_markdown": "Filosu istikrarlı bir şekilde büyüdü.",
+      "tts": {
+        "text": "Filosu istikrarlı bir şekilde büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha büyük ve daha iyi silahlı gemiler edindi.",
+      "text_markdown": "Daha büyük ve daha iyi silahlı gemiler edindi.",
+      "tts": {
+        "text": "Daha büyük ve daha iyi silahlı gemiler edindi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Körfez genelinden, Al Khalifa'ya karşı kendi şikâyetleri olan kabilelerden adamlar dahil olmak üzere takipçiler topladı.",
+      "text_markdown": "Körfez genelinden, Al Khalifa'ya karşı kendi şikâyetleri olan kabilelerden adamlar dahil olmak üzere takipçiler topladı.",
+      "tts": {
+        "text": "Körfez genelinden, Al Khalifa'ya karşı kendi şikâyetleri olan kabilelerden adamlar dahil olmak üzere takipçiler topladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz doksanlı yıllarda Rahmah ibn Jabir, Basra Körfezi'nin en korkulan korsanıydı.",
+      "text_markdown": "Bin yedi yüz doksanlı yıllarda Rahmah ibn Jabir, Basra Körfezi'nin en korkulan korsanıydı.",
+      "tts": {
+        "text": "Bin yedi yüz doksanlı yıllarda Rahmah ibn Jabir, Basra Körfezi'nin en korkulan korsanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı, Bahreyn'den Maskat'a kadar tüccarlar tarafından korkuyla anılıyordu.",
+      "text_markdown": "Adı, Bahreyn'den Maskat'a kadar tüccarlar tarafından korkuyla anılıyordu.",
+      "tts": {
+        "text": "Adı, Bahreyn'den Maskat'a kadar tüccarlar tarafından korkuyla anılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa onu en tehlikeli düşmanları olarak görüyordu.",
+      "text_markdown": "Al Khalifa onu en tehlikeli düşmanları olarak görüyordu.",
+      "tts": {
+        "text": "Al Khalifa onu en tehlikeli düşmanları olarak görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayısız savaşından birinde Rahmah bir gözünü kaybetti.",
+      "text_markdown": "Sayısız savaşından birinde Rahmah bir gözünü kaybetti.",
+      "tts": {
+        "text": "Sayısız savaşından birinde Rahmah bir gözünü kaybetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu yaralanma, daha az iradeli bir adamın kariyerini sona erdirirdi.",
+      "text_markdown": "Bu yaralanma, daha az iradeli bir adamın kariyerini sona erdirirdi.",
+      "tts": {
+        "text": "Bu yaralanma, daha az iradeli bir adamın kariyerini sona erdirirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah için bu yalnızca bir onur nişanıydı.",
+      "text_markdown": "Rahmah için bu yalnızca bir onur nişanıydı.",
+      "tts": {
+        "text": "Rahmah için bu yalnızca bir onur nişanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eskisi gibi aynı vahşetle savaşmaya devam etti.",
+      "text_markdown": "Eskisi gibi aynı vahşetle savaşmaya devam etti.",
+      "tts": {
+        "text": "Eskisi gibi aynı vahşetle savaşmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onu tanıyan Avrupalı gözlemciler, dehşet verici bir figür tarif etti.",
+      "text_markdown": "Onu tanıyan Avrupalı gözlemciler, dehşet verici bir figür tarif etti.",
+      "tts": {
+        "text": "Onu tanıyan Avrupalı gözlemciler, dehşet verici bir figür tarif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uzun boylu ve zayıftı, tek bir yanan gözü ve yıllarca süren savaştan yara izi kalmış bir yüzü vardı.",
+      "text_markdown": "Uzun boylu ve zayıftı, tek bir yanan gözü ve yıllarca süren savaştan yara izi kalmış bir yüzü vardı.",
+      "tts": {
+        "text": "Uzun boylu ve zayıftı, tek bir yanan gözü ve yıllarca süren savaştan yara izi kalmış bir yüzü vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sesinin suyun ötesine taşındığı, savaşın kaosu içinde bile adamlarını topladığı söylenirdi.",
+      "text_markdown": "Sesinin suyun ötesine taşındığı, savaşın kaosu içinde bile adamlarını topladığı söylenirdi.",
+      "tts": {
+        "text": "Sesinin suyun ötesine taşındığı, savaşın kaosu içinde bile adamlarını topladığı söylenirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bitmeyen Savaş",
+      "text_markdown": "Bitmeyen Savaş"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah'ın Al Khalifa'ya karşı savaşı ayrı ayrı baskınların bir dizisi değildi.",
+      "text_markdown": "Rahmah'ın Al Khalifa'ya karşı savaşı ayrı ayrı baskınların bir dizisi değildi.",
+      "tts": {
+        "text": "Rahmah'ın Al Khalifa'ya karşı savaşı ayrı ayrı baskınların bir dizisi değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On yıllar süren amansız bir saldırganlık kampanyasıydı.",
+      "text_markdown": "On yıllar süren amansız bir saldırganlık kampanyasıydı.",
+      "tts": {
+        "text": "On yıllar süren amansız bir saldırganlık kampanyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemilerini, limanlarını ve müttefiklerini eşit kararlılıkla saldırdı.",
+      "text_markdown": "Gemilerini, limanlarını ve müttefiklerini eşit kararlılıkla saldırdı.",
+      "tts": {
+        "text": "Gemilerini, limanlarını ve müttefiklerini eşit kararlılıkla saldırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taktikleri basit ama etkiliydi.",
+      "text_markdown": "Taktikleri basit ama etkiliydi.",
+      "tts": {
+        "text": "Taktikleri basit ama etkiliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha yavaş ticaret gemilerini durdurmak için hızlı, manevra kabiliyetli kalyonlar kullanıyordu.",
+      "text_markdown": "Daha yavaş ticaret gemilerini durdurmak için hızlı, manevra kabiliyetli kalyonlar kullanıyordu.",
+      "tts": {
+        "text": "Daha yavaş ticaret gemilerini durdurmak için hızlı, manevra kabiliyetli kalyonlar kullanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamları düşman gemilerine kılıçlar, hançerler ve tüfeklerle çıkıyordu.",
+      "text_markdown": "Adamları düşman gemilerine kılıçlar, hançerler ve tüfeklerle çıkıyordu.",
+      "tts": {
+        "text": "Adamları düşman gemilerine kılıçlar, hançerler ve tüfeklerle çıkıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaş vahşi ve yakın mesafeliydi.",
+      "text_markdown": "Savaş vahşi ve yakın mesafeliydi.",
+      "tts": {
+        "text": "Savaş vahşi ve yakın mesafeliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah direnen lere çok az merhamet gösterdi.",
+      "text_markdown": "Rahmah direnen lere çok az merhamet gösterdi.",
+      "tts": {
+        "text": "Rahmah direnen lere çok az merhamet gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esir alınan Al Khalifa denizcileri çoğunlukla öldürülüyor ya da köleleştiriliyordu.",
+      "text_markdown": "Esir alınan Al Khalifa denizcileri çoğunlukla öldürülüyor ya da köleleştiriliyordu.",
+      "tts": {
+        "text": "Esir alınan Al Khalifa denizcileri çoğunlukla öldürülüyor ya da köleleştiriliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa'nın denizin kendisinden korkmasını istiyordu.",
+      "text_markdown": "Al Khalifa'nın denizin kendisinden korkmasını istiyordu.",
+      "tts": {
+        "text": "Al Khalifa'nın denizin kendisinden korkmasını istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Khalifa kendi filosuyla karşılık verdi.",
+      "text_markdown": "Al Khalifa kendi filosuyla karşılık verdi.",
+      "tts": {
+        "text": "Al Khalifa kendi filosuyla karşılık verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah'ın üslerine tekrarlanan saldırılar düzenledi.",
+      "text_markdown": "Rahmah'ın üslerine tekrarlanan saldırılar düzenledi.",
+      "tts": {
+        "text": "Rahmah'ın üslerine tekrarlanan saldırılar düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birkaç kez onu konumunu terk etmeye ve yeni bir limana çekilmeye zorladılar.",
+      "text_markdown": "Birkaç kez onu konumunu terk etmeye ve yeni bir limana çekilmeye zorladılar.",
+      "tts": {
+        "text": "Birkaç kez onu konumunu terk etmeye ve yeni bir limana çekilmeye zorladılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama Rahmah her zaman geri döndü.",
+      "text_markdown": "Ama Rahmah her zaman geri döndü.",
+      "tts": {
+        "text": "Ama Rahmah her zaman geri döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yeniden toparlanır, yeni takipçiler toplar ve savaşa geri dönerdi.",
+      "text_markdown": "Yeniden toparlanır, yeni takipçiler toplar ve savaşa geri dönerdi.",
+      "tts": {
+        "text": "Yeniden toparlanır, yeni takipçiler toplar ve savaşa geri dönerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dayanıklılığı olağanüstüydü.",
+      "text_markdown": "Dayanıklılığı olağanüstüydü.",
+      "tts": {
+        "text": "Dayanıklılığı olağanüstüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hiçbir yenilgi onun için kesin değildi.",
+      "text_markdown": "Hiçbir yenilgi onun için kesin değildi.",
+      "tts": {
+        "text": "Hiçbir yenilgi onun için kesin değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Khalifa'ya karşı çıkan herkesle ittifak kurdu.",
+      "text_markdown": "Al Khalifa'ya karşı çıkan herkesle ittifak kurdu.",
+      "tts": {
+        "text": "Al Khalifa'ya karşı çıkan herkesle ittifak kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İşine geldiğinde Vehhabilerle müttefik oldu.",
+      "text_markdown": "İşine geldiğinde Vehhabilerle müttefik oldu.",
+      "tts": {
+        "text": "İşine geldiğinde Vehhabilerle müttefik oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İşe yaradıklarında Ummanlılarla müttefik oldu.",
+      "text_markdown": "İşe yaradıklarında Ummanlılarla müttefik oldu.",
+      "tts": {
+        "text": "İşe yaradıklarında Ummanlılarla müttefik oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hatta zaman zaman İngilizlerle bile işbirliği yaptı.",
+      "text_markdown": "Hatta zaman zaman İngilizlerle bile işbirliği yaptı.",
+      "tts": {
+        "text": "Hatta zaman zaman İngilizlerle bile işbirliği yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ittifaklar her zaman geçici ve her zaman stratejikti.",
+      "text_markdown": "Bu ittifaklar her zaman geçici ve her zaman stratejikti.",
+      "tts": {
+        "text": "Bu ittifaklar her zaman geçici ve her zaman stratejikti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah'ın tek gerçek sadakati kabilesine ve intikamınaydı.",
+      "text_markdown": "Rahmah'ın tek gerçek sadakati kabilesine ve intikamınaydı.",
+      "tts": {
+        "text": "Rahmah'ın tek gerçek sadakati kabilesine ve intikamınaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa'ya zarar vermesine yardım edebilecek herkesle çalışırdı.",
+      "text_markdown": "Al Khalifa'ya zarar vermesine yardım edebilecek herkesle çalışırdı.",
+      "tts": {
+        "text": "Al Khalifa'ya zarar vermesine yardım edebilecek herkesle çalışırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vehhabiler bir süreliğine özellikle önemli müttefiklerdi.",
+      "text_markdown": "Vehhabiler bir süreliğine özellikle önemli müttefiklerdi.",
+      "tts": {
+        "text": "Vehhabiler bir süreliğine özellikle önemli müttefiklerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suudi-Vehhabi devleti, on sekizinci yüzyılın sonları ve on dokuzuncu yüzyılın başlarında Arabistan'a yayılıyordu.",
+      "text_markdown": "Suudi-Vehhabi devleti, on sekizinci yüzyılın sonları ve on dokuzuncu yüzyılın başlarında Arabistan'a yayılıyordu.",
+      "tts": {
+        "text": "Suudi-Vehhabi devleti, on sekizinci yüzyılın sonları ve on dokuzuncu yüzyılın başlarında Arabistan'a yayılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa'yı rakip olarak görüyorlar ve Rahmah'ın saldırılarını desteklemekten memnunlardı.",
+      "text_markdown": "Al Khalifa'yı rakip olarak görüyorlar ve Rahmah'ın saldırılarını desteklemekten memnunlardı.",
+      "tts": {
+        "text": "Al Khalifa'yı rakip olarak görüyorlar ve Rahmah'ın saldırılarını desteklemekten memnunlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vehhabi desteğiyle Rahmah, en iddialı operasyonlarından bazılarını başlattı.",
+      "text_markdown": "Vehhabi desteğiyle Rahmah, en iddialı operasyonlarından bazılarını başlattı.",
+      "tts": {
+        "text": "Vehhabi desteğiyle Rahmah, en iddialı operasyonlarından bazılarını başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahreyn'in limanlarını ablukaya alarak adanın ticaretini kesti.",
+      "text_markdown": "Bahreyn'in limanlarını ablukaya alarak adanın ticaretini kesti.",
+      "tts": {
+        "text": "Bahreyn'in limanlarını ablukaya alarak adanın ticaretini kesti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yataklardan dönen inci dalgıçları konvoylarına saldırdı.",
+      "text_markdown": "Yataklardan dönen inci dalgıçları konvoylarına saldırdı.",
+      "tts": {
+        "text": "Yataklardan dönen inci dalgıçları konvoylarına saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bahreyn çevresindeki suları Al Khalifa'ya sadık herkes için tehlikeli hale getirdi.",
+      "text_markdown": "Bahreyn çevresindeki suları Al Khalifa'ya sadık herkes için tehlikeli hale getirdi.",
+      "tts": {
+        "text": "Bahreyn çevresindeki suları Al Khalifa'ya sadık herkes için tehlikeli hale getirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnci ticareti Bahreyn'in can damarıydı.",
+      "text_markdown": "İnci ticareti Bahreyn'in can damarıydı.",
+      "tts": {
+        "text": "İnci ticareti Bahreyn'in can damarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onu aksatarak Rahmah, Al Khalifa gücünün temelini vurdu.",
+      "text_markdown": "Onu aksatarak Rahmah, Al Khalifa gücünün temelini vurdu.",
+      "tts": {
+        "text": "Onu aksatarak Rahmah, Al Khalifa gücünün temelini vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaybedilen bir inci geliri sezonu, bir hükümdar aileyi askeri bir yenilgiden daha fazla zayıflatabilirdi.",
+      "text_markdown": "Kaybedilen bir inci geliri sezonu, bir hükümdar aileyi askeri bir yenilgiden daha fazla zayıflatabilirdi.",
+      "tts": {
+        "text": "Kaybedilen bir inci geliri sezonu, bir hükümdar aileyi askeri bir yenilgiden daha fazla zayıflatabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler bu çatışmaları artan bir endişeyle izliyordu.",
+      "text_markdown": "İngilizler bu çatışmaları artan bir endişeyle izliyordu.",
+      "tts": {
+        "text": "İngilizler bu çatışmaları artan bir endişeyle izliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her kabile savaşı Körfez'den akan ticareti aksatıyordu.",
+      "text_markdown": "Her kabile savaşı Körfez'den akan ticareti aksatıyordu.",
+      "tts": {
+        "text": "Her kabile savaşı Körfez'den akan ticareti aksatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz tüccarlar para kaybediyordu ve İngiliz yetkililer sabrını yitiriyordu.",
+      "text_markdown": "İngiliz tüccarlar para kaybediyordu ve İngiliz yetkililer sabrını yitiriyordu.",
+      "tts": {
+        "text": "İngiliz tüccarlar para kaybediyordu ve İngiliz yetkililer sabrını yitiriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz ajanlar, Rahmah ile Al Khalifa arasında arabuluculuk yapmaya defalarca çalıştı.",
+      "text_markdown": "İngiliz ajanlar, Rahmah ile Al Khalifa arasında arabuluculuk yapmaya defalarca çalıştı.",
+      "tts": {
+        "text": "İngiliz ajanlar, Rahmah ile Al Khalifa arasında arabuluculuk yapmaya defalarca çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ateşkes müzakere etmeyi ve anlaşmazlıkları çözmeyi teklif ettiler.",
+      "text_markdown": "Ateşkes müzakere etmeyi ve anlaşmazlıkları çözmeyi teklif ettiler.",
+      "tts": {
+        "text": "Ateşkes müzakere etmeyi ve anlaşmazlıkları çözmeyi teklif ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah her teklifi reddetti.",
+      "text_markdown": "Rahmah her teklifi reddetti.",
+      "tts": {
+        "text": "Rahmah her teklifi reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barışla ilgilenmiyordu.",
+      "text_markdown": "Barışla ilgilenmiyordu.",
+      "tts": {
+        "text": "Barışla ilgilenmiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis Warden adlı bir İngiliz siyasi ajanı Rahmah ile görüştü ve ayrıntılı bir tanım bıraktı.",
+      "text_markdown": "Francis Warden adlı bir İngiliz siyasi ajanı Rahmah ile görüştü ve ayrıntılı bir tanım bıraktı.",
+      "tts": {
+        "text": "Francis Warden adlı bir İngiliz siyasi ajanı Rahmah ile görüştü ve ayrıntılı bir tanım bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanı kibar ama amansız olarak tanımladı.",
+      "text_markdown": "Korsanı kibar ama amansız olarak tanımladı.",
+      "tts": {
+        "text": "Korsanı kibar ama amansız olarak tanımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah tutumunu açıkça anlattı: Al Khalifa halkına ait olanı çalmıştı ve geri verilene kadar savaşacaktı.",
+      "text_markdown": "Rahmah tutumunu açıkça anlattı: Al Khalifa halkına ait olanı çalmıştı ve geri verilene kadar savaşacaktı.",
+      "tts": {
+        "text": "Rahmah tutumunu açıkça anlattı: Al Khalifa halkına ait olanı çalmıştı ve geri verilene kadar savaşacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler onun inatçılığından hayal kırıklığına uğramıştı.",
+      "text_markdown": "İngilizler onun inatçılığından hayal kırıklığına uğramıştı.",
+      "tts": {
+        "text": "İngilizler onun inatçılığından hayal kırıklığına uğramıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onu ne rüşvetle, ne tehditle ne de mantıkla ikna edebildiler.",
+      "text_markdown": "Onu ne rüşvetle, ne tehditle ne de mantıkla ikna edebildiler.",
+      "tts": {
+        "text": "Onu ne rüşvetle, ne tehditle ne de mantıkla ikna edebildiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa'ya olan nefreti mutlaktı ve müzakerenin ötesindeydi.",
+      "text_markdown": "Al Khalifa'ya olan nefreti mutlaktı ve müzakerenin ötesindeydi.",
+      "tts": {
+        "text": "Al Khalifa'ya olan nefreti mutlaktı ve müzakerenin ötesindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah, uzun kariyeri boyunca üssünü birkaç kez değiştirdi.",
+      "text_markdown": "Rahmah, uzun kariyeri boyunca üssünü birkaç kez değiştirdi.",
+      "tts": {
+        "text": "Rahmah, uzun kariyeri boyunca üssünü birkaç kez değiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Khor Hassan çok tehlikeli hale gelince Arap kıyısındaki Dammam'a taşındı.",
+      "text_markdown": "Khor Hassan çok tehlikeli hale gelince Arap kıyısındaki Dammam'a taşındı.",
+      "tts": {
+        "text": "Khor Hassan çok tehlikeli hale gelince Arap kıyısındaki Dammam'a taşındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dammam ona Suudi-Vehhabi desteğine ve yeni bir liman setine erişim sağladı.",
+      "text_markdown": "Dammam ona Suudi-Vehhabi desteğine ve yeni bir liman setine erişim sağladı.",
+      "tts": {
+        "text": "Dammam ona Suudi-Vehhabi desteğine ve yeni bir liman setine erişim sağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dammam'dan baskınlarına kesintisiz devam etti.",
+      "text_markdown": "Dammam'dan baskınlarına kesintisiz devam etti.",
+      "tts": {
+        "text": "Dammam'dan baskınlarına kesintisiz devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu artık önemliydi, düzinelerce silahlı kalyon sayıyordu.",
+      "text_markdown": "Filosu artık önemliydi, düzinelerce silahlı kalyon sayıyordu.",
+      "tts": {
+        "text": "Filosu artık önemliydi, düzinelerce silahlı kalyon sayıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bitmeyen Savaş",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sadece bir korsan değil, başlı başına bölgesel bir güç haline gelmişti.",
+      "text_markdown": "Sadece bir korsan değil, başlı başına bölgesel bir güç haline gelmişti.",
+      "tts": {
+        "text": "Sadece bir korsan değil, başlı başına bölgesel bir güç haline gelmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Doruk Noktasında",
+      "text_markdown": "Doruk Noktasında"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On dokuzuncu yüzyılın başlarında Rahmah ibn Jabir gücünün zirvesindeydi.",
+      "text_markdown": "On dokuzuncu yüzyılın başlarında Rahmah ibn Jabir gücünün zirvesindeydi.",
+      "tts": {
+        "text": "On dokuzuncu yüzyılın başlarında Rahmah ibn Jabir gücünün zirvesindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Önemli bir filo kontrol ediyor ve Körfez genelinde ittifakları vardı.",
+      "text_markdown": "Önemli bir filo kontrol ediyor ve Körfez genelinde ittifakları vardı.",
+      "tts": {
+        "text": "Önemli bir filo kontrol ediyor ve Körfez genelinde ittifakları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İtibarı Hürmüz Boğazı'ndan Kuveyt kıyısına kadar korkuluyordu.",
+      "text_markdown": "İtibarı Hürmüz Boğazı'ndan Kuveyt kıyısına kadar korkuluyordu.",
+      "tts": {
+        "text": "İtibarı Hürmüz Boğazı'ndan Kuveyt kıyısına kadar korkuluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Döneminin ve yerinin standartlarına göre artık yaşlı bir adamdı.",
+      "text_markdown": "Döneminin ve yerinin standartlarına göre artık yaşlı bir adamdı.",
+      "tts": {
+        "text": "Döneminin ve yerinin standartlarına göre artık yaşlı bir adamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yıllarca süren savaş, vücudunu yara izleriyle dolu ve yıpranmış bırakmıştı.",
+      "text_markdown": "Yıllarca süren savaş, vücudunu yara izleriyle dolu ve yıpranmış bırakmıştı.",
+      "tts": {
+        "text": "Yıllarca süren savaş, vücudunu yara izleriyle dolu ve yıpranmış bırakmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir gözünü kaybetmiş ve sayısız yara almıştı.",
+      "text_markdown": "Bir gözünü kaybetmiş ve sayısız yara almıştı.",
+      "tts": {
+        "text": "Bir gözünü kaybetmiş ve sayısız yara almıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama ruhu kırılmamıştı.",
+      "text_markdown": "Ama ruhu kırılmamıştı.",
+      "tts": {
+        "text": "Ama ruhu kırılmamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amiral gemisinin pruvasında durarak baskınları şahsen yönetmeye devam ediyordu.",
+      "text_markdown": "Amiral gemisinin pruvasında durarak baskınları şahsen yönetmeye devam ediyordu.",
+      "tts": {
+        "text": "Amiral gemisinin pruvasında durarak baskınları şahsen yönetmeye devam ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kalan gözünün savaşta şiddetli bir ışıkla parladığı söylenirdi.",
+      "text_markdown": "Kalan gözünün savaşta şiddetli bir ışıkla parladığı söylenirdi.",
+      "tts": {
+        "text": "Kalan gözünün savaşta şiddetli bir ışıkla parladığı söylenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamları onun Tanrı tarafından kutsandığına ve öldürülemeyeceğine inanıyordu.",
+      "text_markdown": "Adamları onun Tanrı tarafından kutsandığına ve öldürülemeyeceğine inanıyordu.",
+      "tts": {
+        "text": "Adamları onun Tanrı tarafından kutsandığına ve öldürülemeyeceğine inanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde onunla karşılaşan Avrupalı ziyaretçiler büyülenmişti.",
+      "text_markdown": "Bu dönemde onunla karşılaşan Avrupalı ziyaretçiler büyülenmişti.",
+      "tts": {
+        "text": "Bu dönemde onunla karşılaşan Avrupalı ziyaretçiler büyülenmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha önce karşılaştıkları hiçbir korsana benzemiyordu.",
+      "text_markdown": "Daha önce karşılaştıkları hiçbir korsana benzemiyordu.",
+      "tts": {
+        "text": "Daha önce karşılaştıkları hiçbir korsana benzemiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sıradan bir haydut değil, zekâ ve amaç sahibi bir adamdı.",
+      "text_markdown": "Sıradan bir haydut değil, zekâ ve amaç sahibi bir adamdı.",
+      "tts": {
+        "text": "Sıradan bir haydut değil, zekâ ve amaç sahibi bir adamdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir İngiliz subayı, Rahmah ile gemisinde görüşmesini anlattı.",
+      "text_markdown": "Bir İngiliz subayı, Rahmah ile gemisinde görüşmesini anlattı.",
+      "tts": {
+        "text": "Bir İngiliz subayı, Rahmah ile gemisinde görüşmesini anlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan onu nezaketle karşıladı, kahve ve hurma ikram etti.",
+      "text_markdown": "Korsan onu nezaketle karşıladı, kahve ve hurma ikram etti.",
+      "tts": {
+        "text": "Korsan onu nezaketle karşıladı, kahve ve hurma ikram etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siyaset ve ticareti eşitler olarak tartıştılar.",
+      "text_markdown": "Siyaset ve ticareti eşitler olarak tartıştılar.",
+      "tts": {
+        "text": "Siyaset ve ticareti eşitler olarak tartıştılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Subay, Rahmah'ın bir suçlu değil, bir hükümdar otoritesiyle konuştuğunu kaydetti.",
+      "text_markdown": "Subay, Rahmah'ın bir suçlu değil, bir hükümdar otoritesiyle konuştuğunu kaydetti.",
+      "tts": {
+        "text": "Subay, Rahmah'ın bir suçlu değil, bir hükümdar otoritesiyle konuştuğunu kaydetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah'ın hane halkı eşlerini, çocuklarını ve geniş ailesini kapsıyordu.",
+      "text_markdown": "Rahmah'ın hane halkı eşlerini, çocuklarını ve geniş ailesini kapsıyordu.",
+      "tts": {
+        "text": "Rahmah'ın hane halkı eşlerini, çocuklarını ve geniş ailesini kapsıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemilerinde ya da karadaki müstahkem yapılarda yaşıyorlardı.",
+      "text_markdown": "Gemilerinde ya da karadaki müstahkem yapılarda yaşıyorlardı.",
+      "tts": {
+        "text": "Gemilerinde ya da karadaki müstahkem yapılarda yaşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ailesi sürekli hareket halindeydi, onu üsten üsse takip ediyordu.",
+      "text_markdown": "Ailesi sürekli hareket halindeydi, onu üsten üsse takip ediyordu.",
+      "tts": {
+        "text": "Ailesi sürekli hareket halindeydi, onu üsten üsse takip ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oğlu Bişr, savaşı sürdürmek için yetiştiriliyordu.",
+      "text_markdown": "Oğlu Bişr, savaşı sürdürmek için yetiştiriliyordu.",
+      "tts": {
+        "text": "Oğlu Bişr, savaşı sürdürmek için yetiştiriliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah, Bişr'i küçük yaşından itibaren baskınlarına götürüyordu.",
+      "text_markdown": "Rahmah, Bişr'i küçük yaşından itibaren baskınlarına götürüyordu.",
+      "tts": {
+        "text": "Rahmah, Bişr'i küçük yaşından itibaren baskınlarına götürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çocuğun denizi, savaşı ve Al Khalifa'ya olan nefreti öğrenmesini istiyordu.",
+      "text_markdown": "Çocuğun denizi, savaşı ve Al Khalifa'ya olan nefreti öğrenmesini istiyordu.",
+      "tts": {
+        "text": "Çocuğun denizi, savaşı ve Al Khalifa'ya olan nefreti öğrenmesini istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ile Al Khalifa arasındaki çatışma tırmanmaya devam etti.",
+      "text_markdown": "Rahmah ile Al Khalifa arasındaki çatışma tırmanmaya devam etti.",
+      "tts": {
+        "text": "Rahmah ile Al Khalifa arasındaki çatışma tırmanmaya devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İki taraf da daha büyük filolar inşa etti ve daha güçlü müttefikler aradı.",
+      "text_markdown": "İki taraf da daha büyük filolar inşa etti ve daha güçlü müttefikler aradı.",
+      "tts": {
+        "text": "İki taraf da daha büyük filolar inşa etti ve daha güçlü müttefikler aradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Körfez giderek daha fazla militarize oluyordu.",
+      "text_markdown": "Körfez giderek daha fazla militarize oluyordu.",
+      "tts": {
+        "text": "Körfez giderek daha fazla militarize oluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1809'da İngilizler Körfez korsanlarına karşı büyük bir deniz seferi başlattı.",
+      "text_markdown": "1809'da İngilizler Körfez korsanlarına karşı büyük bir deniz seferi başlattı.",
+      "tts": {
+        "text": "Bin sekiz yüz dokuz yılında İngilizler Körfez korsanlarına karşı büyük bir deniz seferi başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birincil hedefleri Ras al-Khaimah'taki Kasimi filosuydu.",
+      "text_markdown": "Birincil hedefleri Ras al-Khaimah'taki Kasimi filosuydu.",
+      "tts": {
+        "text": "Birincil hedefleri Ras al-Khaimah'taki Kasimi filosuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kasimiler, Rahmah'tan ayrı başka bir güçlü korsan konfederasyonuydu.",
+      "text_markdown": "Kasimiler, Rahmah'tan ayrı başka bir güçlü korsan konfederasyonuydu.",
+      "tts": {
+        "text": "Kasimiler, Rahmah'tan ayrı başka bir güçlü korsan konfederasyonuydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizlerin Ras al-Khaimah'ı bombalaması Kasimi filosunun büyük bölümünü yok etti.",
+      "text_markdown": "İngilizlerin Ras al-Khaimah'ı bombalaması Kasimi filosunun büyük bölümünü yok etti.",
+      "tts": {
+        "text": "İngilizlerin Ras al-Khaimah'ı bombalaması Kasimi filosunun büyük bölümünü yok etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama Körfez'deki korsanlığa son vermedi.",
+      "text_markdown": "Ama Körfez'deki korsanlığa son vermedi.",
+      "tts": {
+        "text": "Ama Körfez'deki korsanlığa son vermedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir neredeyse hiç duraklamadan operasyonlarına devam etti.",
+      "text_markdown": "Rahmah ibn Jabir neredeyse hiç duraklamadan operasyonlarına devam etti.",
+      "tts": {
+        "text": "Rahmah ibn Jabir neredeyse hiç duraklamadan operasyonlarına devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler Rahmah'ı sınıflandırmakta zorlandı.",
+      "text_markdown": "İngilizler Rahmah'ı sınıflandırmakta zorlandı.",
+      "tts": {
+        "text": "İngilizler Rahmah'ı sınıflandırmakta zorlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Açıkça bir korsandı, ama İngiliz gemilerine hiçbir zaman doğrudan saldırmadı.",
+      "text_markdown": "Açıkça bir korsandı, ama İngiliz gemilerine hiçbir zaman doğrudan saldırmadı.",
+      "tts": {
+        "text": "Açıkça bir korsandı, ama İngiliz gemilerine hiçbir zaman doğrudan saldırmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşı tamamen Al Khalifa ve müttefiklerine odaklanmıştı.",
+      "text_markdown": "Savaşı tamamen Al Khalifa ve müttefiklerine odaklanmıştı.",
+      "tts": {
+        "text": "Savaşı tamamen Al Khalifa ve müttefiklerine odaklanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiliz gözünde bu, onu doğrudan bir tehditten çok bir baş belası yapıyordu.",
+      "text_markdown": "İngiliz gözünde bu, onu doğrudan bir tehditten çok bir baş belası yapıyordu.",
+      "tts": {
+        "text": "İngiliz gözünde bu, onu doğrudan bir tehditten çok bir baş belası yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah bu belirsizliği kendi avantajına kullandı.",
+      "text_markdown": "Rahmah bu belirsizliği kendi avantajına kullandı.",
+      "tts": {
+        "text": "Rahmah bu belirsizliği kendi avantajına kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizlerle dikkatli bir ilişki sürdürdü.",
+      "text_markdown": "İngilizlerle dikkatli bir ilişki sürdürdü.",
+      "tts": {
+        "text": "İngilizlerle dikkatli bir ilişki sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onları asla kendisine karşı harekete geçmeye kışkırtmadı.",
+      "text_markdown": "Onları asla kendisine karşı harekete geçmeye kışkırtmadı.",
+      "tts": {
+        "text": "Onları asla kendisine karşı harekete geçmeye kışkırtmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hatta onlara diğer korsan grupları hakkında istihbarat bile sağladı.",
+      "text_markdown": "Hatta onlara diğer korsan grupları hakkında istihbarat bile sağladı.",
+      "tts": {
+        "text": "Hatta onlara diğer korsan grupları hakkında istihbarat bile sağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1820'de İngilizler Körfez kabilelerine Genel Barış Antlaşması'nı dayattı.",
+      "text_markdown": "1820'de İngilizler Körfez kabilelerine Genel Barış Antlaşması'nı dayattı.",
+      "tts": {
+        "text": "Bin sekiz yüz yirmi yılında İngilizler Körfez kabilelerine Genel Barış Antlaşması'nı dayattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Antlaşma korsanlığa son vermeyi ve ticaret için istikrar yaratmayı amaçlıyordu.",
+      "text_markdown": "Antlaşma korsanlığa son vermeyi ve ticaret için istikrar yaratmayı amaçlıyordu.",
+      "tts": {
+        "text": "Antlaşma korsanlığa son vermeyi ve ticaret için istikrar yaratmayı amaçlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyı yöneticilerinin çoğu baskı altında imzaladı.",
+      "text_markdown": "Kıyı yöneticilerinin çoğu baskı altında imzaladı.",
+      "tts": {
+        "text": "Kıyı yöneticilerinin çoğu baskı altında imzaladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah imzalamayı reddetti.",
+      "text_markdown": "Rahmah imzalamayı reddetti.",
+      "tts": {
+        "text": "Rahmah imzalamayı reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al Khalifa'nın Bahreyn üzerindeki kontrolünü tanıyan hiçbir anlaşmayı kabul etmezdi.",
+      "text_markdown": "Al Khalifa'nın Bahreyn üzerindeki kontrolünü tanıyan hiçbir anlaşmayı kabul etmezdi.",
+      "tts": {
+        "text": "Al Khalifa'nın Bahreyn üzerindeki kontrolünü tanıyan hiçbir anlaşmayı kabul etmezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngilizler reddini kaydetti ama hemen harekete geçmedi.",
+      "text_markdown": "İngilizler reddini kaydetti ama hemen harekete geçmedi.",
+      "tts": {
+        "text": "İngilizler reddini kaydetti ama hemen harekete geçmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Artık altmışın üzerindeydi.",
+      "text_markdown": "Artık altmışın üzerindeydi.",
+      "tts": {
+        "text": "Artık altmışın üzerindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bedeni onu yarı yolda bırakıyordu ama iradesi bırakmıyordu.",
+      "text_markdown": "Bedeni onu yarı yolda bırakıyordu ama iradesi bırakmıyordu.",
+      "tts": {
+        "text": "Bedeni onu yarı yolda bırakıyordu ama iradesi bırakmıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruk Noktasında",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zamanın azaltamadığı bir nefretle yelken açmaya ve savaşmaya devam etti.",
+      "text_markdown": "Zamanın azaltamadığı bir nefretle yelken açmaya ve savaşmaya devam etti.",
+      "tts": {
+        "text": "Zamanın azaltamadığı bir nefretle yelken açmaya ve savaşmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1826 yılına gelindiğinde Rahmah ibn Jabir zamanının tükendiğini biliyordu.",
+      "text_markdown": "1826 yılına gelindiğinde Rahmah ibn Jabir zamanının tükendiğini biliyordu.",
+      "tts": {
+        "text": "Bin sekiz yüz yirmi altı yılına gelindiğinde Rahmah ibn Jabir zamanının tükendiğini biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaşlıydı, bir gözü görmeyen ve giderek daha fazla izole olmuştu.",
+      "text_markdown": "Yaşlıydı, bir gözü görmeyen ve giderek daha fazla izole olmuştu.",
+      "tts": {
+        "text": "Yaşlıydı, bir gözü görmeyen ve giderek daha fazla izole olmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vehhabi müttefikleri yıllar önce Mısır kuvvetleri tarafından yenilgiye uğratılmıştı.",
+      "text_markdown": "Vehhabi müttefikleri yıllar önce Mısır kuvvetleri tarafından yenilgiye uğratılmıştı.",
+      "tts": {
+        "text": "Vehhabi müttefikleri yıllar önce Mısır kuvvetleri tarafından yenilgiye uğratılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Filosu zirvesindekinden daha küçüktü.",
+      "text_markdown": "Filosu zirvesindekinden daha küçüktü.",
+      "tts": {
+        "text": "Filosu zirvesindekinden daha küçüktü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama savaşmayı bırakmayı reddetti.",
+      "text_markdown": "Ama savaşmayı bırakmayı reddetti.",
+      "tts": {
+        "text": "Ama savaşmayı bırakmayı reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teslim olmak düşünülemezdi.",
+      "text_markdown": "Teslim olmak düşünülemezdi.",
+      "tts": {
+        "text": "Teslim olmak düşünülemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Khalifa hâlâ Bahreyn'i elinde tutuyordu.",
+      "text_markdown": "Al Khalifa hâlâ Bahreyn'i elinde tutuyordu.",
+      "tts": {
+        "text": "Al Khalifa hâlâ Bahreyn'i elinde tutuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haksızlık düzeltilmemişti.",
+      "text_markdown": "Haksızlık düzeltilmemişti.",
+      "tts": {
+        "text": "Haksızlık düzeltilmemişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Rahmah için önemli olan tek gerçek buydu.",
+      "text_markdown": "Rahmah için önemli olan tek gerçek buydu.",
+      "tts": {
+        "text": "Rahmah için önemli olan tek gerçek buydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Khalifa ve müttefikleri, Rahmah'ı kesin olarak yok etmek için büyük bir filo topladı.",
+      "text_markdown": "Al Khalifa ve müttefikleri, Rahmah'ı kesin olarak yok etmek için büyük bir filo topladı.",
+      "tts": {
+        "text": "Al Khalifa ve müttefikleri, Rahmah'ı kesin olarak yok etmek için büyük bir filo topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahreyn'den ve Umman destekli kuvvetlerden gemilerle desteklendiler.",
+      "text_markdown": "Bahreyn'den ve Umman destekli kuvvetlerden gemilerle desteklendiler.",
+      "tts": {
+        "text": "Bahreyn'den ve Umman destekli kuvvetlerden gemilerle desteklendiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birleşik filo, Rahmah'ın toplayabileceği her şeyden çok daha büyüktü.",
+      "text_markdown": "Birleşik filo, Rahmah'ın toplayabileceği her şeyden çok daha büyüktü.",
+      "tts": {
+        "text": "Birleşik filo, Rahmah'ın toplayabileceği her şeyden çok daha büyüktü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son savaş Katar ile Bahreyn arasındaki sularda gerçekleşti.",
+      "text_markdown": "Son savaş Katar ile Bahreyn arasındaki sularda gerçekleşti.",
+      "tts": {
+        "text": "Son savaş Katar ile Bahreyn arasındaki sularda gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah küçük bir kalyon filosuyla düşmanlarıyla karşılaşmak üzere yelken açtı.",
+      "text_markdown": "Rahmah küçük bir kalyon filosuyla düşmanlarıyla karşılaşmak üzere yelken açtı.",
+      "tts": {
+        "text": "Rahmah küçük bir kalyon filosuyla düşmanlarıyla karşılaşmak üzere yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayıca geride olduğunu biliyordu.",
+      "text_markdown": "Sayıca geride olduğunu biliyordu.",
+      "tts": {
+        "text": "Sayıca geride olduğunu biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Umurunda değildi.",
+      "text_markdown": "Umurunda değildi.",
+      "tts": {
+        "text": "Umurunda değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Genç oğlu Bişr, amiral gemisinde onunla birlikteydi.",
+      "text_markdown": "Genç oğlu Bişr, amiral gemisinde onunla birlikteydi.",
+      "tts": {
+        "text": "Genç oğlu Bişr, amiral gemisinde onunla birlikteydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah çocuğu her büyük savaşa götürmüştü.",
+      "text_markdown": "Rahmah çocuğu her büyük savaşa götürmüştü.",
+      "tts": {
+        "text": "Rahmah çocuğu her büyük savaşa götürmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu sefer de farklı olmayacaktı.",
+      "text_markdown": "Bu sefer de farklı olmayacaktı.",
+      "tts": {
+        "text": "Bu sefer de farklı olmayacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş sabahın erken saatlerinde başladı.",
+      "text_markdown": "Savaş sabahın erken saatlerinde başladı.",
+      "tts": {
+        "text": "Savaş sabahın erken saatlerinde başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İki filo, Körfez'in düz, parlak suları üzerinde birbirine yaklaştı.",
+      "text_markdown": "İki filo, Körfez'in düz, parlak suları üzerinde birbirine yaklaştı.",
+      "tts": {
+        "text": "İki filo, Körfez'in düz, parlak suları üzerinde birbirine yaklaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hava, tüfek ateşinin çatırdaması ve tekne gövdelerinin çarpışmasıyla doldu.",
+      "text_markdown": "Hava, tüfek ateşinin çatırdaması ve tekne gövdelerinin çarpışmasıyla doldu.",
+      "tts": {
+        "text": "Hava, tüfek ateşinin çatırdaması ve tekne gövdelerinin çarpışmasıyla doldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah'ın gemileri çaresiz bir cesaretle savaştı.",
+      "text_markdown": "Rahmah'ın gemileri çaresiz bir cesaretle savaştı.",
+      "tts": {
+        "text": "Rahmah'ın gemileri çaresiz bir cesaretle savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Silah ve sayı bakımından gerideydi ama kaçmadılar.",
+      "text_markdown": "Silah ve sayı bakımından gerideydi ama kaçmadılar.",
+      "tts": {
+        "text": "Silah ve sayı bakımından gerideydi ama kaçmadılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaptanları buna izin vermezdi ve onlar da sormakla onu onursuzlaştırmazdı.",
+      "text_markdown": "Kaptanları buna izin vermezdi ve onlar da sormakla onu onursuzlaştırmazdı.",
+      "tts": {
+        "text": "Kaptanları buna izin vermezdi ve onlar da sormakla onu onursuzlaştırmazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birer birer Rahmah'ın gemileri devre dışı bırakıldı ya da ele geçirildi.",
+      "text_markdown": "Birer birer Rahmah'ın gemileri devre dışı bırakıldı ya da ele geçirildi.",
+      "tts": {
+        "text": "Birer birer Rahmah'ın gemileri devre dışı bırakıldı ya da ele geçirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düşman filosu amiral gemisinin etrafını kapattı.",
+      "text_markdown": "Düşman filosu amiral gemisinin etrafını kapattı.",
+      "tts": {
+        "text": "Düşman filosu amiral gemisinin etrafını kapattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çıkarma grupları gemisini kuşatmaya hazırlandı.",
+      "text_markdown": "Çıkarma grupları gemisini kuşatmaya hazırlandı.",
+      "tts": {
+        "text": "Çıkarma grupları gemisini kuşatmaya hazırlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son yaklaşıyordu.",
+      "text_markdown": "Son yaklaşıyordu.",
+      "tts": {
+        "text": "Son yaklaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bundan sonra olan, Basra Körfezi tarihinin en ünlü hikâyelerinden biri oldu.",
+      "text_markdown": "Bundan sonra olan, Basra Körfezi tarihinin en ünlü hikâyelerinden biri oldu.",
+      "tts": {
+        "text": "Bundan sonra olan, Basra Körfezi tarihinin en ünlü hikâyelerinden biri oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir, yenilginin kesin olduğunu görerek son kararını verdi.",
+      "text_markdown": "Rahmah ibn Jabir, yenilginin kesin olduğunu görerek son kararını verdi.",
+      "tts": {
+        "text": "Rahmah ibn Jabir, yenilginin kesin olduğunu görerek son kararını verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oğlunu kollarına aldı.",
+      "text_markdown": "Oğlunu kollarına aldı.",
+      "tts": {
+        "text": "Oğlunu kollarına aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geminin barut deposunun bulunduğu alt güverteye indi.",
+      "text_markdown": "Geminin barut deposunun bulunduğu alt güverteye indi.",
+      "tts": {
+        "text": "Geminin barut deposunun bulunduğu alt güverteye indi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yanan bir meşale taşıyordu.",
+      "text_markdown": "Yanan bir meşale taşıyordu.",
+      "tts": {
+        "text": "Yanan bir meşale taşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı anlatımlar dua etmek için durduğunu söyler.",
+      "text_markdown": "Bazı anlatımlar dua etmek için durduğunu söyler.",
+      "tts": {
+        "text": "Bazı anlatımlar dua etmek için durduğunu söyler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diğerleri tek kelime etmeden girdiğini söyler.",
+      "text_markdown": "Diğerleri tek kelime etmeden girdiğini söyler.",
+      "tts": {
+        "text": "Diğerleri tek kelime etmeden girdiğini söyler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayrıntılar değişir ama sonuç değişmez.",
+      "text_markdown": "Ayrıntılar değişir ama sonuç değişmez.",
+      "tts": {
+        "text": "Ayrıntılar değişir ama sonuç değişmez.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir meşaleyi baruta dokundurdu.",
+      "text_markdown": "Rahmah ibn Jabir meşaleyi baruta dokundurdu.",
+      "tts": {
+        "text": "Rahmah ibn Jabir meşaleyi baruta dokundurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Patlama gemisini anında yok etti.",
+      "text_markdown": "Patlama gemisini anında yok etti.",
+      "tts": {
+        "text": "Patlama gemisini anında yok etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Patlama Rahmah'ı, oğlu Bişr'i ve gemiye çıkan düşman denizcilerini öldürdü.",
+      "text_markdown": "Patlama Rahmah'ı, oğlu Bişr'i ve gemiye çıkan düşman denizcilerini öldürdü.",
+      "tts": {
+        "text": "Patlama Rahmah'ı, oğlu Bişr'i ve gemiye çıkan düşman denizcilerini öldürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şok dalgası yakınlardaki her gemiyi sarstı.",
+      "text_markdown": "Şok dalgası yakınlardaki her gemiyi sarstı.",
+      "tts": {
+        "text": "Şok dalgası yakınlardaki her gemiyi sarstı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sudan bir duman ve ateş sütunu yükseldi.",
+      "text_markdown": "Sudan bir duman ve ateş sütunu yükseldi.",
+      "tts": {
+        "text": "Sudan bir duman ve ateş sütunu yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amiral gemisinin bulunduğu yerde yalnızca yanan enkazdan başka bir şey yoktu.",
+      "text_markdown": "Amiral gemisinin bulunduğu yerde yalnızca yanan enkazdan başka bir şey yoktu.",
+      "tts": {
+        "text": "Amiral gemisinin bulunduğu yerde yalnızca yanan enkazdan başka bir şey yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir teslim yerine ölümü seçti.",
+      "text_markdown": "Rahmah ibn Jabir teslim yerine ölümü seçti.",
+      "tts": {
+        "text": "Rahmah ibn Jabir teslim yerine ölümü seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düşmanlarına yakalanma tatminini vermektense onları yanında götürmeyi seçti.",
+      "text_markdown": "Düşmanlarına yakalanma tatminini vermektense onları yanında götürmeyi seçti.",
+      "tts": {
+        "text": "Düşmanlarına yakalanma tatminini vermektense onları yanında götürmeyi seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşını kendi şartlarında bitirmeyi seçti.",
+      "text_markdown": "Savaşını kendi şartlarında bitirmeyi seçti.",
+      "tts": {
+        "text": "Savaşını kendi şartlarında bitirmeyi seçti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oğlu Bişr'in ölümü bu hikâyenin en karanlık kısmıdır.",
+      "text_markdown": "Oğlu Bişr'in ölümü bu hikâyenin en karanlık kısmıdır.",
+      "tts": {
+        "text": "Oğlu Bişr'in ölümü bu hikâyenin en karanlık kısmıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah bir çocuğu barut deposuna yanında götürdü.",
+      "text_markdown": "Rahmah bir çocuğu barut deposuna yanında götürdü.",
+      "tts": {
+        "text": "Rahmah bir çocuğu barut deposuna yanında götürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oğlunun Al Khalifa'nın tutsağı olarak yaşamayacağına karar verdi.",
+      "text_markdown": "Oğlunun Al Khalifa'nın tutsağı olarak yaşamayacağına karar verdi.",
+      "tts": {
+        "text": "Oğlunun Al Khalifa'nın tutsağı olarak yaşamayacağına karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Modern duyarlılıkları dehşete düşüren bir eylemdir.",
+      "text_markdown": "Modern duyarlılıkları dehşete düşüren bir eylemdir.",
+      "tts": {
+        "text": "Modern duyarlılıkları dehşete düşüren bir eylemdir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah'ın dünyasında esir düşmek zaten kölelik ya da ölüm demekti.",
+      "text_markdown": "Rahmah'ın dünyasında esir düşmek zaten kölelik ya da ölüm demekti.",
+      "tts": {
+        "text": "Rahmah'ın dünyasında esir düşmek zaten kölelik ya da ölüm demekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barut deposunu bir merhamet eylemi olarak görmüş olabilir.",
+      "text_markdown": "Barut deposunu bir merhamet eylemi olarak görmüş olabilir.",
+      "tts": {
+        "text": "Barut deposunu bir merhamet eylemi olarak görmüş olabilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir'in görkemli ölümü, asla unutulmayacağını garantiledi.",
+      "text_markdown": "Rahmah ibn Jabir'in görkemli ölümü, asla unutulmayacağını garantiledi.",
+      "tts": {
+        "text": "Rahmah ibn Jabir'in görkemli ölümü, asla unutulmayacağını garantiledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Patlamaya her iki taraftan yüzlerce denizci tanık oldu.",
+      "text_markdown": "Patlamaya her iki taraftan yüzlerce denizci tanık oldu.",
+      "tts": {
+        "text": "Patlamaya her iki taraftan yüzlerce denizci tanık oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hikâye günler içinde Körfez geneline yayıldı.",
+      "text_markdown": "Hikâye günler içinde Körfez geneline yayıldı.",
+      "tts": {
+        "text": "Hikâye günler içinde Körfez geneline yayıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arap kabileleri arasında efsane oldu.",
+      "text_markdown": "Arap kabileleri arasında efsane oldu.",
+      "tts": {
+        "text": "Arap kabileleri arasında efsane oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Meydan okumanın en üst örneği olarak görüldü.",
+      "text_markdown": "Meydan okumanın en üst örneği olarak görüldü.",
+      "tts": {
+        "text": "Meydan okumanın en üst örneği olarak görüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son ana kadar hakları için savaşmıştı ve boyun eğmektense ölmüştü.",
+      "text_markdown": "Son ana kadar hakları için savaşmıştı ve boyun eğmektense ölmüştü.",
+      "tts": {
+        "text": "Son ana kadar hakları için savaşmıştı ve boyun eğmektense ölmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler ölümünü resmi raporlarına kaydetti.",
+      "text_markdown": "İngilizler ölümünü resmi raporlarına kaydetti.",
+      "tts": {
+        "text": "İngilizler ölümünü resmi raporlarına kaydetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Körfez'in en inatçı korsanının gidişini rahatlama ve saygı karışımıyla kaydettiler.",
+      "text_markdown": "Körfez'in en inatçı korsanının gidişini rahatlama ve saygı karışımıyla kaydettiler.",
+      "tts": {
+        "text": "Körfez'in en inatçı korsanının gidişini rahatlama ve saygı karışımıyla kaydettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Körfez'i kontrol etme planları için sürekli bir sorun olmuştu.",
+      "text_markdown": "Körfez'i kontrol etme planları için sürekli bir sorun olmuştu.",
+      "tts": {
+        "text": "Körfez'i kontrol etme planları için sürekli bir sorun olmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Khalifa onun ölümünü bir zafer olarak kutladı.",
+      "text_markdown": "Al Khalifa onun ölümünü bir zafer olarak kutladı.",
+      "tts": {
+        "text": "Al Khalifa onun ölümünü bir zafer olarak kutladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En tehlikeli düşmanları gitmişti.",
+      "text_markdown": "En tehlikeli düşmanları gitmişti.",
+      "tts": {
+        "text": "En tehlikeli düşmanları gitmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bahreyn artık on yıllardır olduğundan daha güvenliydi.",
+      "text_markdown": "Bahreyn artık on yıllardır olduğundan daha güvenliydi.",
+      "tts": {
+        "text": "Bahreyn artık on yıllardır olduğundan daha güvenliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jalahimah tehdidi, en büyük şampiyonlarıyla birlikte öldü.",
+      "text_markdown": "Jalahimah tehdidi, en büyük şampiyonlarıyla birlikte öldü.",
+      "tts": {
+        "text": "Jalahimah tehdidi, en büyük şampiyonlarıyla birlikte öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalahimah kabilesi eski gücünü hiçbir zaman geri kazanamadı.",
+      "text_markdown": "Jalahimah kabilesi eski gücünü hiçbir zaman geri kazanamadı.",
+      "tts": {
+        "text": "Jalahimah kabilesi eski gücünü hiçbir zaman geri kazanamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah'ın şiddetli liderliği olmadan siyasi bir güç olarak giderek silindiler.",
+      "text_markdown": "Rahmah'ın şiddetli liderliği olmadan siyasi bir güç olarak giderek silindiler.",
+      "tts": {
+        "text": "Rahmah'ın şiddetli liderliği olmadan siyasi bir güç olarak giderek silindiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları diğer kabilelere entegre oldu.",
+      "text_markdown": "Bazıları diğer kabilelere entegre oldu.",
+      "tts": {
+        "text": "Bazıları diğer kabilelere entegre oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğerleri kıyı boyunca huzurlu yaşamlara yerleşti.",
+      "text_markdown": "Diğerleri kıyı boyunca huzurlu yaşamlara yerleşti.",
+      "tts": {
+        "text": "Diğerleri kıyı boyunca huzurlu yaşamlara yerleşti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Basra Körfezi, Rahmah'ın ölümünden sonra onlarca yıl daha çekişmeli bir suyolu olmaya devam etti.",
+      "text_markdown": "Basra Körfezi, Rahmah'ın ölümünden sonra onlarca yıl daha çekişmeli bir suyolu olmaya devam etti.",
+      "tts": {
+        "text": "Basra Körfezi, Rahmah'ın ölümünden sonra onlarca yıl daha çekişmeli bir suyolu olmaya devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler sonunda 1853'te kalıcı bir ateşkes dayattı ve bu bölgeye kolonyal adını verdi: Müttefik Devletler.",
+      "text_markdown": "İngilizler sonunda 1853'te kalıcı bir ateşkes dayattı ve bu bölgeye kolonyal adını verdi: Müttefik Devletler.",
+      "tts": {
+        "text": "İngilizler sonunda bin sekiz yüz elli üç yılında kalıcı bir ateşkes dayattı ve bu bölgeye kolonyal adını verdi: Müttefik Devletler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu devletler bugün Birleşik Arap Emirlikleri'dir.",
+      "text_markdown": "Bu devletler bugün Birleşik Arap Emirlikleri'dir.",
+      "tts": {
+        "text": "Bu devletler bugün Birleşik Arap Emirlikleri'dir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahreyn, Al Khalifa yönetimi altında kaldı.",
+      "text_markdown": "Bahreyn, Al Khalifa yönetimi altında kaldı.",
+      "tts": {
+        "text": "Bahreyn, Al Khalifa yönetimi altında kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah'ın hayatı boyunca savaştığı aile, ada devletini bugün hâlâ yönetiyor.",
+      "text_markdown": "Rahmah'ın hayatı boyunca savaştığı aile, ada devletini bugün hâlâ yönetiyor.",
+      "tts": {
+        "text": "Rahmah'ın hayatı boyunca savaştığı aile, ada devletini bugün hâlâ yönetiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşı, sonunda, siyasi haritada hiçbir şeyi değiştirmedi.",
+      "text_markdown": "Savaşı, sonunda, siyasi haritada hiçbir şeyi değiştirmedi.",
+      "tts": {
+        "text": "Savaşı, sonunda, siyasi haritada hiçbir şeyi değiştirmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama Rahmah ibn Jabir'in hikâyesi, kabile onurunun bir insanı aklın ötesine nasıl sürükleyebildiğinin güçlü bir örneği olarak yaşamaya devam ediyor.",
+      "text_markdown": "Ama Rahmah ibn Jabir'in hikâyesi, kabile onurunun bir insanı aklın ötesine nasıl sürükleyebildiğinin güçlü bir örneği olarak yaşamaya devam ediyor.",
+      "tts": {
+        "text": "Ama Rahmah ibn Jabir'in hikâyesi, kabile onurunun bir insanı aklın ötesine nasıl sürükleyebildiğinin güçlü bir örneği olarak yaşamaya devam ediyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parlak ve cesurdu, ama aynı zamanda nefretle tüketilmişti.",
+      "text_markdown": "Parlak ve cesurdu, ama aynı zamanda nefretle tüketilmişti.",
+      "tts": {
+        "text": "Parlak ve cesurdu, ama aynı zamanda nefretle tüketilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşı kabilesini yok etti, oğlunu öldürdü ve kalıcı hiçbir şey başaramadı.",
+      "text_markdown": "Savaşı kabilesini yok etti, oğlunu öldürdü ve kalıcı hiçbir şey başaramadı.",
+      "tts": {
+        "text": "Savaşı kabilesini yok etti, oğlunu öldürdü ve kalıcı hiçbir şey başaramadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son eylemi, mirasının en çok tartışılan kısmı olmaya devam ediyor.",
+      "text_markdown": "Son eylemi, mirasının en çok tartışılan kısmı olmaya devam ediyor.",
+      "tts": {
+        "text": "Son eylemi, mirasının en çok tartışılan kısmı olmaya devam ediyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cesaret miydi yoksa delilik mi?",
+      "text_markdown": "Cesaret miydi yoksa delilik mi?",
+      "tts": {
+        "text": "Cesaret miydi yoksa delilik mi?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Meydan okumanın en üst ifadesi miydi, yoksa kendi çocuğunu öldüren bencil bir eylem mi?",
+      "text_markdown": "Meydan okumanın en üst ifadesi miydi, yoksa kendi çocuğunu öldüren bencil bir eylem mi?",
+      "tts": {
+        "text": "Meydan okumanın en üst ifadesi miydi, yoksa kendi çocuğunu öldüren bencil bir eylem mi?",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu soruların kolay cevapları yok.",
+      "text_markdown": "Bu soruların kolay cevapları yok.",
+      "tts": {
+        "text": "Bu soruların kolay cevapları yok.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir, bizimkinden farklı değerlere sahip bir dünyada yaşadı.",
+      "text_markdown": "Rahmah ibn Jabir, bizimkinden farklı değerlere sahip bir dünyada yaşadı.",
+      "tts": {
+        "text": "Rahmah ibn Jabir, bizimkinden farklı değerlere sahip bir dünyada yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esaret, aşağılanma, kölelik veya daha kötüsü demekti.",
+      "text_markdown": "Esaret, aşağılanma, kölelik veya daha kötüsü demekti.",
+      "tts": {
+        "text": "Esaret, aşağılanma, kölelik veya daha kötüsü demekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p100",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onun dünyasında patlama, tek onurlu seçenek gibi görünmüş olabilir.",
+      "text_markdown": "Onun dünyasında patlama, tek onurlu seçenek gibi görünmüş olabilir.",
+      "tts": {
+        "text": "Onun dünyasında patlama, tek onurlu seçenek gibi görünmüş olabilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Basra Körfezi tarihinin en dikkat çekici figürlerinden biri olmaya devam ediyor.",
+      "text_markdown": "Basra Körfezi tarihinin en dikkat çekici figürlerinden biri olmaya devam ediyor.",
+      "tts": {
+        "text": "Basra Körfezi tarihinin en dikkat çekici figürlerinden biri olmaya devam ediyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kırk yıldan fazla bir süre tüm bölgeyi korku içinde tutan tek gözlü bir korsan.",
+      "text_markdown": "Kırk yıldan fazla bir süre tüm bölgeyi korku içinde tutan tek gözlü bir korsan.",
+      "tts": {
+        "text": "Kırk yıldan fazla bir süre tüm bölgeyi korku içinde tutan tek gözlü bir korsan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teslim olmak yerine ateşi seçen bir adam.",
+      "text_markdown": "Teslim olmak yerine ateşi seçen bir adam.",
+      "tts": {
+        "text": "Teslim olmak yerine ateşi seçen bir adam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p101",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Körfez o günden beri bir benzerini görmedi.",
+      "text_markdown": "Körfez o günden beri bir benzerini görmedi.",
+      "tts": {
+        "text": "Körfez o günden beri bir benzerini görmedi.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

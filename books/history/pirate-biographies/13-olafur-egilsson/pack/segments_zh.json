@@ -1,0 +1,4259 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_olafur_egilsson",
+  "language": "zh",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个真实的故事，但它不是从海盗的角度来讲述的。",
+      "text_markdown": "这是一个真实的故事，但它不是从海盗的角度来讲述的。",
+      "tts": {
+        "text": "这是一个真实的故事，但它不是从海盗的角度来讲述的。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是从被掳走者的角度讲述的。",
+      "text_markdown": "它是从被掳走者的角度讲述的。",
+      "tts": {
+        "text": "它是从被掳走者的角度讲述的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数海盗故事颂扬大胆的袭击和宝藏。",
+      "text_markdown": "大多数海盗故事颂扬大胆的袭击和宝藏。",
+      "tts": {
+        "text": "大多数海盗故事颂扬大胆的袭击和宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个故事讲的是被留在硝烟中的人们的遭遇。",
+      "text_markdown": "这个故事讲的是被留在硝烟中的人们的遭遇。",
+      "tts": {
+        "text": "这个故事讲的是被留在硝烟中的人们的遭遇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年夏天，来自北非的海盗一路航行到了冰岛。",
+      "text_markdown": "1627年夏天，来自北非的海盗一路航行到了冰岛。",
+      "tts": {
+        "text": "一六二七年夏天，来自北非的海盗一路航行到了冰岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们抓获了近四百人，将他们带过大海去卖为奴隶。",
+      "text_markdown": "他们抓获了近四百人，将他们带过大海去卖为奴隶。",
+      "tts": {
+        "text": "他们抓获了近四百人，将他们带过大海去卖为奴隶。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些俘虏中有一位名叫奥拉夫·埃吉尔松的牧师。",
+      "text_markdown": "这些俘虏中有一位名叫奥拉夫·埃吉尔松的牧师。",
+      "tts": {
+        "text": "这些俘虏中有一位名叫奥拉夫·埃吉尔松的牧师。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他写了一本书，记录了他所见、所受和所失。",
+      "text_markdown": "他写了一本书，记录了他所见、所受和所失。",
+      "tts": {
+        "text": "他写了一本书，记录了他所见、所受和所失。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是他的故事。",
+      "text_markdown": "这就是他的故事。",
+      "tts": {
+        "text": "这就是他的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它属于一本关于海盗的书，因为海盗行为从来不仅仅关乎海盗。",
+      "text_markdown": "它属于一本关于海盗的书，因为海盗行为从来不仅仅关乎海盗。",
+      "tts": {
+        "text": "它属于一本关于海盗的书，因为海盗行为从来不仅仅关乎海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它始终也关乎被他们伤害的人。",
+      "text_markdown": "它始终也关乎被他们伤害的人。",
+      "tts": {
+        "text": "它始终也关乎被他们伤害的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "韦斯特曼群岛",
+      "text_markdown": "韦斯特曼群岛"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在冰岛南海岸远处，一簇小型火山岛从北大西洋中拔起。",
+      "text_markdown": "在冰岛南海岸远处，一簇小型火山岛从北大西洋中拔起。",
+      "tts": {
+        "text": "在冰岛南海岸远处，一簇小型火山岛从北大西洋中拔起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "冰岛人称之为韦斯特曼纳群岛，即韦斯特曼群岛。",
+      "text_markdown": "冰岛人称之为韦斯特曼纳群岛，即韦斯特曼群岛。",
+      "tts": {
+        "text": "冰岛人称之为韦斯特曼纳群岛，即韦斯特曼群岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们是全欧洲最与世隔绝的社区之一。",
+      "text_markdown": "它们是全欧洲最与世隔绝的社区之一。",
+      "tts": {
+        "text": "它们是全欧洲最与世隔绝的社区之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最大的岛屿叫赫马岛，是唯一曾有人永久定居的岛屿。",
+      "text_markdown": "最大的岛屿叫赫马岛，是唯一曾有人永久定居的岛屿。",
+      "tts": {
+        "text": "最大的岛屿叫赫马岛，是唯一曾有人永久定居的岛屿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "即便是赫马岛也很小，宽不过五公里，几乎四面都是陡峭的悬崖。",
+      "text_markdown": "即便是赫马岛也很小，宽不过五公里，几乎四面都是陡峭的悬崖。",
+      "tts": {
+        "text": "即便是赫马岛也很小，宽不过五公里，几乎四面都是陡峭的悬崖。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些岛屿由海底火山喷发形成。",
+      "text_markdown": "这些岛屿由海底火山喷发形成。",
+      "tts": {
+        "text": "这些岛屿由海底火山喷发形成。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "岩石是深色玄武岩，悬崖直插汹涌的海浪中。",
+      "text_markdown": "岩石是深色玄武岩，悬崖直插汹涌的海浪中。",
+      "tts": {
+        "text": "岩石是深色玄武岩，悬崖直插汹涌的海浪中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夏天，数以百万计的海鸟在岩架上筑巢。",
+      "text_markdown": "夏天，数以百万计的海鸟在岩架上筑巢。",
+      "tts": {
+        "text": "夏天，数以百万计的海鸟在岩架上筑巢。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "冬天，暴风雨连续数周肆虐群岛。",
+      "text_markdown": "冬天，暴风雨连续数周肆虐群岛。",
+      "tts": {
+        "text": "冬天，暴风雨连续数周肆虐群岛。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "世界尽头的生活",
+      "text_markdown": "世界尽头的生活"
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪初，赫马岛上大约生活着五百人。",
+      "text_markdown": "十七世纪初，赫马岛上大约生活着五百人。",
+      "tts": {
+        "text": "十七世纪初，赫马岛上大约生活着五百人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们靠捕鱼、养羊和从悬崖上采集海鸟蛋为生。",
+      "text_markdown": "他们靠捕鱼、养羊和从悬崖上采集海鸟蛋为生。",
+      "tts": {
+        "text": "他们靠捕鱼、养羊和从悬崖上采集海鸟蛋为生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "岛民们说冰岛语，一种自维京时代以来几乎没有变化的语言。",
+      "text_markdown": "岛民们说冰岛语，一种自维京时代以来几乎没有变化的语言。",
+      "tts": {
+        "text": "岛民们说冰岛语，一种自维京时代以来几乎没有变化的语言。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们是路德宗信徒，教堂是社区生活的中心。",
+      "text_markdown": "他们是路德宗信徒，教堂是社区生活的中心。",
+      "tts": {
+        "text": "他们是路德宗信徒，教堂是社区生活的中心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冰岛由丹麦王国统治，丹麦通过严格的垄断控制所有贸易。",
+      "text_markdown": "冰岛由丹麦王国统治，丹麦通过严格的垄断控制所有贸易。",
+      "tts": {
+        "text": "冰岛由丹麦王国统治，丹麦通过严格的垄断控制所有贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "只有丹麦商人可以买卖商品，冰岛人与外界几乎没有联系。",
+      "text_markdown": "只有丹麦商人可以买卖商品，冰岛人与外界几乎没有联系。",
+      "tts": {
+        "text": "只有丹麦商人可以买卖商品，冰岛人与外界几乎没有联系。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "小冰期",
+      "text_markdown": "小冰期"
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪是历史学家所称的小冰期的一部分。",
+      "text_markdown": "十七世纪是历史学家所称的小冰期的一部分。",
+      "tts": {
+        "text": "十七世纪是历史学家所称的小冰期的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在冰岛，海冰有时会围困岛屿数月之久，阻断船只，冻死牲畜。",
+      "text_markdown": "在冰岛，海冰有时会围困岛屿数月之久，阻断船只，冻死牲畜。",
+      "tts": {
+        "text": "在冰岛，海冰有时会围困岛屿数月之久，阻断船只，冻死牲畜。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在韦斯特曼群岛，生长季节太短，无法种植谷物。",
+      "text_markdown": "在韦斯特曼群岛，生长季节太短，无法种植谷物。",
+      "tts": {
+        "text": "在韦斯特曼群岛，生长季节太短，无法种植谷物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们依赖大海，而当暴风雨阻碍了捕鱼时，他们就要挨饿。",
+      "text_markdown": "人们依赖大海，而当暴风雨阻碍了捕鱼时，他们就要挨饿。",
+      "tts": {
+        "text": "人们依赖大海，而当暴风雨阻碍了捕鱼时，他们就要挨饿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "和平而脆弱的地方",
+      "text_markdown": "和平而脆弱的地方"
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管困难重重，韦斯特曼群岛却是一片安宁之地。",
+      "text_markdown": "尽管困难重重，韦斯特曼群岛却是一片安宁之地。",
+      "tts": {
+        "text": "尽管困难重重，韦斯特曼群岛却是一片安宁之地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这里没有士兵，没有堡垒，没有城墙，也没有港口防御。",
+      "text_markdown": "这里没有士兵，没有堡垒，没有城墙，也没有港口防御。",
+      "tts": {
+        "text": "这里没有士兵，没有堡垒，没有城墙，也没有港口防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "岛民除了刀具和劳动工具外没有任何武器。",
+      "text_markdown": "岛民除了刀具和劳动工具外没有任何武器。",
+      "tts": {
+        "text": "岛民除了刀具和劳动工具外没有任何武器。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "没有人料到会遭到袭击。",
+      "text_markdown": "没有人料到会遭到袭击。",
+      "tts": {
+        "text": "没有人料到会遭到袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗只存在于关于遥远海域的故事里。",
+      "text_markdown": "海盗只存在于关于遥远海域的故事里。",
+      "tts": {
+        "text": "海盗只存在于关于遥远海域的故事里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北大西洋似乎太冷、太凶险，也离任何有价值的地方太远。",
+      "text_markdown": "北大西洋似乎太冷、太凶险，也离任何有价值的地方太远。",
+      "tts": {
+        "text": "北大西洋似乎太冷、太凶险，也离任何有价值的地方太远。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "群岛唯一的防御就是它们的偏远。",
+      "text_markdown": "群岛唯一的防御就是它们的偏远。",
+      "tts": {
+        "text": "群岛唯一的防御就是它们的偏远。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但世界正在发生变化，这将把危险带到这片被遗忘的海角。",
+      "text_markdown": "但世界正在发生变化，这将把危险带到这片被遗忘的海角。",
+      "tts": {
+        "text": "但世界正在发生变化，这将把危险带到这片被遗忘的海角。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "巴巴里海盗北进",
+      "text_markdown": "巴巴里海盗北进"
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿着北非海岸，强大的港口城市靠海上劫掠繁荣兴旺。",
+      "text_markdown": "沿着北非海岸，强大的港口城市靠海上劫掠繁荣兴旺。",
+      "tts": {
+        "text": "沿着北非海岸，强大的港口城市靠海上劫掠繁荣兴旺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔、突尼斯和萨累是巴巴里海盗的大本营，他们在奥斯曼帝国的支持下行动。",
+      "text_markdown": "阿尔及尔、突尼斯和萨累是巴巴里海盗的大本营，他们在奥斯曼帝国的支持下行动。",
+      "tts": {
+        "text": "阿尔及尔、突尼斯和萨累是巴巴里海盗的大本营，他们在奥斯曼帝国的支持下行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几个世纪以来，海盗劫掠西班牙、意大利和法国，掳人为奴出售。",
+      "text_markdown": "几个世纪以来，海盗劫掠西班牙、意大利和法国，掳人为奴出售。",
+      "tts": {
+        "text": "几个世纪以来，海盗劫掠西班牙、意大利和法国，掳人为奴出售。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔的奴隶市场闻名整个地中海。",
+      "text_markdown": "阿尔及尔的奴隶市场闻名整个地中海。",
+      "tts": {
+        "text": "阿尔及尔的奴隶市场闻名整个地中海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪初，加入海盗的欧洲叛徒带来了新船只、航海技术和对北方海域的了解。",
+      "text_markdown": "十七世纪初，加入海盗的欧洲叛徒带来了新船只、航海技术和对北方海域的了解。",
+      "tts": {
+        "text": "十七世纪初，加入海盗的欧洲叛徒带来了新船只、航海技术和对北方海域的了解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗开始深入大西洋，袭击英格兰、爱尔兰，甚至冰岛。",
+      "text_markdown": "海盗开始深入大西洋，袭击英格兰、爱尔兰，甚至冰岛。",
+      "tts": {
+        "text": "海盗开始深入大西洋，袭击英格兰、爱尔兰，甚至冰岛。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最重要的叛徒之一是一个将自己重塑为巴巴里船长的荷兰人。",
+      "text_markdown": "最重要的叛徒之一是一个将自己重塑为巴巴里船长的荷兰人。",
+      "tts": {
+        "text": "最重要的叛徒之一是一个将自己重塑为巴巴里船长的荷兰人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "韦斯特曼群岛",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数百年来保护韦斯特曼群岛的隔绝即将终结。",
+      "text_markdown": "数百年来保护韦斯特曼群岛的隔绝即将终结。",
+      "tts": {
+        "text": "数百年来保护韦斯特曼群岛的隔绝即将终结。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海盗来袭之日",
+      "text_markdown": "海盗来袭之日"
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年7月的一个夏日，一支舰队出现在冰岛南方的地平线上。",
+      "text_markdown": "1627年7月的一个夏日，一支舰队出现在冰岛南方的地平线上。",
+      "tts": {
+        "text": "一六二七年七月的一个夏日，一支舰队出现在冰岛南方的地平线上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们不是丹麦商船。",
+      "text_markdown": "它们不是丹麦商船。",
+      "tts": {
+        "text": "它们不是丹麦商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们是来自巴巴里海岸的战舰。",
+      "text_markdown": "它们是来自巴巴里海岸的战舰。",
+      "tts": {
+        "text": "它们是来自巴巴里海岸的战舰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "舰队由一个欧洲人称为「小穆拉特·雷斯」的人率领。",
+      "text_markdown": "舰队由一个欧洲人称为「小穆拉特·雷斯」的人率领。",
+      "tts": {
+        "text": "舰队由一个欧洲人称为「小穆拉特·雷斯」的人率领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的真名是扬·扬斯宗·范·哈勒姆，出生于荷兰共和国。",
+      "text_markdown": "他的真名是扬·扬斯宗·范·哈勒姆，出生于荷兰共和国。",
+      "tts": {
+        "text": "他的真名是扬·扬斯宗·范·哈勒姆，出生于荷兰共和国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是一名水手，后来成为海盗，皈依了伊斯兰教，并晋升为大西洋上最强大的海盗船长之一。",
+      "text_markdown": "他是一名水手，后来成为海盗，皈依了伊斯兰教，并晋升为大西洋上最强大的海盗船长之一。",
+      "tts": {
+        "text": "他是一名水手，后来成为海盗，皈依了伊斯兰教，并晋升为大西洋上最强大的海盗船长之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "荷兰叛徒",
+      "text_markdown": "荷兰叛徒"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "扬·扬斯宗大约于1570年出生在哈勒姆市。",
+      "text_markdown": "扬·扬斯宗大约于1570年出生在哈勒姆市。",
+      "tts": {
+        "text": "扬·扬斯宗大约于一五七〇年出生在哈勒姆市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他最初是一名荷兰私掠船主，在荷兰与西班牙的漫长战争期间获得攻击西班牙船只的许可。",
+      "text_markdown": "他最初是一名荷兰私掠船主，在荷兰与西班牙的漫长战争期间获得攻击西班牙船只的许可。",
+      "tts": {
+        "text": "他最初是一名荷兰私掠船主，在荷兰与西班牙的漫长战争期间获得攻击西班牙船只的许可。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在某个时候，扬斯宗被海盗俘获，带到了摩洛哥的萨累港。",
+      "text_markdown": "在某个时候，扬斯宗被海盗俘获，带到了摩洛哥的萨累港。",
+      "tts": {
+        "text": "在某个时候，扬斯宗被海盗俘获，带到了摩洛哥的萨累港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他没有继续做俘虏，而是皈依了伊斯兰教，取名穆拉特·雷斯，并证明自己是一名冷酷无情的指挥官。",
+      "text_markdown": "他没有继续做俘虏，而是皈依了伊斯兰教，取名穆拉特·雷斯，并证明自己是一名冷酷无情的指挥官。",
+      "tts": {
+        "text": "他没有继续做俘虏，而是皈依了伊斯兰教，取名穆拉特·雷斯，并证明自己是一名冷酷无情的指挥官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他升任萨累共和国的总统，那是摩洛哥海岸的一个海盗国家。",
+      "text_markdown": "他升任萨累共和国的总统，那是摩洛哥海岸的一个海盗国家。",
+      "tts": {
+        "text": "他升任萨累共和国的总统，那是摩洛哥海岸的一个海盗国家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从萨累、后来又从阿尔及尔出发，在整个大西洋领导劫掠行动。",
+      "text_markdown": "他从萨累、后来又从阿尔及尔出发，在整个大西洋领导劫掠行动。",
+      "tts": {
+        "text": "他从萨累、后来又从阿尔及尔出发，在整个大西洋领导劫掠行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1631年他甚至袭击了爱尔兰的巴尔的摩镇，掳走了一百多名俘虏。",
+      "text_markdown": "1631年他甚至袭击了爱尔兰的巴尔的摩镇，掳走了一百多名俘虏。",
+      "tts": {
+        "text": "一六三一年他甚至袭击了爱尔兰的巴尔的摩镇，掳走了一百多名俘虏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "北上之路",
+      "text_markdown": "北上之路"
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加入海盗的英国和荷兰叛徒带来了关于大西洋风向和洋流的知识。",
+      "text_markdown": "加入海盗的英国和荷兰叛徒带来了关于大西洋风向和洋流的知识。",
+      "tts": {
+        "text": "加入海盗的英国和荷兰叛徒带来了关于大西洋风向和洋流的知识。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们知道冰岛几乎完全没有防御。",
+      "text_markdown": "他们知道冰岛几乎完全没有防御。",
+      "tts": {
+        "text": "他们知道冰岛几乎完全没有防御。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔的奴隶市场需要源源不断的俘虏。",
+      "text_markdown": "阿尔及尔的奴隶市场需要源源不断的俘虏。",
+      "tts": {
+        "text": "阿尔及尔的奴隶市场需要源源不断的俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地中海的劫掠区巡逻越来越严密，海盗需要新的猎场。",
+      "text_markdown": "地中海的劫掠区巡逻越来越严密，海盗需要新的猎场。",
+      "tts": {
+        "text": "地中海的劫掠区巡逻越来越严密，海盗需要新的猎场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冰岛是完美的目标：孤立、毫无防备、被丹麦当局忽视。",
+      "text_markdown": "冰岛是完美的目标：孤立、毫无防备、被丹麦当局忽视。",
+      "tts": {
+        "text": "冰岛是完美的目标：孤立、毫无防备、被丹麦当局忽视。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "劫掠开始",
+      "text_markdown": "劫掠开始"
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗舰队首先袭击了冰岛东海岸，洗劫了一些小型定居点。",
+      "text_markdown": "海盗舰队首先袭击了冰岛东海岸，洗劫了一些小型定居点。",
+      "tts": {
+        "text": "海盗舰队首先袭击了冰岛东海岸，洗劫了一些小型定居点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些最初的袭击令人恐惧但规模不大。",
+      "text_markdown": "这些最初的袭击令人恐惧但规模不大。",
+      "tts": {
+        "text": "这些最初的袭击令人恐惧但规模不大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "七月十六日，海盗转向韦斯特曼群岛。",
+      "text_markdown": "七月十六日，海盗转向韦斯特曼群岛。",
+      "tts": {
+        "text": "七月十六日，海盗转向韦斯特曼群岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在晨雾的掩护下抵达赫马岛。",
+      "text_markdown": "他们在晨雾的掩护下抵达赫马岛。",
+      "tts": {
+        "text": "他们在晨雾的掩护下抵达赫马岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "岛民们听到了袭击的传闻，但无从准备。",
+      "text_markdown": "岛民们听到了袭击的传闻，但无从准备。",
+      "tts": {
+        "text": "岛民们听到了袭击的传闻，但无从准备。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "袭击赫马岛",
+      "text_markdown": "袭击赫马岛"
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗在悬崖最低的东岸登陆。",
+      "text_markdown": "海盗在悬崖最低的东岸登陆。",
+      "tts": {
+        "text": "海盗在悬崖最低的东岸登陆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们乘小船上岸，手持刀剑、火枪和火把。",
+      "text_markdown": "他们乘小船上岸，手持刀剑、火枪和火把。",
+      "tts": {
+        "text": "他们乘小船上岸，手持刀剑、火枪和火把。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫·埃吉尔松正和妻子奥斯塔及孩子们在家中。",
+      "text_markdown": "奥拉夫·埃吉尔松正和妻子奥斯塔及孩子们在家中。",
+      "tts": {
+        "text": "奥拉夫·埃吉尔松正和妻子奥斯塔及孩子们在家中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是岛上的牧师，一个博学而虔诚的人，时年六十三岁。",
+      "text_markdown": "他是岛上的牧师，一个博学而虔诚的人，时年六十三岁。",
+      "tts": {
+        "text": "他是岛上的牧师，一个博学而虔诚的人，时年六十三岁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗行动迅速，踹开门，把人从家中拖出来。",
+      "text_markdown": "海盗行动迅速，踹开门，把人从家中拖出来。",
+      "tts": {
+        "text": "海盗行动迅速，踹开门，把人从家中拖出来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些岛民试图躲进悬崖边的洞穴里。",
+      "text_markdown": "一些岛民试图躲进悬崖边的洞穴里。",
+      "tts": {
+        "text": "一些岛民试图躲进悬崖边的洞穴里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "还有人在黑暗中翻越熔岩地。",
+      "text_markdown": "还有人在黑暗中翻越熔岩地。",
+      "tts": {
+        "text": "还有人在黑暗中翻越熔岩地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "袭击者放火烧毁了建筑物，包括教堂。",
+      "text_markdown": "袭击者放火烧毁了建筑物，包括教堂。",
+      "tts": {
+        "text": "袭击者放火烧毁了建筑物，包括教堂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥拉夫后来写道，看着教堂燃烧是整个磨难中最痛苦的时刻之一。",
+      "text_markdown": "奥拉夫后来写道，看着教堂燃烧是整个磨难中最痛苦的时刻之一。",
+      "tts": {
+        "text": "奥拉夫后来写道，看着教堂燃烧是整个磨难中最痛苦的时刻之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那是他社区的心脏。",
+      "text_markdown": "那是他社区的心脏。",
+      "tts": {
+        "text": "那是他社区的心脏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "被俘",
+      "text_markdown": "被俘"
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "袭击结束时，海盗从赫马岛抓获了大约二百四十人。",
+      "text_markdown": "袭击结束时，海盗从赫马岛抓获了大约二百四十人。",
+      "tts": {
+        "text": "袭击结束时，海盗从赫马岛抓获了大约二百四十人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "男人、女人和孩子被驱赶到岸边。",
+      "text_markdown": "男人、女人和孩子被驱赶到岸边。",
+      "tts": {
+        "text": "男人、女人和孩子被驱赶到岸边。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫、奥斯塔和他们的孩子都在俘虏之中。",
+      "text_markdown": "奥拉夫、奥斯塔和他们的孩子都在俘虏之中。",
+      "tts": {
+        "text": "奥拉夫、奥斯塔和他们的孩子都在俘虏之中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们被迫和邻居朋友一起登上海盗船。",
+      "text_markdown": "他们被迫和邻居朋友一起登上海盗船。",
+      "tts": {
+        "text": "他们被迫和邻居朋友一起登上海盗船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那个夏天的所有袭击中，大约有四百名冰岛人被掳走。",
+      "text_markdown": "那个夏天的所有袭击中，大约有四百名冰岛人被掳走。",
+      "tts": {
+        "text": "那个夏天的所有袭击中，大约有四百名冰岛人被掳走。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对于一个人口仅约五万的国家来说，这是毁灭性的打击。",
+      "text_markdown": "对于一个人口仅约五万的国家来说，这是毁灭性的打击。",
+      "tts": {
+        "text": "对于一个人口仅约五万的国家来说，这是毁灭性的打击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗起航向南。",
+      "text_markdown": "海盗起航向南。",
+      "tts": {
+        "text": "海盗起航向南。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "韦斯特曼群岛的居民看着自己的家园在身后消失。",
+      "text_markdown": "韦斯特曼群岛的居民看着自己的家园在身后消失。",
+      "tts": {
+        "text": "韦斯特曼群岛的居民看着自己的家园在身后消失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "海盗来袭之日",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数人再也没能回到冰岛。",
+      "text_markdown": "大多数人再也没能回到冰岛。",
+      "tts": {
+        "text": "大多数人再也没能回到冰岛。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "驶往阿尔及尔",
+      "text_markdown": "驶往阿尔及尔"
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船只转向南方，驶入大西洋深处。",
+      "text_markdown": "船只转向南方，驶入大西洋深处。",
+      "tts": {
+        "text": "船只转向南方，驶入大西洋深处。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对于甲板下的俘虏来说，新的苦难开始了。",
+      "text_markdown": "对于甲板下的俘虏来说，新的苦难开始了。",
+      "tts": {
+        "text": "对于甲板下的俘虏来说，新的苦难开始了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫在书中详细描述了这段航程。",
+      "text_markdown": "奥拉夫在书中详细描述了这段航程。",
+      "tts": {
+        "text": "奥拉夫在书中详细描述了这段航程。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "俘虏们被关在狭小阴暗的空间里，食物和水都很少，毫无隐私可言。",
+      "text_markdown": "俘虏们被关在狭小阴暗的空间里，食物和水都很少，毫无隐私可言。",
+      "tts": {
+        "text": "俘虏们被关在狭小阴暗的空间里，食物和水都很少，毫无隐私可言。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "随着船只驶向更南方，酷热愈发难以忍受。",
+      "text_markdown": "随着船只驶向更南方，酷热愈发难以忍受。",
+      "tts": {
+        "text": "随着船只驶向更南方，酷热愈发难以忍受。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "船上的境况",
+      "text_markdown": "船上的境况"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俘虏们被紧紧塞在船舱里。",
+      "text_markdown": "俘虏们被紧紧塞在船舱里。",
+      "tts": {
+        "text": "俘虏们被紧紧塞在船舱里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多人晕船，空气恶臭，疾病迅速蔓延。",
+      "text_markdown": "许多人晕船，空气恶臭，疾病迅速蔓延。",
+      "tts": {
+        "text": "许多人晕船，空气恶臭，疾病迅速蔓延。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗把俘虏当作货物对待。",
+      "text_markdown": "海盗把俘虏当作货物对待。",
+      "tts": {
+        "text": "海盗把俘虏当作货物对待。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们只给俘虏喂刚够活命的食物。",
+      "text_markdown": "他们只给俘虏喂刚够活命的食物。",
+      "tts": {
+        "text": "他们只给俘虏喂刚够活命的食物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对海盗而言，这些人只是要送到市场上的商品。",
+      "text_markdown": "对海盗而言，这些人只是要送到市场上的商品。",
+      "tts": {
+        "text": "对海盗而言，这些人只是要送到市场上的商品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫作为牧师，试图带领众人祷告，尽力不让精神彻底崩溃。",
+      "text_markdown": "奥拉夫作为牧师，试图带领众人祷告，尽力不让精神彻底崩溃。",
+      "tts": {
+        "text": "奥拉夫作为牧师，试图带领众人祷告，尽力不让精神彻底崩溃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但绝望是压倒性的。",
+      "text_markdown": "但绝望是压倒性的。",
+      "tts": {
+        "text": "但绝望是压倒性的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "航程持续了数周，沿欧洲海岸行驶，穿过直布罗陀海峡进入地中海。",
+      "text_markdown": "航程持续了数周，沿欧洲海岸行驶，穿过直布罗陀海峡进入地中海。",
+      "tts": {
+        "text": "航程持续了数周，沿欧洲海岸行驶，穿过直布罗陀海峡进入地中海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "抵达阿尔及尔",
+      "text_markdown": "抵达阿尔及尔"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当船只抵达阿尔及尔时，俘虏被带上甲板。",
+      "text_markdown": "当船只抵达阿尔及尔时，俘虏被带上甲板。",
+      "tts": {
+        "text": "当船只抵达阿尔及尔时，俘虏被带上甲板。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "眼前的景象令他们震惊。",
+      "text_markdown": "眼前的景象令他们震惊。",
+      "tts": {
+        "text": "眼前的景象令他们震惊。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔是地中海沿岸最大的城市之一，白色建筑和宣礼塔如迷宫般沿陡峭山坡攀升。",
+      "text_markdown": "阿尔及尔是地中海沿岸最大的城市之一，白色建筑和宣礼塔如迷宫般沿陡峭山坡攀升。",
+      "tts": {
+        "text": "阿尔及尔是地中海沿岸最大的城市之一，白色建筑和宣礼塔如迷宫般沿陡峭山坡攀升。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这里大概有十万居民，远超整个冰岛的人口。",
+      "text_markdown": "这里大概有十万居民，远超整个冰岛的人口。",
+      "tts": {
+        "text": "这里大概有十万居民，远超整个冰岛的人口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对于一辈子生活在小小火山岛上的人来说，这景象无法理解。",
+      "text_markdown": "对于一辈子生活在小小火山岛上的人来说，这景象无法理解。",
+      "tts": {
+        "text": "对于一辈子生活在小小火山岛上的人来说，这景象无法理解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "喧嚣、酷热、人群、宣礼声——一切都令人窒息。",
+      "text_markdown": "喧嚣、酷热、人群、宣礼声——一切都令人窒息。",
+      "tts": {
+        "text": "喧嚣、酷热、人群、宣礼声——一切都令人窒息。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "奥斯曼阿尔及尔",
+      "text_markdown": "奥斯曼阿尔及尔"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔名义上隶属奥斯曼帝国，但实际上由当地军事首领统治。",
+      "text_markdown": "阿尔及尔名义上隶属奥斯曼帝国，但实际上由当地军事首领统治。",
+      "tts": {
+        "text": "阿尔及尔名义上隶属奥斯曼帝国，但实际上由当地军事首领统治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的经济建立在海盗劫掠和奴隶贸易之上。",
+      "text_markdown": "它的经济建立在海盗劫掠和奴隶贸易之上。",
+      "tts": {
+        "text": "它的经济建立在海盗劫掠和奴隶贸易之上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家估计，在任何时候都有数万名被奴役的欧洲人生活在巴巴里诸国。",
+      "text_markdown": "历史学家估计，在任何时候都有数万名被奴役的欧洲人生活在巴巴里诸国。",
+      "tts": {
+        "text": "历史学家估计，在任何时候都有数万名被奴役的欧洲人生活在巴巴里诸国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "俘虏来自西班牙、意大利、法国、葡萄牙、英格兰，现在还有冰岛。",
+      "text_markdown": "俘虏来自西班牙、意大利、法国、葡萄牙、英格兰，现在还有冰岛。",
+      "tts": {
+        "text": "俘虏来自西班牙、意大利、法国、葡萄牙、英格兰，现在还有冰岛。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这座城市的国际化程度是少有欧洲城市能比拟的。",
+      "text_markdown": "这座城市的国际化程度是少有欧洲城市能比拟的。",
+      "tts": {
+        "text": "这座城市的国际化程度是少有欧洲城市能比拟的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "穆斯林、犹太人、基督徒和来自几十个国家的叛逃者比邻而居。",
+      "text_markdown": "穆斯林、犹太人、基督徒和来自几十个国家的叛逃者比邻而居。",
+      "tts": {
+        "text": "穆斯林、犹太人、基督徒和来自几十个国家的叛逃者比邻而居。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "奴隶市场",
+      "text_markdown": "奴隶市场"
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫对奴隶市场的描写是他书中最生动的段落之一。",
+      "text_markdown": "奥拉夫对奴隶市场的描写是他书中最生动的段落之一。",
+      "tts": {
+        "text": "奥拉夫对奴隶市场的描写是他书中最生动的段落之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "俘虏被带到港口附近的一片空地上，买家检查他们的牙齿、双手和健康状况。",
+      "text_markdown": "俘虏被带到港口附近的一片空地上，买家检查他们的牙齿、双手和健康状况。",
+      "tts": {
+        "text": "俘虏被带到港口附近的一片空地上，买家检查他们的牙齿、双手和健康状况。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年轻力壮者卖得最高的价钱。",
+      "text_markdown": "年轻力壮者卖得最高的价钱。",
+      "tts": {
+        "text": "年轻力壮者卖得最高的价钱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "妇女和儿童被分开出售，往往卖给不同的买家。",
+      "text_markdown": "妇女和儿童被分开出售，往往卖给不同的买家。",
+      "tts": {
+        "text": "妇女和儿童被分开出售，往往卖给不同的买家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在航程中幸存下来的家庭被拆散了。",
+      "text_markdown": "在航程中幸存下来的家庭被拆散了。",
+      "tts": {
+        "text": "在航程中幸存下来的家庭被拆散了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫描述了丈夫被从妻子身边拉走、父母眼睁睁看着孩子被带走时的尖叫和哭泣。",
+      "text_markdown": "奥拉夫描述了丈夫被从妻子身边拉走、父母眼睁睁看着孩子被带走时的尖叫和哭泣。",
+      "tts": {
+        "text": "奥拉夫描述了丈夫被从妻子身边拉走、父母眼睁睁看着孩子被带走时的尖叫和哭泣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他写道，没有任何言语能够描述那一天的恐怖。",
+      "text_markdown": "他写道，没有任何言语能够描述那一天的恐怖。",
+      "tts": {
+        "text": "他写道，没有任何言语能够描述那一天的恐怖。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "分离",
+      "text_markdown": "分离"
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫和妻子奥斯塔在市场上被分开。",
+      "text_markdown": "奥拉夫和妻子奥斯塔在市场上被分开。",
+      "tts": {
+        "text": "奥拉夫和妻子奥斯塔在市场上被分开。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的孩子也被带走了。",
+      "text_markdown": "他们的孩子也被带走了。",
+      "tts": {
+        "text": "他们的孩子也被带走了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对奥拉夫来说，分离是囚禁中最痛苦的部分。",
+      "text_markdown": "对奥拉夫来说，分离是囚禁中最痛苦的部分。",
+      "tts": {
+        "text": "对奥拉夫来说，分离是囚禁中最痛苦的部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他不知道奥斯塔被带到了哪里。",
+      "text_markdown": "他不知道奥斯塔被带到了哪里。",
+      "tts": {
+        "text": "他不知道奥斯塔被带到了哪里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种不确定性是一种永远不会结束的折磨。",
+      "text_markdown": "这种不确定性是一种永远不会结束的折磨。",
+      "tts": {
+        "text": "这种不确定性是一种永远不会结束的折磨。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "人口贸易",
+      "text_markdown": "人口贸易"
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴里奴隶贸易规模巨大。",
+      "text_markdown": "巴巴里奴隶贸易规模巨大。",
+      "tts": {
+        "text": "巴巴里奴隶贸易规模巨大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史学家估计，在1530年至1780年间，海盗奴役了超过一百万欧洲人。",
+      "text_markdown": "历史学家估计，在1530年至1780年间，海盗奴役了超过一百万欧洲人。",
+      "tts": {
+        "text": "历史学家估计，在一五三〇年至一七八〇年间，海盗奴役了超过一百万欧洲人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隶制有多种形式：家庭服务、建筑工程、农业劳动，或被锁链锁在桨上在桨帆船上划桨。",
+      "text_markdown": "奴隶制有多种形式：家庭服务、建筑工程、农业劳动，或被锁链锁在桨上在桨帆船上划桨。",
+      "tts": {
+        "text": "奴隶制有多种形式：家庭服务、建筑工程、农业劳动，或被锁链锁在桨上在桨帆船上划桨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那些皈依伊斯兰教的人通常获得更多自由，但皈依并不保证获释。",
+      "text_markdown": "那些皈依伊斯兰教的人通常获得更多自由，但皈依并不保证获释。",
+      "tts": {
+        "text": "那些皈依伊斯兰教的人通常获得更多自由，但皈依并不保证获释。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对大多数俘虏来说，唯一现实的希望是赎金。",
+      "text_markdown": "对大多数俘虏来说，唯一现实的希望是赎金。",
+      "tts": {
+        "text": "对大多数俘虏来说，唯一现实的希望是赎金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三位一体修会等宗教团体专门从事赎买谈判，但过程缓慢且费用高昂。",
+      "text_markdown": "三位一体修会等宗教团体专门从事赎买谈判，但过程缓慢且费用高昂。",
+      "tts": {
+        "text": "三位一体修会等宗教团体专门从事赎买谈判，但过程缓慢且费用高昂。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对冰岛人来说，希望渺茫。",
+      "text_markdown": "对冰岛人来说，希望渺茫。",
+      "tts": {
+        "text": "对冰岛人来说，希望渺茫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "驶往阿尔及尔",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "冰岛贫穷，丹麦不紧不慢，光通信就要花费数月。",
+      "text_markdown": "冰岛贫穷，丹麦不紧不慢，光通信就要花费数月。",
+      "tts": {
+        "text": "冰岛贫穷，丹麦不紧不慢，光通信就要花费数月。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "囚禁与使命",
+      "text_markdown": "囚禁与使命"
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫在阿尔及尔度过了数月的俘虏生涯。",
+      "text_markdown": "奥拉夫在阿尔及尔度过了数月的俘虏生涯。",
+      "tts": {
+        "text": "奥拉夫在阿尔及尔度过了数月的俘虏生涯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他六十三岁了，不适合从事重体力劳动，在奴隶市场上的价值很低。",
+      "text_markdown": "他六十三岁了，不适合从事重体力劳动，在奴隶市场上的价值很低。",
+      "tts": {
+        "text": "他六十三岁了，不适合从事重体力劳动，在奴隶市场上的价值很低。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但他受过教育，能读会写，而且是一名教会人士。",
+      "text_markdown": "但他受过教育，能读会写，而且是一名教会人士。",
+      "tts": {
+        "text": "但他受过教育，能读会写，而且是一名教会人士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "即使身为俘虏，这也赋予了他一定的地位。",
+      "text_markdown": "即使身为俘虏，这也赋予了他一定的地位。",
+      "tts": {
+        "text": "即使身为俘虏，这也赋予了他一定的地位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "被选为谈判者",
+      "text_markdown": "被选为谈判者"
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "必须有人前往欧洲，在丹麦国王面前为俘虏们请命。",
+      "text_markdown": "必须有人前往欧洲，在丹麦国王面前为俘虏们请命。",
+      "tts": {
+        "text": "必须有人前往欧洲，在丹麦国王面前为俘虏们请命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥拉夫被选中执行这一使命。",
+      "text_markdown": "奥拉夫被选中执行这一使命。",
+      "tts": {
+        "text": "奥拉夫被选中执行这一使命。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一项痛苦的任务。",
+      "text_markdown": "这是一项痛苦的任务。",
+      "tts": {
+        "text": "这是一项痛苦的任务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它意味着某种自由，但也意味着抛下所有他爱的人，不知道是否还能再见到他们。",
+      "text_markdown": "它意味着某种自由，但也意味着抛下所有他爱的人，不知道是否还能再见到他们。",
+      "tts": {
+        "text": "它意味着某种自由，但也意味着抛下所有他爱的人，不知道是否还能再见到他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他接受了，因为他相信这是拯救他的人民的唯一机会。",
+      "text_markdown": "他接受了，因为他相信这是拯救他的人民的唯一机会。",
+      "tts": {
+        "text": "他接受了，因为他相信这是拯救他的人民的唯一机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果他成功了，数百人可能获得自由。",
+      "text_markdown": "如果他成功了，数百人可能获得自由。",
+      "tts": {
+        "text": "如果他成功了，数百人可能获得自由。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "如果他失败了，他们将终身为奴。",
+      "text_markdown": "如果他失败了，他们将终身为奴。",
+      "tts": {
+        "text": "如果他失败了，他们将终身为奴。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "穿越欧洲之旅",
+      "text_markdown": "穿越欧洲之旅"
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫从阿尔及尔到哥本哈根的旅程漫长而艰辛。",
+      "text_markdown": "奥拉夫从阿尔及尔到哥本哈根的旅程漫长而艰辛。",
+      "tts": {
+        "text": "奥拉夫从阿尔及尔到哥本哈根的旅程漫长而艰辛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他乘船和陆路穿过地中海和北欧。",
+      "text_markdown": "他乘船和陆路穿过地中海和北欧。",
+      "tts": {
+        "text": "他乘船和陆路穿过地中海和北欧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是一位年迈的牧师，没有钱，没有人脉，也没有影响力。",
+      "text_markdown": "他是一位年迈的牧师，没有钱，没有人脉，也没有影响力。",
+      "tts": {
+        "text": "他是一位年迈的牧师，没有钱，没有人脉，也没有影响力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他不会说途经国家的语言。",
+      "text_markdown": "他不会说途经国家的语言。",
+      "tts": {
+        "text": "他不会说途经国家的语言。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他依靠陌生人的善心和同情的神职人员的书信。",
+      "text_markdown": "他依靠陌生人的善心和同情的神职人员的书信。",
+      "tts": {
+        "text": "他依靠陌生人的善心和同情的神职人员的书信。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一路上他第一次见识了冰岛以外的世界。",
+      "text_markdown": "一路上他第一次见识了冰岛以外的世界。",
+      "tts": {
+        "text": "一路上他第一次见识了冰岛以外的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的描述对历史学家来说十分珍贵，是一个局外人眼中十七世纪欧洲的记录。",
+      "text_markdown": "他的描述对历史学家来说十分珍贵，是一个局外人眼中十七世纪欧洲的记录。",
+      "tts": {
+        "text": "他的描述对历史学家来说十分珍贵，是一个局外人眼中十七世纪欧洲的记录。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "哥本哈根与丹麦宫廷",
+      "text_markdown": "哥本哈根与丹麦宫廷"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫到达哥本哈根后，描述了那场袭击、囚禁以及他的人民所受的苦难。",
+      "text_markdown": "奥拉夫到达哥本哈根后，描述了那场袭击、囚禁以及他的人民所受的苦难。",
+      "tts": {
+        "text": "奥拉夫到达哥本哈根后，描述了那场袭击、囚禁以及他的人民所受的苦难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他恳求赎金。",
+      "text_markdown": "他恳求赎金。",
+      "tts": {
+        "text": "他恳求赎金。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "回应令人失望。",
+      "text_markdown": "回应令人失望。",
+      "tts": {
+        "text": "回应令人失望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丹麦并不富裕，三十年战争正吞噬着欧洲，而冰岛是一个遥远的殖民地。",
+      "text_markdown": "丹麦并不富裕，三十年战争正吞噬着欧洲，而冰岛是一个遥远的殖民地。",
+      "tts": {
+        "text": "丹麦并不富裕，三十年战争正吞噬着欧洲，而冰岛是一个遥远的殖民地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "国王有自己的开销。",
+      "text_markdown": "国王有自己的开销。",
+      "tts": {
+        "text": "国王有自己的开销。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "委员会成立了，信件也写了，但承诺的资金很少到位。",
+      "text_markdown": "委员会成立了，信件也写了，但承诺的资金很少到位。",
+      "tts": {
+        "text": "委员会成立了，信件也写了，但承诺的资金很少到位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "官僚机构按自己的节奏运转，而数百人仍然身陷奴役。",
+      "text_markdown": "官僚机构按自己的节奏运转，而数百人仍然身陷奴役。",
+      "tts": {
+        "text": "官僚机构按自己的节奏运转，而数百人仍然身陷奴役。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "教会的回应",
+      "text_markdown": "教会的回应"
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫也向路德宗教会求助。",
+      "text_markdown": "奥拉夫也向路德宗教会求助。",
+      "tts": {
+        "text": "奥拉夫也向路德宗教会求助。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "组织了募捐活动，也做了布道，但筹集的金额始终不够。",
+      "text_markdown": "组织了募捐活动，也做了布道，但筹集的金额始终不够。",
+      "tts": {
+        "text": "组织了募捐活动，也做了布道，但筹集的金额始终不够。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔的赎金要求很高，远超教会或王室愿意支付的数目。",
+      "text_markdown": "阿尔及尔的赎金要求很高，远超教会或王室愿意支付的数目。",
+      "tts": {
+        "text": "阿尔及尔的赎金要求很高，远超教会或王室愿意支付的数目。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "谈判拖了好几年。",
+      "text_markdown": "谈判拖了好几年。",
+      "tts": {
+        "text": "谈判拖了好几年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "赎金网络",
+      "text_markdown": "赎金网络"
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在天主教国家，三位一体修会等宗教团体有着数百年赎买俘虏的经验。",
+      "text_markdown": "在天主教国家，三位一体修会等宗教团体有着数百年赎买俘虏的经验。",
+      "tts": {
+        "text": "在天主教国家，三位一体修会等宗教团体有着数百年赎买俘虏的经验。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但在新教的北方，没有类似的机构。",
+      "text_markdown": "但在新教的北方，没有类似的机构。",
+      "tts": {
+        "text": "但在新教的北方，没有类似的机构。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "丹麦不得不从零开始建立赎买机制。",
+      "text_markdown": "丹麦不得不从零开始建立赎买机制。",
+      "tts": {
+        "text": "丹麦不得不从零开始建立赎买机制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "钱必须跨越国境、兑换货币，并送到阿尔及尔的正确人手中。",
+      "text_markdown": "钱必须跨越国境、兑换货币，并送到阿尔及尔的正确人手中。",
+      "tts": {
+        "text": "钱必须跨越国境、兑换货币，并送到阿尔及尔的正确人手中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "整个过程充满了拖延、腐败和食言。",
+      "text_markdown": "整个过程充满了拖延、腐败和食言。",
+      "tts": {
+        "text": "整个过程充满了拖延、腐败和食言。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "漫长的等待",
+      "text_markdown": "漫长的等待"
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫花了数年时间为赎金奔走，写信并拜访官员。",
+      "text_markdown": "奥拉夫花了数年时间为赎金奔走，写信并拜访官员。",
+      "tts": {
+        "text": "奥拉夫花了数年时间为赎金奔走，写信并拜访官员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年复一年，俘虏们仍然留在阿尔及尔。",
+      "text_markdown": "年复一年，俘虏们仍然留在阿尔及尔。",
+      "tts": {
+        "text": "年复一年，俘虏们仍然留在阿尔及尔。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这段时间里，他写下了自己的书。",
+      "text_markdown": "在这段时间里，他写下了自己的书。",
+      "tts": {
+        "text": "在这段时间里，他写下了自己的书。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他记录了自己所见证的一切，从袭击到奴隶市场再到穿越欧洲的旅程。",
+      "text_markdown": "他记录了自己所见证的一切，从袭击到奴隶市场再到穿越欧洲的旅程。",
+      "tts": {
+        "text": "他记录了自己所见证的一切，从袭击到奴隶市场再到穿越欧洲的旅程。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这本书在他生前未能出版，但以手稿的形式流传。",
+      "text_markdown": "这本书在他生前未能出版，但以手稿的形式流传。",
+      "tts": {
+        "text": "这本书在他生前未能出版，但以手稿的形式流传。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它成为了关于整个事件最重要的文献之一。",
+      "text_markdown": "它成为了关于整个事件最重要的文献之一。",
+      "tts": {
+        "text": "它成为了关于整个事件最重要的文献之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "权力的冷漠",
+      "text_markdown": "权力的冷漠"
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫记述中最令人痛心的主题之一，是当权者的冷漠。",
+      "text_markdown": "奥拉夫记述中最令人痛心的主题之一，是当权者的冷漠。",
+      "tts": {
+        "text": "奥拉夫记述中最令人痛心的主题之一，是当权者的冷漠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丹麦官员并非残忍，他们只是有其他优先事项。",
+      "text_markdown": "丹麦官员并非残忍，他们只是有其他优先事项。",
+      "tts": {
+        "text": "丹麦官员并非残忍，他们只是有其他优先事项。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "受苦的人们贫穷、偏远、在政治上无足轻重。",
+      "text_markdown": "受苦的人们贫穷、偏远、在政治上无足轻重。",
+      "tts": {
+        "text": "受苦的人们贫穷、偏远、在政治上无足轻重。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的政府在公开场合哀悼他们，在私下里却置之不理。",
+      "text_markdown": "他们的政府在公开场合哀悼他们，在私下里却置之不理。",
+      "tts": {
+        "text": "他们的政府在公开场合哀悼他们，在私下里却置之不理。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫的文字中透露出日益加深的苦涩。",
+      "text_markdown": "奥拉夫的文字中透露出日益加深的苦涩。",
+      "tts": {
+        "text": "奥拉夫的文字中透露出日益加深的苦涩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他冒着一切风险将人民的诉求带到哥本哈根。",
+      "text_markdown": "他冒着一切风险将人民的诉求带到哥本哈根。",
+      "tts": {
+        "text": "他冒着一切风险将人民的诉求带到哥本哈根。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁与使命",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "回答是：他们不够重要，不值得迅速营救。",
+      "text_markdown": "回答是：他们不够重要，不值得迅速营救。",
+      "tts": {
+        "text": "回答是：他们不够重要，不值得迅速营救。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "归来者与未归者",
+      "text_markdown": "归来者与未归者"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在1627年被俘的大约四百名冰岛人中，只有少数人最终返回了家园。",
+      "text_markdown": "在1627年被俘的大约四百名冰岛人中，只有少数人最终返回了家园。",
+      "tts": {
+        "text": "在一六二七年被俘的大约四百名冰岛人中，只有少数人最终返回了家园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "赎买工作耗时近十年，等到钱送到时，许多人已经死去。",
+      "text_markdown": "赎买工作耗时近十年，等到钱送到时，许多人已经死去。",
+      "tts": {
+        "text": "赎买工作耗时近十年，等到钱送到时，许多人已经死去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "疾病、过度劳累和绝望在最初几年夺去了许多人的生命。",
+      "text_markdown": "疾病、过度劳累和绝望在最初几年夺去了许多人的生命。",
+      "tts": {
+        "text": "疾病、过度劳累和绝望在最初几年夺去了许多人的生命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从冰岛的寒冷到阿尔及尔的酷热，这种转变是毁灭性的。",
+      "text_markdown": "从冰岛的寒冷到阿尔及尔的酷热，这种转变是毁灭性的。",
+      "tts": {
+        "text": "从冰岛的寒冷到阿尔及尔的酷热，这种转变是毁灭性的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "改宗者",
+      "text_markdown": "改宗者"
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些俘虏皈依了伊斯兰教。",
+      "text_markdown": "一些俘虏皈依了伊斯兰教。",
+      "tts": {
+        "text": "一些俘虏皈依了伊斯兰教。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "皈依带来了实际的好处：皈依者在法律上不能再被当作奴隶，还可以获得工作和婚姻的机会。",
+      "text_markdown": "皈依带来了实际的好处：皈依者在法律上不能再被当作奴隶，还可以获得工作和婚姻的机会。",
+      "tts": {
+        "text": "皈依带来了实际的好处：皈依者在法律上不能再被当作奴隶，还可以获得工作和婚姻的机会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对一些人来说，皈依是为了生存，而非信仰。",
+      "text_markdown": "对一些人来说，皈依是为了生存，而非信仰。",
+      "tts": {
+        "text": "对一些人来说，皈依是为了生存，而非信仰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "另一些人真心接受了新的宗教，建立了新的生活。",
+      "text_markdown": "另一些人真心接受了新的宗教，建立了新的生活。",
+      "tts": {
+        "text": "另一些人真心接受了新的宗教，建立了新的生活。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冰岛教会对这些皈依感到恐惧。",
+      "text_markdown": "冰岛教会对这些皈依感到恐惧。",
+      "tts": {
+        "text": "冰岛教会对这些皈依感到恐惧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但从俘虏的角度来看，皈依有时是唯一的生存之道。",
+      "text_markdown": "但从俘虏的角度来看，皈依有时是唯一的生存之道。",
+      "tts": {
+        "text": "但从俘虏的角度来看，皈依有时是唯一的生存之道。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "少数被赎回者",
+      "text_markdown": "少数被赎回者"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1636年，袭击发生近九年后，赎金终于付清。",
+      "text_markdown": "1636年，袭击发生近九年后，赎金终于付清。",
+      "tts": {
+        "text": "一六三六年，袭击发生近九年后，赎金终于付清。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三十四名俘虏获释并被送回家乡。",
+      "text_markdown": "三十四名俘虏获释并被送回家乡。",
+      "tts": {
+        "text": "三十四名俘虏获释并被送回家乡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四百人中的三十四人。",
+      "text_markdown": "四百人中的三十四人。",
+      "tts": {
+        "text": "四百人中的三十四人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些人已经死了，有些人皈依了伊斯兰教，还有很多人找不到或主人拒绝出售。",
+      "text_markdown": "有些人已经死了，有些人皈依了伊斯兰教，还有很多人找不到或主人拒绝出售。",
+      "tts": {
+        "text": "有些人已经死了，有些人皈依了伊斯兰教，还有很多人找不到或主人拒绝出售。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "古德丽德·西蒙娜多蒂尔",
+      "text_markdown": "古德丽德·西蒙娜多蒂尔"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在最终被赎回的人中有古德丽德·西蒙娜多蒂尔。",
+      "text_markdown": "在最终被赎回的人中有古德丽德·西蒙娜多蒂尔。",
+      "tts": {
+        "text": "在最终被赎回的人中有古德丽德·西蒙娜多蒂尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她被俘时还是个年轻女子，在阿尔及尔当了近十年奴隶。",
+      "text_markdown": "她被俘时还是个年轻女子，在阿尔及尔当了近十年奴隶。",
+      "tts": {
+        "text": "她被俘时还是个年轻女子，在阿尔及尔当了近十年奴隶。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当她回到冰岛时，已经判若两人。",
+      "text_markdown": "当她回到冰岛时，已经判若两人。",
+      "tts": {
+        "text": "当她回到冰岛时，已经判若两人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她会说阿拉伯语，曾生活在一个与她被掳走时完全不同的世界里。",
+      "text_markdown": "她会说阿拉伯语，曾生活在一个与她被掳走时完全不同的世界里。",
+      "tts": {
+        "text": "她会说阿拉伯语，曾生活在一个与她被掳走时完全不同的世界里。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "回来后，她嫁给了后来成为冰岛历史上最伟大诗人之一的哈尔格里姆·佩图尔松。",
+      "text_markdown": "回来后，她嫁给了后来成为冰岛历史上最伟大诗人之一的哈尔格里姆·佩图尔松。",
+      "tts": {
+        "text": "回来后，她嫁给了后来成为冰岛历史上最伟大诗人之一的哈尔格里姆·佩图尔松。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的《受难赞美诗》至今仍被视为冰岛文学的杰作。",
+      "text_markdown": "他的《受难赞美诗》至今仍被视为冰岛文学的杰作。",
+      "tts": {
+        "text": "他的《受难赞美诗》至今仍被视为冰岛文学的杰作。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个在北非被奴役的女人嫁给了冰岛最受爱戴的宗教诗人。",
+      "text_markdown": "一个在北非被奴役的女人嫁给了冰岛最受爱戴的宗教诗人。",
+      "tts": {
+        "text": "一个在北非被奴役的女人嫁给了冰岛最受爱戴的宗教诗人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们共同建立了生活，尽管囚禁的阴影从未完全离开她。",
+      "text_markdown": "他们共同建立了生活，尽管囚禁的阴影从未完全离开她。",
+      "tts": {
+        "text": "他们共同建立了生活，尽管囚禁的阴影从未完全离开她。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "奥拉夫的归来",
+      "text_markdown": "奥拉夫的归来"
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫本人最终也回到了冰岛，但已经是一个身心俱碎的人。",
+      "text_markdown": "奥拉夫本人最终也回到了冰岛，但已经是一个身心俱碎的人。",
+      "tts": {
+        "text": "奥拉夫本人最终也回到了冰岛，但已经是一个身心俱碎的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p124",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他失去了大部分家人，而他承担的使命也基本失败了。",
+      "text_markdown": "他失去了大部分家人，而他承担的使命也基本失败了。",
+      "tts": {
+        "text": "他失去了大部分家人，而他承担的使命也基本失败了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他妻子奥斯塔的命运至今仍不确定。",
+      "text_markdown": "他妻子奥斯塔的命运至今仍不确定。",
+      "tts": {
+        "text": "他妻子奥斯塔的命运至今仍不确定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p125",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史学家认为她死于囚禁中，但具体情况不得而知。",
+      "text_markdown": "历史学家认为她死于囚禁中，但具体情况不得而知。",
+      "tts": {
+        "text": "历史学家认为她死于囚禁中，但具体情况不得而知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p125",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他记述中的沉默比任何文字都更响亮。",
+      "text_markdown": "他记述中的沉默比任何文字都更响亮。",
+      "tts": {
+        "text": "他记述中的沉默比任何文字都更响亮。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫活到了1651年，享年八十七岁。",
+      "text_markdown": "奥拉夫活到了1651年，享年八十七岁。",
+      "tts": {
+        "text": "奥拉夫活到了一六五一年，享年八十七岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p126",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在生命的最后岁月里，承受着他所见所失一切的重压。",
+      "text_markdown": "他在生命的最后岁月里，承受着他所见所失一切的重压。",
+      "tts": {
+        "text": "他在生命的最后岁月里，承受着他所见所失一切的重压。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "挥之不去的创伤",
+      "text_markdown": "挥之不去的创伤"
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "归来的俘虏发现冰岛已经继续向前。",
+      "text_markdown": "归来的俘虏发现冰岛已经继续向前。",
+      "tts": {
+        "text": "归来的俘虏发现冰岛已经继续向前。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p128",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的家园已经给了别人，财产也没了。",
+      "text_markdown": "他们的家园已经给了别人，财产也没了。",
+      "tts": {
+        "text": "他们的家园已经给了别人，财产也没了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "教会要求归来者接受公开的信仰考试，以证明他们没有改宗。",
+      "text_markdown": "教会要求归来者接受公开的信仰考试，以证明他们没有改宗。",
+      "tts": {
+        "text": "教会要求归来者接受公开的信仰考试，以证明他们没有改宗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p129",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对于已经经历了难以想象之苦难的人来说，这是一种侮辱。",
+      "text_markdown": "对于已经经历了难以想象之苦难的人来说，这是一种侮辱。",
+      "tts": {
+        "text": "对于已经经历了难以想象之苦难的人来说，这是一种侮辱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多人难以重新适应。",
+      "text_markdown": "许多人难以重新适应。",
+      "tts": {
+        "text": "许多人难以重新适应。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p130",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们已经以邻居无法理解的方式改变了。",
+      "text_markdown": "他们已经以邻居无法理解的方式改变了。",
+      "tts": {
+        "text": "他们已经以邻居无法理解的方式改变了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冰岛人称之为「土耳其人掳掠」的蒂尔基亚劳尼德事件在民族记忆中留下了深深的伤疤。",
+      "text_markdown": "冰岛人称之为「土耳其人掳掠」的蒂尔基亚劳尼德事件在民族记忆中留下了深深的伤疤。",
+      "tts": {
+        "text": "冰岛人称之为「土耳其人掳掠」的蒂尔基亚劳尼德事件在民族记忆中留下了深深的伤疤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p131",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "关于这次袭击的歌曲和故事代代相传。",
+      "text_markdown": "关于这次袭击的歌曲和故事代代相传。",
+      "tts": {
+        "text": "关于这次袭击的歌曲和故事代代相传。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "归来者与未归者",
+      "paragraph_id": "p131",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "韦斯特曼群岛从未忘记。",
+      "text_markdown": "韦斯特曼群岛从未忘记。",
+      "tts": {
+        "text": "韦斯特曼群岛从未忘记。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "幸存的书",
+      "text_markdown": "幸存的书"
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫的著作《旅行之书》在他有生之年从未出版。",
+      "text_markdown": "奥拉夫的著作《旅行之书》在他有生之年从未出版。",
+      "tts": {
+        "text": "奥拉夫的著作《旅行之书》在他有生之年从未出版。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它以手抄本的形式流传，一个读者传给另一个读者。",
+      "text_markdown": "它以手抄本的形式流传，一个读者传给另一个读者。",
+      "tts": {
+        "text": "它以手抄本的形式流传，一个读者传给另一个读者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p133",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几个世纪以来，它成为冰岛文学中最重要的历史文献之一。",
+      "text_markdown": "几个世纪以来，它成为冰岛文学中最重要的历史文献之一。",
+      "tts": {
+        "text": "几个世纪以来，它成为冰岛文学中最重要的历史文献之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它是极少数由北欧人撰写的巴巴里奴隶贸易亲历记之一。",
+      "text_markdown": "它是极少数由北欧人撰写的巴巴里奴隶贸易亲历记之一。",
+      "tts": {
+        "text": "它是极少数由北欧人撰写的巴巴里奴隶贸易亲历记之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p134",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作为一名来自小小火山岛上的冰岛牧师，奥拉夫的视角在整个欧洲文学中都是独一无二的。",
+      "text_markdown": "作为一名来自小小火山岛上的冰岛牧师，奥拉夫的视角在整个欧洲文学中都是独一无二的。",
+      "tts": {
+        "text": "作为一名来自小小火山岛上的冰岛牧师，奥拉夫的视角在整个欧洲文学中都是独一无二的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "这本书教给我们什么",
+      "text_markdown": "这本书教给我们什么"
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫以学者的审慎目光写作。",
+      "text_markdown": "奥拉夫以学者的审慎目光写作。",
+      "tts": {
+        "text": "奥拉夫以学者的审慎目光写作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p136",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他描述了阿尔及尔、它的风俗、奴隶市场以及日常的囚禁生活，没有过分夸大。",
+      "text_markdown": "他描述了阿尔及尔、它的风俗、奴隶市场以及日常的囚禁生活，没有过分夸大。",
+      "tts": {
+        "text": "他描述了阿尔及尔、它的风俗、奴隶市场以及日常的囚禁生活，没有过分夸大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的书教导我们，海盗行为不仅仅关乎海盗。",
+      "text_markdown": "他的书教导我们，海盗行为不仅仅关乎海盗。",
+      "tts": {
+        "text": "他的书教导我们，海盗行为不仅仅关乎海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一次袭击背后，都有真实的人的生活被摧毁。",
+      "text_markdown": "每一次袭击背后，都有真实的人的生活被摧毁。",
+      "tts": {
+        "text": "每一次袭击背后，都有真实的人的生活被摧毁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p137",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奥拉夫是少数讲述了自己故事的受害者之一。",
+      "text_markdown": "奥拉夫是少数讲述了自己故事的受害者之一。",
+      "tts": {
+        "text": "奥拉夫是少数讲述了自己故事的受害者之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "《旅行之书》还揭示了欧洲列强未能保护自己人民的失败。",
+      "text_markdown": "《旅行之书》还揭示了欧洲列强未能保护自己人民的失败。",
+      "tts": {
+        "text": "《旅行之书》还揭示了欧洲列强未能保护自己人民的失败。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p138",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丹麦统治着冰岛，却几乎没有做任何事来保卫它。",
+      "text_markdown": "丹麦统治着冰岛，却几乎没有做任何事来保卫它。",
+      "tts": {
+        "text": "丹麦统治着冰岛，却几乎没有做任何事来保卫它。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "俘虏们被本应保护他们的政府抛弃了。",
+      "text_markdown": "俘虏们被本应保护他们的政府抛弃了。",
+      "tts": {
+        "text": "俘虏们被本应保护他们的政府抛弃了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "为什么这个故事属于海盗系列",
+      "text_markdown": "为什么这个故事属于海盗系列"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本书是一个关于著名海盗的系列丛书的一部分。",
+      "text_markdown": "本书是一个关于著名海盗的系列丛书的一部分。",
+      "tts": {
+        "text": "本书是一个关于著名海盗的系列丛书的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p140",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥拉夫不是海盗。",
+      "text_markdown": "奥拉夫不是海盗。",
+      "tts": {
+        "text": "奥拉夫不是海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p140",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是海盗行为的受害者。",
+      "text_markdown": "他是海盗行为的受害者。",
+      "tts": {
+        "text": "他是海盗行为的受害者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p140",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他的故事对于理解海盗行为的真正含义至关重要。",
+      "text_markdown": "但他的故事对于理解海盗行为的真正含义至关重要。",
+      "tts": {
+        "text": "但他的故事对于理解海盗行为的真正含义至关重要。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗行为常常被浪漫化。",
+      "text_markdown": "海盗行为常常被浪漫化。",
+      "tts": {
+        "text": "海盗行为常常被浪漫化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p141",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但其本质是对普通人的有组织暴力。",
+      "text_markdown": "但其本质是对普通人的有组织暴力。",
+      "tts": {
+        "text": "但其本质是对普通人的有组织暴力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p141",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴巴里海盗不仅仅偷窃财物。",
+      "text_markdown": "巴巴里海盗不仅仅偷窃财物。",
+      "tts": {
+        "text": "巴巴里海盗不仅仅偷窃财物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p141",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们偷走的是人。",
+      "text_markdown": "他们偷走的是人。",
+      "tts": {
+        "text": "他们偷走的是人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫的故事迫使我们从另一面看待海盗行为。",
+      "text_markdown": "奥拉夫的故事迫使我们从另一面看待海盗行为。",
+      "tts": {
+        "text": "奥拉夫的故事迫使我们从另一面看待海盗行为。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它让我们想象被从家中撕走、与家人分离、在市场上被出售、被自己的政府遗忘是什么感受。",
+      "text_markdown": "它让我们想象被从家中撕走、与家人分离、在市场上被出售、被自己的政府遗忘是什么感受。",
+      "tts": {
+        "text": "它让我们想象被从家中撕走、与家人分离、在市场上被出售、被自己的政府遗忘是什么感受。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "今日韦斯特曼群岛",
+      "text_markdown": "今日韦斯特曼群岛"
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "韦斯特曼群岛至今仍有人居住，今天大约有四千人生活在赫马岛上。",
+      "text_markdown": "韦斯特曼群岛至今仍有人居住，今天大约有四千人生活在赫马岛上。",
+      "tts": {
+        "text": "韦斯特曼群岛至今仍有人居住，今天大约有四千人生活在赫马岛上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p144",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些岛屿以自然美景、海鹦栖息地和一年一度的节日而闻名。",
+      "text_markdown": "这些岛屿以自然美景、海鹦栖息地和一年一度的节日而闻名。",
+      "tts": {
+        "text": "这些岛屿以自然美景、海鹦栖息地和一年一度的节日而闻名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年那场袭击的记忆至今犹存。",
+      "text_markdown": "1627年那场袭击的记忆至今犹存。",
+      "tts": {
+        "text": "一六二七年那场袭击的记忆至今犹存。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p145",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "赫马岛上的纪念碑纪念着受害者，当地历史学家努力考证俘虏的姓名。",
+      "text_markdown": "赫马岛上的纪念碑纪念着受害者，当地历史学家努力考证俘虏的姓名。",
+      "tts": {
+        "text": "赫马岛上的纪念碑纪念着受害者，当地历史学家努力考证俘虏的姓名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2009年，为纪念被掳走的人们竖立了一座纪念碑。",
+      "text_markdown": "2009年，为纪念被掳走的人们竖立了一座纪念碑。",
+      "tts": {
+        "text": "二〇〇九年，为纪念被掳走的人们竖立了一座纪念碑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p146",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "碑文提醒来访者，曾经有普通人在这里生活，却被强行带到了世界的另一端。",
+      "text_markdown": "碑文提醒来访者，曾经有普通人在这里生活，却被强行带到了世界的另一端。",
+      "tts": {
+        "text": "碑文提醒来访者，曾经有普通人在这里生活，却被强行带到了世界的另一端。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "记忆与传承",
+      "text_markdown": "记忆与传承"
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥拉夫已经去世近四百年，但他的话语至今仍在回响。",
+      "text_markdown": "奥拉夫已经去世近四百年，但他的话语至今仍在回响。",
+      "tts": {
+        "text": "奥拉夫已经去世近四百年，但他的话语至今仍在回响。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p148",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的书提醒我们，历史不仅仅由国王和征服者书写。",
+      "text_markdown": "他的书提醒我们，历史不仅仅由国王和征服者书写。",
+      "tts": {
+        "text": "他的书提醒我们，历史不仅仅由国王和征服者书写。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史也由承受非凡苦难、并找到方式为之作证的普通人书写。",
+      "text_markdown": "历史也由承受非凡苦难、并找到方式为之作证的普通人书写。",
+      "tts": {
+        "text": "历史也由承受非凡苦难、并找到方式为之作证的普通人书写。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "《旅行之书》就是他的见证。",
+      "text_markdown": "《旅行之书》就是他的见证。",
+      "tts": {
+        "text": "《旅行之书》就是他的见证。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p149",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个失去了几乎一切、却不肯让自己的故事消亡的人的声音。",
+      "text_markdown": "这是一个失去了几乎一切、却不肯让自己的故事消亡的人的声音。",
+      "tts": {
+        "text": "这是一个失去了几乎一切、却不肯让自己的故事消亡的人的声音。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "幸存的书",
+      "paragraph_id": "p149",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "只要他的书还在，1627年从韦斯特曼群岛被掳走的人们就不会被遗忘。",
+      "text_markdown": "只要他的书还在，1627年从韦斯特曼群岛被掳走的人们就不会被遗忘。",
+      "tts": {
+        "text": "只要他的书还在，一六二七年从韦斯特曼群岛被掳走的人们就不会被遗忘。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

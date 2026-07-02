@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jean_lafitte",
+  "language": "ja",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への注記",
+      "text_markdown": "読者への注記"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、戦争の勝利に貢献した密貿易商の実話である。",
+      "text_markdown": "これは、戦争の勝利に貢献した密貿易商の実話である。",
+      "tts": {
+        "text": "これは、戦争の勝利に貢献した密貿易商の実話である。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はジャン・ラフィートといい、アメリカ史上最も魅力的な無法者の一人であった。",
+      "text_markdown": "彼の名はジャン・ラフィートといい、アメリカ史上最も魅力的な無法者の一人であった。",
+      "tts": {
+        "text": "彼の名はジャン・ラフィートといい、アメリカ史上最も魅力的な無法者の一人であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は自らを私掠船長と称したが、アメリカ政府は彼を海賊と呼んだ。",
+      "text_markdown": "彼は自らを私掠船長と称したが、アメリカ政府は彼を海賊と呼んだ。",
+      "tts": {
+        "text": "彼は自らを私掠船長と称したが、アメリカ政府は彼を海賊と呼んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートはルイジアナの沼地から密貿易帝国を運営していた。",
+      "text_markdown": "ラフィートはルイジアナの沼地から密貿易帝国を運営していた。",
+      "tts": {
+        "text": "ラフィートはルイジアナの沼地から密貿易帝国を運営していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス軍がニューオーリンズを征服しようとした時、彼はアメリカのために戦うことを選んだ。",
+      "text_markdown": "イギリス軍がニューオーリンズを征服しようとした時、彼はアメリカのために戦うことを選んだ。",
+      "tts": {
+        "text": "イギリス軍がニューオーリンズを征服しようとした時、彼はアメリカのために戦うことを選んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の決断は千八百十二年戦争の流れを変える一助となった。",
+      "text_markdown": "彼の決断は千八百十二年戦争の流れを変える一助となった。",
+      "tts": {
+        "text": "彼の決断は千八百十二年戦争の流れを変える一助となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートに関するほぼすべてが謎に包まれている。",
+      "text_markdown": "ラフィートに関するほぼすべてが謎に包まれている。",
+      "tts": {
+        "text": "ラフィートに関するほぼすべてが謎に包まれている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼がどこで生まれたか正確にはわからない。",
+      "text_markdown": "彼がどこで生まれたか正確にはわからない。",
+      "tts": {
+        "text": "彼がどこで生まれたか正確にはわからない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼がいつ、どのように死んだか正確にはわからない。",
+      "text_markdown": "彼がいつ、どのように死んだか正確にはわからない。",
+      "tts": {
+        "text": "彼がいつ、どのように死んだか正確にはわからない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の名前でさえ、資料によって綴りが異なる。",
+      "text_markdown": "彼の名前でさえ、資料によって綴りが異なる。",
+      "tts": {
+        "text": "彼の名前でさえ、資料によって綴りが異なる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本書は入手可能な最良の証拠に基づいて彼の物語を語る。",
+      "text_markdown": "本書は入手可能な最良の証拠に基づいて彼の物語を語る。",
+      "tts": {
+        "text": "本書は入手可能な最良の証拠に基づいて彼の物語を語る。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "記録が不確かなところでは、そう述べている。",
+      "text_markdown": "記録が不確かなところでは、そう述べている。",
+      "tts": {
+        "text": "記録が不確かなところでは、そう述べている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "メキシコ湾岸の世界",
+      "text_markdown": "メキシコ湾岸の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャン・ラフィートは北米史上最も激動の時代に生きた。",
+      "text_markdown": "ジャン・ラフィートは北米史上最も激動の時代に生きた。",
+      "tts": {
+        "text": "ジャン・ラフィートは北米史上最も激動の時代に生きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帝国は崩壊し、新しい国家が誕生し、メキシコ湾がそのすべての中心にあった。",
+      "text_markdown": "帝国は崩壊し、新しい国家が誕生し、メキシコ湾がそのすべての中心にあった。",
+      "tts": {
+        "text": "帝国は崩壊し、新しい国家が誕生し、メキシコ湾がそのすべての中心にあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メキシコ湾はアメリカ、メキシコ、キューバに囲まれた広大で温暖な水域である。",
+      "text_markdown": "メキシコ湾はアメリカ、メキシコ、キューバに囲まれた広大で温暖な水域である。",
+      "tts": {
+        "text": "メキシコ湾はアメリカ、メキシコ、キューバに囲まれた広大で温暖な水域である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その海岸線はフロリダの先端からユカタン半島まで伸びている。",
+      "text_markdown": "その海岸線はフロリダの先端からユカタン半島まで伸びている。",
+      "tts": {
+        "text": "その海岸線はフロリダの先端からユカタン半島まで伸びている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何世紀もの間、湾は貿易、密貿易、紛争の交差点であった。",
+      "text_markdown": "何世紀もの間、湾は貿易、密貿易、紛争の交差点であった。",
+      "tts": {
+        "text": "何世紀もの間、湾は貿易、密貿易、紛争の交差点であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズは北米最大の水路であるミシシッピ川の河口に位置していた。",
+      "text_markdown": "ニューオーリンズは北米最大の水路であるミシシッピ川の河口に位置していた。",
+      "tts": {
+        "text": "ニューオーリンズは北米最大の水路であるミシシッピ川の河口に位置していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ニューオーリンズを支配する者が広大な領土の貿易を支配した。",
+      "text_markdown": "ニューオーリンズを支配する者が広大な領土の貿易を支配した。",
+      "tts": {
+        "text": "ニューオーリンズを支配する者が広大な領土の貿易を支配した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この都市は千七百十八年にフランス人によって建設された。",
+      "text_markdown": "この都市は千七百十八年にフランス人によって建設された。",
+      "tts": {
+        "text": "この都市は千七百十八年にフランス人によって建設された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その後スペインに割譲され、フランスに返還され、最終的にアメリカに売却された。",
+      "text_markdown": "その後スペインに割譲され、フランスに返還され、最終的にアメリカに売却された。",
+      "tts": {
+        "text": "その後スペインに割譲され、フランスに返還され、最終的にアメリカに売却された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1803年のルイジアナ買収はアメリカ史上最も重要な出来事の一つであった。",
+      "text_markdown": "1803年のルイジアナ買収はアメリカ史上最も重要な出来事の一つであった。",
+      "tts": {
+        "text": "千八百三年のルイジアナ買収はアメリカ史上最も重要な出来事の一つであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アメリカはフランスからルイジアナ準州を約千五百万ドルで購入した。",
+      "text_markdown": "アメリカはフランスからルイジアナ準州を約千五百万ドルで購入した。",
+      "tts": {
+        "text": "アメリカはフランスからルイジアナ準州を約千五百万ドルで購入した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この一回の取引で若い国家の面積は倍増した。",
+      "text_markdown": "この一回の取引で若い国家の面積は倍増した。",
+      "tts": {
+        "text": "この一回の取引で若い国家の面積は倍増した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "領土の宝石であるニューオーリンズは一夜にしてアメリカの都市となった。",
+      "text_markdown": "領土の宝石であるニューオーリンズは一夜にしてアメリカの都市となった。",
+      "tts": {
+        "text": "領土の宝石であるニューオーリンズは一夜にしてアメリカの都市となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしニューオーリンズは他のどのアメリカの都市とも違っていた。",
+      "text_markdown": "しかしニューオーリンズは他のどのアメリカの都市とも違っていた。",
+      "tts": {
+        "text": "しかしニューオーリンズは他のどのアメリカの都市とも違っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その文化はフランス、スペイン、アフリカ、カリブ、先住民の影響が混じり合ったものであった。",
+      "text_markdown": "その文化はフランス、スペイン、アフリカ、カリブ、先住民の影響が混じり合ったものであった。",
+      "tts": {
+        "text": "その文化はフランス、スペイン、アフリカ、カリブ、先住民の影響が混じり合ったものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランス語とスペイン語は英語と同じくらい一般的に話されていた。",
+      "text_markdown": "フランス語とスペイン語は英語と同じくらい一般的に話されていた。",
+      "tts": {
+        "text": "フランス語とスペイン語は英語と同じくらい一般的に話されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この都市の食、音楽、建築、慣習はこの並外れた融合を反映していた。",
+      "text_markdown": "この都市の食、音楽、建築、慣習はこの並外れた融合を反映していた。",
+      "tts": {
+        "text": "この都市の食、音楽、建築、慣習はこの並外れた融合を反映していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百九十一年に始まったハイチ革命は湾岸地域に深い影響を与えた。",
+      "text_markdown": "千七百九十一年に始まったハイチ革命は湾岸地域に深い影響を与えた。",
+      "tts": {
+        "text": "千七百九十一年に始まったハイチ革命は湾岸地域に深い影響を与えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランス植民地サン＝ドマングの奴隷たちが主人に対して蜂起した。",
+      "text_markdown": "フランス植民地サン＝ドマングの奴隷たちが主人に対して蜂起した。",
+      "tts": {
+        "text": "フランス植民地サン＝ドマングの奴隷たちが主人に対して蜂起した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何年にも及ぶ残酷な戦いの後、彼らは独立国家ハイチを建国した。",
+      "text_markdown": "何年にも及ぶ残酷な戦いの後、彼らは独立国家ハイチを建国した。",
+      "tts": {
+        "text": "何年にも及ぶ残酷な戦いの後、彼らは独立国家ハイチを建国した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "何千人ものハイチ難民がニューオーリンズに逃れ、文化を持ち込んだ。",
+      "text_markdown": "何千人ものハイチ難民がニューオーリンズに逃れ、文化を持ち込んだ。",
+      "tts": {
+        "text": "何千人ものハイチ難民がニューオーリンズに逃れ、文化を持ち込んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隷貿易は湾岸経済の中核であった。",
+      "text_markdown": "奴隷貿易は湾岸経済の中核であった。",
+      "tts": {
+        "text": "奴隷貿易は湾岸経済の中核であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ルイジアナの砂糖プランテーションは奴隷労働に依存していた。",
+      "text_markdown": "ルイジアナの砂糖プランテーションは奴隷労働に依存していた。",
+      "tts": {
+        "text": "ルイジアナの砂糖プランテーションは奴隷労働に依存していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "綿花はアメリカ南部の王となりつつあった。",
+      "text_markdown": "綿花はアメリカ南部の王となりつつあった。",
+      "tts": {
+        "text": "綿花はアメリカ南部の王となりつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奴隷への需要は広大で恐ろしい市場を生み出した。",
+      "text_markdown": "奴隷への需要は広大で恐ろしい市場を生み出した。",
+      "tts": {
+        "text": "奴隷への需要は広大で恐ろしい市場を生み出した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "密貿易はルイジアナ南部の湿地帯での生活様式であった。",
+      "text_markdown": "密貿易はルイジアナ南部の湿地帯での生活様式であった。",
+      "tts": {
+        "text": "密貿易はルイジアナ南部の湿地帯での生活様式であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バイユーはゆっくり流れる水路、沼地、湿地の網である。",
+      "text_markdown": "バイユーはゆっくり流れる水路、沼地、湿地の網である。",
+      "tts": {
+        "text": "バイユーはゆっくり流れる水路、沼地、湿地の網である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ニューオーリンズの南方に何百キロも広がっている。",
+      "text_markdown": "ニューオーリンズの南方に何百キロも広がっている。",
+      "tts": {
+        "text": "ニューオーリンズの南方に何百キロも広がっている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地形は非常に複雑で、部外者は何日も道に迷うことがあった。",
+      "text_markdown": "地形は非常に複雑で、部外者は何日も道に迷うことがあった。",
+      "tts": {
+        "text": "地形は非常に複雑で、部外者は何日も道に迷うことがあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカ政府は国に入る商品に輸入税を課した。",
+      "text_markdown": "アメリカ政府は国に入る商品に輸入税を課した。",
+      "tts": {
+        "text": "アメリカ政府は国に入る商品に輸入税を課した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "密貿易商は隠れた水路から商品を持ち込んでこれらの税を逃れた。",
+      "text_markdown": "密貿易商は隠れた水路から商品を持ち込んでこれらの税を逃れた。",
+      "tts": {
+        "text": "密貿易商は隠れた水路から商品を持ち込んでこれらの税を逃れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ニューオーリンズの商人たちは密輸品をより安い価格で喜んで買った。",
+      "text_markdown": "ニューオーリンズの商人たちは密輸品をより安い価格で喜んで買った。",
+      "tts": {
+        "text": "ニューオーリンズの商人たちは密輸品をより安い価格で喜んで買った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当局は広大で足跡のないバイユー地帯を巡回するのに苦労した。",
+      "text_markdown": "当局は広大で足跡のないバイユー地帯を巡回するのに苦労した。",
+      "tts": {
+        "text": "当局は広大で足跡のないバイユー地帯を巡回するのに苦労した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十九世紀初頭、私掠行為はまだ一般的であった。",
+      "text_markdown": "十九世紀初頭、私掠行為はまだ一般的であった。",
+      "tts": {
+        "text": "十九世紀初頭、私掠行為はまだ一般的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私掠船長とは政府から敵船を攻撃する権限を与えられた民間の船長のことであった。",
+      "text_markdown": "私掠船長とは政府から敵船を攻撃する権限を与えられた民間の船長のことであった。",
+      "tts": {
+        "text": "私掠船長とは政府から敵船を攻撃する権限を与えられた民間の船長のことであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私掠船長と海賊の区別は完全に書類に依存していた。",
+      "text_markdown": "私掠船長と海賊の区別は完全に書類に依存していた。",
+      "tts": {
+        "text": "私掠船長と海賊の区別は完全に書類に依存していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "有効な書類を持つ私掠船長は合法であり、書類がなければ海賊であった。",
+      "text_markdown": "有効な書類を持つ私掠船長は合法であり、書類がなければ海賊であった。",
+      "tts": {
+        "text": "有効な書類を持つ私掠船長は合法であり、書類がなければ海賊であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブ海や南米の多くの小国が私掠免許状を発行した。",
+      "text_markdown": "カリブ海や南米の多くの小国が私掠免許状を発行した。",
+      "tts": {
+        "text": "カリブ海や南米の多くの小国が私掠免許状を発行した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの国の中には紙の上にしかほとんど存在しないものもあった。",
+      "text_markdown": "これらの国の中には紙の上にしかほとんど存在しないものもあった。",
+      "tts": {
+        "text": "これらの国の中には紙の上にしかほとんど存在しないものもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "賢い私掠船長は常に自分の襲撃を認可してくれる政府を見つけることができた。",
+      "text_markdown": "賢い私掠船長は常に自分の襲撃を認可してくれる政府を見つけることができた。",
+      "tts": {
+        "text": "賢い私掠船長は常に自分の襲撃を認可してくれる政府を見つけることができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この法的グレーゾーンこそジャン・ラフィートが活動した場所であった。",
+      "text_markdown": "この法的グレーゾーンこそジャン・ラフィートが活動した場所であった。",
+      "tts": {
+        "text": "この法的グレーゾーンこそジャン・ラフィートが活動した場所であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時期、アメリカ大陸におけるスペイン帝国は崩壊しつつあった。",
+      "text_markdown": "この時期、アメリカ大陸におけるスペイン帝国は崩壊しつつあった。",
+      "tts": {
+        "text": "この時期、アメリカ大陸におけるスペイン帝国は崩壊しつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラテンアメリカ全土で革命が勃発していた。",
+      "text_markdown": "ラテンアメリカ全土で革命が勃発していた。",
+      "tts": {
+        "text": "ラテンアメリカ全土で革命が勃発していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの商船は私掠船長にとって格好の標的であった。",
+      "text_markdown": "スペインの商船は私掠船長にとって格好の標的であった。",
+      "tts": {
+        "text": "スペインの商船は私掠船長にとって格好の標的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "メキシコ湾は大胆で無節操な者たちにとって機会に満ちていた。",
+      "text_markdown": "メキシコ湾は大胆で無節操な者たちにとって機会に満ちていた。",
+      "tts": {
+        "text": "メキシコ湾は大胆で無節操な者たちにとって機会に満ちていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカとイギリスの間の1812年戦争はその年の六月に勃発した。",
+      "text_markdown": "アメリカとイギリスの間の1812年戦争はその年の六月に勃発した。",
+      "tts": {
+        "text": "アメリカとイギリスの間の千八百十二年戦争はその年の六月に勃発した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスはアメリカの海運に干渉し、アメリカ人船員を強制的にイギリス海軍に徴用していた。",
+      "text_markdown": "イギリスはアメリカの海運に干渉し、アメリカ人船員を強制的にイギリス海軍に徴用していた。",
+      "tts": {
+        "text": "イギリスはアメリカの海運に干渉し、アメリカ人船員を強制的にイギリス海軍に徴用していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦争は二年以上続くことになる。",
+      "text_markdown": "戦争は二年以上続くことになる。",
+      "tts": {
+        "text": "戦争は二年以上続くことになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最も劇的な瞬間はニューオーリンズで訪れることになる。",
+      "text_markdown": "最も劇的な瞬間はニューオーリンズで訪れることになる。",
+      "tts": {
+        "text": "最も劇的な瞬間はニューオーリンズで訪れることになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイユー地帯は驚くべき多様性の野生生物の生息地であった。",
+      "text_markdown": "バイユー地帯は驚くべき多様性の野生生物の生息地であった。",
+      "tts": {
+        "text": "バイユー地帯は驚くべき多様性の野生生物の生息地であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "メキシコ湾岸の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ワニ、ヘビ、そして無数の鳥類が沼地に生息していた。",
+      "text_markdown": "ワニ、ヘビ、そして無数の鳥類が沼地に生息していた。",
+      "tts": {
+        "text": "ワニ、ヘビ、そして無数の鳥類が沼地に生息していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャン・ラフィートは1780年頃に生まれたが、正確な出生地には議論がある。",
+      "text_markdown": "ジャン・ラフィートは1780年頃に生まれたが、正確な出生地には議論がある。",
+      "tts": {
+        "text": "ジャン・ラフィートは千七百八十年頃に生まれたが、正確な出生地には議論がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の資料では、フランス南西部の港湾都市バイヨンヌで生まれたとされている。",
+      "text_markdown": "一部の資料では、フランス南西部の港湾都市バイヨンヌで生まれたとされている。",
+      "tts": {
+        "text": "一部の資料では、フランス南西部の港湾都市バイヨンヌで生まれたとされている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランス植民地サン＝ドマング、現在のハイチで生まれたと考える者もいる。",
+      "text_markdown": "フランス植民地サン＝ドマング、現在のハイチで生まれたと考える者もいる。",
+      "tts": {
+        "text": "フランス植民地サン＝ドマング、現在のハイチで生まれたと考える者もいる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィート自身がこの謎を意図的に育んだ。",
+      "text_markdown": "ラフィート自身がこの謎を意図的に育んだ。",
+      "tts": {
+        "text": "ラフィート自身がこの謎を意図的に育んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は自分の出自についてほとんど語らず、人によって異なる話をした。",
+      "text_markdown": "彼は自分の出自についてほとんど語らず、人によって異なる話をした。",
+      "tts": {
+        "text": "彼は自分の出自についてほとんど語らず、人によって異なる話をした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明確な過去を持たない男は当局にとって追跡が困難であった。",
+      "text_markdown": "明確な過去を持たない男は当局にとって追跡が困難であった。",
+      "tts": {
+        "text": "明確な過去を持たない男は当局にとって追跡が困難であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄のピエール・ラフィートは生涯を通じて彼の最も親しいパートナーであった。",
+      "text_markdown": "兄のピエール・ラフィートは生涯を通じて彼の最も親しいパートナーであった。",
+      "tts": {
+        "text": "兄のピエール・ラフィートは生涯を通じて彼の最も親しいパートナーであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ピエールはジャンより年上で、初期の事業を率いていた可能性がある。",
+      "text_markdown": "ピエールはジャンより年上で、初期の事業を率いていた可能性がある。",
+      "tts": {
+        "text": "ピエールはジャンより年上で、初期の事業を率いていた可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二人の兄弟は商売でもトラブルでも切り離せない存在であった。",
+      "text_markdown": "二人の兄弟は商売でもトラブルでも切り離せない存在であった。",
+      "tts": {
+        "text": "二人の兄弟は商売でもトラブルでも切り離せない存在であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィート兄弟は1803年から1805年頃にニューオーリンズに到着した。",
+      "text_markdown": "ラフィート兄弟は1803年から1805年頃にニューオーリンズに到着した。",
+      "tts": {
+        "text": "ラフィート兄弟は千八百三年から千八百五年頃にニューオーリンズに到着した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "街はちょうどフランスからアメリカの支配への移行期にあった。",
+      "text_markdown": "街はちょうどフランスからアメリカの支配への移行期にあった。",
+      "tts": {
+        "text": "街はちょうどフランスからアメリカの支配への移行期にあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "雰囲気は混沌として機会に満ちていた。",
+      "text_markdown": "雰囲気は混沌として機会に満ちていた。",
+      "tts": {
+        "text": "雰囲気は混沌として機会に満ちていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "法律は曖昧で、施行は弱く、財が築かれていた。",
+      "text_markdown": "法律は曖昧で、施行は弱く、財が築かれていた。",
+      "tts": {
+        "text": "法律は曖昧で、施行は弱く、財が築かれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟は当初、商人として身を立てた。",
+      "text_markdown": "兄弟は当初、商人として身を立てた。",
+      "tts": {
+        "text": "兄弟は当初、商人として身を立てた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フレンチ・クォーターで倉庫と鍛冶屋を営んだ。",
+      "text_markdown": "フレンチ・クォーターで倉庫と鍛冶屋を営んだ。",
+      "tts": {
+        "text": "フレンチ・クォーターで倉庫と鍛冶屋を営んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鍛冶屋は密輸品を売るための隠れ蓑だった可能性がある。",
+      "text_markdown": "鍛冶屋は密輸品を売るための隠れ蓑だった可能性がある。",
+      "tts": {
+        "text": "鍛冶屋は密輸品を売るための隠れ蓑だった可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ニューオーリンズの建物が今もラフィートの元の鍛冶屋であると主張している。",
+      "text_markdown": "ニューオーリンズの建物が今もラフィートの元の鍛冶屋であると主張している。",
+      "tts": {
+        "text": "ニューオーリンズの建物が今もラフィートの元の鍛冶屋であると主張している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャン・ラフィートは長身で、ハンサムで、魅力的と描写された。",
+      "text_markdown": "ジャン・ラフィートは長身で、ハンサムで、魅力的と描写された。",
+      "tts": {
+        "text": "ジャン・ラフィートは長身で、ハンサムで、魅力的と描写された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランス語、英語、スペイン語を流暢に話し、イタリア語も話せた可能性がある。",
+      "text_markdown": "フランス語、英語、スペイン語を流暢に話し、イタリア語も話せた可能性がある。",
+      "tts": {
+        "text": "フランス語、英語、スペイン語を流暢に話し、イタリア語も話せた可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "身なりがよく、紳士の礼儀作法で振る舞った。",
+      "text_markdown": "身なりがよく、紳士の礼儀作法で振る舞った。",
+      "tts": {
+        "text": "身なりがよく、紳士の礼儀作法で振る舞った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "商人、政治家、無法者の間を自在に行き来できた。",
+      "text_markdown": "商人、政治家、無法者の間を自在に行き来できた。",
+      "tts": {
+        "text": "商人、政治家、無法者の間を自在に行き来できた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートは湾岸沿いにコネクションのネットワークを築いた。",
+      "text_markdown": "ラフィートは湾岸沿いにコネクションのネットワークを築いた。",
+      "tts": {
+        "text": "ラフィートは湾岸沿いにコネクションのネットワークを築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船長、倉庫のオーナー、プランテーションの主人、政府関係者を知っていた。",
+      "text_markdown": "船長、倉庫のオーナー、プランテーションの主人、政府関係者を知っていた。",
+      "tts": {
+        "text": "船長、倉庫のオーナー、プランテーションの主人、政府関係者を知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの知人の一部は合法的なビジネスマンであった。",
+      "text_markdown": "これらの知人の一部は合法的なビジネスマンであった。",
+      "tts": {
+        "text": "これらの知人の一部は合法的なビジネスマンであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それ以外は密貿易商、海賊、泥棒であった。",
+      "text_markdown": "それ以外は密貿易商、海賊、泥棒であった。",
+      "tts": {
+        "text": "それ以外は密貿易商、海賊、泥棒であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟はまもなく単純な貿易から大規模な密貿易へと拡大した。",
+      "text_markdown": "兄弟はまもなく単純な貿易から大規模な密貿易へと拡大した。",
+      "tts": {
+        "text": "兄弟はまもなく単純な貿易から大規模な密貿易へと拡大した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの商船とその積荷の拿捕と販売を組織した。",
+      "text_markdown": "スペインの商船とその積荷の拿捕と販売を組織した。",
+      "tts": {
+        "text": "スペインの商船とその積荷の拿捕と販売を組織した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奴隷の売買も行い、これは非常に利益の大きいものであった。",
+      "text_markdown": "奴隷の売買も行い、これは非常に利益の大きいものであった。",
+      "tts": {
+        "text": "奴隷の売買も行い、これは非常に利益の大きいものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "千八百八年に成立した奴隷輸入禁止法は価格をさらに押し上げただけであった。",
+      "text_markdown": "千八百八年に成立した奴隷輸入禁止法は価格をさらに押し上げただけであった。",
+      "tts": {
+        "text": "千八百八年に成立した奴隷輸入禁止法は価格をさらに押し上げただけであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートはカルタヘナ共和国の私掠免許状で自身の活動を正当化した。",
+      "text_markdown": "ラフィートはカルタヘナ共和国の私掠免許状で自身の活動を正当化した。",
+      "tts": {
+        "text": "ラフィートはカルタヘナ共和国の私掠免許状で自身の活動を正当化した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カルタヘナは現在のコロンビアの都市で、スペインからの独立を宣言していた。",
+      "text_markdown": "カルタヘナは現在のコロンビアの都市で、スペインからの独立を宣言していた。",
+      "tts": {
+        "text": "カルタヘナは現在のコロンビアの都市で、スペインからの独立を宣言していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その私掠免許状はスペイン船への攻撃を許可するものであった。",
+      "text_markdown": "その私掠免許状はスペイン船への攻撃を許可するものであった。",
+      "tts": {
+        "text": "その私掠免許状はスペイン船への攻撃を許可するものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これによりラフィートに薄い合法性の外見が与えられた。",
+      "text_markdown": "これによりラフィートに薄い合法性の外見が与えられた。",
+      "tts": {
+        "text": "これによりラフィートに薄い合法性の外見が与えられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートが私掠船長か海賊かは誰に聞くかによって異なった。",
+      "text_markdown": "ラフィートが私掠船長か海賊かは誰に聞くかによって異なった。",
+      "tts": {
+        "text": "ラフィートが私掠船長か海賊かは誰に聞くかによって異なった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "安い商品を買ったニューオーリンズの商人たちは彼を私掠船長と呼んだ。",
+      "text_markdown": "安い商品を買ったニューオーリンズの商人たちは彼を私掠船長と呼んだ。",
+      "tts": {
+        "text": "安い商品を買ったニューオーリンズの商人たちは彼を私掠船長と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペイン政府とアメリカ当局は彼を海賊と呼んだ。",
+      "text_markdown": "スペイン政府とアメリカ当局は彼を海賊と呼んだ。",
+      "tts": {
+        "text": "スペイン政府とアメリカ当局は彼を海賊と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフィートは常に自分が合法的な実業家であると主張した。",
+      "text_markdown": "ラフィートは常に自分が合法的な実業家であると主張した。",
+      "tts": {
+        "text": "ラフィートは常に自分が合法的な実業家であると主張した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バラタリア湾はラフィートの密貿易帝国の中心となった。",
+      "text_markdown": "バラタリア湾はラフィートの密貿易帝国の中心となった。",
+      "tts": {
+        "text": "バラタリア湾はラフィートの密貿易帝国の中心となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この湾はニューオーリンズの南約八十キロに位置していた。",
+      "text_markdown": "この湾はニューオーリンズの南約八十キロに位置していた。",
+      "tts": {
+        "text": "この湾はニューオーリンズの南約八十キロに位置していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは島、バイユー、隠された水路の迷路であった。",
+      "text_markdown": "それは島、バイユー、隠された水路の迷路であった。",
+      "tts": {
+        "text": "それは島、バイユー、隠された水路の迷路であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "湾内の大きな島グランドテールがラフィートの本拠地となった。",
+      "text_markdown": "湾内の大きな島グランドテールがラフィートの本拠地となった。",
+      "tts": {
+        "text": "湾内の大きな島グランドテールがラフィートの本拠地となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グランドテールからラフィートは驚くべき効率で事業を運営した。",
+      "text_markdown": "グランドテールからラフィートは驚くべき効率で事業を運営した。",
+      "tts": {
+        "text": "グランドテールからラフィートは驚くべき効率で事業を運営した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拿捕した商品は島の倉庫に保管された。",
+      "text_markdown": "拿捕した商品は島の倉庫に保管された。",
+      "tts": {
+        "text": "拿捕した商品は島の倉庫に保管された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "定期的なオークションがニューオーリンズやそれ以外からの買い手を集めた。",
+      "text_markdown": "定期的なオークションがニューオーリンズやそれ以外からの買い手を集めた。",
+      "tts": {
+        "text": "定期的なオークションがニューオーリンズやそれ以外からの買い手を集めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最盛期にはラフィートの事業は何百人もの人を雇っていた。",
+      "text_markdown": "最盛期にはラフィートの事業は何百人もの人を雇っていた。",
+      "tts": {
+        "text": "最盛期にはラフィートの事業は何百人もの人を雇っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズのフレンチ・クォーターは街の社交生活の中心であった。",
+      "text_markdown": "ニューオーリンズのフレンチ・クォーターは街の社交生活の中心であった。",
+      "tts": {
+        "text": "ニューオーリンズのフレンチ・クォーターは街の社交生活の中心であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "狭い通りには店、居酒屋、鉄製バルコニーのある家が並んでいた。",
+      "text_markdown": "狭い通りには店、居酒屋、鉄製バルコニーのある家が並んでいた。",
+      "tts": {
+        "text": "狭い通りには店、居酒屋、鉄製バルコニーのある家が並んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフィートはこの世界を容易に行き来し、あらゆる場面で味方を作った。",
+      "text_markdown": "ラフィートはこの世界を容易に行き来し、あらゆる場面で味方を作った。",
+      "tts": {
+        "text": "ラフィートはこの世界を容易に行き来し、あらゆる場面で味方を作った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あらゆる社会階層の人々を魅了する能力が彼の最大の武器であった。",
+      "text_markdown": "あらゆる社会階層の人々を魅了する能力が彼の最大の武器であった。",
+      "tts": {
+        "text": "あらゆる社会階層の人々を魅了する能力が彼の最大の武器であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力への道",
+      "text_markdown": "権力への道"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百十年までにジャン・ラフィートはバラタリア湾の紛れもない支配者であった。",
+      "text_markdown": "千八百十年までにジャン・ラフィートはバラタリア湾の紛れもない支配者であった。",
+      "tts": {
+        "text": "千八百十年までにジャン・ラフィートはバラタリア湾の紛れもない支配者であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の船団は数十隻に達していた。",
+      "text_markdown": "彼の船団は数十隻に達していた。",
+      "tts": {
+        "text": "彼の船団は数十隻に達していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "メキシコ湾全域でスペインの商船を拿捕した。",
+      "text_markdown": "メキシコ湾全域でスペインの商船を拿捕した。",
+      "tts": {
+        "text": "メキシコ湾全域でスペインの商船を拿捕した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "戦利品はグランドテールに運ばれ売却された。",
+      "text_markdown": "戦利品はグランドテールに運ばれ売却された。",
+      "tts": {
+        "text": "戦利品はグランドテールに運ばれ売却された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートは洗練された流通網を通じて商品の販売を組織した。",
+      "text_markdown": "ラフィートは洗練された流通網を通じて商品の販売を組織した。",
+      "tts": {
+        "text": "ラフィートは洗練された流通網を通じて商品の販売を組織した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "小舟がバイユーを通って密輸品をニューオーリンズ近郊の市場に運んだ。",
+      "text_markdown": "小舟がバイユーを通って密輸品をニューオーリンズ近郊の市場に運んだ。",
+      "tts": {
+        "text": "小舟がバイユーを通って密輸品をニューオーリンズ近郊の市場に運んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商品は合法市場価格をはるかに下回る価格で届いた。",
+      "text_markdown": "商品は合法市場価格をはるかに下回る価格で届いた。",
+      "tts": {
+        "text": "商品は合法市場価格をはるかに下回る価格で届いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これにより商人にも一般消費者にもラフィートは人気を博した。",
+      "text_markdown": "これにより商人にも一般消費者にもラフィートは人気を博した。",
+      "tts": {
+        "text": "これにより商人にも一般消費者にもラフィートは人気を博した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートが売った奴隷は特に利益率の高い商品であった。",
+      "text_markdown": "ラフィートが売った奴隷は特に利益率の高い商品であった。",
+      "tts": {
+        "text": "ラフィートが売った奴隷は特に利益率の高い商品であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "連邦法は千八百八年以降、奴隷のアメリカへの輸入を禁止した。",
+      "text_markdown": "連邦法は千八百八年以降、奴隷のアメリカへの輸入を禁止した。",
+      "tts": {
+        "text": "連邦法は千八百八年以降、奴隷のアメリカへの輸入を禁止した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし需要、特に綿花栽培地域での需要は依然として膨大であった。",
+      "text_markdown": "しかし需要、特に綿花栽培地域での需要は依然として膨大であった。",
+      "tts": {
+        "text": "しかし需要、特に綿花栽培地域での需要は依然として膨大であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフィートのような密貿易商が需給のギャップを埋めた。",
+      "text_markdown": "ラフィートのような密貿易商が需給のギャップを埋めた。",
+      "tts": {
+        "text": "ラフィートのような密貿易商が需給のギャップを埋めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ルイジアナ州知事ウィリアム・クレイボーンはラフィートを阻止する決意であった。",
+      "text_markdown": "ルイジアナ州知事ウィリアム・クレイボーンはラフィートを阻止する決意であった。",
+      "tts": {
+        "text": "ルイジアナ州知事ウィリアム・クレイボーンはラフィートを阻止する決意であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "クレイボーンはラフィートの首に500ドルの懸賞金をかけた。",
+      "text_markdown": "クレイボーンはラフィートの首に500ドルの懸賞金をかけた。",
+      "tts": {
+        "text": "クレイボーンはラフィートの首に五百ドルの懸賞金をかけた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "連邦政府にバラタリアの拠点を壊滅させるための海軍力派遣を促した。",
+      "text_markdown": "連邦政府にバラタリアの拠点を壊滅させるための海軍力派遣を促した。",
+      "tts": {
+        "text": "連邦政府にバラタリアの拠点を壊滅させるための海軍力派遣を促した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有名な伝説によると、ラフィートは懸賞金に自らの懸賞金で応じた。",
+      "text_markdown": "有名な伝説によると、ラフィートは懸賞金に自らの懸賞金で応じた。",
+      "tts": {
+        "text": "有名な伝説によると、ラフィートは懸賞金に自らの懸賞金で応じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はクレイボーン知事の逮捕に5,000ドルの報酬を提示したとされる。",
+      "text_markdown": "彼はクレイボーン知事の逮捕に5,000ドルの報酬を提示したとされる。",
+      "tts": {
+        "text": "彼はクレイボーン知事の逮捕に五千ドルの報酬を提示したとされる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この話は作り話かもしれないが、ラフィートの大胆さを完璧に表している。",
+      "text_markdown": "この話は作り話かもしれないが、ラフィートの大胆さを完璧に表している。",
+      "tts": {
+        "text": "この話は作り話かもしれないが、ラフィートの大胆さを完璧に表している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は自分を逮捕しようとする男を公然と嘲笑していた。",
+      "text_markdown": "彼は自分を逮捕しようとする男を公然と嘲笑していた。",
+      "tts": {
+        "text": "彼は自分を逮捕しようとする男を公然と嘲笑していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズの人々とラフィートの関係は複雑であった。",
+      "text_markdown": "ニューオーリンズの人々とラフィートの関係は複雑であった。",
+      "tts": {
+        "text": "ニューオーリンズの人々とラフィートの関係は複雑であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの裕福な市民が彼の商品を購入し、密貿易の恩恵を受けていた。",
+      "text_markdown": "多くの裕福な市民が彼の商品を購入し、密貿易の恩恵を受けていた。",
+      "tts": {
+        "text": "多くの裕福な市民が彼の商品を購入し、密貿易の恩恵を受けていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部の弁護士や政治家はひそかに彼から報酬を得ていた。",
+      "text_markdown": "一部の弁護士や政治家はひそかに彼から報酬を得ていた。",
+      "tts": {
+        "text": "一部の弁護士や政治家はひそかに彼から報酬を得ていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし公の場では、知られた無法者を支持しているところを見られるわけにはいかなかった。",
+      "text_markdown": "しかし公の場では、知られた無法者を支持しているところを見られるわけにはいかなかった。",
+      "tts": {
+        "text": "しかし公の場では、知られた無法者を支持しているところを見られるわけにはいかなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ピエール・ラフィートは千八百十三年に海賊行為の罪で逮捕された。",
+      "text_markdown": "ピエール・ラフィートは千八百十三年に海賊行為の罪で逮捕された。",
+      "tts": {
+        "text": "ピエール・ラフィートは千八百十三年に海賊行為の罪で逮捕された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ニューオーリンズの主要な行政庁舎であるカビルドに拘留された。",
+      "text_markdown": "ニューオーリンズの主要な行政庁舎であるカビルドに拘留された。",
+      "tts": {
+        "text": "ニューオーリンズの主要な行政庁舎であるカビルドに拘留された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャン・ラフィートは兄の釈放を確保するために精力的に活動した。",
+      "text_markdown": "ジャン・ラフィートは兄の釈放を確保するために精力的に活動した。",
+      "tts": {
+        "text": "ジャン・ラフィートは兄の釈放を確保するために精力的に活動した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ピエールは最終的に謎の状況下で逃亡した。",
+      "text_markdown": "ピエールは最終的に謎の状況下で逃亡した。",
+      "tts": {
+        "text": "ピエールは最終的に謎の状況下で逃亡した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百十四年までに千八百十二年戦争は危機的局面に達していた。",
+      "text_markdown": "千八百十四年までに千八百十二年戦争は危機的局面に達していた。",
+      "tts": {
+        "text": "千八百十四年までに千八百十二年戦争は危機的局面に達していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスはヨーロッパでナポレオンを倒し、全軍事力をアメリカに集中できるようになった。",
+      "text_markdown": "イギリスはヨーロッパでナポレオンを倒し、全軍事力をアメリカに集中できるようになった。",
+      "tts": {
+        "text": "イギリスはヨーロッパでナポレオンを倒し、全軍事力をアメリカに集中できるようになった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ミシシッピ川の支配権を握るためにニューオーリンズへの大攻勢を計画した。",
+      "text_markdown": "ミシシッピ川の支配権を握るためにニューオーリンズへの大攻勢を計画した。",
+      "tts": {
+        "text": "ミシシッピ川の支配権を握るためにニューオーリンズへの大攻勢を計画した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ニューオーリンズが陥落すれば、アメリカ西部全体が分断されることになる。",
+      "text_markdown": "ニューオーリンズが陥落すれば、アメリカ西部全体が分断されることになる。",
+      "tts": {
+        "text": "ニューオーリンズが陥落すれば、アメリカ西部全体が分断されることになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスの将校たちが驚くべき提案を持ってジャン・ラフィートに接触した。",
+      "text_markdown": "イギリスの将校たちが驚くべき提案を持ってジャン・ラフィートに接触した。",
+      "tts": {
+        "text": "イギリスの将校たちが驚くべき提案を持ってジャン・ラフィートに接触した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは三万ドル、王立海軍の階級、イギリス領土内の土地を約束した。",
+      "text_markdown": "彼らは三万ドル、王立海軍の階級、イギリス領土内の土地を約束した。",
+      "tts": {
+        "text": "彼らは三万ドル、王立海軍の階級、イギリス領土内の土地を約束した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見返りにバイユーの水路の知識と彼の船団を求めた。",
+      "text_markdown": "見返りにバイユーの水路の知識と彼の船団を求めた。",
+      "tts": {
+        "text": "見返りにバイユーの水路の知識と彼の船団を求めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリス軍はニューオーリンズへの侵攻を導くためにラフィートを必要としていた。",
+      "text_markdown": "イギリス軍はニューオーリンズへの侵攻を導くためにラフィートを必要としていた。",
+      "tts": {
+        "text": "イギリス軍はニューオーリンズへの侵攻を導くためにラフィートを必要としていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートはイギリスの提案を慎重に検討しているように見えた。",
+      "text_markdown": "ラフィートはイギリスの提案を慎重に検討しているように見えた。",
+      "tts": {
+        "text": "ラフィートはイギリスの提案を慎重に検討しているように見えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "考える時間を求め、二週間の猶予を得た。",
+      "text_markdown": "考える時間を求め、二週間の猶予を得た。",
+      "tts": {
+        "text": "考える時間を求め、二週間の猶予を得た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし密かに、すでに決心していた。",
+      "text_markdown": "しかし密かに、すでに決心していた。",
+      "tts": {
+        "text": "しかし密かに、すでに決心していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリスの計画と文書をクレイボーン知事に送った。",
+      "text_markdown": "イギリスの計画と文書をクレイボーン知事に送った。",
+      "tts": {
+        "text": "イギリスの計画と文書をクレイボーン知事に送った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートのクレイボーンへの手紙は説得の傑作であった。",
+      "text_markdown": "ラフィートのクレイボーンへの手紙は説得の傑作であった。",
+      "tts": {
+        "text": "ラフィートのクレイボーンへの手紙は説得の傑作であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は部下、武器、バイユーの知識をアメリカの大義に提供した。",
+      "text_markdown": "彼は部下、武器、バイユーの知識をアメリカの大義に提供した。",
+      "tts": {
+        "text": "彼は部下、武器、バイユーの知識をアメリカの大義に提供した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見返りに自分と部下の完全な恩赦を求めた。",
+      "text_markdown": "見返りに自分と部下の完全な恩赦を求めた。",
+      "tts": {
+        "text": "見返りに自分と部下の完全な恩赦を求めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "取引を求める犯罪者ではなく、サービスを提供する愛国者として自らを位置づけた。",
+      "text_markdown": "取引を求める犯罪者ではなく、サービスを提供する愛国者として自らを位置づけた。",
+      "tts": {
+        "text": "取引を求める犯罪者ではなく、サービスを提供する愛国者として自らを位置づけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クレイボーンは疑念を抱いたが、ラフィートの情報を軍事当局に転送した。",
+      "text_markdown": "クレイボーンは疑念を抱いたが、ラフィートの情報を軍事当局に転送した。",
+      "tts": {
+        "text": "クレイボーンは疑念を抱いたが、ラフィートの情報を軍事当局に転送した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の役人はそれを罠だと信じた。",
+      "text_markdown": "一部の役人はそれを罠だと信じた。",
+      "tts": {
+        "text": "一部の役人はそれを罠だと信じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフィートの警告にもかかわらず、アメリカ海軍は千八百十四年九月にバラタリア湾を攻撃した。",
+      "text_markdown": "ラフィートの警告にもかかわらず、アメリカ海軍は千八百十四年九月にバラタリア湾を攻撃した。",
+      "tts": {
+        "text": "ラフィートの警告にもかかわらず、アメリカ海軍は千八百十四年九月にバラタリア湾を攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフィートの拠点を破壊し、多くの部下を捕虜にした。",
+      "text_markdown": "ラフィートの拠点を破壊し、多くの部下を捕虜にした。",
+      "tts": {
+        "text": "ラフィートの拠点を破壊し、多くの部下を捕虜にした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィート自身はバラタリア襲撃の際に捕獲を免れた。",
+      "text_markdown": "ラフィート自身はバラタリア襲撃の際に捕獲を免れた。",
+      "tts": {
+        "text": "ラフィート自身はバラタリア襲撃の際に捕獲を免れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "倉庫は焼かれ、船は押収された。",
+      "text_markdown": "倉庫は焼かれ、船は押収された。",
+      "tts": {
+        "text": "倉庫は焼かれ、船は押収された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何年もかけて築いた事業がたった一日で壊滅した。",
+      "text_markdown": "何年もかけて築いた事業がたった一日で壊滅した。",
+      "tts": {
+        "text": "何年もかけて築いた事業がたった一日で壊滅した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしイギリスの侵攻はまだ迫っており、ニューオーリンズは無防備であった。",
+      "text_markdown": "しかしイギリスの侵攻はまだ迫っており、ニューオーリンズは無防備であった。",
+      "tts": {
+        "text": "しかしイギリスの侵攻はまだ迫っており、ニューオーリンズは無防備であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンドリュー・ジャクソン将軍は千八百十四年十二月にニューオーリンズに到着した。",
+      "text_markdown": "アンドリュー・ジャクソン将軍は千八百十四年十二月にニューオーリンズに到着した。",
+      "tts": {
+        "text": "アンドリュー・ジャクソン将軍は千八百十四年十二月にニューオーリンズに到着した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "果断な行動で知られるたくましい辺境の軍人であった。",
+      "text_markdown": "果断な行動で知られるたくましい辺境の軍人であった。",
+      "tts": {
+        "text": "果断な行動で知られるたくましい辺境の軍人であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "街の防御が嘆かわしいほど不十分であることを発見した。",
+      "text_markdown": "街の防御が嘆かわしいほど不十分であることを発見した。",
+      "tts": {
+        "text": "街の防御が嘆かわしいほど不十分であることを発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "見つけられるすべての兵士、すべての銃、すべての火薬樽が必要であった。",
+      "text_markdown": "見つけられるすべての兵士、すべての銃、すべての火薬樽が必要であった。",
+      "tts": {
+        "text": "見つけられるすべての兵士、すべての銃、すべての火薬樽が必要であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートはジャクソンに接近し、バラタリアの部下の奉仕を申し出た。",
+      "text_markdown": "ラフィートはジャクソンに接近し、バラタリアの部下の奉仕を申し出た。",
+      "tts": {
+        "text": "ラフィートはジャクソンに接近し、バラタリアの部下の奉仕を申し出た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャクソンは当初バラタリアの者たちを地獄の盗賊と呼んでいた。",
+      "text_markdown": "ジャクソンは当初バラタリアの者たちを地獄の盗賊と呼んでいた。",
+      "tts": {
+        "text": "ジャクソンは当初バラタリアの者たちを地獄の盗賊と呼んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしイギリスの脅威の現実に直面し、ラフィートの申し出を受け入れた。",
+      "text_markdown": "しかしイギリスの脅威の現実に直面し、ラフィートの申し出を受け入れた。",
+      "tts": {
+        "text": "しかしイギリスの脅威の現実に直面し、ラフィートの申し出を受け入れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフィートの部下は火打ち石、火薬、砲術の専門知識という重要な物資をもたらした。",
+      "text_markdown": "ラフィートの部下は火打ち石、火薬、砲術の専門知識という重要な物資をもたらした。",
+      "tts": {
+        "text": "ラフィートの部下は火打ち石、火薬、砲術の専門知識という重要な物資をもたらした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズの戦いは1815年1月8日に行われた。",
+      "text_markdown": "ニューオーリンズの戦いは1815年1月8日に行われた。",
+      "tts": {
+        "text": "ニューオーリンズの戦いは千八百十五年一月八日に行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千八百十二年戦争の最後の大規模な戦闘であった。",
+      "text_markdown": "千八百十二年戦争の最後の大規模な戦闘であった。",
+      "tts": {
+        "text": "千八百十二年戦争の最後の大規模な戦闘であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皮肉なことに、和平条約はすでにヨーロッパで署名されていたが、その知らせはまだアメリカに届いていなかった。",
+      "text_markdown": "皮肉なことに、和平条約はすでにヨーロッパで署名されていたが、その知らせはまだアメリカに届いていなかった。",
+      "tts": {
+        "text": "皮肉なことに、和平条約はすでにヨーロッパで署名されていたが、その知らせはまだアメリカに届いていなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス軍は約八千人の歴戦の兵士で攻撃した。",
+      "text_markdown": "イギリス軍は約八千人の歴戦の兵士で攻撃した。",
+      "tts": {
+        "text": "イギリス軍は約八千人の歴戦の兵士で攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの多くはヨーロッパでナポレオンの軍と戦った経験があった。",
+      "text_markdown": "彼らの多くはヨーロッパでナポレオンの軍と戦った経験があった。",
+      "tts": {
+        "text": "彼らの多くはヨーロッパでナポレオンの軍と戦った経験があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界最高の兵士と見なされていた。",
+      "text_markdown": "世界最高の兵士と見なされていた。",
+      "tts": {
+        "text": "世界最高の兵士と見なされていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "司令官はエドワード・パケナム少将であった。",
+      "text_markdown": "司令官はエドワード・パケナム少将であった。",
+      "tts": {
+        "text": "司令官はエドワード・パケナム少将であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャクソンの防衛線はニューオーリンズの南にあるシャルメット農園を横切って伸びていた。",
+      "text_markdown": "ジャクソンの防衛線はニューオーリンズの南にあるシャルメット農園を横切って伸びていた。",
+      "tts": {
+        "text": "ジャクソンの防衛線はニューオーリンズの南にあるシャルメット農園を横切って伸びていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の軍は運河と土塁を防御陣地として使用した。",
+      "text_markdown": "彼の軍は運河と土塁を防御陣地として使用した。",
+      "tts": {
+        "text": "彼の軍は運河と土塁を防御陣地として使用した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカ軍の防衛線には正規軍、民兵、自由黒人兵士、チョクトー族の戦士、バラタリアの海賊が含まれていた。",
+      "text_markdown": "アメリカ軍の防衛線には正規軍、民兵、自由黒人兵士、チョクトー族の戦士、バラタリアの海賊が含まれていた。",
+      "tts": {
+        "text": "アメリカ軍の防衛線には正規軍、民兵、自由黒人兵士、チョクトー族の戦士、バラタリアの海賊が含まれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートのバラタリア軍は防衛線に沿った重要な砲兵陣地を担当した。",
+      "text_markdown": "ラフィートのバラタリア軍は防衛線に沿った重要な砲兵陣地を担当した。",
+      "tts": {
+        "text": "ラフィートのバラタリア軍は防衛線に沿った重要な砲兵陣地を担当した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは大砲を正確に扱える経験豊富な砲手であった。",
+      "text_markdown": "彼らは大砲を正確に扱える経験豊富な砲手であった。",
+      "tts": {
+        "text": "彼らは大砲を正確に扱える経験豊富な砲手であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフィート自身は顧問として、銃と物資の配置を指揮した。",
+      "text_markdown": "ラフィート自身は顧問として、銃と物資の配置を指揮した。",
+      "tts": {
+        "text": "ラフィート自身は顧問として、銃と物資の配置を指揮した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の地形知識は防衛にとってかけがえのないものであった。",
+      "text_markdown": "彼の地形知識は防衛にとってかけがえのないものであった。",
+      "tts": {
+        "text": "彼の地形知識は防衛にとってかけがえのないものであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス軍はアメリカの要塞に対して開けた地形での正面攻撃を仕掛けた。",
+      "text_markdown": "イギリス軍はアメリカの要塞に対して開けた地形での正面攻撃を仕掛けた。",
+      "tts": {
+        "text": "イギリス軍はアメリカの要塞に対して開けた地形での正面攻撃を仕掛けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アメリカ軍の大砲と小銃の砲火が進撃する縦隊を壊滅させた。",
+      "text_markdown": "アメリカ軍の大砲と小銃の砲火が進撃する縦隊を壊滅させた。",
+      "tts": {
+        "text": "アメリカ軍の大砲と小銃の砲火が進撃する縦隊を壊滅させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリス兵は並外れた勇気で前進したが、波のように倒れていった。",
+      "text_markdown": "イギリス兵は並外れた勇気で前進したが、波のように倒れていった。",
+      "tts": {
+        "text": "イギリス兵は並外れた勇気で前進したが、波のように倒れていった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "パケナム将軍は突撃を率いて戦死した。",
+      "text_markdown": "パケナム将軍は突撃を率いて戦死した。",
+      "tts": {
+        "text": "パケナム将軍は突撃を率いて戦死した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦闘は二時間足らずで終了した。",
+      "text_markdown": "戦闘は二時間足らずで終了した。",
+      "tts": {
+        "text": "戦闘は二時間足らずで終了した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス軍は約2,000人の死傷者を出した。戦死、負傷、捕虜を含む。",
+      "text_markdown": "イギリス軍は約2,000人の死傷者を出した。戦死、負傷、捕虜を含む。",
+      "tts": {
+        "text": "イギリス軍は約二千人の死傷者を出した。戦死、負傷、捕虜を含む。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカ軍の死傷者は100人に満たなかった。",
+      "text_markdown": "アメリカ軍の死傷者は100人に満たなかった。",
+      "tts": {
+        "text": "アメリカ軍の死傷者は百人に満たなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "軍事史上最も一方的な勝利の一つであった。",
+      "text_markdown": "軍事史上最も一方的な勝利の一つであった。",
+      "tts": {
+        "text": "軍事史上最も一方的な勝利の一つであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バラタリアの者たちは戦闘での功績を称えられた。",
+      "text_markdown": "バラタリアの者たちは戦闘での功績を称えられた。",
+      "tts": {
+        "text": "バラタリアの者たちは戦闘での功績を称えられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの砲撃は壊滅的かつ正確であった。",
+      "text_markdown": "彼らの砲撃は壊滅的かつ正確であった。",
+      "tts": {
+        "text": "彼らの砲撃は壊滅的かつ正確であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャクソン自身が公に彼らの勇敢さと技量を称賛した。",
+      "text_markdown": "ジャクソン自身が公に彼らの勇敢さと技量を称賛した。",
+      "tts": {
+        "text": "ジャクソン自身が公に彼らの勇敢さと技量を称賛した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数か月前に海賊と呼ばれていた者たちが今や英雄として称えられた。",
+      "text_markdown": "数か月前に海賊と呼ばれていた者たちが今や英雄として称えられた。",
+      "tts": {
+        "text": "数か月前に海賊と呼ばれていた者たちが今や英雄として称えられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズの勝利はアンドリュー・ジャクソンを国民的英雄にした。",
+      "text_markdown": "ニューオーリンズの勝利はアンドリュー・ジャクソンを国民的英雄にした。",
+      "tts": {
+        "text": "ニューオーリンズの勝利はアンドリュー・ジャクソンを国民的英雄にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "また、ジャン・ラフィートを指名手配犯から愛国者に変えた。",
+      "text_markdown": "また、ジャン・ラフィートを指名手配犯から愛国者に変えた。",
+      "tts": {
+        "text": "また、ジャン・ラフィートを指名手配犯から愛国者に変えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この戦いは、ラフィートがアメリカ側に立つという決断が正しかったことを証明した。",
+      "text_markdown": "この戦いは、ラフィートがアメリカ側に立つという決断が正しかったことを証明した。",
+      "tts": {
+        "text": "この戦いは、ラフィートがアメリカ側に立つという決断が正しかったことを証明した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はこの同盟にすべてを賭け、そして勝った。",
+      "text_markdown": "彼はこの同盟にすべてを賭け、そして勝った。",
+      "tts": {
+        "text": "彼はこの同盟にすべてを賭け、そして勝った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジェームズ・マディソン大統領はラフィートとバラタリアの全員に完全な恩赦を与えた。",
+      "text_markdown": "ジェームズ・マディソン大統領はラフィートとバラタリアの全員に完全な恩赦を与えた。",
+      "tts": {
+        "text": "ジェームズ・マディソン大統領はラフィートとバラタリアの全員に完全な恩赦を与えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "恩赦は海賊行為と密貿易に関する以前のすべての告発を消し去った。",
+      "text_markdown": "恩赦は海賊行為と密貿易に関する以前のすべての告発を消し去った。",
+      "tts": {
+        "text": "恩赦は海賊行為と密貿易に関する以前のすべての告発を消し去った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフィートは法的にも政治的にも自由の身であった。",
+      "text_markdown": "ラフィートは法的にも政治的にも自由の身であった。",
+      "tts": {
+        "text": "ラフィートは法的にも政治的にも自由の身であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "束の間、彼はニューオーリンズで最も人気のある人物の一人であった。",
+      "text_markdown": "束の間、彼はニューオーリンズで最も人気のある人物の一人であった。",
+      "tts": {
+        "text": "束の間、彼はニューオーリンズで最も人気のある人物の一人であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "恩赦はラフィートに新たな正当な人生を始めるチャンスを与えた。",
+      "text_markdown": "恩赦はラフィートに新たな正当な人生を始めるチャンスを与えた。",
+      "tts": {
+        "text": "恩赦はラフィートに新たな正当な人生を始めるチャンスを与えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あらゆる分野で成功できるコネ、知性、カリスマ性を持っていた。",
+      "text_markdown": "あらゆる分野で成功できるコネ、知性、カリスマ性を持っていた。",
+      "tts": {
+        "text": "あらゆる分野で成功できるコネ、知性、カリスマ性を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の立場にある多くの人間はこの機会を掴んだだろう。",
+      "text_markdown": "彼の立場にある多くの人間はこの機会を掴んだだろう。",
+      "tts": {
+        "text": "彼の立場にある多くの人間はこの機会を掴んだだろう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしジャン・ラフィートは普通の人間ではなかった。",
+      "text_markdown": "しかしジャン・ラフィートは普通の人間ではなかった。",
+      "tts": {
+        "text": "しかしジャン・ラフィートは普通の人間ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海と無法者の生活の魅力があまりにも強かった。",
+      "text_markdown": "海と無法者の生活の魅力があまりにも強かった。",
+      "tts": {
+        "text": "海と無法者の生活の魅力があまりにも強かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦いから二年以内に、ラフィートは密貿易と私掠行為に戻っていた。",
+      "text_markdown": "戦いから二年以内に、ラフィートは密貿易と私掠行為に戻っていた。",
+      "tts": {
+        "text": "戦いから二年以内に、ラフィートは密貿易と私掠行為に戻っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "かつての商売の自由と利益に抗えなかった。",
+      "text_markdown": "かつての商売の自由と利益に抗えなかった。",
+      "tts": {
+        "text": "かつての商売の自由と利益に抗えなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "恩赦は命を救ったが、彼の本性は変えなかった。",
+      "text_markdown": "恩赦は命を救ったが、彼の本性は変えなかった。",
+      "tts": {
+        "text": "恩赦は命を救ったが、彼の本性は変えなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズにおけるジャクソンの防衛戦略は見事に練られていた。",
+      "text_markdown": "ニューオーリンズにおけるジャクソンの防衛戦略は見事に練られていた。",
+      "tts": {
+        "text": "ニューオーリンズにおけるジャクソンの防衛戦略は見事に練られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バイユーの自然地形を利用してイギリス軍を狭い殺傷地帯に誘い込んだ。",
+      "text_markdown": "バイユーの自然地形を利用してイギリス軍を狭い殺傷地帯に誘い込んだ。",
+      "tts": {
+        "text": "バイユーの自然地形を利用してイギリス軍を狭い殺傷地帯に誘い込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカ軍防衛線の前の泥濘の野は進撃するイギリス軍にとって死の罠となった。",
+      "text_markdown": "アメリカ軍防衛線の前の泥濘の野は進撃するイギリス軍にとって死の罠となった。",
+      "tts": {
+        "text": "アメリカ軍防衛線の前の泥濘の野は進撃するイギリス軍にとって死の罠となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "勝利の報はアメリカ中に熱狂的に広まった。",
+      "text_markdown": "勝利の報はアメリカ中に熱狂的に広まった。",
+      "tts": {
+        "text": "勝利の報はアメリカ中に熱狂的に広まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アメリカ人はこの戦いを、若い国家がいかなる大国にも立ち向かえる証として祝った。",
+      "text_markdown": "アメリカ人はこの戦いを、若い国家がいかなる大国にも立ち向かえる証として祝った。",
+      "tts": {
+        "text": "アメリカ人はこの戦いを、若い国家がいかなる大国にも立ち向かえる証として祝った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1817年までにラフィートはガルベストン島に新たな拠点を築いた。",
+      "text_markdown": "1817年までにラフィートはガルベストン島に新たな拠点を築いた。",
+      "tts": {
+        "text": "千八百十七年までにラフィートはガルベストン島に新たな拠点を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ガルベストンは当時スペイン領テキサスの海岸に位置していた。",
+      "text_markdown": "ガルベストンは当時スペイン領テキサスの海岸に位置していた。",
+      "tts": {
+        "text": "ガルベストンは当時スペイン領テキサスの海岸に位置していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカの管轄権から遠く、湾での作戦に最適な場所であった。",
+      "text_markdown": "アメリカの管轄権から遠く、湾での作戦に最適な場所であった。",
+      "tts": {
+        "text": "アメリカの管轄権から遠く、湾での作戦に最適な場所であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートは新しい居留地をカンペチェと名付けた。",
+      "text_markdown": "ラフィートは新しい居留地をカンペチェと名付けた。",
+      "tts": {
+        "text": "ラフィートは新しい居留地をカンペチェと名付けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは急速に繁栄する海賊コミュニティへと成長した。",
+      "text_markdown": "それは急速に繁栄する海賊コミュニティへと成長した。",
+      "tts": {
+        "text": "それは急速に繁栄する海賊コミュニティへと成長した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最盛期にはカンペチェには1,000人以上が住んでいた。",
+      "text_markdown": "最盛期にはカンペチェには1,000人以上が住んでいた。",
+      "tts": {
+        "text": "最盛期にはカンペチェには千人以上が住んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "独自の政府、裁判所、社会階層があった。",
+      "text_markdown": "独自の政府、裁判所、社会階層があった。",
+      "tts": {
+        "text": "独自の政府、裁判所、社会階層があった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートはガルベストンの文民・軍事総督を自称した。",
+      "text_markdown": "ラフィートはガルベストンの文民・軍事総督を自称した。",
+      "tts": {
+        "text": "ラフィートはガルベストンの文民・軍事総督を自称した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "居留地内で厳格な規則を施行した。",
+      "text_markdown": "居留地内で厳格な規則を施行した。",
+      "tts": {
+        "text": "居留地内で厳格な規則を施行した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有効な私掠免許状を持つスペイン船のみを攻撃するよう部下に命じた。",
+      "text_markdown": "有効な私掠免許状を持つスペイン船のみを攻撃するよう部下に命じた。",
+      "tts": {
+        "text": "有効な私掠免許状を持つスペイン船のみを攻撃するよう部下に命じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アメリカ船には手を出してはならないことになっていた。",
+      "text_markdown": "アメリカ船には手を出してはならないことになっていた。",
+      "tts": {
+        "text": "アメリカ船には手を出してはならないことになっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "実際にはこの規則の施行は困難であった。",
+      "text_markdown": "実際にはこの規則の施行は困難であった。",
+      "tts": {
+        "text": "実際にはこの規則の施行は困難であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフィートの船長の一部は命令に反してアメリカ船を攻撃した。",
+      "text_markdown": "ラフィートの船長の一部は命令に反してアメリカ船を攻撃した。",
+      "tts": {
+        "text": "ラフィートの船長の一部は命令に反してアメリカ船を攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの無許可の襲撃はアメリカ政府から望まれない注目を集めた。",
+      "text_markdown": "これらの無許可の襲撃はアメリカ政府から望まれない注目を集めた。",
+      "tts": {
+        "text": "これらの無許可の襲撃はアメリカ政府から望まれない注目を集めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフィートは規則に違反した船長を罰したが、被害はすでに生じていた。",
+      "text_markdown": "ラフィートは規則に違反した船長を罰したが、被害はすでに生じていた。",
+      "tts": {
+        "text": "ラフィートは規則に違反した船長を罰したが、被害はすでに生じていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湾の政治状況は急速に変化していた。",
+      "text_markdown": "湾の政治状況は急速に変化していた。",
+      "tts": {
+        "text": "湾の政治状況は急速に変化していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラテンアメリカの革命がこの地域を作り変えていた。",
+      "text_markdown": "ラテンアメリカの革命がこの地域を作り変えていた。",
+      "tts": {
+        "text": "ラテンアメリカの革命がこの地域を作り変えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "新しい国が生まれ、古い帝国が消えていた。",
+      "text_markdown": "新しい国が生まれ、古い帝国が消えていた。",
+      "tts": {
+        "text": "新しい国が生まれ、古い帝国が消えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフィートを守っていた私掠免許状は入手がますます困難になっていた。",
+      "text_markdown": "ラフィートを守っていた私掠免許状は入手がますます困難になっていた。",
+      "tts": {
+        "text": "ラフィートを守っていた私掠免許状は入手がますます困難になっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカも湾における海軍のプレゼンスを拡大していた。",
+      "text_markdown": "アメリカも湾における海軍のプレゼンスを拡大していた。",
+      "tts": {
+        "text": "アメリカも湾における海軍のプレゼンスを拡大していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海軍には海賊行為を鎮圧しアメリカの海運を守る命令が下されていた。",
+      "text_markdown": "海軍には海賊行為を鎮圧しアメリカの海運を守る命令が下されていた。",
+      "tts": {
+        "text": "海軍には海賊行為を鎮圧しアメリカの海運を守る命令が下されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ガルベストンのラフィートの居留地は政府にとって恥ずかしい存在になりつつあった。",
+      "text_markdown": "ガルベストンのラフィートの居留地は政府にとって恥ずかしい存在になりつつあった。",
+      "tts": {
+        "text": "ガルベストンのラフィートの居留地は政府にとって恥ずかしい存在になりつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼が守るために戦った国が今や彼を問題視していた。",
+      "text_markdown": "彼が守るために戦った国が今や彼を問題視していた。",
+      "tts": {
+        "text": "彼が守るために戦った国が今や彼を問題視していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百十八年に壊滅的なハリケーンがガルベストンを襲った。",
+      "text_markdown": "千八百十八年に壊滅的なハリケーンがガルベストンを襲った。",
+      "tts": {
+        "text": "千八百十八年に壊滅的なハリケーンがガルベストンを襲った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "嵐は居留地の大部分を破壊し、ラフィートの船数隻を沈めた。",
+      "text_markdown": "嵐は居留地の大部分を破壊し、ラフィートの船数隻を沈めた。",
+      "tts": {
+        "text": "嵐は居留地の大部分を破壊し、ラフィートの船数隻を沈めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再建は遅く費用がかかった。",
+      "text_markdown": "再建は遅く費用がかかった。",
+      "tts": {
+        "text": "再建は遅く費用がかかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ハリケーンはカンペチェが完全には回復できなかった打撃であった。",
+      "text_markdown": "ハリケーンはカンペチェが完全には回復できなかった打撃であった。",
+      "tts": {
+        "text": "ハリケーンはカンペチェが完全には回復できなかった打撃であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1821年、アメリカの軍艦が最後通牒を携えてガルベストンに到着した。",
+      "text_markdown": "1821年、アメリカの軍艦が最後通牒を携えてガルベストンに到着した。",
+      "tts": {
+        "text": "千八百二十一年、アメリカの軍艦が最後通牒を携えてガルベストンに到着した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフィートは直ちに島を去るよう命じられた。",
+      "text_markdown": "ラフィートは直ちに島を去るよう命じられた。",
+      "tts": {
+        "text": "ラフィートは直ちに島を去るよう命じられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拒否すれば海軍が武力で排除すると告げられた。",
+      "text_markdown": "拒否すれば海軍が武力で排除すると告げられた。",
+      "tts": {
+        "text": "拒否すれば海軍が武力で排除すると告げられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートは二度目のアメリカとの戦いを選ばなかった。",
+      "text_markdown": "ラフィートは二度目のアメリカとの戦いを選ばなかった。",
+      "tts": {
+        "text": "ラフィートは二度目のアメリカとの戦いを選ばなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "居留地カンペチェを明け渡すのではなく焼き払った。",
+      "text_markdown": "居留地カンペチェを明け渡すのではなく焼き払った。",
+      "tts": {
+        "text": "居留地カンペチェを明け渡すのではなく焼き払った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "炎は水上で何キロも先から見えた。",
+      "text_markdown": "炎は水上で何キロも先から見えた。",
+      "tts": {
+        "text": "炎は水上で何キロも先から見えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そしてメキシコ湾へと帆を揚げ、姿を消した。",
+      "text_markdown": "そしてメキシコ湾へと帆を揚げ、姿を消した。",
+      "tts": {
+        "text": "そしてメキシコ湾へと帆を揚げ、姿を消した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ガルベストンを去った後のジャン・ラフィートに何が起きたかは歴史上最大の謎の一つである。",
+      "text_markdown": "ガルベストンを去った後のジャン・ラフィートに何が起きたかは歴史上最大の謎の一つである。",
+      "tts": {
+        "text": "ガルベストンを去った後のジャン・ラフィートに何が起きたかは歴史上最大の謎の一つである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "キューバやユカタン周辺の海域で私掠行為を続けたという説もある。",
+      "text_markdown": "キューバやユカタン周辺の海域で私掠行為を続けたという説もある。",
+      "tts": {
+        "text": "キューバやユカタン周辺の海域で私掠行為を続けたという説もある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "偽名で小さな町にひっそりと住んだという説もある。",
+      "text_markdown": "偽名で小さな町にひっそりと住んだという説もある。",
+      "tts": {
+        "text": "偽名で小さな町にひっそりと住んだという説もある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートは1823年頃に亡くなったと考えられているが、これすら不確かである。",
+      "text_markdown": "ラフィートは1823年頃に亡くなったと考えられているが、これすら不確かである。",
+      "tts": {
+        "text": "ラフィートは千八百二十三年頃に亡くなったと考えられているが、これすら不確かである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ユカタン半島で熱病で亡くなったと考える歴史家もいる。",
+      "text_markdown": "ユカタン半島で熱病で亡くなったと考える歴史家もいる。",
+      "tts": {
+        "text": "ユカタン半島で熱病で亡くなったと考える歴史家もいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "千八百五十年代まで生きたとする説もある。",
+      "text_markdown": "千八百五十年代まで生きたとする説もある。",
+      "tts": {
+        "text": "千八百五十年代まで生きたとする説もある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "どの墓も彼のものと確定的に特定されたことはない。",
+      "text_markdown": "どの墓も彼のものと確定的に特定されたことはない。",
+      "tts": {
+        "text": "どの墓も彼のものと確定的に特定されたことはない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄のピエール・ラフィートもおそらくほぼ同時期に亡くなった。",
+      "text_markdown": "兄のピエール・ラフィートもおそらくほぼ同時期に亡くなった。",
+      "tts": {
+        "text": "兄のピエール・ラフィートもおそらくほぼ同時期に亡くなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ピエールの運命も同様に不明である。",
+      "text_markdown": "ピエールの運命も同様に不明である。",
+      "tts": {
+        "text": "ピエールの運命も同様に不明である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "共に帝国を築いた兄弟は共に消えた。",
+      "text_markdown": "共に帝国を築いた兄弟は共に消えた。",
+      "tts": {
+        "text": "共に帝国を築いた兄弟は共に消えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの物語は始まった時と同じように謎に包まれて終わった。",
+      "text_markdown": "彼らの物語は始まった時と同じように謎に包まれて終わった。",
+      "tts": {
+        "text": "彼らの物語は始まった時と同じように謎に包まれて終わった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートが湾岸沿いに宝物を埋めたという伝説もある。",
+      "text_markdown": "ラフィートが湾岸沿いに宝物を埋めたという伝説もある。",
+      "tts": {
+        "text": "ラフィートが湾岸沿いに宝物を埋めたという伝説もある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宝探したちは約二百年にわたり彼の黄金を探し続けているが、見つかっていない。",
+      "text_markdown": "宝探したちは約二百年にわたり彼の黄金を探し続けているが、見つかっていない。",
+      "tts": {
+        "text": "宝探したちは約二百年にわたり彼の黄金を探し続けているが、見つかっていない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャン・ラフィートはアメリカ史上最もロマンチックに描かれた人物の一人である。",
+      "text_markdown": "ジャン・ラフィートはアメリカ史上最もロマンチックに描かれた人物の一人である。",
+      "tts": {
+        "text": "ジャン・ラフィートはアメリカ史上最もロマンチックに描かれた人物の一人である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ニューオーリンズの紳士海賊として記憶されている。",
+      "text_markdown": "ニューオーリンズの紳士海賊として記憶されている。",
+      "tts": {
+        "text": "ニューオーリンズの紳士海賊として記憶されている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ルイジアナの国立歴史公園が彼の名を冠している。",
+      "text_markdown": "ルイジアナの国立歴史公園が彼の名を冠している。",
+      "tts": {
+        "text": "ルイジアナの国立歴史公園が彼の名を冠している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ニューオーリンズの戦いにおける彼の役割がアメリカの物語の中に確固たる地位を築いた。",
+      "text_markdown": "ニューオーリンズの戦いにおける彼の役割がアメリカの物語の中に確固たる地位を築いた。",
+      "tts": {
+        "text": "ニューオーリンズの戦いにおける彼の役割がアメリカの物語の中に確固たる地位を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "無法者も愛国者になれることを証明した。",
+      "text_markdown": "無法者も愛国者になれることを証明した。",
+      "tts": {
+        "text": "無法者も愛国者になれることを証明した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の砲手たちは街を救い、世界最強の海軍を辱めた。",
+      "text_markdown": "彼の砲手たちは街を救い、世界最強の海軍を辱めた。",
+      "tts": {
+        "text": "彼の砲手たちは街を救い、世界最強の海軍を辱めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフィートは数え切れないほどの小説、映画、テレビ番組に登場している。",
+      "text_markdown": "ラフィートは数え切れないほどの小説、映画、テレビ番組に登場している。",
+      "tts": {
+        "text": "ラフィートは数え切れないほどの小説、映画、テレビ番組に登場している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バイロン卿の詩『海賊』はラフィートに部分的に触発された可能性がある。",
+      "text_markdown": "バイロン卿の詩『海賊』はラフィートに部分的に触発された可能性がある。",
+      "tts": {
+        "text": "バイロン卿の詩『海賊』はラフィートに部分的に触発された可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "魅力的な英雄から冷血な犯罪者まで、あらゆる姿で描かれてきた。",
+      "text_markdown": "魅力的な英雄から冷血な犯罪者まで、あらゆる姿で描かれてきた。",
+      "tts": {
+        "text": "魅力的な英雄から冷血な犯罪者まで、あらゆる姿で描かれてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "真実は、いつものように、その中間のどこかにある。",
+      "text_markdown": "真実は、いつものように、その中間のどこかにある。",
+      "tts": {
+        "text": "真実は、いつものように、その中間のどこかにある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちはラフィートの人物像と動機について議論を続けている。",
+      "text_markdown": "歴史家たちはラフィートの人物像と動機について議論を続けている。",
+      "tts": {
+        "text": "歴史家たちはラフィートの人物像と動機について議論を続けている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "養国を愛した愛国者だったのか、それとも自らを救うために取引した犯罪者だったのか。",
+      "text_markdown": "養国を愛した愛国者だったのか、それとも自らを救うために取引した犯罪者だったのか。",
+      "tts": {
+        "text": "養国を愛した愛国者だったのか、それとも自らを救うために取引した犯罪者だったのか。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "証拠は両方の解釈を支持している。",
+      "text_markdown": "証拠は両方の解釈を支持している。",
+      "tts": {
+        "text": "証拠は両方の解釈を支持している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は矛盾に満ちた人物であり、単純なレッテルを拒む。",
+      "text_markdown": "彼は矛盾に満ちた人物であり、単純なレッテルを拒む。",
+      "tts": {
+        "text": "彼は矛盾に満ちた人物であり、単純なレッテルを拒む。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隷貿易への関与は彼の遺産の最も暗い部分である。",
+      "text_markdown": "奴隷貿易への関与は彼の遺産の最も暗い部分である。",
+      "tts": {
+        "text": "奴隷貿易への関与は彼の遺産の最も暗い部分である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフィートは利益のために人間を売買した。",
+      "text_markdown": "ラフィートは利益のために人間を売買した。",
+      "tts": {
+        "text": "ラフィートは利益のために人間を売買した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この事実は、残りがどれほどロマンチックであっても、彼の物語から切り離すことはできない。",
+      "text_markdown": "この事実は、残りがどれほどロマンチックであっても、彼の物語から切り離すことはできない。",
+      "tts": {
+        "text": "この事実は、残りがどれほどロマンチックであっても、彼の物語から切り離すことはできない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "出自と死の謎は彼の永続的な魅力をさらに高めるだけである。",
+      "text_markdown": "出自と死の謎は彼の永続的な魅力をさらに高めるだけである。",
+      "tts": {
+        "text": "出自と死の謎は彼の永続的な魅力をさらに高めるだけである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "どこからともなく現れ、どこへともなく消える男は語り部にとって抗いがたい。",
+      "text_markdown": "どこからともなく現れ、どこへともなく消える男は語り部にとって抗いがたい。",
+      "tts": {
+        "text": "どこからともなく現れ、どこへともなく消える男は語り部にとって抗いがたい。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャン・ラフィートは誰よりもそれを理解していた。",
+      "text_markdown": "ジャン・ラフィートは誰よりもそれを理解していた。",
+      "tts": {
+        "text": "ジャン・ラフィートは誰よりもそれを理解していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は襲撃を計画するのと同じ慎重さで自らの伝説を作り上げた。",
+      "text_markdown": "彼は襲撃を計画するのと同じ慎重さで自らの伝説を作り上げた。",
+      "tts": {
+        "text": "彼は襲撃を計画するのと同じ慎重さで自らの伝説を作り上げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は見せかけの達人であり、舞踏会場でも海賊船でも同じように居心地よくしていた。",
+      "text_markdown": "彼は見せかけの達人であり、舞踏会場でも海賊船でも同じように居心地よくしていた。",
+      "tts": {
+        "text": "彼は見せかけの達人であり、舞踏会場でも海賊船でも同じように居心地よくしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本当のラフィートと彼が作り上げた神話の境界線は、おそらく完全には解きほぐされないだろう。",
+      "text_markdown": "本当のラフィートと彼が作り上げた神話の境界線は、おそらく完全には解きほぐされないだろう。",
+      "tts": {
+        "text": "本当のラフィートと彼が作り上げた神話の境界線は、おそらく完全には解きほぐされないだろう。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明らかなのは、彼が湾岸の歴史を形作ったということである。",
+      "text_markdown": "明らかなのは、彼が湾岸の歴史を形作ったということである。",
+      "tts": {
+        "text": "明らかなのは、彼が湾岸の歴史を形作ったということである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は重要な瞬間にそこにいて、行動することを選んだ。",
+      "text_markdown": "彼は重要な瞬間にそこにいて、行動することを選んだ。",
+      "tts": {
+        "text": "彼は重要な瞬間にそこにいて、行動することを選んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "良くも悪くも、ジャン・ラフィートはアメリカの物語に足跡を残した。",
+      "text_markdown": "良くも悪くも、ジャン・ラフィートはアメリカの物語に足跡を残した。",
+      "tts": {
+        "text": "良くも悪くも、ジャン・ラフィートはアメリカの物語に足跡を残した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャン・ラフィートの日記として知られる文書が二十世紀に浮上した。",
+      "text_markdown": "ジャン・ラフィートの日記として知られる文書が二十世紀に浮上した。",
+      "tts": {
+        "text": "ジャン・ラフィートの日記として知られる文書が二十世紀に浮上した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほとんどの歴史家はその日記を偽造と見なしているが、議論は続いている。",
+      "text_markdown": "ほとんどの歴史家はその日記を偽造と見なしているが、議論は続いている。",
+      "tts": {
+        "text": "ほとんどの歴史家はその日記を偽造と見なしているが、議論は続いている。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

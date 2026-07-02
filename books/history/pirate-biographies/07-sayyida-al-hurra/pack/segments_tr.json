@@ -1,0 +1,4457 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sayyida_al_hurra",
+  "language": "tr",
+  "total_segments": 298,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, korsan olan bir kraliçenin gerçek hikâyesidir.",
+      "text_markdown": "Bu, korsan olan bir kraliçenin gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, korsan olan bir kraliçenin gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Sayyide el-Hürra idi ve batı Akdeniz sularına hükmediyordu.",
+      "text_markdown": "Adı Sayyide el-Hürra idi ve batı Akdeniz sularına hükmediyordu.",
+      "tts": {
+        "text": "Adı Sayyide el-Hürra idi ve batı Akdeniz sularına hükmediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İslam dünyasında el-Hürra, yani hür ve egemen olan unvanını taşıyan son kadındı.",
+      "text_markdown": "İslam dünyasında el-Hürra, yani hür ve egemen olan unvanını taşıyan son kadındı.",
+      "tts": {
+        "text": "İslam dünyasında el-Hürra, yani hür ve egemen olan unvanını taşıyan son kadındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin hikâyesi bir felaketle başlar.",
+      "text_markdown": "Sayyide'nin hikâyesi bir felaketle başlar.",
+      "tts": {
+        "text": "Sayyide'nin hikâyesi bir felaketle başlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492 yılında İspanya'daki son Müslüman krallık, Ferdinand ve İzabella'nın Hristiyan ordularına yenildi.",
+      "text_markdown": "1492 yılında İspanya'daki son Müslüman krallık, Ferdinand ve İzabella'nın Hristiyan ordularına yenildi.",
+      "tts": {
+        "text": "Bin dört yüz doksan iki yılında İspanya'daki son Müslüman krallık, Ferdinand ve İzabella'nın Hristiyan ordularına yenildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüz binlerce Müslüman, ailelerinin yüzyıllardır vatan olarak adlandırdığı topraklardan sürüldü.",
+      "text_markdown": "Yüz binlerce Müslüman, ailelerinin yüzyıllardır vatan olarak adlandırdığı topraklardan sürüldü.",
+      "tts": {
+        "text": "Yüz binlerce Müslüman, ailelerinin yüzyıllardır vatan olarak adlandırdığı topraklardan sürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide'nin ailesi de onların arasındaydı.",
+      "text_markdown": "Sayyide'nin ailesi de onların arasındaydı.",
+      "tts": {
+        "text": "Sayyide'nin ailesi de onların arasındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap sizi on altıncı yüzyılda batı Akdeniz'in limanlarına ve kalelerine götürecek.",
+      "text_markdown": "Bu kitap sizi on altıncı yüzyılda batı Akdeniz'in limanlarına ve kalelerine götürecek.",
+      "tts": {
+        "text": "Bu kitap sizi on altıncı yüzyılda batı Akdeniz'in limanlarına ve kalelerine götürecek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir mülteci kızın nasıl kraliçe, diplomat ve korsan beyi olduğunu göreceksiniz.",
+      "text_markdown": "Bir mülteci kızın nasıl kraliçe, diplomat ve korsan beyi olduğunu göreceksiniz.",
+      "tts": {
+        "text": "Bir mülteci kızın nasıl kraliçe, diplomat ve korsan beyi olduğunu göreceksiniz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitaptaki her şey tarihî kaynaklara dayanmaktadır, ancak kaynaklar Avrupalı korsanlara kıyasla daha azdır.",
+      "text_markdown": "Bu kitaptaki her şey tarihî kaynaklara dayanmaktadır, ancak kaynaklar Avrupalı korsanlara kıyasla daha azdır.",
+      "tts": {
+        "text": "Bu kitaptaki her şey tarihî kaynaklara dayanmaktadır, ancak kaynaklar Avrupalı korsanlara kıyasla daha azdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Olgular belirsiz olduğunda bunu açıkça belirteceğiz.",
+      "text_markdown": "Olgular belirsiz olduğunda bunu açıkça belirteceğiz.",
+      "tts": {
+        "text": "Olgular belirsiz olduğunda bunu açıkça belirteceğiz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İki İnanç Arasındaki Dünya",
+      "text_markdown": "İki İnanç Arasındaki Dünya"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Batı Akdeniz, Hristiyan Avrupa ile İslam dünyası arasında bir savaş alanıydı.",
+      "text_markdown": "Batı Akdeniz, Hristiyan Avrupa ile İslam dünyası arasında bir savaş alanıydı.",
+      "tts": {
+        "text": "Batı Akdeniz, Hristiyan Avrupa ile İslam dünyası arasında bir savaş alanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yüzyıllarca iki medeniyet bu dar denizin kontrolü için çarpışmıştı.",
+      "text_markdown": "Yüzyıllarca iki medeniyet bu dar denizin kontrolü için çarpışmıştı.",
+      "tts": {
+        "text": "Yüzyıllarca iki medeniyet bu dar denizin kontrolü için çarpışmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En dar noktasında yalnızca dokuz mil genişliğindeki Cebelitarık Boğazı onları ayırıyordu.",
+      "text_markdown": "En dar noktasında yalnızca dokuz mil genişliğindeki Cebelitarık Boğazı onları ayırıyordu.",
+      "tts": {
+        "text": "En dar noktasında yalnızca dokuz mil genişliğindeki Cebelitarık Boğazı onları ayırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Boğazı kontrol etmek, Atlas Okyanusu ile Akdeniz arasındaki geçidi kontrol etmek demekti.",
+      "text_markdown": "Boğazı kontrol etmek, Atlas Okyanusu ile Akdeniz arasındaki geçidi kontrol etmek demekti.",
+      "tts": {
+        "text": "Boğazı kontrol etmek, Atlas Okyanusu ile Akdeniz arasındaki geçidi kontrol etmek demekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaklaşık 800 yıl boyunca Müslümanlar İber Yarımadası'nın bazı bölgelerini yönetmişti.",
+      "text_markdown": "Yaklaşık 800 yıl boyunca Müslümanlar İber Yarımadası'nın bazı bölgelerini yönetmişti.",
+      "tts": {
+        "text": "Yaklaşık sekiz yüz yıl boyunca Müslümanlar İber Yarımadası'nın bazı bölgelerini yönetmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Topraklarına Endülüs adını vermişlerdi ve ortaçağ Avrupa'sının en ileri medeniyetlerinden biriydi.",
+      "text_markdown": "Topraklarına Endülüs adını vermişlerdi ve ortaçağ Avrupa'sının en ileri medeniyetlerinden biriydi.",
+      "tts": {
+        "text": "Topraklarına Endülüs adını vermişlerdi ve ortaçağ Avrupa'sının en ileri medeniyetlerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehirlerinde kütüphaneler, üniversiteler ve hastaneler vardı; Avrupa'nın büyük bölümü hâlâ karanlıktayken.",
+      "text_markdown": "Şehirlerinde kütüphaneler, üniversiteler ve hastaneler vardı; Avrupa'nın büyük bölümü hâlâ karanlıktayken.",
+      "tts": {
+        "text": "Şehirlerinde kütüphaneler, üniversiteler ve hastaneler vardı; Avrupa'nın büyük bölümü hâlâ karanlıktayken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kurtuba, Gırnata ve İşbiliye İslam mimarisinin ve biliminin mücevherleriydi.",
+      "text_markdown": "Kurtuba, Gırnata ve İşbiliye İslam mimarisinin ve biliminin mücevherleriydi.",
+      "tts": {
+        "text": "Kurtuba, Gırnata ve İşbiliye İslam mimarisinin ve biliminin mücevherleriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Endülüs bir entelektüel başarı merkeziydi.",
+      "text_markdown": "Endülüs bir entelektüel başarı merkeziydi.",
+      "tts": {
+        "text": "Endülüs bir entelektüel başarı merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Müslüman, Yahudi ve Hristiyan âlimler yüzyıllarca yan yana çalışmıştı.",
+      "text_markdown": "Müslüman, Yahudi ve Hristiyan âlimler yüzyıllarca yan yana çalışmıştı.",
+      "tts": {
+        "text": "Müslüman, Yahudi ve Hristiyan âlimler yüzyıllarca yan yana çalışmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yunan felsefesini tercüme ettiler, matematiği ilerlettiler ve tıp ile astronomide çığır açtılar.",
+      "text_markdown": "Yunan felsefesini tercüme ettiler, matematiği ilerlettiler ve tıp ile astronomide çığır açtılar.",
+      "tts": {
+        "text": "Yunan felsefesini tercüme ettiler, matematiği ilerlettiler ve tıp ile astronomide çığır açtılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bilgi geleneği Avrupa Rönesansı'nı derinden etkileyecekti.",
+      "text_markdown": "Bu bilgi geleneği Avrupa Rönesansı'nı derinden etkileyecekti.",
+      "tts": {
+        "text": "Bu bilgi geleneği Avrupa Rönesansı'nı derinden etkileyecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey İspanya'nın Hristiyan krallıkları yüzyıllar boyunca Reconquista adlı bir seferle güneye ilerledi.",
+      "text_markdown": "Kuzey İspanya'nın Hristiyan krallıkları yüzyıllar boyunca Reconquista adlı bir seferle güneye ilerledi.",
+      "tts": {
+        "text": "Kuzey İspanya'nın Hristiyan krallıkları yüzyıllar boyunca Reconquista adlı bir seferle güneye ilerledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yıl yıl, on yıl on yıl Müslüman topraklarını fethettiler.",
+      "text_markdown": "Yıl yıl, on yıl on yıl Müslüman topraklarını fethettiler.",
+      "tts": {
+        "text": "Yıl yıl, on yıl on yıl Müslüman topraklarını fethettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On beşinci yüzyılın sonlarında yalnızca küçük Gırnata Krallığı Müslüman yönetimi altında kalmıştı.",
+      "text_markdown": "On beşinci yüzyılın sonlarında yalnızca küçük Gırnata Krallığı Müslüman yönetimi altında kalmıştı.",
+      "tts": {
+        "text": "On beşinci yüzyılın sonlarında yalnızca küçük Gırnata Krallığı Müslüman yönetimi altında kalmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Düşüşü sadece bir zaman meselesiydi.",
+      "text_markdown": "Düşüşü sadece bir zaman meselesiydi.",
+      "tts": {
+        "text": "Düşüşü sadece bir zaman meselesiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gırnata Ocak 1492'de düştü ve İspanya'daki yaklaşık 8 asırlık Müslüman varlığına son verdi.",
+      "text_markdown": "Gırnata Ocak 1492'de düştü ve İspanya'daki yaklaşık 8 asırlık Müslüman varlığına son verdi.",
+      "tts": {
+        "text": "Gırnata bin dört yüz doksan iki yılının Ocak ayında düştü ve İspanya'daki yaklaşık sekiz asırlık Müslüman varlığına son verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kral Ferdinand ve Kraliçe İzabella Elhamra Sarayı'na zaferle girdiler.",
+      "text_markdown": "Kral Ferdinand ve Kraliçe İzabella Elhamra Sarayı'na zaferle girdiler.",
+      "tts": {
+        "text": "Kral Ferdinand ve Kraliçe İzabella Elhamra Sarayı'na zaferle girdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya'nın son Müslüman hükümdarı Muhammed el-Sagir Fas'a sürgüne gitti.",
+      "text_markdown": "İspanya'nın son Müslüman hükümdarı Muhammed el-Sagir Fas'a sürgüne gitti.",
+      "tts": {
+        "text": "İspanya'nın son Müslüman hükümdarı Muhammed el-Sagir Fas'a sürgüne gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bütün bir medeniyet kökünden söküldü.",
+      "text_markdown": "Bütün bir medeniyet kökünden söküldü.",
+      "tts": {
+        "text": "Bütün bir medeniyet kökünden söküldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gırnata'nın düşüşü İspanya'daki Müslüman nüfus için bir felaketti.",
+      "text_markdown": "Gırnata'nın düşüşü İspanya'daki Müslüman nüfus için bir felaketti.",
+      "tts": {
+        "text": "Gırnata'nın düşüşü İspanya'daki Müslüman nüfus için bir felaketti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başlangıçta Ferdinand ve İzabella Müslümanların dinlerini ve geleneklerini koruyabileceklerini vaat etti.",
+      "text_markdown": "Başlangıçta Ferdinand ve İzabella Müslümanların dinlerini ve geleneklerini koruyabileceklerini vaat etti.",
+      "tts": {
+        "text": "Başlangıçta Ferdinand ve İzabella Müslümanların dinlerini ve geleneklerini koruyabileceklerini vaat etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu vaatler kısa sürede bozuldu.",
+      "text_markdown": "Bu vaatler kısa sürede bozuldu.",
+      "tts": {
+        "text": "Bu vaatler kısa sürede bozuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Müslümanlar Hristiyanlığa geçmeye ya da İspanya'yı tamamen terk etmeye zorlandı.",
+      "text_markdown": "Müslümanlar Hristiyanlığa geçmeye ya da İspanya'yı tamamen terk etmeye zorlandı.",
+      "tts": {
+        "text": "Müslümanlar Hristiyanlığa geçmeye ya da İspanya'yı tamamen terk etmeye zorlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Din değiştirmeyi reddedenler sürüldü.",
+      "text_markdown": "Din değiştirmeyi reddedenler sürüldü.",
+      "tts": {
+        "text": "Din değiştirmeyi reddedenler sürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cebelitarık Boğazı'nı geçerek Fas'a, Cezayir'e ve Tunus'a kaçtılar.",
+      "text_markdown": "Cebelitarık Boğazı'nı geçerek Fas'a, Cezayir'e ve Tunus'a kaçtılar.",
+      "tts": {
+        "text": "Cebelitarık Boğazı'nı geçerek Fas'a, Cezayir'e ve Tunus'a kaçtılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mülteci olarak geldiler, taşıyabildiklerini taşıyarak ve kaybettikleri her şeyin yasını tutarak.",
+      "text_markdown": "Mülteci olarak geldiler, taşıyabildiklerini taşıyarak ve kaybettikleri her şeyin yasını tutarak.",
+      "tts": {
+        "text": "Mülteci olarak geldiler, taşıyabildiklerini taşıyarak ve kaybettikleri her şeyin yasını tutarak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçoğu İspanyol Tacı'na karşı intikam arzusuyla yanıyordu.",
+      "text_markdown": "Birçoğu İspanyol Tacı'na karşı intikam arzusuyla yanıyordu.",
+      "tts": {
+        "text": "Birçoğu İspanyol Tacı'na karşı intikam arzusuyla yanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas bu mültecilerin başlıca varış noktasıydı.",
+      "text_markdown": "Fas bu mültecilerin başlıca varış noktasıydı.",
+      "tts": {
+        "text": "Fas bu mültecilerin başlıca varış noktasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fas kıyıları İspanya'dan boğazın hemen karşısında uzanıyordu.",
+      "text_markdown": "Fas kıyıları İspanya'dan boğazın hemen karşısında uzanıyordu.",
+      "tts": {
+        "text": "Fas kıyıları İspanya'dan boğazın hemen karşısında uzanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fes, Tanca ve Tetuan gibi şehirler çok sayıda Endülüslü mülteciyi barındırdı.",
+      "text_markdown": "Fes, Tanca ve Tetuan gibi şehirler çok sayıda Endülüslü mülteciyi barındırdı.",
+      "tts": {
+        "text": "Fes, Tanca ve Tetuan gibi şehirler çok sayıda Endülüslü mülteciyi barındırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu yerinden edilen aileler becerillerini, bilgilerini ve öfkelerini beraberlerinde getirdiler.",
+      "text_markdown": "Bu yerinden edilen aileler becerillerini, bilgilerini ve öfkelerini beraberlerinde getirdiler.",
+      "tts": {
+        "text": "Bu yerinden edilen aileler becerillerini, bilgilerini ve öfkelerini beraberlerinde getirdiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Osmanlı İmparatorluğu bu çağın en büyük İslam gücüydü.",
+      "text_markdown": "Osmanlı İmparatorluğu bu çağın en büyük İslam gücüydü.",
+      "tts": {
+        "text": "Osmanlı İmparatorluğu bu çağın en büyük İslam gücüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başkenti İstanbul'dan üç kıtaya yayılan geniş bir toprak parçasını kontrol ediyordu.",
+      "text_markdown": "Başkenti İstanbul'dan üç kıtaya yayılan geniş bir toprak parçasını kontrol ediyordu.",
+      "tts": {
+        "text": "Başkenti İstanbul'dan üç kıtaya yayılan geniş bir toprak parçasını kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanlı donanması doğu Akdeniz'e hâkimdi.",
+      "text_markdown": "Osmanlı donanması doğu Akdeniz'e hâkimdi.",
+      "tts": {
+        "text": "Osmanlı donanması doğu Akdeniz'e hâkimdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuzey Afrika limanlarından faaliyet gösteren Osmanlı korsanları Avrupa gemilerine ve kıyılarına baskın düzenliyordu.",
+      "text_markdown": "Kuzey Afrika limanlarından faaliyet gösteren Osmanlı korsanları Avrupa gemilerine ve kıyılarına baskın düzenliyordu.",
+      "tts": {
+        "text": "Kuzey Afrika limanlarından faaliyet gösteren Osmanlı korsanları Avrupa gemilerine ve kıyılarına baskın düzenliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En ünlü Osmanlı korsanı Barbaros Hayreddin Paşa idi.",
+      "text_markdown": "En ünlü Osmanlı korsanı Barbaros Hayreddin Paşa idi.",
+      "tts": {
+        "text": "En ünlü Osmanlı korsanı Barbaros Hayreddin Paşa idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir kıyılarından faaliyet gösteriyor ve güçlü bir donanmaya komuta ediyordu.",
+      "text_markdown": "Cezayir kıyılarından faaliyet gösteriyor ve güçlü bir donanmaya komuta ediyordu.",
+      "tts": {
+        "text": "Cezayir kıyılarından faaliyet gösteriyor ve güçlü bir donanmaya komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbaros hem korsan hem de Osmanlı donanmasının amiraliydi.",
+      "text_markdown": "Barbaros hem korsan hem de Osmanlı donanmasının amiraliydi.",
+      "tts": {
+        "text": "Barbaros hem korsan hem de Osmanlı donanmasının amiraliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baskınları İspanya, İtalya ve Fransa kıyılarını dehşete düşürüyordu.",
+      "text_markdown": "Baskınları İspanya, İtalya ve Fransa kıyılarını dehşete düşürüyordu.",
+      "tts": {
+        "text": "Baskınları İspanya, İtalya ve Fransa kıyılarını dehşete düşürüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu arada İspanya ve Portekiz geniş denizaşırı imparatorluklar kuruyordu.",
+      "text_markdown": "Bu arada İspanya ve Portekiz geniş denizaşırı imparatorluklar kuruyordu.",
+      "tts": {
+        "text": "Bu arada İspanya ve Portekiz geniş denizaşırı imparatorluklar kuruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amerika kıtasını sömürgeleştirmişler, Afrika ve Asya'da ticaret merkezleri kurmuşlardı.",
+      "text_markdown": "Amerika kıtasını sömürgeleştirmişler, Afrika ve Asya'da ticaret merkezleri kurmuşlardı.",
+      "tts": {
+        "text": "Amerika kıtasını sömürgeleştirmişler, Afrika ve Asya'da ticaret merkezleri kurmuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zenginlikleri gemilerin Cebelitarık Boğazı'ndan güvenli geçişine bağlıydı.",
+      "text_markdown": "Zenginlikleri gemilerin Cebelitarık Boğazı'ndan güvenli geçişine bağlıydı.",
+      "tts": {
+        "text": "Zenginlikleri gemilerin Cebelitarık Boğazı'ndan güvenli geçişine bağlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu trafiğin herhangi bir kesintisi imparatorluklarının ekonomik temellerini tehdit ediyordu.",
+      "text_markdown": "Bu trafiğin herhangi bir kesintisi imparatorluklarının ekonomik temellerini tehdit ediyordu.",
+      "tts": {
+        "text": "Bu trafiğin herhangi bir kesintisi imparatorluklarının ekonomik temellerini tehdit ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cebelitarık Boğazı bu nedenle muazzam stratejik öneme sahip bir yerdi.",
+      "text_markdown": "Cebelitarık Boğazı bu nedenle muazzam stratejik öneme sahip bir yerdi.",
+      "tts": {
+        "text": "Cebelitarık Boğazı bu nedenle muazzam stratejik öneme sahip bir yerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Boğazı kontrol eden, Atlas Okyanusu ile Akdeniz arasındaki servet akışını kontrol ediyordu.",
+      "text_markdown": "Boğazı kontrol eden, Atlas Okyanusu ile Akdeniz arasındaki servet akışını kontrol ediyordu.",
+      "tts": {
+        "text": "Boğazı kontrol eden, Atlas Okyanusu ile Akdeniz arasındaki servet akışını kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Büyük güçlere meydan okumaya yetecek kadar cesur herkes için mükemmel bir av alanıydı.",
+      "text_markdown": "Büyük güçlere meydan okumaya yetecek kadar cesur herkes için mükemmel bir av alanıydı.",
+      "tts": {
+        "text": "Büyük güçlere meydan okumaya yetecek kadar cesur herkes için mükemmel bir av alanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra en cesurlarından biri olacaktı.",
+      "text_markdown": "Sayyide el-Hürra en cesurlarından biri olacaktı.",
+      "tts": {
+        "text": "Sayyide el-Hürra en cesurlarından biri olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akdeniz'deki korsanlık Karayipler'deki korsanlıktan farklıydı.",
+      "text_markdown": "Akdeniz'deki korsanlık Karayipler'deki korsanlıktan farklıydı.",
+      "tts": {
+        "text": "Akdeniz'deki korsanlık Karayipler'deki korsanlıktan farklıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hristiyanlar ve Müslümanlar arasındaki dinî çatışmayla derinden iç içeydi.",
+      "text_markdown": "Hristiyanlar ve Müslümanlar arasındaki dinî çatışmayla derinden iç içeydi.",
+      "tts": {
+        "text": "Hristiyanlar ve Müslümanlar arasındaki dinî çatışmayla derinden iç içeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Müslüman korsanlar Hristiyan gemilerine, Hristiyan korsanlar da Müslüman gemilerine baskın yapıyordu.",
+      "text_markdown": "Müslüman korsanlar Hristiyan gemilerine, Hristiyan korsanlar da Müslüman gemilerine baskın yapıyordu.",
+      "tts": {
+        "text": "Müslüman korsanlar Hristiyan gemilerine, Hristiyan korsanlar da Müslüman gemilerine baskın yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "İki İnanç Arasındaki Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her iki taraf da saldırılarını kişisel kazanç peşinde olsalar bile kutsal savaş olarak meşrulaştırıyordu.",
+      "text_markdown": "Her iki taraf da saldırılarını kişisel kazanç peşinde olsalar bile kutsal savaş olarak meşrulaştırıyordu.",
+      "tts": {
+        "text": "Her iki taraf da saldırılarını kişisel kazanç peşinde olsalar bile kutsal savaş olarak meşrulaştırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gırnata'dan Tetuan'a",
+      "text_markdown": "Gırnata'dan Tetuan'a"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra yaklaşık 1485 yılında Gırnata Krallığı'nda doğdu.",
+      "text_markdown": "Sayyide el-Hürra yaklaşık 1485 yılında Gırnata Krallığı'nda doğdu.",
+      "tts": {
+        "text": "Sayyide el-Hürra yaklaşık bin dört yüz seksen beş yılında Gırnata Krallığı'nda doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğum adı Lalla Ayşe olabilir, ancak bu kesin değildir.",
+      "text_markdown": "Doğum adı Lalla Ayşe olabilir, ancak bu kesin değildir.",
+      "tts": {
+        "text": "Doğum adı Lalla Ayşe olabilir, ancak bu kesin değildir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihin onu hatırladığı Sayyide el-Hürra unvanı, asil hanım, hür olan anlamına gelen bir onur unvanıydı.",
+      "text_markdown": "Tarihin onu hatırladığı Sayyide el-Hürra unvanı, asil hanım, hür olan anlamına gelen bir onur unvanıydı.",
+      "tts": {
+        "text": "Tarihin onu hatırladığı Sayyide el-Hürra unvanı, asil hanım, hür olan anlamına gelen bir onur unvanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu unvan ona hayatının ilerleyen dönemlerinde gücünün ve bağımsızlığının bir işareti olarak verildi.",
+      "text_markdown": "Bu unvan ona hayatının ilerleyen dönemlerinde gücünün ve bağımsızlığının bir işareti olarak verildi.",
+      "tts": {
+        "text": "Bu unvan ona hayatının ilerleyen dönemlerinde gücünün ve bağımsızlığının bir işareti olarak verildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ailesi, Endülüs toplumunda derin kökleri olan asil bir klan olan Reşid hanedanına mensuptu.",
+      "text_markdown": "Ailesi, Endülüs toplumunda derin kökleri olan asil bir klan olan Reşid hanedanına mensuptu.",
+      "tts": {
+        "text": "Ailesi, Endülüs toplumunda derin kökleri olan asil bir klan olan Reşid hanedanına mensuptu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babası Mulay Ali bin Reşid, hatırı sayılır siyasi nüfuza sahip bir adamdı.",
+      "text_markdown": "Babası Mulay Ali bin Reşid, hatırı sayılır siyasi nüfuza sahip bir adamdı.",
+      "tts": {
+        "text": "Babası Mulay Ali bin Reşid, hatırı sayılır siyasi nüfuza sahip bir adamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aile, Gırnata'dan daha önce ayrıldıktan sonra Rif bölgesindeki dağ şehri Şefşauen'de yaşıyordu.",
+      "text_markdown": "Aile, Gırnata'dan daha önce ayrıldıktan sonra Rif bölgesindeki dağ şehri Şefşauen'de yaşıyordu.",
+      "tts": {
+        "text": "Aile, Gırnata'dan daha önce ayrıldıktan sonra Rif bölgesindeki dağ şehri Şefşauen'de yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şefşauen Reconquista mültecileri tarafından kurulmuştu ve Portekizlilere karşı direniş üssü olarak hizmet ediyordu.",
+      "text_markdown": "Şefşauen Reconquista mültecileri tarafından kurulmuştu ve Portekizlilere karşı direniş üssü olarak hizmet ediyordu.",
+      "tts": {
+        "text": "Şefşauen Reconquista mültecileri tarafından kurulmuştu ve Portekizlilere karşı direniş üssü olarak hizmet ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide öğrenme ve siyasi bilinç atmosferinde büyüdü.",
+      "text_markdown": "Sayyide öğrenme ve siyasi bilinç atmosferinde büyüdü.",
+      "tts": {
+        "text": "Sayyide öğrenme ve siyasi bilinç atmosferinde büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ailesi eğitime değer veriyordu ve ilahiyat, diller ve diplomasi alanında kapsamlı eğitim aldı.",
+      "text_markdown": "Ailesi eğitime değer veriyordu ve ilahiyat, diller ve diplomasi alanında kapsamlı eğitim aldı.",
+      "tts": {
+        "text": "Ailesi eğitime değer veriyordu ve ilahiyat, diller ve diplomasi alanında kapsamlı eğitim aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arapça konuşuyordu ve ailesinin Endülüs mirasından dolayı muhtemelen İspanyolca da anlıyordu.",
+      "text_markdown": "Arapça konuşuyordu ve ailesinin Endülüs mirasından dolayı muhtemelen İspanyolca da anlıyordu.",
+      "tts": {
+        "text": "Arapça konuşuyordu ve ailesinin Endülüs mirasından dolayı muhtemelen İspanyolca da anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu eğitim dönemin kadınları için alışılmadıktı, ancak Reşid ailesi sıradan değildi.",
+      "text_markdown": "Bu eğitim dönemin kadınları için alışılmadıktı, ancak Reşid ailesi sıradan değildi.",
+      "tts": {
+        "text": "Bu eğitim dönemin kadınları için alışılmadıktı, ancak Reşid ailesi sıradan değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sürgün deneyimi Sayyide'nin tüm dünya görüşünü şekillendirdi.",
+      "text_markdown": "Sürgün deneyimi Sayyide'nin tüm dünya görüşünü şekillendirdi.",
+      "tts": {
+        "text": "Sürgün deneyimi Sayyide'nin tüm dünya görüşünü şekillendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Endülüs'ün kayıp cennetinin hikâyelerini dinleyerek büyüdü.",
+      "text_markdown": "Endülüs'ün kayıp cennetinin hikâyelerini dinleyerek büyüdü.",
+      "tts": {
+        "text": "Endülüs'ün kayıp cennetinin hikâyelerini dinleyerek büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaşlı nesil güzel evlerinden, bahçelerinden ve kütüphanelerinden derin bir kederle bahsediyordu.",
+      "text_markdown": "Yaşlı nesil güzel evlerinden, bahçelerinden ve kütüphanelerinden derin bir kederle bahsediyordu.",
+      "tts": {
+        "text": "Yaşlı nesil güzel evlerinden, bahçelerinden ve kütüphanelerinden derin bir kederle bahsediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu toplu mülksüzleştirme travması güçlü bir misilleme arzusunu körükledi.",
+      "text_markdown": "Bu toplu mülksüzleştirme travması güçlü bir misilleme arzusunu körükledi.",
+      "tts": {
+        "text": "Bu toplu mülksüzleştirme travması güçlü bir misilleme arzusunu körükledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şefşauen'in kendisi olağanüstü bir yerdi.",
+      "text_markdown": "Şefşauen'in kendisi olağanüstü bir yerdi.",
+      "tts": {
+        "text": "Şefşauen'in kendisi olağanüstü bir yerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rif dağları arasına kurulmuş, mavi boyalı duvarları ve dar sokakları olan bir şehirdi.",
+      "text_markdown": "Rif dağları arasına kurulmuş, mavi boyalı duvarları ve dar sokakları olan bir şehirdi.",
+      "tts": {
+        "text": "Rif dağları arasına kurulmuş, mavi boyalı duvarları ve dar sokakları olan bir şehirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kurucuları konumu Portekiz baskınlarına karşı savunulabilirliği nedeniyle seçmişti.",
+      "text_markdown": "Kurucuları konumu Portekiz baskınlarına karşı savunulabilirliği nedeniyle seçmişti.",
+      "tts": {
+        "text": "Kurucuları konumu Portekiz baskınlarına karşı savunulabilirliği nedeniyle seçmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şehir Endülüslü mülteciler için bir sığınak ve direniş merkezi oldu.",
+      "text_markdown": "Şehir Endülüslü mülteciler için bir sığınak ve direniş merkezi oldu.",
+      "tts": {
+        "text": "Şehir Endülüslü mülteciler için bir sığınak ve direniş merkezi oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henüz gençken Sayyide, Tetuan valisi Ebu'l-Hasan el-Mandri ile evlendirildi.",
+      "text_markdown": "Henüz gençken Sayyide, Tetuan valisi Ebu'l-Hasan el-Mandri ile evlendirildi.",
+      "tts": {
+        "text": "Henüz gençken Sayyide, Tetuan valisi Ebu'l-Hasan el-Mandri ile evlendirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El-Mandri, Tetuan'ı harabelerden yeniden inşa etmiş saygın bir liderdi.",
+      "text_markdown": "El-Mandri, Tetuan'ı harabelerden yeniden inşa etmiş saygın bir liderdi.",
+      "tts": {
+        "text": "El-Mandri, Tetuan'ı harabelerden yeniden inşa etmiş saygın bir liderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir on yıllar önce Portekizliler tarafından yıkılmıştı ve yavaşça toparlanıyordu.",
+      "text_markdown": "Şehir on yıllar önce Portekizliler tarafından yıkılmıştı ve yavaşça toparlanıyordu.",
+      "tts": {
+        "text": "Şehir on yıllar önce Portekizliler tarafından yıkılmıştı ve yavaşça toparlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Evlilik iki güçlü mülteci ailesi arasında siyasi bir ittifaktı.",
+      "text_markdown": "Evlilik iki güçlü mülteci ailesi arasında siyasi bir ittifaktı.",
+      "tts": {
+        "text": "Evlilik iki güçlü mülteci ailesi arasında siyasi bir ittifaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetuan Fas'ın kuzey kıyısında, Cebelitarık Boğazı'na yakın bir konumdaydı.",
+      "text_markdown": "Tetuan Fas'ın kuzey kıyısında, Cebelitarık Boğazı'na yakın bir konumdaydı.",
+      "tts": {
+        "text": "Tetuan Fas'ın kuzey kıyısında, Cebelitarık Boğazı'na yakın bir konumdaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hem ticaret hem de Avrupa gemilerine baskın yapmak için ideal bir konumdaydı.",
+      "text_markdown": "Hem ticaret hem de Avrupa gemilerine baskın yapmak için ideal bir konumdaydı.",
+      "tts": {
+        "text": "Hem ticaret hem de Avrupa gemilerine baskın yapmak için ideal bir konumdaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir ağırlıklı olarak Endülüslü mültecilerin yaşadığı gelişen bir liman oldu.",
+      "text_markdown": "Şehir ağırlıklı olarak Endülüslü mültecilerin yaşadığı gelişen bir liman oldu.",
+      "tts": {
+        "text": "Şehir ağırlıklı olarak Endülüslü mültecilerin yaşadığı gelişen bir liman oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu mülteciler İspanyol limanları, koyları ve deniz yolları hakkındaki bilgilerini beraberlerinde getirdiler.",
+      "text_markdown": "Bu mülteciler İspanyol limanları, koyları ve deniz yolları hakkındaki bilgilerini beraberlerinde getirdiler.",
+      "tts": {
+        "text": "Bu mülteciler İspanyol limanları, koyları ve deniz yolları hakkındaki bilgilerini beraberlerinde getirdiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide kocasına Tetuan'ın yönetiminde yetenekli bir eş olduğunu kanıtladı.",
+      "text_markdown": "Sayyide kocasına Tetuan'ın yönetiminde yetenekli bir eş olduğunu kanıtladı.",
+      "tts": {
+        "text": "Sayyide kocasına Tetuan'ın yönetiminde yetenekli bir eş olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siyasi kararlara katılıyor ve bölgenin karmaşık diplomasisini anlıyordu.",
+      "text_markdown": "Siyasi kararlara katılıyor ve bölgenin karmaşık diplomasisini anlıyordu.",
+      "tts": {
+        "text": "Siyasi kararlara katılıyor ve bölgenin karmaşık diplomasisini anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kocası öldüğünde Sayyide özel hayata çekilmedi.",
+      "text_markdown": "Kocası öldüğünde Sayyide özel hayata çekilmedi.",
+      "tts": {
+        "text": "Kocası öldüğünde Sayyide özel hayata çekilmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bunun yerine Tetuan'ın yönetimini bizzat devraldı.",
+      "text_markdown": "Bunun yerine Tetuan'ın yönetimini bizzat devraldı.",
+      "tts": {
+        "text": "Bunun yerine Tetuan'ın yönetimini bizzat devraldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir şehrin tek yöneticisi olmak bu çağda bir kadın için olağanüstü bir başarıydı.",
+      "text_markdown": "Bir şehrin tek yöneticisi olmak bu çağda bir kadın için olağanüstü bir başarıydı.",
+      "tts": {
+        "text": "Bir şehrin tek yöneticisi olmak bu çağda bir kadın için olağanüstü bir başarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyide iktidarı elinde tutmak için siyasi becerilere, aile bağlantılarına ve kişisel otoriteye sahipti.",
+      "text_markdown": "Sayyide iktidarı elinde tutmak için siyasi becerilere, aile bağlantılarına ve kişisel otoriteye sahipti.",
+      "tts": {
+        "text": "Sayyide iktidarı elinde tutmak için siyasi becerilere, aile bağlantılarına ve kişisel otoriteye sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tetuan halkı onun yönetimini kabul etti çünkü yetkinidi ve çünkü merhum kocası ona güvenmişti.",
+      "text_markdown": "Tetuan halkı onun yönetimini kabul etti çünkü yetkinidi ve çünkü merhum kocası ona güvenmişti.",
+      "tts": {
+        "text": "Tetuan halkı onun yönetimini kabul etti çünkü yetkinidi ve çünkü merhum kocası ona güvenmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Artık Fas kıyılarındaki en güçlü kişilerden biriydi.",
+      "text_markdown": "Artık Fas kıyılarındaki en güçlü kişilerden biriydi.",
+      "tts": {
+        "text": "Artık Fas kıyılarındaki en güçlü kişilerden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin güçlü müttefikleri de vardı.",
+      "text_markdown": "Sayyide'nin güçlü müttefikleri de vardı.",
+      "tts": {
+        "text": "Sayyide'nin güçlü müttefikleri de vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şefşauen'deki aile bağlantıları ona Rif dağlarında bir destek ağı sağlıyordu.",
+      "text_markdown": "Şefşauen'deki aile bağlantıları ona Rif dağlarında bir destek ağı sağlıyordu.",
+      "tts": {
+        "text": "Şefşauen'deki aile bağlantıları ona Rif dağlarında bir destek ağı sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas'ı Fes'ten yöneten Vattasi hanedanıyla iyi ilişkiler sürdürüyordu.",
+      "text_markdown": "Fas'ı Fes'ten yöneten Vattasi hanedanıyla iyi ilişkiler sürdürüyordu.",
+      "tts": {
+        "text": "Fas'ı Fes'ten yöneten Vattasi hanedanıyla iyi ilişkiler sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ittifaklar onu kadın bir yöneticiyi sorgulayabilecek rakiplerden koruyordu.",
+      "text_markdown": "Bu ittifaklar onu kadın bir yöneticiyi sorgulayabilecek rakiplerden koruyordu.",
+      "tts": {
+        "text": "Bu ittifaklar onu kadın bir yöneticiyi sorgulayabilecek rakiplerden koruyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin yönetimi altında Tetuan gelişti.",
+      "text_markdown": "Sayyide'nin yönetimi altında Tetuan gelişti.",
+      "tts": {
+        "text": "Sayyide'nin yönetimi altında Tetuan gelişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret limanından akıyordu ve nüfusu artıyordu.",
+      "text_markdown": "Ticaret limanından akıyordu ve nüfusu artıyordu.",
+      "tts": {
+        "text": "Ticaret limanından akıyordu ve nüfusu artıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Sayyide'nin basit yönetimin ötesinde hırsları vardı.",
+      "text_markdown": "Ancak Sayyide'nin basit yönetimin ötesinde hırsları vardı.",
+      "tts": {
+        "text": "Ancak Sayyide'nin basit yönetimin ötesinde hırsları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gözlerini denize ve her gün Cebelitarık Boğazı'ndan geçen Avrupa gemilerine çevirdi.",
+      "text_markdown": "Gözlerini denize ve her gün Cebelitarık Boğazı'ndan geçen Avrupa gemilerine çevirdi.",
+      "tts": {
+        "text": "Gözlerini denize ve her gün Cebelitarık Boğazı'ndan geçen Avrupa gemilerine çevirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyollar ve Portekizliler birçok Fas kıyı şehrini ele geçirmişti.",
+      "text_markdown": "İspanyollar ve Portekizliler birçok Fas kıyı şehrini ele geçirmişti.",
+      "tts": {
+        "text": "İspanyollar ve Portekizliler birçok Fas kıyı şehrini ele geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sebte, Tanca ve diğer limanlar Avrupa kontrolündeydi.",
+      "text_markdown": "Sebte, Tanca ve diğer limanlar Avrupa kontrolündeydi.",
+      "tts": {
+        "text": "Sebte, Tanca ve diğer limanlar Avrupa kontrolündeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu işgaller Fas halkı için sürekli bir aşağılanmaydı.",
+      "text_markdown": "Bu işgaller Fas halkı için sürekli bir aşağılanmaydı.",
+      "tts": {
+        "text": "Bu işgaller Fas halkı için sürekli bir aşağılanmaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Gırnata'dan Tetuan'a",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide korsanlık faaliyetini bu yabancı işgalcilere karşı meşru bir direniş biçimi olarak görüyordu.",
+      "text_markdown": "Sayyide korsanlık faaliyetini bu yabancı işgalcilere karşı meşru bir direniş biçimi olarak görüyordu.",
+      "tts": {
+        "text": "Sayyide korsanlık faaliyetini bu yabancı işgalcilere karşı meşru bir direniş biçimi olarak görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsanların Kraliçesi",
+      "text_markdown": "Korsanların Kraliçesi"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra batı Akdeniz genelinde faaliyet gösteren bir korsan donanması kurdu.",
+      "text_markdown": "Sayyide el-Hürra batı Akdeniz genelinde faaliyet gösteren bir korsan donanması kurdu.",
+      "tts": {
+        "text": "Sayyide el-Hürra batı Akdeniz genelinde faaliyet gösteren bir korsan donanması kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemileri Cebelitarık Boğazı'ndan geçen İspanyol ve Portekiz ticaret gemilerine saldırıyordu.",
+      "text_markdown": "Gemileri Cebelitarık Boğazı'ndan geçen İspanyol ve Portekiz ticaret gemilerine saldırıyordu.",
+      "tts": {
+        "text": "Gemileri Cebelitarık Boğazı'ndan geçen İspanyol ve Portekiz ticaret gemilerine saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu baskınları askeri bir komutan hassasiyetiyle organize ediyordu.",
+      "text_markdown": "Bu baskınları askeri bir komutan hassasiyetiyle organize ediyordu.",
+      "tts": {
+        "text": "Bu baskınları askeri bir komutan hassasiyetiyle organize ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her saldırı, gemileri ve mürettebatı için riski en aza indirirken kârı en üst düzeye çıkarmak üzere planlanıyordu.",
+      "text_markdown": "Her saldırı, gemileri ve mürettebatı için riski en aza indirirken kârı en üst düzeye çıkarmak üzere planlanıyordu.",
+      "tts": {
+        "text": "Her saldırı, gemileri ve mürettebatı için riski en aza indirirken kârı en üst düzeye çıkarmak üzere planlanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide için yelken açan korsanlar Faslı denizciler ve Endülüslü mültecilerin karışımıydı.",
+      "text_markdown": "Sayyide için yelken açan korsanlar Faslı denizciler ve Endülüslü mültecilerin karışımıydı.",
+      "tts": {
+        "text": "Sayyide için yelken açan korsanlar Faslı denizciler ve Endülüslü mültecilerin karışımıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mültecilerin çoğu İspanyol kıyılarını yakından tanıyan eski denizcilerdi.",
+      "text_markdown": "Mültecilerin çoğu İspanyol kıyılarını yakından tanıyan eski denizcilerdi.",
+      "tts": {
+        "text": "Mültecilerin çoğu İspanyol kıyılarını yakından tanıyan eski denizcilerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Limanları, deniz yollarını ve ticaret konvoylarının tarifelerini biliyorlardı.",
+      "text_markdown": "Limanları, deniz yollarını ve ticaret konvoylarının tarifelerini biliyorlardı.",
+      "tts": {
+        "text": "Limanları, deniz yollarını ve ticaret konvoylarının tarifelerini biliyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu istihbarat Sayyide'nin donanmasına belirleyici bir avantaj sağlıyordu.",
+      "text_markdown": "Bu istihbarat Sayyide'nin donanmasına belirleyici bir avantaj sağlıyordu.",
+      "tts": {
+        "text": "Bu istihbarat Sayyide'nin donanmasına belirleyici bir avantaj sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide ünlü Osmanlı korsanı Barbaros Hayreddin ile bir ittifak kurdu.",
+      "text_markdown": "Sayyide ünlü Osmanlı korsanı Barbaros Hayreddin ile bir ittifak kurdu.",
+      "tts": {
+        "text": "Sayyide ünlü Osmanlı korsanı Barbaros Hayreddin ile bir ittifak kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbaros, Cezayir'deki üssünden doğu Akdeniz'i kontrol ediyordu.",
+      "text_markdown": "Barbaros, Cezayir'deki üssünden doğu Akdeniz'i kontrol ediyordu.",
+      "tts": {
+        "text": "Barbaros, Cezayir'deki üssünden doğu Akdeniz'i kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birlikte batı Akdeniz'i aralarında paylaştılar.",
+      "text_markdown": "Birlikte batı Akdeniz'i aralarında paylaştılar.",
+      "tts": {
+        "text": "Birlikte batı Akdeniz'i aralarında paylaştılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide Cebelitarık Boğazı yakınlarındaki suları kontrol ederken Barbaros daha doğuda hâkimdi.",
+      "text_markdown": "Sayyide Cebelitarık Boğazı yakınlarındaki suları kontrol ederken Barbaros daha doğuda hâkimdi.",
+      "tts": {
+        "text": "Sayyide Cebelitarık Boğazı yakınlarındaki suları kontrol ederken Barbaros daha doğuda hâkimdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ittifak Sayyide'yi Akdeniz korsanlığının en önemli figürlerinden biri yaptı.",
+      "text_markdown": "Bu ittifak Sayyide'yi Akdeniz korsanlığının en önemli figürlerinden biri yaptı.",
+      "tts": {
+        "text": "Bu ittifak Sayyide'yi Akdeniz korsanlığının en önemli figürlerinden biri yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbaros ile böyle bir ortaklık kurduğu bilinen tek kadındı.",
+      "text_markdown": "Barbaros ile böyle bir ortaklık kurduğu bilinen tek kadındı.",
+      "tts": {
+        "text": "Barbaros ile böyle bir ortaklık kurduğu bilinen tek kadındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birleşik kuvvetleri batı Akdeniz'i Avrupa denizciliği için son derece tehlikeli hale getirdi.",
+      "text_markdown": "Birleşik kuvvetleri batı Akdeniz'i Avrupa denizciliği için son derece tehlikeli hale getirdi.",
+      "tts": {
+        "text": "Birleşik kuvvetleri batı Akdeniz'i Avrupa denizciliği için son derece tehlikeli hale getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanya ve Portekiz ticaret filolarını bu koordineli tehdide karşı korumakta zorlanıyordu.",
+      "text_markdown": "İspanya ve Portekiz ticaret filolarını bu koordineli tehdide karşı korumakta zorlanıyordu.",
+      "tts": {
+        "text": "İspanya ve Portekiz ticaret filolarını bu koordineli tehdide karşı korumakta zorlanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin korsanları gemileri soyup serbest bırakmakla yetinmiyordu.",
+      "text_markdown": "Sayyide'nin korsanları gemileri soyup serbest bırakmakla yetinmiyordu.",
+      "tts": {
+        "text": "Sayyide'nin korsanları gemileri soyup serbest bırakmakla yetinmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hem yükleri hem de yolcuları ele geçiriyorlardı.",
+      "text_markdown": "Hem yükleri hem de yolcuları ele geçiriyorlardı.",
+      "tts": {
+        "text": "Hem yükleri hem de yolcuları ele geçiriyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupalı esirler fidye için tutuluyordu ve bu önemli bir gelir kaynağı oldu.",
+      "text_markdown": "Avrupalı esirler fidye için tutuluyordu ve bu önemli bir gelir kaynağı oldu.",
+      "tts": {
+        "text": "Avrupalı esirler fidye için tutuluyordu ve bu önemli bir gelir kaynağı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Varlıklı esirler aileleri veya hükümetleri tarafından ödenen muazzam meblağlar getirebiliyordu.",
+      "text_markdown": "Varlıklı esirler aileleri veya hükümetleri tarafından ödenen muazzam meblağlar getirebiliyordu.",
+      "tts": {
+        "text": "Varlıklı esirler aileleri veya hükümetleri tarafından ödenen muazzam meblağlar getirebiliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fidye ticareti kendi kuralları ve aracıları olan karmaşık bir işti.",
+      "text_markdown": "Fidye ticareti kendi kuralları ve aracıları olan karmaşık bir işti.",
+      "tts": {
+        "text": "Fidye ticareti kendi kuralları ve aracıları olan karmaşık bir işti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya ve Portekiz'den dini tarikatlar esirlerin serbest bırakılması müzakerelerinde uzmanlaşmıştı.",
+      "text_markdown": "İspanya ve Portekiz'den dini tarikatlar esirlerin serbest bırakılması müzakerelerinde uzmanlaşmıştı.",
+      "tts": {
+        "text": "İspanya ve Portekiz'den dini tarikatlar esirlerin serbest bırakılması müzakerelerinde uzmanlaşmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyide bu aracılarla sıradan bir korsan olarak değil, devlet başkanı olarak muhatap oluyordu.",
+      "text_markdown": "Sayyide bu aracılarla sıradan bir korsan olarak değil, devlet başkanı olarak muhatap oluyordu.",
+      "tts": {
+        "text": "Sayyide bu aracılarla sıradan bir korsan olarak değil, devlet başkanı olarak muhatap oluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avrupa hükümetleriyle diplomatik yazışmaları İspanyol ve Portekiz arşivlerinde günümüze ulaşmıştır.",
+      "text_markdown": "Avrupa hükümetleriyle diplomatik yazışmaları İspanyol ve Portekiz arşivlerinde günümüze ulaşmıştır.",
+      "tts": {
+        "text": "Avrupa hükümetleriyle diplomatik yazışmaları İspanyol ve Portekiz arşivlerinde günümüze ulaşmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa kaynakları Sayyide'yi korku ve gönülsüz saygı karışımıyla tasvir eder.",
+      "text_markdown": "Avrupa kaynakları Sayyide'yi korku ve gönülsüz saygı karışımıyla tasvir eder.",
+      "tts": {
+        "text": "Avrupa kaynakları Sayyide'yi korku ve gönülsüz saygı karışımıyla tasvir eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ona korsan kraliçesi diyorlardı, oysa o kendini savaş yürüten meşru bir hükümdar olarak görüyordu.",
+      "text_markdown": "Ona korsan kraliçesi diyorlardı, oysa o kendini savaş yürüten meşru bir hükümdar olarak görüyordu.",
+      "tts": {
+        "text": "Ona korsan kraliçesi diyorlardı, oysa o kendini savaş yürüten meşru bir hükümdar olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onun gözünde İspanyollar ve Portekizliler Müslüman topraklarını çalan saldırganlardı.",
+      "text_markdown": "Onun gözünde İspanyollar ve Portekizliler Müslüman topraklarını çalan saldırganlardı.",
+      "tts": {
+        "text": "Onun gözünde İspanyollar ve Portekizliler Müslüman topraklarını çalan saldırganlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baskınları adalet eylemleriydi, sıradan haydutluk değil.",
+      "text_markdown": "Baskınları adalet eylemleriydi, sıradan haydutluk değil.",
+      "tts": {
+        "text": "Baskınları adalet eylemleriydi, sıradan haydutluk değil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin korsanlık ve fidyeden elde ettiği servet Tetuan'ı Fas'ın en zengin şehirlerinden biri yaptı.",
+      "text_markdown": "Sayyide'nin korsanlık ve fidyeden elde ettiği servet Tetuan'ı Fas'ın en zengin şehirlerinden biri yaptı.",
+      "tts": {
+        "text": "Sayyide'nin korsanlık ve fidyeden elde ettiği servet Tetuan'ı Fas'ın en zengin şehirlerinden biri yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehrin altyapısına yatırım yaparak limanını genişletti ve savunmasını güçlendirdi.",
+      "text_markdown": "Şehrin altyapısına yatırım yaparak limanını genişletti ve savunmasını güçlendirdi.",
+      "tts": {
+        "text": "Şehrin altyapısına yatırım yaparak limanını genişletti ve savunmasını güçlendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan filosunun kârlarıyla yeni camiler, pazarlar ve evler inşa edildi.",
+      "text_markdown": "Korsan filosunun kârlarıyla yeni camiler, pazarlar ve evler inşa edildi.",
+      "tts": {
+        "text": "Korsan filosunun kârlarıyla yeni camiler, pazarlar ve evler inşa edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetuan gelişen bir ticaret ve kültür merkezi haline geldi.",
+      "text_markdown": "Tetuan gelişen bir ticaret ve kültür merkezi haline geldi.",
+      "tts": {
+        "text": "Tetuan gelişen bir ticaret ve kültür merkezi haline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptanları boğazdaki her koyu ve akıntıyı bilen usta denizcilerdi.",
+      "text_markdown": "Kaptanları boğazdaki her koyu ve akıntıyı bilen usta denizcilerdi.",
+      "tts": {
+        "text": "Kaptanları boğazdaki her koyu ve akıntıyı bilen usta denizcilerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ağır Avrupa savaş gemilerini geçebilecek hızlı ve manevra kabiliyeti yüksek gemiler kullanıyorlardı.",
+      "text_markdown": "Ağır Avrupa savaş gemilerini geçebilecek hızlı ve manevra kabiliyeti yüksek gemiler kullanıyorlardı.",
+      "tts": {
+        "text": "Ağır Avrupa savaş gemilerini geçebilecek hızlı ve manevra kabiliyeti yüksek gemiler kullanıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Görüşün zayıf olduğu şafakta veya alacakaranlıkta saldırıyorlardı.",
+      "text_markdown": "Görüşün zayıf olduğu şafakta veya alacakaranlıkta saldırıyorlardı.",
+      "tts": {
+        "text": "Görüşün zayıf olduğu şafakta veya alacakaranlıkta saldırıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baskın unsuru en büyük silahlarıydı.",
+      "text_markdown": "Baskın unsuru en büyük silahlarıydı.",
+      "tts": {
+        "text": "Baskın unsuru en büyük silahlarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İtibarı Vattasi sultanının bizzat dikkatini çekecek kadar büyüdü.",
+      "text_markdown": "İtibarı Vattasi sultanının bizzat dikkatini çekecek kadar büyüdü.",
+      "tts": {
+        "text": "İtibarı Vattasi sultanının bizzat dikkatini çekecek kadar büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan Ahmed el-Vattasi yaklaşık 1515 yılında Sayyide'ye evlenme teklif etti.",
+      "text_markdown": "Sultan Ahmed el-Vattasi yaklaşık 1515 yılında Sayyide'ye evlenme teklif etti.",
+      "tts": {
+        "text": "Sultan Ahmed el-Vattasi yaklaşık bin beş yüz on beş yılında Sayyide'ye evlenme teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, dönemin herhangi bir kadını için olağanüstü bir onurdu.",
+      "text_markdown": "Bu, dönemin herhangi bir kadını için olağanüstü bir onurdu.",
+      "tts": {
+        "text": "Bu, dönemin herhangi bir kadını için olağanüstü bir onurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aynı zamanda Sayyide'nin biriktirdiği siyasi ve ekonomik gücü de yansıtıyordu.",
+      "text_markdown": "Aynı zamanda Sayyide'nin biriktirdiği siyasi ve ekonomik gücü de yansıtıyordu.",
+      "tts": {
+        "text": "Aynı zamanda Sayyide'nin biriktirdiği siyasi ve ekonomik gücü de yansıtıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide evliliği kabul etti ama kendi şartlarıyla.",
+      "text_markdown": "Sayyide evliliği kabul etti ama kendi şartlarıyla.",
+      "tts": {
+        "text": "Sayyide evliliği kabul etti ama kendi şartlarıyla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düğünün sultanın saray kurduğu Fes'te değil Tetuan'da yapılmasını şart koştu.",
+      "text_markdown": "Düğünün sultanın saray kurduğu Fes'te değil Tetuan'da yapılmasını şart koştu.",
+      "tts": {
+        "text": "Düğünün sultanın saray kurduğu Fes'te değil Tetuan'da yapılmasını şart koştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu olağanüstü bir koşuldu çünkü gelenek gelinin damada gitmesini gerektiriyordu.",
+      "text_markdown": "Bu olağanüstü bir koşuldu çünkü gelenek gelinin damada gitmesini gerektiriyordu.",
+      "tts": {
+        "text": "Bu olağanüstü bir koşuldu çünkü gelenek gelinin damada gitmesini gerektiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sultan kabul etti ve tören için Tetuan'a geldi.",
+      "text_markdown": "Sultan kabul etti ve tören için Tetuan'a geldi.",
+      "tts": {
+        "text": "Sultan kabul etti ve tören için Tetuan'a geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Fas tarihinde bir kralın gelin için düğüne gittiği tek kayıtlı örnekti.",
+      "text_markdown": "Bu, Fas tarihinde bir kralın gelin için düğüne gittiği tek kayıtlı örnekti.",
+      "tts": {
+        "text": "Bu, Fas tarihinde bir kralın gelin için düğüne gittiği tek kayıtlı örnekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyide'nin ulaştığı muazzam gücü ve prestiji gösteriyordu.",
+      "text_markdown": "Sayyide'nin ulaştığı muazzam gücü ve prestiji gösteriyordu.",
+      "tts": {
+        "text": "Sayyide'nin ulaştığı muazzam gücü ve prestiji gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilikten sonra bile Tetuan'ı bağımsız olarak yönetmeye devam etti.",
+      "text_markdown": "Evlilikten sonra bile Tetuan'ı bağımsız olarak yönetmeye devam etti.",
+      "tts": {
+        "text": "Evlilikten sonra bile Tetuan'ı bağımsız olarak yönetmeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kendi başına bir kraliçeydi, yalnızca sultanın eşi değil.",
+      "text_markdown": "Kendi başına bir kraliçeydi, yalnızca sultanın eşi değil.",
+      "tts": {
+        "text": "Kendi başına bir kraliçeydi, yalnızca sultanın eşi değil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Evlilik Sayyide'ye ek siyasi koruma sağladı.",
+      "text_markdown": "Evlilik Sayyide'ye ek siyasi koruma sağladı.",
+      "tts": {
+        "text": "Evlilik Sayyide'ye ek siyasi koruma sağladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultanın eşi olarak yerel rakipler için dokunulmazdı.",
+      "text_markdown": "Sultanın eşi olarak yerel rakipler için dokunulmazdı.",
+      "tts": {
+        "text": "Sultanın eşi olarak yerel rakipler için dokunulmazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan operasyonları daha da büyük bir güvenle devam etti.",
+      "text_markdown": "Korsan operasyonları daha da büyük bir güvenle devam etti.",
+      "tts": {
+        "text": "Korsan operasyonları daha da büyük bir güvenle devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Batı Akdeniz onun hâkimiyet alanı olmaya devam etti.",
+      "text_markdown": "Batı Akdeniz onun hâkimiyet alanı olmaya devam etti.",
+      "tts": {
+        "text": "Batı Akdeniz onun hâkimiyet alanı olmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya baskınlarını durdurmak için Sayyide ile defalarca müzakere etmeye çalıştı.",
+      "text_markdown": "İspanya baskınlarını durdurmak için Sayyide ile defalarca müzakere etmeye çalıştı.",
+      "tts": {
+        "text": "İspanya baskınlarını durdurmak için Sayyide ile defalarca müzakere etmeye çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol elçiler esirlerin serbest bırakılmasını ve barış olasılığını görüşmek üzere Tetuan'a gitti.",
+      "text_markdown": "İspanyol elçiler esirlerin serbest bırakılmasını ve barış olasılığını görüşmek üzere Tetuan'a gitti.",
+      "tts": {
+        "text": "İspanyol elçiler esirlerin serbest bırakılmasını ve barış olasılığını görüşmek üzere Tetuan'a gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyide sert pazarlık yapıyor ve korsan operasyonlarını tamamen durdurmayı asla kabul etmiyordu.",
+      "text_markdown": "Sayyide sert pazarlık yapıyor ve korsan operasyonlarını tamamen durdurmayı asla kabul etmiyordu.",
+      "tts": {
+        "text": "Sayyide sert pazarlık yapıyor ve korsan operasyonlarını tamamen durdurmayı asla kabul etmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz gücünün siyasi nüfuzunun kaynağı olduğunu biliyordu.",
+      "text_markdown": "Deniz gücünün siyasi nüfuzunun kaynağı olduğunu biliyordu.",
+      "tts": {
+        "text": "Deniz gücünün siyasi nüfuzunun kaynağı olduğunu biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portekiz de onun oluşturduğu tehditle başa çıkmakta zorlanıyordu.",
+      "text_markdown": "Portekiz de onun oluşturduğu tehditle başa çıkmakta zorlanıyordu.",
+      "tts": {
+        "text": "Portekiz de onun oluşturduğu tehditle başa çıkmakta zorlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrika ve Asya'daki sömürgelerine ulaşmaya çalışan Portekiz gemileri Cebelitarık Boğazı'ndan geçmek zorundaydı.",
+      "text_markdown": "Afrika ve Asya'daki sömürgelerine ulaşmaya çalışan Portekiz gemileri Cebelitarık Boğazı'ndan geçmek zorundaydı.",
+      "tts": {
+        "text": "Afrika ve Asya'daki sömürgelerine ulaşmaya çalışan Portekiz gemileri Cebelitarık Boğazı'ndan geçmek zorundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyide'nin korsanları bu geçişi tehlikeli ve pahalı hale getiriyordu.",
+      "text_markdown": "Sayyide'nin korsanları bu geçişi tehlikeli ve pahalı hale getiriyordu.",
+      "tts": {
+        "text": "Sayyide'nin korsanları bu geçişi tehlikeli ve pahalı hale getiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Kraliçesi",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Portekiz hükümeti Tetuan'a karşı askeri harekât düşündü ama hiçbir zaman uygulamadı.",
+      "text_markdown": "Portekiz hükümeti Tetuan'a karşı askeri harekât düşündü ama hiçbir zaman uygulamadı.",
+      "tts": {
+        "text": "Portekiz hükümeti Tetuan'a karşı askeri harekât düşündü ama hiçbir zaman uygulamadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Egemen Kadın",
+      "text_markdown": "Egemen Kadın"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gücünün zirvesinde Sayyide el-Hürra dünyanın en stratejik su yollarından birini kontrol ediyordu.",
+      "text_markdown": "Gücünün zirvesinde Sayyide el-Hürra dünyanın en stratejik su yollarından birini kontrol ediyordu.",
+      "tts": {
+        "text": "Gücünün zirvesinde Sayyide el-Hürra dünyanın en stratejik su yollarından birini kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan filosu Cebelitarık Boğazı'nın batı yaklaşımlarına hâkimdi.",
+      "text_markdown": "Korsan filosu Cebelitarık Boğazı'nın batı yaklaşımlarına hâkimdi.",
+      "tts": {
+        "text": "Korsan filosu Cebelitarık Boğazı'nın batı yaklaşımlarına hâkimdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir Avrupa gemisi saldırıya uğrama riski olmadan bu sulardan geçemiyordu.",
+      "text_markdown": "Hiçbir Avrupa gemisi saldırıya uğrama riski olmadan bu sulardan geçemiyordu.",
+      "tts": {
+        "text": "Hiçbir Avrupa gemisi saldırıya uğrama riski olmadan bu sulardan geçemiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanyol ve Portekiz ticaretine verilen zarar ciddi boyuttaydı.",
+      "text_markdown": "İspanyol ve Portekiz ticaretine verilen zarar ciddi boyuttaydı.",
+      "tts": {
+        "text": "İspanyol ve Portekiz ticaretine verilen zarar ciddi boyuttaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide Tetuan'ı askeri güç ve siyasi becerinin birleşimiyle yönetiyordu.",
+      "text_markdown": "Sayyide Tetuan'ı askeri güç ve siyasi becerinin birleşimiyle yönetiyordu.",
+      "tts": {
+        "text": "Sayyide Tetuan'ı askeri güç ve siyasi becerinin birleşimiyle yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa gemi hareketlerini izleyen bir muhbir ağı sürdürüyordu.",
+      "text_markdown": "Avrupa gemi hareketlerini izleyen bir muhbir ağı sürdürüyordu.",
+      "tts": {
+        "text": "Avrupa gemi hareketlerini izleyen bir muhbir ağı sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupa hükümetleriyle fidye anlaşmalarını eşit olarak müzakere ediyordu.",
+      "text_markdown": "Avrupa hükümetleriyle fidye anlaşmalarını eşit olarak müzakere ediyordu.",
+      "tts": {
+        "text": "Avrupa hükümetleriyle fidye anlaşmalarını eşit olarak müzakere ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetuan'daki sarayı siyasi faaliyetlerin ve diplomatik entrikaların merkeziydi.",
+      "text_markdown": "Tetuan'daki sarayı siyasi faaliyetlerin ve diplomatik entrikaların merkeziydi.",
+      "tts": {
+        "text": "Tetuan'daki sarayı siyasi faaliyetlerin ve diplomatik entrikaların merkeziydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El-Hürra unvanı İslam dünyasında derin bir anlam taşıyordu.",
+      "text_markdown": "El-Hürra unvanı İslam dünyasında derin bir anlam taşıyordu.",
+      "tts": {
+        "text": "El-Hürra unvanı İslam dünyasında derin bir anlam taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyide'nin hiçbir erkeğe hesap vermediği ve kendi adına hükmettiği anlamına geliyordu.",
+      "text_markdown": "Sayyide'nin hiçbir erkeğe hesap vermediği ve kendi adına hükmettiği anlamına geliyordu.",
+      "tts": {
+        "text": "Sayyide'nin hiçbir erkeğe hesap vermediği ve kendi adına hükmettiği anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İslam tarihinde bu unvanı taşıyan son kadındı.",
+      "text_markdown": "İslam tarihinde bu unvanı taşıyan son kadındı.",
+      "tts": {
+        "text": "İslam tarihinde bu unvanı taşıyan son kadındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ondan önce veya sonra hiçbir kadın bölgede aynı siyasi ve askeri güç bileşimini elde edemedi.",
+      "text_markdown": "Ondan önce veya sonra hiçbir kadın bölgede aynı siyasi ve askeri güç bileşimini elde edemedi.",
+      "tts": {
+        "text": "Ondan önce veya sonra hiçbir kadın bölgede aynı siyasi ve askeri güç bileşimini elde edemedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başarısı Tetuan'ı dolduran Endülüslü mülteci topluluğu üzerine kurulmuştu.",
+      "text_markdown": "Başarısı Tetuan'ı dolduran Endülüslü mülteci topluluğu üzerine kurulmuştu.",
+      "tts": {
+        "text": "Başarısı Tetuan'ı dolduran Endülüslü mülteci topluluğu üzerine kurulmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu mülteciler sürekli bir eğitimli yönetici ve deneyimli denizci kaynağı sağlıyordu.",
+      "text_markdown": "Bu mülteciler sürekli bir eğitimli yönetici ve deneyimli denizci kaynağı sağlıyordu.",
+      "tts": {
+        "text": "Bu mülteciler sürekli bir eğitimli yönetici ve deneyimli denizci kaynağı sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol dili ve kültürü bilgileri istihbarat toplama için paha biçilmezdi.",
+      "text_markdown": "İspanyol dili ve kültürü bilgileri istihbarat toplama için paha biçilmezdi.",
+      "tts": {
+        "text": "İspanyol dili ve kültürü bilgileri istihbarat toplama için paha biçilmezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide yönetimindeki Tetuan, Endülüs anısı ve intikam umuduyla tanımlanan bir şehirdi.",
+      "text_markdown": "Sayyide yönetimindeki Tetuan, Endülüs anısı ve intikam umuduyla tanımlanan bir şehirdi.",
+      "tts": {
+        "text": "Sayyide yönetimindeki Tetuan, Endülüs anısı ve intikam umuduyla tanımlanan bir şehirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide ayrıca diğer Kuzey Afrika limanlarıyla da ilişkiler sürdürüyordu.",
+      "text_markdown": "Sayyide ayrıca diğer Kuzey Afrika limanlarıyla da ilişkiler sürdürüyordu.",
+      "tts": {
+        "text": "Sayyide ayrıca diğer Kuzey Afrika limanlarıyla da ilişkiler sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir, Tunus ve Selâ hepsi korsanlık faaliyetlerinin merkezleriydi.",
+      "text_markdown": "Cezayir, Tunus ve Selâ hepsi korsanlık faaliyetlerinin merkezleriydi.",
+      "tts": {
+        "text": "Cezayir, Tunus ve Selâ hepsi korsanlık faaliyetlerinin merkezleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çatışmalardan kaçınmak ve istihbarat paylaşmak için bu şehirlerdeki liderlerle koordine oluyordu.",
+      "text_markdown": "Çatışmalardan kaçınmak ve istihbarat paylaşmak için bu şehirlerdeki liderlerle koordine oluyordu.",
+      "tts": {
+        "text": "Çatışmalardan kaçınmak ve istihbarat paylaşmak için bu şehirlerdeki liderlerle koordine oluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ittifak ağı korsan operasyonlarını daha etkili hale getiriyordu.",
+      "text_markdown": "Bu ittifak ağı korsan operasyonlarını daha etkili hale getiriyordu.",
+      "tts": {
+        "text": "Bu ittifak ağı korsan operasyonlarını daha etkili hale getiriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemin Avrupa kayıtları Sayyide'nin korsanlarıyla ilgili şikâyetlerle doludur.",
+      "text_markdown": "Bu dönemin Avrupa kayıtları Sayyide'nin korsanlarıyla ilgili şikâyetlerle doludur.",
+      "tts": {
+        "text": "Bu dönemin Avrupa kayıtları Sayyide'nin korsanlarıyla ilgili şikâyetlerle doludur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol büyükelçiler Tetuan korsanlarına karşı harekete geçilmesini talep eden mektuplar yazıyordu.",
+      "text_markdown": "İspanyol büyükelçiler Tetuan korsanlarına karşı harekete geçilmesini talep eden mektuplar yazıyordu.",
+      "tts": {
+        "text": "İspanyol büyükelçiler Tetuan korsanlarına karşı harekete geçilmesini talep eden mektuplar yazıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portekizli tüccarlar krallarından askeri koruma istiyordu.",
+      "text_markdown": "Portekizli tüccarlar krallarından askeri koruma istiyordu.",
+      "tts": {
+        "text": "Portekizli tüccarlar krallarından askeri koruma istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Filosunun neden olduğu ekonomik hasar Avrupa politikasını etkileyecek kadar önemliydi.",
+      "text_markdown": "Filosunun neden olduğu ekonomik hasar Avrupa politikasını etkileyecek kadar önemliydi.",
+      "tts": {
+        "text": "Filosunun neden olduğu ekonomik hasar Avrupa politikasını etkileyecek kadar önemliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin kendisi hem korkulan hem de hayranlık duyulan bir figürdü.",
+      "text_markdown": "Sayyide'nin kendisi hem korkulan hem de hayranlık duyulan bir figürdü.",
+      "tts": {
+        "text": "Sayyide'nin kendisi hem korkulan hem de hayranlık duyulan bir figürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa güçlerinin son derece rahatsız edici bulduğu bir şeyi temsil ediyordu.",
+      "text_markdown": "Avrupa güçlerinin son derece rahatsız edici bulduğu bir şeyi temsil ediyordu.",
+      "tts": {
+        "text": "Avrupa güçlerinin son derece rahatsız edici bulduğu bir şeyi temsil ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gerçek siyasi ve askeri güce sahip bir Müslüman kadın onların her varsayımını sorguluyordu.",
+      "text_markdown": "Gerçek siyasi ve askeri güce sahip bir Müslüman kadın onların her varsayımını sorguluyordu.",
+      "tts": {
+        "text": "Gerçek siyasi ve askeri güce sahip bir Müslüman kadın onların her varsayımını sorguluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Varlığının kendisi Avrupa düzenine karşı bir meydan okumaydı.",
+      "text_markdown": "Varlığının kendisi Avrupa düzenine karşı bir meydan okumaydı.",
+      "tts": {
+        "text": "Varlığının kendisi Avrupa düzenine karşı bir meydan okumaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide yönetiminde Tetuan'daki yaşam Endülüs'ün kozmopolit mirasını yansıtıyordu.",
+      "text_markdown": "Sayyide yönetiminde Tetuan'daki yaşam Endülüs'ün kozmopolit mirasını yansıtıyordu.",
+      "tts": {
+        "text": "Sayyide yönetiminde Tetuan'daki yaşam Endülüs'ün kozmopolit mirasını yansıtıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehrin güzel bahçeleri, akan çeşmeleri ve Endülüs tarzı badanalı evleri vardı.",
+      "text_markdown": "Şehrin güzel bahçeleri, akan çeşmeleri ve Endülüs tarzı badanalı evleri vardı.",
+      "tts": {
+        "text": "Şehrin güzel bahçeleri, akan çeşmeleri ve Endülüs tarzı badanalı evleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zanaatkârlar ince seramikler, kumaşlar ve maden işleri üretiyordu.",
+      "text_markdown": "Zanaatkârlar ince seramikler, kumaşlar ve maden işleri üretiyordu.",
+      "tts": {
+        "text": "Zanaatkârlar ince seramikler, kumaşlar ve maden işleri üretiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şehrin kültürel zenginliği onu finanse eden korsanlık ticaretinin şiddetiyle keskin bir tezat oluşturuyordu.",
+      "text_markdown": "Şehrin kültürel zenginliği onu finanse eden korsanlık ticaretinin şiddetiyle keskin bir tezat oluşturuyordu.",
+      "tts": {
+        "text": "Şehrin kültürel zenginliği onu finanse eden korsanlık ticaretinin şiddetiyle keskin bir tezat oluşturuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin filosu düzinelerce gemiyi kapsayacak şekilde büyüdü.",
+      "text_markdown": "Sayyide'nin filosu düzinelerce gemiyi kapsayacak şekilde büyüdü.",
+      "tts": {
+        "text": "Sayyide'nin filosu düzinelerce gemiyi kapsayacak şekilde büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları ele geçirilmiş Avrupa gemileriydi, eski sahiplerine karşı çevrilmişti.",
+      "text_markdown": "Bazıları ele geçirilmiş Avrupa gemileriydi, eski sahiplerine karşı çevrilmişti.",
+      "tts": {
+        "text": "Bazıları ele geçirilmiş Avrupa gemileriydi, eski sahiplerine karşı çevrilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri Tetuan'ın kendi tersanelerinde inşa edilmişti.",
+      "text_markdown": "Diğerleri Tetuan'ın kendi tersanelerinde inşa edilmişti.",
+      "tts": {
+        "text": "Diğerleri Tetuan'ın kendi tersanelerinde inşa edilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Filo iyi bakılıyordu ve boğazdaki her akıntıyı ve sığlığı bilen deneyimli denizciler tarafından yönetiliyordu.",
+      "text_markdown": "Filo iyi bakılıyordu ve boğazdaki her akıntıyı ve sığlığı bilen deneyimli denizciler tarafından yönetiliyordu.",
+      "tts": {
+        "text": "Filo iyi bakılıyordu ve boğazdaki her akıntıyı ve sığlığı bilen deneyimli denizciler tarafından yönetiliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hükümdarlığı batı Akdeniz'de güç dengesinin tartışıldığı kısa bir dönemi temsil ediyordu.",
+      "text_markdown": "Hükümdarlığı batı Akdeniz'de güç dengesinin tartışıldığı kısa bir dönemi temsil ediyordu.",
+      "tts": {
+        "text": "Hükümdarlığı batı Akdeniz'de güç dengesinin tartışıldığı kısa bir dönemi temsil ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya ve Portekiz'in daha büyük donanmaları vardı ama her yerde aynı anda bulunamazlardı.",
+      "text_markdown": "İspanya ve Portekiz'in daha büyük donanmaları vardı ama her yerde aynı anda bulunamazlardı.",
+      "tts": {
+        "text": "İspanya ve Portekiz'in daha büyük donanmaları vardı ama her yerde aynı anda bulunamazlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyide'nin korsanları Avrupa deniz gücündeki boşlukları hassasiyetle kullanıyordu.",
+      "text_markdown": "Sayyide'nin korsanları Avrupa deniz gücündeki boşlukları hassasiyetle kullanıyordu.",
+      "tts": {
+        "text": "Sayyide'nin korsanları Avrupa deniz gücündeki boşlukları hassasiyetle kullanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yaklaşık otuz yıl boyunca kendi deniz bölgesinde hâkim güçtü.",
+      "text_markdown": "Yaklaşık otuz yıl boyunca kendi deniz bölgesinde hâkim güçtü.",
+      "tts": {
+        "text": "Yaklaşık otuz yıl boyunca kendi deniz bölgesinde hâkim güçtü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yönettiği fidye ekonomisi gelişkin ve iyi organize edilmişti.",
+      "text_markdown": "Yönettiği fidye ekonomisi gelişkin ve iyi organize edilmişti.",
+      "tts": {
+        "text": "Yönettiği fidye ekonomisi gelişkin ve iyi organize edilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fiyatlar esirin sosyal konumuna ve ailesinin ödeme gücüne göre belirleniyordu.",
+      "text_markdown": "Fiyatlar esirin sosyal konumuna ve ailesinin ödeme gücüne göre belirleniyordu.",
+      "tts": {
+        "text": "Fiyatlar esirin sosyal konumuna ve ailesinin ödeme gücüne göre belirleniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Müzakereler aylarca hatta yıllarca sürebiliyordu.",
+      "text_markdown": "Müzakereler aylarca hatta yıllarca sürebiliyordu.",
+      "tts": {
+        "text": "Müzakereler aylarca hatta yıllarca sürebiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı esirler tutsaklıkları sırasında iyi muamele görürken diğerleri ağır koşullara katlanıyordu.",
+      "text_markdown": "Bazı esirler tutsaklıkları sırasında iyi muamele görürken diğerleri ağır koşullara katlanıyordu.",
+      "tts": {
+        "text": "Bazı esirler tutsaklıkları sırasında iyi muamele görürken diğerleri ağır koşullara katlanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide korsan faaliyetlerini korsanlık olarak değil Reconquista'ya karşı mücadelenin devamı olarak görüyordu.",
+      "text_markdown": "Sayyide korsan faaliyetlerini korsanlık olarak değil Reconquista'ya karşı mücadelenin devamı olarak görüyordu.",
+      "tts": {
+        "text": "Sayyide korsan faaliyetlerini korsanlık olarak değil Reconquista'ya karşı mücadelenin devamı olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyollar Endülüs'ü Müslümanlardan zorla almıştı.",
+      "text_markdown": "İspanyollar Endülüs'ü Müslümanlardan zorla almıştı.",
+      "tts": {
+        "text": "İspanyollar Endülüs'ü Müslümanlardan zorla almıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyide'nin bakış açısından o sadece farklı araçlarla karşılık veriyordu.",
+      "text_markdown": "Sayyide'nin bakış açısından o sadece farklı araçlarla karşılık veriyordu.",
+      "tts": {
+        "text": "Sayyide'nin bakış açısından o sadece farklı araçlarla karşılık veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Egemen Kadın",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu çerçeveleme eylemlerine topluluğunun gözünde ahlaki meşruiyet kazandırıyordu.",
+      "text_markdown": "Bu çerçeveleme eylemlerine topluluğunun gözünde ahlaki meşruiyet kazandırıyordu.",
+      "tts": {
+        "text": "Bu çerçeveleme eylemlerine topluluğunun gözünde ahlaki meşruiyet kazandırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bir Kraliçenin Düşüşü",
+      "text_markdown": "Bir Kraliçenin Düşüşü"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra'nın gücü muazzam olsa da sarsılmaz değildi.",
+      "text_markdown": "Sayyide el-Hürra'nın gücü muazzam olsa da sarsılmaz değildi.",
+      "tts": {
+        "text": "Sayyide el-Hürra'nın gücü muazzam olsa da sarsılmaz değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İttifakların, askeri gücün ve siyasi becerinin hassas bir dengesine dayanıyordu.",
+      "text_markdown": "İttifakların, askeri gücün ve siyasi becerinin hassas bir dengesine dayanıyordu.",
+      "tts": {
+        "text": "İttifakların, askeri gücün ve siyasi becerinin hassas bir dengesine dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu denge değiştiğinde konumu tehlikeye girdi.",
+      "text_markdown": "Bu denge değiştiğinde konumu tehlikeye girdi.",
+      "tts": {
+        "text": "Bu denge değiştiğinde konumu tehlikeye girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onu devrecek güçler Avrupa'dan değil kendi ailesinin içinden geldi.",
+      "text_markdown": "Onu devrecek güçler Avrupa'dan değil kendi ailesinin içinden geldi.",
+      "tts": {
+        "text": "Onu devrecek güçler Avrupa'dan değil kendi ailesinin içinden geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vattasi sultanıyla evliliği ona siyasi koruma sağlamıştı.",
+      "text_markdown": "Vattasi sultanıyla evliliği ona siyasi koruma sağlamıştı.",
+      "tts": {
+        "text": "Vattasi sultanıyla evliliği ona siyasi koruma sağlamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak Vattasi hanedanının kendisi zayıflıyordu.",
+      "text_markdown": "Ancak Vattasi hanedanının kendisi zayıflıyordu.",
+      "tts": {
+        "text": "Ancak Vattasi hanedanının kendisi zayıflıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rakip hizipler Fas'ta iktidar için yarışıyordu.",
+      "text_markdown": "Rakip hizipler Fas'ta iktidar için yarışıyordu.",
+      "tts": {
+        "text": "Rakip hizipler Fas'ta iktidar için yarışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sultanın Tetuan gibi uzak eyaletler üzerindeki otoritesi giderek zayıflıyordu.",
+      "text_markdown": "Sultanın Tetuan gibi uzak eyaletler üzerindeki otoritesi giderek zayıflıyordu.",
+      "tts": {
+        "text": "Sultanın Tetuan gibi uzak eyaletler üzerindeki otoritesi giderek zayıflıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin üvey oğlu Mulay Ahmed el-Hassan el-Mandri'nin kendi hırsları vardı.",
+      "text_markdown": "Sayyide'nin üvey oğlu Mulay Ahmed el-Hassan el-Mandri'nin kendi hırsları vardı.",
+      "tts": {
+        "text": "Sayyide'nin üvey oğlu Mulay Ahmed el-Hassan el-Mandri'nin kendi hırsları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tetuan'ın bir erkek tarafından, özellikle kendisi tarafından yönetilmesi gerektiğine inanıyordu.",
+      "text_markdown": "Tetuan'ın bir erkek tarafından, özellikle kendisi tarafından yönetilmesi gerektiğine inanıyordu.",
+      "tts": {
+        "text": "Tetuan'ın bir erkek tarafından, özellikle kendisi tarafından yönetilmesi gerektiğine inanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Üvey annesinin uzun süredir iktidarı elinde tutmasına kızıyordu.",
+      "text_markdown": "Üvey annesinin uzun süredir iktidarı elinde tutmasına kızıyordu.",
+      "tts": {
+        "text": "Üvey annesinin uzun süredir iktidarı elinde tutmasına kızıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onu devirmek için komplo kurmaya başladı.",
+      "text_markdown": "Onu devirmek için komplo kurmaya başladı.",
+      "tts": {
+        "text": "Onu devirmek için komplo kurmaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mulay Ahmed, Sayyide'nin yönetiminden memnun olmayanlar arasından destekçiler topladı.",
+      "text_markdown": "Mulay Ahmed, Sayyide'nin yönetiminden memnun olmayanlar arasından destekçiler topladı.",
+      "tts": {
+        "text": "Mulay Ahmed, Sayyide'nin yönetiminden memnun olmayanlar arasından destekçiler topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tetuan'daki bazı erkekler yetkinliğine bakmaksızın bir kadın tarafından yönetilmekten rahatsızdı.",
+      "text_markdown": "Tetuan'daki bazı erkekler yetkinliğine bakmaksızın bir kadın tarafından yönetilmekten rahatsızdı.",
+      "tts": {
+        "text": "Tetuan'daki bazı erkekler yetkinliğine bakmaksızın bir kadın tarafından yönetilmekten rahatsızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri kendileri için güç ve servet elde etme fırsatı görüyordu.",
+      "text_markdown": "Diğerleri kendileri için güç ve servet elde etme fırsatı görüyordu.",
+      "tts": {
+        "text": "Diğerleri kendileri için güç ve servet elde etme fırsatı görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Komplo gizlice büyüdü.",
+      "text_markdown": "Komplo gizlice büyüdü.",
+      "tts": {
+        "text": "Komplo gizlice büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaklaşık 1542 yılında Mulay Ahmed, Sayyide'ye karşı bir saray darbesi gerçekleştirdi.",
+      "text_markdown": "Yaklaşık 1542 yılında Mulay Ahmed, Sayyide'ye karşı bir saray darbesi gerçekleştirdi.",
+      "tts": {
+        "text": "Yaklaşık bin beş yüz kırk iki yılında Mulay Ahmed, Sayyide'ye karşı bir saray darbesi gerçekleştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Darbenin ayrıntıları hayatta kalan kaynaklarda iyi belgelenmemiştir.",
+      "text_markdown": "Darbenin ayrıntıları hayatta kalan kaynaklarda iyi belgelenmemiştir.",
+      "tts": {
+        "text": "Darbenin ayrıntıları hayatta kalan kaynaklarda iyi belgelenmemiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bilinen, Tetuan'ın kontrolünü ele geçirdiği ve Sayyide'yi iktidardan uzaklaştırdığıdır.",
+      "text_markdown": "Bilinen, Tetuan'ın kontrolünü ele geçirdiği ve Sayyide'yi iktidardan uzaklaştırdığıdır.",
+      "tts": {
+        "text": "Bilinen, Tetuan'ın kontrolünü ele geçirdiği ve Sayyide'yi iktidardan uzaklaştırdığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yaklaşık otuz yıl süren hükümdarlığı sona erdi.",
+      "text_markdown": "Yaklaşık otuz yıl süren hükümdarlığı sona erdi.",
+      "tts": {
+        "text": "Yaklaşık otuz yıl süren hükümdarlığı sona erdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide unvanından, otoritesinden ve servetinden mahrum bırakıldı.",
+      "text_markdown": "Sayyide unvanından, otoritesinden ve servetinden mahrum bırakıldı.",
+      "tts": {
+        "text": "Sayyide unvanından, otoritesinden ve servetinden mahrum bırakıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kurduğu korsan filosu elinden alındı.",
+      "text_markdown": "Kurduğu korsan filosu elinden alındı.",
+      "tts": {
+        "text": "Kurduğu korsan filosu elinden alındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas'ın en güçlü insanlarından biri olmaktan nüfuzsuz sıradan bir vatandaşa dönüştü.",
+      "text_markdown": "Fas'ın en güçlü insanlarından biri olmaktan nüfuzsuz sıradan bir vatandaşa dönüştü.",
+      "tts": {
+        "text": "Fas'ın en güçlü insanlarından biri olmaktan nüfuzsuz sıradan bir vatandaşa dönüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Düşüş hızlı ve tam oldu.",
+      "text_markdown": "Düşüş hızlı ve tam oldu.",
+      "tts": {
+        "text": "Düşüş hızlı ve tam oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İktidarı kaybettikten sonra Sayyide tarihî kayıtlardan neredeyse tamamen silindi.",
+      "text_markdown": "İktidarı kaybettikten sonra Sayyide tarihî kayıtlardan neredeyse tamamen silindi.",
+      "tts": {
+        "text": "İktidarı kaybettikten sonra Sayyide tarihî kayıtlardan neredeyse tamamen silindi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir güvenilir kaynak darbeden sonraki hayatını anlatmaz.",
+      "text_markdown": "Hiçbir güvenilir kaynak darbeden sonraki hayatını anlatmaz.",
+      "tts": {
+        "text": "Hiçbir güvenilir kaynak darbeden sonraki hayatını anlatmaz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ailesinin kökleri olan dağ şehri Şefşauen'e çekilmiş olabilir.",
+      "text_markdown": "Ailesinin kökleri olan dağ şehri Şefşauen'e çekilmiş olabilir.",
+      "tts": {
+        "text": "Ailesinin kökleri olan dağ şehri Şefşauen'e çekilmiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kalan yıllarını bilinmezlik içinde geçirmiş olabilir.",
+      "text_markdown": "Kalan yıllarını bilinmezlik içinde geçirmiş olabilir.",
+      "tts": {
+        "text": "Kalan yıllarını bilinmezlik içinde geçirmiş olabilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Sayyide'nin yaklaşık 1561'de öldüğünü tahmin eder, ancak tarih kesin değildir.",
+      "text_markdown": "Tarihçiler Sayyide'nin yaklaşık 1561'de öldüğünü tahmin eder, ancak tarih kesin değildir.",
+      "tts": {
+        "text": "Tarihçiler Sayyide'nin yaklaşık bin beş yüz altmış bir yılında öldüğünü tahmin eder, ancak tarih kesin değildir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu tahmin doğruysa yaklaşık yetmiş altı yıl yaşamıştır.",
+      "text_markdown": "Bu tahmin doğruysa yaklaşık yetmiş altı yıl yaşamıştır.",
+      "tts": {
+        "text": "Bu tahmin doğruysa yaklaşık yetmiş altı yıl yaşamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, dönem için olağanüstü uzun bir ömürdü.",
+      "text_markdown": "Bu, dönem için olağanüstü uzun bir ömürdü.",
+      "tts": {
+        "text": "Bu, dönem için olağanüstü uzun bir ömürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak son yılları hakkında hiçbir şey bilinmemektedir.",
+      "text_markdown": "Ancak son yılları hakkında hiçbir şey bilinmemektedir.",
+      "tts": {
+        "text": "Ancak son yılları hakkında hiçbir şey bilinmemektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetuan şehri Sayyide'nin düşüşünden sonra da korsan faaliyetlerinin merkezi olmaya devam etti.",
+      "text_markdown": "Tetuan şehri Sayyide'nin düşüşünden sonra da korsan faaliyetlerinin merkezi olmaya devam etti.",
+      "tts": {
+        "text": "Tetuan şehri Sayyide'nin düşüşünden sonra da korsan faaliyetlerinin merkezi olmaya devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama bir daha onun çapında bir lidere sahip olmadı.",
+      "text_markdown": "Ama bir daha onun çapında bir lidere sahip olmadı.",
+      "tts": {
+        "text": "Ama bir daha onun çapında bir lidere sahip olmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Haleflerinin onun siyasi becerisi ve uluslararası ittifak ağı yoktu.",
+      "text_markdown": "Haleflerinin onun siyasi becerisi ve uluslararası ittifak ağı yoktu.",
+      "tts": {
+        "text": "Haleflerinin onun siyasi becerisi ve uluslararası ittifak ağı yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetuan'ın bir korsan gücü olarak altın çağı onunla sona erdi.",
+      "text_markdown": "Tetuan'ın bir korsan gücü olarak altın çağı onunla sona erdi.",
+      "tts": {
+        "text": "Tetuan'ın bir korsan gücü olarak altın çağı onunla sona erdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha geniş siyasi bağlam da Akdeniz korsanlığının aleyhine döndü.",
+      "text_markdown": "Daha geniş siyasi bağlam da Akdeniz korsanlığının aleyhine döndü.",
+      "tts": {
+        "text": "Daha geniş siyasi bağlam da Akdeniz korsanlığının aleyhine döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya Atlas Okyanusu ticaret yollarını korumak için giderek büyüyen bir donanma inşa ediyordu.",
+      "text_markdown": "İspanya Atlas Okyanusu ticaret yollarını korumak için giderek büyüyen bir donanma inşa ediyordu.",
+      "tts": {
+        "text": "İspanya Atlas Okyanusu ticaret yollarını korumak için giderek büyüyen bir donanma inşa ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuzey Afrika korsanlarını destekleyen Osmanlı İmparatorluğu uzun gerileme dönemini başlatıyordu.",
+      "text_markdown": "Kuzey Afrika korsanlarını destekleyen Osmanlı İmparatorluğu uzun gerileme dönemini başlatıyordu.",
+      "tts": {
+        "text": "Kuzey Afrika korsanlarını destekleyen Osmanlı İmparatorluğu uzun gerileme dönemini başlatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide'nin kariyerini mümkün kılan dünya yavaş yavaş ortadan kalkıyordu.",
+      "text_markdown": "Sayyide'nin kariyerini mümkün kılan dünya yavaş yavaş ortadan kalkıyordu.",
+      "tts": {
+        "text": "Sayyide'nin kariyerini mümkün kılan dünya yavaş yavaş ortadan kalkıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Düşüşü modern öncesi dünyada iktidarın kırılganlığının bir hatırlatmasıydı.",
+      "text_markdown": "Düşüşü modern öncesi dünyada iktidarın kırılganlığının bir hatırlatmasıydı.",
+      "tts": {
+        "text": "Düşüşü modern öncesi dünyada iktidarın kırılganlığının bir hatırlatmasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyide kadar yetenekli bir yönetici bile doğru bağlantılara sahip kararlı bir rakip tarafından devrilebilirdi.",
+      "text_markdown": "Sayyide kadar yetenekli bir yönetici bile doğru bağlantılara sahip kararlı bir rakip tarafından devrilebilirdi.",
+      "tts": {
+        "text": "Sayyide kadar yetenekli bir yönetici bile doğru bağlantılara sahip kararlı bir rakip tarafından devrilebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anayasal güvencelerin olmadığı bir dünyada iktidar tamamen kişisel ittifaklara ve askeri güce bağlıydı.",
+      "text_markdown": "Anayasal güvencelerin olmadığı bir dünyada iktidar tamamen kişisel ittifaklara ve askeri güce bağlıydı.",
+      "tts": {
+        "text": "Anayasal güvencelerin olmadığı bir dünyada iktidar tamamen kişisel ittifaklara ve askeri güce bağlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bir Kraliçenin Düşüşü",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bunlar başarısız olduğunda bir kraliçe bile düşebilirdi.",
+      "text_markdown": "Bunlar başarısız olduğunda bir kraliçe bile düşebilirdi.",
+      "tts": {
+        "text": "Bunlar başarısız olduğunda bir kraliçe bile düşebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hür Kadının Mirası",
+      "text_markdown": "Hür Kadının Mirası"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra'nın mirası son on yıllarda önemli ölçüde büyüdü.",
+      "text_markdown": "Sayyide el-Hürra'nın mirası son on yıllarda önemli ölçüde büyüdü.",
+      "tts": {
+        "text": "Sayyide el-Hürra'nın mirası son on yıllarda önemli ölçüde büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca Fas dışında büyük ölçüde unutulmuştu.",
+      "text_markdown": "Yüzyıllar boyunca Fas dışında büyük ölçüde unutulmuştu.",
+      "tts": {
+        "text": "Yüzyıllar boyunca Fas dışında büyük ölçüde unutulmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupa korsan tarihleri neredeyse yalnızca Karayipler'deki erkek korsanlara odaklanmıştı.",
+      "text_markdown": "Avrupa korsan tarihleri neredeyse yalnızca Karayipler'deki erkek korsanlara odaklanmıştı.",
+      "tts": {
+        "text": "Avrupa korsan tarihleri neredeyse yalnızca Karayipler'deki erkek korsanlara odaklanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide'nin hikâyesi esas olarak Fas sözlü geleneğinde ve Arapça tarih eserlerinde korundu.",
+      "text_markdown": "Sayyide'nin hikâyesi esas olarak Fas sözlü geleneğinde ve Arapça tarih eserlerinde korundu.",
+      "tts": {
+        "text": "Sayyide'nin hikâyesi esas olarak Fas sözlü geleneğinde ve Arapça tarih eserlerinde korundu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern tarihçiler onun hikâyesini yeniden keşfetmeye ve kutlamaya başladı.",
+      "text_markdown": "Modern tarihçiler onun hikâyesini yeniden keşfetmeye ve kutlamaya başladı.",
+      "tts": {
+        "text": "Modern tarihçiler onun hikâyesini yeniden keşfetmeye ve kutlamaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Artık Akdeniz korsanlığı döneminin en dikkat çekici figürlerinden biri olarak kabul edilmektedir.",
+      "text_markdown": "Artık Akdeniz korsanlığı döneminin en dikkat çekici figürlerinden biri olarak kabul edilmektedir.",
+      "tts": {
+        "text": "Artık Akdeniz korsanlığı döneminin en dikkat çekici figürlerinden biri olarak kabul edilmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otuz yıl boyunca bağımsız güç sürdürme başarısı olağanüstü olarak değerlendirilmektedir.",
+      "text_markdown": "Otuz yıl boyunca bağımsız güç sürdürme başarısı olağanüstü olarak değerlendirilmektedir.",
+      "tts": {
+        "text": "Otuz yıl boyunca bağımsız güç sürdürme başarısı olağanüstü olarak değerlendirilmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kadın liderliğinin son derece nadir olduğu bir dönemde kadın liderliğinin bir örneği olarak incelenmektedir.",
+      "text_markdown": "Kadın liderliğinin son derece nadir olduğu bir dönemde kadın liderliğinin bir örneği olarak incelenmektedir.",
+      "tts": {
+        "text": "Kadın liderliğinin son derece nadir olduğu bir dönemde kadın liderliğinin bir örneği olarak incelenmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas'ta Sayyide ulusal bir kahraman olarak anılmaktadır.",
+      "text_markdown": "Fas'ta Sayyide ulusal bir kahraman olarak anılmaktadır.",
+      "tts": {
+        "text": "Fas'ta Sayyide ulusal bir kahraman olarak anılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mülksüzleştirmelerini kabul etmeyi reddeden Endülüslü mültecilerin direnişini temsil eder.",
+      "text_markdown": "Mülksüzleştirmelerini kabul etmeyi reddeden Endülüslü mültecilerin direnişini temsil eder.",
+      "tts": {
+        "text": "Mülksüzleştirmelerini kabul etmeyi reddeden Endülüslü mültecilerin direnişini temsil eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tetuan şehri anısını bugüne kadar onurlandırmaktadır.",
+      "text_markdown": "Tetuan şehri anısını bugüne kadar onurlandırmaktadır.",
+      "tts": {
+        "text": "Tetuan şehri anısını bugüne kadar onurlandırmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hikâyesi Fas okullarında cesaret ve bağımsızlık örneği olarak öğretilmektedir.",
+      "text_markdown": "Hikâyesi Fas okullarında cesaret ve bağımsızlık örneği olarak öğretilmektedir.",
+      "tts": {
+        "text": "Hikâyesi Fas okullarında cesaret ve bağımsızlık örneği olarak öğretilmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyide'nin Barbaros ile ittifakı tarihî açıdan önemlidir.",
+      "text_markdown": "Sayyide'nin Barbaros ile ittifakı tarihî açıdan önemlidir.",
+      "tts": {
+        "text": "Sayyide'nin Barbaros ile ittifakı tarihî açıdan önemlidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akdeniz korsanlık dünyasının sadece bireysel akıncılardan oluşan bir topluluk olmadığını gösterir.",
+      "text_markdown": "Akdeniz korsanlık dünyasının sadece bireysel akıncılardan oluşan bir topluluk olmadığını gösterir.",
+      "tts": {
+        "text": "Akdeniz korsanlık dünyasının sadece bireysel akıncılardan oluşan bir topluluk olmadığını gösterir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geniş mesafeler boyunca koordine edilen stratejik bir ağdı.",
+      "text_markdown": "Geniş mesafeler boyunca koordine edilen stratejik bir ağdı.",
+      "tts": {
+        "text": "Geniş mesafeler boyunca koordine edilen stratejik bir ağdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide Akdeniz'in dünyanın en çekişmeli denizi olduğu bir dönemde bu ağda merkezi bir rol oynadı.",
+      "text_markdown": "Sayyide Akdeniz'in dünyanın en çekişmeli denizi olduğu bir dönemde bu ağda merkezi bir rol oynadı.",
+      "tts": {
+        "text": "Sayyide Akdeniz'in dünyanın en çekişmeli denizi olduğu bir dönemde bu ağda merkezi bir rol oynadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi ayrıca korsanlık ve devlet yönetimi arasındaki karmaşık ilişkiyi de aydınlatır.",
+      "text_markdown": "Hikâyesi ayrıca korsanlık ve devlet yönetimi arasındaki karmaşık ilişkiyi de aydınlatır.",
+      "tts": {
+        "text": "Hikâyesi ayrıca korsanlık ve devlet yönetimi arasındaki karmaşık ilişkiyi de aydınlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyide aynı anda kraliçe, korsan ve diplomattı.",
+      "text_markdown": "Sayyide aynı anda kraliçe, korsan ve diplomattı.",
+      "tts": {
+        "text": "Sayyide aynı anda kraliçe, korsan ve diplomattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlık faaliyetini sadece zenginleşme aracı olarak değil, dış politika aracı olarak kullandı.",
+      "text_markdown": "Korsanlık faaliyetini sadece zenginleşme aracı olarak değil, dış politika aracı olarak kullandı.",
+      "tts": {
+        "text": "Korsanlık faaliyetini sadece zenginleşme aracı olarak değil, dış politika aracı olarak kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kariyeri korsanlık ile meşru savaş arasındaki çizginin Akdeniz'de Karayipler kadar bulanık olduğunu gösterir.",
+      "text_markdown": "Kariyeri korsanlık ile meşru savaş arasındaki çizginin Akdeniz'de Karayipler kadar bulanık olduğunu gösterir.",
+      "tts": {
+        "text": "Kariyeri korsanlık ile meşru savaş arasındaki çizginin Akdeniz'de Karayipler kadar bulanık olduğunu gösterir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El-Hürra unvanı en kalıcı sembolü olarak kalmaya devam etmektedir.",
+      "text_markdown": "El-Hürra unvanı en kalıcı sembolü olarak kalmaya devam etmektedir.",
+      "tts": {
+        "text": "El-Hürra unvanı en kalıcı sembolü olarak kalmaya devam etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hür kadın, egemen kadın, kimseye hesap vermeyen kadın anlamına geliyordu.",
+      "text_markdown": "Hür kadın, egemen kadın, kimseye hesap vermeyen kadın anlamına geliyordu.",
+      "tts": {
+        "text": "Hür kadın, egemen kadın, kimseye hesap vermeyen kadın anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O zamandan bu yana İslam dünyasında hiçbir kadın bu unvanı taşımamıştır.",
+      "text_markdown": "O zamandan bu yana İslam dünyasında hiçbir kadın bu unvanı taşımamıştır.",
+      "tts": {
+        "text": "O zamandan bu yana İslam dünyasında hiçbir kadın bu unvanı taşımamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra tarihte yalnız durmaktadır, türünün sonuncusu.",
+      "text_markdown": "Sayyide el-Hürra tarihte yalnız durmaktadır, türünün sonuncusu.",
+      "tts": {
+        "text": "Sayyide el-Hürra tarihte yalnız durmaktadır, türünün sonuncusu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün araştırmacılar hayatı hakkında daha fazla bilgi ortaya çıkarabilecek yeni belgeler aramaya devam etmektedir.",
+      "text_markdown": "Bugün araştırmacılar hayatı hakkında daha fazla bilgi ortaya çıkarabilecek yeni belgeler aramaya devam etmektedir.",
+      "tts": {
+        "text": "Bugün araştırmacılar hayatı hakkında daha fazla bilgi ortaya çıkarabilecek yeni belgeler aramaya devam etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fas, İspanya ve Portekiz'deki arşivler hâlâ keşfedilmemiş mektuplar, antlaşmalar ve anlatılar barındırıyor olabilir.",
+      "text_markdown": "Fas, İspanya ve Portekiz'deki arşivler hâlâ keşfedilmemiş mektuplar, antlaşmalar ve anlatılar barındırıyor olabilir.",
+      "tts": {
+        "text": "Fas, İspanya ve Portekiz'deki arşivler hâlâ keşfedilmemiş mektuplar, antlaşmalar ve anlatılar barındırıyor olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her yeni keşif bu olağanüstü kadının bulmacasına bir parça daha eklemektedir.",
+      "text_markdown": "Her yeni keşif bu olağanüstü kadının bulmacasına bir parça daha eklemektedir.",
+      "tts": {
+        "text": "Her yeni keşif bu olağanüstü kadının bulmacasına bir parça daha eklemektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hür Kadının Mirası",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyide el-Hürra'nın tam hikâyesi henüz yazılmamıştır.",
+      "text_markdown": "Sayyide el-Hürra'nın tam hikâyesi henüz yazılmamıştır.",
+      "tts": {
+        "text": "Sayyide el-Hürra'nın tam hikâyesi henüz yazılmamıştır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

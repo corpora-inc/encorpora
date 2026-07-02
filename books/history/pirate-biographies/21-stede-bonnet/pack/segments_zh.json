@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_stede_bonnet",
+  "language": "zh",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本系列中的每个海盗故事都讲述了一个坚强、足智多谋或走投无路的人。",
+      "text_markdown": "本系列中的每个海盗故事都讲述了一个坚强、足智多谋或走投无路的人。",
+      "tts": {
+        "text": "本系列中的每个海盗故事都讲述了一个坚强、足智多谋或走投无路的人。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "斯蒂德·邦尼特什么都不是。",
+      "text_markdown": "斯蒂德·邦尼特什么都不是。",
+      "tts": {
+        "text": "斯蒂德·邦尼特什么都不是。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他是巴巴多斯一位富有的甘蔗种植园主，有着漂亮的房子、良好的教育，以及完全没有理由去当海盗。",
+      "text_markdown": "他是巴巴多斯一位富有的甘蔗种植园主，有着漂亮的房子、良好的教育，以及完全没有理由去当海盗。",
+      "tts": {
+        "text": "他是巴巴多斯一位富有的甘蔗种植园主，有着漂亮的房子、良好的教育，以及完全没有理由去当海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他还是去了。",
+      "text_markdown": "他还是去了。",
+      "tts": {
+        "text": "他还是去了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的故事是整个海盗史上最奇异的故事之一。",
+      "text_markdown": "他的故事是整个海盗史上最奇异的故事之一。",
+      "tts": {
+        "text": "他的故事是整个海盗史上最奇异的故事之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他买了一艘船，而不是偷一艘。",
+      "text_markdown": "他买了一艘船，而不是偷一艘。",
+      "tts": {
+        "text": "他买了一艘船，而不是偷一艘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他雇了一批船员，而不是赢得他们的忠诚。",
+      "text_markdown": "他雇了一批船员，而不是赢得他们的忠诚。",
+      "tts": {
+        "text": "他雇了一批船员，而不是赢得他们的忠诚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他以一个度假者的准备程度投身犯罪生涯。",
+      "text_markdown": "他以一个度假者的准备程度投身犯罪生涯。",
+      "tts": {
+        "text": "他以一个度假者的准备程度投身犯罪生涯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几乎所有记载都表明，他是一个极其糟糕的海盗。",
+      "text_markdown": "几乎所有记载都表明，他是一个极其糟糕的海盗。",
+      "tts": {
+        "text": "几乎所有记载都表明，他是一个极其糟糕的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "然而他的故事却极具教育意义。",
+      "text_markdown": "然而他的故事却极具教育意义。",
+      "tts": {
+        "text": "然而他的故事却极具教育意义。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它告诉我们海盗生涯真正需要什么，恰恰因为邦尼特一样都不具备。",
+      "text_markdown": "它告诉我们海盗生涯真正需要什么，恰恰因为邦尼特一样都不具备。",
+      "tts": {
+        "text": "它告诉我们海盗生涯真正需要什么，恰恰因为邦尼特一样都不具备。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的故事还与海盗黄金时代最著名的一些人物交织在一起。",
+      "text_markdown": "他的故事还与海盗黄金时代最著名的一些人物交织在一起。",
+      "tts": {
+        "text": "他的故事还与海盗黄金时代最著名的一些人物交织在一起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他与黑胡子本人一起航行。",
+      "text_markdown": "他与黑胡子本人一起航行。",
+      "tts": {
+        "text": "他与黑胡子本人一起航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这对斯蒂德·邦尼特来说可没什么好结果。",
+      "text_markdown": "这对斯蒂德·邦尼特来说可没什么好结果。",
+      "tts": {
+        "text": "这对斯蒂德·邦尼特来说可没什么好结果。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "加勒比海的世界",
+      "text_markdown": "加勒比海的世界"
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初是海盗黄金时代的鼎盛时期。",
+      "text_markdown": "十八世纪初是海盗黄金时代的鼎盛时期。",
+      "tts": {
+        "text": "十八世纪初是海盗黄金时代的鼎盛时期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "加勒比海是这个世界的中心，一个温暖水域遍布数千座岛屿的广袤海域。",
+      "text_markdown": "加勒比海是这个世界的中心，一个温暖水域遍布数千座岛屿的广袤海域。",
+      "tts": {
+        "text": "加勒比海是这个世界的中心，一个温暖水域遍布数千座岛屿的广袤海域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是海盗的天堂。",
+      "text_markdown": "这是海盗的天堂。",
+      "tts": {
+        "text": "这是海盗的天堂。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲列强争夺加勒比地区已超过两个世纪。",
+      "text_markdown": "欧洲列强争夺加勒比地区已超过两个世纪。",
+      "tts": {
+        "text": "欧洲列强争夺加勒比地区已超过两个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙、英格兰、法国和荷兰都宣称对岛屿和大陆领土拥有主权。",
+      "text_markdown": "西班牙、英格兰、法国和荷兰都宣称对岛屿和大陆领土拥有主权。",
+      "tts": {
+        "text": "西班牙、英格兰、法国和荷兰都宣称对岛屿和大陆领土拥有主权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "流经该地区的财富令人瞠目。",
+      "text_markdown": "流经该地区的财富令人瞠目。",
+      "tts": {
+        "text": "流经该地区的财富令人瞠目。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蔗糖是加勒比财富的基础。",
+      "text_markdown": "蔗糖是加勒比财富的基础。",
+      "tts": {
+        "text": "蔗糖是加勒比财富的基础。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "甘蔗种植园遍布各岛，由数十万被奴役的非洲人耕作。",
+      "text_markdown": "甘蔗种植园遍布各岛，由数十万被奴役的非洲人耕作。",
+      "tts": {
+        "text": "甘蔗种植园遍布各岛，由数十万被奴役的非洲人耕作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "蔗糖贸易为种植园主和购买其产品的欧洲商人带来了巨额利润。",
+      "text_markdown": "蔗糖贸易为种植园主和购买其产品的欧洲商人带来了巨额利润。",
+      "tts": {
+        "text": "蔗糖贸易为种植园主和购买其产品的欧洲商人带来了巨额利润。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴多斯是加勒比地区最富有的蔗糖岛之一。",
+      "text_markdown": "巴巴多斯是加勒比地区最富有的蔗糖岛之一。",
+      "tts": {
+        "text": "巴巴多斯是加勒比地区最富有的蔗糖岛之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国殖民者从1640年代开始在那里建立甘蔗种植园。",
+      "text_markdown": "英国殖民者从1640年代开始在那里建立甘蔗种植园。",
+      "tts": {
+        "text": "英国殖民者从一六四零年代开始在那里建立甘蔗种植园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到十八世纪初，该岛已是大英帝国人口最稠密、利润最丰厚的殖民地之一。",
+      "text_markdown": "到十八世纪初，该岛已是大英帝国人口最稠密、利润最丰厚的殖民地之一。",
+      "tts": {
+        "text": "到十八世纪初，该岛已是大英帝国人口最稠密、利润最丰厚的殖民地之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴多斯的财富建立在奴隶制之上。",
+      "text_markdown": "巴巴多斯的财富建立在奴隶制之上。",
+      "tts": {
+        "text": "巴巴多斯的财富建立在奴隶制之上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一个富有的种植园主背后，都有数百名在残酷条件下劳作的被奴役者。",
+      "text_markdown": "每一个富有的种植园主背后，都有数百名在残酷条件下劳作的被奴役者。",
+      "tts": {
+        "text": "每一个富有的种植园主背后，都有数百名在残酷条件下劳作的被奴役者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "甘蔗种植园是巨大苦难的场所。",
+      "text_markdown": "甘蔗种植园是巨大苦难的场所。",
+      "tts": {
+        "text": "甘蔗种植园是巨大苦难的场所。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "正是这个世界让斯蒂德·邦尼特变得富有。",
+      "text_markdown": "正是这个世界让斯蒂德·邦尼特变得富有。",
+      "tts": {
+        "text": "正是这个世界让斯蒂德·邦尼特变得富有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "种植园之外的加勒比海是一片无法之地。",
+      "text_markdown": "种植园之外的加勒比海是一片无法之地。",
+      "tts": {
+        "text": "种植园之外的加勒比海是一片无法之地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "岛屿之间的距离十分遥远。",
+      "text_markdown": "岛屿之间的距离十分遥远。",
+      "tts": {
+        "text": "岛屿之间的距离十分遥远。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海军巡逻力量薄弱且不可靠。",
+      "text_markdown": "海军巡逻力量薄弱且不可靠。",
+      "tts": {
+        "text": "海军巡逻力量薄弱且不可靠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一艘快船配上一群胆大的船员，可以相对逍遥法外地掠夺商船。",
+      "text_markdown": "一艘快船配上一群胆大的船员，可以相对逍遥法外地掠夺商船。",
+      "tts": {
+        "text": "一艘快船配上一群胆大的船员，可以相对逍遥法外地掠夺商船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1713年西班牙王位继承战争的结束使加勒比海涌入了大量失业水手。",
+      "text_markdown": "1713年西班牙王位继承战争的结束使加勒比海涌入了大量失业水手。",
+      "tts": {
+        "text": "一七一三年西班牙王位继承战争的结束使加勒比海涌入了大量失业水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "成千上万在战争期间充当私掠者的人突然失去了合法工作。",
+      "text_markdown": "成千上万在战争期间充当私掠者的人突然失去了合法工作。",
+      "tts": {
+        "text": "成千上万在战争期间充当私掠者的人突然失去了合法工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多人转向海盗行当，因为这是他们唯一会的手艺。",
+      "text_markdown": "许多人转向海盗行当，因为这是他们唯一会的手艺。",
+      "tts": {
+        "text": "许多人转向海盗行当，因为这是他们唯一会的手艺。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黄金时代的海盗按照数十年来演变的一套规则和惯例行事。",
+      "text_markdown": "黄金时代的海盗按照数十年来演变的一套规则和惯例行事。",
+      "tts": {
+        "text": "黄金时代的海盗按照数十年来演变的一套规则和惯例行事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船长由船员选举产生。",
+      "text_markdown": "船长由船员选举产生。",
+      "tts": {
+        "text": "船长由船员选举产生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品按照约定的份额分配。",
+      "text_markdown": "战利品按照约定的份额分配。",
+      "tts": {
+        "text": "战利品按照约定的份额分配。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "纪律靠集体同意来维持，而非船长的绝对权威。",
+      "text_markdown": "纪律靠集体同意来维持，而非船长的绝对权威。",
+      "tts": {
+        "text": "纪律靠集体同意来维持，而非船长的绝对权威。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一种粗犷的民主形式。",
+      "text_markdown": "这是一种粗犷的民主形式。",
+      "tts": {
+        "text": "这是一种粗犷的民主形式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗船是大西洋世界中最平等的社群之一。",
+      "text_markdown": "海盗船是大西洋世界中最平等的社群之一。",
+      "tts": {
+        "text": "海盗船是大西洋世界中最平等的社群之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "各种族和背景的人一起服役。",
+      "text_markdown": "各种族和背景的人一起服役。",
+      "tts": {
+        "text": "各种族和背景的人一起服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "前奴隶与前海军军官并肩航行。",
+      "text_markdown": "前奴隶与前海军军官并肩航行。",
+      "tts": {
+        "text": "前奴隶与前海军军官并肩航行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个成功的海盗船长需要特定的技能。",
+      "text_markdown": "一个成功的海盗船长需要特定的技能。",
+      "tts": {
+        "text": "一个成功的海盗船长需要特定的技能。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他需要靠星星导航。",
+      "text_markdown": "他需要靠星星导航。",
+      "tts": {
+        "text": "他需要靠星星导航。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他需要能判读天气和洋流。",
+      "text_markdown": "他需要能判读天气和洋流。",
+      "tts": {
+        "text": "他需要能判读天气和洋流。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他需要在危险的人群中激发忠诚并化解冲突。",
+      "text_markdown": "他需要在危险的人群中激发忠诚并化解冲突。",
+      "tts": {
+        "text": "他需要在危险的人群中激发忠诚并化解冲突。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最重要的是，海盗船长需要赢得船员的尊重。",
+      "text_markdown": "最重要的是，海盗船长需要赢得船员的尊重。",
+      "tts": {
+        "text": "最重要的是，海盗船长需要赢得船员的尊重。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果船员对船长失去信心，他们会直接投票将他赶下台。",
+      "text_markdown": "如果船员对船长失去信心，他们会直接投票将他赶下台。",
+      "tts": {
+        "text": "如果船员对船长失去信心，他们会直接投票将他赶下台。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "无能、怯懦或不公正的船长会被毫不客气地替换。",
+      "text_markdown": "无能、怯懦或不公正的船长会被毫不客气地替换。",
+      "tts": {
+        "text": "无能、怯懦或不公正的船长会被毫不客气地替换。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到1717年，英国政府决定打击海盗。",
+      "text_markdown": "到1717年，英国政府决定打击海盗。",
+      "tts": {
+        "text": "到一七一七年，英国政府决定打击海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乔治一世国王发布了一道皇家公告，向在规定期限前投降的海盗提供赦免。",
+      "text_markdown": "乔治一世国王发布了一道皇家公告，向在规定期限前投降的海盗提供赦免。",
+      "tts": {
+        "text": "乔治一世国王发布了一道皇家公告，向在规定期限前投降的海盗提供赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多海盗接受了赦免。",
+      "text_markdown": "许多海盗接受了赦免。",
+      "tts": {
+        "text": "许多海盗接受了赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其他人则置若罔闻。",
+      "text_markdown": "其他人则置若罔闻。",
+      "tts": {
+        "text": "其他人则置若罔闻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是斯蒂德·邦尼特选择踏入的世界。",
+      "text_markdown": "这就是斯蒂德·邦尼特选择踏入的世界。",
+      "tts": {
+        "text": "这就是斯蒂德·邦尼特选择踏入的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个由职业罪犯、经验丰富的杀手和久经风浪的水手组成的世界。",
+      "text_markdown": "一个由职业罪犯、经验丰富的杀手和久经风浪的水手组成的世界。",
+      "tts": {
+        "text": "一个由职业罪犯、经验丰富的杀手和久经风浪的水手组成的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在毫无相关经验的情况下踏入了这个世界。",
+      "text_markdown": "他在毫无相关经验的情况下踏入了这个世界。",
+      "tts": {
+        "text": "他在毫无相关经验的情况下踏入了这个世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "加勒比海的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "结果可想而知。",
+      "text_markdown": "结果可想而知。",
+      "tts": {
+        "text": "结果可想而知。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯蒂德·邦尼特于1688年出生在巴巴多斯。",
+      "text_markdown": "斯蒂德·邦尼特于1688年出生在巴巴多斯。",
+      "tts": {
+        "text": "斯蒂德·邦尼特于一六八八年出生在巴巴多斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的家族是该岛的地主贵族阶层。",
+      "text_markdown": "他的家族是该岛的地主贵族阶层。",
+      "tts": {
+        "text": "他的家族是该岛的地主贵族阶层。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们拥有一座利润丰厚的甘蔗种植园，过着舒适优渥的生活。",
+      "text_markdown": "他们拥有一座利润丰厚的甘蔗种植园，过着舒适优渥的生活。",
+      "tts": {
+        "text": "他们拥有一座利润丰厚的甘蔗种植园，过着舒适优渥的生活。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他接受了良好的教育，这在加勒比殖民地并不常见。",
+      "text_markdown": "他接受了良好的教育，这在加勒比殖民地并不常见。",
+      "tts": {
+        "text": "他接受了良好的教育，这在加勒比殖民地并不常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他能读善写。",
+      "text_markdown": "他能读善写。",
+      "tts": {
+        "text": "他能读善写。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他熟悉文学和历史。",
+      "text_markdown": "他熟悉文学和历史。",
+      "tts": {
+        "text": "他熟悉文学和历史。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "简而言之，他是一位绅士。",
+      "text_markdown": "简而言之，他是一位绅士。",
+      "tts": {
+        "text": "简而言之，他是一位绅士。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特继承了家族种植园，成为一个相当富有的人。",
+      "text_markdown": "邦尼特继承了家族种植园，成为一个相当富有的人。",
+      "tts": {
+        "text": "邦尼特继承了家族种植园，成为一个相当富有的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是巴巴多斯社会中受人尊敬的成员。",
+      "text_markdown": "他是巴巴多斯社会中受人尊敬的成员。",
+      "tts": {
+        "text": "他是巴巴多斯社会中受人尊敬的成员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在该岛民兵中拥有少校军衔，这是一个具有社会地位的职位。",
+      "text_markdown": "他在该岛民兵中拥有少校军衔，这是一个具有社会地位的职位。",
+      "tts": {
+        "text": "他在该岛民兵中拥有少校军衔，这是一个具有社会地位的职位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他娶了一位名叫玛丽·阿拉姆比的女子。",
+      "text_markdown": "他娶了一位名叫玛丽·阿拉姆比的女子。",
+      "tts": {
+        "text": "他娶了一位名叫玛丽·阿拉姆比的女子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们育有子女。",
+      "text_markdown": "他们育有子女。",
+      "tts": {
+        "text": "他们育有子女。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从各方面来看，斯蒂德·邦尼特拥有那个时代一个男人所能渴望的一切。",
+      "text_markdown": "从各方面来看，斯蒂德·邦尼特拥有那个时代一个男人所能渴望的一切。",
+      "tts": {
+        "text": "从各方面来看，斯蒂德·邦尼特拥有那个时代一个男人所能渴望的一切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然而有些事情不对劲。",
+      "text_markdown": "然而有些事情不对劲。",
+      "tts": {
+        "text": "然而有些事情不对劲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史记载表明邦尼特内心深处极为不幸福。",
+      "text_markdown": "历史记载表明邦尼特内心深处极为不幸福。",
+      "tts": {
+        "text": "历史记载表明邦尼特内心深处极为不幸福。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最常被提及的原因是他的婚姻。",
+      "text_markdown": "最常被提及的原因是他的婚姻。",
+      "tts": {
+        "text": "最常被提及的原因是他的婚姻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多个来源将他的家庭生活描述为痛苦不堪。",
+      "text_markdown": "多个来源将他的家庭生活描述为痛苦不堪。",
+      "tts": {
+        "text": "多个来源将他的家庭生活描述为痛苦不堪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一份当时的记载直言不讳地说，邦尼特之所以转向海盗，是为了逃避妻子的唠叨。",
+      "text_markdown": "一份当时的记载直言不讳地说，邦尼特之所以转向海盗，是为了逃避妻子的唠叨。",
+      "tts": {
+        "text": "一份当时的记载直言不讳地说，邦尼特之所以转向海盗，是为了逃避妻子的唠叨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这对玛丽·阿拉姆比是否公平，我们无从知晓。",
+      "text_markdown": "这对玛丽·阿拉姆比是否公平，我们无从知晓。",
+      "tts": {
+        "text": "这对玛丽·阿拉姆比是否公平，我们无从知晓。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们知道的是，邦尼特成为海盗的决定让所有认识他的人都感到困惑不已。",
+      "text_markdown": "我们知道的是，邦尼特成为海盗的决定让所有认识他的人都感到困惑不已。",
+      "tts": {
+        "text": "我们知道的是，邦尼特成为海盗的决定让所有认识他的人都感到困惑不已。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些历史学家认为邦尼特可能患有精神疾病。",
+      "text_markdown": "一些历史学家认为邦尼特可能患有精神疾病。",
+      "tts": {
+        "text": "一些历史学家认为邦尼特可能患有精神疾病。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的同代人使用了「精神错乱」这个说法。",
+      "text_markdown": "他的同代人使用了「精神错乱」这个说法。",
+      "tts": {
+        "text": "他的同代人使用了「精神错乱」这个说法。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "某种力量驱使他放弃优渥的生活，投身犯罪。",
+      "text_markdown": "某种力量驱使他放弃优渥的生活，投身犯罪。",
+      "tts": {
+        "text": "某种力量驱使他放弃优渥的生活，投身犯罪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年春天，邦尼特秘密委托建造了一艘单桅帆船。",
+      "text_markdown": "1717年春天，邦尼特秘密委托建造了一艘单桅帆船。",
+      "tts": {
+        "text": "一七一七年春天，邦尼特秘密委托建造了一艘单桅帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "单桅帆船是一种快速的单桅帆船，深受海盗青睐。",
+      "text_markdown": "单桅帆船是一种快速的单桅帆船，深受海盗青睐。",
+      "tts": {
+        "text": "单桅帆船是一种快速的单桅帆船，深受海盗青睐。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但海盗不会买自己的船。",
+      "text_markdown": "但海盗不会买自己的船。",
+      "tts": {
+        "text": "但海盗不会买自己的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们偷。",
+      "text_markdown": "他们偷。",
+      "tts": {
+        "text": "他们偷。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特自掏腰包买下了他的单桅帆船。",
+      "text_markdown": "邦尼特自掏腰包买下了他的单桅帆船。",
+      "tts": {
+        "text": "邦尼特自掏腰包买下了他的单桅帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他给它取名为「复仇号」。",
+      "text_markdown": "他给它取名为「复仇号」。",
+      "tts": {
+        "text": "他给它取名为「复仇号」。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个名字暗示了一种怨恨，但对谁或什么仍不清楚。",
+      "text_markdown": "这个名字暗示了一种怨恨，但对谁或什么仍不清楚。",
+      "tts": {
+        "text": "这个名字暗示了一种怨恨，但对谁或什么仍不清楚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "也许这是对自己不幸的复仇。",
+      "text_markdown": "也许这是对自己不幸的复仇。",
+      "tts": {
+        "text": "也许这是对自己不幸的复仇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后他雇了大约七十名船员。",
+      "text_markdown": "然后他雇了大约七十名船员。",
+      "tts": {
+        "text": "然后他雇了大约七十名船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "真正的海盗船长不会雇佣他们的船员。",
+      "text_markdown": "真正的海盗船长不会雇佣他们的船员。",
+      "tts": {
+        "text": "真正的海盗船长不会雇佣他们的船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船员选择他们的船长。",
+      "text_markdown": "船员选择他们的船长。",
+      "tts": {
+        "text": "船员选择他们的船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "邦尼特从一开始就把整个关系搞反了。",
+      "text_markdown": "邦尼特从一开始就把整个关系搞反了。",
+      "tts": {
+        "text": "邦尼特从一开始就把整个关系搞反了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他雇的人是一帮粗犷的人，经验丰富的水手，其中可能还有一些前海盗。",
+      "text_markdown": "他雇的人是一帮粗犷的人，经验丰富的水手，其中可能还有一些前海盗。",
+      "tts": {
+        "text": "他雇的人是一帮粗犷的人，经验丰富的水手，其中可能还有一些前海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们很快意识到他们的新船长几乎对航海和战斗一窍不通。",
+      "text_markdown": "他们很快意识到他们的新船长几乎对航海和战斗一窍不通。",
+      "tts": {
+        "text": "他们很快意识到他们的新船长几乎对航海和战斗一窍不通。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他付钱给他们，所以他们也就接受了。",
+      "text_markdown": "但他付钱给他们，所以他们也就接受了。",
+      "tts": {
+        "text": "但他付钱给他们，所以他们也就接受了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一天夜里，邦尼特趁着夜色从巴巴多斯的卡莱尔湾出发了。",
+      "text_markdown": "一天夜里，邦尼特趁着夜色从巴巴多斯的卡莱尔湾出发了。",
+      "tts": {
+        "text": "一天夜里，邦尼特趁着夜色从巴巴多斯的卡莱尔湾出发了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他抛下了种植园、家人和全部的过往生活。",
+      "text_markdown": "他抛下了种植园、家人和全部的过往生活。",
+      "tts": {
+        "text": "他抛下了种植园、家人和全部的过往生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他正驶向一个他完全不够格加入的世界。",
+      "text_markdown": "他正驶向一个他完全不够格加入的世界。",
+      "tts": {
+        "text": "他正驶向一个他完全不够格加入的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这位绅士种植园主变成了海盗。",
+      "text_markdown": "这位绅士种植园主变成了海盗。",
+      "tts": {
+        "text": "这位绅士种植园主变成了海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "加勒比海从未见过这样的事。",
+      "text_markdown": "加勒比海从未见过这样的事。",
+      "tts": {
+        "text": "加勒比海从未见过这样的事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它大概宁愿没见过。",
+      "text_markdown": "它大概宁愿没见过。",
+      "tts": {
+        "text": "它大概宁愿没见过。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "「绅士海盗」,「绅士海盗」",
+      "text_markdown": "「绅士海盗」,「绅士海盗」"
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯蒂德·邦尼特早期的海盗生涯是一连串笨拙、半成功的劫掠。",
+      "text_markdown": "斯蒂德·邦尼特早期的海盗生涯是一连串笨拙、半成功的劫掠。",
+      "tts": {
+        "text": "斯蒂德·邦尼特早期的海盗生涯是一连串笨拙、半成功的劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他沿着美洲海岸向北航行，俘获了几艘小型船只。",
+      "text_markdown": "他沿着美洲海岸向北航行，俘获了几艘小型船只。",
+      "tts": {
+        "text": "他沿着美洲海岸向北航行，俘获了几艘小型船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品微薄，但足以阻止船员立即哗变。",
+      "text_markdown": "战利品微薄，但足以阻止船员立即哗变。",
+      "tts": {
+        "text": "战利品微薄，但足以阻止船员立即哗变。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在弗吉尼亚和卡罗莱纳沿岸夺取船只。",
+      "text_markdown": "他在弗吉尼亚和卡罗莱纳沿岸夺取船只。",
+      "tts": {
+        "text": "他在弗吉尼亚和卡罗莱纳沿岸夺取船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他还在纽约附近进行劫掠。",
+      "text_markdown": "他还在纽约附近进行劫掠。",
+      "tts": {
+        "text": "他还在纽约附近进行劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的手法笨拙但偶尔有效，主要是因为他的目标是无法反击的手无寸铁的商船。",
+      "text_markdown": "他的手法笨拙但偶尔有效，主要是因为他的目标是无法反击的手无寸铁的商船。",
+      "tts": {
+        "text": "他的手法笨拙但偶尔有效，主要是因为他的目标是无法反击的手无寸铁的商船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特缺乏航海知识是一个持续存在的问题。",
+      "text_markdown": "邦尼特缺乏航海知识是一个持续存在的问题。",
+      "tts": {
+        "text": "邦尼特缺乏航海知识是一个持续存在的问题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他不懂导航、航海术或海战。",
+      "text_markdown": "他不懂导航、航海术或海战。",
+      "tts": {
+        "text": "他不懂导航、航海术或海战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的船员实际上替他驾驶船只，而他发出的命令被他们客客气气地无视了。",
+      "text_markdown": "他的船员实际上替他驾驶船只，而他发出的命令被他们客客气气地无视了。",
+      "tts": {
+        "text": "他的船员实际上替他驾驶船只，而他发出的命令被他们客客气气地无视了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管无能，邦尼特有一个对他有利的特质。",
+      "text_markdown": "尽管无能，邦尼特有一个对他有利的特质。",
+      "tts": {
+        "text": "尽管无能，邦尼特有一个对他有利的特质。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他对船员的薪酬很大方。",
+      "text_markdown": "他对船员的薪酬很大方。",
+      "tts": {
+        "text": "他对船员的薪酬很大方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数海盗船长按份额分配战利品。",
+      "text_markdown": "大多数海盗船长按份额分配战利品。",
+      "tts": {
+        "text": "大多数海盗船长按份额分配战利品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "邦尼特干脆从个人财产中给手下发工资，这是闻所未闻的安排。",
+      "text_markdown": "邦尼特干脆从个人财产中给手下发工资，这是闻所未闻的安排。",
+      "tts": {
+        "text": "邦尼特干脆从个人财产中给手下发工资，这是闻所未闻的安排。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的船员容忍他的领导，因为钱来得稳定。",
+      "text_markdown": "他的船员容忍他的领导，因为钱来得稳定。",
+      "tts": {
+        "text": "他的船员容忍他的领导，因为钱来得稳定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在海盗世界的不确定中，一个按时发薪的船长有一定价值，哪怕他连港口都驶不出去。",
+      "text_markdown": "在海盗世界的不确定中，一个按时发薪的船长有一定价值，哪怕他连港口都驶不出去。",
+      "tts": {
+        "text": "在海盗世界的不确定中，一个按时发薪的船长有一定价值，哪怕他连港口都驶不出去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特作为「绅士海盗」的名声迅速传开。",
+      "text_markdown": "邦尼特作为「绅士海盗」的名声迅速传开。",
+      "tts": {
+        "text": "邦尼特作为「绅士海盗」的名声迅速传开。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个富有的种植园主变成海盗，这是人们无法抵挡的八卦。",
+      "text_markdown": "一个富有的种植园主变成海盗，这是人们无法抵挡的八卦。",
+      "tts": {
+        "text": "一个富有的种植园主变成海盗，这是人们无法抵挡的八卦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "沿海地区人人都知道这个故事。",
+      "text_markdown": "沿海地区人人都知道这个故事。",
+      "tts": {
+        "text": "沿海地区人人都知道这个故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大多数人觉得这简直太好笑了。",
+      "text_markdown": "大多数人觉得这简直太好笑了。",
+      "tts": {
+        "text": "大多数人觉得这简直太好笑了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后，在1717年秋天，斯蒂德·邦尼特遇到了加勒比海最臭名昭著的海盗。",
+      "text_markdown": "然后，在1717年秋天，斯蒂德·邦尼特遇到了加勒比海最臭名昭著的海盗。",
+      "tts": {
+        "text": "然后，在一七一七年秋天，斯蒂德·邦尼特遇到了加勒比海最臭名昭著的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他遇到了爱德华·蒂奇，历史上称他为黑胡子。",
+      "text_markdown": "他遇到了爱德华·蒂奇，历史上称他为黑胡子。",
+      "tts": {
+        "text": "他遇到了爱德华·蒂奇，历史上称他为黑胡子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这次相遇将定义邦尼特海盗生涯的余生。",
+      "text_markdown": "这次相遇将定义邦尼特海盗生涯的余生。",
+      "tts": {
+        "text": "这次相遇将定义邦尼特海盗生涯的余生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子是邦尼特所不是的一切。",
+      "text_markdown": "黑胡子是邦尼特所不是的一切。",
+      "tts": {
+        "text": "黑胡子是邦尼特所不是的一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他经验丰富、冷酷无情、魅力十足、令人闻风丧胆。",
+      "text_markdown": "他经验丰富、冷酷无情、魅力十足、令人闻风丧胆。",
+      "tts": {
+        "text": "他经验丰富、冷酷无情、魅力十足、令人闻风丧胆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他凭借技巧和威慑的结合来指挥船员。",
+      "text_markdown": "他凭借技巧和威慑的结合来指挥船员。",
+      "tts": {
+        "text": "他凭借技巧和威慑的结合来指挥船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他是暴力之徒的天生领袖。",
+      "text_markdown": "他是暴力之徒的天生领袖。",
+      "tts": {
+        "text": "他是暴力之徒的天生领袖。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当黑胡子看到邦尼特的处境时，他立刻看到了机会。",
+      "text_markdown": "当黑胡子看到邦尼特的处境时，他立刻看到了机会。",
+      "tts": {
+        "text": "当黑胡子看到邦尼特的处境时，他立刻看到了机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这里有一个人，拥有一艘好船却毫无指挥能力。",
+      "text_markdown": "这里有一个人，拥有一艘好船却毫无指挥能力。",
+      "tts": {
+        "text": "这里有一个人，拥有一艘好船却毫无指挥能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子建议邦尼特与他联手。",
+      "text_markdown": "黑胡子建议邦尼特与他联手。",
+      "tts": {
+        "text": "黑胡子建议邦尼特与他联手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他实际上做的是夺取了控制权。",
+      "text_markdown": "他实际上做的是夺取了控制权。",
+      "tts": {
+        "text": "他实际上做的是夺取了控制权。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子派自己的一名军官指挥「复仇号」。",
+      "text_markdown": "黑胡子派自己的一名军官指挥「复仇号」。",
+      "tts": {
+        "text": "黑胡子派自己的一名军官指挥「复仇号」。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "邦尼特被转移到黑胡子的旗舰「安妮女王复仇号」上，以客人身份待着。",
+      "text_markdown": "邦尼特被转移到黑胡子的旗舰「安妮女王复仇号」上，以客人身份待着。",
+      "tts": {
+        "text": "邦尼特被转移到黑胡子的旗舰「安妮女王复仇号」上，以客人身份待着。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是客人，就像人质是客人一样。",
+      "text_markdown": "他是客人，就像人质是客人一样。",
+      "tts": {
+        "text": "他是客人，就像人质是客人一样。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他既无权力也无角色。",
+      "text_markdown": "他既无权力也无角色。",
+      "tts": {
+        "text": "他既无权力也无角色。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据多方记载，邦尼特在黑胡子的船上，整天读书并穿着睡袍在甲板上散步。",
+      "text_markdown": "据多方记载，邦尼特在黑胡子的船上，整天读书并穿着睡袍在甲板上散步。",
+      "tts": {
+        "text": "据多方记载，邦尼特在黑胡子的船上，整天读书并穿着睡袍在甲板上散步。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从一个差劲的海盗船长变成了根本不是船长。",
+      "text_markdown": "他从一个差劲的海盗船长变成了根本不是船长。",
+      "tts": {
+        "text": "他从一个差劲的海盗船长变成了根本不是船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他成了曾经属于自己的船上的乘客。",
+      "text_markdown": "他成了曾经属于自己的船上的乘客。",
+      "tts": {
+        "text": "他成了曾经属于自己的船上的乘客。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的船员对这种安排并不不满。",
+      "text_markdown": "他的船员对这种安排并不不满。",
+      "tts": {
+        "text": "他的船员对这种安排并不不满。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑胡子是一个远比邦尼特称职的领袖。",
+      "text_markdown": "黑胡子是一个远比邦尼特称职的领袖。",
+      "tts": {
+        "text": "黑胡子是一个远比邦尼特称职的领袖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在黑胡子的指挥下，联合舰队获得了更丰厚的战利品，运作也更高效。",
+      "text_markdown": "在黑胡子的指挥下，联合舰队获得了更丰厚的战利品，运作也更高效。",
+      "tts": {
+        "text": "在黑胡子的指挥下，联合舰队获得了更丰厚的战利品，运作也更高效。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数月间，邦尼特作为下属与黑胡子一起航行。",
+      "text_markdown": "数月间，邦尼特作为下属与黑胡子一起航行。",
+      "tts": {
+        "text": "数月间，邦尼特作为下属与黑胡子一起航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们沿着美洲海岸和加勒比海劫掠船只。",
+      "text_markdown": "他们沿着美洲海岸和加勒比海劫掠船只。",
+      "tts": {
+        "text": "他们沿着美洲海岸和加勒比海劫掠船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子越来越富有。",
+      "text_markdown": "黑胡子越来越富有。",
+      "tts": {
+        "text": "黑胡子越来越富有。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "邦尼特越来越无关紧要。",
+      "text_markdown": "邦尼特越来越无关紧要。",
+      "tts": {
+        "text": "邦尼特越来越无关紧要。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年5月，黑胡子率领舰队前往南卡罗来纳州的查尔斯顿，封锁了整个港口。",
+      "text_markdown": "1718年5月，黑胡子率领舰队前往南卡罗来纳州的查尔斯顿，封锁了整个港口。",
+      "tts": {
+        "text": "一七一八年五月，黑胡子率领舰队前往南卡罗来纳州的查尔斯顿，封锁了整个港口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是美国历史上最大胆的海盗行为之一。",
+      "text_markdown": "这是美国历史上最大胆的海盗行为之一。",
+      "tts": {
+        "text": "这是美国历史上最大胆的海盗行为之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "进出港口的船只被扣押。",
+      "text_markdown": "进出港口的船只被扣押。",
+      "tts": {
+        "text": "进出港口的船只被扣押。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "整座城市实际上被劫为人质。",
+      "text_markdown": "整座城市实际上被劫为人质。",
+      "tts": {
+        "text": "整座城市实际上被劫为人质。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的要求很不寻常。",
+      "text_markdown": "黑胡子的要求很不寻常。",
+      "tts": {
+        "text": "黑胡子的要求很不寻常。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他没有要金银财宝。",
+      "text_markdown": "他没有要金银财宝。",
+      "tts": {
+        "text": "他没有要金银财宝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他要求一箱药品。",
+      "text_markdown": "他要求一箱药品。",
+      "tts": {
+        "text": "他要求一箱药品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的船员正遭受性病之苦，他需要医疗物资。",
+      "text_markdown": "他的船员正遭受性病之苦，他需要医疗物资。",
+      "tts": {
+        "text": "他的船员正遭受性病之苦，他需要医疗物资。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查尔斯顿城照办了。",
+      "text_markdown": "查尔斯顿城照办了。",
+      "tts": {
+        "text": "查尔斯顿城照办了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "药品被送达，黑胡子释放了人质。",
+      "text_markdown": "药品被送达，黑胡子释放了人质。",
+      "tts": {
+        "text": "药品被送达，黑胡子释放了人质。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "整个事件展示了黑胡子的胆量和他对局面的完全掌控。",
+      "text_markdown": "整个事件展示了黑胡子的胆量和他对局面的完全掌控。",
+      "tts": {
+        "text": "整个事件展示了黑胡子的胆量和他对局面的完全掌控。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特在一旁看着这一切。",
+      "text_markdown": "邦尼特在一旁看着这一切。",
+      "tts": {
+        "text": "邦尼特在一旁看着这一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他亲眼见证了海盗史上最著名的事件之一。",
+      "text_markdown": "他亲眼见证了海盗史上最著名的事件之一。",
+      "tts": {
+        "text": "他亲眼见证了海盗史上最著名的事件之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "绅士海盗",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他什么也没贡献。",
+      "text_markdown": "他什么也没贡献。",
+      "tts": {
+        "text": "他什么也没贡献。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "赦免",
+      "text_markdown": "赦免"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查尔斯顿封锁事件后不久，黑胡子决定利用国王的赦免。",
+      "text_markdown": "查尔斯顿封锁事件后不久，黑胡子决定利用国王的赦免。",
+      "tts": {
+        "text": "查尔斯顿封锁事件后不久，黑胡子决定利用国王的赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他航行到北卡罗来纳州的巴斯镇，向总督投降。",
+      "text_markdown": "他航行到北卡罗来纳州的巴斯镇，向总督投降。",
+      "tts": {
+        "text": "他航行到北卡罗来纳州的巴斯镇，向总督投降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他获得了赦免，至少暂时安顿了下来。",
+      "text_markdown": "他获得了赦免，至少暂时安顿了下来。",
+      "tts": {
+        "text": "他获得了赦免，至少暂时安顿了下来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在此之前，黑胡子最后一次背叛了邦尼特。",
+      "text_markdown": "在此之前，黑胡子最后一次背叛了邦尼特。",
+      "tts": {
+        "text": "在此之前，黑胡子最后一次背叛了邦尼特。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他搜刮了「复仇号」上的物资，并将邦尼特原来的许多船员丢弃在一个沙洲上。",
+      "text_markdown": "他搜刮了「复仇号」上的物资，并将邦尼特原来的许多船员丢弃在一个沙洲上。",
+      "tts": {
+        "text": "他搜刮了「复仇号」上的物资，并将邦尼特原来的许多船员丢弃在一个沙洲上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将最好的战利品据为己有。",
+      "text_markdown": "他将最好的战利品据为己有。",
+      "tts": {
+        "text": "他将最好的战利品据为己有。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "邦尼特只剩下一艘空船和一群被遗弃的人。",
+      "text_markdown": "邦尼特只剩下一艘空船和一群被遗弃的人。",
+      "tts": {
+        "text": "邦尼特只剩下一艘空船和一群被遗弃的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特怒不可遏。",
+      "text_markdown": "邦尼特怒不可遏。",
+      "tts": {
+        "text": "邦尼特怒不可遏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他发誓要追杀黑胡子并报仇雪恨。",
+      "text_markdown": "他发誓要追杀黑胡子并报仇雪恨。",
+      "tts": {
+        "text": "他发誓要追杀黑胡子并报仇雪恨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的船名从未如此恰当。",
+      "text_markdown": "他的船名从未如此恰当。",
+      "tts": {
+        "text": "他的船名从未如此恰当。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他从未追上黑胡子，这个威胁不过是空话。",
+      "text_markdown": "但他从未追上黑胡子，这个威胁不过是空话。",
+      "tts": {
+        "text": "但他从未追上黑胡子，这个威胁不过是空话。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特决定自己也去寻求赦免。",
+      "text_markdown": "邦尼特决定自己也去寻求赦免。",
+      "tts": {
+        "text": "邦尼特决定自己也去寻求赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他航行到巴斯镇——黑胡子获得赦免的同一个地方——向当局投降。",
+      "text_markdown": "他航行到巴斯镇——黑胡子获得赦免的同一个地方——向当局投降。",
+      "tts": {
+        "text": "他航行到巴斯镇——黑胡子获得赦免的同一个地方——向当局投降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在1718年夏天获得了国王的赦免。",
+      "text_markdown": "他在1718年夏天获得了国王的赦免。",
+      "tts": {
+        "text": "他在一七一八年夏天获得了国王的赦免。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赦免要求邦尼特彻底放弃海盗行为。",
+      "text_markdown": "赦免要求邦尼特彻底放弃海盗行为。",
+      "tts": {
+        "text": "赦免要求邦尼特彻底放弃海盗行为。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他应该成为一个守法公民。",
+      "text_markdown": "他应该成为一个守法公民。",
+      "tts": {
+        "text": "他应该成为一个守法公民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对于一个拥有他那样财富和教育的人来说，这应该很简单。",
+      "text_markdown": "对于一个拥有他那样财富和教育的人来说，这应该很简单。",
+      "tts": {
+        "text": "对于一个拥有他那样财富和教育的人来说，这应该很简单。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "并非如此。",
+      "text_markdown": "并非如此。",
+      "tts": {
+        "text": "并非如此。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "邦尼特只撑了几周就重操旧业了。",
+      "text_markdown": "邦尼特只撑了几周就重操旧业了。",
+      "tts": {
+        "text": "邦尼特只撑了几周就重操旧业了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家对他的原因争论不休。",
+      "text_markdown": "历史学家对他的原因争论不休。",
+      "tts": {
+        "text": "历史学家对他的原因争论不休。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "有人认为他因为在「复仇号」和船员身上花光了家产，已经无力回家。",
+      "text_markdown": "有人认为他因为在「复仇号」和船员身上花光了家产，已经无力回家。",
+      "tts": {
+        "text": "有人认为他因为在「复仇号」和船员身上花光了家产，已经无力回家。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一些人认为邦尼特已经彻底断了后路。",
+      "text_markdown": "另一些人认为邦尼特已经彻底断了后路。",
+      "tts": {
+        "text": "另一些人认为邦尼特已经彻底断了后路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他无法回到巴巴多斯。",
+      "text_markdown": "他无法回到巴巴多斯。",
+      "tts": {
+        "text": "他无法回到巴巴多斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是一个抛弃了家人和种植园的通缉犯海盗。",
+      "text_markdown": "他是一个抛弃了家人和种植园的通缉犯海盗。",
+      "tts": {
+        "text": "他是一个抛弃了家人和种植园的通缉犯海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗生涯，尽管他干得一塌糊涂，却是他剩下的唯一出路。",
+      "text_markdown": "海盗生涯，尽管他干得一塌糊涂，却是他剩下的唯一出路。",
+      "tts": {
+        "text": "海盗生涯，尽管他干得一塌糊涂，却是他剩下的唯一出路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他化名为托马斯船长。",
+      "text_markdown": "他化名为托马斯船长。",
+      "tts": {
+        "text": "他化名为托马斯船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他把船改名为「皇家詹姆斯号」。",
+      "text_markdown": "他把船改名为「皇家詹姆斯号」。",
+      "tts": {
+        "text": "他把船改名为「皇家詹姆斯号」。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他以为这些伪装能保护他。",
+      "text_markdown": "他以为这些伪装能保护他。",
+      "tts": {
+        "text": "他以为这些伪装能保护他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有。",
+      "text_markdown": "没有。",
+      "tts": {
+        "text": "没有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他恢复了沿卡罗来纳海岸劫掠船只的活动。",
+      "text_markdown": "他恢复了沿卡罗来纳海岸劫掠船只的活动。",
+      "tts": {
+        "text": "他恢复了沿卡罗来纳海岸劫掠船只的活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的目标大多是小型商船。",
+      "text_markdown": "他的目标大多是小型商船。",
+      "tts": {
+        "text": "他的目标大多是小型商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品不大，但足以养活船员。",
+      "text_markdown": "战利品不大，但足以养活船员。",
+      "tts": {
+        "text": "战利品不大，但足以养活船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "邦尼特又回到了他那老一套平庸的海盗路子。",
+      "text_markdown": "邦尼特又回到了他那老一套平庸的海盗路子。",
+      "tts": {
+        "text": "邦尼特又回到了他那老一套平庸的海盗路子。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查尔斯顿当局决心阻止他。",
+      "text_markdown": "查尔斯顿当局决心阻止他。",
+      "tts": {
+        "text": "查尔斯顿当局决心阻止他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "威廉·雷特上校，一位杰出的市民和民兵领袖，自愿率领一支远征队讨伐海盗。",
+      "text_markdown": "威廉·雷特上校，一位杰出的市民和民兵领袖，自愿率领一支远征队讨伐海盗。",
+      "tts": {
+        "text": "威廉·雷特上校，一位杰出的市民和民兵领袖，自愿率领一支远征队讨伐海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "雷特获得了两艘武装单桅帆船和一批经验丰富的战士。",
+      "text_markdown": "雷特获得了两艘武装单桅帆船和一批经验丰富的战士。",
+      "tts": {
+        "text": "雷特获得了两艘武装单桅帆船和一批经验丰富的战士。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雷特追踪邦尼特到了北卡罗来纳州的恐惧角河。",
+      "text_markdown": "雷特追踪邦尼特到了北卡罗来纳州的恐惧角河。",
+      "tts": {
+        "text": "雷特追踪邦尼特到了北卡罗来纳州的恐惧角河。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "邦尼特在那里抛锚修船。",
+      "text_markdown": "邦尼特在那里抛锚修船。",
+      "tts": {
+        "text": "邦尼特在那里抛锚修船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他处于易受攻击的位置，雷特深知这一点。",
+      "text_markdown": "他处于易受攻击的位置，雷特深知这一点。",
+      "tts": {
+        "text": "他处于易受攻击的位置，雷特深知这一点。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "恐惧角河之战发生在1718年9月。",
+      "text_markdown": "恐惧角河之战发生在1718年9月。",
+      "tts": {
+        "text": "恐惧角河之战发生在一七一八年九月。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一场混乱而笨拙的交战。",
+      "text_markdown": "这是一场混乱而笨拙的交战。",
+      "tts": {
+        "text": "这是一场混乱而笨拙的交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "雷特的船和邦尼特的船在不同时刻都搁浅在沙洲上。",
+      "text_markdown": "雷特的船和邦尼特的船在不同时刻都搁浅在沙洲上。",
+      "tts": {
+        "text": "雷特的船和邦尼特的船在不同时刻都搁浅在沙洲上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "战斗持续了数小时。",
+      "text_markdown": "战斗持续了数小时。",
+      "tts": {
+        "text": "战斗持续了数小时。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最终，雷特凭借兵力优势获胜。",
+      "text_markdown": "最终，雷特凭借兵力优势获胜。",
+      "tts": {
+        "text": "最终，雷特凭借兵力优势获胜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在船员拒绝继续战斗后，邦尼特投降了。",
+      "text_markdown": "在船员拒绝继续战斗后，邦尼特投降了。",
+      "tts": {
+        "text": "在船员拒绝继续战斗后，邦尼特投降了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "绅士海盗被俘了。",
+      "text_markdown": "绅士海盗被俘了。",
+      "tts": {
+        "text": "绅士海盗被俘了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特被戴着镣铐押往查尔斯顿。",
+      "text_markdown": "邦尼特被戴着镣铐押往查尔斯顿。",
+      "tts": {
+        "text": "邦尼特被戴着镣铐押往查尔斯顿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几个月前被黑胡子封锁的城市，现在有了自己要对付的海盗。",
+      "text_markdown": "几个月前被黑胡子封锁的城市，现在有了自己要对付的海盗。",
+      "tts": {
+        "text": "几个月前被黑胡子封锁的城市，现在有了自己要对付的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "赦免",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "而且不像黑胡子，这个海盗逃不掉了。",
+      "text_markdown": "而且不像黑胡子，这个海盗逃不掉了。",
+      "tts": {
+        "text": "而且不像黑胡子，这个海盗逃不掉了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "结局",
+      "text_markdown": "结局"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯蒂德·邦尼特被关押在查尔斯顿等待审判。",
+      "text_markdown": "斯蒂德·邦尼特被关押在查尔斯顿等待审判。",
+      "tts": {
+        "text": "斯蒂德·邦尼特被关押在查尔斯顿等待审判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被关在镇上执法官的家中，对于海盗来说这算是相当舒适的监禁了。",
+      "text_markdown": "他被关在镇上执法官的家中，对于海盗来说这算是相当舒适的监禁了。",
+      "tts": {
+        "text": "他被关在镇上执法官的家中，对于海盗来说这算是相当舒适的监禁了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "即便作为囚犯，他的绅士身份仍然有些用处。",
+      "text_markdown": "即便作为囚犯，他的绅士身份仍然有些用处。",
+      "tts": {
+        "text": "即便作为囚犯，他的绅士身份仍然有些用处。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他曾短暂越狱一次。",
+      "text_markdown": "他曾短暂越狱一次。",
+      "tts": {
+        "text": "他曾短暂越狱一次。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他逃出囚禁之处，藏在港口附近的沙利文岛上。",
+      "text_markdown": "他逃出囚禁之处，藏在港口附近的沙利文岛上。",
+      "tts": {
+        "text": "他逃出囚禁之处，藏在港口附近的沙利文岛上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几天内就被重新抓获。",
+      "text_markdown": "几天内就被重新抓获。",
+      "tts": {
+        "text": "几天内就被重新抓获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这次越狱消除了当局可能对他残存的任何同情。",
+      "text_markdown": "这次越狱消除了当局可能对他残存的任何同情。",
+      "tts": {
+        "text": "这次越狱消除了当局可能对他残存的任何同情。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的审判于1718年10月下旬开始。",
+      "text_markdown": "他的审判于1718年10月下旬开始。",
+      "tts": {
+        "text": "他的审判于一七一八年十月下旬开始。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是黄金时代最重要的海盗审判之一。",
+      "text_markdown": "这是黄金时代最重要的海盗审判之一。",
+      "tts": {
+        "text": "这是黄金时代最重要的海盗审判之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "审判在尼古拉斯·特罗特法官面前进行，此人既细致又无情。",
+      "text_markdown": "审判在尼古拉斯·特罗特法官面前进行，此人既细致又无情。",
+      "tts": {
+        "text": "审判在尼古拉斯·特罗特法官面前进行，此人既细致又无情。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特被控两项海盗罪。",
+      "text_markdown": "邦尼特被控两项海盗罪。",
+      "tts": {
+        "text": "邦尼特被控两项海盗罪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "不利于他的证据确凿无疑。",
+      "text_markdown": "不利于他的证据确凿无疑。",
+      "tts": {
+        "text": "不利于他的证据确凿无疑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多名证人对他的劫掠行为作证。",
+      "text_markdown": "多名证人对他的劫掠行为作证。",
+      "tts": {
+        "text": "多名证人对他的劫掠行为作证。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他自己的船员也出庭作证指控他。",
+      "text_markdown": "他自己的船员也出庭作证指控他。",
+      "tts": {
+        "text": "他自己的船员也出庭作证指控他。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特以令人惊讶的口才为自己辩护。",
+      "text_markdown": "邦尼特以令人惊讶的口才为自己辩护。",
+      "tts": {
+        "text": "邦尼特以令人惊讶的口才为自己辩护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他辩称自己是被迫行事，被黑胡子逼迫从事海盗活动。",
+      "text_markdown": "他辩称自己是被迫行事，被黑胡子逼迫从事海盗活动。",
+      "tts": {
+        "text": "他辩称自己是被迫行事，被黑胡子逼迫从事海盗活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他以接受国王赦免作为自己善意的证明。",
+      "text_markdown": "他以接受国王赦免作为自己善意的证明。",
+      "tts": {
+        "text": "他以接受国王赦免作为自己善意的证明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "法庭没有被说服。",
+      "text_markdown": "法庭没有被说服。",
+      "tts": {
+        "text": "法庭没有被说服。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "邦尼特重操海盗旧业，违反了赦免条款。",
+      "text_markdown": "邦尼特重操海盗旧业，违反了赦免条款。",
+      "tts": {
+        "text": "邦尼特重操海盗旧业，违反了赦免条款。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是自愿做出选择的。",
+      "text_markdown": "他是自愿做出选择的。",
+      "tts": {
+        "text": "他是自愿做出选择的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "陪审团裁定他所有罪名成立。",
+      "text_markdown": "陪审团裁定他所有罪名成立。",
+      "tts": {
+        "text": "陪审团裁定他所有罪名成立。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "特罗特法官判处邦尼特绞刑。",
+      "text_markdown": "特罗特法官判处邦尼特绞刑。",
+      "tts": {
+        "text": "特罗特法官判处邦尼特绞刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在量刑演说中，法官对邦尼特这样一个有社会地位的人选择犯罪生涯表达了特别的蔑视。",
+      "text_markdown": "在量刑演说中，法官对邦尼特这样一个有社会地位的人选择犯罪生涯表达了特别的蔑视。",
+      "tts": {
+        "text": "在量刑演说中，法官对邦尼特这样一个有社会地位的人选择犯罪生涯表达了特别的蔑视。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "演说冗长、详尽而毁灭性。",
+      "text_markdown": "演说冗长、详尽而毁灭性。",
+      "tts": {
+        "text": "演说冗长、详尽而毁灭性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据报道，邦尼特在宣判时失声痛哭。",
+      "text_markdown": "据报道，邦尼特在宣判时失声痛哭。",
+      "tts": {
+        "text": "据报道，邦尼特在宣判时失声痛哭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他给南卡罗来纳州总督写了一封信恳求开恩。",
+      "text_markdown": "他给南卡罗来纳州总督写了一封信恳求开恩。",
+      "tts": {
+        "text": "他给南卡罗来纳州总督写了一封信恳求开恩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "信写得文笔流畅、情真意切。",
+      "text_markdown": "信写得文笔流畅、情真意切。",
+      "tts": {
+        "text": "信写得文笔流畅、情真意切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但没能救他。",
+      "text_markdown": "但没能救他。",
+      "tts": {
+        "text": "但没能救他。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他不是大多数海盗那样的老练罪犯。",
+      "text_markdown": "他不是大多数海盗那样的老练罪犯。",
+      "tts": {
+        "text": "他不是大多数海盗那样的老练罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一个迷茫、不幸福的人，做了一系列灾难性的决定。",
+      "text_markdown": "他是一个迷茫、不幸福的人，做了一系列灾难性的决定。",
+      "tts": {
+        "text": "他是一个迷茫、不幸福的人，做了一系列灾难性的决定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "现在那些决定追上了他。",
+      "text_markdown": "现在那些决定追上了他。",
+      "tts": {
+        "text": "现在那些决定追上了他。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年12月10日，斯蒂德·邦尼特在查尔斯顿的白角被绞死。",
+      "text_markdown": "1718年12月10日，斯蒂德·邦尼特在查尔斯顿的白角被绞死。",
+      "tts": {
+        "text": "一七一八年十二月十日，斯蒂德·邦尼特在查尔斯顿的白角被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他三十岁。",
+      "text_markdown": "他三十岁。",
+      "tts": {
+        "text": "他三十岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人群聚集起来观看绅士海盗的处刑。",
+      "text_markdown": "人群聚集起来观看绅士海盗的处刑。",
+      "tts": {
+        "text": "人群聚集起来观看绅士海盗的处刑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据目击者称，他吓坏了。",
+      "text_markdown": "据目击者称，他吓坏了。",
+      "tts": {
+        "text": "据目击者称，他吓坏了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他手中紧握着一小束枯萎的花，这个可悲的细节保留在了历史记录中。",
+      "text_markdown": "他手中紧握着一小束枯萎的花，这个可悲的细节保留在了历史记录中。",
+      "tts": {
+        "text": "他手中紧握着一小束枯萎的花，这个可悲的细节保留在了历史记录中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他没有像拉赫马·伊本·贾比尔那样桀骜不驯地死去，也没有巴塞洛缪·罗伯茨的尊严。",
+      "text_markdown": "他没有像拉赫马·伊本·贾比尔那样桀骜不驯地死去，也没有巴塞洛缪·罗伯茨的尊严。",
+      "tts": {
+        "text": "他没有像拉赫马·伊本·贾比尔那样桀骜不驯地死去，也没有巴塞洛缪·罗伯茨的尊严。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他死的方式和他的海盗生涯一样：糟糕，并且带着一种这一切都不是什么好主意的感觉。",
+      "text_markdown": "他死的方式和他的海盗生涯一样：糟糕，并且带着一种这一切都不是什么好主意的感觉。",
+      "tts": {
+        "text": "他死的方式和他的海盗生涯一样：糟糕，并且带着一种这一切都不是什么好主意的感觉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "结局",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "绳索完成了它的工作，绅士海盗就此离去。",
+      "text_markdown": "绳索完成了它的工作，绅士海盗就此离去。",
+      "tts": {
+        "text": "绳索完成了它的工作，绅士海盗就此离去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯蒂德·邦尼特已成为黄金时代最著名的海盗之一。",
+      "text_markdown": "斯蒂德·邦尼特已成为黄金时代最著名的海盗之一。",
+      "tts": {
+        "text": "斯蒂德·邦尼特已成为黄金时代最著名的海盗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名声并非来自他的成就——那微乎其微——而是来自他故事的纯粹荒诞性。",
+      "text_markdown": "他的名声并非来自他的成就——那微乎其微——而是来自他故事的纯粹荒诞性。",
+      "tts": {
+        "text": "他的名声并非来自他的成就——那微乎其微——而是来自他故事的纯粹荒诞性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他是这个问题的答案：当一个完全不合格的人决定当海盗时会怎样？",
+      "text_markdown": "他是这个问题的答案：当一个完全不合格的人决定当海盗时会怎样？",
+      "tts": {
+        "text": "他是这个问题的答案：当一个完全不合格的人决定当海盗时会怎样？",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "答案是：几乎没有好事。",
+      "text_markdown": "答案是：几乎没有好事。",
+      "tts": {
+        "text": "答案是：几乎没有好事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特的故事被写入书籍、搬上舞台和电视银幕。",
+      "text_markdown": "邦尼特的故事被写入书籍、搬上舞台和电视银幕。",
+      "tts": {
+        "text": "邦尼特的故事被写入书籍、搬上舞台和电视银幕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他已成为小说中的热门人物，常被描绘成一个笨拙但令人同情的角色。",
+      "text_markdown": "他已成为小说中的热门人物，常被描绘成一个笨拙但令人同情的角色。",
+      "tts": {
+        "text": "他已成为小说中的热门人物，常被描绘成一个笨拙但令人同情的角色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他处境的喜剧性使他经久不衰地吸引人。",
+      "text_markdown": "他处境的喜剧性使他经久不衰地吸引人。",
+      "tts": {
+        "text": "他处境的喜剧性使他经久不衰地吸引人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但喜剧背后是真正的悲剧。",
+      "text_markdown": "但喜剧背后是真正的悲剧。",
+      "tts": {
+        "text": "但喜剧背后是真正的悲剧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "邦尼特的受害者是真实的人。",
+      "text_markdown": "邦尼特的受害者是真实的人。",
+      "tts": {
+        "text": "邦尼特的受害者是真实的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他俘获的船上载着被恐吓和抢劫的真实水手。",
+      "text_markdown": "他俘获的船上载着被恐吓和抢劫的真实水手。",
+      "tts": {
+        "text": "他俘获的船上载着被恐吓和抢劫的真实水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他无能的幽默不应掩盖他造成的伤害。",
+      "text_markdown": "他无能的幽默不应掩盖他造成的伤害。",
+      "tts": {
+        "text": "他无能的幽默不应掩盖他造成的伤害。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的船员付出了最高的代价。",
+      "text_markdown": "他的船员付出了最高的代价。",
+      "tts": {
+        "text": "他的船员付出了最高的代价。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们中许多人与船长一同被绞死。",
+      "text_markdown": "他们中许多人与船长一同被绞死。",
+      "tts": {
+        "text": "他们中许多人与船长一同被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们追随了一个本不该出海的人。",
+      "text_markdown": "他们追随了一个本不该出海的人。",
+      "tts": {
+        "text": "他们追随了一个本不该出海的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们对他的信任，不论有多少，都让他们付出了生命的代价。",
+      "text_markdown": "他们对他的信任，不论有多少，都让他们付出了生命的代价。",
+      "tts": {
+        "text": "他们对他的信任，不论有多少，都让他们付出了生命的代价。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特的故事还揭示了殖民地加勒比海严格的阶级结构。",
+      "text_markdown": "邦尼特的故事还揭示了殖民地加勒比海严格的阶级结构。",
+      "tts": {
+        "text": "邦尼特的故事还揭示了殖民地加勒比海严格的阶级结构。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个富有的白人种植园主在巴巴多斯几乎可以为所欲为而不受惩罚。",
+      "text_markdown": "一个富有的白人种植园主在巴巴多斯几乎可以为所欲为而不受惩罚。",
+      "tts": {
+        "text": "一个富有的白人种植园主在巴巴多斯几乎可以为所欲为而不受惩罚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但当邦尼特跨出了自己的阶级角色，体制便将他摧毁。",
+      "text_markdown": "但当邦尼特跨出了自己的阶级角色，体制便将他摧毁。",
+      "tts": {
+        "text": "但当邦尼特跨出了自己的阶级角色，体制便将他摧毁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "邦尼特被绞死时，海盗黄金时代正在走向终结。",
+      "text_markdown": "邦尼特被绞死时，海盗黄金时代正在走向终结。",
+      "tts": {
+        "text": "邦尼特被绞死时，海盗黄金时代正在走向终结。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国政府正在加勒比海全境系统地追捕海盗。",
+      "text_markdown": "英国政府正在加勒比海全境系统地追捕海盗。",
+      "tts": {
+        "text": "英国政府正在加勒比海全境系统地追捕海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子本人也在邦尼特被处决后仅数周被杀。",
+      "text_markdown": "黑胡子本人也在邦尼特被处决后仅数周被杀。",
+      "tts": {
+        "text": "黑胡子本人也在邦尼特被处决后仅数周被杀。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几年之内，大多数著名的黄金时代海盗不是死了就是被捕了。",
+      "text_markdown": "几年之内，大多数著名的黄金时代海盗不是死了就是被捕了。",
+      "tts": {
+        "text": "几年之内，大多数著名的黄金时代海盗不是死了就是被捕了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "加勒比海自由放任的海盗时代正在落幕。",
+      "text_markdown": "加勒比海自由放任的海盗时代正在落幕。",
+      "tts": {
+        "text": "加勒比海自由放任的海盗时代正在落幕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海军力量增强，殖民政府更加有序，海盗活动的空间越来越小。",
+      "text_markdown": "海军力量增强，殖民政府更加有序，海盗活动的空间越来越小。",
+      "tts": {
+        "text": "海军力量增强，殖民政府更加有序，海盗活动的空间越来越小。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯蒂德·邦尼特算不上一个伟大的海盗。",
+      "text_markdown": "斯蒂德·邦尼特算不上一个伟大的海盗。",
+      "tts": {
+        "text": "斯蒂德·邦尼特算不上一个伟大的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他甚至算不上一个称职的海盗。",
+      "text_markdown": "他甚至算不上一个称职的海盗。",
+      "tts": {
+        "text": "他甚至算不上一个称职的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他的故事之所以流传，是因为它从根本上是人性的。",
+      "text_markdown": "但他的故事之所以流传，是因为它从根本上是人性的。",
+      "tts": {
+        "text": "但他的故事之所以流传，是因为它从根本上是人性的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他是一个对生活极度不满的人，做出了一个疯狂、非理性的决定来改变它。",
+      "text_markdown": "他是一个对生活极度不满的人，做出了一个疯狂、非理性的决定来改变它。",
+      "tts": {
+        "text": "他是一个对生活极度不满的人，做出了一个疯狂、非理性的决定来改变它。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他为一个完全没准备好去过的幻想烧毁了一切。",
+      "text_markdown": "他为一个完全没准备好去过的幻想烧毁了一切。",
+      "tts": {
+        "text": "他为一个完全没准备好去过的幻想烧毁了一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "至少在这一点上，他和我们许多人并没有那么不同。",
+      "text_markdown": "至少在这一点上，他和我们许多人并没有那么不同。",
+      "tts": {
+        "text": "至少在这一点上，他和我们许多人并没有那么不同。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他死在查尔斯顿，手中握着枯萎的花。",
+      "text_markdown": "他死在查尔斯顿，手中握着枯萎的花。",
+      "tts": {
+        "text": "他死在查尔斯顿，手中握着枯萎的花。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "绅士海盗走到了他那不可思议的、不幸的航程的终点。",
+      "text_markdown": "绅士海盗走到了他那不可思议的、不幸的航程的终点。",
+      "tts": {
+        "text": "绅士海盗走到了他那不可思议的、不幸的航程的终点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大海对斯蒂德·邦尼特再无耐心，法律亦然。",
+      "text_markdown": "大海对斯蒂德·邦尼特再无耐心，法律亦然。",
+      "tts": {
+        "text": "大海对斯蒂德·邦尼特再无耐心，法律亦然。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4352 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_thomas_pellow",
+  "language": "zh",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这不是一个从海盗视角讲述的海盗故事。",
+      "text_markdown": "这不是一个从海盗视角讲述的海盗故事。",
+      "tts": {
+        "text": "这不是一个从海盗视角讲述的海盗故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个被掳走之人的故事。",
+      "text_markdown": "这是一个被掳走之人的故事。",
+      "tts": {
+        "text": "这是一个被掳走之人的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛是一个来自康沃尔的英国男孩。",
+      "text_markdown": "托马斯·佩洛是一个来自康沃尔的英国男孩。",
+      "tts": {
+        "text": "托马斯·佩洛是一个来自康沃尔的英国男孩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "十一岁时，他被巴巴里海盗俘获并带到了摩洛哥。",
+      "text_markdown": "十一岁时，他被巴巴里海盗俘获并带到了摩洛哥。",
+      "tts": {
+        "text": "十一岁时，他被巴巴里海盗俘获并带到了摩洛哥。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将在二十三年后才回到家乡。",
+      "text_markdown": "他将在二十三年后才回到家乡。",
+      "tts": {
+        "text": "他将在二十三年后才回到家乡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在那些年里，他被迫皈依伊斯兰教，接受士兵训练，并被迫为北非历史上最强大、最残暴的统治者之一效力。",
+      "text_markdown": "在那些年里，他被迫皈依伊斯兰教，接受士兵训练，并被迫为北非历史上最强大、最残暴的统治者之一效力。",
+      "tts": {
+        "text": "在那些年里，他被迫皈依伊斯兰教，接受士兵训练，并被迫为北非历史上最强大、最残暴的统治者之一效力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他目睹了任何孩子都不应该看到的事情。",
+      "text_markdown": "他目睹了任何孩子都不应该看到的事情。",
+      "tts": {
+        "text": "他目睹了任何孩子都不应该看到的事情。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当他最终逃脱并返回英格兰后，他写下了关于被囚经历的回忆录。",
+      "text_markdown": "当他最终逃脱并返回英格兰后，他写下了关于被囚经历的回忆录。",
+      "tts": {
+        "text": "当他最终逃脱并返回英格兰后，他写下了关于被囚经历的回忆录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是十八世纪最引人注目的文献之一。",
+      "text_markdown": "这是十八世纪最引人注目的文献之一。",
+      "tts": {
+        "text": "这是十八世纪最引人注目的文献之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "也是最令人痛苦的文献之一。",
+      "text_markdown": "也是最令人痛苦的文献之一。",
+      "tts": {
+        "text": "也是最令人痛苦的文献之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的故事提醒我们，海盗行为并非对每个人来说都是冒险。",
+      "text_markdown": "他的故事提醒我们，海盗行为并非对每个人来说都是冒险。",
+      "tts": {
+        "text": "他的故事提醒我们，海盗行为并非对每个人来说都是冒险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一个选择大海的海盗背后，都有数百个毫无选择的人。",
+      "text_markdown": "每一个选择大海的海盗背后，都有数百个毫无选择的人。",
+      "tts": {
+        "text": "每一个选择大海的海盗背后，都有数百个毫无选择的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "巴巴里海岸的世界",
+      "text_markdown": "巴巴里海岸的世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴里海岸是欧洲人对北非海岸的称呼。",
+      "text_markdown": "巴巴里海岸是欧洲人对北非海岸的称呼。",
+      "tts": {
+        "text": "巴巴里海岸是欧洲人对北非海岸的称呼。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它从西部的摩洛哥延伸到东部的利比亚。",
+      "text_markdown": "它从西部的摩洛哥延伸到东部的利比亚。",
+      "tts": {
+        "text": "它从西部的摩洛哥延伸到东部的利比亚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几个世纪以来，这里是世界上一些最令人恐惧的海盗的家园。",
+      "text_markdown": "几个世纪以来，这里是世界上一些最令人恐惧的海盗的家园。",
+      "tts": {
+        "text": "几个世纪以来，这里是世界上一些最令人恐惧的海盗的家园。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴里海盗不是普通的海盗。",
+      "text_markdown": "巴巴里海盗不是普通的海盗。",
+      "tts": {
+        "text": "巴巴里海盗不是普通的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在北非国家的庇护下运作，而且经常得到直接支持。",
+      "text_markdown": "他们在北非国家的庇护下运作，而且经常得到直接支持。",
+      "tts": {
+        "text": "他们在北非国家的庇护下运作，而且经常得到直接支持。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩洛哥、阿尔及尔、突尼斯和的黎波里都从海盗袭击中获利。",
+      "text_markdown": "摩洛哥、阿尔及尔、突尼斯和的黎波里都从海盗袭击中获利。",
+      "tts": {
+        "text": "摩洛哥、阿尔及尔、突尼斯和的黎波里都从海盗袭击中获利。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗袭击欧洲的航运和沿海城镇。",
+      "text_markdown": "海盗袭击欧洲的航运和沿海城镇。",
+      "tts": {
+        "text": "海盗袭击欧洲的航运和沿海城镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们夺取船只，掠夺货物，抓捕俘虏。",
+      "text_markdown": "他们夺取船只，掠夺货物，抓捕俘虏。",
+      "tts": {
+        "text": "他们夺取船只，掠夺货物，抓捕俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "俘虏是所有战利品中最有价值的。",
+      "text_markdown": "俘虏是所有战利品中最有价值的。",
+      "tts": {
+        "text": "俘虏是所有战利品中最有价值的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俘虏可以向其家人索取巨额赎金。",
+      "text_markdown": "俘虏可以向其家人索取巨额赎金。",
+      "tts": {
+        "text": "俘虏可以向其家人索取巨额赎金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那些无法被赎回的人被卖为奴隶。",
+      "text_markdown": "那些无法被赎回的人被卖为奴隶。",
+      "tts": {
+        "text": "那些无法被赎回的人被卖为奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家估计，在1530年至1780年间，超过一百万欧洲人被巴巴里海盗奴役。",
+      "text_markdown": "历史学家估计，在1530年至1780年间，超过一百万欧洲人被巴巴里海盗奴役。",
+      "tts": {
+        "text": "历史学家估计，在一千五百三十年至一千七百八十年间，超过一百万欧洲人被巴巴里海盗奴役。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是奴隶贸易的另一面。",
+      "text_markdown": "这是奴隶贸易的另一面。",
+      "tts": {
+        "text": "这是奴隶贸易的另一面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当欧洲列强奴役非洲人并将他们运过大西洋时，北非势力正在奴役欧洲人并迫使他们在自己的土地上劳作。",
+      "text_markdown": "当欧洲列强奴役非洲人并将他们运过大西洋时，北非势力正在奴役欧洲人并迫使他们在自己的土地上劳作。",
+      "tts": {
+        "text": "当欧洲列强奴役非洲人并将他们运过大西洋时，北非势力正在奴役欧洲人并迫使他们在自己的土地上劳作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "地中海两岸的苦难都是真实的。",
+      "text_markdown": "地中海两岸的苦难都是真实的。",
+      "tts": {
+        "text": "地中海两岸的苦难都是真实的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩洛哥大西洋沿岸的海盗港口萨累尤其臭名昭著。",
+      "text_markdown": "摩洛哥大西洋沿岸的海盗港口萨累尤其臭名昭著。",
+      "tts": {
+        "text": "摩洛哥大西洋沿岸的海盗港口萨累尤其臭名昭著。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "萨累的海盗被称为萨累海盗。",
+      "text_markdown": "萨累的海盗被称为萨累海盗。",
+      "tts": {
+        "text": "萨累的海盗被称为萨累海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们远远越过地中海，北上袭击至冰岛和爱尔兰。",
+      "text_markdown": "他们远远越过地中海，北上袭击至冰岛和爱尔兰。",
+      "tts": {
+        "text": "他们远远越过地中海，北上袭击至冰岛和爱尔兰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1631年，萨累海盗袭击了爱尔兰的巴尔的摩村，掳走了100多人。",
+      "text_markdown": "1631年，萨累海盗袭击了爱尔兰的巴尔的摩村，掳走了100多人。",
+      "tts": {
+        "text": "一千六百三十一年，萨累海盗袭击了爱尔兰的巴尔的摩村，掳走了一百多人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大多数人再也没有被看到。",
+      "text_markdown": "大多数人再也没有被看到。",
+      "tts": {
+        "text": "大多数人再也没有被看到。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这就是托马斯·佩洛将被拖入的世界。",
+      "text_markdown": "这就是托马斯·佩洛将被拖入的世界。",
+      "tts": {
+        "text": "这就是托马斯·佩洛将被拖入的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初的摩洛哥由苏丹穆莱·伊斯梅尔统治。",
+      "text_markdown": "十八世纪初的摩洛哥由苏丹穆莱·伊斯梅尔统治。",
+      "tts": {
+        "text": "十八世纪初的摩洛哥由苏丹穆莱·伊斯梅尔统治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是摩洛哥历史上在位时间最长的君主之一，从1672年统治到1727年。",
+      "text_markdown": "他是摩洛哥历史上在位时间最长的君主之一，从1672年统治到1727年。",
+      "tts": {
+        "text": "他是摩洛哥历史上在位时间最长的君主之一，从一千六百七十二年统治到一千七百二十七年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他也是最残暴的统治者之一。",
+      "text_markdown": "他也是最残暴的统治者之一。",
+      "tts": {
+        "text": "他也是最残暴的统治者之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "穆莱·伊斯梅尔梦想将摩洛哥建成一个伟大的帝国。",
+      "text_markdown": "穆莱·伊斯梅尔梦想将摩洛哥建成一个伟大的帝国。",
+      "tts": {
+        "text": "穆莱·伊斯梅尔梦想将摩洛哥建成一个伟大的帝国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在首都梅克内斯修建了一个庞大的宫殿建筑群。",
+      "text_markdown": "他在首都梅克内斯修建了一个庞大的宫殿建筑群。",
+      "tts": {
+        "text": "他在首都梅克内斯修建了一个庞大的宫殿建筑群。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "建设工程由数万名奴隶完成，包括欧洲人和非洲人。",
+      "text_markdown": "建设工程由数万名奴隶完成，包括欧洲人和非洲人。",
+      "tts": {
+        "text": "建设工程由数万名奴隶完成，包括欧洲人和非洲人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苏丹以极端暴力行为闻名。",
+      "text_markdown": "苏丹以极端暴力行为闻名。",
+      "tts": {
+        "text": "苏丹以极端暴力行为闻名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他亲手杀死令他不悦的仆人和朝臣。",
+      "text_markdown": "他亲手杀死令他不悦的仆人和朝臣。",
+      "tts": {
+        "text": "他亲手杀死令他不悦的仆人和朝臣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "外国大使报告称目睹了随心所欲进行的处决。",
+      "text_markdown": "外国大使报告称目睹了随心所欲进行的处决。",
+      "tts": {
+        "text": "外国大使报告称目睹了随心所欲进行的处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "恐惧是他权力的基础。",
+      "text_markdown": "恐惧是他权力的基础。",
+      "tts": {
+        "text": "恐惧是他权力的基础。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他拥有一支庞大的军队，包括一支由被奴役的黑人士兵组成的私人卫队，称为黑卫队。",
+      "text_markdown": "他拥有一支庞大的军队，包括一支由被奴役的黑人士兵组成的私人卫队，称为黑卫队。",
+      "tts": {
+        "text": "他拥有一支庞大的军队，包括一支由被奴役的黑人士兵组成的私人卫队，称为黑卫队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这支军队对苏丹极为忠诚，既是他的军事力量，也是他的恐怖工具。",
+      "text_markdown": "这支军队对苏丹极为忠诚，既是他的军事力量，也是他的恐怖工具。",
+      "tts": {
+        "text": "这支军队对苏丹极为忠诚，既是他的军事力量，也是他的恐怖工具。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在摩洛哥的欧洲俘虏扮演着多种角色。",
+      "text_markdown": "在摩洛哥的欧洲俘虏扮演着多种角色。",
+      "tts": {
+        "text": "在摩洛哥的欧洲俘虏扮演着多种角色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些人被迫从事繁重的劳动，建造苏丹的宫殿。",
+      "text_markdown": "一些人被迫从事繁重的劳动，建造苏丹的宫殿。",
+      "tts": {
+        "text": "一些人被迫从事繁重的劳动，建造苏丹的宫殿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他人被训练成士兵或行政人员。",
+      "text_markdown": "其他人被训练成士兵或行政人员。",
+      "tts": {
+        "text": "其他人被训练成士兵或行政人员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "少数人被留作私人仆从。",
+      "text_markdown": "少数人被留作私人仆从。",
+      "tts": {
+        "text": "少数人被留作私人仆从。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皈依伊斯兰教的俘虏得到了稍好的待遇。",
+      "text_markdown": "皈依伊斯兰教的俘虏得到了稍好的待遇。",
+      "tts": {
+        "text": "皈依伊斯兰教的俘虏得到了稍好的待遇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "皈依不保证自由，但为更高的职位打开了大门。",
+      "text_markdown": "皈依不保证自由，但为更高的职位打开了大门。",
+      "tts": {
+        "text": "皈依不保证自由，但为更高的职位打开了大门。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多欧洲人在酷刑或死亡威胁下皈依。",
+      "text_markdown": "许多欧洲人在酷刑或死亡威胁下皈依。",
+      "tts": {
+        "text": "许多欧洲人在酷刑或死亡威胁下皈依。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲各国政府偶尔会就释放本国公民进行谈判。",
+      "text_markdown": "欧洲各国政府偶尔会就释放本国公民进行谈判。",
+      "tts": {
+        "text": "欧洲各国政府偶尔会就释放本国公民进行谈判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "赎金支付很常见。",
+      "text_markdown": "赎金支付很常见。",
+      "tts": {
+        "text": "赎金支付很常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "宗教修会，尤其是三位一体会和默塞德修会，致力于赎回俘虏。",
+      "text_markdown": "宗教修会，尤其是三位一体会和默塞德修会，致力于赎回俘虏。",
+      "tts": {
+        "text": "宗教修会，尤其是三位一体会和默塞德修会，致力于赎回俘虏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但赎金过程缓慢、昂贵且不可靠。",
+      "text_markdown": "但赎金过程缓慢、昂贵且不可靠。",
+      "tts": {
+        "text": "但赎金过程缓慢、昂贵且不可靠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多俘虏从未被赎回。",
+      "text_markdown": "许多俘虏从未被赎回。",
+      "tts": {
+        "text": "许多俘虏从未被赎回。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在摩洛哥生活和死去，远离家乡。",
+      "text_markdown": "他们在摩洛哥生活和死去，远离家乡。",
+      "tts": {
+        "text": "他们在摩洛哥生活和死去，远离家乡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "巴巴里海岸的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "托马斯·佩洛差点也成为他们中的一员。",
+      "text_markdown": "托马斯·佩洛差点也成为他们中的一员。",
+      "tts": {
+        "text": "托马斯·佩洛差点也成为他们中的一员。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛于1704年出生在英格兰西南端康沃尔的彭林镇。",
+      "text_markdown": "托马斯·佩洛于1704年出生在英格兰西南端康沃尔的彭林镇。",
+      "tts": {
+        "text": "托马斯·佩洛于一千七百零四年出生在英格兰西南端康沃尔的彭林镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "康沃尔是一个航海地区。",
+      "text_markdown": "康沃尔是一个航海地区。",
+      "tts": {
+        "text": "康沃尔是一个航海地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几代人以来，这里的人们依靠海洋为生。",
+      "text_markdown": "几代人以来，这里的人们依靠海洋为生。",
+      "tts": {
+        "text": "几代人以来，这里的人们依靠海洋为生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯的叔叔约翰·佩洛船长是一名商船水手，与欧洲和地中海各港口进行贸易。",
+      "text_markdown": "托马斯的叔叔约翰·佩洛船长是一名商船水手，与欧洲和地中海各港口进行贸易。",
+      "tts": {
+        "text": "托马斯的叔叔约翰·佩洛船长是一名商船水手，与欧洲和地中海各港口进行贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一位经验丰富的水手，了解行业的风险。",
+      "text_markdown": "他是一位经验丰富的水手，了解行业的风险。",
+      "tts": {
+        "text": "他是一位经验丰富的水手，了解行业的风险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在这些风险中，巴巴里海盗是最令人恐惧的。",
+      "text_markdown": "在这些风险中，巴巴里海盗是最令人恐惧的。",
+      "tts": {
+        "text": "在这些风险中，巴巴里海盗是最令人恐惧的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1715年，当托马斯年仅十一岁时，他的叔叔带他登上了自己的船弗朗西斯号。",
+      "text_markdown": "1715年，当托马斯年仅十一岁时，他的叔叔带他登上了自己的船弗朗西斯号。",
+      "tts": {
+        "text": "一千七百一十五年，当托马斯年仅十一岁时，他的叔叔带他登上了自己的船弗朗西斯号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这次航行原本是一次前往地中海的贸易远征。",
+      "text_markdown": "这次航行原本是一次前往地中海的贸易远征。",
+      "tts": {
+        "text": "这次航行原本是一次前往地中海的贸易远征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它本应是对男孩的教育，一个学习家族手艺的机会。",
+      "text_markdown": "它本应是对男孩的教育，一个学习家族手艺的机会。",
+      "tts": {
+        "text": "它本应是对男孩的教育，一个学习家族手艺的机会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯对出海非常兴奋。",
+      "text_markdown": "托马斯对出海非常兴奋。",
+      "tts": {
+        "text": "托马斯对出海非常兴奋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "和康沃尔的大多数男孩一样，他从小听着关于远方港口和海上航行的故事长大。",
+      "text_markdown": "和康沃尔的大多数男孩一样，他从小听着关于远方港口和海上航行的故事长大。",
+      "tts": {
+        "text": "和康沃尔的大多数男孩一样，他从小听着关于远方港口和海上航行的故事长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海上生活的现实将与故事大不相同。",
+      "text_markdown": "海上生活的现实将与故事大不相同。",
+      "tts": {
+        "text": "海上生活的现实将与故事大不相同。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弗朗西斯号带着一小队船员从法尔茅斯起航。",
+      "text_markdown": "弗朗西斯号带着一小队船员从法尔茅斯起航。",
+      "tts": {
+        "text": "弗朗西斯号带着一小队船员从法尔茅斯起航。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "佩洛船长计划用英国货物换取地中海产品。",
+      "text_markdown": "佩洛船长计划用英国货物换取地中海产品。",
+      "tts": {
+        "text": "佩洛船长计划用英国货物换取地中海产品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "航线将带他们沿着西班牙和葡萄牙海岸行驶。",
+      "text_markdown": "航线将带他们沿着西班牙和葡萄牙海岸行驶。",
+      "tts": {
+        "text": "航线将带他们沿着西班牙和葡萄牙海岸行驶。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在北非海岸附近的某处，灾难降临了。",
+      "text_markdown": "在北非海岸附近的某处，灾难降临了。",
+      "tts": {
+        "text": "在北非海岸附近的某处，灾难降临了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "来自萨累的海盗发现了弗朗西斯号并发起追击。",
+      "text_markdown": "来自萨累的海盗发现了弗朗西斯号并发起追击。",
+      "tts": {
+        "text": "来自萨累的海盗发现了弗朗西斯号并发起追击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船无法与速度快、装备精良的海盗船匹敌。",
+      "text_markdown": "商船无法与速度快、装备精良的海盗船匹敌。",
+      "tts": {
+        "text": "商船无法与速度快、装备精良的海盗船匹敌。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "佩洛船长试图甩掉他们，但弗朗西斯号太慢了。",
+      "text_markdown": "佩洛船长试图甩掉他们，但弗朗西斯号太慢了。",
+      "tts": {
+        "text": "佩洛船长试图甩掉他们，但弗朗西斯号太慢了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗缩短了距离并开了警告枪。",
+      "text_markdown": "海盗缩短了距离并开了警告枪。",
+      "tts": {
+        "text": "海盗缩短了距离并开了警告枪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "弗朗西斯号的船员别无选择，只能投降。",
+      "text_markdown": "弗朗西斯号的船员别无选择，只能投降。",
+      "tts": {
+        "text": "弗朗西斯号的船员别无选择，只能投降。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗登上了船，俘虏了船员。",
+      "text_markdown": "海盗登上了船，俘虏了船员。",
+      "tts": {
+        "text": "海盗登上了船，俘虏了船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "托马斯看着武装人员涌上甲板。",
+      "text_markdown": "托马斯看着武装人员涌上甲板。",
+      "tts": {
+        "text": "托马斯看着武装人员涌上甲板。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他吓坏了。",
+      "text_markdown": "他吓坏了。",
+      "tts": {
+        "text": "他吓坏了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他是一个孩子，孤身一人处在暴力的陌生人中间。",
+      "text_markdown": "他是一个孩子，孤身一人处在暴力的陌生人中间。",
+      "tts": {
+        "text": "他是一个孩子，孤身一人处在暴力的陌生人中间。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俘虏们被带到萨累，然后步行深入内陆到达苏丹的首都梅克内斯。",
+      "text_markdown": "俘虏们被带到萨累，然后步行深入内陆到达苏丹的首都梅克内斯。",
+      "tts": {
+        "text": "俘虏们被带到萨累，然后步行深入内陆到达苏丹的首都梅克内斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅途花了好几天。",
+      "text_markdown": "旅途花了好几天。",
+      "tts": {
+        "text": "旅途花了好几天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "托马斯戴着镣铐在北非的烈日下行走，周围是他听不懂语言的人们。",
+      "text_markdown": "托马斯戴着镣铐在北非的烈日下行走，周围是他听不懂语言的人们。",
+      "tts": {
+        "text": "托马斯戴着镣铐在北非的烈日下行走，周围是他听不懂语言的人们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当他们到达梅克内斯时，托马斯第一次看到了苏丹的宫殿。",
+      "text_markdown": "当他们到达梅克内斯时，托马斯第一次看到了苏丹的宫殿。",
+      "tts": {
+        "text": "当他们到达梅克内斯时，托马斯第一次看到了苏丹的宫殿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它巨大无比，是一个由庭院、花园和巨大城墙组成的广阔建筑群。",
+      "text_markdown": "它巨大无比，是一个由庭院、花园和巨大城墙组成的广阔建筑群。",
+      "tts": {
+        "text": "它巨大无比，是一个由庭院、花园和巨大城墙组成的广阔建筑群。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它也是一个苦难之地，由奴隶的劳动建成。",
+      "text_markdown": "它也是一个苦难之地，由奴隶的劳动建成。",
+      "tts": {
+        "text": "它也是一个苦难之地，由奴隶的劳动建成。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俘虏们被带到苏丹穆莱·伊斯梅尔面前。",
+      "text_markdown": "俘虏们被带到苏丹穆莱·伊斯梅尔面前。",
+      "tts": {
+        "text": "俘虏们被带到苏丹穆莱·伊斯梅尔面前。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏丹像农民检查牲畜一样检查他们。",
+      "text_markdown": "苏丹像农民检查牲畜一样检查他们。",
+      "tts": {
+        "text": "苏丹像农民检查牲畜一样检查他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他决定谁将工作，谁可能被赎回，谁将在他的宫廷中服务。",
+      "text_markdown": "他决定谁将工作，谁可能被赎回，谁将在他的宫廷中服务。",
+      "tts": {
+        "text": "他决定谁将工作，谁可能被赎回，谁将在他的宫廷中服务。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "约翰·佩洛船长最终被赎回了。",
+      "text_markdown": "约翰·佩洛船长最终被赎回了。",
+      "tts": {
+        "text": "约翰·佩洛船长最终被赎回了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他回到了英格兰，但未能确保侄子获释。",
+      "text_markdown": "他回到了英格兰，但未能确保侄子获释。",
+      "tts": {
+        "text": "他回到了英格兰，但未能确保侄子获释。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "托马斯被孤零零地留在摩洛哥，孤独而恐惧。",
+      "text_markdown": "托马斯被孤零零地留在摩洛哥，孤独而恐惧。",
+      "tts": {
+        "text": "托马斯被孤零零地留在摩洛哥，孤独而恐惧。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "男孩只有十一岁。",
+      "text_markdown": "男孩只有十一岁。",
+      "tts": {
+        "text": "男孩只有十一岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在离家数千英里的地方。",
+      "text_markdown": "他在离家数千英里的地方。",
+      "tts": {
+        "text": "他在离家数千英里的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他不知道自己是否还能再见到英格兰。",
+      "text_markdown": "他不知道自己是否还能再见到英格兰。",
+      "tts": {
+        "text": "他不知道自己是否还能再见到英格兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的囚禁生涯开始了。",
+      "text_markdown": "他的囚禁生涯开始了。",
+      "tts": {
+        "text": "他的囚禁生涯开始了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的父母一定在想他们的儿子发生了什么。",
+      "text_markdown": "他的父母一定在想他们的儿子发生了什么。",
+      "tts": {
+        "text": "他的父母一定在想他们的儿子发生了什么。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有任何消息能从大海的另一边传到他们那里。",
+      "text_markdown": "没有任何消息能从大海的另一边传到他们那里。",
+      "tts": {
+        "text": "没有任何消息能从大海的另一边传到他们那里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据他们所知，托马斯已经死了。",
+      "text_markdown": "据他们所知，托马斯已经死了。",
+      "tts": {
+        "text": "据他们所知，托马斯已经死了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "俘虏",
+      "text_markdown": "俘虏"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛被囚禁的最初几年，以被迫皈依伊斯兰教的压力为标志。",
+      "text_markdown": "托马斯·佩洛被囚禁的最初几年，以被迫皈依伊斯兰教的压力为标志。",
+      "tts": {
+        "text": "托马斯·佩洛被囚禁的最初几年，以被迫皈依伊斯兰教的压力为标志。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏丹的宫廷要求欧洲俘虏放弃基督教信仰。",
+      "text_markdown": "苏丹的宫廷要求欧洲俘虏放弃基督教信仰。",
+      "tts": {
+        "text": "苏丹的宫廷要求欧洲俘虏放弃基督教信仰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皈依者得到更好的待遇。",
+      "text_markdown": "皈依者得到更好的待遇。",
+      "tts": {
+        "text": "皈依者得到更好的待遇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拒绝者面临惩罚。",
+      "text_markdown": "拒绝者面临惩罚。",
+      "tts": {
+        "text": "拒绝者面临惩罚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯起初进行了抵抗。",
+      "text_markdown": "托马斯起初进行了抵抗。",
+      "tts": {
+        "text": "托马斯起初进行了抵抗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一个来自基督教国家的男孩，信仰是他仅剩的家乡记忆。",
+      "text_markdown": "他是一个来自基督教国家的男孩，信仰是他仅剩的家乡记忆。",
+      "tts": {
+        "text": "他是一个来自基督教国家的男孩，信仰是他仅剩的家乡记忆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他以一个孩子抓住异域世界中最后一样熟悉事物的绝望紧紧抓着它。",
+      "text_markdown": "他以一个孩子抓住异域世界中最后一样熟悉事物的绝望紧紧抓着它。",
+      "tts": {
+        "text": "他以一个孩子抓住异域世界中最后一样熟悉事物的绝望紧紧抓着它。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但压力是无情的。",
+      "text_markdown": "但压力是无情的。",
+      "tts": {
+        "text": "但压力是无情的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他遭到殴打和酷刑。",
+      "text_markdown": "他遭到殴打和酷刑。",
+      "tts": {
+        "text": "他遭到殴打和酷刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据他自己的叙述，他遭受了数月的虐待，目的是摧毁他的意志。",
+      "text_markdown": "据他自己的叙述，他遭受了数月的虐待，目的是摧毁他的意志。",
+      "tts": {
+        "text": "据他自己的叙述，他遭受了数月的虐待，目的是摧毁他的意志。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "手段残忍而有系统。",
+      "text_markdown": "手段残忍而有系统。",
+      "tts": {
+        "text": "手段残忍而有系统。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最终，托马斯屈服了。",
+      "text_markdown": "最终，托马斯屈服了。",
+      "tts": {
+        "text": "最终，托马斯屈服了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他皈依了伊斯兰教，取了一个穆斯林名字。",
+      "text_markdown": "他皈依了伊斯兰教，取了一个穆斯林名字。",
+      "tts": {
+        "text": "他皈依了伊斯兰教，取了一个穆斯林名字。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他后来将此描述为囚禁中最痛苦的时刻。",
+      "text_markdown": "他后来将此描述为囚禁中最痛苦的时刻。",
+      "tts": {
+        "text": "他后来将此描述为囚禁中最痛苦的时刻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他觉得自己背叛了所有的信仰。",
+      "text_markdown": "他觉得自己背叛了所有的信仰。",
+      "tts": {
+        "text": "他觉得自己背叛了所有的信仰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现代读者在评判他时应当谨慎。",
+      "text_markdown": "现代读者在评判他时应当谨慎。",
+      "tts": {
+        "text": "现代读者在评判他时应当谨慎。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一个孩子，孤独地被成年人折磨。",
+      "text_markdown": "他是一个孩子，孤独地被成年人折磨。",
+      "tts": {
+        "text": "他是一个孩子，孤独地被成年人折磨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的皈依是一种生存策略，不是自由选择。",
+      "text_markdown": "他的皈依是一种生存策略，不是自由选择。",
+      "tts": {
+        "text": "他的皈依是一种生存策略，不是自由选择。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "成千上万的其他俘虏在同样难以忍受的条件下做出了相同的决定。",
+      "text_markdown": "成千上万的其他俘虏在同样难以忍受的条件下做出了相同的决定。",
+      "tts": {
+        "text": "成千上万的其他俘虏在同样难以忍受的条件下做出了相同的决定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皈依后，托马斯被训练为苏丹军队中的士兵。",
+      "text_markdown": "皈依后，托马斯被训练为苏丹军队中的士兵。",
+      "tts": {
+        "text": "皈依后，托马斯被训练为苏丹军队中的士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他学会了骑马、射击和战斗。",
+      "text_markdown": "他学会了骑马、射击和战斗。",
+      "tts": {
+        "text": "他学会了骑马、射击和战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的阿拉伯语变得流利，并熟悉了摩洛哥的习俗。",
+      "text_markdown": "他的阿拉伯语变得流利，并熟悉了摩洛哥的习俗。",
+      "tts": {
+        "text": "他的阿拉伯语变得流利，并熟悉了摩洛哥的习俗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他被派遣参加摩洛哥内陆的军事行动。",
+      "text_markdown": "他被派遣参加摩洛哥内陆的军事行动。",
+      "tts": {
+        "text": "他被派遣参加摩洛哥内陆的军事行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏丹不断战斗以维持对叛乱部落的控制。",
+      "text_markdown": "苏丹不断战斗以维持对叛乱部落的控制。",
+      "tts": {
+        "text": "苏丹不断战斗以维持对叛乱部落的控制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "托马斯以士兵身份参与了这些战役——一个曾经的俘虏现在为他的俘获者效力。",
+      "text_markdown": "托马斯以士兵身份参与了这些战役——一个曾经的俘虏现在为他的俘获者效力。",
+      "tts": {
+        "text": "托马斯以士兵身份参与了这些战役——一个曾经的俘虏现在为他的俘获者效力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他目睹的暴力令人震惊。",
+      "text_markdown": "他目睹的暴力令人震惊。",
+      "tts": {
+        "text": "他目睹的暴力令人震惊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏丹对叛乱的惩罚是野蛮而公开的。",
+      "text_markdown": "苏丹对叛乱的惩罚是野蛮而公开的。",
+      "tts": {
+        "text": "苏丹对叛乱的惩罚是野蛮而公开的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战败的敌人在大规模示众中被处决。",
+      "text_markdown": "战败的敌人在大规模示众中被处决。",
+      "tts": {
+        "text": "战败的敌人在大规模示众中被处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "托马斯看到的事情伴随了他的余生。",
+      "text_markdown": "托马斯看到的事情伴随了他的余生。",
+      "tts": {
+        "text": "托马斯看到的事情伴随了他的余生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他也目睹了梅克内斯宫殿的持续建设。",
+      "text_markdown": "他也目睹了梅克内斯宫殿的持续建设。",
+      "tts": {
+        "text": "他也目睹了梅克内斯宫殿的持续建设。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数千名奴隶日夜劳作，实现苏丹的愿景。",
+      "text_markdown": "数千名奴隶日夜劳作，实现苏丹的愿景。",
+      "tts": {
+        "text": "数千名奴隶日夜劳作，实现苏丹的愿景。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "倒下的工人有时被活埋在他们正在修建的墙壁中。",
+      "text_markdown": "倒下的工人有时被活埋在他们正在修建的墙壁中。",
+      "tts": {
+        "text": "倒下的工人有时被活埋在他们正在修建的墙壁中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "穆莱·伊斯梅尔的宫殿旨在与凡尔赛宫媲美。",
+      "text_markdown": "穆莱·伊斯梅尔的宫殿旨在与凡尔赛宫媲美。",
+      "tts": {
+        "text": "穆莱·伊斯梅尔的宫殿旨在与凡尔赛宫媲美。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苏丹听说了法国国王的宏伟宫殿，决心要超越它。",
+      "text_markdown": "苏丹听说了法国国王的宏伟宫殿，决心要超越它。",
+      "tts": {
+        "text": "苏丹听说了法国国王的宏伟宫殿，决心要超越它。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "结果是一个庞大的建筑群，绵延数英里。",
+      "text_markdown": "结果是一个庞大的建筑群，绵延数英里。",
+      "tts": {
+        "text": "结果是一个庞大的建筑群，绵延数英里。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯在苏丹的军队中服役了多年。",
+      "text_markdown": "托马斯在苏丹的军队中服役了多年。",
+      "tts": {
+        "text": "托马斯在苏丹的军队中服役了多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他逐步升迁，获得了一定程度的信任和责任。",
+      "text_markdown": "他逐步升迁，获得了一定程度的信任和责任。",
+      "tts": {
+        "text": "他逐步升迁，获得了一定程度的信任和责任。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他从未忘记自己是一个囚犯。",
+      "text_markdown": "但他从未忘记自己是一个囚犯。",
+      "tts": {
+        "text": "但他从未忘记自己是一个囚犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他从未停止想要回家。",
+      "text_markdown": "他从未停止想要回家。",
+      "tts": {
+        "text": "他从未停止想要回家。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他与摩洛哥的其他欧洲俘虏建立了联系。",
+      "text_markdown": "他与摩洛哥的其他欧洲俘虏建立了联系。",
+      "tts": {
+        "text": "他与摩洛哥的其他欧洲俘虏建立了联系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们有数百人，分散在全国各地。",
+      "text_markdown": "他们有数百人，分散在全国各地。",
+      "tts": {
+        "text": "他们有数百人，分散在全国各地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们形成了一个地下社区，分享信息，互相支持。",
+      "text_markdown": "他们形成了一个地下社区，分享信息，互相支持。",
+      "tts": {
+        "text": "他们形成了一个地下社区，分享信息，互相支持。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些俘虏适应了新生活并真诚地皈依了。",
+      "text_markdown": "一些俘虏适应了新生活并真诚地皈依了。",
+      "tts": {
+        "text": "一些俘虏适应了新生活并真诚地皈依了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其他人秘密保持着原来的信仰，在关起门来后信奉基督教。",
+      "text_markdown": "其他人秘密保持着原来的信仰，在关起门来后信奉基督教。",
+      "tts": {
+        "text": "其他人秘密保持着原来的信仰，在关起门来后信奉基督教。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "托马斯存在于这两个世界之间的某处。",
+      "text_markdown": "托马斯存在于这两个世界之间的某处。",
+      "tts": {
+        "text": "托马斯存在于这两个世界之间的某处。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在公开场合扮演忠诚的穆斯林士兵。",
+      "text_markdown": "他在公开场合扮演忠诚的穆斯林士兵。",
+      "tts": {
+        "text": "他在公开场合扮演忠诚的穆斯林士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私下里，他珍藏着关于康沃尔的记忆和逃跑的希望。",
+      "text_markdown": "私下里，他珍藏着关于康沃尔的记忆和逃跑的希望。",
+      "tts": {
+        "text": "私下里，他珍藏着关于康沃尔的记忆和逃跑的希望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他存在的双重性令人疲惫。",
+      "text_markdown": "他存在的双重性令人疲惫。",
+      "tts": {
+        "text": "他存在的双重性令人疲惫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他总是在表演，总是在隐藏真实的自己。",
+      "text_markdown": "他总是在表演，总是在隐藏真实的自己。",
+      "tts": {
+        "text": "他总是在表演，总是在隐藏真实的自己。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "岁月流逝。",
+      "text_markdown": "岁月流逝。",
+      "tts": {
+        "text": "岁月流逝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "托马斯在苏丹的服务中从男孩成长为男人。",
+      "text_markdown": "托马斯在苏丹的服务中从男孩成长为男人。",
+      "tts": {
+        "text": "托马斯在苏丹的服务中从男孩成长为男人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩洛哥的季节更迭，英格兰成了一个逐渐消褪的记忆。",
+      "text_markdown": "摩洛哥的季节更迭，英格兰成了一个逐渐消褪的记忆。",
+      "tts": {
+        "text": "摩洛哥的季节更迭，英格兰成了一个逐渐消褪的记忆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "俘虏",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但逃跑的渴望从未消亡。",
+      "text_markdown": "但逃跑的渴望从未消亡。",
+      "tts": {
+        "text": "但逃跑的渴望从未消亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "囚禁",
+      "text_markdown": "囚禁"
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1727年，苏丹穆莱·伊斯梅尔在统治55年后去世。",
+      "text_markdown": "1727年，苏丹穆莱·伊斯梅尔在统治55年后去世。",
+      "tts": {
+        "text": "一千七百二十七年，苏丹穆莱·伊斯梅尔在统治五十五年后去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的死将摩洛哥推入了混乱。",
+      "text_markdown": "他的死将摩洛哥推入了混乱。",
+      "tts": {
+        "text": "他的死将摩洛哥推入了混乱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的众多儿子争夺王位，爆发了激烈的继承危机。",
+      "text_markdown": "他的众多儿子争夺王位，爆发了激烈的继承危机。",
+      "tts": {
+        "text": "他的众多儿子争夺王位，爆发了激烈的继承危机。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "接下来的十年以内战、饥荒和瘟疫为标志。",
+      "text_markdown": "接下来的十年以内战、饥荒和瘟疫为标志。",
+      "tts": {
+        "text": "接下来的十年以内战、饥荒和瘟疫为标志。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "敌对的王子在全国各地互相厮杀。",
+      "text_markdown": "敌对的王子在全国各地互相厮杀。",
+      "tts": {
+        "text": "敌对的王子在全国各地互相厮杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "军队沿着派系路线分裂。",
+      "text_markdown": "军队沿着派系路线分裂。",
+      "tts": {
+        "text": "军队沿着派系路线分裂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有人是安全的。",
+      "text_markdown": "没有人是安全的。",
+      "tts": {
+        "text": "没有人是安全的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对托马斯·佩洛来说，混乱既是危险也是机会。",
+      "text_markdown": "对托马斯·佩洛来说，混乱既是危险也是机会。",
+      "tts": {
+        "text": "对托马斯·佩洛来说，混乱既是危险也是机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中央权力的崩溃意味着管理俘虏的规则执行得不那么严格了。",
+      "text_markdown": "中央权力的崩溃意味着管理俘虏的规则执行得不那么严格了。",
+      "tts": {
+        "text": "中央权力的崩溃意味着管理俘虏的规则执行得不那么严格了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "卫兵被内战分散了注意力。",
+      "text_markdown": "卫兵被内战分散了注意力。",
+      "tts": {
+        "text": "卫兵被内战分散了注意力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "逃跑也许终于成为可能。",
+      "text_markdown": "逃跑也许终于成为可能。",
+      "tts": {
+        "text": "逃跑也许终于成为可能。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但从摩洛哥逃跑极其困难。",
+      "text_markdown": "但从摩洛哥逃跑极其困难。",
+      "tts": {
+        "text": "但从摩洛哥逃跑极其困难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个国家辽阔而陌生。",
+      "text_markdown": "这个国家辽阔而陌生。",
+      "tts": {
+        "text": "这个国家辽阔而陌生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个欧洲人会立刻被认出来。",
+      "text_markdown": "一个欧洲人会立刻被认出来。",
+      "tts": {
+        "text": "一个欧洲人会立刻被认出来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "被重新抓获的奴隶受到的惩罚很严厉，往往是死刑。",
+      "text_markdown": "被重新抓获的奴隶受到的惩罚很严厉，往往是死刑。",
+      "tts": {
+        "text": "被重新抓获的奴隶受到的惩罚很严厉，往往是死刑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯必须仔细计划。",
+      "text_markdown": "托马斯必须仔细计划。",
+      "tts": {
+        "text": "托马斯必须仔细计划。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他需要补给、路线和盟友。",
+      "text_markdown": "他需要补给、路线和盟友。",
+      "tts": {
+        "text": "他需要补给、路线和盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他需要穿越数百英里的敌对领土，到达一个能找到前往欧洲船只的港口。",
+      "text_markdown": "他需要穿越数百英里的敌对领土，到达一个能找到前往欧洲船只的港口。",
+      "tts": {
+        "text": "他需要穿越数百英里的敌对领土，到达一个能找到前往欧洲船只的港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他花了数月时间准备。",
+      "text_markdown": "他花了数月时间准备。",
+      "tts": {
+        "text": "他花了数月时间准备。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他收集了食物、水和关于北上路线的信息。",
+      "text_markdown": "他收集了食物、水和关于北上路线的信息。",
+      "tts": {
+        "text": "他收集了食物、水和关于北上路线的信息。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他找到了其他可能愿意与他一起逃跑的俘虏。",
+      "text_markdown": "他找到了其他可能愿意与他一起逃跑的俘虏。",
+      "tts": {
+        "text": "他找到了其他可能愿意与他一起逃跑的俘虏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯还必须克服多年的心理调适。",
+      "text_markdown": "托马斯还必须克服多年的心理调适。",
+      "tts": {
+        "text": "托马斯还必须克服多年的心理调适。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从童年起就是俘虏。",
+      "text_markdown": "他从童年起就是俘虏。",
+      "tts": {
+        "text": "他从童年起就是俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "苏丹的宫廷是他所知的唯一成年生活。",
+      "text_markdown": "苏丹的宫廷是他所知的唯一成年生活。",
+      "tts": {
+        "text": "苏丹的宫廷是他所知的唯一成年生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "离开意味着放弃一切熟悉的东西，即使熟悉的东西是一座监狱。",
+      "text_markdown": "离开意味着放弃一切熟悉的东西，即使熟悉的东西是一座监狱。",
+      "tts": {
+        "text": "离开意味着放弃一切熟悉的东西，即使熟悉的东西是一座监狱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "长期囚禁的心理创伤无法被夸大。",
+      "text_markdown": "长期囚禁的心理创伤无法被夸大。",
+      "tts": {
+        "text": "长期囚禁的心理创伤无法被夸大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在奴役中度过数十年的俘虏往往难以想象自由。",
+      "text_markdown": "在奴役中度过数十年的俘虏往往难以想象自由。",
+      "tts": {
+        "text": "在奴役中度过数十年的俘虏往往难以想象自由。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们已经适应了在囚禁中生存，而这些适应使得挣脱更加困难。",
+      "text_markdown": "他们已经适应了在囚禁中生存，而这些适应使得挣脱更加困难。",
+      "tts": {
+        "text": "他们已经适应了在囚禁中生存，而这些适应使得挣脱更加困难。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯已经为苏丹及其继任者服务了二十多年。",
+      "text_markdown": "托马斯已经为苏丹及其继任者服务了二十多年。",
+      "tts": {
+        "text": "托马斯已经为苏丹及其继任者服务了二十多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他能流利地说阿拉伯语。",
+      "text_markdown": "他能流利地说阿拉伯语。",
+      "tts": {
+        "text": "他能流利地说阿拉伯语。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他对摩洛哥的风俗了如指掌。",
+      "text_markdown": "他对摩洛哥的风俗了如指掌。",
+      "tts": {
+        "text": "他对摩洛哥的风俗了如指掌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在很多方面，他已经成为他想要逃离的世界的一部分。",
+      "text_markdown": "在很多方面，他已经成为他想要逃离的世界的一部分。",
+      "tts": {
+        "text": "在很多方面，他已经成为他想要逃离的世界的一部分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但他仍然记得康沃尔。",
+      "text_markdown": "但他仍然记得康沃尔。",
+      "tts": {
+        "text": "但他仍然记得康沃尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他记得绿色的山丘和冰冷的大海。",
+      "text_markdown": "他记得绿色的山丘和冰冷的大海。",
+      "tts": {
+        "text": "他记得绿色的山丘和冰冷的大海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他记得他的家人，尽管他们的面容在这么多年后一定已经模糊了。",
+      "text_markdown": "他记得他的家人，尽管他们的面容在这么多年后一定已经模糊了。",
+      "tts": {
+        "text": "他记得他的家人，尽管他们的面容在这么多年后一定已经模糊了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对家乡的记忆是将他与真实自我联系在一起的那根线。",
+      "text_markdown": "对家乡的记忆是将他与真实自我联系在一起的那根线。",
+      "tts": {
+        "text": "对家乡的记忆是将他与真实自我联系在一起的那根线。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在内战年代，托马斯目睹了各方犯下的暴行。",
+      "text_markdown": "在内战年代，托马斯目睹了各方犯下的暴行。",
+      "tts": {
+        "text": "在内战年代，托马斯目睹了各方犯下的暴行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "城市遭到劫掠。",
+      "text_markdown": "城市遭到劫掠。",
+      "tts": {
+        "text": "城市遭到劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人口遭到屠杀。",
+      "text_markdown": "人口遭到屠杀。",
+      "tts": {
+        "text": "人口遭到屠杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他被迫服务的国家正在自我撕裂。",
+      "text_markdown": "他被迫服务的国家正在自我撕裂。",
+      "tts": {
+        "text": "他被迫服务的国家正在自我撕裂。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他看到饥荒席卷乡间。",
+      "text_markdown": "他看到饥荒席卷乡间。",
+      "tts": {
+        "text": "他看到饥荒席卷乡间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们死在梅克内斯的街头。",
+      "text_markdown": "人们死在梅克内斯的街头。",
+      "tts": {
+        "text": "人们死在梅克内斯的街头。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "穆莱·伊斯梅尔建造的宏伟宫殿在没有奴隶军团维护的情况下开始崩塌。",
+      "text_markdown": "穆莱·伊斯梅尔建造的宏伟宫殿在没有奴隶军团维护的情况下开始崩塌。",
+      "tts": {
+        "text": "穆莱·伊斯梅尔建造的宏伟宫殿在没有奴隶军团维护的情况下开始崩塌。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这种崩溃和苦难的氛围中，托马斯做出了决定。",
+      "text_markdown": "在这种崩溃和苦难的氛围中，托马斯做出了决定。",
+      "tts": {
+        "text": "在这种崩溃和苦难的氛围中，托马斯做出了决定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他要么逃脱，要么死于尝试。",
+      "text_markdown": "他要么逃脱，要么死于尝试。",
+      "tts": {
+        "text": "他要么逃脱，要么死于尝试。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "囚禁",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他不能在一个衰败的国家里度过余生做囚犯。",
+      "text_markdown": "他不能在一个衰败的国家里度过余生做囚犯。",
+      "tts": {
+        "text": "他不能在一个衰败的国家里度过余生做囚犯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "逃亡",
+      "text_markdown": "逃亡"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1738年，托马斯·佩洛发起了他的自由之逃。",
+      "text_markdown": "1738年，托马斯·佩洛发起了他的自由之逃。",
+      "tts": {
+        "text": "一千七百三十八年，托马斯·佩洛发起了他的自由之逃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在持续内战造成的混乱中从岗位上溜走了。",
+      "text_markdown": "他在持续内战造成的混乱中从岗位上溜走了。",
+      "tts": {
+        "text": "他在持续内战造成的混乱中从岗位上溜走了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他三十四岁了。",
+      "text_markdown": "他三十四岁了。",
+      "tts": {
+        "text": "他三十四岁了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他已被囚禁了二十三年。",
+      "text_markdown": "他已被囚禁了二十三年。",
+      "tts": {
+        "text": "他已被囚禁了二十三年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "向北的旅程令人恐惧。",
+      "text_markdown": "向北的旅程令人恐惧。",
+      "tts": {
+        "text": "向北的旅程令人恐惧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他主要在夜间行进，白天躲藏。",
+      "text_markdown": "他主要在夜间行进，白天躲藏。",
+      "tts": {
+        "text": "他主要在夜间行进，白天躲藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他避开了可能被认出的道路和城镇。",
+      "text_markdown": "他避开了可能被认出的道路和城镇。",
+      "tts": {
+        "text": "他避开了可能被认出的道路和城镇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他独自身处一个既熟悉又充满敌意的地方。",
+      "text_markdown": "他独自身处一个既熟悉又充满敌意的地方。",
+      "tts": {
+        "text": "他独自身处一个既熟悉又充满敌意的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他懂得这里的语言和习俗，但他是个逃犯。",
+      "text_markdown": "他懂得这里的语言和习俗，但他是个逃犯。",
+      "tts": {
+        "text": "他懂得这里的语言和习俗，但他是个逃犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "任何发现他身份的人都可以为了悬赏而告发他。",
+      "text_markdown": "任何发现他身份的人都可以为了悬赏而告发他。",
+      "tts": {
+        "text": "任何发现他身份的人都可以为了悬赏而告发他。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他靠能找到或偷到的任何食物存活。",
+      "text_markdown": "他靠能找到或偷到的任何食物存活。",
+      "tts": {
+        "text": "他靠能找到或偷到的任何食物存活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当他敢于靠近时，他从溪流和水井中饮水。",
+      "text_markdown": "当他敢于靠近时，他从溪流和水井中饮水。",
+      "tts": {
+        "text": "当他敢于靠近时，他从溪流和水井中饮水。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "身体上的艰苦极其严峻，但他继续向北前进。",
+      "text_markdown": "身体上的艰苦极其严峻，但他继续向北前进。",
+      "tts": {
+        "text": "身体上的艰苦极其严峻，但他继续向北前进。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有时，他从意想不到的来源得到了帮助。",
+      "text_markdown": "有时，他从意想不到的来源得到了帮助。",
+      "tts": {
+        "text": "有时，他从意想不到的来源得到了帮助。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些摩洛哥人同情他，给了他食物或住所。",
+      "text_markdown": "一些摩洛哥人同情他，给了他食物或住所。",
+      "tts": {
+        "text": "一些摩洛哥人同情他，给了他食物或住所。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "不是所有人都是敌人。",
+      "text_markdown": "不是所有人都是敌人。",
+      "tts": {
+        "text": "不是所有人都是敌人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "即使在逃亡中，托马斯也遇到了人类的善意。",
+      "text_markdown": "即使在逃亡中，托马斯也遇到了人类的善意。",
+      "tts": {
+        "text": "即使在逃亡中，托马斯也遇到了人类的善意。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他朝海岸前进，目标是一个可能有欧洲船只的港口。",
+      "text_markdown": "他朝海岸前进，目标是一个可能有欧洲船只的港口。",
+      "tts": {
+        "text": "他朝海岸前进，目标是一个可能有欧洲船只的港口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅程持续了数周艰苦的跋涉。",
+      "text_markdown": "旅程持续了数周艰苦的跋涉。",
+      "tts": {
+        "text": "旅程持续了数周艰苦的跋涉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每一天都有被重新抓获的风险。",
+      "text_markdown": "每一天都有被重新抓获的风险。",
+      "tts": {
+        "text": "每一天都有被重新抓获的风险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他最终到达了海岸，找到了一艘开往欧洲的船。",
+      "text_markdown": "他最终到达了海岸，找到了一艘开往欧洲的船。",
+      "tts": {
+        "text": "他最终到达了海岸，找到了一艘开往欧洲的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他如何获得船上位置的细节在他的叙述中并不清楚。",
+      "text_markdown": "他如何获得船上位置的细节在他的叙述中并不清楚。",
+      "tts": {
+        "text": "他如何获得船上位置的细节在他的叙述中并不清楚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "清楚的是他将摩洛哥抛在身后，横渡了地中海。",
+      "text_markdown": "清楚的是他将摩洛哥抛在身后，横渡了地中海。",
+      "tts": {
+        "text": "清楚的是他将摩洛哥抛在身后，横渡了地中海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当托马斯终于到达英格兰时，他在自己的国家成了一个陌生人。",
+      "text_markdown": "当托马斯终于到达英格兰时，他在自己的国家成了一个陌生人。",
+      "tts": {
+        "text": "当托马斯终于到达英格兰时，他在自己的国家成了一个陌生人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他离开时是一个十一岁的男孩。",
+      "text_markdown": "他离开时是一个十一岁的男孩。",
+      "tts": {
+        "text": "他离开时是一个十一岁的男孩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他回来时是一个三十四岁的男人。",
+      "text_markdown": "他回来时是一个三十四岁的男人。",
+      "tts": {
+        "text": "他回来时是一个三十四岁的男人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一切都变了，国家变了，人也变了。",
+      "text_markdown": "一切都变了，国家变了，人也变了。",
+      "tts": {
+        "text": "一切都变了，国家变了，人也变了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的家人几乎认不出他。",
+      "text_markdown": "他的家人几乎认不出他。",
+      "tts": {
+        "text": "他的家人几乎认不出他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他已经离开了超过半辈子。",
+      "text_markdown": "他已经离开了超过半辈子。",
+      "tts": {
+        "text": "他已经离开了超过半辈子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他说话带着口音，举止不同，承载着他们永远无法理解的经历之重。",
+      "text_markdown": "他说话带着口音，举止不同，承载着他们永远无法理解的经历之重。",
+      "tts": {
+        "text": "他说话带着口音，举止不同，承载着他们永远无法理解的经历之重。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "回归正常生活极其困难。",
+      "text_markdown": "回归正常生活极其困难。",
+      "tts": {
+        "text": "回归正常生活极其困难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "托马斯的整个成年生活都在异国文化中度过，处于奴役状态。",
+      "text_markdown": "托马斯的整个成年生活都在异国文化中度过，处于奴役状态。",
+      "tts": {
+        "text": "托马斯的整个成年生活都在异国文化中度过，处于奴役状态。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在摩洛哥学到的技能在康沃尔毫无用处。",
+      "text_markdown": "他在摩洛哥学到的技能在康沃尔毫无用处。",
+      "tts": {
+        "text": "他在摩洛哥学到的技能在康沃尔毫无用处。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "回家的那个男人不是当年离开的那个男孩。",
+      "text_markdown": "回家的那个男人不是当年离开的那个男孩。",
+      "tts": {
+        "text": "回家的那个男人不是当年离开的那个男孩。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他最终写下了回忆录，以《托马斯·佩洛漫长囚禁与冒险史》为题出版。",
+      "text_markdown": "他最终写下了回忆录，以《托马斯·佩洛漫长囚禁与冒险史》为题出版。",
+      "tts": {
+        "text": "他最终写下了回忆录，以《托马斯·佩洛漫长囚禁与冒险史》为题出版。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "书中生动详细地描述了他的被俘、被迫皈依、多年服役和逃亡。",
+      "text_markdown": "书中生动详细地描述了他的被俘、被迫皈依、多年服役和逃亡。",
+      "tts": {
+        "text": "书中生动详细地描述了他的被俘、被迫皈依、多年服役和逃亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这本回忆录在英格兰很受欢迎。",
+      "text_markdown": "这本回忆录在英格兰很受欢迎。",
+      "tts": {
+        "text": "这本回忆录在英格兰很受欢迎。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它满足了公众对异域东方的迷恋和对巴巴里奴隶贸易的恐惧。",
+      "text_markdown": "它满足了公众对异域东方的迷恋和对巴巴里奴隶贸易的恐惧。",
+      "tts": {
+        "text": "它满足了公众对异域东方的迷恋和对巴巴里奴隶贸易的恐惧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在激烈的宗教冲突时期，它也充当了反伊斯兰的宣传工具。",
+      "text_markdown": "在激烈的宗教冲突时期，它也充当了反伊斯兰的宣传工具。",
+      "tts": {
+        "text": "在激烈的宗教冲突时期，它也充当了反伊斯兰的宣传工具。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现代历史学家对托马斯的叙述既尊重又谨慎。",
+      "text_markdown": "现代历史学家对托马斯的叙述既尊重又谨慎。",
+      "tts": {
+        "text": "现代历史学家对托马斯的叙述既尊重又谨慎。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些细节可能为了迎合读者而被夸大或美化了。",
+      "text_markdown": "一些细节可能为了迎合读者而被夸大或美化了。",
+      "tts": {
+        "text": "一些细节可能为了迎合读者而被夸大或美化了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但故事的核心得到了其他历史证据的支持。",
+      "text_markdown": "但故事的核心得到了其他历史证据的支持。",
+      "tts": {
+        "text": "但故事的核心得到了其他历史证据的支持。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛的去世日期和情况不得而知。",
+      "text_markdown": "托马斯·佩洛的去世日期和情况不得而知。",
+      "tts": {
+        "text": "托马斯·佩洛的去世日期和情况不得而知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在回忆录出版后，他从历史记录中消失了。",
+      "text_markdown": "在回忆录出版后，他从历史记录中消失了。",
+      "tts": {
+        "text": "在回忆录出版后，他从历史记录中消失了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "逃亡",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个经历了二十三年囚禁的幸存者悄然消失在了默默无闻中。",
+      "text_markdown": "这个经历了二十三年囚禁的幸存者悄然消失在了默默无闻中。",
+      "tts": {
+        "text": "这个经历了二十三年囚禁的幸存者悄然消失在了默默无闻中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛的回忆录是关于巴巴里奴隶贸易最重要的文献之一。",
+      "text_markdown": "托马斯·佩洛的回忆录是关于巴巴里奴隶贸易最重要的文献之一。",
+      "tts": {
+        "text": "托马斯·佩洛的回忆录是关于巴巴里奴隶贸易最重要的文献之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它提供了一个欧洲俘虏在摩洛哥生活的第一手记述。",
+      "text_markdown": "它提供了一个欧洲俘虏在摩洛哥生活的第一手记述。",
+      "tts": {
+        "text": "它提供了一个欧洲俘虏在摩洛哥生活的第一手记述。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "很少有其他来源能提供如此详细和个人化的证词。",
+      "text_markdown": "很少有其他来源能提供如此详细和个人化的证词。",
+      "tts": {
+        "text": "很少有其他来源能提供如此详细和个人化的证词。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的故事照亮了一个常常被忽视的历史篇章。",
+      "text_markdown": "他的故事照亮了一个常常被忽视的历史篇章。",
+      "tts": {
+        "text": "他的故事照亮了一个常常被忽视的历史篇章。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北非国家对欧洲人的奴役持续了几个世纪。",
+      "text_markdown": "北非国家对欧洲人的奴役持续了几个世纪。",
+      "tts": {
+        "text": "北非国家对欧洲人的奴役持续了几个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它影响了数百万人，塑造了地中海世界的政治。",
+      "text_markdown": "它影响了数百万人，塑造了地中海世界的政治。",
+      "tts": {
+        "text": "它影响了数百万人，塑造了地中海世界的政治。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯帮助维护的梅克内斯宫殿今天仍部分矗立。",
+      "text_markdown": "托马斯帮助维护的梅克内斯宫殿今天仍部分矗立。",
+      "tts": {
+        "text": "托马斯帮助维护的梅克内斯宫殿今天仍部分矗立。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是联合国教科文组织世界遗产。",
+      "text_markdown": "它是联合国教科文组织世界遗产。",
+      "tts": {
+        "text": "它是联合国教科文组织世界遗产。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "游客们走过奴隶曾经劳作的同一庭院。",
+      "text_markdown": "游客们走过奴隶曾经劳作的同一庭院。",
+      "tts": {
+        "text": "游客们走过奴隶曾经劳作的同一庭院。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "废墟的美丽掩盖了建造它们的苦难。",
+      "text_markdown": "废墟的美丽掩盖了建造它们的苦难。",
+      "tts": {
+        "text": "废墟的美丽掩盖了建造它们的苦难。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯侍奉的苏丹穆莱·伊斯梅尔在摩洛哥和欧洲有着不同的评价。",
+      "text_markdown": "托马斯侍奉的苏丹穆莱·伊斯梅尔在摩洛哥和欧洲有着不同的评价。",
+      "tts": {
+        "text": "托马斯侍奉的苏丹穆莱·伊斯梅尔在摩洛哥和欧洲有着不同的评价。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在摩洛哥，他被歌颂为统一国家的强有力统治者。",
+      "text_markdown": "在摩洛哥，他被歌颂为统一国家的强有力统治者。",
+      "tts": {
+        "text": "在摩洛哥，他被歌颂为统一国家的强有力统治者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在欧洲，他被记住为奴役了数千人的暴君。",
+      "text_markdown": "在欧洲，他被记住为奴役了数千人的暴君。",
+      "tts": {
+        "text": "在欧洲，他被记住为奴役了数千人的暴君。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两种观点都包含着真相。",
+      "text_markdown": "两种观点都包含着真相。",
+      "tts": {
+        "text": "两种观点都包含着真相。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史是复杂的，强大的统治者留下复杂的遗产。",
+      "text_markdown": "历史是复杂的，强大的统治者留下复杂的遗产。",
+      "tts": {
+        "text": "历史是复杂的，强大的统治者留下复杂的遗产。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "建造梅克内斯的奴隶们不会称穆莱·伊斯梅尔为伟大的国王。",
+      "text_markdown": "建造梅克内斯的奴隶们不会称穆莱·伊斯梅尔为伟大的国王。",
+      "tts": {
+        "text": "建造梅克内斯的奴隶们不会称穆莱·伊斯梅尔为伟大的国王。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛的故事还提出了关于身份认同的困难问题。",
+      "text_markdown": "托马斯·佩洛的故事还提出了关于身份认同的困难问题。",
+      "tts": {
+        "text": "托马斯·佩洛的故事还提出了关于身份认同的困难问题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在摩洛哥生活了二十三年后，托马斯还是英国人吗？",
+      "text_markdown": "在摩洛哥生活了二十三年后，托马斯还是英国人吗？",
+      "tts": {
+        "text": "在摩洛哥生活了二十三年后，托马斯还是英国人吗？",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他还是基督徒吗？",
+      "text_markdown": "他还是基督徒吗？",
+      "tts": {
+        "text": "他还是基督徒吗？",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "答案并不简单。",
+      "text_markdown": "答案并不简单。",
+      "tts": {
+        "text": "答案并不简单。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在摩洛哥度过的时间比在英格兰更多。",
+      "text_markdown": "他在摩洛哥度过的时间比在英格兰更多。",
+      "tts": {
+        "text": "他在摩洛哥度过的时间比在英格兰更多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的阿拉伯语说得比许多母语者还好。",
+      "text_markdown": "他的阿拉伯语说得比许多母语者还好。",
+      "tts": {
+        "text": "他的阿拉伯语说得比许多母语者还好。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他参加过摩洛哥的战争，按摩洛哥的习俗生活。",
+      "text_markdown": "他参加过摩洛哥的战争，按摩洛哥的习俗生活。",
+      "tts": {
+        "text": "他参加过摩洛哥的战争，按摩洛哥的习俗生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "俘虏与参与者之间的界限在几十年中变得模糊了。",
+      "text_markdown": "俘虏与参与者之间的界限在几十年中变得模糊了。",
+      "tts": {
+        "text": "俘虏与参与者之间的界限在几十年中变得模糊了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的被迫皈依并非独一无二。",
+      "text_markdown": "他的被迫皈依并非独一无二。",
+      "tts": {
+        "text": "他的被迫皈依并非独一无二。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数千名欧洲俘虏被迫皈依伊斯兰教。",
+      "text_markdown": "数千名欧洲俘虏被迫皈依伊斯兰教。",
+      "tts": {
+        "text": "数千名欧洲俘虏被迫皈依伊斯兰教。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人最终回归了基督教。",
+      "text_markdown": "一些人最终回归了基督教。",
+      "tts": {
+        "text": "一些人最终回归了基督教。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其他人终生保持穆斯林身份。",
+      "text_markdown": "其他人终生保持穆斯林身份。",
+      "tts": {
+        "text": "其他人终生保持穆斯林身份。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "被迫皈依和真诚皈依之间的界限往往模糊不清。",
+      "text_markdown": "被迫皈依和真诚皈依之间的界限往往模糊不清。",
+      "tts": {
+        "text": "被迫皈依和真诚皈依之间的界限往往模糊不清。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴巴里奴隶贸易在托马斯逃跑后又持续了数十年。",
+      "text_markdown": "巴巴里奴隶贸易在托马斯逃跑后又持续了数十年。",
+      "tts": {
+        "text": "巴巴里奴隶贸易在托马斯逃跑后又持续了数十年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "直到十九世纪初，欧洲和美国的海军力量才最终镇压了海盗。",
+      "text_markdown": "直到十九世纪初，欧洲和美国的海军力量才最终镇压了海盗。",
+      "tts": {
+        "text": "直到十九世纪初，欧洲和美国的海军力量才最终镇压了海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "美国在1801年和1815年两次对巴巴里国家发动战争。",
+      "text_markdown": "美国在1801年和1815年两次对巴巴里国家发动战争。",
+      "tts": {
+        "text": "美国在一千八百零一年和一千八百一十五年两次对巴巴里国家发动战争。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·佩洛的故事归根结底是一个关于生存的故事。",
+      "text_markdown": "托马斯·佩洛的故事归根结底是一个关于生存的故事。",
+      "tts": {
+        "text": "托马斯·佩洛的故事归根结底是一个关于生存的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他忍受了二十三年的囚禁、被迫皈依、暴力和孤立。",
+      "text_markdown": "他忍受了二十三年的囚禁、被迫皈依、暴力和孤立。",
+      "tts": {
+        "text": "他忍受了二十三年的囚禁、被迫皈依、暴力和孤立。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他经历了这一切，找到了回家的路。",
+      "text_markdown": "他经历了这一切，找到了回家的路。",
+      "tts": {
+        "text": "他经历了这一切，找到了回家的路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的回忆录证明了一个人能承受多少而仍然保持自我。",
+      "text_markdown": "他的回忆录证明了一个人能承受多少而仍然保持自我。",
+      "tts": {
+        "text": "他的回忆录证明了一个人能承受多少而仍然保持自我。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历经所有那些年月，跨越所有那些距离，托马斯·佩洛从未停止做那个想回家的康沃尔男孩。",
+      "text_markdown": "历经所有那些年月，跨越所有那些距离，托马斯·佩洛从未停止做那个想回家的康沃尔男孩。",
+      "tts": {
+        "text": "历经所有那些年月，跨越所有那些距离，托马斯·佩洛从未停止做那个想回家的康沃尔男孩。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

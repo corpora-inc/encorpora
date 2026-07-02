@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_klaus_stortebeker",
+  "language": "zh",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个真实的故事，讲述了一位海盗在被斩首后，无头的身体仍然继续行走。",
+      "text_markdown": "这是一个真实的故事，讲述了一位海盗在被斩首后，无头的身体仍然继续行走。",
+      "tts": {
+        "text": "这是一个真实的故事，讲述了一位海盗在被斩首后，无头的身体仍然继续行走。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字叫克劳斯·施特尔特贝克尔，在600多年前，他曾令北欧的海域陷入恐慌。",
+      "text_markdown": "他的名字叫克劳斯·施特尔特贝克尔，在600多年前，他曾令北欧的海域陷入恐慌。",
+      "tts": {
+        "text": "他的名字叫克劳斯·施特尔特贝克尔，在六百多年前，他曾令北欧的海域陷入恐慌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "至少，传说是这么说的。",
+      "text_markdown": "至少，传说是这么说的。",
+      "tts": {
+        "text": "至少，传说是这么说的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔是德国民间传说中最著名的人物之一。",
+      "text_markdown": "施特尔特贝克尔是德国民间传说中最著名的人物之一。",
+      "tts": {
+        "text": "施特尔特贝克尔是德国民间传说中最著名的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的故事涉及战争、海盗活动、背叛，以及一场成为传奇的处决。",
+      "text_markdown": "他的故事涉及战争、海盗活动、背叛，以及一场成为传奇的处决。",
+      "tts": {
+        "text": "他的故事涉及战争、海盗活动、背叛，以及一场成为传奇的处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他生活在一个强大的商业城市控制着北方贸易路线的时代。",
+      "text_markdown": "他生活在一个强大的商业城市控制着北方贸易路线的时代。",
+      "tts": {
+        "text": "他生活在一个强大的商业城市控制着北方贸易路线的时代。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在他的故事中，将事实与神话分开并非总是可能的。",
+      "text_markdown": "在他的故事中，将事实与神话分开并非总是可能的。",
+      "tts": {
+        "text": "在他的故事中，将事实与神话分开并非总是可能的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他生前留下的文献极为稀少。",
+      "text_markdown": "他生前留下的文献极为稀少。",
+      "tts": {
+        "text": "他生前留下的文献极为稀少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们所知道的大部分内容来自数十年或数百年后撰写的编年史。",
+      "text_markdown": "我们所知道的大部分内容来自数十年或数百年后撰写的编年史。",
+      "tts": {
+        "text": "我们所知道的大部分内容来自数十年或数百年后撰写的编年史。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这本书尽可能忠实于史料来讲述他的故事。",
+      "text_markdown": "这本书尽可能忠实于史料来讲述他的故事。",
+      "tts": {
+        "text": "这本书尽可能忠实于史料来讲述他的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "北方海洋的世界",
+      "text_markdown": "北方海洋的世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克劳斯·施特尔特贝克尔生活在14世纪下半叶。",
+      "text_markdown": "克劳斯·施特尔特贝克尔生活在14世纪下半叶。",
+      "tts": {
+        "text": "克劳斯·施特尔特贝克尔生活在一千三百年代的后半段。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那是欧洲历史上的中世纪晚期。",
+      "text_markdown": "那是欧洲历史上的中世纪晚期。",
+      "tts": {
+        "text": "那是欧洲历史上的中世纪晚期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北欧与地中海南部截然不同。",
+      "text_markdown": "北欧与地中海南部截然不同。",
+      "tts": {
+        "text": "北欧与地中海南部截然不同。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波罗的海和北海是北方贸易的主要通道。",
+      "text_markdown": "波罗的海和北海是北方贸易的主要通道。",
+      "tts": {
+        "text": "波罗的海和北海是北方贸易的主要通道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船只在斯堪的纳维亚、俄罗斯、英格兰和德国海岸之间运输货物。",
+      "text_markdown": "船只在斯堪的纳维亚、俄罗斯、英格兰和德国海岸之间运输货物。",
+      "tts": {
+        "text": "船只在斯堪的纳维亚、俄罗斯、英格兰和德国海岸之间运输货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "谁控制了海上航线，谁就掌握了巨大的财富。",
+      "text_markdown": "谁控制了海上航线，谁就掌握了巨大的财富。",
+      "tts": {
+        "text": "谁控制了海上航线，谁就掌握了巨大的财富。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方贸易中最强大的力量是汉萨同盟。",
+      "text_markdown": "北方贸易中最强大的力量是汉萨同盟。",
+      "tts": {
+        "text": "北方贸易中最强大的力量是汉萨同盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "汉萨同盟是分布在北欧各地的商业城市联盟。",
+      "text_markdown": "汉萨同盟是分布在北欧各地的商业城市联盟。",
+      "tts": {
+        "text": "汉萨同盟是分布在北欧各地的商业城市联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它不是一个国家或王国，而是一个为贸易而合作的城市网络。",
+      "text_markdown": "它不是一个国家或王国，而是一个为贸易而合作的城市网络。",
+      "tts": {
+        "text": "它不是一个国家或王国，而是一个为贸易而合作的城市网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在鼎盛时期，汉萨同盟包括近两百座城市。",
+      "text_markdown": "在鼎盛时期，汉萨同盟包括近两百座城市。",
+      "tts": {
+        "text": "在鼎盛时期，汉萨同盟包括近两百座城市。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最重要的汉萨城市是吕贝克、汉堡、不来梅、罗斯托克和但泽。",
+      "text_markdown": "最重要的汉萨城市是吕贝克、汉堡、不来梅、罗斯托克和但泽。",
+      "tts": {
+        "text": "最重要的汉萨城市是吕贝克、汉堡、不来梅、罗斯托克和但泽。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "吕贝克被视为同盟的非正式首都。",
+      "text_markdown": "吕贝克被视为同盟的非正式首都。",
+      "tts": {
+        "text": "吕贝克被视为同盟的非正式首都。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "汉堡通过易北河控制着通往北海的通道。",
+      "text_markdown": "汉堡通过易北河控制着通往北海的通道。",
+      "tts": {
+        "text": "汉堡通过易北河控制着通往北海的通道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "不来梅是北海上的另一个重要贸易港口。",
+      "text_markdown": "不来梅是北海上的另一个重要贸易港口。",
+      "tts": {
+        "text": "不来梅是北海上的另一个重要贸易港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "同盟贸易品包括来自俄罗斯的皮毛、斯堪的纳维亚的木材和普鲁士的谷物。",
+      "text_markdown": "同盟贸易品包括来自俄罗斯的皮毛、斯堪的纳维亚的木材和普鲁士的谷物。",
+      "tts": {
+        "text": "同盟贸易品包括来自俄罗斯的皮毛、斯堪的纳维亚的木材和普鲁士的谷物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波罗的海的腌鲱鱼是最重要的贸易商品之一。",
+      "text_markdown": "波罗的海的腌鲱鱼是最重要的贸易商品之一。",
+      "tts": {
+        "text": "波罗的海的腌鲱鱼是最重要的贸易商品之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "琥珀、蜂蜡和蜂蜜从东波罗的海向西流通。",
+      "text_markdown": "琥珀、蜂蜡和蜂蜜从东波罗的海向西流通。",
+      "tts": {
+        "text": "琥珀、蜂蜡和蜂蜜从东波罗的海向西流通。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "佛兰德斯和英格兰的布匹则向东运输作为交换。",
+      "text_markdown": "佛兰德斯和英格兰的布匹则向东运输作为交换。",
+      "tts": {
+        "text": "佛兰德斯和英格兰的布匹则向东运输作为交换。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉萨同盟毫不留情地维护其贸易垄断。",
+      "text_markdown": "汉萨同盟毫不留情地维护其贸易垄断。",
+      "tts": {
+        "text": "汉萨同盟毫不留情地维护其贸易垄断。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "非成员城市被排除在最有利可图的路线之外。",
+      "text_markdown": "非成员城市被排除在最有利可图的路线之外。",
+      "tts": {
+        "text": "非成员城市被排除在最有利可图的路线之外。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "同盟可以实施贸易禁运，使整个地区屈服。",
+      "text_markdown": "同盟可以实施贸易禁运，使整个地区屈服。",
+      "tts": {
+        "text": "同盟可以实施贸易禁运，使整个地区屈服。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它维持着自己的海军力量来保护商船队。",
+      "text_markdown": "它维持着自己的海军力量来保护商船队。",
+      "tts": {
+        "text": "它维持着自己的海军力量来保护商船队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管有这些防御措施，海盗活动在北方海域仍是一个持续性问题。",
+      "text_markdown": "尽管有这些防御措施，海盗活动在北方海域仍是一个持续性问题。",
+      "tts": {
+        "text": "尽管有这些防御措施，海盗活动在北方海域仍是一个持续性问题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波罗的海和北海的海岸线布满了岛屿和海湾。",
+      "text_markdown": "波罗的海和北海的海岸线布满了岛屿和海湾。",
+      "tts": {
+        "text": "波罗的海和北海的海岸线布满了岛屿和海湾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗可以躲在较大战舰无法追踪的浅水区。",
+      "text_markdown": "海盗可以躲在较大战舰无法追踪的浅水区。",
+      "tts": {
+        "text": "海盗可以躲在较大战舰无法追踪的浅水区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多雾的天气和短暂的冬日使伏击商船变得容易。",
+      "text_markdown": "多雾的天气和短暂的冬日使伏击商船变得容易。",
+      "tts": {
+        "text": "多雾的天气和短暂的冬日使伏击商船变得容易。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯堪的纳维亚的政治局势极其复杂。",
+      "text_markdown": "斯堪的纳维亚的政治局势极其复杂。",
+      "tts": {
+        "text": "斯堪的纳维亚的政治局势极其复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丹麦、瑞典和挪威不断相互交战。",
+      "text_markdown": "丹麦、瑞典和挪威不断相互交战。",
+      "tts": {
+        "text": "丹麦、瑞典和挪威不断相互交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在玛格丽特一世女王的统治下，丹麦是主导力量。",
+      "text_markdown": "在玛格丽特一世女王的统治下，丹麦是主导力量。",
+      "tts": {
+        "text": "在玛格丽特一世女王的统治下，丹麦是主导力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她于一千三百九十七年将丹麦、挪威和瑞典统一在卡尔马联盟之下。",
+      "text_markdown": "她于一千三百九十七年将丹麦、挪威和瑞典统一在卡尔马联盟之下。",
+      "tts": {
+        "text": "她于一千三百九十七年将丹麦、挪威和瑞典统一在卡尔马联盟之下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在卡尔马联盟之前，瑞典一直抵制丹麦的控制。",
+      "text_markdown": "在卡尔马联盟之前，瑞典一直抵制丹麦的控制。",
+      "tts": {
+        "text": "在卡尔马联盟之前，瑞典一直抵制丹麦的控制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "梅克伦堡的阿尔布雷希特国王统治着瑞典，但受到丹麦的玛格丽特的挑战。",
+      "text_markdown": "梅克伦堡的阿尔布雷希特国王统治着瑞典，但受到丹麦的玛格丽特的挑战。",
+      "tts": {
+        "text": "梅克伦堡的阿尔布雷希特国王统治着瑞典，但受到丹麦的玛格丽特的挑战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "玛格丽特击败了阿尔布雷希特并将他囚禁。",
+      "text_markdown": "玛格丽特击败了阿尔布雷希特并将他囚禁。",
+      "tts": {
+        "text": "玛格丽特击败了阿尔布雷希特并将他囚禁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "阿尔布雷希特的支持者在德国城市罗斯托克等地进行了反击。",
+      "text_markdown": "阿尔布雷希特的支持者在德国城市罗斯托克等地进行了反击。",
+      "tts": {
+        "text": "阿尔布雷希特的支持者在德国城市罗斯托克等地进行了反击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "丹麦与支持阿尔布雷希特的城市之间的这场战争为海盗创造了机会。",
+      "text_markdown": "丹麦与支持阿尔布雷希特的城市之间的这场战争为海盗创造了机会。",
+      "tts": {
+        "text": "丹麦与支持阿尔布雷希特的城市之间的这场战争为海盗创造了机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些城市雇佣私掠船来扰乱丹麦的航运并向被围困的斯德哥尔摩运送补给。",
+      "text_markdown": "这些城市雇佣私掠船来扰乱丹麦的航运并向被围困的斯德哥尔摩运送补给。",
+      "tts": {
+        "text": "这些城市雇佣私掠船来扰乱丹麦的航运并向被围困的斯德哥尔摩运送补给。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些私掠船被称为粮食兄弟会。",
+      "text_markdown": "这些私掠船被称为粮食兄弟会。",
+      "tts": {
+        "text": "这些私掠船被称为粮食兄弟会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们的名字来源于拉丁语中表示食物的词，因为他们的使命是运送补给。",
+      "text_markdown": "他们的名字来源于拉丁语中表示食物的词，因为他们的使命是运送补给。",
+      "tts": {
+        "text": "他们的名字来源于拉丁语中表示食物的词，因为他们的使命是运送补给。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世纪的德国城邦与欧洲其他任何地方都不同。",
+      "text_markdown": "中世纪的德国城邦与欧洲其他任何地方都不同。",
+      "tts": {
+        "text": "中世纪的德国城邦与欧洲其他任何地方都不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们通过富商组成的选举委员会独立自治。",
+      "text_markdown": "它们通过富商组成的选举委员会独立自治。",
+      "tts": {
+        "text": "它们通过富商组成的选举委员会独立自治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们有自己的法律、自己的民兵和自己的舰队。",
+      "text_markdown": "它们有自己的法律、自己的民兵和自己的舰队。",
+      "tts": {
+        "text": "它们有自己的法律、自己的民兵和自己的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它们不效忠于任何国王或王子。",
+      "text_markdown": "它们不效忠于任何国王或王子。",
+      "tts": {
+        "text": "它们不效忠于任何国王或王子。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡——施特尔特贝克尔最终将在那里走向终结——就是这些骄傲城市中的一座。",
+      "text_markdown": "汉堡——施特尔特贝克尔最终将在那里走向终结——就是这些骄傲城市中的一座。",
+      "tts": {
+        "text": "汉堡——施特尔特贝克尔最终将在那里走向终结——就是这些骄傲城市中的一座。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它坐落在易北河畔，距北海约一百公里。",
+      "text_markdown": "它坐落在易北河畔，距北海约一百公里。",
+      "tts": {
+        "text": "它坐落在易北河畔，距北海约一百公里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "汉堡的商人靠贸易致富，并凶猛地守护着自己的财富。",
+      "text_markdown": "汉堡的商人靠贸易致富，并凶猛地守护着自己的财富。",
+      "tts": {
+        "text": "汉堡的商人靠贸易致富，并凶猛地守护着自己的财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们对任何威胁其航运的人毫无耐心。",
+      "text_markdown": "他们对任何威胁其航运的人毫无耐心。",
+      "tts": {
+        "text": "他们对任何威胁其航运的人毫无耐心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是孕育克劳斯·施特尔特贝克尔的世界。",
+      "text_markdown": "这就是孕育克劳斯·施特尔特贝克尔的世界。",
+      "tts": {
+        "text": "这就是孕育克劳斯·施特尔特贝克尔的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个由商业王子、交战王国和危险海洋构成的世界。",
+      "text_markdown": "这是一个由商业王子、交战王国和危险海洋构成的世界。",
+      "tts": {
+        "text": "这是一个由商业王子、交战王国和危险海洋构成的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "北方海洋的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在这样的世界里，一个拥有快船的大胆之人可以成为英雄，也可以成为恶棍。",
+      "text_markdown": "在这样的世界里，一个拥有快船的大胆之人可以成为英雄，也可以成为恶棍。",
+      "tts": {
+        "text": "在这样的世界里，一个拥有快船的大胆之人可以成为英雄，也可以成为恶棍。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克劳斯·施特尔特贝克尔大约出生于1360年。",
+      "text_markdown": "克劳斯·施特尔特贝克尔大约出生于1360年。",
+      "tts": {
+        "text": "克劳斯·施特尔特贝克尔大约出生于一千三百六十年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的确切出生地不详。",
+      "text_markdown": "他的确切出生地不详。",
+      "tts": {
+        "text": "他的确切出生地不详。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些历史学家认为他来自维斯马，一个波罗的海沿岸的汉萨港口。",
+      "text_markdown": "一些历史学家认为他来自维斯马，一个波罗的海沿岸的汉萨港口。",
+      "tts": {
+        "text": "一些历史学家认为他来自维斯马，一个波罗的海沿岸的汉萨港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的真名可能是尼古拉斯·施托岑贝赫尔。",
+      "text_markdown": "他的真名可能是尼古拉斯·施托岑贝赫尔。",
+      "tts": {
+        "text": "他的真名可能是尼古拉斯·施托岑贝赫尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "施特尔特贝克尔这个名字是低地德语中的绰号。",
+      "text_markdown": "施特尔特贝克尔这个名字是低地德语中的绰号。",
+      "tts": {
+        "text": "施特尔特贝克尔这个名字是低地德语中的绰号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它的意思大约是干掉这杯或一口喝光。",
+      "text_markdown": "它的意思大约是干掉这杯或一口喝光。",
+      "tts": {
+        "text": "它的意思大约是干掉这杯或一口喝光。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据传说，施特尔特贝克尔能一口喝完一个4升的啤酒杯。",
+      "text_markdown": "据传说，施特尔特贝克尔能一口喝完一个4升的啤酒杯。",
+      "tts": {
+        "text": "据传说，施特尔特贝克尔能一口喝完一个四升的啤酒杯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "不管这是事实还是夸张，这个绰号留了下来。",
+      "text_markdown": "不管这是事实还是夸张，这个绰号留了下来。",
+      "tts": {
+        "text": "不管这是事实还是夸张，这个绰号留了下来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这暗示着一个体力和食量都令人印象深刻的男人。",
+      "text_markdown": "这暗示着一个体力和食量都令人印象深刻的男人。",
+      "tts": {
+        "text": "这暗示着一个体力和食量都令人印象深刻的男人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于施特尔特贝克尔的童年或家庭几乎一无所知。",
+      "text_markdown": "关于施特尔特贝克尔的童年或家庭几乎一无所知。",
+      "tts": {
+        "text": "关于施特尔特贝克尔的童年或家庭几乎一无所知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世纪关于普通人的记录极为稀少。",
+      "text_markdown": "中世纪关于普通人的记录极为稀少。",
+      "tts": {
+        "text": "中世纪关于普通人的记录极为稀少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他可能来自一个水手或渔民家庭。",
+      "text_markdown": "他可能来自一个水手或渔民家庭。",
+      "tts": {
+        "text": "他可能来自一个水手或渔民家庭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他也可能出身于较为富裕的背景。",
+      "text_markdown": "他也可能出身于较为富裕的背景。",
+      "tts": {
+        "text": "他也可能出身于较为富裕的背景。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们所知道的是，他加入了粮食兄弟会。",
+      "text_markdown": "我们所知道的是，他加入了粮食兄弟会。",
+      "tts": {
+        "text": "我们所知道的是，他加入了粮食兄弟会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "粮食兄弟会最初是拥有合法军事使命的私掠船。",
+      "text_markdown": "粮食兄弟会最初是拥有合法军事使命的私掠船。",
+      "tts": {
+        "text": "粮食兄弟会最初是拥有合法军事使命的私掠船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们被雇来打破丹麦对斯德哥尔摩的封锁。",
+      "text_markdown": "他们被雇来打破丹麦对斯德哥尔摩的封锁。",
+      "tts": {
+        "text": "他们被雇来打破丹麦对斯德哥尔摩的封锁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "瑞典首都斯德哥尔摩当时正被丹麦军队围困。",
+      "text_markdown": "瑞典首都斯德哥尔摩当时正被丹麦军队围困。",
+      "tts": {
+        "text": "瑞典首都斯德哥尔摩当时正被丹麦军队围困。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丹麦女王玛格丽特想将瑞典置于她的控制之下。",
+      "text_markdown": "丹麦女王玛格丽特想将瑞典置于她的控制之下。",
+      "tts": {
+        "text": "丹麦女王玛格丽特想将瑞典置于她的控制之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "城市正在挨饿，守卫者急需补给。",
+      "text_markdown": "城市正在挨饿，守卫者急需补给。",
+      "tts": {
+        "text": "城市正在挨饿，守卫者急需补给。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "支持梅克伦堡的阿尔布雷希特国王的城市组织了一次救援行动。",
+      "text_markdown": "支持梅克伦堡的阿尔布雷希特国王的城市组织了一次救援行动。",
+      "tts": {
+        "text": "支持梅克伦堡的阿尔布雷希特国王的城市组织了一次救援行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们委托私掠船绕过丹麦舰队，将食物送往斯德哥尔摩。",
+      "text_markdown": "他们委托私掠船绕过丹麦舰队，将食物送往斯德哥尔摩。",
+      "tts": {
+        "text": "他们委托私掠船绕过丹麦舰队，将食物送往斯德哥尔摩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些私掠船获得了私掠许可证，使他们对丹麦船只的袭击合法化。",
+      "text_markdown": "这些私掠船获得了私掠许可证，使他们对丹麦船只的袭击合法化。",
+      "tts": {
+        "text": "这些私掠船获得了私掠许可证，使他们对丹麦船只的袭击合法化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "粮食兄弟会就是这样诞生的。",
+      "text_markdown": "粮食兄弟会就是这样诞生的。",
+      "tts": {
+        "text": "粮食兄弟会就是这样诞生的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "粮食兄弟会在完成任务方面卓有成效。",
+      "text_markdown": "粮食兄弟会在完成任务方面卓有成效。",
+      "tts": {
+        "text": "粮食兄弟会在完成任务方面卓有成效。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们突破了丹麦的封锁，为饥饿的城市送去了食物。",
+      "text_markdown": "他们突破了丹麦的封锁，为饥饿的城市送去了食物。",
+      "tts": {
+        "text": "他们突破了丹麦的封锁，为饥饿的城市送去了食物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们还成功地袭击了丹麦和挪威的商船。",
+      "text_markdown": "他们还成功地袭击了丹麦和挪威的商船。",
+      "tts": {
+        "text": "他们还成功地袭击了丹麦和挪威的商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船员们从掠夺的战利品中变得富有。",
+      "text_markdown": "船员们从掠夺的战利品中变得富有。",
+      "tts": {
+        "text": "船员们从掠夺的战利品中变得富有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这项任务吸引了各种各样的人。",
+      "text_markdown": "这项任务吸引了各种各样的人。",
+      "tts": {
+        "text": "这项任务吸引了各种各样的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些是经验丰富的水手和士兵。",
+      "text_markdown": "有些是经验丰富的水手和士兵。",
+      "tts": {
+        "text": "有些是经验丰富的水手和士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他人则是冒险家、亡命之徒，或逃避债务和法律制裁的人。",
+      "text_markdown": "其他人则是冒险家、亡命之徒，或逃避债务和法律制裁的人。",
+      "tts": {
+        "text": "其他人则是冒险家、亡命之徒，或逃避债务和法律制裁的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "粮食兄弟会成为所有寻求海上财富和自由之人的磁石。",
+      "text_markdown": "粮食兄弟会成为所有寻求海上财富和自由之人的磁石。",
+      "tts": {
+        "text": "粮食兄弟会成为所有寻求海上财富和自由之人的磁石。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔迅速升至该团体的领导地位。",
+      "text_markdown": "施特尔特贝克尔迅速升至该团体的领导地位。",
+      "tts": {
+        "text": "施特尔特贝克尔迅速升至该团体的领导地位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他崛起的确切细节已湮没在历史中。",
+      "text_markdown": "他崛起的确切细节已湮没在历史中。",
+      "tts": {
+        "text": "他崛起的确切细节已湮没在历史中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他一定是一位技术精湛的水手、凶猛的战士和天生的领导者。",
+      "text_markdown": "他一定是一位技术精湛的水手、凶猛的战士和天生的领导者。",
+      "tts": {
+        "text": "他一定是一位技术精湛的水手、凶猛的战士和天生的领导者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "战争结束时，他已是最杰出的粮食兄弟之一。",
+      "text_markdown": "战争结束时，他已是最杰出的粮食兄弟之一。",
+      "tts": {
+        "text": "战争结束时，他已是最杰出的粮食兄弟之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战争实际上在1395年随着阿尔布雷希特国王获释而结束。",
+      "text_markdown": "战争实际上在1395年随着阿尔布雷希特国王获释而结束。",
+      "tts": {
+        "text": "战争实际上在一千三百九十五年随着阿尔布雷希特国王获释而结束。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "交战各方达成了和平协议。",
+      "text_markdown": "交战各方达成了和平协议。",
+      "tts": {
+        "text": "交战各方达成了和平协议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "授权粮食兄弟会的私掠许可证被撤销。",
+      "text_markdown": "授权粮食兄弟会的私掠许可证被撤销。",
+      "tts": {
+        "text": "授权粮食兄弟会的私掠许可证被撤销。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但粮食兄弟会无意停手。",
+      "text_markdown": "但粮食兄弟会无意停手。",
+      "tts": {
+        "text": "但粮食兄弟会无意停手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们已经尝到了公海上的财富和自由的滋味。",
+      "text_markdown": "他们已经尝到了公海上的财富和自由的滋味。",
+      "tts": {
+        "text": "他们已经尝到了公海上的财富和自由的滋味。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对于靠刀剑为生的人来说，回归平凡生活毫无吸引力。",
+      "text_markdown": "对于靠刀剑为生的人来说，回归平凡生活毫无吸引力。",
+      "tts": {
+        "text": "对于靠刀剑为生的人来说，回归平凡生活毫无吸引力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们继续劫掠，但现在他们是海盗，而非私掠船了。",
+      "text_markdown": "他们继续劫掠，但现在他们是海盗，而非私掠船了。",
+      "tts": {
+        "text": "他们继续劫掠，但现在他们是海盗，而非私掠船了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据传说，他们的座右铭大胆而挑衅。",
+      "text_markdown": "据传说，他们的座右铭大胆而挑衅。",
+      "tts": {
+        "text": "据传说，他们的座右铭大胆而挑衅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们自称上帝之友、世界之敌。",
+      "text_markdown": "他们自称上帝之友、世界之敌。",
+      "tts": {
+        "text": "他们自称上帝之友、世界之敌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这句话完美地体现了他们的亡命徒身份。",
+      "text_markdown": "这句话完美地体现了他们的亡命徒身份。",
+      "tts": {
+        "text": "这句话完美地体现了他们的亡命徒身份。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们不服从任何国王、任何城市、任何法律。",
+      "text_markdown": "他们不服从任何国王、任何城市、任何法律。",
+      "tts": {
+        "text": "他们不服从任何国王、任何城市、任何法律。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世纪的水手面临的危险不仅仅是风暴和敌船。",
+      "text_markdown": "中世纪的水手面临的危险不仅仅是风暴和敌船。",
+      "tts": {
+        "text": "中世纪的水手面临的危险不仅仅是风暴和敌船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "疾病和营养不良是长途航行中的常伴。",
+      "text_markdown": "疾病和营养不良是长途航行中的常伴。",
+      "tts": {
+        "text": "疾病和营养不良是长途航行中的常伴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "加入粮食兄弟会的人选择了一种艰苦且往往短暂的生活。",
+      "text_markdown": "加入粮食兄弟会的人选择了一种艰苦且往往短暂的生活。",
+      "tts": {
+        "text": "加入粮食兄弟会的人选择了一种艰苦且往往短暂的生活。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起之路",
+      "text_markdown": "崛起之路"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战争结束后，粮食兄弟会需要一个行动基地。",
+      "text_markdown": "战争结束后，粮食兄弟会需要一个行动基地。",
+      "tts": {
+        "text": "战争结束后，粮食兄弟会需要一个行动基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们占领了波罗的海中的哥特兰岛。",
+      "text_markdown": "他们占领了波罗的海中的哥特兰岛。",
+      "tts": {
+        "text": "他们占领了波罗的海中的哥特兰岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "哥特兰是一个位于瑞典和波罗的海海岸之间的大型战略岛屿。",
+      "text_markdown": "哥特兰是一个位于瑞典和波罗的海海岸之间的大型战略岛屿。",
+      "tts": {
+        "text": "哥特兰是一个位于瑞典和波罗的海海岸之间的大型战略岛屿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "哥特兰岛上的维斯比城曾是一个富裕的汉萨贸易中心。",
+      "text_markdown": "哥特兰岛上的维斯比城曾是一个富裕的汉萨贸易中心。",
+      "tts": {
+        "text": "哥特兰岛上的维斯比城曾是一个富裕的汉萨贸易中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "到海盗到来时，它已失去了昔日的辉煌。",
+      "text_markdown": "到海盗到来时，它已失去了昔日的辉煌。",
+      "tts": {
+        "text": "到海盗到来时，它已失去了昔日的辉煌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "粮食兄弟会将这座岛变成了他们的据点。",
+      "text_markdown": "粮食兄弟会将这座岛变成了他们的据点。",
+      "tts": {
+        "text": "粮食兄弟会将这座岛变成了他们的据点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从哥特兰出发，他们可以袭击波罗的海各个方向的船只。",
+      "text_markdown": "从哥特兰出发，他们可以袭击波罗的海各个方向的船只。",
+      "tts": {
+        "text": "从哥特兰出发，他们可以袭击波罗的海各个方向的船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔和他的船员们袭击了来自吕贝克、汉堡和其他汉萨城市的商船。",
+      "text_markdown": "施特尔特贝克尔和他的船员们袭击了来自吕贝克、汉堡和其他汉萨城市的商船。",
+      "tts": {
+        "text": "施特尔特贝克尔和他的船员们袭击了来自吕贝克、汉堡和其他汉萨城市的商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们夺取了谷物、布匹、盐和奢侈品的货物。",
+      "text_markdown": "他们夺取了谷物、布匹、盐和奢侈品的货物。",
+      "tts": {
+        "text": "他们夺取了谷物、布匹、盐和奢侈品的货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们破坏了同盟维持了数代人的贸易路线。",
+      "text_markdown": "他们破坏了同盟维持了数代人的贸易路线。",
+      "tts": {
+        "text": "他们破坏了同盟维持了数代人的贸易路线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "经济损失是巨大的。",
+      "text_markdown": "经济损失是巨大的。",
+      "tts": {
+        "text": "经济损失是巨大的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉萨同盟怒不可遏，但难以有效回应。",
+      "text_markdown": "汉萨同盟怒不可遏，但难以有效回应。",
+      "tts": {
+        "text": "汉萨同盟怒不可遏，但难以有效回应。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "同盟是一个贸易联盟，而非统一的军事力量。",
+      "text_markdown": "同盟是一个贸易联盟，而非统一的军事力量。",
+      "tts": {
+        "text": "同盟是一个贸易联盟，而非统一的军事力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "组织一次联合海军远征需要许多独立城市的同意。",
+      "text_markdown": "组织一次联合海军远征需要许多独立城市的同意。",
+      "tts": {
+        "text": "组织一次联合海军远征需要许多独立城市的同意。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这需要时间，而与此同时海盗们继续着他们的劫掠。",
+      "text_markdown": "这需要时间，而与此同时海盗们继续着他们的劫掠。",
+      "tts": {
+        "text": "这需要时间，而与此同时海盗们继续着他们的劫掠。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "哥特兰的海盗不仅仅袭击商船。",
+      "text_markdown": "哥特兰的海盗不仅仅袭击商船。",
+      "tts": {
+        "text": "哥特兰的海盗不仅仅袭击商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们还劫掠沿海城镇和渔村。",
+      "text_markdown": "他们还劫掠沿海城镇和渔村。",
+      "tts": {
+        "text": "他们还劫掠沿海城镇和渔村。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们绑架人质索要赎金，烧毁抵抗的定居点。",
+      "text_markdown": "他们绑架人质索要赎金，烧毁抵抗的定居点。",
+      "tts": {
+        "text": "他们绑架人质索要赎金，烧毁抵抗的定居点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对粮食兄弟会的恐惧蔓延到了整个波罗的海地区。",
+      "text_markdown": "对粮食兄弟会的恐惧蔓延到了整个波罗的海地区。",
+      "tts": {
+        "text": "对粮食兄弟会的恐惧蔓延到了整个波罗的海地区。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔成为粮食兄弟会中最著名、最令人恐惧的人物。",
+      "text_markdown": "施特尔特贝克尔成为粮食兄弟会中最著名、最令人恐惧的人物。",
+      "tts": {
+        "text": "施特尔特贝克尔成为粮食兄弟会中最著名、最令人恐惧的人物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字在从诺夫哥罗德到卑尔根的港口被人们怀着恐惧提起。",
+      "text_markdown": "他的名字在从诺夫哥罗德到卑尔根的港口被人们怀着恐惧提起。",
+      "tts": {
+        "text": "他的名字在从诺夫哥罗德到卑尔根的港口被人们怀着恐惧提起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是总首领还是仅仅是最臭名昭著的船长，目前尚不清楚。",
+      "text_markdown": "他是总首领还是仅仅是最臭名昭著的船长，目前尚不清楚。",
+      "tts": {
+        "text": "他是总首领还是仅仅是最臭名昭著的船长，目前尚不清楚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "中世纪编年史也提到了其他首领。",
+      "text_markdown": "中世纪编年史也提到了其他首领。",
+      "tts": {
+        "text": "中世纪编年史也提到了其他首领。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个重要的盟友是格德克·米歇尔斯，另一位杰出的粮食兄弟。",
+      "text_markdown": "一个重要的盟友是格德克·米歇尔斯，另一位杰出的粮食兄弟。",
+      "tts": {
+        "text": "一个重要的盟友是格德克·米歇尔斯，另一位杰出的粮食兄弟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "米歇尔斯独立行动，但在重大劫掠中与施特尔特贝克尔合作。",
+      "text_markdown": "米歇尔斯独立行动，但在重大劫掠中与施特尔特贝克尔合作。",
+      "tts": {
+        "text": "米歇尔斯独立行动，但在重大劫掠中与施特尔特贝克尔合作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们共同指挥着一支规模可观的海盗船队。",
+      "text_markdown": "他们共同指挥着一支规模可观的海盗船队。",
+      "tts": {
+        "text": "他们共同指挥着一支规模可观的海盗船队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "条顿骑士团最终决定对哥特兰的海盗采取行动。",
+      "text_markdown": "条顿骑士团最终决定对哥特兰的海盗采取行动。",
+      "tts": {
+        "text": "条顿骑士团最终决定对哥特兰的海盗采取行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "条顿骑士团是一个以普鲁士为基地的强大军事组织。",
+      "text_markdown": "条顿骑士团是一个以普鲁士为基地的强大军事组织。",
+      "tts": {
+        "text": "条顿骑士团是一个以普鲁士为基地的强大军事组织。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们控制着波罗的海东岸沿线的广大领土。",
+      "text_markdown": "他们控制着波罗的海东岸沿线的广大领土。",
+      "tts": {
+        "text": "他们控制着波罗的海东岸沿线的广大领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗的劫掠也威胁着他们的利益。",
+      "text_markdown": "海盗的劫掠也威胁着他们的利益。",
+      "tts": {
+        "text": "海盗的劫掠也威胁着他们的利益。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1398年，条顿骑士团发动了对哥特兰的入侵。",
+      "text_markdown": "1398年，条顿骑士团发动了对哥特兰的入侵。",
+      "tts": {
+        "text": "一千三百九十八年，条顿骑士团发动了对哥特兰的入侵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们以压倒性的力量进攻并占领了该岛。",
+      "text_markdown": "他们以压倒性的力量进攻并占领了该岛。",
+      "tts": {
+        "text": "他们以压倒性的力量进攻并占领了该岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多海盗被杀或被俘。",
+      "text_markdown": "许多海盗被杀或被俘。",
+      "tts": {
+        "text": "许多海盗被杀或被俘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但施特尔特贝克尔不在其中。",
+      "text_markdown": "但施特尔特贝克尔不在其中。",
+      "tts": {
+        "text": "但施特尔特贝克尔不在其中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔和他的许多追随者在岛屿陷落之前逃走了。",
+      "text_markdown": "施特尔特贝克尔和他的许多追随者在岛屿陷落之前逃走了。",
+      "tts": {
+        "text": "施特尔特贝克尔和他的许多追随者在岛屿陷落之前逃走了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们向西航行，将波罗的海抛在身后。",
+      "text_markdown": "他们向西航行，将波罗的海抛在身后。",
+      "tts": {
+        "text": "他们向西航行，将波罗的海抛在身后。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们将行动转移到了北海。",
+      "text_markdown": "他们将行动转移到了北海。",
+      "tts": {
+        "text": "他们将行动转移到了北海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们海盗生涯的新阶段开始了。",
+      "text_markdown": "他们海盗生涯的新阶段开始了。",
+      "tts": {
+        "text": "他们海盗生涯的新阶段开始了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔在东弗里斯兰海岸建立了新基地。",
+      "text_markdown": "施特尔特贝克尔在东弗里斯兰海岸建立了新基地。",
+      "tts": {
+        "text": "施特尔特贝克尔在东弗里斯兰海岸建立了新基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "东弗里斯兰是一个由沼泽、岛屿和小型独立领地组成的地区。",
+      "text_markdown": "东弗里斯兰是一个由沼泽、岛屿和小型独立领地组成的地区。",
+      "tts": {
+        "text": "东弗里斯兰是一个由沼泽、岛屿和小型独立领地组成的地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有任何单一权力机构控制弗里斯兰海岸。",
+      "text_markdown": "没有任何单一权力机构控制弗里斯兰海岸。",
+      "tts": {
+        "text": "没有任何单一权力机构控制弗里斯兰海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种政治碎片化使其成为海盗的理想藏身之处。",
+      "text_markdown": "这种政治碎片化使其成为海盗的理想藏身之处。",
+      "tts": {
+        "text": "这种政治碎片化使其成为海盗的理想藏身之处。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃姆登和马里恩哈菲成为施特尔特贝克尔船队的重要基地。",
+      "text_markdown": "埃姆登和马里恩哈菲成为施特尔特贝克尔船队的重要基地。",
+      "tts": {
+        "text": "埃姆登和马里恩哈菲成为施特尔特贝克尔船队的重要基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当地的弗里斯兰首领容忍甚至积极支持海盗。",
+      "text_markdown": "当地的弗里斯兰首领容忍甚至积极支持海盗。",
+      "tts": {
+        "text": "当地的弗里斯兰首领容忍甚至积极支持海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗在当地市场消费，这有利于弗里斯兰经济。",
+      "text_markdown": "海盗在当地市场消费，这有利于弗里斯兰经济。",
+      "tts": {
+        "text": "海盗在当地市场消费，这有利于弗里斯兰经济。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一些首领以提供安全港口为交换，获得一部分战利品。",
+      "text_markdown": "一些首领以提供安全港口为交换，获得一部分战利品。",
+      "tts": {
+        "text": "一些首领以提供安全港口为交换，获得一部分战利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从东弗里斯兰出发，施特尔特贝克尔的船只可以袭击北海的航运线路。",
+      "text_markdown": "从东弗里斯兰出发，施特尔特贝克尔的船只可以袭击北海的航运线路。",
+      "tts": {
+        "text": "从东弗里斯兰出发，施特尔特贝克尔的船只可以袭击北海的航运线路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们袭击了在英格兰、佛兰德斯和汉萨港口之间航行的船只。",
+      "text_markdown": "他们袭击了在英格兰、佛兰德斯和汉萨港口之间航行的船只。",
+      "tts": {
+        "text": "他们袭击了在英格兰、佛兰德斯和汉萨港口之间航行的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从波罗的海转移到北海极大地扩展了他们的活动范围。",
+      "text_markdown": "从波罗的海转移到北海极大地扩展了他们的活动范围。",
+      "tts": {
+        "text": "从波罗的海转移到北海极大地扩展了他们的活动范围。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "北方海域中没有任何商船是安全的。",
+      "text_markdown": "北方海域中没有任何商船是安全的。",
+      "tts": {
+        "text": "北方海域中没有任何商船是安全的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉萨同盟现在同时面临两个海域的海盗袭击。",
+      "text_markdown": "汉萨同盟现在同时面临两个海域的海盗袭击。",
+      "tts": {
+        "text": "汉萨同盟现在同时面临两个海域的海盗袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "留在波罗的海的粮食兄弟继续在那里劫掠。",
+      "text_markdown": "留在波罗的海的粮食兄弟继续在那里劫掠。",
+      "tts": {
+        "text": "留在波罗的海的粮食兄弟继续在那里劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "施特尔特贝克尔的派系恐吓着北海。",
+      "text_markdown": "施特尔特贝克尔的派系恐吓着北海。",
+      "tts": {
+        "text": "施特尔特贝克尔的派系恐吓着北海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "同盟的贸易正被从两个方向扼杀。",
+      "text_markdown": "同盟的贸易正被从两个方向扼杀。",
+      "tts": {
+        "text": "同盟的贸易正被从两个方向扼杀。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "粮食兄弟会使用了一种简单但有效的劫掠策略。",
+      "text_markdown": "粮食兄弟会使用了一种简单但有效的劫掠策略。",
+      "tts": {
+        "text": "粮食兄弟会使用了一种简单但有效的劫掠策略。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在已知航运路线附近的隐蔽海湾中等待。",
+      "text_markdown": "他们在已知航运路线附近的隐蔽海湾中等待。",
+      "tts": {
+        "text": "他们在已知航运路线附近的隐蔽海湾中等待。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当商船经过时，他们就冲出来以人数优势将其制服。",
+      "text_markdown": "当商船经过时，他们就冲出来以人数优势将其制服。",
+      "tts": {
+        "text": "当商船经过时，他们就冲出来以人数优势将其制服。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "被俘的船员有时会获得加入海盗的选择。",
+      "text_markdown": "被俘的船员有时会获得加入海盗的选择。",
+      "tts": {
+        "text": "被俘的船员有时会获得加入海盗的选择。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多普通水手对他们的汉萨雇主并无多少忠诚。",
+      "text_markdown": "许多普通水手对他们的汉萨雇主并无多少忠诚。",
+      "tts": {
+        "text": "许多普通水手对他们的汉萨雇主并无多少忠诚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "鼎盛时期",
+      "text_markdown": "鼎盛时期"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在权力巅峰时期，施特尔特贝克尔指挥着一支多艘船的船队。",
+      "text_markdown": "在权力巅峰时期，施特尔特贝克尔指挥着一支多艘船的船队。",
+      "tts": {
+        "text": "在权力巅峰时期，施特尔特贝克尔指挥着一支多艘船的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "确切数目不详，但编年史表明规模相当可观。",
+      "text_markdown": "确切数目不详，但编年史表明规模相当可观。",
+      "tts": {
+        "text": "确切数目不详，但编年史表明规模相当可观。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的船员可能多达数百人。",
+      "text_markdown": "他的船员可能多达数百人。",
+      "tts": {
+        "text": "他的船员可能多达数百人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波罗的海和北海海盗使用的船只被称为柯克船和赫尔克船。",
+      "text_markdown": "波罗的海和北海海盗使用的船只被称为柯克船和赫尔克船。",
+      "tts": {
+        "text": "波罗的海和北海海盗使用的船只被称为柯克船和赫尔克船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "柯克船是一种坚固的平底商船，适用于北方水域。",
+      "text_markdown": "柯克船是一种坚固的平底商船，适用于北方水域。",
+      "tts": {
+        "text": "柯克船是一种坚固的平底商船，适用于北方水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "柯克船速度慢，但可以装载大量货物和众多船员。",
+      "text_markdown": "柯克船速度慢，但可以装载大量货物和众多船员。",
+      "tts": {
+        "text": "柯克船速度慢，但可以装载大量货物和众多船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗经常俘获商用柯克船并将其改装为己用。",
+      "text_markdown": "海盗经常俘获商用柯克船并将其改装为己用。",
+      "tts": {
+        "text": "海盗经常俘获商用柯克船并将其改装为己用。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方海域的航行既危险又困难。",
+      "text_markdown": "北方海域的航行既危险又困难。",
+      "tts": {
+        "text": "北方海域的航行既危险又困难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世纪的水手依靠海岸地标、太阳位置和经验来导航。",
+      "text_markdown": "中世纪的水手依靠海岸地标、太阳位置和经验来导航。",
+      "tts": {
+        "text": "中世纪的水手依靠海岸地标、太阳位置和经验来导航。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "指南针已有，但尚未得到广泛信任。",
+      "text_markdown": "指南针已有，但尚未得到广泛信任。",
+      "tts": {
+        "text": "指南针已有，但尚未得到广泛信任。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "与后来几个世纪相比，海图还很粗糙。",
+      "text_markdown": "与后来几个世纪相比，海图还很粗糙。",
+      "tts": {
+        "text": "与后来几个世纪相比，海图还很粗糙。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北海的风暴以其猛烈而闻名。",
+      "text_markdown": "北海的风暴以其猛烈而闻名。",
+      "tts": {
+        "text": "北海的风暴以其猛烈而闻名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北海南部的浅水区会产生陡峭而危险的海浪。",
+      "text_markdown": "北海南部的浅水区会产生陡峭而危险的海浪。",
+      "tts": {
+        "text": "北海南部的浅水区会产生陡峭而危险的海浪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船只可能毫无预警地被推上沙洲或岩石海岸。",
+      "text_markdown": "船只可能毫无预警地被推上沙洲或岩石海岸。",
+      "tts": {
+        "text": "船只可能毫无预警地被推上沙洲或岩石海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每一次航行都是与死亡的赌博。",
+      "text_markdown": "每一次航行都是与死亡的赌博。",
+      "tts": {
+        "text": "每一次航行都是与死亡的赌博。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔的海盗们袭击运载谷物、布匹、盐和啤酒的船只。",
+      "text_markdown": "施特尔特贝克尔的海盗们袭击运载谷物、布匹、盐和啤酒的船只。",
+      "tts": {
+        "text": "施特尔特贝克尔的海盗们袭击运载谷物、布匹、盐和啤酒的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们还夺取鲱鱼货物——这是北欧各地的主食。",
+      "text_markdown": "他们还夺取鲱鱼货物——这是北欧各地的主食。",
+      "tts": {
+        "text": "他们还夺取鲱鱼货物——这是北欧各地的主食。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "葡萄酒、香料和精美织物等奢侈品尤受青睐。",
+      "text_markdown": "葡萄酒、香料和精美织物等奢侈品尤受青睐。",
+      "tts": {
+        "text": "葡萄酒、香料和精美织物等奢侈品尤受青睐。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "任何能卖掉的东西都值得抢夺。",
+      "text_markdown": "任何能卖掉的东西都值得抢夺。",
+      "tts": {
+        "text": "任何能卖掉的东西都值得抢夺。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "传说施特尔特贝克尔会与穷人分享战利品。",
+      "text_markdown": "传说施特尔特贝克尔会与穷人分享战利品。",
+      "tts": {
+        "text": "传说施特尔特贝克尔会与穷人分享战利品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这种罗宾汉式的形象已伴随他数个世纪。",
+      "text_markdown": "这种罗宾汉式的形象已伴随他数个世纪。",
+      "tts": {
+        "text": "这种罗宾汉式的形象已伴随他数个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是否真的接济穷人，已无法考证。",
+      "text_markdown": "他是否真的接济穷人，已无法考证。",
+      "tts": {
+        "text": "他是否真的接济穷人，已无法考证。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个传说可能是在他死后产生的，以使他的故事更具同情色彩。",
+      "text_markdown": "这个传说可能是在他死后产生的，以使他的故事更具同情色彩。",
+      "tts": {
+        "text": "这个传说可能是在他死后产生的，以使他的故事更具同情色彩。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "可以确定的是，汉萨城市蒙受了巨大的损失。",
+      "text_markdown": "可以确定的是，汉萨城市蒙受了巨大的损失。",
+      "tts": {
+        "text": "可以确定的是，汉萨城市蒙受了巨大的损失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商业航行的保险费用急剧上升。",
+      "text_markdown": "商业航行的保险费用急剧上升。",
+      "tts": {
+        "text": "商业航行的保险费用急剧上升。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些贸易路线变得过于危险，没有武装护卫无法使用。",
+      "text_markdown": "一些贸易路线变得过于危险，没有武装护卫无法使用。",
+      "tts": {
+        "text": "一些贸易路线变得过于危险，没有武装护卫无法使用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "同盟作为贸易保护者的声誉正在受到损害。",
+      "text_markdown": "同盟作为贸易保护者的声誉正在受到损害。",
+      "tts": {
+        "text": "同盟作为贸易保护者的声誉正在受到损害。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗还破坏了对波罗的海经济至关重要的鲱鱼渔业。",
+      "text_markdown": "海盗还破坏了对波罗的海经济至关重要的鲱鱼渔业。",
+      "tts": {
+        "text": "海盗还破坏了对波罗的海经济至关重要的鲱鱼渔业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "来自吕贝克和其他城市的渔船队在海上遭到袭击。",
+      "text_markdown": "来自吕贝克和其他城市的渔船队在海上遭到袭击。",
+      "tts": {
+        "text": "来自吕贝克和其他城市的渔船队在海上遭到袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鲱鱼价格上涨，给普通百姓带来了困苦。",
+      "text_markdown": "鲱鱼价格上涨，给普通百姓带来了困苦。",
+      "tts": {
+        "text": "鲱鱼价格上涨，给普通百姓带来了困苦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这使得海盗像被富商憎恨一样，也被平民百姓所憎恨。",
+      "text_markdown": "这使得海盗像被富商憎恨一样，也被平民百姓所憎恨。",
+      "tts": {
+        "text": "这使得海盗像被富商憎恨一样，也被平民百姓所憎恨。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔的名字成为北方海域危险的代名词。",
+      "text_markdown": "施特尔特贝克尔的名字成为北方海域危险的代名词。",
+      "tts": {
+        "text": "施特尔特贝克尔的名字成为北方海域危险的代名词。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说母亲们会警告孩子，施特尔特贝克尔会来抓他们。",
+      "text_markdown": "据说母亲们会警告孩子，施特尔特贝克尔会来抓他们。",
+      "tts": {
+        "text": "据说母亲们会警告孩子，施特尔特贝克尔会来抓他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的声名随着每次成功的劫掠而增长。",
+      "text_markdown": "他的声名随着每次成功的劫掠而增长。",
+      "tts": {
+        "text": "他的声名随着每次成功的劫掠而增长。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世纪海盗船上的生活艰苦而残酷。",
+      "text_markdown": "中世纪海盗船上的生活艰苦而残酷。",
+      "tts": {
+        "text": "中世纪海盗船上的生活艰苦而残酷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "住处拥挤，食物常常腐烂，淡水稀缺。",
+      "text_markdown": "住处拥挤，食物常常腐烂，淡水稀缺。",
+      "tts": {
+        "text": "住处拥挤，食物常常腐烂，淡水稀缺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "疾病可以在几天内席卷整个船员。",
+      "text_markdown": "疾病可以在几天内席卷整个船员。",
+      "tts": {
+        "text": "疾病可以在几天内席卷整个船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "暴力是日常生活中不变的一部分。",
+      "text_markdown": "暴力是日常生活中不变的一部分。",
+      "tts": {
+        "text": "暴力是日常生活中不变的一部分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗之间的争端常常以拳头或刀刃解决。",
+      "text_markdown": "海盗之间的争端常常以拳头或刀刃解决。",
+      "tts": {
+        "text": "海盗之间的争端常常以拳头或刀刃解决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "领导力取决于船长获取战利品和维持秩序的能力。",
+      "text_markdown": "领导力取决于船长获取战利品和维持秩序的能力。",
+      "tts": {
+        "text": "领导力取决于船长获取战利品和维持秩序的能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "失败的船长可能会被挑战和替换。",
+      "text_markdown": "失败的船长可能会被挑战和替换。",
+      "tts": {
+        "text": "失败的船长可能会被挑战和替换。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "施特尔特贝克尔凭借技艺、狡黠和人格魅力维持了自己的地位。",
+      "text_markdown": "施特尔特贝克尔凭借技艺、狡黠和人格魅力维持了自己的地位。",
+      "tts": {
+        "text": "施特尔特贝克尔凭借技艺、狡黠和人格魅力维持了自己的地位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "庇护施特尔特贝克尔的弗里斯兰首领们在玩一场危险的游戏。",
+      "text_markdown": "庇护施特尔特贝克尔的弗里斯兰首领们在玩一场危险的游戏。",
+      "tts": {
+        "text": "庇护施特尔特贝克尔的弗里斯兰首领们在玩一场危险的游戏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "汉萨同盟有能力实施毁灭性的贸易禁运。",
+      "text_markdown": "汉萨同盟有能力实施毁灭性的贸易禁运。",
+      "tts": {
+        "text": "汉萨同盟有能力实施毁灭性的贸易禁运。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "窝藏海盗的城市面临被切断所有北方贸易的风险。",
+      "text_markdown": "窝藏海盗的城市面临被切断所有北方贸易的风险。",
+      "tts": {
+        "text": "窝藏海盗的城市面临被切断所有北方贸易的风险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "施特尔特贝克尔盟友面临的压力越来越大。",
+      "text_markdown": "施特尔特贝克尔盟友面临的压力越来越大。",
+      "tts": {
+        "text": "施特尔特贝克尔盟友面临的压力越来越大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡尤其下定决心要消灭施特尔特贝克尔。",
+      "text_markdown": "汉堡尤其下定决心要消灭施特尔特贝克尔。",
+      "tts": {
+        "text": "汉堡尤其下定决心要消灭施特尔特贝克尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "该城的商人们已经损失了太多的船只和金钱。",
+      "text_markdown": "该城的商人们已经损失了太多的船只和金钱。",
+      "tts": {
+        "text": "该城的商人们已经损失了太多的船只和金钱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们开始建造一支专门用于追捕海盗的舰队。",
+      "text_markdown": "他们开始建造一支专门用于追捕海盗的舰队。",
+      "tts": {
+        "text": "他们开始建造一支专门用于追捕海盗的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "施特尔特贝克尔统治的末日正在逼近。",
+      "text_markdown": "施特尔特贝克尔统治的末日正在逼近。",
+      "tts": {
+        "text": "施特尔特贝克尔统治的末日正在逼近。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "啤酒是汉萨网络中交易量最大的商品之一。",
+      "text_markdown": "啤酒是汉萨网络中交易量最大的商品之一。",
+      "tts": {
+        "text": "啤酒是汉萨网络中交易量最大的商品之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "汉堡和不来梅是向全欧洲出口啤酒的主要酿酒中心。",
+      "text_markdown": "汉堡和不来梅是向全欧洲出口啤酒的主要酿酒中心。",
+      "tts": {
+        "text": "汉堡和不来梅是向全欧洲出口啤酒的主要酿酒中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对啤酒货运的海盗袭击几乎与对谷物的袭击一样受到重视。",
+      "text_markdown": "对啤酒货运的海盗袭击几乎与对谷物的袭击一样受到重视。",
+      "tts": {
+        "text": "对啤酒货运的海盗袭击几乎与对谷物的袭击一样受到重视。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "末路",
+      "text_markdown": "末路"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡集结了一支战舰队，并由经验丰富的指挥官率领。",
+      "text_markdown": "汉堡集结了一支战舰队，并由经验丰富的指挥官率领。",
+      "tts": {
+        "text": "汉堡集结了一支战舰队，并由经验丰富的指挥官率领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "舰队由一个名叫西蒙·冯·乌特勒支的人统帅。",
+      "text_markdown": "舰队由一个名叫西蒙·冯·乌特勒支的人统帅。",
+      "tts": {
+        "text": "舰队由一个名叫西蒙·冯·乌特勒支的人统帅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西蒙是一位技艺精湛的水手和坚定的海盗猎人。",
+      "text_markdown": "西蒙是一位技艺精湛的水手和坚定的海盗猎人。",
+      "tts": {
+        "text": "西蒙是一位技艺精湛的水手和坚定的海盗猎人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1401年，西蒙的舰队从汉堡出发，追捕施特尔特贝克尔。",
+      "text_markdown": "1401年，西蒙的舰队从汉堡出发，追捕施特尔特贝克尔。",
+      "tts": {
+        "text": "一千四百零一年，西蒙的舰队从汉堡出发，追捕施特尔特贝克尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们搜索了北海以及弗里斯兰群岛周围的水域。",
+      "text_markdown": "他们搜索了北海以及弗里斯兰群岛周围的水域。",
+      "tts": {
+        "text": "他们搜索了北海以及弗里斯兰群岛周围的水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在广阔的北海中找到海盗并非易事。",
+      "text_markdown": "在广阔的北海中找到海盗并非易事。",
+      "tts": {
+        "text": "在广阔的北海中找到海盗并非易事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡舰队最终在黑尔戈兰岛附近遇到了施特尔特贝克尔的船只。",
+      "text_markdown": "汉堡舰队最终在黑尔戈兰岛附近遇到了施特尔特贝克尔的船只。",
+      "tts": {
+        "text": "汉堡舰队最终在黑尔戈兰岛附近遇到了施特尔特贝克尔的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑尔戈兰是北海深处的一座小型岩石岛屿。",
+      "text_markdown": "黑尔戈兰是北海深处的一座小型岩石岛屿。",
+      "tts": {
+        "text": "黑尔戈兰是北海深处的一座小型岩石岛屿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是水手们沿德国海岸航行时熟知的地标。",
+      "text_markdown": "它是水手们沿德国海岸航行时熟知的地标。",
+      "tts": {
+        "text": "它是水手们沿德国海岸航行时熟知的地标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡战舰与海盗舰队之间爆发了一场激战。",
+      "text_markdown": "汉堡战舰与海盗舰队之间爆发了一场激战。",
+      "tts": {
+        "text": "汉堡战舰与海盗舰队之间爆发了一场激战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "战斗残酷而持续了数小时。",
+      "text_markdown": "战斗残酷而持续了数小时。",
+      "tts": {
+        "text": "战斗残酷而持续了数小时。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗们拼死战斗，因为他们知道被俘意味着必死无疑。",
+      "text_markdown": "海盗们拼死战斗，因为他们知道被俘意味着必死无疑。",
+      "tts": {
+        "text": "海盗们拼死战斗，因为他们知道被俘意味着必死无疑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据一个著名的传说，施特尔特贝克尔船上的一个叛徒决定了战局。",
+      "text_markdown": "据一个著名的传说，施特尔特贝克尔船上的一个叛徒决定了战局。",
+      "tts": {
+        "text": "据一个著名的传说，施特尔特贝克尔船上的一个叛徒决定了战局。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说这个叛徒将熔化的铅倒入了船舵链中。",
+      "text_markdown": "据说这个叛徒将熔化的铅倒入了船舵链中。",
+      "tts": {
+        "text": "据说这个叛徒将熔化的铅倒入了船舵链中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有正常运作的舵，船无法机动或逃跑。",
+      "text_markdown": "没有正常运作的舵，船无法机动或逃跑。",
+      "tts": {
+        "text": "没有正常运作的舵，船无法机动或逃跑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "汉堡舰队得以登上并制服了瘫痪的船只。",
+      "text_markdown": "汉堡舰队得以登上并制服了瘫痪的船只。",
+      "tts": {
+        "text": "汉堡舰队得以登上并制服了瘫痪的船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔被活捉并戴着锁链被带回汉堡。",
+      "text_markdown": "施特尔特贝克尔被活捉并戴着锁链被带回汉堡。",
+      "tts": {
+        "text": "施特尔特贝克尔被活捉并戴着锁链被带回汉堡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在市议会面前受审。",
+      "text_markdown": "他在市议会面前受审。",
+      "tts": {
+        "text": "他在市议会面前受审。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "结果毫无悬念。",
+      "text_markdown": "结果毫无悬念。",
+      "tts": {
+        "text": "结果毫无悬念。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他被判犯有海盗罪，并被判处斩首死刑。",
+      "text_markdown": "他被判犯有海盗罪，并被判处斩首死刑。",
+      "tts": {
+        "text": "他被判犯有海盗罪，并被判处斩首死刑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "处决于1401年10月20日在汉堡的格拉斯布鲁克执行。",
+      "text_markdown": "处决于1401年10月20日在汉堡的格拉斯布鲁克执行。",
+      "tts": {
+        "text": "处决于一千四百零一年十月二十日在汉堡的格拉斯布鲁克执行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "格拉斯布鲁克是港口附近的一片沼泽地，用于公开处决。",
+      "text_markdown": "格拉斯布鲁克是港口附近的一片沼泽地，用于公开处决。",
+      "tts": {
+        "text": "格拉斯布鲁克是港口附近的一片沼泽地，用于公开处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一大群人聚集在一起观看这位臭名昭著的海盗之死。",
+      "text_markdown": "一大群人聚集在一起观看这位臭名昭著的海盗之死。",
+      "tts": {
+        "text": "一大群人聚集在一起观看这位臭名昭著的海盗之死。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是关于施特尔特贝克尔最著名的传说发生的地方。",
+      "text_markdown": "这就是关于施特尔特贝克尔最著名的传说发生的地方。",
+      "tts": {
+        "text": "这就是关于施特尔特贝克尔最著名的传说发生的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说在处决前，施特尔特贝克尔向汉堡市长提出了一个请求。",
+      "text_markdown": "据说在处决前，施特尔特贝克尔向汉堡市长提出了一个请求。",
+      "tts": {
+        "text": "据说在处决前，施特尔特贝克尔向汉堡市长提出了一个请求。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他请求在被斩首后，凡他的无头之身能走过的船员都应被释放。",
+      "text_markdown": "他请求在被斩首后，凡他的无头之身能走过的船员都应被释放。",
+      "tts": {
+        "text": "他请求在被斩首后，凡他的无头之身能走过的船员都应被释放。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "市长也许觉得好笑，同意了这个请求。",
+      "text_markdown": "市长也许觉得好笑，同意了这个请求。",
+      "tts": {
+        "text": "市长也许觉得好笑，同意了这个请求。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔被刽子手一剑斩首。",
+      "text_markdown": "施特尔特贝克尔被刽子手一剑斩首。",
+      "tts": {
+        "text": "施特尔特贝克尔被刽子手一剑斩首。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "然后，据传说，他的无头身体站了起来。",
+      "text_markdown": "然后，据传说，他的无头身体站了起来。",
+      "tts": {
+        "text": "然后，据传说，他的无头身体站了起来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它走过了11名船员，然后刽子手将其绊倒。",
+      "text_markdown": "它走过了11名船员，然后刽子手将其绊倒。",
+      "tts": {
+        "text": "它走过了十一名船员，然后刽子手将其绊倒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "有些版本说刽子手伸出了脚，另一些说他扔了一根木头。",
+      "text_markdown": "有些版本说刽子手伸出了脚，另一些说他扔了一根木头。",
+      "tts": {
+        "text": "有些版本说刽子手伸出了脚，另一些说他扔了一根木头。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡市长拒绝兑现协议。",
+      "text_markdown": "汉堡市长拒绝兑现协议。",
+      "tts": {
+        "text": "汉堡市长拒绝兑现协议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当天，所有73名被俘海盗全部被斩首。",
+      "text_markdown": "当天，所有73名被俘海盗全部被斩首。",
+      "tts": {
+        "text": "当天，所有七十三名被俘海盗全部被斩首。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的头颅被插在易北河岸边的木桩上示众。",
+      "text_markdown": "他们的头颅被插在易北河岸边的木桩上示众。",
+      "tts": {
+        "text": "他们的头颅被插在易北河岸边的木桩上示众。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是对任何可能考虑从事海盗活动的人的严酷警告。",
+      "text_markdown": "这是对任何可能考虑从事海盗活动的人的严酷警告。",
+      "tts": {
+        "text": "这是对任何可能考虑从事海盗活动的人的严酷警告。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一个传说说，事后有人问刽子手手臂是否累了。",
+      "text_markdown": "另一个传说说，事后有人问刽子手手臂是否累了。",
+      "tts": {
+        "text": "另一个传说说，事后有人问刽子手手臂是否累了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说他回答说，他还可以把整个汉堡市议会的人都斩了。",
+      "text_markdown": "据说他回答说，他还可以把整个汉堡市议会的人都斩了。",
+      "tts": {
+        "text": "据说他回答说，他还可以把整个汉堡市议会的人都斩了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "因为这种无礼，刽子手本人也被处死了。",
+      "text_markdown": "因为这种无礼，刽子手本人也被处死了。",
+      "tts": {
+        "text": "因为这种无礼，刽子手本人也被处死了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些处决传说是否属实，已无法考证。",
+      "text_markdown": "这些处决传说是否属实，已无法考证。",
+      "tts": {
+        "text": "这些处决传说是否属实，已无法考证。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格德克·米歇尔斯和剩余的粮食兄弟在施特尔特贝克尔死后继续劫掠。",
+      "text_markdown": "格德克·米歇尔斯和剩余的粮食兄弟在施特尔特贝克尔死后继续劫掠。",
+      "tts": {
+        "text": "格德克·米歇尔斯和剩余的粮食兄弟在施特尔特贝克尔死后继续劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但汉堡舰队也追剿了他们。",
+      "text_markdown": "但汉堡舰队也追剿了他们。",
+      "tts": {
+        "text": "但汉堡舰队也追剿了他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "米歇尔斯在施特尔特贝克尔之后不久被俘并被处决。",
+      "text_markdown": "米歇尔斯在施特尔特贝克尔之后不久被俘并被处决。",
+      "tts": {
+        "text": "米歇尔斯在施特尔特贝克尔之后不久被俘并被处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "粮食兄弟会的时代结束了。",
+      "text_markdown": "粮食兄弟会的时代结束了。",
+      "tts": {
+        "text": "粮食兄弟会的时代结束了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "处决粮食兄弟意在向所有考虑从事海盗活动的人发出警示。",
+      "text_markdown": "处决粮食兄弟意在向所有考虑从事海盗活动的人发出警示。",
+      "tts": {
+        "text": "处决粮食兄弟意在向所有考虑从事海盗活动的人发出警示。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "末路",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "汉堡将斩下的头颅展示了数月之久，作为可怕的震慑。",
+      "text_markdown": "汉堡将斩下的头颅展示了数月之久，作为可怕的震慑。",
+      "tts": {
+        "text": "汉堡将斩下的头颅展示了数月之久，作为可怕的震慑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "传奇",
+      "text_markdown": "传奇"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克劳斯·施特尔特贝克尔是北德民间传说中最著名的人物之一。",
+      "text_markdown": "克劳斯·施特尔特贝克尔是北德民间传说中最著名的人物之一。",
+      "tts": {
+        "text": "克劳斯·施特尔特贝克尔是北德民间传说中最著名的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的传奇已被讲述和重述了六百多年。",
+      "text_markdown": "他的传奇已被讲述和重述了六百多年。",
+      "tts": {
+        "text": "他的传奇已被讲述和重述了六百多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他被人们作为海盗、叛逆者和民间英雄铭记。",
+      "text_markdown": "他被人们作为海盗、叛逆者和民间英雄铭记。",
+      "tts": {
+        "text": "他被人们作为海盗、叛逆者和民间英雄铭记。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "汉堡历史博物馆中的一个头骨长期以来被认为是他的。",
+      "text_markdown": "汉堡历史博物馆中的一个头骨长期以来被认为是他的。",
+      "tts": {
+        "text": "汉堡历史博物馆中的一个头骨长期以来被认为是他的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "头骨上钉着一枚大钉子，据说是在处决后钉上去的。",
+      "text_markdown": "头骨上钉着一枚大钉子，据说是在处决后钉上去的。",
+      "tts": {
+        "text": "头骨上钉着一枚大钉子，据说是在处决后钉上去的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "DNA检测和法医分析对这个头骨是否真的属于他提出了质疑。",
+      "text_markdown": "DNA检测和法医分析对这个头骨是否真的属于他提出了质疑。",
+      "tts": {
+        "text": "DNA检测和法医分析对这个头骨是否真的属于他提出了质疑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "博物馆已将其从展览中撤下，但传说依然流传。",
+      "text_markdown": "博物馆已将其从展览中撤下，但传说依然流传。",
+      "tts": {
+        "text": "博物馆已将其从展览中撤下，但传说依然流传。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在汉堡和北德其他城市可以找到施特尔特贝克尔的雕像。",
+      "text_markdown": "在汉堡和北德其他城市可以找到施特尔特贝克尔的雕像。",
+      "tts": {
+        "text": "在汉堡和北德其他城市可以找到施特尔特贝克尔的雕像。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一座大型铜像矗立在汉堡仓库城区的一条街上。",
+      "text_markdown": "一座大型铜像矗立在汉堡仓库城区的一条街上。",
+      "tts": {
+        "text": "一座大型铜像矗立在汉堡仓库城区的一条街上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它描绘了一个自信而强壮的男人，目光投向港口方向。",
+      "text_markdown": "它描绘了一个自信而强壮的男人，目光投向港口方向。",
+      "tts": {
+        "text": "它描绘了一个自信而强壮的男人，目光投向港口方向。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每年夏天，吕根岛上的露天戏剧节都会上演关于他生平的戏剧。",
+      "text_markdown": "每年夏天，吕根岛上的露天戏剧节都会上演关于他生平的戏剧。",
+      "tts": {
+        "text": "每年夏天，吕根岛上的露天戏剧节都会上演关于他生平的戏剧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "施特尔特贝克尔节每年吸引数万名游客。",
+      "text_markdown": "施特尔特贝克尔节每年吸引数万名游客。",
+      "tts": {
+        "text": "施特尔特贝克尔节每年吸引数万名游客。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是德国最受欢迎的露天戏剧活动之一。",
+      "text_markdown": "它是德国最受欢迎的露天戏剧活动之一。",
+      "tts": {
+        "text": "它是德国最受欢迎的露天戏剧活动之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "施特尔特贝克尔被比作英国民间传说中的罗宾汉。",
+      "text_markdown": "施特尔特贝克尔被比作英国民间传说中的罗宾汉。",
+      "tts": {
+        "text": "施特尔特贝克尔被比作英国民间传说中的罗宾汉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "两人都是传说中劫富济贫的亡命之徒。",
+      "text_markdown": "两人都是传说中劫富济贫的亡命之徒。",
+      "tts": {
+        "text": "两人都是传说中劫富济贫的亡命之徒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "两个故事都将历史事实与几个世纪的渲染混合在一起。",
+      "text_markdown": "两个故事都将历史事实与几个世纪的渲染混合在一起。",
+      "tts": {
+        "text": "两个故事都将历史事实与几个世纪的渲染混合在一起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "与罗宾汉的比较使施特尔特贝克尔的传奇更容易被国际理解。",
+      "text_markdown": "与罗宾汉的比较使施特尔特贝克尔的传奇更容易被国际理解。",
+      "tts": {
+        "text": "与罗宾汉的比较使施特尔特贝克尔的传奇更容易被国际理解。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家们争论粮食兄弟会是自由战士还是普通罪犯。",
+      "text_markdown": "历史学家们争论粮食兄弟会是自由战士还是普通罪犯。",
+      "tts": {
+        "text": "历史学家们争论粮食兄弟会是自由战士还是普通罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些人认为他们是抵抗汉萨同盟垄断的勇士。",
+      "text_markdown": "有些人认为他们是抵抗汉萨同盟垄断的勇士。",
+      "tts": {
+        "text": "有些人认为他们是抵抗汉萨同盟垄断的勇士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一些人则指出，他们恐吓了普通渔民和沿海村民。",
+      "text_markdown": "另一些人则指出，他们恐吓了普通渔民和沿海村民。",
+      "tts": {
+        "text": "另一些人则指出，他们恐吓了普通渔民和沿海村民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "真相可能包含两种观点的成分。",
+      "text_markdown": "真相可能包含两种观点的成分。",
+      "tts": {
+        "text": "真相可能包含两种观点的成分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史记录告诉我们的内容有限但明确。",
+      "text_markdown": "历史记录告诉我们的内容有限但明确。",
+      "tts": {
+        "text": "历史记录告诉我们的内容有限但明确。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个叫施特尔特贝克尔的人在波罗的海和北海领导了一伙海盗。",
+      "text_markdown": "一个叫施特尔特贝克尔的人在波罗的海和北海领导了一伙海盗。",
+      "tts": {
+        "text": "一个叫施特尔特贝克尔的人在波罗的海和北海领导了一伙海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他被汉堡抓获并处决。",
+      "text_markdown": "他被汉堡抓获并处决。",
+      "tts": {
+        "text": "他被汉堡抓获并处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其余的一切都是传说，由几个世纪的叙述塑造而成。",
+      "text_markdown": "其余的一切都是传说，由几个世纪的叙述塑造而成。",
+      "tts": {
+        "text": "其余的一切都是传说，由几个世纪的叙述塑造而成。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "传说之所以经久不衰，是因为它触及了人性深处的某些东西。",
+      "text_markdown": "传说之所以经久不衰，是因为它触及了人性深处的某些东西。",
+      "tts": {
+        "text": "传说之所以经久不衰，是因为它触及了人性深处的某些东西。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个人挑战强权并付出最高代价的理念跨越文化产生共鸣。",
+      "text_markdown": "一个人挑战强权并付出最高代价的理念跨越文化产生共鸣。",
+      "tts": {
+        "text": "一个人挑战强权并付出最高代价的理念跨越文化产生共鸣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "传奇",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "克劳斯·施特尔特贝克尔的故事证明了某些传奇拒绝消亡。",
+      "text_markdown": "克劳斯·施特尔特贝克尔的故事证明了某些传奇拒绝消亡。",
+      "tts": {
+        "text": "克劳斯·施特尔特贝克尔的故事证明了某些传奇拒绝消亡。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

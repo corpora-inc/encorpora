@@ -1,0 +1,4427 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jeanne_de_clisson",
+  "language": "ja",
+  "total_segments": 296,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への注記",
+      "text_markdown": "読者への注記"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはジャンヌ・ド・クリッソンの物語です。彼女はブルトン貴族の女性で、中世ヨーロッパで最も恐れられた海賊の一人となりました。",
+      "text_markdown": "これはジャンヌ・ド・クリッソンの物語です。彼女はブルトン貴族の女性で、中世ヨーロッパで最も恐れられた海賊の一人となりました。",
+      "tts": {
+        "text": "これはジャンヌ・ド・クリッソンの物語です。彼女はブルトン貴族の女性で、中世ヨーロッパで最も恐れられた海賊の一人となりました。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は歴史上、ブルターニュの雌獅子として知られています。",
+      "text_markdown": "彼女は歴史上、ブルターニュの雌獅子として知られています。",
+      "tts": {
+        "text": "彼女は歴史上、ブルターニュの雌獅子として知られています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌの物語は冒険ではなく、裏切りから始まります。",
+      "text_markdown": "ジャンヌの物語は冒険ではなく、裏切りから始まります。",
+      "tts": {
+        "text": "ジャンヌの物語は冒険ではなく、裏切りから始まります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランス国王が偽りの反逆罪で夫を処刑したとき、ジャンヌは復讐を誓いました。",
+      "text_markdown": "フランス国王が偽りの反逆罪で夫を処刑したとき、ジャンヌは復讐を誓いました。",
+      "tts": {
+        "text": "フランス国王が偽りの反逆罪で夫を処刑したとき、ジャンヌは復讐を誓いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は持ち物をすべて売り払い、軍艦を購入し、十三年間イギリス海峡でフランス船を追い続けました。",
+      "text_markdown": "彼女は持ち物をすべて売り払い、軍艦を購入し、十三年間イギリス海峡でフランス船を追い続けました。",
+      "tts": {
+        "text": "彼女は持ち物をすべて売り払い、軍艦を購入し、十三年間イギリス海峡でフランス船を追い続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の船は黒い船体と赤い帆を持ち、乗組員はほとんど生存者を残しませんでした。",
+      "text_markdown": "彼女の船は黒い船体と赤い帆を持ち、乗組員はほとんど生存者を残しませんでした。",
+      "tts": {
+        "text": "彼女の船は黒い船体と赤い帆を持ち、乗組員はほとんど生存者を残しませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の物語は百年戦争の時代を背景にしています。これはヨーロッパ史上最も長く血なまぐさい紛争の一つです。",
+      "text_markdown": "彼女の物語は百年戦争の時代を背景にしています。これはヨーロッパ史上最も長く血なまぐさい紛争の一つです。",
+      "tts": {
+        "text": "彼女の物語は百年戦争の時代を背景にしています。これはヨーロッパ史上最も長く血なまぐさい紛争の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは忠誠、悲しみ、そして復讐のために人がどこまで行けるかについての物語です。",
+      "text_markdown": "これは忠誠、悲しみ、そして復讐のために人がどこまで行けるかについての物語です。",
+      "tts": {
+        "text": "これは忠誠、悲しみ、そして復讐のために人がどこまで行けるかについての物語です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここに記された出来事は中世の年代記と歴史的記録に基づいています。",
+      "text_markdown": "ここに記された出来事は中世の年代記と歴史的記録に基づいています。",
+      "tts": {
+        "text": "ここに記された出来事は中世の年代記と歴史的記録に基づいています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いくつかの詳細は時の流れの中で失われており、不確かな部分については本文中で注記しています。",
+      "text_markdown": "いくつかの詳細は時の流れの中で失われており、不確かな部分については本文中で注記しています。",
+      "tts": {
+        "text": "いくつかの詳細は時の流れの中で失われており、不確かな部分については本文中で注記しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "中世ブルターニュの世界",
+      "text_markdown": "中世ブルターニュの世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世紀初頭、ヨーロッパは王国、公国、封建領地が入り混じる世界でした。",
+      "text_markdown": "十四世紀初頭、ヨーロッパは王国、公国、封建領地が入り混じる世界でした。",
+      "tts": {
+        "text": "十四世紀初頭、ヨーロッパは王国、公国、封建領地が入り混じる世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "権力は国王、公爵、そしてカトリック教会が握っていました。",
+      "text_markdown": "権力は国王、公爵、そしてカトリック教会が握っていました。",
+      "tts": {
+        "text": "権力は国王、公爵、そしてカトリック教会が握っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一般の人々にはほとんど権利がなく、領主の慈悲の下で暮らしていました。",
+      "text_markdown": "一般の人々にはほとんど権利がなく、領主の慈悲の下で暮らしていました。",
+      "tts": {
+        "text": "一般の人々にはほとんど権利がなく、領主の慈悲の下で暮らしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュはフランス北西海岸の公国でした。",
+      "text_markdown": "ブルターニュはフランス北西海岸の公国でした。",
+      "tts": {
+        "text": "ブルターニュはフランス北西海岸の公国でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大西洋とイギリス海峡に突き出た大きな半島を占めていました。",
+      "text_markdown": "大西洋とイギリス海峡に突き出た大きな半島を占めていました。",
+      "tts": {
+        "text": "大西洋とイギリス海峡に突き出た大きな半島を占めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブルトン人は独自の言語、習慣、そして激しい独立心を持っていました。",
+      "text_markdown": "ブルトン人は独自の言語、習慣、そして激しい独立心を持っていました。",
+      "tts": {
+        "text": "ブルトン人は独自の言語、習慣、そして激しい独立心を持っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュは名目上フランスの一部でしたが、その公爵はしばしば独立して行動しました。",
+      "text_markdown": "ブルターニュは名目上フランスの一部でしたが、その公爵はしばしば独立して行動しました。",
+      "tts": {
+        "text": "ブルターニュは名目上フランスの一部でしたが、その公爵はしばしば独立して行動しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは独自の宮廷、軍隊、外国との同盟を維持していました。",
+      "text_markdown": "彼らは独自の宮廷、軍隊、外国との同盟を維持していました。",
+      "tts": {
+        "text": "彼らは独自の宮廷、軍隊、外国との同盟を維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブルターニュとフランス王室の関係は常に緊張していました。",
+      "text_markdown": "ブルターニュとフランス王室の関係は常に緊張していました。",
+      "tts": {
+        "text": "ブルターニュとフランス王室の関係は常に緊張していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス海峡は中世ヨーロッパで最も忙しく危険な水路の一つでした。",
+      "text_markdown": "イギリス海峡は中世ヨーロッパで最も忙しく危険な水路の一つでした。",
+      "tts": {
+        "text": "イギリス海峡は中世ヨーロッパで最も忙しく危険な水路の一つでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船、漁船、軍艦が絶えず行き来していました。",
+      "text_markdown": "商船、漁船、軍艦が絶えず行き来していました。",
+      "tts": {
+        "text": "商船、漁船、軍艦が絶えず行き来していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊行為は一般的で、海賊と海軍戦士の境界線はしばしば曖昧でした。",
+      "text_markdown": "海賊行為は一般的で、海賊と海軍戦士の境界線はしばしば曖昧でした。",
+      "tts": {
+        "text": "海賊行為は一般的で、海賊と海軍戦士の境界線はしばしば曖昧でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世紀初頭のフランスは次第に強力になる一連の国王に支配されていました。",
+      "text_markdown": "十四世紀初頭のフランスは次第に強力になる一連の国王に支配されていました。",
+      "tts": {
+        "text": "十四世紀初頭のフランスは次第に強力になる一連の国王に支配されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フィリップ六世はカペー朝最後の直系男子相続人が亡くなった後、1328年に即位しました。",
+      "text_markdown": "フィリップ六世はカペー朝最後の直系男子相続人が亡くなった後、1328年に即位しました。",
+      "tts": {
+        "text": "フィリップ六世はカペー朝最後の直系男子相続人が亡くなった後、千三百二十八年に即位しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の王位継承権はイングランドのエドワード三世によって即座に異議を唱えられました。",
+      "text_markdown": "彼の王位継承権はイングランドのエドワード三世によって即座に異議を唱えられました。",
+      "tts": {
+        "text": "彼の王位継承権はイングランドのエドワード三世によって即座に異議を唱えられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エドワード三世は母親を通じてフランス王位への より強い権利を主張しました。",
+      "text_markdown": "エドワード三世は母親を通じてフランス王位への より強い権利を主張しました。",
+      "tts": {
+        "text": "エドワード三世は母親を通じてフランス王位への より強い権利を主張しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フィリップ六世はこの主張を退け、紛争はやがて公然たる戦争へと発展しました。",
+      "text_markdown": "フィリップ六世はこの主張を退け、紛争はやがて公然たる戦争へと発展しました。",
+      "tts": {
+        "text": "フィリップ六世はこの主張を退け、紛争はやがて公然たる戦争へと発展しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この紛争は百年戦争として知られるようになりました。",
+      "text_markdown": "この紛争は百年戦争として知られるようになりました。",
+      "tts": {
+        "text": "この紛争は百年戦争として知られるようになりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年戦争は1337年から1453年まで続きました。",
+      "text_markdown": "百年戦争は1337年から1453年まで続きました。",
+      "tts": {
+        "text": "百年戦争は千三百三十七年から千四百五十三年まで続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "主にイングランドとフランスの間で戦われましたが、ヨーロッパ中から同盟者や臣下を巻き込みました。",
+      "text_markdown": "主にイングランドとフランスの間で戦われましたが、ヨーロッパ中から同盟者や臣下を巻き込みました。",
+      "tts": {
+        "text": "主にイングランドとフランスの間で戦われましたが、ヨーロッパ中から同盟者や臣下を巻き込みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブルターニュは主要な戦場の一つとなりました。",
+      "text_markdown": "ブルターニュは主要な戦場の一つとなりました。",
+      "tts": {
+        "text": "ブルターニュは主要な戦場の一つとなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュ内部では、誰が公国を治めるかをめぐる別の紛争が勃発しました。",
+      "text_markdown": "ブルターニュ内部では、誰が公国を治めるかをめぐる別の紛争が勃発しました。",
+      "tts": {
+        "text": "ブルターニュ内部では、誰が公国を治めるかをめぐる別の紛争が勃発しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これはブルターニュ継承戦争と呼ばれました。",
+      "text_markdown": "これはブルターニュ継承戦争と呼ばれました。",
+      "tts": {
+        "text": "これはブルターニュ継承戦争と呼ばれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1341年から1365年まで続き、凄まじい残虐さで戦われました。",
+      "text_markdown": "1341年から1365年まで続き、凄まじい残虐さで戦われました。",
+      "tts": {
+        "text": "千三百四十一年から千三百六十五年まで続き、凄まじい残虐さで戦われました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二人の対立する王位請求者がブルターニュの支配権を争いました。",
+      "text_markdown": "二人の対立する王位請求者がブルターニュの支配権を争いました。",
+      "tts": {
+        "text": "二人の対立する王位請求者がブルターニュの支配権を争いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シャルル・ド・ブロワはフランスに支持されていました。",
+      "text_markdown": "シャルル・ド・ブロワはフランスに支持されていました。",
+      "tts": {
+        "text": "シャルル・ド・ブロワはフランスに支持されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャン・ド・モンフォールはイングランドに支持されていました。",
+      "text_markdown": "ジャン・ド・モンフォールはイングランドに支持されていました。",
+      "tts": {
+        "text": "ジャン・ド・モンフォールはイングランドに支持されていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルトン貴族はどちらかの陣営を選ぶことを強いられました。",
+      "text_markdown": "ブルトン貴族はどちらかの陣営を選ぶことを強いられました。",
+      "tts": {
+        "text": "ブルトン貴族はどちらかの陣営を選ぶことを強いられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "間違った選択は土地、称号、さらには命を失うことを意味しかねませんでした。",
+      "text_markdown": "間違った選択は土地、称号、さらには命を失うことを意味しかねませんでした。",
+      "tts": {
+        "text": "間違った選択は土地、称号、さらには命を失うことを意味しかねませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "忠誠が移り変わり、致命的な結果をもたらすこの世界で、ジャンヌ・ド・クリッソンは罠にはまることになります。",
+      "text_markdown": "忠誠が移り変わり、致命的な結果をもたらすこの世界で、ジャンヌ・ド・クリッソンは罠にはまることになります。",
+      "tts": {
+        "text": "忠誠が移り変わり、致命的な結果をもたらすこの世界で、ジャンヌ・ド・クリッソンは罠にはまることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世の戦争は残酷で、しばしば民間人を標的にしました。",
+      "text_markdown": "中世の戦争は残酷で、しばしば民間人を標的にしました。",
+      "tts": {
+        "text": "中世の戦争は残酷で、しばしば民間人を標的にしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "軍隊は作物を焼き、家畜を殺し、村を破壊して敵を弱体化させました。",
+      "text_markdown": "軍隊は作物を焼き、家畜を殺し、村を破壊して敵を弱体化させました。",
+      "tts": {
+        "text": "軍隊は作物を焼き、家畜を殺し、村を破壊して敵を弱体化させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "包囲戦は何ヶ月も続くことがあり、防衛側はしばしば飢え死にしました。",
+      "text_markdown": "包囲戦は何ヶ月も続くことがあり、防衛側はしばしば飢え死にしました。",
+      "tts": {
+        "text": "包囲戦は何ヶ月も続くことがあり、防衛側はしばしば飢え死にしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海戦も同様に過酷でした。",
+      "text_markdown": "海戦も同様に過酷でした。",
+      "tts": {
+        "text": "海戦も同様に過酷でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船は互いに衝突し、乗組員は剣と斧で白兵戦を行いました。",
+      "text_markdown": "船は互いに衝突し、乗組員は剣と斧で白兵戦を行いました。",
+      "tts": {
+        "text": "船は互いに衝突し、乗組員は剣と斧で白兵戦を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海上では捕虜がとられることはまれでした。収容する場所がなかったからです。",
+      "text_markdown": "海上では捕虜がとられることはまれでした。収容する場所がなかったからです。",
+      "tts": {
+        "text": "海上では捕虜がとられることはまれでした。収容する場所がなかったからです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世ヨーロッパの女性には家庭を管理し、子供を産み、夫に従うことが期待されていました。",
+      "text_markdown": "中世ヨーロッパの女性には家庭を管理し、子供を産み、夫に従うことが期待されていました。",
+      "tts": {
+        "text": "中世ヨーロッパの女性には家庭を管理し、子供を産み、夫に従うことが期待されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貴族の女性は庶民の女性より多くの権力を持っていましたが、法的にはまだ男性に従属していました。",
+      "text_markdown": "貴族の女性は庶民の女性より多くの権力を持っていましたが、法的にはまだ男性に従属していました。",
+      "tts": {
+        "text": "貴族の女性は庶民の女性より多くの権力を持っていましたが、法的にはまだ男性に従属していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし、中世の歴史にはこれらの期待に反抗した女性の例が数多くあります。",
+      "text_markdown": "しかし、中世の歴史にはこれらの期待に反抗した女性の例が数多くあります。",
+      "tts": {
+        "text": "しかし、中世の歴史にはこれらの期待に反抗した女性の例が数多くあります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "軍隊を率いた者もいれば、領土を統治した者もおり、海に乗り出した者もいました。",
+      "text_markdown": "軍隊を率いた者もいれば、領土を統治した者もおり、海に乗り出した者もいました。",
+      "tts": {
+        "text": "軍隊を率いた者もいれば、領土を統治した者もおり、海に乗り出した者もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンは、与えられた役割を拒否した女性の最も劇的な例の一つとなりました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンは、与えられた役割を拒否した女性の最も劇的な例の一つとなりました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンは、与えられた役割を拒否した女性の最も劇的な例の一つとなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "封建制度は領主と臣下の間の忠誠に基づいていました。",
+      "text_markdown": "封建制度は領主と臣下の間の忠誠に基づいていました。",
+      "tts": {
+        "text": "封建制度は領主と臣下の間の忠誠に基づいていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貴族は土地と保護の見返りに国王や公爵に忠誠を誓いました。",
+      "text_markdown": "貴族は土地と保護の見返りに国王や公爵に忠誠を誓いました。",
+      "tts": {
+        "text": "貴族は土地と保護の見返りに国王や公爵に忠誠を誓いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この誓いを破ることは死刑に値する反逆罪でした。",
+      "text_markdown": "この誓いを破ることは死刑に値する反逆罪でした。",
+      "tts": {
+        "text": "この誓いを破ることは死刑に値する反逆罪でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし反逆の告発はしばしば政治的武器でした。",
+      "text_markdown": "しかし反逆の告発はしばしば政治的武器でした。",
+      "tts": {
+        "text": "しかし反逆の告発はしばしば政治的武器でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "国王はそれを使って競争相手を滅ぼし、土地を没収し、潜在的な反対者を威嚇しました。",
+      "text_markdown": "国王はそれを使って競争相手を滅ぼし、土地を没収し、潜在的な反対者を威嚇しました。",
+      "tts": {
+        "text": "国王はそれを使って競争相手を滅ぼし、土地を没収し、潜在的な反対者を威嚇しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "反逆の告発に証拠は必要なく、王の疑惑だけで十分でした。",
+      "text_markdown": "反逆の告発に証拠は必要なく、王の疑惑だけで十分でした。",
+      "tts": {
+        "text": "反逆の告発に証拠は必要なく、王の疑惑だけで十分でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス海峡はドーバーとカレーの間の最も狭い地点でわずか34キロメートルの幅しかありません。",
+      "text_markdown": "イギリス海峡はドーバーとカレーの間の最も狭い地点でわずか34キロメートルの幅しかありません。",
+      "tts": {
+        "text": "イギリス海峡はドーバーとカレーの間の最も狭い地点でわずか三十四キロメートルの幅しかありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "好条件であれば、船は数時間で横断できました。",
+      "text_markdown": "好条件であれば、船は数時間で横断できました。",
+      "tts": {
+        "text": "好条件であれば、船は数時間で横断できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世ブルターニュの世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし嵐、霧、強い潮流がすべての航海を危険なものにしました。",
+      "text_markdown": "しかし嵐、霧、強い潮流がすべての航海を危険なものにしました。",
+      "tts": {
+        "text": "しかし嵐、霧、強い潮流がすべての航海を危険なものにしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "クリッソンの貴婦人",
+      "text_markdown": "クリッソンの貴婦人"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンは1300年頃、ブルターニュで最も有力な家族の一つに生まれました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンは1300年頃、ブルターニュで最も有力な家族の一つに生まれました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンは千三百年頃、ブルターニュで最も有力な家族の一つに生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の出生名はジャンヌ・ド・ベルヴィルでした。",
+      "text_markdown": "彼女の出生名はジャンヌ・ド・ベルヴィルでした。",
+      "tts": {
+        "text": "彼女の出生名はジャンヌ・ド・ベルヴィルでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベルヴィル家はブルターニュとポワトゥーの境界地域に広大な土地を所有していました。",
+      "text_markdown": "ベルヴィル家はブルターニュとポワトゥーの境界地域に広大な土地を所有していました。",
+      "tts": {
+        "text": "ベルヴィル家はブルターニュとポワトゥーの境界地域に広大な土地を所有していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌは十二歳で最初の結婚をしました。当時の貴族女性には一般的なことでした。",
+      "text_markdown": "ジャンヌは十二歳で最初の結婚をしました。当時の貴族女性には一般的なことでした。",
+      "tts": {
+        "text": "ジャンヌは十二歳で最初の結婚をしました。当時の貴族女性には一般的なことでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最初の夫は裕福なブルトン領主、ジョフロワ・ド・シャトーブリアンでした。",
+      "text_markdown": "最初の夫は裕福なブルトン領主、ジョフロワ・ド・シャトーブリアンでした。",
+      "tts": {
+        "text": "最初の夫は裕福なブルトン領主、ジョフロワ・ド・シャトーブリアンでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "結婚は政治的同盟を強化するために両家によって取り決められました。",
+      "text_markdown": "結婚は政治的同盟を強化するために両家によって取り決められました。",
+      "tts": {
+        "text": "結婚は政治的同盟を強化するために両家によって取り決められました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジョフロワは1326年に亡くなり、ジャンヌは二人の子供を持つ若い未亡人となりました。",
+      "text_markdown": "ジョフロワは1326年に亡くなり、ジャンヌは二人の子供を持つ若い未亡人となりました。",
+      "tts": {
+        "text": "ジョフロワは千三百二十六年に亡くなり、ジャンヌは二人の子供を持つ若い未亡人となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はわずか26歳ほどでした。",
+      "text_markdown": "彼女はわずか26歳ほどでした。",
+      "tts": {
+        "text": "彼女はわずか二十六歳ほどでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1330年、ジャンヌは再婚しました。",
+      "text_markdown": "1330年、ジャンヌは再婚しました。",
+      "tts": {
+        "text": "千三百三十年、ジャンヌは再婚しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二番目の夫はオリヴィエ・ド・クリッソンで、ブルターニュで最も著名な領主の一人でした。",
+      "text_markdown": "二番目の夫はオリヴィエ・ド・クリッソンで、ブルターニュで最も著名な領主の一人でした。",
+      "tts": {
+        "text": "二番目の夫はオリヴィエ・ド・クリッソンで、ブルターニュで最も著名な領主の一人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は裕福で人脈が広く、優れた軍事指揮官でした。",
+      "text_markdown": "彼は裕福で人脈が広く、優れた軍事指揮官でした。",
+      "tts": {
+        "text": "彼は裕福で人脈が広く、優れた軍事指揮官でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夫妻はブルターニュ南東部のクリッソン領地で暮らしました。",
+      "text_markdown": "夫妻はブルターニュ南東部のクリッソン領地で暮らしました。",
+      "tts": {
+        "text": "夫妻はブルターニュ南東部のクリッソン領地で暮らしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人の間に五人の子供が生まれました。",
+      "text_markdown": "二人の間に五人の子供が生まれました。",
+      "tts": {
+        "text": "二人の間に五人の子供が生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あらゆる記録によれば、強く愛情深い結婚生活でした。",
+      "text_markdown": "あらゆる記録によれば、強く愛情深い結婚生活でした。",
+      "tts": {
+        "text": "あらゆる記録によれば、強く愛情深い結婚生活でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オリヴィエ・ド・クリッソンはブルターニュ公の忠実な臣下でした。",
+      "text_markdown": "オリヴィエ・ド・クリッソンはブルターニュ公の忠実な臣下でした。",
+      "tts": {
+        "text": "オリヴィエ・ド・クリッソンはブルターニュ公の忠実な臣下でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いくつかの軍事遠征で戦い、同僚から深く尊敬されていました。",
+      "text_markdown": "いくつかの軍事遠征で戦い、同僚から深く尊敬されていました。",
+      "tts": {
+        "text": "いくつかの軍事遠征で戦い、同僚から深く尊敬されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は名誉ある判断力に優れた人物とみなされていました。",
+      "text_markdown": "彼は名誉ある判断力に優れた人物とみなされていました。",
+      "tts": {
+        "text": "彼は名誉ある判断力に優れた人物とみなされていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1341年にブルターニュ継承戦争が勃発すると、オリヴィエは当初フランスが支持するシャルル・ド・ブロワを支持しました。",
+      "text_markdown": "1341年にブルターニュ継承戦争が勃発すると、オリヴィエは当初フランスが支持するシャルル・ド・ブロワを支持しました。",
+      "tts": {
+        "text": "千三百四十一年にブルターニュ継承戦争が勃発すると、オリヴィエは当初フランスが支持するシャルル・ド・ブロワを支持しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ブルトン貴族の大半が同じ選択をしました。",
+      "text_markdown": "ブルトン貴族の大半が同じ選択をしました。",
+      "tts": {
+        "text": "ブルトン貴族の大半が同じ選択をしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オリヴィエは1342年のヴァンヌ包囲戦で戦いました。",
+      "text_markdown": "オリヴィエは1342年のヴァンヌ包囲戦で戦いました。",
+      "tts": {
+        "text": "オリヴィエは千三百四十二年のヴァンヌ包囲戦で戦いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦闘中にイングランド軍に捕らえられ、身代金と引き換えに拘束されました。",
+      "text_markdown": "戦闘中にイングランド軍に捕らえられ、身代金と引き換えに拘束されました。",
+      "tts": {
+        "text": "戦闘中にイングランド軍に捕らえられ、身代金と引き換えに拘束されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "身代金が設定され、最終的に解放されました。",
+      "text_markdown": "身代金が設定され、最終的に解放されました。",
+      "tts": {
+        "text": "身代金が設定され、最終的に解放されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし彼の解放は疑惑を呼びました。",
+      "text_markdown": "しかし彼の解放は疑惑を呼びました。",
+      "tts": {
+        "text": "しかし彼の解放は疑惑を呼びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部のフランス貴族は彼の身代金が低すぎると噂しました。",
+      "text_markdown": "一部のフランス貴族は彼の身代金が低すぎると噂しました。",
+      "tts": {
+        "text": "一部のフランス貴族は彼の身代金が低すぎると噂しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランド人が彼を安く解放したのは、スパイになることに同意したからだと示唆しました。",
+      "text_markdown": "イングランド人が彼を安く解放したのは、スパイになることに同意したからだと示唆しました。",
+      "tts": {
+        "text": "イングランド人が彼を安く解放したのは、スパイになることに同意したからだと示唆しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オリヴィエがフランスを裏切ったという証拠はありません。",
+      "text_markdown": "オリヴィエがフランスを裏切ったという証拠はありません。",
+      "tts": {
+        "text": "オリヴィエがフランスを裏切ったという証拠はありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家たちは、この告発は政治的なもので、彼の土地と称号を望む競争者によって動機づけられたと考えています。",
+      "text_markdown": "歴史家たちは、この告発は政治的なもので、彼の土地と称号を望む競争者によって動機づけられたと考えています。",
+      "tts": {
+        "text": "歴史家たちは、この告発は政治的なもので、彼の土地と称号を望む競争者によって動機づけられたと考えています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1343年、オリヴィエはパリの馬上試合に召集されました。",
+      "text_markdown": "1343年、オリヴィエはパリの馬上試合に召集されました。",
+      "tts": {
+        "text": "千三百四十三年、オリヴィエはパリの馬上試合に召集されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は何も疑わず、喜んで赴きました。",
+      "text_markdown": "彼は何も疑わず、喜んで赴きました。",
+      "tts": {
+        "text": "彼は何も疑わず、喜んで赴きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到着すると、逮捕されフィリップ六世に対する反逆罪で告発されました。",
+      "text_markdown": "到着すると、逮捕されフィリップ六世に対する反逆罪で告発されました。",
+      "tts": {
+        "text": "到着すると、逮捕されフィリップ六世に対する反逆罪で告発されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正式な裁判は行われませんでした。",
+      "text_markdown": "正式な裁判は行われませんでした。",
+      "tts": {
+        "text": "正式な裁判は行われませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "告発はオリヴィエの政敵の疑惑と証言に基づいていました。",
+      "text_markdown": "告発はオリヴィエの政敵の疑惑と証言に基づいていました。",
+      "tts": {
+        "text": "告発はオリヴィエの政敵の疑惑と証言に基づいていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1343年8月2日、オリヴィエ・ド・クリッソンはパリのレ・アールで斬首されました。",
+      "text_markdown": "1343年8月2日、オリヴィエ・ド・クリッソンはパリのレ・アールで斬首されました。",
+      "tts": {
+        "text": "千三百四十三年八月二日、オリヴィエ・ド・クリッソンはパリのレ・アールで斬首されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の首はナントに送られ、警告として市門の上の槍に掲げられました。",
+      "text_markdown": "彼の首はナントに送られ、警告として市門の上の槍に掲げられました。",
+      "tts": {
+        "text": "彼の首はナントに送られ、警告として市門の上の槍に掲げられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌは夫の処刑を知ったとき、打ちのめされました。",
+      "text_markdown": "ジャンヌは夫の処刑を知ったとき、打ちのめされました。",
+      "tts": {
+        "text": "ジャンヌは夫の処刑を知ったとき、打ちのめされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年代記によれば、彼女は二人の末の息子を連れてナントに旅しました。",
+      "text_markdown": "年代記によれば、彼女は二人の末の息子を連れてナントに旅しました。",
+      "tts": {
+        "text": "年代記によれば、彼女は二人の末の息子を連れてナントに旅しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は門に掲げられた父の首を息子たちに見せ、フランス国王が何をしたか覚えておくように言いました。",
+      "text_markdown": "彼女は門に掲げられた父の首を息子たちに見せ、フランス国王が何をしたか覚えておくように言いました。",
+      "tts": {
+        "text": "彼女は門に掲げられた父の首を息子たちに見せ、フランス国王が何をしたか覚えておくように言いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その瞬間から、ジャンヌ・ド・クリッソンはただ一つの目的に生涯を捧げました。",
+      "text_markdown": "その瞬間から、ジャンヌ・ド・クリッソンはただ一つの目的に生涯を捧げました。",
+      "tts": {
+        "text": "その瞬間から、ジャンヌ・ド・クリッソンはただ一つの目的に生涯を捧げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランス国王とその支持者たちに、夫に対してなしたことの報いを受けさせるのです。",
+      "text_markdown": "フランス国王とその支持者たちに、夫に対してなしたことの報いを受けさせるのです。",
+      "tts": {
+        "text": "フランス国王とその支持者たちに、夫に対してなしたことの報いを受けさせるのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女はまずクリッソンの領地を売却しました。",
+      "text_markdown": "彼女はまずクリッソンの領地を売却しました。",
+      "tts": {
+        "text": "彼女はまずクリッソンの領地を売却しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "土地、宝石、所有物を金に換えました。",
+      "text_markdown": "土地、宝石、所有物を金に換えました。",
+      "tts": {
+        "text": "土地、宝石、所有物を金に換えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その金で忠実な部下からなる小さな軍隊を組織しました。",
+      "text_markdown": "その金で忠実な部下からなる小さな軍隊を組織しました。",
+      "tts": {
+        "text": "その金で忠実な部下からなる小さな軍隊を組織しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュのフランス支持派の城や駐屯地を攻撃しました。",
+      "text_markdown": "ブルターニュのフランス支持派の城や駐屯地を攻撃しました。",
+      "tts": {
+        "text": "ブルターニュのフランス支持派の城や駐屯地を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の襲撃は迅速で、激烈で、容赦がありませんでした。",
+      "text_markdown": "彼女の襲撃は迅速で、激烈で、容赦がありませんでした。",
+      "tts": {
+        "text": "彼女の襲撃は迅速で、激烈で、容赦がありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランス王室を支持するすべての兵士を殺し、要塞を炎に包みました。",
+      "text_markdown": "フランス王室を支持するすべての兵士を殺し、要塞を炎に包みました。",
+      "tts": {
+        "text": "フランス王室を支持するすべての兵士を殺し、要塞を炎に包みました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし陸上での戦争はジャンヌにとって十分ではありませんでした。",
+      "text_markdown": "しかし陸上での戦争はジャンヌにとって十分ではありませんでした。",
+      "tts": {
+        "text": "しかし陸上での戦争はジャンヌにとって十分ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランスが最も痛みを感じるところを攻撃したかったのです。",
+      "text_markdown": "フランスが最も痛みを感じるところを攻撃したかったのです。",
+      "tts": {
+        "text": "フランスが最も痛みを感じるところを攻撃したかったのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "クリッソンの貴婦人",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は戦争を海に持ち込むことを決意しました。",
+      "text_markdown": "彼女は戦争を海に持ち込むことを決意しました。",
+      "tts": {
+        "text": "彼女は戦争を海に持ち込むことを決意しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "黒い艦隊",
+      "text_markdown": "黒い艦隊"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンは三隻の軍艦を購入しました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンは三隻の軍艦を購入しました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンは三隻の軍艦を購入しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船体を黒く塗らせました。",
+      "text_markdown": "船体を黒く塗らせました。",
+      "tts": {
+        "text": "船体を黒く塗らせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帆を赤く染めるよう命じました。",
+      "text_markdown": "帆を赤く染めるよう命じました。",
+      "tts": {
+        "text": "帆を赤く染めるよう命じました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒い船体と赤い帆は遠くからでも識別できるように設計されていました。",
+      "text_markdown": "黒い船体と赤い帆は遠くからでも識別できるように設計されていました。",
+      "tts": {
+        "text": "黒い船体と赤い帆は遠くからでも識別できるように設計されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャンヌはフランス人に誰が来るのか知ってほしかったのです。",
+      "text_markdown": "ジャンヌはフランス人に誰が来るのか知ってほしかったのです。",
+      "tts": {
+        "text": "ジャンヌはフランス人に誰が来るのか知ってほしかったのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夫が感じたのと同じ恐怖を彼らにも味わわせたかったのです。",
+      "text_markdown": "夫が感じたのと同じ恐怖を彼らにも味わわせたかったのです。",
+      "tts": {
+        "text": "夫が感じたのと同じ恐怖を彼らにも味わわせたかったのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女はイギリス海峡に乗り出し、フランスの商船や軍艦への攻撃を始めました。",
+      "text_markdown": "彼女はイギリス海峡に乗り出し、フランスの商船や軍艦への攻撃を始めました。",
+      "tts": {
+        "text": "彼女はイギリス海峡に乗り出し、フランスの商船や軍艦への攻撃を始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の艦隊はフランス国旗を掲げるすべての船を標的にしました。",
+      "text_markdown": "彼女の艦隊はフランス国旗を掲げるすべての船を標的にしました。",
+      "tts": {
+        "text": "彼女の艦隊はフランス国旗を掲げるすべての船を標的にしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌは自ら部下を率いて戦闘に臨みました。",
+      "text_markdown": "ジャンヌは自ら部下を率いて戦闘に臨みました。",
+      "tts": {
+        "text": "ジャンヌは自ら部下を率いて戦闘に臨みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年代記によれば、彼女は戦闘で斧を振るい、乗組員と共に戦いました。",
+      "text_markdown": "年代記によれば、彼女は戦闘で斧を振るい、乗組員と共に戦いました。",
+      "tts": {
+        "text": "年代記によれば、彼女は戦闘で斧を振るい、乗組員と共に戦いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は恐れを知らず、徹底的に容赦がなかったと言われています。",
+      "text_markdown": "彼女は恐れを知らず、徹底的に容赦がなかったと言われています。",
+      "tts": {
+        "text": "彼女は恐れを知らず、徹底的に容赦がなかったと言われています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の船がフランス船を捕獲すると、乗組員は殺されました。",
+      "text_markdown": "彼女の船がフランス船を捕獲すると、乗組員は殺されました。",
+      "tts": {
+        "text": "彼女の船がフランス船を捕獲すると、乗組員は殺されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしジャンヌは常に二、三人の生存者を残しました。",
+      "text_markdown": "しかしジャンヌは常に二、三人の生存者を残しました。",
+      "tts": {
+        "text": "しかしジャンヌは常に二、三人の生存者を残しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らをフランスに送り返し、何が起きたかを王に伝えさせました。",
+      "text_markdown": "彼らをフランスに送り返し、何が起きたかを王に伝えさせました。",
+      "tts": {
+        "text": "彼らをフランスに送り返し、何が起きたかを王に伝えさせました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは意図的な心理戦の戦略でした。",
+      "text_markdown": "これは意図的な心理戦の戦略でした。",
+      "tts": {
+        "text": "これは意図的な心理戦の戦略でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "生存者たちは黒い船体に赤い帆の船の話を広めました。",
+      "text_markdown": "生存者たちは黒い船体に赤い帆の船の話を広めました。",
+      "tts": {
+        "text": "生存者たちは黒い船体に赤い帆の船の話を広めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブルターニュの雌獅子への恐怖はフランス沿岸全体に広がりました。",
+      "text_markdown": "ブルターニュの雌獅子への恐怖はフランス沿岸全体に広がりました。",
+      "tts": {
+        "text": "ブルターニュの雌獅子への恐怖はフランス沿岸全体に広がりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌはフランス貴族に対して特に容赦がありませんでした。",
+      "text_markdown": "ジャンヌはフランス貴族に対して特に容赦がありませんでした。",
+      "tts": {
+        "text": "ジャンヌはフランス貴族に対して特に容赦がありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フィリップ六世を支持する領主や騎士を捕らえた場合、自ら処刑を監督しました。",
+      "text_markdown": "フィリップ六世を支持する領主や騎士を捕らえた場合、自ら処刑を監督しました。",
+      "tts": {
+        "text": "フィリップ六世を支持する領主や騎士を捕らえた場合、自ら処刑を監督しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランス貴族に、夫に対してなされたのと同じ不正義を感じさせたかったのです。",
+      "text_markdown": "フランス貴族に、夫に対してなされたのと同じ不正義を感じさせたかったのです。",
+      "tts": {
+        "text": "フランス貴族に、夫に対してなされたのと同じ不正義を感じさせたかったのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女はイングランドと同盟を結びました。",
+      "text_markdown": "彼女はイングランドと同盟を結びました。",
+      "tts": {
+        "text": "彼女はイングランドと同盟を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エドワード三世はフランスの海運を攻撃する者なら誰でも喜んで支援しました。",
+      "text_markdown": "エドワード三世はフランスの海運を攻撃する者なら誰でも喜んで支援しました。",
+      "tts": {
+        "text": "エドワード三世はフランスの海運を攻撃する者なら誰でも喜んで支援しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌの襲撃はフランスの貿易を混乱させ、戦争遂行能力を弱めました。",
+      "text_markdown": "ジャンヌの襲撃はフランスの貿易を混乱させ、戦争遂行能力を弱めました。",
+      "tts": {
+        "text": "ジャンヌの襲撃はフランスの貿易を混乱させ、戦争遂行能力を弱めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランドはジャンヌに物資、安全な港、フランス船の動向に関する情報を提供しました。",
+      "text_markdown": "イングランドはジャンヌに物資、安全な港、フランス船の動向に関する情報を提供しました。",
+      "tts": {
+        "text": "イングランドはジャンヌに物資、安全な港、フランス船の動向に関する情報を提供しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "見返りにジャンヌは襲撃の利益を分け合い、イングランド船には決して危害を加えないようにしました。",
+      "text_markdown": "見返りにジャンヌは襲撃の利益を分け合い、イングランド船には決して危害を加えないようにしました。",
+      "tts": {
+        "text": "見返りにジャンヌは襲撃の利益を分け合い、イングランド船には決して危害を加えないようにしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランス王室はジャンヌの攻撃に激怒しましたが、彼女を止めることに苦労しました。",
+      "text_markdown": "フランス王室はジャンヌの攻撃に激怒しましたが、彼女を止めることに苦労しました。",
+      "tts": {
+        "text": "フランス王室はジャンヌの攻撃に激怒しましたが、彼女を止めることに苦労しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス海峡は広大で、ジャンヌの船は高速でした。",
+      "text_markdown": "イギリス海峡は広大で、ジャンヌの船は高速でした。",
+      "tts": {
+        "text": "イギリス海峡は広大で、ジャンヌの船は高速でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は予告なく攻撃し、フランス軍艦が対応する前に姿を消しました。",
+      "text_markdown": "彼女は予告なく攻撃し、フランス軍艦が対応する前に姿を消しました。",
+      "tts": {
+        "text": "彼女は予告なく攻撃し、フランス軍艦が対応する前に姿を消しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フィリップ六世はクリッソン家の残りの土地を没収し、ジャンヌを無法者と宣言しました。",
+      "text_markdown": "フィリップ六世はクリッソン家の残りの土地を没収し、ジャンヌを無法者と宣言しました。",
+      "tts": {
+        "text": "フィリップ六世はクリッソン家の残りの土地を没収し、ジャンヌを無法者と宣言しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の首に賞金をかけました。",
+      "text_markdown": "彼女の首に賞金をかけました。",
+      "tts": {
+        "text": "彼女の首に賞金をかけました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしジャンヌは彼の手の届かない場所にいました。海とイングランドの同盟者に守られていたのです。",
+      "text_markdown": "しかしジャンヌは彼の手の届かない場所にいました。海とイングランドの同盟者に守られていたのです。",
+      "tts": {
+        "text": "しかしジャンヌは彼の手の届かない場所にいました。海とイングランドの同盟者に守られていたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌの戦いは一人の怒った女性の単独行動ではありませんでした。",
+      "text_markdown": "ジャンヌの戦いは一人の怒った女性の単独行動ではありませんでした。",
+      "tts": {
+        "text": "ジャンヌの戦いは一人の怒った女性の単独行動ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は艦隊と、歴戦の水夫と兵士からなる乗組員を指揮していました。",
+      "text_markdown": "彼女は艦隊と、歴戦の水夫と兵士からなる乗組員を指揮していました。",
+      "tts": {
+        "text": "彼女は艦隊と、歴戦の水夫と兵士からなる乗組員を指揮していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "攻撃を綿密に計画し、戦略的な精度で標的を選びました。",
+      "text_markdown": "攻撃を綿密に計画し、戦略的な精度で標的を選びました。",
+      "tts": {
+        "text": "攻撃を綿密に計画し、戦略的な精度で標的を選びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水夫たちは彼女に忠実でした。",
+      "text_markdown": "水夫たちは彼女に忠実でした。",
+      "tts": {
+        "text": "水夫たちは彼女に忠実でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "女性が男性を戦闘に率いることなど想定されていない時代に、ジャンヌの乗組員は躊躇なく彼女に従いました。",
+      "text_markdown": "女性が男性を戦闘に率いることなど想定されていない時代に、ジャンヌの乗組員は躊躇なく彼女に従いました。",
+      "tts": {
+        "text": "女性が男性を戦闘に率いることなど想定されていない時代に、ジャンヌの乗組員は躊躇なく彼女に従いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の個人的な勇気と大義の正しさが尊敬を勝ち取りました。",
+      "text_markdown": "彼女の個人的な勇気と大義の正しさが尊敬を勝ち取りました。",
+      "tts": {
+        "text": "彼女の個人的な勇気と大義の正しさが尊敬を勝ち取りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女はノルマンディー海岸沿いでも活動し、フランス王室を支持する漁村や沿岸の町を襲撃しました。",
+      "text_markdown": "彼女はノルマンディー海岸沿いでも活動し、フランス王室を支持する漁村や沿岸の町を襲撃しました。",
+      "tts": {
+        "text": "彼女はノルマンディー海岸沿いでも活動し、フランス王室を支持する漁村や沿岸の町を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランス軍向けの物資を焼き払いました。",
+      "text_markdown": "フランス軍向けの物資を焼き払いました。",
+      "tts": {
+        "text": "フランス軍向けの物資を焼き払いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランスの戦争機構を支える補給線を断ちました。",
+      "text_markdown": "フランスの戦争機構を支える補給線を断ちました。",
+      "tts": {
+        "text": "フランスの戦争機構を支える補給線を断ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年を追うごとに、ジャンヌはフランスとの戦争を続けました。",
+      "text_markdown": "年を追うごとに、ジャンヌはフランスとの戦争を続けました。",
+      "tts": {
+        "text": "年を追うごとに、ジャンヌはフランスとの戦争を続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他の海賊なら疲れ果てたり恩赦を受け入れたりしたかもしれません。",
+      "text_markdown": "他の海賊なら疲れ果てたり恩赦を受け入れたりしたかもしれません。",
+      "tts": {
+        "text": "他の海賊なら疲れ果てたり恩赦を受け入れたりしたかもしれません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌは決して屈しませんでした。",
+      "text_markdown": "ジャンヌは決して屈しませんでした。",
+      "tts": {
+        "text": "ジャンヌは決して屈しませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フィリップ六世への憎悪は絶対的なものでした。",
+      "text_markdown": "フィリップ六世への憎悪は絶対的なものでした。",
+      "tts": {
+        "text": "フィリップ六世への憎悪は絶対的なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フィリップが1350年に亡くなると、息子のジャン二世が王位と戦争を継承しました。",
+      "text_markdown": "フィリップが1350年に亡くなると、息子のジャン二世が王位と戦争を継承しました。",
+      "tts": {
+        "text": "フィリップが千三百五十年に亡くなると、息子のジャン二世が王位と戦争を継承しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌの新王の軍に対する攻撃は途切れることなく続きました。",
+      "text_markdown": "ジャンヌの新王の軍に対する攻撃は途切れることなく続きました。",
+      "tts": {
+        "text": "ジャンヌの新王の軍に対する攻撃は途切れることなく続きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌの乗組員には夫に仕えクリッソンの名に忠実であり続けたブルトンの水夫がいました。",
+      "text_markdown": "ジャンヌの乗組員には夫に仕えクリッソンの名に忠実であり続けたブルトンの水夫がいました。",
+      "tts": {
+        "text": "ジャンヌの乗組員には夫に仕えクリッソンの名に忠実であり続けたブルトンの水夫がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの男たちは海峡の海域とブルターニュの海岸を熟知していました。",
+      "text_markdown": "これらの男たちは海峡の海域とブルターニュの海岸を熟知していました。",
+      "tts": {
+        "text": "これらの男たちは海峡の海域とブルターニュの海岸を熟知していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの地域の知識はジャンヌに大きな戦術的優位を与えました。",
+      "text_markdown": "彼らの地域の知識はジャンヌに大きな戦術的優位を与えました。",
+      "tts": {
+        "text": "彼らの地域の知識はジャンヌに大きな戦術的優位を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世紀四十年代の中世の軍艦は後の世紀の大型ガレオン船ではありませんでした。",
+      "text_markdown": "十四世紀四十年代の中世の軍艦は後の世紀の大型ガレオン船ではありませんでした。",
+      "tts": {
+        "text": "十四世紀四十年代の中世の軍艦は後の世紀の大型ガレオン船ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船から改造されることの多い、より小型の船でした。",
+      "text_markdown": "商船から改造されることの多い、より小型の船でした。",
+      "tts": {
+        "text": "商船から改造されることの多い、より小型の船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帆だけでなく櫂にも頼り、浅い沿岸水域で操縦できました。",
+      "text_markdown": "帆だけでなく櫂にも頼り、浅い沿岸水域で操縦できました。",
+      "tts": {
+        "text": "帆だけでなく櫂にも頼り、浅い沿岸水域で操縦できました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "敵船への乗り込みがこの時代の海戦の主な方法でした。",
+      "text_markdown": "敵船への乗り込みがこの時代の海戦の主な方法でした。",
+      "tts": {
+        "text": "敵船への乗り込みがこの時代の海戦の主な方法でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員は敵船に鉤を引っかけ、引き寄せ、剣と斧を持って殺到しました。",
+      "text_markdown": "乗組員は敵船に鉤を引っかけ、引き寄せ、剣と斧を持って殺到しました。",
+      "tts": {
+        "text": "乗組員は敵船に鉤を引っかけ、引き寄せ、剣と斧を持って殺到しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い艦隊",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "接近戦で残忍な戦いでした。",
+      "text_markdown": "接近戦で残忍な戦いでした。",
+      "tts": {
+        "text": "接近戦で残忍な戦いでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海峡での十三年",
+      "text_markdown": "海峡での十三年"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンの復讐の戦いは約十三年間続きました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンの復讐の戦いは約十三年間続きました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンの復讐の戦いは約十三年間続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1343年から約1356年まで、彼女はイギリス海峡でフランスの海運を恐怖に陥れました。",
+      "text_markdown": "1343年から約1356年まで、彼女はイギリス海峡でフランスの海運を恐怖に陥れました。",
+      "tts": {
+        "text": "千三百四十三年から約千三百五十六年まで、彼女はイギリス海峡でフランスの海運を恐怖に陥れました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この間、彼女は海上で最も有名で恐れられた人物の一人となりました。",
+      "text_markdown": "この間、彼女は海上で最も有名で恐れられた人物の一人となりました。",
+      "tts": {
+        "text": "この間、彼女は海上で最も有名で恐れられた人物の一人となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランスの水夫たちは水平線に黒い船体が見えることを恐れました。",
+      "text_markdown": "フランスの水夫たちは水平線に黒い船体が見えることを恐れました。",
+      "tts": {
+        "text": "フランスの水夫たちは水平線に黒い船体が見えることを恐れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌの艦隊の赤い帆は死が迫っていることを意味しました。",
+      "text_markdown": "ジャンヌの艦隊の赤い帆は死が迫っていることを意味しました。",
+      "tts": {
+        "text": "ジャンヌの艦隊の赤い帆は死が迫っていることを意味しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランス船を捕獲し積荷を売ることで艦隊を維持しました。",
+      "text_markdown": "フランス船を捕獲し積荷を売ることで艦隊を維持しました。",
+      "tts": {
+        "text": "フランス船を捕獲し積荷を売ることで艦隊を維持しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "襲撃で得た戦利品が新しい船、武器、乗組員の資金となりました。",
+      "text_markdown": "襲撃で得た戦利品が新しい船、武器、乗組員の資金となりました。",
+      "tts": {
+        "text": "襲撃で得た戦利品が新しい船、武器、乗組員の資金となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は自給自足で、誰にも恩義を負っていませんでした。",
+      "text_markdown": "彼女は自給自足で、誰にも恩義を負っていませんでした。",
+      "tts": {
+        "text": "彼女は自給自足で、誰にも恩義を負っていませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世紀四十年代と五十年代のイギリス海峡は戦場でした。",
+      "text_markdown": "十四世紀四十年代と五十年代のイギリス海峡は戦場でした。",
+      "tts": {
+        "text": "十四世紀四十年代と五十年代のイギリス海峡は戦場でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドとフランスの艦隊が定期的に衝突しました。",
+      "text_markdown": "イングランドとフランスの艦隊が定期的に衝突しました。",
+      "tts": {
+        "text": "イングランドとフランスの艦隊が定期的に衝突しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船は護衛のために船団を組んで航行しましたが、船団でさえジャンヌからは安全ではありませんでした。",
+      "text_markdown": "商船は護衛のために船団を組んで航行しましたが、船団でさえジャンヌからは安全ではありませんでした。",
+      "tts": {
+        "text": "商船は護衛のために船団を組んで航行しましたが、船団でさえジャンヌからは安全ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌの評判はブルターニュをはるかに超えて広がりました。",
+      "text_markdown": "ジャンヌの評判はブルターニュをはるかに超えて広がりました。",
+      "tts": {
+        "text": "ジャンヌの評判はブルターニュをはるかに超えて広がりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ブルターニュの雌獅子についての物語はフランス、イングランド、低地諸国に広がりました。",
+      "text_markdown": "ブルターニュの雌獅子についての物語はフランス、イングランド、低地諸国に広がりました。",
+      "tts": {
+        "text": "ブルターニュの雌獅子についての物語はフランス、イングランド、低地諸国に広がりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は王権の不正義に対する反抗の象徴となりました。",
+      "text_markdown": "彼女は王権の不正義に対する反抗の象徴となりました。",
+      "tts": {
+        "text": "彼女は王権の不正義に対する反抗の象徴となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの年月を通じて、子供たちは彼女の人生の中心であり続けました。",
+      "text_markdown": "これらの年月を通じて、子供たちは彼女の人生の中心であり続けました。",
+      "tts": {
+        "text": "これらの年月を通じて、子供たちは彼女の人生の中心であり続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海上での戦いの危険から離れた安全な場所で育てられるよう配慮しました。",
+      "text_markdown": "海上での戦いの危険から離れた安全な場所で育てられるよう配慮しました。",
+      "tts": {
+        "text": "海上での戦いの危険から離れた安全な場所で育てられるよう配慮しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最初の結婚で生まれた長男はイングランドの同盟者に預けられました。",
+      "text_markdown": "最初の結婚で生まれた長男はイングランドの同盟者に預けられました。",
+      "tts": {
+        "text": "最初の結婚で生まれた長男はイングランドの同盟者に預けられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "息子の小オリヴィエ・ド・クリッソンはやがてフランスで最も有力な人物の一人となります。",
+      "text_markdown": "息子の小オリヴィエ・ド・クリッソンはやがてフランスで最も有力な人物の一人となります。",
+      "tts": {
+        "text": "息子の小オリヴィエ・ド・クリッソンはやがてフランスで最も有力な人物の一人となります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は最終的に王国最高の軍事職であるフランス元帥となりました。",
+      "text_markdown": "彼は最終的に王国最高の軍事職であるフランス元帥となりました。",
+      "tts": {
+        "text": "彼は最終的に王国最高の軍事職であるフランス元帥となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "反逆者の烙印を押された家族にとって、驚くべき逆転劇でした。",
+      "text_markdown": "反逆者の烙印を押された家族にとって、驚くべき逆転劇でした。",
+      "tts": {
+        "text": "反逆者の烙印を押された家族にとって、驚くべき逆転劇でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌの戦術は年月とともに進化しました。",
+      "text_markdown": "ジャンヌの戦術は年月とともに進化しました。",
+      "tts": {
+        "text": "ジャンヌの戦術は年月とともに進化しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海峡の天候と潮汐を読む術を学びました。",
+      "text_markdown": "海峡の天候と潮汐を読む術を学びました。",
+      "tts": {
+        "text": "海峡の天候と潮汐を読む術を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どの港が安全でどの港がフランス軍艦に巡回されているか知っていました。",
+      "text_markdown": "どの港が安全でどの港がフランス軍艦に巡回されているか知っていました。",
+      "tts": {
+        "text": "どの港が安全でどの港がフランス軍艦に巡回されているか知っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "視界が悪く逃走しやすい夜間に攻撃しました。",
+      "text_markdown": "視界が悪く逃走しやすい夜間に攻撃しました。",
+      "tts": {
+        "text": "視界が悪く逃走しやすい夜間に攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "護衛の充実した船団ではなく、孤立した船を狙いました。",
+      "text_markdown": "護衛の充実した船団ではなく、孤立した船を狙いました。",
+      "tts": {
+        "text": "護衛の充実した船団ではなく、孤立した船を狙いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "常に撤退計画を持っていました。",
+      "text_markdown": "常に撤退計画を持っていました。",
+      "tts": {
+        "text": "常に撤退計画を持っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランスは彼女を追跡する艦隊を送りましたが、決して捕まえることはできませんでした。",
+      "text_markdown": "フランスは彼女を追跡する艦隊を送りましたが、決して捕まえることはできませんでした。",
+      "tts": {
+        "text": "フランスは彼女を追跡する艦隊を送りましたが、決して捕まえることはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャンヌはほとんどの海軍指揮官よりも海峡の海域をよく知っていました。",
+      "text_markdown": "ジャンヌはほとんどの海軍指揮官よりも海峡の海域をよく知っていました。",
+      "tts": {
+        "text": "ジャンヌはほとんどの海軍指揮官よりも海峡の海域をよく知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "霧の中に消え、沿岸の入り江に隠れ、外洋で追手を振り切ることができました。",
+      "text_markdown": "霧の中に消え、沿岸の入り江に隠れ、外洋で追手を振り切ることができました。",
+      "tts": {
+        "text": "霧の中に消え、沿岸の入り江に隠れ、外洋で追手を振り切ることができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "危機一髪の場面もありました。",
+      "text_markdown": "危機一髪の場面もありました。",
+      "tts": {
+        "text": "危機一髪の場面もありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ある記録によれば、ジャンヌの艦隊は一度海峡の嵐で散り散りになりました。",
+      "text_markdown": "ある記録によれば、ジャンヌの艦隊は一度海峡の嵐で散り散りになりました。",
+      "tts": {
+        "text": "ある記録によれば、ジャンヌの艦隊は一度海峡の嵐で散り散りになりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "息子たちと共に数日間漂流し、ようやくイングランドの海岸にたどり着きました。",
+      "text_markdown": "息子たちと共に数日間漂流し、ようやくイングランドの海岸にたどり着きました。",
+      "tts": {
+        "text": "息子たちと共に数日間漂流し、ようやくイングランドの海岸にたどり着きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この苦難の中で、末の息子の一人が凍えと疲労で亡くなったと伝えられています。",
+      "text_markdown": "この苦難の中で、末の息子の一人が凍えと疲労で亡くなったと伝えられています。",
+      "tts": {
+        "text": "この苦難の中で、末の息子の一人が凍えと疲労で亡くなったと伝えられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この喪失は悲しみを深めましたが、決意を弱めることはありませんでした。",
+      "text_markdown": "この喪失は悲しみを深めましたが、決意を弱めることはありませんでした。",
+      "tts": {
+        "text": "この喪失は悲しみを深めましたが、決意を弱めることはありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌの戦争は個人的なものでしたが、より大きな大義に貢献しました。",
+      "text_markdown": "ジャンヌの戦争は個人的なものでしたが、より大きな大義に貢献しました。",
+      "tts": {
+        "text": "ジャンヌの戦争は個人的なものでしたが、より大きな大義に貢献しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランスの海運を攻撃することで、フランスがイングランドとその同盟国に対して戦争を行う能力を弱めました。",
+      "text_markdown": "フランスの海運を攻撃することで、フランスがイングランドとその同盟国に対して戦争を行う能力を弱めました。",
+      "tts": {
+        "text": "フランスの海運を攻撃することで、フランスがイングランドとその同盟国に対して戦争を行う能力を弱めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はイングランドの戦争努力にとって貴重な存在でした。",
+      "text_markdown": "彼女はイングランドの戦争努力にとって貴重な存在でした。",
+      "tts": {
+        "text": "彼女はイングランドの戦争努力にとって貴重な存在でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランドは彼女を名誉ある同盟者として扱いました。",
+      "text_markdown": "イングランドは彼女を名誉ある同盟者として扱いました。",
+      "tts": {
+        "text": "イングランドは彼女を名誉ある同盟者として扱いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランド宮廷に迎えられ、保護と支援を受けました。",
+      "text_markdown": "イングランド宮廷に迎えられ、保護と支援を受けました。",
+      "tts": {
+        "text": "イングランド宮廷に迎えられ、保護と支援を受けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の大義はイングランド人にとって正当なものでした。彼らにはフランス王を軽蔑する独自の理由があったのです。",
+      "text_markdown": "彼女の大義はイングランド人にとって正当なものでした。彼らにはフランス王を軽蔑する独自の理由があったのです。",
+      "tts": {
+        "text": "彼女の大義はイングランド人にとって正当なものでした。彼らにはフランス王を軽蔑する独自の理由があったのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年月が過ぎても、百年戦争は終わりの見えないまま続きました。",
+      "text_markdown": "年月が過ぎても、百年戦争は終わりの見えないまま続きました。",
+      "tts": {
+        "text": "年月が過ぎても、百年戦争は終わりの見えないまま続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黒死病が1348年と1349年にヨーロッパを襲い、おそらく人口の三分の一を死に至らしめました。",
+      "text_markdown": "黒死病が1348年と1349年にヨーロッパを襲い、おそらく人口の三分の一を死に至らしめました。",
+      "tts": {
+        "text": "黒死病が千三百四十八年と千三百四十九年にヨーロッパを襲い、おそらく人口の三分の一を死に至らしめました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "疫病は軍隊、交易、そして社会秩序そのものを混乱させました。",
+      "text_markdown": "疫病は軍隊、交易、そして社会秩序そのものを混乱させました。",
+      "tts": {
+        "text": "疫病は軍隊、交易、そして社会秩序そのものを混乱させました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このような恐ろしい時代にあっても、ジャンヌは襲撃を続けました。",
+      "text_markdown": "このような恐ろしい時代にあっても、ジャンヌは襲撃を続けました。",
+      "tts": {
+        "text": "このような恐ろしい時代にあっても、ジャンヌは襲撃を続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海上の戦争は冬の嵐で止まらないのと同様、疫病でも止まりませんでした。",
+      "text_markdown": "海上の戦争は冬の嵐で止まらないのと同様、疫病でも止まりませんでした。",
+      "tts": {
+        "text": "海上の戦争は冬の嵐で止まらないのと同様、疫病でも止まりませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンは単なる利益を求める海賊ではありませんでした。",
+      "text_markdown": "ジャンヌ・ド・クリッソンは単なる利益を求める海賊ではありませんでした。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンは単なる利益を求める海賊ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "夫を殺したと信じる王に対して私的な戦争を遂行する女性でした。",
+      "text_markdown": "夫を殺したと信じる王に対して私的な戦争を遂行する女性でした。",
+      "tts": {
+        "text": "夫を殺したと信じる王に対して私的な戦争を遂行する女性でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女が沈めるフランス船の一隻一隻が、彼女の目には正義の行為でした。",
+      "text_markdown": "彼女が沈めるフランス船の一隻一隻が、彼女の目には正義の行為でした。",
+      "tts": {
+        "text": "彼女が沈めるフランス船の一隻一隻が、彼女の目には正義の行為でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュのフランス軍に食糧を運ぶ補給船は特に価値ある標的でした。",
+      "text_markdown": "ブルターニュのフランス軍に食糧を運ぶ補給船は特に価値ある標的でした。",
+      "tts": {
+        "text": "ブルターニュのフランス軍に食糧を運ぶ補給船は特に価値ある標的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの船を捕獲または沈没させることで、ジャンヌは敵の駐屯地から食糧、武器、援軍を奪いました。",
+      "text_markdown": "これらの船を捕獲または沈没させることで、ジャンヌは敵の駐屯地から食糧、武器、援軍を奪いました。",
+      "tts": {
+        "text": "これらの船を捕獲または沈没させることで、ジャンヌは敵の駐屯地から食糧、武器、援軍を奪いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の襲撃はブルターニュにおける戦争の行方に直接的な影響を与えました。",
+      "text_markdown": "彼女の襲撃はブルターニュにおける戦争の行方に直接的な影響を与えました。",
+      "tts": {
+        "text": "彼女の襲撃はブルターニュにおける戦争の行方に直接的な影響を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海上での生活は乗船するすべての人にとって過酷でした。",
+      "text_markdown": "海上での生活は乗船するすべての人にとって過酷でした。",
+      "tts": {
+        "text": "海上での生活は乗船するすべての人にとって過酷でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船は寒く、湿っぽく、狭いものでした。",
+      "text_markdown": "船は寒く、湿っぽく、狭いものでした。",
+      "tts": {
+        "text": "船は寒く、湿っぽく、狭いものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "食料はすぐに腐り、真水は常に不足していました。",
+      "text_markdown": "食料はすぐに腐り、真水は常に不足していました。",
+      "tts": {
+        "text": "食料はすぐに腐り、真水は常に不足していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌは乗組員と共にこれらの苦難に耐えました。",
+      "text_markdown": "ジャンヌは乗組員と共にこれらの苦難に耐えました。",
+      "tts": {
+        "text": "ジャンヌは乗組員と共にこれらの苦難に耐えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は岸辺の安全な場所から指揮をとることはありませんでした。",
+      "text_markdown": "彼女は岸辺の安全な場所から指揮をとることはありませんでした。",
+      "tts": {
+        "text": "彼女は岸辺の安全な場所から指揮をとることはありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡での十三年",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自らの船で航海し、戦闘に参加し、海の危険を共にしました。",
+      "text_markdown": "自らの船で航海し、戦闘に参加し、海の危険を共にしました。",
+      "tts": {
+        "text": "自らの船で航海し、戦闘に参加し、海の危険を共にしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "静かな岸辺",
+      "text_markdown": "静かな岸辺"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1356年頃、ジャンヌ・ド・クリッソンは海から退きました。",
+      "text_markdown": "1356年頃、ジャンヌ・ド・クリッソンは海から退きました。",
+      "tts": {
+        "text": "千三百五十六年頃、ジャンヌ・ド・クリッソンは海から退きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "約十三年間、戦い続けていました。",
+      "text_markdown": "約十三年間、戦い続けていました。",
+      "tts": {
+        "text": "約十三年間、戦い続けていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "引退の正確な理由は完全には分かっていません。",
+      "text_markdown": "引退の正確な理由は完全には分かっていません。",
+      "tts": {
+        "text": "引退の正確な理由は完全には分かっていません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちは年齢、疲労、政治情勢の変化がすべて要因となったと考えています。",
+      "text_markdown": "歴史家たちは年齢、疲労、政治情勢の変化がすべて要因となったと考えています。",
+      "tts": {
+        "text": "歴史家たちは年齢、疲労、政治情勢の変化がすべて要因となったと考えています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャンヌはこの時点で五十代半ばでした。中世としては高齢です。",
+      "text_markdown": "ジャンヌはこの時点で五十代半ばでした。中世としては高齢です。",
+      "tts": {
+        "text": "ジャンヌはこの時点で五十代半ばでした。中世としては高齢です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は三度目の結婚をしました。",
+      "text_markdown": "彼女は三度目の結婚をしました。",
+      "tts": {
+        "text": "彼女は三度目の結婚をしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "新しい夫はウォルター・ベントリーで、イングランドの騎士で軍事指揮官でした。",
+      "text_markdown": "新しい夫はウォルター・ベントリーで、イングランドの騎士で軍事指揮官でした。",
+      "tts": {
+        "text": "新しい夫はウォルター・ベントリーで、イングランドの騎士で軍事指揮官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベントリーはブルターニュにおけるイングランドの副官を務めていました。",
+      "text_markdown": "ベントリーはブルターニュにおけるイングランドの副官を務めていました。",
+      "tts": {
+        "text": "ベントリーはブルターニュにおけるイングランドの副官を務めていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ベントリーとの結婚はジャンヌの人生の新たな章を表していました。",
+      "text_markdown": "ベントリーとの結婚はジャンヌの人生の新たな章を表していました。",
+      "tts": {
+        "text": "ベントリーとの結婚はジャンヌの人生の新たな章を表していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何年もの暴力と悲しみの後、落ち着くことを選びました。",
+      "text_markdown": "何年もの暴力と悲しみの後、落ち着くことを選びました。",
+      "tts": {
+        "text": "何年もの暴力と悲しみの後、落ち着くことを選びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夫の殺害に対して恐ろしい代償を課していました。",
+      "text_markdown": "夫の殺害に対して恐ろしい代償を課していました。",
+      "tts": {
+        "text": "夫の殺害に対して恐ろしい代償を課していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌとウォルター・ベントリーはブルターニュの領地で暮らしました。",
+      "text_markdown": "ジャンヌとウォルター・ベントリーはブルターニュの領地で暮らしました。",
+      "tts": {
+        "text": "ジャンヌとウォルター・ベントリーはブルターニュの領地で暮らしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランスとイングランドの戦争は続いていましたが、ジャンヌはもはやその一部ではありませんでした。",
+      "text_markdown": "フランスとイングランドの戦争は続いていましたが、ジャンヌはもはやその一部ではありませんでした。",
+      "tts": {
+        "text": "フランスとイングランドの戦争は続いていましたが、ジャンヌはもはやその一部ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最後の年月を貴婦人として過ごし、家庭と残りの土地を管理しました。",
+      "text_markdown": "最後の年月を貴婦人として過ごし、家庭と残りの土地を管理しました。",
+      "tts": {
+        "text": "最後の年月を貴婦人として過ごし、家庭と残りの土地を管理しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス海峡の獰猛な海賊は再びブルトン貴族の夫人となりました。",
+      "text_markdown": "イギリス海峡の獰猛な海賊は再びブルトン貴族の夫人となりました。",
+      "tts": {
+        "text": "イギリス海峡の獰猛な海賊は再びブルトン貴族の夫人となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンは1359年に亡くなりました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンは1359年に亡くなりました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンは千三百五十九年に亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "およそ59歳でした。",
+      "text_markdown": "およそ59歳でした。",
+      "tts": {
+        "text": "およそ五十九歳でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "死因は記録されていません。",
+      "text_markdown": "死因は記録されていません。",
+      "tts": {
+        "text": "死因は記録されていません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュの田園地帯にあるジャコバン教会に埋葬されました。",
+      "text_markdown": "ブルターニュの田園地帯にあるジャコバン教会に埋葬されました。",
+      "tts": {
+        "text": "ブルターニュの田園地帯にあるジャコバン教会に埋葬されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "墓の正確な場所は何世紀もの間に失われました。",
+      "text_markdown": "墓の正確な場所は何世紀もの間に失われました。",
+      "tts": {
+        "text": "墓の正確な場所は何世紀もの間に失われました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "息子の小オリヴィエ・ド・クリッソンは生き延び、繁栄しました。",
+      "text_markdown": "息子の小オリヴィエ・ド・クリッソンは生き延び、繁栄しました。",
+      "tts": {
+        "text": "息子の小オリヴィエ・ド・クリッソンは生き延び、繁栄しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "父が反逆者として処刑されたにもかかわらず、若きオリヴィエはフランス軍の最高位にまで上り詰めました。",
+      "text_markdown": "父が反逆者として処刑されたにもかかわらず、若きオリヴィエはフランス軍の最高位にまで上り詰めました。",
+      "tts": {
+        "text": "父が反逆者として処刑されたにもかかわらず、若きオリヴィエはフランス軍の最高位にまで上り詰めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1380年にフランス元帥に任命され、十年以上その地位にありました。",
+      "text_markdown": "1380年にフランス元帥に任命され、十年以上その地位にありました。",
+      "tts": {
+        "text": "千三百八十年にフランス元帥に任命され、十年以上その地位にありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "元帥はフランス軍の最高司令官でした。",
+      "text_markdown": "元帥はフランス軍の最高司令官でした。",
+      "tts": {
+        "text": "元帥はフランス軍の最高司令官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王国で最も強力な地位の一つでした。",
+      "text_markdown": "王国で最も強力な地位の一つでした。",
+      "tts": {
+        "text": "王国で最も強力な地位の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クリッソン家は反逆者として断罪され、すべてを剥奪されていました。",
+      "text_markdown": "クリッソン家は反逆者として断罪され、すべてを剥奪されていました。",
+      "tts": {
+        "text": "クリッソン家は反逆者として断罪され、すべてを剥奪されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "わずか一世代で、フランスの権力の頂点に返り咲いたのです。",
+      "text_markdown": "わずか一世代で、フランスの権力の頂点に返り咲いたのです。",
+      "tts": {
+        "text": "わずか一世代で、フランスの権力の頂点に返り咲いたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌの戦いは無駄ではありませんでした。",
+      "text_markdown": "ジャンヌの戦いは無駄ではありませんでした。",
+      "tts": {
+        "text": "ジャンヌの戦いは無駄ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウォルター・ベントリーはジャンヌの死後数年間生き続けました。",
+      "text_markdown": "ウォルター・ベントリーはジャンヌの死後数年間生き続けました。",
+      "tts": {
+        "text": "ウォルター・ベントリーはジャンヌの死後数年間生き続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "自身の死まで、ブルターニュにおけるイングランドの利益のために働き続けました。",
+      "text_markdown": "自身の死まで、ブルターニュにおけるイングランドの利益のために働き続けました。",
+      "tts": {
+        "text": "自身の死まで、ブルターニュにおけるイングランドの利益のために働き続けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年戦争はジャンヌの死後もほぼ一世紀続くことになります。",
+      "text_markdown": "百年戦争はジャンヌの死後もほぼ一世紀続くことになります。",
+      "tts": {
+        "text": "百年戦争はジャンヌの死後もほぼ一世紀続くことになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ブルターニュはその後何十年もフランスとイングランドの戦場であり続けることになります。",
+      "text_markdown": "ブルターニュはその後何十年もフランスとイングランドの戦場であり続けることになります。",
+      "tts": {
+        "text": "ブルターニュはその後何十年もフランスとイングランドの戦場であり続けることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦士から妻への転身は見かけほど突然のものではありませんでした。",
+      "text_markdown": "戦士から妻への転身は見かけほど突然のものではありませんでした。",
+      "tts": {
+        "text": "戦士から妻への転身は見かけほど突然のものではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世の貴族女性は夫の不在時にしばしば領地を管理し、紛争を解決し、裁きを行っていました。",
+      "text_markdown": "中世の貴族女性は夫の不在時にしばしば領地を管理し、紛争を解決し、裁きを行っていました。",
+      "tts": {
+        "text": "中世の貴族女性は夫の不在時にしばしば領地を管理し、紛争を解決し、裁きを行っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌは常に海賊以上の存在でした。",
+      "text_markdown": "ジャンヌは常に海賊以上の存在でした。",
+      "tts": {
+        "text": "ジャンヌは常に海賊以上の存在でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌが最後の年月を過ごしたブルターニュの田園地帯は数十年の戦争で傷ついていました。",
+      "text_markdown": "ジャンヌが最後の年月を過ごしたブルターニュの田園地帯は数十年の戦争で傷ついていました。",
+      "tts": {
+        "text": "ジャンヌが最後の年月を過ごしたブルターニュの田園地帯は数十年の戦争で傷ついていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "焼けた村、放棄された農場、廃墟となった城が景観に点在していました。",
+      "text_markdown": "焼けた村、放棄された農場、廃墟となった城が景観に点在していました。",
+      "tts": {
+        "text": "焼けた村、放棄された農場、廃墟となった城が景観に点在していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "静かな岸辺",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女が戦うのを助けた戦争は、愛する土地に恐ろしい犠牲を強いていました。",
+      "text_markdown": "彼女が戦うのを助けた戦争は、愛する土地に恐ろしい犠牲を強いていました。",
+      "tts": {
+        "text": "彼女が戦うのを助けた戦争は、愛する土地に恐ろしい犠牲を強いていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "記憶される雌獅子",
+      "text_markdown": "記憶される雌獅子"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンの物語は約七百年にわたって語り継がれてきました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンの物語は約七百年にわたって語り継がれてきました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンの物語は約七百年にわたって語り継がれてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世の年代記、フランスの歴史書、そして女性戦士に関する現代の書籍に登場します。",
+      "text_markdown": "中世の年代記、フランスの歴史書、そして女性戦士に関する現代の書籍に登場します。",
+      "tts": {
+        "text": "中世の年代記、フランスの歴史書、そして女性戦士に関する現代の書籍に登場します。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世ヨーロッパ史上、軍艦を指揮したことで知られる数少ない女性の一人です。",
+      "text_markdown": "中世ヨーロッパ史上、軍艦を指揮したことで知られる数少ない女性の一人です。",
+      "tts": {
+        "text": "中世ヨーロッパ史上、軍艦を指揮したことで知られる数少ない女性の一人です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の十三年にわたる戦いはいかなる基準から見ても並外れたものです。",
+      "text_markdown": "彼女の十三年にわたる戦いはいかなる基準から見ても並外れたものです。",
+      "tts": {
+        "text": "彼女の十三年にわたる戦いはいかなる基準から見ても並外れたものです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一部の歴史家は彼女の物語のすべての詳細が正確かどうかを疑問視しています。",
+      "text_markdown": "一部の歴史家は彼女の物語のすべての詳細が正確かどうかを疑問視しています。",
+      "tts": {
+        "text": "一部の歴史家は彼女の物語のすべての詳細が正確かどうかを疑問視しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世の年代記は必ずしも信頼できるものではなく、物語は時とともに劇的になる傾向がありました。",
+      "text_markdown": "中世の年代記は必ずしも信頼できるものではなく、物語は時とともに劇的になる傾向がありました。",
+      "tts": {
+        "text": "中世の年代記は必ずしも信頼できるものではなく、物語は時とともに劇的になる傾向がありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし核となる事実は複数の資料によって裏付けられています。",
+      "text_markdown": "しかし核となる事実は複数の資料によって裏付けられています。",
+      "tts": {
+        "text": "しかし核となる事実は複数の資料によって裏付けられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オリヴィエ・ド・クリッソンは反逆罪で処刑されました。",
+      "text_markdown": "オリヴィエ・ド・クリッソンは反逆罪で処刑されました。",
+      "tts": {
+        "text": "オリヴィエ・ド・クリッソンは反逆罪で処刑されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p105",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌ・ド・クリッソンは実際に海に出てフランスの海運を攻撃しました。",
+      "text_markdown": "ジャンヌ・ド・クリッソンは実際に海に出てフランスの海運を攻撃しました。",
+      "tts": {
+        "text": "ジャンヌ・ド・クリッソンは実際に海に出てフランスの海運を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p105",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "百年戦争中に実際にイングランドと同盟を結びました。",
+      "text_markdown": "百年戦争中に実際にイングランドと同盟を結びました。",
+      "tts": {
+        "text": "百年戦争中に実際にイングランドと同盟を結びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の物語は正義と復讐についての問いを提起します。",
+      "text_markdown": "彼女の物語は正義と復讐についての問いを提起します。",
+      "tts": {
+        "text": "彼女の物語は正義と復讐についての問いを提起します。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オリヴィエ・ド・クリッソンの処刑はほぼ確実に不当でした。",
+      "text_markdown": "オリヴィエ・ド・クリッソンの処刑はほぼ確実に不当でした。",
+      "tts": {
+        "text": "オリヴィエ・ド・クリッソンの処刑はほぼ確実に不当でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジャンヌの反応は極端でしたが、挑発もまた極端でした。",
+      "text_markdown": "ジャンヌの反応は極端でしたが、挑発もまた極端でした。",
+      "tts": {
+        "text": "ジャンヌの反応は極端でしたが、挑発もまた極端でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は夫の死とは何の関係もない無実の水夫や漁師を殺しました。",
+      "text_markdown": "彼女は夫の死とは何の関係もない無実の水夫や漁師を殺しました。",
+      "tts": {
+        "text": "彼女は夫の死とは何の関係もない無実の水夫や漁師を殺しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の戦争は個人的なものでしたが、犠牲者はしばしば無関係な人々でした。",
+      "text_markdown": "彼女の戦争は個人的なものでしたが、犠牲者はしばしば無関係な人々でした。",
+      "tts": {
+        "text": "彼女の戦争は個人的なものでしたが、犠牲者はしばしば無関係な人々でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それにもかかわらず、彼女の物語を語る多くの人々から非難されるのではなく称えられてきました。",
+      "text_markdown": "それにもかかわらず、彼女の物語を語る多くの人々から非難されるのではなく称えられてきました。",
+      "tts": {
+        "text": "それにもかかわらず、彼女の物語を語る多くの人々から非難されるのではなく称えられてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "不正義を受け入れることを拒否し、持てるすべてで戦った女性として記憶されています。",
+      "text_markdown": "不正義を受け入れることを拒否し、持てるすべてで戦った女性として記憶されています。",
+      "tts": {
+        "text": "不正義を受け入れることを拒否し、持てるすべてで戦った女性として記憶されています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブルターニュでは今も民衆の英雄です。",
+      "text_markdown": "ブルターニュでは今も民衆の英雄です。",
+      "tts": {
+        "text": "ブルターニュでは今も民衆の英雄です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の名は勇気、反抗、そしてブルトン民族の激しい独立心と結びついています。",
+      "text_markdown": "彼女の名は勇気、反抗、そしてブルトン民族の激しい独立心と結びついています。",
+      "tts": {
+        "text": "彼女の名は勇気、反抗、そしてブルトン民族の激しい独立心と結びついています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赤い帆の黒い船は消えました。",
+      "text_markdown": "赤い帆の黒い船は消えました。",
+      "tts": {
+        "text": "赤い帆の黒い船は消えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス海峡はとうの昔に戦場ではなくなりました。",
+      "text_markdown": "イギリス海峡はとうの昔に戦場ではなくなりました。",
+      "tts": {
+        "text": "イギリス海峡はとうの昔に戦場ではなくなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p110",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしブルターニュの雌獅子の物語は、ある種の不正義には答えが必要だと信じる人々によって語り継がれています。",
+      "text_markdown": "しかしブルターニュの雌獅子の物語は、ある種の不正義には答えが必要だと信じる人々によって語り継がれています。",
+      "tts": {
+        "text": "しかしブルターニュの雌獅子の物語は、ある種の不正義には答えが必要だと信じる人々によって語り継がれています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代の歴史家たちはジャンヌ・ド・クリッソンを中世に軍事力を行使した女性というより広い文脈の中に位置づけています。",
+      "text_markdown": "現代の歴史家たちはジャンヌ・ド・クリッソンを中世に軍事力を行使した女性というより広い文脈の中に位置づけています。",
+      "tts": {
+        "text": "現代の歴史家たちはジャンヌ・ド・クリッソンを中世に軍事力を行使した女性というより広い文脈の中に位置づけています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は唯一無二ではありませんでしたが、傑出していました。",
+      "text_markdown": "彼女は唯一無二ではありませんでしたが、傑出していました。",
+      "tts": {
+        "text": "彼女は唯一無二ではありませんでしたが、傑出していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これほど長期にわたり、これほどの壊滅的な効果を持つ軍事作戦を維持した女性はほとんどいません。",
+      "text_markdown": "これほど長期にわたり、これほどの壊滅的な効果を持つ軍事作戦を維持した女性はほとんどいません。",
+      "tts": {
+        "text": "これほど長期にわたり、これほどの壊滅的な効果を持つ軍事作戦を維持した女性はほとんどいません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クリッソン城はフランスのロワール渓谷、クリッソンの町に今も残っています。",
+      "text_markdown": "クリッソン城はフランスのロワール渓谷、クリッソンの町に今も残っています。",
+      "tts": {
+        "text": "クリッソン城はフランスのロワール渓谷、クリッソンの町に今も残っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その中世の廃墟は、かつてそこを治めた一族の名残りです。",
+      "text_markdown": "その中世の廃墟は、かつてそこを治めた一族の名残りです。",
+      "tts": {
+        "text": "その中世の廃墟は、かつてそこを治めた一族の名残りです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "訪問者はジャンヌとオリヴィエがかつて暮らした同じ石造りの大広間を歩くことができます。",
+      "text_markdown": "訪問者はジャンヌとオリヴィエがかつて暮らした同じ石造りの大広間を歩くことができます。",
+      "tts": {
+        "text": "訪問者はジャンヌとオリヴィエがかつて暮らした同じ石造りの大広間を歩くことができます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年戦争はジャンヌの死からほぼ一世紀後の1453年にようやく終結しました。",
+      "text_markdown": "百年戦争はジャンヌの死からほぼ一世紀後の1453年にようやく終結しました。",
+      "tts": {
+        "text": "百年戦争はジャンヌの死からほぼ一世紀後の千四百五十三年にようやく終結しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランスが戦争に勝利し、イングランドは大陸のほぼすべての領土を失いました。",
+      "text_markdown": "フランスが戦争に勝利し、イングランドは大陸のほぼすべての領土を失いました。",
+      "tts": {
+        "text": "フランスが戦争に勝利し、イングランドは大陸のほぼすべての領土を失いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "記憶される雌獅子",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブルターニュは最終的に征服ではなく婚姻によってフランスの一部となりました。",
+      "text_markdown": "ブルターニュは最終的に征服ではなく婚姻によってフランスの一部となりました。",
+      "tts": {
+        "text": "ブルターニュは最終的に征服ではなく婚姻によってフランスの一部となりました。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

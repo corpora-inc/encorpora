@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "fr",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Un mot au lecteur",
+      "text_markdown": "Un mot au lecteur"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ceci est l'histoire vraie du pirate le plus terrifiant qui ait jamais vécu.",
+      "text_markdown": "Ceci est l'histoire vraie du pirate le plus terrifiant qui ait jamais vécu.",
+      "tts": {
+        "text": "Ceci est l'histoire vraie du pirate le plus terrifiant qui ait jamais vécu.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son nom était Edward Teach, mais le monde se souvient de lui sous le nom de Barbe Noire.",
+      "text_markdown": "Son nom était Edward Teach, mais le monde se souvient de lui sous le nom de Barbe Noire.",
+      "tts": {
+        "text": "Son nom était Edward Teach, mais le monde se souvient de lui sous le nom de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il a terrorisé les mers pendant seulement 2 ans environ, mais sa légende a perduré plus de 300 ans.",
+      "text_markdown": "Il a terrorisé les mers pendant seulement 2 ans environ, mais sa légende a perduré plus de 300 ans.",
+      "tts": {
+        "text": "Il a terrorisé les mers pendant seulement deux ans environ, mais sa légende a perduré plus de trois cents ans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire ne ressemblait pas aux pirates que l'on voit dans les films.",
+      "text_markdown": "Barbe Noire ne ressemblait pas aux pirates que l'on voit dans les films.",
+      "tts": {
+        "text": "Barbe Noire ne ressemblait pas aux pirates que l'on voit dans les films.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il était pire.",
+      "text_markdown": "Il était pire.",
+      "tts": {
+        "text": "Il était pire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il tressait des mèches à combustion lente dans son énorme barbe noire et les allumait avant la bataille.",
+      "text_markdown": "Il tressait des mèches à combustion lente dans son énorme barbe noire et les allumait avant la bataille.",
+      "tts": {
+        "text": "Il tressait des mèches à combustion lente dans son énorme barbe noire et les allumait avant la bataille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La fumée s'enroulait autour de son visage, le faisant ressembler à un démon surgissant de la mer.",
+      "text_markdown": "La fumée s'enroulait autour de son visage, le faisant ressembler à un démon surgissant de la mer.",
+      "tts": {
+        "text": "La fumée s'enroulait autour de son visage, le faisant ressembler à un démon surgissant de la mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce livre vous emmènera dans les ports et les voies maritimes du début du dix-huitième siècle.",
+      "text_markdown": "Ce livre vous emmènera dans les ports et les voies maritimes du début du dix-huitième siècle.",
+      "tts": {
+        "text": "Ce livre vous emmènera dans les ports et les voies maritimes du début du dix-huitième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vous verrez comment des marins ordinaires sont devenus des hors-la-loi, et comment les empires ont lutté pour les arrêter.",
+      "text_markdown": "Vous verrez comment des marins ordinaires sont devenus des hors-la-loi, et comment les empires ont lutté pour les arrêter.",
+      "tts": {
+        "text": "Vous verrez comment des marins ordinaires sont devenus des hors-la-loi, et comment les empires ont lutté pour les arrêter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tout dans ce livre est basé sur des archives historiques, des documents judiciaires et des témoignages de première main.",
+      "text_markdown": "Tout dans ce livre est basé sur des archives historiques, des documents judiciaires et des témoignages de première main.",
+      "tts": {
+        "text": "Tout dans ce livre est basé sur des archives historiques, des documents judiciaires et des témoignages de première main.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Un mot au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lorsque les faits sont incertains, nous le dirons clairement.",
+      "text_markdown": "Lorsque les faits sont incertains, nous le dirons clairement.",
+      "tts": {
+        "text": "Lorsque les faits sont incertains, nous le dirons clairement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le monde qui a forgé un pirate",
+      "text_markdown": "Le monde qui a forgé un pirate"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La fin du dix-septième siècle était une ère d'empires et de commerce océanique.",
+      "text_markdown": "La fin du dix-septième siècle était une ère d'empires et de commerce océanique.",
+      "tts": {
+        "text": "La fin du dix-septième siècle était une ère d'empires et de commerce océanique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'Angleterre, l'Espagne, la France et les Pays-Bas se disputaient les colonies dans les Amériques.",
+      "text_markdown": "L'Angleterre, l'Espagne, la France et les Pays-Bas se disputaient les colonies dans les Amériques.",
+      "tts": {
+        "text": "L'Angleterre, l'Espagne, la France et les Pays-Bas se disputaient les colonies dans les Amériques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leurs navires marchands transportaient du sucre, du tabac, du coton et des personnes réduites en esclavage à travers l'Atlantique.",
+      "text_markdown": "Leurs navires marchands transportaient du sucre, du tabac, du coton et des personnes réduites en esclavage à travers l'Atlantique.",
+      "tts": {
+        "text": "Leurs navires marchands transportaient du sucre, du tabac, du coton et des personnes réduites en esclavage à travers l'Atlantique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Partout où des cargaisons de valeur circulaient sur la mer, les pirates suivaient.",
+      "text_markdown": "Partout où des cargaisons de valeur circulaient sur la mer, les pirates suivaient.",
+      "tts": {
+        "text": "Partout où des cargaisons de valeur circulaient sur la mer, les pirates suivaient.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mer des Caraïbes était le carrefour de ce commerce mondial.",
+      "text_markdown": "La mer des Caraïbes était le carrefour de ce commerce mondial.",
+      "tts": {
+        "text": "La mer des Caraïbes était le carrefour de ce commerce mondial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des centaines d'îles parsemaient les eaux turquoise chaudes entre la Floride et l'Amérique du Sud.",
+      "text_markdown": "Des centaines d'îles parsemaient les eaux turquoise chaudes entre la Floride et l'Amérique du Sud.",
+      "tts": {
+        "text": "Des centaines d'îles parsemaient les eaux turquoise chaudes entre la Floride et l'Amérique du Sud.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Beaucoup de ces îles appartenaient à des puissances européennes qui les utilisaient comme plantations de sucre.",
+      "text_markdown": "Beaucoup de ces îles appartenaient à des puissances européennes qui les utilisaient comme plantations de sucre.",
+      "tts": {
+        "text": "Beaucoup de ces îles appartenaient à des puissances européennes qui les utilisaient comme plantations de sucre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Des navires chargés de sucre et de rhum partaient des ports caribéens vers l'Europe chaque semaine.",
+      "text_markdown": "Des navires chargés de sucre et de rhum partaient des ports caribéens vers l'Europe chaque semaine.",
+      "tts": {
+        "text": "Des navires chargés de sucre et de rhum partaient des ports caribéens vers l'Europe chaque semaine.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'Angleterre et l'Espagne étaient rivales depuis plus d'un siècle.",
+      "text_markdown": "L'Angleterre et l'Espagne étaient rivales depuis plus d'un siècle.",
+      "tts": {
+        "text": "L'Angleterre et l'Espagne étaient rivales depuis plus d'un siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des corsaires anglais comme Sir Francis Drake avaient pillé les flottes au trésor espagnoles à la fin du quinzième siècle.",
+      "text_markdown": "Des corsaires anglais comme Sir Francis Drake avaient pillé les flottes au trésor espagnoles à la fin du quinzième siècle.",
+      "tts": {
+        "text": "Des corsaires anglais comme Sir Francis Drake avaient pillé les flottes au trésor espagnoles à la fin du quinzième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un corsaire était un capitaine de navire privé autorisé par un gouvernement à attaquer les navires ennemis.",
+      "text_markdown": "Un corsaire était un capitaine de navire privé autorisé par un gouvernement à attaquer les navires ennemis.",
+      "tts": {
+        "text": "Un corsaire était un capitaine de navire privé autorisé par un gouvernement à attaquer les navires ennemis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les corsaires portaient un document appelé lettre de marque qui rendait leurs attaques légales.",
+      "text_markdown": "Les corsaires portaient un document appelé lettre de marque qui rendait leurs attaques légales.",
+      "tts": {
+        "text": "Les corsaires portaient un document appelé lettre de marque qui rendait leurs attaques légales.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre de la Reine Anne éclata en 1702 et dura jusqu'en 1713.",
+      "text_markdown": "La guerre de la Reine Anne éclata en 1702 et dura jusqu'en 1713.",
+      "tts": {
+        "text": "La guerre de la Reine Anne éclata en mille sept cent deux et dura jusqu'en mille sept cent treize.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cela faisait partie d'un conflit européen plus large appelé la guerre de Succession d'Espagne.",
+      "text_markdown": "Cela faisait partie d'un conflit européen plus large appelé la guerre de Succession d'Espagne.",
+      "tts": {
+        "text": "Cela faisait partie d'un conflit européen plus large appelé la guerre de Succession d'Espagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'Angleterre et ses alliés combattirent la France et l'Espagne pour le contrôle des routes commerciales et des territoires.",
+      "text_markdown": "L'Angleterre et ses alliés combattirent la France et l'Espagne pour le contrôle des routes commerciales et des territoires.",
+      "tts": {
+        "text": "L'Angleterre et ses alliés combattirent la France et l'Espagne pour le contrôle des routes commerciales et des territoires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pendant la guerre, des milliers de marins servirent sur des navires corsaires, pillant les marchands ennemis pour le profit.",
+      "text_markdown": "Pendant la guerre, des milliers de marins servirent sur des navires corsaires, pillant les marchands ennemis pour le profit.",
+      "tts": {
+        "text": "Pendant la guerre, des milliers de marins servirent sur des navires corsaires, pillant les marchands ennemis pour le profit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand la guerre prit fin avec le traité d'Utrecht en 1713, tout changea.",
+      "text_markdown": "Quand la guerre prit fin avec le traité d'Utrecht en 1713, tout changea.",
+      "tts": {
+        "text": "Quand la guerre prit fin avec le traité d'Utrecht en mille sept cent treize, tout changea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les commissions de course furent annulées du jour au lendemain.",
+      "text_markdown": "Les commissions de course furent annulées du jour au lendemain.",
+      "tts": {
+        "text": "Les commissions de course furent annulées du jour au lendemain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Des milliers de marins et de combattants entraînés se retrouvèrent soudain sans emploi légal.",
+      "text_markdown": "Des milliers de marins et de combattants entraînés se retrouvèrent soudain sans emploi légal.",
+      "tts": {
+        "text": "Des milliers de marins et de combattants entraînés se retrouvèrent soudain sans emploi légal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beaucoup d'entre eux ne possédaient rien d'autre que les vêtements qu'ils portaient et leur connaissance de la mer.",
+      "text_markdown": "Beaucoup d'entre eux ne possédaient rien d'autre que les vêtements qu'ils portaient et leur connaissance de la mer.",
+      "tts": {
+        "text": "Beaucoup d'entre eux ne possédaient rien d'autre que les vêtements qu'ils portaient et leur connaissance de la mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vie de marin ordinaire à cette époque était brutale.",
+      "text_markdown": "La vie de marin ordinaire à cette époque était brutale.",
+      "tts": {
+        "text": "La vie de marin ordinaire à cette époque était brutale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les capitaines marchands gouvernaient leurs navires comme des tyrans.",
+      "text_markdown": "Les capitaines marchands gouvernaient leurs navires comme des tyrans.",
+      "tts": {
+        "text": "Les capitaines marchands gouvernaient leurs navires comme des tyrans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les marins étaient battus pour des infractions mineures et parfois pas payés du tout.",
+      "text_markdown": "Les marins étaient battus pour des infractions mineures et parfois pas payés du tout.",
+      "tts": {
+        "text": "Les marins étaient battus pour des infractions mineures et parfois pas payés du tout.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le marin moyen gagnait environ 1 livre par mois, à peine de quoi survivre à terre.",
+      "text_markdown": "Le marin moyen gagnait environ 1 livre par mois, à peine de quoi survivre à terre.",
+      "tts": {
+        "text": "Le marin moyen gagnait environ une livre par mois, à peine de quoi survivre à terre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le service dans la marine était encore pire à bien des égards.",
+      "text_markdown": "Le service dans la marine était encore pire à bien des égards.",
+      "tts": {
+        "text": "Le service dans la marine était encore pire à bien des égards.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Royal Navy utilisait des groupes de recrutement forcé pour enlever des hommes dans les rues et les forcer à servir sur des navires de guerre.",
+      "text_markdown": "La Royal Navy utilisait des groupes de recrutement forcé pour enlever des hommes dans les rues et les forcer à servir sur des navires de guerre.",
+      "tts": {
+        "text": "La Royal Navy utilisait des groupes de recrutement forcé pour enlever des hommes dans les rues et les forcer à servir sur des navires de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les maladies tuaient plus de marins que le combat ne l'a jamais fait.",
+      "text_markdown": "Les maladies tuaient plus de marins que le combat ne l'a jamais fait.",
+      "tts": {
+        "text": "Les maladies tuaient plus de marins que le combat ne l'a jamais fait.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le scorbut, la dysenterie et les fièvres tropicales balayaient les ponts inférieurs surpeuplés avec une vitesse terrifiante.",
+      "text_markdown": "Le scorbut, la dysenterie et les fièvres tropicales balayaient les ponts inférieurs surpeuplés avec une vitesse terrifiante.",
+      "tts": {
+        "text": "Le scorbut, la dysenterie et les fièvres tropicales balayaient les ponts inférieurs surpeuplés avec une vitesse terrifiante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La piraterie offrait une alternative que beaucoup de marins trouvaient irrésistible.",
+      "text_markdown": "La piraterie offrait une alternative que beaucoup de marins trouvaient irrésistible.",
+      "tts": {
+        "text": "La piraterie offrait une alternative que beaucoup de marins trouvaient irrésistible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les pirates élisaient leurs propres capitaines et votaient sur les décisions importantes.",
+      "text_markdown": "Les pirates élisaient leurs propres capitaines et votaient sur les décisions importantes.",
+      "tts": {
+        "text": "Les pirates élisaient leurs propres capitaines et votaient sur les décisions importantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'argent du butin était réparti beaucoup plus équitablement que sur les navires marchands ou militaires.",
+      "text_markdown": "L'argent du butin était réparti beaucoup plus équitablement que sur les navires marchands ou militaires.",
+      "tts": {
+        "text": "L'argent du butin était réparti beaucoup plus équitablement que sur les navires marchands ou militaires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un pirate ordinaire pouvait gagner en une seule razzia ce qu'un marin marchand gagnait en plusieurs années.",
+      "text_markdown": "Un pirate ordinaire pouvait gagner en une seule razzia ce qu'un marin marchand gagnait en plusieurs années.",
+      "tts": {
+        "text": "Un pirate ordinaire pouvait gagner en une seule razzia ce qu'un marin marchand gagnait en plusieurs années.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'île de New Providence aux Bahamas devint la capitale non officielle de la piraterie.",
+      "text_markdown": "L'île de New Providence aux Bahamas devint la capitale non officielle de la piraterie.",
+      "tts": {
+        "text": "L'île de New Providence aux Bahamas devint la capitale non officielle de la piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son port principal à Nassau pouvait abriter des centaines de navires.",
+      "text_markdown": "Son port principal à Nassau pouvait abriter des centaines de navires.",
+      "tts": {
+        "text": "Son port principal à Nassau pouvait abriter des centaines de navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'île n'avait ni gouvernement colonial fort ni fort capable de la défendre.",
+      "text_markdown": "L'île n'avait ni gouvernement colonial fort ni fort capable de la défendre.",
+      "tts": {
+        "text": "L'île n'avait ni gouvernement colonial fort ni fort capable de la défendre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Au début du dix-huitième siècle, les pirates surpassaient en nombre les citoyens honnêtes à Nassau.",
+      "text_markdown": "Au début du dix-huitième siècle, les pirates surpassaient en nombre les citoyens honnêtes à Nassau.",
+      "tts": {
+        "text": "Au début du dix-huitième siècle, les pirates surpassaient en nombre les citoyens honnêtes à Nassau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau devint ce que les historiens appellent la République des Pirates.",
+      "text_markdown": "Nassau devint ce que les historiens appellent la République des Pirates.",
+      "tts": {
+        "text": "Nassau devint ce que les historiens appellent la République des Pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des capitaines pirates comme Benjamin Hornigold, Charles Vane et Calico Jack Rackham en firent leur foyer.",
+      "text_markdown": "Des capitaines pirates comme Benjamin Hornigold, Charles Vane et Calico Jack Rackham en firent leur foyer.",
+      "tts": {
+        "text": "Des capitaines pirates comme Benjamin Hornigold, Charles Vane et Calico Jack Rackham en firent leur foyer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les navires arrivaient constamment, apportant des marchandises volées à échanger.",
+      "text_markdown": "Les navires arrivaient constamment, apportant des marchandises volées à échanger.",
+      "tts": {
+        "text": "Les navires arrivaient constamment, apportant des marchandises volées à échanger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Des tavernes et des marchés surgirent pour servir l'économie pirate.",
+      "text_markdown": "Des tavernes et des marchés surgirent pour servir l'économie pirate.",
+      "tts": {
+        "text": "Des tavernes et des marchés surgirent pour servir l'économie pirate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les gouvernements coloniaux le long de la côte américaine étaient mal défendus.",
+      "text_markdown": "Les gouvernements coloniaux le long de la côte américaine étaient mal défendus.",
+      "tts": {
+        "text": "Les gouvernements coloniaux le long de la côte américaine étaient mal défendus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Virginie, les Carolines et les colonies de Nouvelle-Angleterre dépendaient du commerce pour survivre.",
+      "text_markdown": "La Virginie, les Carolines et les colonies de Nouvelle-Angleterre dépendaient du commerce pour survivre.",
+      "tts": {
+        "text": "La Virginie, les Carolines et les colonies de Nouvelle-Angleterre dépendaient du commerce pour survivre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leurs ports étaient actifs mais leurs marines étaient petites.",
+      "text_markdown": "Leurs ports étaient actifs mais leurs marines étaient petites.",
+      "tts": {
+        "text": "Leurs ports étaient actifs mais leurs marines étaient petites.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un seul navire pirate bien armé pouvait paralyser le commerce de toute une colonie.",
+      "text_markdown": "Un seul navire pirate bien armé pouvait paralyser le commerce de toute une colonie.",
+      "tts": {
+        "text": "Un seul navire pirate bien armé pouvait paralyser le commerce de toute une colonie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'était le monde qui a produit Edward Teach.",
+      "text_markdown": "C'était le monde qui a produit Edward Teach.",
+      "tts": {
+        "text": "C'était le monde qui a produit Edward Teach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'était un monde d'opportunités violentes, où un marin audacieux pouvait devenir riche ou mourir en essayant.",
+      "text_markdown": "C'était un monde d'opportunités violentes, où un marin audacieux pouvait devenir riche ou mourir en essayant.",
+      "tts": {
+        "text": "C'était un monde d'opportunités violentes, où un marin audacieux pouvait devenir riche ou mourir en essayant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La frontière entre la course légale et la piraterie illégale était mince et changeait constamment.",
+      "text_markdown": "La frontière entre la course légale et la piraterie illégale était mince et changeait constamment.",
+      "tts": {
+        "text": "La frontière entre la course légale et la piraterie illégale était mince et changeait constamment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde qui a forgé un pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barbe Noire allait exploiter cette zone grise mieux que presque n'importe qui.",
+      "text_markdown": "Barbe Noire allait exploiter cette zone grise mieux que presque n'importe qui.",
+      "tts": {
+        "text": "Barbe Noire allait exploiter cette zone grise mieux que presque n'importe qui.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La formation d'Edward Teach",
+      "text_markdown": "La formation d'Edward Teach"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Presque rien n'est connu avec certitude sur les premières années de Barbe Noire.",
+      "text_markdown": "Presque rien n'est connu avec certitude sur les premières années de Barbe Noire.",
+      "tts": {
+        "text": "Presque rien n'est connu avec certitude sur les premières années de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'est courant chez les pirates, dont les vies avant la piraterie apparaissaient rarement dans les registres officiels.",
+      "text_markdown": "C'est courant chez les pirates, dont les vies avant la piraterie apparaissaient rarement dans les registres officiels.",
+      "tts": {
+        "text": "C'est courant chez les pirates, dont les vies avant la piraterie apparaissaient rarement dans les registres officiels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les historiens doivent reconstituer ses origines à partir d'indices épars et de récits ultérieurs.",
+      "text_markdown": "Les historiens doivent reconstituer ses origines à partir d'indices épars et de récits ultérieurs.",
+      "tts": {
+        "text": "Les historiens doivent reconstituer ses origines à partir d'indices épars et de récits ultérieurs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La théorie la plus largement acceptée est qu'Edward Teach est né à Bristol, en Angleterre.",
+      "text_markdown": "La théorie la plus largement acceptée est qu'Edward Teach est né à Bristol, en Angleterre.",
+      "tts": {
+        "text": "La théorie la plus largement acceptée est qu'Edward Teach est né à Bristol, en Angleterre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol était l'une des plus grandes villes portuaires de l'Empire britannique à la fin du dix-septième siècle.",
+      "text_markdown": "Bristol était l'une des plus grandes villes portuaires de l'Empire britannique à la fin du dix-septième siècle.",
+      "tts": {
+        "text": "Bristol était l'une des plus grandes villes portuaires de l'Empire britannique à la fin du dix-septième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les navires partaient de Bristol vers l'Afrique, les Caraïbes et les colonies américaines.",
+      "text_markdown": "Les navires partaient de Bristol vers l'Afrique, les Caraïbes et les colonies américaines.",
+      "tts": {
+        "text": "Les navires partaient de Bristol vers l'Afrique, les Caraïbes et les colonies américaines.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'économie de la ville reposait sur le commerce maritime, y compris la traite transatlantique des esclaves.",
+      "text_markdown": "L'économie de la ville reposait sur le commerce maritime, y compris la traite transatlantique des esclaves.",
+      "tts": {
+        "text": "L'économie de la ville reposait sur le commerce maritime, y compris la traite transatlantique des esclaves.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les historiens estiment que Teach est né vers 1680, bien qu'aucun acte de naissance n'ait été trouvé.",
+      "text_markdown": "Les historiens estiment que Teach est né vers 1680, bien qu'aucun acte de naissance n'ait été trouvé.",
+      "tts": {
+        "text": "Les historiens estiment que Teach est né vers mille six cent quatre-vingts, bien qu'aucun acte de naissance n'ait été trouvé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son nom de famille apparaît dans divers registres sous les formes Teach, Thatch, Thach et Tatch.",
+      "text_markdown": "Son nom de famille apparaît dans divers registres sous les formes Teach, Thatch, Thach et Tatch.",
+      "tts": {
+        "text": "Son nom de famille apparaît dans divers registres sous les formes Teach, Thatch, Thach et Tatch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'orthographe n'était pas standardisée à cette époque, et les noms étaient souvent écrits phonétiquement.",
+      "text_markdown": "L'orthographe n'était pas standardisée à cette époque, et les noms étaient souvent écrits phonétiquement.",
+      "tts": {
+        "text": "L'orthographe n'était pas standardisée à cette époque, et les noms étaient souvent écrits phonétiquement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains indices suggèrent que Teach venait d'une famille respectable.",
+      "text_markdown": "Certains indices suggèrent que Teach venait d'une famille respectable.",
+      "tts": {
+        "text": "Certains indices suggèrent que Teach venait d'une famille respectable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il savait lire et écrire, ce qui était inhabituel pour les marins ordinaires de l'époque.",
+      "text_markdown": "Il savait lire et écrire, ce qui était inhabituel pour les marins ordinaires de l'époque.",
+      "tts": {
+        "text": "Il savait lire et écrire, ce qui était inhabituel pour les marins ordinaires de l'époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Une lettre qu'il a écrite survit dans les archives historiques, montrant une écriture claire et assurée.",
+      "text_markdown": "Une lettre qu'il a écrite survit dans les archives historiques, montrant une écriture claire et assurée.",
+      "tts": {
+        "text": "Une lettre qu'il a écrite survit dans les archives historiques, montrant une écriture claire et assurée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'alphabétisation suggère au moins une certaine éducation formelle, probablement dans l'une des écoles caritatives de Bristol.",
+      "text_markdown": "L'alphabétisation suggère au moins une certaine éducation formelle, probablement dans l'une des écoles caritatives de Bristol.",
+      "tts": {
+        "text": "L'alphabétisation suggère au moins une certaine éducation formelle, probablement dans l'une des écoles caritatives de Bristol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach a presque certainement pris la mer étant jeune.",
+      "text_markdown": "Teach a presque certainement pris la mer étant jeune.",
+      "tts": {
+        "text": "Teach a presque certainement pris la mer étant jeune.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "À Bristol, la mer était le chemin le plus évident vers l'emploi.",
+      "text_markdown": "À Bristol, la mer était le chemin le plus évident vers l'emploi.",
+      "tts": {
+        "text": "À Bristol, la mer était le chemin le plus évident vers l'emploi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Des garçons dès l'âge de douze ans servaient comme mousses ou marins apprentis sur des navires marchands.",
+      "text_markdown": "Des garçons dès l'âge de douze ans servaient comme mousses ou marins apprentis sur des navires marchands.",
+      "tts": {
+        "text": "Des garçons dès l'âge de douze ans servaient comme mousses ou marins apprentis sur des navires marchands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le travail était dangereux, mais il offrait l'aventure et la chance de voir le monde.",
+      "text_markdown": "Le travail était dangereux, mais il offrait l'aventure et la chance de voir le monde.",
+      "tts": {
+        "text": "Le travail était dangereux, mais il offrait l'aventure et la chance de voir le monde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand la guerre de la Reine Anne commença, Teach entra probablement au service comme corsaire.",
+      "text_markdown": "Quand la guerre de la Reine Anne commença, Teach entra probablement au service comme corsaire.",
+      "tts": {
+        "text": "Quand la guerre de la Reine Anne commença, Teach entra probablement au service comme corsaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol était une base majeure pour les opérations de course contre la marine française et espagnole.",
+      "text_markdown": "Bristol était une base majeure pour les opérations de course contre la marine française et espagnole.",
+      "tts": {
+        "text": "Bristol était une base majeure pour les opérations de course contre la marine française et espagnole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un jeune homme avec de l'expérience en navigation aurait été recruté avec empressement.",
+      "text_markdown": "Un jeune homme avec de l'expérience en navigation aurait été recruté avec empressement.",
+      "tts": {
+        "text": "Un jeune homme avec de l'expérience en navigation aurait été recruté avec empressement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La course enseigna à Teach les compétences du combat naval qui le rendraient plus tard célèbre.",
+      "text_markdown": "La course enseigna à Teach les compétences du combat naval qui le rendraient plus tard célèbre.",
+      "tts": {
+        "text": "La course enseigna à Teach les compétences du combat naval qui le rendraient plus tard célèbre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre donna à Teach des années d'expérience dans le combat de navire à navire.",
+      "text_markdown": "La guerre donna à Teach des années d'expérience dans le combat de navire à navire.",
+      "tts": {
+        "text": "La guerre donna à Teach des années d'expérience dans le combat de navire à navire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il apprit à manier les canons, aborder les navires ennemis et diriger un équipage sous le feu.",
+      "text_markdown": "Il apprit à manier les canons, aborder les navires ennemis et diriger un équipage sous le feu.",
+      "tts": {
+        "text": "Il apprit à manier les canons, aborder les navires ennemis et diriger un équipage sous le feu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il apprit également la géographie des Caraïbes et les schémas de la navigation marchande.",
+      "text_markdown": "Il apprit également la géographie des Caraïbes et les schémas de la navigation marchande.",
+      "tts": {
+        "text": "Il apprit également la géographie des Caraïbes et les schémas de la navigation marchande.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce savoir était inestimable pour un futur pirate.",
+      "text_markdown": "Ce savoir était inestimable pour un futur pirate.",
+      "tts": {
+        "text": "Ce savoir était inestimable pour un futur pirate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand la guerre prit fin en 1713, Teach se retrouva dans la même situation que des milliers d'autres marins.",
+      "text_markdown": "Quand la guerre prit fin en 1713, Teach se retrouva dans la même situation que des milliers d'autres marins.",
+      "tts": {
+        "text": "Quand la guerre prit fin en mille sept cent treize, Teach se retrouva dans la même situation que des milliers d'autres marins.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il avait des compétences et de l'expérience mais aucun moyen légal de les utiliser.",
+      "text_markdown": "Il avait des compétences et de l'expérience mais aucun moyen légal de les utiliser.",
+      "tts": {
+        "text": "Il avait des compétences et de l'expérience mais aucun moyen légal de les utiliser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Marine royale en temps de paix se réduisait, et les navires marchands n'embauchaient pas.",
+      "text_markdown": "La Marine royale en temps de paix se réduisait, et les navires marchands n'embauchaient pas.",
+      "tts": {
+        "text": "La Marine royale en temps de paix se réduisait, et les navires marchands n'embauchaient pas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le chemin vers la piraterie était presque inévitable pour des hommes comme lui.",
+      "text_markdown": "Le chemin vers la piraterie était presque inévitable pour des hommes comme lui.",
+      "tts": {
+        "text": "Le chemin vers la piraterie était presque inévitable pour des hommes comme lui.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach se rendit sur l'île de New Providence aux Bahamas.",
+      "text_markdown": "Teach se rendit sur l'île de New Providence aux Bahamas.",
+      "tts": {
+        "text": "Teach se rendit sur l'île de New Providence aux Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Là, il rejoignit l'équipage du capitaine Benjamin Hornigold, l'un des pirates les plus prospères de l'époque.",
+      "text_markdown": "Là, il rejoignit l'équipage du capitaine Benjamin Hornigold, l'un des pirates les plus prospères de l'époque.",
+      "tts": {
+        "text": "Là, il rejoignit l'équipage du capitaine Benjamin Hornigold, l'un des pirates les plus prospères de l'époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold était un ancien corsaire qui s'était tourné vers la piraterie après la guerre.",
+      "text_markdown": "Hornigold était un ancien corsaire qui s'était tourné vers la piraterie après la guerre.",
+      "tts": {
+        "text": "Hornigold était un ancien corsaire qui s'était tourné vers la piraterie après la guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il commandait une petite flotte de navires opérant depuis le port de Nassau.",
+      "text_markdown": "Il commandait une petite flotte de navires opérant depuis le port de Nassau.",
+      "tts": {
+        "text": "Il commandait une petite flotte de navires opérant depuis le port de Nassau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold reconnut rapidement les capacités de Teach.",
+      "text_markdown": "Hornigold reconnut rapidement les capacités de Teach.",
+      "tts": {
+        "text": "Hornigold reconnut rapidement les capacités de Teach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teach était physiquement imposant, mesurant bien plus d'un mètre quatre-vingts à une époque où la plupart des hommes étaient beaucoup plus petits.",
+      "text_markdown": "Teach était physiquement imposant, mesurant bien plus d'un mètre quatre-vingts à une époque où la plupart des hommes étaient beaucoup plus petits.",
+      "tts": {
+        "text": "Teach était physiquement imposant, mesurant bien plus d'un mètre quatre-vingts à une époque où la plupart des hommes étaient beaucoup plus petits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il était courageux au combat et avait un don naturel pour commander les hommes.",
+      "text_markdown": "Il était courageux au combat et avait un don naturel pour commander les hommes.",
+      "tts": {
+        "text": "Il était courageux au combat et avait un don naturel pour commander les hommes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hornigold donna à Teach le commandement d'un sloop capturé.",
+      "text_markdown": "Hornigold donna à Teach le commandement d'un sloop capturé.",
+      "tts": {
+        "text": "Hornigold donna à Teach le commandement d'un sloop capturé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fin 1717, Teach et Hornigold capturèrent un grand navire marchand français appelé La Concorde.",
+      "text_markdown": "Fin 1717, Teach et Hornigold capturèrent un grand navire marchand français appelé La Concorde.",
+      "tts": {
+        "text": "Fin mille sept cent dix-sept, Teach et Hornigold capturèrent un grand navire marchand français appelé La Concorde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Concorde était un navire négrier, lourdement armé et transportant une cargaison de valeur.",
+      "text_markdown": "La Concorde était un navire négrier, lourdement armé et transportant une cargaison de valeur.",
+      "tts": {
+        "text": "La Concorde était un navire négrier, lourdement armé et transportant une cargaison de valeur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teach s'empara du navire et entreprit de le transformer.",
+      "text_markdown": "Teach s'empara du navire et entreprit de le transformer.",
+      "tts": {
+        "text": "Teach s'empara du navire et entreprit de le transformer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il monta des canons supplémentaires jusqu'à ce que le navire soit hérissé de puissance de feu.",
+      "text_markdown": "Il monta des canons supplémentaires jusqu'à ce que le navire soit hérissé de puissance de feu.",
+      "tts": {
+        "text": "Il monta des canons supplémentaires jusqu'à ce que le navire soit hérissé de puissance de feu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach rebaptisa son nouveau vaisseau amiral La Vengeance de la Reine Anne.",
+      "text_markdown": "Teach rebaptisa son nouveau vaisseau amiral La Vengeance de la Reine Anne.",
+      "tts": {
+        "text": "Teach rebaptisa son nouveau vaisseau amiral La Vengeance de la Reine Anne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le nom était une déclaration politique délibérée.",
+      "text_markdown": "Le nom était une déclaration politique délibérée.",
+      "tts": {
+        "text": "Le nom était une déclaration politique délibérée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il faisait référence à la Reine Anne, sous le règne de laquelle les corsaires avaient servi légalement.",
+      "text_markdown": "Il faisait référence à la Reine Anne, sous le règne de laquelle les corsaires avaient servi légalement.",
+      "tts": {
+        "text": "Il faisait référence à la Reine Anne, sous le règne de laquelle les corsaires avaient servi légalement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teach déclarait que sa piraterie était une vengeance pour les promesses brisées de la Couronne.",
+      "text_markdown": "Teach déclarait que sa piraterie était une vengeance pour les promesses brisées de la Couronne.",
+      "tts": {
+        "text": "Teach déclarait que sa piraterie était une vengeance pour les promesses brisées de la Couronne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avec 40 canons et un équipage de plus de 300 hommes, La Vengeance de la Reine Anne était l'un des navires pirates les plus puissants en mer.",
+      "text_markdown": "Avec 40 canons et un équipage de plus de 300 hommes, La Vengeance de la Reine Anne était l'un des navires pirates les plus puissants en mer.",
+      "tts": {
+        "text": "Avec quarante canons et un équipage de plus de trois cents hommes, La Vengeance de la Reine Anne était l'un des navires pirates les plus puissants en mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbe Noire n'était plus un pirate subalterne opérant sous l'autorité d'un autre.",
+      "text_markdown": "Barbe Noire n'était plus un pirate subalterne opérant sous l'autorité d'un autre.",
+      "tts": {
+        "text": "Barbe Noire n'était plus un pirate subalterne opérant sous l'autorité d'un autre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il était désormais une force avec laquelle il fallait compter.",
+      "text_markdown": "Il était désormais une force avec laquelle il fallait compter.",
+      "tts": {
+        "text": "Il était désormais une force avec laquelle il fallait compter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formation d'Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La légende de Barbe Noire était sur le point de commencer.",
+      "text_markdown": "La légende de Barbe Noire était sur le point de commencer.",
+      "tts": {
+        "text": "La légende de Barbe Noire était sur le point de commencer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terreur de l'Atlantique",
+      "text_markdown": "La terreur de l'Atlantique"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Début 1718, Barbe Noire navigua vers le nord depuis les Caraïbes avec La Vengeance de la Reine Anne.",
+      "text_markdown": "Début 1718, Barbe Noire navigua vers le nord depuis les Caraïbes avec La Vengeance de la Reine Anne.",
+      "tts": {
+        "text": "Début mille sept cent dix-huit, Barbe Noire navigua vers le nord depuis les Caraïbes avec La Vengeance de la Reine Anne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il se dirigeait vers les voies maritimes le long de la côte coloniale américaine.",
+      "text_markdown": "Il se dirigeait vers les voies maritimes le long de la côte coloniale américaine.",
+      "tts": {
+        "text": "Il se dirigeait vers les voies maritimes le long de la côte coloniale américaine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ces eaux étaient riches en trafic marchand et mal défendues.",
+      "text_markdown": "Ces eaux étaient riches en trafic marchand et mal défendues.",
+      "tts": {
+        "text": "Ces eaux étaient riches en trafic marchand et mal défendues.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barbe Noire comptait exploiter cette vulnérabilité au maximum.",
+      "text_markdown": "Barbe Noire comptait exploiter cette vulnérabilité au maximum.",
+      "tts": {
+        "text": "Barbe Noire comptait exploiter cette vulnérabilité au maximum.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La stratégie de Barbe Noire reposait autant sur la terreur que sur la puissance de feu.",
+      "text_markdown": "La stratégie de Barbe Noire reposait autant sur la terreur que sur la puissance de feu.",
+      "tts": {
+        "text": "La stratégie de Barbe Noire reposait autant sur la terreur que sur la puissance de feu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il comprenait qu'un ennemi terrorisé se rendrait sans combattre.",
+      "text_markdown": "Il comprenait qu'un ennemi terrorisé se rendrait sans combattre.",
+      "tts": {
+        "text": "Il comprenait qu'un ennemi terrorisé se rendrait sans combattre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Une bataille évitée était une bataille gagnée, car elle préservait son équipage et ses navires.",
+      "text_markdown": "Une bataille évitée était une bataille gagnée, car elle préservait son équipage et ses navires.",
+      "tts": {
+        "text": "Une bataille évitée était une bataille gagnée, car elle préservait son équipage et ses navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chaque élément de son apparence était conçu pour maximiser la peur.",
+      "text_markdown": "Chaque élément de son apparence était conçu pour maximiser la peur.",
+      "tts": {
+        "text": "Chaque élément de son apparence était conçu pour maximiser la peur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il laissa pousser son épaisse barbe noire à une longueur énorme, couvrant la majeure partie de son visage et de sa poitrine.",
+      "text_markdown": "Il laissa pousser son épaisse barbe noire à une longueur énorme, couvrant la majeure partie de son visage et de sa poitrine.",
+      "tts": {
+        "text": "Il laissa pousser son épaisse barbe noire à une longueur énorme, couvrant la majeure partie de son visage et de sa poitrine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avant la bataille, il tressait dans sa barbe des mèches de chanvre à combustion lente appelées mèches lentes.",
+      "text_markdown": "Avant la bataille, il tressait dans sa barbe des mèches de chanvre à combustion lente appelées mèches lentes.",
+      "tts": {
+        "text": "Avant la bataille, il tressait dans sa barbe des mèches de chanvre à combustion lente appelées mèches lentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Une fois allumées, ces mèches produisaient des nuages de fumée autour de sa tête.",
+      "text_markdown": "Une fois allumées, ces mèches produisaient des nuages de fumée autour de sa tête.",
+      "tts": {
+        "text": "Une fois allumées, ces mèches produisaient des nuages de fumée autour de sa tête.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'effet était surnaturel, comme un monstre émergeant d'un feu sulfureux.",
+      "text_markdown": "L'effet était surnaturel, comme un monstre émergeant d'un feu sulfureux.",
+      "tts": {
+        "text": "L'effet était surnaturel, comme un monstre émergeant d'un feu sulfureux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il portait plusieurs pistolets attachés sur sa poitrine dans un baudrier de cuir.",
+      "text_markdown": "Il portait plusieurs pistolets attachés sur sa poitrine dans un baudrier de cuir.",
+      "tts": {
+        "text": "Il portait plusieurs pistolets attachés sur sa poitrine dans un baudrier de cuir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il portait aussi plusieurs sabres d'abordage et des dagues à sa ceinture.",
+      "text_markdown": "Il portait aussi plusieurs sabres d'abordage et des dagues à sa ceinture.",
+      "tts": {
+        "text": "Il portait aussi plusieurs sabres d'abordage et des dagues à sa ceinture.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son habillement était délibérément théâtral, conçu pour paraître aussi effrayant que possible.",
+      "text_markdown": "Son habillement était délibérément théâtral, conçu pour paraître aussi effrayant que possible.",
+      "tts": {
+        "text": "Son habillement était délibérément théâtral, conçu pour paraître aussi effrayant que possible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les témoins le décrivaient comme l'image même du diable.",
+      "text_markdown": "Les témoins le décrivaient comme l'image même du diable.",
+      "tts": {
+        "text": "Les témoins le décrivaient comme l'image même du diable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire rassembla une petite flotte de navires pirates autour de lui.",
+      "text_markdown": "Barbe Noire rassembla une petite flotte de navires pirates autour de lui.",
+      "tts": {
+        "text": "Barbe Noire rassembla une petite flotte de navires pirates autour de lui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "À son apogée, il commandait 4 navires et plusieurs centaines de pirates.",
+      "text_markdown": "À son apogée, il commandait 4 navires et plusieurs centaines de pirates.",
+      "tts": {
+        "text": "À son apogée, il commandait quatre navires et plusieurs centaines de pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'était une concentration inhabituelle de puissance pirate.",
+      "text_markdown": "C'était une concentration inhabituelle de puissance pirate.",
+      "tts": {
+        "text": "C'était une concentration inhabituelle de puissance pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La plupart des pirates opéraient seuls ou en paires, mais Barbe Noire pensait à plus grande échelle.",
+      "text_markdown": "La plupart des pirates opéraient seuls ou en paires, mais Barbe Noire pensait à plus grande échelle.",
+      "tts": {
+        "text": "La plupart des pirates opéraient seuls ou en paires, mais Barbe Noire pensait à plus grande échelle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sa flotte capturait navire après navire le long de la côte.",
+      "text_markdown": "Sa flotte capturait navire après navire le long de la côte.",
+      "tts": {
+        "text": "Sa flotte capturait navire après navire le long de la côte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les capitaines marchands qui voyaient son pavillon noir se rendaient souvent immédiatement.",
+      "text_markdown": "Les capitaines marchands qui voyaient son pavillon noir se rendaient souvent immédiatement.",
+      "tts": {
+        "text": "Les capitaines marchands qui voyaient son pavillon noir se rendaient souvent immédiatement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ceux qui résistaient étaient submergés par la supériorité numérique et la puissance de feu.",
+      "text_markdown": "Ceux qui résistaient étaient submergés par la supériorité numérique et la puissance de feu.",
+      "tts": {
+        "text": "Ceux qui résistaient étaient submergés par la supériorité numérique et la puissance de feu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La réputation de Barbe Noire se répandit dans chaque port des Caraïbes à la Nouvelle-Angleterre.",
+      "text_markdown": "La réputation de Barbe Noire se répandit dans chaque port des Caraïbes à la Nouvelle-Angleterre.",
+      "tts": {
+        "text": "La réputation de Barbe Noire se répandit dans chaque port des Caraïbes à la Nouvelle-Angleterre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans une attaque typique, Barbe Noire arborait de faux pavillons pour approcher sa cible.",
+      "text_markdown": "Dans une attaque typique, Barbe Noire arborait de faux pavillons pour approcher sa cible.",
+      "tts": {
+        "text": "Dans une attaque typique, Barbe Noire arborait de faux pavillons pour approcher sa cible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les pirates hissaient souvent le drapeau d'une nation amie pour se rapprocher avant de se révéler.",
+      "text_markdown": "Les pirates hissaient souvent le drapeau d'une nation amie pour se rapprocher avant de se révéler.",
+      "tts": {
+        "text": "Les pirates hissaient souvent le drapeau d'une nation amie pour se rapprocher avant de se révéler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Au dernier moment, ils hissaient leur véritable pavillon pirate.",
+      "text_markdown": "Au dernier moment, ils hissaient leur véritable pavillon pirate.",
+      "tts": {
+        "text": "Au dernier moment, ils hissaient leur véritable pavillon pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "À ce moment-là, il était généralement trop tard pour la victime de s'enfuir.",
+      "text_markdown": "À ce moment-là, il était généralement trop tard pour la victime de s'enfuir.",
+      "tts": {
+        "text": "À ce moment-là, il était généralement trop tard pour la victime de s'enfuir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le pavillon de Barbe Noire était distinctif et terrifiant.",
+      "text_markdown": "Le pavillon de Barbe Noire était distinctif et terrifiant.",
+      "tts": {
+        "text": "Le pavillon de Barbe Noire était distinctif et terrifiant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il montrait un squelette tenant un sablier dans une main et une lance dans l'autre.",
+      "text_markdown": "Il montrait un squelette tenant un sablier dans une main et une lance dans l'autre.",
+      "tts": {
+        "text": "Il montrait un squelette tenant un sablier dans une main et une lance dans l'autre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La lance était pointée vers un cœur saignant.",
+      "text_markdown": "La lance était pointée vers un cœur saignant.",
+      "tts": {
+        "text": "La lance était pointée vers un cœur saignant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le message était clair : votre temps s'écoule, et la mort arrive.",
+      "text_markdown": "Le message était clair : votre temps s'écoule, et la mort arrive.",
+      "tts": {
+        "text": "Le message était clair : votre temps s'écoule, et la mort arrive.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mai 1718, Barbe Noire exécuta son plan le plus audacieux.",
+      "text_markdown": "En mai 1718, Barbe Noire exécuta son plan le plus audacieux.",
+      "tts": {
+        "text": "En mai mille sept cent dix-huit, Barbe Noire exécuta son plan le plus audacieux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il navigua avec sa flotte directement dans le port de Charleston, en Caroline du Sud.",
+      "text_markdown": "Il navigua avec sa flotte directement dans le port de Charleston, en Caroline du Sud.",
+      "tts": {
+        "text": "Il navigua avec sa flotte directement dans le port de Charleston, en Caroline du Sud.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Charleston était l'un des ports les plus riches et les plus importants des colonies américaines.",
+      "text_markdown": "Charleston était l'un des ports les plus riches et les plus importants des colonies américaines.",
+      "tts": {
+        "text": "Charleston était l'un des ports les plus riches et les plus importants des colonies américaines.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce qui suivit fut l'un des actes de piraterie les plus audacieux de l'histoire.",
+      "text_markdown": "Ce qui suivit fut l'un des actes de piraterie les plus audacieux de l'histoire.",
+      "tts": {
+        "text": "Ce qui suivit fut l'un des actes de piraterie les plus audacieux de l'histoire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire bloqua tout le port de Charleston.",
+      "text_markdown": "Barbe Noire bloqua tout le port de Charleston.",
+      "tts": {
+        "text": "Barbe Noire bloqua tout le port de Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aucun navire ne pouvait entrer ni sortir sans sa permission.",
+      "text_markdown": "Aucun navire ne pouvait entrer ni sortir sans sa permission.",
+      "tts": {
+        "text": "Aucun navire ne pouvait entrer ni sortir sans sa permission.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pendant près d'une semaine, il tint la ville en otage.",
+      "text_markdown": "Pendant près d'une semaine, il tint la ville en otage.",
+      "tts": {
+        "text": "Pendant près d'une semaine, il tint la ville en otage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il captura chaque navire qui tenta de passer par l'entrée du port.",
+      "text_markdown": "Il captura chaque navire qui tenta de passer par l'entrée du port.",
+      "tts": {
+        "text": "Il captura chaque navire qui tenta de passer par l'entrée du port.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il s'empara d'au moins 8 navires pendant le blocus.",
+      "text_markdown": "Il s'empara d'au moins 8 navires pendant le blocus.",
+      "tts": {
+        "text": "Il s'empara d'au moins huit navires pendant le blocus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parmi ses prisonniers se trouvaient certains des citoyens les plus éminents de Charleston.",
+      "text_markdown": "Parmi ses prisonniers se trouvaient certains des citoyens les plus éminents de Charleston.",
+      "tts": {
+        "text": "Parmi ses prisonniers se trouvaient certains des citoyens les plus éminents de Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il prit des otages et menaça de tous les tuer.",
+      "text_markdown": "Il prit des otages et menaça de tous les tuer.",
+      "tts": {
+        "text": "Il prit des otages et menaça de tous les tuer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La demande de Barbe Noire fut surprenante.",
+      "text_markdown": "La demande de Barbe Noire fut surprenante.",
+      "tts": {
+        "text": "La demande de Barbe Noire fut surprenante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il ne demanda ni or ni bijoux.",
+      "text_markdown": "Il ne demanda ni or ni bijoux.",
+      "tts": {
+        "text": "Il ne demanda ni or ni bijoux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Au lieu de cela, il exigea un coffre de médicaments.",
+      "text_markdown": "Au lieu de cela, il exigea un coffre de médicaments.",
+      "tts": {
+        "text": "Au lieu de cela, il exigea un coffre de médicaments.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les historiens pensent que son équipage souffrait de syphilis et d'autres maladies courantes chez les marins.",
+      "text_markdown": "Les historiens pensent que son équipage souffrait de syphilis et d'autres maladies courantes chez les marins.",
+      "tts": {
+        "text": "Les historiens pensent que son équipage souffrait de syphilis et d'autres maladies courantes chez les marins.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le gouverneur de Caroline du Sud n'avait pas de marine capable de défier la flotte de Barbe Noire.",
+      "text_markdown": "Le gouverneur de Caroline du Sud n'avait pas de marine capable de défier la flotte de Barbe Noire.",
+      "tts": {
+        "text": "Le gouverneur de Caroline du Sud n'avait pas de marine capable de défier la flotte de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Après des négociations tendues, la ville envoya les médicaments aux pirates.",
+      "text_markdown": "Après des négociations tendues, la ville envoya les médicaments aux pirates.",
+      "tts": {
+        "text": "Après des négociations tendues, la ville envoya les médicaments aux pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbe Noire libéra ses otages, mais après les avoir dépouillés de leurs objets de valeur.",
+      "text_markdown": "Barbe Noire libéra ses otages, mais après les avoir dépouillés de leurs objets de valeur.",
+      "tts": {
+        "text": "Barbe Noire libéra ses otages, mais après les avoir dépouillés de leurs objets de valeur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il quitta Charleston avec sa réputation à son apogée absolue.",
+      "text_markdown": "Il quitta Charleston avec sa réputation à son apogée absolue.",
+      "tts": {
+        "text": "Il quitta Charleston avec sa réputation à son apogée absolue.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Après Charleston, Barbe Noire navigua vers le nord jusqu'à l'inlet de Beaufort en Caroline du Nord.",
+      "text_markdown": "Après Charleston, Barbe Noire navigua vers le nord jusqu'à l'inlet de Beaufort en Caroline du Nord.",
+      "tts": {
+        "text": "Après Charleston, Barbe Noire navigua vers le nord jusqu'à l'inlet de Beaufort en Caroline du Nord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Là, La Vengeance de la Reine Anne s'échoua sur un banc de sable et fut perdue.",
+      "text_markdown": "Là, La Vengeance de la Reine Anne s'échoua sur un banc de sable et fut perdue.",
+      "tts": {
+        "text": "Là, La Vengeance de la Reine Anne s'échoua sur un banc de sable et fut perdue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Certains historiens pensent que ce fut un acte délibéré de Barbe Noire pour réduire sa flotte et son équipage.",
+      "text_markdown": "Certains historiens pensent que ce fut un acte délibéré de Barbe Noire pour réduire sa flotte et son équipage.",
+      "tts": {
+        "text": "Certains historiens pensent que ce fut un acte délibéré de Barbe Noire pour réduire sa flotte et son équipage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "La terreur de l'Atlantique",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Des centaines de pirates furent abandonnés, tandis que Barbe Noire gardait le meilleur trésor pour lui.",
+      "text_markdown": "Des centaines de pirates furent abandonnés, tandis que Barbe Noire gardait le meilleur trésor pour lui.",
+      "tts": {
+        "text": "Des centaines de pirates furent abandonnés, tandis que Barbe Noire gardait le meilleur trésor pour lui.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "À l'apogée de sa puissance",
+      "text_markdown": "À l'apogée de sa puissance"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Après avoir perdu La Vengeance de la Reine Anne, Barbe Noire navigua vers la ville de Bath, en Caroline du Nord.",
+      "text_markdown": "Après avoir perdu La Vengeance de la Reine Anne, Barbe Noire navigua vers la ville de Bath, en Caroline du Nord.",
+      "tts": {
+        "text": "Après avoir perdu La Vengeance de la Reine Anne, Barbe Noire navigua vers la ville de Bath, en Caroline du Nord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Là, il rencontra le gouverneur Charles Eden et accepta un pardon royal.",
+      "text_markdown": "Là, il rencontra le gouverneur Charles Eden et accepta un pardon royal.",
+      "tts": {
+        "text": "Là, il rencontra le gouverneur Charles Eden et accepta un pardon royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le pardon était censé mettre fin à sa carrière de pirate.",
+      "text_markdown": "Le pardon était censé mettre fin à sa carrière de pirate.",
+      "tts": {
+        "text": "Le pardon était censé mettre fin à sa carrière de pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mais Barbe Noire n'avait aucune intention de prendre sa retraite.",
+      "text_markdown": "Mais Barbe Noire n'avait aucune intention de prendre sa retraite.",
+      "tts": {
+        "text": "Mais Barbe Noire n'avait aucune intention de prendre sa retraite.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath était une minuscule communauté de quelques dizaines de maisons sur la rivière Pamlico.",
+      "text_markdown": "Bath était une minuscule communauté de quelques dizaines de maisons sur la rivière Pamlico.",
+      "tts": {
+        "text": "Bath était une minuscule communauté de quelques dizaines de maisons sur la rivière Pamlico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'était un foyer improbable pour le pirate le plus redouté de l'Atlantique.",
+      "text_markdown": "C'était un foyer improbable pour le pirate le plus redouté de l'Atlantique.",
+      "tts": {
+        "text": "C'était un foyer improbable pour le pirate le plus redouté de l'Atlantique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais son isolement et son gouverneur corrompu en faisaient un endroit parfait pour les desseins de Barbe Noire.",
+      "text_markdown": "Mais son isolement et son gouverneur corrompu en faisaient un endroit parfait pour les desseins de Barbe Noire.",
+      "tts": {
+        "text": "Mais son isolement et son gouverneur corrompu en faisaient un endroit parfait pour les desseins de Barbe Noire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le gouverneur Charles Eden semble avoir été un partenaire consentant de Barbe Noire.",
+      "text_markdown": "Le gouverneur Charles Eden semble avoir été un partenaire consentant de Barbe Noire.",
+      "tts": {
+        "text": "Le gouverneur Charles Eden semble avoir été un partenaire consentant de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il fournissait une couverture légale pour les activités continues du pirate.",
+      "text_markdown": "Il fournissait une couverture légale pour les activités continues du pirate.",
+      "tts": {
+        "text": "Il fournissait une couverture légale pour les activités continues du pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbe Noire capturait des navires en mer puis apportait la cargaison à Bath.",
+      "text_markdown": "Barbe Noire capturait des navires en mer puis apportait la cargaison à Bath.",
+      "tts": {
+        "text": "Barbe Noire capturait des navires en mer puis apportait la cargaison à Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eden déclarait les biens comme sauvetage légitime et prenait une part des profits.",
+      "text_markdown": "Eden déclarait les biens comme sauvetage légitime et prenait une part des profits.",
+      "tts": {
+        "text": "Eden déclarait les biens comme sauvetage légitime et prenait une part des profits.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire épousa une femme locale pendant son séjour à Bath.",
+      "text_markdown": "Barbe Noire épousa une femme locale pendant son séjour à Bath.",
+      "tts": {
+        "text": "Barbe Noire épousa une femme locale pendant son séjour à Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On pense qu'elle avait environ 16 ans.",
+      "text_markdown": "On pense qu'elle avait environ 16 ans.",
+      "tts": {
+        "text": "On pense qu'elle avait environ seize ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les archives historiques suggèrent qu'il s'agissait peut-être de sa quatorzième épouse.",
+      "text_markdown": "Les archives historiques suggèrent qu'il s'agissait peut-être de sa quatorzième épouse.",
+      "tts": {
+        "text": "Les archives historiques suggèrent qu'il s'agissait peut-être de sa quatorzième épouse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La plupart de ces mariages étaient des arrangements informels courants parmi les gens de mer.",
+      "text_markdown": "La plupart de ces mariages étaient des arrangements informels courants parmi les gens de mer.",
+      "tts": {
+        "text": "La plupart de ces mariages étaient des arrangements informels courants parmi les gens de mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Malgré son pardon, Barbe Noire continua à s'en prendre à la navigation.",
+      "text_markdown": "Malgré son pardon, Barbe Noire continua à s'en prendre à la navigation.",
+      "tts": {
+        "text": "Malgré son pardon, Barbe Noire continua à s'en prendre à la navigation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il prétendait que les navires capturés étaient des bâtiments espagnols ou français, ce qui en faisait des prises légitimes.",
+      "text_markdown": "Il prétendait que les navires capturés étaient des bâtiments espagnols ou français, ce qui en faisait des prises légitimes.",
+      "tts": {
+        "text": "Il prétendait que les navires capturés étaient des bâtiments espagnols ou français, ce qui en faisait des prises légitimes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le gouverneur Eden certifiait commodément ces allégations sans enquête.",
+      "text_markdown": "Le gouverneur Eden certifiait commodément ces allégations sans enquête.",
+      "tts": {
+        "text": "Le gouverneur Eden certifiait commodément ces allégations sans enquête.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La relation de Barbe Noire avec la communauté locale était complexe.",
+      "text_markdown": "La relation de Barbe Noire avec la communauté locale était complexe.",
+      "tts": {
+        "text": "La relation de Barbe Noire avec la communauté locale était complexe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Certains résidents accueillaient la richesse qu'il apportait à leur ville en difficulté.",
+      "text_markdown": "Certains résidents accueillaient la richesse qu'il apportait à leur ville en difficulté.",
+      "tts": {
+        "text": "Certains résidents accueillaient la richesse qu'il apportait à leur ville en difficulté.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "D'autres vivaient dans la terreur du pirate violent et de son équipage armé.",
+      "text_markdown": "D'autres vivaient dans la terreur du pirate violent et de son équipage armé.",
+      "tts": {
+        "text": "D'autres vivaient dans la terreur du pirate violent et de son équipage armé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Personne n'osait le défier ouvertement.",
+      "text_markdown": "Personne n'osait le défier ouvertement.",
+      "tts": {
+        "text": "Personne n'osait le défier ouvertement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il organisait de somptueuses réceptions dans sa maison de Bath.",
+      "text_markdown": "Il organisait de somptueuses réceptions dans sa maison de Bath.",
+      "tts": {
+        "text": "Il organisait de somptueuses réceptions dans sa maison de Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des personnalités locales éminentes, y compris le gouverneur lui-même, assistaient à ces événements.",
+      "text_markdown": "Des personnalités locales éminentes, y compris le gouverneur lui-même, assistaient à ces événements.",
+      "tts": {
+        "text": "Des personnalités locales éminentes, y compris le gouverneur lui-même, assistaient à ces événements.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le vin et les spiritueux volés coulaient à flots.",
+      "text_markdown": "Le vin et les spiritueux volés coulaient à flots.",
+      "tts": {
+        "text": "Le vin et les spiritueux volés coulaient à flots.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ces fêtes aidaient Barbe Noire à maintenir son réseau d'alliés et d'informateurs.",
+      "text_markdown": "Ces fêtes aidaient Barbe Noire à maintenir son réseau d'alliés et d'informateurs.",
+      "tts": {
+        "text": "Ces fêtes aidaient Barbe Noire à maintenir son réseau d'alliés et d'informateurs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire entretenait également une cachette sur l'île d'Ocracoke.",
+      "text_markdown": "Barbe Noire entretenait également une cachette sur l'île d'Ocracoke.",
+      "tts": {
+        "text": "Barbe Noire entretenait également une cachette sur l'île d'Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke était une île-barrière isolée sur les Outer Banks de Caroline du Nord.",
+      "text_markdown": "Ocracoke était une île-barrière isolée sur les Outer Banks de Caroline du Nord.",
+      "tts": {
+        "text": "Ocracoke était une île-barrière isolée sur les Outer Banks de Caroline du Nord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ses eaux peu profondes et ses hauts-fonds traîtres rendaient pratiquement impossible l'approche de grands navires de guerre.",
+      "text_markdown": "Ses eaux peu profondes et ses hauts-fonds traîtres rendaient pratiquement impossible l'approche de grands navires de guerre.",
+      "tts": {
+        "text": "Ses eaux peu profondes et ses hauts-fonds traîtres rendaient pratiquement impossible l'approche de grands navires de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pour un pirate qui connaissait les chenaux, c'était une forteresse imprenable.",
+      "text_markdown": "Pour un pirate qui connaissait les chenaux, c'était une forteresse imprenable.",
+      "tts": {
+        "text": "Pour un pirate qui connaissait les chenaux, c'était une forteresse imprenable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "D'autres pirates venaient à Ocracoke pour commercer, se ravitailler et socialiser.",
+      "text_markdown": "D'autres pirates venaient à Ocracoke pour commercer, se ravitailler et socialiser.",
+      "tts": {
+        "text": "D'autres pirates venaient à Ocracoke pour commercer, se ravitailler et socialiser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles Vane, un autre capitaine pirate notoire, rendit visite à Barbe Noire là-bas.",
+      "text_markdown": "Charles Vane, un autre capitaine pirate notoire, rendit visite à Barbe Noire là-bas.",
+      "tts": {
+        "text": "Charles Vane, un autre capitaine pirate notoire, rendit visite à Barbe Noire là-bas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les deux équipages tinrent une fête de plusieurs jours sur la plage.",
+      "text_markdown": "Les deux équipages tinrent une fête de plusieurs jours sur la plage.",
+      "tts": {
+        "text": "Les deux équipages tinrent une fête de plusieurs jours sur la plage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les rapports sur ce rassemblement de pirates alarmèrent les fonctionnaires coloniaux tout le long de la côte.",
+      "text_markdown": "Les rapports sur ce rassemblement de pirates alarmèrent les fonctionnaires coloniaux tout le long de la côte.",
+      "tts": {
+        "text": "Les rapports sur ce rassemblement de pirates alarmèrent les fonctionnaires coloniaux tout le long de la côte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les pirates vivaient selon un code de conduite que Barbe Noire faisait respecter strictement.",
+      "text_markdown": "Les pirates vivaient selon un code de conduite que Barbe Noire faisait respecter strictement.",
+      "tts": {
+        "text": "Les pirates vivaient selon un code de conduite que Barbe Noire faisait respecter strictement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chaque homme avait droit de vote sur les décisions majeures.",
+      "text_markdown": "Chaque homme avait droit de vote sur les décisions majeures.",
+      "tts": {
+        "text": "Chaque homme avait droit de vote sur les décisions majeures.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le butin était réparti selon des parts convenues.",
+      "text_markdown": "Le butin était réparti selon des parts convenues.",
+      "tts": {
+        "text": "Le butin était réparti selon des parts convenues.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Quiconque était surpris à voler le trésor commun était sévèrement puni.",
+      "text_markdown": "Quiconque était surpris à voler le trésor commun était sévèrement puni.",
+      "tts": {
+        "text": "Quiconque était surpris à voler le trésor commun était sévèrement puni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les marchands et propriétaires de plantations le long de la côte étaient désespérés.",
+      "text_markdown": "Les marchands et propriétaires de plantations le long de la côte étaient désespérés.",
+      "tts": {
+        "text": "Les marchands et propriétaires de plantations le long de la côte étaient désespérés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leur commerce était étranglé par les raids constants de Barbe Noire.",
+      "text_markdown": "Leur commerce était étranglé par les raids constants de Barbe Noire.",
+      "tts": {
+        "text": "Leur commerce était étranglé par les raids constants de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les tarifs d'assurance pour les navires transitant par les eaux de Caroline montèrent en flèche.",
+      "text_markdown": "Les tarifs d'assurance pour les navires transitant par les eaux de Caroline montèrent en flèche.",
+      "tts": {
+        "text": "Les tarifs d'assurance pour les navires transitant par les eaux de Caroline montèrent en flèche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Certains marchands cessèrent complètement d'envoyer des navires, préférant perdre des affaires plutôt que tout perdre.",
+      "text_markdown": "Certains marchands cessèrent complètement d'envoyer des navires, préférant perdre des affaires plutôt que tout perdre.",
+      "tts": {
+        "text": "Certains marchands cessèrent complètement d'envoyer des navires, préférant perdre des affaires plutôt que tout perdre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le gouverneur de Virginie, Alexander Spotswood, était particulièrement indigné.",
+      "text_markdown": "Le gouverneur de Virginie, Alexander Spotswood, était particulièrement indigné.",
+      "tts": {
+        "text": "Le gouverneur de Virginie, Alexander Spotswood, était particulièrement indigné.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'économie de la Virginie dépendait des exportations de tabac acheminées par la baie de Chesapeake.",
+      "text_markdown": "L'économie de la Virginie dépendait des exportations de tabac acheminées par la baie de Chesapeake.",
+      "tts": {
+        "text": "L'économie de la Virginie dépendait des exportations de tabac acheminées par la baie de Chesapeake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La présence de Barbe Noire à proximité menaçait l'industrie la plus vitale de la Virginie.",
+      "text_markdown": "La présence de Barbe Noire à proximité menaçait l'industrie la plus vitale de la Virginie.",
+      "tts": {
+        "text": "La présence de Barbe Noire à proximité menaçait l'industrie la plus vitale de la Virginie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spotswood décida que si la Caroline du Nord ne s'occupait pas du pirate, la Virginie le ferait.",
+      "text_markdown": "Spotswood décida que si la Caroline du Nord ne s'occupait pas du pirate, la Virginie le ferait.",
+      "tts": {
+        "text": "Spotswood décida que si la Caroline du Nord ne s'occupait pas du pirate, la Virginie le ferait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood commença à planifier secrètement une opération militaire pour capturer ou tuer Barbe Noire.",
+      "text_markdown": "Spotswood commença à planifier secrètement une opération militaire pour capturer ou tuer Barbe Noire.",
+      "tts": {
+        "text": "Spotswood commença à planifier secrètement une opération militaire pour capturer ou tuer Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Envoyer des forces de Virginie en Caroline du Nord sans autorisation était juridiquement discutable.",
+      "text_markdown": "Envoyer des forces de Virginie en Caroline du Nord sans autorisation était juridiquement discutable.",
+      "tts": {
+        "text": "Envoyer des forces de Virginie en Caroline du Nord sans autorisation était juridiquement discutable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée de sa puissance",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais Spotswood décida d'agir quand même, estimant que la menace justifiait des mesures extraordinaires.",
+      "text_markdown": "Mais Spotswood décida d'agir quand même, estimant que la menace justifiait des mesures extraordinaires.",
+      "tts": {
+        "text": "Mais Spotswood décida d'agir quand même, estimant que la menace justifiait des mesures extraordinaires.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La bataille d'Ocracoke",
+      "text_markdown": "La bataille d'Ocracoke"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En novembre 1718, le gouverneur Spotswood mit son plan à exécution.",
+      "text_markdown": "En novembre 1718, le gouverneur Spotswood mit son plan à exécution.",
+      "tts": {
+        "text": "En novembre mille sept cent dix-huit, le gouverneur Spotswood mit son plan à exécution.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il loua deux petits sloops à des propriétaires civils et les plaça sous commandement naval.",
+      "text_markdown": "Il loua deux petits sloops à des propriétaires civils et les plaça sous commandement naval.",
+      "tts": {
+        "text": "Il loua deux petits sloops à des propriétaires civils et les plaça sous commandement naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'expédition était dirigée par le lieutenant Robert Maynard de la Royal Navy.",
+      "text_markdown": "L'expédition était dirigée par le lieutenant Robert Maynard de la Royal Navy.",
+      "tts": {
+        "text": "L'expédition était dirigée par le lieutenant Robert Maynard de la Royal Navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maynard était un officier expérimenté réputé pour son courage et sa détermination.",
+      "text_markdown": "Maynard était un officier expérimenté réputé pour son courage et sa détermination.",
+      "tts": {
+        "text": "Maynard était un officier expérimenté réputé pour son courage et sa détermination.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood choisit des sloops parce qu'ils avaient un faible tirant d'eau.",
+      "text_markdown": "Spotswood choisit des sloops parce qu'ils avaient un faible tirant d'eau.",
+      "tts": {
+        "text": "Spotswood choisit des sloops parce qu'ils avaient un faible tirant d'eau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seuls des navires à fond plat pouvaient naviguer dans les chenaux autour de l'île d'Ocracoke.",
+      "text_markdown": "Seuls des navires à fond plat pouvaient naviguer dans les chenaux autour de l'île d'Ocracoke.",
+      "tts": {
+        "text": "Seuls des navires à fond plat pouvaient naviguer dans les chenaux autour de l'île d'Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Des navires de guerre plus grands se seraient échoués bien avant d'atteindre le mouillage de Barbe Noire.",
+      "text_markdown": "Des navires de guerre plus grands se seraient échoués bien avant d'atteindre le mouillage de Barbe Noire.",
+      "tts": {
+        "text": "Des navires de guerre plus grands se seraient échoués bien avant d'atteindre le mouillage de Barbe Noire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les deux sloops de Maynard transportaient environ 60 hommes au total.",
+      "text_markdown": "Les deux sloops de Maynard transportaient environ 60 hommes au total.",
+      "tts": {
+        "text": "Les deux sloops de Maynard transportaient environ soixante hommes au total.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'étaient des marins de navires de guerre de la Royal Navy stationnés en Virginie.",
+      "text_markdown": "C'étaient des marins de navires de guerre de la Royal Navy stationnés en Virginie.",
+      "tts": {
+        "text": "C'étaient des marins de navires de guerre de la Royal Navy stationnés en Virginie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On promit aux hommes une part de tout butin pirate capturé.",
+      "text_markdown": "On promit aux hommes une part de tout butin pirate capturé.",
+      "tts": {
+        "text": "On promit aux hommes une part de tout butin pirate capturé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'expédition navigua vers le sud depuis la Virginie dans le secret.",
+      "text_markdown": "L'expédition navigua vers le sud depuis la Virginie dans le secret.",
+      "tts": {
+        "text": "L'expédition navigua vers le sud depuis la Virginie dans le secret.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotswood ne dit presque à personne la mission pour empêcher que Barbe Noire soit averti.",
+      "text_markdown": "Spotswood ne dit presque à personne la mission pour empêcher que Barbe Noire soit averti.",
+      "tts": {
+        "text": "Spotswood ne dit presque à personne la mission pour empêcher que Barbe Noire soit averti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La rapidité et la surprise étaient essentielles au succès du plan.",
+      "text_markdown": "La rapidité et la surprise étaient essentielles au succès du plan.",
+      "tts": {
+        "text": "La rapidité et la surprise étaient essentielles au succès du plan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le soir du 21 novembre 1718, les sloops de Maynard arrivèrent près de l'île d'Ocracoke.",
+      "text_markdown": "Le soir du 21 novembre 1718, les sloops de Maynard arrivèrent près de l'île d'Ocracoke.",
+      "tts": {
+        "text": "Le soir du vingt et un novembre mille sept cent dix-huit, les sloops de Maynard arrivèrent près de l'île d'Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils jetèrent l'ancre au bord du chenal et attendirent l'aube.",
+      "text_markdown": "Ils jetèrent l'ancre au bord du chenal et attendirent l'aube.",
+      "tts": {
+        "text": "Ils jetèrent l'ancre au bord du chenal et attendirent l'aube.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maynard pouvait voir les lumières du sloop Adventure de Barbe Noire dans le port.",
+      "text_markdown": "Maynard pouvait voir les lumières du sloop Adventure de Barbe Noire dans le port.",
+      "tts": {
+        "text": "Maynard pouvait voir les lumières du sloop Adventure de Barbe Noire dans le port.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les pirates faisaient la fête, ignorant que leur destin approchait.",
+      "text_markdown": "Les pirates faisaient la fête, ignorant que leur destin approchait.",
+      "tts": {
+        "text": "Les pirates faisaient la fête, ignorant que leur destin approchait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aux premières lueurs, les sloops de Maynard entrèrent dans le chenal.",
+      "text_markdown": "Aux premières lueurs, les sloops de Maynard entrèrent dans le chenal.",
+      "tts": {
+        "text": "Aux premières lueurs, les sloops de Maynard entrèrent dans le chenal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbe Noire les repéra immédiatement et les identifia comme une menace.",
+      "text_markdown": "Barbe Noire les repéra immédiatement et les identifia comme une menace.",
+      "tts": {
+        "text": "Barbe Noire les repéra immédiatement et les identifia comme une menace.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il coupa son câble d'ancre et tenta de manœuvrer pour le combat.",
+      "text_markdown": "Il coupa son câble d'ancre et tenta de manœuvrer pour le combat.",
+      "tts": {
+        "text": "Il coupa son câble d'ancre et tenta de manœuvrer pour le combat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les eaux étroites et peu profondes de l'inlet d'Ocracoke transformèrent la bataille en combat rapproché.",
+      "text_markdown": "Les eaux étroites et peu profondes de l'inlet d'Ocracoke transformèrent la bataille en combat rapproché.",
+      "tts": {
+        "text": "Les eaux étroites et peu profondes de l'inlet d'Ocracoke transformèrent la bataille en combat rapproché.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le premier mouvement de Barbe Noire fut dévastateur.",
+      "text_markdown": "Le premier mouvement de Barbe Noire fut dévastateur.",
+      "tts": {
+        "text": "Le premier mouvement de Barbe Noire fut dévastateur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il tira une bordée de canons chargés de mitraille et de ferraille.",
+      "text_markdown": "Il tira une bordée de canons chargés de mitraille et de ferraille.",
+      "tts": {
+        "text": "Il tira une bordée de canons chargés de mitraille et de ferraille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'explosion balaya le pont de l'un des sloops de Maynard.",
+      "text_markdown": "L'explosion balaya le pont de l'un des sloops de Maynard.",
+      "tts": {
+        "text": "L'explosion balaya le pont de l'un des sloops de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le commandant du sloop fut tué sur le coup, ainsi que plusieurs de ses hommes.",
+      "text_markdown": "Le commandant du sloop fut tué sur le coup, ainsi que plusieurs de ses hommes.",
+      "tts": {
+        "text": "Le commandant du sloop fut tué sur le coup, ainsi que plusieurs de ses hommes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le propre sloop de Maynard subit de lourds dégâts du feu des canons.",
+      "text_markdown": "Le propre sloop de Maynard subit de lourds dégâts du feu des canons.",
+      "tts": {
+        "text": "Le propre sloop de Maynard subit de lourds dégâts du feu des canons.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Environ un tiers de son équipage fut tué ou blessé lors du premier échange.",
+      "text_markdown": "Environ un tiers de son équipage fut tué ou blessé lors du premier échange.",
+      "tts": {
+        "text": "Environ un tiers de son équipage fut tué ou blessé lors du premier échange.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais Maynard avait un plan astucieux.",
+      "text_markdown": "Mais Maynard avait un plan astucieux.",
+      "tts": {
+        "text": "Mais Maynard avait un plan astucieux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il ordonna à la plupart de ses survivants de se cacher sous le pont.",
+      "text_markdown": "Il ordonna à la plupart de ses survivants de se cacher sous le pont.",
+      "tts": {
+        "text": "Il ordonna à la plupart de ses survivants de se cacher sous le pont.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seuls quelques marins restèrent visibles sur le pont supérieur.",
+      "text_markdown": "Seuls quelques marins restèrent visibles sur le pont supérieur.",
+      "tts": {
+        "text": "Seuls quelques marins restèrent visibles sur le pont supérieur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quand Barbe Noire regarda le navire apparemment vide, il supposa que la plupart de l'équipage était mort.",
+      "text_markdown": "Quand Barbe Noire regarda le navire apparemment vide, il supposa que la plupart de l'équipage était mort.",
+      "tts": {
+        "text": "Quand Barbe Noire regarda le navire apparemment vide, il supposa que la plupart de l'équipage était mort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il ordonna à ses pirates d'aborder le sloop de Maynard pour l'achever.",
+      "text_markdown": "Il ordonna à ses pirates d'aborder le sloop de Maynard pour l'achever.",
+      "tts": {
+        "text": "Il ordonna à ses pirates d'aborder le sloop de Maynard pour l'achever.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire et ses hommes se balancèrent sur le pont du sloop de Maynard.",
+      "text_markdown": "Barbe Noire et ses hommes se balancèrent sur le pont du sloop de Maynard.",
+      "tts": {
+        "text": "Barbe Noire et ses hommes se balancèrent sur le pont du sloop de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "À cet instant, Maynard donna le signal.",
+      "text_markdown": "À cet instant, Maynard donna le signal.",
+      "tts": {
+        "text": "À cet instant, Maynard donna le signal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ses marins cachés surgirent d'en bas, armes à la main.",
+      "text_markdown": "Ses marins cachés surgirent d'en bas, armes à la main.",
+      "tts": {
+        "text": "Ses marins cachés surgirent d'en bas, armes à la main.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les pirates se retrouvèrent piégés dans un furieux combat au corps à corps.",
+      "text_markdown": "Les pirates se retrouvèrent piégés dans un furieux combat au corps à corps.",
+      "tts": {
+        "text": "Les pirates se retrouvèrent piégés dans un furieux combat au corps à corps.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbe Noire et Maynard se battirent directement l'un contre l'autre.",
+      "text_markdown": "Barbe Noire et Maynard se battirent directement l'un contre l'autre.",
+      "tts": {
+        "text": "Barbe Noire et Maynard se battirent directement l'un contre l'autre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbe Noire abattit son sabre avec une telle force qu'il brisa la lame de l'épée de Maynard.",
+      "text_markdown": "Barbe Noire abattit son sabre avec une telle force qu'il brisa la lame de l'épée de Maynard.",
+      "tts": {
+        "text": "Barbe Noire abattit son sabre avec une telle force qu'il brisa la lame de l'épée de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alors que Barbe Noire levait son sabre pour porter le coup fatal, l'un des hommes de Maynard lui trancha le cou.",
+      "text_markdown": "Alors que Barbe Noire levait son sabre pour porter le coup fatal, l'un des hommes de Maynard lui trancha le cou.",
+      "tts": {
+        "text": "Alors que Barbe Noire levait son sabre pour porter le coup fatal, l'un des hommes de Maynard lui trancha le cou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barbe Noire chancela mais continua à se battre.",
+      "text_markdown": "Barbe Noire chancela mais continua à se battre.",
+      "tts": {
+        "text": "Barbe Noire chancela mais continua à se battre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Finalement, Barbe Noire s'effondra et mourut sur le pont du sloop de Maynard.",
+      "text_markdown": "Finalement, Barbe Noire s'effondra et mourut sur le pont du sloop de Maynard.",
+      "tts": {
+        "text": "Finalement, Barbe Noire s'effondra et mourut sur le pont du sloop de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lorsque son corps fut examiné, on compta 5 blessures par balle et plus de 20 coups d'épée.",
+      "text_markdown": "Lorsque son corps fut examiné, on compta 5 blessures par balle et plus de 20 coups d'épée.",
+      "tts": {
+        "text": "Lorsque son corps fut examiné, on compta cinq blessures par balle et plus de vingt coups d'épée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les pirates restants se rendirent en voyant tomber leur capitaine.",
+      "text_markdown": "Les pirates restants se rendirent en voyant tomber leur capitaine.",
+      "tts": {
+        "text": "Les pirates restants se rendirent en voyant tomber leur capitaine.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard ordonna de trancher la tête de Barbe Noire.",
+      "text_markdown": "Maynard ordonna de trancher la tête de Barbe Noire.",
+      "tts": {
+        "text": "Maynard ordonna de trancher la tête de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La tête fut suspendue au beaupré de son sloop comme preuve de la mort.",
+      "text_markdown": "La tête fut suspendue au beaupré de son sloop comme preuve de la mort.",
+      "tts": {
+        "text": "La tête fut suspendue au beaupré de son sloop comme preuve de la mort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le corps décapité de Barbe Noire fut jeté dans les eaux de l'inlet d'Ocracoke.",
+      "text_markdown": "Le corps décapité de Barbe Noire fut jeté dans les eaux de l'inlet d'Ocracoke.",
+      "tts": {
+        "text": "Le corps décapité de Barbe Noire fut jeté dans les eaux de l'inlet d'Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La bataille d'Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La légende raconte que le corps nagea autour du sloop avant de couler, bien que ce soit assurément de la fiction.",
+      "text_markdown": "La légende raconte que le corps nagea autour du sloop avant de couler, bien que ce soit assurément de la fiction.",
+      "tts": {
+        "text": "La légende raconte que le corps nagea autour du sloop avant de couler, bien que ce soit assurément de la fiction.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La légende qui ne meurt jamais",
+      "text_markdown": "La légende qui ne meurt jamais"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mort de Barbe Noire envoya des ondes de choc à travers la communauté pirate.",
+      "text_markdown": "La mort de Barbe Noire envoya des ondes de choc à travers la communauté pirate.",
+      "tts": {
+        "text": "La mort de Barbe Noire envoya des ondes de choc à travers la communauté pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si le pirate le plus redouté de l'Atlantique pouvait être traqué et tué, personne n'était en sécurité.",
+      "text_markdown": "Si le pirate le plus redouté de l'Atlantique pouvait être traqué et tué, personne n'était en sécurité.",
+      "tts": {
+        "text": "Si le pirate le plus redouté de l'Atlantique pouvait être traqué et tué, personne n'était en sécurité.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De nombreux pirates acceptèrent des pardons royaux dans les mois qui suivirent.",
+      "text_markdown": "De nombreux pirates acceptèrent des pardons royaux dans les mois qui suivirent.",
+      "tts": {
+        "text": "De nombreux pirates acceptèrent des pardons royaux dans les mois qui suivirent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'Âge d'or de la piraterie entrait dans ses dernières années.",
+      "text_markdown": "L'Âge d'or de la piraterie entrait dans ses dernières années.",
+      "tts": {
+        "text": "L'Âge d'or de la piraterie entrait dans ses dernières années.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les membres survivants de l'équipage de Barbe Noire furent jugés en Virginie.",
+      "text_markdown": "Les membres survivants de l'équipage de Barbe Noire furent jugés en Virginie.",
+      "tts": {
+        "text": "Les membres survivants de l'équipage de Barbe Noire furent jugés en Virginie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La plupart furent reconnus coupables et pendus.",
+      "text_markdown": "La plupart furent reconnus coupables et pendus.",
+      "tts": {
+        "text": "La plupart furent reconnus coupables et pendus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leurs corps furent exposés dans des cages de fer le long du front de mer en guise de sinistre avertissement.",
+      "text_markdown": "Leurs corps furent exposés dans des cages de fer le long du front de mer en guise de sinistre avertissement.",
+      "tts": {
+        "text": "Leurs corps furent exposés dans des cages de fer le long du front de mer en guise de sinistre avertissement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les autorités coloniales voulaient faire comprendre sans ambiguïté que l'ère de la tolérance envers les pirates était révolue.",
+      "text_markdown": "Les autorités coloniales voulaient faire comprendre sans ambiguïté que l'ère de la tolérance envers les pirates était révolue.",
+      "tts": {
+        "text": "Les autorités coloniales voulaient faire comprendre sans ambiguïté que l'ère de la tolérance envers les pirates était révolue.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1724, un livre intitulé Histoire générale des pirates fut publié à Londres.",
+      "text_markdown": "En 1724, un livre intitulé Histoire générale des pirates fut publié à Londres.",
+      "tts": {
+        "text": "En mille sept cent vingt-quatre, un livre intitulé Histoire générale des pirates fut publié à Londres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'auteur figurait comme le capitaine Charles Johnson, bien que sa véritable identité reste inconnue.",
+      "text_markdown": "L'auteur figurait comme le capitaine Charles Johnson, bien que sa véritable identité reste inconnue.",
+      "tts": {
+        "text": "L'auteur figurait comme le capitaine Charles Johnson, bien que sa véritable identité reste inconnue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ce livre consacra un chapitre entier aux exploits de Barbe Noire.",
+      "text_markdown": "Ce livre consacra un chapitre entier aux exploits de Barbe Noire.",
+      "tts": {
+        "text": "Ce livre consacra un chapitre entier aux exploits de Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce fut le fondement sur lequel la légende de Barbe Noire fut bâtie.",
+      "text_markdown": "Ce fut le fondement sur lequel la légende de Barbe Noire fut bâtie.",
+      "tts": {
+        "text": "Ce fut le fondement sur lequel la légende de Barbe Noire fut bâtie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au fil des siècles, Barbe Noire devint le symbole même de la piraterie.",
+      "text_markdown": "Au fil des siècles, Barbe Noire devint le symbole même de la piraterie.",
+      "tts": {
+        "text": "Au fil des siècles, Barbe Noire devint le symbole même de la piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quand les gens imaginent un pirate, ils visualisent généralement quelqu'un qui ressemble à Barbe Noire.",
+      "text_markdown": "Quand les gens imaginent un pirate, ils visualisent généralement quelqu'un qui ressemble à Barbe Noire.",
+      "tts": {
+        "text": "Quand les gens imaginent un pirate, ils visualisent généralement quelqu'un qui ressemble à Barbe Noire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'énorme barbe, les mèches fumantes, le baudrier de pistolets sont devenus l'imagerie pirate standard.",
+      "text_markdown": "L'énorme barbe, les mèches fumantes, le baudrier de pistolets sont devenus l'imagerie pirate standard.",
+      "tts": {
+        "text": "L'énorme barbe, les mèches fumantes, le baudrier de pistolets sont devenus l'imagerie pirate standard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aucun autre pirate n'a eu un impact aussi durable sur la culture populaire.",
+      "text_markdown": "Aucun autre pirate n'a eu un impact aussi durable sur la culture populaire.",
+      "tts": {
+        "text": "Aucun autre pirate n'a eu un impact aussi durable sur la culture populaire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1996, des archéologues marins découvrirent l'épave d'un navire près de Beaufort, en Caroline du Nord.",
+      "text_markdown": "En 1996, des archéologues marins découvrirent l'épave d'un navire près de Beaufort, en Caroline du Nord.",
+      "tts": {
+        "text": "En mille neuf cent quatre-vingt-seize, des archéologues marins découvrirent l'épave d'un navire près de Beaufort, en Caroline du Nord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils pensent qu'il s'agit des restes de La Vengeance de la Reine Anne.",
+      "text_markdown": "Ils pensent qu'il s'agit des restes de La Vengeance de la Reine Anne.",
+      "tts": {
+        "text": "Ils pensent qu'il s'agit des restes de La Vengeance de la Reine Anne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plus de 280 000 artefacts ont été récupérés du site depuis lors.",
+      "text_markdown": "Plus de 280 000 artefacts ont été récupérés du site depuis lors.",
+      "tts": {
+        "text": "Plus de deux cent quatre-vingt mille artefacts ont été récupérés du site depuis lors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Parmi ceux-ci figurent des canons, des ancres, des instruments médicaux et de la poussière d'or.",
+      "text_markdown": "Parmi ceux-ci figurent des canons, des ancres, des instruments médicaux et de la poussière d'or.",
+      "tts": {
+        "text": "Parmi ceux-ci figurent des canons, des ancres, des instruments médicaux et de la poussière d'or.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les artefacts nous en apprennent beaucoup sur la vie quotidienne à bord d'un navire pirate.",
+      "text_markdown": "Les artefacts nous en apprennent beaucoup sur la vie quotidienne à bord d'un navire pirate.",
+      "tts": {
+        "text": "Les artefacts nous en apprennent beaucoup sur la vie quotidienne à bord d'un navire pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils révèlent que l'équipage mangeait bien, avec des traces de porc, de bœuf et de poisson dans leur alimentation.",
+      "text_markdown": "Ils révèlent que l'équipage mangeait bien, avec des traces de porc, de bœuf et de poisson dans leur alimentation.",
+      "tts": {
+        "text": "Ils révèlent que l'équipage mangeait bien, avec des traces de porc, de bœuf et de poisson dans leur alimentation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les instruments médicaux suggèrent que le navire transportait un chirurgien, comme la plupart des grands navires.",
+      "text_markdown": "Les instruments médicaux suggèrent que le navire transportait un chirurgien, comme la plupart des grands navires.",
+      "tts": {
+        "text": "Les instruments médicaux suggèrent que le navire transportait un chirurgien, comme la plupart des grands navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La poussière d'or confirme l'énorme richesse que la piraterie pouvait générer.",
+      "text_markdown": "La poussière d'or confirme l'énorme richesse que la piraterie pouvait générer.",
+      "tts": {
+        "text": "La poussière d'or confirme l'énorme richesse que la piraterie pouvait générer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La carrière de Barbe Noire en tant que pirate ne dura qu'environ deux ans.",
+      "text_markdown": "La carrière de Barbe Noire en tant que pirate ne dura qu'environ deux ans.",
+      "tts": {
+        "text": "La carrière de Barbe Noire en tant que pirate ne dura qu'environ deux ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En ce bref laps de temps, il captura des dizaines de navires et terrorisa tout un littoral.",
+      "text_markdown": "En ce bref laps de temps, il captura des dizaines de navires et terrorisa tout un littoral.",
+      "tts": {
+        "text": "En ce bref laps de temps, il captura des dizaines de navires et terrorisa tout un littoral.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il bloqua un grand port colonial et défia la marine la plus puissante du monde.",
+      "text_markdown": "Il bloqua un grand port colonial et défia la marine la plus puissante du monde.",
+      "tts": {
+        "text": "Il bloqua un grand port colonial et défia la marine la plus puissante du monde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son histoire reste l'un des chapitres les plus dramatiques de l'histoire maritime.",
+      "text_markdown": "Son histoire reste l'un des chapitres les plus dramatiques de l'histoire maritime.",
+      "tts": {
+        "text": "Son histoire reste l'un des chapitres les plus dramatiques de l'histoire maritime.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aujourd'hui, le nom de Barbe Noire perdure dans d'innombrables livres, films et émissions de télévision.",
+      "text_markdown": "Aujourd'hui, le nom de Barbe Noire perdure dans d'innombrables livres, films et émissions de télévision.",
+      "tts": {
+        "text": "Aujourd'hui, le nom de Barbe Noire perdure dans d'innombrables livres, films et émissions de télévision.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'île d'Ocracoke est aujourd'hui une destination touristique populaire, en partie grâce à son histoire pirate.",
+      "text_markdown": "L'île d'Ocracoke est aujourd'hui une destination touristique populaire, en partie grâce à son histoire pirate.",
+      "tts": {
+        "text": "L'île d'Ocracoke est aujourd'hui une destination touristique populaire, en partie grâce à son histoire pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chaque année, la ville organise un festival célébrant l'anniversaire de la célèbre bataille.",
+      "text_markdown": "Chaque année, la ville organise un festival célébrant l'anniversaire de la célèbre bataille.",
+      "tts": {
+        "text": "Chaque année, la ville organise un festival célébrant l'anniversaire de la célèbre bataille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "La légende qui ne meurt jamais",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le pirate qui mettait le feu à sa barbe est devenu une figure immortelle de l'imaginaire populaire.",
+      "text_markdown": "Le pirate qui mettait le feu à sa barbe est devenu une figure immortelle de l'imaginaire populaire.",
+      "tts": {
+        "text": "Le pirate qui mettait le feu à sa barbe est devenu une figure immortelle de l'imaginaire populaire.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

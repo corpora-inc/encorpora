@@ -1,0 +1,4397 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_kanhoji_angre",
+  "language": "tr",
+  "total_segments": 294,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Hindistan'ın Konkan kıyısının yenilmez amirali Kanhoji Angre'nin gerçek hikâyesidir.",
+      "text_markdown": "Bu, Hindistan'ın Konkan kıyısının yenilmez amirali Kanhoji Angre'nin gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, Hindistan'ın Konkan kıyısının yenilmez amirali Kanhoji Angre'nin gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maratha İmparatorluğu'na hizmet etti ve yaklaşık otuz yıl boyunca Hindistan'ın batı kıyısını kontrol etti.",
+      "text_markdown": "Maratha İmparatorluğu'na hizmet etti ve yaklaşık otuz yıl boyunca Hindistan'ın batı kıyısını kontrol etti.",
+      "tts": {
+        "text": "Maratha İmparatorluğu'na hizmet etti ve yaklaşık otuz yıl boyunca Hindistan'ın batı kıyısını kontrol etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi, Portekiz İmparatorluğu ve Hollanda Cumhuriyeti onu yenmeyi başaramadı.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi, Portekiz İmparatorluğu ve Hollanda Cumhuriyeti onu yenmeyi başaramadı.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi, Portekiz İmparatorluğu ve Hollanda Cumhuriyeti onu yenmeyi başaramadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre, Hindistan dışında pek tanınmaz.",
+      "text_markdown": "Kanhoji Angre, Hindistan dışında pek tanınmaz.",
+      "tts": {
+        "text": "Kanhoji Angre, Hindistan dışında pek tanınmaz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa tarih yazımında genellikle bir korsan olarak göz ardı edilir.",
+      "text_markdown": "Avrupa tarih yazımında genellikle bir korsan olarak göz ardı edilir.",
+      "tts": {
+        "text": "Avrupa tarih yazımında genellikle bir korsan olarak göz ardı edilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hint tarih yazımında, yurdunu yabancı sömürgecilere karşı savunan bir vatansever olarak anılır.",
+      "text_markdown": "Hint tarih yazımında, yurdunu yabancı sömürgecilere karşı savunan bir vatansever olarak anılır.",
+      "tts": {
+        "text": "Hint tarih yazımında, yurdunu yabancı sömürgecilere karşı savunan bir vatansever olarak anılır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gerçek, her zaman olduğu gibi, her iki anlatımın önerdiğinden daha karmaşıktır.",
+      "text_markdown": "Gerçek, her zaman olduğu gibi, her iki anlatımın önerdiğinden daha karmaşıktır.",
+      "tts": {
+        "text": "Gerçek, her zaman olduğu gibi, her iki anlatımın önerdiğinden daha karmaşıktır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanhoji Angre, korsanlık, deniz savaşı ve meşru yönetim arasındaki sınırların tanınmayacak kadar bulanıklaştığı bir dünyada faaliyet gösterdi.",
+      "text_markdown": "Kanhoji Angre, korsanlık, deniz savaşı ve meşru yönetim arasındaki sınırların tanınmayacak kadar bulanıklaştığı bir dünyada faaliyet gösterdi.",
+      "tts": {
+        "text": "Kanhoji Angre, korsanlık, deniz savaşı ve meşru yönetim arasındaki sınırların tanınmayacak kadar bulanıklaştığı bir dünyada faaliyet gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitap, tarihsel kaynakların izin verdiği ölçüde doğruluk ve derinlikle onun hikâyesini anlatmaktadır.",
+      "text_markdown": "Bu kitap, tarihsel kaynakların izin verdiği ölçüde doğruluk ve derinlikle onun hikâyesini anlatmaktadır.",
+      "tts": {
+        "text": "Bu kitap, tarihsel kaynakların izin verdiği ölçüde doğruluk ve derinlikle onun hikâyesini anlatmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitaptaki her iddia, Maratha, İngiliz, Portekiz ve Hollanda kaynaklarından elde edilen kanıtlara dayanmaktadır.",
+      "text_markdown": "Bu kitaptaki her iddia, Maratha, İngiliz, Portekiz ve Hollanda kaynaklarından elde edilen kanıtlara dayanmaktadır.",
+      "tts": {
+        "text": "Bu kitaptaki her iddia, Maratha, İngiliz, Portekiz ve Hollanda kaynaklarından elde edilen kanıtlara dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kaynaklar birbiriyle çeliştiğinde, uyuşmazlığı belirtiriz.",
+      "text_markdown": "Bu kaynaklar birbiriyle çeliştiğinde, uyuşmazlığı belirtiriz.",
+      "tts": {
+        "text": "Bu kaynaklar birbiriyle çeliştiğinde, uyuşmazlığı belirtiriz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kayıtlar sessiz kaldığında, spekülasyon yapmayız.",
+      "text_markdown": "Kayıtlar sessiz kaldığında, spekülasyon yapmayız.",
+      "tts": {
+        "text": "Kayıtlar sessiz kaldığında, spekülasyon yapmayız.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Konkan Kıyısının Dünyası",
+      "text_markdown": "Konkan Kıyısının Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konkan kıyısı, Hindistan'ın batı kenarı boyunca uzanan dar bir kara şerididir.",
+      "text_markdown": "Konkan kıyısı, Hindistan'ın batı kenarı boyunca uzanan dar bir kara şerididir.",
+      "tts": {
+        "text": "Konkan kıyısı, Hindistan'ın batı kenarı boyunca uzanan dar bir kara şerididir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzeyde modern Mumbai'den güneyde Goa'ya kadar uzanır.",
+      "text_markdown": "Kuzeyde modern Mumbai'den güneyde Goa'ya kadar uzanır.",
+      "tts": {
+        "text": "Kuzeyde modern Mumbai'den güneyde Goa'ya kadar uzanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batıda Arap Denizi, doğuda ise kıyıyı Dekkan Platosu'ndan ayıran Batı Ghat Dağları yükselir.",
+      "text_markdown": "Batıda Arap Denizi, doğuda ise kıyıyı Dekkan Platosu'ndan ayıran Batı Ghat Dağları yükselir.",
+      "tts": {
+        "text": "Batıda Arap Denizi, doğuda ise kıyıyı Dekkan Platosu'ndan ayıran Batı Ghat Dağları yükselir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kıyı şeridi engebeli ve derin girintili çıkıntılıdır.",
+      "text_markdown": "Kıyı şeridi engebeli ve derin girintili çıkıntılıdır.",
+      "tts": {
+        "text": "Kıyı şeridi engebeli ve derin girintili çıkıntılıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kayalık burunlar, korunaklı koylar ve gelgit kanalları, deniz savaşı için mükemmel bir coğrafya oluşturur.",
+      "text_markdown": "Kayalık burunlar, korunaklı koylar ve gelgit kanalları, deniz savaşı için mükemmel bir coğrafya oluşturur.",
+      "tts": {
+        "text": "Kayalık burunlar, korunaklı koylar ve gelgit kanalları, deniz savaşı için mükemmel bir coğrafya oluşturur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arap Denizi üzerinden esen muson rüzgârları bu kıyıdaki yaşamın ritmini belirler.",
+      "text_markdown": "Arap Denizi üzerinden esen muson rüzgârları bu kıyıdaki yaşamın ritmini belirler.",
+      "tts": {
+        "text": "Arap Denizi üzerinden esen muson rüzgârları bu kıyıdaki yaşamın ritmini belirler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gemiler yalnızca belirli aylarda seyredebilir ve musonun zamanlaması ticaretin ve savaşın ne zaman mümkün olduğunu belirler.",
+      "text_markdown": "Gemiler yalnızca belirli aylarda seyredebilir ve musonun zamanlaması ticaretin ve savaşın ne zaman mümkün olduğunu belirler.",
+      "tts": {
+        "text": "Gemiler yalnızca belirli aylarda seyredebilir ve musonun zamanlaması ticaretin ve savaşın ne zaman mümkün olduğunu belirler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzyıllardır Konkan kıyısı dünyanın en yoğun deniz koridorlarından biri olmuştur.",
+      "text_markdown": "Yüzyıllardır Konkan kıyısı dünyanın en yoğun deniz koridorlarından biri olmuştur.",
+      "tts": {
+        "text": "Yüzyıllardır Konkan kıyısı dünyanın en yoğun deniz koridorlarından biri olmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arap kalyonları, Hindistan ile Basra Körfezi ve Doğu Afrika limanları arasında baharat, tekstil ve değerli taşlar taşırdı.",
+      "text_markdown": "Arap kalyonları, Hindistan ile Basra Körfezi ve Doğu Afrika limanları arasında baharat, tekstil ve değerli taşlar taşırdı.",
+      "tts": {
+        "text": "Arap kalyonları, Hindistan ile Basra Körfezi ve Doğu Afrika limanları arasında baharat, tekstil ve değerli taşlar taşırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hintli tüccarlar Asya'nın dört bir yanından gelen alıcılarla biber, kakule, tarçın ve pamuk ticareti yaparlardı.",
+      "text_markdown": "Hintli tüccarlar Asya'nın dört bir yanından gelen alıcılarla biber, kakule, tarçın ve pamuk ticareti yaparlardı.",
+      "tts": {
+        "text": "Hintli tüccarlar Asya'nın dört bir yanından gelen alıcılarla biber, kakule, tarçın ve pamuk ticareti yaparlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ticaretin yarattığı zenginlik uzak imparatorlukların dikkatini çekti.",
+      "text_markdown": "Bu ticaretin yarattığı zenginlik uzak imparatorlukların dikkatini çekti.",
+      "tts": {
+        "text": "Bu ticaretin yarattığı zenginlik uzak imparatorlukların dikkatini çekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portekizliler, Vasco da Gama'nın Kaliküt limanına demir attığı 1498 yılında Hint kıyılarına ulaştı.",
+      "text_markdown": "Portekizliler, Vasco da Gama'nın Kaliküt limanına demir attığı 1498 yılında Hint kıyılarına ulaştı.",
+      "tts": {
+        "text": "Portekizliler, Vasco da Gama'nın Kaliküt limanına demir attığı bin dört yüz doksan sekiz yılında Hint kıyılarına ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç yıl içinde Portekizliler, Hindistan'ın tüm batı kıyısı boyunca müstahkem ticaret karakolları kurdu.",
+      "text_markdown": "Birkaç yıl içinde Portekizliler, Hindistan'ın tüm batı kıyısı boyunca müstahkem ticaret karakolları kurdu.",
+      "tts": {
+        "text": "Birkaç yıl içinde Portekizliler, Hindistan'ın tüm batı kıyısı boyunca müstahkem ticaret karakolları kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Goa, Mozambik'ten Makao'ya uzanan bir sömürge imparatorluğu olan Portekiz Hindistan Devleti'nin başkenti oldu.",
+      "text_markdown": "Goa, Mozambik'ten Makao'ya uzanan bir sömürge imparatorluğu olan Portekiz Hindistan Devleti'nin başkenti oldu.",
+      "tts": {
+        "text": "Goa, Mozambik'ten Makao'ya uzanan bir sömürge imparatorluğu olan Portekiz Hindistan Devleti'nin başkenti oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Portekizliler, üstün deniz ateş gücünü kullanarak Hint Okyanusu ticaretine hâkim oldular.",
+      "text_markdown": "Portekizliler, üstün deniz ateş gücünü kullanarak Hint Okyanusu ticaretine hâkim oldular.",
+      "tts": {
+        "text": "Portekizliler, üstün deniz ateş gücünü kullanarak Hint Okyanusu ticaretine hâkim oldular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portekizliler, kartaz adı verilen bir geçiş belgesi sistemi getirdiler.",
+      "text_markdown": "Portekizliler, kartaz adı verilen bir geçiş belgesi sistemi getirdiler.",
+      "tts": {
+        "text": "Portekizliler, kartaz adı verilen bir geçiş belgesi sistemi getirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arap Denizi'nde ticaret yapmak isteyen her Hint gemisi Portekizlilerden bir kartaz satın almak zorundaydı.",
+      "text_markdown": "Arap Denizi'nde ticaret yapmak isteyen her Hint gemisi Portekizlilerden bir kartaz satın almak zorundaydı.",
+      "tts": {
+        "text": "Arap Denizi'nde ticaret yapmak isteyen her Hint gemisi Portekizlilerden bir kartaz satın almak zorundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kartazsız gemiler el konulabilir, mürettebatları hapsedilebilir veya öldürülebilirdi.",
+      "text_markdown": "Kartazsız gemiler el konulabilir, mürettebatları hapsedilebilir veya öldürülebilirdi.",
+      "tts": {
+        "text": "Kartazsız gemiler el konulabilir, mürettebatları hapsedilebilir veya öldürülebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu sistem Portekizlilere Hint Okyanusu ticareti üzerinde fiili kontrol sağladı.",
+      "text_markdown": "Bu sistem Portekizlilere Hint Okyanusu ticareti üzerinde fiili kontrol sağladı.",
+      "tts": {
+        "text": "Bu sistem Portekizlilere Hint Okyanusu ticareti üzerinde fiili kontrol sağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hollandalılar on yedinci yüzyılın başlarında geldiler.",
+      "text_markdown": "Hollandalılar on yedinci yüzyılın başlarında geldiler.",
+      "tts": {
+        "text": "Hollandalılar on yedinci yüzyılın başlarında geldiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hollanda Doğu Hindistan Şirketi, Hint kıyısında ticaret karakolları kurdu ve Portekizlilerle agresif bir şekilde rekabet etti.",
+      "text_markdown": "Hollanda Doğu Hindistan Şirketi, Hint kıyısında ticaret karakolları kurdu ve Portekizlilerle agresif bir şekilde rekabet etti.",
+      "tts": {
+        "text": "Hollanda Doğu Hindistan Şirketi, Hint kıyısında ticaret karakolları kurdu ve Portekizlilerle agresif bir şekilde rekabet etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi kısa süre sonra onları takip etti.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi kısa süre sonra onları takip etti.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi kısa süre sonra onları takip etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "On yedinci yüzyılın sonlarında üç Avrupa gücü Hindistan'ın deniz ticaretinin kontrolü için yarışıyordu.",
+      "text_markdown": "On yedinci yüzyılın sonlarında üç Avrupa gücü Hindistan'ın deniz ticaretinin kontrolü için yarışıyordu.",
+      "tts": {
+        "text": "On yedinci yüzyılın sonlarında üç Avrupa gücü Hindistan'ın deniz ticaretinin kontrolü için yarışıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu sırada, Konkan kıyısının üzerindeki Dekkan Platosu'nda yeni bir Hint gücü yükseliyordu.",
+      "text_markdown": "Bu sırada, Konkan kıyısının üzerindeki Dekkan Platosu'nda yeni bir Hint gücü yükseliyordu.",
+      "tts": {
+        "text": "Bu sırada, Konkan kıyısının üzerindeki Dekkan Platosu'nda yeni bir Hint gücü yükseliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maratha İmparatorluğu, bin altı yüz altmışlı yıllarda Shivaji Bhonsale tarafından kuruldu.",
+      "text_markdown": "Maratha İmparatorluğu, bin altı yüz altmışlı yıllarda Shivaji Bhonsale tarafından kuruldu.",
+      "tts": {
+        "text": "Maratha İmparatorluğu, bin altı yüz altmışlı yıllarda Shivaji Bhonsale tarafından kuruldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Shivaji, çökmekte olan Babür İmparatorluğu'ndan bağımsız bir krallık çıkaran bir askeri dehaydı.",
+      "text_markdown": "Shivaji, çökmekte olan Babür İmparatorluğu'ndan bağımsız bir krallık çıkaran bir askeri dehaydı.",
+      "tts": {
+        "text": "Shivaji, çökmekte olan Babür İmparatorluğu'ndan bağımsız bir krallık çıkaran bir askeri dehaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kıyının kontrolünün imparatorluğunun hayatta kalması için gerekli olduğunu fark etti.",
+      "text_markdown": "Kıyının kontrolünün imparatorluğunun hayatta kalması için gerekli olduğunu fark etti.",
+      "tts": {
+        "text": "Kıyının kontrolünün imparatorluğunun hayatta kalması için gerekli olduğunu fark etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Shivaji sıfırdan bir donanma inşa etti.",
+      "text_markdown": "Shivaji sıfırdan bir donanma inşa etti.",
+      "tts": {
+        "text": "Shivaji sıfırdan bir donanma inşa etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konkan kıyısı boyunca kaleler inşa etti ve sularını devriye gezmek üzere savaş gemileri sipariş etti.",
+      "text_markdown": "Konkan kıyısı boyunca kaleler inşa etti ve sularını devriye gezmek üzere savaş gemileri sipariş etti.",
+      "tts": {
+        "text": "Konkan kıyısı boyunca kaleler inşa etti ve sularını devriye gezmek üzere savaş gemileri sipariş etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz komutanları atadı ve Sarkhel yani Büyük Amiral makamını kurdu.",
+      "text_markdown": "Deniz komutanları atadı ve Sarkhel yani Büyük Amiral makamını kurdu.",
+      "tts": {
+        "text": "Deniz komutanları atadı ve Sarkhel yani Büyük Amiral makamını kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maratha donanması, Maratha ticaretini korumak ve Avrupa müdahalesine direnmek için kurulmuştu.",
+      "text_markdown": "Maratha donanması, Maratha ticaretini korumak ve Avrupa müdahalesine direnmek için kurulmuştu.",
+      "tts": {
+        "text": "Maratha donanması, Maratha ticaretini korumak ve Avrupa müdahalesine direnmek için kurulmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Shivaji'nin 1680'deki ölümünden sonra Maratha İmparatorluğu çalkantılı bir dönem yaşadı.",
+      "text_markdown": "Shivaji'nin 1680'deki ölümünden sonra Maratha İmparatorluğu çalkantılı bir dönem yaşadı.",
+      "tts": {
+        "text": "Shivaji'nin bin altı yüz seksen yılındaki ölümünden sonra Maratha İmparatorluğu çalkantılı bir dönem yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halefleri iç çekişmeler ve dış tehditlerle mücadele etti.",
+      "text_markdown": "Halefleri iç çekişmeler ve dış tehditlerle mücadele etti.",
+      "tts": {
+        "text": "Halefleri iç çekişmeler ve dış tehditlerle mücadele etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babür İmparatoru Evrengzib, onlarca yıl sürecek büyük bir Dekkan istilası başlattı.",
+      "text_markdown": "Babür İmparatoru Evrengzib, onlarca yıl sürecek büyük bir Dekkan istilası başlattı.",
+      "tts": {
+        "text": "Babür İmparatoru Evrengzib, onlarca yıl sürecek büyük bir Dekkan istilası başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu kaos döneminde Maratha donanması, ardışık atanmış amiraller komutasında kıyı boyunca faaliyetlerini sürdürdü.",
+      "text_markdown": "Bu kaos döneminde Maratha donanması, ardışık atanmış amiraller komutasında kıyı boyunca faaliyetlerini sürdürdü.",
+      "tts": {
+        "text": "Bu kaos döneminde Maratha donanması, ardışık atanmış amiraller komutasında kıyı boyunca faaliyetlerini sürdürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa ticaret şirketleri bu istikrarsızlığı nüfuzlarını genişletmek için kullandılar.",
+      "text_markdown": "Avrupa ticaret şirketleri bu istikrarsızlığı nüfuzlarını genişletmek için kullandılar.",
+      "tts": {
+        "text": "Avrupa ticaret şirketleri bu istikrarsızlığı nüfuzlarını genişletmek için kullandılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi, kuzey Konkan kıyısındaki bir ada topluluğu olan Bombay'da karargâhını kurdu.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi, kuzey Konkan kıyısındaki bir ada topluluğu olan Bombay'da karargâhını kurdu.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi, kuzey Konkan kıyısındaki bir ada topluluğu olan Bombay'da karargâhını kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portekizliler Goa'yı ve birkaç küçük yerleşim yerini ellerinde tutuyordu.",
+      "text_markdown": "Portekizliler Goa'yı ve birkaç küçük yerleşim yerini ellerinde tutuyordu.",
+      "tts": {
+        "text": "Portekizliler Goa'yı ve birkaç küçük yerleşim yerini ellerinde tutuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hollandalılar kıyı boyunca çeşitli noktalarda ticaret karakolları sürdürüyordu.",
+      "text_markdown": "Hollandalılar kıyı boyunca çeşitli noktalarda ticaret karakolları sürdürüyordu.",
+      "tts": {
+        "text": "Hollandalılar kıyı boyunca çeşitli noktalarda ticaret karakolları sürdürüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babür İmparatorluğu bir asırdan fazla süredir Hindistan'ın baskın gücüydü.",
+      "text_markdown": "Babür İmparatorluğu bir asırdan fazla süredir Hindistan'ın baskın gücüydü.",
+      "tts": {
+        "text": "Babür İmparatorluğu bir asırdan fazla süredir Hindistan'ın baskın gücüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İmparator Akbar dönemindeki zirvesinde, Babür İmparatorluğu Hint alt kıtasının büyük bölümünü kontrol ediyordu.",
+      "text_markdown": "İmparator Akbar dönemindeki zirvesinde, Babür İmparatorluğu Hint alt kıtasının büyük bölümünü kontrol ediyordu.",
+      "tts": {
+        "text": "İmparator Akbar dönemindeki zirvesinde, Babür İmparatorluğu Hint alt kıtasının büyük bölümünü kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak on yedinci yüzyılın sonlarında imparatorluk, Evrengzib'in Dekkan'daki bitmeyen savaşlarının yükü altında çöküyordu.",
+      "text_markdown": "Ancak on yedinci yüzyılın sonlarında imparatorluk, Evrengzib'in Dekkan'daki bitmeyen savaşlarının yükü altında çöküyordu.",
+      "tts": {
+        "text": "Ancak on yedinci yüzyılın sonlarında imparatorluk, Evrengzib'in Dekkan'daki bitmeyen savaşlarının yükü altında çöküyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu çöküş, Marathalar gibi bölgesel güçlere bağımsızlıklarını ilan etme fırsatı yarattı.",
+      "text_markdown": "Bu çöküş, Marathalar gibi bölgesel güçlere bağımsızlıklarını ilan etme fırsatı yarattı.",
+      "tts": {
+        "text": "Bu çöküş, Marathalar gibi bölgesel güçlere bağımsızlıklarını ilan etme fırsatı yarattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baharat ticareti Hint kıyısını Avrupalı tüccarlar için son derece değerli kılmıştı.",
+      "text_markdown": "Baharat ticareti Hint kıyısını Avrupalı tüccarlar için son derece değerli kılmıştı.",
+      "tts": {
+        "text": "Baharat ticareti Hint kıyısını Avrupalı tüccarlar için son derece değerli kılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Malabar kıyısının biberi, kakulesi ve tarçını Avrupa pazarlarında gümüş ağırlığınca değer taşıyordu.",
+      "text_markdown": "Malabar kıyısının biberi, kakulesi ve tarçını Avrupa pazarlarında gümüş ağırlığınca değer taşıyordu.",
+      "tts": {
+        "text": "Malabar kıyısının biberi, kakulesi ve tarçını Avrupa pazarlarında gümüş ağırlığınca değer taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu baharatların kontrolü, Avrupa'nın Hint Okyanusu'na tüm yayılmasının itici gücüydü.",
+      "text_markdown": "Bu baharatların kontrolü, Avrupa'nın Hint Okyanusu'na tüm yayılmasının itici gücüydü.",
+      "tts": {
+        "text": "Bu baharatların kontrolü, Avrupa'nın Hint Okyanusu'na tüm yayılmasının itici gücüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Konkan kıyısındaki her kale, her ticaret karakolu ve her deniz muharebesi nihayetinde bu ticaretten kimin kâr edeceğiyle ilgiliydi.",
+      "text_markdown": "Konkan kıyısındaki her kale, her ticaret karakolu ve her deniz muharebesi nihayetinde bu ticaretten kimin kâr edeceğiyle ilgiliydi.",
+      "tts": {
+        "text": "Konkan kıyısındaki her kale, her ticaret karakolu ve her deniz muharebesi nihayetinde bu ticaretten kimin kâr edeceğiyle ilgiliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rakip imparatorlukların, sömürge hırsının ve deniz savaşının bu dünyasında Kanhoji Angre doğdu.",
+      "text_markdown": "Rakip imparatorlukların, sömürge hırsının ve deniz savaşının bu dünyasında Kanhoji Angre doğdu.",
+      "tts": {
+        "text": "Rakip imparatorlukların, sömürge hırsının ve deniz savaşının bu dünyasında Kanhoji Angre doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüm kariyerini, kıyıyı kontrol etmeye kararlı güçlere karşı Konkan kıyısını savunmaya adayacaktı.",
+      "text_markdown": "Tüm kariyerini, kıyıyı kontrol etmeye kararlı güçlere karşı Konkan kıyısını savunmaya adayacaktı.",
+      "tts": {
+        "text": "Tüm kariyerini, kıyıyı kontrol etmeye kararlı güçlere karşı Konkan kıyısını savunmaya adayacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Konkan Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hindistan'ın o güne kadar yetiştirdiği en etkili deniz komutanı olacaktı.",
+      "text_markdown": "Hindistan'ın o güne kadar yetiştirdiği en etkili deniz komutanı olacaktı.",
+      "tts": {
+        "text": "Hindistan'ın o güne kadar yetiştirdiği en etkili deniz komutanı olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre, 1669 yılında Bombay'ın güneyinde Konkan kıyısındaki Alibag kasabasında doğdu.",
+      "text_markdown": "Kanhoji Angre, 1669 yılında Bombay'ın güneyinde Konkan kıyısındaki Alibag kasabasında doğdu.",
+      "tts": {
+        "text": "Kanhoji Angre, bin altı yüz altmış dokuz yılında Bombay'ın güneyinde Konkan kıyısındaki Alibag kasabasında doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ailesi Maratha savaşçı kastına mensuptu.",
+      "text_markdown": "Ailesi Maratha savaşçı kastına mensuptu.",
+      "tts": {
+        "text": "Ailesi Maratha savaşçı kastına mensuptu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Askerlik hizmeti ve Maratha yöneticilerine bağlılık konusunda uzun bir geleneğe sahiptiler.",
+      "text_markdown": "Askerlik hizmeti ve Maratha yöneticilerine bağlılık konusunda uzun bir geleneğe sahiptiler.",
+      "tts": {
+        "text": "Askerlik hizmeti ve Maratha yöneticilerine bağlılık konusunda uzun bir geleneğe sahiptiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji, savaş, deniz ticareti ve yabancı güçlere direnişle şekillenen bir dünyada büyüdü.",
+      "text_markdown": "Kanhoji, savaş, deniz ticareti ve yabancı güçlere direnişle şekillenen bir dünyada büyüdü.",
+      "tts": {
+        "text": "Kanhoji, savaş, deniz ticareti ve yabancı güçlere direnişle şekillenen bir dünyada büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babası Tukoji Angre, Maratha ordusunda hizmet ediyordu.",
+      "text_markdown": "Babası Tukoji Angre, Maratha ordusunda hizmet ediyordu.",
+      "tts": {
+        "text": "Babası Tukoji Angre, Maratha ordusunda hizmet ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Angre ailesi, Maratha sarayıyla ve Shivaji'nin inşa ettiği kıyı kaleleri ağıyla bağlantılıydı.",
+      "text_markdown": "Angre ailesi, Maratha sarayıyla ve Shivaji'nin inşa ettiği kıyı kaleleri ağıyla bağlantılıydı.",
+      "tts": {
+        "text": "Angre ailesi, Maratha sarayıyla ve Shivaji'nin inşa ettiği kıyı kaleleri ağıyla bağlantılıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Genç Kanhoji, o da Maratha davasına hizmet edeceği beklentisiyle yetiştirildi.",
+      "text_markdown": "Genç Kanhoji, o da Maratha davasına hizmet edeceği beklentisiyle yetiştirildi.",
+      "tts": {
+        "text": "Genç Kanhoji, o da Maratha davasına hizmet edeceği beklentisiyle yetiştirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Küçük yaştan itibaren hem kara hem deniz savaşı eğitimi aldı.",
+      "text_markdown": "Küçük yaştan itibaren hem kara hem deniz savaşı eğitimi aldı.",
+      "tts": {
+        "text": "Küçük yaştan itibaren hem kara hem deniz savaşı eğitimi aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konkan kıyısı zorlu bir eğitim alanıydı.",
+      "text_markdown": "Konkan kıyısı zorlu bir eğitim alanıydı.",
+      "tts": {
+        "text": "Konkan kıyısı zorlu bir eğitim alanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sular tehlikeliydi; güçlü akıntılar, gizli resifler ve öngörülemeyen muson fırtınaları barındırıyordu.",
+      "text_markdown": "Sular tehlikeliydi; güçlü akıntılar, gizli resifler ve öngörülemeyen muson fırtınaları barındırıyordu.",
+      "tts": {
+        "text": "Sular tehlikeliydi; güçlü akıntılar, gizli resifler ve öngörülemeyen muson fırtınaları barındırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu sularda seyrüsefer, her koyun, her burnun ve her gelgit düzeninin ayrıntılı bilgisini gerektiriyordu.",
+      "text_markdown": "Bu sularda seyrüsefer, her koyun, her burnun ve her gelgit düzeninin ayrıntılı bilgisini gerektiriyordu.",
+      "tts": {
+        "text": "Bu sularda seyrüsefer, her koyun, her burnun ve her gelgit düzeninin ayrıntılı bilgisini gerektiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji bu bilgiyi gençliğinde küçük teknelerle kıyı boyunca seyir ederek edindi.",
+      "text_markdown": "Kanhoji bu bilgiyi gençliğinde küçük teknelerle kıyı boyunca seyir ederek edindi.",
+      "tts": {
+        "text": "Kanhoji bu bilgiyi gençliğinde küçük teknelerle kıyı boyunca seyir ederek edindi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Genç bir subay olarak Maratha deniz hizmetine girdi.",
+      "text_markdown": "Genç bir subay olarak Maratha deniz hizmetine girdi.",
+      "tts": {
+        "text": "Genç bir subay olarak Maratha deniz hizmetine girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O dönemde Maratha donanması, aralarında Vijaydurg, Sindhudurg ve Kolaba'nın da bulunduğu kıyı kalelerinden oluşan bir dizi üsse dayanıyordu.",
+      "text_markdown": "O dönemde Maratha donanması, aralarında Vijaydurg, Sindhudurg ve Kolaba'nın da bulunduğu kıyı kalelerinden oluşan bir dizi üsse dayanıyordu.",
+      "tts": {
+        "text": "O dönemde Maratha donanması, aralarında Vijaydurg, Sindhudurg ve Kolaba'nın da bulunduğu kıyı kalelerinden oluşan bir dizi üsse dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kaleler kayalık adalar ve burunlar üzerine inşa edilmişti; denizden saldırı neredeyse olanaksızdı.",
+      "text_markdown": "Bu kaleler kayalık adalar ve burunlar üzerine inşa edilmişti; denizden saldırı neredeyse olanaksızdı.",
+      "tts": {
+        "text": "Bu kaleler kayalık adalar ve burunlar üzerine inşa edilmişti; denizden saldırı neredeyse olanaksızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Shivaji onları özellikle deniz bombardımanına dayanacak şekilde tasarlamıştı.",
+      "text_markdown": "Shivaji onları özellikle deniz bombardımanına dayanacak şekilde tasarlamıştı.",
+      "tts": {
+        "text": "Shivaji onları özellikle deniz bombardımanına dayanacak şekilde tasarlamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji, Maratha donanmasında hızla yükseldi.",
+      "text_markdown": "Kanhoji, Maratha donanmasında hızla yükseldi.",
+      "tts": {
+        "text": "Kanhoji, Maratha donanmasında hızla yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hem Babür hem de Siddi deniz kuvvetlerine karşı çarpışmalarda öne çıktı.",
+      "text_markdown": "Hem Babür hem de Siddi deniz kuvvetlerine karşı çarpışmalarda öne çıktı.",
+      "tts": {
+        "text": "Hem Babür hem de Siddi deniz kuvvetlerine karşı çarpışmalarda öne çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siddiler, Bombay'ın güneyindeki Janjira kalesinde konuşlanan bir Habeşistan topluluğuydu.",
+      "text_markdown": "Siddiler, Bombay'ın güneyindeki Janjira kalesinde konuşlanan bir Habeşistan topluluğuydu.",
+      "tts": {
+        "text": "Siddiler, Bombay'ın güneyindeki Janjira kalesinde konuşlanan bir Habeşistan topluluğuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onlarca yıldır kıyının kontrolü için Marathaların rakibiydiydiler.",
+      "text_markdown": "Onlarca yıldır kıyının kontrolü için Marathaların rakibiydiydiler.",
+      "tts": {
+        "text": "Onlarca yıldır kıyının kontrolü için Marathaların rakibiydiydiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1698 yılında Kanhoji, Maratha donanmasının Büyük Amirali olan Sarkhel'e atandı.",
+      "text_markdown": "1698 yılında Kanhoji, Maratha donanmasının Büyük Amirali olan Sarkhel'e atandı.",
+      "tts": {
+        "text": "Bin altı yüz doksan sekiz yılında Kanhoji, Maratha donanmasının Büyük Amirali olan Sarkhel'e atandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık yirmi dokuz yaşındaydı.",
+      "text_markdown": "Yaklaşık yirmi dokuz yaşındaydı.",
+      "tts": {
+        "text": "Yaklaşık yirmi dokuz yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atama, Kanhoji'nin olağanüstü denizcilik yeteneklerini takdir eden Maratha Kralı Rajaram'dan geldi.",
+      "text_markdown": "Atama, Kanhoji'nin olağanüstü denizcilik yeteneklerini takdir eden Maratha Kralı Rajaram'dan geldi.",
+      "tts": {
+        "text": "Atama, Kanhoji'nin olağanüstü denizcilik yeteneklerini takdir eden Maratha Kralı Rajaram'dan geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, Kanhoji'nin ömrünün sonuna kadar taşıyacağı bir makamdı.",
+      "text_markdown": "Bu, Kanhoji'nin ömrünün sonuna kadar taşıyacağı bir makamdı.",
+      "tts": {
+        "text": "Bu, Kanhoji'nin ömrünün sonuna kadar taşıyacağı bir makamdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sarkhel olarak Kanhoji, Konkan kıyısı boyunca tüm Maratha deniz kuvvetlerine komuta etti.",
+      "text_markdown": "Sarkhel olarak Kanhoji, Konkan kıyısı boyunca tüm Maratha deniz kuvvetlerine komuta etti.",
+      "tts": {
+        "text": "Sarkhel olarak Kanhoji, Konkan kıyısı boyunca tüm Maratha deniz kuvvetlerine komuta etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaş gemilerinden oluşan bir filo ve müstahkem üsler ağını yönetiyordu.",
+      "text_markdown": "Savaş gemilerinden oluşan bir filo ve müstahkem üsler ağını yönetiyordu.",
+      "tts": {
+        "text": "Savaş gemilerinden oluşan bir filo ve müstahkem üsler ağını yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyıyı savunmak, Maratha ticaretini korumak ve Avrupa müdahalesine direnmekle sorumluydu.",
+      "text_markdown": "Kıyıyı savunmak, Maratha ticaretini korumak ve Avrupa müdahalesine direnmekle sorumluydu.",
+      "tts": {
+        "text": "Kıyıyı savunmak, Maratha ticaretini korumak ve Avrupa müdahalesine direnmekle sorumluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu muazzam bir sorumluluktu ve onu tam bir adanmışlıkla üstlendi.",
+      "text_markdown": "Bu muazzam bir sorumluluktu ve onu tam bir adanmışlıkla üstlendi.",
+      "tts": {
+        "text": "Bu muazzam bir sorumluluktu ve onu tam bir adanmışlıkla üstlendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Atama kritik bir zamanda gerçekleşti.",
+      "text_markdown": "Atama kritik bir zamanda gerçekleşti.",
+      "tts": {
+        "text": "Atama kritik bir zamanda gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dekkan'a yönelik Babür istilası doruğundaydı.",
+      "text_markdown": "Dekkan'a yönelik Babür istilası doruğundaydı.",
+      "tts": {
+        "text": "Dekkan'a yönelik Babür istilası doruğundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maratha krallığı karada hayatta kalma mücadelesi veriyordu.",
+      "text_markdown": "Maratha krallığı karada hayatta kalma mücadelesi veriyordu.",
+      "tts": {
+        "text": "Maratha krallığı karada hayatta kalma mücadelesi veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz, Marathaların hâlâ güç yansıtabildikleri tek alandı ve Kanhoji bundan en iyi şekilde yararlanmaya kararlıydı.",
+      "text_markdown": "Deniz, Marathaların hâlâ güç yansıtabildikleri tek alandı ve Kanhoji bundan en iyi şekilde yararlanmaya kararlıydı.",
+      "tts": {
+        "text": "Deniz, Marathaların hâlâ güç yansıtabildikleri tek alandı ve Kanhoji bundan en iyi şekilde yararlanmaya kararlıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji, ana üssünü Alibag yakınlarındaki Kolaba ada kalesinde kurdu.",
+      "text_markdown": "Kanhoji, ana üssünü Alibag yakınlarındaki Kolaba ada kalesinde kurdu.",
+      "tts": {
+        "text": "Kanhoji, ana üssünü Alibag yakınlarındaki Kolaba ada kalesinde kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kolaba'dan Bombay'a giden deniz yollarını ve kıyı boyunca uzanan ana ticaret güzergâhlarını kontrol edebiliyordu.",
+      "text_markdown": "Kolaba'dan Bombay'a giden deniz yollarını ve kıyı boyunca uzanan ana ticaret güzergâhlarını kontrol edebiliyordu.",
+      "tts": {
+        "text": "Kolaba'dan Bombay'a giden deniz yollarını ve kıyı boyunca uzanan ana ticaret güzergâhlarını kontrol edebiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adayı ek top mevzileriyle tahkim etti ve büyüyen filosunu barındırmak için limanı genişletti.",
+      "text_markdown": "Adayı ek top mevzileriyle tahkim etti ve büyüyen filosunu barındırmak için limanı genişletti.",
+      "tts": {
+        "text": "Adayı ek top mevzileriyle tahkim etti ve büyüyen filosunu barındırmak için limanı genişletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kolaba, sonraki otuz yıl boyunca karargâhı olarak kalacaktı.",
+      "text_markdown": "Kolaba, sonraki otuz yıl boyunca karargâhı olarak kalacaktı.",
+      "tts": {
+        "text": "Kolaba, sonraki otuz yıl boyunca karargâhı olarak kalacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca kıyıdaki en güçlü Maratha deniz üssü olan Vijaydurg kalesini de güçlendirdi.",
+      "text_markdown": "Ayrıca kıyıdaki en güçlü Maratha deniz üssü olan Vijaydurg kalesini de güçlendirdi.",
+      "tts": {
+        "text": "Ayrıca kıyıdaki en güçlü Maratha deniz üssü olan Vijaydurg kalesini de güçlendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vijaydurg, Arap Denizi'ne uzanan kayalık bir burun üzerine inşa edilmişti.",
+      "text_markdown": "Vijaydurg, Arap Denizi'ne uzanan kayalık bir burun üzerine inşa edilmişti.",
+      "tts": {
+        "text": "Vijaydurg, Arap Denizi'ne uzanan kayalık bir burun üzerine inşa edilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Üç kat duvarı, yer altı tünelleri ve bütün bir filoyu barındırabilecek korunaklı bir limanı vardı.",
+      "text_markdown": "Üç kat duvarı, yer altı tünelleri ve bütün bir filoyu barındırabilecek korunaklı bir limanı vardı.",
+      "tts": {
+        "text": "Üç kat duvarı, yer altı tünelleri ve bütün bir filoyu barındırabilecek korunaklı bir limanı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji'nin komutası altında Vijaydurg neredeyse zaptedilemez hale geldi.",
+      "text_markdown": "Kanhoji'nin komutası altında Vijaydurg neredeyse zaptedilemez hale geldi.",
+      "tts": {
+        "text": "Kanhoji'nin komutası altında Vijaydurg neredeyse zaptedilemez hale geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konkan'ın kıyı toplulukları balıkçılar, tüccarlar ve savaşçıların bir karışımıydı.",
+      "text_markdown": "Konkan'ın kıyı toplulukları balıkçılar, tüccarlar ve savaşçıların bir karışımıydı.",
+      "tts": {
+        "text": "Konkan'ın kıyı toplulukları balıkçılar, tüccarlar ve savaşçıların bir karışımıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok aile çoklu roller üstleniyordu; barış zamanında balık avlıyor, çağrıldığında savaşıyorlardı.",
+      "text_markdown": "Birçok aile çoklu roller üstleniyordu; barış zamanında balık avlıyor, çağrıldığında savaşıyorlardı.",
+      "tts": {
+        "text": "Birçok aile çoklu roller üstleniyordu; barış zamanında balık avlıyor, çağrıldığında savaşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu denizcilik becerisi ve askeri hazırlık karışımı onları bir deniz kuvveti için ideal askerler yapıyordu.",
+      "text_markdown": "Bu denizcilik becerisi ve askeri hazırlık karışımı onları bir deniz kuvveti için ideal askerler yapıyordu.",
+      "tts": {
+        "text": "Bu denizcilik becerisi ve askeri hazırlık karışımı onları bir deniz kuvveti için ideal askerler yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji en sadık ve yetenekli denizcilerini bu topluluklardan devşirdi.",
+      "text_markdown": "Kanhoji en sadık ve yetenekli denizcilerini bu topluluklardan devşirdi.",
+      "tts": {
+        "text": "Kanhoji en sadık ve yetenekli denizcilerini bu topluluklardan devşirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu üslerden Kanhoji, Hint Okyanusu'nun en etkili deniz kuvvetini inşa etmeye başladı.",
+      "text_markdown": "Bu üslerden Kanhoji, Hint Okyanusu'nun en etkili deniz kuvvetini inşa etmeye başladı.",
+      "tts": {
+        "text": "Bu üslerden Kanhoji, Hint Okyanusu'nun en etkili deniz kuvvetini inşa etmeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konkan kıyı topluluklarından yetenekli denizciler topladı.",
+      "text_markdown": "Konkan kıyı topluluklarından yetenekli denizciler topladı.",
+      "tts": {
+        "text": "Konkan kıyı topluluklarından yetenekli denizciler topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hint kıyısının özel koşullarına göre tasarlanmış yeni savaş gemileri sipariş etti.",
+      "text_markdown": "Hint kıyısının özel koşullarına göre tasarlanmış yeni savaş gemileri sipariş etti.",
+      "tts": {
+        "text": "Hint kıyısının özel koşullarına göre tasarlanmış yeni savaş gemileri sipariş etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve Avrupalı deniz komutanlarını yıllarca hayal kırıklığına uğratacak taktikler geliştirdi.",
+      "text_markdown": "Ve Avrupalı deniz komutanlarını yıllarca hayal kırıklığına uğratacak taktikler geliştirdi.",
+      "tts": {
+        "text": "Ve Avrupalı deniz komutanlarını yıllarca hayal kırıklığına uğratacak taktikler geliştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İktidara Yükseliş",
+      "text_markdown": "İktidara Yükseliş"
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre'nin Konkan kıyısına hâkim olması sistematik ve amansızdı.",
+      "text_markdown": "Kanhoji Angre'nin Konkan kıyısına hâkim olması sistematik ve amansızdı.",
+      "tts": {
+        "text": "Kanhoji Angre'nin Konkan kıyısına hâkim olması sistematik ve amansızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tek bir dramatik zafer peşinde koşmadı.",
+      "text_markdown": "Tek bir dramatik zafer peşinde koşmadı.",
+      "tts": {
+        "text": "Tek bir dramatik zafer peşinde koşmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine gücünü kademeli olarak, denizcilik becerisi, stratejik tahkim ve kurnaz diplomasi birleşimiyle inşa etti.",
+      "text_markdown": "Bunun yerine gücünü kademeli olarak, denizcilik becerisi, stratejik tahkim ve kurnaz diplomasi birleşimiyle inşa etti.",
+      "tts": {
+        "text": "Bunun yerine gücünü kademeli olarak, denizcilik becerisi, stratejik tahkim ve kurnaz diplomasi birleşimiyle inşa etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sarkhel olarak atanmasından sonraki on yıl içinde batı Hindistan kıyısının tartışmasız hâkimi oldu.",
+      "text_markdown": "Sarkhel olarak atanmasından sonraki on yıl içinde batı Hindistan kıyısının tartışmasız hâkimi oldu.",
+      "tts": {
+        "text": "Sarkhel olarak atanmasından sonraki on yıl içinde batı Hindistan kıyısının tartışmasız hâkimi oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk yıllardaki baş düşmanı Janjira merkezli Siddi filosuydu.",
+      "text_markdown": "İlk yıllardaki baş düşmanı Janjira merkezli Siddi filosuydu.",
+      "tts": {
+        "text": "İlk yıllardaki baş düşmanı Janjira merkezli Siddi filosuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siddiler Babür İmparatorluğu ile ittifak kurmuş ve Maratha kıyı yerleşimlerine sürekli tehdit oluşturuyorlardı.",
+      "text_markdown": "Siddiler Babür İmparatorluğu ile ittifak kurmuş ve Maratha kıyı yerleşimlerine sürekli tehdit oluşturuyorlardı.",
+      "tts": {
+        "text": "Siddiler Babür İmparatorluğu ile ittifak kurmuş ve Maratha kıyı yerleşimlerine sürekli tehdit oluşturuyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji Siddilere karşı uzun bir sefer yürüttü, güçlerini aşamalı olarak kırdı ve onları ada kalelerine geri püskürttü.",
+      "text_markdown": "Kanhoji Siddilere karşı uzun bir sefer yürüttü, güçlerini aşamalı olarak kırdı ve onları ada kalelerine geri püskürttü.",
+      "tts": {
+        "text": "Kanhoji Siddilere karşı uzun bir sefer yürüttü, güçlerini aşamalı olarak kırdı ve onları ada kalelerine geri püskürttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Janjira'nın kendisini hiçbir zaman ele geçiremedi ama Siddi filosunu ciddi bir tehdit olmaktan çıkardı.",
+      "text_markdown": "Janjira'nın kendisini hiçbir zaman ele geçiremedi ama Siddi filosunu ciddi bir tehdit olmaktan çıkardı.",
+      "tts": {
+        "text": "Janjira'nın kendisini hiçbir zaman ele geçiremedi ama Siddi filosunu ciddi bir tehdit olmaktan çıkardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa ticaret şirketleriyle ilişkisi daha karmaşıktı.",
+      "text_markdown": "Avrupa ticaret şirketleriyle ilişkisi daha karmaşıktı.",
+      "tts": {
+        "text": "Avrupa ticaret şirketleriyle ilişkisi daha karmaşıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi, Kanhoji'nin Kolaba'daki karargâhının hemen kuzeyindeki Bombay'da konuşlanmıştı.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi, Kanhoji'nin Kolaba'daki karargâhının hemen kuzeyindeki Bombay'da konuşlanmıştı.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi, Kanhoji'nin Kolaba'daki karargâhının hemen kuzeyindeki Bombay'da konuşlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şirket, Hint kıyı ticaretine sınırsız erişim istiyordu.",
+      "text_markdown": "Şirket, Hint kıyı ticaretine sınırsız erişim istiyordu.",
+      "tts": {
+        "text": "Şirket, Hint kıyı ticaretine sınırsız erişim istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji, Maratha sularındaki tüm gemilerin Maratha geçiş belgesi taşımasını ya da el konulmasını talep etti.",
+      "text_markdown": "Kanhoji, Maratha sularındaki tüm gemilerin Maratha geçiş belgesi taşımasını ya da el konulmasını talep etti.",
+      "tts": {
+        "text": "Kanhoji, Maratha sularındaki tüm gemilerin Maratha geçiş belgesi taşımasını ya da el konulmasını talep etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu talep, Portekiz kartaz sisteminin ayna görüntüsüydü.",
+      "text_markdown": "Bu talep, Portekiz kartaz sisteminin ayna görüntüsüydü.",
+      "tts": {
+        "text": "Bu talep, Portekiz kartaz sisteminin ayna görüntüsüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupalılar iki yüz yıldır Hint gemiciliğine geçiş belgesi dayatmışlardı.",
+      "text_markdown": "Avrupalılar iki yüz yıldır Hint gemiciliğine geçiş belgesi dayatmışlardı.",
+      "tts": {
+        "text": "Avrupalılar iki yüz yıldır Hint gemiciliğine geçiş belgesi dayatmışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şimdi bir Hintli komutan aynı şartı Avrupa gemilerine dayatıyordu.",
+      "text_markdown": "Şimdi bir Hintli komutan aynı şartı Avrupa gemilerine dayatıyordu.",
+      "tts": {
+        "text": "Şimdi bir Hintli komutan aynı şartı Avrupa gemilerine dayatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizler bunu dayanılmaz buldu ama engelleyemediler.",
+      "text_markdown": "İngilizler bunu dayanılmaz buldu ama engelleyemediler.",
+      "tts": {
+        "text": "İngilizler bunu dayanılmaz buldu ama engelleyemediler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizlerle ilk büyük çatışma 1702 yılında yaşandı.",
+      "text_markdown": "İngilizlerle ilk büyük çatışma 1702 yılında yaşandı.",
+      "tts": {
+        "text": "İngilizlerle ilk büyük çatışma bin yedi yüz iki yılında yaşandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanhoji'nin filosu, Maratha geçiş belgesi olmadan seyreden bir İngiliz ticaret gemisine el koydu.",
+      "text_markdown": "Kanhoji'nin filosu, Maratha geçiş belgesi olmadan seyreden bir İngiliz ticaret gemisine el koydu.",
+      "tts": {
+        "text": "Kanhoji'nin filosu, Maratha geçiş belgesi olmadan seyreden bir İngiliz ticaret gemisine el koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bombay'daki İngiliz vali geminin iadesini talep etti.",
+      "text_markdown": "Bombay'daki İngiliz vali geminin iadesini talep etti.",
+      "tts": {
+        "text": "Bombay'daki İngiliz vali geminin iadesini talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji, Maratha sularındaki her geminin Maratha otoritesine tabi olduğunu savunarak reddetti.",
+      "text_markdown": "Kanhoji, Maratha sularındaki her geminin Maratha otoritesine tabi olduğunu savunarak reddetti.",
+      "tts": {
+        "text": "Kanhoji, Maratha sularındaki her geminin Maratha otoritesine tabi olduğunu savunarak reddetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler Kanhoji'yi cezalandırmak için bir deniz seferi düzenledi.",
+      "text_markdown": "İngilizler Kanhoji'yi cezalandırmak için bir deniz seferi düzenledi.",
+      "tts": {
+        "text": "İngilizler Kanhoji'yi cezalandırmak için bir deniz seferi düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kolaba üssüne yapılan saldırı tam bir başarısızlıkla sonuçlandı.",
+      "text_markdown": "Kolaba üssüne yapılan saldırı tam bir başarısızlıkla sonuçlandı.",
+      "tts": {
+        "text": "Kolaba üssüne yapılan saldırı tam bir başarısızlıkla sonuçlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji'nin kıyı bataryaları İngiliz gemilerini ağır hasarla geri püskürttü.",
+      "text_markdown": "Kanhoji'nin kıyı bataryaları İngiliz gemilerini ağır hasarla geri püskürttü.",
+      "tts": {
+        "text": "Kanhoji'nin kıyı bataryaları İngiliz gemilerini ağır hasarla geri püskürttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizler bu çarpışmada asker, gemi ve itibar kaybetti.",
+      "text_markdown": "İngilizler bu çarpışmada asker, gemi ve itibar kaybetti.",
+      "tts": {
+        "text": "İngilizler bu çarpışmada asker, gemi ve itibar kaybetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kalıp izleyen on yıllarda defalarca tekrarlandı.",
+      "text_markdown": "Bu kalıp izleyen on yıllarda defalarca tekrarlandı.",
+      "tts": {
+        "text": "Bu kalıp izleyen on yıllarda defalarca tekrarlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler Kanhoji'nin üslerinden birine saldırmak için filo gönderirdi.",
+      "text_markdown": "İngilizler Kanhoji'nin üslerinden birine saldırmak için filo gönderirdi.",
+      "tts": {
+        "text": "İngilizler Kanhoji'nin üslerinden birine saldırmak için filo gönderirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji kıyı bilgisini, tahkimatlarını ve daha hızlı gemilerini kullanarak onları alt ederdi.",
+      "text_markdown": "Kanhoji kıyı bilgisini, tahkimatlarını ve daha hızlı gemilerini kullanarak onları alt ederdi.",
+      "tts": {
+        "text": "Kanhoji kıyı bilgisini, tahkimatlarını ve daha hızlı gemilerini kullanarak onları alt ederdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizler hiçbir şey başaramadan çekilirdi.",
+      "text_markdown": "İngilizler hiçbir şey başaramadan çekilirdi.",
+      "tts": {
+        "text": "İngilizler hiçbir şey başaramadan çekilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portekizliler de daha iyi sonuç elde edemedi.",
+      "text_markdown": "Portekizliler de daha iyi sonuç elde edemedi.",
+      "tts": {
+        "text": "Portekizliler de daha iyi sonuç elde edemedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İki yüz yıl boyunca Hint kıyısının baskın Avrupa gücü olmuşlardı.",
+      "text_markdown": "İki yüz yıl boyunca Hint kıyısının baskın Avrupa gücü olmuşlardı.",
+      "tts": {
+        "text": "İki yüz yıl boyunca Hint kıyısının baskın Avrupa gücü olmuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak deniz güçleri azalıyordu ve garnizonları yetersiz kadroyla çalışıyordu.",
+      "text_markdown": "Ancak deniz güçleri azalıyordu ve garnizonları yetersiz kadroyla çalışıyordu.",
+      "tts": {
+        "text": "Ancak deniz güçleri azalıyordu ve garnizonları yetersiz kadroyla çalışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji Portekiz gemilerine baskın düzenledi ve kıyı boyunca birkaç küçük karakollarını ele geçirdi.",
+      "text_markdown": "Kanhoji Portekiz gemilerine baskın düzenledi ve kıyı boyunca birkaç küçük karakollarını ele geçirdi.",
+      "tts": {
+        "text": "Kanhoji Portekiz gemilerine baskın düzenledi ve kıyı boyunca birkaç küçük karakollarını ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hollanda Doğu Hindistan Şirketi de Kanhoji ile çatıştı.",
+      "text_markdown": "Hollanda Doğu Hindistan Şirketi de Kanhoji ile çatıştı.",
+      "tts": {
+        "text": "Hollanda Doğu Hindistan Şirketi de Kanhoji ile çatıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geçiş belgesi olmadan Maratha sularına giren Hollanda gemileri ele geçirildi.",
+      "text_markdown": "Geçiş belgesi olmadan Maratha sularına giren Hollanda gemileri ele geçirildi.",
+      "tts": {
+        "text": "Geçiş belgesi olmadan Maratha sularına giren Hollanda gemileri ele geçirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hollandalılar müzakere etmeyi denedi, ardından tehdit etti, ardından saldırdı.",
+      "text_markdown": "Hollandalılar müzakere etmeyi denedi, ardından tehdit etti, ardından saldırdı.",
+      "tts": {
+        "text": "Hollandalılar müzakere etmeyi denedi, ardından tehdit etti, ardından saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizler ve Portekizliler gibi onlar da Kanhoji'yi kıyı kalelerinden söküp atmayı başaramadı.",
+      "text_markdown": "İngilizler ve Portekizliler gibi onlar da Kanhoji'yi kıyı kalelerinden söküp atmayı başaramadı.",
+      "tts": {
+        "text": "İngilizler ve Portekizliler gibi onlar da Kanhoji'yi kıyı kalelerinden söküp atmayı başaramadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1712'de İngilizler ve Portekizliler, Kanhoji'nin Kolaba'daki üssüne saldırmak için birleşik bir filo oluşturdular.",
+      "text_markdown": "1712'de İngilizler ve Portekizliler, Kanhoji'nin Kolaba'daki üssüne saldırmak için birleşik bir filo oluşturdular.",
+      "tts": {
+        "text": "Bin yedi yüz on iki yılında İngilizler ve Portekizliler, Kanhoji'nin Kolaba'daki üssüne saldırmak için birleşik bir filo oluşturdular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, Avrupa güçlerinin ortak düşmana karşı iş birliği yaptığı nadir durumlardan biriydi.",
+      "text_markdown": "Bu, Avrupa güçlerinin ortak düşmana karşı iş birliği yaptığı nadir durumlardan biriydi.",
+      "tts": {
+        "text": "Bu, Avrupa güçlerinin ortak düşmana karşı iş birliği yaptığı nadir durumlardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birleşik filo Kolaba'yı birkaç gün boyunca bombaladı.",
+      "text_markdown": "Birleşik filo Kolaba'yı birkaç gün boyunca bombaladı.",
+      "tts": {
+        "text": "Birleşik filo Kolaba'yı birkaç gün boyunca bombaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji'nin savunması dayandı ve müttefikler önemli kayıplarla çekildi.",
+      "text_markdown": "Kanhoji'nin savunması dayandı ve müttefikler önemli kayıplarla çekildi.",
+      "tts": {
+        "text": "Kanhoji'nin savunması dayandı ve müttefikler önemli kayıplarla çekildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718'deki ikinci ortak saldırı da aynı akıbete uğradı.",
+      "text_markdown": "1718'deki ikinci ortak saldırı da aynı akıbete uğradı.",
+      "tts": {
+        "text": "Bin yedi yüz on sekiz yılındaki ikinci ortak saldırı da aynı akıbete uğradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler ve Portekizliler yeniden Kolaba'ya karşı güçlerini birleştirdiler.",
+      "text_markdown": "İngilizler ve Portekizliler yeniden Kolaba'ya karşı güçlerini birleştirdiler.",
+      "tts": {
+        "text": "İngilizler ve Portekizliler yeniden Kolaba'ya karşı güçlerini birleştirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yine Kanhoji'nin kıyı bataryaları ve deniz taktikleri onları mağlup etti.",
+      "text_markdown": "Yine Kanhoji'nin kıyı bataryaları ve deniz taktikleri onları mağlup etti.",
+      "tts": {
+        "text": "Yine Kanhoji'nin kıyı bataryaları ve deniz taktikleri onları mağlup etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avrupa güçleri, Kanhoji'nin zorla bertaraf edilemeyeceğini kabul etmek zorunda kaldı.",
+      "text_markdown": "Avrupa güçleri, Kanhoji'nin zorla bertaraf edilemeyeceğini kabul etmek zorunda kaldı.",
+      "tts": {
+        "text": "Avrupa güçleri, Kanhoji'nin zorla bertaraf edilemeyeceğini kabul etmek zorunda kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji'nin başarısı yalnızca savunma savaşına dayanmıyordu.",
+      "text_markdown": "Kanhoji'nin başarısı yalnızca savunma savaşına dayanmıyordu.",
+      "tts": {
+        "text": "Kanhoji'nin başarısı yalnızca savunma savaşına dayanmıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kariyeri boyunca Avrupa gemilerine aktif olarak baskın düzenledi.",
+      "text_markdown": "Kariyeri boyunca Avrupa gemilerine aktif olarak baskın düzenledi.",
+      "tts": {
+        "text": "Kariyeri boyunca Avrupa gemilerine aktif olarak baskın düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hızlı ve çevik gemileri ticaret gemilerini yakalıyor, yüklerini ele geçiriyor ve kıyı boyunca uzanan kanallar ve koylar labirentinde kayboluyordu.",
+      "text_markdown": "Hızlı ve çevik gemileri ticaret gemilerini yakalıyor, yüklerini ele geçiriyor ve kıyı boyunca uzanan kanallar ve koylar labirentinde kayboluyordu.",
+      "tts": {
+        "text": "Hızlı ve çevik gemileri ticaret gemilerini yakalıyor, yüklerini ele geçiriyor ve kıyı boyunca uzanan kanallar ve koylar labirentinde kayboluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avrupa şirketleri her yıl baskınları yüzünden muazzam meblağlar kaybetti.",
+      "text_markdown": "Avrupa şirketleri her yıl baskınları yüzünden muazzam meblağlar kaybetti.",
+      "tts": {
+        "text": "Avrupa şirketleri her yıl baskınları yüzünden muazzam meblağlar kaybetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi'nin bu dönemden kayıtları Kanhoji Angre hakkındaki şikâyetlerle doludur.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi'nin bu dönemden kayıtları Kanhoji Angre hakkındaki şikâyetlerle doludur.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi'nin bu dönemden kayıtları Kanhoji Angre hakkındaki şikâyetlerle doludur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onu korsan, bela ve meşru ticaret için tehdit olarak nitelendirdiler.",
+      "text_markdown": "Onu korsan, bela ve meşru ticaret için tehdit olarak nitelendirdiler.",
+      "tts": {
+        "text": "Onu korsan, bela ve meşru ticaret için tehdit olarak nitelendirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Maratha bakış açısından Kanhoji, Avrupalıların yüzyıllardır yaptığı şeyi yapıyordu.",
+      "text_markdown": "Ancak Maratha bakış açısından Kanhoji, Avrupalıların yüzyıllardır yaptığı şeyi yapıyordu.",
+      "tts": {
+        "text": "Ancak Maratha bakış açısından Kanhoji, Avrupalıların yüzyıllardır yaptığı şeyi yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Denizleri kontrol ediyor, ticareti vergilendiriyor ve hükümdarının çıkarlarını korumak için deniz gücünü kullanıyordu.",
+      "text_markdown": "Denizleri kontrol ediyor, ticareti vergilendiriyor ve hükümdarının çıkarlarını korumak için deniz gücünü kullanıyordu.",
+      "tts": {
+        "text": "Denizleri kontrol ediyor, ticareti vergilendiriyor ve hükümdarının çıkarlarını korumak için deniz gücünü kullanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz yirmili yıllarla birlikte Kanhoji, Bombay'dan Ratnagiri'nin güneyine kadar tüm Konkan kıyısını kontrol ediyordu.",
+      "text_markdown": "Bin yedi yüz yirmili yıllarla birlikte Kanhoji, Bombay'dan Ratnagiri'nin güneyine kadar tüm Konkan kıyısını kontrol ediyordu.",
+      "tts": {
+        "text": "Bin yedi yüz yirmili yıllarla birlikte Kanhoji, Bombay'dan Ratnagiri'nin güneyine kadar tüm Konkan kıyısını kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosunda düzinelerce savaş gemisi ve yüzlerce küçük tekne vardı.",
+      "text_markdown": "Filosunda düzinelerce savaş gemisi ve yüzlerce küçük tekne vardı.",
+      "tts": {
+        "text": "Filosunda düzinelerce savaş gemisi ve yüzlerce küçük tekne vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tahkimli üsler zinciri kıyıyı, hiçbir geminin izni olmadan geçemeyeceği bir geçide dönüştürmüştü.",
+      "text_markdown": "Tahkimli üsler zinciri kıyıyı, hiçbir geminin izni olmadan geçemeyeceği bir geçide dönüştürmüştü.",
+      "tts": {
+        "text": "Tahkimli üsler zinciri kıyıyı, hiçbir geminin izni olmadan geçemeyeceği bir geçide dönüştürmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O, fiilen batı Hint denizinin egemeni idi.",
+      "text_markdown": "O, fiilen batı Hint denizinin egemeni idi.",
+      "tts": {
+        "text": "O, fiilen batı Hint denizinin egemeni idi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvedeyken",
+      "text_markdown": "Zirvedeyken"
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gücünün zirvesinde Kanhoji Angre, Hint Okyanusu'ndaki en önemli deniz komutanıydı.",
+      "text_markdown": "Gücünün zirvesinde Kanhoji Angre, Hint Okyanusu'ndaki en önemli deniz komutanıydı.",
+      "tts": {
+        "text": "Gücünün zirvesinde Kanhoji Angre, Hint Okyanusu'ndaki en önemli deniz komutanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu, Asya'nın en yoğun ticaret güzergâhlarından biri olan Bombay ile Goa arasındaki deniz yollarını kontrol ediyordu.",
+      "text_markdown": "Filosu, Asya'nın en yoğun ticaret güzergâhlarından biri olan Bombay ile Goa arasındaki deniz yollarını kontrol ediyordu.",
+      "tts": {
+        "text": "Filosu, Asya'nın en yoğun ticaret güzergâhlarından biri olan Bombay ile Goa arasındaki deniz yollarını kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hindistan'ın batı kıyısında faaliyet gösteren her Avrupa ticaret şirketi onun gücünü hesaba katmak zorundaydı.",
+      "text_markdown": "Hindistan'ın batı kıyısında faaliyet gösteren her Avrupa ticaret şirketi onun gücünü hesaba katmak zorundaydı.",
+      "tts": {
+        "text": "Hindistan'ın batı kıyısında faaliyet gösteren her Avrupa ticaret şirketi onun gücünü hesaba katmak zorundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onun rızası olmadan hiçbir yük güvende değildi.",
+      "text_markdown": "Onun rızası olmadan hiçbir yük güvende değildi.",
+      "tts": {
+        "text": "Onun rızası olmadan hiçbir yük güvende değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji'nin filosu Konkan kıyısının özel koşullarına göre tasarlanmıştı.",
+      "text_markdown": "Kanhoji'nin filosu Konkan kıyısının özel koşullarına göre tasarlanmıştı.",
+      "tts": {
+        "text": "Kanhoji'nin filosu Konkan kıyısının özel koşullarına göre tasarlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En büyük gemileri grab adı verilen, sığ su çekimli iki direkli savaş gemileriydi ve kıyıya yakın seyredebiliyorlardı.",
+      "text_markdown": "En büyük gemileri grab adı verilen, sığ su çekimli iki direkli savaş gemileriydi ve kıyıya yakın seyredebiliyorlardı.",
+      "tts": {
+        "text": "En büyük gemileri grab adı verilen, sığ su çekimli iki direkli savaş gemileriydi ve kıyıya yakın seyredebiliyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayrıca küçük kürekli tekneler olan gallivat'lar da kullandı; bunlar hızlı ve son derece manevra kabiliyetine sahipti.",
+      "text_markdown": "Ayrıca küçük kürekli tekneler olan gallivat'lar da kullandı; bunlar hızlı ve son derece manevra kabiliyetine sahipti.",
+      "tts": {
+        "text": "Ayrıca küçük kürekli tekneler olan gallivat'lar da kullandı; bunlar hızlı ve son derece manevra kabiliyetine sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu gallivat'lar, Avrupa gemilerinin giremeyeceği gelgit kanallarında ve sığ sularda çalışabiliyordu.",
+      "text_markdown": "Bu gallivat'lar, Avrupa gemilerinin giremeyeceği gelgit kanallarında ve sığ sularda çalışabiliyordu.",
+      "tts": {
+        "text": "Bu gallivat'lar, Avrupa gemilerinin giremeyeceği gelgit kanallarında ve sığ sularda çalışabiliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grab ve gallivat birleşimi yıkıcı biçimde etkili idi.",
+      "text_markdown": "Grab ve gallivat birleşimi yıkıcı biçimde etkili idi.",
+      "tts": {
+        "text": "Grab ve gallivat birleşimi yıkıcı biçimde etkili idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Grablar düşman gemisiyle top menzilinde çatışmaya giriyor ve sürekli ateşle onu zayıflatıyordu.",
+      "text_markdown": "Grablar düşman gemisiyle top menzilinde çatışmaya giriyor ve sürekli ateşle onu zayıflatıyordu.",
+      "tts": {
+        "text": "Grablar düşman gemisiyle top menzilinde çatışmaya giriyor ve sürekli ateşle onu zayıflatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ardından gallivat'lar sürü halinde dalıyor, mürettebatları aynı anda birden fazla yönden düşman gemisine çıkıyordu.",
+      "text_markdown": "Ardından gallivat'lar sürü halinde dalıyor, mürettebatları aynı anda birden fazla yönden düşman gemisine çıkıyordu.",
+      "tts": {
+        "text": "Ardından gallivat'lar sürü halinde dalıyor, mürettebatları aynı anda birden fazla yönden düşman gemisine çıkıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Büyük gemiler arasında borda ateşi alışverişine eğitilmiş Avrupalı kaptanların bu sürü taktiklerine cevabı yoktu.",
+      "text_markdown": "Büyük gemiler arasında borda ateşi alışverişine eğitilmiş Avrupalı kaptanların bu sürü taktiklerine cevabı yoktu.",
+      "tts": {
+        "text": "Büyük gemiler arasında borda ateşi alışverişine eğitilmiş Avrupalı kaptanların bu sürü taktiklerine cevabı yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji'nin kıyı tahkimatları da bir o kadar heybetliydi.",
+      "text_markdown": "Kanhoji'nin kıyı tahkimatları da bir o kadar heybetliydi.",
+      "tts": {
+        "text": "Kanhoji'nin kıyı tahkimatları da bir o kadar heybetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaleleri, denizden hücum edilmesi neredeyse imkânsız olan kayalık adalar ve burunlar üzerine inşa edilmişti.",
+      "text_markdown": "Kaleleri, denizden hücum edilmesi neredeyse imkânsız olan kayalık adalar ve burunlar üzerine inşa edilmişti.",
+      "tts": {
+        "text": "Kaleleri, denizden hücum edilmesi neredeyse imkânsız olan kayalık adalar ve burunlar üzerine inşa edilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Duvarlar, Avrupa savaş gemilerinin top ateşine dayanacak kadar kalındı.",
+      "text_markdown": "Duvarlar, Avrupa savaş gemilerinin top ateşine dayanacak kadar kalındı.",
+      "tts": {
+        "text": "Duvarlar, Avrupa savaş gemilerinin top ateşine dayanacak kadar kalındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yer altı geçitleri tahkimatın farklı bölümlerini birbirine bağlıyor ve savunucuların görünmeden hareket etmesine olanak tanıyordu.",
+      "text_markdown": "Yer altı geçitleri tahkimatın farklı bölümlerini birbirine bağlıyor ve savunucuların görünmeden hareket etmesine olanak tanıyordu.",
+      "tts": {
+        "text": "Yer altı geçitleri tahkimatın farklı bölümlerini birbirine bağlıyor ve savunucuların görünmeden hareket etmesine olanak tanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vijaydurg, savunma ağının baş tacıydı.",
+      "text_markdown": "Vijaydurg, savunma ağının baş tacıydı.",
+      "tts": {
+        "text": "Vijaydurg, savunma ağının baş tacıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kale, üç tarafı denizle çevrili kayalık bir burun üzerinde yükseliyordu.",
+      "text_markdown": "Kale, üç tarafı denizle çevrili kayalık bir burun üzerinde yükseliyordu.",
+      "tts": {
+        "text": "Kale, üç tarafı denizle çevrili kayalık bir burun üzerinde yükseliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Üç kat duvarları, muson mevsiminde tüm filosunu barındıracak kadar geniş bir alanı çevreliyordu.",
+      "text_markdown": "Üç kat duvarları, muson mevsiminde tüm filosunu barındıracak kadar geniş bir alanı çevreliyordu.",
+      "tts": {
+        "text": "Üç kat duvarları, muson mevsiminde tüm filosunu barındıracak kadar geniş bir alanı çevreliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onu gören Avrupalı deniz subayları, karşılaştıkları en güçlü tahkimatlardan biri olarak tarif ettiler.",
+      "text_markdown": "Onu gören Avrupalı deniz subayları, karşılaştıkları en güçlü tahkimatlardan biri olarak tarif ettiler.",
+      "tts": {
+        "text": "Onu gören Avrupalı deniz subayları, karşılaştıkları en güçlü tahkimatlardan biri olarak tarif ettiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji filosunu vergilendirme, ticaret ve ganimetin birleşimiyle sürdürdü.",
+      "text_markdown": "Kanhoji filosunu vergilendirme, ticaret ve ganimetin birleşimiyle sürdürdü.",
+      "tts": {
+        "text": "Kanhoji filosunu vergilendirme, ticaret ve ganimetin birleşimiyle sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maratha geçiş belgesi taşıyan gemiler donanmayı finanse etmeye yönelik bir ücret ödüyordu.",
+      "text_markdown": "Maratha geçiş belgesi taşıyan gemiler donanmayı finanse etmeye yönelik bir ücret ödüyordu.",
+      "tts": {
+        "text": "Maratha geçiş belgesi taşıyan gemiler donanmayı finanse etmeye yönelik bir ücret ödüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geçiş belgesi olmayan gemilere el konuluyor ve yükleri satılıyordu.",
+      "text_markdown": "Geçiş belgesi olmayan gemilere el konuluyor ve yükleri satılıyordu.",
+      "tts": {
+        "text": "Geçiş belgesi olmayan gemilere el konuluyor ve yükleri satılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu gelir sistemi verimli ve kendi kendini sürdürüyordu.",
+      "text_markdown": "Bu gelir sistemi verimli ve kendi kendini sürdürüyordu.",
+      "tts": {
+        "text": "Bu gelir sistemi verimli ve kendi kendini sürdürüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Satara'daki Maratha hükümeti Kanhoji'nin değerini takdir ediyordu.",
+      "text_markdown": "Satara'daki Maratha hükümeti Kanhoji'nin değerini takdir ediyordu.",
+      "tts": {
+        "text": "Satara'daki Maratha hükümeti Kanhoji'nin değerini takdir ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O, imparatorluğun Avrupa deniz gücüne karşı kalkanıydı.",
+      "text_markdown": "O, imparatorluğun Avrupa deniz gücüne karşı kalkanıydı.",
+      "tts": {
+        "text": "O, imparatorluğun Avrupa deniz gücüne karşı kalkanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Filosu olmasaydı Maratha kıyısı ablukaya ve istilaya açık olurdu.",
+      "text_markdown": "Filosu olmasaydı Maratha kıyısı ablukaya ve istilaya açık olurdu.",
+      "tts": {
+        "text": "Filosu olmasaydı Maratha kıyısı ablukaya ve istilaya açık olurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maratha İmparatorluğu'nun başbakanı Peşva, Kanhoji ile kariyeri boyunca yakın ilişki sürdürdü.",
+      "text_markdown": "Maratha İmparatorluğu'nun başbakanı Peşva, Kanhoji ile kariyeri boyunca yakın ilişki sürdürdü.",
+      "tts": {
+        "text": "Maratha İmparatorluğu'nun başbakanı Peşva, Kanhoji ile kariyeri boyunca yakın ilişki sürdürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji ayrıca gelişmiş bir istihbarat ağı sürdürüyordu.",
+      "text_markdown": "Kanhoji ayrıca gelişmiş bir istihbarat ağı sürdürüyordu.",
+      "tts": {
+        "text": "Kanhoji ayrıca gelişmiş bir istihbarat ağı sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bombay, Goa ve kıyının başlıca ticaret limanlarında ajanları vardı.",
+      "text_markdown": "Bombay, Goa ve kıyının başlıca ticaret limanlarında ajanları vardı.",
+      "tts": {
+        "text": "Bombay, Goa ve kıyının başlıca ticaret limanlarında ajanları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Değerli yük gemilerinin ne zaman kalktığını ve hangi güzergâhları izlemeyi planladıklarını biliyordu.",
+      "text_markdown": "Değerli yük gemilerinin ne zaman kalktığını ve hangi güzergâhları izlemeyi planladıklarını biliyordu.",
+      "tts": {
+        "text": "Değerli yük gemilerinin ne zaman kalktığını ve hangi güzergâhları izlemeyi planladıklarını biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bilgiler ona Avrupalı rakiplerine karşı belirleyici avantaj sağlıyordu.",
+      "text_markdown": "Bu bilgiler ona Avrupalı rakiplerine karşı belirleyici avantaj sağlıyordu.",
+      "tts": {
+        "text": "Bu bilgiler ona Avrupalı rakiplerine karşı belirleyici avantaj sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi Kanhoji ile defalarca müzakere etmeye çalıştı.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi Kanhoji ile defalarca müzakere etmeye çalıştı.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi Kanhoji ile defalarca müzakere etmeye çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret imtiyazları, parasal ödemeler ve diplomatik tanınma teklif ettiler.",
+      "text_markdown": "Ticaret imtiyazları, parasal ödemeler ve diplomatik tanınma teklif ettiler.",
+      "tts": {
+        "text": "Ticaret imtiyazları, parasal ödemeler ve diplomatik tanınma teklif ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji her teklifi dinledi ama temel tutumundan asla taviz vermedi.",
+      "text_markdown": "Kanhoji her teklifi dinledi ama temel tutumundan asla taviz vermedi.",
+      "tts": {
+        "text": "Kanhoji her teklifi dinledi ama temel tutumundan asla taviz vermedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Konkan kıyısı Maratha toprağıydı ve Maratha sularındaki tüm gemiler Maratha hukukuna tabiydi.",
+      "text_markdown": "Konkan kıyısı Maratha toprağıydı ve Maratha sularındaki tüm gemiler Maratha hukukuna tabiydi.",
+      "tts": {
+        "text": "Konkan kıyısı Maratha toprağıydı ve Maratha sularındaki tüm gemiler Maratha hukukuna tabiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kişisel hayatı ailesi ve inancı etrafında şekillenmişti.",
+      "text_markdown": "Kişisel hayatı ailesi ve inancı etrafında şekillenmişti.",
+      "tts": {
+        "text": "Kişisel hayatı ailesi ve inancı etrafında şekillenmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kıyı boyunca tapınaklara ve dini kurumlara himaye eden dindar bir Hindu idi.",
+      "text_markdown": "Kıyı boyunca tapınaklara ve dini kurumlara himaye eden dindar bir Hindu idi.",
+      "tts": {
+        "text": "Kıyı boyunca tapınaklara ve dini kurumlara himaye eden dindar bir Hindu idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz savaşı ve yönetim konusunda yetiştirdiği birkaç oğlu vardı.",
+      "text_markdown": "Deniz savaşı ve yönetim konusunda yetiştirdiği birkaç oğlu vardı.",
+      "tts": {
+        "text": "Deniz savaşı ve yönetim konusunda yetiştirdiği birkaç oğlu vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ölümünden sonra ailesinin işini sürdürmesini amaçlıyordu.",
+      "text_markdown": "Ölümünden sonra ailesinin işini sürdürmesini amaçlıyordu.",
+      "tts": {
+        "text": "Ölümünden sonra ailesinin işini sürdürmesini amaçlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji, kontrolü altındaki kıyı topluluklarını kararlılık ve adaletin birleşimiyle yönetti.",
+      "text_markdown": "Kanhoji, kontrolü altındaki kıyı topluluklarını kararlılık ve adaletin birleşimiyle yönetti.",
+      "tts": {
+        "text": "Kanhoji, kontrolü altındaki kıyı topluluklarını kararlılık ve adaletin birleşimiyle yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Balıkçı topluluklarını Avrupa müdahalesinden korudu.",
+      "text_markdown": "Balıkçı topluluklarını Avrupa müdahalesinden korudu.",
+      "tts": {
+        "text": "Balıkçı topluluklarını Avrupa müdahalesinden korudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyı boyunca liman ve pazarlarda düzeni sürdürdü.",
+      "text_markdown": "Kıyı boyunca liman ve pazarlarda düzeni sürdürdü.",
+      "tts": {
+        "text": "Kıyı boyunca liman ve pazarlarda düzeni sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçok kıyı topluluğu onu yöneticileri değil koruyucuları olarak gördü.",
+      "text_markdown": "Birçok kıyı topluluğu onu yöneticileri değil koruyucuları olarak gördü.",
+      "tts": {
+        "text": "Birçok kıyı topluluğu onu yöneticileri değil koruyucuları olarak gördü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kariyerinin zirvesinde Kanhoji Angre olağanüstü bir başarıya imza atmıştı.",
+      "text_markdown": "Kariyerinin zirvesinde Kanhoji Angre olağanüstü bir başarıya imza atmıştı.",
+      "tts": {
+        "text": "Kariyerinin zirvesinde Kanhoji Angre olağanüstü bir başarıya imza atmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Asya'daki en güçlü üç Avrupa donanmasına direnebilecek bir deniz kuvveti inşa etmişti.",
+      "text_markdown": "Asya'daki en güçlü üç Avrupa donanmasına direnebilecek bir deniz kuvveti inşa etmişti.",
+      "tts": {
+        "text": "Asya'daki en güçlü üç Avrupa donanmasına direnebilecek bir deniz kuvveti inşa etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunu yerel kaynaklar, yerel bilgi ve yerel taktiklerle başarmıştı.",
+      "text_markdown": "Bunu yerel kaynaklar, yerel bilgi ve yerel taktiklerle başarmıştı.",
+      "tts": {
+        "text": "Bunu yerel kaynaklar, yerel bilgi ve yerel taktiklerle başarmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hint deniz gücünün Avrupa hâkimiyetine kendi şartlarıyla meydan okuyabileceğini kanıtladı.",
+      "text_markdown": "Hint deniz gücünün Avrupa hâkimiyetine kendi şartlarıyla meydan okuyabileceğini kanıtladı.",
+      "tts": {
+        "text": "Hint deniz gücünün Avrupa hâkimiyetine kendi şartlarıyla meydan okuyabileceğini kanıtladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son yıllarında Kanhoji Angre aktif kalmaya ve komutayı sürdürmeye devam etti.",
+      "text_markdown": "Son yıllarında Kanhoji Angre aktif kalmaya ve komutayı sürdürmeye devam etti.",
+      "tts": {
+        "text": "Son yıllarında Kanhoji Angre aktif kalmaya ve komutayı sürdürmeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ölmeden önce güçleri zayıflayan pek çok tarihsel figürün aksine, Kanhoji en sona kadar konumunu korudu.",
+      "text_markdown": "Ölmeden önce güçleri zayıflayan pek çok tarihsel figürün aksine, Kanhoji en sona kadar konumunu korudu.",
+      "tts": {
+        "text": "Ölmeden önce güçleri zayıflayan pek çok tarihsel figürün aksine, Kanhoji en sona kadar konumunu korudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Filosu kıyıyı devriye gezmeye devam etti, kaleleri tam kadro ile korundu ve otoritesi sorgulanmadı.",
+      "text_markdown": "Filosu kıyıyı devriye gezmeye devam etti, kaleleri tam kadro ile korundu ve otoritesi sorgulanmadı.",
+      "tts": {
+        "text": "Filosu kıyıyı devriye gezmeye devam etti, kaleleri tam kadro ile korundu ve otoritesi sorgulanmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tüm kariyeri boyunca hiçbir muharebede yenilmedi.",
+      "text_markdown": "Tüm kariyeri boyunca hiçbir muharebede yenilmedi.",
+      "tts": {
+        "text": "Tüm kariyeri boyunca hiçbir muharebede yenilmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz yirmili yıllarda Maratha İmparatorluğu içindeki siyasi durum daha da karmaşıklaştı.",
+      "text_markdown": "Bin yedi yüz yirmili yıllarda Maratha İmparatorluğu içindeki siyasi durum daha da karmaşıklaştı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmili yıllarda Maratha İmparatorluğu içindeki siyasi durum daha da karmaşıklaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Peşva Balaji Vishwanath iktidarı merkezileştirmiş ve Maratha kralının yetkisini azaltmıştı.",
+      "text_markdown": "Peşva Balaji Vishwanath iktidarı merkezileştirmiş ve Maratha kralının yetkisini azaltmıştı.",
+      "tts": {
+        "text": "Peşva Balaji Vishwanath iktidarı merkezileştirmiş ve Maratha kralının yetkisini azaltmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Balaji'nin ölümünden sonra oğlu Baji Rao Peşva oldu.",
+      "text_markdown": "Balaji'nin ölümünden sonra oğlu Baji Rao Peşva oldu.",
+      "tts": {
+        "text": "Balaji'nin ölümünden sonra oğlu Baji Rao Peşva oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baji Rao karada parlak bir askeri komutandı ama deniz savunmasında Kanhoji'ye büyük ölçüde bağımlıydı.",
+      "text_markdown": "Baji Rao karada parlak bir askeri komutandı ama deniz savunmasında Kanhoji'ye büyük ölçüde bağımlıydı.",
+      "tts": {
+        "text": "Baji Rao karada parlak bir askeri komutandı ama deniz savunmasında Kanhoji'ye büyük ölçüde bağımlıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji, Maratha devletine bağlılık ile operasyonel bağımsızlık arasında hassas bir denge kurdu.",
+      "text_markdown": "Kanhoji, Maratha devletine bağlılık ile operasyonel bağımsızlık arasında hassas bir denge kurdu.",
+      "tts": {
+        "text": "Kanhoji, Maratha devletine bağlılık ile operasyonel bağımsızlık arasında hassas bir denge kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Prensip olarak kralın ve Peşva'nın otoritesini kabul etti.",
+      "text_markdown": "Prensip olarak kralın ve Peşva'nın otoritesini kabul etti.",
+      "tts": {
+        "text": "Prensip olarak kralın ve Peşva'nın otoritesini kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak pratikte donanmayı özerk bir operasyon olarak yürüttü.",
+      "text_markdown": "Ancak pratikte donanmayı özerk bir operasyon olarak yürüttü.",
+      "tts": {
+        "text": "Ancak pratikte donanmayı özerk bir operasyon olarak yürüttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maratha hükümeti bu düzenlemeye göz yumdu çünkü Kanhoji vazgeçilmezdi.",
+      "text_markdown": "Maratha hükümeti bu düzenlemeye göz yumdu çünkü Kanhoji vazgeçilmezdi.",
+      "tts": {
+        "text": "Maratha hükümeti bu düzenlemeye göz yumdu çünkü Kanhoji vazgeçilmezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa güçleri ona karşı farklı stratejiler denemeye devam etti.",
+      "text_markdown": "Avrupa güçleri ona karşı farklı stratejiler denemeye devam etti.",
+      "tts": {
+        "text": "Avrupa güçleri ona karşı farklı stratejiler denemeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler Kanhoji ile ticaret yapan Hintli tüccarları kısıtlayarak ekonomik baskı uygulamayı denedi.",
+      "text_markdown": "İngilizler Kanhoji ile ticaret yapan Hintli tüccarları kısıtlayarak ekonomik baskı uygulamayı denedi.",
+      "tts": {
+        "text": "İngilizler Kanhoji ile ticaret yapan Hintli tüccarları kısıtlayarak ekonomik baskı uygulamayı denedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portekizliler Siddiler ve diğer yerel güçlerle ittifak kurmaya çalıştı.",
+      "text_markdown": "Portekizliler Siddiler ve diğer yerel güçlerle ittifak kurmaya çalıştı.",
+      "tts": {
+        "text": "Portekizliler Siddiler ve diğer yerel güçlerle ittifak kurmaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu stratejilerin hiçbiri Kanhoji'nin kıyı üzerindeki kontrolünü zayıflatmayı başaramadı.",
+      "text_markdown": "Bu stratejilerin hiçbiri Kanhoji'nin kıyı üzerindeki kontrolünü zayıflatmayı başaramadı.",
+      "tts": {
+        "text": "Bu stratejilerin hiçbiri Kanhoji'nin kıyı üzerindeki kontrolünü zayıflatmayı başaramadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720 yılında İngilizler Kanhoji'nin üslerine karşı bir deniz seferi daha başlattı.",
+      "text_markdown": "1720 yılında İngilizler Kanhoji'nin üslerine karşı bir deniz seferi daha başlattı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmi yılında İngilizler Kanhoji'nin üslerine karşı bir deniz seferi daha başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sefer birkaç savaş gemisi ve büyük bir asker kuvveti içeriyordu.",
+      "text_markdown": "Sefer birkaç savaş gemisi ve büyük bir asker kuvveti içeriyordu.",
+      "tts": {
+        "text": "Sefer birkaç savaş gemisi ve büyük bir asker kuvveti içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir kez daha Kanhoji'nin savunması dayandı ve İngilizler geri çekilmek zorunda kaldı.",
+      "text_markdown": "Bir kez daha Kanhoji'nin savunması dayandı ve İngilizler geri çekilmek zorunda kaldı.",
+      "tts": {
+        "text": "Bir kez daha Kanhoji'nin savunması dayandı ve İngilizler geri çekilmek zorunda kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, yaşamı boyunca onu yenmeye yönelik son büyük İngiliz girişimlerinden biriydi.",
+      "text_markdown": "Bu, yaşamı boyunca onu yenmeye yönelik son büyük İngiliz girişimlerinden biriydi.",
+      "tts": {
+        "text": "Bu, yaşamı boyunca onu yenmeye yönelik son büyük İngiliz girişimlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre, 4 Temmuz 1729'da Alibag'daki üssünde hayatını kaybetti.",
+      "text_markdown": "Kanhoji Angre, 4 Temmuz 1729'da Alibag'daki üssünde hayatını kaybetti.",
+      "tts": {
+        "text": "Kanhoji Angre, dört Temmuz bin yedi yüz yirmi dokuz tarihinde Alibag'daki üssünde hayatını kaybetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık altmış yaşındaydı.",
+      "text_markdown": "Yaklaşık altmış yaşındaydı.",
+      "tts": {
+        "text": "Yaklaşık altmış yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşta değil, doğal nedenlerden öldü.",
+      "text_markdown": "Savaşta değil, doğal nedenlerden öldü.",
+      "tts": {
+        "text": "Savaşta değil, doğal nedenlerden öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maratha donanmasının Sarkhel'i olarak otuz bir yıl hizmet etmişti.",
+      "text_markdown": "Maratha donanmasının Sarkhel'i olarak otuz bir yıl hizmet etmişti.",
+      "tts": {
+        "text": "Maratha donanmasının Sarkhel'i olarak otuz bir yıl hizmet etmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ölümü anında bir iktidar boşluğu yarattı.",
+      "text_markdown": "Ölümü anında bir iktidar boşluğu yarattı.",
+      "tts": {
+        "text": "Ölümü anında bir iktidar boşluğu yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oğulları topraklarını ve filosunu kendi aralarında paylaştı.",
+      "text_markdown": "Oğulları topraklarını ve filosunu kendi aralarında paylaştı.",
+      "tts": {
+        "text": "Oğulları topraklarını ve filosunu kendi aralarında paylaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji'nin kişisel otoritesiyle sürdürdüğü birlik çatırdamaya başladı.",
+      "text_markdown": "Kanhoji'nin kişisel otoritesiyle sürdürdüğü birlik çatırdamaya başladı.",
+      "tts": {
+        "text": "Kanhoji'nin kişisel otoritesiyle sürdürdüğü birlik çatırdamaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onun liderliği olmadan Maratha deniz komutanlığı iç çekişmelerle zayıfladı.",
+      "text_markdown": "Onun liderliği olmadan Maratha deniz komutanlığı iç çekişmelerle zayıfladı.",
+      "tts": {
+        "text": "Onun liderliği olmadan Maratha deniz komutanlığı iç çekişmelerle zayıfladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oğlu Sambhaji Angre başlangıçta filonun kontrolünü ele aldı.",
+      "text_markdown": "Oğlu Sambhaji Angre başlangıçta filonun kontrolünü ele aldı.",
+      "tts": {
+        "text": "Oğlu Sambhaji Angre başlangıçta filonun kontrolünü ele aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak kardeşler arasındaki rekabet çatışmaya yol açtı.",
+      "text_markdown": "Ancak kardeşler arasındaki rekabet çatışmaya yol açtı.",
+      "tts": {
+        "text": "Ancak kardeşler arasındaki rekabet çatışmaya yol açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maratha hükümeti müdahale etti ve Angre ailesinin gücü giderek azaldı.",
+      "text_markdown": "Maratha hükümeti müdahale etti ve Angre ailesinin gücü giderek azaldı.",
+      "tts": {
+        "text": "Maratha hükümeti müdahale etti ve Angre ailesinin gücü giderek azaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avrupa şirketleri bu gelişmeleri büyük ilgiyle izledi.",
+      "text_markdown": "Avrupa şirketleri bu gelişmeleri büyük ilgiyle izledi.",
+      "tts": {
+        "text": "Avrupa şirketleri bu gelişmeleri büyük ilgiyle izledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1756 yılında, Kanhoji'nin ölümünden yaklaşık otuz yıl sonra, İngilizler ve Marathalar Vijaydurg'daki Angre kalesine ortaklaşa saldırdı.",
+      "text_markdown": "1756 yılında, Kanhoji'nin ölümünden yaklaşık otuz yıl sonra, İngilizler ve Marathalar Vijaydurg'daki Angre kalesine ortaklaşa saldırdı.",
+      "tts": {
+        "text": "Bin yedi yüz elli altı yılında, Kanhoji'nin ölümünden yaklaşık otuz yıl sonra, İngilizler ve Marathalar Vijaydurg'daki Angre kalesine ortaklaşa saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanhoji döneminde zaptedilemez olan kale sonunda düştü.",
+      "text_markdown": "Kanhoji döneminde zaptedilemez olan kale sonunda düştü.",
+      "tts": {
+        "text": "Kanhoji döneminde zaptedilemez olan kale sonunda düştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele geçirilmesiyle Hint kıyısında İngiliz deniz hâkimiyetinin önündeki son büyük engel kaldırılmış oldu.",
+      "text_markdown": "Ele geçirilmesiyle Hint kıyısında İngiliz deniz hâkimiyetinin önündeki son büyük engel kaldırılmış oldu.",
+      "tts": {
+        "text": "Ele geçirilmesiyle Hint kıyısında İngiliz deniz hâkimiyetinin önündeki son büyük engel kaldırılmış oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji'nin tanımladığı çağ sona ermişti.",
+      "text_markdown": "Kanhoji'nin tanımladığı çağ sona ermişti.",
+      "tts": {
+        "text": "Kanhoji'nin tanımladığı çağ sona ermişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maratha İmparatorluğu deniz liderliği geçiş sürecindeyken bile karada büyümeye devam etti.",
+      "text_markdown": "Maratha İmparatorluğu deniz liderliği geçiş sürecindeyken bile karada büyümeye devam etti.",
+      "tts": {
+        "text": "Maratha İmparatorluğu deniz liderliği geçiş sürecindeyken bile karada büyümeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Peşva Baji Rao, Maratha topraklarını Orta ve Kuzey Hindistan'a genişletti.",
+      "text_markdown": "Peşva Baji Rao, Maratha topraklarını Orta ve Kuzey Hindistan'a genişletti.",
+      "tts": {
+        "text": "Peşva Baji Rao, Maratha topraklarını Orta ve Kuzey Hindistan'a genişletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Kanhoji'nin birleşik deniz komutanlığı olmadan kıyı giderek daha savunmasız hale geldi.",
+      "text_markdown": "Ancak Kanhoji'nin birleşik deniz komutanlığı olmadan kıyı giderek daha savunmasız hale geldi.",
+      "tts": {
+        "text": "Ancak Kanhoji'nin birleşik deniz komutanlığı olmadan kıyı giderek daha savunmasız hale geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi bu zaafı fark etti ve buna göre plan yapmaya başladı.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi bu zaafı fark etti ve buna göre plan yapmaya başladı.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi bu zaafı fark etti ve buna göre plan yapmaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre'nin yenilmemiş sicili, Hint askeri tarihinin en dikkat çekici başarılarından biridir.",
+      "text_markdown": "Kanhoji Angre'nin yenilmemiş sicili, Hint askeri tarihinin en dikkat çekici başarılarından biridir.",
+      "tts": {
+        "text": "Kanhoji Angre'nin yenilmemiş sicili, Hint askeri tarihinin en dikkat çekici başarılarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Otuz yıl boyunca kıyıyı dünyanın en güçlü deniz kuvvetlerine karşı korudu.",
+      "text_markdown": "Otuz yıl boyunca kıyıyı dünyanın en güçlü deniz kuvvetlerine karşı korudu.",
+      "tts": {
+        "text": "Otuz yıl boyunca kıyıyı dünyanın en güçlü deniz kuvvetlerine karşı korudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunu yerel gemiler, yerel mürettebat ve yerel taktiklerle başardı.",
+      "text_markdown": "Bunu yerel gemiler, yerel mürettebat ve yerel taktiklerle başardı.",
+      "tts": {
+        "text": "Bunu yerel gemiler, yerel mürettebat ve yerel taktiklerle başardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hiçbir Avrupalı komutan onu yenmenin yolunu bulamadı.",
+      "text_markdown": "Hiçbir Avrupalı komutan onu yenmenin yolunu bulamadı.",
+      "tts": {
+        "text": "Hiçbir Avrupalı komutan onu yenmenin yolunu bulamadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre'nin mirası, korsanlığı tanımlama hakkının kime ait olduğu sorusuyla derinden iç içedir.",
+      "text_markdown": "Kanhoji Angre'nin mirası, korsanlığı tanımlama hakkının kime ait olduğu sorusuyla derinden iç içedir.",
+      "tts": {
+        "text": "Kanhoji Angre'nin mirası, korsanlığı tanımlama hakkının kime ait olduğu sorusuyla derinden iç içedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi ticaretlerini aksattığı için onu korsan olarak nitelendirdi.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi ticaretlerini aksattığı için onu korsan olarak nitelendirdi.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi ticaretlerini aksattığı için onu korsan olarak nitelendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maratha İmparatorluğu kıyılarını savunduğu için onu amiral olarak nitelendirdi.",
+      "text_markdown": "Maratha İmparatorluğu kıyılarını savunduğu için onu amiral olarak nitelendirdi.",
+      "tts": {
+        "text": "Maratha İmparatorluğu kıyılarını savunduğu için onu amiral olarak nitelendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her iki tanımlama da gerçeğin bir kısmını barındırır.",
+      "text_markdown": "Her iki tanımlama da gerçeğin bir kısmını barındırır.",
+      "tts": {
+        "text": "Her iki tanımlama da gerçeğin bir kısmını barındırır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan etiketi tarafsız bir tanım değil, siyasi bir silâhtı.",
+      "text_markdown": "Korsan etiketi tarafsız bir tanım değil, siyasi bir silâhtı.",
+      "tts": {
+        "text": "Korsan etiketi tarafsız bir tanım değil, siyasi bir silâhtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupalı ticaret şirketleri Hint Okyanusu'na kendi kurallarını dayattı ve bu kurallara direnen herkesi suçlu ilan etti.",
+      "text_markdown": "Avrupalı ticaret şirketleri Hint Okyanusu'na kendi kurallarını dayattı ve bu kurallara direnen herkesi suçlu ilan etti.",
+      "tts": {
+        "text": "Avrupalı ticaret şirketleri Hint Okyanusu'na kendi kurallarını dayattı ve bu kurallara direnen herkesi suçlu ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu tanıma göre, Hint suları üzerinde egemenlik iddia eden her Hintli yönetici korsandı.",
+      "text_markdown": "Bu tanıma göre, Hint suları üzerinde egemenlik iddia eden her Hintli yönetici korsandı.",
+      "tts": {
+        "text": "Bu tanıma göre, Hint suları üzerinde egemenlik iddia eden her Hintli yönetici korsandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji bu mantığı tamamen reddetti ve tarih büyük ölçüde onu haklı çıkardı.",
+      "text_markdown": "Kanhoji bu mantığı tamamen reddetti ve tarih büyük ölçüde onu haklı çıkardı.",
+      "tts": {
+        "text": "Kanhoji bu mantığı tamamen reddetti ve tarih büyük ölçüde onu haklı çıkardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern Hindistan'da Kanhoji Angre ulusal kahraman olarak tanınmaktadır.",
+      "text_markdown": "Modern Hindistan'da Kanhoji Angre ulusal kahraman olarak tanınmaktadır.",
+      "tts": {
+        "text": "Modern Hindistan'da Kanhoji Angre ulusal kahraman olarak tanınmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hindistan Donanması Mumbai'deki bir kıyı tesisine onun adını verdi.",
+      "text_markdown": "Hindistan Donanması Mumbai'deki bir kıyı tesisine onun adını verdi.",
+      "tts": {
+        "text": "Hindistan Donanması Mumbai'deki bir kıyı tesisine onun adını verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Heykeli Konkan kıyısının önemli noktalarında dikilmektedir.",
+      "text_markdown": "Heykeli Konkan kıyısının önemli noktalarında dikilmektedir.",
+      "tts": {
+        "text": "Heykeli Konkan kıyısının önemli noktalarında dikilmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hint deniz gücünün öncüsü ve Hint egemenliğinin savunucusu olarak anılmaktadır.",
+      "text_markdown": "Hint deniz gücünün öncüsü ve Hint egemenliğinin savunucusu olarak anılmaktadır.",
+      "tts": {
+        "text": "Hint deniz gücünün öncüsü ve Hint egemenliğinin savunucusu olarak anılmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Askeri yenilikleri nesiller boyunca Hint deniz düşüncesini etkilemiştir.",
+      "text_markdown": "Askeri yenilikleri nesiller boyunca Hint deniz düşüncesini etkilemiştir.",
+      "tts": {
+        "text": "Askeri yenilikleri nesiller boyunca Hint deniz düşüncesini etkilemiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hızlı küçük tekneler ile tahkimli kıyı üslerinin birleşimi, sonraki Hintli deniz komutanlarının incelediği ve uyarladığı bir doktrin olmuştur.",
+      "text_markdown": "Hızlı küçük tekneler ile tahkimli kıyı üslerinin birleşimi, sonraki Hintli deniz komutanlarının incelediği ve uyarladığı bir doktrin olmuştur.",
+      "tts": {
+        "text": "Hızlı küçük tekneler ile tahkimli kıyı üslerinin birleşimi, sonraki Hintli deniz komutanlarının incelediği ve uyarladığı bir doktrin olmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onun, kaba ateş gücü yerine gelgitler, akıntılar ve kıyı coğrafyası hakkındaki yerel bilgiye verdiği önem bugün deniz stratejisi için hâlâ geçerlidir.",
+      "text_markdown": "Onun, kaba ateş gücü yerine gelgitler, akıntılar ve kıyı coğrafyası hakkındaki yerel bilgiye verdiği önem bugün deniz stratejisi için hâlâ geçerlidir.",
+      "tts": {
+        "text": "Onun, kaba ateş gücü yerine gelgitler, akıntılar ve kıyı coğrafyası hakkındaki yerel bilgiye verdiği önem bugün deniz stratejisi için hâlâ geçerlidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yerel avantajlara sahip daha küçük bir kuvvetin teknolojik olarak üstün bir düşmana direnebileceğini kanıtladı.",
+      "text_markdown": "Yerel avantajlara sahip daha küçük bir kuvvetin teknolojik olarak üstün bir düşmana direnebileceğini kanıtladı.",
+      "tts": {
+        "text": "Yerel avantajlara sahip daha küçük bir kuvvetin teknolojik olarak üstün bir düşmana direnebileceğini kanıtladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vijaydurg kalesi hâlâ Konkan kıyısında ayaktadır.",
+      "text_markdown": "Vijaydurg kalesi hâlâ Konkan kıyısında ayaktadır.",
+      "tts": {
+        "text": "Vijaydurg kalesi hâlâ Konkan kıyısında ayaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dev duvarları ve korunaklı limanı, Kanhoji'nin inşa ettiği deniz gücünün anıtıdır.",
+      "text_markdown": "Dev duvarları ve korunaklı limanı, Kanhoji'nin inşa ettiği deniz gücünün anıtıdır.",
+      "tts": {
+        "text": "Dev duvarları ve korunaklı limanı, Kanhoji'nin inşa ettiği deniz gücünün anıtıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ziyaretçiler hâlâ top mevzilerini, yeraltı geçitlerini ve bir zamanlar filosunun sığındığı limanı görebilir.",
+      "text_markdown": "Ziyaretçiler hâlâ top mevzilerini, yeraltı geçitlerini ve bir zamanlar filosunun sığındığı limanı görebilir.",
+      "tts": {
+        "text": "Ziyaretçiler hâlâ top mevzilerini, yeraltı geçitlerini ve bir zamanlar filosunun sığındığı limanı görebilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maratha askeri mimarisinin günümüze ulaşan en güzel örneklerinden biridir.",
+      "text_markdown": "Maratha askeri mimarisinin günümüze ulaşan en güzel örneklerinden biridir.",
+      "tts": {
+        "text": "Maratha askeri mimarisinin günümüze ulaşan en güzel örneklerinden biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre'nin kariyeri, Asya'daki sömürgecilik tarihi hakkında önemli sorular gündeme getirmektedir.",
+      "text_markdown": "Kanhoji Angre'nin kariyeri, Asya'daki sömürgecilik tarihi hakkında önemli sorular gündeme getirmektedir.",
+      "tts": {
+        "text": "Kanhoji Angre'nin kariyeri, Asya'daki sömürgecilik tarihi hakkında önemli sorular gündeme getirmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupalı ticaret şirketleri genişlemelerini uygarlığın ve meşru ticaretin ilerlemesi olarak sundu.",
+      "text_markdown": "Avrupalı ticaret şirketleri genişlemelerini uygarlığın ve meşru ticaretin ilerlemesi olarak sundu.",
+      "tts": {
+        "text": "Avrupalı ticaret şirketleri genişlemelerini uygarlığın ve meşru ticaretin ilerlemesi olarak sundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Kanhoji gibi Hintli yöneticilerin bakış açısından Avrupalılar işgalciydi.",
+      "text_markdown": "Ancak Kanhoji gibi Hintli yöneticilerin bakış açısından Avrupalılar işgalciydi.",
+      "tts": {
+        "text": "Ancak Kanhoji gibi Hintli yöneticilerin bakış açısından Avrupalılar işgalciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kurallarını zorla dayatmışlar ve bu kurallara karşı direnişi suç ilan etmişlerdi.",
+      "text_markdown": "Kurallarını zorla dayatmışlar ve bu kurallara karşı direnişi suç ilan etmişlerdi.",
+      "tts": {
+        "text": "Kurallarını zorla dayatmışlar ve bu kurallara karşı direnişi suç ilan etmişlerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji'nin başardığı şey korsanlık değil egemenlikti.",
+      "text_markdown": "Kanhoji'nin başardığı şey korsanlık değil egemenlikti.",
+      "tts": {
+        "text": "Kanhoji'nin başardığı şey korsanlık değil egemenlikti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sularını kontrol etti, içlerinden geçen ticareti vergilendirdi ve halkını yabancı saldırganlığa karşı korudu.",
+      "text_markdown": "Sularını kontrol etti, içlerinden geçen ticareti vergilendirdi ve halkını yabancı saldırganlığa karşı korudu.",
+      "tts": {
+        "text": "Sularını kontrol etti, içlerinden geçen ticareti vergilendirdi ve halkını yabancı saldırganlığa karşı korudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunu otuz bir yıl boyunca tek bir savaş kaybetmeden yaptı.",
+      "text_markdown": "Bunu otuz bir yıl boyunca tek bir savaş kaybetmeden yaptı.",
+      "tts": {
+        "text": "Bunu otuz bir yıl boyunca tek bir savaş kaybetmeden yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hint Okyanusu'nun uzun tarihinde başka hiç kimse bu rekoru eşleştirememiştir.",
+      "text_markdown": "Hint Okyanusu'nun uzun tarihinde başka hiç kimse bu rekoru eşleştirememiştir.",
+      "tts": {
+        "text": "Hint Okyanusu'nun uzun tarihinde başka hiç kimse bu rekoru eşleştirememiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Yaşamı, denizin tarihinin onda yol alan her ulusa ait olduğunun kanıtıdır.",
+      "text_markdown": "Yaşamı, denizin tarihinin onda yol alan her ulusa ait olduğunun kanıtıdır.",
+      "tts": {
+        "text": "Yaşamı, denizin tarihinin onda yol alan her ulusa ait olduğunun kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

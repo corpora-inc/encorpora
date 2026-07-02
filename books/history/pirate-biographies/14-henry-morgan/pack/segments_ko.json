@@ -1,0 +1,4607 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "language": "ko",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 보내는 글",
+      "text_markdown": "독자에게 보내는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 헨리 모건의 이야기이다. 카리브해 역사상 가장 성공한 해적의 이야기이다.",
+      "text_markdown": "이것은 헨리 모건의 이야기이다. 카리브해 역사상 가장 성공한 해적의 이야기이다.",
+      "tts": {
+        "text": "이것은 헨리 모건의 이야기이다. 카리브해 역사상 가장 성공한 해적의 이야기이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 스페인 제국의 가장 부유한 도시들을 약탈했지만 한 번도 처벌받지 않았다.",
+      "text_markdown": "그는 스페인 제국의 가장 부유한 도시들을 약탈했지만 한 번도 처벌받지 않았다.",
+      "tts": {
+        "text": "그는 스페인 제국의 가장 부유한 도시들을 약탈했지만 한 번도 처벌받지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 해적 행위와 애국심 사이의 경계가 의도적으로 흐려진 시대에 살았다.",
+      "text_markdown": "모건은 해적 행위와 애국심 사이의 경계가 의도적으로 흐려진 시대에 살았다.",
+      "tts": {
+        "text": "모건은 해적 행위와 애국심 사이의 경계가 의도적으로 흐려진 시대에 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드는 공개적으로 전쟁을 선포하지 않고 스페인을 약화시키기 위해 그와 같은 자들을 이용했다.",
+      "text_markdown": "잉글랜드는 공개적으로 전쟁을 선포하지 않고 스페인을 약화시키기 위해 그와 같은 자들을 이용했다.",
+      "tts": {
+        "text": "잉글랜드는 공개적으로 전쟁을 선포하지 않고 스페인을 약화시키기 위해 그와 같은 자들을 이용했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 마을을 습격하고, 도시를 불태우고, 숨겨진 금에 대한 정보를 얻기 위해 포로들을 고문했다.",
+      "text_markdown": "그는 마을을 습격하고, 도시를 불태우고, 숨겨진 금에 대한 정보를 얻기 위해 포로들을 고문했다.",
+      "tts": {
+        "text": "그는 마을을 습격하고, 도시를 불태우고, 숨겨진 금에 대한 정보를 얻기 위해 포로들을 고문했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그럼에도 그는 헨리 모건 경, 왕국의 기사이자 자메이카 부총독으로 죽었다.",
+      "text_markdown": "그럼에도 그는 헨리 모건 경, 왕국의 기사이자 자메이카 부총독으로 죽었다.",
+      "tts": {
+        "text": "그럼에도 그는 헨리 모건 경, 왕국의 기사이자 자메이카 부총독으로 죽었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 이야기는 폭력, 제국, 그리고 강대국을 위해 봉사하는 자에게 주어지는 보상에 대한 어려운 질문을 던진다.",
+      "text_markdown": "그의 이야기는 폭력, 제국, 그리고 강대국을 위해 봉사하는 자에게 주어지는 보상에 대한 어려운 질문을 던진다.",
+      "tts": {
+        "text": "그의 이야기는 폭력, 제국, 그리고 강대국을 위해 봉사하는 자에게 주어지는 보상에 대한 어려운 질문을 던진다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여기 서술된 사건들은 재판 기록과 목격자 증언을 포함한 역사적 기록에 기반한다.",
+      "text_markdown": "여기 서술된 사건들은 재판 기록과 목격자 증언을 포함한 역사적 기록에 기반한다.",
+      "tts": {
+        "text": "여기 서술된 사건들은 재판 기록과 목격자 증언을 포함한 역사적 기록에 기반한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세부 사항이 불확실한 곳에서는 본문이 그렇다고 밝히고 있다.",
+      "text_markdown": "세부 사항이 불확실한 곳에서는 본문이 그렇다고 밝히고 있다.",
+      "tts": {
+        "text": "세부 사항이 불확실한 곳에서는 본문이 그렇다고 밝히고 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "그를 만든 세계",
+      "text_markdown": "그를 만든 세계"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백 년대의 카리브해는 지구상에서 가장 많은 분쟁이 벌어진 수역이었다.",
+      "text_markdown": "천육백 년대의 카리브해는 지구상에서 가장 많은 분쟁이 벌어진 수역이었다.",
+      "tts": {
+        "text": "천육백 년대의 카리브해는 지구상에서 가장 많은 분쟁이 벌어진 수역이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인, 잉글랜드, 프랑스, 네덜란드 모두 그곳의 섬들과 해안선에 대한 영유권을 주장했다.",
+      "text_markdown": "스페인, 잉글랜드, 프랑스, 네덜란드 모두 그곳의 섬들과 해안선에 대한 영유권을 주장했다.",
+      "tts": {
+        "text": "스페인, 잉글랜드, 프랑스, 네덜란드 모두 그곳의 섬들과 해안선에 대한 영유권을 주장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "각 나라는 요새를 건설하고, 식민지를 세우고, 영토를 방어하기 위해 군함을 보냈다.",
+      "text_markdown": "각 나라는 요새를 건설하고, 식민지를 세우고, 영토를 방어하기 위해 군함을 보냈다.",
+      "tts": {
+        "text": "각 나라는 요새를 건설하고, 식민지를 세우고, 영토를 방어하기 위해 군함을 보냈다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인이 가장 먼저 도착하여 가장 큰 몫을 차지했다.",
+      "text_markdown": "스페인이 가장 먼저 도착하여 가장 큰 몫을 차지했다.",
+      "tts": {
+        "text": "스페인이 가장 먼저 도착하여 가장 큰 몫을 차지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인의 제국은 멕시코에서 페루까지, 쿠바에서 필리핀까지 뻗어 있었다.",
+      "text_markdown": "스페인의 제국은 멕시코에서 페루까지, 쿠바에서 필리핀까지 뻗어 있었다.",
+      "tts": {
+        "text": "스페인의 제국은 멕시코에서 페루까지, 쿠바에서 필리핀까지 뻗어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "매년 보물 함대가 아메리카에서 은과 금을 세비야로 실어 날랐다.",
+      "text_markdown": "매년 보물 함대가 아메리카에서 은과 금을 세비야로 실어 날랐다.",
+      "tts": {
+        "text": "매년 보물 함대가 아메리카에서 은과 금을 세비야로 실어 날랐다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 부는 스페인을 한 세기 이상 유럽에서 가장 부유한 국가로 만들었다.",
+      "text_markdown": "이 부는 스페인을 한 세기 이상 유럽에서 가장 부유한 국가로 만들었다.",
+      "tts": {
+        "text": "이 부는 스페인을 한 세기 이상 유럽에서 가장 부유한 국가로 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 그것은 또한 스페인을 표적으로 만들었다.",
+      "text_markdown": "하지만 그것은 또한 스페인을 표적으로 만들었다.",
+      "tts": {
+        "text": "하지만 그것은 또한 스페인을 표적으로 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인인들은 카리브해 전체를 자국의 배타적 영역이라고 선포했다.",
+      "text_markdown": "스페인인들은 카리브해 전체를 자국의 배타적 영역이라고 선포했다.",
+      "tts": {
+        "text": "스페인인들은 카리브해 전체를 자국의 배타적 영역이라고 선포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 어떤 다른 나라도 그 해역에서 교역하거나 정착하거나 항해할 권리가 없다고 주장했다.",
+      "text_markdown": "그들은 어떤 다른 나라도 그 해역에서 교역하거나 정착하거나 항해할 권리가 없다고 주장했다.",
+      "tts": {
+        "text": "그들은 어떤 다른 나라도 그 해역에서 교역하거나 정착하거나 항해할 권리가 없다고 주장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 주장은 천사백구십삼 년의 교황 칙령에 근거했으며, 이 칙령은 신세계를 스페인과 포르투갈로 나눈 것이었다.",
+      "text_markdown": "이 주장은 천사백구십삼 년의 교황 칙령에 근거했으며, 이 칙령은 신세계를 스페인과 포르투갈로 나눈 것이었다.",
+      "tts": {
+        "text": "이 주장은 천사백구십삼 년의 교황 칙령에 근거했으며, 이 칙령은 신세계를 스페인과 포르투갈로 나눈 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드, 프랑스, 네덜란드는 이 칙령을 인정하지 않았다.",
+      "text_markdown": "잉글랜드, 프랑스, 네덜란드는 이 칙령을 인정하지 않았다.",
+      "tts": {
+        "text": "잉글랜드, 프랑스, 네덜란드는 이 칙령을 인정하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 어떤 교황도 대륙을 나눠줄 권한이 없다고 주장했다.",
+      "text_markdown": "그들은 어떤 교황도 대륙을 나눠줄 권한이 없다고 주장했다.",
+      "tts": {
+        "text": "그들은 어떤 교황도 대륙을 나눠줄 권한이 없다고 주장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 의견 불일치가 카리브해에서 한 세기에 걸친 전쟁의 근본 원인이었다.",
+      "text_markdown": "이 의견 불일치가 카리브해에서 한 세기에 걸친 전쟁의 근본 원인이었다.",
+      "tts": {
+        "text": "이 의견 불일치가 카리브해에서 한 세기에 걸친 전쟁의 근본 원인이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백 년대 초반에 잉글랜드의 경제는 스페인보다 훨씬 작았다.",
+      "text_markdown": "천육백 년대 초반에 잉글랜드의 경제는 스페인보다 훨씬 작았다.",
+      "tts": {
+        "text": "천육백 년대 초반에 잉글랜드의 경제는 스페인보다 훨씬 작았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "카리브해의 잉글랜드 식민지들은 가난하고 취약했다.",
+      "text_markdown": "카리브해의 잉글랜드 식민지들은 가난하고 취약했다.",
+      "tts": {
+        "text": "카리브해의 잉글랜드 식민지들은 가난하고 취약했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 설탕, 담배, 그리고 스페인인들에게서 빼앗을 수 있는 모든 것으로 연명했다.",
+      "text_markdown": "그들은 설탕, 담배, 그리고 스페인인들에게서 빼앗을 수 있는 모든 것으로 연명했다.",
+      "tts": {
+        "text": "그들은 설탕, 담배, 그리고 스페인인들에게서 빼앗을 수 있는 모든 것으로 연명했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드 정부는 스페인 선박과 정착지에 대한 공격을 은밀히 장려했다.",
+      "text_markdown": "잉글랜드 정부는 스페인 선박과 정착지에 대한 공격을 은밀히 장려했다.",
+      "tts": {
+        "text": "잉글랜드 정부는 스페인 선박과 정착지에 대한 공격을 은밀히 장려했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사략선은 사략 면허장이라 불리는 법적 문서를 받은 민간인이었다.",
+      "text_markdown": "사략선은 사략 면허장이라 불리는 법적 문서를 받은 민간인이었다.",
+      "tts": {
+        "text": "사략선은 사략 면허장이라 불리는 법적 문서를 받은 민간인이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 면허장은 자국을 위해 적의 배를 공격할 수 있는 권한을 부여했다.",
+      "text_markdown": "이 면허장은 자국을 위해 적의 배를 공격할 수 있는 권한을 부여했다.",
+      "tts": {
+        "text": "이 면허장은 자국을 위해 적의 배를 공격할 수 있는 권한을 부여했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사략선과 해적의 차이는 단지 한 장의 종이에 불과했다.",
+      "text_markdown": "사략선과 해적의 차이는 단지 한 장의 종이에 불과했다.",
+      "tts": {
+        "text": "사략선과 해적의 차이는 단지 한 장의 종이에 불과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 편지가 없으면, 당신은 범죄자였다.",
+      "text_markdown": "그 편지가 없으면, 당신은 범죄자였다.",
+      "tts": {
+        "text": "그 편지가 없으면, 당신은 범죄자였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것이 있으면, 당신은 애국자였다.",
+      "text_markdown": "그것이 있으면, 당신은 애국자였다.",
+      "tts": {
+        "text": "그것이 있으면, 당신은 애국자였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자메이카는 카리브해에서 잉글랜드의 가장 중요한 영토였다.",
+      "text_markdown": "자메이카는 카리브해에서 잉글랜드의 가장 중요한 영토였다.",
+      "tts": {
+        "text": "자메이카는 카리브해에서 잉글랜드의 가장 중요한 영토였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드는 천육백오십오 년에 스페인으로부터 자메이카를 빼앗았다. 모건이 도착하기 불과 십 년 전이었다.",
+      "text_markdown": "잉글랜드는 천육백오십오 년에 스페인으로부터 자메이카를 빼앗았다. 모건이 도착하기 불과 십 년 전이었다.",
+      "tts": {
+        "text": "잉글랜드는 천육백오십오 년에 스페인으로부터 자메이카를 빼앗았다. 모건이 도착하기 불과 십 년 전이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "섬은 여전히 방어가 취약하고 미개발 상태였다.",
+      "text_markdown": "섬은 여전히 방어가 취약하고 미개발 상태였다.",
+      "tts": {
+        "text": "섬은 여전히 방어가 취약하고 미개발 상태였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수도 포트 로열은 킹스턴 항구 입구의 좁은 모래톱 위에 자리 잡고 있었다.",
+      "text_markdown": "수도 포트 로열은 킹스턴 항구 입구의 좁은 모래톱 위에 자리 잡고 있었다.",
+      "tts": {
+        "text": "수도 포트 로열은 킹스턴 항구 입구의 좁은 모래톱 위에 자리 잡고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도시는 붐비고, 시끄럽고, 선술집과 도박장으로 가득했다.",
+      "text_markdown": "도시는 붐비고, 시끄럽고, 선술집과 도박장으로 가득했다.",
+      "tts": {
+        "text": "도시는 붐비고, 시끄럽고, 선술집과 도박장으로 가득했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포트 로열은 지구상에서 가장 사악한 도시로 알려지게 되었다.",
+      "text_markdown": "포트 로열은 지구상에서 가장 사악한 도시로 알려지게 되었다.",
+      "tts": {
+        "text": "포트 로열은 지구상에서 가장 사악한 도시로 알려지게 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 그곳에서 럼주, 여자, 주사위에 약탈품을 탕진했다.",
+      "text_markdown": "해적들은 그곳에서 럼주, 여자, 주사위에 약탈품을 탕진했다.",
+      "tts": {
+        "text": "해적들은 그곳에서 럼주, 여자, 주사위에 약탈품을 탕진했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "한 사나이가 하룻밤에 재산을 날리고 일주일 안에 다시 바다에 나갈 수 있었다.",
+      "text_markdown": "한 사나이가 하룻밤에 재산을 날리고 일주일 안에 다시 바다에 나갈 수 있었다.",
+      "tts": {
+        "text": "한 사나이가 하룻밤에 재산을 날리고 일주일 안에 다시 바다에 나갈 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자메이카의 총독들은 방위를 위해 해적들에게 의존했다.",
+      "text_markdown": "자메이카의 총독들은 방위를 위해 해적들에게 의존했다.",
+      "tts": {
+        "text": "자메이카의 총독들은 방위를 위해 해적들에게 의존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "섬에는 스페인의 공격을 막을 만큼 강력한 상비 해군이 없었다.",
+      "text_markdown": "섬에는 스페인의 공격을 막을 만큼 강력한 상비 해군이 없었다.",
+      "tts": {
+        "text": "섬에는 스페인의 공격을 막을 만큼 강력한 상비 해군이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그래서 총독들은 사략 면허장을 발급하고 해적들에게 싸움을 맡겼다.",
+      "text_markdown": "그래서 총독들은 사략 면허장을 발급하고 해적들에게 싸움을 맡겼다.",
+      "tts": {
+        "text": "그래서 총독들은 사략 면허장을 발급하고 해적들에게 싸움을 맡겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 잉글랜드인, 프랑스인, 네덜란드인, 아프리카인 선원들로 구성된 혼성 집단이었다.",
+      "text_markdown": "해적들은 잉글랜드인, 프랑스인, 네덜란드인, 아프리카인 선원들로 구성된 혼성 집단이었다.",
+      "tts": {
+        "text": "해적들은 잉글랜드인, 프랑스인, 네덜란드인, 아프리카인 선원들로 구성된 혼성 집단이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 이들이 과거 계약 하인이거나 도주 노예였다.",
+      "text_markdown": "많은 이들이 과거 계약 하인이거나 도주 노예였다.",
+      "tts": {
+        "text": "많은 이들이 과거 계약 하인이거나 도주 노예였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 거친 삶을 살았고 잃을 것이 거의 없었다.",
+      "text_markdown": "그들은 거친 삶을 살았고 잃을 것이 거의 없었다.",
+      "tts": {
+        "text": "그들은 거친 삶을 살았고 잃을 것이 거의 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "버커니어라는 단어는 프랑스어 부카니에에서 유래했으며, 고기를 훈제하는 사람을 뜻한다.",
+      "text_markdown": "버커니어라는 단어는 프랑스어 부카니에에서 유래했으며, 고기를 훈제하는 사람을 뜻한다.",
+      "tts": {
+        "text": "버커니어라는 단어는 프랑스어 부카니에에서 유래했으며, 고기를 훈제하는 사람을 뜻한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "최초의 버커니어들은 히스파니올라 섬에서 야생 소와 돼지 고기를 훈제하던 사냥꾼들이었다.",
+      "text_markdown": "최초의 버커니어들은 히스파니올라 섬에서 야생 소와 돼지 고기를 훈제하던 사냥꾼들이었다.",
+      "tts": {
+        "text": "최초의 버커니어들은 히스파니올라 섬에서 야생 소와 돼지 고기를 훈제하던 사냥꾼들이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인인들이 그들을 몰아내자, 그들은 생존을 위해 바다로 향했다.",
+      "text_markdown": "스페인인들이 그들을 몰아내자, 그들은 생존을 위해 바다로 향했다.",
+      "tts": {
+        "text": "스페인인들이 그들을 몰아내자, 그들은 생존을 위해 바다로 향했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백육십 년대에 이르러 버커니어들은 무시할 수 없는 전투 세력이 되어 있었다.",
+      "text_markdown": "천육백육십 년대에 이르러 버커니어들은 무시할 수 없는 전투 세력이 되어 있었다.",
+      "tts": {
+        "text": "천육백육십 년대에 이르러 버커니어들은 무시할 수 없는 전투 세력이 되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 머스킷총, 커틀러스, 그리고 날것의 용기로 싸웠다.",
+      "text_markdown": "그들은 머스킷총, 커틀러스, 그리고 날것의 용기로 싸웠다.",
+      "tts": {
+        "text": "그들은 머스킷총, 커틀러스, 그리고 날것의 용기로 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 배에 올라타고 요새화된 진지를 공격하는 데 능숙했다.",
+      "text_markdown": "그들은 배에 올라타고 요새화된 진지를 공격하는 데 능숙했다.",
+      "tts": {
+        "text": "그들은 배에 올라타고 요새화된 진지를 공격하는 데 능숙했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인은 카리브해에서의 모든 외국인 존재를 불법으로 간주했다.",
+      "text_markdown": "스페인은 카리브해에서의 모든 외국인 존재를 불법으로 간주했다.",
+      "tts": {
+        "text": "스페인은 카리브해에서의 모든 외국인 존재를 불법으로 간주했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인인의 눈에 모든 잉글랜드 정착민은 불법 침입자였고 모든 잉글랜드 선박은 합법적 사냥감이었다.",
+      "text_markdown": "스페인인의 눈에 모든 잉글랜드 정착민은 불법 침입자였고 모든 잉글랜드 선박은 합법적 사냥감이었다.",
+      "tts": {
+        "text": "스페인인의 눈에 모든 잉글랜드 정착민은 불법 침입자였고 모든 잉글랜드 선박은 합법적 사냥감이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 상호 적대감은 끝없는 습격과 보복의 순환을 만들어냈다.",
+      "text_markdown": "이 상호 적대감은 끝없는 습격과 보복의 순환을 만들어냈다.",
+      "tts": {
+        "text": "이 상호 적대감은 끝없는 습격과 보복의 순환을 만들어냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인인들은 잉글랜드 정착지를 공격했고, 잉글랜드인들은 스페인 정착지를 공격했다.",
+      "text_markdown": "스페인인들은 잉글랜드 정착지를 공격했고, 잉글랜드인들은 스페인 정착지를 공격했다.",
+      "tts": {
+        "text": "스페인인들은 잉글랜드 정착지를 공격했고, 잉글랜드인들은 스페인 정착지를 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "그를 만든 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 폭력적인 세계에 헨리 모건은 기회를 찾는 젊은이로서 도착했다.",
+      "text_markdown": "이 폭력적인 세계에 헨리 모건은 기회를 찾는 젊은이로서 도착했다.",
+      "tts": {
+        "text": "이 폭력적인 세계에 헨리 모건은 기회를 찾는 젊은이로서 도착했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "카리브해의 웨일스인",
+      "text_markdown": "카리브해의 웨일스인"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 모건은 천육백삼십오 년경 웨일스 남동부의 란럼니라는 마을에서 태어났다.",
+      "text_markdown": "헨리 모건은 천육백삼십오 년경 웨일스 남동부의 란럼니라는 마을에서 태어났다.",
+      "tts": {
+        "text": "헨리 모건은 천육백삼십오 년경 웨일스 남동부의 란럼니라는 마을에서 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 가문은 웨일스 젠트리 계층에 속했으며, 이는 토지와 지역적 영향력을 보유했음을 의미한다.",
+      "text_markdown": "그의 가문은 웨일스 젠트리 계층에 속했으며, 이는 토지와 지역적 영향력을 보유했음을 의미한다.",
+      "tts": {
+        "text": "그의 가문은 웨일스 젠트리 계층에 속했으며, 이는 토지와 지역적 영향력을 보유했음을 의미한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 삼촌 두 명은 잉글랜드 내전 중 군 장교로 복무했다.",
+      "text_markdown": "그의 삼촌 두 명은 잉글랜드 내전 중 군 장교로 복무했다.",
+      "tts": {
+        "text": "그의 삼촌 두 명은 잉글랜드 내전 중 군 장교로 복무했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백삼십 년대의 웨일스는 영국의 시골이자 비교적 가난한 지역이었다.",
+      "text_markdown": "천육백삼십 년대의 웨일스는 영국의 시골이자 비교적 가난한 지역이었다.",
+      "tts": {
+        "text": "천육백삼십 년대의 웨일스는 영국의 시골이자 비교적 가난한 지역이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "웨일스 젠트리는 잉글랜드의 대지주에 비해 소박한 영지를 소유했다.",
+      "text_markdown": "웨일스 젠트리는 잉글랜드의 대지주에 비해 소박한 영지를 소유했다.",
+      "tts": {
+        "text": "웨일스 젠트리는 잉글랜드의 대지주에 비해 소박한 영지를 소유했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 그들은 군 복무와 가문의 명예를 무엇보다 중시했다.",
+      "text_markdown": "하지만 그들은 군 복무와 가문의 명예를 무엇보다 중시했다.",
+      "tts": {
+        "text": "하지만 그들은 군 복무와 가문의 명예를 무엇보다 중시했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건의 어린 시절에 대해서는 알려진 바가 거의 없다.",
+      "text_markdown": "모건의 어린 시절에 대해서는 알려진 바가 거의 없다.",
+      "tts": {
+        "text": "모건의 어린 시절에 대해서는 알려진 바가 거의 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 자신의 초기 시절에 대해 한 번도 쓴 적이 없으며, 학교 기록도 남아 있지 않다.",
+      "text_markdown": "그는 자신의 초기 시절에 대해 한 번도 쓴 적이 없으며, 학교 기록도 남아 있지 않다.",
+      "tts": {
+        "text": "그는 자신의 초기 시절에 대해 한 번도 쓴 적이 없으며, 학교 기록도 남아 있지 않다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사학자들은 그가 기초 교육을 받았지만 대학 교육을 받지는 않았을 것으로 추정한다.",
+      "text_markdown": "역사학자들은 그가 기초 교육을 받았지만 대학 교육을 받지는 않았을 것으로 추정한다.",
+      "tts": {
+        "text": "역사학자들은 그가 기초 교육을 받았지만 대학 교육을 받지는 않았을 것으로 추정한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백오십 년대 후반 어느 시점에 모건은 카리브해로 항해했다.",
+      "text_markdown": "천육백오십 년대 후반 어느 시점에 모건은 카리브해로 항해했다.",
+      "tts": {
+        "text": "천육백오십 년대 후반 어느 시점에 모건은 카리브해로 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그가 어떻게 그곳에 갔는지는 논쟁의 대상이다.",
+      "text_markdown": "그가 어떻게 그곳에 갔는지는 논쟁의 대상이다.",
+      "tts": {
+        "text": "그가 어떻게 그곳에 갔는지는 논쟁의 대상이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한 이야기에 따르면, 그는 소년 시절 브리스톨에서 납치되어 바베이도스에서 계약 하인으로 팔렸다고 한다.",
+      "text_markdown": "한 이야기에 따르면, 그는 소년 시절 브리스톨에서 납치되어 바베이도스에서 계약 하인으로 팔렸다고 한다.",
+      "tts": {
+        "text": "한 이야기에 따르면, 그는 소년 시절 브리스톨에서 납치되어 바베이도스에서 계약 하인으로 팔렸다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건 자신은 나중에 이를 부인하며 명예 훼손이라고 불렀다.",
+      "text_markdown": "모건 자신은 나중에 이를 부인하며 명예 훼손이라고 불렀다.",
+      "tts": {
+        "text": "모건 자신은 나중에 이를 부인하며 명예 훼손이라고 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 이 주장을 인쇄한 출판업자를 고소하여 손해배상을 받았다.",
+      "text_markdown": "그는 이 주장을 인쇄한 출판업자를 고소하여 손해배상을 받았다.",
+      "tts": {
+        "text": "그는 이 주장을 인쇄한 출판업자를 고소하여 손해배상을 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "더 가능성 있는 설명은 모건이 병사로서 카리브해에 왔다는 것이다.",
+      "text_markdown": "더 가능성 있는 설명은 모건이 병사로서 카리브해에 왔다는 것이다.",
+      "tts": {
+        "text": "더 가능성 있는 설명은 모건이 병사로서 카리브해에 왔다는 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천육백오십오 년, 잉글랜드는 스페인 영토를 점령하기 위해 대규모 군사 원정대를 보냈다.",
+      "text_markdown": "천육백오십오 년, 잉글랜드는 스페인 영토를 점령하기 위해 대규모 군사 원정대를 보냈다.",
+      "tts": {
+        "text": "천육백오십오 년, 잉글랜드는 스페인 영토를 점령하기 위해 대규모 군사 원정대를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함대는 히스파니올라 점령에 실패했지만 자메이카 점령에는 성공했다.",
+      "text_markdown": "함대는 히스파니올라 점령에 실패했지만 자메이카 점령에는 성공했다.",
+      "tts": {
+        "text": "함대는 히스파니올라 점령에 실패했지만 자메이카 점령에는 성공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 원정은 서방 설계라고 알려져 있었다.",
+      "text_markdown": "이 원정은 서방 설계라고 알려져 있었다.",
+      "tts": {
+        "text": "이 원정은 서방 설계라고 알려져 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드의 호국경 올리버 크롬웰이 명령한 것이었다.",
+      "text_markdown": "잉글랜드의 호국경 올리버 크롬웰이 명령한 것이었다.",
+      "tts": {
+        "text": "잉글랜드의 호국경 올리버 크롬웰이 명령한 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "크롬웰은 카리브해에 대한 스페인의 지배를 타파하고 잉글랜드의 세력을 확장하고자 했다.",
+      "text_markdown": "크롬웰은 카리브해에 대한 스페인의 지배를 타파하고 잉글랜드의 세력을 확장하고자 했다.",
+      "tts": {
+        "text": "크롬웰은 카리브해에 대한 스페인의 지배를 타파하고 잉글랜드의 세력을 확장하고자 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 이 원정의 일원이었을 수도 있고, 직후에 도착했을 수도 있다.",
+      "text_markdown": "모건은 이 원정의 일원이었을 수도 있고, 직후에 도착했을 수도 있다.",
+      "tts": {
+        "text": "모건은 이 원정의 일원이었을 수도 있고, 직후에 도착했을 수도 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어쨌든, 천육백육십 년대 초반에 이르러 그는 자메이카에 자리를 잡았다.",
+      "text_markdown": "어쨌든, 천육백육십 년대 초반에 이르러 그는 자메이카에 자리를 잡았다.",
+      "tts": {
+        "text": "어쨌든, 천육백육십 년대 초반에 이르러 그는 자메이카에 자리를 잡았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 빠르게 유능하고 야심 찬 전사임을 증명했다.",
+      "text_markdown": "그는 빠르게 유능하고 야심 찬 전사임을 증명했다.",
+      "tts": {
+        "text": "그는 빠르게 유능하고 야심 찬 전사임을 증명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천육백육십삼 년, 그는 중앙아메리카의 스페인 정착지를 공격하는 버커니어 원정에 합류했다.",
+      "text_markdown": "천육백육십삼 년, 그는 중앙아메리카의 스페인 정착지를 공격하는 버커니어 원정에 합류했다.",
+      "tts": {
+        "text": "천육백육십삼 년, 그는 중앙아메리카의 스페인 정착지를 공격하는 버커니어 원정에 합류했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "습격자들은 오늘날의 니카라과와 온두라스 해안을 따라 도시들을 공격했다.",
+      "text_markdown": "습격자들은 오늘날의 니카라과와 온두라스 해안을 따라 도시들을 공격했다.",
+      "tts": {
+        "text": "습격자들은 오늘날의 니카라과와 온두라스 해안을 따라 도시들을 공격했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 초기 원정은 크리스토퍼 밍스라는 노련한 버커니어가 이끌었다.",
+      "text_markdown": "이 초기 원정은 크리스토퍼 밍스라는 노련한 버커니어가 이끌었다.",
+      "tts": {
+        "text": "이 초기 원정은 크리스토퍼 밍스라는 노련한 버커니어가 이끌었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "밍스는 대담하고 경험 많은 습격자로 젊은 버커니어들에게 기술을 가르쳤다.",
+      "text_markdown": "밍스는 대담하고 경험 많은 습격자로 젊은 버커니어들에게 기술을 가르쳤다.",
+      "tts": {
+        "text": "밍스는 대담하고 경험 많은 습격자로 젊은 버커니어들에게 기술을 가르쳤다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건은 그를 주의 깊게 관찰하며 배웠다.",
+      "text_markdown": "모건은 그를 주의 깊게 관찰하며 배웠다.",
+      "tts": {
+        "text": "모건은 그를 주의 깊게 관찰하며 배웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 이 초기 습격들을 통해 자신의 경력을 결정짓게 될 전술을 배웠다.",
+      "text_markdown": "모건은 이 초기 습격들을 통해 자신의 경력을 결정짓게 될 전술을 배웠다.",
+      "tts": {
+        "text": "모건은 이 초기 습격들을 통해 자신의 경력을 결정짓게 될 전술을 배웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 정글 지형을 통해 대규모 인원을 이동시키는 방법을 연구했다.",
+      "text_markdown": "그는 정글 지형을 통해 대규모 인원을 이동시키는 방법을 연구했다.",
+      "tts": {
+        "text": "그는 정글 지형을 통해 대규모 인원을 이동시키는 방법을 연구했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 빠르게 타격하고 스페인 지원군이 도착하기 전에 후퇴하는 법을 배웠다.",
+      "text_markdown": "그는 빠르게 타격하고 스페인 지원군이 도착하기 전에 후퇴하는 법을 배웠다.",
+      "tts": {
+        "text": "그는 빠르게 타격하고 스페인 지원군이 도착하기 전에 후퇴하는 법을 배웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백육십오 년, 모건은 유명한 버커니어 에드워드 맨스필드와 함께 프로비던스 섬 습격에 참가했다.",
+      "text_markdown": "천육백육십오 년, 모건은 유명한 버커니어 에드워드 맨스필드와 함께 프로비던스 섬 습격에 참가했다.",
+      "tts": {
+        "text": "천육백육십오 년, 모건은 유명한 버커니어 에드워드 맨스필드와 함께 프로비던스 섬 습격에 참가했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프로비던스는 니카라과 해안의 작은 섬으로, 몇 년 전 스페인이 잉글랜드로부터 탈환한 곳이었다.",
+      "text_markdown": "프로비던스는 니카라과 해안의 작은 섬으로, 몇 년 전 스페인이 잉글랜드로부터 탈환한 곳이었다.",
+      "tts": {
+        "text": "프로비던스는 니카라과 해안의 작은 섬으로, 몇 년 전 스페인이 잉글랜드로부터 탈환한 곳이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "맨스필드의 함대는 쉽게 섬을 점령했다.",
+      "text_markdown": "맨스필드의 함대는 쉽게 섬을 점령했다.",
+      "tts": {
+        "text": "맨스필드의 함대는 쉽게 섬을 점령했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 이 원정은 버커니어 지도부의 문제를 드러냈다.",
+      "text_markdown": "하지만 이 원정은 버커니어 지도부의 문제를 드러냈다.",
+      "tts": {
+        "text": "하지만 이 원정은 버커니어 지도부의 문제를 드러냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사나이들은 전리품 분배 방법을 놓고 다투었고, 많은 이가 탈영했다.",
+      "text_markdown": "사나이들은 전리품 분배 방법을 놓고 다투었고, 많은 이가 탈영했다.",
+      "tts": {
+        "text": "사나이들은 전리품 분배 방법을 놓고 다투었고, 많은 이가 탈영했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백육십칠 년 맨스필드가 죽자, 버커니어들은 새로운 지도자가 필요했다.",
+      "text_markdown": "천육백육십칠 년 맨스필드가 죽자, 버커니어들은 새로운 지도자가 필요했다.",
+      "tts": {
+        "text": "천육백육십칠 년 맨스필드가 죽자, 버커니어들은 새로운 지도자가 필요했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건이 후임으로 선출되었다.",
+      "text_markdown": "모건이 후임으로 선출되었다.",
+      "tts": {
+        "text": "모건이 후임으로 선출되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 겨우 서른 살이었지만, 이미 대담함과 전술적 능력으로 명성을 얻고 있었다.",
+      "text_markdown": "그는 겨우 서른 살이었지만, 이미 대담함과 전술적 능력으로 명성을 얻고 있었다.",
+      "tts": {
+        "text": "그는 겨우 서른 살이었지만, 이미 대담함과 전술적 능력으로 명성을 얻고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "거의 같은 시기에, 모건은 아내 메리 엘리자베스와 결혼했다.",
+      "text_markdown": "거의 같은 시기에, 모건은 아내 메리 엘리자베스와 결혼했다.",
+      "tts": {
+        "text": "거의 같은 시기에, 모건은 아내 메리 엘리자베스와 결혼했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 자메이카 부총독을 역임한 그의 삼촌 에드워드 모건의 딸이었다.",
+      "text_markdown": "그녀는 자메이카 부총독을 역임한 그의 삼촌 에드워드 모건의 딸이었다.",
+      "tts": {
+        "text": "그녀는 자메이카 부총독을 역임한 그의 삼촌 에드워드 모건의 딸이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 결혼은 그를 섬의 식민지 엘리트 계층과 연결시켰다.",
+      "text_markdown": "이 결혼은 그를 섬의 식민지 엘리트 계층과 연결시켰다.",
+      "tts": {
+        "text": "이 결혼은 그를 섬의 식민지 엘리트 계층과 연결시켰다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 이제 버커니어 선장이자 자메이카 농장주 계급의 일원이었다.",
+      "text_markdown": "모건은 이제 버커니어 선장이자 자메이카 농장주 계급의 일원이었다.",
+      "tts": {
+        "text": "모건은 이제 버커니어 선장이자 자메이카 농장주 계급의 일원이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 토지와 노예를 소유했고, 정치를 전쟁만큼이나 잘 이해했다.",
+      "text_markdown": "그는 토지와 노예를 소유했고, 정치를 전쟁만큼이나 잘 이해했다.",
+      "tts": {
+        "text": "그는 토지와 노예를 소유했고, 정치를 전쟁만큼이나 잘 이해했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 자메이카 총독 토머스 모디포드 경과 긴밀한 관계를 구축했다.",
+      "text_markdown": "그는 자메이카 총독 토머스 모디포드 경과 긴밀한 관계를 구축했다.",
+      "tts": {
+        "text": "그는 자메이카 총독 토머스 모디포드 경과 긴밀한 관계를 구축했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모디포드는 스페인의 침략에 대한 섬의 방어를 모건에게 의존했다.",
+      "text_markdown": "모디포드는 스페인의 침략에 대한 섬의 방어를 모건에게 의존했다.",
+      "tts": {
+        "text": "모디포드는 스페인의 침략에 대한 섬의 방어를 모건에게 의존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대가로 모디포드는 모건에게 스페인 목표를 공격하는 데 필요한 법적 근거를 제공했다.",
+      "text_markdown": "그 대가로 모디포드는 모건에게 스페인 목표를 공격하는 데 필요한 법적 근거를 제공했다.",
+      "tts": {
+        "text": "그 대가로 모디포드는 모건에게 스페인 목표를 공격하는 데 필요한 법적 근거를 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "총독과 해적 사이의 이 파트너십은 카리브해의 세력 균형을 재편하게 된다.",
+      "text_markdown": "총독과 해적 사이의 이 파트너십은 카리브해의 세력 균형을 재편하게 된다.",
+      "tts": {
+        "text": "총독과 해적 사이의 이 파트너십은 카리브해의 세력 균형을 재편하게 된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "카리브해의 웨일스인",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건은 자신을 스페인 본토에서 가장 두려운 인물로 만들 일련의 습격을 시작하려 하고 있었다.",
+      "text_markdown": "모건은 자신을 스페인 본토에서 가장 두려운 인물로 만들 일련의 습격을 시작하려 하고 있었다.",
+      "tts": {
+        "text": "모건은 자신을 스페인 본토에서 가장 두려운 인물로 만들 일련의 습격을 시작하려 하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "제국을 뒤흔든 습격",
+      "text_markdown": "제국을 뒤흔든 습격"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건의 첫 번째 주요 독립 지휘는 천육백육십팔 년에 이루어졌다.",
+      "text_markdown": "모건의 첫 번째 주요 독립 지휘는 천육백육십팔 년에 이루어졌다.",
+      "tts": {
+        "text": "모건의 첫 번째 주요 독립 지휘는 천육백육십팔 년에 이루어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모디포드 총독은 자메이카 공격에 관한 스페인의 계획에 대한 정보 수집을 그에게 위임했다.",
+      "text_markdown": "모디포드 총독은 자메이카 공격에 관한 스페인의 계획에 대한 정보 수집을 그에게 위임했다.",
+      "tts": {
+        "text": "모디포드 총독은 자메이카 공격에 관한 스페인의 계획에 대한 정보 수집을 그에게 위임했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건은 이 위임을 매우 폭넓게 해석했다.",
+      "text_markdown": "모건은 이 위임을 매우 폭넓게 해석했다.",
+      "tts": {
+        "text": "모건은 이 위임을 매우 폭넓게 해석했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 열두 척의 배와 칠백 명 이상의 병력으로 함대를 편성했다.",
+      "text_markdown": "그는 열두 척의 배와 칠백 명 이상의 병력으로 함대를 편성했다.",
+      "tts": {
+        "text": "그는 열두 척의 배와 칠백 명 이상의 병력으로 함대를 편성했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 목표는 아메리카에서 가장 견고하게 요새화된 도시 중 하나인 포르토벨로였다.",
+      "text_markdown": "그의 목표는 아메리카에서 가장 견고하게 요새화된 도시 중 하나인 포르토벨로였다.",
+      "tts": {
+        "text": "그의 목표는 아메리카에서 가장 견고하게 요새화된 도시 중 하나인 포르토벨로였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포르토벨로는 오늘날 파나마의 카리브해 연안에 위치했다.",
+      "text_markdown": "포르토벨로는 오늘날 파나마의 카리브해 연안에 위치했다.",
+      "tts": {
+        "text": "포르토벨로는 오늘날 파나마의 카리브해 연안에 위치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남미의 은이 스페인행 배에 실리는 곳이었다.",
+      "text_markdown": "남미의 은이 스페인행 배에 실리는 곳이었다.",
+      "tts": {
+        "text": "남미의 은이 스페인행 배에 실리는 곳이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 도시는 세 개의 석조 요새와 직업 군인으로 구성된 수비대가 지키고 있었다.",
+      "text_markdown": "이 도시는 세 개의 석조 요새와 직업 군인으로 구성된 수비대가 지키고 있었다.",
+      "tts": {
+        "text": "이 도시는 세 개의 석조 요새와 직업 군인으로 구성된 수비대가 지키고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아무도 포르토벨로에 대한 공격을 예상하지 못했다.",
+      "text_markdown": "아무도 포르토벨로에 대한 공격을 예상하지 못했다.",
+      "tts": {
+        "text": "아무도 포르토벨로에 대한 공격을 예상하지 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인인들은 그곳이 난공불락이라 여겼다.",
+      "text_markdown": "스페인인들은 그곳이 난공불락이라 여겼다.",
+      "tts": {
+        "text": "스페인인들은 그곳이 난공불락이라 여겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바로 그것이 모건이 그곳을 선택한 이유였다.",
+      "text_markdown": "바로 그것이 모건이 그곳을 선택한 이유였다.",
+      "tts": {
+        "text": "바로 그것이 모건이 그곳을 선택한 이유였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건의 부하들은 밤에 도시에서 수 마일 떨어진 곳에 상륙했다.",
+      "text_markdown": "모건의 부하들은 밤에 도시에서 수 마일 떨어진 곳에 상륙했다.",
+      "tts": {
+        "text": "모건의 부하들은 밤에 도시에서 수 마일 떨어진 곳에 상륙했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 카누를 타고 해안에 도착한 뒤 어둠 속에서 정글을 통해 기어갔다.",
+      "text_markdown": "그들은 카누를 타고 해안에 도착한 뒤 어둠 속에서 정글을 통해 기어갔다.",
+      "tts": {
+        "text": "그들은 카누를 타고 해안에 도착한 뒤 어둠 속에서 정글을 통해 기어갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "새벽에 첫 번째 요새를 공격하여 수비대를 완전히 기습했다.",
+      "text_markdown": "새벽에 첫 번째 요새를 공격하여 수비대를 완전히 기습했다.",
+      "tts": {
+        "text": "새벽에 첫 번째 요새를 공격하여 수비대를 완전히 기습했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인인들은 용감하게 저항했지만 공격의 속도에 압도당했다.",
+      "text_markdown": "스페인인들은 용감하게 저항했지만 공격의 속도에 압도당했다.",
+      "tts": {
+        "text": "스페인인들은 용감하게 저항했지만 공격의 속도에 압도당했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건의 버커니어들은 백병전에 능숙한 노련한 시가전 전사였다.",
+      "text_markdown": "모건의 버커니어들은 백병전에 능숙한 노련한 시가전 전사였다.",
+      "tts": {
+        "text": "모건의 버커니어들은 백병전에 능숙한 노련한 시가전 전사였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 적을 경악시킨 전술을 사용했다.",
+      "text_markdown": "모건은 적을 경악시킨 전술을 사용했다.",
+      "tts": {
+        "text": "모건은 적을 경악시킨 전술을 사용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로로 잡힌 수도사와 수녀들에게 두 번째 요새의 벽까지 사다리를 운반하도록 강제했다.",
+      "text_markdown": "포로로 잡힌 수도사와 수녀들에게 두 번째 요새의 벽까지 사다리를 운반하도록 강제했다.",
+      "tts": {
+        "text": "포로로 잡힌 수도사와 수녀들에게 두 번째 요새의 벽까지 사다리를 운반하도록 강제했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 수비대는 자국의 성직자들에게 발포할 수 없었다.",
+      "text_markdown": "스페인 수비대는 자국의 성직자들에게 발포할 수 없었다.",
+      "tts": {
+        "text": "스페인 수비대는 자국의 성직자들에게 발포할 수 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이틀 안에 세 개의 요새가 모두 함락되었다.",
+      "text_markdown": "이틀 안에 세 개의 요새가 모두 함락되었다.",
+      "tts": {
+        "text": "이틀 안에 세 개의 요새가 모두 함락되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건의 버커니어들은 이 주일에 걸쳐 도시를 약탈했다.",
+      "text_markdown": "모건의 버커니어들은 이 주일에 걸쳐 도시를 약탈했다.",
+      "tts": {
+        "text": "모건의 버커니어들은 이 주일에 걸쳐 도시를 약탈했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 금과 귀중품이 어디에 숨겨져 있는지 알아내기 위해 포로들을 고문했다.",
+      "text_markdown": "그들은 금과 귀중품이 어디에 숨겨져 있는지 알아내기 위해 포로들을 고문했다.",
+      "tts": {
+        "text": "그들은 금과 귀중품이 어디에 숨겨져 있는지 알아내기 위해 포로들을 고문했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포르토벨로에서의 총 전리품은 막대했다.",
+      "text_markdown": "포르토벨로에서의 총 전리품은 막대했다.",
+      "tts": {
+        "text": "포르토벨로에서의 총 전리품은 막대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사학자들은 전리품이 이십오만 피스 오브 에이트 이상이었을 것으로 추정한다.",
+      "text_markdown": "역사학자들은 전리품이 이십오만 피스 오브 에이트 이상이었을 것으로 추정한다.",
+      "tts": {
+        "text": "역사학자들은 전리품이 이십오만 피스 오브 에이트 이상이었을 것으로 추정한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일반 선원 한 명 한 명이 수년 치 정직한 임금에 해당하는 몫을 받았다.",
+      "text_markdown": "일반 선원 한 명 한 명이 수년 치 정직한 임금에 해당하는 몫을 받았다.",
+      "tts": {
+        "text": "일반 선원 한 명 한 명이 수년 치 정직한 임금에 해당하는 몫을 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 영웅으로 포트 로열에 귀환했다.",
+      "text_markdown": "모건은 영웅으로 포트 로열에 귀환했다.",
+      "tts": {
+        "text": "모건은 영웅으로 포트 로열에 귀환했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포르토벨로 습격의 성공은 수백 명의 추가 인원을 모건의 깃발 아래로 끌어들였다.",
+      "text_markdown": "포르토벨로 습격의 성공은 수백 명의 추가 인원을 모건의 깃발 아래로 끌어들였다.",
+      "tts": {
+        "text": "포르토벨로 습격의 성공은 수백 명의 추가 인원을 모건의 깃발 아래로 끌어들였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "카리브해 전역의 버커니어들이 난공불락의 도시를 함락시킨 사나이와 함께 항해하고 싶어 했다.",
+      "text_markdown": "카리브해 전역의 버커니어들이 난공불락의 도시를 함락시킨 사나이와 함께 항해하고 싶어 했다.",
+      "tts": {
+        "text": "카리브해 전역의 버커니어들이 난공불락의 도시를 함락시킨 사나이와 함께 항해하고 싶어 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백육십구 년 초, 모건은 이번에는 마라카이보를 목표로 다시 출항했다.",
+      "text_markdown": "천육백육십구 년 초, 모건은 이번에는 마라카이보를 목표로 다시 출항했다.",
+      "tts": {
+        "text": "천육백육십구 년 초, 모건은 이번에는 마라카이보를 목표로 다시 출항했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마라카이보는 오늘날 베네수엘라의 마라카이보 호수 연안에 있는 부유한 교역 도시였다.",
+      "text_markdown": "마라카이보는 오늘날 베네수엘라의 마라카이보 호수 연안에 있는 부유한 교역 도시였다.",
+      "tts": {
+        "text": "마라카이보는 오늘날 베네수엘라의 마라카이보 호수 연안에 있는 부유한 교역 도시였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "도시에 도달하려면 모건의 함대는 요새가 지키는 좁은 수로를 통과해야 했다.",
+      "text_markdown": "도시에 도달하려면 모건의 함대는 요새가 지키는 좁은 수로를 통과해야 했다.",
+      "tts": {
+        "text": "도시에 도달하려면 모건의 함대는 요새가 지키는 좁은 수로를 통과해야 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "버커니어들은 요새에 돌입했지만 이미 버려져 있었다.",
+      "text_markdown": "버커니어들은 요새에 돌입했지만 이미 버려져 있었다.",
+      "tts": {
+        "text": "버커니어들은 요새에 돌입했지만 이미 버려져 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 수비대는 장전된 대포를 남겨둔 채 도주해 있었다.",
+      "text_markdown": "스페인 수비대는 장전된 대포를 남겨둔 채 도주해 있었다.",
+      "tts": {
+        "text": "스페인 수비대는 장전된 대포를 남겨둔 채 도주해 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건의 부하들은 마라카이보에 입성했지만 거의 텅 비어 있었다.",
+      "text_markdown": "모건의 부하들은 마라카이보에 입성했지만 거의 텅 비어 있었다.",
+      "tts": {
+        "text": "모건의 부하들은 마라카이보에 입성했지만 거의 텅 비어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "주민들은 귀중품을 가지고 주변 시골로 도주한 상태였다.",
+      "text_markdown": "주민들은 귀중품을 가지고 주변 시골로 도주한 상태였다.",
+      "tts": {
+        "text": "주민들은 귀중품을 가지고 주변 시골로 도주한 상태였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건은 그들을 추적하기 위해 습격대를 파견했다.",
+      "text_markdown": "모건은 그들을 추적하기 위해 습격대를 파견했다.",
+      "tts": {
+        "text": "모건은 그들을 추적하기 위해 습격대를 파견했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "버커니어들은 숨겨진 보물을 찾아 몇 주를 보냈다.",
+      "text_markdown": "버커니어들은 숨겨진 보물을 찾아 몇 주를 보냈다.",
+      "tts": {
+        "text": "버커니어들은 숨겨진 보물을 찾아 몇 주를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 포로가 된 민간인들로부터 정보를 뽑아내기 위해 고문을 사용했다.",
+      "text_markdown": "그들은 포로가 된 민간인들로부터 정보를 뽑아내기 위해 고문을 사용했다.",
+      "tts": {
+        "text": "그들은 포로가 된 민간인들로부터 정보를 뽑아내기 위해 고문을 사용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 방법은 그 시대의 가혹한 기준으로 보아도 잔혹했다.",
+      "text_markdown": "이러한 방법은 그 시대의 가혹한 기준으로 보아도 잔혹했다.",
+      "tts": {
+        "text": "이러한 방법은 그 시대의 가혹한 기준으로 보아도 잔혹했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건이 마라카이보를 떠나려 했을 때, 수로가 봉쇄되어 있음을 발견했다.",
+      "text_markdown": "모건이 마라카이보를 떠나려 했을 때, 수로가 봉쇄되어 있음을 발견했다.",
+      "tts": {
+        "text": "모건이 마라카이보를 떠나려 했을 때, 수로가 봉쇄되어 있음을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 군함 세 척이 도착하여 요새를 다시 점령한 것이었다.",
+      "text_markdown": "스페인 군함 세 척이 도착하여 요새를 다시 점령한 것이었다.",
+      "tts": {
+        "text": "스페인 군함 세 척이 도착하여 요새를 다시 점령한 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건은 전 함대와 함께 호수 안에 갇혔다.",
+      "text_markdown": "모건은 전 함대와 함께 호수 안에 갇혔다.",
+      "tts": {
+        "text": "모건은 전 함대와 함께 호수 안에 갇혔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 제독은 모건에게 항복을 요구하는 서한을 보냈다.",
+      "text_markdown": "스페인 제독은 모건에게 항복을 요구하는 서한을 보냈다.",
+      "tts": {
+        "text": "스페인 제독은 모건에게 항복을 요구하는 서한을 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "버커니어들이 전리품을 모두 반환하면 안전한 통행을 보장하겠다고 약속했다.",
+      "text_markdown": "버커니어들이 전리품을 모두 반환하면 안전한 통행을 보장하겠다고 약속했다.",
+      "tts": {
+        "text": "버커니어들이 전리품을 모두 반환하면 안전한 통행을 보장하겠다고 약속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건은 거부했다.",
+      "text_markdown": "모건은 거부했다.",
+      "tts": {
+        "text": "모건은 거부했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대신, 모건은 기발한 탈출 계획을 고안했다.",
+      "text_markdown": "대신, 모건은 기발한 탈출 계획을 고안했다.",
+      "tts": {
+        "text": "대신, 모건은 기발한 탈출 계획을 고안했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "폭발물을 가득 실은 화공선을 스페인 기함에 직접 보냈다.",
+      "text_markdown": "폭발물을 가득 실은 화공선을 스페인 기함에 직접 보냈다.",
+      "tts": {
+        "text": "폭발물을 가득 실은 화공선을 스페인 기함에 직접 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기함은 폭발하여 침몰했다.",
+      "text_markdown": "기함은 폭발하여 침몰했다.",
+      "tts": {
+        "text": "기함은 폭발하여 침몰했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 번째 스페인 배는 좌초되어 나포되었다.",
+      "text_markdown": "두 번째 스페인 배는 좌초되어 나포되었다.",
+      "tts": {
+        "text": "두 번째 스페인 배는 좌초되어 나포되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세 번째는 요새 포화의 엄호 아래로 후퇴했다.",
+      "text_markdown": "세 번째는 요새 포화의 엄호 아래로 후퇴했다.",
+      "tts": {
+        "text": "세 번째는 요새 포화의 엄호 아래로 후퇴했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이어서 모건은 간단한 기만으로 요새 사령관을 속였다.",
+      "text_markdown": "이어서 모건은 간단한 기만으로 요새 사령관을 속였다.",
+      "tts": {
+        "text": "이어서 모건은 간단한 기만으로 요새 사령관을 속였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마치 상륙 공격을 준비하는 것처럼 병사를 가득 태운 보트를 해안 쪽으로 보냈다.",
+      "text_markdown": "마치 상륙 공격을 준비하는 것처럼 병사를 가득 태운 보트를 해안 쪽으로 보냈다.",
+      "tts": {
+        "text": "마치 상륙 공격을 준비하는 것처럼 병사를 가득 태운 보트를 해안 쪽으로 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "병사들은 보트 바닥에 숨어 눈에 띄지 않게 되돌아왔다.",
+      "text_markdown": "병사들은 보트 바닥에 숨어 눈에 띄지 않게 되돌아왔다.",
+      "tts": {
+        "text": "병사들은 보트 바닥에 숨어 눈에 띄지 않게 되돌아왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 사령관은 대포를 요새의 육지 쪽으로 옮겼다.",
+      "text_markdown": "스페인 사령관은 대포를 요새의 육지 쪽으로 옮겼다.",
+      "tts": {
+        "text": "스페인 사령관은 대포를 요새의 육지 쪽으로 옮겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그날 밤, 모건은 무방비 상태의 바다 쪽 성벽을 지나 함대를 항해시켰다.",
+      "text_markdown": "그날 밤, 모건은 무방비 상태의 바다 쪽 성벽을 지나 함대를 항해시켰다.",
+      "tts": {
+        "text": "그날 밤, 모건은 무방비 상태의 바다 쪽 성벽을 지나 함대를 항해시켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아침이 되자, 버커니어들은 안전하게 외해에 나와 있었다.",
+      "text_markdown": "아침이 되자, 버커니어들은 안전하게 외해에 나와 있었다.",
+      "tts": {
+        "text": "아침이 되자, 버커니어들은 안전하게 외해에 나와 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마라카이보 습격은 모건의 생존 최고의 버커니어 지휘관이라는 명성을 확고히 했다.",
+      "text_markdown": "마라카이보 습격은 모건의 생존 최고의 버커니어 지휘관이라는 명성을 확고히 했다.",
+      "tts": {
+        "text": "마라카이보 습격은 모건의 생존 최고의 버커니어 지휘관이라는 명성을 확고히 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 교활하고 무자비했으며, 멈출 수 없는 것처럼 보였다.",
+      "text_markdown": "그는 교활하고 무자비했으며, 멈출 수 없는 것처럼 보였다.",
+      "tts": {
+        "text": "그는 교활하고 무자비했으며, 멈출 수 없는 것처럼 보였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "제국을 뒤흔든 습격",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 다음 목표는 가장 대담한 것이 될 터였다.",
+      "text_markdown": "그의 다음 목표는 가장 대담한 것이 될 터였다.",
+      "tts": {
+        "text": "그의 다음 목표는 가장 대담한 것이 될 터였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "파나마 약탈",
+      "text_markdown": "파나마 약탈"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백칠십 년, 모건은 자신의 경력에서 가장 야심 찬 습격을 계획하기 시작했다.",
+      "text_markdown": "천육백칠십 년, 모건은 자신의 경력에서 가장 야심 찬 습격을 계획하기 시작했다.",
+      "tts": {
+        "text": "천육백칠십 년, 모건은 자신의 경력에서 가장 야심 찬 습격을 계획하기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 목표는 파나마 시, 아메리카 전체에서 가장 부유한 도시였다.",
+      "text_markdown": "그의 목표는 파나마 시, 아메리카 전체에서 가장 부유한 도시였다.",
+      "tts": {
+        "text": "그의 목표는 파나마 시, 아메리카 전체에서 가장 부유한 도시였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파나마 시는 파나마 지협의 태평양 연안에 위치했다.",
+      "text_markdown": "파나마 시는 파나마 지협의 태평양 연안에 위치했다.",
+      "tts": {
+        "text": "파나마 시는 파나마 지협의 태평양 연안에 위치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페루에서 오는 모든 은과 금이 스페인으로 가는 도중 이곳을 통과했다.",
+      "text_markdown": "페루에서 오는 모든 은과 금이 스페인으로 가는 도중 이곳을 통과했다.",
+      "tts": {
+        "text": "페루에서 오는 모든 은과 금이 스페인으로 가는 도중 이곳을 통과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 도시는 수천 명이 거주했으며, 신세계에서 가장 훌륭한 건물들이 있었다.",
+      "text_markdown": "이 도시는 수천 명이 거주했으며, 신세계에서 가장 훌륭한 건물들이 있었다.",
+      "tts": {
+        "text": "이 도시는 수천 명이 거주했으며, 신세계에서 가장 훌륭한 건물들이 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파나마 시에는 웅장한 교회, 석조 창고, 높은 종탑을 가진 대성당이 있었다.",
+      "text_markdown": "파나마 시에는 웅장한 교회, 석조 창고, 높은 종탑을 가진 대성당이 있었다.",
+      "tts": {
+        "text": "파나마 시에는 웅장한 교회, 석조 창고, 높은 종탑을 가진 대성당이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "부유한 상인들은 기와 지붕과 철제 발코니가 있는 집에 살았다.",
+      "text_markdown": "부유한 상인들은 기와 지붕과 철제 발코니가 있는 집에 살았다.",
+      "tts": {
+        "text": "부유한 상인들은 기와 지붕과 철제 발코니가 있는 집에 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 스페인 태평양 제국의 보석이었다.",
+      "text_markdown": "그것은 스페인 태평양 제국의 보석이었다.",
+      "tts": {
+        "text": "그것은 스페인 태평양 제국의 보석이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파나마 시에 도달하려면, 모건은 지협 전체를 도보로 횡단해야 했다.",
+      "text_markdown": "파나마 시에 도달하려면, 모건은 지협 전체를 도보로 횡단해야 했다.",
+      "tts": {
+        "text": "파나마 시에 도달하려면, 모건은 지협 전체를 도보로 횡단해야 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 여정은 며칠간 빽빽한 열대 정글을 헤치며 나아가야 함을 의미했다.",
+      "text_markdown": "그 여정은 며칠간 빽빽한 열대 정글을 헤치며 나아가야 함을 의미했다.",
+      "tts": {
+        "text": "그 여정은 며칠간 빽빽한 열대 정글을 헤치며 나아가야 함을 의미했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이토록 위험한 것을 시도한 버커니어 부대는 일찍이 없었다.",
+      "text_markdown": "이토록 위험한 것을 시도한 버커니어 부대는 일찍이 없었다.",
+      "tts": {
+        "text": "이토록 위험한 것을 시도한 버커니어 부대는 일찍이 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 역사상 가장 큰 버커니어 군대를 소집했다.",
+      "text_markdown": "모건은 역사상 가장 큰 버커니어 군대를 소집했다.",
+      "tts": {
+        "text": "모건은 역사상 가장 큰 버커니어 군대를 소집했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천팔백 명 이상이 합류하여 삼십육 척의 함대로 출항했다.",
+      "text_markdown": "천팔백 명 이상이 합류하여 삼십육 척의 함대로 출항했다.",
+      "tts": {
+        "text": "천팔백 명 이상이 합류하여 삼십육 척의 함대로 출항했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 천육백칠십 년 십이월에 프로비던스 섬에 집결했다.",
+      "text_markdown": "그들은 천육백칠십 년 십이월에 프로비던스 섬에 집결했다.",
+      "tts": {
+        "text": "그들은 천육백칠십 년 십이월에 프로비던스 섬에 집결했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 번째 단계는 차그레스 강 하구의 산 로렌소 요새를 점령하는 것이었다.",
+      "text_markdown": "첫 번째 단계는 차그레스 강 하구의 산 로렌소 요새를 점령하는 것이었다.",
+      "tts": {
+        "text": "첫 번째 단계는 차그레스 강 하구의 산 로렌소 요새를 점령하는 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 요새는 파나마 내륙으로의 강 경로를 지키고 있었다.",
+      "text_markdown": "이 요새는 파나마 내륙으로의 강 경로를 지키고 있었다.",
+      "tts": {
+        "text": "이 요새는 파나마 내륙으로의 강 경로를 지키고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 요새를 점령하기 위해 사백 명의 선발대를 보냈다.",
+      "text_markdown": "모건은 요새를 점령하기 위해 사백 명의 선발대를 보냈다.",
+      "tts": {
+        "text": "모건은 요새를 점령하기 위해 사백 명의 선발대를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "돌격은 치열했다.",
+      "text_markdown": "돌격은 치열했다.",
+      "tts": {
+        "text": "돌격은 치열했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "버커니어들은 수류탄과 사다리로 성벽을 공격했다.",
+      "text_markdown": "버커니어들은 수류탄과 사다리로 성벽을 공격했다.",
+      "tts": {
+        "text": "버커니어들은 수류탄과 사다리로 성벽을 공격했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투 중, 한 버커니어가 화살에 맞았다.",
+      "text_markdown": "전투 중, 한 버커니어가 화살에 맞았다.",
+      "tts": {
+        "text": "전투 중, 한 버커니어가 화살에 맞았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 화살을 몸에서 뽑아 솜으로 감싼 뒤 머스킷으로 되쏘았다.",
+      "text_markdown": "그는 화살을 몸에서 뽑아 솜으로 감싼 뒤 머스킷으로 되쏘았다.",
+      "tts": {
+        "text": "그는 화살을 몸에서 뽑아 솜으로 감싼 뒤 머스킷으로 되쏘았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "불타는 화살이 요새의 초가지붕에 불을 붙였다.",
+      "text_markdown": "불타는 화살이 요새의 초가지붕에 불을 붙였다.",
+      "tts": {
+        "text": "불타는 화살이 요새의 초가지붕에 불을 붙였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "불은 요새 내부의 목조 구조물로 빠르게 번졌다.",
+      "text_markdown": "불은 요새 내부의 목조 구조물로 빠르게 번졌다.",
+      "tts": {
+        "text": "불은 요새 내부의 목조 구조물로 빠르게 번졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "화약고가 폭발하여 수십 명의 스페인 수비대가 사망했다.",
+      "text_markdown": "화약고가 폭발하여 수십 명의 스페인 수비대가 사망했다.",
+      "tts": {
+        "text": "화약고가 폭발하여 수십 명의 스페인 수비대가 사망했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아침이 되자, 요새는 버커니어의 손에 넘어갔다.",
+      "text_markdown": "아침이 되자, 요새는 버커니어의 손에 넘어갔다.",
+      "tts": {
+        "text": "아침이 되자, 요새는 버커니어의 손에 넘어갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 후 모건은 주력 부대를 카누에 태우고 차그레스 강을 거슬러 올라갔다.",
+      "text_markdown": "그 후 모건은 주력 부대를 카누에 태우고 차그레스 강을 거슬러 올라갔다.",
+      "tts": {
+        "text": "그 후 모건은 주력 부대를 카누에 태우고 차그레스 강을 거슬러 올라갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여정은 지구상 가장 험난한 지형을 아홉 일에 걸쳐 통과해야 했다.",
+      "text_markdown": "여정은 지구상 가장 험난한 지형을 아홉 일에 걸쳐 통과해야 했다.",
+      "tts": {
+        "text": "여정은 지구상 가장 험난한 지형을 아홉 일에 걸쳐 통과해야 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "셋째 날에 식량이 바닥났다.",
+      "text_markdown": "셋째 날에 식량이 바닥났다.",
+      "tts": {
+        "text": "셋째 날에 식량이 바닥났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 가죽 가방을 먹고, 신발을 삶고, 나뭇잎을 씹었다.",
+      "text_markdown": "그들은 가죽 가방을 먹고, 신발을 삶고, 나뭇잎을 씹었다.",
+      "tts": {
+        "text": "그들은 가죽 가방을 먹고, 신발을 삶고, 나뭇잎을 씹었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 굶주림으로 쓰러져 동료들이 업고 가야 했다.",
+      "text_markdown": "일부는 굶주림으로 쓰러져 동료들이 업고 가야 했다.",
+      "tts": {
+        "text": "일부는 굶주림으로 쓰러져 동료들이 업고 가야 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마침내 지협의 태평양 쪽에 도달했을 때, 사나이들은 환호성을 질렀다.",
+      "text_markdown": "마침내 지협의 태평양 쪽에 도달했을 때, 사나이들은 환호성을 질렀다.",
+      "tts": {
+        "text": "마침내 지협의 태평양 쪽에 도달했을 때, 사나이들은 환호성을 질렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "멀리 파나마 시의 탑들이 보였다.",
+      "text_markdown": "멀리 파나마 시의 탑들이 보였다.",
+      "tts": {
+        "text": "멀리 파나마 시의 탑들이 보였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 총독은 도시를 방어하기 위해 약 이천육백 명의 병력을 소집했다.",
+      "text_markdown": "스페인 총독은 도시를 방어하기 위해 약 이천육백 명의 병력을 소집했다.",
+      "tts": {
+        "text": "스페인 총독은 도시를 방어하기 위해 약 이천육백 명의 병력을 소집했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 또한 야생 황소 두 떼를 데려왔는데, 버커니어 대열로 돌진시킬 계획이었다.",
+      "text_markdown": "그는 또한 야생 황소 두 떼를 데려왔는데, 버커니어 대열로 돌진시킬 계획이었다.",
+      "tts": {
+        "text": "그는 또한 야생 황소 두 떼를 데려왔는데, 버커니어 대열로 돌진시킬 계획이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파나마 전투는 천육백칠십일 년 일월 이십팔일에 벌어졌다.",
+      "text_markdown": "파나마 전투는 천육백칠십일 년 일월 이십팔일에 벌어졌다.",
+      "tts": {
+        "text": "파나마 전투는 천육백칠십일 년 일월 이십팔일에 벌어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건은 성벽 밖 개활지에 부하들을 배치했다.",
+      "text_markdown": "모건은 성벽 밖 개활지에 부하들을 배치했다.",
+      "tts": {
+        "text": "모건은 성벽 밖 개활지에 부하들을 배치했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 기병이 먼저 돌격했지만, 버커니어들은 굳건히 버텼다.",
+      "text_markdown": "스페인 기병이 먼저 돌격했지만, 버커니어들은 굳건히 버텼다.",
+      "tts": {
+        "text": "스페인 기병이 먼저 돌격했지만, 버커니어들은 굳건히 버텼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 머스킷 사격은 근거리에서 파괴적이었다.",
+      "text_markdown": "그들의 머스킷 사격은 근거리에서 파괴적이었다.",
+      "tts": {
+        "text": "그들의 머스킷 사격은 근거리에서 파괴적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기병은 몇 분 만에 전멸했다.",
+      "text_markdown": "기병은 몇 분 만에 전멸했다.",
+      "tts": {
+        "text": "기병은 몇 분 만에 전멸했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "황소들이 풀려났지만, 엉뚱한 방향으로 달렸다.",
+      "text_markdown": "황소들이 풀려났지만, 엉뚱한 방향으로 달렸다.",
+      "tts": {
+        "text": "황소들이 풀려났지만, 엉뚱한 방향으로 달렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부는 스페인 대열을 거꾸로 달려 혼란을 가중시켰다.",
+      "text_markdown": "일부는 스페인 대열을 거꾸로 달려 혼란을 가중시켰다.",
+      "tts": {
+        "text": "일부는 스페인 대열을 거꾸로 달려 혼란을 가중시켰다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 보병은 무너져 도시를 향해 도주했다.",
+      "text_markdown": "스페인 보병은 무너져 도시를 향해 도주했다.",
+      "tts": {
+        "text": "스페인 보병은 무너져 도시를 향해 도주했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건의 버커니어들이 거리를 통해 추격했다.",
+      "text_markdown": "모건의 버커니어들이 거리를 통해 추격했다.",
+      "tts": {
+        "text": "모건의 버커니어들이 거리를 통해 추격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 곳에서 전투는 야만적이고 백병전이었다.",
+      "text_markdown": "많은 곳에서 전투는 야만적이고 백병전이었다.",
+      "tts": {
+        "text": "많은 곳에서 전투는 야만적이고 백병전이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투 중 또는 직후에 파나마 시에서 대화재가 발생했다.",
+      "text_markdown": "전투 중 또는 직후에 파나마 시에서 대화재가 발생했다.",
+      "tts": {
+        "text": "전투 중 또는 직후에 파나마 시에서 대화재가 발생했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건의 부하들이 불을 질렀는지 스페인 수비대가 질렀는지는 여전히 논란이다.",
+      "text_markdown": "모건의 부하들이 불을 질렀는지 스페인 수비대가 질렀는지는 여전히 논란이다.",
+      "tts": {
+        "text": "모건의 부하들이 불을 질렀는지 스페인 수비대가 질렀는지는 여전히 논란이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "화재는 몇 시간 만에 도시 대부분을 파괴했다.",
+      "text_markdown": "화재는 몇 시간 만에 도시 대부분을 파괴했다.",
+      "tts": {
+        "text": "화재는 몇 시간 만에 도시 대부분을 파괴했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "버커니어들은 사 주에 걸쳐 폐허 속에서 보물을 찾았다.",
+      "text_markdown": "버커니어들은 사 주에 걸쳐 폐허 속에서 보물을 찾았다.",
+      "tts": {
+        "text": "버커니어들은 사 주에 걸쳐 폐허 속에서 보물을 찾았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 포로를 심문하고 잔해를 파헤쳤다.",
+      "text_markdown": "그들은 포로를 심문하고 잔해를 파헤쳤다.",
+      "tts": {
+        "text": "그들은 포로를 심문하고 잔해를 파헤쳤다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도시 부의 상당 부분은 전투 전에 배에 실려 남쪽으로 보내진 상태였다.",
+      "text_markdown": "도시 부의 상당 부분은 전투 전에 배에 실려 남쪽으로 보내진 상태였다.",
+      "tts": {
+        "text": "도시 부의 상당 부분은 전투 전에 배에 실려 남쪽으로 보내진 상태였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전리품은 사나이들이 기대한 것보다 적었다.",
+      "text_markdown": "전리품은 사나이들이 기대한 것보다 적었다.",
+      "tts": {
+        "text": "전리품은 사나이들이 기대한 것보다 적었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "분배될 때, 각자가 포르토벨로에서 벌었던 것보다 훨씬 적게 받았다.",
+      "text_markdown": "분배될 때, 각자가 포르토벨로에서 벌었던 것보다 훨씬 적게 받았다.",
+      "tts": {
+        "text": "분배될 때, 각자가 포르토벨로에서 벌었던 것보다 훨씬 적게 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 이들이 모건이 자신을 위해 보물을 숨겼다고 비난했다.",
+      "text_markdown": "많은 이들이 모건이 자신을 위해 보물을 숨겼다고 비난했다.",
+      "tts": {
+        "text": "많은 이들이 모건이 자신을 위해 보물을 숨겼다고 비난했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 이 비난을 부인했지만, 불평은 결코 그치지 않았다.",
+      "text_markdown": "모건은 이 비난을 부인했지만, 불평은 결코 그치지 않았다.",
+      "tts": {
+        "text": "모건은 이 비난을 부인했지만, 불평은 결코 그치지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 군대를 이끌고 지협을 건너 카리브해 연안으로 돌아왔다.",
+      "text_markdown": "그는 군대를 이끌고 지협을 건너 카리브해 연안으로 돌아왔다.",
+      "tts": {
+        "text": "그는 군대를 이끌고 지협을 건너 카리브해 연안으로 돌아왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건이 모르는 사이에, 잉글랜드와 스페인 사이에 이미 평화 조약이 체결되어 있었다.",
+      "text_markdown": "모건이 모르는 사이에, 잉글랜드와 스페인 사이에 이미 평화 조약이 체결되어 있었다.",
+      "tts": {
+        "text": "모건이 모르는 사이에, 잉글랜드와 스페인 사이에 이미 평화 조약이 체결되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마드리드 조약은 천육백칠십 년 칠월에 합의되었으며, 파나마 습격보다 수개월 앞선 것이었다.",
+      "text_markdown": "마드리드 조약은 천육백칠십 년 칠월에 합의되었으며, 파나마 습격보다 수개월 앞선 것이었다.",
+      "tts": {
+        "text": "마드리드 조약은 천육백칠십 년 칠월에 합의되었으며, 파나마 습격보다 수개월 앞선 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "조약 조건에 따라 양국은 서로의 식민지 공격을 중단하기로 합의했다.",
+      "text_markdown": "조약 조건에 따라 양국은 서로의 식민지 공격을 중단하기로 합의했다.",
+      "tts": {
+        "text": "조약 조건에 따라 양국은 서로의 식민지 공격을 중단하기로 합의했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파나마 시의 파괴는 외교적 위기를 초래했다.",
+      "text_markdown": "파나마 시의 파괴는 외교적 위기를 초래했다.",
+      "tts": {
+        "text": "파나마 시의 파괴는 외교적 위기를 초래했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인은 격분하여 잉글랜드에 책임자 처벌을 요구했다.",
+      "text_markdown": "스페인은 격분하여 잉글랜드에 책임자 처벌을 요구했다.",
+      "tts": {
+        "text": "스페인은 격분하여 잉글랜드에 책임자 처벌을 요구했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "파나마 약탈",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "파나마의 약탈은 새 조약에 대한 상상할 수 있는 가장 극적인 위반이었다.",
+      "text_markdown": "파나마의 약탈은 새 조약에 대한 상상할 수 있는 가장 극적인 위반이었다.",
+      "tts": {
+        "text": "파나마의 약탈은 새 조약에 대한 상상할 수 있는 가장 극적인 위반이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적에서 총독으로",
+      "text_markdown": "해적에서 총독으로"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드 정부는 스페인의 분노를 가라앉혀야 했다.",
+      "text_markdown": "잉글랜드 정부는 스페인의 분노를 가라앉혀야 했다.",
+      "tts": {
+        "text": "잉글랜드 정부는 스페인의 분노를 가라앉혀야 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천육백칠십이 년, 모디포드 총독과 헨리 모건 모두 런던으로 소환되었다.",
+      "text_markdown": "천육백칠십이 년, 모디포드 총독과 헨리 모건 모두 런던으로 소환되었다.",
+      "tts": {
+        "text": "천육백칠십이 년, 모디포드 총독과 헨리 모건 모두 런던으로 소환되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모디포드는 상징적 처벌로 런던탑에 투옥되었다.",
+      "text_markdown": "모디포드는 상징적 처벌로 런던탑에 투옥되었다.",
+      "tts": {
+        "text": "모디포드는 상징적 처벌로 런던탑에 투옥되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 재판을 받을 것을 각오하고 잉글랜드에 도착했다.",
+      "text_markdown": "모건은 재판을 받을 것을 각오하고 잉글랜드에 도착했다.",
+      "tts": {
+        "text": "모건은 재판을 받을 것을 각오하고 잉글랜드에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 대신, 그는 범죄자라기보다 유명인사로 대우받고 있음을 발견했다.",
+      "text_markdown": "그 대신, 그는 범죄자라기보다 유명인사로 대우받고 있음을 발견했다.",
+      "tts": {
+        "text": "그 대신, 그는 범죄자라기보다 유명인사로 대우받고 있음을 발견했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찰스 이세 국왕은 모건의 업적에 은밀히 기뻐했다.",
+      "text_markdown": "찰스 이세 국왕은 모건의 업적에 은밀히 기뻐했다.",
+      "tts": {
+        "text": "찰스 이세 국왕은 모건의 업적에 은밀히 기뻐했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파나마 약탈은 스페인을 수치스럽게 했고 카리브해에서의 잉글랜드의 힘을 보여주었다.",
+      "text_markdown": "파나마 약탈은 스페인을 수치스럽게 했고 카리브해에서의 잉글랜드의 힘을 보여주었다.",
+      "tts": {
+        "text": "파나마 약탈은 스페인을 수치스럽게 했고 카리브해에서의 잉글랜드의 힘을 보여주었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 결과는 국왕이 환영하는 것이었지만, 공개적으로 그렇게 말할 수는 없었다.",
+      "text_markdown": "이러한 결과는 국왕이 환영하는 것이었지만, 공개적으로 그렇게 말할 수는 없었다.",
+      "tts": {
+        "text": "이러한 결과는 국왕이 환영하는 것이었지만, 공개적으로 그렇게 말할 수는 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 런던에서 약 삼 년을 보냈다.",
+      "text_markdown": "모건은 런던에서 약 삼 년을 보냈다.",
+      "tts": {
+        "text": "모건은 런던에서 약 삼 년을 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 귀족들과 식사하고, 카리브해 문제에 대해 정부에 자문하며, 편안하게 살았다.",
+      "text_markdown": "그는 귀족들과 식사하고, 카리브해 문제에 대해 정부에 자문하며, 편안하게 살았다.",
+      "tts": {
+        "text": "그는 귀족들과 식사하고, 카리브해 문제에 대해 정부에 자문하며, 편안하게 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 수도의 커피하우스와 응접실에서 익숙한 인물이 되었다.",
+      "text_markdown": "그는 수도의 커피하우스와 응접실에서 익숙한 인물이 되었다.",
+      "tts": {
+        "text": "그는 수도의 커피하우스와 응접실에서 익숙한 인물이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백칠십사 년, 찰스 국왕이 놀라운 결정을 내렸다.",
+      "text_markdown": "천육백칠십사 년, 찰스 국왕이 놀라운 결정을 내렸다.",
+      "tts": {
+        "text": "천육백칠십사 년, 찰스 국왕이 놀라운 결정을 내렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "헨리 모건을 기사로 서임하여 헨리 모건 경으로 만든 것이다.",
+      "text_markdown": "헨리 모건을 기사로 서임하여 헨리 모건 경으로 만든 것이다.",
+      "tts": {
+        "text": "헨리 모건을 기사로 서임하여 헨리 모건 경으로 만든 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리고 나서 모건을 자메이카 부총독으로 임명했다.",
+      "text_markdown": "그리고 나서 모건을 자메이카 부총독으로 임명했다.",
+      "tts": {
+        "text": "그리고 나서 모건을 자메이카 부총독으로 임명했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "평화 조약을 위반하고 파나마 시를 약탈한 사나이가 이제 자메이카를 통치하기 위해 돌려보내지고 있었다.",
+      "text_markdown": "평화 조약을 위반하고 파나마 시를 약탈한 사나이가 이제 자메이카를 통치하기 위해 돌려보내지고 있었다.",
+      "tts": {
+        "text": "평화 조약을 위반하고 파나마 시를 약탈한 사나이가 이제 자메이카를 통치하기 위해 돌려보내지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이는 식민지 역사상 가장 놀라운 운명의 역전 중 하나였다.",
+      "text_markdown": "이는 식민지 역사상 가장 놀라운 운명의 역전 중 하나였다.",
+      "tts": {
+        "text": "이는 식민지 역사상 가장 놀라운 운명의 역전 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 천육백칠십육 년 자메이카에 돌아와 새로운 직무를 수행했다.",
+      "text_markdown": "모건은 천육백칠십육 년 자메이카에 돌아와 새로운 직무를 수행했다.",
+      "tts": {
+        "text": "모건은 천육백칠십육 년 자메이카에 돌아와 새로운 직무를 수행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 역할은 새 총독 본 경 아래에서 복무하는 것이었다.",
+      "text_markdown": "그의 역할은 새 총독 본 경 아래에서 복무하는 것이었다.",
+      "tts": {
+        "text": "그의 역할은 새 총독 본 경 아래에서 복무하는 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아이러니하게도, 모건의 임무 중 하나는 해적 행위를 근절하는 것이었다.",
+      "text_markdown": "아이러니하게도, 모건의 임무 중 하나는 해적 행위를 근절하는 것이었다.",
+      "tts": {
+        "text": "아이러니하게도, 모건의 임무 중 하나는 해적 행위를 근절하는 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드는 이제 스페인과의 평화를 원했고, 버커니어들은 더 이상 유용하지 않았다.",
+      "text_markdown": "잉글랜드는 이제 스페인과의 평화를 원했고, 버커니어들은 더 이상 유용하지 않았다.",
+      "tts": {
+        "text": "잉글랜드는 이제 스페인과의 평화를 원했고, 버커니어들은 더 이상 유용하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건에게는 옛 동료들을 통제하는 것이 기대되었다.",
+      "text_markdown": "모건에게는 옛 동료들을 통제하는 것이 기대되었다.",
+      "tts": {
+        "text": "모건에게는 옛 동료들을 통제하는 것이 기대되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 엇갈린 열의로 이 임무를 수행했다.",
+      "text_markdown": "그는 엇갈린 열의로 이 임무를 수행했다.",
+      "tts": {
+        "text": "그는 엇갈린 열의로 이 임무를 수행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몇몇 해적을 체포하고 소수를 교수형에 처했지만, 다른 이들을 몰래 돕고 있다는 비난도 받았다.",
+      "text_markdown": "몇몇 해적을 체포하고 소수를 교수형에 처했지만, 다른 이들을 몰래 돕고 있다는 비난도 받았다.",
+      "tts": {
+        "text": "몇몇 해적을 체포하고 소수를 교수형에 처했지만, 다른 이들을 몰래 돕고 있다는 비난도 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 충성은 언제나 복잡했다.",
+      "text_markdown": "그의 충성은 언제나 복잡했다.",
+      "tts": {
+        "text": "그의 충성은 언제나 복잡했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "본 경과 모건은 자주 충돌했다.",
+      "text_markdown": "본 경과 모건은 자주 충돌했다.",
+      "tts": {
+        "text": "본 경과 모건은 자주 충돌했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "본은 모건을 무례하고 믿을 수 없는 자로 여겼다.",
+      "text_markdown": "본은 모건을 무례하고 믿을 수 없는 자로 여겼다.",
+      "tts": {
+        "text": "본은 모건을 무례하고 믿을 수 없는 자로 여겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건은 본을 카리브해의 현실을 이해하지 못하는 나약한 지도자로 여겼다.",
+      "text_markdown": "모건은 본을 카리브해의 현실을 이해하지 못하는 나약한 지도자로 여겼다.",
+      "tts": {
+        "text": "모건은 본을 카리브해의 현실을 이해하지 못하는 나약한 지도자로 여겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세월이 흐르며, 모건은 부유한 자메이카 농장주의 삶에 정착했다.",
+      "text_markdown": "세월이 흐르며, 모건은 부유한 자메이카 농장주의 삶에 정착했다.",
+      "tts": {
+        "text": "세월이 흐르며, 모건은 부유한 자메이카 농장주의 삶에 정착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 여러 대규모 영지와 수백 명의 노예 노동자를 소유했다.",
+      "text_markdown": "그는 여러 대규모 영지와 수백 명의 노예 노동자를 소유했다.",
+      "tts": {
+        "text": "그는 여러 대규모 영지와 수백 명의 노예 노동자를 소유했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 또한 과음했다.",
+      "text_markdown": "그는 또한 과음했다.",
+      "tts": {
+        "text": "그는 또한 과음했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "방문객들은 그를 얼굴이 붉고 과체중이며 자주 앓는 사람으로 묘사했다.",
+      "text_markdown": "방문객들은 그를 얼굴이 붉고 과체중이며 자주 앓는 사람으로 묘사했다.",
+      "tts": {
+        "text": "방문객들은 그를 얼굴이 붉고 과체중이며 자주 앓는 사람으로 묘사했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 건강은 천육백팔십 년대 내내 꾸준히 악화되었다.",
+      "text_markdown": "그의 건강은 천육백팔십 년대 내내 꾸준히 악화되었다.",
+      "tts": {
+        "text": "그의 건강은 천육백팔십 년대 내내 꾸준히 악화되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백팔십삼 년, 새 총독에 의해 자메이카 평의회에서 해임되었다.",
+      "text_markdown": "천육백팔십삼 년, 새 총독에 의해 자메이카 평의회에서 해임되었다.",
+      "tts": {
+        "text": "천육백팔십삼 년, 새 총독에 의해 자메이카 평의회에서 해임되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모건은 해적에게 너무 동정적이고 통치하기엔 너무 자주 취해 있다는 비난을 받았다.",
+      "text_markdown": "모건은 해적에게 너무 동정적이고 통치하기엔 너무 자주 취해 있다는 비난을 받았다.",
+      "tts": {
+        "text": "모건은 해적에게 너무 동정적이고 통치하기엔 너무 자주 취해 있다는 비난을 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 마지막 해를 농장에서 보내며, 대부분 공적 생활에서 물러나 있었다.",
+      "text_markdown": "그는 마지막 해를 농장에서 보내며, 대부분 공적 생활에서 물러나 있었다.",
+      "tts": {
+        "text": "그는 마지막 해를 농장에서 보내며, 대부분 공적 생활에서 물러나 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한스 슬론이라는 의사가 마지막 몇 개월간 모건을 방문했다.",
+      "text_markdown": "한스 슬론이라는 의사가 마지막 몇 개월간 모건을 방문했다.",
+      "tts": {
+        "text": "한스 슬론이라는 의사가 마지막 몇 개월간 모건을 방문했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "슬론은 모건을 쇠약하고 피부가 누렇다고 묘사했는데, 이는 간부전의 명백한 징후였다.",
+      "text_markdown": "슬론은 모건을 쇠약하고 피부가 누렇다고 묘사했는데, 이는 간부전의 명백한 징후였다.",
+      "tts": {
+        "text": "슬론은 모건을 쇠약하고 피부가 누렇다고 묘사했는데, 이는 간부전의 명백한 징후였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 모건은 천육백팔십팔 년 팔월 이십오일에 오십삼 세의 나이로 사망했다.",
+      "text_markdown": "헨리 모건은 천육백팔십팔 년 팔월 이십오일에 오십삼 세의 나이로 사망했다.",
+      "tts": {
+        "text": "헨리 모건은 천육백팔십팔 년 팔월 이십오일에 오십삼 세의 나이로 사망했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사인은 거의 확실히 수년간의 과도한 음주로 인한 간 질환이었다.",
+      "text_markdown": "사인은 거의 확실히 수년간의 과도한 음주로 인한 간 질환이었다.",
+      "tts": {
+        "text": "사인은 거의 확실히 수년간의 과도한 음주로 인한 간 질환이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포트 로열에서 국장이 거행되었다.",
+      "text_markdown": "포트 로열에서 국장이 거행되었다.",
+      "tts": {
+        "text": "포트 로열에서 국장이 거행되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "항구의 배들이 조포를 발사했다.",
+      "text_markdown": "항구의 배들이 조포를 발사했다.",
+      "tts": {
+        "text": "항구의 배들이 조포를 발사했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 바다가 내려다보이는 팰리세이도스 묘지에 안장되었다.",
+      "text_markdown": "그는 바다가 내려다보이는 팰리세이도스 묘지에 안장되었다.",
+      "tts": {
+        "text": "그는 바다가 내려다보이는 팰리세이도스 묘지에 안장되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사 년 후인 천육백구십이 년, 대지진이 포트 로열을 파괴했다.",
+      "text_markdown": "사 년 후인 천육백구십이 년, 대지진이 포트 로열을 파괴했다.",
+      "tts": {
+        "text": "사 년 후인 천육백구십이 년, 대지진이 포트 로열을 파괴했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시의 삼분의 이가 바다로 미끄러져 들어갔다.",
+      "text_markdown": "도시의 삼분의 이가 바다로 미끄러져 들어갔다.",
+      "tts": {
+        "text": "도시의 삼분의 이가 바다로 미끄러져 들어갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모건의 무덤은 바다에 삼켜진 묘지의 일부에 포함되어 있었다.",
+      "text_markdown": "모건의 무덤은 바다에 삼켜진 묘지의 일부에 포함되어 있었다.",
+      "tts": {
+        "text": "모건의 무덤은 바다에 삼켜진 묘지의 일부에 포함되어 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 시신은 발견된 적이 없다.",
+      "text_markdown": "그의 시신은 발견된 적이 없다.",
+      "tts": {
+        "text": "그의 시신은 발견된 적이 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "해적에서 총독으로",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지구상에서 가장 사악한 도시와, 그곳을 고향으로 삼았던 가장 유명한 해적, 둘 다 파도 아래로 사라졌다.",
+      "text_markdown": "지구상에서 가장 사악한 도시와, 그곳을 고향으로 삼았던 가장 유명한 해적, 둘 다 파도 아래로 사라졌다.",
+      "tts": {
+        "text": "지구상에서 가장 사악한 도시와, 그곳을 고향으로 삼았던 가장 유명한 해적, 둘 다 파도 아래로 사라졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "모건 선장의 전설",
+      "text_markdown": "모건 선장의 전설"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 모건의 이야기는 삼백 년 이상 전해지고 또 전해져 왔다.",
+      "text_markdown": "헨리 모건의 이야기는 삼백 년 이상 전해지고 또 전해져 왔다.",
+      "tts": {
+        "text": "헨리 모건의 이야기는 삼백 년 이상 전해지고 또 전해져 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 역사상 가장 유명한 해적 중 한 명이지만, 정작 본인은 해적이 아니라고 늘 주장했다.",
+      "text_markdown": "그는 역사상 가장 유명한 해적 중 한 명이지만, 정작 본인은 해적이 아니라고 늘 주장했다.",
+      "tts": {
+        "text": "그는 역사상 가장 유명한 해적 중 한 명이지만, 정작 본인은 해적이 아니라고 늘 주장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "생전에 이미 모건은 전설이 되어가고 있었다.",
+      "text_markdown": "생전에 이미 모건은 전설이 되어가고 있었다.",
+      "tts": {
+        "text": "생전에 이미 모건은 전설이 되어가고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알렉상드르 엑스케멜린이라는 네덜란드 작가가 천육백칠십팔 년에 모건의 습격에 대한 기록을 출판했다.",
+      "text_markdown": "알렉상드르 엑스케멜린이라는 네덜란드 작가가 천육백칠십팔 년에 모건의 습격에 대한 기록을 출판했다.",
+      "tts": {
+        "text": "알렉상드르 엑스케멜린이라는 네덜란드 작가가 천육백칠십팔 년에 모건의 습격에 대한 기록을 출판했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 책의 제목은 아메리카의 버커니어들이었다.",
+      "text_markdown": "그 책의 제목은 아메리카의 버커니어들이었다.",
+      "tts": {
+        "text": "그 책의 제목은 아메리카의 버커니어들이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "엑스케멜린은 모건 휘하에서 복무했으며 그가 묘사한 많은 사건을 직접 목격했다.",
+      "text_markdown": "엑스케멜린은 모건 휘하에서 복무했으며 그가 묘사한 많은 사건을 직접 목격했다.",
+      "tts": {
+        "text": "엑스케멜린은 모건 휘하에서 복무했으며 그가 묘사한 많은 사건을 직접 목격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 책은 유럽 전역에서 베스트셀러가 되었다.",
+      "text_markdown": "그의 책은 유럽 전역에서 베스트셀러가 되었다.",
+      "tts": {
+        "text": "그의 책은 유럽 전역에서 베스트셀러가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 수세기에 걸쳐 카리브해 버커니어에 대한 대중적 이미지를 형성했다.",
+      "text_markdown": "그것은 수세기에 걸쳐 카리브해 버커니어에 대한 대중적 이미지를 형성했다.",
+      "tts": {
+        "text": "그것은 수세기에 걸쳐 카리브해 버커니어에 대한 대중적 이미지를 형성했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 자신이 계약 하인이었다고 주장한 잉글랜드 출판업자를 고소했다.",
+      "text_markdown": "모건은 자신이 계약 하인이었다고 주장한 잉글랜드 출판업자를 고소했다.",
+      "tts": {
+        "text": "모건은 자신이 계약 하인이었다고 주장한 잉글랜드 출판업자를 고소했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 재판에서 이기고 손해배상을 받았지만, 책은 계속 팔렸다.",
+      "text_markdown": "그는 재판에서 이기고 손해배상을 받았지만, 책은 계속 팔렸다.",
+      "tts": {
+        "text": "그는 재판에서 이기고 손해배상을 받았지만, 책은 계속 팔렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건의 유산은 복잡하다.",
+      "text_markdown": "모건의 유산은 복잡하다.",
+      "tts": {
+        "text": "모건의 유산은 복잡하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드인들에게 그는 자메이카를 지키고 스페인을 굴복시킨 국민 영웅이었다.",
+      "text_markdown": "잉글랜드인들에게 그는 자메이카를 지키고 스페인을 굴복시킨 국민 영웅이었다.",
+      "tts": {
+        "text": "잉글랜드인들에게 그는 자메이카를 지키고 스페인을 굴복시킨 국민 영웅이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인인들에게 그는 도시를 불태우고 무고한 사람들을 고문한 전쟁 범죄자였다.",
+      "text_markdown": "스페인인들에게 그는 도시를 불태우고 무고한 사람들을 고문한 전쟁 범죄자였다.",
+      "tts": {
+        "text": "스페인인들에게 그는 도시를 불태우고 무고한 사람들을 고문한 전쟁 범죄자였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현대 역사학자들은 그를 시대의 산물로 본다.",
+      "text_markdown": "현대 역사학자들은 그를 시대의 산물로 본다.",
+      "tts": {
+        "text": "현대 역사학자들은 그를 시대의 산물로 본다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그가 저지른 폭력은 극단적이었지만, 그의 정부의 전폭적인 지원 아래 수행되었다.",
+      "text_markdown": "그가 저지른 폭력은 극단적이었지만, 그의 정부의 전폭적인 지원 아래 수행되었다.",
+      "tts": {
+        "text": "그가 저지른 폭력은 극단적이었지만, 그의 정부의 전폭적인 지원 아래 수행되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모건은 잔혹함에서 유일무이한 것이 아니었다.",
+      "text_markdown": "모건은 잔혹함에서 유일무이한 것이 아니었다.",
+      "tts": {
+        "text": "모건은 잔혹함에서 유일무이한 것이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 병사들도 잉글랜드 정착민에게 유사한 잔학 행위를 저질렀다.",
+      "text_markdown": "스페인 병사들도 잉글랜드 정착민에게 유사한 잔학 행위를 저질렀다.",
+      "tts": {
+        "text": "스페인 병사들도 잉글랜드 정착민에게 유사한 잔학 행위를 저질렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "차이점은 모건이 그토록 화려한 규모로 성공했다는 것이다.",
+      "text_markdown": "차이점은 모건이 그토록 화려한 규모로 성공했다는 것이다.",
+      "tts": {
+        "text": "차이점은 모건이 그토록 화려한 규모로 성공했다는 것이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 모건의 이름은 럼주 브랜드를 통해 가장 널리 알려져 있다.",
+      "text_markdown": "오늘날 모건의 이름은 럼주 브랜드를 통해 가장 널리 알려져 있다.",
+      "tts": {
+        "text": "오늘날 모건의 이름은 럼주 브랜드를 통해 가장 널리 알려져 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술이 그를 죽였을 가능성이 높다는 점을 감안하면, 그 아이러니를 놓치기 어렵다.",
+      "text_markdown": "술이 그를 죽였을 가능성이 높다는 점을 감안하면, 그 아이러니를 놓치기 어렵다.",
+      "tts": {
+        "text": "술이 그를 죽였을 가능성이 높다는 점을 감안하면, 그 아이러니를 놓치기 어렵다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수중 고고학자들은 포트 로열의 침몰한 유적을 탐사해 왔다.",
+      "text_markdown": "수중 고고학자들은 포트 로열의 침몰한 유적을 탐사해 왔다.",
+      "tts": {
+        "text": "수중 고고학자들은 포트 로열의 침몰한 유적을 탐사해 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 모건 시대의 건물, 선술집, 유물이 바다 아래 보존되어 있는 것을 발견했다.",
+      "text_markdown": "그들은 모건 시대의 건물, 선술집, 유물이 바다 아래 보존되어 있는 것을 발견했다.",
+      "tts": {
+        "text": "그들은 모건 시대의 건물, 선술집, 유물이 바다 아래 보존되어 있는 것을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 모건 자신의 무덤은 여전히 찾지 못하고 있다.",
+      "text_markdown": "하지만 모건 자신의 무덤은 여전히 찾지 못하고 있다.",
+      "tts": {
+        "text": "하지만 모건 자신의 무덤은 여전히 찾지 못하고 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 모건은 법과 범죄 사이의 경계가 권력자들에 의해 자신들의 이익을 위해 그어지는 세계에 살았다.",
+      "text_markdown": "헨리 모건은 법과 범죄 사이의 경계가 권력자들에 의해 자신들의 이익을 위해 그어지는 세계에 살았다.",
+      "tts": {
+        "text": "헨리 모건은 법과 범죄 사이의 경계가 권력자들에 의해 자신들의 이익을 위해 그어지는 세계에 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 그 경계를 누구보다 잘 이용했다.",
+      "text_markdown": "그는 그 경계를 누구보다 잘 이용했다.",
+      "tts": {
+        "text": "그는 그 경계를 누구보다 잘 이용했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 기사가 된 해적이었다.",
+      "text_markdown": "그는 기사가 된 해적이었다.",
+      "tts": {
+        "text": "그는 기사가 된 해적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 총독이 된 범죄자였다.",
+      "text_markdown": "그는 총독이 된 범죄자였다.",
+      "tts": {
+        "text": "그는 총독이 된 범죄자였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "모건 선장의 전설",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 이야기는 역사의 영웅과 악당이 종종 같은 사람이며, 다른 해안에서 바라볼 뿐이라는 사실을 일깨워 준다.",
+      "text_markdown": "그의 이야기는 역사의 영웅과 악당이 종종 같은 사람이며, 다른 해안에서 바라볼 뿐이라는 사실을 일깨워 준다.",
+      "tts": {
+        "text": "그의 이야기는 역사의 영웅과 악당이 종종 같은 사람이며, 다른 해안에서 바라볼 뿐이라는 사실을 일깨워 준다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

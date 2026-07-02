@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_anne_bonny",
+  "language": "zh",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个关于一位曾令加勒比海闻风丧胆的女人的真实故事。",
+      "text_markdown": "这是一个关于一位曾令加勒比海闻风丧胆的女人的真实故事。",
+      "tts": {
+        "text": "这是一个关于一位曾令加勒比海闻风丧胆的女人的真实故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的名字叫安妮·邦妮，是历史上最著名的海盗之一。",
+      "text_markdown": "她的名字叫安妮·邦妮，是历史上最著名的海盗之一。",
+      "tts": {
+        "text": "她的名字叫安妮·邦妮，是历史上最著名的海盗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她大约在1697年出生于爱尔兰，在殖民时期的南卡罗来纳长大。",
+      "text_markdown": "她大约在1697年出生于爱尔兰，在殖民时期的南卡罗来纳长大。",
+      "tts": {
+        "text": "她大约在一六九七年出生于爱尔兰，在殖民时期的南卡罗来纳长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮打破了她的世界试图强加给女性的每一条规则。",
+      "text_markdown": "安妮·邦妮打破了她的世界试图强加给女性的每一条规则。",
+      "tts": {
+        "text": "安妮·邦妮打破了她的世界试图强加给女性的每一条规则。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她放弃了体面的生活，与海盗一起航行。",
+      "text_markdown": "她放弃了体面的生活，与海盗一起航行。",
+      "tts": {
+        "text": "她放弃了体面的生活，与海盗一起航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她参加战斗，赢得了老练水手的尊重。",
+      "text_markdown": "她参加战斗，赢得了老练水手的尊重。",
+      "tts": {
+        "text": "她参加战斗，赢得了老练水手的尊重。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的故事主要来自一个来源，出版于1724年。",
+      "text_markdown": "她的故事主要来自一个来源，出版于1724年。",
+      "tts": {
+        "text": "她的故事主要来自一个来源，出版于一七二四年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那个来源是查尔斯·约翰逊船长关于最臭名昭著的海盗的著作。",
+      "text_markdown": "那个来源是查尔斯·约翰逊船长关于最臭名昭著的海盗的著作。",
+      "tts": {
+        "text": "那个来源是查尔斯·约翰逊船长关于最臭名昭著的海盗的著作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们无法确定安妮的故事中有多少是事实，多少是传说。",
+      "text_markdown": "我们无法确定安妮的故事中有多少是事实，多少是传说。",
+      "tts": {
+        "text": "我们无法确定安妮的故事中有多少是事实，多少是传说。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们所知道的已经足够非凡。",
+      "text_markdown": "我们所知道的已经足够非凡。",
+      "tts": {
+        "text": "我们所知道的已经足够非凡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这就是她的故事，尽可能忠实于历史记录来讲述。",
+      "text_markdown": "这就是她的故事，尽可能忠实于历史记录来讲述。",
+      "tts": {
+        "text": "这就是她的故事，尽可能忠实于历史记录来讲述。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "安妮·邦妮所知的世界",
+      "text_markdown": "安妮·邦妮所知的世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮生活在历史学家称之为海盗黄金时代的时期。",
+      "text_markdown": "安妮·邦妮生活在历史学家称之为海盗黄金时代的时期。",
+      "tts": {
+        "text": "安妮·邦妮生活在历史学家称之为海盗黄金时代的时期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个时代大约从1680年持续到1730年。",
+      "text_markdown": "这个时代大约从1680年持续到1730年。",
+      "tts": {
+        "text": "这个时代大约从一六八零年持续到一七三零年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "成千上万的海盗游荡在加勒比海、大西洋和印度洋。",
+      "text_markdown": "成千上万的海盗游荡在加勒比海、大西洋和印度洋。",
+      "tts": {
+        "text": "成千上万的海盗游荡在加勒比海、大西洋和印度洋。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加勒比海位于北美洲和南美洲之间。",
+      "text_markdown": "加勒比海位于北美洲和南美洲之间。",
+      "tts": {
+        "text": "加勒比海位于北美洲和南美洲之间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它散布着数百座大大小小的岛屿。",
+      "text_markdown": "它散布着数百座大大小小的岛屿。",
+      "tts": {
+        "text": "它散布着数百座大大小小的岛屿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在18世纪初，欧洲帝国不断争夺这些岛屿。",
+      "text_markdown": "在18世纪初，欧洲帝国不断争夺这些岛屿。",
+      "tts": {
+        "text": "在十八世纪初，欧洲帝国不断争夺这些岛屿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西班牙、英格兰、法国和荷兰都在那里宣称拥有领土。",
+      "text_markdown": "西班牙、英格兰、法国和荷兰都在那里宣称拥有领土。",
+      "tts": {
+        "text": "西班牙、英格兰、法国和荷兰都在那里宣称拥有领土。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加勒比海的经济依赖于糖、烟草和奴隶劳动。",
+      "text_markdown": "加勒比海的经济依赖于糖、烟草和奴隶劳动。",
+      "tts": {
+        "text": "加勒比海的经济依赖于糖、烟草和奴隶劳动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "牙买加和巴巴多斯等岛屿上的大型甘蔗种植园创造了巨大的财富。",
+      "text_markdown": "牙买加和巴巴多斯等岛屿上的大型甘蔗种植园创造了巨大的财富。",
+      "tts": {
+        "text": "牙买加和巴巴多斯等岛屿上的大型甘蔗种植园创造了巨大的财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些财富通过船只运输，使加勒比海对海盗具有不可抗拒的吸引力。",
+      "text_markdown": "这些财富通过船只运输，使加勒比海对海盗具有不可抗拒的吸引力。",
+      "tts": {
+        "text": "这些财富通过船只运输，使加勒比海对海盗具有不可抗拒的吸引力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "糖是大西洋世界最有价值的商品。",
+      "text_markdown": "糖是大西洋世界最有价值的商品。",
+      "tts": {
+        "text": "糖是大西洋世界最有价值的商品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的生产需要在残酷条件下投入大量劳动力。",
+      "text_markdown": "它的生产需要在残酷条件下投入大量劳动力。",
+      "tts": {
+        "text": "它的生产需要在残酷条件下投入大量劳动力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数百万被奴役的非洲人被带到加勒比海在种植园工作。",
+      "text_markdown": "数百万被奴役的非洲人被带到加勒比海在种植园工作。",
+      "tts": {
+        "text": "数百万被奴役的非洲人被带到加勒比海在种植园工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "糖的利润资助了帝国，建造了欧洲的伟大城市。",
+      "text_markdown": "糖的利润资助了帝国，建造了欧洲的伟大城市。",
+      "tts": {
+        "text": "糖的利润资助了帝国，建造了欧洲的伟大城市。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙王位继承战争于1713年结束。",
+      "text_markdown": "西班牙王位继承战争于1713年结束。",
+      "tts": {
+        "text": "西班牙王位继承战争于一七一三年结束。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那场战争期间，各国政府雇用了被称为私掠船长的私人船长。",
+      "text_markdown": "在那场战争期间，各国政府雇用了被称为私掠船长的私人船长。",
+      "tts": {
+        "text": "在那场战争期间，各国政府雇用了被称为私掠船长的私人船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私掠船长携带着被称为私掠许可证的官方文件。",
+      "text_markdown": "私掠船长携带着被称为私掠许可证的官方文件。",
+      "tts": {
+        "text": "私掠船长携带着被称为私掠许可证的官方文件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些许可证赋予他们攻击敌方船只的合法权利。",
+      "text_markdown": "这些许可证赋予他们攻击敌方船只的合法权利。",
+      "tts": {
+        "text": "这些许可证赋予他们攻击敌方船只的合法权利。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当战争结束时，成千上万的私掠船长突然失去了工作。",
+      "text_markdown": "当战争结束时，成千上万的私掠船长突然失去了工作。",
+      "tts": {
+        "text": "当战争结束时，成千上万的私掠船长突然失去了工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们中的许多人除了航海和战斗外没有其他技能。",
+      "text_markdown": "他们中的许多人除了航海和战斗外没有其他技能。",
+      "tts": {
+        "text": "他们中的许多人除了航海和战斗外没有其他技能。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人转向海盗活动，因为他们看不到其他生存方式。",
+      "text_markdown": "一些人转向海盗活动，因为他们看不到其他生存方式。",
+      "tts": {
+        "text": "一些人转向海盗活动，因为他们看不到其他生存方式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "另一些人成为海盗，因为他们宁愿自由也不愿贫穷。",
+      "text_markdown": "另一些人成为海盗，因为他们宁愿自由也不愿贫穷。",
+      "tts": {
+        "text": "另一些人成为海盗，因为他们宁愿自由也不愿贫穷。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴哈马群岛新普罗维登斯岛上的拿骚成为海盗的避风港。",
+      "text_markdown": "巴哈马群岛新普罗维登斯岛上的拿骚成为海盗的避风港。",
+      "tts": {
+        "text": "巴哈马群岛新普罗维登斯岛上的拿骚成为海盗的避风港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "到1716年，数百名海盗聚集在那里。",
+      "text_markdown": "到1716年，数百名海盗聚集在那里。",
+      "tts": {
+        "text": "到一七一六年，数百名海盗聚集在那里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们建立了一些历史学家所说的海盗共和国。",
+      "text_markdown": "他们建立了一些历史学家所说的海盗共和国。",
+      "tts": {
+        "text": "他们建立了一些历史学家所说的海盗共和国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拿骚有一个好港口、淡水，而且海军难以进攻。",
+      "text_markdown": "拿骚有一个好港口、淡水，而且海军难以进攻。",
+      "tts": {
+        "text": "拿骚有一个好港口、淡水，而且海军难以进攻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拿骚的海盗共和国没有正式政府。",
+      "text_markdown": "拿骚的海盗共和国没有正式政府。",
+      "tts": {
+        "text": "拿骚的海盗共和国没有正式政府。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们选举自己的领袖，并在他们之间解决纠纷。",
+      "text_markdown": "海盗们选举自己的领袖，并在他们之间解决纠纷。",
+      "tts": {
+        "text": "海盗们选举自己的领袖，并在他们之间解决纠纷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "酒馆、妓院和市场靠赃物繁荣兴旺。",
+      "text_markdown": "酒馆、妓院和市场靠赃物繁荣兴旺。",
+      "tts": {
+        "text": "酒馆、妓院和市场靠赃物繁荣兴旺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是西半球最无法无天的地方之一。",
+      "text_markdown": "这是西半球最无法无天的地方之一。",
+      "tts": {
+        "text": "这是西半球最无法无天的地方之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年，英国王室派伍兹·罗杰斯到拿骚担任新总督。",
+      "text_markdown": "1718年，英国王室派伍兹·罗杰斯到拿骚担任新总督。",
+      "tts": {
+        "text": "一七一八年，英国王室派伍兹·罗杰斯到拿骚担任新总督。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗杰斯本人是前私掠船长，深谙海盗之道。",
+      "text_markdown": "罗杰斯本人是前私掠船长，深谙海盗之道。",
+      "tts": {
+        "text": "罗杰斯本人是前私掠船长，深谙海盗之道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他向任何愿意投降并放弃海盗生涯的人提供皇家赦免。",
+      "text_markdown": "他向任何愿意投降并放弃海盗生涯的人提供皇家赦免。",
+      "tts": {
+        "text": "他向任何愿意投降并放弃海盗生涯的人提供皇家赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "许多海盗接受了提议，但并非所有人都是真心的。",
+      "text_markdown": "许多海盗接受了提议，但并非所有人都是真心的。",
+      "tts": {
+        "text": "许多海盗接受了提议，但并非所有人都是真心的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗杰斯还明确表示，拒绝赦免的海盗将被处以绞刑。",
+      "text_markdown": "罗杰斯还明确表示，拒绝赦免的海盗将被处以绞刑。",
+      "tts": {
+        "text": "罗杰斯还明确表示，拒绝赦免的海盗将被处以绞刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他公开处决了几名海盗以证明他是认真的。",
+      "text_markdown": "他公开处决了几名海盗以证明他是认真的。",
+      "tts": {
+        "text": "他公开处决了几名海盗以证明他是认真的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拿骚海盗共和国的时代即将结束。",
+      "text_markdown": "拿骚海盗共和国的时代即将结束。",
+      "tts": {
+        "text": "拿骚海盗共和国的时代即将结束。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与此同时，英国在北美的殖民地正在迅速发展。",
+      "text_markdown": "与此同时，英国在北美的殖民地正在迅速发展。",
+      "tts": {
+        "text": "与此同时，英国在北美的殖民地正在迅速发展。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "南卡罗来纳殖民地的查尔斯顿是最富有的港口之一。",
+      "text_markdown": "南卡罗来纳殖民地的查尔斯顿是最富有的港口之一。",
+      "tts": {
+        "text": "南卡罗来纳殖民地的查尔斯顿是最富有的港口之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是大米、靛蓝和被奴役人口贸易的中心。",
+      "text_markdown": "它是大米、靛蓝和被奴役人口贸易的中心。",
+      "tts": {
+        "text": "它是大米、靛蓝和被奴役人口贸易的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "查尔斯顿的商人们雄心勃勃，而且往往心狠手辣。",
+      "text_markdown": "查尔斯顿的商人们雄心勃勃，而且往往心狠手辣。",
+      "tts": {
+        "text": "查尔斯顿的商人们雄心勃勃，而且往往心狠手辣。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在18世纪初，女性在英国社会中几乎没有选择。",
+      "text_markdown": "在18世纪初，女性在英国社会中几乎没有选择。",
+      "tts": {
+        "text": "在十八世纪初，女性在英国社会中几乎没有选择。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她们不能拥有财产、不能投票、不能担任公职。",
+      "text_markdown": "她们不能拥有财产、不能投票、不能担任公职。",
+      "tts": {
+        "text": "她们不能拥有财产、不能投票、不能担任公职。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个女人的法律身份在结婚时被吸收到丈夫的身份中。",
+      "text_markdown": "一个女人的法律身份在结婚时被吸收到丈夫的身份中。",
+      "tts": {
+        "text": "一个女人的法律身份在结婚时被吸收到丈夫的身份中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一个女人与海盗并肩作战的想法几乎是不可想象的。",
+      "text_markdown": "一个女人与海盗并肩作战的想法几乎是不可想象的。",
+      "tts": {
+        "text": "一个女人与海盗并肩作战的想法几乎是不可想象的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然而，大海总是吸引着那些拒绝遵循社会规则的人。",
+      "text_markdown": "然而，大海总是吸引着那些拒绝遵循社会规则的人。",
+      "tts": {
+        "text": "然而，大海总是吸引着那些拒绝遵循社会规则的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗船按照自己的规则运作，一些船员出奇地民主。",
+      "text_markdown": "海盗船按照自己的规则运作，一些船员出奇地民主。",
+      "tts": {
+        "text": "海盗船按照自己的规则运作，一些船员出奇地民主。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船长由选举产生，也可以被投票罢免。",
+      "text_markdown": "船长由选举产生，也可以被投票罢免。",
+      "tts": {
+        "text": "船长由选举产生，也可以被投票罢免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "战利品按照约定的份额分配。",
+      "text_markdown": "战利品按照约定的份额分配。",
+      "tts": {
+        "text": "战利品按照约定的份额分配。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是安妮·邦妮到达拿骚时进入的世界。",
+      "text_markdown": "这就是安妮·邦妮到达拿骚时进入的世界。",
+      "tts": {
+        "text": "这就是安妮·邦妮到达拿骚时进入的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个充满暴力、机遇和激进自由的世界。",
+      "text_markdown": "这是一个充满暴力、机遇和激进自由的世界。",
+      "tts": {
+        "text": "这是一个充满暴力、机遇和激进自由的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "安妮·邦妮所知的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这也是一个正在迅速消失的世界。",
+      "text_markdown": "这也是一个正在迅速消失的世界。",
+      "tts": {
+        "text": "这也是一个正在迅速消失的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮大约在1697年出生于爱尔兰科克郡的小港口城镇金塞尔。",
+      "text_markdown": "安妮·邦妮大约在1697年出生于爱尔兰科克郡的小港口城镇金塞尔。",
+      "tts": {
+        "text": "安妮·邦妮大约在一六九七年出生于爱尔兰科克郡的小港口城镇金塞尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些资料将她的出生时间定在1698年或1700年，但大多数历史学家倾向于1697年。",
+      "text_markdown": "一些资料将她的出生时间定在1698年或1700年，但大多数历史学家倾向于1697年。",
+      "tts": {
+        "text": "一些资料将她的出生时间定在一六九八年或一七零零年，但大多数历史学家倾向于一六九七年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的父亲是威廉·科马克，金塞尔一位成功的律师。",
+      "text_markdown": "她的父亲是威廉·科马克，金塞尔一位成功的律师。",
+      "tts": {
+        "text": "她的父亲是威廉·科马克，金塞尔一位成功的律师。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的母亲是玛丽·布伦南，科马克家的仆人。",
+      "text_markdown": "她的母亲是玛丽·布伦南，科马克家的仆人。",
+      "tts": {
+        "text": "她的母亲是玛丽·布伦南，科马克家的仆人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "安妮是他们的私生女，出生于婚姻之外。",
+      "text_markdown": "安妮是他们的私生女，出生于婚姻之外。",
+      "tts": {
+        "text": "安妮是他们的私生女，出生于婚姻之外。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在18世纪的爱尔兰，这是一桩严重的丑闻。",
+      "text_markdown": "在18世纪的爱尔兰，这是一桩严重的丑闻。",
+      "tts": {
+        "text": "在十八世纪的爱尔兰，这是一桩严重的丑闻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "威廉·科马克的妻子发现了这段婚外情并离开了他。",
+      "text_markdown": "威廉·科马克的妻子发现了这段婚外情并离开了他。",
+      "tts": {
+        "text": "威廉·科马克的妻子发现了这段婚外情并离开了他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丑闻摧毁了他在金塞尔的法律事务所。",
+      "text_markdown": "丑闻摧毁了他在金塞尔的法律事务所。",
+      "tts": {
+        "text": "丑闻摧毁了他在金塞尔的法律事务所。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的客户抛弃了他，他的名誉毁于一旦。",
+      "text_markdown": "他的客户抛弃了他，他的名誉毁于一旦。",
+      "tts": {
+        "text": "他的客户抛弃了他，他的名誉毁于一旦。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "科马克决定在美洲殖民地重新开始。",
+      "text_markdown": "科马克决定在美洲殖民地重新开始。",
+      "tts": {
+        "text": "科马克决定在美洲殖民地重新开始。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他带着玛丽·布伦南和年幼的安妮去了南卡罗来纳的查尔斯顿。",
+      "text_markdown": "他带着玛丽·布伦南和年幼的安妮去了南卡罗来纳的查尔斯顿。",
+      "tts": {
+        "text": "他带着玛丽·布伦南和年幼的安妮去了南卡罗来纳的查尔斯顿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "起初，他给安妮穿上男孩的衣服，叫她安迪。",
+      "text_markdown": "起初，他给安妮穿上男孩的衣服，叫她安迪。",
+      "tts": {
+        "text": "起初，他给安妮穿上男孩的衣服，叫她安迪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他告诉人们这个孩子是一个亲戚的儿子，他正在培训其当法律书记员。",
+      "text_markdown": "他告诉人们这个孩子是一个亲戚的儿子，他正在培训其当法律书记员。",
+      "tts": {
+        "text": "他告诉人们这个孩子是一个亲戚的儿子，他正在培训其当法律书记员。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个骗局没有持续多久，但科马克还是在查尔斯顿发达了。",
+      "text_markdown": "这个骗局没有持续多久，但科马克还是在查尔斯顿发达了。",
+      "tts": {
+        "text": "这个骗局没有持续多久，但科马克还是在查尔斯顿发达了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他成为了一名成功的商人，最终购置了一座种植园。",
+      "text_markdown": "他成为了一名成功的商人，最终购置了一座种植园。",
+      "tts": {
+        "text": "他成为了一名成功的商人，最终购置了一座种植园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座种植园可能种植大米或靛蓝，这是该地区的主要经济作物。",
+      "text_markdown": "这座种植园可能种植大米或靛蓝，这是该地区的主要经济作物。",
+      "tts": {
+        "text": "这座种植园可能种植大米或靛蓝，这是该地区的主要经济作物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "与大多数殖民地儿童相比，安妮在相对舒适的环境中长大。",
+      "text_markdown": "与大多数殖民地儿童相比，安妮在相对舒适的环境中长大。",
+      "tts": {
+        "text": "与大多数殖民地儿童相比，安妮在相对舒适的环境中长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "金塞尔，安妮离开的那个城镇，是爱尔兰南海岸一个繁忙的港口。",
+      "text_markdown": "金塞尔，安妮离开的那个城镇，是爱尔兰南海岸一个繁忙的港口。",
+      "tts": {
+        "text": "金塞尔，安妮离开的那个城镇，是爱尔兰南海岸一个繁忙的港口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它曾是英军和西班牙军队之间一场著名战役的所在地。",
+      "text_markdown": "它曾是英军和西班牙军队之间一场著名战役的所在地。",
+      "tts": {
+        "text": "它曾是英军和西班牙军队之间一场著名战役的所在地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "该镇的居民是爱尔兰和英格兰定居者的混合体。",
+      "text_markdown": "该镇的居民是爱尔兰和英格兰定居者的混合体。",
+      "tts": {
+        "text": "该镇的居民是爱尔兰和英格兰定居者的混合体。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "安妮永远不会回到她出生的土地。",
+      "text_markdown": "安妮永远不会回到她出生的土地。",
+      "tts": {
+        "text": "安妮永远不会回到她出生的土地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根据约翰逊船长的记载，安妮从小就脾气暴躁。",
+      "text_markdown": "根据约翰逊船长的记载，安妮从小就脾气暴躁。",
+      "tts": {
+        "text": "根据约翰逊船长的记载，安妮从小就脾气暴躁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个故事声称她曾在暴怒中用餐刀刺伤了一个女仆。",
+      "text_markdown": "一个故事声称她曾在暴怒中用餐刀刺伤了一个女仆。",
+      "tts": {
+        "text": "一个故事声称她曾在暴怒中用餐刀刺伤了一个女仆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "无论这个故事是否属实或被夸大，它确立了她暴力的名声。",
+      "text_markdown": "无论这个故事是否属实或被夸大，它确立了她暴力的名声。",
+      "tts": {
+        "text": "无论这个故事是否属实或被夸大，它确立了她暴力的名声。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮的母亲玛丽·布伦南在安妮还小的时候就去世了。",
+      "text_markdown": "安妮的母亲玛丽·布伦南在安妮还小的时候就去世了。",
+      "tts": {
+        "text": "安妮的母亲玛丽·布伦南在安妮还小的时候就去世了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "玛丽去世的确切日期和原因不得而知。",
+      "text_markdown": "玛丽去世的确切日期和原因不得而知。",
+      "tts": {
+        "text": "玛丽去世的确切日期和原因不得而知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "此后安妮主要由父亲抚养长大。",
+      "text_markdown": "此后安妮主要由父亲抚养长大。",
+      "tts": {
+        "text": "此后安妮主要由父亲抚养长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据说安妮十几岁时有一头红发，被认为很有魅力。",
+      "text_markdown": "据说安妮十几岁时有一头红发，被认为很有魅力。",
+      "tts": {
+        "text": "据说安妮十几岁时有一头红发，被认为很有魅力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说她性格倔强，难以控制。",
+      "text_markdown": "据说她性格倔强，难以控制。",
+      "tts": {
+        "text": "据说她性格倔强，难以控制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的父亲希望她嫁给一个富人，提升家族的地位。",
+      "text_markdown": "她的父亲希望她嫁给一个富人，提升家族的地位。",
+      "tts": {
+        "text": "她的父亲希望她嫁给一个富人，提升家族的地位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初的查尔斯顿是一个粗犷的边境城镇。",
+      "text_markdown": "十八世纪初的查尔斯顿是一个粗犷的边境城镇。",
+      "tts": {
+        "text": "十八世纪初的查尔斯顿是一个粗犷的边境城镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "富有的种植园主与水手、士兵和商人比邻而居。",
+      "text_markdown": "富有的种植园主与水手、士兵和商人比邻而居。",
+      "tts": {
+        "text": "富有的种植园主与水手、士兵和商人比邻而居。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "港口迎来了来自大西洋世界各地的船只。",
+      "text_markdown": "港口迎来了来自大西洋世界各地的船只。",
+      "tts": {
+        "text": "港口迎来了来自大西洋世界各地的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "安妮在海洋故事的环绕中长大。",
+      "text_markdown": "安妮在海洋故事的环绕中长大。",
+      "tts": {
+        "text": "安妮在海洋故事的环绕中长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "相反，大约在1718年，安妮嫁给了詹姆斯·邦妮。",
+      "text_markdown": "相反，大约在1718年，安妮嫁给了詹姆斯·邦妮。",
+      "tts": {
+        "text": "相反，大约在一七一八年，安妮嫁给了詹姆斯·邦妮。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "詹姆斯·邦妮是一个没有钱也没有前途的小海盗。",
+      "text_markdown": "詹姆斯·邦妮是一个没有钱也没有前途的小海盗。",
+      "tts": {
+        "text": "詹姆斯·邦妮是一个没有钱也没有前途的小海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些历史学家认为他娶安妮是为了得到她父亲的种植园。",
+      "text_markdown": "一些历史学家认为他娶安妮是为了得到她父亲的种植园。",
+      "tts": {
+        "text": "一些历史学家认为他娶安妮是为了得到她父亲的种植园。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "威廉·科马克对这桩婚事勃然大怒。",
+      "text_markdown": "威廉·科马克对这桩婚事勃然大怒。",
+      "tts": {
+        "text": "威廉·科马克对这桩婚事勃然大怒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他完全剥夺了安妮的继承权，拒绝给她任何遗产。",
+      "text_markdown": "他完全剥夺了安妮的继承权，拒绝给她任何遗产。",
+      "tts": {
+        "text": "他完全剥夺了安妮的继承权，拒绝给她任何遗产。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个传说称安妮为了报复放火烧了她父亲的种植园。",
+      "text_markdown": "一个传说称安妮为了报复放火烧了她父亲的种植园。",
+      "tts": {
+        "text": "一个传说称安妮为了报复放火烧了她父亲的种植园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "历史学家无法证实这件事是否确实发生过。",
+      "text_markdown": "历史学家无法证实这件事是否确实发生过。",
+      "tts": {
+        "text": "历史学家无法证实这件事是否确实发生过。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮和詹姆斯·邦妮前往巴哈马群岛的拿骚。",
+      "text_markdown": "安妮和詹姆斯·邦妮前往巴哈马群岛的拿骚。",
+      "tts": {
+        "text": "安妮和詹姆斯·邦妮前往巴哈马群岛的拿骚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们到达时，拿骚仍然是一个无法无天的海盗避风港。",
+      "text_markdown": "他们到达时，拿骚仍然是一个无法无天的海盗避风港。",
+      "tts": {
+        "text": "他们到达时，拿骚仍然是一个无法无天的海盗避风港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "詹姆斯·邦妮开始为总督伍兹·罗杰斯担任线人。",
+      "text_markdown": "詹姆斯·邦妮开始为总督伍兹·罗杰斯担任线人。",
+      "tts": {
+        "text": "詹姆斯·邦妮开始为总督伍兹·罗杰斯担任线人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他为了金钱向当局报告海盗的活动。",
+      "text_markdown": "他为了金钱向当局报告海盗的活动。",
+      "tts": {
+        "text": "他为了金钱向当局报告海盗的活动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮鄙视丈夫当线人的工作。",
+      "text_markdown": "安妮鄙视丈夫当线人的工作。",
+      "tts": {
+        "text": "安妮鄙视丈夫当线人的工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她觉得海盗比当局有趣得多。",
+      "text_markdown": "她觉得海盗比当局有趣得多。",
+      "tts": {
+        "text": "她觉得海盗比当局有趣得多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她开始在拿骚的酒馆和码头消磨时间。",
+      "text_markdown": "她开始在拿骚的酒馆和码头消磨时间。",
+      "tts": {
+        "text": "她开始在拿骚的酒馆和码头消磨时间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "正是在那里，她的生活永远改变了。",
+      "text_markdown": "正是在那里，她的生活永远改变了。",
+      "tts": {
+        "text": "正是在那里，她的生活永远改变了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起",
+      "text_markdown": "崛起"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在拿骚，安妮·邦妮遇到了一位名叫约翰·拉卡姆的海盗船长。",
+      "text_markdown": "在拿骚，安妮·邦妮遇到了一位名叫约翰·拉卡姆的海盗船长。",
+      "tts": {
+        "text": "在拿骚，安妮·邦妮遇到了一位名叫约翰·拉卡姆的海盗船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉卡姆因穿着色彩鲜艳的印花布衣服而被称为棉布杰克。",
+      "text_markdown": "拉卡姆因穿着色彩鲜艳的印花布衣服而被称为棉布杰克。",
+      "tts": {
+        "text": "拉卡姆因穿着色彩鲜艳的印花布衣服而被称为棉布杰克。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他迷人、大胆，与詹姆斯·邦妮完全不同。",
+      "text_markdown": "他迷人、大胆，与詹姆斯·邦妮完全不同。",
+      "tts": {
+        "text": "他迷人、大胆，与詹姆斯·邦妮完全不同。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮和棉布杰克开始了一段热烈的恋情。",
+      "text_markdown": "安妮和棉布杰克开始了一段热烈的恋情。",
+      "tts": {
+        "text": "安妮和棉布杰克开始了一段热烈的恋情。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉卡姆提出通过一种叫做妻子买卖的交易从她丈夫那里买下安妮。",
+      "text_markdown": "拉卡姆提出通过一种叫做妻子买卖的交易从她丈夫那里买下安妮。",
+      "tts": {
+        "text": "拉卡姆提出通过一种叫做妻子买卖的交易从她丈夫那里买下安妮。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "妻子买卖在殖民世界的某些地方是一种粗俗但被承认的习俗。",
+      "text_markdown": "妻子买卖在殖民世界的某些地方是一种粗俗但被承认的习俗。",
+      "tts": {
+        "text": "妻子买卖在殖民世界的某些地方是一种粗俗但被承认的习俗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "詹姆斯·邦妮拒绝了这个提议，并向总督罗杰斯投诉。",
+      "text_markdown": "詹姆斯·邦妮拒绝了这个提议，并向总督罗杰斯投诉。",
+      "tts": {
+        "text": "詹姆斯·邦妮拒绝了这个提议，并向总督罗杰斯投诉。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗杰斯威胁说，如果安妮不回到丈夫身边，就公开鞭打她。",
+      "text_markdown": "罗杰斯威胁说，如果安妮不回到丈夫身边，就公开鞭打她。",
+      "tts": {
+        "text": "罗杰斯威胁说，如果安妮不回到丈夫身边，就公开鞭打她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "安妮根本无意服从。",
+      "text_markdown": "安妮根本无意服从。",
+      "tts": {
+        "text": "安妮根本无意服从。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "相反，她和棉布杰克从拿骚港偷了一艘单桅帆船扬帆而去。",
+      "text_markdown": "相反，她和棉布杰克从拿骚港偷了一艘单桅帆船扬帆而去。",
+      "tts": {
+        "text": "相反，她和棉布杰克从拿骚港偷了一艘单桅帆船扬帆而去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉卡姆此前已接受了罗杰斯的皇家赦免。",
+      "text_markdown": "拉卡姆此前已接受了罗杰斯的皇家赦免。",
+      "tts": {
+        "text": "拉卡姆此前已接受了罗杰斯的皇家赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "重返海盗生涯使他再次成为不法之徒。",
+      "text_markdown": "重返海盗生涯使他再次成为不法之徒。",
+      "tts": {
+        "text": "重返海盗生涯使他再次成为不法之徒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "安妮·邦妮作为船员的正式成员与他一同航行。",
+      "text_markdown": "安妮·邦妮作为船员的正式成员与他一同航行。",
+      "tts": {
+        "text": "安妮·邦妮作为船员的正式成员与他一同航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从那一刻起，她就是一名海盗了。",
+      "text_markdown": "从那一刻起，她就是一名海盗了。",
+      "tts": {
+        "text": "从那一刻起，她就是一名海盗了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮是否曾乔装成男人是历史学家争论的话题。",
+      "text_markdown": "安妮是否曾乔装成男人是历史学家争论的话题。",
+      "tts": {
+        "text": "安妮是否曾乔装成男人是历史学家争论的话题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些记载说她穿着男装作战以避免麻烦。",
+      "text_markdown": "一些记载说她穿着男装作战以避免麻烦。",
+      "tts": {
+        "text": "一些记载说她穿着男装作战以避免麻烦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他记载则表明船员从一开始就知道她是女人。",
+      "text_markdown": "其他记载则表明船员从一开始就知道她是女人。",
+      "tts": {
+        "text": "其他记载则表明船员从一开始就知道她是女人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "无论如何，她都被接纳为战士和水手。",
+      "text_markdown": "无论如何，她都被接纳为战士和水手。",
+      "tts": {
+        "text": "无论如何，她都被接纳为战士和水手。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉卡姆的船员操作着一艘小型单桅帆船，速度快且易于操纵。",
+      "text_markdown": "拉卡姆的船员操作着一艘小型单桅帆船，速度快且易于操纵。",
+      "tts": {
+        "text": "拉卡姆的船员操作着一艘小型单桅帆船，速度快且易于操纵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们以渔船、商船和小型贸易船为目标。",
+      "text_markdown": "他们以渔船、商船和小型贸易船为目标。",
+      "tts": {
+        "text": "他们以渔船、商船和小型贸易船为目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们沿着牙买加、伊斯帕尼奥拉和古巴的海岸劫掠。",
+      "text_markdown": "他们沿着牙买加、伊斯帕尼奥拉和古巴的海岸劫掠。",
+      "tts": {
+        "text": "他们沿着牙买加、伊斯帕尼奥拉和古巴的海岸劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们的猎场遍布加勒比海西部。",
+      "text_markdown": "他们的猎场遍布加勒比海西部。",
+      "tts": {
+        "text": "他们的猎场遍布加勒比海西部。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉卡姆在财富或权力方面并不是伟大的海盗船长之一。",
+      "text_markdown": "拉卡姆在财富或权力方面并不是伟大的海盗船长之一。",
+      "tts": {
+        "text": "拉卡姆在财富或权力方面并不是伟大的海盗船长之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的船员很少，大概十几到二十人。",
+      "text_markdown": "他的船员很少，大概十几到二十人。",
+      "tts": {
+        "text": "他的船员很少，大概十几到二十人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "与黑胡子等海盗的战利品相比，他们的收获很少。",
+      "text_markdown": "与黑胡子等海盗的战利品相比，他们的收获很少。",
+      "tts": {
+        "text": "与黑胡子等海盗的战利品相比，他们的收获很少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但安妮·邦妮的存在使这个船员变得传奇。",
+      "text_markdown": "但安妮·邦妮的存在使这个船员变得传奇。",
+      "tts": {
+        "text": "但安妮·邦妮的存在使这个船员变得传奇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "就在这段时期，安妮遇到了玛丽·里德。",
+      "text_markdown": "就在这段时期，安妮遇到了玛丽·里德。",
+      "tts": {
+        "text": "就在这段时期，安妮遇到了玛丽·里德。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "玛丽·里德是拉卡姆船上的另一名女性。",
+      "text_markdown": "玛丽·里德是拉卡姆船上的另一名女性。",
+      "tts": {
+        "text": "玛丽·里德是拉卡姆船上的另一名女性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "玛丽一生大部分时间都乔装成男人。",
+      "text_markdown": "玛丽一生大部分时间都乔装成男人。",
+      "tts": {
+        "text": "玛丽一生大部分时间都乔装成男人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "玛丽·里德出生于英格兰，被母亲当作男孩抚养。",
+      "text_markdown": "玛丽·里德出生于英格兰，被母亲当作男孩抚养。",
+      "tts": {
+        "text": "玛丽·里德出生于英格兰，被母亲当作男孩抚养。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的母亲将她伪装成男孩以获取为男性子嗣准备的遗产。",
+      "text_markdown": "她的母亲将她伪装成男孩以获取为男性子嗣准备的遗产。",
+      "tts": {
+        "text": "她的母亲将她伪装成男孩以获取为男性子嗣准备的遗产。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "玛丽在从军期间以男性身份服役于英国军队，之后才出海。",
+      "text_markdown": "玛丽在从军期间以男性身份服役于英国军队，之后才出海。",
+      "tts": {
+        "text": "玛丽在从军期间以男性身份服役于英国军队，之后才出海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她曾在西班牙王位继承战争期间在佛兰德斯作战。",
+      "text_markdown": "她曾在西班牙王位继承战争期间在佛兰德斯作战。",
+      "tts": {
+        "text": "她曾在西班牙王位继承战争期间在佛兰德斯作战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "玛丽还在佛兰德斯嫁给了一位同袍。",
+      "text_markdown": "玛丽还在佛兰德斯嫁给了一位同袍。",
+      "tts": {
+        "text": "玛丽还在佛兰德斯嫁给了一位同袍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "丈夫去世后，她重返海上生活。",
+      "text_markdown": "丈夫去世后，她重返海上生活。",
+      "tts": {
+        "text": "丈夫去世后，她重返海上生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她最终登上了一艘驶往加勒比海的船，该船被海盗俘获。",
+      "text_markdown": "她最终登上了一艘驶往加勒比海的船，该船被海盗俘获。",
+      "tts": {
+        "text": "她最终登上了一艘驶往加勒比海的船，该船被海盗俘获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这就是她加入拉卡姆船队的经过。",
+      "text_markdown": "这就是她加入拉卡姆船队的经过。",
+      "tts": {
+        "text": "这就是她加入拉卡姆船队的经过。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根据约翰逊的记载，安妮起初被玛丽吸引，以为她是男人。",
+      "text_markdown": "根据约翰逊的记载，安妮起初被玛丽吸引，以为她是男人。",
+      "tts": {
+        "text": "根据约翰逊的记载，安妮起初被玛丽吸引，以为她是男人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当安妮发现玛丽的真实身份后，她们成为了亲密的朋友和盟友。",
+      "text_markdown": "当安妮发现玛丽的真实身份后，她们成为了亲密的朋友和盟友。",
+      "tts": {
+        "text": "当安妮发现玛丽的真实身份后，她们成为了亲密的朋友和盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说棉布杰克在得知真相之前曾感到嫉妒。",
+      "text_markdown": "据说棉布杰克在得知真相之前曾感到嫉妒。",
+      "tts": {
+        "text": "据说棉布杰克在得知真相之前曾感到嫉妒。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮和玛丽都一再在战斗中证明了自己。",
+      "text_markdown": "安妮和玛丽都一再在战斗中证明了自己。",
+      "tts": {
+        "text": "安妮和玛丽都一再在战斗中证明了自己。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "目击者后来作证说，这两名女性是船上最凶猛的战士。",
+      "text_markdown": "目击者后来作证说，这两名女性是船上最凶猛的战士。",
+      "tts": {
+        "text": "目击者后来作证说，这两名女性是船上最凶猛的战士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她们熟练而凶猛地挥舞着短刀和手枪。",
+      "text_markdown": "她们熟练而凶猛地挥舞着短刀和手枪。",
+      "tts": {
+        "text": "她们熟练而凶猛地挥舞着短刀和手枪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船队在牙买加附近的水域劫掠小型船只。",
+      "text_markdown": "船队在牙买加附近的水域劫掠小型船只。",
+      "tts": {
+        "text": "船队在牙买加附近的水域劫掠小型船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们夺取货物、食物、武器，偶尔还招募新成员。",
+      "text_markdown": "他们夺取货物、食物、武器，偶尔还招募新成员。",
+      "tts": {
+        "text": "他们夺取货物、食物、武器，偶尔还招募新成员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些被俘的水手选择加入海盗而不是被抛弃在海上漂流。",
+      "text_markdown": "一些被俘的水手选择加入海盗而不是被抛弃在海上漂流。",
+      "tts": {
+        "text": "一些被俘的水手选择加入海盗而不是被抛弃在海上漂流。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到1720年，加勒比海的海盗活动变得越来越危险。",
+      "text_markdown": "到1720年，加勒比海的海盗活动变得越来越危险。",
+      "tts": {
+        "text": "到一七二零年，加勒比海的海盗活动变得越来越危险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国皇家海军加强了巡逻和海盗搜捕。",
+      "text_markdown": "英国皇家海军加强了巡逻和海盗搜捕。",
+      "tts": {
+        "text": "英国皇家海军加强了巡逻和海盗搜捕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "总督罗杰斯授权海盗猎人见到海盗就可以捕杀。",
+      "text_markdown": "总督罗杰斯授权海盗猎人见到海盗就可以捕杀。",
+      "tts": {
+        "text": "总督罗杰斯授权海盗猎人见到海盗就可以捕杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "绞索正在收紧，包围着该地区的每一支海盗船队。",
+      "text_markdown": "绞索正在收紧，包围着该地区的每一支海盗船队。",
+      "tts": {
+        "text": "绞索正在收紧，包围着该地区的每一支海盗船队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管危险重重，拉卡姆的船队在1720年夏秋两季继续劫掠。",
+      "text_markdown": "尽管危险重重，拉卡姆的船队在1720年夏秋两季继续劫掠。",
+      "tts": {
+        "text": "尽管危险重重，拉卡姆的船队在一七二零年夏秋两季继续劫掠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们似乎无法或不愿放弃海盗生活。",
+      "text_markdown": "他们似乎无法或不愿放弃海盗生活。",
+      "tts": {
+        "text": "他们似乎无法或不愿放弃海盗生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的好运即将用尽。",
+      "text_markdown": "他们的好运即将用尽。",
+      "tts": {
+        "text": "他们的好运即将用尽。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "鼎盛时期",
+      "text_markdown": "鼎盛时期"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗船上的生活与浪漫故事所描述的截然不同。",
+      "text_markdown": "海盗船上的生活与浪漫故事所描述的截然不同。",
+      "tts": {
+        "text": "海盗船上的生活与浪漫故事所描述的截然不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它拥挤、肮脏，而且往往很无聊。",
+      "text_markdown": "它拥挤、肮脏，而且往往很无聊。",
+      "tts": {
+        "text": "它拥挤、肮脏，而且往往很无聊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "水手们吃硬饼干、腌肉和任何能找到的新鲜食物。",
+      "text_markdown": "水手们吃硬饼干、腌肉和任何能找到的新鲜食物。",
+      "tts": {
+        "text": "水手们吃硬饼干、腌肉和任何能找到的新鲜食物。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在长途航行中，淡水总是供不应求。",
+      "text_markdown": "在长途航行中，淡水总是供不应求。",
+      "tts": {
+        "text": "在长途航行中，淡水总是供不应求。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们喝朗姆酒、啤酒或掺了酒精的水来保持水分。",
+      "text_markdown": "海盗们喝朗姆酒、啤酒或掺了酒精的水来保持水分。",
+      "tts": {
+        "text": "海盗们喝朗姆酒、啤酒或掺了酒精的水来保持水分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "疾病杀死的水手远多于战斗。",
+      "text_markdown": "疾病杀死的水手远多于战斗。",
+      "tts": {
+        "text": "疾病杀死的水手远多于战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坏血病、痢疾和热带热病是持续的威胁。",
+      "text_markdown": "坏血病、痢疾和热带热病是持续的威胁。",
+      "tts": {
+        "text": "坏血病、痢疾和热带热病是持续的威胁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉卡姆的单桅帆船是一艘为速度而设计的小型单桅船。",
+      "text_markdown": "拉卡姆的单桅帆船是一艘为速度而设计的小型单桅船。",
+      "tts": {
+        "text": "拉卡姆的单桅帆船是一艘为速度而设计的小型单桅船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它无法搭载太多船员或沉重货物。",
+      "text_markdown": "它无法搭载太多船员或沉重货物。",
+      "tts": {
+        "text": "它无法搭载太多船员或沉重货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但它足够快以追上商船，也足够灵活以逃离战舰。",
+      "text_markdown": "但它足够快以追上商船，也足够灵活以逃离战舰。",
+      "tts": {
+        "text": "但它足够快以追上商船，也足够灵活以逃离战舰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "单桅帆船可以由小型船员操作，这完全适合拉卡姆。",
+      "text_markdown": "单桅帆船可以由小型船员操作，这完全适合拉卡姆。",
+      "tts": {
+        "text": "单桅帆船可以由小型船员操作，这完全适合拉卡姆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船员越少意味着每个人分到的战利品越多。",
+      "text_markdown": "船员越少意味着每个人分到的战利品越多。",
+      "tts": {
+        "text": "船员越少意味着每个人分到的战利品越多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "单桅帆船的浅吃水也使它能够藏在大船无法进入的海湾和水道中。",
+      "text_markdown": "单桅帆船的浅吃水也使它能够藏在大船无法进入的海湾和水道中。",
+      "tts": {
+        "text": "单桅帆船的浅吃水也使它能够藏在大船无法进入的海湾和水道中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗船员通过一套被称为条例的书面规则来自我管理。",
+      "text_markdown": "海盗船员通过一套被称为条例的书面规则来自我管理。",
+      "tts": {
+        "text": "海盗船员通过一套被称为条例的书面规则来自我管理。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每个船员在加入前都要签署或标记条例。",
+      "text_markdown": "每个船员在加入前都要签署或标记条例。",
+      "tts": {
+        "text": "每个船员在加入前都要签署或标记条例。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "条例规定了如何分配战利品。",
+      "text_markdown": "条例规定了如何分配战利品。",
+      "tts": {
+        "text": "条例规定了如何分配战利品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它们还制定了战斗、赌博和解决争端的规则。",
+      "text_markdown": "它们还制定了战斗、赌博和解决争端的规则。",
+      "tts": {
+        "text": "它们还制定了战斗、赌博和解决争端的规则。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船长由船员投票选出。",
+      "text_markdown": "船长由船员投票选出。",
+      "tts": {
+        "text": "船长由船员投票选出。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果船员对他失去信心，可以随时将他免职。",
+      "text_markdown": "如果船员对他失去信心，可以随时将他免职。",
+      "tts": {
+        "text": "如果船员对他失去信心，可以随时将他免职。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "舵手充当某种副官和调解人。",
+      "text_markdown": "舵手充当某种副官和调解人。",
+      "tts": {
+        "text": "舵手充当某种副官和调解人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种民主制度在当时是非凡的。",
+      "text_markdown": "这种民主制度在当时是非凡的。",
+      "tts": {
+        "text": "这种民主制度在当时是非凡的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮和玛丽·里德在这个体系中以平等身份运作。",
+      "text_markdown": "安妮·邦妮和玛丽·里德在这个体系中以平等身份运作。",
+      "tts": {
+        "text": "安妮·邦妮和玛丽·里德在这个体系中以平等身份运作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她们像男性船员一样获得战利品份额。",
+      "text_markdown": "她们像男性船员一样获得战利品份额。",
+      "tts": {
+        "text": "她们像男性船员一样获得战利品份额。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她们的战斗能力为她们赢得了船上的尊重。",
+      "text_markdown": "她们的战斗能力为她们赢得了船上的尊重。",
+      "tts": {
+        "text": "她们的战斗能力为她们赢得了船上的尊重。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加勒比海盗的武器种类繁多且致命。",
+      "text_markdown": "加勒比海盗的武器种类繁多且致命。",
+      "tts": {
+        "text": "加勒比海盗的武器种类繁多且致命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "弯刀是海上近身搏斗的首选武器。",
+      "text_markdown": "弯刀是海上近身搏斗的首选武器。",
+      "tts": {
+        "text": "弯刀是海上近身搏斗的首选武器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "燧发手枪虽然携带方便，但在重新装弹前只能发射一枪。",
+      "text_markdown": "燧发手枪虽然携带方便，但在重新装弹前只能发射一枪。",
+      "tts": {
+        "text": "燧发手枪虽然携带方便，但在重新装弹前只能发射一枪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "登船斧、匕首和被称为火罐的手榴弹也很常见。",
+      "text_markdown": "登船斧、匕首和被称为火罐的手榴弹也很常见。",
+      "tts": {
+        "text": "登船斧、匕首和被称为火罐的手榴弹也很常见。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当海盗攻击一艘船时，首要目标是恐吓船员使其投降。",
+      "text_markdown": "当海盗攻击一艘船时，首要目标是恐吓船员使其投降。",
+      "tts": {
+        "text": "当海盗攻击一艘船时，首要目标是恐吓船员使其投降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "升起骷髅旗是一种心理武器。",
+      "text_markdown": "升起骷髅旗是一种心理武器。",
+      "tts": {
+        "text": "升起骷髅旗是一种心理武器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数商船船员不战而降，因为抵抗意味着死亡。",
+      "text_markdown": "大多数商船船员不战而降，因为抵抗意味着死亡。",
+      "tts": {
+        "text": "大多数商船船员不战而降，因为抵抗意味着死亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "棉布杰克自己的旗帜很有特色。",
+      "text_markdown": "棉布杰克自己的旗帜很有特色。",
+      "tts": {
+        "text": "棉布杰克自己的旗帜很有特色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它在黑色背景上展示了一个白色骷髅头和两把交叉的剑。",
+      "text_markdown": "它在黑色背景上展示了一个白色骷髅头和两把交叉的剑。",
+      "tts": {
+        "text": "它在黑色背景上展示了一个白色骷髅头和两把交叉的剑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个设计是历史上最知名的海盗旗之一。",
+      "text_markdown": "这个设计是历史上最知名的海盗旗之一。",
+      "tts": {
+        "text": "这个设计是历史上最知名的海盗旗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "许多现代海盗旗的描绘都基于拉卡姆的设计。",
+      "text_markdown": "许多现代海盗旗的描绘都基于拉卡姆的设计。",
+      "tts": {
+        "text": "许多现代海盗旗的描绘都基于拉卡姆的设计。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮的暴力名声在海盗社区中根深蒂固。",
+      "text_markdown": "安妮·邦妮的暴力名声在海盗社区中根深蒂固。",
+      "tts": {
+        "text": "安妮·邦妮的暴力名声在海盗社区中根深蒂固。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她后来受审时的证人描述她渴望战斗。",
+      "text_markdown": "她后来受审时的证人描述她渴望战斗。",
+      "tts": {
+        "text": "她后来受审时的证人描述她渴望战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说她咒骂和威胁那些抵抗的被俘水手。",
+      "text_markdown": "据说她咒骂和威胁那些抵抗的被俘水手。",
+      "tts": {
+        "text": "据说她咒骂和威胁那些抵抗的被俘水手。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "玛丽·里德同样令人生畏。",
+      "text_markdown": "玛丽·里德同样令人生畏。",
+      "tts": {
+        "text": "玛丽·里德同样令人生畏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个故事讲述玛丽向一名海盗同伴发起决斗，以保护她在乎的一个男人。",
+      "text_markdown": "一个故事讲述玛丽向一名海盗同伴发起决斗，以保护她在乎的一个男人。",
+      "tts": {
+        "text": "一个故事讲述玛丽向一名海盗同伴发起决斗，以保护她在乎的一个男人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她在单打独斗中杀死了对方。",
+      "text_markdown": "她在单打独斗中杀死了对方。",
+      "tts": {
+        "text": "她在单打独斗中杀死了对方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "不管这个故事是否属实，它反映了人们认为她有多危险。",
+      "text_markdown": "不管这个故事是否属实，它反映了人们认为她有多危险。",
+      "tts": {
+        "text": "不管这个故事是否属实，它反映了人们认为她有多危险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年夏天，船队沿着牙买加北海岸航行。",
+      "text_markdown": "1720年夏天，船队沿着牙买加北海岸航行。",
+      "tts": {
+        "text": "一七二零年夏天，船队沿着牙买加北海岸航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们夺取了几艘渔船和一艘商用双桅帆船。",
+      "text_markdown": "他们夺取了几艘渔船和一艘商用双桅帆船。",
+      "tts": {
+        "text": "他们夺取了几艘渔船和一艘商用双桅帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品虽小，但让船员们吃饱穿暖有了供给。",
+      "text_markdown": "战利品虽小，但让船员们吃饱穿暖有了供给。",
+      "tts": {
+        "text": "战利品虽小，但让船员们吃饱穿暖有了供给。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "牙买加总督尼古拉斯·劳斯爵士发布了针对拉卡姆的通缉令。",
+      "text_markdown": "牙买加总督尼古拉斯·劳斯爵士发布了针对拉卡姆的通缉令。",
+      "tts": {
+        "text": "牙买加总督尼古拉斯·劳斯爵士发布了针对拉卡姆的通缉令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "通缉令特别指名了拉卡姆和他船上两名未具名的女性。",
+      "text_markdown": "通缉令特别指名了拉卡姆和他船上两名未具名的女性。",
+      "tts": {
+        "text": "通缉令特别指名了拉卡姆和他船上两名未具名的女性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是少数承认女海盗存在的官方文件之一。",
+      "text_markdown": "这是少数承认女海盗存在的官方文件之一。",
+      "tts": {
+        "text": "这是少数承认女海盗存在的官方文件之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当局雇用了经验丰富的水手来追捕拉卡姆的船队。",
+      "text_markdown": "当局雇用了经验丰富的水手来追捕拉卡姆的船队。",
+      "tts": {
+        "text": "当局雇用了经验丰富的水手来追捕拉卡姆的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乔纳森·巴内特船长被委任为海盗猎人。",
+      "text_markdown": "乔纳森·巴内特船长被委任为海盗猎人。",
+      "tts": {
+        "text": "乔纳森·巴内特船长被委任为海盗猎人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴内特熟悉牙买加周围的水域，决心找到他们。",
+      "text_markdown": "巴内特熟悉牙买加周围的水域，决心找到他们。",
+      "tts": {
+        "text": "巴内特熟悉牙买加周围的水域，决心找到他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "追捕行动正在逼近棉布杰克和他的船队。",
+      "text_markdown": "追捕行动正在逼近棉布杰克和他的船队。",
+      "tts": {
+        "text": "追捕行动正在逼近棉布杰克和他的船队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终结",
+      "text_markdown": "终结"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年10月，乔纳森·巴内特船长发现拉卡姆的单桅帆船停泊在牙买加西端附近。",
+      "text_markdown": "1720年10月，乔纳森·巴内特船长发现拉卡姆的单桅帆船停泊在牙买加西端附近。",
+      "tts": {
+        "text": "一七二零年十月，乔纳森·巴内特船长发现拉卡姆的单桅帆船停泊在牙买加西端附近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们停泊在内格里尔角附近的一个小海湾中。",
+      "text_markdown": "海盗们停泊在内格里尔角附近的一个小海湾中。",
+      "tts": {
+        "text": "海盗们停泊在内格里尔角附近的一个小海湾中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴内特的船是在夜间靠近的。",
+      "text_markdown": "巴内特的船是在夜间靠近的。",
+      "tts": {
+        "text": "巴内特的船是在夜间靠近的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉卡姆的大部分船员都醉了或在甲板下睡着了。",
+      "text_markdown": "拉卡姆的大部分船员都醉了或在甲板下睡着了。",
+      "tts": {
+        "text": "拉卡姆的大部分船员都醉了或在甲板下睡着了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们之前在当天早些时候夺取了一艘小渔船后一直在庆祝。",
+      "text_markdown": "他们之前在当天早些时候夺取了一艘小渔船后一直在庆祝。",
+      "tts": {
+        "text": "他们之前在当天早些时候夺取了一艘小渔船后一直在庆祝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船员完全没有准备应对袭击。",
+      "text_markdown": "船员完全没有准备应对袭击。",
+      "tts": {
+        "text": "船员完全没有准备应对袭击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当巴内特的人开火时，大多数海盗躲到了甲板下面。",
+      "text_markdown": "当巴内特的人开火时，大多数海盗躲到了甲板下面。",
+      "tts": {
+        "text": "当巴内特的人开火时，大多数海盗躲到了甲板下面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "根据审判证词，安妮·邦妮和玛丽·里德是少数反击的人之一。",
+      "text_markdown": "根据审判证词，安妮·邦妮和玛丽·里德是少数反击的人之一。",
+      "tts": {
+        "text": "根据审判证词，安妮·邦妮和玛丽·里德是少数反击的人之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她们向攻击者开枪并挥舞弯刀。",
+      "text_markdown": "她们向攻击者开枪并挥舞弯刀。",
+      "tts": {
+        "text": "她们向攻击者开枪并挥舞弯刀。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据说安妮对躲在下面的男人大喊让他们上来战斗。",
+      "text_markdown": "据说安妮对躲在下面的男人大喊让他们上来战斗。",
+      "tts": {
+        "text": "据说安妮对躲在下面的男人大喊让他们上来战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当他们拒绝时，她愤怒地朝船舱开了一枪。",
+      "text_markdown": "当他们拒绝时，她愤怒地朝船舱开了一枪。",
+      "tts": {
+        "text": "当他们拒绝时，她愤怒地朝船舱开了一枪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "尽管安妮和玛丽英勇作战，海盗们很快就被制服了。",
+      "text_markdown": "尽管安妮和玛丽英勇作战，海盗们很快就被制服了。",
+      "tts": {
+        "text": "尽管安妮和玛丽英勇作战，海盗们很快就被制服了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "巴内特的船员俘获了整艘船。",
+      "text_markdown": "巴内特的船员俘获了整艘船。",
+      "tts": {
+        "text": "巴内特的船员俘获了整艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "被俘的海盗被带到牙买加的西班牙城接受审判。",
+      "text_markdown": "被俘的海盗被带到牙买加的西班牙城接受审判。",
+      "tts": {
+        "text": "被俘的海盗被带到牙买加的西班牙城接受审判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙城当时是牙买加的首府。",
+      "text_markdown": "西班牙城当时是牙买加的首府。",
+      "tts": {
+        "text": "西班牙城当时是牙买加的首府。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "审判于1720年11月在海军法庭进行。",
+      "text_markdown": "审判于1720年11月在海军法庭进行。",
+      "tts": {
+        "text": "审判于一七二零年十一月在海军法庭进行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "棉布杰克·拉卡姆首先受审，时间是1720年11月16日。",
+      "text_markdown": "棉布杰克·拉卡姆首先受审，时间是1720年11月16日。",
+      "tts": {
+        "text": "棉布杰克·拉卡姆首先受审，时间是一七二零年十一月十六日。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被判犯有海盗罪，处以绞刑。",
+      "text_markdown": "他被判犯有海盗罪，处以绞刑。",
+      "tts": {
+        "text": "他被判犯有海盗罪，处以绞刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的尸体被放在一个叫做铁笼的金属笼子里展示，作为对他人的警告。",
+      "text_markdown": "他的尸体被放在一个叫做铁笼的金属笼子里展示，作为对他人的警告。",
+      "tts": {
+        "text": "他的尸体被放在一个叫做铁笼的金属笼子里展示，作为对他人的警告。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "铁笼被放置在一个过往船只可以看到的小岛上。",
+      "text_markdown": "铁笼被放置在一个过往船只可以看到的小岛上。",
+      "tts": {
+        "text": "铁笼被放置在一个过往船只可以看到的小岛上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在他被处决前，安妮·邦妮被允许到牢房里探望棉布杰克。",
+      "text_markdown": "在他被处决前，安妮·邦妮被允许到牢房里探望棉布杰克。",
+      "tts": {
+        "text": "在他被处决前，安妮·邦妮被允许到牢房里探望棉布杰克。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "根据约翰逊的记载，她对他没有表现出任何同情。",
+      "text_markdown": "根据约翰逊的记载，她对他没有表现出任何同情。",
+      "tts": {
+        "text": "根据约翰逊的记载，她对他没有表现出任何同情。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说她告诉他，如果他像个男人一样战斗，就不会像条狗一样被绞死。",
+      "text_markdown": "据说她告诉他，如果他像个男人一样战斗，就不会像条狗一样被绞死。",
+      "tts": {
+        "text": "据说她告诉他，如果他像个男人一样战斗，就不会像条狗一样被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这句话成为海盗历史上最著名的话语之一。",
+      "text_markdown": "这句话成为海盗历史上最著名的话语之一。",
+      "tts": {
+        "text": "这句话成为海盗历史上最著名的话语之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮和玛丽·里德于1720年11月28日受审。",
+      "text_markdown": "安妮·邦妮和玛丽·里德于1720年11月28日受审。",
+      "tts": {
+        "text": "安妮·邦妮和玛丽·里德于一七二零年十一月二十八日受审。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多名证人出庭指证她们。",
+      "text_markdown": "多名证人出庭指证她们。",
+      "tts": {
+        "text": "多名证人出庭指证她们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "被俘的渔民和水手描述了这两名女性如何用武器攻击他们。",
+      "text_markdown": "被俘的渔民和水手描述了这两名女性如何用武器攻击他们。",
+      "tts": {
+        "text": "被俘的渔民和水手描述了这两名女性如何用武器攻击他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "两名女性均被判有罪，处以绞刑。",
+      "text_markdown": "两名女性均被判有罪，处以绞刑。",
+      "tts": {
+        "text": "两名女性均被判有罪，处以绞刑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但安妮和玛丽都有一条法律上的出路。",
+      "text_markdown": "但安妮和玛丽都有一条法律上的出路。",
+      "tts": {
+        "text": "但安妮和玛丽都有一条法律上的出路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每位女性都声称自己怀孕了。",
+      "text_markdown": "每位女性都声称自己怀孕了。",
+      "tts": {
+        "text": "每位女性都声称自己怀孕了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "根据英国法律，怀孕的女性不能被处决。",
+      "text_markdown": "根据英国法律，怀孕的女性不能被处决。",
+      "tts": {
+        "text": "根据英国法律，怀孕的女性不能被处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种法律保护被称为以怀孕申辩。",
+      "text_markdown": "这种法律保护被称为以怀孕申辩。",
+      "tts": {
+        "text": "这种法律保护被称为以怀孕申辩。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两名女性经检查确认怀孕。",
+      "text_markdown": "两名女性经检查确认怀孕。",
+      "tts": {
+        "text": "两名女性经检查确认怀孕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她们的行刑被无限期推迟。",
+      "text_markdown": "她们的行刑被无限期推迟。",
+      "tts": {
+        "text": "她们的行刑被无限期推迟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她们被送回监狱等待分娩。",
+      "text_markdown": "她们被送回监狱等待分娩。",
+      "tts": {
+        "text": "她们被送回监狱等待分娩。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "玛丽·里德再也没有活着离开监狱。",
+      "text_markdown": "玛丽·里德再也没有活着离开监狱。",
+      "tts": {
+        "text": "玛丽·里德再也没有活着离开监狱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她病倒了，可能是牙买加监狱中常见的热病。",
+      "text_markdown": "她病倒了，可能是牙买加监狱中常见的热病。",
+      "tts": {
+        "text": "她病倒了，可能是牙买加监狱中常见的热病。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "玛丽·里德于1721年4月在狱中去世。",
+      "text_markdown": "玛丽·里德于1721年4月在狱中去世。",
+      "tts": {
+        "text": "玛丽·里德于一七二一年四月在狱中去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她被埋葬在牙买加的圣凯瑟琳教区。",
+      "text_markdown": "她被埋葬在牙买加的圣凯瑟琳教区。",
+      "tts": {
+        "text": "她被埋葬在牙买加的圣凯瑟琳教区。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮的命运是海盗历史上最大的谜团之一。",
+      "text_markdown": "安妮·邦妮的命运是海盗历史上最大的谜团之一。",
+      "tts": {
+        "text": "安妮·邦妮的命运是海盗历史上最大的谜团之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有她被处决的记录。",
+      "text_markdown": "没有她被处决的记录。",
+      "tts": {
+        "text": "没有她被处决的记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有她被释放的记录。",
+      "text_markdown": "没有她被释放的记录。",
+      "tts": {
+        "text": "没有她被释放的记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她在审判之后就从历史记录中消失了。",
+      "text_markdown": "她在审判之后就从历史记录中消失了。",
+      "tts": {
+        "text": "她在审判之后就从历史记录中消失了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最常见的理论是她的父亲从监狱中赎出了她。",
+      "text_markdown": "最常见的理论是她的父亲从监狱中赎出了她。",
+      "tts": {
+        "text": "最常见的理论是她的父亲从监狱中赎出了她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "威廉·科马克在查尔斯顿仍然是个富人。",
+      "text_markdown": "威廉·科马克在查尔斯顿仍然是个富人。",
+      "tts": {
+        "text": "威廉·科马克在查尔斯顿仍然是个富人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他有能力和人脉来安排她悄悄获释。",
+      "text_markdown": "他有能力和人脉来安排她悄悄获释。",
+      "tts": {
+        "text": "他有能力和人脉来安排她悄悄获释。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些历史学家认为安妮回到了查尔斯顿，以另一个名字生活。",
+      "text_markdown": "一些历史学家认为安妮回到了查尔斯顿，以另一个名字生活。",
+      "tts": {
+        "text": "一些历史学家认为安妮回到了查尔斯顿，以另一个名字生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一种理论认为她就是一位名叫安妮·伯利的女性，后来结婚生子。",
+      "text_markdown": "一种理论认为她就是一位名叫安妮·伯利的女性，后来结婚生子。",
+      "tts": {
+        "text": "一种理论认为她就是一位名叫安妮·伯利的女性，后来结婚生子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "如果这一理论正确，安妮·邦妮活到了大约82岁。",
+      "text_markdown": "如果这一理论正确，安妮·邦妮活到了大约82岁。",
+      "tts": {
+        "text": "如果这一理论正确，安妮·邦妮活到了大约八十二岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "终结",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她大约在1782年去世，远在海盗黄金时代结束之后。",
+      "text_markdown": "她大约在1782年去世，远在海盗黄金时代结束之后。",
+      "tts": {
+        "text": "她大约在一七八二年去世，远在海盗黄金时代结束之后。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮是历史上最著名的海盗之一。",
+      "text_markdown": "安妮·邦妮是历史上最著名的海盗之一。",
+      "tts": {
+        "text": "安妮·邦妮是历史上最著名的海盗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她出名不是因为海盗活动的规模，而是因为她这个人。",
+      "text_markdown": "她出名不是因为海盗活动的规模，而是因为她这个人。",
+      "tts": {
+        "text": "她出名不是因为海盗活动的规模，而是因为她这个人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个女人在海盗船上与男人并肩作战，在任何时代都是非凡的。",
+      "text_markdown": "一个女人在海盗船上与男人并肩作战，在任何时代都是非凡的。",
+      "tts": {
+        "text": "一个女人在海盗船上与男人并肩作战，在任何时代都是非凡的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的故事挑战了海盗活动是纯男性活动的观念。",
+      "text_markdown": "她的故事挑战了海盗活动是纯男性活动的观念。",
+      "tts": {
+        "text": "她的故事挑战了海盗活动是纯男性活动的观念。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "安妮和玛丽·里德证明了女性在战斗中同样可以令人生畏。",
+      "text_markdown": "安妮和玛丽·里德证明了女性在战斗中同样可以令人生畏。",
+      "tts": {
+        "text": "安妮和玛丽·里德证明了女性在战斗中同样可以令人生畏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她们的榜样激励了一代又一代的作家、艺术家和历史学家。",
+      "text_markdown": "她们的榜样激励了一代又一代的作家、艺术家和历史学家。",
+      "tts": {
+        "text": "她们的榜样激励了一代又一代的作家、艺术家和历史学家。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查尔斯·约翰逊船长于1724年出版的著作是安妮故事的主要来源。",
+      "text_markdown": "查尔斯·约翰逊船长于1724年出版的著作是安妮故事的主要来源。",
+      "tts": {
+        "text": "查尔斯·约翰逊船长于一七二四年出版的著作是安妮故事的主要来源。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "全名是《最臭名昭著的海盗的抢劫和谋杀通史》。",
+      "text_markdown": "全名是《最臭名昭著的海盗的抢劫和谋杀通史》。",
+      "tts": {
+        "text": "全名是《最臭名昭著的海盗的抢劫和谋杀通史》。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它成为畅销书，塑造了几个世纪以来世界对海盗的想象。",
+      "text_markdown": "它成为畅销书，塑造了几个世纪以来世界对海盗的想象。",
+      "tts": {
+        "text": "它成为畅销书，塑造了几个世纪以来世界对海盗的想象。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家对约翰逊记载的可靠性存在争议。",
+      "text_markdown": "历史学家对约翰逊记载的可靠性存在争议。",
+      "tts": {
+        "text": "历史学家对约翰逊记载的可靠性存在争议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些细节与法庭记录和其他文件相吻合。",
+      "text_markdown": "一些细节与法庭记录和其他文件相吻合。",
+      "tts": {
+        "text": "一些细节与法庭记录和其他文件相吻合。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他细节似乎是为了戏剧效果而夸大或编造的。",
+      "text_markdown": "其他细节似乎是为了戏剧效果而夸大或编造的。",
+      "tts": {
+        "text": "其他细节似乎是为了戏剧效果而夸大或编造的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "将事实从传说中分离出来是海盗历史研究的持续挑战之一。",
+      "text_markdown": "将事实从传说中分离出来是海盗历史研究的持续挑战之一。",
+      "tts": {
+        "text": "将事实从传说中分离出来是海盗历史研究的持续挑战之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "来自牙买加西班牙城的审判记录提供了最可靠的证据。",
+      "text_markdown": "来自牙买加西班牙城的审判记录提供了最可靠的证据。",
+      "tts": {
+        "text": "来自牙买加西班牙城的审判记录提供了最可靠的证据。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们证实两名女性在拉卡姆的船上作战。",
+      "text_markdown": "它们证实两名女性在拉卡姆的船上作战。",
+      "tts": {
+        "text": "它们证实两名女性在拉卡姆的船上作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们证实了目击者看到安妮和玛丽战斗的证词。",
+      "text_markdown": "它们证实了目击者看到安妮和玛丽战斗的证词。",
+      "tts": {
+        "text": "它们证实了目击者看到安妮和玛丽战斗的证词。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些记录是海盗学术研究中最重要的文献之一。",
+      "text_markdown": "这些记录是海盗学术研究中最重要的文献之一。",
+      "tts": {
+        "text": "这些记录是海盗学术研究中最重要的文献之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮·邦妮出现在数百部小说、电影、电视节目和电子游戏中。",
+      "text_markdown": "安妮·邦妮出现在数百部小说、电影、电视节目和电子游戏中。",
+      "tts": {
+        "text": "安妮·邦妮出现在数百部小说、电影、电视节目和电子游戏中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她已成为反抗不公正权威的象征。",
+      "text_markdown": "她已成为反抗不公正权威的象征。",
+      "tts": {
+        "text": "她已成为反抗不公正权威的象征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她拒绝接受社会赋予她的角色，这在几个世纪后仍然引起共鸣。",
+      "text_markdown": "她拒绝接受社会赋予她的角色，这在几个世纪后仍然引起共鸣。",
+      "tts": {
+        "text": "她拒绝接受社会赋予她的角色，这在几个世纪后仍然引起共鸣。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她失踪的谜团只会让她的传奇更加引人入胜。",
+      "text_markdown": "她失踪的谜团只会让她的传奇更加引人入胜。",
+      "tts": {
+        "text": "她失踪的谜团只会让她的传奇更加引人入胜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我们不知道她是死在狱中、平静地生活，还是以另一个名字再次出海。",
+      "text_markdown": "我们不知道她是死在狱中、平静地生活，还是以另一个名字再次出海。",
+      "tts": {
+        "text": "我们不知道她是死在狱中、平静地生活，还是以另一个名字再次出海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种不确定性让每一代人都可以为她的故事想象自己的结局。",
+      "text_markdown": "这种不确定性让每一代人都可以为她的故事想象自己的结局。",
+      "tts": {
+        "text": "这种不确定性让每一代人都可以为她的故事想象自己的结局。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "毋庸置疑的是她的勇气。",
+      "text_markdown": "毋庸置疑的是她的勇气。",
+      "tts": {
+        "text": "毋庸置疑的是她的勇气。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当她周围的男人因恐惧而躲藏时，安妮·邦妮站了出来，奋力战斗。",
+      "text_markdown": "当她周围的男人因恐惧而躲藏时，安妮·邦妮站了出来，奋力战斗。",
+      "tts": {
+        "text": "当她周围的男人因恐惧而躲藏时，安妮·邦妮站了出来，奋力战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个由宣誓作证的证人所证实的唯一事实，就是她最真实的遗产。",
+      "text_markdown": "这个由宣誓作证的证人所证实的唯一事实，就是她最真实的遗产。",
+      "tts": {
+        "text": "这个由宣誓作证的证人所证实的唯一事实，就是她最真实的遗产。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

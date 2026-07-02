@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_grace_omalley",
+  "language": "zh",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是格蕾丝·奥马利的真实故事，她是爱尔兰西海岸的海盗女王。",
+      "text_markdown": "这是格蕾丝·奥马利的真实故事，她是爱尔兰西海岸的海盗女王。",
+      "tts": {
+        "text": "这是格蕾丝·奥马利的真实故事，她是爱尔兰西海岸的海盗女王。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她出生在一个充满盖尔酋长、部族战争和大西洋风暴的世界。",
+      "text_markdown": "她出生在一个充满盖尔酋长、部族战争和大西洋风暴的世界。",
+      "tts": {
+        "text": "她出生在一个充满盖尔酋长、部族战争和大西洋风暴的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她去世时，英格兰王室已经征服并彻底改变了那个世界。",
+      "text_markdown": "她去世时，英格兰王室已经征服并彻底改变了那个世界。",
+      "tts": {
+        "text": "她去世时，英格兰王室已经征服并彻底改变了那个世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利经历了爱尔兰历史上最动荡的一个世纪。",
+      "text_markdown": "格蕾丝·奥马利经历了爱尔兰历史上最动荡的一个世纪。",
+      "tts": {
+        "text": "格蕾丝·奥马利经历了爱尔兰历史上最动荡的一个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她指挥一支船队，与英国军队作战，在牢狱中幸存，并且比三任丈夫都活得更久。",
+      "text_markdown": "她指挥一支船队，与英国军队作战，在牢狱中幸存，并且比三任丈夫都活得更久。",
+      "tts": {
+        "text": "她指挥一支船队，与英国军队作战，在牢狱中幸存，并且比三任丈夫都活得更久。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她曾经航行到伦敦，与伊丽莎白一世女王面对面会见。",
+      "text_markdown": "她曾经航行到伦敦，与伊丽莎白一世女王面对面会见。",
+      "tts": {
+        "text": "她曾经航行到伦敦，与伊丽莎白一世女王面对面会见。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的爱尔兰名字是格拉尼亚·沃尔，这个名字至今仍在爱尔兰家喻户晓。",
+      "text_markdown": "她的爱尔兰名字是格拉尼亚·沃尔，这个名字至今仍在爱尔兰家喻户晓。",
+      "tts": {
+        "text": "她的爱尔兰名字是格拉尼亚·沃尔，这个名字至今仍在爱尔兰家喻户晓。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "本书在历史记录允许的范围内讲述她的故事。",
+      "text_markdown": "本书在历史记录允许的范围内讲述她的故事。",
+      "tts": {
+        "text": "本书在历史记录允许的范围内讲述她的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在历史记录沉默之处，我们如实说明。",
+      "text_markdown": "在历史记录沉默之处，我们如实说明。",
+      "tts": {
+        "text": "在历史记录沉默之处，我们如实说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的一生被远比任何个人更强大的力量所塑造。",
+      "text_markdown": "她的一生被远比任何个人更强大的力量所塑造。",
+      "tts": {
+        "text": "她的一生被远比任何个人更强大的力量所塑造。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "都铎王朝对爱尔兰的征服、盖尔部族制度的瓦解以及英国殖民势力的崛起，构成了她故事的时代背景。",
+      "text_markdown": "都铎王朝对爱尔兰的征服、盖尔部族制度的瓦解以及英国殖民势力的崛起，构成了她故事的时代背景。",
+      "tts": {
+        "text": "都铎王朝对爱尔兰的征服、盖尔部族制度的瓦解以及英国殖民势力的崛起，构成了她故事的时代背景。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "要理解格蕾丝·奥马利，首先必须理解她出生的那个世界。",
+      "text_markdown": "要理解格蕾丝·奥马利，首先必须理解她出生的那个世界。",
+      "tts": {
+        "text": "要理解格蕾丝·奥马利，首先必须理解她出生的那个世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "盖尔爱尔兰的世界",
+      "text_markdown": "盖尔爱尔兰的世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世纪的爱尔兰是一座分裂的岛屿。",
+      "text_markdown": "十六世纪的爱尔兰是一座分裂的岛屿。",
+      "tts": {
+        "text": "十六世纪的爱尔兰是一座分裂的岛屿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "以都柏林为中心的东海岸由英国定居者控制，受英国法律管辖。",
+      "text_markdown": "以都柏林为中心的东海岸由英国定居者控制，受英国法律管辖。",
+      "tts": {
+        "text": "以都柏林为中心的东海岸由英国定居者控制，受英国法律管辖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一区域被称为佩尔，而在它之外是一个英国人几乎无法理解的世界。",
+      "text_markdown": "这一区域被称为佩尔，而在它之外是一个英国人几乎无法理解的世界。",
+      "tts": {
+        "text": "这一区域被称为佩尔，而在它之外是一个英国人几乎无法理解的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在佩尔以西，爱尔兰由盖尔酋长统治。",
+      "text_markdown": "在佩尔以西，爱尔兰由盖尔酋长统治。",
+      "tts": {
+        "text": "在佩尔以西，爱尔兰由盖尔酋长统治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些酋长依据古老的布雷亨法律管理他们的领地。",
+      "text_markdown": "这些酋长依据古老的布雷亨法律管理他们的领地。",
+      "tts": {
+        "text": "这些酋长依据古老的布雷亨法律管理他们的领地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "布雷亨法律是一套复杂的法律体系，比英国普通法更为古老，涵盖了从土地所有权到婚姻的一切事务。",
+      "text_markdown": "布雷亨法律是一套复杂的法律体系，比英国普通法更为古老，涵盖了从土地所有权到婚姻的一切事务。",
+      "tts": {
+        "text": "布雷亨法律是一套复杂的法律体系，比英国普通法更为古老，涵盖了从土地所有权到婚姻的一切事务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它与英格兰的法律毫无相似之处。",
+      "text_markdown": "它与英格兰的法律毫无相似之处。",
+      "tts": {
+        "text": "它与英格兰的法律毫无相似之处。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根据布雷亨法律，土地属于部族，而非个人。",
+      "text_markdown": "根据布雷亨法律，土地属于部族，而非个人。",
+      "tts": {
+        "text": "根据布雷亨法律，土地属于部族，而非个人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "酋长并非自动继承其职位。",
+      "text_markdown": "酋长并非自动继承其职位。",
+      "tts": {
+        "text": "酋长并非自动继承其职位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "相反，部族中的主要成员会从统治家族中选出最有能力的候选人。",
+      "text_markdown": "相反，部族中的主要成员会从统治家族中选出最有能力的候选人。",
+      "tts": {
+        "text": "相反，部族中的主要成员会从统治家族中选出最有能力的候选人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种制度意味着领导权是靠实力赢得的，而非简单地从父亲传给儿子。",
+      "text_markdown": "这种制度意味着领导权是靠实力赢得的，而非简单地从父亲传给儿子。",
+      "tts": {
+        "text": "这种制度意味着领导权是靠实力赢得的，而非简单地从父亲传给儿子。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "爱尔兰的西海岸被大西洋所主宰。",
+      "text_markdown": "爱尔兰的西海岸被大西洋所主宰。",
+      "tts": {
+        "text": "爱尔兰的西海岸被大西洋所主宰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大海塑造了沿岸社区生活的方方面面。",
+      "text_markdown": "大海塑造了沿岸社区生活的方方面面。",
+      "tts": {
+        "text": "大海塑造了沿岸社区生活的方方面面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕鱼、贸易和海上劫掠是沿海经济的基础。",
+      "text_markdown": "捕鱼、贸易和海上劫掠是沿海经济的基础。",
+      "tts": {
+        "text": "捕鱼、贸易和海上劫掠是沿海经济的基础。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "控制着最好港口的部族是最富有、最强大的。",
+      "text_markdown": "控制着最好港口的部族是最富有、最强大的。",
+      "tts": {
+        "text": "控制着最好港口的部族是最富有、最强大的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "位于爱尔兰西部的康诺特省是一些最强大的盖尔部族的家园。",
+      "text_markdown": "位于爱尔兰西部的康诺特省是一些最强大的盖尔部族的家园。",
+      "tts": {
+        "text": "位于爱尔兰西部的康诺特省是一些最强大的盖尔部族的家园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥弗莱厄蒂家族控制着康诺特南部的大片地区。",
+      "text_markdown": "奥弗莱厄蒂家族控制着康诺特南部的大片地区。",
+      "tts": {
+        "text": "奥弗莱厄蒂家族控制着康诺特南部的大片地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "伯克家族是诺曼定居者的后裔，已经完全盖尔化，控制着北方大片领地。",
+      "text_markdown": "伯克家族是诺曼定居者的后裔，已经完全盖尔化，控制着北方大片领地。",
+      "tts": {
+        "text": "伯克家族是诺曼定居者的后裔，已经完全盖尔化，控制着北方大片领地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "而奥马利家族控制着克鲁湾及周围的海岸线。",
+      "text_markdown": "而奥马利家族控制着克鲁湾及周围的海岸线。",
+      "tts": {
+        "text": "而奥马利家族控制着克鲁湾及周围的海岸线。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克鲁湾是欧洲最杰出的天然良港之一。",
+      "text_markdown": "克鲁湾是欧洲最杰出的天然良港之一。",
+      "tts": {
+        "text": "克鲁湾是欧洲最杰出的天然良港之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它包含数百个小岛，克莱尔岛的巨大身躯为它们遮挡了大西洋的风暴。",
+      "text_markdown": "它包含数百个小岛，克莱尔岛的巨大身躯为它们遮挡了大西洋的风暴。",
+      "tts": {
+        "text": "它包含数百个小岛，克莱尔岛的巨大身躯为它们遮挡了大西洋的风暴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这片海湾为舰队提供了完美的锚地。",
+      "text_markdown": "这片海湾为舰队提供了完美的锚地。",
+      "tts": {
+        "text": "这片海湾为舰队提供了完美的锚地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "谁控制了克鲁湾，谁就掌握了通往西海岸最富饶渔场的通道。",
+      "text_markdown": "谁控制了克鲁湾，谁就掌握了通往西海岸最富饶渔场的通道。",
+      "tts": {
+        "text": "谁控制了克鲁湾，谁就掌握了通往西海岸最富饶渔场的通道。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥马利家族数百年来一直是航海世家。",
+      "text_markdown": "奥马利家族数百年来一直是航海世家。",
+      "tts": {
+        "text": "奥马利家族数百年来一直是航海世家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的族训从爱尔兰语翻译过来是：陆上与海上皆强大。",
+      "text_markdown": "他们的族训从爱尔兰语翻译过来是：陆上与海上皆强大。",
+      "tts": {
+        "text": "他们的族训从爱尔兰语翻译过来是：陆上与海上皆强大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们向使用其水域的渔船征收通行费。",
+      "text_markdown": "他们向使用其水域的渔船征收通行费。",
+      "tts": {
+        "text": "他们向使用其水域的渔船征收通行费。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们与西班牙、苏格兰以及法国西部的港口进行贸易。",
+      "text_markdown": "他们与西班牙、苏格兰以及法国西部的港口进行贸易。",
+      "tts": {
+        "text": "他们与西班牙、苏格兰以及法国西部的港口进行贸易。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "自十二世纪以来，英格兰王室就宣称对全爱尔兰拥有宗主权。",
+      "text_markdown": "自十二世纪以来，英格兰王室就宣称对全爱尔兰拥有宗主权。",
+      "tts": {
+        "text": "自十二世纪以来，英格兰王室就宣称对全爱尔兰拥有宗主权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但在大部分时间里，英格兰的控制仅限于佩尔和少数几个沿海城镇。",
+      "text_markdown": "但在大部分时间里，英格兰的控制仅限于佩尔和少数几个沿海城镇。",
+      "tts": {
+        "text": "但在大部分时间里，英格兰的控制仅限于佩尔和少数几个沿海城镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西部的盖尔酋长们世代以来实际上一直是独立的。",
+      "text_markdown": "西部的盖尔酋长们世代以来实际上一直是独立的。",
+      "tts": {
+        "text": "西部的盖尔酋长们世代以来实际上一直是独立的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "那种独立即将走到尽头。",
+      "text_markdown": "那种独立即将走到尽头。",
+      "tts": {
+        "text": "那种独立即将走到尽头。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利八世国王开始推行一项新政策，要对全爱尔兰实行英格兰直接统治。",
+      "text_markdown": "亨利八世国王开始推行一项新政策，要对全爱尔兰实行英格兰直接统治。",
+      "tts": {
+        "text": "亨利八世国王开始推行一项新政策，要对全爱尔兰实行英格兰直接统治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他要求盖尔酋长臣服于英国法律，并将他们的土地交给王室。",
+      "text_markdown": "他要求盖尔酋长臣服于英国法律，并将他们的土地交给王室。",
+      "tts": {
+        "text": "他要求盖尔酋长臣服于英国法律，并将他们的土地交给王室。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作为交换，王室将以英国法律名义重新授予这些土地。",
+      "text_markdown": "作为交换，王室将以英国法律名义重新授予这些土地。",
+      "tts": {
+        "text": "作为交换，王室将以英国法律名义重新授予这些土地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这项政策被称为投降与重授，它直接打击了盖尔社会的核心。",
+      "text_markdown": "这项政策被称为投降与重授，它直接打击了盖尔社会的核心。",
+      "tts": {
+        "text": "这项政策被称为投降与重授，它直接打击了盖尔社会的核心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多酋长激烈地抵制这项政策。",
+      "text_markdown": "许多酋长激烈地抵制这项政策。",
+      "tts": {
+        "text": "许多酋长激烈地抵制这项政策。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们视之为对其家族世代拥有之土地的掠夺。",
+      "text_markdown": "他们视之为对其家族世代拥有之土地的掠夺。",
+      "tts": {
+        "text": "他们视之为对其家族世代拥有之土地的掠夺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他人则接受了英国头衔，希望在新制度下保住自己的权力。",
+      "text_markdown": "其他人则接受了英国头衔，希望在新制度下保住自己的权力。",
+      "tts": {
+        "text": "其他人则接受了英国头衔，希望在新制度下保住自己的权力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "结果是全岛数十年的冲突、谈判和背叛。",
+      "text_markdown": "结果是全岛数十年的冲突、谈判和背叛。",
+      "tts": {
+        "text": "结果是全岛数十年的冲突、谈判和背叛。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伊丽莎白一世女王延续并加强了她父亲在爱尔兰的政策。",
+      "text_markdown": "伊丽莎白一世女王延续并加强了她父亲在爱尔兰的政策。",
+      "tts": {
+        "text": "伊丽莎白一世女王延续并加强了她父亲在爱尔兰的政策。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她派遣总督和军队在全岛推行英国法律。",
+      "text_markdown": "她派遣总督和军队在全岛推行英国法律。",
+      "tts": {
+        "text": "她派遣总督和军队在全岛推行英国法律。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "都铎征服是残酷的，包括屠杀、强制迁移和对盖尔文化的蓄意摧毁。",
+      "text_markdown": "都铎征服是残酷的，包括屠杀、强制迁移和对盖尔文化的蓄意摧毁。",
+      "tts": {
+        "text": "都铎征服是残酷的，包括屠杀、强制迁移和对盖尔文化的蓄意摧毁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利就诞生在这个盖尔独立正在消亡的世界里。",
+      "text_markdown": "格蕾丝·奥马利就诞生在这个盖尔独立正在消亡的世界里。",
+      "tts": {
+        "text": "格蕾丝·奥马利就诞生在这个盖尔独立正在消亡的世界里。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙人也对爱尔兰海岸有着利益诉求。",
+      "text_markdown": "西班牙人也对爱尔兰海岸有着利益诉求。",
+      "tts": {
+        "text": "西班牙人也对爱尔兰海岸有着利益诉求。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙是英格兰最大的对手，而爱尔兰为西班牙入侵提供了潜在的基地。",
+      "text_markdown": "西班牙是英格兰最大的对手，而爱尔兰为西班牙入侵提供了潜在的基地。",
+      "tts": {
+        "text": "西班牙是英格兰最大的对手，而爱尔兰为西班牙入侵提供了潜在的基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "爱尔兰酋长与西班牙商人保持着贸易关系。",
+      "text_markdown": "爱尔兰酋长与西班牙商人保持着贸易关系。",
+      "tts": {
+        "text": "爱尔兰酋长与西班牙商人保持着贸易关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "盖尔爱尔兰的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些联系在世纪推进中变得越来越具有政治危险性。",
+      "text_markdown": "这些联系在世纪推进中变得越来越具有政治危险性。",
+      "tts": {
+        "text": "这些联系在世纪推进中变得越来越具有政治危险性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利大约在1530年出生于克鲁湾入口处的克莱尔岛。",
+      "text_markdown": "格蕾丝·奥马利大约在1530年出生于克鲁湾入口处的克莱尔岛。",
+      "tts": {
+        "text": "格蕾丝·奥马利大约在一千五百三十年出生于克鲁湾入口处的克莱尔岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的父亲是杜达拉·奥马利，奥马利部族的酋长。",
+      "text_markdown": "她的父亲是杜达拉·奥马利，奥马利部族的酋长。",
+      "tts": {
+        "text": "她的父亲是杜达拉·奥马利，奥马利部族的酋长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他因一头黑发和过人的力量而被称为黑橡树。",
+      "text_markdown": "他因一头黑发和过人的力量而被称为黑橡树。",
+      "tts": {
+        "text": "他因一头黑发和过人的力量而被称为黑橡树。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她母亲的名字记载为玛格丽特，但关于她的其他信息知之甚少。",
+      "text_markdown": "她母亲的名字记载为玛格丽特，但关于她的其他信息知之甚少。",
+      "tts": {
+        "text": "她母亲的名字记载为玛格丽特，但关于她的其他信息知之甚少。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝在大海的环抱中长大。",
+      "text_markdown": "格蕾丝在大海的环抱中长大。",
+      "tts": {
+        "text": "格蕾丝在大海的环抱中长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "克莱尔岛位于克鲁湾的入口处，完全暴露在大西洋的力量之下。",
+      "text_markdown": "克莱尔岛位于克鲁湾的入口处，完全暴露在大西洋的力量之下。",
+      "tts": {
+        "text": "克莱尔岛位于克鲁湾的入口处，完全暴露在大西洋的力量之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座岛屿面积不大，风吹日晒，却美丽非凡。",
+      "text_markdown": "这座岛屿面积不大，风吹日晒，却美丽非凡。",
+      "tts": {
+        "text": "这座岛屿面积不大，风吹日晒，却美丽非凡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它是奥马利部族的据点和海上行动的基地。",
+      "text_markdown": "它是奥马利部族的据点和海上行动的基地。",
+      "tts": {
+        "text": "它是奥马利部族的据点和海上行动的基地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从很小的时候起，格蕾丝就显示出航海的天赋。",
+      "text_markdown": "从很小的时候起，格蕾丝就显示出航海的天赋。",
+      "tts": {
+        "text": "从很小的时候起，格蕾丝就显示出航海的天赋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据说她还是个孩子时就要求跟父亲一起出海做贸易。",
+      "text_markdown": "据说她还是个孩子时就要求跟父亲一起出海做贸易。",
+      "tts": {
+        "text": "据说她还是个孩子时就要求跟父亲一起出海做贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当被告知她的长发会缠在船上的绳索里时，她把头发剪短了。",
+      "text_markdown": "当被告知她的长发会缠在船上的绳索里时，她把头发剪短了。",
+      "tts": {
+        "text": "当被告知她的长发会缠在船上的绳索里时，她把头发剪短了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个故事不管是否完全属实，都为她赢得了格拉尼亚·沃尔的绰号，意思是秃头格蕾丝。",
+      "text_markdown": "这个故事不管是否完全属实，都为她赢得了格拉尼亚·沃尔的绰号，意思是秃头格蕾丝。",
+      "tts": {
+        "text": "这个故事不管是否完全属实，都为她赢得了格拉尼亚·沃尔的绰号，意思是秃头格蕾丝。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她通过观察星星、潮汐和海鸟的行为来学习航海。",
+      "text_markdown": "她通过观察星星、潮汐和海鸟的行为来学习航海。",
+      "tts": {
+        "text": "她通过观察星星、潮汐和海鸟的行为来学习航海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她学会了克鲁湾周围危险的水流以及更远处开阔大西洋的规律。",
+      "text_markdown": "她学会了克鲁湾周围危险的水流以及更远处开阔大西洋的规律。",
+      "tts": {
+        "text": "她学会了克鲁湾周围危险的水流以及更远处开阔大西洋的规律。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她学会了在能摧毁两倍大船只的风暴中驾驶船只。",
+      "text_markdown": "她学会了在能摧毁两倍大船只的风暴中驾驶船只。",
+      "tts": {
+        "text": "她学会了在能摧毁两倍大船只的风暴中驾驶船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些技能需要多年才能掌握，而她年纪轻轻就已精通。",
+      "text_markdown": "这些技能需要多年才能掌握，而她年纪轻轻就已精通。",
+      "tts": {
+        "text": "这些技能需要多年才能掌握，而她年纪轻轻就已精通。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝的教育不仅限于航海。",
+      "text_markdown": "格蕾丝的教育不仅限于航海。",
+      "tts": {
+        "text": "格蕾丝的教育不仅限于航海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作为酋长的女儿，她应当学习了盖尔世界的政治艺术。",
+      "text_markdown": "作为酋长的女儿，她应当学习了盖尔世界的政治艺术。",
+      "tts": {
+        "text": "作为酋长的女儿，她应当学习了盖尔世界的政治艺术。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她理解联盟、领土主张以及将各部族联系在一起的复杂义务网络。",
+      "text_markdown": "她理解联盟、领土主张以及将各部族联系在一起的复杂义务网络。",
+      "tts": {
+        "text": "她理解联盟、领土主张以及将各部族联系在一起的复杂义务网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她说爱尔兰语，可能还学过一些英语，也许还有拉丁语。",
+      "text_markdown": "她说爱尔兰语，可能还学过一些英语，也许还有拉丁语。",
+      "tts": {
+        "text": "她说爱尔兰语，可能还学过一些英语，也许还有拉丁语。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约在1546年，当她大约十六岁时，格蕾丝嫁给了多纳尔·奥弗莱厄蒂。",
+      "text_markdown": "大约在1546年，当她大约十六岁时，格蕾丝嫁给了多纳尔·奥弗莱厄蒂。",
+      "tts": {
+        "text": "大约在一千五百四十六年，当她大约十六岁时，格蕾丝嫁给了多纳尔·奥弗莱厄蒂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多纳尔是克鲁湾以南科尼马拉地区奥弗莱厄蒂家族酋长之位的继承人。",
+      "text_markdown": "多纳尔是克鲁湾以南科尼马拉地区奥弗莱厄蒂家族酋长之位的继承人。",
+      "tts": {
+        "text": "多纳尔是克鲁湾以南科尼马拉地区奥弗莱厄蒂家族酋长之位的继承人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这桩婚姻是两个强大盖尔部族之间的政治联盟。",
+      "text_markdown": "这桩婚姻是两个强大盖尔部族之间的政治联盟。",
+      "tts": {
+        "text": "这桩婚姻是两个强大盖尔部族之间的政治联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它让格蕾丝得以进入奥弗莱厄蒂领地的港口和疆域。",
+      "text_markdown": "它让格蕾丝得以进入奥弗莱厄蒂领地的港口和疆域。",
+      "tts": {
+        "text": "它让格蕾丝得以进入奥弗莱厄蒂领地的港口和疆域。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多纳尔·奥弗莱厄蒂被称为战斗多纳尔。",
+      "text_markdown": "多纳尔·奥弗莱厄蒂被称为战斗多纳尔。",
+      "tts": {
+        "text": "多纳尔·奥弗莱厄蒂被称为战斗多纳尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他性情好斗，经常卷入与邻近部族的争斗。",
+      "text_markdown": "他性情好斗，经常卷入与邻近部族的争斗。",
+      "tts": {
+        "text": "他性情好斗，经常卷入与邻近部族的争斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "格蕾丝在婚姻期间为他生了三个孩子。",
+      "text_markdown": "格蕾丝在婚姻期间为他生了三个孩子。",
+      "tts": {
+        "text": "格蕾丝在婚姻期间为他生了三个孩子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但根据传统说法，她很快成为了两人中更有能力的领袖。",
+      "text_markdown": "但根据传统说法，她很快成为了两人中更有能力的领袖。",
+      "tts": {
+        "text": "但根据传统说法，她很快成为了两人中更有能力的领袖。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当多纳尔在与敌对部族的冲突中被杀后，格蕾丝接管了他的船队和追随者。",
+      "text_markdown": "当多纳尔在与敌对部族的冲突中被杀后，格蕾丝接管了他的船队和追随者。",
+      "tts": {
+        "text": "当多纳尔在与敌对部族的冲突中被杀后，格蕾丝接管了他的船队和追随者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "根据布雷亨法律，她对他的财产没有自动继承权。",
+      "text_markdown": "根据布雷亨法律，她对他的财产没有自动继承权。",
+      "tts": {
+        "text": "根据布雷亨法律，她对他的财产没有自动继承权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但她通过多年共同航海赢得了船员们的忠诚。",
+      "text_markdown": "但她通过多年共同航海赢得了船员们的忠诚。",
+      "tts": {
+        "text": "但她通过多年共同航海赢得了船员们的忠诚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "那些人选择追随她，她成为了名副其实的指挥官。",
+      "text_markdown": "那些人选择追随她，她成为了名副其实的指挥官。",
+      "tts": {
+        "text": "那些人选择追随她，她成为了名副其实的指挥官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝带着追随者和船只回到了克鲁湾。",
+      "text_markdown": "格蕾丝带着追随者和船只回到了克鲁湾。",
+      "tts": {
+        "text": "格蕾丝带着追随者和船只回到了克鲁湾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在克莱尔岛建立了基地，开始组建船队。",
+      "text_markdown": "她在克莱尔岛建立了基地，开始组建船队。",
+      "tts": {
+        "text": "她在克莱尔岛建立了基地，开始组建船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她向渔船征收通行费，与外国商人做贸易，并劫掠敌对部族的船只。",
+      "text_markdown": "她向渔船征收通行费，与外国商人做贸易，并劫掠敌对部族的船只。",
+      "tts": {
+        "text": "她向渔船征收通行费，与外国商人做贸易，并劫掠敌对部族的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "几年之内，她就成为爱尔兰西海岸最有势力的人物之一。",
+      "text_markdown": "几年之内，她就成为爱尔兰西海岸最有势力的人物之一。",
+      "tts": {
+        "text": "几年之内，她就成为爱尔兰西海岸最有势力的人物之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她在大约1566年再婚，嫁给了被称为铁理查德的理查德·伯克。",
+      "text_markdown": "她在大约1566年再婚，嫁给了被称为铁理查德的理查德·伯克。",
+      "tts": {
+        "text": "她在大约一千五百六十六年再婚，嫁给了被称为铁理查德的理查德·伯克。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "理查德是梅奥郡伯克家族一个强大分支的酋长。",
+      "text_markdown": "理查德是梅奥郡伯克家族一个强大分支的酋长。",
+      "tts": {
+        "text": "理查德是梅奥郡伯克家族一个强大分支的酋长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "根据一个著名的故事，格蕾丝按照布雷亨法律与他结婚一年，然后把他锁在了自己城堡外面。",
+      "text_markdown": "根据一个著名的故事，格蕾丝按照布雷亨法律与他结婚一年，然后把他锁在了自己城堡外面。",
+      "tts": {
+        "text": "根据一个著名的故事，格蕾丝按照布雷亨法律与他结婚一年，然后把他锁在了自己城堡外面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "无论这个故事是否完全属实，它反映了她大胆不拘一格的名声。",
+      "text_markdown": "无论这个故事是否完全属实，它反映了她大胆不拘一格的名声。",
+      "tts": {
+        "text": "无论这个故事是否完全属实，它反映了她大胆不拘一格的名声。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管有各种精彩的故事，格蕾丝和理查德实际上在一起生活了很多年。",
+      "text_markdown": "尽管有各种精彩的故事，格蕾丝和理查德实际上在一起生活了很多年。",
+      "tts": {
+        "text": "尽管有各种精彩的故事，格蕾丝和理查德实际上在一起生活了很多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们有一个儿子名叫蒂博特，后来在爱尔兰历史上扮演了重要角色。",
+      "text_markdown": "他们有一个儿子名叫蒂博特，后来在爱尔兰历史上扮演了重要角色。",
+      "tts": {
+        "text": "他们有一个儿子名叫蒂博特，后来在爱尔兰历史上扮演了重要角色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这桩婚姻给格蕾丝带来了更多的领地、船只和政治关系。",
+      "text_markdown": "这桩婚姻给格蕾丝带来了更多的领地、船只和政治关系。",
+      "tts": {
+        "text": "这桩婚姻给格蕾丝带来了更多的领地、船只和政治关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她现在是西海岸最有权势的女性，也许是全爱尔兰最有权势的女性。",
+      "text_markdown": "她现在是西海岸最有权势的女性，也许是全爱尔兰最有权势的女性。",
+      "tts": {
+        "text": "她现在是西海岸最有权势的女性，也许是全爱尔兰最有权势的女性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的船队在鼎盛时期多达二十艘船。",
+      "text_markdown": "她的船队在鼎盛时期多达二十艘船。",
+      "tts": {
+        "text": "她的船队在鼎盛时期多达二十艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些不是大型战舰，而是适合大西洋恶劣海况的坚固桨帆船。",
+      "text_markdown": "这些不是大型战舰，而是适合大西洋恶劣海况的坚固桨帆船。",
+      "tts": {
+        "text": "这些不是大型战舰，而是适合大西洋恶劣海况的坚固桨帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们运载着货物、战士，以及一个正在迅速消失的盖尔世界的希望。",
+      "text_markdown": "它们运载着货物、战士，以及一个正在迅速消失的盖尔世界的希望。",
+      "tts": {
+        "text": "它们运载着货物、战士，以及一个正在迅速消失的盖尔世界的希望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利正在建立一个海上帝国，而她所认识的世界正在同时被摧毁。",
+      "text_markdown": "格蕾丝·奥马利正在建立一个海上帝国，而她所认识的世界正在同时被摧毁。",
+      "tts": {
+        "text": "格蕾丝·奥马利正在建立一个海上帝国，而她所认识的世界正在同时被摧毁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起之路",
+      "text_markdown": "崛起之路"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利的权力建立在三个基础之上：船队、联盟和胆识。",
+      "text_markdown": "格蕾丝·奥马利的权力建立在三个基础之上：船队、联盟和胆识。",
+      "tts": {
+        "text": "格蕾丝·奥马利的权力建立在三个基础之上：船队、联盟和胆识。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的船队使她控制了西海岸沿线的航道。",
+      "text_markdown": "她的船队使她控制了西海岸沿线的航道。",
+      "tts": {
+        "text": "她的船队使她控制了西海岸沿线的航道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的婚姻和家族关系使她与最强大的盖尔部族结成了联盟。",
+      "text_markdown": "她的婚姻和家族关系使她与最强大的盖尔部族结成了联盟。",
+      "tts": {
+        "text": "她的婚姻和家族关系使她与最强大的盖尔部族结成了联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "而她个人的勇气赢得了那些原本绝不会追随一个女人的人的忠诚。",
+      "text_markdown": "而她个人的勇气赢得了那些原本绝不会追随一个女人的人的忠诚。",
+      "tts": {
+        "text": "而她个人的勇气赢得了那些原本绝不会追随一个女人的人的忠诚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她劫掠那些未经许可穿越其水域而不缴纳通行费的商船。",
+      "text_markdown": "她劫掠那些未经许可穿越其水域而不缴纳通行费的商船。",
+      "tts": {
+        "text": "她劫掠那些未经许可穿越其水域而不缴纳通行费的商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她攻击那些挑战她领地的敌对部族的船只。",
+      "text_markdown": "她攻击那些挑战她领地的敌对部族的船只。",
+      "tts": {
+        "text": "她攻击那些挑战她领地的敌对部族的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她与西班牙和苏格兰商人做贸易，用爱尔兰的皮革、鱼和羊毛换取葡萄酒、盐和武器。",
+      "text_markdown": "她与西班牙和苏格兰商人做贸易，用爱尔兰的皮革、鱼和羊毛换取葡萄酒、盐和武器。",
+      "tts": {
+        "text": "她与西班牙和苏格兰商人做贸易，用爱尔兰的皮革、鱼和羊毛换取葡萄酒、盐和武器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的经营活动使她富有且在整个西海岸具有政治影响力。",
+      "text_markdown": "她的经营活动使她富有且在整个西海岸具有政治影响力。",
+      "tts": {
+        "text": "她的经营活动使她富有且在整个西海岸具有政治影响力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "康诺特的英国当局视她为危险的叛逆者。",
+      "text_markdown": "康诺特的英国当局视她为危险的叛逆者。",
+      "tts": {
+        "text": "康诺特的英国当局视她为危险的叛逆者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "理查德·宾厄姆爵士于1584年被任命为康诺特的英国总督。",
+      "text_markdown": "理查德·宾厄姆爵士于1584年被任命为康诺特的英国总督。",
+      "tts": {
+        "text": "理查德·宾厄姆爵士于一千五百八十四年被任命为康诺特的英国总督。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "宾厄姆是一个冷酷无情的行政官，决心粉碎盖尔人的抵抗。",
+      "text_markdown": "宾厄姆是一个冷酷无情的行政官，决心粉碎盖尔人的抵抗。",
+      "tts": {
+        "text": "宾厄姆是一个冷酷无情的行政官，决心粉碎盖尔人的抵抗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他将格蕾丝·奥马利视为主要打击目标之一。",
+      "text_markdown": "他将格蕾丝·奥马利视为主要打击目标之一。",
+      "tts": {
+        "text": "他将格蕾丝·奥马利视为主要打击目标之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "宾厄姆夺取了她的牲畜，并多次试图逮捕她。",
+      "text_markdown": "宾厄姆夺取了她的牲畜，并多次试图逮捕她。",
+      "tts": {
+        "text": "宾厄姆夺取了她的牲畜，并多次试图逮捕她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他抓住了她的长子欧文并将其杀害。",
+      "text_markdown": "他抓住了她的长子欧文并将其杀害。",
+      "tts": {
+        "text": "他抓住了她的长子欧文并将其杀害。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他关押了她的兄弟和多名追随者。",
+      "text_markdown": "他关押了她的兄弟和多名追随者。",
+      "tts": {
+        "text": "他关押了她的兄弟和多名追随者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他对她的打击行动充满个人仇恨和报复心理。",
+      "text_markdown": "他对她的打击行动充满个人仇恨和报复心理。",
+      "tts": {
+        "text": "他对她的打击行动充满个人仇恨和报复心理。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝用一切可用的手段抵抗宾厄姆。",
+      "text_markdown": "格蕾丝用一切可用的手段抵抗宾厄姆。",
+      "tts": {
+        "text": "格蕾丝用一切可用的手段抵抗宾厄姆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她袭击英国的补给船。",
+      "text_markdown": "她袭击英国的补给船。",
+      "tts": {
+        "text": "她袭击英国的补给船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她庇护那些逃离宾厄姆军队的盖尔叛军。",
+      "text_markdown": "她庇护那些逃离宾厄姆军队的盖尔叛军。",
+      "tts": {
+        "text": "她庇护那些逃离宾厄姆军队的盖尔叛军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她利用对海岸线的了解躲避英军巡逻，并在他们最意想不到的地方发动袭击。",
+      "text_markdown": "她利用对海岸线的了解躲避英军巡逻，并在他们最意想不到的地方发动袭击。",
+      "tts": {
+        "text": "她利用对海岸线的了解躲避英军巡逻，并在他们最意想不到的地方发动袭击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但宾厄姆的资源远远超过她。",
+      "text_markdown": "但宾厄姆的资源远远超过她。",
+      "tts": {
+        "text": "但宾厄姆的资源远远超过她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他指挥着英国士兵、大炮，并有王室的支持。",
+      "text_markdown": "他指挥着英国士兵、大炮，并有王室的支持。",
+      "tts": {
+        "text": "他指挥着英国士兵、大炮，并有王室的支持。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "格蕾丝正在与欧洲最强大的王国进行一场注定失败的战争。",
+      "text_markdown": "格蕾丝正在与欧洲最强大的王国进行一场注定失败的战争。",
+      "tts": {
+        "text": "格蕾丝正在与欧洲最强大的王国进行一场注定失败的战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到一千五百九十年代初，她已经走投无路。",
+      "text_markdown": "到一千五百九十年代初，她已经走投无路。",
+      "tts": {
+        "text": "到一千五百九十年代初，她已经走投无路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在1593年，格蕾丝做出了都铎时代历史上最非凡的决定之一。",
+      "text_markdown": "在1593年，格蕾丝做出了都铎时代历史上最非凡的决定之一。",
+      "tts": {
+        "text": "在一千五百九十三年，格蕾丝做出了都铎时代历史上最非凡的决定之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她决定完全绕过宾厄姆，直接向伊丽莎白一世女王请愿。",
+      "text_markdown": "她决定完全绕过宾厄姆，直接向伊丽莎白一世女王请愿。",
+      "tts": {
+        "text": "她决定完全绕过宾厄姆，直接向伊丽莎白一世女王请愿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她写了一份请愿书给女王，陈述了她对宾厄姆的控诉。",
+      "text_markdown": "她写了一份请愿书给女王，陈述了她对宾厄姆的控诉。",
+      "tts": {
+        "text": "她写了一份请愿书给女王，陈述了她对宾厄姆的控诉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "然后她亲自航行到英格兰去陈述她的案情。",
+      "text_markdown": "然后她亲自航行到英格兰去陈述她的案情。",
+      "tts": {
+        "text": "然后她亲自航行到英格兰去陈述她的案情。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利与伊丽莎白女王的会面发生在伦敦的格林威治宫。",
+      "text_markdown": "格蕾丝·奥马利与伊丽莎白女王的会面发生在伦敦的格林威治宫。",
+      "tts": {
+        "text": "格蕾丝·奥马利与伊丽莎白女王的会面发生在伦敦的格林威治宫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "确切日期没有记录，但它发生在1593年九月。",
+      "text_markdown": "确切日期没有记录，但它发生在1593年九月。",
+      "tts": {
+        "text": "确切日期没有记录，但它发生在一千五百九十三年九月。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "十六世纪两位最杰出的女性面对面地站在一起。",
+      "text_markdown": "十六世纪两位最杰出的女性面对面地站在一起。",
+      "tts": {
+        "text": "十六世纪两位最杰出的女性面对面地站在一起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一位统治着欧洲最强大的王国；另一位统治着大西洋边缘的一支船队。",
+      "text_markdown": "一位统治着欧洲最强大的王国；另一位统治着大西洋边缘的一支船队。",
+      "tts": {
+        "text": "一位统治着欧洲最强大的王国；另一位统治着大西洋边缘的一支船队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝用拉丁语进行了这次会谈，两位女性都会说这种语言。",
+      "text_markdown": "格蕾丝用拉丁语进行了这次会谈，两位女性都会说这种语言。",
+      "tts": {
+        "text": "格蕾丝用拉丁语进行了这次会谈，两位女性都会说这种语言。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她拒绝向伊丽莎白鞠躬，声称自己也是一位主权统治者。",
+      "text_markdown": "她拒绝向伊丽莎白鞠躬，声称自己也是一位主权统治者。",
+      "tts": {
+        "text": "她拒绝向伊丽莎白鞠躬，声称自己也是一位主权统治者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她条理清晰、态度坚定地提交了她的请愿书。",
+      "text_markdown": "她条理清晰、态度坚定地提交了她的请愿书。",
+      "tts": {
+        "text": "她条理清晰、态度坚定地提交了她的请愿书。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "据说伊丽莎白对她的勇气和风度印象深刻。",
+      "text_markdown": "据说伊丽莎白对她的勇气和风度印象深刻。",
+      "tts": {
+        "text": "据说伊丽莎白对她的勇气和风度印象深刻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伊丽莎白同意了格蕾丝的多项要求。",
+      "text_markdown": "伊丽莎白同意了格蕾丝的多项要求。",
+      "tts": {
+        "text": "伊丽莎白同意了格蕾丝的多项要求。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她命令宾厄姆释放格蕾丝被关押的家人。",
+      "text_markdown": "她命令宾厄姆释放格蕾丝被关押的家人。",
+      "tts": {
+        "text": "她命令宾厄姆释放格蕾丝被关押的家人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她准许格蕾丝继续她的海上活动。",
+      "text_markdown": "她准许格蕾丝继续她的海上活动。",
+      "tts": {
+        "text": "她准许格蕾丝继续她的海上活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她为格蕾丝和她的追随者写了保护信。",
+      "text_markdown": "她为格蕾丝和她的追随者写了保护信。",
+      "tts": {
+        "text": "她为格蕾丝和她的追随者写了保护信。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格林威治的这次会面是格蕾丝·奥马利的一次外交胜利。",
+      "text_markdown": "格林威治的这次会面是格蕾丝·奥马利的一次外交胜利。",
+      "tts": {
+        "text": "格林威治的这次会面是格蕾丝·奥马利的一次外交胜利。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她越过了英国在爱尔兰的殖民行政机构。",
+      "text_markdown": "她越过了英国在爱尔兰的殖民行政机构。",
+      "tts": {
+        "text": "她越过了英国在爱尔兰的殖民行政机构。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她直接与君主谈判并获得了实质性的让步。",
+      "text_markdown": "她直接与君主谈判并获得了实质性的让步。",
+      "tts": {
+        "text": "她直接与君主谈判并获得了实质性的让步。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有任何其他盖尔酋长取得过类似的成就。",
+      "text_markdown": "没有任何其他盖尔酋长取得过类似的成就。",
+      "tts": {
+        "text": "没有任何其他盖尔酋长取得过类似的成就。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但这次胜利是脆弱而短暂的。",
+      "text_markdown": "但这次胜利是脆弱而短暂的。",
+      "tts": {
+        "text": "但这次胜利是脆弱而短暂的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宾厄姆对被自己的女王推翻感到愤怒。",
+      "text_markdown": "宾厄姆对被自己的女王推翻感到愤怒。",
+      "tts": {
+        "text": "宾厄姆对被自己的女王推翻感到愤怒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他拖延执行伊丽莎白的命令。",
+      "text_markdown": "他拖延执行伊丽莎白的命令。",
+      "tts": {
+        "text": "他拖延执行伊丽莎白的命令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "摧毁盖尔爱尔兰的结构性力量不会因为任何一次谈判而停止。",
+      "text_markdown": "摧毁盖尔爱尔兰的结构性力量不会因为任何一次谈判而停止。",
+      "tts": {
+        "text": "摧毁盖尔爱尔兰的结构性力量不会因为任何一次谈判而停止。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "格蕾丝赢得了一场战斗，但这场战争已经输了。",
+      "text_markdown": "格蕾丝赢得了一场战斗，但这场战争已经输了。",
+      "tts": {
+        "text": "格蕾丝赢得了一场战斗，但这场战争已经输了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "九年战争在一千五百九十年代席卷了整个爱尔兰。",
+      "text_markdown": "九年战争在一千五百九十年代席卷了整个爱尔兰。",
+      "tts": {
+        "text": "九年战争在一千五百九十年代席卷了整个爱尔兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "盖尔酋长们发动了对英国统治的最后一次绝望叛乱。",
+      "text_markdown": "盖尔酋长们发动了对英国统治的最后一次绝望叛乱。",
+      "tts": {
+        "text": "盖尔酋长们发动了对英国统治的最后一次绝望叛乱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战争以英国的胜利和旧盖尔秩序的彻底瓦解而告终。",
+      "text_markdown": "战争以英国的胜利和旧盖尔秩序的彻底瓦解而告终。",
+      "tts": {
+        "text": "战争以英国的胜利和旧盖尔秩序的彻底瓦解而告终。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利活着目睹了她为之奋斗的世界在身边土崩瓦解。",
+      "text_markdown": "格蕾丝·奥马利活着目睹了她为之奋斗的世界在身边土崩瓦解。",
+      "tts": {
+        "text": "格蕾丝·奥马利活着目睹了她为之奋斗的世界在身边土崩瓦解。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "权力巅峰",
+      "text_markdown": "权力巅峰"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一千五百七十年代和一千五百八十年代的权力巅峰时期，格蕾丝·奥马利控制着西部海域。",
+      "text_markdown": "在一千五百七十年代和一千五百八十年代的权力巅峰时期，格蕾丝·奥马利控制着西部海域。",
+      "tts": {
+        "text": "在一千五百七十年代和一千五百八十年代的权力巅峰时期，格蕾丝·奥马利控制着西部海域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的船队主宰着从戈尔韦湾到多尼戈尔的水域。",
+      "text_markdown": "她的船队主宰着从戈尔韦湾到多尼戈尔的水域。",
+      "tts": {
+        "text": "她的船队主宰着从戈尔韦湾到多尼戈尔的水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有任何船只能在她不知情的情况下通过她的领地，通常也免不了向她缴纳费用。",
+      "text_markdown": "没有任何船只能在她不知情的情况下通过她的领地，通常也免不了向她缴纳费用。",
+      "tts": {
+        "text": "没有任何船只能在她不知情的情况下通过她的领地，通常也免不了向她缴纳费用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她是爱尔兰大西洋沿岸无可争议的海上霸主。",
+      "text_markdown": "她是爱尔兰大西洋沿岸无可争议的海上霸主。",
+      "tts": {
+        "text": "她是爱尔兰大西洋沿岸无可争议的海上霸主。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的主要据点是克莱尔岛、罗克弗利特城堡以及沿海的其他几处要塞。",
+      "text_markdown": "她的主要据点是克莱尔岛、罗克弗利特城堡以及沿海的其他几处要塞。",
+      "tts": {
+        "text": "她的主要据点是克莱尔岛、罗克弗利特城堡以及沿海的其他几处要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗克弗利特城堡，又称卡里卡豪利，矗立在克鲁湾的一处狭窄水湾上。",
+      "text_markdown": "罗克弗利特城堡，又称卡里卡豪利，矗立在克鲁湾的一处狭窄水湾上。",
+      "tts": {
+        "text": "罗克弗利特城堡，又称卡里卡豪利，矗立在克鲁湾的一处狭窄水湾上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是一座虽小但坚不可摧的塔楼，三面环水。",
+      "text_markdown": "这是一座虽小但坚不可摧的塔楼，三面环水。",
+      "tts": {
+        "text": "这是一座虽小但坚不可摧的塔楼，三面环水。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "传说格蕾丝把船的缆绳系在床柱上，以便在夜间感知水面上的任何动静。",
+      "text_markdown": "传说格蕾丝把船的缆绳系在床柱上，以便在夜间感知水面上的任何动静。",
+      "tts": {
+        "text": "传说格蕾丝把船的缆绳系在床柱上，以便在夜间感知水面上的任何动静。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝维持着一支数百人的战斗力量。",
+      "text_markdown": "格蕾丝维持着一支数百人的战斗力量。",
+      "tts": {
+        "text": "格蕾丝维持着一支数百人的战斗力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们不是职业军人，而是出于忠诚、血缘和自身利益为她效力的部族成员。",
+      "text_markdown": "他们不是职业军人，而是出于忠诚、血缘和自身利益为她效力的部族成员。",
+      "tts": {
+        "text": "他们不是职业军人，而是出于忠诚、血缘和自身利益为她效力的部族成员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们为她的船只当船员，守卫她的城堡，在劫掠行动中与她并肩作战。",
+      "text_markdown": "他们为她的船只当船员，守卫她的城堡，在劫掠行动中与她并肩作战。",
+      "tts": {
+        "text": "他们为她的船只当船员，守卫她的城堡，在劫掠行动中与她并肩作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她供他们食宿，付给他们酬劳，并亲自带领他们冲锋陷阵。",
+      "text_markdown": "她供他们食宿，付给他们酬劳，并亲自带领他们冲锋陷阵。",
+      "tts": {
+        "text": "她供他们食宿，付给他们酬劳，并亲自带领他们冲锋陷阵。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的船是适合大西洋沿岸的坚固浅吃水桨帆船。",
+      "text_markdown": "她的船是适合大西洋沿岸的坚固浅吃水桨帆船。",
+      "tts": {
+        "text": "她的船是适合大西洋沿岸的坚固浅吃水桨帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们能够在克鲁湾周围吃水较深的船只无法进入的险恶水域中航行。",
+      "text_markdown": "它们能够在克鲁湾周围吃水较深的船只无法进入的险恶水域中航行。",
+      "tts": {
+        "text": "它们能够在克鲁湾周围吃水较深的船只无法进入的险恶水域中航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们速度够快，能追上商船；机动性够强，能逃脱战舰。",
+      "text_markdown": "它们速度够快，能追上商船；机动性够强，能逃脱战舰。",
+      "tts": {
+        "text": "它们速度够快，能追上商船；机动性够强，能逃脱战舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种设计经过奥马利家族数代人的完善。",
+      "text_markdown": "这种设计经过奥马利家族数代人的完善。",
+      "tts": {
+        "text": "这种设计经过奥马利家族数代人的完善。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝与外国商人进行广泛的贸易。",
+      "text_markdown": "格蕾丝与外国商人进行广泛的贸易。",
+      "tts": {
+        "text": "格蕾丝与外国商人进行广泛的贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙船只将葡萄酒、铁和盐运到爱尔兰海岸。",
+      "text_markdown": "西班牙船只将葡萄酒、铁和盐运到爱尔兰海岸。",
+      "tts": {
+        "text": "西班牙船只将葡萄酒、铁和盐运到爱尔兰海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作为回报，格蕾丝出口咸鱼、牛皮和羊毛。",
+      "text_markdown": "作为回报，格蕾丝出口咸鱼、牛皮和羊毛。",
+      "tts": {
+        "text": "作为回报，格蕾丝出口咸鱼、牛皮和羊毛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种贸易在英国法律下严格来说是非法的，但英国法律在荒蛮的大西洋海岸几乎没有意义。",
+      "text_markdown": "这种贸易在英国法律下严格来说是非法的，但英国法律在荒蛮的大西洋海岸几乎没有意义。",
+      "tts": {
+        "text": "这种贸易在英国法律下严格来说是非法的，但英国法律在荒蛮的大西洋海岸几乎没有意义。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她还劫掠那些拒绝缴纳通行费的船只。",
+      "text_markdown": "她还劫掠那些拒绝缴纳通行费的船只。",
+      "tts": {
+        "text": "她还劫掠那些拒绝缴纳通行费的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国商人、爱尔兰敌对部族和苏格兰贸易商都在她手中遭受了损失。",
+      "text_markdown": "英国商人、爱尔兰敌对部族和苏格兰贸易商都在她手中遭受了损失。",
+      "tts": {
+        "text": "英国商人、爱尔兰敌对部族和苏格兰贸易商都在她手中遭受了损失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的劫掠行动是经过精心计算的，而非随意为之。",
+      "text_markdown": "她的劫掠行动是经过精心计算的，而非随意为之。",
+      "tts": {
+        "text": "她的劫掠行动是经过精心计算的，而非随意为之。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她专挑那些她知道载有贵重货物的船只下手，而避开那些防守严密的船只。",
+      "text_markdown": "她专挑那些她知道载有贵重货物的船只下手，而避开那些防守严密的船只。",
+      "tts": {
+        "text": "她专挑那些她知道载有贵重货物的船只下手，而避开那些防守严密的船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝与两任丈夫都育有子女，并把他们培养成领袖。",
+      "text_markdown": "格蕾丝与两任丈夫都育有子女，并把他们培养成领袖。",
+      "tts": {
+        "text": "格蕾丝与两任丈夫都育有子女，并把他们培养成领袖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的儿子们在她的船队中担任船长，并以各自的身份成为政治人物。",
+      "text_markdown": "她的儿子们在她的船队中担任船长，并以各自的身份成为政治人物。",
+      "tts": {
+        "text": "她的儿子们在她的船队中担任船长，并以各自的身份成为政治人物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的儿媳玛格丽特代她管理地产。",
+      "text_markdown": "她的儿媳玛格丽特代她管理地产。",
+      "tts": {
+        "text": "她的儿媳玛格丽特代她管理地产。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奥马利网络是一个家族企业，靠血缘和格蕾丝的人格力量维系在一起。",
+      "text_markdown": "奥马利网络是一个家族企业，靠血缘和格蕾丝的人格力量维系在一起。",
+      "tts": {
+        "text": "奥马利网络是一个家族企业，靠血缘和格蕾丝的人格力量维系在一起。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋海岸的生活对体力要求极高，而且常常充满危险。",
+      "text_markdown": "大西洋海岸的生活对体力要求极高，而且常常充满危险。",
+      "tts": {
+        "text": "大西洋海岸的生活对体力要求极高，而且常常充满危险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "天气恶劣，一年中大部分时间风暴从海上席卷而来。",
+      "text_markdown": "天气恶劣，一年中大部分时间风暴从海上席卷而来。",
+      "tts": {
+        "text": "天气恶劣，一年中大部分时间风暴从海上席卷而来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船只是敞开的或只有部分甲板，几乎无法抵御风雨。",
+      "text_markdown": "船只是敞开的或只有部分甲板，几乎无法抵御风雨。",
+      "tts": {
+        "text": "船只是敞开的或只有部分甲板，几乎无法抵御风雨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格蕾丝忍受这些条件长达数十年，一直航行和战斗到六十多岁。",
+      "text_markdown": "格蕾丝忍受这些条件长达数十年，一直航行和战斗到六十多岁。",
+      "tts": {
+        "text": "格蕾丝忍受这些条件长达数十年，一直航行和战斗到六十多岁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她以在战斗中的个人英勇而闻名。",
+      "text_markdown": "她以在战斗中的个人英勇而闻名。",
+      "tts": {
+        "text": "她以在战斗中的个人英勇而闻名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个著名的故事描述了她在生下儿子蒂博特的第二天就击退了对她船只的一次袭击。",
+      "text_markdown": "一个著名的故事描述了她在生下儿子蒂博特的第二天就击退了对她船只的一次袭击。",
+      "tts": {
+        "text": "一个著名的故事描述了她在生下儿子蒂博特的第二天就击退了对她船只的一次袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说她从床上起身，抓起武器，在甲板上领导了防御。",
+      "text_markdown": "据说她从床上起身，抓起武器，在甲板上领导了防御。",
+      "tts": {
+        "text": "据说她从床上起身，抓起武器，在甲板上领导了防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "无论这个故事的每个细节是否完全准确，它捕捉到了使她成为传奇的精神。",
+      "text_markdown": "无论这个故事的每个细节是否完全准确，它捕捉到了使她成为传奇的精神。",
+      "tts": {
+        "text": "无论这个故事的每个细节是否完全准确，它捕捉到了使她成为传奇的精神。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "支撑她权力的盖尔世界是一个复杂而成熟的社会。",
+      "text_markdown": "支撑她权力的盖尔世界是一个复杂而成熟的社会。",
+      "tts": {
+        "text": "支撑她权力的盖尔世界是一个复杂而成熟的社会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它有自己的法律体系、自己的文学、自己的音乐和自己的治理形式。",
+      "text_markdown": "它有自己的法律体系、自己的文学、自己的音乐和自己的治理形式。",
+      "tts": {
+        "text": "它有自己的法律体系、自己的文学、自己的音乐和自己的治理形式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国殖民者将其斥为野蛮，但它绝非简单。",
+      "text_markdown": "英国殖民者将其斥为野蛮，但它绝非简单。",
+      "tts": {
+        "text": "英国殖民者将其斥为野蛮，但它绝非简单。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利是这个世界的产物，她体现了其独立和勇气的价值观。",
+      "text_markdown": "格蕾丝·奥马利是这个世界的产物，她体现了其独立和勇气的价值观。",
+      "tts": {
+        "text": "格蕾丝·奥马利是这个世界的产物，她体现了其独立和勇气的价值观。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝还在西海岸沿线维持着情报网络。",
+      "text_markdown": "格蕾丝还在西海岸沿线维持着情报网络。",
+      "tts": {
+        "text": "格蕾丝还在西海岸沿线维持着情报网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在戈尔韦、康诺特的港口以及英国驻军城镇都有线人。",
+      "text_markdown": "她在戈尔韦、康诺特的港口以及英国驻军城镇都有线人。",
+      "tts": {
+        "text": "她在戈尔韦、康诺特的港口以及英国驻军城镇都有线人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她知道英国补给船何时到达以及运载的是什么货物。",
+      "text_markdown": "她知道英国补给船何时到达以及运载的是什么货物。",
+      "tts": {
+        "text": "她知道英国补给船何时到达以及运载的是什么货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些情报在贸易和劫掠中都给了她决定性的优势。",
+      "text_markdown": "这些情报在贸易和劫掠中都给了她决定性的优势。",
+      "tts": {
+        "text": "这些情报在贸易和劫掠中都给了她决定性的优势。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她与西班牙的贸易关系尤为宝贵。",
+      "text_markdown": "她与西班牙的贸易关系尤为宝贵。",
+      "tts": {
+        "text": "她与西班牙的贸易关系尤为宝贵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙商人为爱尔兰的鱼和皮革支付高价。",
+      "text_markdown": "西班牙商人为爱尔兰的鱼和皮革支付高价。",
+      "tts": {
+        "text": "西班牙商人为爱尔兰的鱼和皮革支付高价。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作为回报，他们提供葡萄酒、武器和铁，这些在爱尔兰西部十分稀缺。",
+      "text_markdown": "作为回报，他们提供葡萄酒、武器和铁，这些在爱尔兰西部十分稀缺。",
+      "tts": {
+        "text": "作为回报，他们提供葡萄酒、武器和铁，这些在爱尔兰西部十分稀缺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些贸易联系使格蕾丝成为康诺特最富有的人之一。",
+      "text_markdown": "这些贸易联系使格蕾丝成为康诺特最富有的人之一。",
+      "tts": {
+        "text": "这些贸易联系使格蕾丝成为康诺特最富有的人之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在权力巅峰时期，格蕾丝·奥马利是爱尔兰最有权势的女性。",
+      "text_markdown": "在权力巅峰时期，格蕾丝·奥马利是爱尔兰最有权势的女性。",
+      "tts": {
+        "text": "在权力巅峰时期，格蕾丝·奥马利是爱尔兰最有权势的女性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她不需要向任何英国总督或盖尔领主负责。",
+      "text_markdown": "她不需要向任何英国总督或盖尔领主负责。",
+      "tts": {
+        "text": "她不需要向任何英国总督或盖尔领主负责。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她缔结自己的联盟，打自己的仗，治理自己的人民。",
+      "text_markdown": "她缔结自己的联盟，打自己的仗，治理自己的人民。",
+      "tts": {
+        "text": "她缔结自己的联盟，打自己的仗，治理自己的人民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在每一个实际意义上，她都是一位海上女王。",
+      "text_markdown": "在每一个实际意义上，她都是一位海上女王。",
+      "tts": {
+        "text": "在每一个实际意义上，她都是一位海上女王。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终章",
+      "text_markdown": "终章"
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利生命的最后十年充满了失去与衰落。",
+      "text_markdown": "格蕾丝·奥马利生命的最后十年充满了失去与衰落。",
+      "tts": {
+        "text": "格蕾丝·奥马利生命的最后十年充满了失去与衰落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国对爱尔兰的征服在一千五百九十年代加速了。",
+      "text_markdown": "英国对爱尔兰的征服在一千五百九十年代加速了。",
+      "tts": {
+        "text": "英国对爱尔兰的征服在一千五百九十年代加速了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "掌权数百年的盖尔酋长被剥夺了土地和头衔。",
+      "text_markdown": "掌权数百年的盖尔酋长被剥夺了土地和头衔。",
+      "tts": {
+        "text": "掌权数百年的盖尔酋长被剥夺了土地和头衔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格蕾丝自出生以来就认识的那个世界正在被系统性地摧毁。",
+      "text_markdown": "格蕾丝自出生以来就认识的那个世界正在被系统性地摧毁。",
+      "tts": {
+        "text": "格蕾丝自出生以来就认识的那个世界正在被系统性地摧毁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "九年战争从1594年持续到1603年，是盖尔抵抗的最后一幕。",
+      "text_markdown": "九年战争从1594年持续到1603年，是盖尔抵抗的最后一幕。",
+      "tts": {
+        "text": "九年战争从一千五百九十四年持续到一千六百零三年，是盖尔抵抗的最后一幕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "以泰隆的休·奥尼尔为首的爱尔兰酋长发动了对英国统治的大规模叛乱。",
+      "text_markdown": "以泰隆的休·奥尼尔为首的爱尔兰酋长发动了对英国统治的大规模叛乱。",
+      "tts": {
+        "text": "以泰隆的休·奥尼尔为首的爱尔兰酋长发动了对英国统治的大规模叛乱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一度，叛乱取得了成功，英国在爱尔兰大部分地区的权威崩溃了。",
+      "text_markdown": "一度，叛乱取得了成功，英国在爱尔兰大部分地区的权威崩溃了。",
+      "tts": {
+        "text": "一度，叛乱取得了成功，英国在爱尔兰大部分地区的权威崩溃了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但英格兰向爱尔兰倾注了军队和资源，叛乱最终被镇压。",
+      "text_markdown": "但英格兰向爱尔兰倾注了军队和资源，叛乱最终被镇压。",
+      "tts": {
+        "text": "但英格兰向爱尔兰倾注了军队和资源，叛乱最终被镇压。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利在九年战争中的角色在历史记录中并不明确。",
+      "text_markdown": "格蕾丝·奥马利在九年战争中的角色在历史记录中并不明确。",
+      "tts": {
+        "text": "格蕾丝·奥马利在九年战争中的角色在历史记录中并不明确。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "战争期间她已年过六旬，可能无法像从前那样指挥她的船队。",
+      "text_markdown": "战争期间她已年过六旬，可能无法像从前那样指挥她的船队。",
+      "tts": {
+        "text": "战争期间她已年过六旬，可能无法像从前那样指挥她的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有些记述表明她支持了叛乱；另一些则表明她保持了谨慎的中立。",
+      "text_markdown": "有些记述表明她支持了叛乱；另一些则表明她保持了谨慎的中立。",
+      "tts": {
+        "text": "有些记述表明她支持了叛乱；另一些则表明她保持了谨慎的中立。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "可以确定的是，英国的胜利终结了盖尔独立的任何可能性。",
+      "text_markdown": "可以确定的是，英国的胜利终结了盖尔独立的任何可能性。",
+      "tts": {
+        "text": "可以确定的是，英国的胜利终结了盖尔独立的任何可能性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的宿敌理查德·宾厄姆于1596年被召回英格兰。",
+      "text_markdown": "她的宿敌理查德·宾厄姆于1596年被召回英格兰。",
+      "tts": {
+        "text": "她的宿敌理查德·宾厄姆于一千五百九十六年被召回英格兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的继任者对格蕾丝和她的家族没那么敌视。",
+      "text_markdown": "他的继任者对格蕾丝和她的家族没那么敌视。",
+      "tts": {
+        "text": "他的继任者对格蕾丝和她的家族没那么敌视。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但结构性的现实并没有改变。",
+      "text_markdown": "但结构性的现实并没有改变。",
+      "tts": {
+        "text": "但结构性的现实并没有改变。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国法律正在取代布雷亨法律，英国地主正在全岛取代盖尔酋长。",
+      "text_markdown": "英国法律正在取代布雷亨法律，英国地主正在全岛取代盖尔酋长。",
+      "tts": {
+        "text": "英国法律正在取代布雷亨法律，英国地主正在全岛取代盖尔酋长。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝的儿子蒂博特最终与英国人言和了。",
+      "text_markdown": "格蕾丝的儿子蒂博特最终与英国人言和了。",
+      "tts": {
+        "text": "格蕾丝的儿子蒂博特最终与英国人言和了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他臣服于英国权威并获得了英国头衔。",
+      "text_markdown": "他臣服于英国权威并获得了英国头衔。",
+      "tts": {
+        "text": "他臣服于英国权威并获得了英国头衔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他成为梅奥子爵，余生忠诚地为英格兰王室效力。",
+      "text_markdown": "他成为梅奥子爵，余生忠诚地为英格兰王室效力。",
+      "tts": {
+        "text": "他成为梅奥子爵，余生忠诚地为英格兰王室效力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一个务实的决定，但它代表着他母亲为之奋斗的一切的死亡。",
+      "text_markdown": "这是一个务实的决定，但它代表着他母亲为之奋斗的一切的死亡。",
+      "tts": {
+        "text": "这是一个务实的决定，但它代表着他母亲为之奋斗的一切的死亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利大约在1603年去世，与伊丽莎白一世女王同年辞世。",
+      "text_markdown": "格蕾丝·奥马利大约在1603年去世，与伊丽莎白一世女王同年辞世。",
+      "tts": {
+        "text": "格蕾丝·奥马利大约在一千六百零三年去世，与伊丽莎白一世女王同年辞世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她去世的确切日期和情形没有记录。",
+      "text_markdown": "她去世的确切日期和情形没有记录。",
+      "tts": {
+        "text": "她去世的确切日期和情形没有记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人们相信她在罗克弗利特城堡去世，那座克鲁湾上的塔楼是她数十年的据点。",
+      "text_markdown": "人们相信她在罗克弗利特城堡去世，那座克鲁湾上的塔楼是她数十年的据点。",
+      "tts": {
+        "text": "人们相信她在罗克弗利特城堡去世，那座克鲁湾上的塔楼是她数十年的据点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她大约七十三岁。",
+      "text_markdown": "她大约七十三岁。",
+      "tts": {
+        "text": "她大约七十三岁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "没有格蕾丝·奥马利生前的画像留存。",
+      "text_markdown": "没有格蕾丝·奥马利生前的画像留存。",
+      "tts": {
+        "text": "没有格蕾丝·奥马利生前的画像留存。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我们不知道她长什么样。",
+      "text_markdown": "我们不知道她长什么样。",
+      "tts": {
+        "text": "我们不知道她长什么样。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们没有她亲笔写的信件。",
+      "text_markdown": "我们没有她亲笔写的信件。",
+      "tts": {
+        "text": "我们没有她亲笔写的信件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "我们拥有的是英国国家文件、请愿书和爱尔兰西部的口头传统。",
+      "text_markdown": "我们拥有的是英国国家文件、请愿书和爱尔兰西部的口头传统。",
+      "tts": {
+        "text": "我们拥有的是英国国家文件、请愿书和爱尔兰西部的口头传统。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国的记录将她描述为一个臭名昭著的叛国者和全省所有叛乱的培育者。",
+      "text_markdown": "英国的记录将她描述为一个臭名昭著的叛国者和全省所有叛乱的培育者。",
+      "tts": {
+        "text": "英国的记录将她描述为一个臭名昭著的叛国者和全省所有叛乱的培育者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些是她敌人的措辞，应当如此看待。",
+      "text_markdown": "这些是她敌人的措辞，应当如此看待。",
+      "tts": {
+        "text": "这些是她敌人的措辞，应当如此看待。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但即便是她的敌人也承认她的权力、智慧和勇气。",
+      "text_markdown": "但即便是她的敌人也承认她的权力、智慧和勇气。",
+      "tts": {
+        "text": "但即便是她的敌人也承认她的权力、智慧和勇气。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她甚至令那些想要消灭她的人都感到敬畏。",
+      "text_markdown": "她甚至令那些想要消灭她的人都感到敬畏。",
+      "tts": {
+        "text": "她甚至令那些想要消灭她的人都感到敬畏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "盖尔秩序在她之后仅维持了几年。",
+      "text_markdown": "盖尔秩序在她之后仅维持了几年。",
+      "tts": {
+        "text": "盖尔秩序在她之后仅维持了几年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1607年的伯爵出逃标志着盖尔贵族权力的最终崩溃。",
+      "text_markdown": "1607年的伯爵出逃标志着盖尔贵族权力的最终崩溃。",
+      "tts": {
+        "text": "一千六百零七年的伯爵出逃标志着盖尔贵族权力的最终崩溃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "阿尔斯特的殖民开始了，被没收的爱尔兰土地被分给了英格兰和苏格兰定居者。",
+      "text_markdown": "阿尔斯特的殖民开始了，被没收的爱尔兰土地被分给了英格兰和苏格兰定居者。",
+      "tts": {
+        "text": "阿尔斯特的殖民开始了，被没收的爱尔兰土地被分给了英格兰和苏格兰定居者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "由此产生的爱尔兰是一块殖民地，而非独立部族的土地。",
+      "text_markdown": "由此产生的爱尔兰是一块殖民地，而非独立部族的土地。",
+      "tts": {
+        "text": "由此产生的爱尔兰是一块殖民地，而非独立部族的土地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国对爱尔兰的殖民通过一种被称为种植园的制度进行。",
+      "text_markdown": "英国对爱尔兰的殖民通过一种被称为种植园的制度进行。",
+      "tts": {
+        "text": "英国对爱尔兰的殖民通过一种被称为种植园的制度进行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在这种制度下，爱尔兰的土地被没收并交给英格兰和苏格兰定居者。",
+      "text_markdown": "在这种制度下，爱尔兰的土地被没收并交给英格兰和苏格兰定居者。",
+      "tts": {
+        "text": "在这种制度下，爱尔兰的土地被没收并交给英格兰和苏格兰定居者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "原住民被驱逐，或被沦为在其家族世代拥有的土地上的佃农。",
+      "text_markdown": "原住民被驱逐，或被沦为在其家族世代拥有的土地上的佃农。",
+      "tts": {
+        "text": "原住民被驱逐，或被沦为在其家族世代拥有的土地上的佃农。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一过程在格蕾丝去世后还会持续数十年，改变了整座岛屿。",
+      "text_markdown": "这一过程在格蕾丝去世后还会持续数十年，改变了整座岛屿。",
+      "tts": {
+        "text": "这一过程在格蕾丝去世后还会持续数十年，改变了整座岛屿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利生活在一个世界的终结和另一个世界的开始之际。",
+      "text_markdown": "格蕾丝·奥马利生活在一个世界的终结和另一个世界的开始之际。",
+      "tts": {
+        "text": "格蕾丝·奥马利生活在一个世界的终结和另一个世界的开始之际。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她无法阻止正在摧毁她世界的力量。",
+      "text_markdown": "她无法阻止正在摧毁她世界的力量。",
+      "tts": {
+        "text": "她无法阻止正在摧毁她世界的力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但她比几乎任何人都更持久、更巧妙、更有斗志地与之抗争。",
+      "text_markdown": "但她比几乎任何人都更持久、更巧妙、更有斗志地与之抗争。",
+      "tts": {
+        "text": "但她比几乎任何人都更持久、更巧妙、更有斗志地与之抗争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的一生证明了一个意志坚定的人在逆境面前能够取得怎样的成就。",
+      "text_markdown": "她的一生证明了一个意志坚定的人在逆境面前能够取得怎样的成就。",
+      "tts": {
+        "text": "她的一生证明了一个意志坚定的人在逆境面前能够取得怎样的成就。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利是爱尔兰历史上最受尊崇的人物之一。",
+      "text_markdown": "格蕾丝·奥马利是爱尔兰历史上最受尊崇的人物之一。",
+      "tts": {
+        "text": "格蕾丝·奥马利是爱尔兰历史上最受尊崇的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的名字在爱尔兰家喻户晓，每个学童都知道。",
+      "text_markdown": "她的名字在爱尔兰家喻户晓，每个学童都知道。",
+      "tts": {
+        "text": "她的名字在爱尔兰家喻户晓，每个学童都知道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她是爱尔兰独立、女性赋权和反殖民抵抗的象征。",
+      "text_markdown": "她是爱尔兰独立、女性赋权和反殖民抵抗的象征。",
+      "tts": {
+        "text": "她是爱尔兰独立、女性赋权和反殖民抵抗的象征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的故事数百年来被传唱在歌曲、戏剧、小说和电影中。",
+      "text_markdown": "她的故事数百年来被传唱在歌曲、戏剧、小说和电影中。",
+      "tts": {
+        "text": "她的故事数百年来被传唱在歌曲、戏剧、小说和电影中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗克弗利特城堡至今仍矗立在克鲁湾的岸边。",
+      "text_markdown": "罗克弗利特城堡至今仍矗立在克鲁湾的岸边。",
+      "tts": {
+        "text": "罗克弗利特城堡至今仍矗立在克鲁湾的岸边。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她出生的克莱尔岛至今仍有人居住，可以乘渡轮前往。",
+      "text_markdown": "她出生的克莱尔岛至今仍有人居住，可以乘渡轮前往。",
+      "tts": {
+        "text": "她出生的克莱尔岛至今仍有人居住，可以乘渡轮前往。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她在克莱尔岛上的修道院里据信保存着她的墓穴。",
+      "text_markdown": "她在克莱尔岛上的修道院里据信保存着她的墓穴。",
+      "tts": {
+        "text": "她在克莱尔岛上的修道院里据信保存着她的墓穴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "世界各地的游客前来参观她生活和统治过的地方。",
+      "text_markdown": "世界各地的游客前来参观她生活和统治过的地方。",
+      "tts": {
+        "text": "世界各地的游客前来参观她生活和统治过的地方。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在爱尔兰民间传统中，格蕾丝·奥马利代表着盖尔西部的精神。",
+      "text_markdown": "在爱尔兰民间传统中，格蕾丝·奥马利代表着盖尔西部的精神。",
+      "tts": {
+        "text": "在爱尔兰民间传统中，格蕾丝·奥马利代表着盖尔西部的精神。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "关于她的故事已经口耳相传了四百多年。",
+      "text_markdown": "关于她的故事已经口耳相传了四百多年。",
+      "tts": {
+        "text": "关于她的故事已经口耳相传了四百多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其中许多故事经过了润色或已成为传说。",
+      "text_markdown": "其中许多故事经过了润色或已成为传说。",
+      "tts": {
+        "text": "其中许多故事经过了润色或已成为传说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但它们反映了一个真实的历史人物，其影响深远而真切。",
+      "text_markdown": "但它们反映了一个真实的历史人物，其影响深远而真切。",
+      "tts": {
+        "text": "但它们反映了一个真实的历史人物，其影响深远而真切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她与伊丽莎白一世的会面仍然是都铎时代最非凡的外交事件之一。",
+      "text_markdown": "她与伊丽莎白一世的会面仍然是都铎时代最非凡的外交事件之一。",
+      "tts": {
+        "text": "她与伊丽莎白一世的会面仍然是都铎时代最非凡的外交事件之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一位盖尔酋长、一个女人、一个海盗，走进了欧洲最强大的宫廷，以平等的身份进行了谈判。",
+      "text_markdown": "一位盖尔酋长、一个女人、一个海盗，走进了欧洲最强大的宫廷，以平等的身份进行了谈判。",
+      "tts": {
+        "text": "一位盖尔酋长、一个女人、一个海盗，走进了欧洲最强大的宫廷，以平等的身份进行了谈判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那一行为的胆魄在数百年后仍然令人震撼。",
+      "text_markdown": "那一行为的胆魄在数百年后仍然令人震撼。",
+      "tts": {
+        "text": "那一行为的胆魄在数百年后仍然令人震撼。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它诉说着一个权力并非总是由出身或性别来定义的世界。",
+      "text_markdown": "它诉说着一个权力并非总是由出身或性别来定义的世界。",
+      "tts": {
+        "text": "它诉说着一个权力并非总是由出身或性别来定义的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家们继续将格蕾丝·奥马利作为近代早期女性领导力的经典案例进行研究。",
+      "text_markdown": "历史学家们继续将格蕾丝·奥马利作为近代早期女性领导力的经典案例进行研究。",
+      "tts": {
+        "text": "历史学家们继续将格蕾丝·奥马利作为近代早期女性领导力的经典案例进行研究。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在一个由男性主宰的世界中运作，却能在战场上和海上指挥男性。",
+      "text_markdown": "她在一个由男性主宰的世界中运作，却能在战场上和海上指挥男性。",
+      "tts": {
+        "text": "她在一个由男性主宰的世界中运作，却能在战场上和海上指挥男性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她以技巧和智谋驾驭着盖尔和英格兰两套复杂的政治体系。",
+      "text_markdown": "她以技巧和智谋驾驭着盖尔和英格兰两套复杂的政治体系。",
+      "tts": {
+        "text": "她以技巧和智谋驾驭着盖尔和英格兰两套复杂的政治体系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的生涯证明，即使在深度父权制的社会中，女性也可以行使真正的权力。",
+      "text_markdown": "她的生涯证明，即使在深度父权制的社会中，女性也可以行使真正的权力。",
+      "tts": {
+        "text": "她的生涯证明，即使在深度父权制的社会中，女性也可以行使真正的权力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格蕾丝为之奋斗保护的盖尔世界的毁灭，是爱尔兰历史上最大的悲剧之一。",
+      "text_markdown": "格蕾丝为之奋斗保护的盖尔世界的毁灭，是爱尔兰历史上最大的悲剧之一。",
+      "tts": {
+        "text": "格蕾丝为之奋斗保护的盖尔世界的毁灭，是爱尔兰历史上最大的悲剧之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一整个文明，有着自己的法律、文学和习俗，被一个殖民强权蓄意摧毁了。",
+      "text_markdown": "一整个文明，有着自己的法律、文学和习俗，被一个殖民强权蓄意摧毁了。",
+      "tts": {
+        "text": "一整个文明，有着自己的法律、文学和习俗，被一个殖民强权蓄意摧毁了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "格蕾丝·奥马利是那个文明最后的捍卫者之一。",
+      "text_markdown": "格蕾丝·奥马利是那个文明最后的捍卫者之一。",
+      "tts": {
+        "text": "格蕾丝·奥马利是那个文明最后的捍卫者之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她的故事与殖民主义及其代价的更宏大叙事密不可分。",
+      "text_markdown": "她的故事与殖民主义及其代价的更宏大叙事密不可分。",
+      "tts": {
+        "text": "她的故事与殖民主义及其代价的更宏大叙事密不可分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "使格蕾丝·奥马利的故事经久不衰的不仅是她做了什么，更是她是谁。",
+      "text_markdown": "使格蕾丝·奥马利的故事经久不衰的不仅是她做了什么，更是她是谁。",
+      "tts": {
+        "text": "使格蕾丝·奥马利的故事经久不衰的不仅是她做了什么，更是她是谁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她是母亲、妻子、战士、商人、外交家和海盗。",
+      "text_markdown": "她是母亲、妻子、战士、商人、外交家和海盗。",
+      "tts": {
+        "text": "她是母亲、妻子、战士、商人、外交家和海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她打破了她的世界试图加诸于她的每一个类别。",
+      "text_markdown": "她打破了她的世界试图加诸于她的每一个类别。",
+      "tts": {
+        "text": "她打破了她的世界试图加诸于她的每一个类别。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她按照自己的方式生活，在一片荒蛮的海岸上，在已知世界的边缘。",
+      "text_markdown": "她按照自己的方式生活，在一片荒蛮的海岸上，在已知世界的边缘。",
+      "tts": {
+        "text": "她按照自己的方式生活，在一片荒蛮的海岸上，在已知世界的边缘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is why her name is still spoken four centuries after her death.",
+      "text_markdown": "That is why her name is still spoken four centuries after her death.",
+      "tts": {
+        "text": "That is why her name is still spoken four centuries after her death.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

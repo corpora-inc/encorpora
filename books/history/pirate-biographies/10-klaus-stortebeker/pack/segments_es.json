@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_klaus_stortebeker",
+  "language": "es",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota para el lector",
+      "text_markdown": "Una nota para el lector"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta es la historia real de un pirata cuyo cuerpo decapitado siguió caminando tras su muerte.",
+      "text_markdown": "Esta es la historia real de un pirata cuyo cuerpo decapitado siguió caminando tras su muerte.",
+      "tts": {
+        "text": "Esta es la historia real de un pirata cuyo cuerpo decapitado siguió caminando tras su muerte.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su nombre era Klaus Störtebeker, y aterrorizó los mares del norte de Europa hace más de 600 años.",
+      "text_markdown": "Su nombre era Klaus Störtebeker, y aterrorizó los mares del norte de Europa hace más de 600 años.",
+      "tts": {
+        "text": "Su nombre era Klaus Störtebeker, y aterrorizó los mares del norte de Europa hace más de seiscientos años.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al menos, eso es lo que dice la leyenda.",
+      "text_markdown": "Al menos, eso es lo que dice la leyenda.",
+      "tts": {
+        "text": "Al menos, eso es lo que dice la leyenda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker es una de las figuras más famosas del folclore alemán.",
+      "text_markdown": "Störtebeker es una de las figuras más famosas del folclore alemán.",
+      "tts": {
+        "text": "Störtebeker es una de las figuras más famosas del folclore alemán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su historia involucra guerra, piratería, traición y una ejecución que se convirtió en leyenda.",
+      "text_markdown": "Su historia involucra guerra, piratería, traición y una ejecución que se convirtió en leyenda.",
+      "tts": {
+        "text": "Su historia involucra guerra, piratería, traición y una ejecución que se convirtió en leyenda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vivió en una época en la que poderosas ciudades mercantiles controlaban las rutas comerciales del norte.",
+      "text_markdown": "Vivió en una época en la que poderosas ciudades mercantiles controlaban las rutas comerciales del norte.",
+      "tts": {
+        "text": "Vivió en una época en la que poderosas ciudades mercantiles controlaban las rutas comerciales del norte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Separar los hechos del mito en su historia no siempre es posible.",
+      "text_markdown": "Separar los hechos del mito en su historia no siempre es posible.",
+      "tts": {
+        "text": "Separar los hechos del mito en su historia no siempre es posible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muy pocos documentos de su época han sobrevivido.",
+      "text_markdown": "Muy pocos documentos de su época han sobrevivido.",
+      "tts": {
+        "text": "Muy pocos documentos de su época han sobrevivido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La mayor parte de lo que sabemos proviene de crónicas escritas décadas o siglos después.",
+      "text_markdown": "La mayor parte de lo que sabemos proviene de crónicas escritas décadas o siglos después.",
+      "tts": {
+        "text": "La mayor parte de lo que sabemos proviene de crónicas escritas décadas o siglos después.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este libro cuenta su historia con la mayor honestidad que las fuentes permiten.",
+      "text_markdown": "Este libro cuenta su historia con la mayor honestidad que las fuentes permiten.",
+      "tts": {
+        "text": "Este libro cuenta su historia con la mayor honestidad que las fuentes permiten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El mundo de los mares del norte",
+      "text_markdown": "El mundo de los mares del norte"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker vivió en la segunda mitad del siglo XIV.",
+      "text_markdown": "Klaus Störtebeker vivió en la segunda mitad del siglo XIV.",
+      "tts": {
+        "text": "Klaus Störtebeker vivió en la segunda mitad de los mil trescientos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fue el período del medievo tardío en la historia europea.",
+      "text_markdown": "Fue el período del medievo tardío en la historia europea.",
+      "tts": {
+        "text": "Fue el período del medievo tardío en la historia europea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El norte de Europa era un lugar muy diferente del sur mediterráneo.",
+      "text_markdown": "El norte de Europa era un lugar muy diferente del sur mediterráneo.",
+      "tts": {
+        "text": "El norte de Europa era un lugar muy diferente del sur mediterráneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El mar Báltico y el mar del Norte eran las autopistas del comercio nórdico.",
+      "text_markdown": "El mar Báltico y el mar del Norte eran las autopistas del comercio nórdico.",
+      "tts": {
+        "text": "El mar Báltico y el mar del Norte eran las autopistas del comercio nórdico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los barcos transportaban mercancías entre Escandinavia, Rusia, Inglaterra y la costa alemana.",
+      "text_markdown": "Los barcos transportaban mercancías entre Escandinavia, Rusia, Inglaterra y la costa alemana.",
+      "tts": {
+        "text": "Los barcos transportaban mercancías entre Escandinavia, Rusia, Inglaterra y la costa alemana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quien controlaba las rutas marítimas controlaba una riqueza enorme.",
+      "text_markdown": "Quien controlaba las rutas marítimas controlaba una riqueza enorme.",
+      "tts": {
+        "text": "Quien controlaba las rutas marítimas controlaba una riqueza enorme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La fuerza más poderosa del comercio nórdico era la Liga Hanseática.",
+      "text_markdown": "La fuerza más poderosa del comercio nórdico era la Liga Hanseática.",
+      "tts": {
+        "text": "La fuerza más poderosa del comercio nórdico era la Liga Hanseática.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Liga era una confederación de ciudades mercantiles repartidas por todo el norte de Europa.",
+      "text_markdown": "La Liga era una confederación de ciudades mercantiles repartidas por todo el norte de Europa.",
+      "tts": {
+        "text": "La Liga era una confederación de ciudades mercantiles repartidas por todo el norte de Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No era un país ni un reino, sino una red de ciudades que cooperaban para el comercio.",
+      "text_markdown": "No era un país ni un reino, sino una red de ciudades que cooperaban para el comercio.",
+      "tts": {
+        "text": "No era un país ni un reino, sino una red de ciudades que cooperaban para el comercio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En su apogeo, la Liga incluía casi doscientas ciudades.",
+      "text_markdown": "En su apogeo, la Liga incluía casi doscientas ciudades.",
+      "tts": {
+        "text": "En su apogeo, la Liga incluía casi doscientas ciudades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las ciudades hanseáticas más importantes eran Lübeck, Hamburgo, Bremen, Rostock y Danzig.",
+      "text_markdown": "Las ciudades hanseáticas más importantes eran Lübeck, Hamburgo, Bremen, Rostock y Danzig.",
+      "tts": {
+        "text": "Las ciudades hanseáticas más importantes eran Lübeck, Hamburgo, Bremen, Rostock y Danzig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lübeck era considerada la capital no oficial de la Liga.",
+      "text_markdown": "Lübeck era considerada la capital no oficial de la Liga.",
+      "tts": {
+        "text": "Lübeck era considerada la capital no oficial de la Liga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hamburgo controlaba el acceso al mar del Norte a través del río Elba.",
+      "text_markdown": "Hamburgo controlaba el acceso al mar del Norte a través del río Elba.",
+      "tts": {
+        "text": "Hamburgo controlaba el acceso al mar del Norte a través del río Elba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bremen era otro gran puerto comercial en el mar del Norte.",
+      "text_markdown": "Bremen era otro gran puerto comercial en el mar del Norte.",
+      "tts": {
+        "text": "Bremen era otro gran puerto comercial en el mar del Norte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Liga comerciaba con pieles de Rusia, madera de Escandinavia y grano de Prusia.",
+      "text_markdown": "La Liga comerciaba con pieles de Rusia, madera de Escandinavia y grano de Prusia.",
+      "tts": {
+        "text": "La Liga comerciaba con pieles de Rusia, madera de Escandinavia y grano de Prusia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El arenque salado del Báltico era uno de los productos comerciales más importantes.",
+      "text_markdown": "El arenque salado del Báltico era uno de los productos comerciales más importantes.",
+      "tts": {
+        "text": "El arenque salado del Báltico era uno de los productos comerciales más importantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El ámbar, la cera de abeja y la miel fluían hacia el oeste desde el Báltico oriental.",
+      "text_markdown": "El ámbar, la cera de abeja y la miel fluían hacia el oeste desde el Báltico oriental.",
+      "tts": {
+        "text": "El ámbar, la cera de abeja y la miel fluían hacia el oeste desde el Báltico oriental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las telas de Flandes e Inglaterra viajaban hacia el este a cambio.",
+      "text_markdown": "Las telas de Flandes e Inglaterra viajaban hacia el este a cambio.",
+      "tts": {
+        "text": "Las telas de Flandes e Inglaterra viajaban hacia el este a cambio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Liga Hanseática hacía cumplir su monopolio comercial sin piedad.",
+      "text_markdown": "La Liga Hanseática hacía cumplir su monopolio comercial sin piedad.",
+      "tts": {
+        "text": "La Liga Hanseática hacía cumplir su monopolio comercial sin piedad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las ciudades no miembros eran excluidas de las rutas más rentables.",
+      "text_markdown": "Las ciudades no miembros eran excluidas de las rutas más rentables.",
+      "tts": {
+        "text": "Las ciudades no miembros eran excluidas de las rutas más rentables.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Liga podía imponer embargos comerciales que ponían de rodillas a regiones enteras.",
+      "text_markdown": "La Liga podía imponer embargos comerciales que ponían de rodillas a regiones enteras.",
+      "tts": {
+        "text": "La Liga podía imponer embargos comerciales que ponían de rodillas a regiones enteras.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mantenía sus propias fuerzas navales para proteger los convoyes mercantes.",
+      "text_markdown": "Mantenía sus propias fuerzas navales para proteger los convoyes mercantes.",
+      "tts": {
+        "text": "Mantenía sus propias fuerzas navales para proteger los convoyes mercantes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A pesar de estas defensas, la piratería era un problema constante en los mares del norte.",
+      "text_markdown": "A pesar de estas defensas, la piratería era un problema constante en los mares del norte.",
+      "tts": {
+        "text": "A pesar de estas defensas, la piratería era un problema constante en los mares del norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las costas del Báltico y del mar del Norte estaban plagadas de islas y ensenadas.",
+      "text_markdown": "Las costas del Báltico y del mar del Norte estaban plagadas de islas y ensenadas.",
+      "tts": {
+        "text": "Las costas del Báltico y del mar del Norte estaban plagadas de islas y ensenadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los piratas podían esconderse en aguas poco profundas donde los barcos de guerra más grandes no podían seguirlos.",
+      "text_markdown": "Los piratas podían esconderse en aguas poco profundas donde los barcos de guerra más grandes no podían seguirlos.",
+      "tts": {
+        "text": "Los piratas podían esconderse en aguas poco profundas donde los barcos de guerra más grandes no podían seguirlos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El tiempo brumoso y los cortos días de invierno facilitaban las emboscadas a los barcos mercantes.",
+      "text_markdown": "El tiempo brumoso y los cortos días de invierno facilitaban las emboscadas a los barcos mercantes.",
+      "tts": {
+        "text": "El tiempo brumoso y los cortos días de invierno facilitaban las emboscadas a los barcos mercantes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La situación política en Escandinavia era extremadamente complicada.",
+      "text_markdown": "La situación política en Escandinavia era extremadamente complicada.",
+      "tts": {
+        "text": "La situación política en Escandinavia era extremadamente complicada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dinamarca, Suecia y Noruega estaban constantemente en guerra entre sí.",
+      "text_markdown": "Dinamarca, Suecia y Noruega estaban constantemente en guerra entre sí.",
+      "tts": {
+        "text": "Dinamarca, Suecia y Noruega estaban constantemente en guerra entre sí.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dinamarca era la potencia dominante bajo la reina Margarita Primera.",
+      "text_markdown": "Dinamarca era la potencia dominante bajo la reina Margarita Primera.",
+      "tts": {
+        "text": "Dinamarca era la potencia dominante bajo la reina Margarita Primera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unió Dinamarca, Noruega y Suecia bajo la Unión de Kalmar en mil trescientos noventa y siete.",
+      "text_markdown": "Unió Dinamarca, Noruega y Suecia bajo la Unión de Kalmar en mil trescientos noventa y siete.",
+      "tts": {
+        "text": "Unió Dinamarca, Noruega y Suecia bajo la Unión de Kalmar en mil trescientos noventa y siete.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Antes de la Unión de Kalmar, Suecia había resistido el control danés.",
+      "text_markdown": "Antes de la Unión de Kalmar, Suecia había resistido el control danés.",
+      "tts": {
+        "text": "Antes de la Unión de Kalmar, Suecia había resistido el control danés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El rey Alberto de Mecklemburgo gobernaba Suecia, pero fue desafiado por Margarita de Dinamarca.",
+      "text_markdown": "El rey Alberto de Mecklemburgo gobernaba Suecia, pero fue desafiado por Margarita de Dinamarca.",
+      "tts": {
+        "text": "El rey Alberto de Mecklemburgo gobernaba Suecia, pero fue desafiado por Margarita de Dinamarca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Margarita derrotó a Alberto y lo encarceló.",
+      "text_markdown": "Margarita derrotó a Alberto y lo encarceló.",
+      "tts": {
+        "text": "Margarita derrotó a Alberto y lo encarceló.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los partidarios de Alberto en la ciudad alemana de Rostock y en otros lugares contraatacaron.",
+      "text_markdown": "Los partidarios de Alberto en la ciudad alemana de Rostock y en otros lugares contraatacaron.",
+      "tts": {
+        "text": "Los partidarios de Alberto en la ciudad alemana de Rostock y en otros lugares contraatacaron.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta guerra entre Dinamarca y las ciudades que apoyaban a Alberto creó una oportunidad para los piratas.",
+      "text_markdown": "Esta guerra entre Dinamarca y las ciudades que apoyaban a Alberto creó una oportunidad para los piratas.",
+      "tts": {
+        "text": "Esta guerra entre Dinamarca y las ciudades que apoyaban a Alberto creó una oportunidad para los piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las ciudades contrataron corsarios para interrumpir la navegación danesa y abastecer la sitiada Estocolmo.",
+      "text_markdown": "Las ciudades contrataron corsarios para interrumpir la navegación danesa y abastecer la sitiada Estocolmo.",
+      "tts": {
+        "text": "Las ciudades contrataron corsarios para interrumpir la navegación danesa y abastecer la sitiada Estocolmo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estos corsarios fueron llamados los Hermanos de las Vituallas.",
+      "text_markdown": "Estos corsarios fueron llamados los Hermanos de las Vituallas.",
+      "tts": {
+        "text": "Estos corsarios fueron llamados los Hermanos de las Vituallas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su nombre provenía de la palabra latina para alimento, porque su misión era llevar suministros.",
+      "text_markdown": "Su nombre provenía de la palabra latina para alimento, porque su misión era llevar suministros.",
+      "tts": {
+        "text": "Su nombre provenía de la palabra latina para alimento, porque su misión era llevar suministros.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las ciudades-estado alemanas medievales eran diferentes a cualquier otra cosa en Europa.",
+      "text_markdown": "Las ciudades-estado alemanas medievales eran diferentes a cualquier otra cosa en Europa.",
+      "tts": {
+        "text": "Las ciudades-estado alemanas medievales eran diferentes a cualquier otra cosa en Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se gobernaban de forma independiente con consejos electos de mercaderes adinerados.",
+      "text_markdown": "Se gobernaban de forma independiente con consejos electos de mercaderes adinerados.",
+      "tts": {
+        "text": "Se gobernaban de forma independiente con consejos electos de mercaderes adinerados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tenían sus propias leyes, sus propias milicias y sus propias armadas.",
+      "text_markdown": "Tenían sus propias leyes, sus propias milicias y sus propias armadas.",
+      "tts": {
+        "text": "Tenían sus propias leyes, sus propias milicias y sus propias armadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No debían lealtad a ningún rey ni príncipe.",
+      "text_markdown": "No debían lealtad a ningún rey ni príncipe.",
+      "tts": {
+        "text": "No debían lealtad a ningún rey ni príncipe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburgo, donde Störtebeker encontraría su fin, era una de estas orgullosas ciudades.",
+      "text_markdown": "Hamburgo, donde Störtebeker encontraría su fin, era una de estas orgullosas ciudades.",
+      "tts": {
+        "text": "Hamburgo, donde Störtebeker encontraría su fin, era una de estas orgullosas ciudades.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se encontraba a orillas del río Elba, a unos cien kilómetros del mar del Norte.",
+      "text_markdown": "Se encontraba a orillas del río Elba, a unos cien kilómetros del mar del Norte.",
+      "tts": {
+        "text": "Se encontraba a orillas del río Elba, a unos cien kilómetros del mar del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los mercaderes de Hamburgo se enriquecieron con el comercio y protegieron su fortuna con fiereza.",
+      "text_markdown": "Los mercaderes de Hamburgo se enriquecieron con el comercio y protegieron su fortuna con fiereza.",
+      "tts": {
+        "text": "Los mercaderes de Hamburgo se enriquecieron con el comercio y protegieron su fortuna con fiereza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No tenían paciencia con nadie que amenazara su navegación.",
+      "text_markdown": "No tenían paciencia con nadie que amenazara su navegación.",
+      "tts": {
+        "text": "No tenían paciencia con nadie que amenazara su navegación.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este era el mundo que produjo a Klaus Störtebeker.",
+      "text_markdown": "Este era el mundo que produjo a Klaus Störtebeker.",
+      "tts": {
+        "text": "Este era el mundo que produjo a Klaus Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un mundo de príncipes mercaderes, reinos en guerra y mares peligrosos.",
+      "text_markdown": "Era un mundo de príncipes mercaderes, reinos en guerra y mares peligrosos.",
+      "tts": {
+        "text": "Era un mundo de príncipes mercaderes, reinos en guerra y mares peligrosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo de los mares del norte",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En un mundo así, un hombre audaz con un barco rápido podía convertirse en héroe o en villano.",
+      "text_markdown": "En un mundo así, un hombre audaz con un barco rápido podía convertirse en héroe o en villano.",
+      "tts": {
+        "text": "En un mundo así, un hombre audaz con un barco rápido podía convertirse en héroe o en villano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Orígenes",
+      "text_markdown": "Orígenes"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker nació alrededor de 1360.",
+      "text_markdown": "Klaus Störtebeker nació alrededor de 1360.",
+      "tts": {
+        "text": "Klaus Störtebeker nació alrededor de mil trescientos sesenta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su lugar de nacimiento exacto es desconocido.",
+      "text_markdown": "Su lugar de nacimiento exacto es desconocido.",
+      "tts": {
+        "text": "Su lugar de nacimiento exacto es desconocido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Algunos historiadores creen que provenía de Wismar, un puerto hanseático en la costa báltica.",
+      "text_markdown": "Algunos historiadores creen que provenía de Wismar, un puerto hanseático en la costa báltica.",
+      "tts": {
+        "text": "Algunos historiadores creen que provenía de Wismar, un puerto hanseático en la costa báltica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su nombre real pudo haber sido Nikolaus Storzenbecher.",
+      "text_markdown": "Su nombre real pudo haber sido Nikolaus Storzenbecher.",
+      "tts": {
+        "text": "Su nombre real pudo haber sido Nikolaus Storzenbecher.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El nombre Störtebeker es un apodo en bajo alemán.",
+      "text_markdown": "El nombre Störtebeker es un apodo en bajo alemán.",
+      "tts": {
+        "text": "El nombre Störtebeker es un apodo en bajo alemán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Significa algo así como vacía el jarro o apura la copa.",
+      "text_markdown": "Significa algo así como vacía el jarro o apura la copa.",
+      "tts": {
+        "text": "Significa algo así como vacía el jarro o apura la copa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Según la leyenda, Störtebeker podía beberse una jarra de cerveza de 4 litros de un solo trago.",
+      "text_markdown": "Según la leyenda, Störtebeker podía beberse una jarra de cerveza de 4 litros de un solo trago.",
+      "tts": {
+        "text": "Según la leyenda, Störtebeker podía beberse una jarra de cerveza de cuatro litros de un solo trago.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ya fuera cierto o una exageración, el nombre perduró.",
+      "text_markdown": "Ya fuera cierto o una exageración, el nombre perduró.",
+      "tts": {
+        "text": "Ya fuera cierto o una exageración, el nombre perduró.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sugiere un hombre de impresionante fuerza física y apetito.",
+      "text_markdown": "Sugiere un hombre de impresionante fuerza física y apetito.",
+      "tts": {
+        "text": "Sugiere un hombre de impresionante fuerza física y apetito.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Casi nada se sabe sobre la infancia o la familia de Störtebeker.",
+      "text_markdown": "Casi nada se sabe sobre la infancia o la familia de Störtebeker.",
+      "tts": {
+        "text": "Casi nada se sabe sobre la infancia o la familia de Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los registros medievales de la gente común son extremadamente escasos.",
+      "text_markdown": "Los registros medievales de la gente común son extremadamente escasos.",
+      "tts": {
+        "text": "Los registros medievales de la gente común son extremadamente escasos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pudo provenir de una familia de marineros o pescadores.",
+      "text_markdown": "Pudo provenir de una familia de marineros o pescadores.",
+      "tts": {
+        "text": "Pudo provenir de una familia de marineros o pescadores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "También pudo venir de un entorno más próspero.",
+      "text_markdown": "También pudo venir de un entorno más próspero.",
+      "tts": {
+        "text": "También pudo venir de un entorno más próspero.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo que sí sabemos es que se unió a los Hermanos de las Vituallas.",
+      "text_markdown": "Lo que sí sabemos es que se unió a los Hermanos de las Vituallas.",
+      "tts": {
+        "text": "Lo que sí sabemos es que se unió a los Hermanos de las Vituallas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los Hermanos de las Vituallas eran originalmente corsarios con una misión militar legítima.",
+      "text_markdown": "Los Hermanos de las Vituallas eran originalmente corsarios con una misión militar legítima.",
+      "tts": {
+        "text": "Los Hermanos de las Vituallas eran originalmente corsarios con una misión militar legítima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fueron contratados para romper el bloqueo danés de Estocolmo.",
+      "text_markdown": "Fueron contratados para romper el bloqueo danés de Estocolmo.",
+      "tts": {
+        "text": "Fueron contratados para romper el bloqueo danés de Estocolmo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estocolmo, la capital de Suecia, estaba sitiada por las fuerzas danesas.",
+      "text_markdown": "Estocolmo, la capital de Suecia, estaba sitiada por las fuerzas danesas.",
+      "tts": {
+        "text": "Estocolmo, la capital de Suecia, estaba sitiada por las fuerzas danesas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La reina Margarita de Dinamarca quería someter a Suecia bajo su control.",
+      "text_markdown": "La reina Margarita de Dinamarca quería someter a Suecia bajo su control.",
+      "tts": {
+        "text": "La reina Margarita de Dinamarca quería someter a Suecia bajo su control.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ciudad se moría de hambre y sus defensores necesitaban suministros desesperadamente.",
+      "text_markdown": "La ciudad se moría de hambre y sus defensores necesitaban suministros desesperadamente.",
+      "tts": {
+        "text": "La ciudad se moría de hambre y sus defensores necesitaban suministros desesperadamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las ciudades que apoyaban al rey Alberto de Mecklemburgo organizaron una misión de socorro.",
+      "text_markdown": "Las ciudades que apoyaban al rey Alberto de Mecklemburgo organizaron una misión de socorro.",
+      "tts": {
+        "text": "Las ciudades que apoyaban al rey Alberto de Mecklemburgo organizaron una misión de socorro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Encargaron a corsarios navegar más allá de la flota danesa y llevar alimentos a Estocolmo.",
+      "text_markdown": "Encargaron a corsarios navegar más allá de la flota danesa y llevar alimentos a Estocolmo.",
+      "tts": {
+        "text": "Encargaron a corsarios navegar más allá de la flota danesa y llevar alimentos a Estocolmo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estos corsarios recibieron patentes de corso, lo que hacía legales sus ataques a barcos daneses.",
+      "text_markdown": "Estos corsarios recibieron patentes de corso, lo que hacía legales sus ataques a barcos daneses.",
+      "tts": {
+        "text": "Estos corsarios recibieron patentes de corso, lo que hacía legales sus ataques a barcos daneses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Así fue como nacieron los Hermanos de las Vituallas.",
+      "text_markdown": "Así fue como nacieron los Hermanos de las Vituallas.",
+      "tts": {
+        "text": "Así fue como nacieron los Hermanos de las Vituallas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los Hermanos de las Vituallas fueron eficaces en su labor.",
+      "text_markdown": "Los Hermanos de las Vituallas fueron eficaces en su labor.",
+      "tts": {
+        "text": "Los Hermanos de las Vituallas fueron eficaces en su labor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rompieron el bloqueo danés y llevaron alimentos a la ciudad hambrienta.",
+      "text_markdown": "Rompieron el bloqueo danés y llevaron alimentos a la ciudad hambrienta.",
+      "tts": {
+        "text": "Rompieron el bloqueo danés y llevaron alimentos a la ciudad hambrienta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "También asaltaron barcos mercantes daneses y noruegos con gran éxito.",
+      "text_markdown": "También asaltaron barcos mercantes daneses y noruegos con gran éxito.",
+      "tts": {
+        "text": "También asaltaron barcos mercantes daneses y noruegos con gran éxito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las tripulaciones se enriquecieron con el botín que capturaron.",
+      "text_markdown": "Las tripulaciones se enriquecieron con el botín que capturaron.",
+      "tts": {
+        "text": "Las tripulaciones se enriquecieron con el botín que capturaron.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La misión atrajo a todo tipo de hombres.",
+      "text_markdown": "La misión atrajo a todo tipo de hombres.",
+      "tts": {
+        "text": "La misión atrajo a todo tipo de hombres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algunos eran marineros y soldados experimentados.",
+      "text_markdown": "Algunos eran marineros y soldados experimentados.",
+      "tts": {
+        "text": "Algunos eran marineros y soldados experimentados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otros eran aventureros, proscritos u hombres que huían de deudas o de la justicia.",
+      "text_markdown": "Otros eran aventureros, proscritos u hombres que huían de deudas o de la justicia.",
+      "tts": {
+        "text": "Otros eran aventureros, proscritos u hombres que huían de deudas o de la justicia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los Hermanos de las Vituallas se convirtieron en un imán para todo aquel que buscaba fortuna y libertad en el mar.",
+      "text_markdown": "Los Hermanos de las Vituallas se convirtieron en un imán para todo aquel que buscaba fortuna y libertad en el mar.",
+      "tts": {
+        "text": "Los Hermanos de las Vituallas se convirtieron en un imán para todo aquel que buscaba fortuna y libertad en el mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker ascendió rápidamente a una posición de liderazgo dentro del grupo.",
+      "text_markdown": "Störtebeker ascendió rápidamente a una posición de liderazgo dentro del grupo.",
+      "tts": {
+        "text": "Störtebeker ascendió rápidamente a una posición de liderazgo dentro del grupo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los detalles exactos de su ascenso se perdieron en la historia.",
+      "text_markdown": "Los detalles exactos de su ascenso se perdieron en la historia.",
+      "tts": {
+        "text": "Los detalles exactos de su ascenso se perdieron en la historia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Debió ser un marinero hábil, un luchador feroz y un líder nato.",
+      "text_markdown": "Debió ser un marinero hábil, un luchador feroz y un líder nato.",
+      "tts": {
+        "text": "Debió ser un marinero hábil, un luchador feroz y un líder nato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Para cuando terminó la guerra, era uno de los Hermanos de las Vituallas más prominentes.",
+      "text_markdown": "Para cuando terminó la guerra, era uno de los Hermanos de las Vituallas más prominentes.",
+      "tts": {
+        "text": "Para cuando terminó la guerra, era uno de los Hermanos de las Vituallas más prominentes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerra terminó efectivamente en 1395 cuando el rey Alberto fue liberado del cautiverio.",
+      "text_markdown": "La guerra terminó efectivamente en 1395 cuando el rey Alberto fue liberado del cautiverio.",
+      "tts": {
+        "text": "La guerra terminó efectivamente en mil trescientos noventa y cinco cuando el rey Alberto fue liberado del cautiverio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se alcanzó un acuerdo de paz entre las partes en conflicto.",
+      "text_markdown": "Se alcanzó un acuerdo de paz entre las partes en conflicto.",
+      "tts": {
+        "text": "Se alcanzó un acuerdo de paz entre las partes en conflicto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las patentes de corso que habían autorizado a los Hermanos de las Vituallas fueron revocadas.",
+      "text_markdown": "Las patentes de corso que habían autorizado a los Hermanos de las Vituallas fueron revocadas.",
+      "tts": {
+        "text": "Las patentes de corso que habían autorizado a los Hermanos de las Vituallas fueron revocadas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero los Hermanos de las Vituallas no tenían intención de detenerse.",
+      "text_markdown": "Pero los Hermanos de las Vituallas no tenían intención de detenerse.",
+      "tts": {
+        "text": "Pero los Hermanos de las Vituallas no tenían intención de detenerse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Habían probado la riqueza y la libertad en alta mar.",
+      "text_markdown": "Habían probado la riqueza y la libertad en alta mar.",
+      "tts": {
+        "text": "Habían probado la riqueza y la libertad en alta mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Volver a la vida ordinaria no tenía ningún atractivo para hombres que habían vivido por la espada.",
+      "text_markdown": "Volver a la vida ordinaria no tenía ningún atractivo para hombres que habían vivido por la espada.",
+      "tts": {
+        "text": "Volver a la vida ordinaria no tenía ningún atractivo para hombres que habían vivido por la espada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Siguieron saqueando, pero ahora eran piratas, no corsarios.",
+      "text_markdown": "Siguieron saqueando, pero ahora eran piratas, no corsarios.",
+      "tts": {
+        "text": "Siguieron saqueando, pero ahora eran piratas, no corsarios.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su lema, según la leyenda, era audaz y desafiante.",
+      "text_markdown": "Su lema, según la leyenda, era audaz y desafiante.",
+      "tts": {
+        "text": "Su lema, según la leyenda, era audaz y desafiante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se declararon amigos de Dios y enemigos del mundo.",
+      "text_markdown": "Se declararon amigos de Dios y enemigos del mundo.",
+      "tts": {
+        "text": "Se declararon amigos de Dios y enemigos del mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esta frase capturaba su identidad de proscritos a la perfección.",
+      "text_markdown": "Esta frase capturaba su identidad de proscritos a la perfección.",
+      "tts": {
+        "text": "Esta frase capturaba su identidad de proscritos a la perfección.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No respondían ante ningún rey, ninguna ciudad ni ninguna ley.",
+      "text_markdown": "No respondían ante ningún rey, ninguna ciudad ni ninguna ley.",
+      "tts": {
+        "text": "No respondían ante ningún rey, ninguna ciudad ni ninguna ley.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los marineros medievales enfrentaban peligros que iban más allá de las tormentas y los barcos enemigos.",
+      "text_markdown": "Los marineros medievales enfrentaban peligros que iban más allá de las tormentas y los barcos enemigos.",
+      "tts": {
+        "text": "Los marineros medievales enfrentaban peligros que iban más allá de las tormentas y los barcos enemigos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las enfermedades y la desnutrición eran compañeras constantes en los largos viajes.",
+      "text_markdown": "Las enfermedades y la desnutrición eran compañeras constantes en los largos viajes.",
+      "tts": {
+        "text": "Las enfermedades y la desnutrición eran compañeras constantes en los largos viajes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Orígenes",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un hombre que se unía a los Hermanos de las Vituallas elegía una vida dura y a menudo corta.",
+      "text_markdown": "Un hombre que se unía a los Hermanos de las Vituallas elegía una vida dura y a menudo corta.",
+      "tts": {
+        "text": "Un hombre que se unía a los Hermanos de las Vituallas elegía una vida dura y a menudo corta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ascenso al poder",
+      "text_markdown": "Ascenso al poder"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tras el fin de la guerra, los Hermanos de las Vituallas necesitaban una base de operaciones.",
+      "text_markdown": "Tras el fin de la guerra, los Hermanos de las Vituallas necesitaban una base de operaciones.",
+      "tts": {
+        "text": "Tras el fin de la guerra, los Hermanos de las Vituallas necesitaban una base de operaciones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se apoderaron de la isla de Gotland en el mar Báltico.",
+      "text_markdown": "Se apoderaron de la isla de Gotland en el mar Báltico.",
+      "tts": {
+        "text": "Se apoderaron de la isla de Gotland en el mar Báltico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gotland era una isla grande y estratégicamente ubicada entre Suecia y la costa báltica.",
+      "text_markdown": "Gotland era una isla grande y estratégicamente ubicada entre Suecia y la costa báltica.",
+      "tts": {
+        "text": "Gotland era una isla grande y estratégicamente ubicada entre Suecia y la costa báltica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La ciudad de Visby en Gotland había sido en su día un próspero centro comercial hanseático.",
+      "text_markdown": "La ciudad de Visby en Gotland había sido en su día un próspero centro comercial hanseático.",
+      "tts": {
+        "text": "La ciudad de Visby en Gotland había sido en su día un próspero centro comercial hanseático.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para cuando llegaron los piratas, había decaído de su antigua gloria.",
+      "text_markdown": "Para cuando llegaron los piratas, había decaído de su antigua gloria.",
+      "tts": {
+        "text": "Para cuando llegaron los piratas, había decaído de su antigua gloria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los Hermanos de las Vituallas convirtieron la isla en su fortaleza.",
+      "text_markdown": "Los Hermanos de las Vituallas convirtieron la isla en su fortaleza.",
+      "tts": {
+        "text": "Los Hermanos de las Vituallas convirtieron la isla en su fortaleza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Desde Gotland, podían asaltar barcos que viajaban en cualquier dirección por el Báltico.",
+      "text_markdown": "Desde Gotland, podían asaltar barcos que viajaban en cualquier dirección por el Báltico.",
+      "tts": {
+        "text": "Desde Gotland, podían asaltar barcos que viajaban en cualquier dirección por el Báltico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker y sus tripulaciones atacaron barcos mercantes de Lübeck, Hamburgo y otras ciudades hanseáticas.",
+      "text_markdown": "Störtebeker y sus tripulaciones atacaron barcos mercantes de Lübeck, Hamburgo y otras ciudades hanseáticas.",
+      "tts": {
+        "text": "Störtebeker y sus tripulaciones atacaron barcos mercantes de Lübeck, Hamburgo y otras ciudades hanseáticas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capturaron cargamentos de grano, tela, sal y artículos de lujo.",
+      "text_markdown": "Capturaron cargamentos de grano, tela, sal y artículos de lujo.",
+      "tts": {
+        "text": "Capturaron cargamentos de grano, tela, sal y artículos de lujo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Interrumpieron rutas comerciales que la Liga había mantenido durante generaciones.",
+      "text_markdown": "Interrumpieron rutas comerciales que la Liga había mantenido durante generaciones.",
+      "tts": {
+        "text": "Interrumpieron rutas comerciales que la Liga había mantenido durante generaciones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El daño económico fue enorme.",
+      "text_markdown": "El daño económico fue enorme.",
+      "tts": {
+        "text": "El daño económico fue enorme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Liga Hanseática estaba furiosa, pero le costaba responder con eficacia.",
+      "text_markdown": "La Liga Hanseática estaba furiosa, pero le costaba responder con eficacia.",
+      "tts": {
+        "text": "La Liga Hanseática estaba furiosa, pero le costaba responder con eficacia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Liga era una alianza comercial, no un poder militar unificado.",
+      "text_markdown": "La Liga era una alianza comercial, no un poder militar unificado.",
+      "tts": {
+        "text": "La Liga era una alianza comercial, no un poder militar unificado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Organizar una expedición naval conjunta requería el acuerdo de muchas ciudades independientes.",
+      "text_markdown": "Organizar una expedición naval conjunta requería el acuerdo de muchas ciudades independientes.",
+      "tts": {
+        "text": "Organizar una expedición naval conjunta requería el acuerdo de muchas ciudades independientes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eso llevaba tiempo, y mientras tanto los piratas continuaban sus incursiones.",
+      "text_markdown": "Eso llevaba tiempo, y mientras tanto los piratas continuaban sus incursiones.",
+      "tts": {
+        "text": "Eso llevaba tiempo, y mientras tanto los piratas continuaban sus incursiones.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los piratas de Gotland no solo atacaban barcos mercantes.",
+      "text_markdown": "Los piratas de Gotland no solo atacaban barcos mercantes.",
+      "tts": {
+        "text": "Los piratas de Gotland no solo atacaban barcos mercantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "También asaltaban ciudades costeras y aldeas pesqueras.",
+      "text_markdown": "También asaltaban ciudades costeras y aldeas pesqueras.",
+      "tts": {
+        "text": "También asaltaban ciudades costeras y aldeas pesqueras.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Secuestraban personas para pedir rescate y quemaban los asentamientos que se resistían.",
+      "text_markdown": "Secuestraban personas para pedir rescate y quemaban los asentamientos que se resistían.",
+      "tts": {
+        "text": "Secuestraban personas para pedir rescate y quemaban los asentamientos que se resistían.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El miedo a los Hermanos de las Vituallas se extendió por toda la región báltica.",
+      "text_markdown": "El miedo a los Hermanos de las Vituallas se extendió por toda la región báltica.",
+      "tts": {
+        "text": "El miedo a los Hermanos de las Vituallas se extendió por toda la región báltica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker se convirtió en el más famoso y temido de los Hermanos de las Vituallas.",
+      "text_markdown": "Störtebeker se convirtió en el más famoso y temido de los Hermanos de las Vituallas.",
+      "tts": {
+        "text": "Störtebeker se convirtió en el más famoso y temido de los Hermanos de las Vituallas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su nombre se pronunciaba con pavor en puertos desde Nóvgorod hasta Bergen.",
+      "text_markdown": "Su nombre se pronunciaba con pavor en puertos desde Nóvgorod hasta Bergen.",
+      "tts": {
+        "text": "Su nombre se pronunciaba con pavor en puertos desde Nóvgorod hasta Bergen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si era el líder supremo o simplemente el capitán más notorio no está claro.",
+      "text_markdown": "Si era el líder supremo o simplemente el capitán más notorio no está claro.",
+      "tts": {
+        "text": "Si era el líder supremo o simplemente el capitán más notorio no está claro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las crónicas medievales mencionan también a otros líderes.",
+      "text_markdown": "Las crónicas medievales mencionan también a otros líderes.",
+      "tts": {
+        "text": "Las crónicas medievales mencionan también a otros líderes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un aliado importante era Gödeke Michels, otro prominente Hermano de las Vituallas.",
+      "text_markdown": "Un aliado importante era Gödeke Michels, otro prominente Hermano de las Vituallas.",
+      "tts": {
+        "text": "Un aliado importante era Gödeke Michels, otro prominente Hermano de las Vituallas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Michels operaba de forma independiente pero cooperaba con Störtebeker en las grandes incursiones.",
+      "text_markdown": "Michels operaba de forma independiente pero cooperaba con Störtebeker en las grandes incursiones.",
+      "tts": {
+        "text": "Michels operaba de forma independiente pero cooperaba con Störtebeker en las grandes incursiones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Juntos comandaban una flota considerable de barcos piratas.",
+      "text_markdown": "Juntos comandaban una flota considerable de barcos piratas.",
+      "tts": {
+        "text": "Juntos comandaban una flota considerable de barcos piratas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los Caballeros Teutónicos decidieron finalmente actuar contra los piratas de Gotland.",
+      "text_markdown": "Los Caballeros Teutónicos decidieron finalmente actuar contra los piratas de Gotland.",
+      "tts": {
+        "text": "Los Caballeros Teutónicos decidieron finalmente actuar contra los piratas de Gotland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los Caballeros Teutónicos eran una poderosa orden militar con sede en Prusia.",
+      "text_markdown": "Los Caballeros Teutónicos eran una poderosa orden militar con sede en Prusia.",
+      "tts": {
+        "text": "Los Caballeros Teutónicos eran una poderosa orden militar con sede en Prusia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Controlaban vastos territorios a lo largo de la costa oriental del Báltico.",
+      "text_markdown": "Controlaban vastos territorios a lo largo de la costa oriental del Báltico.",
+      "tts": {
+        "text": "Controlaban vastos territorios a lo largo de la costa oriental del Báltico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los ataques piratas también amenazaban sus intereses.",
+      "text_markdown": "Los ataques piratas también amenazaban sus intereses.",
+      "tts": {
+        "text": "Los ataques piratas también amenazaban sus intereses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1398, los Caballeros Teutónicos lanzaron una invasión de Gotland.",
+      "text_markdown": "En 1398, los Caballeros Teutónicos lanzaron una invasión de Gotland.",
+      "tts": {
+        "text": "En mil trescientos noventa y ocho, los Caballeros Teutónicos lanzaron una invasión de Gotland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atacaron con fuerza abrumadora y capturaron la isla.",
+      "text_markdown": "Atacaron con fuerza abrumadora y capturaron la isla.",
+      "tts": {
+        "text": "Atacaron con fuerza abrumadora y capturaron la isla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muchos piratas fueron muertos o capturados.",
+      "text_markdown": "Muchos piratas fueron muertos o capturados.",
+      "tts": {
+        "text": "Muchos piratas fueron muertos o capturados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pero Störtebeker no estaba entre ellos.",
+      "text_markdown": "Pero Störtebeker no estaba entre ellos.",
+      "tts": {
+        "text": "Pero Störtebeker no estaba entre ellos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker y muchos de sus seguidores escaparon antes de que cayera la isla.",
+      "text_markdown": "Störtebeker y muchos de sus seguidores escaparon antes de que cayera la isla.",
+      "tts": {
+        "text": "Störtebeker y muchos de sus seguidores escaparon antes de que cayera la isla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navegaron hacia el oeste, dejando el mar Báltico atrás.",
+      "text_markdown": "Navegaron hacia el oeste, dejando el mar Báltico atrás.",
+      "tts": {
+        "text": "Navegaron hacia el oeste, dejando el mar Báltico atrás.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trasladaron sus operaciones al mar del Norte.",
+      "text_markdown": "Trasladaron sus operaciones al mar del Norte.",
+      "tts": {
+        "text": "Trasladaron sus operaciones al mar del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Una nueva fase de su carrera pirata estaba comenzando.",
+      "text_markdown": "Una nueva fase de su carrera pirata estaba comenzando.",
+      "tts": {
+        "text": "Una nueva fase de su carrera pirata estaba comenzando.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker estableció una nueva base a lo largo de la costa de Frisia Oriental.",
+      "text_markdown": "Störtebeker estableció una nueva base a lo largo de la costa de Frisia Oriental.",
+      "tts": {
+        "text": "Störtebeker estableció una nueva base a lo largo de la costa de Frisia Oriental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Frisia Oriental era una región de marismas, islas y pequeños territorios independientes.",
+      "text_markdown": "Frisia Oriental era una región de marismas, islas y pequeños territorios independientes.",
+      "tts": {
+        "text": "Frisia Oriental era una región de marismas, islas y pequeños territorios independientes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ninguna autoridad única controlaba la costa frisona.",
+      "text_markdown": "Ninguna autoridad única controlaba la costa frisona.",
+      "tts": {
+        "text": "Ninguna autoridad única controlaba la costa frisona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta fragmentación política la convertía en un escondite ideal para piratas.",
+      "text_markdown": "Esta fragmentación política la convertía en un escondite ideal para piratas.",
+      "tts": {
+        "text": "Esta fragmentación política la convertía en un escondite ideal para piratas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las ciudades de Emden y Marienhafe se convirtieron en bases importantes para la flota de Störtebeker.",
+      "text_markdown": "Las ciudades de Emden y Marienhafe se convirtieron en bases importantes para la flota de Störtebeker.",
+      "tts": {
+        "text": "Las ciudades de Emden y Marienhafe se convirtieron en bases importantes para la flota de Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los jefes frisones locales toleraban o apoyaban activamente a los piratas.",
+      "text_markdown": "Los jefes frisones locales toleraban o apoyaban activamente a los piratas.",
+      "tts": {
+        "text": "Los jefes frisones locales toleraban o apoyaban activamente a los piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los piratas gastaban dinero en los mercados locales, lo que beneficiaba la economía frisona.",
+      "text_markdown": "Los piratas gastaban dinero en los mercados locales, lo que beneficiaba la economía frisona.",
+      "tts": {
+        "text": "Los piratas gastaban dinero en los mercados locales, lo que beneficiaba la economía frisona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algunos jefes recibían una parte del botín a cambio de puerto seguro.",
+      "text_markdown": "Algunos jefes recibían una parte del botín a cambio de puerto seguro.",
+      "tts": {
+        "text": "Algunos jefes recibían una parte del botín a cambio de puerto seguro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Desde Frisia Oriental, los barcos de Störtebeker podían atacar las rutas marítimas del mar del Norte.",
+      "text_markdown": "Desde Frisia Oriental, los barcos de Störtebeker podían atacar las rutas marítimas del mar del Norte.",
+      "tts": {
+        "text": "Desde Frisia Oriental, los barcos de Störtebeker podían atacar las rutas marítimas del mar del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atacaban navíos que viajaban entre Inglaterra, Flandes y los puertos hanseáticos.",
+      "text_markdown": "Atacaban navíos que viajaban entre Inglaterra, Flandes y los puertos hanseáticos.",
+      "tts": {
+        "text": "Atacaban navíos que viajaban entre Inglaterra, Flandes y los puertos hanseáticos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El paso del Báltico al mar del Norte amplió su alcance drásticamente.",
+      "text_markdown": "El paso del Báltico al mar del Norte amplió su alcance drásticamente.",
+      "tts": {
+        "text": "El paso del Báltico al mar del Norte amplió su alcance drásticamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ningún barco mercante en los mares del norte estaba a salvo.",
+      "text_markdown": "Ningún barco mercante en los mares del norte estaba a salvo.",
+      "tts": {
+        "text": "Ningún barco mercante en los mares del norte estaba a salvo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Liga Hanseática ahora enfrentaba ataques piratas en dos mares simultáneamente.",
+      "text_markdown": "La Liga Hanseática ahora enfrentaba ataques piratas en dos mares simultáneamente.",
+      "tts": {
+        "text": "La Liga Hanseática ahora enfrentaba ataques piratas en dos mares simultáneamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los Hermanos de las Vituallas restantes en el Báltico continuaron sus incursiones allí.",
+      "text_markdown": "Los Hermanos de las Vituallas restantes en el Báltico continuaron sus incursiones allí.",
+      "tts": {
+        "text": "Los Hermanos de las Vituallas restantes en el Báltico continuaron sus incursiones allí.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La facción de Störtebeker aterrorizaba el mar del Norte.",
+      "text_markdown": "La facción de Störtebeker aterrorizaba el mar del Norte.",
+      "tts": {
+        "text": "La facción de Störtebeker aterrorizaba el mar del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El comercio de la Liga estaba siendo estrangulado desde ambas direcciones.",
+      "text_markdown": "El comercio de la Liga estaba siendo estrangulado desde ambas direcciones.",
+      "tts": {
+        "text": "El comercio de la Liga estaba siendo estrangulado desde ambas direcciones.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los Hermanos de las Vituallas usaban una estrategia de asalto simple pero efectiva.",
+      "text_markdown": "Los Hermanos de las Vituallas usaban una estrategia de asalto simple pero efectiva.",
+      "tts": {
+        "text": "Los Hermanos de las Vituallas usaban una estrategia de asalto simple pero efectiva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esperaban en bahías protegidas cerca de rutas marítimas conocidas.",
+      "text_markdown": "Esperaban en bahías protegidas cerca de rutas marítimas conocidas.",
+      "tts": {
+        "text": "Esperaban en bahías protegidas cerca de rutas marítimas conocidas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuando pasaba un barco mercante, se lanzaban y lo abrumaban con su superioridad numérica.",
+      "text_markdown": "Cuando pasaba un barco mercante, se lanzaban y lo abrumaban con su superioridad numérica.",
+      "tts": {
+        "text": "Cuando pasaba un barco mercante, se lanzaban y lo abrumaban con su superioridad numérica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A las tripulaciones capturadas a veces se les daba la opción de unirse a los piratas.",
+      "text_markdown": "A las tripulaciones capturadas a veces se les daba la opción de unirse a los piratas.",
+      "tts": {
+        "text": "A las tripulaciones capturadas a veces se les daba la opción de unirse a los piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascenso al poder",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muchos marineros comunes tenían poca lealtad hacia sus empleadores hanseáticos.",
+      "text_markdown": "Muchos marineros comunes tenían poca lealtad hacia sus empleadores hanseáticos.",
+      "tts": {
+        "text": "Muchos marineros comunes tenían poca lealtad hacia sus empleadores hanseáticos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En la cima",
+      "text_markdown": "En la cima"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En la cima de su poder, Störtebeker comandaba una flota de múltiples barcos.",
+      "text_markdown": "En la cima de su poder, Störtebeker comandaba una flota de múltiples barcos.",
+      "tts": {
+        "text": "En la cima de su poder, Störtebeker comandaba una flota de múltiples barcos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El número exacto es desconocido, pero las crónicas sugieren que era considerable.",
+      "text_markdown": "El número exacto es desconocido, pero las crónicas sugieren que era considerable.",
+      "tts": {
+        "text": "El número exacto es desconocido, pero las crónicas sugieren que era considerable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus tripulaciones pudieron haber sumado cientos.",
+      "text_markdown": "Sus tripulaciones pudieron haber sumado cientos.",
+      "tts": {
+        "text": "Sus tripulaciones pudieron haber sumado cientos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los barcos usados por los piratas del Báltico y el mar del Norte se llamaban cocas y hulcos.",
+      "text_markdown": "Los barcos usados por los piratas del Báltico y el mar del Norte se llamaban cocas y hulcos.",
+      "tts": {
+        "text": "Los barcos usados por los piratas del Báltico y el mar del Norte se llamaban cocas y hulcos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una coca era un robusto barco mercante de fondo plano adaptado para aguas del norte.",
+      "text_markdown": "Una coca era un robusto barco mercante de fondo plano adaptado para aguas del norte.",
+      "tts": {
+        "text": "Una coca era un robusto barco mercante de fondo plano adaptado para aguas del norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las cocas eran lentas pero podían transportar grandes cargas y muchos tripulantes.",
+      "text_markdown": "Las cocas eran lentas pero podían transportar grandes cargas y muchos tripulantes.",
+      "tts": {
+        "text": "Las cocas eran lentas pero podían transportar grandes cargas y muchos tripulantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los piratas a menudo capturaban cocas mercantes y las convertían para su propio uso.",
+      "text_markdown": "Los piratas a menudo capturaban cocas mercantes y las convertían para su propio uso.",
+      "tts": {
+        "text": "Los piratas a menudo capturaban cocas mercantes y las convertían para su propio uso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La navegación en los mares del norte era peligrosa y difícil.",
+      "text_markdown": "La navegación en los mares del norte era peligrosa y difícil.",
+      "tts": {
+        "text": "La navegación en los mares del norte era peligrosa y difícil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los marineros medievales dependían de puntos de referencia costeros, la posición del sol y la experiencia.",
+      "text_markdown": "Los marineros medievales dependían de puntos de referencia costeros, la posición del sol y la experiencia.",
+      "tts": {
+        "text": "Los marineros medievales dependían de puntos de referencia costeros, la posición del sol y la experiencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las brújulas estaban disponibles pero aún no se confiaba ampliamente en ellas.",
+      "text_markdown": "Las brújulas estaban disponibles pero aún no se confiaba ampliamente en ellas.",
+      "tts": {
+        "text": "Las brújulas estaban disponibles pero aún no se confiaba ampliamente en ellas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las cartas náuticas eran toscas comparadas con las de siglos posteriores.",
+      "text_markdown": "Las cartas náuticas eran toscas comparadas con las de siglos posteriores.",
+      "tts": {
+        "text": "Las cartas náuticas eran toscas comparadas con las de siglos posteriores.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las tormentas en el mar del Norte eran legendarias por su violencia.",
+      "text_markdown": "Las tormentas en el mar del Norte eran legendarias por su violencia.",
+      "tts": {
+        "text": "Las tormentas en el mar del Norte eran legendarias por su violencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las aguas poco profundas del sur del mar del Norte producían olas empinadas y peligrosas.",
+      "text_markdown": "Las aguas poco profundas del sur del mar del Norte producían olas empinadas y peligrosas.",
+      "tts": {
+        "text": "Las aguas poco profundas del sur del mar del Norte producían olas empinadas y peligrosas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los barcos podían ser arrojados contra bancos de arena o costas rocosas sin aviso.",
+      "text_markdown": "Los barcos podían ser arrojados contra bancos de arena o costas rocosas sin aviso.",
+      "tts": {
+        "text": "Los barcos podían ser arrojados contra bancos de arena o costas rocosas sin aviso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cada viaje era una apuesta con la muerte.",
+      "text_markdown": "Cada viaje era una apuesta con la muerte.",
+      "tts": {
+        "text": "Cada viaje era una apuesta con la muerte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los piratas de Störtebeker atacaban barcos que transportaban grano, tela, sal y cerveza.",
+      "text_markdown": "Los piratas de Störtebeker atacaban barcos que transportaban grano, tela, sal y cerveza.",
+      "tts": {
+        "text": "Los piratas de Störtebeker atacaban barcos que transportaban grano, tela, sal y cerveza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "También capturaban cargamentos de arenque, un alimento básico en todo el norte de Europa.",
+      "text_markdown": "También capturaban cargamentos de arenque, un alimento básico en todo el norte de Europa.",
+      "tts": {
+        "text": "También capturaban cargamentos de arenque, un alimento básico en todo el norte de Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los artículos de lujo como vino, especias y telas finas eran especialmente codiciados.",
+      "text_markdown": "Los artículos de lujo como vino, especias y telas finas eran especialmente codiciados.",
+      "tts": {
+        "text": "Los artículos de lujo como vino, especias y telas finas eran especialmente codiciados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Todo lo que pudiera venderse valía la pena tomar.",
+      "text_markdown": "Todo lo que pudiera venderse valía la pena tomar.",
+      "tts": {
+        "text": "Todo lo que pudiera venderse valía la pena tomar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La leyenda dice que Störtebeker compartía su botín con los pobres.",
+      "text_markdown": "La leyenda dice que Störtebeker compartía su botín con los pobres.",
+      "tts": {
+        "text": "La leyenda dice que Störtebeker compartía su botín con los pobres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta imagen de Robin Hood lo ha acompañado durante siglos.",
+      "text_markdown": "Esta imagen de Robin Hood lo ha acompañado durante siglos.",
+      "tts": {
+        "text": "Esta imagen de Robin Hood lo ha acompañado durante siglos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si realmente daba a los pobres es imposible de verificar.",
+      "text_markdown": "Si realmente daba a los pobres es imposible de verificar.",
+      "tts": {
+        "text": "Si realmente daba a los pobres es imposible de verificar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La leyenda pudo haber surgido después de su muerte para hacer su historia más simpática.",
+      "text_markdown": "La leyenda pudo haber surgido después de su muerte para hacer su historia más simpática.",
+      "tts": {
+        "text": "La leyenda pudo haber surgido después de su muerte para hacer su historia más simpática.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo que es seguro es que las ciudades hanseáticas sufrieron pérdidas enormes.",
+      "text_markdown": "Lo que es seguro es que las ciudades hanseáticas sufrieron pérdidas enormes.",
+      "tts": {
+        "text": "Lo que es seguro es que las ciudades hanseáticas sufrieron pérdidas enormes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los costos de seguros para viajes mercantes se dispararon.",
+      "text_markdown": "Los costos de seguros para viajes mercantes se dispararon.",
+      "tts": {
+        "text": "Los costos de seguros para viajes mercantes se dispararon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Algunas rutas comerciales se volvieron demasiado peligrosas para usarse sin escolta armada.",
+      "text_markdown": "Algunas rutas comerciales se volvieron demasiado peligrosas para usarse sin escolta armada.",
+      "tts": {
+        "text": "Algunas rutas comerciales se volvieron demasiado peligrosas para usarse sin escolta armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La reputación de la Liga como protectora del comercio estaba siendo socavada.",
+      "text_markdown": "La reputación de la Liga como protectora del comercio estaba siendo socavada.",
+      "tts": {
+        "text": "La reputación de la Liga como protectora del comercio estaba siendo socavada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los piratas también interrumpieron las pesquerías de arenque vitales para la economía báltica.",
+      "text_markdown": "Los piratas también interrumpieron las pesquerías de arenque vitales para la economía báltica.",
+      "tts": {
+        "text": "Los piratas también interrumpieron las pesquerías de arenque vitales para la economía báltica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las flotas pesqueras de Lübeck y otras ciudades fueron atacadas en el mar.",
+      "text_markdown": "Las flotas pesqueras de Lübeck y otras ciudades fueron atacadas en el mar.",
+      "tts": {
+        "text": "Las flotas pesqueras de Lübeck y otras ciudades fueron atacadas en el mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El precio del arenque subió, causando penurias a la gente común.",
+      "text_markdown": "El precio del arenque subió, causando penurias a la gente común.",
+      "tts": {
+        "text": "El precio del arenque subió, causando penurias a la gente común.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esto hizo que los piratas fueran tan odiados por el pueblo como por los mercaderes ricos.",
+      "text_markdown": "Esto hizo que los piratas fueran tan odiados por el pueblo como por los mercaderes ricos.",
+      "tts": {
+        "text": "Esto hizo que los piratas fueran tan odiados por el pueblo como por los mercaderes ricos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El nombre de Störtebeker se convirtió en sinónimo de peligro en los mares del norte.",
+      "text_markdown": "El nombre de Störtebeker se convirtió en sinónimo de peligro en los mares del norte.",
+      "tts": {
+        "text": "El nombre de Störtebeker se convirtió en sinónimo de peligro en los mares del norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se dice que las madres advertían a sus hijos de que Störtebeker vendría a buscarlos.",
+      "text_markdown": "Se dice que las madres advertían a sus hijos de que Störtebeker vendría a buscarlos.",
+      "tts": {
+        "text": "Se dice que las madres advertían a sus hijos de que Störtebeker vendría a buscarlos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Su reputación crecía con cada incursión exitosa.",
+      "text_markdown": "Su reputación crecía con cada incursión exitosa.",
+      "tts": {
+        "text": "Su reputación crecía con cada incursión exitosa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vida a bordo de un barco pirata medieval era dura y brutal.",
+      "text_markdown": "La vida a bordo de un barco pirata medieval era dura y brutal.",
+      "tts": {
+        "text": "La vida a bordo de un barco pirata medieval era dura y brutal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los espacios eran estrechos, la comida a menudo estaba podrida y el agua dulce era escasa.",
+      "text_markdown": "Los espacios eran estrechos, la comida a menudo estaba podrida y el agua dulce era escasa.",
+      "tts": {
+        "text": "Los espacios eran estrechos, la comida a menudo estaba podrida y el agua dulce era escasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las enfermedades podían arrasar una tripulación en días.",
+      "text_markdown": "Las enfermedades podían arrasar una tripulación en días.",
+      "tts": {
+        "text": "Las enfermedades podían arrasar una tripulación en días.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La violencia era una parte constante de la vida diaria.",
+      "text_markdown": "La violencia era una parte constante de la vida diaria.",
+      "tts": {
+        "text": "La violencia era una parte constante de la vida diaria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las disputas entre piratas se resolvían a menudo a puñetazos o a cuchilladas.",
+      "text_markdown": "Las disputas entre piratas se resolvían a menudo a puñetazos o a cuchilladas.",
+      "tts": {
+        "text": "Las disputas entre piratas se resolvían a menudo a puñetazos o a cuchilladas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El liderazgo dependía de la capacidad del capitán para conseguir botín y mantener el orden.",
+      "text_markdown": "El liderazgo dependía de la capacidad del capitán para conseguir botín y mantener el orden.",
+      "tts": {
+        "text": "El liderazgo dependía de la capacidad del capitán para conseguir botín y mantener el orden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un capitán que fracasaba podía ser desafiado y reemplazado.",
+      "text_markdown": "Un capitán que fracasaba podía ser desafiado y reemplazado.",
+      "tts": {
+        "text": "Un capitán que fracasaba podía ser desafiado y reemplazado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Störtebeker mantuvo su posición mediante habilidad, astucia y fuerza de carácter.",
+      "text_markdown": "Störtebeker mantuvo su posición mediante habilidad, astucia y fuerza de carácter.",
+      "tts": {
+        "text": "Störtebeker mantuvo su posición mediante habilidad, astucia y fuerza de carácter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los jefes frisones que daban refugio a Störtebeker jugaban un juego peligroso.",
+      "text_markdown": "Los jefes frisones que daban refugio a Störtebeker jugaban un juego peligroso.",
+      "tts": {
+        "text": "Los jefes frisones que daban refugio a Störtebeker jugaban un juego peligroso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Liga Hanseática tenía el poder de imponer embargos comerciales devastadores.",
+      "text_markdown": "La Liga Hanseática tenía el poder de imponer embargos comerciales devastadores.",
+      "tts": {
+        "text": "La Liga Hanseática tenía el poder de imponer embargos comerciales devastadores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las ciudades que albergaban piratas se arriesgaban a ser cortadas de todo el comercio del norte.",
+      "text_markdown": "Las ciudades que albergaban piratas se arriesgaban a ser cortadas de todo el comercio del norte.",
+      "tts": {
+        "text": "Las ciudades que albergaban piratas se arriesgaban a ser cortadas de todo el comercio del norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La presión sobre los aliados de Störtebeker iba en aumento.",
+      "text_markdown": "La presión sobre los aliados de Störtebeker iba en aumento.",
+      "tts": {
+        "text": "La presión sobre los aliados de Störtebeker iba en aumento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburgo, en particular, estaba decidida a destruir a Störtebeker.",
+      "text_markdown": "Hamburgo, en particular, estaba decidida a destruir a Störtebeker.",
+      "tts": {
+        "text": "Hamburgo, en particular, estaba decidida a destruir a Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los mercaderes de la ciudad habían perdido demasiados barcos y demasiado dinero.",
+      "text_markdown": "Los mercaderes de la ciudad habían perdido demasiados barcos y demasiado dinero.",
+      "tts": {
+        "text": "Los mercaderes de la ciudad habían perdido demasiados barcos y demasiado dinero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Comenzaron a construir una flota diseñada específicamente para cazar piratas.",
+      "text_markdown": "Comenzaron a construir una flota diseñada específicamente para cazar piratas.",
+      "tts": {
+        "text": "Comenzaron a construir una flota diseñada específicamente para cazar piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El fin del reinado de Störtebeker se acercaba.",
+      "text_markdown": "El fin del reinado de Störtebeker se acercaba.",
+      "tts": {
+        "text": "El fin del reinado de Störtebeker se acercaba.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La cerveza era una de las mercancías más comercializadas en la red hanseática.",
+      "text_markdown": "La cerveza era una de las mercancías más comercializadas en la red hanseática.",
+      "tts": {
+        "text": "La cerveza era una de las mercancías más comercializadas en la red hanseática.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hamburgo y Bremen eran grandes centros cerveceros que exportaban cerveza a toda Europa.",
+      "text_markdown": "Hamburgo y Bremen eran grandes centros cerveceros que exportaban cerveza a toda Europa.",
+      "tts": {
+        "text": "Hamburgo y Bremen eran grandes centros cerveceros que exportaban cerveza a toda Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cima",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los ataques piratas a los envíos de cerveza se tomaban casi tan en serio como los ataques al grano.",
+      "text_markdown": "Los ataques piratas a los envíos de cerveza se tomaban casi tan en serio como los ataques al grano.",
+      "tts": {
+        "text": "Los ataques piratas a los envíos de cerveza se tomaban casi tan en serio como los ataques al grano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El final",
+      "text_markdown": "El final"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburgo reunió una flota de barcos de guerra y la puso bajo comandantes experimentados.",
+      "text_markdown": "Hamburgo reunió una flota de barcos de guerra y la puso bajo comandantes experimentados.",
+      "tts": {
+        "text": "Hamburgo reunió una flota de barcos de guerra y la puso bajo comandantes experimentados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La flota estaba dirigida por un hombre llamado Simón de Utrecht.",
+      "text_markdown": "La flota estaba dirigida por un hombre llamado Simón de Utrecht.",
+      "tts": {
+        "text": "La flota estaba dirigida por un hombre llamado Simón de Utrecht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Simón era un marinero hábil y un cazador de piratas decidido.",
+      "text_markdown": "Simón era un marinero hábil y un cazador de piratas decidido.",
+      "tts": {
+        "text": "Simón era un marinero hábil y un cazador de piratas decidido.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1401, la flota de Simón zarpó de Hamburgo para cazar a Störtebeker.",
+      "text_markdown": "En 1401, la flota de Simón zarpó de Hamburgo para cazar a Störtebeker.",
+      "tts": {
+        "text": "En mil cuatrocientos uno, la flota de Simón zarpó de Hamburgo para cazar a Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Registraron el mar del Norte y las aguas alrededor de las islas Frisonas.",
+      "text_markdown": "Registraron el mar del Norte y las aguas alrededor de las islas Frisonas.",
+      "tts": {
+        "text": "Registraron el mar del Norte y las aguas alrededor de las islas Frisonas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Encontrar a los piratas en la vasta extensión del mar del Norte no era tarea fácil.",
+      "text_markdown": "Encontrar a los piratas en la vasta extensión del mar del Norte no era tarea fácil.",
+      "tts": {
+        "text": "Encontrar a los piratas en la vasta extensión del mar del Norte no era tarea fácil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La flota de Hamburgo finalmente encontró los barcos de Störtebeker cerca de la isla de Helgoland.",
+      "text_markdown": "La flota de Hamburgo finalmente encontró los barcos de Störtebeker cerca de la isla de Helgoland.",
+      "tts": {
+        "text": "La flota de Hamburgo finalmente encontró los barcos de Störtebeker cerca de la isla de Helgoland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Helgoland es una pequeña isla rocosa muy adentrada en el mar del Norte.",
+      "text_markdown": "Helgoland es una pequeña isla rocosa muy adentrada en el mar del Norte.",
+      "tts": {
+        "text": "Helgoland es una pequeña isla rocosa muy adentrada en el mar del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era un punto de referencia bien conocido para los marineros que navegaban la costa alemana.",
+      "text_markdown": "Era un punto de referencia bien conocido para los marineros que navegaban la costa alemana.",
+      "tts": {
+        "text": "Era un punto de referencia bien conocido para los marineros que navegaban la costa alemana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se libró una feroz batalla entre los barcos de guerra de Hamburgo y la flota pirata.",
+      "text_markdown": "Se libró una feroz batalla entre los barcos de guerra de Hamburgo y la flota pirata.",
+      "tts": {
+        "text": "Se libró una feroz batalla entre los barcos de guerra de Hamburgo y la flota pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La lucha fue brutal y duró horas.",
+      "text_markdown": "La lucha fue brutal y duró horas.",
+      "tts": {
+        "text": "La lucha fue brutal y duró horas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los piratas lucharon desesperadamente, sabiendo que la captura significaba muerte segura.",
+      "text_markdown": "Los piratas lucharon desesperadamente, sabiendo que la captura significaba muerte segura.",
+      "tts": {
+        "text": "Los piratas lucharon desesperadamente, sabiendo que la captura significaba muerte segura.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Según una famosa leyenda, un traidor a bordo del barco de Störtebeker decidió la batalla.",
+      "text_markdown": "Según una famosa leyenda, un traidor a bordo del barco de Störtebeker decidió la batalla.",
+      "tts": {
+        "text": "Según una famosa leyenda, un traidor a bordo del barco de Störtebeker decidió la batalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Este traidor supuestamente vertió plomo fundido en la cadena del timón.",
+      "text_markdown": "Este traidor supuestamente vertió plomo fundido en la cadena del timón.",
+      "tts": {
+        "text": "Este traidor supuestamente vertió plomo fundido en la cadena del timón.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin un timón que funcionara, el barco no podía maniobrar ni escapar.",
+      "text_markdown": "Sin un timón que funcionara, el barco no podía maniobrar ni escapar.",
+      "tts": {
+        "text": "Sin un timón que funcionara, el barco no podía maniobrar ni escapar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La flota de Hamburgo pudo abordar y dominar la nave averiada.",
+      "text_markdown": "La flota de Hamburgo pudo abordar y dominar la nave averiada.",
+      "tts": {
+        "text": "La flota de Hamburgo pudo abordar y dominar la nave averiada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker fue capturado vivo y llevado de vuelta a Hamburgo encadenado.",
+      "text_markdown": "Störtebeker fue capturado vivo y llevado de vuelta a Hamburgo encadenado.",
+      "tts": {
+        "text": "Störtebeker fue capturado vivo y llevado de vuelta a Hamburgo encadenado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fue juzgado ante el consejo de la ciudad.",
+      "text_markdown": "Fue juzgado ante el consejo de la ciudad.",
+      "tts": {
+        "text": "Fue juzgado ante el consejo de la ciudad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El resultado nunca estuvo en duda.",
+      "text_markdown": "El resultado nunca estuvo en duda.",
+      "tts": {
+        "text": "El resultado nunca estuvo en duda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fue declarado culpable de piratería y condenado a muerte por decapitación.",
+      "text_markdown": "Fue declarado culpable de piratería y condenado a muerte por decapitación.",
+      "tts": {
+        "text": "Fue declarado culpable de piratería y condenado a muerte por decapitación.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La ejecución tuvo lugar el 20 de octubre de 1401 en el Grasbrook de Hamburgo.",
+      "text_markdown": "La ejecución tuvo lugar el 20 de octubre de 1401 en el Grasbrook de Hamburgo.",
+      "tts": {
+        "text": "La ejecución tuvo lugar el veinte de octubre de mil cuatrocientos uno en el Grasbrook de Hamburgo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El Grasbrook era una zona pantanosa cerca del puerto usada para ejecuciones públicas.",
+      "text_markdown": "El Grasbrook era una zona pantanosa cerca del puerto usada para ejecuciones públicas.",
+      "tts": {
+        "text": "El Grasbrook era una zona pantanosa cerca del puerto usada para ejecuciones públicas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una gran multitud se reunió para presenciar la muerte del infame pirata.",
+      "text_markdown": "Una gran multitud se reunió para presenciar la muerte del infame pirata.",
+      "tts": {
+        "text": "Una gran multitud se reunió para presenciar la muerte del infame pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aquí es donde tiene lugar la leyenda más famosa sobre Störtebeker.",
+      "text_markdown": "Aquí es donde tiene lugar la leyenda más famosa sobre Störtebeker.",
+      "tts": {
+        "text": "Aquí es donde tiene lugar la leyenda más famosa sobre Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Antes de su ejecución, Störtebeker supuestamente hizo una petición al alcalde de Hamburgo.",
+      "text_markdown": "Antes de su ejecución, Störtebeker supuestamente hizo una petición al alcalde de Hamburgo.",
+      "tts": {
+        "text": "Antes de su ejecución, Störtebeker supuestamente hizo una petición al alcalde de Hamburgo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pidió que cualquiera de sus tripulantes junto al que pudiera caminar tras ser decapitado fuera liberado.",
+      "text_markdown": "Pidió que cualquiera de sus tripulantes junto al que pudiera caminar tras ser decapitado fuera liberado.",
+      "tts": {
+        "text": "Pidió que cualquiera de sus tripulantes junto al que pudiera caminar tras ser decapitado fuera liberado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El alcalde, quizás divertido, accedió a la petición.",
+      "text_markdown": "El alcalde, quizás divertido, accedió a la petición.",
+      "tts": {
+        "text": "El alcalde, quizás divertido, accedió a la petición.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker fue decapitado de un solo golpe de la espada del verdugo.",
+      "text_markdown": "Störtebeker fue decapitado de un solo golpe de la espada del verdugo.",
+      "tts": {
+        "text": "Störtebeker fue decapitado de un solo golpe de la espada del verdugo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Entonces, según la leyenda, su cuerpo sin cabeza se levantó.",
+      "text_markdown": "Entonces, según la leyenda, su cuerpo sin cabeza se levantó.",
+      "tts": {
+        "text": "Entonces, según la leyenda, su cuerpo sin cabeza se levantó.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Caminó junto a 11 de sus tripulantes antes de que el verdugo lo hiciera tropezar.",
+      "text_markdown": "Caminó junto a 11 de sus tripulantes antes de que el verdugo lo hiciera tropezar.",
+      "tts": {
+        "text": "Caminó junto a once de sus tripulantes antes de que el verdugo lo hiciera tropezar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algunas versiones dicen que el verdugo le puso el pie, otras que lanzó un tronco.",
+      "text_markdown": "Algunas versiones dicen que el verdugo le puso el pie, otras que lanzó un tronco.",
+      "tts": {
+        "text": "Algunas versiones dicen que el verdugo le puso el pie, otras que lanzó un tronco.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El alcalde de Hamburgo se negó a cumplir el acuerdo.",
+      "text_markdown": "El alcalde de Hamburgo se negó a cumplir el acuerdo.",
+      "tts": {
+        "text": "El alcalde de Hamburgo se negó a cumplir el acuerdo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los 73 piratas capturados fueron decapitados ese día.",
+      "text_markdown": "Los 73 piratas capturados fueron decapitados ese día.",
+      "tts": {
+        "text": "Los setenta y tres piratas capturados fueron decapitados ese día.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus cabezas fueron exhibidas en estacas de madera a orillas del río Elba.",
+      "text_markdown": "Sus cabezas fueron exhibidas en estacas de madera a orillas del río Elba.",
+      "tts": {
+        "text": "Sus cabezas fueron exhibidas en estacas de madera a orillas del río Elba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era una advertencia sombría para cualquiera que considerara la piratería.",
+      "text_markdown": "Era una advertencia sombría para cualquiera que considerara la piratería.",
+      "tts": {
+        "text": "Era una advertencia sombría para cualquiera que considerara la piratería.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Otra leyenda cuenta que al verdugo le preguntaron después si tenía el brazo cansado.",
+      "text_markdown": "Otra leyenda cuenta que al verdugo le preguntaron después si tenía el brazo cansado.",
+      "tts": {
+        "text": "Otra leyenda cuenta que al verdugo le preguntaron después si tenía el brazo cansado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Supuestamente respondió que también podría decapitar a todo el consejo de la ciudad de Hamburgo.",
+      "text_markdown": "Supuestamente respondió que también podría decapitar a todo el consejo de la ciudad de Hamburgo.",
+      "tts": {
+        "text": "Supuestamente respondió que también podría decapitar a todo el consejo de la ciudad de Hamburgo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Por esta insolencia, el verdugo fue ejecutado él mismo.",
+      "text_markdown": "Por esta insolencia, el verdugo fue ejecutado él mismo.",
+      "tts": {
+        "text": "Por esta insolencia, el verdugo fue ejecutado él mismo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Si alguna de estas leyendas sobre la ejecución es cierta es imposible de verificar.",
+      "text_markdown": "Si alguna de estas leyendas sobre la ejecución es cierta es imposible de verificar.",
+      "tts": {
+        "text": "Si alguna de estas leyendas sobre la ejecución es cierta es imposible de verificar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gödeke Michels y los Hermanos de las Vituallas restantes continuaron sus incursiones tras la muerte de Störtebeker.",
+      "text_markdown": "Gödeke Michels y los Hermanos de las Vituallas restantes continuaron sus incursiones tras la muerte de Störtebeker.",
+      "tts": {
+        "text": "Gödeke Michels y los Hermanos de las Vituallas restantes continuaron sus incursiones tras la muerte de Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pero la flota de Hamburgo los persiguió también.",
+      "text_markdown": "Pero la flota de Hamburgo los persiguió también.",
+      "tts": {
+        "text": "Pero la flota de Hamburgo los persiguió también.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Michels fue capturado y ejecutado poco después de Störtebeker.",
+      "text_markdown": "Michels fue capturado y ejecutado poco después de Störtebeker.",
+      "tts": {
+        "text": "Michels fue capturado y ejecutado poco después de Störtebeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La era de los Hermanos de las Vituallas había terminado.",
+      "text_markdown": "La era de los Hermanos de las Vituallas había terminado.",
+      "tts": {
+        "text": "La era de los Hermanos de las Vituallas había terminado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La ejecución de los Hermanos de las Vituallas pretendía enviar un mensaje a todos los que consideraran la piratería.",
+      "text_markdown": "La ejecución de los Hermanos de las Vituallas pretendía enviar un mensaje a todos los que consideraran la piratería.",
+      "tts": {
+        "text": "La ejecución de los Hermanos de las Vituallas pretendía enviar un mensaje a todos los que consideraran la piratería.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "El final",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hamburgo exhibió las cabezas cortadas durante meses como disuasión sombría.",
+      "text_markdown": "Hamburgo exhibió las cabezas cortadas durante meses como disuasión sombría.",
+      "tts": {
+        "text": "Hamburgo exhibió las cabezas cortadas durante meses como disuasión sombría.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legado",
+      "text_markdown": "Legado"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker es una de las figuras más famosas del folclore del norte de Alemania.",
+      "text_markdown": "Klaus Störtebeker es una de las figuras más famosas del folclore del norte de Alemania.",
+      "tts": {
+        "text": "Klaus Störtebeker es una de las figuras más famosas del folclore del norte de Alemania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su leyenda se ha contado y vuelto a contar durante más de seiscientos años.",
+      "text_markdown": "Su leyenda se ha contado y vuelto a contar durante más de seiscientos años.",
+      "tts": {
+        "text": "Su leyenda se ha contado y vuelto a contar durante más de seiscientos años.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es recordado como pirata, rebelde y héroe popular.",
+      "text_markdown": "Es recordado como pirata, rebelde y héroe popular.",
+      "tts": {
+        "text": "Es recordado como pirata, rebelde y héroe popular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un cráneo en el Museo de Historia de Hamburgo fue considerado durante mucho tiempo como el suyo.",
+      "text_markdown": "Un cráneo en el Museo de Historia de Hamburgo fue considerado durante mucho tiempo como el suyo.",
+      "tts": {
+        "text": "Un cráneo en el Museo de Historia de Hamburgo fue considerado durante mucho tiempo como el suyo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tenía un gran clavo clavado, supuestamente colocado allí después de la ejecución.",
+      "text_markdown": "Tenía un gran clavo clavado, supuestamente colocado allí después de la ejecución.",
+      "tts": {
+        "text": "Tenía un gran clavo clavado, supuestamente colocado allí después de la ejecución.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las pruebas de ADN y el análisis forense han puesto en duda si el cráneo es realmente suyo.",
+      "text_markdown": "Las pruebas de ADN y el análisis forense han puesto en duda si el cráneo es realmente suyo.",
+      "tts": {
+        "text": "Las pruebas de ADN y el análisis forense han puesto en duda si el cráneo es realmente suyo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El museo lo retiró de la exhibición, pero la leyenda persiste.",
+      "text_markdown": "El museo lo retiró de la exhibición, pero la leyenda persiste.",
+      "tts": {
+        "text": "El museo lo retiró de la exhibición, pero la leyenda persiste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se pueden encontrar estatuas de Störtebeker en Hamburgo y otras ciudades del norte de Alemania.",
+      "text_markdown": "Se pueden encontrar estatuas de Störtebeker en Hamburgo y otras ciudades del norte de Alemania.",
+      "tts": {
+        "text": "Se pueden encontrar estatuas de Störtebeker en Hamburgo y otras ciudades del norte de Alemania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una gran estatua de bronce se encuentra en una calle del distrito de almacenes de Hamburgo.",
+      "text_markdown": "Una gran estatua de bronce se encuentra en una calle del distrito de almacenes de Hamburgo.",
+      "tts": {
+        "text": "Una gran estatua de bronce se encuentra en una calle del distrito de almacenes de Hamburgo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Representa a un hombre seguro y poderoso que mira hacia el puerto.",
+      "text_markdown": "Representa a un hombre seguro y poderoso que mira hacia el puerto.",
+      "tts": {
+        "text": "Representa a un hombre seguro y poderoso que mira hacia el puerto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada verano, un festival de teatro al aire libre en la isla de Rügen presenta obras sobre su vida.",
+      "text_markdown": "Cada verano, un festival de teatro al aire libre en la isla de Rügen presenta obras sobre su vida.",
+      "tts": {
+        "text": "Cada verano, un festival de teatro al aire libre en la isla de Rügen presenta obras sobre su vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El Festival de Störtebeker atrae a decenas de miles de visitantes cada año.",
+      "text_markdown": "El Festival de Störtebeker atrae a decenas de miles de visitantes cada año.",
+      "tts": {
+        "text": "El Festival de Störtebeker atrae a decenas de miles de visitantes cada año.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es uno de los eventos de teatro al aire libre más populares de Alemania.",
+      "text_markdown": "Es uno de los eventos de teatro al aire libre más populares de Alemania.",
+      "tts": {
+        "text": "Es uno de los eventos de teatro al aire libre más populares de Alemania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker ha sido comparado con Robin Hood del folclore inglés.",
+      "text_markdown": "Störtebeker ha sido comparado con Robin Hood del folclore inglés.",
+      "tts": {
+        "text": "Störtebeker ha sido comparado con Robin Hood del folclore inglés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ambos son proscritos legendarios que supuestamente robaban a los ricos y daban a los pobres.",
+      "text_markdown": "Ambos son proscritos legendarios que supuestamente robaban a los ricos y daban a los pobres.",
+      "tts": {
+        "text": "Ambos son proscritos legendarios que supuestamente robaban a los ricos y daban a los pobres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ambas historias mezclan hechos históricos con siglos de embellecimiento.",
+      "text_markdown": "Ambas historias mezclan hechos históricos con siglos de embellecimiento.",
+      "tts": {
+        "text": "Ambas historias mezclan hechos históricos con siglos de embellecimiento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La comparación con Robin Hood ha hecho más fácil entender la leyenda de Störtebeker internacionalmente.",
+      "text_markdown": "La comparación con Robin Hood ha hecho más fácil entender la leyenda de Störtebeker internacionalmente.",
+      "tts": {
+        "text": "La comparación con Robin Hood ha hecho más fácil entender la leyenda de Störtebeker internacionalmente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los historiadores debaten si los Hermanos de las Vituallas eran luchadores por la libertad o simples criminales.",
+      "text_markdown": "Los historiadores debaten si los Hermanos de las Vituallas eran luchadores por la libertad o simples criminales.",
+      "tts": {
+        "text": "Los historiadores debaten si los Hermanos de las Vituallas eran luchadores por la libertad o simples criminales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algunos los ven como hombres que resistieron el monopolio de la Liga Hanseática.",
+      "text_markdown": "Algunos los ven como hombres que resistieron el monopolio de la Liga Hanseática.",
+      "tts": {
+        "text": "Algunos los ven como hombres que resistieron el monopolio de la Liga Hanseática.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otros señalan que aterrorizaron a pescadores comunes y aldeanos costeros.",
+      "text_markdown": "Otros señalan que aterrorizaron a pescadores comunes y aldeanos costeros.",
+      "tts": {
+        "text": "Otros señalan que aterrorizaron a pescadores comunes y aldeanos costeros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La verdad probablemente incluye elementos de ambas perspectivas.",
+      "text_markdown": "La verdad probablemente incluye elementos de ambas perspectivas.",
+      "tts": {
+        "text": "La verdad probablemente incluye elementos de ambas perspectivas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo que nos dice el registro histórico es limitado pero claro.",
+      "text_markdown": "Lo que nos dice el registro histórico es limitado pero claro.",
+      "tts": {
+        "text": "Lo que nos dice el registro histórico es limitado pero claro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un hombre llamado Störtebeker lideró una banda de piratas en los mares Báltico y del Norte.",
+      "text_markdown": "Un hombre llamado Störtebeker lideró una banda de piratas en los mares Báltico y del Norte.",
+      "tts": {
+        "text": "Un hombre llamado Störtebeker lideró una banda de piratas en los mares Báltico y del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fue capturado por Hamburgo y ejecutado.",
+      "text_markdown": "Fue capturado por Hamburgo y ejecutado.",
+      "tts": {
+        "text": "Fue capturado por Hamburgo y ejecutado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Todo lo demás es leyenda, moldeada por siglos de narración.",
+      "text_markdown": "Todo lo demás es leyenda, moldeada por siglos de narración.",
+      "tts": {
+        "text": "Todo lo demás es leyenda, moldeada por siglos de narración.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La leyenda perdura porque habla de algo profundo en la naturaleza humana.",
+      "text_markdown": "La leyenda perdura porque habla de algo profundo en la naturaleza humana.",
+      "tts": {
+        "text": "La leyenda perdura porque habla de algo profundo en la naturaleza humana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La idea de un solo hombre desafiando a los poderosos y pagando el precio máximo resuena a través de las culturas.",
+      "text_markdown": "La idea de un solo hombre desafiando a los poderosos y pagando el precio máximo resuena a través de las culturas.",
+      "tts": {
+        "text": "La idea de un solo hombre desafiando a los poderosos y pagando el precio máximo resuena a través de las culturas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La historia de Klaus Störtebeker es prueba de que algunas leyendas se niegan a morir.",
+      "text_markdown": "La historia de Klaus Störtebeker es prueba de que algunas leyendas se niegan a morir.",
+      "tts": {
+        "text": "La historia de Klaus Störtebeker es prueba de que algunas leyendas se niegan a morir.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

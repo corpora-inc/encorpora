@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "fi",
+  "total_segments": 310,
+  "segments": [
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 0,
+      "id": "ch00-001",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Lukijalle",
+      "text_markdown": "Lukijalle",
+      "title": "Lukijalle"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "text": "Tämä on tositapahtumiin perustuva kertomus menestyksekkäimmästä merirosvosta koko tunnetussa historiassa.",
+      "text_markdown": "Tämä on tositapahtumiin perustuva kertomus menestyksekkäimmästä merirosvosta koko tunnetussa historiassa.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Tämä on tositapahtumiin perustuva kertomus menestyksekkäimmästä merirosvosta koko tunnetussa historiassa.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "text": "Hänen nimensä oli Zheng Yi Sao, ja hän komensi suurinta merirosvolaivastoa, jonka maailma on koskaan nähnyt.",
+      "text_markdown": "Hänen nimensä oli Zheng Yi Sao, ja hän komensi suurinta merirosvolaivastoa, jonka maailma on koskaan nähnyt.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Hänen nimensä oli Zheng Yi Sao, ja hän komensi suurinta merirosvolaivastoa, jonka maailma on koskaan nähnyt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "text": "Valtansa huipulla hän hallitsi enemmän laivoja kuin useimmilla valtioilla oli.",
+      "text_markdown": "Valtansa huipulla hän hallitsi enemmän laivoja kuin useimmilla valtioilla oli.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Valtansa huipulla hän hallitsi enemmän laivoja kuin useimmilla valtioilla oli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "text": "Hän ei syntynyt rikkauteen tai etuoikeuksiin.",
+      "text_markdown": "Hän ei syntynyt rikkauteen tai etuoikeuksiin.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Hän ei syntynyt rikkauteen tai etuoikeuksiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "text": "Hän syntyi köyhyyteen Etelä-Kiinassa, myöhään 1700-luvulla.",
+      "text_markdown": "Hän syntyi köyhyyteen Etelä-Kiinassa, myöhään 1700-luvulla.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Hän syntyi köyhyyteen Etelä-Kiinassa, myöhään seitsemäntoistasadan luvulla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "text": "Kaiken, mitä hän saavutti, hän rakensi älykkyydellä, häikäilemättömyydellä ja poikkeuksellisella kyvyllä organisoida ihmisiä.",
+      "text_markdown": "Kaiken, mitä hän saavutti, hän rakensi älykkyydellä, häikäilemättömyydellä ja poikkeuksellisella kyvyllä organisoida ihmisiä.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Kaiken, mitä hän saavutti, hän rakensi älykkyydellä, häikäilemättömyydellä ja poikkeuksellisella kyvyllä organisoida ihmisiä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "text": "Tämä kirja kertoo tarinan siitä, kuinka nainen, jolla ei ollut mitään, nousi Etelä-Kiinan meren kiistattomaksi hallitsijaksi.",
+      "text_markdown": "Tämä kirja kertoo tarinan siitä, kuinka nainen, jolla ei ollut mitään, nousi Etelä-Kiinan meren kiistattomaksi hallitsijaksi.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Tämä kirja kertoo tarinan siitä, kuinka nainen, jolla ei ollut mitään, nousi Etelä-Kiinan meren kiistattomaksi hallitsijaksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "text": "Se on tarina sodasta, kaupasta, laista ja selviytymisestä.",
+      "text_markdown": "Se on tarina sodasta, kaupasta, laista ja selviytymisestä.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Se on tarina sodasta, kaupasta, laista ja selviytymisestä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "text": "Se on myös tarina maailmasta, joka muuttui nopeasti, kun eurooppalaiset suurvallat tunkeutuivat syvemmälle Aasiaan.",
+      "text_markdown": "Se on myös tarina maailmasta, joka muuttui nopeasti, kun eurooppalaiset suurvallat tunkeutuivat syvemmälle Aasiaan.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Se on myös tarina maailmasta, joka muuttui nopeasti, kun eurooppalaiset suurvallat tunkeutuivat syvemmälle Aasiaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "text": "Jokainen tämän kirjan fakta perustuu historiallisiin lähteisiin.",
+      "text_markdown": "Jokainen tämän kirjan fakta perustuu historiallisiin lähteisiin.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Jokainen tämän kirjan fakta perustuu historiallisiin lähteisiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "text": "Missä tiedot ovat epävarmoja, me kerromme sen.",
+      "text_markdown": "Missä tiedot ovat epävarmoja, me kerromme sen.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Missä tiedot ovat epävarmoja, me kerromme sen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "text": "Missä historioitsijat ovat eri mieltä, esitämme vahvimman saatavilla olevan todisteen.",
+      "text_markdown": "Missä historioitsijat ovat eri mieltä, esitämme vahvimman saatavilla olevan todisteen.",
+      "title": "Lukijalle",
+      "tts": {
+        "text": "Missä historioitsijat ovat eri mieltä, esitämme vahvimman saatavilla olevan todisteen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 1,
+      "id": "ch01-014",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Etelä-Kiinan meren maailma",
+      "text_markdown": "Etelä-Kiinan meren maailma",
+      "title": "Etelä-Kiinan meren maailma"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-015",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "text": "Etelä-Kiinan meri on yksi maapallon vilkkaimmista vesiväylistä.",
+      "text_markdown": "Etelä-Kiinan meri on yksi maapallon vilkkaimmista vesiväylistä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Etelä-Kiinan meri on yksi maapallon vilkkaimmista vesiväylistä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "text": "Se ulottuu Vietnamin rannikolta lännessä Filippiineille idässä.",
+      "text_markdown": "Se ulottuu Vietnamin rannikolta lännessä Filippiineille idässä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Se ulottuu Vietnamin rannikolta lännessä Filippiineille idässä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-017",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "text": "Pohjoisessa on Kiinan rannikko, ja etelässä sijaitsevat Borneon ja Sumatran saaret.",
+      "text_markdown": "Pohjoisessa on Kiinan rannikko, ja etelässä sijaitsevat Borneon ja Sumatran saaret.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Pohjoisessa on Kiinan rannikko, ja etelässä sijaitsevat Borneon ja Sumatran saaret.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-018",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "text": "Tuhansien vuosien ajan kauppiaat ovat purjehtineet näillä vesillä.",
+      "text_markdown": "Tuhansien vuosien ajan kauppiaat ovat purjehtineet näillä vesillä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Tuhansien vuosien ajan kauppiaat ovat purjehtineet näillä vesillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "text": "Kiinalaiset džonkit kuljettivat silkkiä, posliinia ja teetä satamiin kaikkialla Kaakkois-Aasiassa.",
+      "text_markdown": "Kiinalaiset džonkit kuljettivat silkkiä, posliinia ja teetä satamiin kaikkialla Kaakkois-Aasiassa.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Kiinalaiset džonkit kuljettivat silkkiä, posliinia ja teetä satamiin kaikkialla Kaakkois-Aasiassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "text": "Vastineeksi mausteita, trooppista puuta ja eksoottisia tavaroita virtasi takaisin Kiinaan.",
+      "text_markdown": "Vastineeksi mausteita, trooppista puuta ja eksoottisia tavaroita virtasi takaisin Kiinaan.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Vastineeksi mausteita, trooppista puuta ja eksoottisia tavaroita virtasi takaisin Kiinaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-021",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "text": "Kantonin kaupunki, nykyiseltä nimeltään Guangzhou, sijaitsi tämän kaupan keskipisteessä.",
+      "text_markdown": "Kantonin kaupunki, nykyiseltä nimeltään Guangzhou, sijaitsi tämän kaupan keskipisteessä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Kantonin kaupunki, nykyiseltä nimeltään Guangzhou, sijaitsi tämän kaupan keskipisteessä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "text": "Kanton oli yksi maailman rikkaimmista kaupungeista 1700-luvulla.",
+      "text_markdown": "Kanton oli yksi maailman rikkaimmista kaupungeista 1700-luvulla.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Kanton oli yksi maailman rikkaimmista kaupungeista seitsemäntoistasadan luvulla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-023",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "text": "Ulkomaalaiset kauppiaat Britanniasta, Ranskasta, Portugalista ja Alankomaista kilpailivat kaikki pääsystä sen markkinoille.",
+      "text_markdown": "Ulkomaalaiset kauppiaat Britanniasta, Ranskasta, Portugalista ja Alankomaista kilpailivat kaikki pääsystä sen markkinoille.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Ulkomaalaiset kauppiaat Britanniasta, Ranskasta, Portugalista ja Alankomaista kilpailivat kaikki pääsystä sen markkinoille.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-024",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "text": "Qing-dynastia hallitsi Kiinaa tällä aikakaudella.",
+      "text_markdown": "Qing-dynastia hallitsi Kiinaa tällä aikakaudella.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Qing-dynastia hallitsi Kiinaa tällä aikakaudella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "text": "Qing-keisarit olivat mantšuja, eivät han-kiinalaisia.",
+      "text_markdown": "Qing-keisarit olivat mantšuja, eivät han-kiinalaisia.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Qing-keisarit olivat mantšuja, eivät han-kiinalaisia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-026",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "text": "He olivat valloittaneet Kiinan vuonna 1644 ja rakentaneet yhden maailman suurimmista imperiumeista.",
+      "text_markdown": "He olivat valloittaneet Kiinan vuonna 1644 ja rakentaneet yhden maailman suurimmista imperiumeista.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "He olivat valloittaneet Kiinan vuonna tuhat kuusisataa neljäkymmentäneljä ja rakentaneet yhden maailman suurimmista imperiumeista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-027",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "text": "Kuitenkin 1700-luvun loppuun mennessä Qing-dynastia alkoi heikentyä.",
+      "text_markdown": "Kuitenkin 1700-luvun loppuun mennessä Qing-dynastia alkoi heikentyä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Kuitenkin tuhat seitsemänsadan luvun loppuun mennessä Qing-dynastia alkoi heikentyä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-028",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "text": "Korruptio levisi läpi keisarillisen byrokratian.",
+      "text_markdown": "Korruptio levisi läpi keisarillisen byrokratian.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Korruptio levisi läpi keisarillisen byrokratian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "text": "Veronkerääjät puristivat talonpojilta ja kalastajilta jokaisen kolikon, jonka he saivat irti.",
+      "text_markdown": "Veronkerääjät puristivat talonpojilta ja kalastajilta jokaisen kolikon, jonka he saivat irti.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Veronkerääjät puristivat talonpojilta ja kalastajilta jokaisen kolikon, jonka he saivat irti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-030",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "text": "Rikkaiden ja köyhien välinen kuilu syveni vuosi vuodelta.",
+      "text_markdown": "Rikkaiden ja köyhien välinen kuilu syveni vuosi vuodelta.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Rikkaiden ja köyhien välinen kuilu syveni vuosi vuodelta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-031",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "text": "Rannikkoprovinssien monet ihmiset elivät toivottomassa köyhyydessä.",
+      "text_markdown": "Rannikkoprovinssien monet ihmiset elivät toivottomassa köyhyydessä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Rannikkoprovinssien monet ihmiset elivät toivottomassa köyhyydessä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-032",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "text": "Guangdongin rannikon kalastusyhteisöt olivat Kiinan köyhimpiä.",
+      "text_markdown": "Guangdongin rannikon kalastusyhteisöt olivat Kiinan köyhimpiä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Guangdongin rannikon kalastusyhteisöt olivat Kiinan köyhimpiä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "text": "Kokonaisten perheiden koti oli pienissä sampan-nimisissä veneissä.",
+      "text_markdown": "Kokonaisten perheiden koti oli pienissä sampan-nimisissä veneissä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Kokonaisten perheiden koti oli pienissä sampan-nimisissä veneissä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-034",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "text": "He syntyivät vedellä, työskentelivät vedellä ja kuolivat vedellä.",
+      "text_markdown": "He syntyivät vedellä, työskentelivät vedellä ja kuolivat vedellä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "He syntyivät vedellä, työskentelivät vedellä ja kuolivat vedellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "text": "Keisarillinen hallitus kutsui heitä Tanka-kansaksi ja kohteli heitä hylkiöinä.",
+      "text_markdown": "Keisarillinen hallitus kutsui heitä Tanka-kansaksi ja kohteli heitä hylkiöinä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Keisarillinen hallitus kutsui heitä Tanka-kansaksi ja kohteli heitä hylkiöinä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-036",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "text": "Tanka-perheiltä oli monilla alueilla kielletty asuminen maalla.",
+      "text_markdown": "Tanka-perheiltä oli monilla alueilla kielletty asuminen maalla.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Tanka-perheiltä oli monilla alueilla kielletty asuminen maalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-037",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "text": "He eivät voineet osallistua keisarillisiin kokeisiin, jotka johtivat valtion virkoihin.",
+      "text_markdown": "He eivät voineet osallistua keisarillisiin kokeisiin, jotka johtivat valtion virkoihin.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "He eivät voineet osallistua keisarillisiin kokeisiin, jotka johtivat valtion virkoihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-038",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "text": "Heidät oli suljettu pois valtavirran kiinalaisesta yhteiskunnasta lain ja tavan mukaan.",
+      "text_markdown": "Heidät oli suljettu pois valtavirran kiinalaisesta yhteiskunnasta lain ja tavan mukaan.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Heidät oli suljettu pois valtavirran kiinalaisesta yhteiskunnasta lain ja tavan mukaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-039",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "text": "Sukupolvien ajan heillä ei ollut tietä parempaan elämään.",
+      "text_markdown": "Sukupolvien ajan heillä ei ollut tietä parempaan elämään.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Sukupolvien ajan heillä ei ollut tietä parempaan elämään.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-040",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "text": "Merirosvous tarjosi vaihtoehdon.",
+      "text_markdown": "Merirosvous tarjosi vaihtoehdon.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Merirosvous tarjosi vaihtoehdon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-041",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "text": "Jos ei voinut nousta laillisin keinoin, meri tarjosi oman taloutensa.",
+      "text_markdown": "Jos ei voinut nousta laillisin keinoin, meri tarjosi oman taloutensa.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Jos ei voinut nousta laillisin keinoin, meri tarjosi oman taloutensa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-042",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "text": "Merirosvolaivastot ryöstelivät kauppalaivoja, kiristivät kalastajakyliä ja salakuljettivat tavaroita keisarillisten partioiden ohi.",
+      "text_markdown": "Merirosvolaivastot ryöstelivät kauppalaivoja, kiristivät kalastajakyliä ja salakuljettivat tavaroita keisarillisten partioiden ohi.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Merirosvolaivastot ryöstelivät kauppalaivoja, kiristivät kalastajakyliä ja salakuljettivat tavaroita keisarillisten partioiden ohi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-043",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "text": "Monille rannikon köyhille merirosvolaivaston jäseneksi liittyminen oli järkevä taloudellinen päätös.",
+      "text_markdown": "Monille rannikon köyhille merirosvolaivaston jäseneksi liittyminen oli järkevä taloudellinen päätös.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Monille rannikon köyhille merirosvolaivaston jäseneksi liittyminen oli järkevä taloudellinen päätös.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-044",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "text": "Etelä-Kiinan meren vedet olivat ihanteellisia merirosvoukselle.",
+      "text_markdown": "Etelä-Kiinan meren vedet olivat ihanteellisia merirosvoukselle.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Etelä-Kiinan meren vedet olivat ihanteellisia merirosvoukselle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-045",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "text": "Tuhannet saaret, poukamat ja jokisuut tarjosivat piilopaikkoja.",
+      "text_markdown": "Tuhannet saaret, poukamat ja jokisuut tarjosivat piilopaikkoja.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Tuhannet saaret, poukamat ja jokisuut tarjosivat piilopaikkoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-046",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "text": "Tiheä sumu ja äkilliset myrskyt vaikeuttivat takaa-ajoa.",
+      "text_markdown": "Tiheä sumu ja äkilliset myrskyt vaikeuttivat takaa-ajoa.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Tiheä sumu ja äkilliset myrskyt vaikeuttivat takaa-ajoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-047",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "text": "Nopea džonkki taitavalla miehistöllä saattoi kadota rannikkoon minuuteissa.",
+      "text_markdown": "Nopea džonkki taitavalla miehistöllä saattoi kadota rannikkoon minuuteissa.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Nopea džonkki taitavalla miehistöllä saattoi kadota rannikkoon minuuteissa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-048",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "text": "Samaan aikaan oopiumikauppa alkoi muokata aluetta uudelleen.",
+      "text_markdown": "Samaan aikaan oopiumikauppa alkoi muokata aluetta uudelleen.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Samaan aikaan oopiumikauppa alkoi muokata aluetta uudelleen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-049",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "text": "Brittiläiset kauppiaat kuljettivat oopiumia Intiasta Kiinaan valtavina määrinä.",
+      "text_markdown": "Brittiläiset kauppiaat kuljettivat oopiumia Intiasta Kiinaan valtavina määrinä.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Brittiläiset kauppiaat kuljettivat oopiumia Intiasta Kiinaan valtavina määrinä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-050",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "text": "Huume oli laiton Kiinassa, mutta voitot olivat niin valtavat, että kauppa kasvoi joka vuosi.",
+      "text_markdown": "Huume oli laiton Kiinassa, mutta voitot olivat niin valtavat, että kauppa kasvoi joka vuosi.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Huume oli laiton Kiinassa, mutta voitot olivat niin valtavat, että kauppa kasvoi joka vuosi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-051",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "text": "Salakuljetusverkostot ulottuivat koko etelärannikkoa pitkin.",
+      "text_markdown": "Salakuljetusverkostot ulottuivat koko etelärannikkoa pitkin.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Salakuljetusverkostot ulottuivat koko etelärannikkoa pitkin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-052",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "text": "Tämä oli maailma, joka synnytti Zheng Yi Saon.",
+      "text_markdown": "Tämä oli maailma, joka synnytti Zheng Yi Saon.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Tämä oli maailma, joka synnytti Zheng Yi Saon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-053",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "text": "Maailma, jossa oli valtavaa rikkautta ja murskaavaa köyhyyttä, erotettuna ohuella kaistaleella merta.",
+      "text_markdown": "Maailma, jossa oli valtavaa rikkautta ja murskaavaa köyhyyttä, erotettuna ohuella kaistaleella merta.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Maailma, jossa oli valtavaa rikkautta ja murskaavaa köyhyyttä, erotettuna ohuella kaistaleella merta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-054",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "text": "Maailma, jossa imperiumit kilpailivat, ja meren laki kuului sille, joka oli tarpeeksi vahva panemaan sen täytäntöön.",
+      "text_markdown": "Maailma, jossa imperiumit kilpailivat, ja meren laki kuului sille, joka oli tarpeeksi vahva panemaan sen täytäntöön.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Maailma, jossa imperiumit kilpailivat, ja meren laki kuului sille, joka oli tarpeeksi vahva panemaan sen täytäntöön.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-055",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "text": "Eurooppalaiset suurvallat näkivät Kiinan markkinana, joka oli murrettava auki.",
+      "text_markdown": "Eurooppalaiset suurvallat näkivät Kiinan markkinana, joka oli murrettava auki.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Eurooppalaiset suurvallat näkivät Kiinan markkinana, joka oli murrettava auki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-056",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "text": "Qing-hallitus näki eurooppalaiset barbaareina, joita oli hallittava.",
+      "text_markdown": "Qing-hallitus näki eurooppalaiset barbaareina, joita oli hallittava.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Qing-hallitus näki eurooppalaiset barbaareina, joita oli hallittava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-057",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "text": "Ja Etelä-Kiinan meren merirosvot näkivät tilaisuuden niiden välisessä kaaoksessa.",
+      "text_markdown": "Ja Etelä-Kiinan meren merirosvot näkivät tilaisuuden niiden välisessä kaaoksessa.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Ja Etelä-Kiinan meren merirosvot näkivät tilaisuuden niiden välisessä kaaoksessa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-058",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "text": "Vuoteen 1790 mennessä Etelä-Kiinan meren merirosvolaivastot käsittivät satoja aluksia.",
+      "text_markdown": "Vuoteen 1790 mennessä Etelä-Kiinan meren merirosvolaivastot käsittivät satoja aluksia.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Vuoteen tuhat seitsemänsataa yhdeksänkymmentä mennessä Etelä-Kiinan meren merirosvolaivastot käsittivät satoja aluksia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-059",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "text": "He eivät olleet järjestäytymättömiä rikollisia.",
+      "text_markdown": "He eivät olleet järjestäytymättömiä rikollisia.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "He eivät olleet järjestäytymättömiä rikollisia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-060",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "text": "Monet toimivat kurinalaisina laivastovoimina, joilla oli hierarkiat ja käytännesäännöt.",
+      "text_markdown": "Monet toimivat kurinalaisina laivastovoimina, joilla oli hierarkiat ja käytännesäännöt.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Monet toimivat kurinalaisina laivastovoimina, joilla oli hierarkiat ja käytännesäännöt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-061",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "text": "Näistä joukoista suurin oli juuri muuttumassa historian mahtavimmaksi merirosvolaivastoksi.",
+      "text_markdown": "Näistä joukoista suurin oli juuri muuttumassa historian mahtavimmaksi merirosvolaivastoksi.",
+      "title": "Etelä-Kiinan meren maailma",
+      "tts": {
+        "text": "Näistä joukoista suurin oli juuri muuttumassa historian mahtavimmaksi merirosvolaivastoksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 2,
+      "id": "ch02-062",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Alkuperä",
+      "text_markdown": "Alkuperä",
+      "title": "Alkuperä"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-063",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "text": "Nainen, josta tulisi Zheng Yi Sao, syntyi noin 1775.",
+      "text_markdown": "Nainen, josta tulisi Zheng Yi Sao, syntyi noin 1775.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Nainen, josta tulisi Zheng Yi Sao, syntyi noin tuhat seitsemänsataaseitsemänkymmentäviisi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-064",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "text": "Hänet tunnetaan yleisimmin nimellä Shi Xianggu kiinalaisissa lähteissä.",
+      "text_markdown": "Hänet tunnetaan yleisimmin nimellä Shi Xianggu kiinalaisissa lähteissä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänet tunnetaan yleisimmin nimellä Shi Xianggu kiinalaisissa lähteissä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "text": "Nimi Zheng Yi Sao tarkoittaa yksinkertaisesti Zheng Yin vaimoa.",
+      "text_markdown": "Nimi Zheng Yi Sao tarkoittaa yksinkertaisesti Zheng Yin vaimoa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Nimi Zheng Yi Sao tarkoittaa yksinkertaisesti Zheng Yin vaimoa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "text": "Hän syntyi Tanka-veneasukkaiden yhteisöön Guangdongin maakunnassa.",
+      "text_markdown": "Hän syntyi Tanka-veneasukkaiden yhteisöön Guangdongin maakunnassa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän syntyi Tanka-veneasukkaiden yhteisöön Guangdongin maakunnassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-067",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "text": "Hänen perheensä oli köyhä, kuten lähes kaikki Tanka-perheet.",
+      "text_markdown": "Hänen perheensä oli köyhä, kuten lähes kaikki Tanka-perheet.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänen perheensä oli köyhä, kuten lähes kaikki Tanka-perheet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "text": "Hän vietti varhaiset vuotensa vedellä oppien rannikon rytmejä.",
+      "text_markdown": "Hän vietti varhaiset vuotensa vedellä oppien rannikon rytmejä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän vietti varhaiset vuotensa vedellä oppien rannikon rytmejä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "text": "Nuorena naisena hän työskenteli kelluvassa bordellissa Kantonin satamassa.",
+      "text_markdown": "Nuorena naisena hän työskenteli kelluvassa bordellissa Kantonin satamassa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Nuorena naisena hän työskenteli kelluvassa bordellissa Kantonin satamassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-070",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "text": "He palvelivat merimiehiä, kauppiaita ja kalastajia, jotka kulkivat vilkkaan sataman läpi.",
+      "text_markdown": "He palvelivat merimiehiä, kauppiaita ja kalastajia, jotka kulkivat vilkkaan sataman läpi.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "He palvelivat merimiehiä, kauppiaita ja kalastajia, jotka kulkivat vilkkaan sataman läpi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "text": "Se oli vaikeaa ja vaarallista työtä, mutta se antoi hänelle tietoa maailmasta, johon harvoilla hänen luokkansa naisilla oli pääsyä.",
+      "text_markdown": "Se oli vaikeaa ja vaarallista työtä, mutta se antoi hänelle tietoa maailmasta, johon harvoilla hänen luokkansa naisilla oli pääsyä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Se oli vaikeaa ja vaarallista työtä, mutta se antoi hänelle tietoa maailmasta, johon harvoilla hänen luokkansa naisilla oli pääsyä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-072",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "text": "Hän oppi lukemaan ihmisiä nopeasti ja tarkasti.",
+      "text_markdown": "Hän oppi lukemaan ihmisiä nopeasti ja tarkasti.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän oppi lukemaan ihmisiä nopeasti ja tarkasti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "text": "Hän oppi kaupan ja neuvottelun kieliä.",
+      "text_markdown": "Hän oppi kaupan ja neuvottelun kieliä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän oppi kaupan ja neuvottelun kieliä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "text": "Nämä taidot osoittautuisivat paljon arvokkaammiksi kuin kukaan olisi voinut ennustaa.",
+      "text_markdown": "Nämä taidot osoittautuisivat paljon arvokkaammiksi kuin kukaan olisi voinut ennustaa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Nämä taidot osoittautuisivat paljon arvokkaammiksi kuin kukaan olisi voinut ennustaa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-075",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "text": "Vuonna 1798 merirosvokapteeni Zheng Yi valtasi aluksen, jolla hän oli.",
+      "text_markdown": "Vuonna 1798 merirosvokapteeni Zheng Yi valtasi aluksen, jolla hän oli.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Vuonna tuhat seitsemänsataayhdeksänkymmentäkahdeksan merirosvokapteeni Zheng Yi valtasi aluksen, jolla hän oli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-076",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "text": "Hän oli kotoisin pitkästä merirosvojen sukulinjasta, joka ulottui sukupolvien taakse.",
+      "text_markdown": "Hän oli kotoisin pitkästä merirosvojen sukulinjasta, joka ulottui sukupolvien taakse.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän oli kotoisin pitkästä merirosvojen sukulinjasta, joka ulottui sukupolvien taakse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-077",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "text": "Hänen perheensä oli tukenut Ming-dynastian jäänteitä Qing-valloittajia vastaan.",
+      "text_markdown": "Hänen perheensä oli tukenut Ming-dynastian jäänteitä Qing-valloittajia vastaan.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänen perheensä oli tukenut Ming-dynastian jäänteitä Qing-valloittajia vastaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-078",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "text": "Zheng Yi kosi nuorta naista.",
+      "text_markdown": "Zheng Yi kosi nuorta naista.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Zheng Yi kosi nuorta naista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-079",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "text": "Useimpien kertomusten mukaan hän ei vain suostunut.",
+      "text_markdown": "Useimpien kertomusten mukaan hän ei vain suostunut.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Useimpien kertomusten mukaan hän ei vain suostunut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-080",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "text": "Hän neuvotteli kumppanuutensa ehdoista ennen kuin suostui avioliittoon.",
+      "text_markdown": "Hän neuvotteli kumppanuutensa ehdoista ennen kuin suostui avioliittoon.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän neuvotteli kumppanuutensa ehdoista ennen kuin suostui avioliittoon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-081",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "text": "Hän vaati tasavertaista osuutta miehistöstään ja tasavertaista ääntä komentopäätöksissä.",
+      "text_markdown": "Hän vaati tasavertaista osuutta miehistöstään ja tasavertaista ääntä komentopäätöksissä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän vaati tasavertaista osuutta miehistöstään ja tasavertaista ääntä komentopäätöksissä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-082",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "text": "Tämä oli poikkeuksellista tuohon aikaan.",
+      "text_markdown": "Tämä oli poikkeuksellista tuohon aikaan.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Tämä oli poikkeuksellista tuohon aikaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-083",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "text": "Naisilla myöhäisen Qing-dynastian Kiinassa oli hyvin vähän laillisia oikeuksia.",
+      "text_markdown": "Naisilla myöhäisen Qing-dynastian Kiinassa oli hyvin vähän laillisia oikeuksia.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Naisilla myöhäisen Qing-dynastian Kiinassa oli hyvin vähän laillisia oikeuksia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-084",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "text": "Vaimon odotettiin tottelevan miestään kyseenalaistamatta.",
+      "text_markdown": "Vaimon odotettiin tottelevan miestään kyseenalaistamatta.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Vaimon odotettiin tottelevan miestään kyseenalaistamatta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-085",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "text": "Mutta tämä oli merirosvomaailma, ja merirosvomaailma teki omat sääntönsä.",
+      "text_markdown": "Mutta tämä oli merirosvomaailma, ja merirosvomaailma teki omat sääntönsä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Mutta tämä oli merirosvomaailma, ja merirosvomaailma teki omat sääntönsä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-086",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "text": "Zheng Yi suostui hänen ehtoihinsa.",
+      "text_markdown": "Zheng Yi suostui hänen ehtoihinsa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Zheng Yi suostui hänen ehtoihinsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-087",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "text": "Historioitsijat uskovat, että hän tunnisti naisen älykkyyden ja potentiaalin johtajana.",
+      "text_markdown": "Historioitsijat uskovat, että hän tunnisti naisen älykkyyden ja potentiaalin johtajana.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Historioitsijat uskovat, että hän tunnisti naisen älykkyyden ja potentiaalin johtajana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-088",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "text": "Heidän avioliittonsa oli yhtä paljon strateginen liitto kuin henkilökohtainen side.",
+      "text_markdown": "Heidän avioliittonsa oli yhtä paljon strateginen liitto kuin henkilökohtainen side.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Heidän avioliittonsa oli yhtä paljon strateginen liitto kuin henkilökohtainen side.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-089",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "text": "Yhdessä he rakentaisivat jotain ennennäkemätöntä.",
+      "text_markdown": "Yhdessä he rakentaisivat jotain ennennäkemätöntä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Yhdessä he rakentaisivat jotain ennennäkemätöntä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-090",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "text": "Zheng Yillä oli rohkea visio.",
+      "text_markdown": "Zheng Yillä oli rohkea visio.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Zheng Yillä oli rohkea visio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-091",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "text": "Hän halusi yhdistää Etelä-Kiinan meren hajallaan olevat merirosvolaivastot yhdeksi konfederaatioksi.",
+      "text_markdown": "Hän halusi yhdistää Etelä-Kiinan meren hajallaan olevat merirosvolaivastot yhdeksi konfederaatioksi.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän halusi yhdistää Etelä-Kiinan meren hajallaan olevat merirosvolaivastot yhdeksi konfederaatioksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-092",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "text": "Yksittäiset merirosvokapteenit olivat aina kilpailleet keskenään.",
+      "text_markdown": "Yksittäiset merirosvokapteenit olivat aina kilpailleet keskenään.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Yksittäiset merirosvokapteenit olivat aina kilpailleet keskenään.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-093",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "text": "Zheng Yi uskoi, että he olisivat paljon voimakkaampia, jos he tekisivät yhteistyötä.",
+      "text_markdown": "Zheng Yi uskoi, että he olisivat paljon voimakkaampia, jos he tekisivät yhteistyötä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Zheng Yi uskoi, että he olisivat paljon voimakkaampia, jos he tekisivät yhteistyötä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-094",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "text": "Vuosien 1798 ja 1805 välillä Zheng Yi työskenteli väsymättä liittojen solmimiseksi.",
+      "text_markdown": "Vuosien 1798 ja 1805 välillä Zheng Yi työskenteli väsymättä liittojen solmimiseksi.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Vuosien tuhat seitsemänsataayhdeksänkymmentäkahdeksan ja tuhat kahdeksansataa viisi välillä Zheng Yi työskenteli väsymättä liittojen solmimiseksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-095",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "text": "Hän suostutteli kilpailevia kapteeneja liittymään konfederaatioonsa diplomatian ja pelottelun yhdistelmällä.",
+      "text_markdown": "Hän suostutteli kilpailevia kapteeneja liittymään konfederaatioonsa diplomatian ja pelottelun yhdistelmällä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän suostutteli kilpailevia kapteeneja liittymään konfederaatioonsa diplomatian ja pelottelun yhdistelmällä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-096",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "text": "Hänen vaimonsa oli syvästi mukana näissä neuvotteluissa.",
+      "text_markdown": "Hänen vaimonsa oli syvästi mukana näissä neuvotteluissa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänen vaimonsa oli syvästi mukana näissä neuvotteluissa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-097",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "text": "Hän auttoi laatimaan sopimukset, jotka sitoivat laivaston yhteen.",
+      "text_markdown": "Hän auttoi laatimaan sopimukset, jotka sitoivat laivaston yhteen.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hän auttoi laatimaan sopimukset, jotka sitoivat laivaston yhteen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-098",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "text": "Vuoteen 1805 mennessä konfederaatio oli valmis.",
+      "text_markdown": "Vuoteen 1805 mennessä konfederaatio oli valmis.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Vuoteen tuhat kahdeksansataa viisi mennessä konfederaatio oli valmis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-099",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "text": "Se koostui kuudesta laivastosta, joista jokainen tunnistettiin lipun värin perusteella.",
+      "text_markdown": "Se koostui kuudesta laivastosta, joista jokainen tunnistettiin lipun värin perusteella.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Se koostui kuudesta laivastosta, joista jokainen tunnistettiin lipun värin perusteella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-100",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "text": "Punaisen lipun laivasto oli suurin ja mahtavin.",
+      "text_markdown": "Punaisen lipun laivasto oli suurin ja mahtavin.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Punaisen lipun laivasto oli suurin ja mahtavin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-101",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "text": "Zheng Yi komensi Punaisen lipun laivastoa henkilökohtaisesti.",
+      "text_markdown": "Zheng Yi komensi Punaisen lipun laivastoa henkilökohtaisesti.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Zheng Yi komensi Punaisen lipun laivastoa henkilökohtaisesti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-102",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "text": "Konfederaatio hallitsi satoja aluksia ja kymmeniä tuhansia merirosvoja.",
+      "text_markdown": "Konfederaatio hallitsi satoja aluksia ja kymmeniä tuhansia merirosvoja.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Konfederaatio hallitsi satoja aluksia ja kymmeniä tuhansia merirosvoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-103",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "text": "Se hallitsi koko Etelä-Kiinan merta.",
+      "text_markdown": "Se hallitsi koko Etelä-Kiinan merta.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Se hallitsi koko Etelä-Kiinan merta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-104",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "text": "Yksikään kauppa-alus ei voinut kulkea näiden vesien läpi maksamatta veroa tai riskeeraamatta tuhoutumista.",
+      "text_markdown": "Yksikään kauppa-alus ei voinut kulkea näiden vesien läpi maksamatta veroa tai riskeeraamatta tuhoutumista.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Yksikään kauppa-alus ei voinut kulkea näiden vesien läpi maksamatta veroa tai riskeeraamatta tuhoutumista.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-105",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "text": "Sitten, marraskuussa 1807, Zheng Yi kuoli.",
+      "text_markdown": "Sitten, marraskuussa 1807, Zheng Yi kuoli.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Sitten, marraskuussa tuhat kahdeksansataa seitsemän, Zheng Yi kuoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-106",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "text": "Hänen kuolemansa olosuhteista historioitsijat kiistelevät.",
+      "text_markdown": "Hänen kuolemansa olosuhteista historioitsijat kiistelevät.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänen kuolemansa olosuhteista historioitsijat kiistelevät.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-107",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "text": "Jotkut kertomukset sanovat hänen hukkuneen myrskyssä.",
+      "text_markdown": "Jotkut kertomukset sanovat hänen hukkuneen myrskyssä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Jotkut kertomukset sanovat hänen hukkuneen myrskyssä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-108",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "text": "Toiset viittaavat siihen, että hänet tapettiin taistelussa Vietnamin rannikolla.",
+      "text_markdown": "Toiset viittaavat siihen, että hänet tapettiin taistelussa Vietnamin rannikolla.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Toiset viittaavat siihen, että hänet tapettiin taistelussa Vietnamin rannikolla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-109",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "text": "Hänen kuolemansa aiheutti kriisin koko konfederaatiolle.",
+      "text_markdown": "Hänen kuolemansa aiheutti kriisin koko konfederaatiolle.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänen kuolemansa aiheutti kriisin koko konfederaatiolle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-110",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "text": "Hänen rakentamansa liitto pysyi koossa hänen henkilökohtaisen auktoriteettinsa ansiosta.",
+      "text_markdown": "Hänen rakentamansa liitto pysyi koossa hänen henkilökohtaisen auktoriteettinsa ansiosta.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänen rakentamansa liitto pysyi koossa hänen henkilökohtaisen auktoriteettinsa ansiosta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-111",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "text": "Ilman vahvaa johtajaa se hajoaisi takaisin kilpaileviksi ryhmittymiksi.",
+      "text_markdown": "Ilman vahvaa johtajaa se hajoaisi takaisin kilpaileviksi ryhmittymiksi.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Ilman vahvaa johtajaa se hajoaisi takaisin kilpaileviksi ryhmittymiksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-112",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "text": "Kaikki, mitä he olivat rakentaneet, oli vaarassa.",
+      "text_markdown": "Kaikki, mitä he olivat rakentaneet, oli vaarassa.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Kaikki, mitä he olivat rakentaneet, oli vaarassa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-113",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "text": "Muiden laivastojen kapteenit odottivat konfederaation romahtavan.",
+      "text_markdown": "Muiden laivastojen kapteenit odottivat konfederaation romahtavan.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Muiden laivastojen kapteenit odottivat konfederaation romahtavan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-114",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "text": "He alkoivat liikehtiä asemiin valmistautuen valtaamaan alueita.",
+      "text_markdown": "He alkoivat liikehtiä asemiin valmistautuen valtaamaan alueita.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "He alkoivat liikehtiä asemiin valmistautuen valtaamaan alueita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-115",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "text": "Mutta he eivät olleet ottaneet huomioon Zheng Yin lesken kunnianhimoa ja kyvykkyyttä.",
+      "text_markdown": "Mutta he eivät olleet ottaneet huomioon Zheng Yin lesken kunnianhimoa ja kyvykkyyttä.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Mutta he eivät olleet ottaneet huomioon Zheng Yin lesken kunnianhimoa ja kyvykkyyttä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-116",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "text": "Hänellä ei ollut aikomusta luopua siitä, mitä hän oli auttanut rakentamaan.",
+      "text_markdown": "Hänellä ei ollut aikomusta luopua siitä, mitä hän oli auttanut rakentamaan.",
+      "title": "Alkuperä",
+      "tts": {
+        "text": "Hänellä ei ollut aikomusta luopua siitä, mitä hän oli auttanut rakentamaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 3,
+      "id": "ch03-117",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Nousu valtaan",
+      "text_markdown": "Nousu valtaan",
+      "title": "Nousu valtaan"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-118",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "text": "Miehensä kuoleman jälkeisinä päivinä Zheng Yi Sao toimi harkitulla nopeudella.",
+      "text_markdown": "Miehensä kuoleman jälkeisinä päivinä Zheng Yi Sao toimi harkitulla nopeudella.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Miehensä kuoleman jälkeisinä päivinä Zheng Yi Sao toimi harkitulla nopeudella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-119",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "text": "Hänen ensimmäinen toimensa oli varmistaa miehensä luotetuimman luutnantin, Zhang Baon, uskollisuus.",
+      "text_markdown": "Hänen ensimmäinen toimensa oli varmistaa miehensä luotetuimman luutnantin, Zhang Baon, uskollisuus.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hänen ensimmäinen toimensa oli varmistaa miehensä luotetuimman luutnantin, Zhang Baon, uskollisuus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-120",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "text": "Zhang Bao oli kalastajan poika, jonka merirosvot olivat vanginneet poikasena.",
+      "text_markdown": "Zhang Bao oli kalastajan poika, jonka merirosvot olivat vanginneet poikasena.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zhang Bao oli kalastajan poika, jonka merirosvot olivat vanginneet poikasena.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-121",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "text": "Zheng Yi oli adoptoinut hänet, kouluttanut hänet ja kasvattanut hänestä sotilaskomentajan.",
+      "text_markdown": "Zheng Yi oli adoptoinut hänet, kouluttanut hänet ja kasvattanut hänestä sotilaskomentajan.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi oli adoptoinut hänet, kouluttanut hänet ja kasvattanut hänestä sotilaskomentajan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-122",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao muodosti Zhang Baon kanssa liiton, joka oli sekä henkilökohtainen että strateginen.",
+      "text_markdown": "Zheng Yi Sao muodosti Zhang Baon kanssa liiton, joka oli sekä henkilökohtainen että strateginen.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi Sao muodosti Zhang Baon kanssa liiton, joka oli sekä henkilökohtainen että strateginen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-123",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "text": "He menisivät lopulta naimisiin.",
+      "text_markdown": "He menisivät lopulta naimisiin.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "He menisivät lopulta naimisiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-124",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "text": "Mutta noina ensimmäisinä kriittisinä viikkoina kumppanuudessa oli kyse selviytymisestä.",
+      "text_markdown": "Mutta noina ensimmäisinä kriittisinä viikkoina kumppanuudessa oli kyse selviytymisestä.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Mutta noina ensimmäisinä kriittisinä viikkoina kumppanuudessa oli kyse selviytymisestä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-125",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "text": "Yhdessä he esittivät yhtenäisen rintaman muille laivaston komentajille.",
+      "text_markdown": "Yhdessä he esittivät yhtenäisen rintaman muille laivaston komentajille.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Yhdessä he esittivät yhtenäisen rintaman muille laivaston komentajille.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-126",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "text": "Hän kutsui koolle kuuden laivaston kapteenin neuvoston.",
+      "text_markdown": "Hän kutsui koolle kuuden laivaston kapteenin neuvoston.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hän kutsui koolle kuuden laivaston kapteenin neuvoston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-127",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "text": "Tuossa kokouksessa hän perusteli vaatimuksensa konfederaation johtajuudesta.",
+      "text_markdown": "Tuossa kokouksessa hän perusteli vaatimuksensa konfederaation johtajuudesta.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Tuossa kokouksessa hän perusteli vaatimuksensa konfederaation johtajuudesta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-128",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "text": "Hän väitti olleensa miehensä tasavertainen kumppani tämän liiton rakentamisessa.",
+      "text_markdown": "Hän väitti olleensa miehensä tasavertainen kumppani tämän liiton rakentamisessa.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hän väitti olleensa miehensä tasavertainen kumppani tämän liiton rakentamisessa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-129",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "text": "Yksi toisensa jälkeen kapteenit suostuivat noudattamaan hänen käskyään.",
+      "text_markdown": "Yksi toisensa jälkeen kapteenit suostuivat noudattamaan hänen käskyään.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Yksi toisensa jälkeen kapteenit suostuivat noudattamaan hänen käskyään.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-130",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "text": "Hänen ensimmäinen haasteensa oli kurin palauttaminen 70 000 merirosvon joukkoihin.",
+      "text_markdown": "Hänen ensimmäinen haasteensa oli kurin palauttaminen 70 000 merirosvon joukkoihin.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hänen ensimmäinen haasteensa oli kurin palauttaminen seitsemänkymmenentuhannen merirosvon joukkoihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-131",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "text": "Merirosvot olivat luonteeltaan itsenäisiä ja epäluuloisia auktoriteetteja kohtaan.",
+      "text_markdown": "Merirosvot olivat luonteeltaan itsenäisiä ja epäluuloisia auktoriteetteja kohtaan.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Merirosvot olivat luonteeltaan itsenäisiä ja epäluuloisia auktoriteetteja kohtaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-132",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao ymmärsi, että laivasto ilman lakeja repisi itsensä hajalle.",
+      "text_markdown": "Zheng Yi Sao ymmärsi, että laivasto ilman lakeja repisi itsensä hajalle.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi Sao ymmärsi, että laivasto ilman lakeja repisi itsensä hajalle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-133",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "text": "Hän loi yhden merirosvohistorian merkittävimmistä lakikoodeista.",
+      "text_markdown": "Hän loi yhden merirosvohistorian merkittävimmistä lakikoodeista.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hän loi yhden merirosvohistorian merkittävimmistä lakikoodeista.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-134",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "text": "Koodi oli tiukka ja yksityiskohtainen.",
+      "text_markdown": "Koodi oli tiukka ja yksityiskohtainen.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Koodi oli tiukka ja yksityiskohtainen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-135",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "text": "Jokainen merirosvo, joka ei noudattanut esimiehensä suoraa käskyä, mestattaisiin.",
+      "text_markdown": "Jokainen merirosvo, joka ei noudattanut esimiehensä suoraa käskyä, mestattaisiin.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Jokainen merirosvo, joka ei noudattanut esimiehensä suoraa käskyä, mestattaisiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-136",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "text": "Karkuruudesta rangaistiin kuolemalla.",
+      "text_markdown": "Karkuruudesta rangaistiin kuolemalla.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Karkuruudesta rangaistiin kuolemalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-137",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "text": "Yhteisestä kassasta varastamisesta rangaistiin kuolemalla.",
+      "text_markdown": "Yhteisestä kassasta varastamisesta rangaistiin kuolemalla.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Yhteisestä kassasta varastamisesta rangaistiin kuolemalla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-138",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "text": "Koodi suojeli myös vangittuja ihmisiä tavoilla, jotka olivat epätavallisia aikakaudelle.",
+      "text_markdown": "Koodi suojeli myös vangittuja ihmisiä tavoilla, jotka olivat epätavallisia aikakaudelle.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Koodi suojeli myös vangittuja ihmisiä tavoilla, jotka olivat epätavallisia aikakaudelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-139",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "text": "Vankeja pahoinpidelleet merirosvot kohtasivat ankaran rangaistuksen.",
+      "text_markdown": "Vankeja pahoinpidelleet merirosvot kohtasivat ankaran rangaistuksen.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Vankeja pahoinpidelleet merirosvot kohtasivat ankaran rangaistuksen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-140",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "text": "Jos merirosvo otti vangitun naisen vaimokseen, hänen oli oltava uskollinen tälle.",
+      "text_markdown": "Jos merirosvo otti vangitun naisen vaimokseen, hänen oli oltava uskollinen tälle.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Jos merirosvo otti vangitun naisen vaimokseen, hänen oli oltava uskollinen tälle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-141",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "text": "Nämä säännöt eivät olleet ehdotuksia; ne pantiin täytäntöön rautaisella johdonmukaisuudella.",
+      "text_markdown": "Nämä säännöt eivät olleet ehdotuksia; ne pantiin täytäntöön rautaisella johdonmukaisuudella.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Nämä säännöt eivät olleet ehdotuksia; ne pantiin täytäntöön rautaisella johdonmukaisuudella.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-142",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "text": "Kaikki ryöstösaalis rekisteröitiin ja jaettiin kiinteän järjestelmän mukaisesti.",
+      "text_markdown": "Kaikki ryöstösaalis rekisteröitiin ja jaettiin kiinteän järjestelmän mukaisesti.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Kaikki ryöstösaalis rekisteröitiin ja jaettiin kiinteän järjestelmän mukaisesti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-143",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "text": "Tavarat vallannut merirosvo sai 20 prosenttia.",
+      "text_markdown": "Tavarat vallannut merirosvo sai 20 prosenttia.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Tavarat vallannut merirosvo sai kaksikymmentä prosenttia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-144",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "text": "Loput 80 prosenttia menivät yhteiseen kassaan.",
+      "text_markdown": "Loput 80 prosenttia menivät yhteiseen kassaan.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Loput kahdeksankymmentä prosenttia menivät yhteiseen kassaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-145",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "text": "Tämä järjestelmä esti sisäiset riidat, jotka tuhosivat useimmat merirosvojärjestöt.",
+      "text_markdown": "Tämä järjestelmä esti sisäiset riidat, jotka tuhosivat useimmat merirosvojärjestöt.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Tämä järjestelmä esti sisäiset riidat, jotka tuhosivat useimmat merirosvojärjestöt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-146",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao rakensi myös hienostuneen verotusjärjestelmän.",
+      "text_markdown": "Zheng Yi Sao rakensi myös hienostuneen verotusjärjestelmän.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi Sao rakensi myös hienostuneen verotusjärjestelmän.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-147",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "text": "Kauppalaivat saattoivat ostaa turvallisen kulun maksamalla säännöllisen maksun.",
+      "text_markdown": "Kauppalaivat saattoivat ostaa turvallisen kulun maksamalla säännöllisen maksun.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Kauppalaivat saattoivat ostaa turvallisen kulun maksamalla säännöllisen maksun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-148",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "text": "Rannikon kalastajakylät maksoivat veroa vastineeksi suojelusta.",
+      "text_markdown": "Rannikon kalastajakylät maksoivat veroa vastineeksi suojelusta.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Rannikon kalastajakylät maksoivat veroa vastineeksi suojelusta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-149",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "text": "Järjestelmä toimi kuin rinnakkaishallitus, keräten tuloja vastineeksi turvallisuudesta.",
+      "text_markdown": "Järjestelmä toimi kuin rinnakkaishallitus, keräten tuloja vastineeksi turvallisuudesta.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Järjestelmä toimi kuin rinnakkaishallitus, keräten tuloja vastineeksi turvallisuudesta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-150",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "text": "Qing-hallitus tunnisti uhan ja lähetti laivastonsa murskaamaan merirosvot.",
+      "text_markdown": "Qing-hallitus tunnisti uhan ja lähetti laivastonsa murskaamaan merirosvot.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Qing-hallitus tunnisti uhan ja lähetti laivastonsa murskaamaan merirosvot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-151",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "text": "Vuonna 1808 massiivinen keisarillinen laivasto purjehti Etelä-Kiinan merelle.",
+      "text_markdown": "Vuonna 1808 massiivinen keisarillinen laivasto purjehti Etelä-Kiinan merelle.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Vuonna tuhat kahdeksansataa kahdeksan massiivinen keisarillinen laivasto purjehti Etelä-Kiinan merelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-152",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "text": "Taistelu oli katastrofi hallitukselle.",
+      "text_markdown": "Taistelu oli katastrofi hallitukselle.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Taistelu oli katastrofi hallitukselle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-153",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "text": "Zheng Yi Saon joukot upottivat tai valtasivat kymmeniä keisarillisia sotalaivoja.",
+      "text_markdown": "Zheng Yi Saon joukot upottivat tai valtasivat kymmeniä keisarillisia sotalaivoja.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi Saon joukot upottivat tai valtasivat kymmeniä keisarillisia sotalaivoja.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-154",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "text": "Voitettu amiraali oli niin nöyryytetty, että hän riisti oman henkensä.",
+      "text_markdown": "Voitettu amiraali oli niin nöyryytetty, että hän riisti oman henkensä.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Voitettu amiraali oli niin nöyryytetty, että hän riisti oman henkensä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-155",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "text": "Keisarillinen hovi oli tyrmistynyt tappion laajuudesta.",
+      "text_markdown": "Keisarillinen hovi oli tyrmistynyt tappion laajuudesta.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Keisarillinen hovi oli tyrmistynyt tappion laajuudesta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-156",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "text": "He olivat lähettäneet parhaat laivansa ja kokeneimman komentajansa, ja he olivat hävinneet.",
+      "text_markdown": "He olivat lähettäneet parhaat laivansa ja kokeneimman komentajansa, ja he olivat hävinneet.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "He olivat lähettäneet parhaat laivansa ja kokeneimman komentajansa, ja he olivat hävinneet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-157",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "text": "Merirosvot olivat nyt vahvempia kuin hallituksen oma laivasto.",
+      "text_markdown": "Merirosvot olivat nyt vahvempia kuin hallituksen oma laivasto.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Merirosvot olivat nyt vahvempia kuin hallituksen oma laivasto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-158",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao hyödynsi etuaan hellittämättä.",
+      "text_markdown": "Zheng Yi Sao hyödynsi etuaan hellittämättä.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi Sao hyödynsi etuaan hellittämättä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-159",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "text": "Hänen laivastonsa laajensi aluettaan koko Guangdongin rannikolla.",
+      "text_markdown": "Hänen laivastonsa laajensi aluettaan koko Guangdongin rannikolla.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hänen laivastonsa laajensi aluettaan koko Guangdongin rannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-160",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "text": "Hän perusti tukikohtia saarille ja piilotettuihin joensuistoihin.",
+      "text_markdown": "Hän perusti tukikohtia saarille ja piilotettuihin joensuistoihin.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hän perusti tukikohtia saarille ja piilotettuihin joensuistoihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-161",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "text": "Hänen tiedusteluverkostonsa ulottui Kantonista Vietnamiin.",
+      "text_markdown": "Hänen tiedusteluverkostonsa ulottui Kantonista Vietnamiin.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hänen tiedusteluverkostonsa ulottui Kantonista Vietnamiin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-162",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "text": "Qing-hallitus kokeili uutta strategiaa.",
+      "text_markdown": "Qing-hallitus kokeili uutta strategiaa.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Qing-hallitus kokeili uutta strategiaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-163",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "text": "He palkkasivat portugalilaisia sotalaivoja Macaon siirtomaasta taistelemaan merirosvoja vastaan.",
+      "text_markdown": "He palkkasivat portugalilaisia sotalaivoja Macaon siirtomaasta taistelemaan merirosvoja vastaan.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "He palkkasivat portugalilaisia sotalaivoja Macaon siirtomaasta taistelemaan merirosvoja vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-164",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "text": "Portugalilaisilla oli moderneja eurooppalaisia tykkejä ja koulutettuja laivaston upseereita.",
+      "text_markdown": "Portugalilaisilla oli moderneja eurooppalaisia tykkejä ja koulutettuja laivaston upseereita.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Portugalilaisilla oli moderneja eurooppalaisia tykkejä ja koulutettuja laivaston upseereita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-165",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "text": "Jonkin aikaa tämä liitto asetti todellista painetta merirosvolaivastolle.",
+      "text_markdown": "Jonkin aikaa tämä liitto asetti todellista painetta merirosvolaivastolle.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Jonkin aikaa tämä liitto asetti todellista painetta merirosvolaivastolle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-166",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "text": "Mutta Zheng Yi Sao sopeutui nopeasti.",
+      "text_markdown": "Mutta Zheng Yi Sao sopeutui nopeasti.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Mutta Zheng Yi Sao sopeutui nopeasti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-167",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "text": "Hän vältti suoraa yhteenottoa portugalilaisten sotalaivojen kanssa.",
+      "text_markdown": "Hän vältti suoraa yhteenottoa portugalilaisten sotalaivojen kanssa.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hän vältti suoraa yhteenottoa portugalilaisten sotalaivojen kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-168",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "text": "Sen sijaan hän kohdisti hyökkäyksensä heidän huoltolinjoihinsa ja hyökkäsi heidän kauppaliittolaisiaan vastaan.",
+      "text_markdown": "Sen sijaan hän kohdisti hyökkäyksensä heidän huoltolinjoihinsa ja hyökkäsi heidän kauppaliittolaisiaan vastaan.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Sen sijaan hän kohdisti hyökkäyksensä heidän huoltolinjoihinsa ja hyökkäsi heidän kauppaliittolaisiaan vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-169",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "text": "Hän ymmärsi, että portugalilaiset taistelisivat vain niin kauan kuin heille maksettaisiin.",
+      "text_markdown": "Hän ymmärsi, että portugalilaiset taistelisivat vain niin kauan kuin heille maksettaisiin.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hän ymmärsi, että portugalilaiset taistelisivat vain niin kauan kuin heille maksettaisiin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-170",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "text": "Vuoteen 1809 mennessä Qingin ja Portugalin liitto ei ollut onnistunut kukistamaan häntä.",
+      "text_markdown": "Vuoteen 1809 mennessä Qingin ja Portugalin liitto ei ollut onnistunut kukistamaan häntä.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Vuoteen tuhat kahdeksansataa yhdeksän mennessä Qingin ja Portugalin liitto ei ollut onnistunut kukistamaan häntä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-171",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "text": "Hallitus oli käyttänyt valtavia summia ja menettänyt kymmeniä laivoja.",
+      "text_markdown": "Hallitus oli käyttänyt valtavia summia ja menettänyt kymmeniä laivoja.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Hallitus oli käyttänyt valtavia summia ja menettänyt kymmeniä laivoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-172",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "text": "Merirosvot hallitsivat rannikkoa tiukemmin kuin koskaan.",
+      "text_markdown": "Merirosvot hallitsivat rannikkoa tiukemmin kuin koskaan.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Merirosvot hallitsivat rannikkoa tiukemmin kuin koskaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-173",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "text": "Zheng Yi Saon konfederaatio oli valtansa huipulla.",
+      "text_markdown": "Zheng Yi Saon konfederaatio oli valtansa huipulla.",
+      "title": "Nousu valtaan",
+      "tts": {
+        "text": "Zheng Yi Saon konfederaatio oli valtansa huipulla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 4,
+      "id": "ch04-174",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Valtansa huipulla",
+      "text_markdown": "Valtansa huipulla",
+      "title": "Valtansa huipulla"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-175",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "text": "Valtansa huipulla merirosvokonfederaatio hallitsi noin 1 800 alusta.",
+      "text_markdown": "Valtansa huipulla merirosvokonfederaatio hallitsi noin 1 800 alusta.",
+      "title": "Valtansa huipulla",
+      "tts": {
+        "text": "Valtansa huipulla merirosvokonfederaatio hallitsi noin tuhat kahdeksansataa alusta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-176",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "text": "Nämä vaihtelivat pienistä, nopeista ryöstöveneistä massiivisiin sota-junkkeihin, jotka kuljettivat kymmeniä tykkejä.",
+      "text_markdown": "Nämä vaihtelivat pienistä, nopeista ryöstöveneistä massiivisiin sota-junkkeihin, jotka kuljettivat kymmeniä tykkejä.",
+      "title": "Valtansa huipulla",
+      "tts": {
+        "text": "Nämä vaihtelivat pienistä, nopeista ryöstöveneistä massiivisiin sota-junkkeihin, jotka kuljettivat kymmeniä tykkejä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-177",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "text": "Taistelujoukkojen kokonaismäärä oli 70 000 – 80 000 ihmistä.",
+      "text_markdown": "Taistelujoukkojen kokonaismäärä oli 70 000 – 80 000 ihmistä.",
+      "title": "Valtansa huipulla",
+      "tts": {
+        "text": "Taistelujoukkojen kokonaismäärä oli seitsemänkymmenentuhannen ja kahdeksankymmenentuhannen ihmisen välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-178",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "text": "Tämä oli suurempi kuin useimpien Euroopan maiden laivastot tuolloin.",
+      "text_markdown": "Tämä oli suurempi kuin useimpien Euroopan maiden laivastot tuolloin.",
+      "title": "Valtansa huipulla",
+      "tts": {
+        "text": "Tämä oli suurempi kuin useimpien Euroopan maiden laivastot tuolloin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-179",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "text": "Pelkästään Punaisen lipun laivastolla oli 600–800 alusta.",
+      "text_markdown": "Pelkästään Punaisen lipun laivastolla oli 600–800 alusta.",
+      "title": "Valtansa huipulla",
+      "tts": {
+        "text": "Pelkästään Punaisen lipun laivastolla oli kuudensadan ja kahdeksansadan aluksen välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-180",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "text": "Se oli konfederaation suurin yksittäinen laivasto.",
+      "text_markdown": "Se oli konfederaation suurin yksittäinen laivasto.",
+      "title": "Valtansa huipulla",
+      "tts": {
+        "text": "Se oli konfederaation suurin yksittäinen laivasto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-181",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao komensi sitä suoraan, ja Zhang Bao toimi hänen ylimpänä sotilaskomentajanaan.",
+      "text_markdown": "Zheng Yi Sao komensi sitä suoraan, ja Zhang Bao toimi hänen ylimpänä sotilaskomentajanaan.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Zheng Yi Sao komensi sitä suoraan, ja Zhang Bao toimi hänen ylimpänä sotilaskomentajanaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-182",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "text": "Muut viisi laivastoa toimivat puoliksi itsenäisesti, mutta noudattivat hänen strategista ohjaustaan.",
+      "text_markdown": "Muut viisi laivastoa toimivat puoliksi itsenäisesti, mutta noudattivat hänen strategista ohjaustaan.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Muut viisi laivastoa toimivat puoliksi itsenäisesti, mutta noudattivat hänen strategista ohjaustaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-183",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "text": "Liittouman alue ulottui yli 1 000 mailin pituisen rannikon matkalle.",
+      "text_markdown": "Liittouman alue ulottui yli 1 000 mailin pituisen rannikon matkalle.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Liittouman alue ulottui yli tuhat mailia pitkän rannikon matkalle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-184",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "text": "Vietnamin rajalta etelässä Fujianin rannikolle pohjoisessa yksikään laiva ei ollut turvassa ilman merirosvojen lupaa.",
+      "text_markdown": "Vietnamin rajalta etelässä Fujianin rannikolle pohjoisessa yksikään laiva ei ollut turvassa ilman merirosvojen lupaa.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Vietnamin rajalta etelässä Fujianin rannikolle pohjoisessa yksikään laiva ei ollut turvassa ilman merirosvojen lupaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-185",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "text": "Jopa mahtava Brittiläinen Itä-Intian kauppakomppania maksoi veroa välttääkseen lastinsa menettämisen.",
+      "text_markdown": "Jopa mahtava Brittiläinen Itä-Intian kauppakomppania maksoi veroa välttääkseen lastinsa menettämisen.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Jopa mahtava Brittiläinen Itä-Intian kauppakomppania maksoi veroa välttääkseen lastinsa menettämisen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-186",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "text": "Elämä merirosvojunkin kyydissä oli ankaraa mutta järjestäytynyttä.",
+      "text_markdown": "Elämä merirosvojunkin kyydissä oli ankaraa mutta järjestäytynyttä.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Elämä merirosvojunkin kyydissä oli ankaraa mutta järjestäytynyttä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-187",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "text": "Jokaisella laivalla oli selkeä hierarkia, kapteenista uusimpaan värvättyyn.",
+      "text_markdown": "Jokaisella laivalla oli selkeä hierarkia, kapteenista uusimpaan värvättyyn.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Jokaisella laivalla oli selkeä hierarkia, kapteenista uusimpaan värvättyyn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-188",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "text": "Ateriat olivat yhteisiä, ja annokset jaettiin tasan.",
+      "text_markdown": "Ateriat olivat yhteisiä, ja annokset jaettiin tasan.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Ateriat olivat yhteisiä, ja annokset jaettiin tasan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-189",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "text": "Jokainen miehistön jäsen sai osuuden saaliista arvon ja roolin perusteella.",
+      "text_markdown": "Jokainen miehistön jäsen sai osuuden saaliista arvon ja roolin perusteella.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Jokainen miehistön jäsen sai osuuden saaliista arvon ja roolin perusteella.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-190",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "text": "Naisia palveli monilla laivaston merirosvoaluksilla.",
+      "text_markdown": "Naisia palveli monilla laivaston merirosvoaluksilla.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Naisia palveli monilla laivaston merirosvoaluksilla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-191",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "text": "Jotkut taistelivat miesten rinnalla ryöstöretkien aikana.",
+      "text_markdown": "Jotkut taistelivat miesten rinnalla ryöstöretkien aikana.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Jotkut taistelivat miesten rinnalla ryöstöretkien aikana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-192",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "text": "Toiset hoitivat tarvikkeita, navigointia ja viestintää laivojen välillä.",
+      "text_markdown": "Toiset hoitivat tarvikkeita, navigointia ja viestintää laivojen välillä.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Toiset hoitivat tarvikkeita, navigointia ja viestintää laivojen välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-193",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "text": "Merirosvomaailma tarjosi naisille enemmän vapautta kuin valtavirran Qing-yhteiskunta.",
+      "text_markdown": "Merirosvomaailma tarjosi naisille enemmän vapautta kuin valtavirran Qing-yhteiskunta.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Merirosvomaailma tarjosi naisille enemmän vapautta kuin valtavirran Qing-yhteiskunta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-194",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "text": "Laivaston sota-junkit olivat pelottavia taistelukoneita.",
+      "text_markdown": "Laivaston sota-junkit olivat pelottavia taistelukoneita.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Laivaston sota-junkit olivat pelottavia taistelukoneita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-195",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "text": "Suuri junkki saattoi kantaa 30 tai useampaa tykkiä.",
+      "text_markdown": "Suuri junkki saattoi kantaa 30 tai useampaa tykkiä.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Suuri junkki saattoi kantaa kolmekymmentä tai useampaa tykkiä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-196",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "text": "Alukset oli rakennettu vahvistetuilla rungoilla ja korkeilla laidoilla torjumaan laivaannousijoita.",
+      "text_markdown": "Alukset oli rakennettu vahvistetuilla rungoilla ja korkeilla laidoilla torjumaan laivaannousijoita.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Alukset oli rakennettu vahvistetuilla rungoilla ja korkeilla laidoilla torjumaan laivaannousijoita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-197",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "text": "Niiden litteät pohjat mahdollistivat navigoinnin matalilla rannikkovesialueilla, minne syvemmällä kulkevat eurooppalaiset alukset eivät päässeet.",
+      "text_markdown": "Niiden litteät pohjat mahdollistivat navigoinnin matalilla rannikkovesialueilla, minne syvemmällä kulkevat eurooppalaiset alukset eivät päässeet.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Niiden litteät pohjat mahdollistivat navigoinnin matalilla rannikkovesialueilla, minne syvemmällä kulkevat eurooppalaiset alukset eivät päässeet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-198",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "text": "Zheng Yi Saon tiedusteluverkosto oli yksi hänen suurimmista aseistaan.",
+      "text_markdown": "Zheng Yi Saon tiedusteluverkosto oli yksi hänen suurimmista aseistaan.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Zheng Yi Saon tiedusteluverkosto oli yksi hänen suurimmista aseistaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-199",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "text": "Hänellä oli vakoojia Kantonissa, Macaossa ja jokaisessa suuremmassa satamassa rannikolla.",
+      "text_markdown": "Hänellä oli vakoojia Kantonissa, Macaossa ja jokaisessa suuremmassa satamassa rannikolla.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Hänellä oli vakoojia Kantonissa, Macaossa ja jokaisessa suuremmassa satamassa rannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-200",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "text": "Hän tiesi, milloin arvokkaat rahtialukset lähtivät ja mitä reittejä ne käyttäisivät.",
+      "text_markdown": "Hän tiesi, milloin arvokkaat rahtialukset lähtivät ja mitä reittejä ne käyttäisivät.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Hän tiesi, milloin arvokkaat rahtialukset lähtivät ja mitä reittejä ne käyttäisivät.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-201",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "text": "Tämä tieto antoi hänelle mahdollisuuden iskeä tarkasti sen sijaan, että olisi luottanut sattumaan.",
+      "text_markdown": "Tämä tieto antoi hänelle mahdollisuuden iskeä tarkasti sen sijaan, että olisi luottanut sattumaan.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Tämä tieto antoi hänelle mahdollisuuden iskeä tarkasti sen sijaan, että olisi luottanut sattumaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-202",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "text": "Hänen rakentamansa verotusjärjestelmä oli huomattavan kehittynyt.",
+      "text_markdown": "Hänen rakentamansa verotusjärjestelmä oli huomattavan kehittynyt.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Hänen rakentamansa verotusjärjestelmä oli huomattavan kehittynyt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-203",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "text": "Eri verokannat koskivat erityyppisiä rahteja.",
+      "text_markdown": "Eri verokannat koskivat erityyppisiä rahteja.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Eri verokannat koskivat erityyppisiä rahteja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-204",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "text": "Silkkikauppiaat maksoivat enemmän kuin riisikauppiaat.",
+      "text_markdown": "Silkkikauppiaat maksoivat enemmän kuin riisikauppiaat.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Silkkikauppiaat maksoivat enemmän kuin riisikauppiaat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-205",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "text": "Suolan salakuljettajat maksoivat lisämaksua, koska heidän lastinsa oli jo laitonta.",
+      "text_markdown": "Suolan salakuljettajat maksoivat lisämaksua, koska heidän lastinsa oli jo laitonta.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Suolan salakuljettajat maksoivat lisämaksua, koska heidän lastinsa oli jo laitonta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-206",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "text": "Koko järjestelmä dokumentoitiin ja pantiin täytäntöön byrokraattisella tarkkuudella.",
+      "text_markdown": "Koko järjestelmä dokumentoitiin ja pantiin täytäntöön byrokraattisella tarkkuudella.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Koko järjestelmä dokumentoitiin ja pantiin täytäntöön byrokraattisella tarkkuudella.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-207",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "text": "Rannikkokylillä oli monimutkainen suhde merirosvoihin.",
+      "text_markdown": "Rannikkokylillä oli monimutkainen suhde merirosvoihin.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Rannikkokylillä oli monimutkainen suhde merirosvoihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-208",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "text": "Monet paheksuivat merirosvojen vaatimia veromaksuja.",
+      "text_markdown": "Monet paheksuivat merirosvojen vaatimia veromaksuja.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Monet paheksuivat merirosvojen vaatimia veromaksuja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-209",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "text": "Mutta merirosvot tarjosivat myös suojaa muita ryöstäjiä ja rosvoja vastaan.",
+      "text_markdown": "Mutta merirosvot tarjosivat myös suojaa muita ryöstäjiä ja rosvoja vastaan.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Mutta merirosvot tarjosivat myös suojaa muita ryöstäjiä ja rosvoja vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-210",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "text": "Joillakin alueilla merirosvot olivat luotettavampia kuin keisarillinen hallitus.",
+      "text_markdown": "Joillakin alueilla merirosvot olivat luotettavampia kuin keisarillinen hallitus.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Joillakin alueilla merirosvot olivat luotettavampia kuin keisarillinen hallitus.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-211",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "text": "Qing-hovia hävetti syvästi sen kyvyttömyys hallita merta.",
+      "text_markdown": "Qing-hovia hävetti syvästi sen kyvyttömyys hallita merta.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Qing-hovia hävetti syvästi sen kyvyttömyys hallita merta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-212",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "text": "Keisarilliset virkamiehet kirjoittivat huolestuneita raportteja merirosvokuningattaren kasvavasta vallasta.",
+      "text_markdown": "Keisarilliset virkamiehet kirjoittivat huolestuneita raportteja merirosvokuningattaren kasvavasta vallasta.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Keisarilliset virkamiehet kirjoittivat huolestuneita raportteja merirosvokuningattaren kasvavasta vallasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-213",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "text": "He pelkäsivät, että merirosvot saattaisivat liittoutua kapinallisryhmien kanssa maalla.",
+      "text_markdown": "He pelkäsivät, että merirosvot saattaisivat liittoutua kapinallisryhmien kanssa maalla.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "He pelkäsivät, että merirosvot saattaisivat liittoutua kapinallisryhmien kanssa maalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-214",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "text": "Yhdistetty maa- ja merikapina saattoi uhata itse dynastiaa.",
+      "text_markdown": "Yhdistetty maa- ja merikapina saattoi uhata itse dynastiaa.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Yhdistetty maa- ja merikapina saattoi uhata itse dynastiaa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-215",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "text": "Britit seurasivat tilannetta suurella mielenkiinnolla.",
+      "text_markdown": "Britit seurasivat tilannetta suurella mielenkiinnolla.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Britit seurasivat tilannetta suurella mielenkiinnolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-216",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "text": "He laajensivat oopiumikauppaansa Kiinan rannikolla.",
+      "text_markdown": "He laajensivat oopiumikauppaansa Kiinan rannikolla.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "He laajensivat oopiumikauppaansa Kiinan rannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-217",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "text": "Merirosvot häiritsivät tätä kauppaa, mikä maksoi brittikauppiaille valtavia summia.",
+      "text_markdown": "Merirosvot häiritsivät tätä kauppaa, mikä maksoi brittikauppiaille valtavia summia.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Merirosvot häiritsivät tätä kauppaa, mikä maksoi brittikauppiaille valtavia summia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-218",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "text": "Zheng Yi Saon lipun alla purjehtiville ihmisille elämä oli parempaa kuin vaihtoehto.",
+      "text_markdown": "Zheng Yi Saon lipun alla purjehtiville ihmisille elämä oli parempaa kuin vaihtoehto.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Zheng Yi Saon lipun alla purjehtiville ihmisille elämä oli parempaa kuin vaihtoehto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-219",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "text": "Merirosvo sai säännöllisesti ruokaa, osuuden saaliista ja yhteenkuuluvuuden tunteen.",
+      "text_markdown": "Merirosvo sai säännöllisesti ruokaa, osuuden saaliista ja yhteenkuuluvuuden tunteen.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Merirosvo sai säännöllisesti ruokaa, osuuden saaliista ja yhteenkuuluvuuden tunteen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-220",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "text": "Tanka-kalastaja sai köyhyyttä, halveksuntaa eikä toivoa etenemisestä.",
+      "text_markdown": "Tanka-kalastaja sai köyhyyttä, halveksuntaa eikä toivoa etenemisestä.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Tanka-kalastaja sai köyhyyttä, halveksuntaa eikä toivoa etenemisestä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-221",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao hallitsi tätä yhteiskuntaa ehdottomalla auktoriteetilla.",
+      "text_markdown": "Zheng Yi Sao hallitsi tätä yhteiskuntaa ehdottomalla auktoriteetilla.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Zheng Yi Sao hallitsi tätä yhteiskuntaa ehdottomalla auktoriteetilla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-222",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "text": "Hän teki strategiset päätökset, jotka muovasivat laivaston tulevaisuutta.",
+      "text_markdown": "Hän teki strategiset päätökset, jotka muovasivat laivaston tulevaisuutta.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Hän teki strategiset päätökset, jotka muovasivat laivaston tulevaisuutta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-223",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "text": "Hän ratkaisi kapteenien välisiä kiistoja ja pani täytäntöön lakikoodin.",
+      "text_markdown": "Hän ratkaisi kapteenien välisiä kiistoja ja pani täytäntöön lakikoodin.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Hän ratkaisi kapteenien välisiä kiistoja ja pani täytäntöön lakikoodin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-224",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "text": "Mitään merkittävää toimenpidettä ei tehty ilman hänen hyväksyntäänsä.",
+      "text_markdown": "Mitään merkittävää toimenpidettä ei tehty ilman hänen hyväksyntäänsä.",
+      "title": "Huipulla",
+      "tts": {
+        "text": "Mitään merkittävää toimenpidettä ei tehty ilman hänen hyväksyntäänsä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 5,
+      "id": "ch05-225",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Loppu",
+      "text_markdown": "Loppu",
+      "title": "Loppu"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-226",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "text": "Vuoteen 1810 mennessä liittoumaan alkoi ilmestyä säröjä.",
+      "text_markdown": "Vuoteen 1810 mennessä liittoumaan alkoi ilmestyä säröjä.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Vuoteen tuhatkahdeksansataakymmenen mennessä liittoumaan alkoi ilmestyä säröjä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-227",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "text": "Jatkuva sodankäynti oli vaatinut veronsa laivoista ja miehistöistä.",
+      "text_markdown": "Jatkuva sodankäynti oli vaatinut veronsa laivoista ja miehistöistä.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Jatkuva sodankäynti oli vaatinut veronsa laivoista ja miehistöistä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-228",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "text": "Qing-hallituksen saarrot häiritsivät toimitusketjuja rannikolla.",
+      "text_markdown": "Qing-hallituksen saarrot häiritsivät toimitusketjuja rannikolla.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Qing-hallituksen saarrot häiritsivät toimitusketjuja rannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-229",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "text": "Ja laivaston kapteenien väliset sisäiset kilpailut olivat kiristyneet.",
+      "text_markdown": "Ja laivaston kapteenien väliset sisäiset kilpailut olivat kiristyneet.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Ja laivaston kapteenien väliset sisäiset kilpailut olivat kiristyneet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-230",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "text": "Vaarallisin kilpailu oli Zhang Baon ja Guo Podai -nimisen kapteenin välillä.",
+      "text_markdown": "Vaarallisin kilpailu oli Zhang Baon ja Guo Podai -nimisen kapteenin välillä.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Vaarallisin kilpailu oli Zhang Baon ja Guo Podai -nimisen kapteenin välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-231",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "text": "Guo Podai komensi Mustan lipun laivastoa, joka oli liittouman toiseksi suurin.",
+      "text_markdown": "Guo Podai komensi Mustan lipun laivastoa, joka oli liittouman toiseksi suurin.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Guo Podai komensi Mustan lipun laivastoa, joka oli liittouman toiseksi suurin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-232",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "text": "Hän paheksui Zhang Baon ja laajemminkin Zheng Yi Saon käskyjen noudattamista.",
+      "text_markdown": "Hän paheksui Zhang Baon ja laajemminkin Zheng Yi Saon käskyjen noudattamista.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän paheksui Zhang Baon ja laajemminkin Zheng Yi Saon käskyjen noudattamista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-233",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "text": "Jännite heidän välillään uhkasi jakaa liittouman kahtia.",
+      "text_markdown": "Jännite heidän välillään uhkasi jakaa liittouman kahtia.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Jännite heidän välillään uhkasi jakaa liittouman kahtia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-234",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "text": "Vuoden 1810 alussa Guo Podai teki kohtalokkaan päätöksen.",
+      "text_markdown": "Vuoden 1810 alussa Guo Podai teki kohtalokkaan päätöksen.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Vuoden tuhatkahdeksansataakymmenen alussa Guo Podai teki kohtalokkaan päätöksen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-235",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "text": "Hän aloitti salaisia neuvotteluja Qing-hallituksen kanssa.",
+      "text_markdown": "Hän aloitti salaisia neuvotteluja Qing-hallituksen kanssa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän aloitti salaisia neuvotteluja Qing-hallituksen kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-236",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "text": "Hallitus tarjosi hänelle täyden armahduksen, sotilasviran ja käteismaksun.",
+      "text_markdown": "Hallitus tarjosi hänelle täyden armahduksen, sotilasviran ja käteismaksun.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hallitus tarjosi hänelle täyden armahduksen, sotilasviran ja käteismaksun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-237",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "text": "Vastineeksi hän kääntyisi entisiä liittolaisiaan vastaan.",
+      "text_markdown": "Vastineeksi hän kääntyisi entisiä liittolaisiaan vastaan.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Vastineeksi hän kääntyisi entisiä liittolaisiaan vastaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-238",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "text": "Guo Podai hyväksyi sopimuksen ja antautui koko laivastonsa kanssa hallitukselle.",
+      "text_markdown": "Guo Podai hyväksyi sopimuksen ja antautui koko laivastonsa kanssa hallitukselle.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Guo Podai hyväksyi sopimuksen ja antautui koko laivastonsa kanssa hallitukselle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-239",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "text": "Yhdessä yössä liittouma menetti satoja aluksia ja tuhansia taistelijoita.",
+      "text_markdown": "Yhdessä yössä liittouma menetti satoja aluksia ja tuhansia taistelijoita.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Yhdessä yössä liittouma menetti satoja aluksia ja tuhansia taistelijoita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-240",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "text": "Mikä pahempaa, Guo Podai toimi nyt hallituksen komentajana käyttäen tietämystään merirosvotaktiikoista heitä vastaan.",
+      "text_markdown": "Mikä pahempaa, Guo Podai toimi nyt hallituksen komentajana käyttäen tietämystään merirosvotaktiikoista heitä vastaan.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Mikä pahempaa, Guo Podai toimi nyt hallituksen komentajana käyttäen tietämystään merirosvotaktiikoista heitä vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-241",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "text": "Voimatasapaino oli muuttunut dramaattisesti.",
+      "text_markdown": "Voimatasapaino oli muuttunut dramaattisesti.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Voimatasapaino oli muuttunut dramaattisesti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-242",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao arvioi uutta tilannetta hänelle ominaisella selkeydellä.",
+      "text_markdown": "Zheng Yi Sao arvioi uutta tilannetta hänelle ominaisella selkeydellä.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Zheng Yi Sao arvioi uutta tilannetta hänelle ominaisella selkeydellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-243",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "text": "Konfederaatio oli heikentynyt, mutta ei tuhoutunut.",
+      "text_markdown": "Konfederaatio oli heikentynyt, mutta ei tuhoutunut.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Konfederaatio oli heikentynyt, mutta ei tuhoutunut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-244",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "text": "Hän komensi yhä Punaisen lipun laivastoa ja useita liittoutuneita laivastoja.",
+      "text_markdown": "Hän komensi yhä Punaisen lipun laivastoa ja useita liittoutuneita laivastoja.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän komensi yhä Punaisen lipun laivastoa ja useita liittoutuneita laivastoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-245",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "text": "Mutta vauhti oli muuttunut, ja hän tiesi sen.",
+      "text_markdown": "Mutta vauhti oli muuttunut, ja hän tiesi sen.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Mutta vauhti oli muuttunut, ja hän tiesi sen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-246",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "text": "Hän teki päätöksen, joka paljasti hänen strategisen nerokkuutensa.",
+      "text_markdown": "Hän teki päätöksen, joka paljasti hänen strategisen nerokkuutensa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän teki päätöksen, joka paljasti hänen strategisen nerokkuutensa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-247",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "text": "Sen sijaan, että olisi taistellut kuolemaan asti, hän päätti neuvotella jäljellä olevan voiman asemasta.",
+      "text_markdown": "Sen sijaan, että olisi taistellut kuolemaan asti, hän päätti neuvotella jäljellä olevan voiman asemasta.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Sen sijaan, että olisi taistellut kuolemaan asti, hän päätti neuvotella jäljellä olevan voiman asemasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-248",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "text": "Hän aloitti neuvottelut Qing-hallituksen kanssa välittäjien kautta.",
+      "text_markdown": "Hän aloitti neuvottelut Qing-hallituksen kanssa välittäjien kautta.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän aloitti neuvottelut Qing-hallituksen kanssa välittäjien kautta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-249",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "text": "Hänen vaatimuksensa olivat rohkeita ja tarkkoja.",
+      "text_markdown": "Hänen vaatimuksensa olivat rohkeita ja tarkkoja.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hänen vaatimuksensa olivat rohkeita ja tarkkoja.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-250",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "text": "Hän vaati täyttä armahdusta itselleen ja Zhang Baolle.",
+      "text_markdown": "Hän vaati täyttä armahdusta itselleen ja Zhang Baolle.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän vaati täyttä armahdusta itselleen ja Zhang Baolle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-251",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "text": "Hän vaati, että hänen merirosvojensa sallitaan pitää henkilökohtainen omaisuutensa.",
+      "text_markdown": "Hän vaati, että hänen merirosvojensa sallitaan pitää henkilökohtainen omaisuutensa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän vaati, että hänen merirosvojensa sallitaan pitää henkilökohtainen omaisuutensa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-252",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "text": "Hän vaati, että Zhang Baolle annetaan virka keisarillisessa laivastossa.",
+      "text_markdown": "Hän vaati, että Zhang Baolle annetaan virka keisarillisessa laivastossa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän vaati, että Zhang Baolle annetaan virka keisarillisessa laivastossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-253",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "text": "Ja hän vaati, että tavalliset antautuneet merirosvot eivät saisi rangaistusta.",
+      "text_markdown": "Ja hän vaati, että tavalliset antautuneet merirosvot eivät saisi rangaistusta.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Ja hän vaati, että tavalliset antautuneet merirosvot eivät saisi rangaistusta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-254",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "text": "Qing-hallitus oli haluton hyväksymään niin anteliaita ehtoja.",
+      "text_markdown": "Qing-hallitus oli haluton hyväksymään niin anteliaita ehtoja.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Qing-hallitus oli haluton hyväksymään niin anteliaita ehtoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-255",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "text": "Armahdusten myöntäminen merirosvoille tuntui nöyryytykseltä imperiumille.",
+      "text_markdown": "Armahdusten myöntäminen merirosvoille tuntui nöyryytykseltä imperiumille.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Armahdusten myöntäminen merirosvoille tuntui nöyryytykseltä imperiumille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-256",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "text": "Mutta he olivat yrittäneet voimaa ja epäonnistuneet.",
+      "text_markdown": "Mutta he olivat yrittäneet voimaa ja epäonnistuneet.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Mutta he olivat yrittäneet voimaa ja epäonnistuneet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-257",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "text": "Neuvottelu oli ainoa jäljellä oleva vaihtoehto.",
+      "text_markdown": "Neuvottelu oli ainoa jäljellä oleva vaihtoehto.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Neuvottelu oli ainoa jäljellä oleva vaihtoehto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-258",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "text": "Huhtikuussa 1810 sopimus viimeisteltiin.",
+      "text_markdown": "Huhtikuussa 1810 sopimus viimeisteltiin.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Huhtikuussa tuhatkahdeksansataakymmenen sopimus viimeisteltiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-259",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "text": "Zheng Yi Sao luovutti laivastonsa hallitukselle.",
+      "text_markdown": "Zheng Yi Sao luovutti laivastonsa hallitukselle.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Zheng Yi Sao luovutti laivastonsa hallitukselle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-260",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "text": "Vastineeksi hän sai kaiken, mitä oli pyytänyt.",
+      "text_markdown": "Vastineeksi hän sai kaiken, mitä oli pyytänyt.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Vastineeksi hän sai kaiken, mitä oli pyytänyt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-261",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "text": "Zhang Bao nimitettiin luutnantiksi Qing-laivastoon ja hän sai komentoonsa 20 alusta.",
+      "text_markdown": "Zhang Bao nimitettiin luutnantiksi Qing-laivastoon ja hän sai komentoonsa 20 alusta.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Zhang Bao nimitettiin luutnantiksi Qing-laivastoon ja hän sai komentoonsa kaksikymmentä alusta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-262",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "text": "Merirosvojen sallittiin pitää osa aluksistaan.",
+      "text_markdown": "Merirosvojen sallittiin pitää osa aluksistaan.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Merirosvojen sallittiin pitää osa aluksistaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-263",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "text": "Ne, jotka halusivat palata siviilielämään, saivat tehdä niin.",
+      "text_markdown": "Ne, jotka halusivat palata siviilielämään, saivat tehdä niin.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Ne, jotka halusivat palata siviilielämään, saivat tehdä niin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-264",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "text": "Ne, jotka halusivat liittyä keisarilliseen laivastoon, toivotettiin tervetulleiksi.",
+      "text_markdown": "Ne, jotka halusivat liittyä keisarilliseen laivastoon, toivotettiin tervetulleiksi.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Ne, jotka halusivat liittyä keisarilliseen laivastoon, toivotettiin tervetulleiksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-265",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "text": "Se oli merirosvouden historian edullisin antautuminen.",
+      "text_markdown": "Se oli merirosvouden historian edullisin antautuminen.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Se oli merirosvouden historian edullisin antautuminen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-266",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao vetäytyi mereltä varakkaana naisena.",
+      "text_markdown": "Zheng Yi Sao vetäytyi mereltä varakkaana naisena.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Zheng Yi Sao vetäytyi mereltä varakkaana naisena.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-267",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "text": "Hän asettui Kantoniin Zhang Baon kanssa.",
+      "text_markdown": "Hän asettui Kantoniin Zhang Baon kanssa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän asettui Kantoniin Zhang Baon kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-268",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "text": "Yhdessä he avasivat pelitalon, josta tuli yksi kaupungin tuottoisimmista.",
+      "text_markdown": "Yhdessä he avasivat pelitalon, josta tuli yksi kaupungin tuottoisimmista.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Yhdessä he avasivat pelitalon, josta tuli yksi kaupungin tuottoisimmista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-269",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "text": "Hän investoi myös suolakauppaan, joka tuotti tasaista tuloa vuosien ajan.",
+      "text_markdown": "Hän investoi myös suolakauppaan, joka tuotti tasaista tuloa vuosien ajan.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän investoi myös suolakauppaan, joka tuotti tasaista tuloa vuosien ajan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-270",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "text": "Zhang Bao palveli keisarillisessa laivastossa kunniakkaasti useita vuosia.",
+      "text_markdown": "Zhang Bao palveli keisarillisessa laivastossa kunniakkaasti useita vuosia.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Zhang Bao palveli keisarillisessa laivastossa kunniakkaasti useita vuosia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-271",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "text": "Hän kuoli vuonna 1822, ollessaan yhä hallituksen palveluksessa.",
+      "text_markdown": "Hän kuoli vuonna 1822, ollessaan yhä hallituksen palveluksessa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän kuoli vuonna tuhatkahdeksansataakaksikymmentäkaksi, ollessaan yhä hallituksen palveluksessa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-272",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "text": "Hänen kuolemaansa surtiin täysin sotilaallisin kunnianosoituksin.",
+      "text_markdown": "Hänen kuolemaansa surtiin täysin sotilaallisin kunnianosoituksin.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hänen kuolemaansa surtiin täysin sotilaallisin kunnianosoituksin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-273",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao eli yli kaksi vuosikymmentä merirosvouksen jättämisen jälkeen.",
+      "text_markdown": "Zheng Yi Sao eli yli kaksi vuosikymmentä merirosvouksen jättämisen jälkeen.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Zheng Yi Sao eli yli kaksi vuosikymmentä merirosvouksen jättämisen jälkeen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-274",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "text": "Hän hoiti liikeintressejään ja kasvatti perheen Kantonissa.",
+      "text_markdown": "Hän hoiti liikeintressejään ja kasvatti perheen Kantonissa.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän hoiti liikeintressejään ja kasvatti perheen Kantonissa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-275",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "text": "Hän kuoli vuonna 1844, noin 69-vuotiaana.",
+      "text_markdown": "Hän kuoli vuonna 1844, noin 69-vuotiaana.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän kuoli vuonna tuhatkahdeksansataaneljäkymmentäneljä, noin kuusikymmentäyhdeksänvuotiaana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-276",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "text": "Hän kuoli omassa sängyssään, perheensä ympäröimänä, Kantonin yhteiskunnan arvostettuna jäsenenä.",
+      "text_markdown": "Hän kuoli omassa sängyssään, perheensä ympäröimänä, Kantonin yhteiskunnan arvostettuna jäsenenä.",
+      "title": "Loppu",
+      "tts": {
+        "text": "Hän kuoli omassa sängyssään, perheensä ympäröimänä, Kantonin yhteiskunnan arvostettuna jäsenenä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 6,
+      "id": "ch06-277",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Perintö",
+      "text_markdown": "Perintö",
+      "title": "Perintö"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-278",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "text": "Zheng Yi Saon ura on ainutlaatuinen merirosvouden historiassa.",
+      "text_markdown": "Zheng Yi Saon ura on ainutlaatuinen merirosvouden historiassa.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Zheng Yi Saon ura on ainutlaatuinen merirosvouden historiassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-279",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "text": "Kukaan muu merirosvo, mies tai nainen, ei koskaan komentanut vastaavan kokoista joukkoa.",
+      "text_markdown": "Kukaan muu merirosvo, mies tai nainen, ei koskaan komentanut vastaavan kokoista joukkoa.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Kukaan muu merirosvo, mies tai nainen, ei koskaan komentanut vastaavan kokoista joukkoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-280",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "text": "Kukaan muu merirosvo ei rakentanut niin hienostunutta laki- ja hallintojärjestelmää.",
+      "text_markdown": "Kukaan muu merirosvo ei rakentanut niin hienostunutta laki- ja hallintojärjestelmää.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Kukaan muu merirosvo ei rakentanut niin hienostunutta laki- ja hallintojärjestelmää.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-281",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "text": "Ja kukaan muu merirosvo ei neuvotellut eläkkeelle siirtymistä niin edullisin ehdoin.",
+      "text_markdown": "Ja kukaan muu merirosvo ei neuvotellut eläkkeelle siirtymistä niin edullisin ehdoin.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Ja kukaan muu merirosvo ei neuvotellut eläkkeelle siirtymistä niin edullisin ehdoin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-282",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "text": "Hänen menestyksensä haastaa monia oletuksia naisten roolista historiassa.",
+      "text_markdown": "Hänen menestyksensä haastaa monia oletuksia naisten roolista historiassa.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hänen menestyksensä haastaa monia oletuksia naisten roolista historiassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-283",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "text": "Hän nousi valtaan yhteiskunnassa, joka tarjosi naisille lähes olemattomat lailliset oikeudet.",
+      "text_markdown": "Hän nousi valtaan yhteiskunnassa, joka tarjosi naisille lähes olemattomat lailliset oikeudet.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän nousi valtaan yhteiskunnassa, joka tarjosi naisille lähes olemattomat lailliset oikeudet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-284",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "text": "Hän komensi kymmeniä tuhansia miehiä maailmassa, joka piti naisia alempiarvoisina.",
+      "text_markdown": "Hän komensi kymmeniä tuhansia miehiä maailmassa, joka piti naisia alempiarvoisina.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän komensi kymmeniä tuhansia miehiä maailmassa, joka piti naisia alempiarvoisina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-285",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "text": "Hänen tarinansa on todiste siitä, että kyvykkyydellä ei ole sukupuolta.",
+      "text_markdown": "Hänen tarinansa on todiste siitä, että kyvykkyydellä ei ole sukupuolta.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hänen tarinansa on todiste siitä, että kyvykkyydellä ei ole sukupuolta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-286",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "text": "Historioitsijat ovat kiistelleet hänen poikkeuksellisen menestyksensä syistä.",
+      "text_markdown": "Historioitsijat ovat kiistelleet hänen poikkeuksellisen menestyksensä syistä.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Historioitsijat ovat kiistelleet hänen poikkeuksellisen menestyksensä syistä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-287",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "text": "Jotkut korostavat hänen henkilökohtaisia ominaisuuksiaan: älykkyyttään, päättäväisyyttään, kykyään herättää uskollisuutta.",
+      "text_markdown": "Jotkut korostavat hänen henkilökohtaisia ominaisuuksiaan: älykkyyttään, päättäväisyyttään, kykyään herättää uskollisuutta.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Jotkut korostavat hänen henkilökohtaisia ominaisuuksiaan: älykkyyttään, päättäväisyyttään, kykyään herättää uskollisuutta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-288",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "text": "Toiset viittaavat rakenteellisiin olosuhteisiin, jotka mahdollistivat hänen nousunsa: Qing-valtion heikkous, rannikkopopulaation köyhyys ja Etelä-Kiinan meren maantiede.",
+      "text_markdown": "Toiset viittaavat rakenteellisiin olosuhteisiin, jotka mahdollistivat hänen nousunsa: Qing-valtion heikkous, rannikkopopulaation köyhyys ja Etelä-Kiinan meren maantiede.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Toiset viittaavat rakenteellisiin olosuhteisiin, jotka mahdollistivat hänen nousunsa: Qing-valtion heikkous, rannikkopopulaation köyhyys ja Etelä-Kiinan meren maantiede.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-289",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "text": "Totuus sisältää lähes varmasti molemmat tekijät.",
+      "text_markdown": "Totuus sisältää lähes varmasti molemmat tekijät.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Totuus sisältää lähes varmasti molemmat tekijät.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-290",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "text": "Ilman olosuhteita hänen lahjakkuudellaan ei olisi ollut näyttämöä.",
+      "text_markdown": "Ilman olosuhteita hänen lahjakkuudellaan ei olisi ollut näyttämöä.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Ilman olosuhteita hänen lahjakkuudellaan ei olisi ollut näyttämöä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-291",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "text": "Ilman hänen lahjakkuuttaan olosuhteet olisivat tuottaneet vain kaaosta.",
+      "text_markdown": "Ilman hänen lahjakkuuttaan olosuhteet olisivat tuottaneet vain kaaosta.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Ilman hänen lahjakkuuttaan olosuhteet olisivat tuottaneet vain kaaosta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-292",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "text": "Hän oli oikea henkilö oikeaan aikaan historiassa.",
+      "text_markdown": "Hän oli oikea henkilö oikeaan aikaan historiassa.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän oli oikea henkilö oikeaan aikaan historiassa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-293",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "text": "Hänen lakikoodinsa vaikutti merirosvojen hallintoon vuosikymmeniä hänen eläkkeelle jäämisensä jälkeen.",
+      "text_markdown": "Hänen lakikoodinsa vaikutti merirosvojen hallintoon vuosikymmeniä hänen eläkkeelle jäämisensä jälkeen.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hänen lakikoodinsa vaikutti merirosvojen hallintoon vuosikymmeniä hänen eläkkeelle jäämisensä jälkeen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-294",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "text": "Myöhemmät merirosvopäälliköt Etelä-Kiinan merellä omaksuivat samankaltaisia verotus- ja lakijärjestelmiä.",
+      "text_markdown": "Myöhemmät merirosvopäälliköt Etelä-Kiinan merellä omaksuivat samankaltaisia verotus- ja lakijärjestelmiä.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Myöhemmät merirosvopäälliköt Etelä-Kiinan merellä omaksuivat samankaltaisia verotus- ja lakijärjestelmiä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-295",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "text": "Hänen mallinsa osoitti, että merirosvolaivastot voitiin järjestää yhtä tehokkaasti kuin kansalliset laivastot.",
+      "text_markdown": "Hänen mallinsa osoitti, että merirosvolaivastot voitiin järjestää yhtä tehokkaasti kuin kansalliset laivastot.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hänen mallinsa osoitti, että merirosvolaivastot voitiin järjestää yhtä tehokkaasti kuin kansalliset laivastot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-296",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "text": "Nykyaikana Zheng Yi Saosta on tullut kulttuuri-ikoni.",
+      "text_markdown": "Nykyaikana Zheng Yi Saosta on tullut kulttuuri-ikoni.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Nykyaikana Zheng Yi Saosta on tullut kulttuuri-ikoni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-297",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "text": "Hän on esiintynyt romaaneissa, elokuvissa ja videopeleissä ympäri maailmaa.",
+      "text_markdown": "Hän on esiintynyt romaaneissa, elokuvissa ja videopeleissä ympäri maailmaa.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän on esiintynyt romaaneissa, elokuvissa ja videopeleissä ympäri maailmaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-298",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "text": "Hänen tarinansa on käännetty kymmenille kielille.",
+      "text_markdown": "Hänen tarinansa on käännetty kymmenille kielille.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hänen tarinansa on käännetty kymmenille kielille.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-299",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "text": "Silti suuri osa hänen elämästään on yhä tuntematonta.",
+      "text_markdown": "Silti suuri osa hänen elämästään on yhä tuntematonta.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Silti suuri osa hänen elämästään on yhä tuntematonta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-300",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "text": "Emme tiedä hänen syntymänimeään varmuudella.",
+      "text_markdown": "Emme tiedä hänen syntymänimeään varmuudella.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Emme tiedä hänen syntymänimeään varmuudella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-301",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "text": "Meillä ei ole yhtään varmistettua kuvaa hänen kasvoistaan.",
+      "text_markdown": "Meillä ei ole yhtään varmistettua kuvaa hänen kasvoistaan.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Meillä ei ole yhtään varmistettua kuvaa hänen kasvoistaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-302",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "text": "Suurin osa siitä, mitä tiedämme, on peräisin hallituksen asiakirjoista, jotka hänen vihollisensa kirjoittivat.",
+      "text_markdown": "Suurin osa siitä, mitä tiedämme, on peräisin hallituksen asiakirjoista, jotka hänen vihollisensa kirjoittivat.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Suurin osa siitä, mitä tiedämme, on peräisin hallituksen asiakirjoista, jotka hänen vihollisensa kirjoittivat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-303",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "text": "Qing-hovilla oli kaikki syy vähätellä hänen saavutuksiaan.",
+      "text_markdown": "Qing-hovilla oli kaikki syy vähätellä hänen saavutuksiaan.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Qing-hovilla oli kaikki syy vähätellä hänen saavutuksiaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-304",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "text": "Monet viralliset asiakirjat vähättelevät hänen rooliaan tai pitävät hänen menestystään Zhang Baon ansiona.",
+      "text_markdown": "Monet viralliset asiakirjat vähättelevät hänen rooliaan tai pitävät hänen menestystään Zhang Baon ansiona.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Monet viralliset asiakirjat vähättelevät hänen rooliaan tai pitävät hänen menestystään Zhang Baon ansiona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-305",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "text": "Historioitsijoiden on luettava nämä lähteet huolellisesti, tietäen, että ne on kirjoitettu poliittisin motiivein.",
+      "text_markdown": "Historioitsijoiden on luettava nämä lähteet huolellisesti, tietäen, että ne on kirjoitettu poliittisin motiivein.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Historioitsijoiden on luettava nämä lähteet huolellisesti, tietäen, että ne on kirjoitettu poliittisin motiivein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-306",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "text": "Mitä asiakirjat eivät voi piilottaa, on hänen saavutuksensa laajuus.",
+      "text_markdown": "Mitä asiakirjat eivät voi piilottaa, on hänen saavutuksensa laajuus.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Mitä asiakirjat eivät voi piilottaa, on hänen saavutuksensa laajuus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-307",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "text": "Hän rakensi historian suurimman merirosvolaivaston.",
+      "text_markdown": "Hän rakensi historian suurimman merirosvolaivaston.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän rakensi historian suurimman merirosvolaivaston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-308",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "text": "Hän kukisti Qing-imperiumin ja Portugalin laivaston yhdistetyt joukot.",
+      "text_markdown": "Hän kukisti Qing-imperiumin ja Portugalin laivaston yhdistetyt joukot.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän kukisti Qing-imperiumin ja Portugalin laivaston yhdistetyt joukot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-309",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "text": "Hän vetäytyi rikkaana, vapaana ja voittamattomana.",
+      "text_markdown": "Hän vetäytyi rikkaana, vapaana ja voittamattomana.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Hän vetäytyi rikkaana, vapaana ja voittamattomana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-310",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "text": "Merihistorian aikana kukaan muu ei ole tehnyt sitä.",
+      "text_markdown": "Merihistorian aikana kukaan muu ei ole tehnyt sitä.",
+      "title": "Perintö",
+      "tts": {
+        "text": "Merihistorian aikana kukaan muu ei ole tehnyt sitä.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

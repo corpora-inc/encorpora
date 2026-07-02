@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_wang_zhi",
+  "language": "ja",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へ",
+      "text_markdown": "読者へ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、政府が正当な貿易を違法としたために海賊になった男の物語である。",
+      "text_markdown": "これは、政府が正当な貿易を違法としたために海賊になった男の物語である。",
+      "tts": {
+        "text": "これは、政府が正当な貿易を違法としたために海賊になった男の物語である。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王直は生まれながらの無法者ではなかった。",
+      "text_markdown": "王直は生まれながらの無法者ではなかった。",
+      "tts": {
+        "text": "王直は生まれながらの無法者ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自国の法律が彼を無法者にしたのである。",
+      "text_markdown": "自国の法律が彼を無法者にしたのである。",
+      "tts": {
+        "text": "自国の法律が彼を無法者にしたのである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明の時代、中国は自国民が海外へ渡航することを禁じた。",
+      "text_markdown": "明の時代、中国は自国民が海外へ渡航することを禁じた。",
+      "tts": {
+        "text": "明の時代、中国は自国民が海外へ渡航することを禁じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この禁令は海禁と呼ばれた。",
+      "text_markdown": "この禁令は海禁と呼ばれた。",
+      "tts": {
+        "text": "この禁令は海禁と呼ばれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海禁は沿岸を守るためのものだったが、実際には海上に広大な犯罪の暗黒世界を生み出した。",
+      "text_markdown": "海禁は沿岸を守るためのものだったが、実際には海上に広大な犯罪の暗黒世界を生み出した。",
+      "tts": {
+        "text": "海禁は沿岸を守るためのものだったが、実際には海上に広大な犯罪の暗黒世界を生み出した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直はその暗黒世界の頂点に上り詰めた。",
+      "text_markdown": "王直はその暗黒世界の頂点に上り詰めた。",
+      "tts": {
+        "text": "王直はその暗黒世界の頂点に上り詰めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は艦隊を指揮し、交易路を支配し、日本沿岸の島々に王国を築いた。",
+      "text_markdown": "彼は艦隊を指揮し、交易路を支配し、日本沿岸の島々に王国を築いた。",
+      "tts": {
+        "text": "彼は艦隊を指揮し、交易路を支配し、日本沿岸の島々に王国を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当局は彼を海賊と呼んだ。",
+      "text_markdown": "当局は彼を海賊と呼んだ。",
+      "tts": {
+        "text": "当局は彼を海賊と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼自身は商人を自称した。",
+      "text_markdown": "彼自身は商人を自称した。",
+      "tts": {
+        "text": "彼自身は商人を自称した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語は、私たちに難しい問いを投げかける。",
+      "text_markdown": "彼の物語は、私たちに難しい問いを投げかける。",
+      "tts": {
+        "text": "彼の物語は、私たちに難しい問いを投げかける。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へ",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府がすべての貿易を禁じた時、密貿易者は犯罪者なのか、それとも合法的な道を一切閉ざされた商人にすぎないのか。",
+      "text_markdown": "政府がすべての貿易を禁じた時、密貿易者は犯罪者なのか、それとも合法的な道を一切閉ざされた商人にすぎないのか。",
+      "tts": {
+        "text": "政府がすべての貿易を禁じた時、密貿易者は犯罪者なのか、それとも合法的な道を一切閉ざされた商人にすぎないのか。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "明の海禁の世界",
+      "text_markdown": "明の海禁の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世紀初頭、中国は地球上で最も裕福で人口の多い国であった。",
+      "text_markdown": "十六世紀初頭、中国は地球上で最も裕福で人口の多い国であった。",
+      "tts": {
+        "text": "十六世紀初頭、中国は地球上で最も裕福で人口の多い国であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "明王朝は一世紀半以上にわたって統治していた。",
+      "text_markdown": "明王朝は一世紀半以上にわたって統治していた。",
+      "tts": {
+        "text": "明王朝は一世紀半以上にわたって統治していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "首都の北京には百万人以上が暮らしていた。",
+      "text_markdown": "首都の北京には百万人以上が暮らしていた。",
+      "tts": {
+        "text": "首都の北京には百万人以上が暮らしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中国は全世界が欲しがる絹、磁器、茶を生産していた。",
+      "text_markdown": "中国は全世界が欲しがる絹、磁器、茶を生産していた。",
+      "tts": {
+        "text": "中国は全世界が欲しがる絹、磁器、茶を生産していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "日本の銀、東南アジアの香辛料、インドの綿花が中国の港に流れ込んでいた。",
+      "text_markdown": "日本の銀、東南アジアの香辛料、インドの綿花が中国の港に流れ込んでいた。",
+      "tts": {
+        "text": "日本の銀、東南アジアの香辛料、インドの綿花が中国の港に流れ込んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海上貿易は帝国にとって莫大な富の源泉となるはずだった。",
+      "text_markdown": "海上貿易は帝国にとって莫大な富の源泉となるはずだった。",
+      "tts": {
+        "text": "海上貿易は帝国にとって莫大な富の源泉となるはずだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし明の朝廷は海を恐れた。",
+      "text_markdown": "しかし明の朝廷は海を恐れた。",
+      "tts": {
+        "text": "しかし明の朝廷は海を恐れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は何世紀にもわたって沿岸を襲撃してきた。",
+      "text_markdown": "海賊は何世紀にもわたって沿岸を襲撃してきた。",
+      "tts": {
+        "text": "海賊は何世紀にもわたって沿岸を襲撃してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "倭寇として知られる日本の海賊は、十四世紀から中国と朝鮮の沿岸を攻撃していた。",
+      "text_markdown": "倭寇として知られる日本の海賊は、十四世紀から中国と朝鮮の沿岸を攻撃していた。",
+      "tts": {
+        "text": "倭寇として知られる日本の海賊は、十四世紀から中国と朝鮮の沿岸を攻撃していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "政府の対策は、より強力な海軍を建設することではなかった。",
+      "text_markdown": "政府の対策は、より強力な海軍を建設することではなかった。",
+      "tts": {
+        "text": "政府の対策は、より強力な海軍を建設することではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "代わりに、明王朝は民間の海上貿易を厳しく禁じる海禁を施行した。",
+      "text_markdown": "代わりに、明王朝は民間の海上貿易を厳しく禁じる海禁を施行した。",
+      "tts": {
+        "text": "代わりに、明王朝は民間の海上貿易を厳しく禁じる海禁を施行した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国の臣民は誰一人として外洋船を建造することを許されなかった。",
+      "text_markdown": "中国の臣民は誰一人として外洋船を建造することを許されなかった。",
+      "tts": {
+        "text": "中国の臣民は誰一人として外洋船を建造することを許されなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "中国の商人は誰一人として外国へ航海することができなかった。",
+      "text_markdown": "中国の商人は誰一人として外国へ航海することができなかった。",
+      "tts": {
+        "text": "中国の商人は誰一人として外国へ航海することができなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海外で貿易を行っていることが発覚すれば、死刑を含む厳しい罰を受けた。",
+      "text_markdown": "海外で貿易を行っていることが発覚すれば、死刑を含む厳しい罰を受けた。",
+      "tts": {
+        "text": "海外で貿易を行っていることが発覚すれば、死刑を含む厳しい罰を受けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "禁令の背後にある論理は単純だった。",
+      "text_markdown": "禁令の背後にある論理は単純だった。",
+      "tts": {
+        "text": "禁令の背後にある論理は単純だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国の船が航海しなければ、海賊は標的も新兵も得られないというものだった。",
+      "text_markdown": "中国の船が航海しなければ、海賊は標的も新兵も得られないというものだった。",
+      "tts": {
+        "text": "中国の船が航海しなければ、海賊は標的も新兵も得られないというものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "沿岸は安全になるはずだった。",
+      "text_markdown": "沿岸は安全になるはずだった。",
+      "tts": {
+        "text": "沿岸は安全になるはずだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現実はまったく逆だった。",
+      "text_markdown": "現実はまったく逆だった。",
+      "tts": {
+        "text": "現実はまったく逆だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海禁は貿易を止めなかった。",
+      "text_markdown": "海禁は貿易を止めなかった。",
+      "tts": {
+        "text": "海禁は貿易を止めなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "すべての貿易を密輸業者の手に押しやっただけだった。",
+      "text_markdown": "すべての貿易を密輸業者の手に押しやっただけだった。",
+      "tts": {
+        "text": "すべての貿易を密輸業者の手に押しやっただけだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "かつて公然と営業していた商人たちは、今や秘密裏に活動せざるを得なくなった。",
+      "text_markdown": "かつて公然と営業していた商人たちは、今や秘密裏に活動せざるを得なくなった。",
+      "tts": {
+        "text": "かつて公然と営業していた商人たちは、今や秘密裏に活動せざるを得なくなった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿岸の共同体は生計を海に頼っていた。",
+      "text_markdown": "沿岸の共同体は生計を海に頼っていた。",
+      "tts": {
+        "text": "沿岸の共同体は生計を海に頼っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "漁師は漁をする必要があった。",
+      "text_markdown": "漁師は漁をする必要があった。",
+      "tts": {
+        "text": "漁師は漁をする必要があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商人は商いをする必要があった。",
+      "text_markdown": "商人は商いをする必要があった。",
+      "tts": {
+        "text": "商人は商いをする必要があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "政府がこれらの活動を違法とした時、住民全体が一夜にして無法者となった。",
+      "text_markdown": "政府がこれらの活動を違法とした時、住民全体が一夜にして無法者となった。",
+      "tts": {
+        "text": "政府がこれらの活動を違法とした時、住民全体が一夜にして無法者となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南東部の福建省と浙江省が最も深刻な打撃を受けた。",
+      "text_markdown": "南東部の福建省と浙江省が最も深刻な打撃を受けた。",
+      "tts": {
+        "text": "南東部の福建省と浙江省が最も深刻な打撃を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの地域は痩せた岩がちの土壌で、農業には適していなかった。",
+      "text_markdown": "これらの地域は痩せた岩がちの土壌で、農業には適していなかった。",
+      "tts": {
+        "text": "これらの地域は痩せた岩がちの土壌で、農業には適していなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの省の人々は常に生き延びるために海に目を向けてきた。",
+      "text_markdown": "これらの省の人々は常に生き延びるために海に目を向けてきた。",
+      "tts": {
+        "text": "これらの省の人々は常に生き延びるために海に目を向けてきた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "合法的な貿易が禁じられると、密輸ネットワークが急速に拡大した。",
+      "text_markdown": "合法的な貿易が禁じられると、密輸ネットワークが急速に拡大した。",
+      "tts": {
+        "text": "合法的な貿易が禁じられると、密輸ネットワークが急速に拡大した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "秘密の港が海岸線に点在した。",
+      "text_markdown": "秘密の港が海岸線に点在した。",
+      "tts": {
+        "text": "秘密の港が海岸線に点在した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "武装した艦隊が密輸業者を政府の巡視船から守った。",
+      "text_markdown": "武装した艦隊が密輸業者を政府の巡視船から守った。",
+      "tts": {
+        "text": "武装した艦隊が密輸業者を政府の巡視船から守った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "倭寇という言葉はもともと日本の海賊を意味していた。",
+      "text_markdown": "倭寇という言葉はもともと日本の海賊を意味していた。",
+      "tts": {
+        "text": "倭寇という言葉はもともと日本の海賊を意味していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし十六世紀までに、倭寇は劇的に変貌していた。",
+      "text_markdown": "しかし十六世紀までに、倭寇は劇的に変貌していた。",
+      "tts": {
+        "text": "しかし十六世紀までに、倭寇は劇的に変貌していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家の推計によれば、王直の時代には、いわゆる日本の海賊の七十パーセントが実際には中国人だった。",
+      "text_markdown": "歴史家の推計によれば、王直の時代には、いわゆる日本の海賊の七十パーセントが実際には中国人だった。",
+      "tts": {
+        "text": "歴史家の推計によれば、王直の時代には、いわゆる日本の海賊の七十パーセントが実際には中国人だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らは法の外に追いやられた中国の商人、船乗り、漁師だった。",
+      "text_markdown": "彼らは法の外に追いやられた中国の商人、船乗り、漁師だった。",
+      "tts": {
+        "text": "彼らは法の外に追いやられた中国の商人、船乗り、漁師だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは明の政府の手が及ばない日本を拠点にしていた。",
+      "text_markdown": "彼らは明の政府の手が及ばない日本を拠点にしていた。",
+      "tts": {
+        "text": "彼らは明の政府の手が及ばない日本を拠点にしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "倭寇という呼び名は朝廷にとって都合の良い虚構となった。",
+      "text_markdown": "倭寇という呼び名は朝廷にとって都合の良い虚構となった。",
+      "tts": {
+        "text": "倭寇という呼び名は朝廷にとって都合の良い虚構となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時期、日本もまた混乱の中にあった。",
+      "text_markdown": "この時期、日本もまた混乱の中にあった。",
+      "tts": {
+        "text": "この時期、日本もまた混乱の中にあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "日本は戦国時代、すなわち群雄割拠の時代に突入していた。",
+      "text_markdown": "日本は戦国時代、すなわち群雄割拠の時代に突入していた。",
+      "tts": {
+        "text": "日本は戦国時代、すなわち群雄割拠の時代に突入していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "中央の権威は崩壊していた。",
+      "text_markdown": "中央の権威は崩壊していた。",
+      "tts": {
+        "text": "中央の権威は崩壊していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大名と呼ばれる地方の領主たちが領土をめぐって争っていた。",
+      "text_markdown": "大名と呼ばれる地方の領主たちが領土をめぐって争っていた。",
+      "tts": {
+        "text": "大名と呼ばれる地方の領主たちが領土をめぐって争っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの日本の領主の中には、中国の密輸業者や海賊を歓迎する者もいた。",
+      "text_markdown": "これらの日本の領主の中には、中国の密輸業者や海賊を歓迎する者もいた。",
+      "tts": {
+        "text": "これらの日本の領主の中には、中国の密輸業者や海賊を歓迎する者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "外国の商人たちは彼らの領地に富をもたらした。",
+      "text_markdown": "外国の商人たちは彼らの領地に富をもたらした。",
+      "tts": {
+        "text": "外国の商人たちは彼らの領地に富をもたらした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その見返りとして、海賊たちは安全な港と庇護を得た。",
+      "text_markdown": "その見返りとして、海賊たちは安全な港と庇護を得た。",
+      "tts": {
+        "text": "その見返りとして、海賊たちは安全な港と庇護を得た。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトガル人は最近、東アジアの海域に到達していた。",
+      "text_markdown": "ポルトガル人は最近、東アジアの海域に到達していた。",
+      "tts": {
+        "text": "ポルトガル人は最近、東アジアの海域に到達していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは1513年に中国に、1543年に日本に到達した。",
+      "text_markdown": "彼らは1513年に中国に、1543年に日本に到達した。",
+      "tts": {
+        "text": "彼らは千五百十三年に中国に、千五百四十三年に日本に到達した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは火器、ヨーロッパの商品、そして中国の絹と日本の銀への強い欲求を持ち込んだ。",
+      "text_markdown": "彼らは火器、ヨーロッパの商品、そして中国の絹と日本の銀への強い欲求を持ち込んだ。",
+      "tts": {
+        "text": "彼らは火器、ヨーロッパの商品、そして中国の絹と日本の銀への強い欲求を持ち込んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これが王直が足を踏み入れた世界だった。",
+      "text_markdown": "これが王直が足を踏み入れた世界だった。",
+      "tts": {
+        "text": "これが王直が足を踏み入れた世界だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正直な商いが犯罪とされる世界だった。",
+      "text_markdown": "正直な商いが犯罪とされる世界だった。",
+      "tts": {
+        "text": "正直な商いが犯罪とされる世界だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "明の海禁の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商人と海賊の境界線が政府の法令によって消し去られた世界だった。",
+      "text_markdown": "商人と海賊の境界線が政府の法令によって消し去られた世界だった。",
+      "tts": {
+        "text": "商人と海賊の境界線が政府の法令によって消し去られた世界だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は中国内陸部の安徽省歙県に生まれた。",
+      "text_markdown": "王直は中国内陸部の安徽省歙県に生まれた。",
+      "tts": {
+        "text": "王直は中国内陸部の安徽省歙県に生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正確な生年は不明だが、十六世紀初頭と考えられている。",
+      "text_markdown": "正確な生年は不明だが、十六世紀初頭と考えられている。",
+      "tts": {
+        "text": "正確な生年は不明だが、十六世紀初頭と考えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の家は裕福ではなかった。",
+      "text_markdown": "彼の家は裕福ではなかった。",
+      "tts": {
+        "text": "彼の家は裕福ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安徽は商人の地として知られていた。",
+      "text_markdown": "安徽は商人の地として知られていた。",
+      "tts": {
+        "text": "安徽は商人の地として知られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この地域の徽州商人は商才で中国全土に名を馳せていた。",
+      "text_markdown": "この地域の徽州商人は商才で中国全土に名を馳せていた。",
+      "tts": {
+        "text": "この地域の徽州商人は商才で中国全土に名を馳せていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは帝国中で塩、茶、木材などの商品を取引していた。",
+      "text_markdown": "彼らは帝国中で塩、茶、木材などの商品を取引していた。",
+      "tts": {
+        "text": "彼らは帝国中で塩、茶、木材などの商品を取引していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は塩の取引から身を立てた。",
+      "text_markdown": "王直は塩の取引から身を立てた。",
+      "tts": {
+        "text": "王直は塩の取引から身を立てた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "塩は中国で最も価値のある商品の一つだった。",
+      "text_markdown": "塩は中国で最も価値のある商品の一つだった。",
+      "tts": {
+        "text": "塩は中国で最も価値のある商品の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府が塩の生産と販売を独占していた。",
+      "text_markdown": "政府が塩の生産と販売を独占していた。",
+      "tts": {
+        "text": "政府が塩の生産と販売を独占していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "許可なく塩を取引することは重罪だった。",
+      "text_markdown": "許可なく塩を取引することは重罪だった。",
+      "tts": {
+        "text": "許可なく塩を取引することは重罪だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし塩の専売制度は深く腐敗していた。",
+      "text_markdown": "しかし塩の専売制度は深く腐敗していた。",
+      "tts": {
+        "text": "しかし塩の専売制度は深く腐敗していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府の許可証は政治的なつながりを持つ者に渡った。",
+      "text_markdown": "政府の許可証は政治的なつながりを持つ者に渡った。",
+      "tts": {
+        "text": "政府の許可証は政治的なつながりを持つ者に渡った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直のような小商人は合法的な市場から締め出されていた。",
+      "text_markdown": "王直のような小商人は合法的な市場から締め出されていた。",
+      "tts": {
+        "text": "王直のような小商人は合法的な市場から締め出されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの者が唯一の選択肢として密輸に転じた。",
+      "text_markdown": "多くの者が唯一の選択肢として密輸に転じた。",
+      "tts": {
+        "text": "多くの者が唯一の選択肢として密輸に転じた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は海上貿易の機会に引かれて沿岸部に移った。",
+      "text_markdown": "王直は海上貿易の機会に引かれて沿岸部に移った。",
+      "tts": {
+        "text": "王直は海上貿易の機会に引かれて沿岸部に移った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は浙江と福建の活気ある港湾地域に落ち着いた。",
+      "text_markdown": "彼は浙江と福建の活気ある港湾地域に落ち着いた。",
+      "tts": {
+        "text": "彼は浙江と福建の活気ある港湾地域に落ち着いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ここでは海禁にもかかわらず、地下経済が栄えていた。",
+      "text_markdown": "ここでは海禁にもかかわらず、地下経済が栄えていた。",
+      "tts": {
+        "text": "ここでは海禁にもかかわらず、地下経済が栄えていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は既存の密輸ネットワークと協力し始めた。",
+      "text_markdown": "彼は既存の密輸ネットワークと協力し始めた。",
+      "tts": {
+        "text": "彼は既存の密輸ネットワークと協力し始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "聡明で機知に富み、勇敢であることを証明した。",
+      "text_markdown": "聡明で機知に富み、勇敢であることを証明した。",
+      "tts": {
+        "text": "聡明で機知に富み、勇敢であることを証明した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海路、隠れ港、政府の巡視を逃れる方法を学んだ。",
+      "text_markdown": "海路、隠れ港、政府の巡視を逃れる方法を学んだ。",
+      "tts": {
+        "text": "海路、隠れ港、政府の巡視を逃れる方法を学んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は密輸の世界で急速に頭角を現した。",
+      "text_markdown": "王直は密輸の世界で急速に頭角を現した。",
+      "tts": {
+        "text": "王直は密輸の世界で急速に頭角を現した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は単なる船乗りや商人ではなかった。",
+      "text_markdown": "彼は単なる船乗りや商人ではなかった。",
+      "tts": {
+        "text": "彼は単なる船乗りや商人ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "組織者であり、広大な距離にまたがる複雑な活動を管理できる指導者だった。",
+      "text_markdown": "組織者であり、広大な距離にまたがる複雑な活動を管理できる指導者だった。",
+      "tts": {
+        "text": "組織者であり、広大な距離にまたがる複雑な活動を管理できる指導者だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百四十年代、彼はもう一人の著名な密輸・海賊の首領である徐海と手を結んだ。",
+      "text_markdown": "千五百四十年代、彼はもう一人の著名な密輸・海賊の首領である徐海と手を結んだ。",
+      "tts": {
+        "text": "千五百四十年代、彼はもう一人の著名な密輸・海賊の首領である徐海と手を結んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人は協力して事業を大幅に拡大した。",
+      "text_markdown": "二人は協力して事業を大幅に拡大した。",
+      "tts": {
+        "text": "二人は協力して事業を大幅に拡大した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "中国の絹を日本の銀と交換し、莫大な利益を上げた。",
+      "text_markdown": "中国の絹を日本の銀と交換し、莫大な利益を上げた。",
+      "tts": {
+        "text": "中国の絹を日本の銀と交換し、莫大な利益を上げた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "日本と中国の銀の価格差は莫大だった。",
+      "text_markdown": "日本と中国の銀の価格差は莫大だった。",
+      "tts": {
+        "text": "日本と中国の銀の価格差は莫大だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "銀は日本では豊富だったが、中国では希少だった。",
+      "text_markdown": "銀は日本では豊富だったが、中国では希少だった。",
+      "tts": {
+        "text": "銀は日本では豊富だったが、中国では希少だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "日本から中国に銀を運べる商人は投資を二倍にも三倍にもできた。",
+      "text_markdown": "日本から中国に銀を運べる商人は投資を二倍にも三倍にもできた。",
+      "tts": {
+        "text": "日本から中国に銀を運べる商人は投資を二倍にも三倍にもできた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしこの貿易は海禁のもとでは完全に違法だった。",
+      "text_markdown": "しかしこの貿易は海禁のもとでは完全に違法だった。",
+      "tts": {
+        "text": "しかしこの貿易は海禁のもとでは完全に違法だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すべての航海が逮捕と処刑の危険を伴っていた。",
+      "text_markdown": "すべての航海が逮捕と処刑の危険を伴っていた。",
+      "tts": {
+        "text": "すべての航海が逮捕と処刑の危険を伴っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直には明の政府の手が及ばない安全な港が必要だった。",
+      "text_markdown": "王直には明の政府の手が及ばない安全な港が必要だった。",
+      "tts": {
+        "text": "王直には明の政府の手が及ばない安全な港が必要だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それを日本で見つけた。",
+      "text_markdown": "それを日本で見つけた。",
+      "tts": {
+        "text": "それを日本で見つけた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "九州の西海岸沖にある遠隔の島々、五島列島が彼の主要拠点となった。",
+      "text_markdown": "九州の西海岸沖にある遠隔の島々、五島列島が彼の主要拠点となった。",
+      "tts": {
+        "text": "九州の西海岸沖にある遠隔の島々、五島列島が彼の主要拠点となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "地元の日本の領主たちは彼の存在を容認し、あるいは歓迎さえした。",
+      "text_markdown": "地元の日本の領主たちは彼の存在を容認し、あるいは歓迎さえした。",
+      "tts": {
+        "text": "地元の日本の領主たちは彼の存在を容認し、あるいは歓迎さえした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は平戸島にも拠点を築いた。",
+      "text_markdown": "王直は平戸島にも拠点を築いた。",
+      "tts": {
+        "text": "王直は平戸島にも拠点を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "平戸はすでに国際的な交易の中心地だった。",
+      "text_markdown": "平戸はすでに国際的な交易の中心地だった。",
+      "tts": {
+        "text": "平戸はすでに国際的な交易の中心地だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ポルトガルの商人たちが到来し始め、ヨーロッパとアジアの商業をつなぐ役割を果たしていた。",
+      "text_markdown": "ポルトガルの商人たちが到来し始め、ヨーロッパとアジアの商業をつなぐ役割を果たしていた。",
+      "tts": {
+        "text": "ポルトガルの商人たちが到来し始め、ヨーロッパとアジアの商業をつなぐ役割を果たしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの島の拠点から、王直は貿易帝国を築いた。",
+      "text_markdown": "これらの島の拠点から、王直は貿易帝国を築いた。",
+      "tts": {
+        "text": "これらの島の拠点から、王直は貿易帝国を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の船は絹、磁器、その他の中国の商品を日本に運んだ。",
+      "text_markdown": "彼の船は絹、磁器、その他の中国の商品を日本に運んだ。",
+      "tts": {
+        "text": "彼の船は絹、磁器、その他の中国の商品を日本に運んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帰路には銀、刀剣、日本の銅を積んで戻った。",
+      "text_markdown": "帰路には銀、刀剣、日本の銅を積んで戻った。",
+      "tts": {
+        "text": "帰路には銀、刀剣、日本の銅を積んで戻った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は単なる密輸業者以上の存在になりつつあった。",
+      "text_markdown": "彼は単なる密輸業者以上の存在になりつつあった。",
+      "tts": {
+        "text": "彼は単なる密輸業者以上の存在になりつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "独立した権力そのものになりつつあった。",
+      "text_markdown": "独立した権力そのものになりつつあった。",
+      "tts": {
+        "text": "独立した権力そのものになりつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船、部下、資金、安全な港を持っていた。",
+      "text_markdown": "船、部下、資金、安全な港を持っていた。",
+      "tts": {
+        "text": "船、部下、資金、安全な港を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼が築いていたものは、まさに一つの国家のようだった。",
+      "text_markdown": "彼が築いていたものは、まさに一つの国家のようだった。",
+      "tts": {
+        "text": "彼が築いていたものは、まさに一つの国家のようだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊王",
+      "text_markdown": "海賊王"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百四十年代末までに、王直は東アジアの海上貿易で最も強力な人物となっていた。",
+      "text_markdown": "千五百四十年代末までに、王直は東アジアの海上貿易で最も強力な人物となっていた。",
+      "tts": {
+        "text": "千五百四十年代末までに、王直は東アジアの海上貿易で最も強力な人物となっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数百隻の船と数千の部下を率いていた。",
+      "text_markdown": "数百隻の船と数千の部下を率いていた。",
+      "tts": {
+        "text": "数百隻の船と数千の部下を率いていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の交易ネットワークは東南アジアから朝鮮にまで及んでいた。",
+      "text_markdown": "彼の交易ネットワークは東南アジアから朝鮮にまで及んでいた。",
+      "tts": {
+        "text": "彼の交易ネットワークは東南アジアから朝鮮にまで及んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は王を自称した。",
+      "text_markdown": "彼は王を自称した。",
+      "tts": {
+        "text": "彼は王を自称した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "五島列島に、首都として機能する要塞化された拠点を建設した。",
+      "text_markdown": "五島列島に、首都として機能する要塞化された拠点を建設した。",
+      "tts": {
+        "text": "五島列島に、首都として機能する要塞化された拠点を建設した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "絹の衣をまとい、封建領主のように謁見を行った。",
+      "text_markdown": "絹の衣をまとい、封建領主のように謁見を行った。",
+      "tts": {
+        "text": "絹の衣をまとい、封建領主のように謁見を行った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "追従者たちは彼を徽王と呼んだ。",
+      "text_markdown": "追従者たちは彼を徽王と呼んだ。",
+      "tts": {
+        "text": "追従者たちは彼を徽王と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この名は安徽省の出自を反映していた。",
+      "text_markdown": "この名は安徽省の出自を反映していた。",
+      "tts": {
+        "text": "この名は安徽省の出自を反映していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "また、徽州の商人ネットワークが仲間に対して抱く忠誠心も反映していた。",
+      "text_markdown": "また、徽州の商人ネットワークが仲間に対して抱く忠誠心も反映していた。",
+      "tts": {
+        "text": "また、徽州の商人ネットワークが仲間に対して抱く忠誠心も反映していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は自分を海賊とは思っていなかった。",
+      "text_markdown": "王直は自分を海賊とは思っていなかった。",
+      "tts": {
+        "text": "王直は自分を海賊とは思っていなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法の外に追いやられた商人だと考えていた。",
+      "text_markdown": "法の外に追いやられた商人だと考えていた。",
+      "tts": {
+        "text": "法の外に追いやられた商人だと考えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府さえ許せば合法的に商いをしたいと繰り返し表明していた。",
+      "text_markdown": "政府さえ許せば合法的に商いをしたいと繰り返し表明していた。",
+      "tts": {
+        "text": "政府さえ許せば合法的に商いをしたいと繰り返し表明していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし明の朝廷は犯罪者としか見なかった。",
+      "text_markdown": "しかし明の朝廷は犯罪者としか見なかった。",
+      "tts": {
+        "text": "しかし明の朝廷は犯罪者としか見なかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "倭寇の襲撃報告が北京に殺到した。",
+      "text_markdown": "倭寇の襲撃報告が北京に殺到した。",
+      "tts": {
+        "text": "倭寇の襲撃報告が北京に殺到した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "沿岸の諸省は混乱に陥っていた。",
+      "text_markdown": "沿岸の諸省は混乱に陥っていた。",
+      "tts": {
+        "text": "沿岸の諸省は混乱に陥っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "町は焼かれ、人々が殺されていた。",
+      "text_markdown": "町は焼かれ、人々が殺されていた。",
+      "tts": {
+        "text": "町は焼かれ、人々が殺されていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この暴力のすべてが王直の仕業というわけではなかった。",
+      "text_markdown": "この暴力のすべてが王直の仕業というわけではなかった。",
+      "tts": {
+        "text": "この暴力のすべてが王直の仕業というわけではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "倭寇は一つの統一された勢力ではなかった。",
+      "text_markdown": "倭寇は一つの統一された勢力ではなかった。",
+      "tts": {
+        "text": "倭寇は一つの統一された勢力ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数十の独立した海賊集団が沿岸で活動していた。",
+      "text_markdown": "数十の独立した海賊集団が沿岸で活動していた。",
+      "tts": {
+        "text": "数十の独立した海賊集団が沿岸で活動していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "王直のような商人もいたが、単なる略奪者や盗賊もいた。",
+      "text_markdown": "王直のような商人もいたが、単なる略奪者や盗賊もいた。",
+      "tts": {
+        "text": "王直のような商人もいたが、単なる略奪者や盗賊もいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし政府はすべてを王直のせいにした。",
+      "text_markdown": "しかし政府はすべてを王直のせいにした。",
+      "tts": {
+        "text": "しかし政府はすべてを王直のせいにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も著名な倭寇の首領として、彼は沿岸の海賊行為の象徴となった。",
+      "text_markdown": "最も著名な倭寇の首領として、彼は沿岸の海賊行為の象徴となった。",
+      "tts": {
+        "text": "最も著名な倭寇の首領として、彼は沿岸の海賊行為の象徴となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "すべての襲撃、すべての攻撃、すべての焼かれた村が彼の影響によるものとされた。",
+      "text_markdown": "すべての襲撃、すべての攻撃、すべての焼かれた村が彼の影響によるものとされた。",
+      "tts": {
+        "text": "すべての襲撃、すべての攻撃、すべての焼かれた村が彼の影響によるものとされた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百五十三年、大規模な倭寇の攻撃が長江デルタを襲った。",
+      "text_markdown": "千五百五十三年、大規模な倭寇の攻撃が長江デルタを襲った。",
+      "tts": {
+        "text": "千五百五十三年、大規模な倭寇の攻撃が長江デルタを襲った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "略奪者たちは都市を包囲し、住民を恐怖に陥れた。",
+      "text_markdown": "略奪者たちは都市を包囲し、住民を恐怖に陥れた。",
+      "tts": {
+        "text": "略奪者たちは都市を包囲し、住民を恐怖に陥れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明の軍は対応に苦慮した。",
+      "text_markdown": "明の軍は対応に苦慮した。",
+      "tts": {
+        "text": "明の軍は対応に苦慮した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "沿岸防衛は何十年も放置されていた。",
+      "text_markdown": "沿岸防衛は何十年も放置されていた。",
+      "tts": {
+        "text": "沿岸防衛は何十年も放置されていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "朝廷は危機に対処するために新たな軍事指揮官を任命した。",
+      "text_markdown": "朝廷は危機に対処するために新たな軍事指揮官を任命した。",
+      "tts": {
+        "text": "朝廷は危機に対処するために新たな軍事指揮官を任命した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その中には、中国の歴史に名を残すことになる二人の人物がいた。",
+      "text_markdown": "その中には、中国の歴史に名を残すことになる二人の人物がいた。",
+      "tts": {
+        "text": "その中には、中国の歴史に名を残すことになる二人の人物がいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戚継光は沿岸軍を再編成する優れた将軍だった。",
+      "text_markdown": "戚継光は沿岸軍を再編成する優れた将軍だった。",
+      "tts": {
+        "text": "戚継光は沿岸軍を再編成する優れた将軍だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "胡宗憲は武力と外交の両方を駆使する狡猾な戦略家だった。",
+      "text_markdown": "胡宗憲は武力と外交の両方を駆使する狡猾な戦略家だった。",
+      "tts": {
+        "text": "胡宗憲は武力と外交の両方を駆使する狡猾な戦略家だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "胡宗憲は軍事力だけでは倭寇を打ち破れないことを理解していた。",
+      "text_markdown": "胡宗憲は軍事力だけでは倭寇を打ち破れないことを理解していた。",
+      "tts": {
+        "text": "胡宗憲は軍事力だけでは倭寇を打ち破れないことを理解していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちは船も拠点も多すぎ、沿岸住民の支持も厚すぎた。",
+      "text_markdown": "海賊たちは船も拠点も多すぎ、沿岸住民の支持も厚すぎた。",
+      "tts": {
+        "text": "海賊たちは船も拠点も多すぎ、沿岸住民の支持も厚すぎた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "別の手段が必要だった。",
+      "text_markdown": "別の手段が必要だった。",
+      "tts": {
+        "text": "別の手段が必要だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "胡宗憲は分断統治の策略を立てた。",
+      "text_markdown": "胡宗憲は分断統治の策略を立てた。",
+      "tts": {
+        "text": "胡宗憲は分断統治の策略を立てた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "倭寇の首領たちを互いに対立させる計画だった。",
+      "text_markdown": "倭寇の首領たちを互いに対立させる計画だった。",
+      "tts": {
+        "text": "倭寇の首領たちを互いに対立させる計画だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "投降する者には恩赦を与え、拒む者は滅ぼすつもりだった。",
+      "text_markdown": "投降する者には恩赦を与え、拒む者は滅ぼすつもりだった。",
+      "tts": {
+        "text": "投降する者には恩赦を与え、拒む者は滅ぼすつもりだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "主な標的は王直だった。",
+      "text_markdown": "主な標的は王直だった。",
+      "tts": {
+        "text": "主な標的は王直だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も強大な倭寇の首領を無力化できれば、残りは崩壊するかもしれなかった。",
+      "text_markdown": "最も強大な倭寇の首領を無力化できれば、残りは崩壊するかもしれなかった。",
+      "tts": {
+        "text": "最も強大な倭寇の首領を無力化できれば、残りは崩壊するかもしれなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "胡宗憲は五島列島の王直に密書を送り始めた。",
+      "text_markdown": "胡宗憲は五島列島の王直に密書を送り始めた。",
+      "tts": {
+        "text": "胡宗憲は五島列島の王直に密書を送り始めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "書状は慎重に練られていた。",
+      "text_markdown": "書状は慎重に練られていた。",
+      "tts": {
+        "text": "書状は慎重に練られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王直が常に望んでいたもの、すなわち合法的な交易権を提示した。",
+      "text_markdown": "王直が常に望んでいたもの、すなわち合法的な交易権を提示した。",
+      "tts": {
+        "text": "王直が常に望んでいたもの、すなわち合法的な交易権を提示した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府は彼個人のために海禁を解除するというものだった。",
+      "text_markdown": "政府は彼個人のために海禁を解除するというものだった。",
+      "tts": {
+        "text": "政府は彼個人のために海禁を解除するというものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "皇帝の許しのもと、公然と合法的に商いができるようになるというのだった。",
+      "text_markdown": "皇帝の許しのもと、公然と合法的に商いができるようになるというのだった。",
+      "tts": {
+        "text": "皇帝の許しのもと、公然と合法的に商いができるようになるというのだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は深く心を動かされた。",
+      "text_markdown": "王直は深く心を動かされた。",
+      "tts": {
+        "text": "王直は深く心を動かされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何年も法の外で活動してきた。",
+      "text_markdown": "何年も法の外で活動してきた。",
+      "tts": {
+        "text": "何年も法の外で活動してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "絶えざる危険、武装護衛の必要性、処刑の脅威が彼にのしかかっていた。",
+      "text_markdown": "絶えざる危険、武装護衛の必要性、処刑の脅威が彼にのしかかっていた。",
+      "tts": {
+        "text": "絶えざる危険、武装護衛の必要性、処刑の脅威が彼にのしかかっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "合法的な貿易は平和と安定を意味するはずだった。",
+      "text_markdown": "合法的な貿易は平和と安定を意味するはずだった。",
+      "tts": {
+        "text": "合法的な貿易は平和と安定を意味するはずだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一方で、胡宗憲は王直の同盟者に対して行動を起こした。",
+      "text_markdown": "一方で、胡宗憲は王直の同盟者に対して行動を起こした。",
+      "tts": {
+        "text": "一方で、胡宗憲は王直の同盟者に対して行動を起こした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "賄賂、脅迫、武力を用いて徐海やその他の海賊の首領を無力化した。",
+      "text_markdown": "賄賂、脅迫、武力を用いて徐海やその他の海賊の首領を無力化した。",
+      "tts": {
+        "text": "賄賂、脅迫、武力を用いて徐海やその他の海賊の首領を無力化した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "徐海は千五百五十六年についに殺害された。自らの部下に裏切られたと伝えられる。",
+      "text_markdown": "徐海は千五百五十六年についに殺害された。自らの部下に裏切られたと伝えられる。",
+      "tts": {
+        "text": "徐海は千五百五十六年についに殺害された。自らの部下に裏切られたと伝えられる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は同盟者が一人また一人と倒れていくのを見た。",
+      "text_markdown": "王直は同盟者が一人また一人と倒れていくのを見た。",
+      "tts": {
+        "text": "王直は同盟者が一人また一人と倒れていくのを見た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "かつて揺るぎなかった彼の地位は、次第に孤立していった。",
+      "text_markdown": "かつて揺るぎなかった彼の地位は、次第に孤立していった。",
+      "tts": {
+        "text": "かつて揺るぎなかった彼の地位は、次第に孤立していった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "恩赦の申し出が彼にとって最善の選択肢に見え始めた。",
+      "text_markdown": "恩赦の申し出が彼にとって最善の選択肢に見え始めた。",
+      "tts": {
+        "text": "恩赦の申し出が彼にとって最善の選択肢に見え始めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "胡宗憲は信頼のおける使者を日本に派遣し、王直と直接会わせた。",
+      "text_markdown": "胡宗憲は信頼のおける使者を日本に派遣し、王直と直接会わせた。",
+      "tts": {
+        "text": "胡宗憲は信頼のおける使者を日本に派遣し、王直と直接会わせた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "使者は贈り物、公文書、そして手厚い約束を携えていた。",
+      "text_markdown": "使者は贈り物、公文書、そして手厚い約束を携えていた。",
+      "tts": {
+        "text": "使者は贈り物、公文書、そして手厚い約束を携えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直に対して、この申し出は本物であると保証した。",
+      "text_markdown": "王直に対して、この申し出は本物であると保証した。",
+      "tts": {
+        "text": "王直に対して、この申し出は本物であると保証した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "交渉は数か月にわたった。",
+      "text_markdown": "交渉は数か月にわたった。",
+      "tts": {
+        "text": "交渉は数か月にわたった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王直は慎重だった。",
+      "text_markdown": "王直は慎重だった。",
+      "tts": {
+        "text": "王直は慎重だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明の政府がかつて約束を破ったことを知っていた。",
+      "text_markdown": "明の政府がかつて約束を破ったことを知っていた。",
+      "tts": {
+        "text": "明の政府がかつて約束を破ったことを知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊王",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし使者は説得力があり、条件は寛大に思えた。",
+      "text_markdown": "しかし使者は説得力があり、条件は寛大に思えた。",
+      "tts": {
+        "text": "しかし使者は説得力があり、条件は寛大に思えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "罠",
+      "text_markdown": "罠"
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百五十七年、王直は命を賭す決断を下した。",
+      "text_markdown": "千五百五十七年、王直は命を賭す決断を下した。",
+      "tts": {
+        "text": "千五百五十七年、王直は命を賭す決断を下した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国に戻ることに同意したのだ。",
+      "text_markdown": "中国に戻ることに同意したのだ。",
+      "tts": {
+        "text": "中国に戻ることに同意したのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "胡宗憲に投降し、恩赦を受け入れ、合法的な商人になるつもりだった。",
+      "text_markdown": "胡宗憲に投降し、恩赦を受け入れ、合法的な商人になるつもりだった。",
+      "tts": {
+        "text": "胡宗憲に投降し、恩赦を受け入れ、合法的な商人になるつもりだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "部下たちはそれを思いとどまるよう警告した。",
+      "text_markdown": "部下たちはそれを思いとどまるよう警告した。",
+      "tts": {
+        "text": "部下たちはそれを思いとどまるよう警告した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの者がこの申し出は罠だと信じていた。",
+      "text_markdown": "多くの者がこの申し出は罠だと信じていた。",
+      "tts": {
+        "text": "多くの者がこの申し出は罠だと信じていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "安全な日本にとどまるよう訴えた。",
+      "text_markdown": "安全な日本にとどまるよう訴えた。",
+      "tts": {
+        "text": "安全な日本にとどまるよう訴えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし王直は亡命生活に疲れていた。",
+      "text_markdown": "しかし王直は亡命生活に疲れていた。",
+      "tts": {
+        "text": "しかし王直は亡命生活に疲れていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "故郷が恋しかった。",
+      "text_markdown": "故郷が恋しかった。",
+      "tts": {
+        "text": "故郷が恋しかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自分ほどの力と影響力を持つ者は、逃亡者の暮らしではなく、認められるべきだと考えていた。",
+      "text_markdown": "自分ほどの力と影響力を持つ者は、逃亡者の暮らしではなく、認められるべきだと考えていた。",
+      "tts": {
+        "text": "自分ほどの力と影響力を持つ者は、逃亡者の暮らしではなく、認められるべきだと考えていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな艦隊を率いて五島列島を出航した。",
+      "text_markdown": "小さな艦隊を率いて五島列島を出航した。",
+      "tts": {
+        "text": "小さな艦隊を率いて五島列島を出航した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国の役人への贈り物を持参した。",
+      "text_markdown": "中国の役人への贈り物を持参した。",
+      "tts": {
+        "text": "中国の役人への贈り物を持参した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も上等な衣をまとい、まるで国賓として迎えられるかのように臨んだ。",
+      "text_markdown": "最も上等な衣をまとい、まるで国賓として迎えられるかのように臨んだ。",
+      "tts": {
+        "text": "最も上等な衣をまとい、まるで国賓として迎えられるかのように臨んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中国の沿岸に到着すると、胡宗憲は盛大な儀式で彼を迎えた。",
+      "text_markdown": "中国の沿岸に到着すると、胡宗憲は盛大な儀式で彼を迎えた。",
+      "tts": {
+        "text": "中国の沿岸に到着すると、胡宗憲は盛大な儀式で彼を迎えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宴が催され、丁重な会話が交わされた。",
+      "text_markdown": "宴が催され、丁重な会話が交わされた。",
+      "tts": {
+        "text": "宴が催され、丁重な会話が交わされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直は犯罪者としてではなく、賓客として扱われた。",
+      "text_markdown": "王直は犯罪者としてではなく、賓客として扱われた。",
+      "tts": {
+        "text": "王直は犯罪者としてではなく、賓客として扱われた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "胡宗憲は恩赦の合意を本当に守りたかったのかもしれない。",
+      "text_markdown": "胡宗憲は恩赦の合意を本当に守りたかったのかもしれない。",
+      "tts": {
+        "text": "胡宗憲は恩赦の合意を本当に守りたかったのかもしれない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裏切りが彼自身の考えだったのか、上位の官僚からの指示だったのかは歴史家の間で議論がある。",
+      "text_markdown": "裏切りが彼自身の考えだったのか、上位の官僚からの指示だったのかは歴史家の間で議論がある。",
+      "tts": {
+        "text": "裏切りが彼自身の考えだったのか、上位の官僚からの指示だったのかは歴史家の間で議論がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明らかなのは、北京の有力者たちが王直の処刑を求めていたということだ。",
+      "text_markdown": "明らかなのは、北京の有力者たちが王直の処刑を求めていたということだ。",
+      "tts": {
+        "text": "明らかなのは、北京の有力者たちが王直の処刑を求めていたということだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの朝臣は、海賊への恩赦を容認できない弱さの表れと見なした。",
+      "text_markdown": "多くの朝臣は、海賊への恩赦を容認できない弱さの表れと見なした。",
+      "tts": {
+        "text": "多くの朝臣は、海賊への恩赦を容認できない弱さの表れと見なした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王直を赦免すれば、他の者が海賊行為に走ることを助長すると主張した。",
+      "text_markdown": "王直を赦免すれば、他の者が海賊行為に走ることを助長すると主張した。",
+      "tts": {
+        "text": "王直を赦免すれば、他の者が海賊行為に走ることを助長すると主張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "法は法であり、王直は何十年もそれを破ってきたのだと。",
+      "text_markdown": "法は法であり、王直は何十年もそれを破ってきたのだと。",
+      "tts": {
+        "text": "法は法であり、王直は何十年もそれを破ってきたのだと。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は到着後まもなく逮捕された。",
+      "text_markdown": "王直は到着後まもなく逮捕された。",
+      "tts": {
+        "text": "王直は到着後まもなく逮捕された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宴は止んだ。",
+      "text_markdown": "宴は止んだ。",
+      "tts": {
+        "text": "宴は止んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "約束は消え去った。",
+      "text_markdown": "約束は消え去った。",
+      "tts": {
+        "text": "約束は消え去った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "鎖につながれ、牢に入れられた。",
+      "text_markdown": "鎖につながれ、牢に入れられた。",
+      "tts": {
+        "text": "鎖につながれ、牢に入れられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "約二年間、獄中に囚われた。",
+      "text_markdown": "約二年間、獄中に囚われた。",
+      "tts": {
+        "text": "約二年間、獄中に囚われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その間、彼の運命は明の朝廷の最高レベルで議論された。",
+      "text_markdown": "その間、彼の運命は明の朝廷の最高レベルで議論された。",
+      "tts": {
+        "text": "その間、彼の運命は明の朝廷の最高レベルで議論された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部の官僚は自発的に投降したことを指摘し、慈悲を訴えた。",
+      "text_markdown": "一部の官僚は自発的に投降したことを指摘し、慈悲を訴えた。",
+      "tts": {
+        "text": "一部の官僚は自発的に投降したことを指摘し、慈悲を訴えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の者は死刑を求めた。",
+      "text_markdown": "他の者は死刑を求めた。",
+      "tts": {
+        "text": "他の者は死刑を求めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "倭寇の襲撃で亡くなった数千人を指摘した。",
+      "text_markdown": "倭寇の襲撃で亡くなった数千人を指摘した。",
+      "tts": {
+        "text": "倭寇の襲撃で亡くなった数千人を指摘した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直がそのすべてに責任があると主張した。",
+      "text_markdown": "王直がそのすべてに責任があると主張した。",
+      "tts": {
+        "text": "王直がそのすべてに責任があると主張した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直が獄中にいる間、かつての部下たちは日本から事態を見守っていた。",
+      "text_markdown": "王直が獄中にいる間、かつての部下たちは日本から事態を見守っていた。",
+      "tts": {
+        "text": "王直が獄中にいる間、かつての部下たちは日本から事態を見守っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは裏切りに激怒していた。",
+      "text_markdown": "彼らは裏切りに激怒していた。",
+      "tts": {
+        "text": "彼らは裏切りに激怒していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府は約束を破ったのだ。",
+      "text_markdown": "政府は約束を破ったのだ。",
+      "tts": {
+        "text": "政府は約束を破ったのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "残りの倭寇との平和的交渉の望みは完全に絶たれた。",
+      "text_markdown": "残りの倭寇との平和的交渉の望みは完全に絶たれた。",
+      "tts": {
+        "text": "残りの倭寇との平和的交渉の望みは完全に絶たれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は獄中から命乞いの書状を書いたと伝えられる。",
+      "text_markdown": "王直は獄中から命乞いの書状を書いたと伝えられる。",
+      "tts": {
+        "text": "王直は獄中から命乞いの書状を書いたと伝えられる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "残りの倭寇を説得して投降させるために自分の影響力を使うと申し出た。",
+      "text_markdown": "残りの倭寇を説得して投降させるために自分の影響力を使うと申し出た。",
+      "tts": {
+        "text": "残りの倭寇を説得して投降させるために自分の影響力を使うと申し出た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自分を殺せば海賊問題は悪化するだけだと訴えた。",
+      "text_markdown": "自分を殺せば海賊問題は悪化するだけだと訴えた。",
+      "tts": {
+        "text": "自分を殺せば海賊問題は悪化するだけだと訴えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の主張は自己保身であると同時に、まったく正しかった。",
+      "text_markdown": "彼の主張は自己保身であると同時に、まったく正しかった。",
+      "tts": {
+        "text": "彼の主張は自己保身であると同時に、まったく正しかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし朝廷は実用的な解決策には関心がなかった。",
+      "text_markdown": "しかし朝廷は実用的な解決策には関心がなかった。",
+      "tts": {
+        "text": "しかし朝廷は実用的な解決策には関心がなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見せしめにすることに関心があったのだ。",
+      "text_markdown": "見せしめにすることに関心があったのだ。",
+      "tts": {
+        "text": "見せしめにすることに関心があったのだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明の朝廷の議論は、貿易政策をめぐる深い分裂を露わにした。",
+      "text_markdown": "明の朝廷の議論は、貿易政策をめぐる深い分裂を露わにした。",
+      "tts": {
+        "text": "明の朝廷の議論は、貿易政策をめぐる深い分裂を露わにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の官僚は海禁が海賊問題の根本原因であることを理解していた。",
+      "text_markdown": "一部の官僚は海禁が海賊問題の根本原因であることを理解していた。",
+      "tts": {
+        "text": "一部の官僚は海禁が海賊問題の根本原因であることを理解していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "貿易制限の緩和を訴えた。",
+      "text_markdown": "貿易制限の緩和を訴えた。",
+      "tts": {
+        "text": "貿易制限の緩和を訴えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の者は、対外貿易は腐敗と危険をもたらすという伝統的な見方に固執した。",
+      "text_markdown": "他の者は、対外貿易は腐敗と危険をもたらすという伝統的な見方に固執した。",
+      "tts": {
+        "text": "他の者は、対外貿易は腐敗と危険をもたらすという伝統的な見方に固執した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海禁はより厳格に施行すべきであり、緩和すべきではないと信じていた。",
+      "text_markdown": "海禁はより厳格に施行すべきであり、緩和すべきではないと信じていた。",
+      "tts": {
+        "text": "海禁はより厳格に施行すべきであり、緩和すべきではないと信じていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "罠",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直の運命に関する議論では、これらの保守派が最終的に勝利した。",
+      "text_markdown": "王直の運命に関する議論では、これらの保守派が最終的に勝利した。",
+      "tts": {
+        "text": "王直の運命に関する議論では、これらの保守派が最終的に勝利した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "最期",
+      "text_markdown": "最期"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百五十九年、北京から命令が下った。",
+      "text_markdown": "千五百五十九年、北京から命令が下った。",
+      "tts": {
+        "text": "千五百五十九年、北京から命令が下った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王直は処刑されることになった。",
+      "text_markdown": "王直は処刑されることになった。",
+      "tts": {
+        "text": "王直は処刑されることになった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赦免もなく、恩赦もなく、慈悲もなかった。",
+      "text_markdown": "赦免もなく、恩赦もなく、慈悲もなかった。",
+      "tts": {
+        "text": "赦免もなく、恩赦もなく、慈悲もなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は杭州の刑場に連行された。",
+      "text_markdown": "王直は杭州の刑場に連行された。",
+      "tts": {
+        "text": "王直は杭州の刑場に連行された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の道を辿る者すべてへの見せしめとして、公衆の面前で斬首された。",
+      "text_markdown": "彼の道を辿る者すべてへの見せしめとして、公衆の面前で斬首された。",
+      "tts": {
+        "text": "彼の道を辿る者すべてへの見せしめとして、公衆の面前で斬首された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王を自称した男は、一介の犯罪者として死んだ。",
+      "text_markdown": "王を自称した男は、一介の犯罪者として死んだ。",
+      "tts": {
+        "text": "王を自称した男は、一介の犯罪者として死んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一部の記録によれば、王直は最後まで反骨を貫いた。",
+      "text_markdown": "一部の記録によれば、王直は最後まで反骨を貫いた。",
+      "tts": {
+        "text": "一部の記録によれば、王直は最後まで反骨を貫いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "自分を海賊だと思ったことは一度もないと述べたと伝えられる。",
+      "text_markdown": "自分を海賊だと思ったことは一度もないと述べたと伝えられる。",
+      "tts": {
+        "text": "自分を海賊だと思ったことは一度もないと述べたと伝えられる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ただ商いがしたかっただけだと。",
+      "text_markdown": "ただ商いがしたかっただけだと。",
+      "tts": {
+        "text": "ただ商いがしたかっただけだと。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明の朝廷は彼の処刑で倭寇の問題が終わると信じた。",
+      "text_markdown": "明の朝廷は彼の処刑で倭寇の問題が終わると信じた。",
+      "tts": {
+        "text": "明の朝廷は彼の処刑で倭寇の問題が終わると信じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは壊滅的に間違っていた。",
+      "text_markdown": "彼らは壊滅的に間違っていた。",
+      "tts": {
+        "text": "彼らは壊滅的に間違っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "正反対のことが起きた。",
+      "text_markdown": "正反対のことが起きた。",
+      "tts": {
+        "text": "正反対のことが起きた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は彼なりの方法で、穏健な力だった。",
+      "text_markdown": "王直は彼なりの方法で、穏健な力だった。",
+      "tts": {
+        "text": "王直は彼なりの方法で、穏健な力だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "部下の規律を維持してきた。",
+      "text_markdown": "部下の規律を維持してきた。",
+      "tts": {
+        "text": "部下の規律を維持してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府との対話の道を開いてきた。",
+      "text_markdown": "政府との対話の道を開いてきた。",
+      "tts": {
+        "text": "政府との対話の道を開いてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "倭寇の中で最も暴力的な勢力を抑えてきた。",
+      "text_markdown": "倭寇の中で最も暴力的な勢力を抑えてきた。",
+      "tts": {
+        "text": "倭寇の中で最も暴力的な勢力を抑えてきた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直の死とともに、それらの歯止めは消えた。",
+      "text_markdown": "王直の死とともに、それらの歯止めは消えた。",
+      "tts": {
+        "text": "王直の死とともに、それらの歯止めは消えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裏切りに激怒したかつての部下たちは、中国沿岸への報復攻撃を開始した。",
+      "text_markdown": "裏切りに激怒したかつての部下たちは、中国沿岸への報復攻撃を開始した。",
+      "tts": {
+        "text": "裏切りに激怒したかつての部下たちは、中国沿岸への報復攻撃を開始した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その後の襲撃は、それまでのいかなるものよりもはるかに破壊的だった。",
+      "text_markdown": "その後の襲撃は、それまでのいかなるものよりもはるかに破壊的だった。",
+      "tts": {
+        "text": "その後の襲撃は、それまでのいかなるものよりもはるかに破壊的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新たな倭寇の首領が台頭し、その多くは王直よりもはるかに残忍だった。",
+      "text_markdown": "新たな倭寇の首領が台頭し、その多くは王直よりもはるかに残忍だった。",
+      "tts": {
+        "text": "新たな倭寇の首領が台頭し、その多くは王直よりもはるかに残忍だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らには交渉する気などなかった。",
+      "text_markdown": "彼らには交渉する気などなかった。",
+      "tts": {
+        "text": "彼らには交渉する気などなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府の約束を信じた男がどうなったかを見ていたからだ。",
+      "text_markdown": "政府の約束を信じた男がどうなったかを見ていたからだ。",
+      "tts": {
+        "text": "政府の約束を信じた男がどうなったかを見ていたからだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明の軍は再燃した海賊行為を鎮圧するため、何年にもわたる高額な遠征を余儀なくされた。",
+      "text_markdown": "明の軍は再燃した海賊行為を鎮圧するため、何年にもわたる高額な遠征を余儀なくされた。",
+      "tts": {
+        "text": "明の軍は再燃した海賊行為を鎮圧するため、何年にもわたる高額な遠征を余儀なくされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戚継光将軍は約十年間にわたり、南東沿岸で倭寇の襲撃と戦った。",
+      "text_markdown": "戚継光将軍は約十年間にわたり、南東沿岸で倭寇の襲撃と戦った。",
+      "tts": {
+        "text": "戚継光将軍は約十年間にわたり、南東沿岸で倭寇の襲撃と戦った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数千の兵士と民間人が戦闘で命を落とした。",
+      "text_markdown": "数千の兵士と民間人が戦闘で命を落とした。",
+      "tts": {
+        "text": "数千の兵士と民間人が戦闘で命を落とした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直を死に誘い込んだ官僚、胡宗憲は失脚した。",
+      "text_markdown": "王直を死に誘い込んだ官僚、胡宗憲は失脚した。",
+      "tts": {
+        "text": "王直を死に誘い込んだ官僚、胡宗憲は失脚した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "後に汚職やその他の罪で告発された。",
+      "text_markdown": "後に汚職やその他の罪で告発された。",
+      "tts": {
+        "text": "後に汚職やその他の罪で告発された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "獄中で、打ちひしがれた男として亡くなった。",
+      "text_markdown": "獄中で、打ちひしがれた男として亡くなった。",
+      "tts": {
+        "text": "獄中で、打ちひしがれた男として亡くなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "歴史は複雑な感情をもって彼を記憶している。",
+      "text_markdown": "歴史は複雑な感情をもって彼を記憶している。",
+      "tts": {
+        "text": "歴史は複雑な感情をもって彼を記憶している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明政府が最悪の倭寇の襲撃をようやく鎮圧できたのは、千五百六十年代半ばになってのことだった。",
+      "text_markdown": "明政府が最悪の倭寇の襲撃をようやく鎮圧できたのは、千五百六十年代半ばになってのことだった。",
+      "tts": {
+        "text": "明政府が最悪の倭寇の襲撃をようやく鎮圧できたのは、千五百六十年代半ばになってのことだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "解決策は処刑を増やすことでも、海禁をより厳しく施行することでもなかった。",
+      "text_markdown": "解決策は処刑を増やすことでも、海禁をより厳しく施行することでもなかった。",
+      "tts": {
+        "text": "解決策は処刑を増やすことでも、海禁をより厳しく施行することでもなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "解決策はまさに王直が常に求めていたことだった。",
+      "text_markdown": "解決策はまさに王直が常に求めていたことだった。",
+      "tts": {
+        "text": "解決策はまさに王直が常に求めていたことだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百六十七年、明の朝廷はついに海禁を緩和した。",
+      "text_markdown": "千五百六十七年、明の朝廷はついに海禁を緩和した。",
+      "tts": {
+        "text": "千五百六十七年、明の朝廷はついに海禁を緩和した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国の商人は東南アジアの港に航海して貿易することを許された。",
+      "text_markdown": "中国の商人は東南アジアの港に航海して貿易することを許された。",
+      "tts": {
+        "text": "中国の商人は東南アジアの港に航海して貿易することを許された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この措置は部分的かつ慎重なものだったが、政策の根本的な転換だった。",
+      "text_markdown": "この措置は部分的かつ慎重なものだったが、政策の根本的な転換だった。",
+      "tts": {
+        "text": "この措置は部分的かつ慎重なものだったが、政策の根本的な転換だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "結果は即座に、そして劇的に現れた。",
+      "text_markdown": "結果は即座に、そして劇的に現れた。",
+      "tts": {
+        "text": "結果は即座に、そして劇的に現れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "沿岸の海賊行為は急激に減少した。",
+      "text_markdown": "沿岸の海賊行為は急激に減少した。",
+      "tts": {
+        "text": "沿岸の海賊行為は急激に減少した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "合法的に商いができるなら、海賊になる理由はなかった。",
+      "text_markdown": "合法的に商いができるなら、海賊になる理由はなかった。",
+      "tts": {
+        "text": "合法的に商いができるなら、海賊になる理由はなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は正しかったが、それを目にすることはなかった。",
+      "text_markdown": "王直は正しかったが、それを目にすることはなかった。",
+      "tts": {
+        "text": "王直は正しかったが、それを目にすることはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府は、後にすべての人に許すことになる行為をした男を殺したのだ。",
+      "text_markdown": "政府は、後にすべての人に許すことになる行為をした男を殺したのだ。",
+      "tts": {
+        "text": "政府は、後にすべての人に許すことになる行為をした男を殺したのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の処刑は悲劇であると同時に無駄だった。",
+      "text_markdown": "彼の処刑は悲劇であると同時に無駄だった。",
+      "tts": {
+        "text": "彼の処刑は悲劇であると同時に無駄だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直の物語は、何世紀にもわたり多くの異なる解釈がなされてきた。",
+      "text_markdown": "王直の物語は、何世紀にもわたり多くの異なる解釈がなされてきた。",
+      "tts": {
+        "text": "王直の物語は、何世紀にもわたり多くの異なる解釈がなされてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "明の朝廷にとって、彼は死に値する犯罪者だった。",
+      "text_markdown": "明の朝廷にとって、彼は死に値する犯罪者だった。",
+      "tts": {
+        "text": "明の朝廷にとって、彼は死に値する犯罪者だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "後世の歴史家にとって、彼は失敗した政策の産物だった。",
+      "text_markdown": "後世の歴史家にとって、彼は失敗した政策の産物だった。",
+      "tts": {
+        "text": "後世の歴史家にとって、彼は失敗した政策の産物だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代の中国では、彼の評判は見直されている。",
+      "text_markdown": "現代の中国では、彼の評判は見直されている。",
+      "tts": {
+        "text": "現代の中国では、彼の評判は見直されている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "自由貿易の先駆者、時代に先んじた人物と見る学者もいる。",
+      "text_markdown": "自由貿易の先駆者、時代に先んじた人物と見る学者もいる。",
+      "tts": {
+        "text": "自由貿易の先駆者、時代に先んじた人物と見る学者もいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "沿岸に暴力をもたらした海賊と見る者もまだいる。",
+      "text_markdown": "沿岸に暴力をもたらした海賊と見る者もまだいる。",
+      "tts": {
+        "text": "沿岸に暴力をもたらした海賊と見る者もまだいる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "日本では、王直は異なる形で記憶されている。",
+      "text_markdown": "日本では、王直は異なる形で記憶されている。",
+      "tts": {
+        "text": "日本では、王直は異なる形で記憶されている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼が暮らした島々に中国の文化と交易品をもたらした功績が認められている。",
+      "text_markdown": "彼が暮らした島々に中国の文化と交易品をもたらした功績が認められている。",
+      "tts": {
+        "text": "彼が暮らした島々に中国の文化と交易品をもたらした功績が認められている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "日本の隣人に新しい工芸品や技術を伝えたとする記録もある。",
+      "text_markdown": "日本の隣人に新しい工芸品や技術を伝えたとする記録もある。",
+      "tts": {
+        "text": "日本の隣人に新しい工芸品や技術を伝えたとする記録もある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼が拠点を築いた五島列島には、今もなお彼の存在の記憶が残っている。",
+      "text_markdown": "彼が拠点を築いた五島列島には、今もなお彼の存在の記憶が残っている。",
+      "tts": {
+        "text": "彼が拠点を築いた五島列島には、今もなお彼の存在の記憶が残っている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地元の伝承は、いくつかの寺社や史跡をこの中国の海賊王と結びつけている。",
+      "text_markdown": "地元の伝承は、いくつかの寺社や史跡をこの中国の海賊王と結びつけている。",
+      "tts": {
+        "text": "地元の伝承は、いくつかの寺社や史跡をこの中国の海賊王と結びつけている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が残した足跡は、彼を処刑した王朝の記憶よりも長く続いている。",
+      "text_markdown": "彼が残した足跡は、彼を処刑した王朝の記憶よりも長く続いている。",
+      "tts": {
+        "text": "彼が残した足跡は、彼を処刑した王朝の記憶よりも長く続いている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直の物語は、究極的には禁止の結果についての物語である。",
+      "text_markdown": "王直の物語は、究極的には禁止の結果についての物語である。",
+      "tts": {
+        "text": "王直の物語は、究極的には禁止の結果についての物語である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府が人々が頼りにしている活動を禁じた時、その活動を根絶することはできない。",
+      "text_markdown": "政府が人々が頼りにしている活動を禁じた時、その活動を根絶することはできない。",
+      "tts": {
+        "text": "政府が人々が頼りにしている活動を禁じた時、その活動を根絶することはできない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ただ地下に追いやり、普通の人々を犯罪者にするだけだ。",
+      "text_markdown": "ただ地下に追いやり、普通の人々を犯罪者にするだけだ。",
+      "tts": {
+        "text": "ただ地下に追いやり、普通の人々を犯罪者にするだけだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海禁はまさに防ごうとした問題を生み出した。",
+      "text_markdown": "海禁はまさに防ごうとした問題を生み出した。",
+      "tts": {
+        "text": "海禁はまさに防ごうとした問題を生み出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貿易を禁じることで、明王朝は東アジア史上最大の海賊艦隊を生み出した。",
+      "text_markdown": "貿易を禁じることで、明王朝は東アジア史上最大の海賊艦隊を生み出した。",
+      "tts": {
+        "text": "貿易を禁じることで、明王朝は東アジア史上最大の海賊艦隊を生み出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も強力な海賊を処刑することで、問題を計り知れないほど悪化させた。",
+      "text_markdown": "最も強力な海賊を処刑することで、問題を計り知れないほど悪化させた。",
+      "tts": {
+        "text": "最も強力な海賊を処刑することで、問題を計り知れないほど悪化させた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "解決策は、ついにそれが訪れた時、貿易を合法化することだった。",
+      "text_markdown": "解決策は、ついにそれが訪れた時、貿易を合法化することだった。",
+      "tts": {
+        "text": "解決策は、ついにそれが訪れた時、貿易を合法化することだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も単純な答えであり、最初に試みるべきだった答えだった。",
+      "text_markdown": "最も単純な答えであり、最初に試みるべきだった答えだった。",
+      "tts": {
+        "text": "最も単純な答えであり、最初に試みるべきだった答えだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王直はその生涯を、政府がやがてすべての人に認めることになるもののために戦って過ごした。",
+      "text_markdown": "王直はその生涯を、政府がやがてすべての人に認めることになるもののために戦って過ごした。",
+      "tts": {
+        "text": "王直はその生涯を、政府がやがてすべての人に認めることになるもののために戦って過ごした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語は歴史を通じて響き続けている。",
+      "text_markdown": "彼の物語は歴史を通じて響き続けている。",
+      "tts": {
+        "text": "彼の物語は歴史を通じて響き続けている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府が広く行われている人間の活動を犯罪とする時、結果は予測可能だ。",
+      "text_markdown": "政府が広く行われている人間の活動を犯罪とする時、結果は予測可能だ。",
+      "tts": {
+        "text": "政府が広く行われている人間の活動を犯罪とする時、結果は予測可能だ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "密輸業者が空白を埋め、暴力が続き、治療は病気よりも悪くなる。",
+      "text_markdown": "密輸業者が空白を埋め、暴力が続き、治療は病気よりも悪くなる。",
+      "tts": {
+        "text": "密輸業者が空白を埋め、暴力が続き、治療は病気よりも悪くなる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王直は千五百五十九年に亡くなった。王国なき海賊王として。",
+      "text_markdown": "王直は千五百五十九年に亡くなった。王国なき海賊王として。",
+      "tts": {
+        "text": "王直は千五百五十九年に亡くなった。王国なき海賊王として。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "八年後、彼が戦い続けた貿易は合法となった。",
+      "text_markdown": "八年後、彼が戦い続けた貿易は合法となった。",
+      "tts": {
+        "text": "八年後、彼が戦い続けた貿易は合法となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は正しかった。そして彼を殺した者たちはそれを知っていた。",
+      "text_markdown": "彼は正しかった。そして彼を殺した者たちはそれを知っていた。",
+      "tts": {
+        "text": "彼は正しかった。そして彼を殺した者たちはそれを知っていた。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

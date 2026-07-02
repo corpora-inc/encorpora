@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jean_lafitte",
+  "language": "it",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota al lettore",
+      "text_markdown": "Una nota al lettore"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la storia vera di un contrabbandiere che aiutò a vincere una guerra.",
+      "text_markdown": "Questa è la storia vera di un contrabbandiere che aiutò a vincere una guerra.",
+      "tts": {
+        "text": "Questa è la storia vera di un contrabbandiere che aiutò a vincere una guerra.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo nome era Jean Lafitte, ed era uno dei fuorilegge più affascinanti della storia americana.",
+      "text_markdown": "Il suo nome era Jean Lafitte, ed era uno dei fuorilegge più affascinanti della storia americana.",
+      "tts": {
+        "text": "Il suo nome era Jean Lafitte, ed era uno dei fuorilegge più affascinanti della storia americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si definiva corsaro, ma il governo degli Stati Uniti lo chiamava pirata.",
+      "text_markdown": "Si definiva corsaro, ma il governo degli Stati Uniti lo chiamava pirata.",
+      "tts": {
+        "text": "Si definiva corsaro, ma il governo degli Stati Uniti lo chiamava pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte gestiva un impero del contrabbando dalle paludi della Louisiana.",
+      "text_markdown": "Lafitte gestiva un impero del contrabbando dalle paludi della Louisiana.",
+      "tts": {
+        "text": "Lafitte gestiva un impero del contrabbando dalle paludi della Louisiana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando i britannici cercarono di conquistare New Orleans, scelse di combattere per l'America.",
+      "text_markdown": "Quando i britannici cercarono di conquistare New Orleans, scelse di combattere per l'America.",
+      "tts": {
+        "text": "Quando i britannici cercarono di conquistare New Orleans, scelse di combattere per l'America.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua decisione contribuì a cambiare il corso della guerra del milleottocentododici.",
+      "text_markdown": "La sua decisione contribuì a cambiare il corso della guerra del milleottocentododici.",
+      "tts": {
+        "text": "La sua decisione contribuì a cambiare il corso della guerra del milleottocentododici.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quasi tutto ciò che riguarda Lafitte è avvolto nel mistero.",
+      "text_markdown": "Quasi tutto ciò che riguarda Lafitte è avvolto nel mistero.",
+      "tts": {
+        "text": "Quasi tutto ciò che riguarda Lafitte è avvolto nel mistero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non sappiamo esattamente dove nacque.",
+      "text_markdown": "Non sappiamo esattamente dove nacque.",
+      "tts": {
+        "text": "Non sappiamo esattamente dove nacque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Non sappiamo esattamente quando o come morì.",
+      "text_markdown": "Non sappiamo esattamente quando o come morì.",
+      "tts": {
+        "text": "Non sappiamo esattamente quando o come morì.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Persino il suo nome è scritto diversamente in diverse fonti.",
+      "text_markdown": "Persino il suo nome è scritto diversamente in diverse fonti.",
+      "tts": {
+        "text": "Persino il suo nome è scritto diversamente in diverse fonti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo libro racconta la sua storia utilizzando le migliori prove disponibili.",
+      "text_markdown": "Questo libro racconta la sua storia utilizzando le migliori prove disponibili.",
+      "tts": {
+        "text": "Questo libro racconta la sua storia utilizzando le migliori prove disponibili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dove le fonti sono incerte, lo diciamo.",
+      "text_markdown": "Dove le fonti sono incerte, lo diciamo.",
+      "tts": {
+        "text": "Dove le fonti sono incerte, lo diciamo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il mondo della costa del Golfo",
+      "text_markdown": "Il mondo della costa del Golfo"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte visse durante uno dei periodi più turbolenti della storia nordamericana.",
+      "text_markdown": "Jean Lafitte visse durante uno dei periodi più turbolenti della storia nordamericana.",
+      "tts": {
+        "text": "Jean Lafitte visse durante uno dei periodi più turbolenti della storia nordamericana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli imperi crollavano, nuove nazioni nascevano e il Golfo del Messico era al centro di tutto.",
+      "text_markdown": "Gli imperi crollavano, nuove nazioni nascevano e il Golfo del Messico era al centro di tutto.",
+      "tts": {
+        "text": "Gli imperi crollavano, nuove nazioni nascevano e il Golfo del Messico era al centro di tutto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Golfo del Messico è una vasta distesa d'acqua calda delimitata dagli Stati Uniti, dal Messico e da Cuba.",
+      "text_markdown": "Il Golfo del Messico è una vasta distesa d'acqua calda delimitata dagli Stati Uniti, dal Messico e da Cuba.",
+      "tts": {
+        "text": "Il Golfo del Messico è una vasta distesa d'acqua calda delimitata dagli Stati Uniti, dal Messico e da Cuba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua costa si estende dalla punta della Florida alla Penisola dello Yucatan.",
+      "text_markdown": "La sua costa si estende dalla punta della Florida alla Penisola dello Yucatan.",
+      "tts": {
+        "text": "La sua costa si estende dalla punta della Florida alla Penisola dello Yucatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Per secoli, il Golfo fu un crocevia di commercio, contrabbando e conflitto.",
+      "text_markdown": "Per secoli, il Golfo fu un crocevia di commercio, contrabbando e conflitto.",
+      "tts": {
+        "text": "Per secoli, il Golfo fu un crocevia di commercio, contrabbando e conflitto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New Orleans si trovava alla foce del Mississippi, la più grande via d'acqua del Nord America.",
+      "text_markdown": "New Orleans si trovava alla foce del Mississippi, la più grande via d'acqua del Nord America.",
+      "tts": {
+        "text": "New Orleans si trovava alla foce del Mississippi, la più grande via d'acqua del Nord America.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chi controllava New Orleans controllava il commercio di un territorio enorme.",
+      "text_markdown": "Chi controllava New Orleans controllava il commercio di un territorio enorme.",
+      "tts": {
+        "text": "Chi controllava New Orleans controllava il commercio di un territorio enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La città era stata fondata dai francesi nel millesettecentodiciotto.",
+      "text_markdown": "La città era stata fondata dai francesi nel millesettecentodiciotto.",
+      "tts": {
+        "text": "La città era stata fondata dai francesi nel millesettecentodiciotto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era poi stata ceduta alla Spagna, restituita alla Francia e infine venduta agli Stati Uniti.",
+      "text_markdown": "Era poi stata ceduta alla Spagna, restituita alla Francia e infine venduta agli Stati Uniti.",
+      "tts": {
+        "text": "Era poi stata ceduta alla Spagna, restituita alla Francia e infine venduta agli Stati Uniti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'acquisto della Louisiana del 1803 fu uno degli eventi più importanti della storia americana.",
+      "text_markdown": "L'acquisto della Louisiana del 1803 fu uno degli eventi più importanti della storia americana.",
+      "tts": {
+        "text": "L'acquisto della Louisiana del milleottocentotré fu uno degli eventi più importanti della storia americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli Stati Uniti acquistarono il Territorio della Louisiana dalla Francia per circa quindici milioni di dollari.",
+      "text_markdown": "Gli Stati Uniti acquistarono il Territorio della Louisiana dalla Francia per circa quindici milioni di dollari.",
+      "tts": {
+        "text": "Gli Stati Uniti acquistarono il Territorio della Louisiana dalla Francia per circa quindici milioni di dollari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questa singola transazione raddoppiò le dimensioni della giovane nazione.",
+      "text_markdown": "Questa singola transazione raddoppiò le dimensioni della giovane nazione.",
+      "tts": {
+        "text": "Questa singola transazione raddoppiò le dimensioni della giovane nazione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "New Orleans, il gioiello del territorio, divenne una città americana dall'oggi al domani.",
+      "text_markdown": "New Orleans, il gioiello del territorio, divenne una città americana dall'oggi al domani.",
+      "tts": {
+        "text": "New Orleans, il gioiello del territorio, divenne una città americana dall'oggi al domani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma New Orleans non somigliava a nessun'altra città americana.",
+      "text_markdown": "Ma New Orleans non somigliava a nessun'altra città americana.",
+      "tts": {
+        "text": "Ma New Orleans non somigliava a nessun'altra città americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua cultura era un mix di influenze francesi, spagnole, africane, caraibiche e native americane.",
+      "text_markdown": "La sua cultura era un mix di influenze francesi, spagnole, africane, caraibiche e native americane.",
+      "tts": {
+        "text": "La sua cultura era un mix di influenze francesi, spagnole, africane, caraibiche e native americane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il francese e lo spagnolo erano parlati comunemente quanto l'inglese.",
+      "text_markdown": "Il francese e lo spagnolo erano parlati comunemente quanto l'inglese.",
+      "tts": {
+        "text": "Il francese e lo spagnolo erano parlati comunemente quanto l'inglese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il cibo, la musica, l'architettura e le usanze della città riflettevano questo straordinario mix.",
+      "text_markdown": "Il cibo, la musica, l'architettura e le usanze della città riflettevano questo straordinario mix.",
+      "tts": {
+        "text": "Il cibo, la musica, l'architettura e le usanze della città riflettevano questo straordinario mix.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Rivoluzione Haitiana, iniziata nel millesettecentonovantuno, plasmò profondamente la costa del Golfo.",
+      "text_markdown": "La Rivoluzione Haitiana, iniziata nel millesettecentonovantuno, plasmò profondamente la costa del Golfo.",
+      "tts": {
+        "text": "La Rivoluzione Haitiana, iniziata nel millesettecentonovantuno, plasmò profondamente la costa del Golfo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le persone schiavizzate nella colonia francese di Saint-Domingue si ribellarono contro i loro padroni.",
+      "text_markdown": "Le persone schiavizzate nella colonia francese di Saint-Domingue si ribellarono contro i loro padroni.",
+      "tts": {
+        "text": "Le persone schiavizzate nella colonia francese di Saint-Domingue si ribellarono contro i loro padroni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dopo anni di combattimenti brutali, fondarono la nazione indipendente di Haiti.",
+      "text_markdown": "Dopo anni di combattimenti brutali, fondarono la nazione indipendente di Haiti.",
+      "tts": {
+        "text": "Dopo anni di combattimenti brutali, fondarono la nazione indipendente di Haiti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Migliaia di profughi da Haiti fuggirono a New Orleans, portando la loro cultura con sé.",
+      "text_markdown": "Migliaia di profughi da Haiti fuggirono a New Orleans, portando la loro cultura con sé.",
+      "tts": {
+        "text": "Migliaia di profughi da Haiti fuggirono a New Orleans, portando la loro cultura con sé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La tratta degli schiavi era centrale nell'economia della costa del Golfo.",
+      "text_markdown": "La tratta degli schiavi era centrale nell'economia della costa del Golfo.",
+      "tts": {
+        "text": "La tratta degli schiavi era centrale nell'economia della costa del Golfo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le piantagioni di zucchero in Louisiana dipendevano dal lavoro degli schiavi.",
+      "text_markdown": "Le piantagioni di zucchero in Louisiana dipendevano dal lavoro degli schiavi.",
+      "tts": {
+        "text": "Le piantagioni di zucchero in Louisiana dipendevano dal lavoro degli schiavi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il cotone stava diventando re nel Sud americano.",
+      "text_markdown": "Il cotone stava diventando re nel Sud americano.",
+      "tts": {
+        "text": "Il cotone stava diventando re nel Sud americano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La domanda di persone schiavizzate creò un mercato vasto e terribile.",
+      "text_markdown": "La domanda di persone schiavizzate creò un mercato vasto e terribile.",
+      "tts": {
+        "text": "La domanda di persone schiavizzate creò un mercato vasto e terribile.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il contrabbando era uno stile di vita nei bayou del sud della Louisiana.",
+      "text_markdown": "Il contrabbando era uno stile di vita nei bayou del sud della Louisiana.",
+      "tts": {
+        "text": "Il contrabbando era uno stile di vita nei bayou del sud della Louisiana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I bayou sono una rete di corsi d'acqua lenti, paludi e acquitrini.",
+      "text_markdown": "I bayou sono una rete di corsi d'acqua lenti, paludi e acquitrini.",
+      "tts": {
+        "text": "I bayou sono una rete di corsi d'acqua lenti, paludi e acquitrini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si estendono per centinaia di chilometri a sud di New Orleans.",
+      "text_markdown": "Si estendono per centinaia di chilometri a sud di New Orleans.",
+      "tts": {
+        "text": "Si estendono per centinaia di chilometri a sud di New Orleans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il paesaggio era così complesso che gli estranei potevano perdersi per giorni.",
+      "text_markdown": "Il paesaggio era così complesso che gli estranei potevano perdersi per giorni.",
+      "tts": {
+        "text": "Il paesaggio era così complesso che gli estranei potevano perdersi per giorni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il governo degli Stati Uniti impose dazi sulle merci importate nel paese.",
+      "text_markdown": "Il governo degli Stati Uniti impose dazi sulle merci importate nel paese.",
+      "tts": {
+        "text": "Il governo degli Stati Uniti impose dazi sulle merci importate nel paese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I contrabbandieri evitavano queste tasse introducendo merci attraverso vie d'acqua nascoste.",
+      "text_markdown": "I contrabbandieri evitavano queste tasse introducendo merci attraverso vie d'acqua nascoste.",
+      "tts": {
+        "text": "I contrabbandieri evitavano queste tasse introducendo merci attraverso vie d'acqua nascoste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I mercanti di New Orleans acquistavano avidamente merci di contrabbando a prezzi più bassi.",
+      "text_markdown": "I mercanti di New Orleans acquistavano avidamente merci di contrabbando a prezzi più bassi.",
+      "tts": {
+        "text": "I mercanti di New Orleans acquistavano avidamente merci di contrabbando a prezzi più bassi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le autorità faticavano a pattugliare il vasto e impenetrabile territorio paludoso.",
+      "text_markdown": "Le autorità faticavano a pattugliare il vasto e impenetrabile territorio paludoso.",
+      "tts": {
+        "text": "Le autorità faticavano a pattugliare il vasto e impenetrabile territorio paludoso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerra di corsa era ancora comune all'inizio del diciannovesimo secolo.",
+      "text_markdown": "La guerra di corsa era ancora comune all'inizio del diciannovesimo secolo.",
+      "tts": {
+        "text": "La guerra di corsa era ancora comune all'inizio del diciannovesimo secolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un corsaro era un capitano di nave privato autorizzato da un governo ad attaccare navi nemiche.",
+      "text_markdown": "Un corsaro era un capitano di nave privato autorizzato da un governo ad attaccare navi nemiche.",
+      "tts": {
+        "text": "Un corsaro era un capitano di nave privato autorizzato da un governo ad attaccare navi nemiche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La distinzione tra un corsaro e un pirata dipendeva interamente dalle carte.",
+      "text_markdown": "La distinzione tra un corsaro e un pirata dipendeva interamente dalle carte.",
+      "tts": {
+        "text": "La distinzione tra un corsaro e un pirata dipendeva interamente dalle carte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un corsaro con documenti validi era legale; senza di essi, era un pirata.",
+      "text_markdown": "Un corsaro con documenti validi era legale; senza di essi, era un pirata.",
+      "tts": {
+        "text": "Un corsaro con documenti validi era legale; senza di essi, era un pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molte piccole nazioni dei Caraibi e del Sud America emettevano lettere di corsa.",
+      "text_markdown": "Molte piccole nazioni dei Caraibi e del Sud America emettevano lettere di corsa.",
+      "tts": {
+        "text": "Molte piccole nazioni dei Caraibi e del Sud America emettevano lettere di corsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcune di queste nazioni esistevano a malapena se non sulla carta.",
+      "text_markdown": "Alcune di queste nazioni esistevano a malapena se non sulla carta.",
+      "tts": {
+        "text": "Alcune di queste nazioni esistevano a malapena se non sulla carta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un corsaro astuto poteva sempre trovare qualche governo disposto ad autorizzare le sue incursioni.",
+      "text_markdown": "Un corsaro astuto poteva sempre trovare qualche governo disposto ad autorizzare le sue incursioni.",
+      "tts": {
+        "text": "Un corsaro astuto poteva sempre trovare qualche governo disposto ad autorizzare le sue incursioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questa zona grigia legale era esattamente dove operava Jean Lafitte.",
+      "text_markdown": "Questa zona grigia legale era esattamente dove operava Jean Lafitte.",
+      "tts": {
+        "text": "Questa zona grigia legale era esattamente dove operava Jean Lafitte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'impero spagnolo nelle Americhe stava crollando in questo periodo.",
+      "text_markdown": "L'impero spagnolo nelle Americhe stava crollando in questo periodo.",
+      "tts": {
+        "text": "L'impero spagnolo nelle Americhe stava crollando in questo periodo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rivoluzioni scoppiavano in tutta l'America Latina.",
+      "text_markdown": "Rivoluzioni scoppiavano in tutta l'America Latina.",
+      "tts": {
+        "text": "Rivoluzioni scoppiavano in tutta l'America Latina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le navi mercantili spagnole erano bersagli vulnerabili per i corsari.",
+      "text_markdown": "Le navi mercantili spagnole erano bersagli vulnerabili per i corsari.",
+      "tts": {
+        "text": "Le navi mercantili spagnole erano bersagli vulnerabili per i corsari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il Golfo del Messico era pieno di opportunità per uomini audaci e senza scrupoli.",
+      "text_markdown": "Il Golfo del Messico era pieno di opportunità per uomini audaci e senza scrupoli.",
+      "tts": {
+        "text": "Il Golfo del Messico era pieno di opportunità per uomini audaci e senza scrupoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerra del 1812 tra gli Stati Uniti e la Gran Bretagna scoppiò nel giugno di quell'anno.",
+      "text_markdown": "La guerra del 1812 tra gli Stati Uniti e la Gran Bretagna scoppiò nel giugno di quell'anno.",
+      "tts": {
+        "text": "La guerra del milleottocentododici tra gli Stati Uniti e la Gran Bretagna scoppiò nel giugno di quell'anno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I britannici avevano interferito con la navigazione americana e arruolato forzatamente marinai americani nella Royal Navy.",
+      "text_markdown": "I britannici avevano interferito con la navigazione americana e arruolato forzatamente marinai americani nella Royal Navy.",
+      "tts": {
+        "text": "I britannici avevano interferito con la navigazione americana e arruolato forzatamente marinai americani nella Royal Navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La guerra sarebbe durata più di due anni.",
+      "text_markdown": "La guerra sarebbe durata più di due anni.",
+      "tts": {
+        "text": "La guerra sarebbe durata più di due anni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il suo momento più drammatico si sarebbe svolto a New Orleans.",
+      "text_markdown": "Il suo momento più drammatico si sarebbe svolto a New Orleans.",
+      "tts": {
+        "text": "Il suo momento più drammatico si sarebbe svolto a New Orleans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il territorio paludoso ospitava una notevole diversità di fauna selvatica.",
+      "text_markdown": "Il territorio paludoso ospitava una notevole diversità di fauna selvatica.",
+      "tts": {
+        "text": "Il territorio paludoso ospitava una notevole diversità di fauna selvatica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo della costa del Golfo",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alligatori, serpenti e innumerevoli specie di uccelli abitavano le paludi.",
+      "text_markdown": "Alligatori, serpenti e innumerevoli specie di uccelli abitavano le paludi.",
+      "tts": {
+        "text": "Alligatori, serpenti e innumerevoli specie di uccelli abitavano le paludi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le origini",
+      "text_markdown": "Le origini"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte nacque intorno al 1780, ma il suo luogo esatto di nascita è controverso.",
+      "text_markdown": "Jean Lafitte nacque intorno al 1780, ma il suo luogo esatto di nascita è controverso.",
+      "tts": {
+        "text": "Jean Lafitte nacque intorno al millesettecentottanta, ma il suo luogo esatto di nascita è controverso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcune fonti dicono che nacque a Bayonne, una città portuale nel sud-ovest della Francia.",
+      "text_markdown": "Alcune fonti dicono che nacque a Bayonne, una città portuale nel sud-ovest della Francia.",
+      "tts": {
+        "text": "Alcune fonti dicono che nacque a Bayonne, una città portuale nel sud-ovest della Francia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altri credono che sia nato nella colonia francese di Saint-Domingue, l'odierna Haiti.",
+      "text_markdown": "Altri credono che sia nato nella colonia francese di Saint-Domingue, l'odierna Haiti.",
+      "tts": {
+        "text": "Altri credono che sia nato nella colonia francese di Saint-Domingue, l'odierna Haiti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo stesso Lafitte coltivò questo mistero deliberatamente.",
+      "text_markdown": "Lo stesso Lafitte coltivò questo mistero deliberatamente.",
+      "tts": {
+        "text": "Lo stesso Lafitte coltivò questo mistero deliberatamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parlava raramente delle sue origini e raccontava storie diverse a persone diverse.",
+      "text_markdown": "Parlava raramente delle sue origini e raccontava storie diverse a persone diverse.",
+      "tts": {
+        "text": "Parlava raramente delle sue origini e raccontava storie diverse a persone diverse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un uomo senza un chiaro passato era più difficile da rintracciare per le autorità.",
+      "text_markdown": "Un uomo senza un chiaro passato era più difficile da rintracciare per le autorità.",
+      "tts": {
+        "text": "Un uomo senza un chiaro passato era più difficile da rintracciare per le autorità.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suo fratello Pierre Lafitte fu il suo più stretto collaboratore per tutta la vita.",
+      "text_markdown": "Suo fratello Pierre Lafitte fu il suo più stretto collaboratore per tutta la vita.",
+      "tts": {
+        "text": "Suo fratello Pierre Lafitte fu il suo più stretto collaboratore per tutta la vita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pierre era più grande di Jean e potrebbe aver guidato le loro prime imprese.",
+      "text_markdown": "Pierre era più grande di Jean e potrebbe aver guidato le loro prime imprese.",
+      "tts": {
+        "text": "Pierre era più grande di Jean e potrebbe aver guidato le loro prime imprese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I due fratelli erano inseparabili negli affari e nei guai.",
+      "text_markdown": "I due fratelli erano inseparabili negli affari e nei guai.",
+      "tts": {
+        "text": "I due fratelli erano inseparabili negli affari e nei guai.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fratelli Lafitte arrivarono a New Orleans intorno al periodo tra il 1803 e il 1805.",
+      "text_markdown": "I fratelli Lafitte arrivarono a New Orleans intorno al periodo tra il 1803 e il 1805.",
+      "tts": {
+        "text": "I fratelli Lafitte arrivarono a New Orleans intorno al periodo tra il milleottocentotré e il milleottocentocinque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La città era in piena transizione dal controllo francese a quello americano.",
+      "text_markdown": "La città era in piena transizione dal controllo francese a quello americano.",
+      "tts": {
+        "text": "La città era in piena transizione dal controllo francese a quello americano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'atmosfera era caotica e piena di opportunità.",
+      "text_markdown": "L'atmosfera era caotica e piena di opportunità.",
+      "tts": {
+        "text": "L'atmosfera era caotica e piena di opportunità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le leggi erano vaghe, l'applicazione debole e si facevano fortune.",
+      "text_markdown": "Le leggi erano vaghe, l'applicazione debole e si facevano fortune.",
+      "tts": {
+        "text": "Le leggi erano vaghe, l'applicazione debole e si facevano fortune.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fratelli inizialmente si stabilirono come mercanti e commercianti.",
+      "text_markdown": "I fratelli inizialmente si stabilirono come mercanti e commercianti.",
+      "tts": {
+        "text": "I fratelli inizialmente si stabilirono come mercanti e commercianti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gestivano un magazzino e una bottega di fabbro nel Quartiere Francese.",
+      "text_markdown": "Gestivano un magazzino e una bottega di fabbro nel Quartiere Francese.",
+      "tts": {
+        "text": "Gestivano un magazzino e una bottega di fabbro nel Quartiere Francese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La bottega del fabbro potrebbe essere stata una copertura per vendere merci di contrabbando.",
+      "text_markdown": "La bottega del fabbro potrebbe essere stata una copertura per vendere merci di contrabbando.",
+      "tts": {
+        "text": "La bottega del fabbro potrebbe essere stata una copertura per vendere merci di contrabbando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un edificio a New Orleans sostiene ancora di essere la bottega originale di Lafitte.",
+      "text_markdown": "Un edificio a New Orleans sostiene ancora di essere la bottega originale di Lafitte.",
+      "tts": {
+        "text": "Un edificio a New Orleans sostiene ancora di essere la bottega originale di Lafitte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte era descritto come alto, bello e affascinante.",
+      "text_markdown": "Jean Lafitte era descritto come alto, bello e affascinante.",
+      "tts": {
+        "text": "Jean Lafitte era descritto come alto, bello e affascinante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parlava correntemente francese, inglese, spagnolo e forse italiano.",
+      "text_markdown": "Parlava correntemente francese, inglese, spagnolo e forse italiano.",
+      "tts": {
+        "text": "Parlava correntemente francese, inglese, spagnolo e forse italiano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vestiva bene e si comportava con i modi di un gentiluomo.",
+      "text_markdown": "Vestiva bene e si comportava con i modi di un gentiluomo.",
+      "tts": {
+        "text": "Vestiva bene e si comportava con i modi di un gentiluomo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Poteva muoversi con disinvoltura tra mercanti, politici e fuorilegge.",
+      "text_markdown": "Poteva muoversi con disinvoltura tra mercanti, politici e fuorilegge.",
+      "tts": {
+        "text": "Poteva muoversi con disinvoltura tra mercanti, politici e fuorilegge.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte costruì una rete di contatti lungo la costa del Golfo.",
+      "text_markdown": "Lafitte costruì una rete di contatti lungo la costa del Golfo.",
+      "tts": {
+        "text": "Lafitte costruì una rete di contatti lungo la costa del Golfo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Conosceva capitani di navi, proprietari di magazzini, proprietari di piantagioni e funzionari governativi.",
+      "text_markdown": "Conosceva capitani di navi, proprietari di magazzini, proprietari di piantagioni e funzionari governativi.",
+      "tts": {
+        "text": "Conosceva capitani di navi, proprietari di magazzini, proprietari di piantagioni e funzionari governativi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni di questi contatti erano uomini d'affari legittimi.",
+      "text_markdown": "Alcuni di questi contatti erano uomini d'affari legittimi.",
+      "tts": {
+        "text": "Alcuni di questi contatti erano uomini d'affari legittimi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Altri erano contrabbandieri, pirati e ladri.",
+      "text_markdown": "Altri erano contrabbandieri, pirati e ladri.",
+      "tts": {
+        "text": "Altri erano contrabbandieri, pirati e ladri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fratelli passarono presto dal semplice commercio al contrabbando su larga scala.",
+      "text_markdown": "I fratelli passarono presto dal semplice commercio al contrabbando su larga scala.",
+      "tts": {
+        "text": "I fratelli passarono presto dal semplice commercio al contrabbando su larga scala.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Organizzarono la cattura e la vendita di navi mercantili spagnole e dei loro carichi.",
+      "text_markdown": "Organizzarono la cattura e la vendita di navi mercantili spagnole e dei loro carichi.",
+      "tts": {
+        "text": "Organizzarono la cattura e la vendita di navi mercantili spagnole e dei loro carichi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Commerciavano anche in persone schiavizzate, il che era enormemente redditizio.",
+      "text_markdown": "Commerciavano anche in persone schiavizzate, il che era enormemente redditizio.",
+      "tts": {
+        "text": "Commerciavano anche in persone schiavizzate, il che era enormemente redditizio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il divieto americano di importare persone schiavizzate, approvato nel milleottocentotto, fece solo aumentare i prezzi.",
+      "text_markdown": "Il divieto americano di importare persone schiavizzate, approvato nel milleottocentotto, fece solo aumentare i prezzi.",
+      "tts": {
+        "text": "Il divieto americano di importare persone schiavizzate, approvato nel milleottocentotto, fece solo aumentare i prezzi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte giustificava le sue attività con lettere di corsa della Repubblica di Cartagena.",
+      "text_markdown": "Lafitte giustificava le sue attività con lettere di corsa della Repubblica di Cartagena.",
+      "tts": {
+        "text": "Lafitte giustificava le sue attività con lettere di corsa della Repubblica di Cartagena.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cartagena era una città nell'odierna Colombia che aveva dichiarato l'indipendenza dalla Spagna.",
+      "text_markdown": "Cartagena era una città nell'odierna Colombia che aveva dichiarato l'indipendenza dalla Spagna.",
+      "tts": {
+        "text": "Cartagena era una città nell'odierna Colombia che aveva dichiarato l'indipendenza dalla Spagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le sue lettere di corsa autorizzavano attacchi contro navi spagnole.",
+      "text_markdown": "Le sue lettere di corsa autorizzavano attacchi contro navi spagnole.",
+      "tts": {
+        "text": "Le sue lettere di corsa autorizzavano attacchi contro navi spagnole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questo dava a Lafitte una sottile patina di legalità.",
+      "text_markdown": "Questo dava a Lafitte una sottile patina di legalità.",
+      "tts": {
+        "text": "Questo dava a Lafitte una sottile patina di legalità.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se Lafitte fosse un corsaro o un pirata dipendeva da chi si chiedeva.",
+      "text_markdown": "Se Lafitte fosse un corsaro o un pirata dipendeva da chi si chiedeva.",
+      "tts": {
+        "text": "Se Lafitte fosse un corsaro o un pirata dipendeva da chi si chiedeva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I mercanti di New Orleans che compravano le sue merci a buon mercato lo chiamavano corsaro.",
+      "text_markdown": "I mercanti di New Orleans che compravano le sue merci a buon mercato lo chiamavano corsaro.",
+      "tts": {
+        "text": "I mercanti di New Orleans che compravano le sue merci a buon mercato lo chiamavano corsaro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il governo spagnolo e le autorità americane lo chiamavano pirata.",
+      "text_markdown": "Il governo spagnolo e le autorità americane lo chiamavano pirata.",
+      "tts": {
+        "text": "Il governo spagnolo e le autorità americane lo chiamavano pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte insistette sempre di essere un uomo d'affari legittimo.",
+      "text_markdown": "Lafitte insistette sempre di essere un uomo d'affari legittimo.",
+      "tts": {
+        "text": "Lafitte insistette sempre di essere un uomo d'affari legittimo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Baia di Barataria divenne il centro dell'impero del contrabbando di Lafitte.",
+      "text_markdown": "La Baia di Barataria divenne il centro dell'impero del contrabbando di Lafitte.",
+      "tts": {
+        "text": "La Baia di Barataria divenne il centro dell'impero del contrabbando di Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Questa baia si trovava a circa ottanta chilometri a sud di New Orleans.",
+      "text_markdown": "Questa baia si trovava a circa ottanta chilometri a sud di New Orleans.",
+      "tts": {
+        "text": "Questa baia si trovava a circa ottanta chilometri a sud di New Orleans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era un labirinto di isole, bayou e canali nascosti.",
+      "text_markdown": "Era un labirinto di isole, bayou e canali nascosti.",
+      "tts": {
+        "text": "Era un labirinto di isole, bayou e canali nascosti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grand Terre, una grande isola nella baia, divenne il quartier generale di Lafitte.",
+      "text_markdown": "Grand Terre, una grande isola nella baia, divenne il quartier generale di Lafitte.",
+      "tts": {
+        "text": "Grand Terre, una grande isola nella baia, divenne il quartier generale di Lafitte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da Grand Terre, Lafitte gestiva la sua operazione con notevole efficienza.",
+      "text_markdown": "Da Grand Terre, Lafitte gestiva la sua operazione con notevole efficienza.",
+      "tts": {
+        "text": "Da Grand Terre, Lafitte gestiva la sua operazione con notevole efficienza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le merci catturate erano immagazzinate in depositi sull'isola.",
+      "text_markdown": "Le merci catturate erano immagazzinate in depositi sull'isola.",
+      "tts": {
+        "text": "Le merci catturate erano immagazzinate in depositi sull'isola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aste regolari attiravano acquirenti da New Orleans e oltre.",
+      "text_markdown": "Aste regolari attiravano acquirenti da New Orleans e oltre.",
+      "tts": {
+        "text": "Aste regolari attiravano acquirenti da New Orleans e oltre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Al suo apice, l'operazione di Lafitte impiegava centinaia di uomini.",
+      "text_markdown": "Al suo apice, l'operazione di Lafitte impiegava centinaia di uomini.",
+      "tts": {
+        "text": "Al suo apice, l'operazione di Lafitte impiegava centinaia di uomini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Quartiere Francese di New Orleans era il cuore della vita sociale della città.",
+      "text_markdown": "Il Quartiere Francese di New Orleans era il cuore della vita sociale della città.",
+      "tts": {
+        "text": "Il Quartiere Francese di New Orleans era il cuore della vita sociale della città.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le sue strade strette erano fiancheggiate da negozi, taverne e case con balconi in ferro.",
+      "text_markdown": "Le sue strade strette erano fiancheggiate da negozi, taverne e case con balconi in ferro.",
+      "tts": {
+        "text": "Le sue strade strette erano fiancheggiate da negozi, taverne e case con balconi in ferro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte si muoveva in questo mondo con facilità, facendosi alleati ad ogni passo.",
+      "text_markdown": "Lafitte si muoveva in questo mondo con facilità, facendosi alleati ad ogni passo.",
+      "tts": {
+        "text": "Lafitte si muoveva in questo mondo con facilità, facendosi alleati ad ogni passo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Le origini",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La sua capacità di affascinare persone di ogni ceto sociale era la sua arma più grande.",
+      "text_markdown": "La sua capacità di affascinare persone di ogni ceto sociale era la sua arma più grande.",
+      "tts": {
+        "text": "La sua capacità di affascinare persone di ogni ceto sociale era la sua arma più grande.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "L'ascesa al potere",
+      "text_markdown": "L'ascesa al potere"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entro il milleottocentodieci, Jean Lafitte era il padrone indiscusso della Baia di Barataria.",
+      "text_markdown": "Entro il milleottocentodieci, Jean Lafitte era il padrone indiscusso della Baia di Barataria.",
+      "tts": {
+        "text": "Entro il milleottocentodieci, Jean Lafitte era il padrone indiscusso della Baia di Barataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua flotta contava decine di navi.",
+      "text_markdown": "La sua flotta contava decine di navi.",
+      "tts": {
+        "text": "La sua flotta contava decine di navi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Catturavano navi mercantili spagnole in tutto il Golfo del Messico.",
+      "text_markdown": "Catturavano navi mercantili spagnole in tutto il Golfo del Messico.",
+      "tts": {
+        "text": "Catturavano navi mercantili spagnole in tutto il Golfo del Messico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il bottino veniva riportato a Grand Terre per essere venduto.",
+      "text_markdown": "Il bottino veniva riportato a Grand Terre per essere venduto.",
+      "tts": {
+        "text": "Il bottino veniva riportato a Grand Terre per essere venduto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte organizzava la vendita delle merci attraverso una sofisticata rete di distribuzione.",
+      "text_markdown": "Lafitte organizzava la vendita delle merci attraverso una sofisticata rete di distribuzione.",
+      "tts": {
+        "text": "Lafitte organizzava la vendita delle merci attraverso una sofisticata rete di distribuzione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piccole imbarcazioni trasportavano contrabbando attraverso i bayou fino ai mercati vicino a New Orleans.",
+      "text_markdown": "Piccole imbarcazioni trasportavano contrabbando attraverso i bayou fino ai mercati vicino a New Orleans.",
+      "tts": {
+        "text": "Piccole imbarcazioni trasportavano contrabbando attraverso i bayou fino ai mercati vicino a New Orleans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le merci arrivavano a prezzi ben al di sotto del tasso di mercato legale.",
+      "text_markdown": "Le merci arrivavano a prezzi ben al di sotto del tasso di mercato legale.",
+      "tts": {
+        "text": "Le merci arrivavano a prezzi ben al di sotto del tasso di mercato legale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Questo rendeva Lafitte popolare sia tra i mercanti che tra i consumatori comuni.",
+      "text_markdown": "Questo rendeva Lafitte popolare sia tra i mercanti che tra i consumatori comuni.",
+      "tts": {
+        "text": "Questo rendeva Lafitte popolare sia tra i mercanti che tra i consumatori comuni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone schiavizzate che Lafitte vendeva erano una merce particolarmente redditizia.",
+      "text_markdown": "Le persone schiavizzate che Lafitte vendeva erano una merce particolarmente redditizia.",
+      "tts": {
+        "text": "Le persone schiavizzate che Lafitte vendeva erano una merce particolarmente redditizia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La legge federale proibì l'importazione di persone schiavizzate negli Stati Uniti dopo il milleottocentotto.",
+      "text_markdown": "La legge federale proibì l'importazione di persone schiavizzate negli Stati Uniti dopo il milleottocentotto.",
+      "tts": {
+        "text": "La legge federale proibì l'importazione di persone schiavizzate negli Stati Uniti dopo il milleottocentotto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma la domanda, specialmente nelle regioni del cotone, rimaneva enorme.",
+      "text_markdown": "Ma la domanda, specialmente nelle regioni del cotone, rimaneva enorme.",
+      "tts": {
+        "text": "Ma la domanda, specialmente nelle regioni del cotone, rimaneva enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Contrabbandieri come Lafitte colmavano il divario tra domanda e offerta.",
+      "text_markdown": "Contrabbandieri come Lafitte colmavano il divario tra domanda e offerta.",
+      "tts": {
+        "text": "Contrabbandieri come Lafitte colmavano il divario tra domanda e offerta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il governatore William Claiborne della Louisiana era determinato a fermare Lafitte.",
+      "text_markdown": "Il governatore William Claiborne della Louisiana era determinato a fermare Lafitte.",
+      "tts": {
+        "text": "Il governatore William Claiborne della Louisiana era determinato a fermare Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Claiborne mise una taglia di 500 dollari sulla testa di Lafitte.",
+      "text_markdown": "Claiborne mise una taglia di 500 dollari sulla testa di Lafitte.",
+      "tts": {
+        "text": "Claiborne mise una taglia di cinquecento dollari sulla testa di Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sollecitò il governo federale a inviare forze navali per distruggere l'operazione di Barataria.",
+      "text_markdown": "Sollecitò il governo federale a inviare forze navali per distruggere l'operazione di Barataria.",
+      "tts": {
+        "text": "Sollecitò il governo federale a inviare forze navali per distruggere l'operazione di Barataria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Secondo una famosa leggenda, Lafitte rispose alla taglia con una propria.",
+      "text_markdown": "Secondo una famosa leggenda, Lafitte rispose alla taglia con una propria.",
+      "tts": {
+        "text": "Secondo una famosa leggenda, Lafitte rispose alla taglia con una propria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrebbe offerto una ricompensa di 5.000 dollari per la cattura del governatore Claiborne.",
+      "text_markdown": "Avrebbe offerto una ricompensa di 5.000 dollari per la cattura del governatore Claiborne.",
+      "tts": {
+        "text": "Avrebbe offerto una ricompensa di cinquemila dollari per la cattura del governatore Claiborne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La storia potrebbe essere apocrifa, ma cattura perfettamente l'audacia di Lafitte.",
+      "text_markdown": "La storia potrebbe essere apocrifa, ma cattura perfettamente l'audacia di Lafitte.",
+      "tts": {
+        "text": "La storia potrebbe essere apocrifa, ma cattura perfettamente l'audacia di Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Scherniva apertamente l'uomo che cercava di arrestarlo.",
+      "text_markdown": "Scherniva apertamente l'uomo che cercava di arrestarlo.",
+      "tts": {
+        "text": "Scherniva apertamente l'uomo che cercava di arrestarlo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il rapporto di Lafitte con la gente di New Orleans era complicato.",
+      "text_markdown": "Il rapporto di Lafitte con la gente di New Orleans era complicato.",
+      "tts": {
+        "text": "Il rapporto di Lafitte con la gente di New Orleans era complicato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Molti cittadini facoltosi compravano le sue merci e beneficiavano del suo contrabbando.",
+      "text_markdown": "Molti cittadini facoltosi compravano le sue merci e beneficiavano del suo contrabbando.",
+      "tts": {
+        "text": "Molti cittadini facoltosi compravano le sue merci e beneficiavano del suo contrabbando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni avvocati e politici erano segretamente sul suo libro paga.",
+      "text_markdown": "Alcuni avvocati e politici erano segretamente sul suo libro paga.",
+      "tts": {
+        "text": "Alcuni avvocati e politici erano segretamente sul suo libro paga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ma pubblicamente non potevano essere visti sostenere un noto fuorilegge.",
+      "text_markdown": "Ma pubblicamente non potevano essere visti sostenere un noto fuorilegge.",
+      "tts": {
+        "text": "Ma pubblicamente non potevano essere visti sostenere un noto fuorilegge.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierre Lafitte fu arrestato nel milleottocentotredici con l'accusa di pirateria.",
+      "text_markdown": "Pierre Lafitte fu arrestato nel milleottocentotredici con l'accusa di pirateria.",
+      "tts": {
+        "text": "Pierre Lafitte fu arrestato nel milleottocentotredici con l'accusa di pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu detenuto nel Cabildo, il principale edificio governativo di New Orleans.",
+      "text_markdown": "Fu detenuto nel Cabildo, il principale edificio governativo di New Orleans.",
+      "tts": {
+        "text": "Fu detenuto nel Cabildo, il principale edificio governativo di New Orleans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jean Lafitte lavorò instancabilmente per ottenere il rilascio del fratello.",
+      "text_markdown": "Jean Lafitte lavorò instancabilmente per ottenere il rilascio del fratello.",
+      "tts": {
+        "text": "Jean Lafitte lavorò instancabilmente per ottenere il rilascio del fratello.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pierre alla fine fuggì dalla custodia in circostanze misteriose.",
+      "text_markdown": "Pierre alla fine fuggì dalla custodia in circostanze misteriose.",
+      "tts": {
+        "text": "Pierre alla fine fuggì dalla custodia in circostanze misteriose.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entro il milleottocentoquattordici, la guerra del milleottocentododici aveva raggiunto una fase critica.",
+      "text_markdown": "Entro il milleottocentoquattordici, la guerra del milleottocentododici aveva raggiunto una fase critica.",
+      "tts": {
+        "text": "Entro il milleottocentoquattordici, la guerra del milleottocentododici aveva raggiunto una fase critica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I britannici avevano sconfitto Napoleone in Europa e potevano ora concentrare tutta la loro potenza militare sull'America.",
+      "text_markdown": "I britannici avevano sconfitto Napoleone in Europa e potevano ora concentrare tutta la loro potenza militare sull'America.",
+      "tts": {
+        "text": "I britannici avevano sconfitto Napoleone in Europa e potevano ora concentrare tutta la loro potenza militare sull'America.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pianificarono un grande assalto a New Orleans per prendere il controllo del Mississippi.",
+      "text_markdown": "Pianificarono un grande assalto a New Orleans per prendere il controllo del Mississippi.",
+      "tts": {
+        "text": "Pianificarono un grande assalto a New Orleans per prendere il controllo del Mississippi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se New Orleans fosse caduta, l'intero ovest degli Stati Uniti sarebbe stato tagliato fuori.",
+      "text_markdown": "Se New Orleans fosse caduta, l'intero ovest degli Stati Uniti sarebbe stato tagliato fuori.",
+      "tts": {
+        "text": "Se New Orleans fosse caduta, l'intero ovest degli Stati Uniti sarebbe stato tagliato fuori.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ufficiali britannici si avvicinarono a Jean Lafitte con un'offerta straordinaria.",
+      "text_markdown": "Ufficiali britannici si avvicinarono a Jean Lafitte con un'offerta straordinaria.",
+      "tts": {
+        "text": "Ufficiali britannici si avvicinarono a Jean Lafitte con un'offerta straordinaria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli promisero 30.000 dollari, un incarico nella Royal Navy e terre in territorio britannico.",
+      "text_markdown": "Gli promisero 30.000 dollari, un incarico nella Royal Navy e terre in territorio britannico.",
+      "tts": {
+        "text": "Gli promisero trentamila dollari, un incarico nella Royal Navy e terre in territorio britannico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In cambio, volevano la sua conoscenza delle vie d'acqua dei bayou e la sua flotta di navi.",
+      "text_markdown": "In cambio, volevano la sua conoscenza delle vie d'acqua dei bayou e la sua flotta di navi.",
+      "tts": {
+        "text": "In cambio, volevano la sua conoscenza delle vie d'acqua dei bayou e la sua flotta di navi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I britannici avevano bisogno di Lafitte per guidare la loro forza d'invasione fino a New Orleans.",
+      "text_markdown": "I britannici avevano bisogno di Lafitte per guidare la loro forza d'invasione fino a New Orleans.",
+      "tts": {
+        "text": "I britannici avevano bisogno di Lafitte per guidare la loro forza d'invasione fino a New Orleans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte sembrò considerare attentamente l'offerta britannica.",
+      "text_markdown": "Lafitte sembrò considerare attentamente l'offerta britannica.",
+      "tts": {
+        "text": "Lafitte sembrò considerare attentamente l'offerta britannica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chiese tempo per riflettere, guadagnandosi due settimane.",
+      "text_markdown": "Chiese tempo per riflettere, guadagnandosi due settimane.",
+      "tts": {
+        "text": "Chiese tempo per riflettere, guadagnandosi due settimane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma in segreto, aveva già preso la sua decisione.",
+      "text_markdown": "Ma in segreto, aveva già preso la sua decisione.",
+      "tts": {
+        "text": "Ma in segreto, aveva già preso la sua decisione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Inviò i piani e i documenti britannici al governatore Claiborne.",
+      "text_markdown": "Inviò i piani e i documenti britannici al governatore Claiborne.",
+      "tts": {
+        "text": "Inviò i piani e i documenti britannici al governatore Claiborne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La lettera di Lafitte a Claiborne fu un capolavoro di persuasione.",
+      "text_markdown": "La lettera di Lafitte a Claiborne fu un capolavoro di persuasione.",
+      "tts": {
+        "text": "La lettera di Lafitte a Claiborne fu un capolavoro di persuasione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Offrì i suoi uomini, le sue armi e la sua conoscenza dei bayou alla causa americana.",
+      "text_markdown": "Offrì i suoi uomini, le sue armi e la sua conoscenza dei bayou alla causa americana.",
+      "tts": {
+        "text": "Offrì i suoi uomini, le sue armi e la sua conoscenza dei bayou alla causa americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In cambio, chiese la grazia completa per sé e per i suoi uomini.",
+      "text_markdown": "In cambio, chiese la grazia completa per sé e per i suoi uomini.",
+      "tts": {
+        "text": "In cambio, chiese la grazia completa per sé e per i suoi uomini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Si presentò non come un criminale in cerca di un accordo, ma come un patriota che offriva i propri servizi.",
+      "text_markdown": "Si presentò non come un criminale in cerca di un accordo, ma come un patriota che offriva i propri servizi.",
+      "tts": {
+        "text": "Si presentò non come un criminale in cerca di un accordo, ma come un patriota che offriva i propri servizi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Claiborne era sospettoso ma inoltrò le informazioni di Lafitte alle autorità militari.",
+      "text_markdown": "Claiborne era sospettoso ma inoltrò le informazioni di Lafitte alle autorità militari.",
+      "tts": {
+        "text": "Claiborne era sospettoso ma inoltrò le informazioni di Lafitte alle autorità militari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni funzionari credettero che fosse una trappola.",
+      "text_markdown": "Alcuni funzionari credettero che fosse una trappola.",
+      "tts": {
+        "text": "Alcuni funzionari credettero che fosse una trappola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nonostante l'avvertimento di Lafitte, la Marina americana attaccò la Baia di Barataria nel settembre del milleottocentoquattordici.",
+      "text_markdown": "Nonostante l'avvertimento di Lafitte, la Marina americana attaccò la Baia di Barataria nel settembre del milleottocentoquattordici.",
+      "tts": {
+        "text": "Nonostante l'avvertimento di Lafitte, la Marina americana attaccò la Baia di Barataria nel settembre del milleottocentoquattordici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Distrussero la base di Lafitte e catturarono molti dei suoi uomini.",
+      "text_markdown": "Distrussero la base di Lafitte e catturarono molti dei suoi uomini.",
+      "tts": {
+        "text": "Distrussero la base di Lafitte e catturarono molti dei suoi uomini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte stesso sfuggì alla cattura durante l'incursione su Barataria.",
+      "text_markdown": "Lafitte stesso sfuggì alla cattura durante l'incursione su Barataria.",
+      "tts": {
+        "text": "Lafitte stesso sfuggì alla cattura durante l'incursione su Barataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I suoi magazzini furono incendiati e le sue navi sequestrate.",
+      "text_markdown": "I suoi magazzini furono incendiati e le sue navi sequestrate.",
+      "tts": {
+        "text": "I suoi magazzini furono incendiati e le sue navi sequestrate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'operazione che aveva costruito in anni fu distrutta in un solo giorno.",
+      "text_markdown": "L'operazione che aveva costruito in anni fu distrutta in un solo giorno.",
+      "tts": {
+        "text": "L'operazione che aveva costruito in anni fu distrutta in un solo giorno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ma l'invasione britannica era ancora in arrivo, e New Orleans era impreparata.",
+      "text_markdown": "Ma l'invasione britannica era ancora in arrivo, e New Orleans era impreparata.",
+      "tts": {
+        "text": "Ma l'invasione britannica era ancora in arrivo, e New Orleans era impreparata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il generale Andrew Jackson arrivò a New Orleans nel dicembre del milleottocentoquattordici.",
+      "text_markdown": "Il generale Andrew Jackson arrivò a New Orleans nel dicembre del milleottocentoquattordici.",
+      "tts": {
+        "text": "Il generale Andrew Jackson arrivò a New Orleans nel dicembre del milleottocentoquattordici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un duro soldato di frontiera con la reputazione di agire con decisione.",
+      "text_markdown": "Era un duro soldato di frontiera con la reputazione di agire con decisione.",
+      "tts": {
+        "text": "Era un duro soldato di frontiera con la reputazione di agire con decisione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trovò le difese della città tristemente inadeguate.",
+      "text_markdown": "Trovò le difese della città tristemente inadeguate.",
+      "tts": {
+        "text": "Trovò le difese della città tristemente inadeguate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aveva bisogno di ogni uomo, ogni arma e ogni barile di polvere da sparo che potesse trovare.",
+      "text_markdown": "Aveva bisogno di ogni uomo, ogni arma e ogni barile di polvere da sparo che potesse trovare.",
+      "tts": {
+        "text": "Aveva bisogno di ogni uomo, ogni arma e ogni barile di polvere da sparo che potesse trovare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte si avvicinò a Jackson e offrì i servizi dei suoi baratariani.",
+      "text_markdown": "Lafitte si avvicinò a Jackson e offrì i servizi dei suoi baratariani.",
+      "tts": {
+        "text": "Lafitte si avvicinò a Jackson e offrì i servizi dei suoi baratariani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jackson aveva inizialmente definito i baratariani banditi infernali.",
+      "text_markdown": "Jackson aveva inizialmente definito i baratariani banditi infernali.",
+      "tts": {
+        "text": "Jackson aveva inizialmente definito i baratariani banditi infernali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma di fronte alla realtà della minaccia britannica, accettò l'offerta di Lafitte.",
+      "text_markdown": "Ma di fronte alla realtà della minaccia britannica, accettò l'offerta di Lafitte.",
+      "tts": {
+        "text": "Ma di fronte alla realtà della minaccia britannica, accettò l'offerta di Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascesa al potere",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gli uomini di Lafitte portarono rifornimenti cruciali di selci, polvere da sparo e competenza nell'artiglieria.",
+      "text_markdown": "Gli uomini di Lafitte portarono rifornimenti cruciali di selci, polvere da sparo e competenza nell'artiglieria.",
+      "tts": {
+        "text": "Gli uomini di Lafitte portarono rifornimenti cruciali di selci, polvere da sparo e competenza nell'artiglieria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "All'apice",
+      "text_markdown": "All'apice"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Battaglia di New Orleans ebbe luogo l'8 gennaio 1815.",
+      "text_markdown": "La Battaglia di New Orleans ebbe luogo l'8 gennaio 1815.",
+      "tts": {
+        "text": "La Battaglia di New Orleans ebbe luogo l'otto gennaio milleottocentoquindici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu l'ultimo grande scontro della guerra del milleottocentododici.",
+      "text_markdown": "Fu l'ultimo grande scontro della guerra del milleottocentododici.",
+      "tts": {
+        "text": "Fu l'ultimo grande scontro della guerra del milleottocentododici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ironicamente, un trattato di pace era già stato firmato in Europa, ma la notizia non era ancora giunta in America.",
+      "text_markdown": "Ironicamente, un trattato di pace era già stato firmato in Europa, ma la notizia non era ancora giunta in America.",
+      "tts": {
+        "text": "Ironicamente, un trattato di pace era già stato firmato in Europa, ma la notizia non era ancora giunta in America.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I britannici attaccarono con una forza di circa ottomila soldati veterani.",
+      "text_markdown": "I britannici attaccarono con una forza di circa ottomila soldati veterani.",
+      "tts": {
+        "text": "I britannici attaccarono con una forza di circa ottomila soldati veterani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Molti di questi uomini avevano combattuto contro gli eserciti di Napoleone in Europa.",
+      "text_markdown": "Molti di questi uomini avevano combattuto contro gli eserciti di Napoleone in Europa.",
+      "tts": {
+        "text": "Molti di questi uomini avevano combattuto contro gli eserciti di Napoleone in Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Erano considerati tra i migliori soldati del mondo.",
+      "text_markdown": "Erano considerati tra i migliori soldati del mondo.",
+      "tts": {
+        "text": "Erano considerati tra i migliori soldati del mondo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il loro comandante era il Maggior Generale Sir Edward Pakenham.",
+      "text_markdown": "Il loro comandante era il Maggior Generale Sir Edward Pakenham.",
+      "tts": {
+        "text": "Il loro comandante era il Maggior Generale Sir Edward Pakenham.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La linea difensiva di Jackson si estendeva attraverso la Piantagione Chalmette, a sud di New Orleans.",
+      "text_markdown": "La linea difensiva di Jackson si estendeva attraverso la Piantagione Chalmette, a sud di New Orleans.",
+      "tts": {
+        "text": "La linea difensiva di Jackson si estendeva attraverso la Piantagione Chalmette, a sud di New Orleans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le sue forze usarono un canale e terrapieni come posizioni difensive.",
+      "text_markdown": "Le sue forze usarono un canale e terrapieni come posizioni difensive.",
+      "tts": {
+        "text": "Le sue forze usarono un canale e terrapieni come posizioni difensive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La linea americana includeva soldati dell'esercito regolare, miliziani, soldati neri liberi, guerrieri Choctaw e pirati baratariani.",
+      "text_markdown": "La linea americana includeva soldati dell'esercito regolare, miliziani, soldati neri liberi, guerrieri Choctaw e pirati baratariani.",
+      "tts": {
+        "text": "La linea americana includeva soldati dell'esercito regolare, miliziani, soldati neri liberi, guerrieri Choctaw e pirati baratariani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I baratariani di Lafitte gestirono batterie d'artiglieria chiave lungo la linea difensiva.",
+      "text_markdown": "I baratariani di Lafitte gestirono batterie d'artiglieria chiave lungo la linea difensiva.",
+      "tts": {
+        "text": "I baratariani di Lafitte gestirono batterie d'artiglieria chiave lungo la linea difensiva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erano artiglieri esperti che sapevano maneggiare i cannoni con precisione.",
+      "text_markdown": "Erano artiglieri esperti che sapevano maneggiare i cannoni con precisione.",
+      "tts": {
+        "text": "Erano artiglieri esperti che sapevano maneggiare i cannoni con precisione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte stesso servì come consigliere, dirigendo il posizionamento di armi e rifornimenti.",
+      "text_markdown": "Lafitte stesso servì come consigliere, dirigendo il posizionamento di armi e rifornimenti.",
+      "tts": {
+        "text": "Lafitte stesso servì come consigliere, dirigendo il posizionamento di armi e rifornimenti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La sua conoscenza del terreno fu inestimabile per la difesa.",
+      "text_markdown": "La sua conoscenza del terreno fu inestimabile per la difesa.",
+      "tts": {
+        "text": "La sua conoscenza del terreno fu inestimabile per la difesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I britannici lanciarono un assalto frontale su terreno aperto contro le fortificazioni americane.",
+      "text_markdown": "I britannici lanciarono un assalto frontale su terreno aperto contro le fortificazioni americane.",
+      "tts": {
+        "text": "I britannici lanciarono un assalto frontale su terreno aperto contro le fortificazioni americane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il fuoco dei cannoni e dei fucili americani devastò le colonne in avanzamento.",
+      "text_markdown": "Il fuoco dei cannoni e dei fucili americani devastò le colonne in avanzamento.",
+      "tts": {
+        "text": "Il fuoco dei cannoni e dei fucili americani devastò le colonne in avanzamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I soldati britannici avanzarono con coraggio straordinario ma furono falciati a ondate.",
+      "text_markdown": "I soldati britannici avanzarono con coraggio straordinario ma furono falciati a ondate.",
+      "tts": {
+        "text": "I soldati britannici avanzarono con coraggio straordinario ma furono falciati a ondate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il Generale Pakenham fu ucciso guidando la carica.",
+      "text_markdown": "Il Generale Pakenham fu ucciso guidando la carica.",
+      "tts": {
+        "text": "Il Generale Pakenham fu ucciso guidando la carica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La battaglia finì in meno di due ore.",
+      "text_markdown": "La battaglia finì in meno di due ore.",
+      "tts": {
+        "text": "La battaglia finì in meno di due ore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I britannici subirono circa 2.000 perdite, tra morti, feriti e prigionieri.",
+      "text_markdown": "I britannici subirono circa 2.000 perdite, tra morti, feriti e prigionieri.",
+      "tts": {
+        "text": "I britannici subirono circa duemila perdite, tra morti, feriti e prigionieri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le perdite americane furono meno di 100.",
+      "text_markdown": "Le perdite americane furono meno di 100.",
+      "tts": {
+        "text": "Le perdite americane furono meno di cento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fu una delle vittorie più sbilanciate della storia militare.",
+      "text_markdown": "Fu una delle vittorie più sbilanciate della storia militare.",
+      "tts": {
+        "text": "Fu una delle vittorie più sbilanciate della storia militare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I baratariani furono elogiati per la loro prestazione in battaglia.",
+      "text_markdown": "I baratariani furono elogiati per la loro prestazione in battaglia.",
+      "tts": {
+        "text": "I baratariani furono elogiati per la loro prestazione in battaglia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il loro fuoco d'artiglieria era stato devastante e preciso.",
+      "text_markdown": "Il loro fuoco d'artiglieria era stato devastante e preciso.",
+      "tts": {
+        "text": "Il loro fuoco d'artiglieria era stato devastante e preciso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jackson stesso lodò pubblicamente il loro coraggio e la loro abilità.",
+      "text_markdown": "Jackson stesso lodò pubblicamente il loro coraggio e la loro abilità.",
+      "tts": {
+        "text": "Jackson stesso lodò pubblicamente il loro coraggio e la loro abilità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gli uomini che erano stati chiamati pirati pochi mesi prima venivano ora celebrati come eroi.",
+      "text_markdown": "Gli uomini che erano stati chiamati pirati pochi mesi prima venivano ora celebrati come eroi.",
+      "tts": {
+        "text": "Gli uomini che erano stati chiamati pirati pochi mesi prima venivano ora celebrati come eroi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vittoria a New Orleans rese Andrew Jackson un eroe nazionale.",
+      "text_markdown": "La vittoria a New Orleans rese Andrew Jackson un eroe nazionale.",
+      "tts": {
+        "text": "La vittoria a New Orleans rese Andrew Jackson un eroe nazionale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trasformò anche Jean Lafitte da criminale ricercato in patriota.",
+      "text_markdown": "Trasformò anche Jean Lafitte da criminale ricercato in patriota.",
+      "tts": {
+        "text": "Trasformò anche Jean Lafitte da criminale ricercato in patriota.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La battaglia dimostrò che la decisione di Lafitte di schierarsi con l'America era stata giusta.",
+      "text_markdown": "La battaglia dimostrò che la decisione di Lafitte di schierarsi con l'America era stata giusta.",
+      "tts": {
+        "text": "La battaglia dimostrò che la decisione di Lafitte di schierarsi con l'America era stata giusta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aveva scommesso tutto su questa alleanza, e aveva vinto.",
+      "text_markdown": "Aveva scommesso tutto su questa alleanza, e aveva vinto.",
+      "tts": {
+        "text": "Aveva scommesso tutto su questa alleanza, e aveva vinto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il presidente James Madison concesse la grazia completa a Lafitte e a tutti i suoi baratariani.",
+      "text_markdown": "Il presidente James Madison concesse la grazia completa a Lafitte e a tutti i suoi baratariani.",
+      "tts": {
+        "text": "Il presidente James Madison concesse la grazia completa a Lafitte e a tutti i suoi baratariani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La grazia cancellò tutte le precedenti accuse di pirateria e contrabbando.",
+      "text_markdown": "La grazia cancellò tutte le precedenti accuse di pirateria e contrabbando.",
+      "tts": {
+        "text": "La grazia cancellò tutte le precedenti accuse di pirateria e contrabbando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lafitte era un uomo libero, legalmente e politicamente.",
+      "text_markdown": "Lafitte era un uomo libero, legalmente e politicamente.",
+      "tts": {
+        "text": "Lafitte era un uomo libero, legalmente e politicamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Per un breve momento, fu uno degli uomini più popolari di New Orleans.",
+      "text_markdown": "Per un breve momento, fu uno degli uomini più popolari di New Orleans.",
+      "tts": {
+        "text": "Per un breve momento, fu uno degli uomini più popolari di New Orleans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La grazia diede a Lafitte la possibilità di iniziare una nuova vita legittima.",
+      "text_markdown": "La grazia diede a Lafitte la possibilità di iniziare una nuova vita legittima.",
+      "tts": {
+        "text": "La grazia diede a Lafitte la possibilità di iniziare una nuova vita legittima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aveva le connessioni, l'intelligenza e il carisma per avere successo in qualsiasi campo.",
+      "text_markdown": "Aveva le connessioni, l'intelligenza e il carisma per avere successo in qualsiasi campo.",
+      "tts": {
+        "text": "Aveva le connessioni, l'intelligenza e il carisma per avere successo in qualsiasi campo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Molti uomini nella sua posizione avrebbero colto l'opportunità.",
+      "text_markdown": "Molti uomini nella sua posizione avrebbero colto l'opportunità.",
+      "tts": {
+        "text": "Molti uomini nella sua posizione avrebbero colto l'opportunità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ma Jean Lafitte non era come la maggior parte degli uomini.",
+      "text_markdown": "Ma Jean Lafitte non era come la maggior parte degli uomini.",
+      "tts": {
+        "text": "Ma Jean Lafitte non era come la maggior parte degli uomini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il richiamo del mare e della vita fuorilegge si rivelò troppo forte.",
+      "text_markdown": "Il richiamo del mare e della vita fuorilegge si rivelò troppo forte.",
+      "tts": {
+        "text": "Il richiamo del mare e della vita fuorilegge si rivelò troppo forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Entro due anni dalla battaglia, Lafitte era tornato al contrabbando e alla guerra di corsa.",
+      "text_markdown": "Entro due anni dalla battaglia, Lafitte era tornato al contrabbando e alla guerra di corsa.",
+      "tts": {
+        "text": "Entro due anni dalla battaglia, Lafitte era tornato al contrabbando e alla guerra di corsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Non riusciva a resistere alla libertà e ai profitti del suo vecchio mestiere.",
+      "text_markdown": "Non riusciva a resistere alla libertà e ai profitti del suo vecchio mestiere.",
+      "tts": {
+        "text": "Non riusciva a resistere alla libertà e ai profitti del suo vecchio mestiere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La grazia gli aveva salvato la vita, ma non aveva cambiato la sua natura.",
+      "text_markdown": "La grazia gli aveva salvato la vita, ma non aveva cambiato la sua natura.",
+      "tts": {
+        "text": "La grazia gli aveva salvato la vita, ma non aveva cambiato la sua natura.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La strategia difensiva di Jackson a New Orleans fu brillantemente concepita.",
+      "text_markdown": "La strategia difensiva di Jackson a New Orleans fu brillantemente concepita.",
+      "tts": {
+        "text": "La strategia difensiva di Jackson a New Orleans fu brillantemente concepita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Usò il terreno naturale del bayou per incanalare i britannici in una stretta zona di morte.",
+      "text_markdown": "Usò il terreno naturale del bayou per incanalare i britannici in una stretta zona di morte.",
+      "tts": {
+        "text": "Usò il terreno naturale del bayou per incanalare i britannici in una stretta zona di morte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I campi fangosi davanti alla linea americana divennero una trappola mortale per i britannici in avanzamento.",
+      "text_markdown": "I campi fangosi davanti alla linea americana divennero una trappola mortale per i britannici in avanzamento.",
+      "tts": {
+        "text": "I campi fangosi davanti alla linea americana divennero una trappola mortale per i britannici in avanzamento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La notizia della vittoria si diffuse negli Stati Uniti con grande entusiasmo.",
+      "text_markdown": "La notizia della vittoria si diffuse negli Stati Uniti con grande entusiasmo.",
+      "tts": {
+        "text": "La notizia della vittoria si diffuse negli Stati Uniti con grande entusiasmo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "All'apice",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli americani celebrarono la battaglia come prova che la loro giovane nazione poteva resistere a qualsiasi potenza.",
+      "text_markdown": "Gli americani celebrarono la battaglia come prova che la loro giovane nazione poteva resistere a qualsiasi potenza.",
+      "tts": {
+        "text": "Gli americani celebrarono la battaglia come prova che la loro giovane nazione poteva resistere a qualsiasi potenza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La fine",
+      "text_markdown": "La fine"
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entro il 1817, Lafitte aveva stabilito una nuova base sull'Isola di Galveston.",
+      "text_markdown": "Entro il 1817, Lafitte aveva stabilito una nuova base sull'Isola di Galveston.",
+      "tts": {
+        "text": "Entro il milleottocentodiciassette, Lafitte aveva stabilito una nuova base sull'Isola di Galveston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galveston si trovava sulla costa di quello che allora era il Texas spagnolo.",
+      "text_markdown": "Galveston si trovava sulla costa di quello che allora era il Texas spagnolo.",
+      "tts": {
+        "text": "Galveston si trovava sulla costa di quello che allora era il Texas spagnolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era lontana dalla giurisdizione americana e perfettamente situata per le operazioni nel Golfo.",
+      "text_markdown": "Era lontana dalla giurisdizione americana e perfettamente situata per le operazioni nel Golfo.",
+      "tts": {
+        "text": "Era lontana dalla giurisdizione americana e perfettamente situata per le operazioni nel Golfo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte chiamò il suo nuovo insediamento Campeche.",
+      "text_markdown": "Lafitte chiamò il suo nuovo insediamento Campeche.",
+      "tts": {
+        "text": "Lafitte chiamò il suo nuovo insediamento Campeche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Crebbe rapidamente fino a diventare una fiorente comunità pirata.",
+      "text_markdown": "Crebbe rapidamente fino a diventare una fiorente comunità pirata.",
+      "tts": {
+        "text": "Crebbe rapidamente fino a diventare una fiorente comunità pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al suo apice, Campeche ospitava oltre 1.000 persone.",
+      "text_markdown": "Al suo apice, Campeche ospitava oltre 1.000 persone.",
+      "tts": {
+        "text": "Al suo apice, Campeche ospitava oltre mille persone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aveva un proprio governo, tribunali e gerarchia sociale.",
+      "text_markdown": "Aveva un proprio governo, tribunali e gerarchia sociale.",
+      "tts": {
+        "text": "Aveva un proprio governo, tribunali e gerarchia sociale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte si dichiarò governatore civile e militare di Galveston.",
+      "text_markdown": "Lafitte si dichiarò governatore civile e militare di Galveston.",
+      "tts": {
+        "text": "Lafitte si dichiarò governatore civile e militare di Galveston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Impose regole severe all'interno dell'insediamento.",
+      "text_markdown": "Impose regole severe all'interno dell'insediamento.",
+      "tts": {
+        "text": "Impose regole severe all'interno dell'insediamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Insistette che i suoi uomini attaccassero solo navi spagnole con lettere di corsa valide.",
+      "text_markdown": "Insistette che i suoi uomini attaccassero solo navi spagnole con lettere di corsa valide.",
+      "tts": {
+        "text": "Insistette che i suoi uomini attaccassero solo navi spagnole con lettere di corsa valide.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le navi americane dovevano essere lasciate in pace.",
+      "text_markdown": "Le navi americane dovevano essere lasciate in pace.",
+      "tts": {
+        "text": "Le navi americane dovevano essere lasciate in pace.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In pratica, questa regola era difficile da applicare.",
+      "text_markdown": "In pratica, questa regola era difficile da applicare.",
+      "tts": {
+        "text": "In pratica, questa regola era difficile da applicare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni capitani di Lafitte attaccarono navi americane nonostante i suoi ordini.",
+      "text_markdown": "Alcuni capitani di Lafitte attaccarono navi americane nonostante i suoi ordini.",
+      "tts": {
+        "text": "Alcuni capitani di Lafitte attaccarono navi americane nonostante i suoi ordini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Queste incursioni non autorizzate attirarono l'attenzione indesiderata del governo degli Stati Uniti.",
+      "text_markdown": "Queste incursioni non autorizzate attirarono l'attenzione indesiderata del governo degli Stati Uniti.",
+      "tts": {
+        "text": "Queste incursioni non autorizzate attirarono l'attenzione indesiderata del governo degli Stati Uniti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lafitte punì i capitani che violarono le sue regole, ma il danno era fatto.",
+      "text_markdown": "Lafitte punì i capitani che violarono le sue regole, ma il danno era fatto.",
+      "tts": {
+        "text": "Lafitte punì i capitani che violarono le sue regole, ma il danno era fatto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La situazione politica nel Golfo stava cambiando rapidamente.",
+      "text_markdown": "La situazione politica nel Golfo stava cambiando rapidamente.",
+      "tts": {
+        "text": "La situazione politica nel Golfo stava cambiando rapidamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le rivoluzioni latinoamericane stavano ridisegnando la regione.",
+      "text_markdown": "Le rivoluzioni latinoamericane stavano ridisegnando la regione.",
+      "tts": {
+        "text": "Le rivoluzioni latinoamericane stavano ridisegnando la regione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nuove nazioni nascevano e vecchi imperi morivano.",
+      "text_markdown": "Nuove nazioni nascevano e vecchi imperi morivano.",
+      "tts": {
+        "text": "Nuove nazioni nascevano e vecchi imperi morivano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le lettere di corsa che avevano protetto Lafitte diventavano più difficili da ottenere.",
+      "text_markdown": "Le lettere di corsa che avevano protetto Lafitte diventavano più difficili da ottenere.",
+      "tts": {
+        "text": "Le lettere di corsa che avevano protetto Lafitte diventavano più difficili da ottenere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli Stati Uniti stavano anche espandendo la loro presenza navale nel Golfo.",
+      "text_markdown": "Gli Stati Uniti stavano anche espandendo la loro presenza navale nel Golfo.",
+      "tts": {
+        "text": "Gli Stati Uniti stavano anche espandendo la loro presenza navale nel Golfo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Marina aveva l'ordine di reprimere la pirateria e proteggere la navigazione americana.",
+      "text_markdown": "La Marina aveva l'ordine di reprimere la pirateria e proteggere la navigazione americana.",
+      "tts": {
+        "text": "La Marina aveva l'ordine di reprimere la pirateria e proteggere la navigazione americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'insediamento di Lafitte a Galveston stava diventando un imbarazzo per il governo.",
+      "text_markdown": "L'insediamento di Lafitte a Galveston stava diventando un imbarazzo per il governo.",
+      "tts": {
+        "text": "L'insediamento di Lafitte a Galveston stava diventando un imbarazzo per il governo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La stessa nazione che aveva aiutato a difendere ora lo considerava un problema.",
+      "text_markdown": "La stessa nazione che aveva aiutato a difendere ora lo considerava un problema.",
+      "tts": {
+        "text": "La stessa nazione che aveva aiutato a difendere ora lo considerava un problema.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un devastante uragano colpì Galveston nel milleottocentodiciotto.",
+      "text_markdown": "Un devastante uragano colpì Galveston nel milleottocentodiciotto.",
+      "tts": {
+        "text": "Un devastante uragano colpì Galveston nel milleottocentodiciotto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La tempesta distrusse gran parte dell'insediamento e affondò diverse navi di Lafitte.",
+      "text_markdown": "La tempesta distrusse gran parte dell'insediamento e affondò diverse navi di Lafitte.",
+      "tts": {
+        "text": "La tempesta distrusse gran parte dell'insediamento e affondò diverse navi di Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ricostruzione fu lenta e costosa.",
+      "text_markdown": "La ricostruzione fu lenta e costosa.",
+      "tts": {
+        "text": "La ricostruzione fu lenta e costosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'uragano fu un colpo da cui Campeche non si riprese mai completamente.",
+      "text_markdown": "L'uragano fu un colpo da cui Campeche non si riprese mai completamente.",
+      "tts": {
+        "text": "L'uragano fu un colpo da cui Campeche non si riprese mai completamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1821, una nave da guerra degli Stati Uniti arrivò a Galveston con un ultimatum.",
+      "text_markdown": "Nel 1821, una nave da guerra degli Stati Uniti arrivò a Galveston con un ultimatum.",
+      "tts": {
+        "text": "Nel milleottocentoventuno, una nave da guerra degli Stati Uniti arrivò a Galveston con un ultimatum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Lafitte fu ordinato di lasciare l'isola immediatamente.",
+      "text_markdown": "A Lafitte fu ordinato di lasciare l'isola immediatamente.",
+      "tts": {
+        "text": "A Lafitte fu ordinato di lasciare l'isola immediatamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli fu detto che se avesse rifiutato, la Marina lo avrebbe rimosso con la forza.",
+      "text_markdown": "Gli fu detto che se avesse rifiutato, la Marina lo avrebbe rimosso con la forza.",
+      "tts": {
+        "text": "Gli fu detto che se avesse rifiutato, la Marina lo avrebbe rimosso con la forza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte scelse di non combattere gli Stati Uniti una seconda volta.",
+      "text_markdown": "Lafitte scelse di non combattere gli Stati Uniti una seconda volta.",
+      "tts": {
+        "text": "Lafitte scelse di non combattere gli Stati Uniti una seconda volta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Incendiò l'insediamento di Campeche piuttosto che arrenderlo.",
+      "text_markdown": "Incendiò l'insediamento di Campeche piuttosto che arrenderlo.",
+      "tts": {
+        "text": "Incendiò l'insediamento di Campeche piuttosto che arrenderlo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le fiamme erano visibili per chilometri sull'acqua.",
+      "text_markdown": "Le fiamme erano visibili per chilometri sull'acqua.",
+      "tts": {
+        "text": "Le fiamme erano visibili per chilometri sull'acqua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Poi salpò verso il Golfo del Messico e scomparve.",
+      "text_markdown": "Poi salpò verso il Golfo del Messico e scomparve.",
+      "tts": {
+        "text": "Poi salpò verso il Golfo del Messico e scomparve.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cosa accadde a Jean Lafitte dopo aver lasciato Galveston è uno dei grandi misteri della storia.",
+      "text_markdown": "Cosa accadde a Jean Lafitte dopo aver lasciato Galveston è uno dei grandi misteri della storia.",
+      "tts": {
+        "text": "Cosa accadde a Jean Lafitte dopo aver lasciato Galveston è uno dei grandi misteri della storia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni resoconti dicono che continuò la guerra di corsa nelle acque intorno a Cuba e allo Yucatan.",
+      "text_markdown": "Alcuni resoconti dicono che continuò la guerra di corsa nelle acque intorno a Cuba e allo Yucatan.",
+      "tts": {
+        "text": "Alcuni resoconti dicono che continuò la guerra di corsa nelle acque intorno a Cuba e allo Yucatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altri dicono che si stabilì tranquillamente in una piccola città sotto un nome falso.",
+      "text_markdown": "Altri dicono che si stabilì tranquillamente in una piccola città sotto un nome falso.",
+      "tts": {
+        "text": "Altri dicono che si stabilì tranquillamente in una piccola città sotto un nome falso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si crede che Lafitte sia morto intorno al 1823, ma anche questo è incerto.",
+      "text_markdown": "Si crede che Lafitte sia morto intorno al 1823, ma anche questo è incerto.",
+      "tts": {
+        "text": "Si crede che Lafitte sia morto intorno al milleottocentoventitre, ma anche questo è incerto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni storici pensano che sia morto di febbre nella Penisola dello Yucatan.",
+      "text_markdown": "Alcuni storici pensano che sia morto di febbre nella Penisola dello Yucatan.",
+      "tts": {
+        "text": "Alcuni storici pensano che sia morto di febbre nella Penisola dello Yucatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altri collocano la sua morte addirittura negli anni milleottocentocinquanta.",
+      "text_markdown": "Altri collocano la sua morte addirittura negli anni milleottocentocinquanta.",
+      "tts": {
+        "text": "Altri collocano la sua morte addirittura negli anni milleottocentocinquanta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nessuna tomba è mai stata identificata con certezza come la sua.",
+      "text_markdown": "Nessuna tomba è mai stata identificata con certezza come la sua.",
+      "tts": {
+        "text": "Nessuna tomba è mai stata identificata con certezza come la sua.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suo fratello Pierre Lafitte probabilmente morì nello stesso periodo.",
+      "text_markdown": "Suo fratello Pierre Lafitte probabilmente morì nello stesso periodo.",
+      "tts": {
+        "text": "Suo fratello Pierre Lafitte probabilmente morì nello stesso periodo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il destino di Pierre è altrettanto oscuro.",
+      "text_markdown": "Il destino di Pierre è altrettanto oscuro.",
+      "tts": {
+        "text": "Il destino di Pierre è altrettanto oscuro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I fratelli che avevano costruito un impero insieme scomparvero insieme.",
+      "text_markdown": "I fratelli che avevano costruito un impero insieme scomparvero insieme.",
+      "tts": {
+        "text": "I fratelli che avevano costruito un impero insieme scomparvero insieme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La loro storia finì come era iniziata, avvolta nel mistero.",
+      "text_markdown": "La loro storia finì come era iniziata, avvolta nel mistero.",
+      "tts": {
+        "text": "La loro storia finì come era iniziata, avvolta nel mistero.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune leggende affermano che Lafitte seppellì un tesoro lungo la costa del Golfo.",
+      "text_markdown": "Alcune leggende affermano che Lafitte seppellì un tesoro lungo la costa del Golfo.",
+      "tts": {
+        "text": "Alcune leggende affermano che Lafitte seppellì un tesoro lungo la costa del Golfo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fine",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I cacciatori di tesori cercano il suo oro da quasi duecento anni senza successo.",
+      "text_markdown": "I cacciatori di tesori cercano il suo oro da quasi duecento anni senza successo.",
+      "tts": {
+        "text": "I cacciatori di tesori cercano il suo oro da quasi duecento anni senza successo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "L'eredità",
+      "text_markdown": "L'eredità"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jean Lafitte è una delle figure più romanticizzate della storia americana.",
+      "text_markdown": "Jean Lafitte è una delle figure più romanticizzate della storia americana.",
+      "tts": {
+        "text": "Jean Lafitte è una delle figure più romanticizzate della storia americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "È ricordato come il pirata gentiluomo di New Orleans.",
+      "text_markdown": "È ricordato come il pirata gentiluomo di New Orleans.",
+      "tts": {
+        "text": "È ricordato come il pirata gentiluomo di New Orleans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un parco storico nazionale in Louisiana porta il suo nome.",
+      "text_markdown": "Un parco storico nazionale in Louisiana porta il suo nome.",
+      "tts": {
+        "text": "Un parco storico nazionale in Louisiana porta il suo nome.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo ruolo nella Battaglia di New Orleans gli assicurò un posto nella storia americana.",
+      "text_markdown": "Il suo ruolo nella Battaglia di New Orleans gli assicurò un posto nella storia americana.",
+      "tts": {
+        "text": "Il suo ruolo nella Battaglia di New Orleans gli assicurò un posto nella storia americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dimostrò che un fuorilegge poteva anche essere un patriota.",
+      "text_markdown": "Dimostrò che un fuorilegge poteva anche essere un patriota.",
+      "tts": {
+        "text": "Dimostrò che un fuorilegge poteva anche essere un patriota.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I suoi artiglieri aiutarono a salvare una città e umiliarono la marina più potente del mondo.",
+      "text_markdown": "I suoi artiglieri aiutarono a salvare una città e umiliarono la marina più potente del mondo.",
+      "tts": {
+        "text": "I suoi artiglieri aiutarono a salvare una città e umiliarono la marina più potente del mondo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lafitte è apparso in innumerevoli romanzi, film e programmi televisivi.",
+      "text_markdown": "Lafitte è apparso in innumerevoli romanzi, film e programmi televisivi.",
+      "tts": {
+        "text": "Lafitte è apparso in innumerevoli romanzi, film e programmi televisivi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il poema Il Corsaro di Lord Byron potrebbe essere stato in parte ispirato da Lafitte.",
+      "text_markdown": "Il poema Il Corsaro di Lord Byron potrebbe essere stato in parte ispirato da Lafitte.",
+      "tts": {
+        "text": "Il poema Il Corsaro di Lord Byron potrebbe essere stato in parte ispirato da Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "È stato ritratto come tutto, dall'eroe affascinante al criminale a sangue freddo.",
+      "text_markdown": "È stato ritratto come tutto, dall'eroe affascinante al criminale a sangue freddo.",
+      "tts": {
+        "text": "È stato ritratto come tutto, dall'eroe affascinante al criminale a sangue freddo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La verità, come sempre, si trova da qualche parte nel mezzo.",
+      "text_markdown": "La verità, come sempre, si trova da qualche parte nel mezzo.",
+      "tts": {
+        "text": "La verità, come sempre, si trova da qualche parte nel mezzo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli storici continuano a dibattere sul carattere e le motivazioni di Lafitte.",
+      "text_markdown": "Gli storici continuano a dibattere sul carattere e le motivazioni di Lafitte.",
+      "tts": {
+        "text": "Gli storici continuano a dibattere sul carattere e le motivazioni di Lafitte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un patriota che amava la sua patria adottiva, o un criminale che fece un patto per salvarsi?",
+      "text_markdown": "Era un patriota che amava la sua patria adottiva, o un criminale che fece un patto per salvarsi?",
+      "tts": {
+        "text": "Era un patriota che amava la sua patria adottiva, o un criminale che fece un patto per salvarsi?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le prove supportano entrambe le interpretazioni.",
+      "text_markdown": "Le prove supportano entrambe le interpretazioni.",
+      "tts": {
+        "text": "Le prove supportano entrambe le interpretazioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era un uomo di contraddizioni che sfugge alle etichette semplici.",
+      "text_markdown": "Era un uomo di contraddizioni che sfugge alle etichette semplici.",
+      "tts": {
+        "text": "Era un uomo di contraddizioni che sfugge alle etichette semplici.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo coinvolgimento nella tratta degli schiavi è la parte più oscura della sua eredità.",
+      "text_markdown": "Il suo coinvolgimento nella tratta degli schiavi è la parte più oscura della sua eredità.",
+      "tts": {
+        "text": "Il suo coinvolgimento nella tratta degli schiavi è la parte più oscura della sua eredità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lafitte comprava e vendeva esseri umani a scopo di lucro.",
+      "text_markdown": "Lafitte comprava e vendeva esseri umani a scopo di lucro.",
+      "tts": {
+        "text": "Lafitte comprava e vendeva esseri umani a scopo di lucro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questo fatto è impossibile da separare dalla sua storia, per quanto romantico possa essere il resto.",
+      "text_markdown": "Questo fatto è impossibile da separare dalla sua storia, per quanto romantico possa essere il resto.",
+      "tts": {
+        "text": "Questo fatto è impossibile da separare dalla sua storia, per quanto romantico possa essere il resto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il mistero delle sue origini e della sua morte non fa che accrescere il suo fascino duraturo.",
+      "text_markdown": "Il mistero delle sue origini e della sua morte non fa che accrescere il suo fascino duraturo.",
+      "tts": {
+        "text": "Il mistero delle sue origini e della sua morte non fa che accrescere il suo fascino duraturo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un uomo che appare dal nulla e svanisce nel nulla è irresistibile per i narratori.",
+      "text_markdown": "Un uomo che appare dal nulla e svanisce nel nulla è irresistibile per i narratori.",
+      "tts": {
+        "text": "Un uomo che appare dal nulla e svanisce nel nulla è irresistibile per i narratori.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jean Lafitte capiva questo meglio di chiunque altro.",
+      "text_markdown": "Jean Lafitte capiva questo meglio di chiunque altro.",
+      "tts": {
+        "text": "Jean Lafitte capiva questo meglio di chiunque altro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Forgiò la propria leggenda con la stessa cura con cui pianificava le sue incursioni.",
+      "text_markdown": "Forgiò la propria leggenda con la stessa cura con cui pianificava le sue incursioni.",
+      "tts": {
+        "text": "Forgiò la propria leggenda con la stessa cura con cui pianificava le sue incursioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un maestro delle apparenze, altrettanto a suo agio in un salone da ballo che su una nave pirata.",
+      "text_markdown": "Era un maestro delle apparenze, altrettanto a suo agio in un salone da ballo che su una nave pirata.",
+      "tts": {
+        "text": "Era un maestro delle apparenze, altrettanto a suo agio in un salone da ballo che su una nave pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il confine tra il vero Lafitte e il mito che creò potrebbe non essere mai completamente dipanato.",
+      "text_markdown": "Il confine tra il vero Lafitte e il mito che creò potrebbe non essere mai completamente dipanato.",
+      "tts": {
+        "text": "Il confine tra il vero Lafitte e il mito che creò potrebbe non essere mai completamente dipanato.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ciò che resta chiaro è che plasmò la storia della costa del Golfo.",
+      "text_markdown": "Ciò che resta chiaro è che plasmò la storia della costa del Golfo.",
+      "tts": {
+        "text": "Ciò che resta chiaro è che plasmò la storia della costa del Golfo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era presente in un momento cruciale e scelse di agire.",
+      "text_markdown": "Era presente in un momento cruciale e scelse di agire.",
+      "tts": {
+        "text": "Era presente in un momento cruciale e scelse di agire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nel bene o nel male, Jean Lafitte lasciò il segno nella storia americana.",
+      "text_markdown": "Nel bene o nel male, Jean Lafitte lasciò il segno nella storia americana.",
+      "tts": {
+        "text": "Nel bene o nel male, Jean Lafitte lasciò il segno nella storia americana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un documento noto come il Diario di Jean Laffite emerse nel ventesimo secolo.",
+      "text_markdown": "Un documento noto come il Diario di Jean Laffite emerse nel ventesimo secolo.",
+      "tts": {
+        "text": "Un documento noto come il Diario di Jean Laffite emerse nel ventesimo secolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'eredità",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La maggior parte degli storici considera il diario un falso, ma il dibattito continua.",
+      "text_markdown": "La maggior parte degli storici considera il diario un falso, ma il dibattito continua.",
+      "tts": {
+        "text": "La maggior parte degli storici considera il diario un falso, ma il dibattito continua.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

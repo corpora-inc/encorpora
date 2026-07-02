@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_every",
+  "language": "tr",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, tarihin en büyük soygununun gerçekleştirip sonra ortadan kaybolan bir korsanın gerçek hikâyesidir.",
+      "text_markdown": "Bu, tarihin en büyük soygununun gerçekleştirip sonra ortadan kaybolan bir korsanın gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, tarihin en büyük soygununun gerçekleştirip sonra ortadan kaybolan bir korsanın gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Henry Every'ydi ve bir zamanlar dünyanın en çok aranan adamıydı.",
+      "text_markdown": "Adı Henry Every'ydi ve bir zamanlar dünyanın en çok aranan adamıydı.",
+      "tts": {
+        "text": "Adı Henry Every'ydi ve bir zamanlar dünyanın en çok aranan adamıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir hükümet onu yakalayamadı ve nasıl ya da nerede öldüğünü kimse bilmiyor.",
+      "text_markdown": "Hiçbir hükümet onu yakalayamadı ve nasıl ya da nerede öldüğünü kimse bilmiyor.",
+      "tts": {
+        "text": "Hiçbir hükümet onu yakalayamadı ve nasıl ya da nerede öldüğünü kimse bilmiyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tek bir saldırıda Every, milyonlarca değerinde bir hazineyi ele geçirdi.",
+      "text_markdown": "Tek bir saldırıda Every, milyonlarca değerinde bir hazineyi ele geçirdi.",
+      "tts": {
+        "text": "Tek bir saldırıda Every, milyonlarca değerinde bir hazineyi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suçu, iki imparatorluk arasında diplomatik bir krize yol açtı.",
+      "text_markdown": "Suçu, iki imparatorluk arasında diplomatik bir krize yol açtı.",
+      "tts": {
+        "text": "Suçu, iki imparatorluk arasında diplomatik bir krize yol açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın en güçlü şirketi olan Doğu Hindistan Şirketi'ni neredeyse yok ediyordu.",
+      "text_markdown": "Dünyanın en güçlü şirketi olan Doğu Hindistan Şirketi'ni neredeyse yok ediyordu.",
+      "tts": {
+        "text": "Dünyanın en güçlü şirketi olan Doğu Hindistan Şirketi'ni neredeyse yok ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap sizi on yedinci yüzyılın sonlarında Hint Okyanusu'nun ticaret yollarına götürecektir.",
+      "text_markdown": "Bu kitap sizi on yedinci yüzyılın sonlarında Hint Okyanusu'nun ticaret yollarına götürecektir.",
+      "tts": {
+        "text": "Bu kitap sizi on yedinci yüzyılın sonlarında Hint Okyanusu'nun ticaret yollarına götürecektir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Every'yi İngiltere'nin rıhtımlarından Madagaskar kıyılarına kadar takip edeceksiniz.",
+      "text_markdown": "Every'yi İngiltere'nin rıhtımlarından Madagaskar kıyılarına kadar takip edeceksiniz.",
+      "tts": {
+        "text": "Every'yi İngiltere'nin rıhtımlarından Madagaskar kıyılarına kadar takip edeceksiniz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitaptaki her şey tarihî belgelere, mahkeme tutanaklarına ve görgü tanığı ifadelerine dayanmaktadır.",
+      "text_markdown": "Bu kitaptaki her şey tarihî belgelere, mahkeme tutanaklarına ve görgü tanığı ifadelerine dayanmaktadır.",
+      "tts": {
+        "text": "Bu kitaptaki her şey tarihî belgelere, mahkeme tutanaklarına ve görgü tanığı ifadelerine dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gerçekler belirsiz olduğunda, bunu açıkça belirteceğiz.",
+      "text_markdown": "Gerçekler belirsiz olduğunda, bunu açıkça belirteceğiz.",
+      "tts": {
+        "text": "Gerçekler belirsiz olduğunda, bunu açıkça belirteceğiz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hint Okyanusu Ticaretinin Dünyası",
+      "text_markdown": "Hint Okyanusu Ticaretinin Dünyası"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On yedinci yüzyılda Hint Okyanusu, dünya üzerindeki en zengin ticaret bölgesiydi.",
+      "text_markdown": "On yedinci yüzyılda Hint Okyanusu, dünya üzerindeki en zengin ticaret bölgesiydi.",
+      "tts": {
+        "text": "On yedinci yüzyılda Hint Okyanusu, dünya üzerindeki en zengin ticaret bölgesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemiler Hindistan, Arabistan, Doğu Afrika ve Güneydoğu Asya arasında ipek, baharat, mücevher ve altın taşıyordu.",
+      "text_markdown": "Gemiler Hindistan, Arabistan, Doğu Afrika ve Güneydoğu Asya arasında ipek, baharat, mücevher ve altın taşıyordu.",
+      "tts": {
+        "text": "Gemiler Hindistan, Arabistan, Doğu Afrika ve Güneydoğu Asya arasında ipek, baharat, mücevher ve altın taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu ticaret yolları, Avrupalıların gelişinden çok önce binlerce yıldır işliyordu.",
+      "text_markdown": "Bu ticaret yolları, Avrupalıların gelişinden çok önce binlerce yıldır işliyordu.",
+      "tts": {
+        "text": "Bu ticaret yolları, Avrupalıların gelişinden çok önce binlerce yıldır işliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu sulardan akan zenginlik neredeyse hayal edilemeyecek boyuttaydı.",
+      "text_markdown": "Bu sulardan akan zenginlik neredeyse hayal edilemeyecek boyuttaydı.",
+      "tts": {
+        "text": "Bu sulardan akan zenginlik neredeyse hayal edilemeyecek boyuttaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde Babür İmparatorluğu, Hint alt kıtasının büyük bölümünü kontrol ediyordu.",
+      "text_markdown": "Bu dönemde Babür İmparatorluğu, Hint alt kıtasının büyük bölümünü kontrol ediyordu.",
+      "tts": {
+        "text": "Bu dönemde Babür İmparatorluğu, Hint alt kıtasının büyük bölümünü kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünyanın en zengin ve en güçlü imparatorluklarından biriydi.",
+      "text_markdown": "Dünyanın en zengin ve en güçlü imparatorluklarından biriydi.",
+      "tts": {
+        "text": "Dünyanın en zengin ve en güçlü imparatorluklarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babür imparatorları devasa ordulara komuta ediyor ve olağanüstü lüks içinde yaşıyorlardı.",
+      "text_markdown": "Babür imparatorları devasa ordulara komuta ediyor ve olağanüstü lüks içinde yaşıyorlardı.",
+      "tts": {
+        "text": "Babür imparatorları devasa ordulara komuta ediyor ve olağanüstü lüks içinde yaşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sarayları altın, değerli taşlar ve dünyanın en ince kumaşlarıyla süslenmişti.",
+      "text_markdown": "Sarayları altın, değerli taşlar ve dünyanın en ince kumaşlarıyla süslenmişti.",
+      "tts": {
+        "text": "Sarayları altın, değerli taşlar ve dünyanın en ince kumaşlarıyla süslenmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her yıl Babür seçkinleri Mekke'ye hac yolculuğu için gemiler gönderirdi.",
+      "text_markdown": "Her yıl Babür seçkinleri Mekke'ye hac yolculuğu için gemiler gönderirdi.",
+      "tts": {
+        "text": "Her yıl Babür seçkinleri Mekke'ye hac yolculuğu için gemiler gönderirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu hacı gemileri aynı zamanda büyük miktarda ticaret malı da taşıyordu.",
+      "text_markdown": "Bu hacı gemileri aynı zamanda büyük miktarda ticaret malı da taşıyordu.",
+      "tts": {
+        "text": "Bu hacı gemileri aynı zamanda büyük miktarda ticaret malı da taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altın, gümüş, mücevher ve ipekler yük ambarlarını dolduruyordu.",
+      "text_markdown": "Altın, gümüş, mücevher ve ipekler yük ambarlarını dolduruyordu.",
+      "tts": {
+        "text": "Altın, gümüş, mücevher ve ipekler yük ambarlarını dolduruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yıllık hacı filosu, herhangi bir okyanusdaki en zengin hedefti.",
+      "text_markdown": "Yıllık hacı filosu, herhangi bir okyanusdaki en zengin hedefti.",
+      "tts": {
+        "text": "Yıllık hacı filosu, herhangi bir okyanusdaki en zengin hedefti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kızıldeniz, Hint Okyanusu ile İslam'ın kutsal şehirleri arasındaki geçit kapısıydı.",
+      "text_markdown": "Kızıldeniz, Hint Okyanusu ile İslam'ın kutsal şehirleri arasındaki geçit kapısıydı.",
+      "tts": {
+        "text": "Kızıldeniz, Hint Okyanusu ile İslam'ın kutsal şehirleri arasındaki geçit kapısıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hindistan'dan gelen gemiler, Mekke'nin kapısı olan Cidde limanına ulaşmak için Kızıldeniz'i yukarı doğru seyrediyordu.",
+      "text_markdown": "Hindistan'dan gelen gemiler, Mekke'nin kapısı olan Cidde limanına ulaşmak için Kızıldeniz'i yukarı doğru seyrediyordu.",
+      "tts": {
+        "text": "Hindistan'dan gelen gemiler, Mekke'nin kapısı olan Cidde limanına ulaşmak için Kızıldeniz'i yukarı doğru seyrediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kızıldeniz'in güney ucundaki dar Bab'ül Mendep Boğazı doğal bir darboğazdı.",
+      "text_markdown": "Kızıldeniz'in güney ucundaki dar Bab'ül Mendep Boğazı doğal bir darboğazdı.",
+      "tts": {
+        "text": "Kızıldeniz'in güney ucundaki dar Bab'ül Mendep Boğazı doğal bir darboğazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O boğazda bekleyen herhangi bir korsan, dünyanın en zengin gemilerini yakalayabilirdi.",
+      "text_markdown": "O boğazda bekleyen herhangi bir korsan, dünyanın en zengin gemilerini yakalayabilirdi.",
+      "tts": {
+        "text": "O boğazda bekleyen herhangi bir korsan, dünyanın en zengin gemilerini yakalayabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa güçleri, on dördüncü yüzyılın sonlarından beri Hint Okyanusu'na yayılıyordu.",
+      "text_markdown": "Avrupa güçleri, on dördüncü yüzyılın sonlarından beri Hint Okyanusu'na yayılıyordu.",
+      "tts": {
+        "text": "Avrupa güçleri, on dördüncü yüzyılın sonlarından beri Hint Okyanusu'na yayılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portekizliler ilk gelenlerdi, ardından Hollandalılar, İngilizler ve Fransızlar geldi.",
+      "text_markdown": "Portekizliler ilk gelenlerdi, ardından Hollandalılar, İngilizler ve Fransızlar geldi.",
+      "tts": {
+        "text": "Portekizliler ilk gelenlerdi, ardından Hollandalılar, İngilizler ve Fransızlar geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hindistan ve Güneydoğu Asya kıyıları boyunca faktörya adı verilen ticaret merkezleri kurdular.",
+      "text_markdown": "Hindistan ve Güneydoğu Asya kıyıları boyunca faktörya adı verilen ticaret merkezleri kurdular.",
+      "tts": {
+        "text": "Hindistan ve Güneydoğu Asya kıyıları boyunca faktörya adı verilen ticaret merkezleri kurdular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ileri karakollar, gelecekteki sömürge imparatorluklarının temelleriydi.",
+      "text_markdown": "Bu ileri karakollar, gelecekteki sömürge imparatorluklarının temelleriydi.",
+      "tts": {
+        "text": "Bu ileri karakollar, gelecekteki sömürge imparatorluklarının temelleriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz Doğu Hindistan Şirketi, bölgedeki en önemli İngiliz varlığıydı.",
+      "text_markdown": "İngiliz Doğu Hindistan Şirketi, bölgedeki en önemli İngiliz varlığıydı.",
+      "tts": {
+        "text": "İngiliz Doğu Hindistan Şirketi, bölgedeki en önemli İngiliz varlığıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1600 yılında Kraliçe I. Elizabeth'ten kraliyet beratı almıştı.",
+      "text_markdown": "1600 yılında Kraliçe I. Elizabeth'ten kraliyet beratı almıştı.",
+      "tts": {
+        "text": "Bin altı yüz yılında Kraliçe Birinci Elizabeth'ten kraliyet beratı almıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şirketin Asya ile tüm İngiliz ticareti üzerinde yasal tekeli vardı.",
+      "text_markdown": "Şirketin Asya ile tüm İngiliz ticareti üzerinde yasal tekeli vardı.",
+      "tts": {
+        "text": "Şirketin Asya ile tüm İngiliz ticareti üzerinde yasal tekeli vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kârları muazzamdı ve hissedarları arasında İngiltere'nin en güçlü insanları yer alıyordu.",
+      "text_markdown": "Kârları muazzamdı ve hissedarları arasında İngiltere'nin en güçlü insanları yer alıyordu.",
+      "tts": {
+        "text": "Kârları muazzamdı ve hissedarları arasında İngiltere'nin en güçlü insanları yer alıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doğu Hindistan Şirketi, Babür İmparatoru'nun izniyle faaliyet gösteriyordu.",
+      "text_markdown": "Doğu Hindistan Şirketi, Babür İmparatoru'nun izniyle faaliyet gösteriyordu.",
+      "tts": {
+        "text": "Doğu Hindistan Şirketi, Babür İmparatoru'nun izniyle faaliyet gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babürlerin iyi niyeti olmadan şirket Hint limanlarında ticaret yapamazdı.",
+      "text_markdown": "Babürlerin iyi niyeti olmadan şirket Hint limanlarında ticaret yapamazdı.",
+      "tts": {
+        "text": "Babürlerin iyi niyeti olmadan şirket Hint limanlarında ticaret yapamazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu ilişki kırılgandı ve karşılıklı güvene dayanıyordu.",
+      "text_markdown": "Bu ilişki kırılgandı ve karşılıklı güvene dayanıyordu.",
+      "tts": {
+        "text": "Bu ilişki kırılgandı ve karşılıklı güvene dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiliz korsanlarının Babür gemilerine herhangi bir saldırısı bu güveni tamamen yok edebilirdi.",
+      "text_markdown": "İngiliz korsanlarının Babür gemilerine herhangi bir saldırısı bu güveni tamamen yok edebilirdi.",
+      "tts": {
+        "text": "İngiliz korsanlarının Babür gemilerine herhangi bir saldırısı bu güveni tamamen yok edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupalı korsanlar onlarca yıldır Hint Okyanusu'ndaki gemilere saldırıyordu.",
+      "text_markdown": "Avrupalı korsanlar onlarca yıldır Hint Okyanusu'ndaki gemilere saldırıyordu.",
+      "tts": {
+        "text": "Avrupalı korsanlar onlarca yıldır Hint Okyanusu'ndaki gemilere saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrika'nın doğu kıyısındaki Madagaskar adası korsan üssü olarak hizmet ediyordu.",
+      "text_markdown": "Afrika'nın doğu kıyısındaki Madagaskar adası korsan üssü olarak hizmet ediyordu.",
+      "tts": {
+        "text": "Afrika'nın doğu kıyısındaki Madagaskar adası korsan üssü olarak hizmet ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar birçok limanında saklanabilir, taze yiyecek ve su temin edebilir ve avlarını bekleyebilirdi.",
+      "text_markdown": "Korsanlar birçok limanında saklanabilir, taze yiyecek ve su temin edebilir ve avlarını bekleyebilirdi.",
+      "tts": {
+        "text": "Korsanlar birçok limanında saklanabilir, taze yiyecek ve su temin edebilir ve avlarını bekleyebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Madagaskar'dan Hindistan kıyılarındaki yoğun deniz yollarına kısa bir yolculuktu.",
+      "text_markdown": "Madagaskar'dan Hindistan kıyılarındaki yoğun deniz yollarına kısa bir yolculuktu.",
+      "tts": {
+        "text": "Madagaskar'dan Hindistan kıyılarındaki yoğun deniz yollarına kısa bir yolculuktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hindistan ile Kızıldeniz arasındaki rota Korsan Turu olarak adlandırılıyordu.",
+      "text_markdown": "Hindistan ile Kızıldeniz arasındaki rota Korsan Turu olarak adlandırılıyordu.",
+      "tts": {
+        "text": "Hindistan ile Kızıldeniz arasındaki rota Korsan Turu olarak adlandırılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz ve Amerikalı korsanlar bu av sahalarına ulaşmak için dünyanın yarısını kat ediyordu.",
+      "text_markdown": "İngiliz ve Amerikalı korsanlar bu av sahalarına ulaşmak için dünyanın yarısını kat ediyordu.",
+      "tts": {
+        "text": "İngiliz ve Amerikalı korsanlar bu av sahalarına ulaşmak için dünyanın yarısını kat ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ödüller uzun yolculuğa değerdi.",
+      "text_markdown": "Ödüller uzun yolculuğa değerdi.",
+      "tts": {
+        "text": "Ödüller uzun yolculuğa değerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tek bir Hint hazine gemisi, düzinelerce Karayip tüccarından daha fazla servet taşıyabilirdi.",
+      "text_markdown": "Tek bir Hint hazine gemisi, düzinelerce Karayip tüccarından daha fazla servet taşıyabilirdi.",
+      "tts": {
+        "text": "Tek bir Hint hazine gemisi, düzinelerce Karayip tüccarından daha fazla servet taşıyabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin altı yüz doksanlarda sıradan İngiliz denizcilerin hayatı zordu.",
+      "text_markdown": "Bin altı yüz doksanlarda sıradan İngiliz denizcilerin hayatı zordu.",
+      "tts": {
+        "text": "Bin altı yüz doksanlarda sıradan İngiliz denizcilerin hayatı zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ücretler düşük, disiplin acımasız ve hastalıklar yaygındı.",
+      "text_markdown": "Ücretler düşük, disiplin acımasız ve hastalıklar yaygındı.",
+      "tts": {
+        "text": "Ücretler düşük, disiplin acımasız ve hastalıklar yaygındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok denizci Fransa'ya karşı savaşlarda görev yapmış ve barış geldiğinde kendini işsiz bulmuştu.",
+      "text_markdown": "Birçok denizci Fransa'ya karşı savaşlarda görev yapmış ve barış geldiğinde kendini işsiz bulmuştu.",
+      "tts": {
+        "text": "Birçok denizci Fransa'ya karşı savaşlarda görev yapmış ve barış geldiğinde kendini işsiz bulmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hint Okyanusu, yoksulluk ve baskıdan cazip bir kaçış sunuyordu.",
+      "text_markdown": "Hint Okyanusu, yoksulluk ve baskıdan cazip bir kaçış sunuyordu.",
+      "tts": {
+        "text": "Hint Okyanusu, yoksulluk ve baskıdan cazip bir kaçış sunuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerika'daki sömürge valileri bazen gizlice Hint Okyanusu korsanlarını destekliyordu.",
+      "text_markdown": "Amerika'daki sömürge valileri bazen gizlice Hint Okyanusu korsanlarını destekliyordu.",
+      "tts": {
+        "text": "Amerika'daki sömürge valileri bazen gizlice Hint Okyanusu korsanlarını destekliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar çalıntı zenginlikleri sömürge limanlarına getirerek yerel ekonomileri canlandırıyordu.",
+      "text_markdown": "Korsanlar çalıntı zenginlikleri sömürge limanlarına getirerek yerel ekonomileri canlandırıyordu.",
+      "tts": {
+        "text": "Korsanlar çalıntı zenginlikleri sömürge limanlarına getirerek yerel ekonomileri canlandırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "New York, Rhode Island ve Karolinalar'daki yetkililer göz yummalarıyla biliniyordu.",
+      "text_markdown": "New York, Rhode Island ve Karolinalar'daki yetkililer göz yummalarıyla biliniyordu.",
+      "tts": {
+        "text": "New York, Rhode Island ve Karolinalar'daki yetkililer göz yummalarıyla biliniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu yolsuzluk korsanların neredeyse cezasız hareket etmesini kolaylaştırıyordu.",
+      "text_markdown": "Bu yolsuzluk korsanların neredeyse cezasız hareket etmesini kolaylaştırıyordu.",
+      "tts": {
+        "text": "Bu yolsuzluk korsanların neredeyse cezasız hareket etmesini kolaylaştırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every korsan olduğunda girdiği dünya buydu.",
+      "text_markdown": "Henry Every korsan olduğunda girdiği dünya buydu.",
+      "tts": {
+        "text": "Henry Every korsan olduğunda girdiği dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İmparatorlukların zenginliklerinin minimum korumayla açık denizlerde taşındığı bir dünyaydı.",
+      "text_markdown": "İmparatorlukların zenginliklerinin minimum korumayla açık denizlerde taşındığı bir dünyaydı.",
+      "tts": {
+        "text": "İmparatorlukların zenginliklerinin minimum korumayla açık denizlerde taşındığı bir dünyaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babür İmparatoru, Avrupa uluslarının kendi tebaalarını kontrol edeceğine güveniyordu.",
+      "text_markdown": "Babür İmparatoru, Avrupa uluslarının kendi tebaalarını kontrol edeceğine güveniyordu.",
+      "tts": {
+        "text": "Babür İmparatoru, Avrupa uluslarının kendi tebaalarını kontrol edeceğine güveniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hint Okyanusu Ticaretinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu güven paramparça olmak üzereydi.",
+      "text_markdown": "Bu güven paramparça olmak üzereydi.",
+      "tts": {
+        "text": "Bu güven paramparça olmak üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bir İsyancının Doğuşu",
+      "text_markdown": "Bir İsyancının Doğuşu"
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every muhtemelen 1659 yılı civarında İngiltere'nin batısında doğdu.",
+      "text_markdown": "Henry Every muhtemelen 1659 yılı civarında İngiltere'nin batısında doğdu.",
+      "tts": {
+        "text": "Henry Every muhtemelen bin altı yüz elli dokuz yılı civarında İngiltere'nin batısında doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı tarihçiler onun Devon'daki Newton Ferrers köyünden geldiğine inanır.",
+      "text_markdown": "Bazı tarihçiler onun Devon'daki Newton Ferrers köyünden geldiğine inanır.",
+      "tts": {
+        "text": "Bazı tarihçiler onun Devon'daki Newton Ferrers köyünden geldiğine inanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Devon bir denizcilik kontluğuydu ve gençlerinin çoğu denize açılırdı.",
+      "text_markdown": "Devon bir denizcilik kontluğuydu ve gençlerinin çoğu denize açılırdı.",
+      "tts": {
+        "text": "Devon bir denizcilik kontluğuydu ve gençlerinin çoğu denize açılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çocukluğu veya ailesi hakkında çok az şey bilinmektedir.",
+      "text_markdown": "Çocukluğu veya ailesi hakkında çok az şey bilinmektedir.",
+      "tts": {
+        "text": "Çocukluğu veya ailesi hakkında çok az şey bilinmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adı tarihî kayıtlarda birçok farklı yazılışla karşımıza çıkar.",
+      "text_markdown": "Adı tarihî kayıtlarda birçok farklı yazılışla karşımıza çıkar.",
+      "tts": {
+        "text": "Adı tarihî kayıtlarda birçok farklı yazılışla karşımıza çıkar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Every, Avery, Evory ve Ivory dönemin belgelerinde yer alır.",
+      "text_markdown": "Every, Avery, Evory ve Ivory dönemin belgelerinde yer alır.",
+      "tts": {
+        "text": "Every, Avery, Evory ve Ivory dönemin belgelerinde yer alır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yazım kurallarının henüz standartlaşmadığı bir çağda bu tipikti.",
+      "text_markdown": "Yazım kurallarının henüz standartlaşmadığı bir çağda bu tipikti.",
+      "tts": {
+        "text": "Yazım kurallarının henüz standartlaşmadığı bir çağda bu tipikti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarihçilerin çoğu, en resmî belgelerde görülen Every yazılışını kullanır.",
+      "text_markdown": "Tarihçilerin çoğu, en resmî belgelerde görülen Every yazılışını kullanır.",
+      "tts": {
+        "text": "Tarihçilerin çoğu, en resmî belgelerde görülen Every yazılışını kullanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every, çağdaşı denizcilerin çoğu gibi genç yaşta denize açıldı.",
+      "text_markdown": "Every, çağdaşı denizcilerin çoğu gibi genç yaşta denize açıldı.",
+      "tts": {
+        "text": "Every, çağdaşı denizcilerin çoğu gibi genç yaşta denize açıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muhtemelen ticaret gemilerinde ve belki de Kraliyet Donanması gemilerinde görev yaptı.",
+      "text_markdown": "Muhtemelen ticaret gemilerinde ve belki de Kraliyet Donanması gemilerinde görev yaptı.",
+      "tts": {
+        "text": "Muhtemelen ticaret gemilerinde ve belki de Kraliyet Donanması gemilerinde görev yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bin altı yüz doksanlara gelindiğinde deneyimli ve yetenekli bir denizciydi.",
+      "text_markdown": "Bin altı yüz doksanlara gelindiğinde deneyimli ve yetenekli bir denizciydi.",
+      "tts": {
+        "text": "Bin altı yüz doksanlara gelindiğinde deneyimli ve yetenekli bir denizciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Navigasyon, denizcilik ve mürettebat yönetimini anlıyordu.",
+      "text_markdown": "Navigasyon, denizcilik ve mürettebat yönetimini anlıyordu.",
+      "tts": {
+        "text": "Navigasyon, denizcilik ve mürettebat yönetimini anlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every'nin korsan olmadan önce köle ticaretiyle ilişkili olduğuna dair kanıtlar var.",
+      "text_markdown": "Every'nin korsan olmadan önce köle ticaretiyle ilişkili olduğuna dair kanıtlar var.",
+      "tts": {
+        "text": "Every'nin korsan olmadan önce köle ticaretiyle ilişkili olduğuna dair kanıtlar var.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Köleleştirilmiş Afrikalıları Atlantik'in karşısına taşıyan gemilerde görev yapmış olabilir.",
+      "text_markdown": "Köleleştirilmiş Afrikalıları Atlantik'in karşısına taşıyan gemilerde görev yapmış olabilir.",
+      "tts": {
+        "text": "Köleleştirilmiş Afrikalıları Atlantik'in karşısına taşıyan gemilerde görev yapmış olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Köle ticareti yasal ve kârlıydı, ancak korkunç derecede acımasızdı.",
+      "text_markdown": "Köle ticareti yasal ve kârlıydı, ancak korkunç derecede acımasızdı.",
+      "tts": {
+        "text": "Köle ticareti yasal ve kârlıydı, ancak korkunç derecede acımasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nispeten iyi ödeme yapan birkaç deniz ticaretinden biriydi.",
+      "text_markdown": "Nispeten iyi ödeme yapan birkaç deniz ticaretinden biriydi.",
+      "tts": {
+        "text": "Nispeten iyi ödeme yapan birkaç deniz ticaretinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1693'te Every, Charles II adlı bir korsan gemisine baş kaptan olarak katıldı.",
+      "text_markdown": "1693'te Every, Charles II adlı bir korsan gemisine baş kaptan olarak katıldı.",
+      "tts": {
+        "text": "Bin altı yüz doksan üçte Every, Charles İkinci adlı bir korsan gemisine baş kaptan olarak katıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemi, İspanyol hükümeti tarafından kiralanan küçük bir filonun parçasıydı.",
+      "text_markdown": "Gemi, İspanyol hükümeti tarafından kiralanan küçük bir filonun parçasıydı.",
+      "tts": {
+        "text": "Gemi, İspanyol hükümeti tarafından kiralanan küçük bir filonun parçasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya, İngiliz korsanlarının Karayipler'deki Fransız kaçakçılara saldırmasını istiyordu.",
+      "text_markdown": "İspanya, İngiliz korsanlarının Karayipler'deki Fransız kaçakçılara saldırmasını istiyordu.",
+      "tts": {
+        "text": "İspanya, İngiliz korsanlarının Karayipler'deki Fransız kaçakçılara saldırmasını istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Meşru ve potansiyel olarak kârlı bir girişim gibi görünüyordu.",
+      "text_markdown": "Meşru ve potansiyel olarak kârlı bir girişim gibi görünüyordu.",
+      "tts": {
+        "text": "Meşru ve potansiyel olarak kârlı bir girişim gibi görünüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Charles İkinci, İspanyol limanı La Coruña'da demir atarak emirleri bekliyordu.",
+      "text_markdown": "Charles İkinci, İspanyol limanı La Coruña'da demir atarak emirleri bekliyordu.",
+      "tts": {
+        "text": "Charles İkinci, İspanyol limanı La Coruña'da demir atarak emirleri bekliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebat aylardır limanda maaşsız ve görevsiz olarak mahsur kalmıştı.",
+      "text_markdown": "Mürettebat aylardır limanda maaşsız ve görevsiz olarak mahsur kalmıştı.",
+      "tts": {
+        "text": "Mürettebat aylardır limanda maaşsız ve görevsiz olarak mahsur kalmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizciler huzursuz ve öfkeli oldu.",
+      "text_markdown": "Denizciler huzursuz ve öfkeli oldu.",
+      "tts": {
+        "text": "Denizciler huzursuz ve öfkeli oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hızlı kâr için imza atmışlardı, sonu gelmeyen bekleme için değil.",
+      "text_markdown": "Hızlı kâr için imza atmışlardı, sonu gelmeyen bekleme için değil.",
+      "tts": {
+        "text": "Hızlı kâr için imza atmışlardı, sonu gelmeyen bekleme için değil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geminin kaptanı Charles Gibson adlı bir adamdı.",
+      "text_markdown": "Geminin kaptanı Charles Gibson adlı bir adamdı.",
+      "tts": {
+        "text": "Geminin kaptanı Charles Gibson adlı bir adamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sert disiplini ve tutmadığı sözler yüzünden mürettebat tarafından genel olarak sevilmezdi.",
+      "text_markdown": "Sert disiplini ve tutmadığı sözler yüzünden mürettebat tarafından genel olarak sevilmezdi.",
+      "tts": {
+        "text": "Sert disiplini ve tutmadığı sözler yüzünden mürettebat tarafından genel olarak sevilmezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlar hizmet koşulları hakkında kandırıldıklarını hissediyordu.",
+      "text_markdown": "Adamlar hizmet koşulları hakkında kandırıldıklarını hissediyordu.",
+      "tts": {
+        "text": "Adamlar hizmet koşulları hakkında kandırıldıklarını hissediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hayal kırıklığı ve kızgınlık güverte altında kaynıyordu.",
+      "text_markdown": "Hayal kırıklığı ve kızgınlık güverte altında kaynıyordu.",
+      "tts": {
+        "text": "Hayal kırıklığı ve kızgınlık güverte altında kaynıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "6 Haziran 1694 gecesi Henry Every bir isyan başlattı.",
+      "text_markdown": "6 Haziran 1694 gecesi Henry Every bir isyan başlattı.",
+      "tts": {
+        "text": "Altı Haziran bin altı yüz doksan dört gecesi Henry Every bir isyan başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan Gibson kamarasında uyurken, Every ve müttefikleri gemiyi ele geçirdi.",
+      "text_markdown": "Kaptan Gibson kamarasında uyurken, Every ve müttefikleri gemiyi ele geçirdi.",
+      "tts": {
+        "text": "Kaptan Gibson kamarasında uyurken, Every ve müttefikleri gemiyi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İsyan iyi planlanmış ve minimum şiddetle gerçekleştirilmişti.",
+      "text_markdown": "İsyan iyi planlanmış ve minimum şiddetle gerçekleştirilmişti.",
+      "tts": {
+        "text": "İsyan iyi planlanmış ve minimum şiddetle gerçekleştirilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şafak söktüğünde Every geminin tam kontrolüne sahipti.",
+      "text_markdown": "Şafak söktüğünde Every geminin tam kontrolüne sahipti.",
+      "tts": {
+        "text": "Şafak söktüğünde Every geminin tam kontrolüne sahipti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every, Gibson'a ve sadık denizcilere bir seçenek sundu.",
+      "text_markdown": "Every, Gibson'a ve sadık denizcilere bir seçenek sundu.",
+      "tts": {
+        "text": "Every, Gibson'a ve sadık denizcilere bir seçenek sundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İsyana katılabilir veya karaya bırakılabilirlerdi.",
+      "text_markdown": "İsyana katılabilir veya karaya bırakılabilirlerdi.",
+      "tts": {
+        "text": "İsyana katılabilir veya karaya bırakılabilirlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaklaşık 16 adam ayrılmayı seçti ve küçük bir tekneyle karaya bırakıldı.",
+      "text_markdown": "Yaklaşık 16 adam ayrılmayı seçti ve küçük bir tekneyle karaya bırakıldı.",
+      "tts": {
+        "text": "Yaklaşık on altı adam ayrılmayı seçti ve küçük bir tekneyle karaya bırakıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mürettebatın geri kalanı, macera ve zenginlik arzusuyla kaderini Every'ye bağladı.",
+      "text_markdown": "Mürettebatın geri kalanı, macera ve zenginlik arzusuyla kaderini Every'ye bağladı.",
+      "tts": {
+        "text": "Mürettebatın geri kalanı, macera ve zenginlik arzusuyla kaderini Every'ye bağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every geminin adını Fancy olarak değiştirdi.",
+      "text_markdown": "Every geminin adını Fancy olarak değiştirdi.",
+      "tts": {
+        "text": "Every geminin adını Fancy olarak değiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Servetlerini aramak için Hint Okyanusu'na yelken açacaklarını ilan etti.",
+      "text_markdown": "Servetlerini aramak için Hint Okyanusu'na yelken açacaklarını ilan etti.",
+      "tts": {
+        "text": "Servetlerini aramak için Hint Okyanusu'na yelken açacaklarını ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mürettebat duyuruyu sevinç çığlıklarıyla karşıladı.",
+      "text_markdown": "Mürettebat duyuruyu sevinç çığlıklarıyla karşıladı.",
+      "tts": {
+        "text": "Mürettebat duyuruyu sevinç çığlıklarıyla karşıladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every, tarihin akışını değiştirecek bir korsanlık eylemi gerçekleştirmişti.",
+      "text_markdown": "Every, tarihin akışını değiştirecek bir korsanlık eylemi gerçekleştirmişti.",
+      "tts": {
+        "text": "Every, tarihin akışını değiştirecek bir korsanlık eylemi gerçekleştirmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hint Okyanusu'na yönelmeden önce Every, Afrika kıyıları boyunca güneye doğru yola çıktı.",
+      "text_markdown": "Hint Okyanusu'na yönelmeden önce Every, Afrika kıyıları boyunca güneye doğru yola çıktı.",
+      "tts": {
+        "text": "Hint Okyanusu'na yönelmeden önce Every, Afrika kıyıları boyunca güneye doğru yola çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İkmal yapmak ve ek mürettebat almak için birkaç limana uğradı.",
+      "text_markdown": "İkmal yapmak ve ek mürettebat almak için birkaç limana uğradı.",
+      "tts": {
+        "text": "İkmal yapmak ve ek mürettebat almak için birkaç limana uğradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğer gemilerden korsanlar, Every'nin artan ününe çekilerek Fancy'ye katıldı.",
+      "text_markdown": "Diğer gemilerden korsanlar, Every'nin artan ününe çekilerek Fancy'ye katıldı.",
+      "tts": {
+        "text": "Diğer gemilerden korsanlar, Every'nin artan ününe çekilerek Fancy'ye katıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Madagaskar'a vardığında mürettebatı kalabalık ve iyi silahlıydı.",
+      "text_markdown": "Madagaskar'a vardığında mürettebatı kalabalık ve iyi silahlıydı.",
+      "tts": {
+        "text": "Madagaskar'a vardığında mürettebatı kalabalık ve iyi silahlıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every olağanüstü bir lider ve denizci olduğunu kanıtladı.",
+      "text_markdown": "Every olağanüstü bir lider ve denizci olduğunu kanıtladı.",
+      "tts": {
+        "text": "Every olağanüstü bir lider ve denizci olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zulme başvurmadan disiplini sürdürdü.",
+      "text_markdown": "Zulme başvurmadan disiplini sürdürdü.",
+      "tts": {
+        "text": "Zulme başvurmadan disiplini sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hızlı kararlar aldı ve adamlarıyla açık iletişim kurdu.",
+      "text_markdown": "Hızlı kararlar aldı ve adamlarıyla açık iletişim kurdu.",
+      "tts": {
+        "text": "Hızlı kararlar aldı ve adamlarıyla açık iletişim kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bir İsyancının Doğuşu",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mürettebat ona tamamen güveniyordu ve sadakatleri en çılgın hayallerinin ötesinde ödüllendirilecekti.",
+      "text_markdown": "Mürettebat ona tamamen güveniyordu ve sadakatleri en çılgın hayallerinin ötesinde ödüllendirilecekti.",
+      "tts": {
+        "text": "Mürettebat ona tamamen güveniyordu ve sadakatleri en çılgın hayallerinin ötesinde ödüllendirilecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En Büyük Ganimet",
+      "text_markdown": "En Büyük Ganimet"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1695'te Every, Fancy'yi Kızıldeniz'in ağzına kadar götürdü.",
+      "text_markdown": "1695'te Every, Fancy'yi Kızıldeniz'in ağzına kadar götürdü.",
+      "tts": {
+        "text": "Bin altı yüz doksan beşte Every, Fancy'yi Kızıldeniz'in ağzına kadar götürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yıllık Babür hacı filosunun yakında buradan geçeceğini biliyordu.",
+      "text_markdown": "Yıllık Babür hacı filosunun yakında buradan geçeceğini biliyordu.",
+      "tts": {
+        "text": "Yıllık Babür hacı filosunun yakında buradan geçeceğini biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu gemiler Mekke'ye hac ziyaretinin ardından Hindistan'a dönüyordu.",
+      "text_markdown": "Bu gemiler Mekke'ye hac ziyaretinin ardından Hindistan'a dönüyordu.",
+      "tts": {
+        "text": "Bu gemiler Mekke'ye hac ziyaretinin ardından Hindistan'a dönüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yük ambarları hazineyle dolup taşıyor olacaktı.",
+      "text_markdown": "Yük ambarları hazineyle dolup taşıyor olacaktı.",
+      "tts": {
+        "text": "Yük ambarları hazineyle dolup taşıyor olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Boğazda bekleyen tek korsan Every değildi.",
+      "text_markdown": "Boğazda bekleyen tek korsan Every değildi.",
+      "tts": {
+        "text": "Boğazda bekleyen tek korsan Every değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç başka korsan gemisi aynı darboğazda toplanmıştı.",
+      "text_markdown": "Birkaç başka korsan gemisi aynı darboğazda toplanmıştı.",
+      "tts": {
+        "text": "Birkaç başka korsan gemisi aynı darboğazda toplanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aralarında Rhode Island'lı ünlü Amerikalı korsan Thomas Tew'un komuta ettiği bir gemi de vardı.",
+      "text_markdown": "Aralarında Rhode Island'lı ünlü Amerikalı korsan Thomas Tew'un komuta ettiği bir gemi de vardı.",
+      "tts": {
+        "text": "Aralarında Rhode Island'lı ünlü Amerikalı korsan Thomas Tew'un komuta ettiği bir gemi de vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every diğer kaptanları geçici bir ittifak kurmaya ikna etti.",
+      "text_markdown": "Every diğer kaptanları geçici bir ittifak kurmaya ikna etti.",
+      "tts": {
+        "text": "Every diğer kaptanları geçici bir ittifak kurmaya ikna etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar, Every'nin küçük filolarının komutanlığını üstlenmesini kabul etti.",
+      "text_markdown": "Korsanlar, Every'nin küçük filolarının komutanlığını üstlenmesini kabul etti.",
+      "tts": {
+        "text": "Korsanlar, Every'nin küçük filolarının komutanlığını üstlenmesini kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, yalnızca bir yıl önce korsan olan biri için dikkat çekici bir başarıydı.",
+      "text_markdown": "Bu, yalnızca bir yıl önce korsan olan biri için dikkat çekici bir başarıydı.",
+      "tts": {
+        "text": "Bu, yalnızca bir yıl önce korsan olan biri için dikkat çekici bir başarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Doğal otoritesi ve berrak düşüncesi onu diğer korsan liderlerinden ayırıyordu.",
+      "text_markdown": "Doğal otoritesi ve berrak düşüncesi onu diğer korsan liderlerinden ayırıyordu.",
+      "tts": {
+        "text": "Doğal otoritesi ve berrak düşüncesi onu diğer korsan liderlerinden ayırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğer kaptanlar onun kararlarına saygı duyuyor ve savaşta sinyallerini takip etmeyi kabul ediyordu.",
+      "text_markdown": "Diğer kaptanlar onun kararlarına saygı duyuyor ve savaşta sinyallerini takip etmeyi kabul ediyordu.",
+      "tts": {
+        "text": "Diğer kaptanlar onun kararlarına saygı duyuyor ve savaşta sinyallerini takip etmeyi kabul ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babür filosu Eylül 1695'te göründü.",
+      "text_markdown": "Babür filosu Eylül 1695'te göründü.",
+      "tts": {
+        "text": "Babür filosu bin altı yüz doksan beş Eylül'ünde göründü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık 25 gemiden oluşuyordu ve birçok büyük silahlı gemiyi içeriyordu.",
+      "text_markdown": "Yaklaşık 25 gemiden oluşuyordu ve birçok büyük silahlı gemiyi içeriyordu.",
+      "tts": {
+        "text": "Yaklaşık yirmi beş gemiden oluşuyordu ve birçok büyük silahlı gemiyi içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar saldırdı ancak Babür eskort gemileri şiddetle karşılık verdi.",
+      "text_markdown": "Korsanlar saldırdı ancak Babür eskort gemileri şiddetle karşılık verdi.",
+      "tts": {
+        "text": "Korsanlar saldırdı ancak Babür eskort gemileri şiddetle karşılık verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas Tew ilk ateş değişiminde hayatını kaybetti; bir top mermisi karnını parçaladı.",
+      "text_markdown": "Thomas Tew ilk ateş değişiminde hayatını kaybetti; bir top mermisi karnını parçaladı.",
+      "tts": {
+        "text": "Thomas Tew ilk ateş değişiminde hayatını kaybetti; bir top mermisi karnını parçaladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tew'un ölümünden sonra korsan gemilerinin çoğu saldırıyı bıraktı.",
+      "text_markdown": "Tew'un ölümünden sonra korsan gemilerinin çoğu saldırıyı bıraktı.",
+      "tts": {
+        "text": "Tew'un ölümünden sonra korsan gemilerinin çoğu saldırıyı bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babür filosu dağıldı ve gemiler farklı yönlere kaçtı.",
+      "text_markdown": "Babür filosu dağıldı ve gemiler farklı yönlere kaçtı.",
+      "tts": {
+        "text": "Babür filosu dağıldı ve gemiler farklı yönlere kaçtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama Every ve Fancy tek başına ilerlemeye devam etti.",
+      "text_markdown": "Ama Every ve Fancy tek başına ilerlemeye devam etti.",
+      "tts": {
+        "text": "Ama Every ve Fancy tek başına ilerlemeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hayatının en büyük ganimetinin kaçmasına izin vermeyecekti.",
+      "text_markdown": "Hayatının en büyük ganimetinin kaçmasına izin vermeyecekti.",
+      "tts": {
+        "text": "Hayatının en büyük ganimetinin kaçmasına izin vermeyecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every ilk olarak Fatih Muhammed adlı bir gemiyi yakaladı.",
+      "text_markdown": "Every ilk olarak Fatih Muhammed adlı bir gemiyi yakaladı.",
+      "tts": {
+        "text": "Every ilk olarak Fatih Muhammed adlı bir gemiyi yakaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yükü 50.000 ile 60.000 sterlin arasında değere sahipti; muazzam bir servetti.",
+      "text_markdown": "Yükü 50.000 ile 60.000 sterlin arasında değere sahipti; muazzam bir servetti.",
+      "tts": {
+        "text": "Yükü elli bin ile altmış bin sterlin arasında değere sahipti; muazzam bir servetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every'nin mürettebatı gemiyi yağmaladı ve serbest bıraktı.",
+      "text_markdown": "Every'nin mürettebatı gemiyi yağmaladı ve serbest bıraktı.",
+      "tts": {
+        "text": "Every'nin mürettebatı gemiyi yağmaladı ve serbest bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Every, daha da büyük bir ganimetin hâlâ önünde kaçtığını biliyordu.",
+      "text_markdown": "Ama Every, daha da büyük bir ganimetin hâlâ önünde kaçtığını biliyordu.",
+      "tts": {
+        "text": "Ama Every, daha da büyük bir ganimetin hâlâ önünde kaçtığını biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ganj-i-Savai, Babür filosundaki en büyük gemiydi.",
+      "text_markdown": "Ganj-i-Savai, Babür filosundaki en büyük gemiydi.",
+      "tts": {
+        "text": "Ganj-i-Savai, Babür filosundaki en büyük gemiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Eşsiz Hazine anlamına geliyordu ve adına layıktı.",
+      "text_markdown": "Adı Eşsiz Hazine anlamına geliyordu ve adına layıktı.",
+      "tts": {
+        "text": "Adı Eşsiz Hazine anlamına geliyordu ve adına layıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babür İmparatoru Aurangzeb'in bizzat kendisine aitti.",
+      "text_markdown": "Babür İmparatoru Aurangzeb'in bizzat kendisine aitti.",
+      "tts": {
+        "text": "Babür İmparatoru Aurangzeb'in bizzat kendisine aitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "62 top ve 400'den fazla asker taşıyordu; Every'nin mürettebatını çok aşıyordu.",
+      "text_markdown": "62 top ve 400'den fazla asker taşıyordu; Every'nin mürettebatını çok aşıyordu.",
+      "tts": {
+        "text": "Altmış iki top ve dört yüzden fazla asker taşıyordu; Every'nin mürettebatını çok aşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fancy, uzun bir kovalamacadan sonra Ganj-i-Savai'ye yetişti.",
+      "text_markdown": "Fancy, uzun bir kovalamacadan sonra Ganj-i-Savai'ye yetişti.",
+      "tts": {
+        "text": "Fancy, uzun bir kovalamacadan sonra Ganj-i-Savai'ye yetişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonra olan, korsan tarihindeki en önemli deniz muharebelerinden biriydi.",
+      "text_markdown": "Sonra olan, korsan tarihindeki en önemli deniz muharebelerinden biriydi.",
+      "tts": {
+        "text": "Sonra olan, korsan tarihindeki en önemli deniz muharebelerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every devasa Babür gemisine ateş açtı.",
+      "text_markdown": "Every devasa Babür gemisine ateş açtı.",
+      "tts": {
+        "text": "Every devasa Babür gemisine ateş açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Erken bir atış Ganj-i-Savai'nin ana direğine isabet ederek manevra kabiliyetini felç etti.",
+      "text_markdown": "Erken bir atış Ganj-i-Savai'nin ana direğine isabet ederek manevra kabiliyetini felç etti.",
+      "tts": {
+        "text": "Erken bir atış Ganj-i-Savai'nin ana direğine isabet ederek manevra kabiliyetini felç etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardından Ganj-i-Savai'nin kendi toplarından biri güvertesinde patladı.",
+      "text_markdown": "Ardından Ganj-i-Savai'nin kendi toplarından biri güvertesinde patladı.",
+      "tts": {
+        "text": "Ardından Ganj-i-Savai'nin kendi toplarından biri güvertesinde patladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Patlama birçok Babür topçusunu öldürdü ve savunucuları kargaşaya sürükledi.",
+      "text_markdown": "Patlama birçok Babür topçusunu öldürdü ve savunucuları kargaşaya sürükledi.",
+      "tts": {
+        "text": "Patlama birçok Babür topçusunu öldürdü ve savunucuları kargaşaya sürükledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every anı değerlendirdi ve adamlarına gemiye çıkma emri verdi.",
+      "text_markdown": "Every anı değerlendirdi ve adamlarına gemiye çıkma emri verdi.",
+      "tts": {
+        "text": "Every anı değerlendirdi ve adamlarına gemiye çıkma emri verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar Babür gemisinin küpeştelerinden akın etti.",
+      "text_markdown": "Korsanlar Babür gemisinin küpeştelerinden akın etti.",
+      "tts": {
+        "text": "Korsanlar Babür gemisinin küpeştelerinden akın etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çarpışma yoğun ama nispeten kısa sürdü.",
+      "text_markdown": "Çarpışma yoğun ama nispeten kısa sürdü.",
+      "tts": {
+        "text": "Çarpışma yoğun ama nispeten kısa sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babür askerleri sayısal üstünlüklerine rağmen top patlamasıyla morallerini kaybetmişti.",
+      "text_markdown": "Babür askerleri sayısal üstünlüklerine rağmen top patlamasıyla morallerini kaybetmişti.",
+      "tts": {
+        "text": "Babür askerleri sayısal üstünlüklerine rağmen top patlamasıyla morallerini kaybetmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaptanları savunmayı yönetmek yerine güvertenin altına saklanmıştı.",
+      "text_markdown": "Kaptanları savunmayı yönetmek yerine güvertenin altına saklanmıştı.",
+      "tts": {
+        "text": "Kaptanları savunmayı yönetmek yerine güvertenin altına saklanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birkaç saat sonra korsanlar geminin kontrolünü ele geçirmişti.",
+      "text_markdown": "Birkaç saat sonra korsanlar geminin kontrolünü ele geçirmişti.",
+      "tts": {
+        "text": "Birkaç saat sonra korsanlar geminin kontrolünü ele geçirmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanların Ganj-i-Savai'nin ambarında bulduğu şey onları şaşkına çevirdi.",
+      "text_markdown": "Korsanların Ganj-i-Savai'nin ambarında bulduğu şey onları şaşkına çevirdi.",
+      "tts": {
+        "text": "Korsanların Ganj-i-Savai'nin ambarında bulduğu şey onları şaşkına çevirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altın ve gümüş sikkeler sandıklar ve fıçılarda yığılmıştı.",
+      "text_markdown": "Altın ve gümüş sikkeler sandıklar ve fıçılarda yığılmıştı.",
+      "tts": {
+        "text": "Altın ve gümüş sikkeler sandıklar ve fıçılarda yığılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıymetli taşlar, ince ipekler ve fildişi her boş alanı dolduruyordu.",
+      "text_markdown": "Kıymetli taşlar, ince ipekler ve fildişi her boş alanı dolduruyordu.",
+      "tts": {
+        "text": "Kıymetli taşlar, ince ipekler ve fildişi her boş alanı dolduruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toplam değer 200.000 ile 600.000 sterlin arasında tahmin edilmiştir.",
+      "text_markdown": "Toplam değer 200.000 ile 600.000 sterlin arasında tahmin edilmiştir.",
+      "tts": {
+        "text": "Toplam değer iki yüz bin ile altı yüz bin sterlin arasında tahmin edilmiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karşılaştırma için, vasıflı bir İngiliz işçi yılda yaklaşık 10 sterlin kazanıyordu.",
+      "text_markdown": "Karşılaştırma için, vasıflı bir İngiliz işçi yılda yaklaşık 10 sterlin kazanıyordu.",
+      "tts": {
+        "text": "Karşılaştırma için, vasıflı bir İngiliz işçi yılda yaklaşık on sterlin kazanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her korsanın ganimetten aldığı pay, hayatının geri kalanını geçirmeye yetecek kadardı.",
+      "text_markdown": "Her korsanın ganimetten aldığı pay, hayatının geri kalanını geçirmeye yetecek kadardı.",
+      "tts": {
+        "text": "Her korsanın ganimetten aldığı pay, hayatının geri kalanını geçirmeye yetecek kadardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Henry Every, korsanlık tarihinin en zengin ganimetlerinden birini ele geçirmişti.",
+      "text_markdown": "Henry Every, korsanlık tarihinin en zengin ganimetlerinden birini ele geçirmişti.",
+      "tts": {
+        "text": "Henry Every, korsanlık tarihinin en zengin ganimetlerinden birini ele geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ne ondan önce ne de sonra hiçbir korsan tek bir baskında bu kadar çok şey almamıştı.",
+      "text_markdown": "Ne ondan önce ne de sonra hiçbir korsan tek bir baskında bu kadar çok şey almamıştı.",
+      "tts": {
+        "text": "Ne ondan önce ne de sonra hiçbir korsan tek bir baskında bu kadar çok şey almamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar Ganj-i-Savai'yi yağmalamak için birkaç gün harcadı.",
+      "text_markdown": "Korsanlar Ganj-i-Savai'yi yağmalamak için birkaç gün harcadı.",
+      "tts": {
+        "text": "Korsanlar Ganj-i-Savai'yi yağmalamak için birkaç gün harcadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculara ve mürettebata korkunç şiddet uyguladılar.",
+      "text_markdown": "Yolculara ve mürettebata korkunç şiddet uyguladılar.",
+      "tts": {
+        "text": "Yolculara ve mürettebata korkunç şiddet uyguladılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dönemin anlatımları ele geçirilen gemide soygun, saldırı ve cinayet tanımlar.",
+      "text_markdown": "Dönemin anlatımları ele geçirilen gemide soygun, saldırı ve cinayet tanımlar.",
+      "tts": {
+        "text": "Dönemin anlatımları ele geçirilen gemide soygun, saldırı ve cinayet tanımlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saldırının vahşetinin ciddi siyasi sonuçları olacaktı.",
+      "text_markdown": "Saldırının vahşetinin ciddi siyasi sonuçları olacaktı.",
+      "tts": {
+        "text": "Saldırının vahşetinin ciddi siyasi sonuçları olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemiyi değerli eşyalarından soyarak arındırdıktan sonra Every, Ganj-i-Savai'yi serbest bıraktı.",
+      "text_markdown": "Gemiyi değerli eşyalarından soyarak arındırdıktan sonra Every, Ganj-i-Savai'yi serbest bıraktı.",
+      "tts": {
+        "text": "Gemiyi değerli eşyalarından soyarak arındırdıktan sonra Every, Ganj-i-Savai'yi serbest bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harap haldeki gemi aksayarak Hindistan'ın Surat limanına döndü.",
+      "text_markdown": "Harap haldeki gemi aksayarak Hindistan'ın Surat limanına döndü.",
+      "tts": {
+        "text": "Harap haldeki gemi aksayarak Hindistan'ın Surat limanına döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayatta kalanlar hikâyelerini anlattığında tepki patlayıcı oldu.",
+      "text_markdown": "Hayatta kalanlar hikâyelerini anlattığında tepki patlayıcı oldu.",
+      "tts": {
+        "text": "Hayatta kalanlar hikâyelerini anlattığında tepki patlayıcı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "En Büyük Ganimet",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every, Hindistan'la İngiliz ticareti tarihindeki en büyük diplomatik krizi yaratmıştı.",
+      "text_markdown": "Every, Hindistan'la İngiliz ticareti tarihindeki en büyük diplomatik krizi yaratmıştı.",
+      "tts": {
+        "text": "Every, Hindistan'la İngiliz ticareti tarihindeki en büyük diplomatik krizi yaratmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dünyanın En Çok Aranan Adamı",
+      "text_markdown": "Dünyanın En Çok Aranan Adamı"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saldırı haberi Babür İmparatoru Aurangzeb'e ulaştığında öfkesi büyüktü.",
+      "text_markdown": "Saldırı haberi Babür İmparatoru Aurangzeb'e ulaştığında öfkesi büyüktü.",
+      "tts": {
+        "text": "Saldırı haberi Babür İmparatoru Aurangzeb'e ulaştığında öfkesi büyüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ganj-i-Savai onun kişisel gemisiydi ve yolcuları arasında saray üyeleri vardı.",
+      "text_markdown": "Ganj-i-Savai onun kişisel gemisiydi ve yolcuları arasında saray üyeleri vardı.",
+      "tts": {
+        "text": "Ganj-i-Savai onun kişisel gemisiydi ve yolcuları arasında saray üyeleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İmparator saldırıyı İslam'ın kendisine yapılmış bir hakaret olarak gördü, çünkü gemi Mekke'den dönen hacıları taşıyordu.",
+      "text_markdown": "İmparator saldırıyı İslam'ın kendisine yapılmış bir hakaret olarak gördü, çünkü gemi Mekke'den dönen hacıları taşıyordu.",
+      "tts": {
+        "text": "İmparator saldırıyı İslam'ın kendisine yapılmış bir hakaret olarak gördü, çünkü gemi Mekke'den dönen hacıları taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizlerin sorumlu tutulmasını talep etti.",
+      "text_markdown": "İngilizlerin sorumlu tutulmasını talep etti.",
+      "tts": {
+        "text": "İngilizlerin sorumlu tutulmasını talep etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aurangzeb, Surat şehrindeki her İngiliz tüccarın tutuklanmasını emretti.",
+      "text_markdown": "Aurangzeb, Surat şehrindeki her İngiliz tüccarın tutuklanmasını emretti.",
+      "tts": {
+        "text": "Aurangzeb, Surat şehrindeki her İngiliz tüccarın tutuklanmasını emretti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğu Hindistan Şirketi çalışanları hapse atıldı.",
+      "text_markdown": "Doğu Hindistan Şirketi çalışanları hapse atıldı.",
+      "tts": {
+        "text": "Doğu Hindistan Şirketi çalışanları hapse atıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret merkezleri Babür askerleri tarafından kuşatıldı.",
+      "text_markdown": "Ticaret merkezleri Babür askerleri tarafından kuşatıldı.",
+      "tts": {
+        "text": "Ticaret merkezleri Babür askerleri tarafından kuşatıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hindistan'daki tüm İngiliz ticareti süresiz olarak askıya alındı.",
+      "text_markdown": "Hindistan'daki tüm İngiliz ticareti süresiz olarak askıya alındı.",
+      "tts": {
+        "text": "Hindistan'daki tüm İngiliz ticareti süresiz olarak askıya alındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doğu Hindistan Şirketi panik içindeydi.",
+      "text_markdown": "Doğu Hindistan Şirketi panik içindeydi.",
+      "tts": {
+        "text": "Doğu Hindistan Şirketi panik içindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hindistan'daki tüm işleri tek bir korsan kaptanı yüzünden risk altındaydı.",
+      "text_markdown": "Hindistan'daki tüm işleri tek bir korsan kaptanı yüzünden risk altındaydı.",
+      "tts": {
+        "text": "Hindistan'daki tüm işleri tek bir korsan kaptanı yüzünden risk altındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şirketin kârları Babür iyi niyetine bağlıydı ve o iyi niyet bir gecede buharlaşmıştı.",
+      "text_markdown": "Şirketin kârları Babür iyi niyetine bağlıydı ve o iyi niyet bir gecede buharlaşmıştı.",
+      "tts": {
+        "text": "Şirketin kârları Babür iyi niyetine bağlıydı ve o iyi niyet bir gecede buharlaşmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiliz hükümetine derhal harekete geçmesi için baskı yaptılar.",
+      "text_markdown": "İngiliz hükümetine derhal harekete geçmesi için baskı yaptılar.",
+      "tts": {
+        "text": "İngiliz hükümetine derhal harekete geçmesi için baskı yaptılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz hükümeti Henry Every'nin yakalanması için dünya çapında bir tutuklama emri çıkardı.",
+      "text_markdown": "İngiliz hükümeti Henry Every'nin yakalanması için dünya çapında bir tutuklama emri çıkardı.",
+      "tts": {
+        "text": "İngiliz hükümeti Henry Every'nin yakalanması için dünya çapında bir tutuklama emri çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başına 500 sterlin ödül kondu; benzeri görülmemiş bir meblağ.",
+      "text_markdown": "Başına 500 sterlin ödül kondu; benzeri görülmemiş bir meblağ.",
+      "tts": {
+        "text": "Başına beş yüz sterlin ödül kondu; benzeri görülmemiş bir meblağ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, kayıtlı tarihteki ilk dünya çapında insan avıydı.",
+      "text_markdown": "Bu, kayıtlı tarihteki ilk dünya çapında insan avıydı.",
+      "tts": {
+        "text": "Bu, kayıtlı tarihteki ilk dünya çapında insan avıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngilizce konuşulan dünyanın her limanına Every ve mürettebatının eşkâli gönderildi.",
+      "text_markdown": "İngilizce konuşulan dünyanın her limanına Every ve mürettebatının eşkâli gönderildi.",
+      "tts": {
+        "text": "İngilizce konuşulan dünyanın her limanına Every ve mürettebatının eşkâli gönderildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doğu Hindistan Şirketi hükümet ödülüne kendi ödülünü de ekledi.",
+      "text_markdown": "Doğu Hindistan Şirketi hükümet ödülüne kendi ödülünü de ekledi.",
+      "tts": {
+        "text": "Doğu Hindistan Şirketi hükümet ödülüne kendi ödülünü de ekledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıca teslim olup Every aleyhine tanıklık eden mürettebat üyelerine af sözü verdiler.",
+      "text_markdown": "Ayrıca teslim olup Every aleyhine tanıklık eden mürettebat üyelerine af sözü verdiler.",
+      "tts": {
+        "text": "Ayrıca teslim olup Every aleyhine tanıklık eden mürettebat üyelerine af sözü verdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şirket Every'yi bulmak ve Babür İmparatoru'na adaletin sağlanacağını göstermek için çaresizdi.",
+      "text_markdown": "Şirket Every'yi bulmak ve Babür İmparatoru'na adaletin sağlanacağını göstermek için çaresizdi.",
+      "tts": {
+        "text": "Şirket Every'yi bulmak ve Babür İmparatoru'na adaletin sağlanacağını göstermek için çaresizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ticari bir kuruluş olarak hayatta kalmaları buna bağlıydı.",
+      "text_markdown": "Ticari bir kuruluş olarak hayatta kalmaları buna bağlıydı.",
+      "tts": {
+        "text": "Ticari bir kuruluş olarak hayatta kalmaları buna bağlıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu sırada Every, Hint Okyanusu'ndan olabildiğince hızlı uzaklaşıyordu.",
+      "text_markdown": "Bu sırada Every, Hint Okyanusu'ndan olabildiğince hızlı uzaklaşıyordu.",
+      "tts": {
+        "text": "Bu sırada Every, Hint Okyanusu'ndan olabildiğince hızlı uzaklaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suç mahallinin yakınında kalmanın intihar olacağını biliyordu.",
+      "text_markdown": "Suç mahallinin yakınında kalmanın intihar olacağını biliyordu.",
+      "tts": {
+        "text": "Suç mahallinin yakınında kalmanın intihar olacağını biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batı Hint Okyanusu'ndaki Réunion adasına yöneldi.",
+      "text_markdown": "Batı Hint Okyanusu'ndaki Réunion adasına yöneldi.",
+      "tts": {
+        "text": "Batı Hint Okyanusu'ndaki Réunion adasına yöneldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Orada hazineyi mürettebatı arasında paylaştırdı.",
+      "text_markdown": "Orada hazineyi mürettebatı arasında paylaştırdı.",
+      "tts": {
+        "text": "Orada hazineyi mürettebatı arasında paylaştırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her sıradan korsan birkaç yüz sterlin değerinde bir pay aldı.",
+      "text_markdown": "Her sıradan korsan birkaç yüz sterlin değerinde bir pay aldı.",
+      "tts": {
+        "text": "Her sıradan korsan birkaç yüz sterlin değerinde bir pay aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Every'nin kendisi kaptan olarak daha büyük bir pay aldı.",
+      "text_markdown": "Every'nin kendisi kaptan olarak daha büyük bir pay aldı.",
+      "tts": {
+        "text": "Every'nin kendisi kaptan olarak daha büyük bir pay aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlar artık hayal edebileceklerinin ötesinde zengindi.",
+      "text_markdown": "Adamlar artık hayal edebileceklerinin ötesinde zengindi.",
+      "tts": {
+        "text": "Adamlar artık hayal edebileceklerinin ötesinde zengindi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Soru, bunu harcayacak kadar uzun yaşayıp yaşayamayacaklarıydı.",
+      "text_markdown": "Soru, bunu harcayacak kadar uzun yaşayıp yaşayamayacaklarıydı.",
+      "tts": {
+        "text": "Soru, bunu harcayacak kadar uzun yaşayıp yaşayamayacaklarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every ardından Fancy ile Atlantik'i geçerek Bahamalar'daki New Providence adasına gitti.",
+      "text_markdown": "Every ardından Fancy ile Atlantik'i geçerek Bahamalar'daki New Providence adasına gitti.",
+      "tts": {
+        "text": "Every ardından Fancy ile Atlantik'i geçerek Bahamalar'daki New Providence adasına gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1696 yılının Nisan ayında vardı; korsan kariyerini başlatan isyandan yaklaşık iki yıl sonra.",
+      "text_markdown": "1696 yılının Nisan ayında vardı; korsan kariyerini başlatan isyandan yaklaşık iki yıl sonra.",
+      "tts": {
+        "text": "Bin altı yüz doksan altı yılının Nisan ayında vardı; korsan kariyerini başlatan isyandan yaklaşık iki yıl sonra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bahamalar valisi Nicholas Trott, korsanları barındırmayı kabul etti.",
+      "text_markdown": "Bahamalar valisi Nicholas Trott, korsanları barındırmayı kabul etti.",
+      "tts": {
+        "text": "Bahamalar valisi Nicholas Trott, korsanları barındırmayı kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every'nin Trott'a fildişi, nakit para ve Fancy'nin kendisiyle rüşvet verdiği söylenir.",
+      "text_markdown": "Every'nin Trott'a fildişi, nakit para ve Fancy'nin kendisiyle rüşvet verdiği söylenir.",
+      "tts": {
+        "text": "Every'nin Trott'a fildişi, nakit para ve Fancy'nin kendisiyle rüşvet verdiği söylenir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vali Trott, Every'nin mürettebatına af belgesi vererek onları masum denizciler gibi gösterdi.",
+      "text_markdown": "Vali Trott, Every'nin mürettebatına af belgesi vererek onları masum denizciler gibi gösterdi.",
+      "tts": {
+        "text": "Vali Trott, Every'nin mürettebatına af belgesi vererek onları masum denizciler gibi gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar Karayipler ve Amerikan kolonileri boyunca dağıldı.",
+      "text_markdown": "Korsanlar Karayipler ve Amerikan kolonileri boyunca dağıldı.",
+      "tts": {
+        "text": "Korsanlar Karayipler ve Amerikan kolonileri boyunca dağıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları New York'a, diğerleri Philadelphia veya Charleston'a yöneldi.",
+      "text_markdown": "Bazıları New York'a, diğerleri Philadelphia veya Charleston'a yöneldi.",
+      "tts": {
+        "text": "Bazıları New York'a, diğerleri Philadelphia veya Charleston'a yöneldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çalıntı Babür hazinelerini yanlarında taşıyarak ellerinden geldiğince gizlediler.",
+      "text_markdown": "Çalıntı Babür hazinelerini yanlarında taşıyarak ellerinden geldiğince gizlediler.",
+      "tts": {
+        "text": "Çalıntı Babür hazinelerini yanlarında taşıyarak ellerinden geldiğince gizlediler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every'nin kendisi ortadan kayboldu.",
+      "text_markdown": "Every'nin kendisi ortadan kayboldu.",
+      "tts": {
+        "text": "Every'nin kendisi ortadan kayboldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, hikâyesinin en dikkat çekici kısmıdır.",
+      "text_markdown": "Bu, hikâyesinin en dikkat çekici kısmıdır.",
+      "tts": {
+        "text": "Bu, hikâyesinin en dikkat çekici kısmıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın gördüğü en yoğun insan avının hedefi olmasına rağmen asla bulunamadı.",
+      "text_markdown": "Dünyanın gördüğü en yoğun insan avının hedefi olmasına rağmen asla bulunamadı.",
+      "tts": {
+        "text": "Dünyanın gördüğü en yoğun insan avının hedefi olmasına rağmen asla bulunamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz onu yutmuş gibi tamamen ortadan kayboldu.",
+      "text_markdown": "Deniz onu yutmuş gibi tamamen ortadan kayboldu.",
+      "tts": {
+        "text": "Deniz onu yutmuş gibi tamamen ortadan kayboldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mürettebatından birkaçı sonunda yakalandı ve Londra'da yargılandı.",
+      "text_markdown": "Mürettebatından birkaçı sonunda yakalandı ve Londra'da yargılandı.",
+      "tts": {
+        "text": "Mürettebatından birkaçı sonunda yakalandı ve Londra'da yargılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1696'da altısı asıldı ve cesetleri uyarı olarak sergilendi.",
+      "text_markdown": "1696'da altısı asıldı ve cesetleri uyarı olarak sergilendi.",
+      "tts": {
+        "text": "Bin altı yüz doksan altıda altısı asıldı ve cesetleri uyarı olarak sergilendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak yakalananlar mürettebatın alt rütbeli üyeleriydi.",
+      "text_markdown": "Ancak yakalananlar mürettebatın alt rütbeli üyeleriydi.",
+      "tts": {
+        "text": "Ancak yakalananlar mürettebatın alt rütbeli üyeleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every'nin kendisi serbest kaldı.",
+      "text_markdown": "Every'nin kendisi serbest kaldı.",
+      "tts": {
+        "text": "Every'nin kendisi serbest kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Londra'daki mahkemeler İngiliz halkını büyüleyen sansasyonel olaylardı.",
+      "text_markdown": "Londra'daki mahkemeler İngiliz halkını büyüleyen sansasyonel olaylardı.",
+      "tts": {
+        "text": "Londra'daki mahkemeler İngiliz halkını büyüleyen sansasyonel olaylardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gazeteler tanıklıkların ayrıntılı anlatımlarını yayımladı.",
+      "text_markdown": "Gazeteler tanıklıkların ayrıntılı anlatımlarını yayımladı.",
+      "tts": {
+        "text": "Gazeteler tanıklıkların ayrıntılı anlatımlarını yayımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir imparatorun hazinesini çalan sıradan bir denizcinin hikâyesi her toplumsal sınıftan insanı büyüledi.",
+      "text_markdown": "Bir imparatorun hazinesini çalan sıradan bir denizcinin hikâyesi her toplumsal sınıftan insanı büyüledi.",
+      "tts": {
+        "text": "Bir imparatorun hazinesini çalan sıradan bir denizcinin hikâyesi her toplumsal sınıftan insanı büyüledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every çağının en ünlü suçlusu oldu.",
+      "text_markdown": "Every çağının en ünlü suçlusu oldu.",
+      "tts": {
+        "text": "Every çağının en ünlü suçlusu oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babür İmparatorluğu ile yaşanan diplomatik krizin çözülmesi yıllar aldı.",
+      "text_markdown": "Babür İmparatorluğu ile yaşanan diplomatik krizin çözülmesi yıllar aldı.",
+      "tts": {
+        "text": "Babür İmparatorluğu ile yaşanan diplomatik krizin çözülmesi yıllar aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğu Hindistan Şirketi sonunda tazminat ödedi ve deniz devriyelerini güçlendirdi.",
+      "text_markdown": "Doğu Hindistan Şirketi sonunda tazminat ödedi ve deniz devriyelerini güçlendirdi.",
+      "tts": {
+        "text": "Doğu Hindistan Şirketi sonunda tazminat ödedi ve deniz devriyelerini güçlendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babür-İngiliz ticareti yeniden başladı, ancak ilişki kalıcı olarak zarar gördü.",
+      "text_markdown": "Babür-İngiliz ticareti yeniden başladı, ancak ilişki kalıcı olarak zarar gördü.",
+      "tts": {
+        "text": "Babür-İngiliz ticareti yeniden başladı, ancak ilişki kalıcı olarak zarar gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Dünyanın En Çok Aranan Adamı",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu olay, Avrupalı korsanların büyük imparatorlukların istikrarını tehdit edebileceğini gösterdi.",
+      "text_markdown": "Bu olay, Avrupalı korsanların büyük imparatorlukların istikrarını tehdit edebileceğini gösterdi.",
+      "tts": {
+        "text": "Bu olay, Avrupalı korsanların büyük imparatorlukların istikrarını tehdit edebileceğini gösterdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kaybolma",
+      "text_markdown": "Kaybolma"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every'nin ortadan kaybolması, korsanlık tarihinin büyük çözülmemiş gizemlerinden biridir.",
+      "text_markdown": "Henry Every'nin ortadan kaybolması, korsanlık tarihinin büyük çözülmemiş gizemlerinden biridir.",
+      "tts": {
+        "text": "Henry Every'nin ortadan kaybolması, korsanlık tarihinin büyük çözülmemiş gizemlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahamalar'dan ayrıldıktan sonra bir daha güvenilir biçimde görülmedi.",
+      "text_markdown": "Bahamalar'dan ayrıldıktan sonra bir daha güvenilir biçimde görülmedi.",
+      "tts": {
+        "text": "Bahamalar'dan ayrıldıktan sonra bir daha güvenilir biçimde görülmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler ona ne olduğu hakkında birçok teori öne sürdü, ancak hiçbiri kanıtlanamaz.",
+      "text_markdown": "Tarihçiler ona ne olduğu hakkında birçok teori öne sürdü, ancak hiçbiri kanıtlanamaz.",
+      "tts": {
+        "text": "Tarihçiler ona ne olduğu hakkında birçok teori öne sürdü, ancak hiçbiri kanıtlanamaz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir teori Every'nin sahte bir kimlikle İngiltere'ye döndüğünü ileri sürer.",
+      "text_markdown": "Bir teori Every'nin sahte bir kimlikle İngiltere'ye döndüğünü ileri sürer.",
+      "tts": {
+        "text": "Bir teori Every'nin sahte bir kimlikle İngiltere'ye döndüğünü ileri sürer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere büyük bir ülkeydi ve parası olan biri Londra gibi bir şehre kolayca karışabilirdi.",
+      "text_markdown": "İngiltere büyük bir ülkeydi ve parası olan biri Londra gibi bir şehre kolayca karışabilirdi.",
+      "tts": {
+        "text": "İngiltere büyük bir ülkeydi ve parası olan biri Londra gibi bir şehre kolayca karışabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gösterişli harcamalardan kaçınsaydı, günlerini sessiz bir belirsizlikte geçirebilirdi.",
+      "text_markdown": "Gösterişli harcamalardan kaçınsaydı, günlerini sessiz bir belirsizlikte geçirebilirdi.",
+      "tts": {
+        "text": "Gösterişli harcamalardan kaçınsaydı, günlerini sessiz bir belirsizlikte geçirebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, daha inandırıcı teorilerden biri olarak kabul edilir.",
+      "text_markdown": "Bu, daha inandırıcı teorilerden biri olarak kabul edilir.",
+      "tts": {
+        "text": "Bu, daha inandırıcı teorilerden biri olarak kabul edilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başka bir teori Every'nin İrlanda'ya gittiğini iddia eder.",
+      "text_markdown": "Başka bir teori Every'nin İrlanda'ya gittiğini iddia eder.",
+      "tts": {
+        "text": "Başka bir teori Every'nin İrlanda'ya gittiğini iddia eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İrlanda, İngiltere'den daha az sıkı kontrol ediliyordu ve limanları transatlantik denizcilikle hareketliydi.",
+      "text_markdown": "İrlanda, İngiltere'den daha az sıkı kontrol ediliyordu ve limanları transatlantik denizcilikle hareketliydi.",
+      "tts": {
+        "text": "İrlanda, İngiltere'den daha az sıkı kontrol ediliyordu ve limanları transatlantik denizcilikle hareketliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zengin bir yabancı orada daha az dikkat çekerdi.",
+      "text_markdown": "Zengin bir yabancı orada daha az dikkat çekerdi.",
+      "tts": {
+        "text": "Zengin bir yabancı orada daha az dikkat çekerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı anlatımlar onu liman kenti Cork'ta konumlandırır.",
+      "text_markdown": "Bazı anlatımlar onu liman kenti Cork'ta konumlandırır.",
+      "tts": {
+        "text": "Bazı anlatımlar onu liman kenti Cork'ta konumlandırır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Üçüncü bir teori Every'nin Doğu Afrika kıyılarına veya Madagaskar'a yelken açtığını öne sürer.",
+      "text_markdown": "Üçüncü bir teori Every'nin Doğu Afrika kıyılarına veya Madagaskar'a yelken açtığını öne sürer.",
+      "tts": {
+        "text": "Üçüncü bir teori Every'nin Doğu Afrika kıyılarına veya Madagaskar'a yelken açtığını öne sürer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok korsan Madagaskar'da emekli olarak yerel halk arasında yaşamıştı.",
+      "text_markdown": "Birçok korsan Madagaskar'da emekli olarak yerel halk arasında yaşamıştı.",
+      "tts": {
+        "text": "Birçok korsan Madagaskar'da emekli olarak yerel halk arasında yaşamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları yerel kadınlarla evlenip küçük kabile reisleri bile olmuştu.",
+      "text_markdown": "Bazıları yerel kadınlarla evlenip küçük kabile reisleri bile olmuştu.",
+      "tts": {
+        "text": "Bazıları yerel kadınlarla evlenip küçük kabile reisleri bile olmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every muazzam servetiyle böyle bir ortamda rahatça yaşayabilirdi.",
+      "text_markdown": "Every muazzam servetiyle böyle bir ortamda rahatça yaşayabilirdi.",
+      "tts": {
+        "text": "Every muazzam servetiyle böyle bir ortamda rahatça yaşayabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En romantik teori Every'nin yoksulluk içinde öldüğünü iddia eder.",
+      "text_markdown": "En romantik teori Every'nin yoksulluk içinde öldüğünü iddia eder.",
+      "tts": {
+        "text": "En romantik teori Every'nin yoksulluk içinde öldüğünü iddia eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu anlatıma göre, çalıntı mücevherlerini alan Bristol tüccarları onu dolandırdı.",
+      "text_markdown": "Bu anlatıma göre, çalıntı mücevherlerini alan Bristol tüccarları onu dolandırdı.",
+      "tts": {
+        "text": "Bu anlatıma göre, çalıntı mücevherlerini alan Bristol tüccarları onu dolandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mücevherlerin gerçek değerinden çok daha azını verdiler ve onun hukuki başvuru hakkı yoktu.",
+      "text_markdown": "Mücevherlerin gerçek değerinden çok daha azını verdiler ve onun hukuki başvuru hakkı yoktu.",
+      "tts": {
+        "text": "Mücevherlerin gerçek değerinden çok daha azını verdiler ve onun hukuki başvuru hakkı yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İddiaya göre kendi çalıntı servetine ulaşamadan beş parasız öldü.",
+      "text_markdown": "İddiaya göre kendi çalıntı servetine ulaşamadan beş parasız öldü.",
+      "tts": {
+        "text": "İddiaya göre kendi çalıntı servetine ulaşamadan beş parasız öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu yoksulluk hikâyesi ilk kez Every'nin ortadan kaybolmasından onlarca yıl sonra yayımlanan bir kitapta ortaya çıktı.",
+      "text_markdown": "Bu yoksulluk hikâyesi ilk kez Every'nin ortadan kaybolmasından onlarca yıl sonra yayımlanan bir kitapta ortaya çıktı.",
+      "tts": {
+        "text": "Bu yoksulluk hikâyesi ilk kez Every'nin ortadan kaybolmasından onlarca yıl sonra yayımlanan bir kitapta ortaya çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu tarihçi bunu güvenilmez kabul eder.",
+      "text_markdown": "Çoğu tarihçi bunu güvenilmez kabul eder.",
+      "tts": {
+        "text": "Çoğu tarihçi bunu güvenilmez kabul eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suçun karşılığının olduğunu gösteren bir ahlâk hikâyesi olarak uydurulmuş olabilir.",
+      "text_markdown": "Suçun karşılığının olduğunu gösteren bir ahlâk hikâyesi olarak uydurulmuş olabilir.",
+      "tts": {
+        "text": "Suçun karşılığının olduğunu gösteren bir ahlâk hikâyesi olarak uydurulmuş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gerçek şu ki, Henry Every'ye ne olduğunu kimse bilmiyor.",
+      "text_markdown": "Gerçek şu ki, Henry Every'ye ne olduğunu kimse bilmiyor.",
+      "tts": {
+        "text": "Gerçek şu ki, Henry Every'ye ne olduğunu kimse bilmiyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesin olan, adaletten tamamen kurtulduğudur.",
+      "text_markdown": "Kesin olan, adaletten tamamen kurtulduğudur.",
+      "tts": {
+        "text": "Kesin olan, adaletten tamamen kurtulduğudur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altın Çağ'ın hiçbir zaman yakalanmayan, savaşta öldürülmeyen ve yargılanmayan tek büyük korsanıydı.",
+      "text_markdown": "Altın Çağ'ın hiçbir zaman yakalanmayan, savaşta öldürülmeyen ve yargılanmayan tek büyük korsanıydı.",
+      "tts": {
+        "text": "Altın Çağ'ın hiçbir zaman yakalanmayan, savaşta öldürülmeyen ve yargılanmayan tek büyük korsanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sistemi tamamen yendi.",
+      "text_markdown": "Sistemi tamamen yendi.",
+      "tts": {
+        "text": "Sistemi tamamen yendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz hükümeti sonunda aramayı bıraktı.",
+      "text_markdown": "İngiliz hükümeti sonunda aramayı bıraktı.",
+      "tts": {
+        "text": "İngiliz hükümeti sonunda aramayı bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başka korsanlar yükselip düştü ve başka krizler dikkat gerektirdi.",
+      "text_markdown": "Başka korsanlar yükselip düştü ve başka krizler dikkat gerektirdi.",
+      "tts": {
+        "text": "Başka korsanlar yükselip düştü ve başka krizler dikkat gerektirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every resmî ilgiden uzaklaştı, ancak efsanesi büyümeye devam etti.",
+      "text_markdown": "Every resmî ilgiden uzaklaştı, ancak efsanesi büyümeye devam etti.",
+      "tts": {
+        "text": "Every resmî ilgiden uzaklaştı, ancak efsanesi büyümeye devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakalanan mürettebat üyeleri mahkeme sırasında bazı bilgiler verdi.",
+      "text_markdown": "Yakalanan mürettebat üyeleri mahkeme sırasında bazı bilgiler verdi.",
+      "tts": {
+        "text": "Yakalanan mürettebat üyeleri mahkeme sırasında bazı bilgiler verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ganj-i-Savai'ye yapılan saldırıyı ve hazinenin bölüşümünü anlattılar.",
+      "text_markdown": "Ganj-i-Savai'ye yapılan saldırıyı ve hazinenin bölüşümünü anlattılar.",
+      "tts": {
+        "text": "Ganj-i-Savai'ye yapılan saldırıyı ve hazinenin bölüşümünü anlattılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak hiçbiri Bahamalar'dan sonra Every'nin nereye gittiğini bilmiyordu.",
+      "text_markdown": "Ancak hiçbiri Bahamalar'dan sonra Every'nin nereye gittiğini bilmiyordu.",
+      "tts": {
+        "text": "Ancak hiçbiri Bahamalar'dan sonra Every'nin nereye gittiğini bilmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bilen varsa bile, bu sırrı mezara götürdü.",
+      "text_markdown": "Bilen varsa bile, bu sırrı mezara götürdü.",
+      "tts": {
+        "text": "Bilen varsa bile, bu sırrı mezara götürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every'nin aranması uluslararası hukukta önemli emsal kararlar oluşturdu.",
+      "text_markdown": "Every'nin aranması uluslararası hukukta önemli emsal kararlar oluşturdu.",
+      "tts": {
+        "text": "Every'nin aranması uluslararası hukukta önemli emsal kararlar oluşturdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hükümetlerin bir suçluyu yakalamak için sınır ötesi iş birliği yaptığı ilk vakalardan biriydi.",
+      "text_markdown": "Hükümetlerin bir suçluyu yakalamak için sınır ötesi iş birliği yaptığı ilk vakalardan biriydi.",
+      "tts": {
+        "text": "Hükümetlerin bir suçluyu yakalamak için sınır ötesi iş birliği yaptığı ilk vakalardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ödül sistemi, muhbirlere af uygulaması ve aranma ilanlarının küresel dağıtımı hep birer yenilikti.",
+      "text_markdown": "Ödül sistemi, muhbirlere af uygulaması ve aranma ilanlarının küresel dağıtımı hep birer yenilikti.",
+      "tts": {
+        "text": "Ödül sistemi, muhbirlere af uygulaması ve aranma ilanlarının küresel dağıtımı hep birer yenilikti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Henry Every'nin suçu, uluslararası ceza adaletinin modern çerçevesinin oluşturulmasına katkıda bulundu.",
+      "text_markdown": "Henry Every'nin suçu, uluslararası ceza adaletinin modern çerçevesinin oluşturulmasına katkıda bulundu.",
+      "tts": {
+        "text": "Henry Every'nin suçu, uluslararası ceza adaletinin modern çerçevesinin oluşturulmasına katkıda bulundu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2023 yılında Rhode Island'daki arkeologlar bir Arap sikke koleksiyonu keşfetti.",
+      "text_markdown": "2023 yılında Rhode Island'daki arkeologlar bir Arap sikke koleksiyonu keşfetti.",
+      "tts": {
+        "text": "İki bin yirmi üç yılında Rhode Island'daki arkeologlar bir Arap sikke koleksiyonu keşfetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sikkeler doğru döneme aittir ve Babür İmparatorluğu'ndan geldiği düşünülmektedir.",
+      "text_markdown": "Sikkeler doğru döneme aittir ve Babür İmparatorluğu'ndan geldiği düşünülmektedir.",
+      "tts": {
+        "text": "Sikkeler doğru döneme aittir ve Babür İmparatorluğu'ndan geldiği düşünülmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler bunların Ganj-i-Savai hazinesinin bir parçası olabileceğine inanıyor.",
+      "text_markdown": "Tarihçiler bunların Ganj-i-Savai hazinesinin bir parçası olabileceğine inanıyor.",
+      "tts": {
+        "text": "Tarihçiler bunların Ganj-i-Savai hazinesinin bir parçası olabileceğine inanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaybolma",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu sikkeler, Every'nin mürettebatının çalıntı servetlerini Amerikan kolonilerine getirdiğinin fiziksel kanıtıdır.",
+      "text_markdown": "Bu sikkeler, Every'nin mürettebatının çalıntı servetlerini Amerikan kolonilerine getirdiğinin fiziksel kanıtıdır.",
+      "tts": {
+        "text": "Bu sikkeler, Every'nin mürettebatının çalıntı servetlerini Amerikan kolonilerine getirdiğinin fiziksel kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsan Kralın Mirası",
+      "text_markdown": "Korsan Kralın Mirası"
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every'nin hikâyesi halkın hayal gücünü anında yakaladı.",
+      "text_markdown": "Henry Every'nin hikâyesi halkın hayal gücünü anında yakaladı.",
+      "tts": {
+        "text": "Henry Every'nin hikâyesi halkın hayal gücünü anında yakaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1713'te Londra'da The Successful Pyrate adlı bir oyun sahnelendi.",
+      "text_markdown": "1713'te Londra'da The Successful Pyrate adlı bir oyun sahnelendi.",
+      "tts": {
+        "text": "Bin yedi yüz on üçte Londra'da The Successful Pyrate adlı bir oyun sahnelendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every'nin maceralarını dramatize etti ve onu romantik bir asi olarak resmetti.",
+      "text_markdown": "Every'nin maceralarını dramatize etti ve onu romantik bir asi olarak resmetti.",
+      "tts": {
+        "text": "Every'nin maceralarını dramatize etti ve onu romantik bir asi olarak resmetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Oyun son derece popülerdi ve birçok kez sahnelendi.",
+      "text_markdown": "Oyun son derece popülerdi ve birçok kez sahnelendi.",
+      "tts": {
+        "text": "Oyun son derece popülerdi ve birçok kez sahnelendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every, halk muhayyilesinde bir halk kahramanı oldu.",
+      "text_markdown": "Every, halk muhayyilesinde bir halk kahramanı oldu.",
+      "tts": {
+        "text": "Every, halk muhayyilesinde bir halk kahramanı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hakkında yazılan baladlar İngiltere genelindeki meyhanelerde söylendi.",
+      "text_markdown": "Hakkında yazılan baladlar İngiltere genelindeki meyhanelerde söylendi.",
+      "tts": {
+        "text": "Hakkında yazılan baladlar İngiltere genelindeki meyhanelerde söylendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ünlü bir balad onu güçlü bir imparatoru aşağılayan korsanların kralı olarak tanımlıyordu.",
+      "text_markdown": "Ünlü bir balad onu güçlü bir imparatoru aşağılayan korsanların kralı olarak tanımlıyordu.",
+      "tts": {
+        "text": "Ünlü bir balad onu güçlü bir imparatoru aşağılayan korsanların kralı olarak tanımlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Katı sınıf hiyerarşisi çağında, hikâyesi özgürlük ve zenginlik hayali kuran sıradan insanlara hitap ediyordu.",
+      "text_markdown": "Katı sınıf hiyerarşisi çağında, hikâyesi özgürlük ve zenginlik hayali kuran sıradan insanlara hitap ediyordu.",
+      "tts": {
+        "text": "Katı sınıf hiyerarşisi çağında, hikâyesi özgürlük ve zenginlik hayali kuran sıradan insanlara hitap ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every'nin başarısı, onun izinden giden bir kuşak korsana ilham verdi.",
+      "text_markdown": "Every'nin başarısı, onun izinden giden bir kuşak korsana ilham verdi.",
+      "tts": {
+        "text": "Every'nin başarısı, onun izinden giden bir kuşak korsana ilham verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ünlü baskınından sonra Hint Okyanusu'ndaki Korsan Turu yoğun kullanılan bir rota haline geldi.",
+      "text_markdown": "Ünlü baskınından sonra Hint Okyanusu'ndaki Korsan Turu yoğun kullanılan bir rota haline geldi.",
+      "tts": {
+        "text": "Ünlü baskınından sonra Hint Okyanusu'ndaki Korsan Turu yoğun kullanılan bir rota haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "William Kidd, Robert Culliford ve diğerleri gibi korsanlar Every'nin başarısını tekrarlamaya çalıştı.",
+      "text_markdown": "William Kidd, Robert Culliford ve diğerleri gibi korsanlar Every'nin başarısını tekrarlamaya çalıştı.",
+      "tts": {
+        "text": "William Kidd, Robert Culliford ve diğerleri gibi korsanlar Every'nin başarısını tekrarlamaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hiçbiri onun başarısına erişemedi ve çoğu şiddetli veya onursuz sonlarla karşılaştı.",
+      "text_markdown": "Hiçbiri onun başarısına erişemedi ve çoğu şiddetli veya onursuz sonlarla karşılaştı.",
+      "tts": {
+        "text": "Hiçbiri onun başarısına erişemedi ve çoğu şiddetli veya onursuz sonlarla karşılaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every'nin baskınının diplomatik sonuçları onlarca yıl sürdü.",
+      "text_markdown": "Every'nin baskınının diplomatik sonuçları onlarca yıl sürdü.",
+      "tts": {
+        "text": "Every'nin baskınının diplomatik sonuçları onlarca yıl sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğu Hindistan Şirketi korsanlıkla mücadeleyi ciddiye almak zorunda kaldı.",
+      "text_markdown": "Doğu Hindistan Şirketi korsanlıkla mücadeleyi ciddiye almak zorunda kaldı.",
+      "tts": {
+        "text": "Doğu Hindistan Şirketi korsanlıkla mücadeleyi ciddiye almak zorunda kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hint Okyanusu'ndaki deniz trafiği için donanma eskortları finanse etmeye başladı.",
+      "text_markdown": "Hint Okyanusu'ndaki deniz trafiği için donanma eskortları finanse etmeye başladı.",
+      "tts": {
+        "text": "Hint Okyanusu'ndaki deniz trafiği için donanma eskortları finanse etmeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu korsanlık karşıtı operasyonlar sonunda şirketin Hindistan ticareti üzerindeki kontrolünü sıkılaştırmasına yardımcı oldu.",
+      "text_markdown": "Bu korsanlık karşıtı operasyonlar sonunda şirketin Hindistan ticareti üzerindeki kontrolünü sıkılaştırmasına yardımcı oldu.",
+      "tts": {
+        "text": "Bu korsanlık karşıtı operasyonlar sonunda şirketin Hindistan ticareti üzerindeki kontrolünü sıkılaştırmasına yardımcı oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı tarihçiler Every'nin baskınının aslında Hindistan'daki İngiliz sömürgeciliğini hızlandırdığını savunur.",
+      "text_markdown": "Bazı tarihçiler Every'nin baskınının aslında Hindistan'daki İngiliz sömürgeciliğini hızlandırdığını savunur.",
+      "tts": {
+        "text": "Bazı tarihçiler Every'nin baskınının aslında Hindistan'daki İngiliz sömürgeciliğini hızlandırdığını savunur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kriz, Doğu Hindistan Şirketi'ni daha güçlü askerî yetenekler inşa etmeye zorladı.",
+      "text_markdown": "Kriz, Doğu Hindistan Şirketi'ni daha güçlü askerî yetenekler inşa etmeye zorladı.",
+      "tts": {
+        "text": "Kriz, Doğu Hindistan Şirketi'ni daha güçlü askerî yetenekler inşa etmeye zorladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu askerî güçler daha sonra sadece korsanlara değil, Hint devletlerine karşı da kullanıldı.",
+      "text_markdown": "Bu askerî güçler daha sonra sadece korsanlara değil, Hint devletlerine karşı da kullanıldı.",
+      "tts": {
+        "text": "Bu askerî güçler daha sonra sadece korsanlara değil, Hint devletlerine karşı da kullanıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every'nin baskınıyla başlayan olaylar zinciri, İngiltere'nin Hindistan'ı nihaî fethine katkıda bulundu.",
+      "text_markdown": "Every'nin baskınıyla başlayan olaylar zinciri, İngiltere'nin Hindistan'ı nihaî fethine katkıda bulundu.",
+      "tts": {
+        "text": "Every'nin baskınıyla başlayan olaylar zinciri, İngiltere'nin Hindistan'ı nihaî fethine katkıda bulundu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every'nin hikâyesi ayrıca şimdiye kadar yazılmış en ünlü korsan romanını da etkiledi.",
+      "text_markdown": "Every'nin hikâyesi ayrıca şimdiye kadar yazılmış en ünlü korsan romanını da etkiledi.",
+      "tts": {
+        "text": "Every'nin hikâyesi ayrıca şimdiye kadar yazılmış en ünlü korsan romanını da etkiledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daniel Defoe'nun kurgu eserlerinin bir bölümünde Every'nin hayatından ilham aldığına inanılır.",
+      "text_markdown": "Daniel Defoe'nun kurgu eserlerinin bir bölümünde Every'nin hayatından ilham aldığına inanılır.",
+      "tts": {
+        "text": "Daniel Defoe'nun kurgu eserlerinin bir bölümünde Every'nin hayatından ilham aldığına inanılır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hazinesiyle kaçıp sonsuza dek kaybolan bir korsan fikri macera edebiyatının vazgeçilmez bir unsuru haline geldi.",
+      "text_markdown": "Hazinesiyle kaçıp sonsuza dek kaybolan bir korsan fikri macera edebiyatının vazgeçilmez bir unsuru haline geldi.",
+      "tts": {
+        "text": "Hazinesiyle kaçıp sonsuza dek kaybolan bir korsan fikri macera edebiyatının vazgeçilmez bir unsuru haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every'nin gerçek hayatı çoğu kurgusal korsan hikâyesinden daha dramatikti.",
+      "text_markdown": "Every'nin gerçek hayatı çoğu kurgusal korsan hikâyesinden daha dramatikti.",
+      "tts": {
+        "text": "Every'nin gerçek hayatı çoğu kurgusal korsan hikâyesinden daha dramatikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Every korsanlık tarihinde eşsiz bir figür olarak kalmaya devam ediyor.",
+      "text_markdown": "Henry Every korsanlık tarihinde eşsiz bir figür olarak kalmaya devam ediyor.",
+      "tts": {
+        "text": "Henry Every korsanlık tarihinde eşsiz bir figür olarak kalmaya devam ediyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altın Çağ'ın en zengin tekil korsanlık eylemini gerçekleştirdi.",
+      "text_markdown": "Altın Çağ'ın en zengin tekil korsanlık eylemini gerçekleştirdi.",
+      "tts": {
+        "text": "Altın Çağ'ın en zengin tekil korsanlık eylemini gerçekleştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki imparatorluğu sarsan uluslararası bir krize yol açtı.",
+      "text_markdown": "İki imparatorluğu sarsan uluslararası bir krize yol açtı.",
+      "tts": {
+        "text": "İki imparatorluğu sarsan uluslararası bir krize yol açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Korsan Kralın Mirası",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve sonra sırlarını yanına alarak bilinmeze doğru kaybolup gitti.",
+      "text_markdown": "Ve sonra sırlarını yanına alarak bilinmeze doğru kaybolup gitti.",
+      "tts": {
+        "text": "Ve sonra sırlarını yanına alarak bilinmeze doğru kaybolup gitti.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

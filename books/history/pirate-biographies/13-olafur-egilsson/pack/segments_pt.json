@@ -1,0 +1,4259 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_olafur_egilsson",
+  "language": "pt",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma nota ao leitor",
+      "text_markdown": "Uma nota ao leitor"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta é uma história verdadeira, mas não é contada do ponto de vista do pirata.",
+      "text_markdown": "Esta é uma história verdadeira, mas não é contada do ponto de vista do pirata.",
+      "tts": {
+        "text": "Esta é uma história verdadeira, mas não é contada do ponto de vista do pirata.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É contada do lado daqueles que foram levados.",
+      "text_markdown": "É contada do lado daqueles que foram levados.",
+      "tts": {
+        "text": "É contada do lado daqueles que foram levados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria das histórias de piratas celebra ataques ousados e tesouros.",
+      "text_markdown": "A maioria das histórias de piratas celebra ataques ousados e tesouros.",
+      "tts": {
+        "text": "A maioria das histórias de piratas celebra ataques ousados e tesouros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta história é sobre o que aconteceu com as pessoas deixadas para trás na fumaça.",
+      "text_markdown": "Esta história é sobre o que aconteceu com as pessoas deixadas para trás na fumaça.",
+      "tts": {
+        "text": "Esta história é sobre o que aconteceu com as pessoas deixadas para trás na fumaça.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão de 1627, piratas do Norte de África navegaram até à Islândia.",
+      "text_markdown": "No verão de 1627, piratas do Norte de África navegaram até à Islândia.",
+      "tts": {
+        "text": "No verão de mil seiscentos e vinte e sete, piratas do Norte de África navegaram até à Islândia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capturaram quase quatrocentas pessoas e levaram-nas através do mar para serem vendidas como escravas.",
+      "text_markdown": "Capturaram quase quatrocentas pessoas e levaram-nas através do mar para serem vendidas como escravas.",
+      "tts": {
+        "text": "Capturaram quase quatrocentas pessoas e levaram-nas através do mar para serem vendidas como escravas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um desses cativos era um pastor chamado Ólafur Egilsson.",
+      "text_markdown": "Um desses cativos era um pastor chamado Ólafur Egilsson.",
+      "tts": {
+        "text": "Um desses cativos era um pastor chamado Ólafur Egilsson.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele escreveu um livro sobre o que viu, o que sofreu e o que perdeu.",
+      "text_markdown": "Ele escreveu um livro sobre o que viu, o que sofreu e o que perdeu.",
+      "tts": {
+        "text": "Ele escreveu um livro sobre o que viu, o que sofreu e o que perdeu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta é a história dele.",
+      "text_markdown": "Esta é a história dele.",
+      "tts": {
+        "text": "Esta é a história dele.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pertence a um livro sobre piratas porque a pirataria nunca foi apenas sobre os piratas.",
+      "text_markdown": "Pertence a um livro sobre piratas porque a pirataria nunca foi apenas sobre os piratas.",
+      "tts": {
+        "text": "Pertence a um livro sobre piratas porque a pirataria nunca foi apenas sobre os piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Foi sempre, também, sobre as pessoas que eles magoaram.",
+      "text_markdown": "Foi sempre, também, sobre as pessoas que eles magoaram.",
+      "tts": {
+        "text": "Foi sempre, também, sobre as pessoas que eles magoaram.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "As Ilhas Westman",
+      "text_markdown": "As Ilhas Westman"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ao largo da costa sul da Islândia, um aglomerado de pequenas ilhas vulcânicas ergue-se do Atlântico Norte.",
+      "text_markdown": "Ao largo da costa sul da Islândia, um aglomerado de pequenas ilhas vulcânicas ergue-se do Atlântico Norte.",
+      "tts": {
+        "text": "Ao largo da costa sul da Islândia, um aglomerado de pequenas ilhas vulcânicas ergue-se do Atlântico Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os islandeses chamam-lhes Vestmannaeyjar, as Ilhas Westman.",
+      "text_markdown": "Os islandeses chamam-lhes Vestmannaeyjar, as Ilhas Westman.",
+      "tts": {
+        "text": "Os islandeses chamam-lhes Vestmannaeyjar, as Ilhas Westman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estão entre as comunidades mais isoladas de toda a Europa.",
+      "text_markdown": "Estão entre as comunidades mais isoladas de toda a Europa.",
+      "tts": {
+        "text": "Estão entre as comunidades mais isoladas de toda a Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maior ilha chama-se Heimaey e é a única que alguma vez foi permanentemente habitada.",
+      "text_markdown": "A maior ilha chama-se Heimaey e é a única que alguma vez foi permanentemente habitada.",
+      "tts": {
+        "text": "A maior ilha chama-se Heimaey e é a única que alguma vez foi permanentemente habitada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mesmo Heimaey é pequena, com apenas cinco quilómetros de largura, e com falésias íngremes em quase todos os lados.",
+      "text_markdown": "Mesmo Heimaey é pequena, com apenas cinco quilómetros de largura, e com falésias íngremes em quase todos os lados.",
+      "tts": {
+        "text": "Mesmo Heimaey é pequena, com apenas cinco quilómetros de largura, e com falésias íngremes em quase todos os lados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As ilhas foram formadas por erupções vulcânicas no fundo do oceano.",
+      "text_markdown": "As ilhas foram formadas por erupções vulcânicas no fundo do oceano.",
+      "tts": {
+        "text": "As ilhas foram formadas por erupções vulcânicas no fundo do oceano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A rocha é basalto escuro e as falésias caem a pique sobre o mar revolto.",
+      "text_markdown": "A rocha é basalto escuro e as falésias caem a pique sobre o mar revolto.",
+      "tts": {
+        "text": "A rocha é basalto escuro e as falésias caem a pique sobre o mar revolto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No verão, milhões de aves marinhas nidificam nas saliências.",
+      "text_markdown": "No verão, milhões de aves marinhas nidificam nas saliências.",
+      "tts": {
+        "text": "No verão, milhões de aves marinhas nidificam nas saliências.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No inverno, tempestades castigam as ilhas durante semanas seguidas.",
+      "text_markdown": "No inverno, tempestades castigam as ilhas durante semanas seguidas.",
+      "tts": {
+        "text": "No inverno, tempestades castigam as ilhas durante semanas seguidas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A vida no fim do mundo",
+      "text_markdown": "A vida no fim do mundo"
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No início do século dezassete, cerca de quinhentas pessoas viviam em Heimaey.",
+      "text_markdown": "No início do século dezassete, cerca de quinhentas pessoas viviam em Heimaey.",
+      "tts": {
+        "text": "No início do século dezassete, cerca de quinhentas pessoas viviam em Heimaey.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sobreviviam da pesca, da criação de ovelhas e da recolha de ovos de aves marinhas nas falésias.",
+      "text_markdown": "Sobreviviam da pesca, da criação de ovelhas e da recolha de ovos de aves marinhas nas falésias.",
+      "tts": {
+        "text": "Sobreviviam da pesca, da criação de ovelhas e da recolha de ovos de aves marinhas nas falésias.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os ilhéus falavam islandês, uma língua que pouco mudara desde o tempo dos Vikings.",
+      "text_markdown": "Os ilhéus falavam islandês, uma língua que pouco mudara desde o tempo dos Vikings.",
+      "tts": {
+        "text": "Os ilhéus falavam islandês, uma língua que pouco mudara desde o tempo dos Vikings.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eram luteranos e a sua igreja era o centro da vida comunitária.",
+      "text_markdown": "Eram luteranos e a sua igreja era o centro da vida comunitária.",
+      "tts": {
+        "text": "Eram luteranos e a sua igreja era o centro da vida comunitária.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Islândia era governada pelo Reino da Dinamarca, que controlava todo o comércio através de um monopólio rigoroso.",
+      "text_markdown": "A Islândia era governada pelo Reino da Dinamarca, que controlava todo o comércio através de um monopólio rigoroso.",
+      "tts": {
+        "text": "A Islândia era governada pelo Reino da Dinamarca, que controlava todo o comércio através de um monopólio rigoroso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Apenas os mercadores dinamarqueses podiam comprar e vender bens, e os islandeses tinham muito pouco contacto com o mundo exterior.",
+      "text_markdown": "Apenas os mercadores dinamarqueses podiam comprar e vender bens, e os islandeses tinham muito pouco contacto com o mundo exterior.",
+      "tts": {
+        "text": "Apenas os mercadores dinamarqueses podiam comprar e vender bens, e os islandeses tinham muito pouco contacto com o mundo exterior.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A Pequena Idade do Gelo",
+      "text_markdown": "A Pequena Idade do Gelo"
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O século dezassete fazia parte de um longo período frio que os historiadores chamam de Pequena Idade do Gelo.",
+      "text_markdown": "O século dezassete fazia parte de um longo período frio que os historiadores chamam de Pequena Idade do Gelo.",
+      "tts": {
+        "text": "O século dezassete fazia parte de um longo período frio que os historiadores chamam de Pequena Idade do Gelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Na Islândia, o gelo marinho por vezes cercava a ilha durante meses, bloqueando navios e matando gado.",
+      "text_markdown": "Na Islândia, o gelo marinho por vezes cercava a ilha durante meses, bloqueando navios e matando gado.",
+      "tts": {
+        "text": "Na Islândia, o gelo marinho por vezes cercava a ilha durante meses, bloqueando navios e matando gado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas Ilhas Westman, a estação de crescimento era demasiado curta para cereais.",
+      "text_markdown": "Nas Ilhas Westman, a estação de crescimento era demasiado curta para cereais.",
+      "tts": {
+        "text": "Nas Ilhas Westman, a estação de crescimento era demasiado curta para cereais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O povo dependia do mar, e quando as tempestades impediam a pesca, passavam fome.",
+      "text_markdown": "O povo dependia do mar, e quando as tempestades impediam a pesca, passavam fome.",
+      "tts": {
+        "text": "O povo dependia do mar, e quando as tempestades impediam a pesca, passavam fome.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Um lugar pacífico e vulnerável",
+      "text_markdown": "Um lugar pacífico e vulnerável"
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apesar destas dificuldades, as Ilhas Westman eram pacíficas.",
+      "text_markdown": "Apesar destas dificuldades, as Ilhas Westman eram pacíficas.",
+      "tts": {
+        "text": "Apesar destas dificuldades, as Ilhas Westman eram pacíficas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não havia soldados, nem forte, nem muralha, nem defesa portuária.",
+      "text_markdown": "Não havia soldados, nem forte, nem muralha, nem defesa portuária.",
+      "tts": {
+        "text": "Não havia soldados, nem forte, nem muralha, nem defesa portuária.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os ilhéus não tinham armas além de facas e ferramentas dos seus ofícios.",
+      "text_markdown": "Os ilhéus não tinham armas além de facas e ferramentas dos seus ofícios.",
+      "tts": {
+        "text": "Os ilhéus não tinham armas além de facas e ferramentas dos seus ofícios.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ninguém esperava um ataque.",
+      "text_markdown": "Ninguém esperava um ataque.",
+      "tts": {
+        "text": "Ninguém esperava um ataque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os piratas pertenciam a histórias sobre mares distantes.",
+      "text_markdown": "Os piratas pertenciam a histórias sobre mares distantes.",
+      "tts": {
+        "text": "Os piratas pertenciam a histórias sobre mares distantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O Atlântico Norte parecia demasiado frio, demasiado agitado e demasiado longe de qualquer lugar valioso.",
+      "text_markdown": "O Atlântico Norte parecia demasiado frio, demasiado agitado e demasiado longe de qualquer lugar valioso.",
+      "tts": {
+        "text": "O Atlântico Norte parecia demasiado frio, demasiado agitado e demasiado longe de qualquer lugar valioso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A única defesa das ilhas era o seu isolamento.",
+      "text_markdown": "A única defesa das ilhas era o seu isolamento.",
+      "tts": {
+        "text": "A única defesa das ilhas era o seu isolamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas algo estava a mudar no mundo que traria o perigo até este canto esquecido do mar.",
+      "text_markdown": "Mas algo estava a mudar no mundo que traria o perigo até este canto esquecido do mar.",
+      "tts": {
+        "text": "Mas algo estava a mudar no mundo que traria o perigo até este canto esquecido do mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Os corsários berberes chegam ao norte",
+      "text_markdown": "Os corsários berberes chegam ao norte"
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ao longo da costa do Norte de África, poderosas cidades portuárias prosperavam com a pirataria marítima.",
+      "text_markdown": "Ao longo da costa do Norte de África, poderosas cidades portuárias prosperavam com a pirataria marítima.",
+      "tts": {
+        "text": "Ao longo da costa do Norte de África, poderosas cidades portuárias prosperavam com a pirataria marítima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Argel, Tunes e Salé eram o lar dos corsários berberes, que operavam com o apoio do Império Otomano.",
+      "text_markdown": "Argel, Tunes e Salé eram o lar dos corsários berberes, que operavam com o apoio do Império Otomano.",
+      "tts": {
+        "text": "Argel, Tunes e Salé eram o lar dos corsários berberes, que operavam com o apoio do Império Otomano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante séculos, os corsários atacaram Espanha, Itália e França, capturando pessoas e vendendo-as como escravas.",
+      "text_markdown": "Durante séculos, os corsários atacaram Espanha, Itália e França, capturando pessoas e vendendo-as como escravas.",
+      "tts": {
+        "text": "Durante séculos, os corsários atacaram Espanha, Itália e França, capturando pessoas e vendendo-as como escravas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os mercados de escravos de Argel eram famosos em todo o Mediterrâneo.",
+      "text_markdown": "Os mercados de escravos de Argel eram famosos em todo o Mediterrâneo.",
+      "tts": {
+        "text": "Os mercados de escravos de Argel eram famosos em todo o Mediterrâneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No início do século dezassete, renegados europeus que se juntaram aos corsários trouxeram novos navios, conhecimentos de navegação e conhecimento dos mares do norte.",
+      "text_markdown": "No início do século dezassete, renegados europeus que se juntaram aos corsários trouxeram novos navios, conhecimentos de navegação e conhecimento dos mares do norte.",
+      "tts": {
+        "text": "No início do século dezassete, renegados europeus que se juntaram aos corsários trouxeram novos navios, conhecimentos de navegação e conhecimento dos mares do norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os corsários começaram a aventurar-se no Atlântico, atacando Inglaterra, Irlanda e até a Islândia.",
+      "text_markdown": "Os corsários começaram a aventurar-se no Atlântico, atacando Inglaterra, Irlanda e até a Islândia.",
+      "tts": {
+        "text": "Os corsários começaram a aventurar-se no Atlântico, atacando Inglaterra, Irlanda e até a Islândia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um dos renegados mais importantes era um holandês que se reinventara como capitão berbere.",
+      "text_markdown": "Um dos renegados mais importantes era um holandês que se reinventara como capitão berbere.",
+      "tts": {
+        "text": "Um dos renegados mais importantes era um holandês que se reinventara como capitão berbere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "As Ilhas Westman",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O isolamento que protegera as Ilhas Westman durante séculos estava prestes a acabar.",
+      "text_markdown": "O isolamento que protegera as Ilhas Westman durante séculos estava prestes a acabar.",
+      "tts": {
+        "text": "O isolamento que protegera as Ilhas Westman durante séculos estava prestes a acabar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O dia em que os piratas chegaram",
+      "text_markdown": "O dia em que os piratas chegaram"
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Num dia de verão em julho de 1627, uma frota de navios apareceu no horizonte a sul da Islândia.",
+      "text_markdown": "Num dia de verão em julho de 1627, uma frota de navios apareceu no horizonte a sul da Islândia.",
+      "tts": {
+        "text": "Num dia de verão em julho de mil seiscentos e vinte e sete, uma frota de navios apareceu no horizonte a sul da Islândia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não eram navios mercantes dinamarqueses.",
+      "text_markdown": "Não eram navios mercantes dinamarqueses.",
+      "tts": {
+        "text": "Não eram navios mercantes dinamarqueses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eram navios de guerra da Costa Berbere.",
+      "text_markdown": "Eram navios de guerra da Costa Berbere.",
+      "tts": {
+        "text": "Eram navios de guerra da Costa Berbere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frota era liderada por um homem que os europeus chamavam de Murat Reis, o Jovem.",
+      "text_markdown": "A frota era liderada por um homem que os europeus chamavam de Murat Reis, o Jovem.",
+      "tts": {
+        "text": "A frota era liderada por um homem que os europeus chamavam de Murat Reis, o Jovem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O seu verdadeiro nome era Jan Janszoon van Haarlem e nascera na República Holandesa.",
+      "text_markdown": "O seu verdadeiro nome era Jan Janszoon van Haarlem e nascera na República Holandesa.",
+      "tts": {
+        "text": "O seu verdadeiro nome era Jan Janszoon van Haarlem e nascera na República Holandesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era um marinheiro que se tornara pirata, convertera-se ao Islão e ascendera a um dos mais poderosos capitães corsários do Atlântico.",
+      "text_markdown": "Era um marinheiro que se tornara pirata, convertera-se ao Islão e ascendera a um dos mais poderosos capitães corsários do Atlântico.",
+      "tts": {
+        "text": "Era um marinheiro que se tornara pirata, convertera-se ao Islão e ascendera a um dos mais poderosos capitães corsários do Atlântico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "O renegado holandês",
+      "text_markdown": "O renegado holandês"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jan Janszoon nasceu por volta de 1570 na cidade de Haarlem.",
+      "text_markdown": "Jan Janszoon nasceu por volta de 1570 na cidade de Haarlem.",
+      "tts": {
+        "text": "Jan Janszoon nasceu por volta de mil quinhentos e setenta na cidade de Haarlem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Começou como corsário holandês, autorizado a atacar navios espanhóis durante a longa guerra entre os Países Baixos e Espanha.",
+      "text_markdown": "Começou como corsário holandês, autorizado a atacar navios espanhóis durante a longa guerra entre os Países Baixos e Espanha.",
+      "tts": {
+        "text": "Começou como corsário holandês, autorizado a atacar navios espanhóis durante a longa guerra entre os Países Baixos e Espanha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em determinado momento, Janszoon foi capturado por corsários e levado para o porto de Salé, em Marrocos.",
+      "text_markdown": "Em determinado momento, Janszoon foi capturado por corsários e levado para o porto de Salé, em Marrocos.",
+      "tts": {
+        "text": "Em determinado momento, Janszoon foi capturado por corsários e levado para o porto de Salé, em Marrocos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em vez de permanecer cativo, converteu-se ao Islão, adotou o nome Murat Reis e provou ser um comandante implacável.",
+      "text_markdown": "Em vez de permanecer cativo, converteu-se ao Islão, adotou o nome Murat Reis e provou ser um comandante implacável.",
+      "tts": {
+        "text": "Em vez de permanecer cativo, converteu-se ao Islão, adotou o nome Murat Reis e provou ser um comandante implacável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ascendeu a presidente da República de Salé, um estado pirata na costa marroquina.",
+      "text_markdown": "Ascendeu a presidente da República de Salé, um estado pirata na costa marroquina.",
+      "tts": {
+        "text": "Ascendeu a presidente da República de Salé, um estado pirata na costa marroquina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A partir de Salé e mais tarde de Argel, liderou ataques pelo Atlântico.",
+      "text_markdown": "A partir de Salé e mais tarde de Argel, liderou ataques pelo Atlântico.",
+      "tts": {
+        "text": "A partir de Salé e mais tarde de Argel, liderou ataques pelo Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chegou a atacar a cidade de Baltimore, na Irlanda, em 1631, levando mais de cem cativos.",
+      "text_markdown": "Chegou a atacar a cidade de Baltimore, na Irlanda, em 1631, levando mais de cem cativos.",
+      "tts": {
+        "text": "Chegou a atacar a cidade de Baltimore, na Irlanda, em mil seiscentos e trinta e um, levando mais de cem cativos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A rota para o norte",
+      "text_markdown": "A rota para o norte"
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Renegados ingleses e holandeses que se juntaram aos corsários trouxeram conhecimento dos ventos e correntes do Atlântico.",
+      "text_markdown": "Renegados ingleses e holandeses que se juntaram aos corsários trouxeram conhecimento dos ventos e correntes do Atlântico.",
+      "tts": {
+        "text": "Renegados ingleses e holandeses que se juntaram aos corsários trouxeram conhecimento dos ventos e correntes do Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sabiam que a Islândia estava quase completamente indefesa.",
+      "text_markdown": "Sabiam que a Islândia estava quase completamente indefesa.",
+      "tts": {
+        "text": "Sabiam que a Islândia estava quase completamente indefesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os mercados de escravos de Argel exigiam um fornecimento constante de cativos.",
+      "text_markdown": "Os mercados de escravos de Argel exigiam um fornecimento constante de cativos.",
+      "tts": {
+        "text": "Os mercados de escravos de Argel exigiam um fornecimento constante de cativos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As zonas de ataque no Mediterrâneo estavam cada vez mais patrulhadas, e os corsários precisavam de novos territórios de caça.",
+      "text_markdown": "As zonas de ataque no Mediterrâneo estavam cada vez mais patrulhadas, e os corsários precisavam de novos territórios de caça.",
+      "tts": {
+        "text": "As zonas de ataque no Mediterrâneo estavam cada vez mais patrulhadas, e os corsários precisavam de novos territórios de caça.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Islândia era perfeita: isolada, indefesa e ignorada pelas autoridades dinamarquesas.",
+      "text_markdown": "A Islândia era perfeita: isolada, indefesa e ignorada pelas autoridades dinamarquesas.",
+      "tts": {
+        "text": "A Islândia era perfeita: isolada, indefesa e ignorada pelas autoridades dinamarquesas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Os ataques começam",
+      "text_markdown": "Os ataques começam"
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frota corsária primeiro atacou a costa leste da Islândia, saqueando pequenos povoados.",
+      "text_markdown": "A frota corsária primeiro atacou a costa leste da Islândia, saqueando pequenos povoados.",
+      "tts": {
+        "text": "A frota corsária primeiro atacou a costa leste da Islândia, saqueando pequenos povoados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estes ataques iniciais foram aterrorizantes, mas pequenos.",
+      "text_markdown": "Estes ataques iniciais foram aterrorizantes, mas pequenos.",
+      "tts": {
+        "text": "Estes ataques iniciais foram aterrorizantes, mas pequenos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A dezasseis de julho, os corsários viraram-se para as Ilhas Westman.",
+      "text_markdown": "A dezasseis de julho, os corsários viraram-se para as Ilhas Westman.",
+      "tts": {
+        "text": "A dezasseis de julho, os corsários viraram-se para as Ilhas Westman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chegaram a Heimaey sob o nevoeiro da madrugada.",
+      "text_markdown": "Chegaram a Heimaey sob o nevoeiro da madrugada.",
+      "tts": {
+        "text": "Chegaram a Heimaey sob o nevoeiro da madrugada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os ilhéus tinham ouvido rumores de ataques, mas não tinham como se preparar.",
+      "text_markdown": "Os ilhéus tinham ouvido rumores de ataques, mas não tinham como se preparar.",
+      "tts": {
+        "text": "Os ilhéus tinham ouvido rumores de ataques, mas não tinham como se preparar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "O ataque a Heimaey",
+      "text_markdown": "O ataque a Heimaey"
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os piratas desembarcaram na costa leste, onde as falésias eram mais baixas.",
+      "text_markdown": "Os piratas desembarcaram na costa leste, onde as falésias eram mais baixas.",
+      "tts": {
+        "text": "Os piratas desembarcaram na costa leste, onde as falésias eram mais baixas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chegaram a terra em pequenos barcos, armados com espadas, mosquetes e tochas.",
+      "text_markdown": "Chegaram a terra em pequenos barcos, armados com espadas, mosquetes e tochas.",
+      "tts": {
+        "text": "Chegaram a terra em pequenos barcos, armados com espadas, mosquetes e tochas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur Egilsson estava em casa com a esposa Ásta e os filhos.",
+      "text_markdown": "Ólafur Egilsson estava em casa com a esposa Ásta e os filhos.",
+      "tts": {
+        "text": "Ólafur Egilsson estava em casa com a esposa Ásta e os filhos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era o pastor da ilha, um homem culto e de fé, com sessenta e três anos de idade.",
+      "text_markdown": "Era o pastor da ilha, um homem culto e de fé, com sessenta e três anos de idade.",
+      "tts": {
+        "text": "Era o pastor da ilha, um homem culto e de fé, com sessenta e três anos de idade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os piratas moveram-se rapidamente, arrombando portas e arrastando pessoas de suas casas.",
+      "text_markdown": "Os piratas moveram-se rapidamente, arrombando portas e arrastando pessoas de suas casas.",
+      "tts": {
+        "text": "Os piratas moveram-se rapidamente, arrombando portas e arrastando pessoas de suas casas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alguns ilhéus tentaram esconder-se em grutas ao longo das falésias.",
+      "text_markdown": "Alguns ilhéus tentaram esconder-se em grutas ao longo das falésias.",
+      "tts": {
+        "text": "Alguns ilhéus tentaram esconder-se em grutas ao longo das falésias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Outros escalaram campos de lava na escuridão.",
+      "text_markdown": "Outros escalaram campos de lava na escuridão.",
+      "tts": {
+        "text": "Outros escalaram campos de lava na escuridão.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os atacantes incendiaram edifícios, incluindo a igreja.",
+      "text_markdown": "Os atacantes incendiaram edifícios, incluindo a igreja.",
+      "tts": {
+        "text": "Os atacantes incendiaram edifícios, incluindo a igreja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur escreveu mais tarde que ver a sua igreja arder foi um dos momentos mais dolorosos de toda a provação.",
+      "text_markdown": "Ólafur escreveu mais tarde que ver a sua igreja arder foi um dos momentos mais dolorosos de toda a provação.",
+      "tts": {
+        "text": "Ólafur escreveu mais tarde que ver a sua igreja arder foi um dos momentos mais dolorosos de toda a provação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era o coração da sua comunidade.",
+      "text_markdown": "Era o coração da sua comunidade.",
+      "tts": {
+        "text": "Era o coração da sua comunidade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A captura",
+      "text_markdown": "A captura"
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No fim do ataque, os corsários tinham capturado cerca de duzentas e quarenta pessoas de Heimaey.",
+      "text_markdown": "No fim do ataque, os corsários tinham capturado cerca de duzentas e quarenta pessoas de Heimaey.",
+      "tts": {
+        "text": "No fim do ataque, os corsários tinham capturado cerca de duzentas e quarenta pessoas de Heimaey.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Homens, mulheres e crianças foram reunidos na praia.",
+      "text_markdown": "Homens, mulheres e crianças foram reunidos na praia.",
+      "tts": {
+        "text": "Homens, mulheres e crianças foram reunidos na praia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur, Ásta e os seus filhos estavam entre os cativos.",
+      "text_markdown": "Ólafur, Ásta e os seus filhos estavam entre os cativos.",
+      "tts": {
+        "text": "Ólafur, Ásta e os seus filhos estavam entre os cativos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foram forçados a embarcar nos navios piratas juntamente com vizinhos e amigos.",
+      "text_markdown": "Foram forçados a embarcar nos navios piratas juntamente com vizinhos e amigos.",
+      "tts": {
+        "text": "Foram forçados a embarcar nos navios piratas juntamente com vizinhos e amigos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em todos os ataques daquele verão, aproximadamente quatrocentos islandeses foram levados.",
+      "text_markdown": "Em todos os ataques daquele verão, aproximadamente quatrocentos islandeses foram levados.",
+      "tts": {
+        "text": "Em todos os ataques daquele verão, aproximadamente quatrocentos islandeses foram levados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para um país com uma população de apenas cerca de cinquenta mil pessoas, isto foi devastador.",
+      "text_markdown": "Para um país com uma população de apenas cerca de cinquenta mil pessoas, isto foi devastador.",
+      "tts": {
+        "text": "Para um país com uma população de apenas cerca de cinquenta mil pessoas, isto foi devastador.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os corsários partiram rumo ao sul.",
+      "text_markdown": "Os corsários partiram rumo ao sul.",
+      "tts": {
+        "text": "Os corsários partiram rumo ao sul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os ilhéus das Westman viram as suas casas desaparecer atrás de si.",
+      "text_markdown": "Os ilhéus das Westman viram as suas casas desaparecer atrás de si.",
+      "tts": {
+        "text": "Os ilhéus das Westman viram as suas casas desaparecer atrás de si.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "O dia em que os piratas chegaram",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A maioria nunca mais veria a Islândia.",
+      "text_markdown": "A maioria nunca mais veria a Islândia.",
+      "tts": {
+        "text": "A maioria nunca mais veria a Islândia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A viagem para Argel",
+      "text_markdown": "A viagem para Argel"
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os navios viraram para sul em direção ao Atlântico aberto.",
+      "text_markdown": "Os navios viraram para sul em direção ao Atlântico aberto.",
+      "tts": {
+        "text": "Os navios viraram para sul em direção ao Atlântico aberto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para os cativos sob o convés, começou um novo tipo de sofrimento.",
+      "text_markdown": "Para os cativos sob o convés, começou um novo tipo de sofrimento.",
+      "tts": {
+        "text": "Para os cativos sob o convés, começou um novo tipo de sofrimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur descreveu a viagem em detalhe no seu livro.",
+      "text_markdown": "Ólafur descreveu a viagem em detalhe no seu livro.",
+      "tts": {
+        "text": "Ólafur descreveu a viagem em detalhe no seu livro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os cativos eram mantidos em espaços apertados e escuros, com pouca comida, pouca água e nenhuma privacidade.",
+      "text_markdown": "Os cativos eram mantidos em espaços apertados e escuros, com pouca comida, pouca água e nenhuma privacidade.",
+      "tts": {
+        "text": "Os cativos eram mantidos em espaços apertados e escuros, com pouca comida, pouca água e nenhuma privacidade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O calor piorava à medida que os navios navegavam mais para sul.",
+      "text_markdown": "O calor piorava à medida que os navios navegavam mais para sul.",
+      "tts": {
+        "text": "O calor piorava à medida que os navios navegavam mais para sul.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Condições a bordo",
+      "text_markdown": "Condições a bordo"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os cativos estavam apinhados no porão.",
+      "text_markdown": "Os cativos estavam apinhados no porão.",
+      "tts": {
+        "text": "Os cativos estavam apinhados no porão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muitos sofriam de enjoo, o ar era fétido e as doenças propagavam-se rapidamente.",
+      "text_markdown": "Muitos sofriam de enjoo, o ar era fétido e as doenças propagavam-se rapidamente.",
+      "tts": {
+        "text": "Muitos sofriam de enjoo, o ar era fétido e as doenças propagavam-se rapidamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os corsários tratavam os cativos como carga.",
+      "text_markdown": "Os corsários tratavam os cativos como carga.",
+      "tts": {
+        "text": "Os corsários tratavam os cativos como carga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eram alimentados apenas o suficiente para se manterem vivos.",
+      "text_markdown": "Eram alimentados apenas o suficiente para se manterem vivos.",
+      "tts": {
+        "text": "Eram alimentados apenas o suficiente para se manterem vivos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Para os corsários, estas pessoas eram mercadoria a ser entregue no mercado.",
+      "text_markdown": "Para os corsários, estas pessoas eram mercadoria a ser entregue no mercado.",
+      "tts": {
+        "text": "Para os corsários, estas pessoas eram mercadoria a ser entregue no mercado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur, como pastor, tentou conduzir orações e manter os espíritos minimamente intactos.",
+      "text_markdown": "Ólafur, como pastor, tentou conduzir orações e manter os espíritos minimamente intactos.",
+      "tts": {
+        "text": "Ólafur, como pastor, tentou conduzir orações e manter os espíritos minimamente intactos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas o desespero era avassalador.",
+      "text_markdown": "Mas o desespero era avassalador.",
+      "tts": {
+        "text": "Mas o desespero era avassalador.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A viagem durou várias semanas, passando ao longo das costas da Europa e pelo Estreito de Gibraltar até ao Mediterrâneo.",
+      "text_markdown": "A viagem durou várias semanas, passando ao longo das costas da Europa e pelo Estreito de Gibraltar até ao Mediterrâneo.",
+      "tts": {
+        "text": "A viagem durou várias semanas, passando ao longo das costas da Europa e pelo Estreito de Gibraltar até ao Mediterrâneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chegada a Argel",
+      "text_markdown": "Chegada a Argel"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando os navios chegaram a Argel, os cativos foram trazidos ao convés.",
+      "text_markdown": "Quando os navios chegaram a Argel, os cativos foram trazidos ao convés.",
+      "tts": {
+        "text": "Quando os navios chegaram a Argel, os cativos foram trazidos ao convés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O que viram espantou-os.",
+      "text_markdown": "O que viram espantou-os.",
+      "tts": {
+        "text": "O que viram espantou-os.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Argel era uma das maiores cidades da costa mediterrânica, subindo por uma encosta íngreme num labirinto de edifícios brancos e minaretes.",
+      "text_markdown": "Argel era uma das maiores cidades da costa mediterrânica, subindo por uma encosta íngreme num labirinto de edifícios brancos e minaretes.",
+      "tts": {
+        "text": "Argel era uma das maiores cidades da costa mediterrânica, subindo por uma encosta íngreme num labirinto de edifícios brancos e minaretes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era o lar de talvez cem mil pessoas, muito mais do que toda a população da Islândia.",
+      "text_markdown": "Era o lar de talvez cem mil pessoas, muito mais do que toda a população da Islândia.",
+      "tts": {
+        "text": "Era o lar de talvez cem mil pessoas, muito mais do que toda a população da Islândia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para pessoas que tinham passado a vida numa minúscula ilha vulcânica, a visão era impossível de compreender.",
+      "text_markdown": "Para pessoas que tinham passado a vida numa minúscula ilha vulcânica, a visão era impossível de compreender.",
+      "tts": {
+        "text": "Para pessoas que tinham passado a vida numa minúscula ilha vulcânica, a visão era impossível de compreender.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O ruído, o calor, as multidões, o chamamento para a oração — tudo era avassalador.",
+      "text_markdown": "O ruído, o calor, as multidões, o chamamento para a oração — tudo era avassalador.",
+      "tts": {
+        "text": "O ruído, o calor, as multidões, o chamamento para a oração — tudo era avassalador.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A Argel otomana",
+      "text_markdown": "A Argel otomana"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Argel era nominalmente parte do Império Otomano, mas era governada na prática por líderes militares locais.",
+      "text_markdown": "Argel era nominalmente parte do Império Otomano, mas era governada na prática por líderes militares locais.",
+      "tts": {
+        "text": "Argel era nominalmente parte do Império Otomano, mas era governada na prática por líderes militares locais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A sua economia era baseada na pirataria corsária e no comércio de escravos.",
+      "text_markdown": "A sua economia era baseada na pirataria corsária e no comércio de escravos.",
+      "tts": {
+        "text": "A sua economia era baseada na pirataria corsária e no comércio de escravos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os historiadores estimam que dezenas de milhares de europeus escravizados viviam nos estados berberes em qualquer momento.",
+      "text_markdown": "Os historiadores estimam que dezenas de milhares de europeus escravizados viviam nos estados berberes em qualquer momento.",
+      "tts": {
+        "text": "Os historiadores estimam que dezenas de milhares de europeus escravizados viviam nos estados berberes em qualquer momento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os cativos vinham de Espanha, Itália, França, Portugal, Inglaterra e agora da Islândia.",
+      "text_markdown": "Os cativos vinham de Espanha, Itália, França, Portugal, Inglaterra e agora da Islândia.",
+      "tts": {
+        "text": "Os cativos vinham de Espanha, Itália, França, Portugal, Inglaterra e agora da Islândia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A cidade era cosmopolita de uma forma que poucas cidades europeias podiam igualar.",
+      "text_markdown": "A cidade era cosmopolita de uma forma que poucas cidades europeias podiam igualar.",
+      "tts": {
+        "text": "A cidade era cosmopolita de uma forma que poucas cidades europeias podiam igualar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muçulmanos, judeus, cristãos e renegados de dezenas de países viviam lado a lado.",
+      "text_markdown": "Muçulmanos, judeus, cristãos e renegados de dezenas de países viviam lado a lado.",
+      "tts": {
+        "text": "Muçulmanos, judeus, cristãos e renegados de dezenas de países viviam lado a lado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "O mercado de escravos",
+      "text_markdown": "O mercado de escravos"
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A descrição que Ólafur faz do mercado de escravos é uma das passagens mais vívidas do seu livro.",
+      "text_markdown": "A descrição que Ólafur faz do mercado de escravos é uma das passagens mais vívidas do seu livro.",
+      "tts": {
+        "text": "A descrição que Ólafur faz do mercado de escravos é uma das passagens mais vívidas do seu livro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os cativos eram levados para uma área aberta perto do porto e examinados por compradores que verificavam os seus dentes, mãos e saúde.",
+      "text_markdown": "Os cativos eram levados para uma área aberta perto do porto e examinados por compradores que verificavam os seus dentes, mãos e saúde.",
+      "tts": {
+        "text": "Os cativos eram levados para uma área aberta perto do porto e examinados por compradores que verificavam os seus dentes, mãos e saúde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os jovens e fortes alcançavam os preços mais altos.",
+      "text_markdown": "Os jovens e fortes alcançavam os preços mais altos.",
+      "tts": {
+        "text": "Os jovens e fortes alcançavam os preços mais altos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mulheres e crianças eram vendidas separadamente, muitas vezes a compradores diferentes.",
+      "text_markdown": "Mulheres e crianças eram vendidas separadamente, muitas vezes a compradores diferentes.",
+      "tts": {
+        "text": "Mulheres e crianças eram vendidas separadamente, muitas vezes a compradores diferentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Famílias que tinham sobrevivido à viagem eram separadas.",
+      "text_markdown": "Famílias que tinham sobrevivido à viagem eram separadas.",
+      "tts": {
+        "text": "Famílias que tinham sobrevivido à viagem eram separadas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur descreveu os gritos e o choro quando maridos eram arrancados das esposas e pais viam os filhos serem levados.",
+      "text_markdown": "Ólafur descreveu os gritos e o choro quando maridos eram arrancados das esposas e pais viam os filhos serem levados.",
+      "tts": {
+        "text": "Ólafur descreveu os gritos e o choro quando maridos eram arrancados das esposas e pais viam os filhos serem levados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Escreveu que nenhumas palavras podiam capturar o horror daquele dia.",
+      "text_markdown": "Escreveu que nenhumas palavras podiam capturar o horror daquele dia.",
+      "tts": {
+        "text": "Escreveu que nenhumas palavras podiam capturar o horror daquele dia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Separação",
+      "text_markdown": "Separação"
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur e a sua esposa Ásta foram separados no mercado.",
+      "text_markdown": "Ólafur e a sua esposa Ásta foram separados no mercado.",
+      "tts": {
+        "text": "Ólafur e a sua esposa Ásta foram separados no mercado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os seus filhos também foram levados.",
+      "text_markdown": "Os seus filhos também foram levados.",
+      "tts": {
+        "text": "Os seus filhos também foram levados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para Ólafur, a separação foi a pior parte do cativeiro.",
+      "text_markdown": "Para Ólafur, a separação foi a pior parte do cativeiro.",
+      "tts": {
+        "text": "Para Ólafur, a separação foi a pior parte do cativeiro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não sabia para onde Ásta tinha sido levada.",
+      "text_markdown": "Não sabia para onde Ásta tinha sido levada.",
+      "tts": {
+        "text": "Não sabia para onde Ásta tinha sido levada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A incerteza era um tipo de tortura que nunca acabava.",
+      "text_markdown": "A incerteza era um tipo de tortura que nunca acabava.",
+      "tts": {
+        "text": "A incerteza era um tipo de tortura que nunca acabava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A economia de seres humanos",
+      "text_markdown": "A economia de seres humanos"
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O comércio de escravos berbere era enorme.",
+      "text_markdown": "O comércio de escravos berbere era enorme.",
+      "tts": {
+        "text": "O comércio de escravos berbere era enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os historiadores estimam que entre 1530 e 1780, os corsários escravizaram mais de um milhão de europeus.",
+      "text_markdown": "Os historiadores estimam que entre 1530 e 1780, os corsários escravizaram mais de um milhão de europeus.",
+      "tts": {
+        "text": "Os historiadores estimam que entre mil quinhentos e trinta e mil setecentos e oitenta, os corsários escravizaram mais de um milhão de europeus.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A escravidão assumia muitas formas: serviço doméstico, construção, agricultura ou remar nas galés acorrentado a um remo.",
+      "text_markdown": "A escravidão assumia muitas formas: serviço doméstico, construção, agricultura ou remar nas galés acorrentado a um remo.",
+      "tts": {
+        "text": "A escravidão assumia muitas formas: serviço doméstico, construção, agricultura ou remar nas galés acorrentado a um remo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aqueles que se convertiam ao Islão recebiam frequentemente mais liberdade, embora a conversão não garantisse a libertação.",
+      "text_markdown": "Aqueles que se convertiam ao Islão recebiam frequentemente mais liberdade, embora a conversão não garantisse a libertação.",
+      "tts": {
+        "text": "Aqueles que se convertiam ao Islão recebiam frequentemente mais liberdade, embora a conversão não garantisse a libertação.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para a maioria dos cativos, a única esperança realista era o resgate.",
+      "text_markdown": "Para a maioria dos cativos, a única esperança realista era o resgate.",
+      "tts": {
+        "text": "Para a maioria dos cativos, a única esperança realista era o resgate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordens religiosas como os Trinitários especializavam-se em negociar libertações, mas o processo era lento e dispendioso.",
+      "text_markdown": "Ordens religiosas como os Trinitários especializavam-se em negociar libertações, mas o processo era lento e dispendioso.",
+      "tts": {
+        "text": "Ordens religiosas como os Trinitários especializavam-se em negociar libertações, mas o processo era lento e dispendioso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para os islandeses, as hipóteses eram escassas.",
+      "text_markdown": "Para os islandeses, as hipóteses eram escassas.",
+      "tts": {
+        "text": "Para os islandeses, as hipóteses eram escassas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "A viagem para Argel",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Islândia era pobre, a Dinamarca mostrava pouca urgência e a comunicação por si só demorava meses.",
+      "text_markdown": "A Islândia era pobre, a Dinamarca mostrava pouca urgência e a comunicação por si só demorava meses.",
+      "tts": {
+        "text": "A Islândia era pobre, a Dinamarca mostrava pouca urgência e a comunicação por si só demorava meses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O cativeiro e a missão",
+      "text_markdown": "O cativeiro e a missão"
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur passou meses em Argel como cativo.",
+      "text_markdown": "Ólafur passou meses em Argel como cativo.",
+      "tts": {
+        "text": "Ólafur passou meses em Argel como cativo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tinha sessenta e três anos, não era adequado para trabalho pesado e o seu valor no mercado de escravos era baixo.",
+      "text_markdown": "Tinha sessenta e três anos, não era adequado para trabalho pesado e o seu valor no mercado de escravos era baixo.",
+      "tts": {
+        "text": "Tinha sessenta e três anos, não era adequado para trabalho pesado e o seu valor no mercado de escravos era baixo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas era instruído, sabia ler e escrever e era um homem da igreja.",
+      "text_markdown": "Mas era instruído, sabia ler e escrever e era um homem da igreja.",
+      "tts": {
+        "text": "Mas era instruído, sabia ler e escrever e era um homem da igreja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Isso dava-lhe um certo estatuto mesmo no cativeiro.",
+      "text_markdown": "Isso dava-lhe um certo estatuto mesmo no cativeiro.",
+      "tts": {
+        "text": "Isso dava-lhe um certo estatuto mesmo no cativeiro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Escolhido como negociador",
+      "text_markdown": "Escolhido como negociador"
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguém tinha de viajar até à Europa e defender a causa dos cativos perante o rei dinamarquês.",
+      "text_markdown": "Alguém tinha de viajar até à Europa e defender a causa dos cativos perante o rei dinamarquês.",
+      "tts": {
+        "text": "Alguém tinha de viajar até à Europa e defender a causa dos cativos perante o rei dinamarquês.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur foi escolhido para esta missão.",
+      "text_markdown": "Ólafur foi escolhido para esta missão.",
+      "tts": {
+        "text": "Ólafur foi escolhido para esta missão.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Era uma missão dolorosa.",
+      "text_markdown": "Era uma missão dolorosa.",
+      "tts": {
+        "text": "Era uma missão dolorosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Significava uma espécie de liberdade, mas também deixar para trás todos os que amava sem saber se os veria novamente.",
+      "text_markdown": "Significava uma espécie de liberdade, mas também deixar para trás todos os que amava sem saber se os veria novamente.",
+      "tts": {
+        "text": "Significava uma espécie de liberdade, mas também deixar para trás todos os que amava sem saber se os veria novamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aceitou porque acreditava ser a única hipótese de salvar o seu povo.",
+      "text_markdown": "Aceitou porque acreditava ser a única hipótese de salvar o seu povo.",
+      "tts": {
+        "text": "Aceitou porque acreditava ser a única hipótese de salvar o seu povo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se tivesse sucesso, centenas poderiam ser libertadas.",
+      "text_markdown": "Se tivesse sucesso, centenas poderiam ser libertadas.",
+      "tts": {
+        "text": "Se tivesse sucesso, centenas poderiam ser libertadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se falhasse, permaneceriam escravizados para o resto da vida.",
+      "text_markdown": "Se falhasse, permaneceriam escravizados para o resto da vida.",
+      "tts": {
+        "text": "Se falhasse, permaneceriam escravizados para o resto da vida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A jornada pela Europa",
+      "text_markdown": "A jornada pela Europa"
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A jornada de Ólafur de Argel a Copenhaga foi longa e difícil.",
+      "text_markdown": "A jornada de Ólafur de Argel a Copenhaga foi longa e difícil.",
+      "tts": {
+        "text": "A jornada de Ólafur de Argel a Copenhaga foi longa e difícil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viajou de navio e por terra através do Mediterrâneo e do norte da Europa.",
+      "text_markdown": "Viajou de navio e por terra através do Mediterrâneo e do norte da Europa.",
+      "tts": {
+        "text": "Viajou de navio e por terra através do Mediterrâneo e do norte da Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era um pastor idoso sem dinheiro, sem contactos e sem influência.",
+      "text_markdown": "Era um pastor idoso sem dinheiro, sem contactos e sem influência.",
+      "tts": {
+        "text": "Era um pastor idoso sem dinheiro, sem contactos e sem influência.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Não falava as línguas dos países por onde passava.",
+      "text_markdown": "Não falava as línguas dos países por onde passava.",
+      "tts": {
+        "text": "Não falava as línguas dos países por onde passava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dependia da caridade de desconhecidos e de cartas de clérigos solidários.",
+      "text_markdown": "Dependia da caridade de desconhecidos e de cartas de clérigos solidários.",
+      "tts": {
+        "text": "Dependia da caridade de desconhecidos e de cartas de clérigos solidários.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pelo caminho, observou o mundo para lá da Islândia pela primeira vez.",
+      "text_markdown": "Pelo caminho, observou o mundo para lá da Islândia pela primeira vez.",
+      "tts": {
+        "text": "Pelo caminho, observou o mundo para lá da Islândia pela primeira vez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As suas descrições são valiosas para os historiadores como o olhar de um forasteiro sobre a Europa do século dezassete.",
+      "text_markdown": "As suas descrições são valiosas para os historiadores como o olhar de um forasteiro sobre a Europa do século dezassete.",
+      "tts": {
+        "text": "As suas descrições são valiosas para os historiadores como o olhar de um forasteiro sobre a Europa do século dezassete.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Copenhaga e a corte dinamarquesa",
+      "text_markdown": "Copenhaga e a corte dinamarquesa"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando Ólafur chegou a Copenhaga, descreveu o ataque, o cativeiro e o sofrimento do seu povo.",
+      "text_markdown": "Quando Ólafur chegou a Copenhaga, descreveu o ataque, o cativeiro e o sofrimento do seu povo.",
+      "tts": {
+        "text": "Quando Ólafur chegou a Copenhaga, descreveu o ataque, o cativeiro e o sofrimento do seu povo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Implorou por dinheiro para o resgate.",
+      "text_markdown": "Implorou por dinheiro para o resgate.",
+      "tts": {
+        "text": "Implorou por dinheiro para o resgate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A resposta foi dececionante.",
+      "text_markdown": "A resposta foi dececionante.",
+      "tts": {
+        "text": "A resposta foi dececionante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Dinamarca não era rica, a Guerra dos Trinta Anos consumia a Europa e a Islândia era uma colónia distante.",
+      "text_markdown": "A Dinamarca não era rica, a Guerra dos Trinta Anos consumia a Europa e a Islândia era uma colónia distante.",
+      "tts": {
+        "text": "A Dinamarca não era rica, a Guerra dos Trinta Anos consumia a Europa e a Islândia era uma colónia distante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O rei tinha as suas próprias despesas.",
+      "text_markdown": "O rei tinha as suas próprias despesas.",
+      "tts": {
+        "text": "O rei tinha as suas próprias despesas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Foram formadas comissões e escritas cartas, mas os fundos prometidos raramente chegavam.",
+      "text_markdown": "Foram formadas comissões e escritas cartas, mas os fundos prometidos raramente chegavam.",
+      "tts": {
+        "text": "Foram formadas comissões e escritas cartas, mas os fundos prometidos raramente chegavam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A burocracia avançava ao seu próprio ritmo enquanto centenas permaneciam escravizados.",
+      "text_markdown": "A burocracia avançava ao seu próprio ritmo enquanto centenas permaneciam escravizados.",
+      "tts": {
+        "text": "A burocracia avançava ao seu próprio ritmo enquanto centenas permaneciam escravizados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A resposta da Igreja",
+      "text_markdown": "A resposta da Igreja"
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur também apelou à Igreja Luterana.",
+      "text_markdown": "Ólafur também apelou à Igreja Luterana.",
+      "tts": {
+        "text": "Ólafur também apelou à Igreja Luterana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foram organizadas coletas e pregados sermões, mas os montantes recolhidos nunca eram suficientes.",
+      "text_markdown": "Foram organizadas coletas e pregados sermões, mas os montantes recolhidos nunca eram suficientes.",
+      "tts": {
+        "text": "Foram organizadas coletas e pregados sermões, mas os montantes recolhidos nunca eram suficientes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As exigências de resgate de Argel eram altas, muito mais do que a igreja ou a coroa pagariam.",
+      "text_markdown": "As exigências de resgate de Argel eram altas, muito mais do que a igreja ou a coroa pagariam.",
+      "tts": {
+        "text": "As exigências de resgate de Argel eram altas, muito mais do que a igreja ou a coroa pagariam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As negociações arrastaram-se durante anos.",
+      "text_markdown": "As negociações arrastaram-se durante anos.",
+      "tts": {
+        "text": "As negociações arrastaram-se durante anos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Redes de resgate",
+      "text_markdown": "Redes de resgate"
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos países católicos, ordens religiosas como os Trinitários tinham séculos de experiência no resgate de cativos.",
+      "text_markdown": "Nos países católicos, ordens religiosas como os Trinitários tinham séculos de experiência no resgate de cativos.",
+      "tts": {
+        "text": "Nos países católicos, ordens religiosas como os Trinitários tinham séculos de experiência no resgate de cativos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas no norte protestante, não existia uma instituição equivalente.",
+      "text_markdown": "Mas no norte protestante, não existia uma instituição equivalente.",
+      "tts": {
+        "text": "Mas no norte protestante, não existia uma instituição equivalente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Dinamarca teve de construir o seu esforço de resgate do zero.",
+      "text_markdown": "A Dinamarca teve de construir o seu esforço de resgate do zero.",
+      "tts": {
+        "text": "A Dinamarca teve de construir o seu esforço de resgate do zero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O dinheiro tinha de cruzar fronteiras, mudar de moeda e chegar às pessoas certas em Argel.",
+      "text_markdown": "O dinheiro tinha de cruzar fronteiras, mudar de moeda e chegar às pessoas certas em Argel.",
+      "tts": {
+        "text": "O dinheiro tinha de cruzar fronteiras, mudar de moeda e chegar às pessoas certas em Argel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O processo estava cheio de atrasos, corrupção e promessas quebradas.",
+      "text_markdown": "O processo estava cheio de atrasos, corrupção e promessas quebradas.",
+      "tts": {
+        "text": "O processo estava cheio de atrasos, corrupção e promessas quebradas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Anos de espera",
+      "text_markdown": "Anos de espera"
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur passou anos a pedir o resgate, escrevendo cartas e visitando funcionários.",
+      "text_markdown": "Ólafur passou anos a pedir o resgate, escrevendo cartas e visitando funcionários.",
+      "tts": {
+        "text": "Ólafur passou anos a pedir o resgate, escrevendo cartas e visitando funcionários.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os anos passaram e os cativos continuavam em Argel.",
+      "text_markdown": "Os anos passaram e os cativos continuavam em Argel.",
+      "tts": {
+        "text": "Os anos passaram e os cativos continuavam em Argel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante esse tempo, escreveu o seu livro.",
+      "text_markdown": "Durante esse tempo, escreveu o seu livro.",
+      "tts": {
+        "text": "Durante esse tempo, escreveu o seu livro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Registou tudo o que testemunhara, desde o ataque aos mercados de escravos até à sua viagem pela Europa.",
+      "text_markdown": "Registou tudo o que testemunhara, desde o ataque aos mercados de escravos até à sua viagem pela Europa.",
+      "tts": {
+        "text": "Registou tudo o que testemunhara, desde o ataque aos mercados de escravos até à sua viagem pela Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O livro não foi publicado durante a sua vida, mas circulou como manuscrito.",
+      "text_markdown": "O livro não foi publicado durante a sua vida, mas circulou como manuscrito.",
+      "tts": {
+        "text": "O livro não foi publicado durante a sua vida, mas circulou como manuscrito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tornou-se um dos documentos mais importantes de todo o episódio.",
+      "text_markdown": "Tornou-se um dos documentos mais importantes de todo o episódio.",
+      "tts": {
+        "text": "Tornou-se um dos documentos mais importantes de todo o episódio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A indiferença do poder",
+      "text_markdown": "A indiferença do poder"
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um dos temas mais dolorosos no relato de Ólafur é a indiferença daqueles no poder.",
+      "text_markdown": "Um dos temas mais dolorosos no relato de Ólafur é a indiferença daqueles no poder.",
+      "tts": {
+        "text": "Um dos temas mais dolorosos no relato de Ólafur é a indiferença daqueles no poder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os funcionários dinamarqueses não eram cruéis; simplesmente tinham outras prioridades.",
+      "text_markdown": "Os funcionários dinamarqueses não eram cruéis; simplesmente tinham outras prioridades.",
+      "tts": {
+        "text": "Os funcionários dinamarqueses não eram cruéis; simplesmente tinham outras prioridades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As pessoas que sofreram eram pobres, remotas e politicamente insignificantes.",
+      "text_markdown": "As pessoas que sofreram eram pobres, remotas e politicamente insignificantes.",
+      "tts": {
+        "text": "As pessoas que sofreram eram pobres, remotas e politicamente insignificantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O governo chorou-as em público e negligenciou-as em privado.",
+      "text_markdown": "O governo chorou-as em público e negligenciou-as em privado.",
+      "tts": {
+        "text": "O governo chorou-as em público e negligenciou-as em privado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A escrita de Ólafur reflete uma amargura crescente.",
+      "text_markdown": "A escrita de Ólafur reflete uma amargura crescente.",
+      "tts": {
+        "text": "A escrita de Ólafur reflete uma amargura crescente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arriscara tudo para levar a mensagem do seu povo a Copenhaga.",
+      "text_markdown": "Arriscara tudo para levar a mensagem do seu povo a Copenhaga.",
+      "tts": {
+        "text": "Arriscara tudo para levar a mensagem do seu povo a Copenhaga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "O cativeiro e a missão",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A resposta foi que não eram suficientemente importantes para serem salvos rapidamente.",
+      "text_markdown": "A resposta foi que não eram suficientemente importantes para serem salvos rapidamente.",
+      "tts": {
+        "text": "A resposta foi que não eram suficientemente importantes para serem salvos rapidamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Os que voltaram e os que não voltaram",
+      "text_markdown": "Os que voltaram e os que não voltaram"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dos cerca de quatrocentos islandeses capturados em 1627, apenas um pequeno número regressou.",
+      "text_markdown": "Dos cerca de quatrocentos islandeses capturados em 1627, apenas um pequeno número regressou.",
+      "tts": {
+        "text": "Dos cerca de quatrocentos islandeses capturados em mil seiscentos e vinte e sete, apenas um pequeno número regressou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O esforço de resgate levou quase uma década, e quando o dinheiro chegou, muitos já tinham morrido.",
+      "text_markdown": "O esforço de resgate levou quase uma década, e quando o dinheiro chegou, muitos já tinham morrido.",
+      "tts": {
+        "text": "O esforço de resgate levou quase uma década, e quando o dinheiro chegou, muitos já tinham morrido.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doenças, excesso de trabalho e desespero mataram muitos nos primeiros anos.",
+      "text_markdown": "Doenças, excesso de trabalho e desespero mataram muitos nos primeiros anos.",
+      "tts": {
+        "text": "Doenças, excesso de trabalho e desespero mataram muitos nos primeiros anos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A transição do ar frio da Islândia para o calor de Argel foi devastadora.",
+      "text_markdown": "A transição do ar frio da Islândia para o calor de Argel foi devastadora.",
+      "tts": {
+        "text": "A transição do ar frio da Islândia para o calor de Argel foi devastadora.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Os que se converteram",
+      "text_markdown": "Os que se converteram"
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns cativos converteram-se ao Islão.",
+      "text_markdown": "Alguns cativos converteram-se ao Islão.",
+      "tts": {
+        "text": "Alguns cativos converteram-se ao Islão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A conversão oferecia vantagens reais: um convertido já não podia ser legalmente mantido como escravo, e abria portas ao trabalho e ao casamento.",
+      "text_markdown": "A conversão oferecia vantagens reais: um convertido já não podia ser legalmente mantido como escravo, e abria portas ao trabalho e ao casamento.",
+      "tts": {
+        "text": "A conversão oferecia vantagens reais: um convertido já não podia ser legalmente mantido como escravo, e abria portas ao trabalho e ao casamento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para alguns, a conversão era sobrevivência, não crença.",
+      "text_markdown": "Para alguns, a conversão era sobrevivência, não crença.",
+      "tts": {
+        "text": "Para alguns, a conversão era sobrevivência, não crença.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Outros abraçaram genuinamente a sua nova religião e construíram novas vidas.",
+      "text_markdown": "Outros abraçaram genuinamente a sua nova religião e construíram novas vidas.",
+      "tts": {
+        "text": "Outros abraçaram genuinamente a sua nova religião e construíram novas vidas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A igreja islandesa via estas conversões com horror.",
+      "text_markdown": "A igreja islandesa via estas conversões com horror.",
+      "tts": {
+        "text": "A igreja islandesa via estas conversões com horror.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas do lado dos cativos, a conversão era por vezes a única forma de sobreviver.",
+      "text_markdown": "Mas do lado dos cativos, a conversão era por vezes a única forma de sobreviver.",
+      "tts": {
+        "text": "Mas do lado dos cativos, a conversão era por vezes a única forma de sobreviver.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Os poucos resgatados",
+      "text_markdown": "Os poucos resgatados"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1636, quase nove anos após o ataque, um resgate foi finalmente pago.",
+      "text_markdown": "Em 1636, quase nove anos após o ataque, um resgate foi finalmente pago.",
+      "tts": {
+        "text": "Em mil seiscentos e trinta e seis, quase nove anos após o ataque, um resgate foi finalmente pago.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trinta e quatro cativos foram libertados e enviados para casa.",
+      "text_markdown": "Trinta e quatro cativos foram libertados e enviados para casa.",
+      "tts": {
+        "text": "Trinta e quatro cativos foram libertados e enviados para casa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trinta e quatro de quatrocentos.",
+      "text_markdown": "Trinta e quatro de quatrocentos.",
+      "tts": {
+        "text": "Trinta e quatro de quatrocentos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alguns tinham morrido, alguns tinham-se convertido, e muitos não puderam ser encontrados ou os seus donos recusaram vendê-los.",
+      "text_markdown": "Alguns tinham morrido, alguns tinham-se convertido, e muitos não puderam ser encontrados ou os seus donos recusaram vendê-los.",
+      "tts": {
+        "text": "Alguns tinham morrido, alguns tinham-se convertido, e muitos não puderam ser encontrados ou os seus donos recusaram vendê-los.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Guðríður Símonardóttir",
+      "text_markdown": "Guðríður Símonardóttir"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entre os que foram eventualmente resgatados estava Guðríður Símonardóttir.",
+      "text_markdown": "Entre os que foram eventualmente resgatados estava Guðríður Símonardóttir.",
+      "tts": {
+        "text": "Entre os que foram eventualmente resgatados estava Guðríður Símonardóttir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fora capturada quando jovem e passara quase uma década escravizada em Argel.",
+      "text_markdown": "Fora capturada quando jovem e passara quase uma década escravizada em Argel.",
+      "tts": {
+        "text": "Fora capturada quando jovem e passara quase uma década escravizada em Argel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando regressou à Islândia, era uma pessoa diferente.",
+      "text_markdown": "Quando regressou à Islândia, era uma pessoa diferente.",
+      "tts": {
+        "text": "Quando regressou à Islândia, era uma pessoa diferente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Falava árabe e vivera num mundo completamente diferente daquele de onde fora levada.",
+      "text_markdown": "Falava árabe e vivera num mundo completamente diferente daquele de onde fora levada.",
+      "tts": {
+        "text": "Falava árabe e vivera num mundo completamente diferente daquele de onde fora levada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Após o regresso, casou com Hallgrímur Pétursson, que se tornaria um dos maiores poetas da história islandesa.",
+      "text_markdown": "Após o regresso, casou com Hallgrímur Pétursson, que se tornaria um dos maiores poetas da história islandesa.",
+      "tts": {
+        "text": "Após o regresso, casou com Hallgrímur Pétursson, que se tornaria um dos maiores poetas da história islandesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os seus Hinos da Paixão são ainda considerados uma obra-prima da literatura islandesa.",
+      "text_markdown": "Os seus Hinos da Paixão são ainda considerados uma obra-prima da literatura islandesa.",
+      "tts": {
+        "text": "Os seus Hinos da Paixão são ainda considerados uma obra-prima da literatura islandesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma mulher escravizada no Norte de África casou com o homem que se tornaria o mais amado poeta religioso da Islândia.",
+      "text_markdown": "Uma mulher escravizada no Norte de África casou com o homem que se tornaria o mais amado poeta religioso da Islândia.",
+      "tts": {
+        "text": "Uma mulher escravizada no Norte de África casou com o homem que se tornaria o mais amado poeta religioso da Islândia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Juntos construíram uma vida, embora a sombra do cativeiro nunca a tenha deixado completamente.",
+      "text_markdown": "Juntos construíram uma vida, embora a sombra do cativeiro nunca a tenha deixado completamente.",
+      "tts": {
+        "text": "Juntos construíram uma vida, embora a sombra do cativeiro nunca a tenha deixado completamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "O regresso de Ólafur",
+      "text_markdown": "O regresso de Ólafur"
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O próprio Ólafur acabou por regressar à Islândia, um homem destroçado e exausto.",
+      "text_markdown": "O próprio Ólafur acabou por regressar à Islândia, um homem destroçado e exausto.",
+      "tts": {
+        "text": "O próprio Ólafur acabou por regressar à Islândia, um homem destroçado e exausto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p124",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perdera a maior parte da família, e a missão que empreendeu falhara em grande medida.",
+      "text_markdown": "Perdera a maior parte da família, e a missão que empreendeu falhara em grande medida.",
+      "tts": {
+        "text": "Perdera a maior parte da família, e a missão que empreendeu falhara em grande medida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O destino da sua esposa Ásta permanece incerto.",
+      "text_markdown": "O destino da sua esposa Ásta permanece incerto.",
+      "tts": {
+        "text": "O destino da sua esposa Ásta permanece incerto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p125",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os historiadores acreditam que morreu em cativeiro, embora as circunstâncias não sejam conhecidas.",
+      "text_markdown": "Os historiadores acreditam que morreu em cativeiro, embora as circunstâncias não sejam conhecidas.",
+      "tts": {
+        "text": "Os historiadores acreditam que morreu em cativeiro, embora as circunstâncias não sejam conhecidas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p125",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O silêncio no seu relato fala mais alto do que palavras.",
+      "text_markdown": "O silêncio no seu relato fala mais alto do que palavras.",
+      "tts": {
+        "text": "O silêncio no seu relato fala mais alto do que palavras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur viveu até 1651, atingindo a idade de oitenta e sete anos.",
+      "text_markdown": "Ólafur viveu até 1651, atingindo a idade de oitenta e sete anos.",
+      "tts": {
+        "text": "Ólafur viveu até mil seiscentos e cinquenta e um, atingindo a idade de oitenta e sete anos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p126",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Passou os seus últimos anos carregando o peso de tudo o que vira e perdera.",
+      "text_markdown": "Passou os seus últimos anos carregando o peso de tudo o que vira e perdera.",
+      "tts": {
+        "text": "Passou os seus últimos anos carregando o peso de tudo o que vira e perdera.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "O trauma que permaneceu",
+      "text_markdown": "O trauma que permaneceu"
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os cativos que regressaram descobriram que a Islândia seguira em frente.",
+      "text_markdown": "Os cativos que regressaram descobriram que a Islândia seguira em frente.",
+      "tts": {
+        "text": "Os cativos que regressaram descobriram que a Islândia seguira em frente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p128",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As suas casas tinham sido dadas a outros e os seus bens tinham desaparecido.",
+      "text_markdown": "As suas casas tinham sido dadas a outros e os seus bens tinham desaparecido.",
+      "tts": {
+        "text": "As suas casas tinham sido dadas a outros e os seus bens tinham desaparecido.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A igreja exigia que os regressados passassem por um exame público de fé para provar que não se tinham convertido.",
+      "text_markdown": "A igreja exigia que os regressados passassem por um exame público de fé para provar que não se tinham convertido.",
+      "tts": {
+        "text": "A igreja exigia que os regressados passassem por um exame público de fé para provar que não se tinham convertido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p129",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Isto era humilhante para pessoas que já tinham sofrido para além do imaginável.",
+      "text_markdown": "Isto era humilhante para pessoas que já tinham sofrido para além do imaginável.",
+      "tts": {
+        "text": "Isto era humilhante para pessoas que já tinham sofrido para além do imaginável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos tiveram dificuldade em readaptar-se.",
+      "text_markdown": "Muitos tiveram dificuldade em readaptar-se.",
+      "tts": {
+        "text": "Muitos tiveram dificuldade em readaptar-se.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p130",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tinham sido mudados de formas que os vizinhos não conseguiam compreender.",
+      "text_markdown": "Tinham sido mudados de formas que os vizinhos não conseguiam compreender.",
+      "tts": {
+        "text": "Tinham sido mudados de formas que os vizinhos não conseguiam compreender.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Tyrkjaránið, como os islandeses chamam aos Raptos Turcos, deixou uma cicatriz na memória nacional.",
+      "text_markdown": "O Tyrkjaránið, como os islandeses chamam aos Raptos Turcos, deixou uma cicatriz na memória nacional.",
+      "tts": {
+        "text": "O Tyrkjaránið, como os islandeses chamam aos Raptos Turcos, deixou uma cicatriz na memória nacional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p131",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Canções e histórias sobre o ataque foram transmitidas de geração em geração.",
+      "text_markdown": "Canções e histórias sobre o ataque foram transmitidas de geração em geração.",
+      "tts": {
+        "text": "Canções e histórias sobre o ataque foram transmitidas de geração em geração.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Os que voltaram e os que não voltaram",
+      "paragraph_id": "p131",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As Ilhas Westman nunca esqueceram.",
+      "text_markdown": "As Ilhas Westman nunca esqueceram.",
+      "tts": {
+        "text": "As Ilhas Westman nunca esqueceram.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O livro que sobreviveu",
+      "text_markdown": "O livro que sobreviveu"
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O livro de Ólafur, o Reisubók, nunca foi publicado durante a sua vida.",
+      "text_markdown": "O livro de Ólafur, o Reisubók, nunca foi publicado durante a sua vida.",
+      "tts": {
+        "text": "O livro de Ólafur, o Reisubók, nunca foi publicado durante a sua vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Circulou como manuscrito escrito à mão, copiado e passado de leitor em leitor.",
+      "text_markdown": "Circulou como manuscrito escrito à mão, copiado e passado de leitor em leitor.",
+      "tts": {
+        "text": "Circulou como manuscrito escrito à mão, copiado e passado de leitor em leitor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p133",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ao longo dos séculos, tornou-se um dos documentos históricos mais importantes da literatura islandesa.",
+      "text_markdown": "Ao longo dos séculos, tornou-se um dos documentos históricos mais importantes da literatura islandesa.",
+      "tts": {
+        "text": "Ao longo dos séculos, tornou-se um dos documentos históricos mais importantes da literatura islandesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É um dos pouquíssimos relatos em primeira mão do comércio de escravos berbere escrito por um europeu do norte.",
+      "text_markdown": "É um dos pouquíssimos relatos em primeira mão do comércio de escravos berbere escrito por um europeu do norte.",
+      "tts": {
+        "text": "É um dos pouquíssimos relatos em primeira mão do comércio de escravos berbere escrito por um europeu do norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p134",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A perspetiva de Ólafur, como pastor islandês de uma minúscula ilha vulcânica, é única em toda a literatura europeia.",
+      "text_markdown": "A perspetiva de Ólafur, como pastor islandês de uma minúscula ilha vulcânica, é única em toda a literatura europeia.",
+      "tts": {
+        "text": "A perspetiva de Ólafur, como pastor islandês de uma minúscula ilha vulcânica, é única em toda a literatura europeia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "O que o livro ensina",
+      "text_markdown": "O que o livro ensina"
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur escreveu com o olhar atento de um erudito.",
+      "text_markdown": "Ólafur escreveu com o olhar atento de um erudito.",
+      "tts": {
+        "text": "Ólafur escreveu com o olhar atento de um erudito.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p136",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Descreveu Argel, os seus costumes, o mercado de escravos e o cativeiro diário sem exagero excessivo.",
+      "text_markdown": "Descreveu Argel, os seus costumes, o mercado de escravos e o cativeiro diário sem exagero excessivo.",
+      "tts": {
+        "text": "Descreveu Argel, os seus costumes, o mercado de escravos e o cativeiro diário sem exagero excessivo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O seu livro ensina-nos que a pirataria não era apenas sobre os piratas.",
+      "text_markdown": "O seu livro ensina-nos que a pirataria não era apenas sobre os piratas.",
+      "tts": {
+        "text": "O seu livro ensina-nos que a pirataria não era apenas sobre os piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Por cada ataque, havia pessoas reais cujas vidas foram destruídas.",
+      "text_markdown": "Por cada ataque, havia pessoas reais cujas vidas foram destruídas.",
+      "tts": {
+        "text": "Por cada ataque, havia pessoas reais cujas vidas foram destruídas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p137",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ólafur é uma das poucas vítimas que contou a sua própria história.",
+      "text_markdown": "Ólafur é uma das poucas vítimas que contou a sua própria história.",
+      "tts": {
+        "text": "Ólafur é uma das poucas vítimas que contou a sua própria história.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Reisubók também revela os fracassos das potências europeias em proteger o seu povo.",
+      "text_markdown": "O Reisubók também revela os fracassos das potências europeias em proteger o seu povo.",
+      "tts": {
+        "text": "O Reisubók também revela os fracassos das potências europeias em proteger o seu povo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p138",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Dinamarca governava a Islândia, mas quase nada fez para a defender.",
+      "text_markdown": "A Dinamarca governava a Islândia, mas quase nada fez para a defender.",
+      "tts": {
+        "text": "A Dinamarca governava a Islândia, mas quase nada fez para a defender.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os cativos foram abandonados pelos governos que deviam protegê-los.",
+      "text_markdown": "Os cativos foram abandonados pelos governos que deviam protegê-los.",
+      "tts": {
+        "text": "Os cativos foram abandonados pelos governos que deviam protegê-los.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Por que esta história pertence a uma série sobre piratas",
+      "text_markdown": "Por que esta história pertence a uma série sobre piratas"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este livro faz parte de uma série sobre piratas famosos.",
+      "text_markdown": "Este livro faz parte de uma série sobre piratas famosos.",
+      "tts": {
+        "text": "Este livro faz parte de uma série sobre piratas famosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p140",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur não era um pirata.",
+      "text_markdown": "Ólafur não era um pirata.",
+      "tts": {
+        "text": "Ólafur não era um pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p140",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era uma vítima da pirataria.",
+      "text_markdown": "Era uma vítima da pirataria.",
+      "tts": {
+        "text": "Era uma vítima da pirataria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p140",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas a sua história é essencial para compreender o que a pirataria realmente significava.",
+      "text_markdown": "Mas a sua história é essencial para compreender o que a pirataria realmente significava.",
+      "tts": {
+        "text": "Mas a sua história é essencial para compreender o que a pirataria realmente significava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A pirataria é frequentemente romantizada.",
+      "text_markdown": "A pirataria é frequentemente romantizada.",
+      "tts": {
+        "text": "A pirataria é frequentemente romantizada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p141",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas no seu cerne, era violência organizada contra pessoas comuns.",
+      "text_markdown": "Mas no seu cerne, era violência organizada contra pessoas comuns.",
+      "tts": {
+        "text": "Mas no seu cerne, era violência organizada contra pessoas comuns.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p141",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os corsários berberes não roubavam apenas bens.",
+      "text_markdown": "Os corsários berberes não roubavam apenas bens.",
+      "tts": {
+        "text": "Os corsários berberes não roubavam apenas bens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p141",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roubavam pessoas.",
+      "text_markdown": "Roubavam pessoas.",
+      "tts": {
+        "text": "Roubavam pessoas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A história de Ólafur obriga-nos a ver a pirataria do outro lado.",
+      "text_markdown": "A história de Ólafur obriga-nos a ver a pirataria do outro lado.",
+      "tts": {
+        "text": "A história de Ólafur obriga-nos a ver a pirataria do outro lado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pede-nos que imaginemos ser arrancados de casa, separados da família, vendidos num mercado e esquecidos pelo nosso governo.",
+      "text_markdown": "Pede-nos que imaginemos ser arrancados de casa, separados da família, vendidos num mercado e esquecidos pelo nosso governo.",
+      "tts": {
+        "text": "Pede-nos que imaginemos ser arrancados de casa, separados da família, vendidos num mercado e esquecidos pelo nosso governo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "As Ilhas Westman hoje",
+      "text_markdown": "As Ilhas Westman hoje"
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As Ilhas Westman continuam habitadas, com cerca de quatro mil pessoas vivendo em Heimaey hoje.",
+      "text_markdown": "As Ilhas Westman continuam habitadas, com cerca de quatro mil pessoas vivendo em Heimaey hoje.",
+      "tts": {
+        "text": "As Ilhas Westman continuam habitadas, com cerca de quatro mil pessoas vivendo em Heimaey hoje.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p144",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As ilhas são conhecidas pela beleza natural, colónias de papagaios-do-mar e um festival anual.",
+      "text_markdown": "As ilhas são conhecidas pela beleza natural, colónias de papagaios-do-mar e um festival anual.",
+      "tts": {
+        "text": "As ilhas são conhecidas pela beleza natural, colónias de papagaios-do-mar e um festival anual.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A memória do ataque de 1627 ainda está viva.",
+      "text_markdown": "A memória do ataque de 1627 ainda está viva.",
+      "tts": {
+        "text": "A memória do ataque de mil seiscentos e vinte e sete ainda está viva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p145",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um memorial em Heimaey honra as vítimas, e historiadores locais trabalharam para identificar os cativos pelo nome.",
+      "text_markdown": "Um memorial em Heimaey honra as vítimas, e historiadores locais trabalharam para identificar os cativos pelo nome.",
+      "tts": {
+        "text": "Um memorial em Heimaey honra as vítimas, e historiadores locais trabalharam para identificar os cativos pelo nome.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 2009, foi erguido um monumento em honra dos que foram levados.",
+      "text_markdown": "Em 2009, foi erguido um monumento em honra dos que foram levados.",
+      "tts": {
+        "text": "Em dois mil e nove, foi erguido um monumento em honra dos que foram levados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p146",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A sua inscrição lembra aos visitantes que pessoas comuns viveram aqui e foram levadas à força para o outro lado do mundo.",
+      "text_markdown": "A sua inscrição lembra aos visitantes que pessoas comuns viveram aqui e foram levadas à força para o outro lado do mundo.",
+      "tts": {
+        "text": "A sua inscrição lembra aos visitantes que pessoas comuns viveram aqui e foram levadas à força para o outro lado do mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Memória e legado",
+      "text_markdown": "Memória e legado"
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur está morto há quase quatrocentos anos, mas as suas palavras ainda falam.",
+      "text_markdown": "Ólafur está morto há quase quatrocentos anos, mas as suas palavras ainda falam.",
+      "tts": {
+        "text": "Ólafur está morto há quase quatrocentos anos, mas as suas palavras ainda falam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p148",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O seu livro lembra-nos que a história não é feita apenas por reis e conquistadores.",
+      "text_markdown": "O seu livro lembra-nos que a história não é feita apenas por reis e conquistadores.",
+      "tts": {
+        "text": "O seu livro lembra-nos que a história não é feita apenas por reis e conquistadores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É também feita por pessoas comuns que suportam sofrimentos extraordinários e encontram uma forma de dar testemunho.",
+      "text_markdown": "É também feita por pessoas comuns que suportam sofrimentos extraordinários e encontram uma forma de dar testemunho.",
+      "tts": {
+        "text": "É também feita por pessoas comuns que suportam sofrimentos extraordinários e encontram uma forma de dar testemunho.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O Reisubók é o seu testemunho.",
+      "text_markdown": "O Reisubók é o seu testemunho.",
+      "tts": {
+        "text": "O Reisubók é o seu testemunho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p149",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É a voz de um homem que perdeu quase tudo mas recusou deixar a sua história morrer.",
+      "text_markdown": "É a voz de um homem que perdeu quase tudo mas recusou deixar a sua história morrer.",
+      "tts": {
+        "text": "É a voz de um homem que perdeu quase tudo mas recusou deixar a sua história morrer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "O livro que sobreviveu",
+      "paragraph_id": "p149",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Enquanto o seu livro sobreviver, as pessoas levadas das Ilhas Westman em 1627 não serão esquecidas.",
+      "text_markdown": "Enquanto o seu livro sobreviver, as pessoas levadas das Ilhas Westman em 1627 não serão esquecidas.",
+      "tts": {
+        "text": "Enquanto o seu livro sobreviver, as pessoas levadas das Ilhas Westman em mil seiscentos e vinte e sete não serão esquecidas.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

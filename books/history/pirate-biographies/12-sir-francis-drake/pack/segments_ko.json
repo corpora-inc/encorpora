@@ -1,0 +1,4502 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sir_francis_drake",
+  "language": "ko",
+  "total_segments": 301,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말씀",
+      "text_markdown": "독자에게 드리는 말씀"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 전 세계를 항해한 한 남자에 대한 실화입니다.",
+      "text_markdown": "이것은 전 세계를 항해한 한 남자에 대한 실화입니다.",
+      "tts": {
+        "text": "이것은 전 세계를 항해한 한 남자에 대한 실화입니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 프랜시스 드레이크였으며, 그는 역사상 가장 유명한 선원 중 한 명이 되었습니다.",
+      "text_markdown": "그의 이름은 프랜시스 드레이크였으며, 그는 역사상 가장 유명한 선원 중 한 명이 되었습니다.",
+      "tts": {
+        "text": "그의 이름은 프랜시스 드레이크였으며, 그는 역사상 가장 유명한 선원 중 한 명이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국에게 그는 침략으로부터 나라를 구한 영웅이었습니다.",
+      "text_markdown": "영국에게 그는 침략으로부터 나라를 구한 영웅이었습니다.",
+      "tts": {
+        "text": "영국에게 그는 침략으로부터 나라를 구한 영웅이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인에게 그는 엘 드라케, 용, 바다에서 가장 두려운 해적이었습니다.",
+      "text_markdown": "스페인에게 그는 엘 드라케, 용, 바다에서 가장 두려운 해적이었습니다.",
+      "tts": {
+        "text": "스페인에게 그는 엘 드라케, 용, 바다에서 가장 두려운 해적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 동시에 두 가지 모두였습니다.",
+      "text_markdown": "그는 동시에 두 가지 모두였습니다.",
+      "tts": {
+        "text": "그는 동시에 두 가지 모두였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그가 영웅인지 악당인지는 전적으로 바다 어느 편에 서 있느냐에 달려 있었습니다.",
+      "text_markdown": "그가 영웅인지 악당인지는 전적으로 바다 어느 편에 서 있느냐에 달려 있었습니다.",
+      "tts": {
+        "text": "그가 영웅인지 악당인지는 전적으로 바다 어느 편에 서 있느냐에 달려 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 유럽 역사에서 가장 극적인 세기 중 하나를 살았습니다.",
+      "text_markdown": "드레이크는 유럽 역사에서 가장 극적인 세기 중 하나를 살았습니다.",
+      "tts": {
+        "text": "드레이크는 유럽 역사에서 가장 극적인 세기 중 하나를 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "제국들이 충돌하고, 종교가 국가를 분열시키고, 세계가 처음으로 지도에 그려지던 시대였습니다.",
+      "text_markdown": "제국들이 충돌하고, 종교가 국가를 분열시키고, 세계가 처음으로 지도에 그려지던 시대였습니다.",
+      "tts": {
+        "text": "제국들이 충돌하고, 종교가 국가를 분열시키고, 세계가 처음으로 지도에 그려지던 시대였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 삶은 이 모든 힘에 의해 형성되었습니다.",
+      "text_markdown": "그의 삶은 이 모든 힘에 의해 형성되었습니다.",
+      "tts": {
+        "text": "그의 삶은 이 모든 힘에 의해 형성되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 그의 이야기입니다.",
+      "text_markdown": "이것은 그의 이야기입니다.",
+      "tts": {
+        "text": "이것은 그의 이야기입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "드레이크가 알았던 세계",
+      "text_markdown": "드레이크가 알았던 세계"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프랜시스 드레이크는 영국 왕 헨리 8세의 치세에 태어났습니다.",
+      "text_markdown": "프랜시스 드레이크는 영국 왕 헨리 8세의 치세에 태어났습니다.",
+      "tts": {
+        "text": "프랜시스 드레이크는 영국 왕 헨리 팔세의 치세에 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "헨리는 로마 가톨릭 교회와 결별하고 영국 국교회를 설립했습니다.",
+      "text_markdown": "헨리는 로마 가톨릭 교회와 결별하고 영국 국교회를 설립했습니다.",
+      "tts": {
+        "text": "헨리는 로마 가톨릭 교회와 결별하고 영국 국교회를 설립했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 결정은 여러 세대에 걸쳐 영국을 종교적으로 분열시켰습니다.",
+      "text_markdown": "이 결정은 여러 세대에 걸쳐 영국을 종교적으로 분열시켰습니다.",
+      "tts": {
+        "text": "이 결정은 여러 세대에 걸쳐 영국을 종교적으로 분열시켰습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리가 죽은 후, 영국은 수년간의 종교적 혼란을 겪었습니다.",
+      "text_markdown": "헨리가 죽은 후, 영국은 수년간의 종교적 혼란을 겪었습니다.",
+      "tts": {
+        "text": "헨리가 죽은 후, 영국은 수년간의 종교적 혼란을 겪었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 아들 에드워드 6세는 개신교도였습니다.",
+      "text_markdown": "그의 아들 에드워드 6세는 개신교도였습니다.",
+      "tts": {
+        "text": "그의 아들 에드워드 육세는 개신교도였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 딸 메리 1세는 가톨릭교도였으며 종교 개혁을 되돌리려 했습니다.",
+      "text_markdown": "그의 딸 메리 1세는 가톨릭교도였으며 종교 개혁을 되돌리려 했습니다.",
+      "tts": {
+        "text": "그의 딸 메리 일세는 가톨릭교도였으며 종교 개혁을 되돌리려 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 너무 많은 개신교도를 처형하여 블러디 메리라는 이름을 얻었습니다.",
+      "text_markdown": "그녀는 너무 많은 개신교도를 처형하여 블러디 메리라는 이름을 얻었습니다.",
+      "tts": {
+        "text": "그녀는 너무 많은 개신교도를 처형하여 블러디 메리라는 이름을 얻었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1558년, 엘리자베스 1세가 여왕이 되었습니다.",
+      "text_markdown": "1558년, 엘리자베스 1세가 여왕이 되었습니다.",
+      "tts": {
+        "text": "천오백오십팔 년, 엘리자베스 일세가 여왕이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 개신교도이며 총명하고 정치적으로 탁월했습니다.",
+      "text_markdown": "그녀는 개신교도이며 총명하고 정치적으로 탁월했습니다.",
+      "tts": {
+        "text": "그녀는 개신교도이며 총명하고 정치적으로 탁월했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 치세는 사십오 년간 지속되며 엘리자베스 시대로 알려지게 되었습니다.",
+      "text_markdown": "그녀의 치세는 사십오 년간 지속되며 엘리자베스 시대로 알려지게 되었습니다.",
+      "tts": {
+        "text": "그녀의 치세는 사십오 년간 지속되며 엘리자베스 시대로 알려지게 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 치세 동안 영국은 세계 패권을 놓고 스페인에 도전하기 시작했습니다.",
+      "text_markdown": "그녀의 치세 동안 영국은 세계 패권을 놓고 스페인에 도전하기 시작했습니다.",
+      "tts": {
+        "text": "그녀의 치세 동안 영국은 세계 패권을 놓고 스페인에 도전하기 시작했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "펠리페 2세 치하의 스페인은 지구상에서 가장 강력한 제국이었습니다.",
+      "text_markdown": "펠리페 2세 치하의 스페인은 지구상에서 가장 강력한 제국이었습니다.",
+      "tts": {
+        "text": "펠리페 이세 치하의 스페인은 지구상에서 가장 강력한 제국이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 영토는 멕시코에서 칠레까지 아메리카 전역에 걸쳐 있었습니다.",
+      "text_markdown": "스페인 영토는 멕시코에서 칠레까지 아메리카 전역에 걸쳐 있었습니다.",
+      "tts": {
+        "text": "스페인 영토는 멕시코에서 칠레까지 아메리카 전역에 걸쳐 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인은 필리핀, 이탈리아 일부, 네덜란드도 지배했습니다.",
+      "text_markdown": "스페인은 필리핀, 이탈리아 일부, 네덜란드도 지배했습니다.",
+      "tts": {
+        "text": "스페인은 필리핀, 이탈리아 일부, 네덜란드도 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아메리카에서 흘러들어오는 부가 스페인을 엄청나게 부유하게 만들었습니다.",
+      "text_markdown": "아메리카에서 흘러들어오는 부가 스페인을 엄청나게 부유하게 만들었습니다.",
+      "tts": {
+        "text": "아메리카에서 흘러들어오는 부가 스페인을 엄청나게 부유하게 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페루와 멕시코 광산의 은이 스페인 권력의 기반이었습니다.",
+      "text_markdown": "페루와 멕시코 광산의 은이 스페인 권력의 기반이었습니다.",
+      "tts": {
+        "text": "페루와 멕시코 광산의 은이 스페인 권력의 기반이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "보물 함대가 이 은을 거대한 선단으로 대서양을 건너 운반했습니다.",
+      "text_markdown": "보물 함대가 이 은을 거대한 선단으로 대서양을 건너 운반했습니다.",
+      "tts": {
+        "text": "보물 함대가 이 은을 거대한 선단으로 대서양을 건너 운반했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 선단은 공격할 만큼 대담한 자에게 매력적인 표적이었습니다.",
+      "text_markdown": "이 선단은 공격할 만큼 대담한 자에게 매력적인 표적이었습니다.",
+      "tts": {
+        "text": "이 선단은 공격할 만큼 대담한 자에게 매력적인 표적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "세계 최강의 스페인 해군이 이 화물을 보호했습니다.",
+      "text_markdown": "세계 최강의 스페인 해군이 이 화물을 보호했습니다.",
+      "tts": {
+        "text": "세계 최강의 스페인 해군이 이 화물을 보호했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1494년 토르데시야스 조약은 세계를 스페인과 포르투갈 사이에 나누었습니다.",
+      "text_markdown": "1494년 토르데시야스 조약은 세계를 스페인과 포르투갈 사이에 나누었습니다.",
+      "tts": {
+        "text": "천사백구십사 년 토르데시야스 조약은 세계를 스페인과 포르투갈 사이에 나누었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국, 프랑스, 네덜란드는 완전히 배제되었습니다.",
+      "text_markdown": "영국, 프랑스, 네덜란드는 완전히 배제되었습니다.",
+      "tts": {
+        "text": "영국, 프랑스, 네덜란드는 완전히 배제되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 나라들은 조약을 거부하고 어디서든 교역하고 탐험할 권리를 주장했습니다.",
+      "text_markdown": "이 나라들은 조약을 거부하고 어디서든 교역하고 탐험할 권리를 주장했습니다.",
+      "tts": {
+        "text": "이 나라들은 조약을 거부하고 어디서든 교역하고 탐험할 권리를 주장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 불일치는 수세기에 걸친 갈등의 근본 원인 중 하나였습니다.",
+      "text_markdown": "이 불일치는 수세기에 걸친 갈등의 근본 원인 중 하나였습니다.",
+      "tts": {
+        "text": "이 불일치는 수세기에 걸친 갈등의 근본 원인 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 남서부의 데번은 항해 문화의 중심지였습니다.",
+      "text_markdown": "영국 남서부의 데번은 항해 문화의 중심지였습니다.",
+      "tts": {
+        "text": "영국 남서부의 데번은 항해 문화의 중심지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "데번의 남자들은 어부, 상인, 그리고 점점 더 약탈자가 되어갔습니다.",
+      "text_markdown": "데번의 남자들은 어부, 상인, 그리고 점점 더 약탈자가 되어갔습니다.",
+      "tts": {
+        "text": "데번의 남자들은 어부, 상인, 그리고 점점 더 약탈자가 되어갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 주는 영국 최고의 선장들을 배출했습니다.",
+      "text_markdown": "이 주는 영국 최고의 선장들을 배출했습니다.",
+      "tts": {
+        "text": "이 주는 영국 최고의 선장들을 배출했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "프랜시스 드레이크, 월터 롤리, 존 호킨스 모두 데번 출신이었습니다.",
+      "text_markdown": "프랜시스 드레이크, 월터 롤리, 존 호킨스 모두 데번 출신이었습니다.",
+      "tts": {
+        "text": "프랜시스 드레이크, 월터 롤리, 존 호킨스 모두 데번 출신이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십육세기 중반의 영국 해군은 스페인에 비해 작았습니다.",
+      "text_markdown": "십육세기 중반의 영국 해군은 스페인에 비해 작았습니다.",
+      "tts": {
+        "text": "십육세기 중반의 영국 해군은 스페인에 비해 작았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 직접 대결에서 배 대 배로 스페인을 상대할 수 없었습니다.",
+      "text_markdown": "영국은 직접 대결에서 배 대 배로 스페인을 상대할 수 없었습니다.",
+      "tts": {
+        "text": "영국은 직접 대결에서 배 대 배로 스페인을 상대할 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신 영국인들은 습격과 괴롭힘 전략을 개발했습니다.",
+      "text_markdown": "대신 영국인들은 습격과 괴롭힘 전략을 개발했습니다.",
+      "tts": {
+        "text": "대신 영국인들은 습격과 괴롭힘 전략을 개발했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "빠르고 잘 무장된 배가 스페인 보물 선단을 공격하고 함대가 대응하기 전에 도주할 수 있었습니다.",
+      "text_markdown": "빠르고 잘 무장된 배가 스페인 보물 선단을 공격하고 함대가 대응하기 전에 도주할 수 있었습니다.",
+      "tts": {
+        "text": "빠르고 잘 무장된 배가 스페인 보물 선단을 공격하고 함대가 대응하기 전에 도주할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사략행위는 스페인에 대한 영국의 비공식 무기가 되었습니다.",
+      "text_markdown": "사략행위는 스페인에 대한 영국의 비공식 무기가 되었습니다.",
+      "tts": {
+        "text": "사략행위는 스페인에 대한 영국의 비공식 무기가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "엘리자베스는 왕국을 위험에 빠뜨리지 않고는 공개적으로 전쟁을 선포할 수 없었습니다.",
+      "text_markdown": "엘리자베스는 왕국을 위험에 빠뜨리지 않고는 공개적으로 전쟁을 선포할 수 없었습니다.",
+      "tts": {
+        "text": "엘리자베스는 왕국을 위험에 빠뜨리지 않고는 공개적으로 전쟁을 선포할 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 조용히 선장들에게 스페인 선박을 습격하도록 허가할 수 있었습니다.",
+      "text_markdown": "하지만 조용히 선장들에게 스페인 선박을 습격하도록 허가할 수 있었습니다.",
+      "tts": {
+        "text": "하지만 조용히 선장들에게 스페인 선박을 습격하도록 허가할 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들이 잡히면 그녀는 어떤 개입도 부인할 수 있었습니다.",
+      "text_markdown": "그들이 잡히면 그녀는 어떤 개입도 부인할 수 있었습니다.",
+      "tts": {
+        "text": "그들이 잡히면 그녀는 어떤 개입도 부인할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노예 무역은 이 시기 영국 항해의 일부였습니다.",
+      "text_markdown": "노예 무역은 이 시기 영국 항해의 일부였습니다.",
+      "tts": {
+        "text": "노예 무역은 이 시기 영국 항해의 일부였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 선장들은 서아프리카에서 사람들을 납치하거나 구매했습니다.",
+      "text_markdown": "영국 선장들은 서아프리카에서 사람들을 납치하거나 구매했습니다.",
+      "tts": {
+        "text": "영국 선장들은 서아프리카에서 사람들을 납치하거나 구매했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들을 아메리카로 운송하여 스페인 식민지인에게 팔았습니다.",
+      "text_markdown": "그들을 아메리카로 운송하여 스페인 식민지인에게 팔았습니다.",
+      "tts": {
+        "text": "그들을 아메리카로 운송하여 스페인 식민지인에게 팔았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 잔인한 무역은 당시 대부분의 유럽인에 의해 합법적 사업으로 여겨졌습니다.",
+      "text_markdown": "이 잔인한 무역은 당시 대부분의 유럽인에 의해 합법적 사업으로 여겨졌습니다.",
+      "tts": {
+        "text": "이 잔인한 무역은 당시 대부분의 유럽인에 의해 합법적 사업으로 여겨졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크의 생전에 세계는 여전히 탐험되고 지도화되고 있었습니다.",
+      "text_markdown": "드레이크의 생전에 세계는 여전히 탐험되고 지도화되고 있었습니다.",
+      "tts": {
+        "text": "드레이크의 생전에 세계는 여전히 탐험되고 지도화되고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽인들은 대륙의 기본 형태는 알았지만 세부 사항은 몰랐습니다.",
+      "text_markdown": "유럽인들은 대륙의 기본 형태는 알았지만 세부 사항은 몰랐습니다.",
+      "tts": {
+        "text": "유럽인들은 대륙의 기본 형태는 알았지만 세부 사항은 몰랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "태평양은 유럽 선원들에게 대부분 미지의 바다였습니다.",
+      "text_markdown": "태평양은 유럽 선원들에게 대부분 미지의 바다였습니다.",
+      "tts": {
+        "text": "태평양은 유럽 선원들에게 대부분 미지의 바다였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대부분의 대륙 내부는 미스터리로 남아 있었습니다.",
+      "text_markdown": "대부분의 대륙 내부는 미스터리로 남아 있었습니다.",
+      "tts": {
+        "text": "대부분의 대륙 내부는 미스터리로 남아 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "항해는 나침반, 아스트롤라베, 추측 항법에 의존했습니다.",
+      "text_markdown": "항해는 나침반, 아스트롤라베, 추측 항법에 의존했습니다.",
+      "tts": {
+        "text": "항해는 나침반, 아스트롤라베, 추측 항법에 의존했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해도는 종종 부정확했으며, 특히 낯선 해역에서는 더했습니다.",
+      "text_markdown": "해도는 종종 부정확했으며, 특히 낯선 해역에서는 더했습니다.",
+      "tts": {
+        "text": "해도는 종종 부정확했으며, 특히 낯선 해역에서는 더했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선장의 기술과 경험이 어떤 도구보다 중요했습니다.",
+      "text_markdown": "선장의 기술과 경험이 어떤 도구보다 중요했습니다.",
+      "tts": {
+        "text": "선장의 기술과 경험이 어떤 도구보다 중요했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바다는 실수를 용서하지 않았습니다.",
+      "text_markdown": "바다는 실수를 용서하지 않았습니다.",
+      "tts": {
+        "text": "바다는 실수를 용서하지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 프랜시스 드레이크를 형성한 세계였습니다.",
+      "text_markdown": "이것이 프랜시스 드레이크를 형성한 세계였습니다.",
+      "tts": {
+        "text": "이것이 프랜시스 드레이크를 형성한 세계였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "종교적 갈등, 제국의 경쟁, 광대한 미지의 바다가 있는 세계.",
+      "text_markdown": "종교적 갈등, 제국의 경쟁, 광대한 미지의 바다가 있는 세계.",
+      "tts": {
+        "text": "종교적 갈등, 제국의 경쟁, 광대한 미지의 바다가 있는 세계.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "드레이크가 알았던 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "겸손한 가정 출신의 대담한 선원이 역사의 흐름을 바꿀 수 있는 세계였습니다.",
+      "text_markdown": "겸손한 가정 출신의 대담한 선원이 역사의 흐름을 바꿀 수 있는 세계였습니다.",
+      "tts": {
+        "text": "겸손한 가정 출신의 대담한 선원이 역사의 흐름을 바꿀 수 있는 세계였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프랜시스 드레이크는 1540년경 영국 데번주 태비스톡에서 태어났습니다.",
+      "text_markdown": "프랜시스 드레이크는 1540년경 영국 데번주 태비스톡에서 태어났습니다.",
+      "tts": {
+        "text": "프랜시스 드레이크는 천오백사십 년경 영국 데번주 태비스톡에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 에드먼드 드레이크와 그의 아내 사이에서 태어난 열두 아들 중 맏이였습니다.",
+      "text_markdown": "그는 에드먼드 드레이크와 그의 아내 사이에서 태어난 열두 아들 중 맏이였습니다.",
+      "tts": {
+        "text": "그는 에드먼드 드레이크와 그의 아내 사이에서 태어난 열두 아들 중 맏이였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가족은 변변찮은 형편이었습니다.",
+      "text_markdown": "가족은 변변찮은 형편이었습니다.",
+      "tts": {
+        "text": "가족은 변변찮은 형편이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에드먼드 드레이크는 농부였으며 나중에 개신교 평신도 설교자가 되었습니다.",
+      "text_markdown": "에드먼드 드레이크는 농부였으며 나중에 개신교 평신도 설교자가 되었습니다.",
+      "tts": {
+        "text": "에드먼드 드레이크는 농부였으며 나중에 개신교 평신도 설교자가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "켄트의 해군 조선소에서 선원과 노동자들에게 성경을 읽어주었습니다.",
+      "text_markdown": "켄트의 해군 조선소에서 선원과 노동자들에게 성경을 읽어주었습니다.",
+      "tts": {
+        "text": "켄트의 해군 조선소에서 선원과 노동자들에게 성경을 읽어주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 강한 개신교 신앙이 젊은 프랜시스의 세계관을 형성했습니다.",
+      "text_markdown": "그의 강한 개신교 신앙이 젊은 프랜시스의 세계관을 형성했습니다.",
+      "tts": {
+        "text": "그의 강한 개신교 신앙이 젊은 프랜시스의 세계관을 형성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 가톨릭 스페인이 모든 선의 적이라고 믿으며 자랐습니다.",
+      "text_markdown": "드레이크는 가톨릭 스페인이 모든 선의 적이라고 믿으며 자랐습니다.",
+      "tts": {
+        "text": "드레이크는 가톨릭 스페인이 모든 선의 적이라고 믿으며 자랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프랜시스가 어릴 때 가족은 켄트로 이사했습니다.",
+      "text_markdown": "프랜시스가 어릴 때 가족은 켄트로 이사했습니다.",
+      "tts": {
+        "text": "프랜시스가 어릴 때 가족은 켄트로 이사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가톨릭 봉기 때 데번을 떠나야 했습니다.",
+      "text_markdown": "가톨릭 봉기 때 데번을 떠나야 했습니다.",
+      "tts": {
+        "text": "가톨릭 봉기 때 데번을 떠나야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "켄트에서 그들은 메드웨이 강과 왕립 조선소 근처에 살았습니다.",
+      "text_markdown": "켄트에서 그들은 메드웨이 강과 왕립 조선소 근처에 살았습니다.",
+      "tts": {
+        "text": "켄트에서 그들은 메드웨이 강과 왕립 조선소 근처에 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어린 소년은 배, 선원, 그리고 바다 냄새에 둘러싸여 자랐습니다.",
+      "text_markdown": "어린 소년은 배, 선원, 그리고 바다 냄새에 둘러싸여 자랐습니다.",
+      "tts": {
+        "text": "어린 소년은 배, 선원, 그리고 바다 냄새에 둘러싸여 자랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십대 때 프랜시스는 작은 연안 무역선의 선장 밑에서 견습생이 되었습니다.",
+      "text_markdown": "십대 때 프랜시스는 작은 연안 무역선의 선장 밑에서 견습생이 되었습니다.",
+      "tts": {
+        "text": "십대 때 프랜시스는 작은 연안 무역선의 선장 밑에서 견습생이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "템스 강 하구와 영국 해협의 좁고 위험한 수역에서 항해를 배웠습니다.",
+      "text_markdown": "템스 강 하구와 영국 해협의 좁고 위험한 수역에서 항해를 배웠습니다.",
+      "tts": {
+        "text": "템스 강 하구와 영국 해협의 좁고 위험한 수역에서 항해를 배웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이곳은 유럽에서 가장 어려운 수역 중 일부였습니다.",
+      "text_markdown": "이곳은 유럽에서 가장 어려운 수역 중 일부였습니다.",
+      "tts": {
+        "text": "이곳은 유럽에서 가장 어려운 수역 중 일부였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그곳에서 배운 기술은 평생 그에게 도움이 되었습니다.",
+      "text_markdown": "그곳에서 배운 기술은 평생 그에게 도움이 되었습니다.",
+      "tts": {
+        "text": "그곳에서 배운 기술은 평생 그에게 도움이 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "늙은 선장이 죽었을 때 유언으로 자신의 배를 드레이크에게 남겼습니다.",
+      "text_markdown": "늙은 선장이 죽었을 때 유언으로 자신의 배를 드레이크에게 남겼습니다.",
+      "tts": {
+        "text": "늙은 선장이 죽었을 때 유언으로 자신의 배를 드레이크에게 남겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "재산이 없는 젊은이에게 이것은 비범한 선물이었습니다.",
+      "text_markdown": "재산이 없는 젊은이에게 이것은 비범한 선물이었습니다.",
+      "tts": {
+        "text": "재산이 없는 젊은이에게 이것은 비범한 선물이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "드레이크는 이제 작지만 자신의 배를 소유하게 되었습니다.",
+      "text_markdown": "드레이크는 이제 작지만 자신의 배를 소유하게 되었습니다.",
+      "tts": {
+        "text": "드레이크는 이제 작지만 자신의 배를 소유하게 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "더 넓은 바다에서 운명을 찾을 준비가 되었습니다.",
+      "text_markdown": "더 넓은 바다에서 운명을 찾을 준비가 되었습니다.",
+      "tts": {
+        "text": "더 넓은 바다에서 운명을 찾을 준비가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크의 사촌은 존 호킨스로, 영국에서 가장 저명한 선장 중 한 명이었습니다.",
+      "text_markdown": "드레이크의 사촌은 존 호킨스로, 영국에서 가장 저명한 선장 중 한 명이었습니다.",
+      "tts": {
+        "text": "드레이크의 사촌은 존 호킨스로, 영국에서 가장 저명한 선장 중 한 명이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "호킨스는 서아프리카와 카리브해로의 무역 항해를 조직했습니다.",
+      "text_markdown": "호킨스는 서아프리카와 카리브해로의 무역 항해를 조직했습니다.",
+      "tts": {
+        "text": "호킨스는 서아프리카와 카리브해로의 무역 항해를 조직했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 항해에는 노예가 된 아프리카인의 포획과 판매가 포함되었습니다.",
+      "text_markdown": "이 항해에는 노예가 된 아프리카인의 포획과 판매가 포함되었습니다.",
+      "tts": {
+        "text": "이 항해에는 노예가 된 아프리카인의 포획과 판매가 포함되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 이러한 원정 중 여러 차례 호킨스와 합류했습니다.",
+      "text_markdown": "드레이크는 이러한 원정 중 여러 차례 호킨스와 합류했습니다.",
+      "tts": {
+        "text": "드레이크는 이러한 원정 중 여러 차례 호킨스와 합류했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1567년, 드레이크는 호킨스와 함께 카리브해로의 대규모 원정에 출항했습니다.",
+      "text_markdown": "1567년, 드레이크는 호킨스와 함께 카리브해로의 대규모 원정에 출항했습니다.",
+      "tts": {
+        "text": "천오백육십칠 년, 드레이크는 호킨스와 함께 카리브해로의 대규모 원정에 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 스페인 식민지에서 팔기 위해 아프리카에서 노예가 된 사람들을 운송했습니다.",
+      "text_markdown": "그들은 스페인 식민지에서 팔기 위해 아프리카에서 노예가 된 사람들을 운송했습니다.",
+      "tts": {
+        "text": "그들은 스페인 식민지에서 팔기 위해 아프리카에서 노예가 된 사람들을 운송했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아메리카의 스페인 당국은 영국 상인을 거부해야 했습니다.",
+      "text_markdown": "아메리카의 스페인 당국은 영국 상인을 거부해야 했습니다.",
+      "tts": {
+        "text": "아메리카의 스페인 당국은 영국 상인을 거부해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 지방 관리들은 규칙을 무시하고 종종 노예를 구매했습니다.",
+      "text_markdown": "하지만 지방 관리들은 규칙을 무시하고 종종 노예를 구매했습니다.",
+      "tts": {
+        "text": "하지만 지방 관리들은 규칙을 무시하고 종종 노예를 구매했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "원정대는 멕시코의 항구 산후안데울루아에서 문제에 봉착했습니다.",
+      "text_markdown": "원정대는 멕시코의 항구 산후안데울루아에서 문제에 봉착했습니다.",
+      "tts": {
+        "text": "원정대는 멕시코의 항구 산후안데울루아에서 문제에 봉착했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "호킨스의 함대는 수리를 위해 거기에 정박했습니다.",
+      "text_markdown": "호킨스의 함대는 수리를 위해 거기에 정박했습니다.",
+      "tts": {
+        "text": "호킨스의 함대는 수리를 위해 거기에 정박했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 보물 함대가 도착하여 우정을 가장한 후 영국 선박을 공격했습니다.",
+      "text_markdown": "스페인 보물 함대가 도착하여 우정을 가장한 후 영국 선박을 공격했습니다.",
+      "tts": {
+        "text": "스페인 보물 함대가 도착하여 우정을 가장한 후 영국 선박을 공격했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1568년 산후안데울루아 전투는 영국에게 재앙이었습니다.",
+      "text_markdown": "1568년 산후안데울루아 전투는 영국에게 재앙이었습니다.",
+      "tts": {
+        "text": "천오백육십팔 년 산후안데울루아 전투는 영국에게 재앙이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "호킨스의 배 대부분이 침몰하거나 나포되었습니다.",
+      "text_markdown": "호킨스의 배 대부분이 침몰하거나 나포되었습니다.",
+      "tts": {
+        "text": "호킨스의 배 대부분이 침몰하거나 나포되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수백 명의 영국 선원이 죽거나 멕시코에 고립되었습니다.",
+      "text_markdown": "수백 명의 영국 선원이 죽거나 멕시코에 고립되었습니다.",
+      "tts": {
+        "text": "수백 명의 영국 선원이 죽거나 멕시코에 고립되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 작은 배로 탈출했지만 이 경험은 그에게 깊은 상처를 남겼습니다.",
+      "text_markdown": "드레이크는 작은 배로 탈출했지만 이 경험은 그에게 깊은 상처를 남겼습니다.",
+      "tts": {
+        "text": "드레이크는 작은 배로 탈출했지만 이 경험은 그에게 깊은 상처를 남겼습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 산후안데울루아에서의 배신에 대해 스페인을 결코 용서하지 않았습니다.",
+      "text_markdown": "드레이크는 산후안데울루아에서의 배신에 대해 스페인을 결코 용서하지 않았습니다.",
+      "tts": {
+        "text": "드레이크는 산후안데울루아에서의 배신에 대해 스페인을 결코 용서하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인의 공격을 배신적이고 불명예스러운 것으로 여겼습니다.",
+      "text_markdown": "스페인의 공격을 배신적이고 불명예스러운 것으로 여겼습니다.",
+      "tts": {
+        "text": "스페인의 공격을 배신적이고 불명예스러운 것으로 여겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그날부터 그는 스페인에 복수하는 데 일생을 바쳤습니다.",
+      "text_markdown": "그날부터 그는 스페인에 복수하는 데 일생을 바쳤습니다.",
+      "tts": {
+        "text": "그날부터 그는 스페인에 복수하는 데 일생을 바쳤습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 개인적 증오는 영국의 국익과 완벽하게 일치했습니다.",
+      "text_markdown": "그의 개인적 증오는 영국의 국익과 완벽하게 일치했습니다.",
+      "tts": {
+        "text": "그의 개인적 증오는 영국의 국익과 완벽하게 일치했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 반격할 결심을 하고 영국으로 돌아갔습니다.",
+      "text_markdown": "드레이크는 반격할 결심을 하고 영국으로 돌아갔습니다.",
+      "tts": {
+        "text": "드레이크는 반격할 결심을 하고 영국으로 돌아갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 선박과 정착지에 대한 독자적인 습격을 계획하기 시작했습니다.",
+      "text_markdown": "스페인 선박과 정착지에 대한 독자적인 습격을 계획하기 시작했습니다.",
+      "tts": {
+        "text": "스페인 선박과 정착지에 대한 독자적인 습격을 계획하기 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "카리브해에 대한 모든 해도와 보고서를 연구했습니다.",
+      "text_markdown": "카리브해에 대한 모든 해도와 보고서를 연구했습니다.",
+      "tts": {
+        "text": "카리브해에 대한 모든 해도와 보고서를 연구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인 본토에 다녀온 모든 선원과 이야기했습니다.",
+      "text_markdown": "스페인 본토에 다녀온 모든 선원과 이야기했습니다.",
+      "tts": {
+        "text": "스페인 본토에 다녀온 모든 선원과 이야기했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 본토는 아메리카에서 스페인의 대륙 영토를 지칭하는 이름이었습니다.",
+      "text_markdown": "스페인 본토는 아메리카에서 스페인의 대륙 영토를 지칭하는 이름이었습니다.",
+      "tts": {
+        "text": "스페인 본토는 아메리카에서 스페인의 대륙 영토를 지칭하는 이름이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "플로리다에서 남아메리카 북부 해안까지 뻗어 있었습니다.",
+      "text_markdown": "플로리다에서 남아메리카 북부 해안까지 뻗어 있었습니다.",
+      "tts": {
+        "text": "플로리다에서 남아메리카 북부 해안까지 뻗어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 본토의 보물 항구는 은과 금이 배에 실리는 곳이었습니다.",
+      "text_markdown": "스페인 본토의 보물 항구는 은과 금이 배에 실리는 곳이었습니다.",
+      "tts": {
+        "text": "스페인 본토의 보물 항구는 은과 금이 배에 실리는 곳이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 항구들이 드레이크의 주요 목표였습니다.",
+      "text_markdown": "이 항구들이 드레이크의 주요 목표였습니다.",
+      "tts": {
+        "text": "이 항구들이 드레이크의 주요 목표였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력의 부상",
+      "text_markdown": "권력의 부상"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1572년, 드레이크는 스페인 본토에 대한 첫 독자적 습격을 개시했습니다.",
+      "text_markdown": "1572년, 드레이크는 스페인 본토에 대한 첫 독자적 습격을 개시했습니다.",
+      "tts": {
+        "text": "천오백칠십이 년, 드레이크는 스페인 본토에 대한 첫 독자적 습격을 개시했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파나마 지협의 놈브레데디오스 항구를 공격했습니다.",
+      "text_markdown": "파나마 지협의 놈브레데디오스 항구를 공격했습니다.",
+      "tts": {
+        "text": "파나마 지협의 놈브레데디오스 항구를 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "놈브레데디오스는 페루 은의 주요 집결지 중 하나였습니다.",
+      "text_markdown": "놈브레데디오스는 페루 은의 주요 집결지 중 하나였습니다.",
+      "tts": {
+        "text": "놈브레데디오스는 페루 은의 주요 집결지 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "습격은 대담했지만 거의 치명적이었습니다.",
+      "text_markdown": "습격은 대담했지만 거의 치명적이었습니다.",
+      "tts": {
+        "text": "습격은 대담했지만 거의 치명적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "드레이크는 공격 중 머스킷 총알에 부상당했습니다.",
+      "text_markdown": "드레이크는 공격 중 머스킷 총알에 부상당했습니다.",
+      "tts": {
+        "text": "드레이크는 공격 중 머스킷 총알에 부상당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "너무 많이 출혈하여 부하들이 배까지 들어 날라야 했습니다.",
+      "text_markdown": "너무 많이 출혈하여 부하들이 배까지 들어 날라야 했습니다.",
+      "tts": {
+        "text": "너무 많이 출혈하여 부하들이 배까지 들어 날라야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약간의 전리품과 스페인 방어에 대한 귀중한 지식을 가지고 탈출했습니다.",
+      "text_markdown": "약간의 전리품과 스페인 방어에 대한 귀중한 지식을 가지고 탈출했습니다.",
+      "tts": {
+        "text": "약간의 전리품과 스페인 방어에 대한 귀중한 지식을 가지고 탈출했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 포기하지 않았습니다.",
+      "text_markdown": "드레이크는 포기하지 않았습니다.",
+      "tts": {
+        "text": "드레이크는 포기하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정글에서 자유롭게 살던 탈주 노예 아프리카인 집단인 시마론과 동맹을 맺었습니다.",
+      "text_markdown": "정글에서 자유롭게 살던 탈주 노예 아프리카인 집단인 시마론과 동맹을 맺었습니다.",
+      "tts": {
+        "text": "정글에서 자유롭게 살던 탈주 노예 아프리카인 집단인 시마론과 동맹을 맺었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시마론은 스페인인을 증오했고 그들과 싸우는 사람을 기꺼이 도왔습니다.",
+      "text_markdown": "시마론은 스페인인을 증오했고 그들과 싸우는 사람을 기꺼이 도왔습니다.",
+      "tts": {
+        "text": "시마론은 스페인인을 증오했고 그들과 싸우는 사람을 기꺼이 도왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 정글, 오솔길, 스페인 노새 행렬의 패턴을 알고 있었습니다.",
+      "text_markdown": "그들은 정글, 오솔길, 스페인 노새 행렬의 패턴을 알고 있었습니다.",
+      "tts": {
+        "text": "그들은 정글, 오솔길, 스페인 노새 행렬의 패턴을 알고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시마론을 안내인으로 삼아 드레이크는 파나마 지협을 도보로 횡단했습니다.",
+      "text_markdown": "시마론을 안내인으로 삼아 드레이크는 파나마 지협을 도보로 횡단했습니다.",
+      "tts": {
+        "text": "시마론을 안내인으로 삼아 드레이크는 파나마 지협을 도보로 횡단했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "며칠 동안 울창한 열대 정글을 헤쳐 나갔습니다.",
+      "text_markdown": "며칠 동안 울창한 열대 정글을 헤쳐 나갔습니다.",
+      "tts": {
+        "text": "며칠 동안 울창한 열대 정글을 헤쳐 나갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "산등성이 꼭대기에서 드레이크는 높은 나무에 올랐습니다.",
+      "text_markdown": "산등성이 꼭대기에서 드레이크는 높은 나무에 올랐습니다.",
+      "tts": {
+        "text": "산등성이 꼭대기에서 드레이크는 높은 나무에 올랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "거기서 태평양을 본 최초의 영국인 중 한 명이 되었습니다.",
+      "text_markdown": "거기서 태평양을 본 최초의 영국인 중 한 명이 되었습니다.",
+      "tts": {
+        "text": "거기서 태평양을 본 최초의 영국인 중 한 명이 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 언젠가 그 위대한 바다를 항해할 수 있게 해달라고 신에게 기도했다고 전해집니다.",
+      "text_markdown": "드레이크는 언젠가 그 위대한 바다를 항해할 수 있게 해달라고 신에게 기도했다고 전해집니다.",
+      "tts": {
+        "text": "드레이크는 언젠가 그 위대한 바다를 항해할 수 있게 해달라고 신에게 기도했다고 전해집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 순간은 그의 삶에서 가장 유명한 이야기 중 하나가 되었습니다.",
+      "text_markdown": "이 순간은 그의 삶에서 가장 유명한 이야기 중 하나가 되었습니다.",
+      "tts": {
+        "text": "이 순간은 그의 삶에서 가장 유명한 이야기 중 하나가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "태평양의 광경은 그를 야망으로 가득 채웠습니다.",
+      "text_markdown": "태평양의 광경은 그를 야망으로 가득 채웠습니다.",
+      "tts": {
+        "text": "태평양의 광경은 그를 야망으로 가득 채웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인의 태평양 식민지가 사실상 무방비 상태임을 깨달았습니다.",
+      "text_markdown": "스페인의 태평양 식민지가 사실상 무방비 상태임을 깨달았습니다.",
+      "tts": {
+        "text": "스페인의 태평양 식민지가 사실상 무방비 상태임을 깨달았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크와 시마론은 은과 금을 운반하는 스페인 노새 행렬을 매복 공격했습니다.",
+      "text_markdown": "드레이크와 시마론은 은과 금을 운반하는 스페인 노새 행렬을 매복 공격했습니다.",
+      "tts": {
+        "text": "드레이크와 시마론은 은과 금을 운반하는 스페인 노새 행렬을 매복 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "보물은 파나마의 태평양 쪽에서 대서양 쪽으로 운반되고 있었습니다.",
+      "text_markdown": "보물은 파나마의 태평양 쪽에서 대서양 쪽으로 운반되고 있었습니다.",
+      "tts": {
+        "text": "보물은 파나마의 태평양 쪽에서 대서양 쪽으로 운반되고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "습격자들은 엄청난 양의 귀금속을 탈취했습니다.",
+      "text_markdown": "습격자들은 엄청난 양의 귀금속을 탈취했습니다.",
+      "tts": {
+        "text": "습격자들은 엄청난 양의 귀금속을 탈취했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 부유하고 유명해져 영국으로 돌아갔습니다.",
+      "text_markdown": "드레이크는 부유하고 유명해져 영국으로 돌아갔습니다.",
+      "tts": {
+        "text": "드레이크는 부유하고 유명해져 영국으로 돌아갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "엘리자베스 여왕은 이 대담한 젊은 선장에게 주목했습니다.",
+      "text_markdown": "엘리자베스 여왕은 이 대담한 젊은 선장에게 주목했습니다.",
+      "tts": {
+        "text": "엘리자베스 여왕은 이 대담한 젊은 선장에게 주목했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "평시에 스페인에 대한 공격을 공개적으로 칭찬할 수 없었습니다.",
+      "text_markdown": "평시에 스페인에 대한 공격을 공개적으로 칭찬할 수 없었습니다.",
+      "tts": {
+        "text": "평시에 스페인에 대한 공격을 공개적으로 칭찬할 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 사적으로는 경쟁자를 약화시키는 모든 것에 기뻐했습니다.",
+      "text_markdown": "하지만 사적으로는 경쟁자를 약화시키는 모든 것에 기뻐했습니다.",
+      "tts": {
+        "text": "하지만 사적으로는 경쟁자를 약화시키는 모든 것에 기뻐했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 여왕 자신에게 가까운 서클에서 활동하기 시작했습니다.",
+      "text_markdown": "드레이크는 여왕 자신에게 가까운 서클에서 활동하기 시작했습니다.",
+      "tts": {
+        "text": "드레이크는 여왕 자신에게 가까운 서클에서 활동하기 시작했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577년, 엘리자베스는 비밀리에 드레이크에게 태평양으로의 원정을 이끌도록 허가했습니다.",
+      "text_markdown": "1577년, 엘리자베스는 비밀리에 드레이크에게 태평양으로의 원정을 이끌도록 허가했습니다.",
+      "tts": {
+        "text": "천오백칠십칠 년, 엘리자베스는 비밀리에 드레이크에게 태평양으로의 원정을 이끌도록 허가했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "항해의 공식 목적은 탐험이었습니다.",
+      "text_markdown": "항해의 공식 목적은 탐험이었습니다.",
+      "tts": {
+        "text": "항해의 공식 목적은 탐험이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "진정한 목적은 남아메리카 태평양 연안의 스페인 영토를 습격하는 것이었습니다.",
+      "text_markdown": "진정한 목적은 남아메리카 태평양 연안의 스페인 영토를 습격하는 것이었습니다.",
+      "tts": {
+        "text": "진정한 목적은 남아메리카 태평양 연안의 스페인 영토를 습격하는 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여왕은 이 사업에 자신의 돈을 투자했습니다.",
+      "text_markdown": "여왕은 이 사업에 자신의 돈을 투자했습니다.",
+      "tts": {
+        "text": "여왕은 이 사업에 자신의 돈을 투자했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 다섯 척의 배와 약 백육십 명의 선원과 함께 플리머스에서 출항했습니다.",
+      "text_markdown": "드레이크는 다섯 척의 배와 약 백육십 명의 선원과 함께 플리머스에서 출항했습니다.",
+      "tts": {
+        "text": "드레이크는 다섯 척의 배와 약 백육십 명의 선원과 함께 플리머스에서 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기함은 펠리컨이었으며 나중에 골든 하인드로 개명했습니다.",
+      "text_markdown": "기함은 펠리컨이었으며 나중에 골든 하인드로 개명했습니다.",
+      "tts": {
+        "text": "기함은 펠리컨이었으며 나중에 골든 하인드로 개명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함대는 남아메리카 해안을 향해 대서양을 남하했습니다.",
+      "text_markdown": "함대는 남아메리카 해안을 향해 대서양을 남하했습니다.",
+      "tts": {
+        "text": "함대는 남아메리카 해안을 향해 대서양을 남하했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대서양 연안의 항해는 어려웠습니다.",
+      "text_markdown": "대서양 연안의 항해는 어려웠습니다.",
+      "tts": {
+        "text": "대서양 연안의 항해는 어려웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 척은 항해에 부적합하여 의도적으로 침몰시켰습니다.",
+      "text_markdown": "한 척은 항해에 부적합하여 의도적으로 침몰시켰습니다.",
+      "tts": {
+        "text": "한 척은 항해에 부적합하여 의도적으로 침몰시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "드레이크는 토머스 다우티라는 신사로부터 권위에 대한 심각한 도전에도 대처해야 했습니다.",
+      "text_markdown": "드레이크는 토머스 다우티라는 신사로부터 권위에 대한 심각한 도전에도 대처해야 했습니다.",
+      "tts": {
+        "text": "드레이크는 토머스 다우티라는 신사로부터 권위에 대한 심각한 도전에도 대처해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 다우티를 반란죄로 재판하고 처형시켰습니다.",
+      "text_markdown": "드레이크는 다우티를 반란죄로 재판하고 처형시켰습니다.",
+      "tts": {
+        "text": "드레이크는 다우티를 반란죄로 재판하고 처형시켰습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함대는 남아메리카 최남단의 마젤란 해협에 진입했습니다.",
+      "text_markdown": "함대는 남아메리카 최남단의 마젤란 해협에 진입했습니다.",
+      "tts": {
+        "text": "함대는 남아메리카 최남단의 마젤란 해협에 진입했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해협은 좁고 위험하며 격렬한 폭풍에 시달렸습니다.",
+      "text_markdown": "해협은 좁고 위험하며 격렬한 폭풍에 시달렸습니다.",
+      "tts": {
+        "text": "해협은 좁고 위험하며 격렬한 폭풍에 시달렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해협을 통과하는 데 16일이 걸렸습니다.",
+      "text_markdown": "해협을 통과하는 데 16일이 걸렸습니다.",
+      "tts": {
+        "text": "해협을 통과하는 데 십육 일이 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "골든 하인드와 다른 두 척만이 통과에서 살아남았습니다.",
+      "text_markdown": "골든 하인드와 다른 두 척만이 통과에서 살아남았습니다.",
+      "tts": {
+        "text": "골든 하인드와 다른 두 척만이 통과에서 살아남았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "태평양으로 나온 후 무서운 폭풍이 나머지 배들을 강타했습니다.",
+      "text_markdown": "태평양으로 나온 후 무서운 폭풍이 나머지 배들을 강타했습니다.",
+      "tts": {
+        "text": "태평양으로 나온 후 무서운 폭풍이 나머지 배들을 강타했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 척은 해협을 통해 뒤로 밀려나 영국으로 돌아갔습니다.",
+      "text_markdown": "한 척은 해협을 통해 뒤로 밀려나 영국으로 돌아갔습니다.",
+      "tts": {
+        "text": "한 척은 해협을 통해 뒤로 밀려나 영국으로 돌아갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또 한 척은 완전히 사라졌습니다.",
+      "text_markdown": "또 한 척은 완전히 사라졌습니다.",
+      "tts": {
+        "text": "또 한 척은 완전히 사라졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 광대하고 미지의 바다에서 골든 하인드에 홀로 남았습니다.",
+      "text_markdown": "드레이크는 광대하고 미지의 바다에서 골든 하인드에 홀로 남았습니다.",
+      "tts": {
+        "text": "드레이크는 광대하고 미지의 바다에서 골든 하인드에 홀로 남았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 남아메리카의 태평양 연안을 따라 북상했습니다.",
+      "text_markdown": "드레이크는 남아메리카의 태평양 연안을 따라 북상했습니다.",
+      "tts": {
+        "text": "드레이크는 남아메리카의 태평양 연안을 따라 북상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그곳의 스페인 식민지는 바다에서 공격받은 적이 없었습니다.",
+      "text_markdown": "그곳의 스페인 식민지는 바다에서 공격받은 적이 없었습니다.",
+      "tts": {
+        "text": "그곳의 스페인 식민지는 바다에서 공격받은 적이 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "적함이 태평양에 들어온 적이 없었기에 방어 시설이 없었습니다.",
+      "text_markdown": "적함이 태평양에 들어온 적이 없었기에 방어 시설이 없었습니다.",
+      "tts": {
+        "text": "적함이 태평양에 들어온 적이 없었기에 방어 시설이 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 항구를 차례로 습격하며 거의 저항을 만나지 않았습니다.",
+      "text_markdown": "드레이크는 항구를 차례로 습격하며 거의 저항을 만나지 않았습니다.",
+      "tts": {
+        "text": "드레이크는 항구를 차례로 습격하며 거의 저항을 만나지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "은, 금, 보석을 막대한 양으로 노획했습니다.",
+      "text_markdown": "은, 금, 보석을 막대한 양으로 노획했습니다.",
+      "tts": {
+        "text": "은, 금, 보석을 막대한 양으로 노획했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 가장 큰 전리품은 스페인 보물선 누에스트라 세뇨라 데 라 콘셉시온이었습니다.",
+      "text_markdown": "그의 가장 큰 전리품은 스페인 보물선 누에스트라 세뇨라 데 라 콘셉시온이었습니다.",
+      "tts": {
+        "text": "그의 가장 큰 전리품은 스페인 보물선 누에스트라 세뇨라 데 라 콘셉시온이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배는 보물이 너무 무겁게 실려 있어 화물을 옮기는 데 며칠이 걸렸습니다.",
+      "text_markdown": "배는 보물이 너무 무겁게 실려 있어 화물을 옮기는 데 며칠이 걸렸습니다.",
+      "tts": {
+        "text": "배는 보물이 너무 무겁게 실려 있어 화물을 옮기는 데 며칠이 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "노획한 보물의 가치는 경이로웠으며, 현대 화폐로 수백만에 달했습니다.",
+      "text_markdown": "노획한 보물의 가치는 경이로웠으며, 현대 화폐로 수백만에 달했습니다.",
+      "tts": {
+        "text": "노획한 보물의 가치는 경이로웠으며, 현대 화폐로 수백만에 달했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "정점에서",
+      "text_markdown": "정점에서"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 왔던 길로 돌아갈 수 없었습니다.",
+      "text_markdown": "드레이크는 왔던 길로 돌아갈 수 없었습니다.",
+      "tts": {
+        "text": "드레이크는 왔던 길로 돌아갈 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인인들이 남아메리카 해안 전체에서 그를 추적하고 있었습니다.",
+      "text_markdown": "스페인인들이 남아메리카 해안 전체에서 그를 추적하고 있었습니다.",
+      "tts": {
+        "text": "스페인인들이 남아메리카 해안 전체에서 그를 추적하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마젤란 해협을 통해 돌아가는 것은 자살 행위였습니다.",
+      "text_markdown": "마젤란 해협을 통해 돌아가는 것은 자살 행위였습니다.",
+      "tts": {
+        "text": "마젤란 해협을 통해 돌아가는 것은 자살 행위였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "서쪽으로 세계를 돌아가기로 결정했습니다.",
+      "text_markdown": "서쪽으로 세계를 돌아가기로 결정했습니다.",
+      "tts": {
+        "text": "서쪽으로 세계를 돌아가기로 결정했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "먼저 드레이크는 중앙아메리카와 북아메리카 해안을 따라 북상했습니다.",
+      "text_markdown": "먼저 드레이크는 중앙아메리카와 북아메리카 해안을 따라 북상했습니다.",
+      "tts": {
+        "text": "먼저 드레이크는 중앙아메리카와 북아메리카 해안을 따라 북상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사가들은 그가 얼마나 북쪽까지 갔는지 논쟁합니다.",
+      "text_markdown": "역사가들은 그가 얼마나 북쪽까지 갔는지 논쟁합니다.",
+      "tts": {
+        "text": "역사가들은 그가 얼마나 북쪽까지 갔는지 논쟁합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 현재의 오리건 지역이나 밴쿠버 섬까지 도달했다고 믿습니다.",
+      "text_markdown": "일부는 현재의 오리건 지역이나 밴쿠버 섬까지 도달했다고 믿습니다.",
+      "tts": {
+        "text": "일부는 현재의 오리건 지역이나 밴쿠버 섬까지 도달했다고 믿습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 이들은 샌프란시스코만 부근을 북한계로 봅니다.",
+      "text_markdown": "다른 이들은 샌프란시스코만 부근을 북한계로 봅니다.",
+      "tts": {
+        "text": "다른 이들은 샌프란시스코만 부근을 북한계로 봅니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 캘리포니아 해안 어딘가에 상륙하여 영국을 위해 영토를 주장했습니다.",
+      "text_markdown": "드레이크는 캘리포니아 해안 어딘가에 상륙하여 영국을 위해 영토를 주장했습니다.",
+      "tts": {
+        "text": "드레이크는 캘리포니아 해안 어딘가에 상륙하여 영국을 위해 영토를 주장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그곳을 노바 알비온, 즉 새로운 브리튼이라 이름 지었습니다.",
+      "text_markdown": "그곳을 노바 알비온, 즉 새로운 브리튼이라 이름 지었습니다.",
+      "tts": {
+        "text": "그곳을 노바 알비온, 즉 새로운 브리튼이라 이름 지었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배를 수리하고 선원들을 쉬게 하며 몇 주를 해안에서 보냈습니다.",
+      "text_markdown": "배를 수리하고 선원들을 쉬게 하며 몇 주를 해안에서 보냈습니다.",
+      "tts": {
+        "text": "배를 수리하고 선원들을 쉬게 하며 몇 주를 해안에서 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "현지 원주민과 우호적 교류가 있었다고 전해집니다.",
+      "text_markdown": "현지 원주민과 우호적 교류가 있었다고 전해집니다.",
+      "tts": {
+        "text": "현지 원주민과 우호적 교류가 있었다고 전해집니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노바 알비온에서 드레이크는 서쪽으로 방향을 돌려 태평양을 횡단했습니다.",
+      "text_markdown": "노바 알비온에서 드레이크는 서쪽으로 방향을 돌려 태평양을 횡단했습니다.",
+      "tts": {
+        "text": "노바 알비온에서 드레이크는 서쪽으로 방향을 돌려 태평양을 횡단했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "횡단에 68일이 걸렸습니다.",
+      "text_markdown": "횡단에 68일이 걸렸습니다.",
+      "tts": {
+        "text": "횡단에 육십팔 일이 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "보급을 위한 섬이 거의 없는 광대하고 고독한 바다였습니다.",
+      "text_markdown": "보급을 위한 섬이 거의 없는 광대하고 고독한 바다였습니다.",
+      "tts": {
+        "text": "보급을 위한 섬이 거의 없는 광대하고 고독한 바다였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "선원들은 줄어드는 식량과 잡을 수 있는 물고기로 생존했습니다.",
+      "text_markdown": "선원들은 줄어드는 식량과 잡을 수 있는 물고기로 생존했습니다.",
+      "tts": {
+        "text": "선원들은 줄어드는 식량과 잡을 수 있는 물고기로 생존했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 오늘날 인도네시아의 말루쿠로 알려진 향료 제도에 도달했습니다.",
+      "text_markdown": "드레이크는 오늘날 인도네시아의 말루쿠로 알려진 향료 제도에 도달했습니다.",
+      "tts": {
+        "text": "드레이크는 오늘날 인도네시아의 말루쿠로 알려진 향료 제도에 도달했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 섬들은 금보다 값진 정향, 육두구, 기타 향신료의 원산지였습니다.",
+      "text_markdown": "이 섬들은 금보다 값진 정향, 육두구, 기타 향신료의 원산지였습니다.",
+      "tts": {
+        "text": "이 섬들은 금보다 값진 정향, 육두구, 기타 향신료의 원산지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "드레이크는 테르나테의 술탄과 무역 협정을 체결했습니다.",
+      "text_markdown": "드레이크는 테르나테의 술탄과 무역 협정을 체결했습니다.",
+      "tts": {
+        "text": "드레이크는 테르나테의 술탄과 무역 협정을 체결했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "골든 하인드에 정향 육 톤을 실었습니다.",
+      "text_markdown": "골든 하인드에 정향 육 톤을 실었습니다.",
+      "tts": {
+        "text": "골든 하인드에 정향 육 톤을 실었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동인도 제도의 암초에서 배가 거의 난파할 뻔했습니다.",
+      "text_markdown": "동인도 제도의 암초에서 배가 거의 난파할 뻔했습니다.",
+      "tts": {
+        "text": "동인도 제도의 암초에서 배가 거의 난파할 뻔했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "골든 하인드가 좌초하여 이십 시간 동안 움직이지 못했습니다.",
+      "text_markdown": "골든 하인드가 좌초하여 이십 시간 동안 움직이지 못했습니다.",
+      "tts": {
+        "text": "골든 하인드가 좌초하여 이십 시간 동안 움직이지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "드레이크는 배가 떠오를 수 있을 만큼 가볍게 하기 위해 화물을 바다에 버려야 했습니다.",
+      "text_markdown": "드레이크는 배가 떠오를 수 있을 만큼 가볍게 하기 위해 화물을 바다에 버려야 했습니다.",
+      "tts": {
+        "text": "드레이크는 배가 떠오를 수 있을 만큼 가볍게 하기 위해 화물을 바다에 버려야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전체 항해에서 가장 무서운 순간 중 하나였습니다.",
+      "text_markdown": "전체 항해에서 가장 무서운 순간 중 하나였습니다.",
+      "tts": {
+        "text": "전체 항해에서 가장 무서운 순간 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 인도양을 횡단하고 아프리카 최남단의 희망봉을 돌았습니다.",
+      "text_markdown": "드레이크는 인도양을 횡단하고 아프리카 최남단의 희망봉을 돌았습니다.",
+      "tts": {
+        "text": "드레이크는 인도양을 횡단하고 아프리카 최남단의 희망봉을 돌았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대서양을 통해 북상했습니다.",
+      "text_markdown": "대서양을 통해 북상했습니다.",
+      "tts": {
+        "text": "대서양을 통해 북상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1580년 9월 26일, 골든 하인드가 플리머스 항구에 입항했습니다.",
+      "text_markdown": "1580년 9월 26일, 골든 하인드가 플리머스 항구에 입항했습니다.",
+      "tts": {
+        "text": "천오백팔십 년 구월 이십육 일, 골든 하인드가 플리머스 항구에 입항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 거의 삼 년간 바다에 있었습니다.",
+      "text_markdown": "드레이크는 거의 삼 년간 바다에 있었습니다.",
+      "tts": {
+        "text": "드레이크는 거의 삼 년간 바다에 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 지구 일주를 완수하고 살아남은 최초의 선장이었습니다.",
+      "text_markdown": "드레이크는 지구 일주를 완수하고 살아남은 최초의 선장이었습니다.",
+      "tts": {
+        "text": "드레이크는 지구 일주를 완수하고 살아남은 최초의 선장이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르디난드 마젤란이 최초의 세계 일주를 시작했지만 필리핀에서 죽었습니다.",
+      "text_markdown": "페르디난드 마젤란이 최초의 세계 일주를 시작했지만 필리핀에서 죽었습니다.",
+      "tts": {
+        "text": "페르디난드 마젤란이 최초의 세계 일주를 시작했지만 필리핀에서 죽었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마젤란의 배 중 하나만이 다른 선장 아래 항해를 완수했습니다.",
+      "text_markdown": "마젤란의 배 중 하나만이 다른 선장 아래 항해를 완수했습니다.",
+      "tts": {
+        "text": "마젤란의 배 중 하나만이 다른 선장 아래 항해를 완수했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 세계 일주 원정을 이끌고 살아서 돌아온 최초의 인물이었습니다.",
+      "text_markdown": "드레이크는 세계 일주 원정을 이끌고 살아서 돌아온 최초의 인물이었습니다.",
+      "tts": {
+        "text": "드레이크는 세계 일주 원정을 이끌고 살아서 돌아온 최초의 인물이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크가 가져온 보물은 경이로웠습니다.",
+      "text_markdown": "드레이크가 가져온 보물은 경이로웠습니다.",
+      "tts": {
+        "text": "드레이크가 가져온 보물은 경이로웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "추정에 따르면 영국 왕실의 연간 총수입보다 많은 가치였습니다.",
+      "text_markdown": "추정에 따르면 영국 왕실의 연간 총수입보다 많은 가치였습니다.",
+      "tts": {
+        "text": "추정에 따르면 영국 왕실의 연간 총수입보다 많은 가치였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "엘리자베스 여왕의 몫만으로도 막대했습니다.",
+      "text_markdown": "엘리자베스 여왕의 몫만으로도 막대했습니다.",
+      "tts": {
+        "text": "엘리자베스 여왕의 몫만으로도 막대했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "항해 투자자들은 수천 퍼센트의 수익을 올렸습니다.",
+      "text_markdown": "항해 투자자들은 수천 퍼센트의 수익을 올렸습니다.",
+      "tts": {
+        "text": "항해 투자자들은 수천 퍼센트의 수익을 올렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1581년 4월 4일, 엘리자베스 여왕은 뎁트퍼드의 골든 하인드를 방문했습니다.",
+      "text_markdown": "1581년 4월 4일, 엘리자베스 여왕은 뎁트퍼드의 골든 하인드를 방문했습니다.",
+      "tts": {
+        "text": "천오백팔십일 년 사월 사일, 엘리자베스 여왕은 뎁트퍼드의 골든 하인드를 방문했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 배의 갑판 위에서 드레이크에게 기사 작위를 수여했습니다.",
+      "text_markdown": "그녀는 배의 갑판 위에서 드레이크에게 기사 작위를 수여했습니다.",
+      "tts": {
+        "text": "그녀는 배의 갑판 위에서 드레이크에게 기사 작위를 수여했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 프랜시스 드레이크 경이 되었습니다.",
+      "text_markdown": "그는 프랜시스 드레이크 경이 되었습니다.",
+      "tts": {
+        "text": "그는 프랜시스 드레이크 경이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인 대사는 격분하여 자국 왕에 대한 모욕이라 했습니다.",
+      "text_markdown": "스페인 대사는 격분하여 자국 왕에 대한 모욕이라 했습니다.",
+      "tts": {
+        "text": "스페인 대사는 격분하여 자국 왕에 대한 모욕이라 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 영국에서 가장 부유하고 유명한 사람 중 한 명이 되었습니다.",
+      "text_markdown": "드레이크는 영국에서 가장 부유하고 유명한 사람 중 한 명이 되었습니다.",
+      "tts": {
+        "text": "드레이크는 영국에서 가장 부유하고 유명한 사람 중 한 명이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "데번의 대저택 버클랜드 수도원을 구입했습니다.",
+      "text_markdown": "데번의 대저택 버클랜드 수도원을 구입했습니다.",
+      "tts": {
+        "text": "데번의 대저택 버클랜드 수도원을 구입했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "플리머스 시장으로 재직했습니다.",
+      "text_markdown": "플리머스 시장으로 재직했습니다.",
+      "tts": {
+        "text": "플리머스 시장으로 재직했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "의회에 선출되었습니다.",
+      "text_markdown": "의회에 선출되었습니다.",
+      "tts": {
+        "text": "의회에 선출되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1585년, 엘리자베스는 드레이크를 다시 스페인령 카리브해 습격에 보냈습니다.",
+      "text_markdown": "1585년, 엘리자베스는 드레이크를 다시 스페인령 카리브해 습격에 보냈습니다.",
+      "tts": {
+        "text": "천오백팔십오 년, 엘리자베스는 드레이크를 다시 스페인령 카리브해 습격에 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이번에는 이십 척 이상의 배와 이천 명 이상의 병사로 구성된 함대와 함께 출항했습니다.",
+      "text_markdown": "이번에는 이십 척 이상의 배와 이천 명 이상의 병사로 구성된 함대와 함께 출항했습니다.",
+      "tts": {
+        "text": "이번에는 이십 척 이상의 배와 이천 명 이상의 병사로 구성된 함대와 함께 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "히스파니올라 섬의 산토도밍고 시를 약탈했습니다.",
+      "text_markdown": "히스파니올라 섬의 산토도밍고 시를 약탈했습니다.",
+      "tts": {
+        "text": "히스파니올라 섬의 산토도밍고 시를 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이어서 현재의 콜롬비아에 있는 카르타헤나 시를 점령하고 몸값을 요구했습니다.",
+      "text_markdown": "이어서 현재의 콜롬비아에 있는 카르타헤나 시를 점령하고 몸값을 요구했습니다.",
+      "tts": {
+        "text": "이어서 현재의 콜롬비아에 있는 카르타헤나 시를 점령하고 몸값을 요구했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 습격은 스페인을 굴욕시키고 영국의 자신감을 높였습니다.",
+      "text_markdown": "이 습격은 스페인을 굴욕시키고 영국의 자신감을 높였습니다.",
+      "tts": {
+        "text": "이 습격은 스페인을 굴욕시키고 영국의 자신감을 높였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "펠리페 2세가 영국 침공을 계획하도록 자극하는 데도 도움이 되었습니다.",
+      "text_markdown": "펠리페 2세가 영국 침공을 계획하도록 자극하는 데도 도움이 되었습니다.",
+      "tts": {
+        "text": "펠리페 이세가 영국 침공을 계획하도록 자극하는 데도 도움이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "정점에서",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세계 최대의 두 해양 강국 간의 충돌이 다가오고 있었습니다.",
+      "text_markdown": "세계 최대의 두 해양 강국 간의 충돌이 다가오고 있었습니다.",
+      "tts": {
+        "text": "세계 최대의 두 해양 강국 간의 충돌이 다가오고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최후",
+      "text_markdown": "최후"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1587년, 드레이크는 해군 역사상 가장 대담한 습격 중 하나를 감행했습니다.",
+      "text_markdown": "1587년, 드레이크는 해군 역사상 가장 대담한 습격 중 하나를 감행했습니다.",
+      "tts": {
+        "text": "천오백팔십칠 년, 드레이크는 해군 역사상 가장 대담한 습격 중 하나를 감행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 항구 카디스로 진입하여 그곳에 모인 함대를 공격했습니다.",
+      "text_markdown": "스페인 항구 카디스로 진입하여 그곳에 모인 함대를 공격했습니다.",
+      "tts": {
+        "text": "스페인 항구 카디스로 진입하여 그곳에 모인 함대를 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "약 삼십 척의 배를 파괴하거나 나포했습니다.",
+      "text_markdown": "약 삼십 척의 배를 파괴하거나 나포했습니다.",
+      "tts": {
+        "text": "약 삼십 척의 배를 파괴하거나 나포했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 이 습격을 스페인 왕의 수염을 그슬리다라고 불렀습니다.",
+      "text_markdown": "드레이크는 이 습격을 스페인 왕의 수염을 그슬리다라고 불렀습니다.",
+      "tts": {
+        "text": "드레이크는 이 습격을 스페인 왕의 수염을 그슬리다라고 불렀습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 공격은 스페인 무적함대를 최소 일 년 지연시켰습니다.",
+      "text_markdown": "이 공격은 스페인 무적함대를 최소 일 년 지연시켰습니다.",
+      "tts": {
+        "text": "이 공격은 스페인 무적함대를 최소 일 년 지연시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인이 침공에 필요한 보급품과 장비도 파괴했습니다.",
+      "text_markdown": "스페인이 침공에 필요한 보급품과 장비도 파괴했습니다.",
+      "tts": {
+        "text": "스페인이 침공에 필요한 보급품과 장비도 파괴했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 다시 한번 영웅으로 영국에 돌아왔습니다.",
+      "text_markdown": "드레이크는 다시 한번 영웅으로 영국에 돌아왔습니다.",
+      "tts": {
+        "text": "드레이크는 다시 한번 영웅으로 영국에 돌아왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1588년, 펠리페 2세가 마침내 대규모 침공 함대를 출격시켰습니다.",
+      "text_markdown": "1588년, 펠리페 2세가 마침내 대규모 침공 함대를 출격시켰습니다.",
+      "tts": {
+        "text": "천오백팔십팔 년, 펠리페 이세가 마침내 대규모 침공 함대를 출격시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 무적함대는 약 130척의 배로 구성되었습니다.",
+      "text_markdown": "스페인 무적함대는 약 130척의 배로 구성되었습니다.",
+      "tts": {
+        "text": "스페인 무적함대는 약 백삼십 척의 배로 구성되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "당시 유럽 역사상 집결된 가장 큰 해군 세력이었습니다.",
+      "text_markdown": "당시 유럽 역사상 집결된 가장 큰 해군 세력이었습니다.",
+      "tts": {
+        "text": "당시 유럽 역사상 집결된 가장 큰 해군 세력이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "네덜란드에서 군대를 영국 해협 건너 호위하는 것이 임무였습니다.",
+      "text_markdown": "네덜란드에서 군대를 영국 해협 건너 호위하는 것이 임무였습니다.",
+      "tts": {
+        "text": "네덜란드에서 군대를 영국 해협 건너 호위하는 것이 임무였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 에핑엄의 하워드 경 휘하에서 영국 함대의 부제독으로 복무했습니다.",
+      "text_markdown": "드레이크는 에핑엄의 하워드 경 휘하에서 영국 함대의 부제독으로 복무했습니다.",
+      "tts": {
+        "text": "드레이크는 에핑엄의 하워드 경 휘하에서 영국 함대의 부제독으로 복무했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 배들은 일반적으로 스페인 갈레온보다 작고 빨랐습니다.",
+      "text_markdown": "영국 배들은 일반적으로 스페인 갈레온보다 작고 빨랐습니다.",
+      "tts": {
+        "text": "영국 배들은 일반적으로 스페인 갈레온보다 작고 빨랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국의 포술은 더 긴 사거리의 대포와 더 잘 훈련된 승무원으로 우월했습니다.",
+      "text_markdown": "영국의 포술은 더 긴 사거리의 대포와 더 잘 훈련된 승무원으로 우월했습니다.",
+      "tts": {
+        "text": "영국의 포술은 더 긴 사거리의 대포와 더 잘 훈련된 승무원으로 우월했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 무적함대의 엄청난 규모는 두려웠습니다.",
+      "text_markdown": "하지만 무적함대의 엄청난 규모는 두려웠습니다.",
+      "tts": {
+        "text": "하지만 무적함대의 엄청난 규모는 두려웠습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 함대는 무적함대가 영국 해협을 올라가는 동안 괴롭혔습니다.",
+      "text_markdown": "영국 함대는 무적함대가 영국 해협을 올라가는 동안 괴롭혔습니다.",
+      "tts": {
+        "text": "영국 함대는 무적함대가 영국 해협을 올라가는 동안 괴롭혔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "더 빠른 배와 더 긴 사거리의 대포를 사용하여 원거리에서 공격했습니다.",
+      "text_markdown": "더 빠른 배와 더 긴 사거리의 대포를 사용하여 원거리에서 공격했습니다.",
+      "tts": {
+        "text": "더 빠른 배와 더 긴 사거리의 대포를 사용하여 원거리에서 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 대형은 유지되었지만 영국은 목표 달성을 저지했습니다.",
+      "text_markdown": "스페인 대형은 유지되었지만 영국은 목표 달성을 저지했습니다.",
+      "tts": {
+        "text": "스페인 대형은 유지되었지만 영국은 목표 달성을 저지했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "결정적 순간은 플랑드르 해안의 그라벨리네에서 왔습니다.",
+      "text_markdown": "결정적 순간은 플랑드르 해안의 그라벨리네에서 왔습니다.",
+      "tts": {
+        "text": "결정적 순간은 플랑드르 해안의 그라벨리네에서 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 밤에 정박 중인 무적함대에 화공선을 보냈습니다.",
+      "text_markdown": "영국은 밤에 정박 중인 무적함대에 화공선을 보냈습니다.",
+      "tts": {
+        "text": "영국은 밤에 정박 중인 무적함대에 화공선을 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "불타는 배들이 스페인 배들을 공포에 질려 흩어지게 만들었습니다.",
+      "text_markdown": "불타는 배들이 스페인 배들을 공포에 질려 흩어지게 만들었습니다.",
+      "tts": {
+        "text": "불타는 배들이 스페인 배들을 공포에 질려 흩어지게 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "무적함대를 보호하던 밀집 대형이 깨졌습니다.",
+      "text_markdown": "무적함대를 보호하던 밀집 대형이 깨졌습니다.",
+      "tts": {
+        "text": "무적함대를 보호하던 밀집 대형이 깨졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국은 흩어진 스페인 함대에 파괴적인 공격을 가했습니다.",
+      "text_markdown": "영국은 흩어진 스페인 함대에 파괴적인 공격을 가했습니다.",
+      "tts": {
+        "text": "영국은 흩어진 스페인 함대에 파괴적인 공격을 가했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러 스페인 배가 침몰하거나 해안으로 떠밀렸습니다.",
+      "text_markdown": "여러 스페인 배가 침몰하거나 해안으로 떠밀렸습니다.",
+      "tts": {
+        "text": "여러 스페인 배가 침몰하거나 해안으로 떠밀렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무적함대는 재편성할 수 없었고 바람에 의해 북쪽으로 밀렸습니다.",
+      "text_markdown": "무적함대는 재편성할 수 없었고 바람에 의해 북쪽으로 밀렸습니다.",
+      "tts": {
+        "text": "무적함대는 재편성할 수 없었고 바람에 의해 북쪽으로 밀렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인으로 돌아가기 위해 스코틀랜드와 아일랜드를 돌아가야 했습니다.",
+      "text_markdown": "스페인으로 돌아가기 위해 스코틀랜드와 아일랜드를 돌아가야 했습니다.",
+      "tts": {
+        "text": "스페인으로 돌아가기 위해 스코틀랜드와 아일랜드를 돌아가야 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "긴 귀환 항해 중 폭풍이 많은 스페인 배를 파괴했습니다.",
+      "text_markdown": "긴 귀환 항해 중 폭풍이 많은 스페인 배를 파괴했습니다.",
+      "tts": {
+        "text": "긴 귀환 항해 중 폭풍이 많은 스페인 배를 파괴했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스코틀랜드와 아일랜드의 바위 해안에서 배들이 난파했습니다.",
+      "text_markdown": "스코틀랜드와 아일랜드의 바위 해안에서 배들이 난파했습니다.",
+      "tts": {
+        "text": "스코틀랜드와 아일랜드의 바위 해안에서 배들이 난파했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "원래 130척 중 약 65척만이 스페인으로 돌아왔습니다.",
+      "text_markdown": "원래 130척 중 약 65척만이 스페인으로 돌아왔습니다.",
+      "tts": {
+        "text": "원래 백삼십 척 중 약 육십오 척만이 스페인으로 돌아왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수천 명의 스페인 선원과 병사가 사망했습니다.",
+      "text_markdown": "수천 명의 스페인 선원과 병사가 사망했습니다.",
+      "tts": {
+        "text": "수천 명의 스페인 선원과 병사가 사망했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 무적함대의 패배는 유럽 역사의 전환점이었습니다.",
+      "text_markdown": "스페인 무적함대의 패배는 유럽 역사의 전환점이었습니다.",
+      "tts": {
+        "text": "스페인 무적함대의 패배는 유럽 역사의 전환점이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인이 바다에서 무적이 아님을 증명했습니다.",
+      "text_markdown": "스페인이 바다에서 무적이 아님을 증명했습니다.",
+      "tts": {
+        "text": "스페인이 바다에서 무적이 아님을 증명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국에게 자체 제국을 확장할 자신감을 주었습니다.",
+      "text_markdown": "영국에게 자체 제국을 확장할 자신감을 주었습니다.",
+      "tts": {
+        "text": "영국에게 자체 제국을 확장할 자신감을 주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 국가의 구원자 중 한 명으로 칭송받았습니다.",
+      "text_markdown": "드레이크는 국가의 구원자 중 한 명으로 칭송받았습니다.",
+      "tts": {
+        "text": "드레이크는 국가의 구원자 중 한 명으로 칭송받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 드레이크의 말년은 실패와 실망을 가져왔습니다.",
+      "text_markdown": "하지만 드레이크의 말년은 실패와 실망을 가져왔습니다.",
+      "tts": {
+        "text": "하지만 드레이크의 말년은 실패와 실망을 가져왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1589년, 그는 영국 무적함대라 불리는 스페인에 대한 반격을 이끌었습니다.",
+      "text_markdown": "1589년, 그는 영국 무적함대라 불리는 스페인에 대한 반격을 이끌었습니다.",
+      "tts": {
+        "text": "천오백팔십구 년, 그는 영국 무적함대라 불리는 스페인에 대한 반격을 이끌었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "원정은 막대한 비용의 재앙이었습니다.",
+      "text_markdown": "원정은 막대한 비용의 재앙이었습니다.",
+      "tts": {
+        "text": "원정은 막대한 비용의 재앙이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "드레이크는 주요 목표 중 어느 것도 달성하지 못했습니다.",
+      "text_markdown": "드레이크는 주요 목표 중 어느 것도 달성하지 못했습니다.",
+      "tts": {
+        "text": "드레이크는 주요 목표 중 어느 것도 달성하지 못했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1595년, 드레이크는 마지막으로 카리브해를 향해 출항했습니다.",
+      "text_markdown": "1595년, 드레이크는 마지막으로 카리브해를 향해 출항했습니다.",
+      "tts": {
+        "text": "천오백구십오 년, 드레이크는 마지막으로 카리브해를 향해 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오랜 파트너 존 호킨스가 동행했습니다.",
+      "text_markdown": "오랜 파트너 존 호킨스가 동행했습니다.",
+      "tts": {
+        "text": "오랜 파트너 존 호킨스가 동행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "원정은 처음부터 불운에 시달렸습니다.",
+      "text_markdown": "원정은 처음부터 불운에 시달렸습니다.",
+      "tts": {
+        "text": "원정은 처음부터 불운에 시달렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "호킨스가 병에 걸려 푸에르토리코 앞바다에서 사망했습니다.",
+      "text_markdown": "호킨스가 병에 걸려 푸에르토리코 앞바다에서 사망했습니다.",
+      "tts": {
+        "text": "호킨스가 병에 걸려 푸에르토리코 앞바다에서 사망했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 푸에르토리코의 산후안을 공격했지만 스페인 수비대에 격퇴당했습니다.",
+      "text_markdown": "드레이크는 푸에르토리코의 산후안을 공격했지만 스페인 수비대에 격퇴당했습니다.",
+      "tts": {
+        "text": "드레이크는 푸에르토리코의 산후안을 공격했지만 스페인 수비대에 격퇴당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러 작은 목표를 습격했지만 보물은 거의 찾지 못했습니다.",
+      "text_markdown": "여러 작은 목표를 습격했지만 보물은 거의 찾지 못했습니다.",
+      "tts": {
+        "text": "여러 작은 목표를 습격했지만 보물은 거의 찾지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인은 드레이크의 이전 습격 이후 방어를 강화했습니다.",
+      "text_markdown": "스페인은 드레이크의 이전 습격 이후 방어를 강화했습니다.",
+      "tts": {
+        "text": "스페인은 드레이크의 이전 습격 이후 방어를 강화했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "쉬운 약탈의 시대는 끝났습니다.",
+      "text_markdown": "쉬운 약탈의 시대는 끝났습니다.",
+      "tts": {
+        "text": "쉬운 약탈의 시대는 끝났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 이질이라는 심각한 장 질환에 걸렸습니다.",
+      "text_markdown": "드레이크는 이질이라는 심각한 장 질환에 걸렸습니다.",
+      "tts": {
+        "text": "드레이크는 이질이라는 심각한 장 질환에 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함대가 파나마 해안을 따라 항해하는 동안 그의 상태는 급속히 악화되었습니다.",
+      "text_markdown": "함대가 파나마 해안을 따라 항해하는 동안 그의 상태는 급속히 악화되었습니다.",
+      "tts": {
+        "text": "함대가 파나마 해안을 따라 항해하는 동안 그의 상태는 급속히 악화되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "프랜시스 드레이크 경은 1596년 1월 28일, 포르토벨로 근처에서 배 위에서 사망했습니다.",
+      "text_markdown": "프랜시스 드레이크 경은 1596년 1월 28일, 포르토벨로 근처에서 배 위에서 사망했습니다.",
+      "tts": {
+        "text": "프랜시스 드레이크 경은 천오백구십육 년 일월 이십팔 일, 포르토벨로 근처에서 배 위에서 사망했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "향년 약 오십육 세였습니다.",
+      "text_markdown": "향년 약 오십육 세였습니다.",
+      "tts": {
+        "text": "향년 약 오십육 세였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "드레이크는 납 관에 넣어져 수장되었습니다.",
+      "text_markdown": "드레이크는 납 관에 넣어져 수장되었습니다.",
+      "tts": {
+        "text": "드레이크는 납 관에 넣어져 수장되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 시신은 그가 수차례 습격한 카리브해의 바다에 내려졌습니다.",
+      "text_markdown": "그의 시신은 그가 수차례 습격한 카리브해의 바다에 내려졌습니다.",
+      "tts": {
+        "text": "그의 시신은 그가 수차례 습격한 카리브해의 바다에 내려졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러 차례의 현대적 탐색 시도에도 불구하고 그의 관은 발견되지 않았습니다.",
+      "text_markdown": "여러 차례의 현대적 탐색 시도에도 불구하고 그의 관은 발견되지 않았습니다.",
+      "tts": {
+        "text": "여러 차례의 현대적 탐색 시도에도 불구하고 그의 관은 발견되지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프랜시스 드레이크 경은 해군 역사의 어떤 인물보다도 복잡한 유산을 남겼습니다.",
+      "text_markdown": "프랜시스 드레이크 경은 해군 역사의 어떤 인물보다도 복잡한 유산을 남겼습니다.",
+      "tts": {
+        "text": "프랜시스 드레이크 경은 해군 역사의 어떤 인물보다도 복잡한 유산을 남겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 동시에 국민 영웅이자 국제 범죄자였습니다.",
+      "text_markdown": "그는 동시에 국민 영웅이자 국제 범죄자였습니다.",
+      "tts": {
+        "text": "그는 동시에 국민 영웅이자 국제 범죄자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "판단은 전적으로 관점에 달려 있습니다.",
+      "text_markdown": "판단은 전적으로 관점에 달려 있습니다.",
+      "tts": {
+        "text": "판단은 전적으로 관점에 달려 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국에서 드레이크는 지구를 일주하고 무적함대를 물리친 사람으로 기억됩니다.",
+      "text_markdown": "영국에서 드레이크는 지구를 일주하고 무적함대를 물리친 사람으로 기억됩니다.",
+      "tts": {
+        "text": "영국에서 드레이크는 지구를 일주하고 무적함대를 물리친 사람으로 기억됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "플리머스와 다른 영국 도시에 그의 동상이 서 있습니다.",
+      "text_markdown": "플리머스와 다른 영국 도시에 그의 동상이 서 있습니다.",
+      "tts": {
+        "text": "플리머스와 다른 영국 도시에 그의 동상이 서 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "플리머스 사운드의 드레이크 섬은 그의 이름을 따왔습니다.",
+      "text_markdown": "플리머스 사운드의 드레이크 섬은 그의 이름을 따왔습니다.",
+      "tts": {
+        "text": "플리머스 사운드의 드레이크 섬은 그의 이름을 따왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 영국 해양 역사에서 가장 칭송받는 인물 중 한 명입니다.",
+      "text_markdown": "그는 영국 해양 역사에서 가장 칭송받는 인물 중 한 명입니다.",
+      "tts": {
+        "text": "그는 영국 해양 역사에서 가장 칭송받는 인물 중 한 명입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인과 라틴아메리카에서 드레이크에 대한 기억은 매우 다릅니다.",
+      "text_markdown": "스페인과 라틴아메리카에서 드레이크에 대한 기억은 매우 다릅니다.",
+      "tts": {
+        "text": "스페인과 라틴아메리카에서 드레이크에 대한 기억은 매우 다릅니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시를 불태우고 보물을 훔친 무자비한 해적으로 기억됩니다.",
+      "text_markdown": "도시를 불태우고 보물을 훔친 무자비한 해적으로 기억됩니다.",
+      "tts": {
+        "text": "도시를 불태우고 보물을 훔친 무자비한 해적으로 기억됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "파나마, 콜롬비아, 기타 국가에서 그는 식민지 폭력의 상징입니다.",
+      "text_markdown": "파나마, 콜롬비아, 기타 국가에서 그는 식민지 폭력의 상징입니다.",
+      "tts": {
+        "text": "파나마, 콜롬비아, 기타 국가에서 그는 식민지 폭력의 상징입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "엘 드라케라는 이름은 스페인어권 문화에서 여전히 무게를 지닙니다.",
+      "text_markdown": "엘 드라케라는 이름은 스페인어권 문화에서 여전히 무게를 지닙니다.",
+      "tts": {
+        "text": "엘 드라케라는 이름은 스페인어권 문화에서 여전히 무게를 지닙니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노예 무역에 대한 드레이크의 관여는 그의 기록에서 피할 수 없는 부분입니다.",
+      "text_markdown": "노예 무역에 대한 드레이크의 관여는 그의 기록에서 피할 수 없는 부분입니다.",
+      "tts": {
+        "text": "노예 무역에 대한 드레이크의 관여는 그의 기록에서 피할 수 없는 부분입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아프리카인을 납치하여 노예로 판 항해에 참여했습니다.",
+      "text_markdown": "아프리카인을 납치하여 노예로 판 항해에 참여했습니다.",
+      "tts": {
+        "text": "아프리카인을 납치하여 노예로 판 항해에 참여했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 경력의 이 측면은 영국의 영웅적 서사에서 종종 축소됩니다.",
+      "text_markdown": "그의 경력의 이 측면은 영국의 영웅적 서사에서 종종 축소됩니다.",
+      "tts": {
+        "text": "그의 경력의 이 측면은 영국의 영웅적 서사에서 종종 축소됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 이 인물과 그의 시대를 이해하는 데 핵심적입니다.",
+      "text_markdown": "그러나 이 인물과 그의 시대를 이해하는 데 핵심적입니다.",
+      "tts": {
+        "text": "그러나 이 인물과 그의 시대를 이해하는 데 핵심적입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남아메리카와 남극 대륙 사이의 위험한 해협인 드레이크 해협은 그의 이름을 따왔습니다.",
+      "text_markdown": "남아메리카와 남극 대륙 사이의 위험한 해협인 드레이크 해협은 그의 이름을 따왔습니다.",
+      "tts": {
+        "text": "남아메리카와 남극 대륙 사이의 위험한 해협인 드레이크 해협은 그의 이름을 따왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "캘리포니아의 드레이크스 베이는 노바 알비온 상륙 추정지를 표시합니다.",
+      "text_markdown": "캘리포니아의 드레이크스 베이는 노바 알비온 상륙 추정지를 표시합니다.",
+      "tts": {
+        "text": "캘리포니아의 드레이크스 베이는 노바 알비온 상륙 추정지를 표시합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전 세계의 지리적 특징들이 그의 이름을 따왔습니다.",
+      "text_markdown": "전 세계의 지리적 특징들이 그의 이름을 따왔습니다.",
+      "tts": {
+        "text": "전 세계의 지리적 특징들이 그의 이름을 따왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 오래 전해지는 전설 중 하나는 드레이크의 북의 이야기입니다.",
+      "text_markdown": "가장 오래 전해지는 전설 중 하나는 드레이크의 북의 이야기입니다.",
+      "tts": {
+        "text": "가장 오래 전해지는 전설 중 하나는 드레이크의 북의 이야기입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전통에 따르면, 영국이 위험에 처하면 드레이크의 북이 저절로 울린다고 합니다.",
+      "text_markdown": "전통에 따르면, 영국이 위험에 처하면 드레이크의 북이 저절로 울린다고 합니다.",
+      "tts": {
+        "text": "전통에 따르면, 영국이 위험에 처하면 드레이크의 북이 저절로 울린다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "버클랜드 수도원에 보관된 북은 주요 군사적 사건 전에 들렸다고 합니다.",
+      "text_markdown": "버클랜드 수도원에 보관된 북은 주요 군사적 사건 전에 들렸다고 합니다.",
+      "tts": {
+        "text": "버클랜드 수도원에 보관된 북은 주요 군사적 사건 전에 들렸다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 전설은 드레이크가 영국의 국가 정체성에 얼마나 깊이 엮여 있는지를 보여줍니다.",
+      "text_markdown": "이 전설은 드레이크가 영국의 국가 정체성에 얼마나 깊이 엮여 있는지를 보여줍니다.",
+      "tts": {
+        "text": "이 전설은 드레이크가 영국의 국가 정체성에 얼마나 깊이 엮여 있는지를 보여줍니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사략선과 해적 사이의 구분은 항상 정치적이었습니다.",
+      "text_markdown": "사략선과 해적 사이의 구분은 항상 정치적이었습니다.",
+      "tts": {
+        "text": "사략선과 해적 사이의 구분은 항상 정치적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "드레이크는 여왕으로부터 스페인 선박을 습격할 허가를 받았습니다.",
+      "text_markdown": "드레이크는 여왕으로부터 스페인 선박을 습격할 허가를 받았습니다.",
+      "tts": {
+        "text": "드레이크는 여왕으로부터 스페인 선박을 습격할 허가를 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국 관점에서 이것은 그를 합법적 해군 사령관으로 만들었습니다.",
+      "text_markdown": "영국 관점에서 이것은 그를 합법적 해군 사령관으로 만들었습니다.",
+      "tts": {
+        "text": "영국 관점에서 이것은 그를 합법적 해군 사령관으로 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인 관점에서 그는 왕관의 보호를 받는 평범한 도둑이었습니다.",
+      "text_markdown": "스페인 관점에서 그는 왕관의 보호를 받는 평범한 도둑이었습니다.",
+      "tts": {
+        "text": "스페인 관점에서 그는 왕관의 보호를 받는 평범한 도둑이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "부정할 수 없는 것은 그의 업적의 규모입니다.",
+      "text_markdown": "부정할 수 없는 것은 그의 업적의 규모입니다.",
+      "tts": {
+        "text": "부정할 수 없는 것은 그의 업적의 규모입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "현대 테니스 코트보다 길지 않은 목조선으로 지구 전체를 항해했습니다.",
+      "text_markdown": "현대 테니스 코트보다 길지 않은 목조선으로 지구 전체를 항해했습니다.",
+      "tts": {
+        "text": "현대 테니스 코트보다 길지 않은 목조선으로 지구 전체를 항해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지구상 가장 위대한 제국에 도전하고 살아서 이야기를 전했습니다.",
+      "text_markdown": "지구상 가장 위대한 제국에 도전하고 살아서 이야기를 전했습니다.",
+      "tts": {
+        "text": "지구상 가장 위대한 제국에 도전하고 살아서 이야기를 전했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "프랜시스 드레이크 경의 이야기는 세계가 그것을 횡단할 만큼 대담한 자의 것임을 증명합니다.",
+      "text_markdown": "프랜시스 드레이크 경의 이야기는 세계가 그것을 횡단할 만큼 대담한 자의 것임을 증명합니다.",
+      "tts": {
+        "text": "프랜시스 드레이크 경의 이야기는 세계가 그것을 횡단할 만큼 대담한 자의 것임을 증명합니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

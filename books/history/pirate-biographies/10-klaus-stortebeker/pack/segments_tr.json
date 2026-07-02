@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_klaus_stortebeker",
+  "language": "tr",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, başı kesildikten sonra bile yürümeye devam eden bir korsanın gerçek hikâyesidir.",
+      "text_markdown": "Bu, başı kesildikten sonra bile yürümeye devam eden bir korsanın gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, başı kesildikten sonra bile yürümeye devam eden bir korsanın gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Klaus Störtebeker'di ve 600 yıldan fazla bir süre önce Kuzey Avrupa denizlerinde terör estirmişti.",
+      "text_markdown": "Adı Klaus Störtebeker'di ve 600 yıldan fazla bir süre önce Kuzey Avrupa denizlerinde terör estirmişti.",
+      "tts": {
+        "text": "Adı Klaus Störtebeker'di ve altı yüz yıldan fazla bir süre önce Kuzey Avrupa denizlerinde terör estirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En azından efsane böyle söylüyor.",
+      "text_markdown": "En azından efsane böyle söylüyor.",
+      "tts": {
+        "text": "En azından efsane böyle söylüyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker, Alman folklorunun en ünlü figürlerinden biridir.",
+      "text_markdown": "Störtebeker, Alman folklorunun en ünlü figürlerinden biridir.",
+      "tts": {
+        "text": "Störtebeker, Alman folklorunun en ünlü figürlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hikâyesi savaş, korsanlık, ihanet ve efsaneye dönüşen bir infazı içerir.",
+      "text_markdown": "Hikâyesi savaş, korsanlık, ihanet ve efsaneye dönüşen bir infazı içerir.",
+      "tts": {
+        "text": "Hikâyesi savaş, korsanlık, ihanet ve efsaneye dönüşen bir infazı içerir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güçlü ticaret şehirlerinin kuzeyin ticaret yollarını kontrol ettiği bir dönemde yaşadı.",
+      "text_markdown": "Güçlü ticaret şehirlerinin kuzeyin ticaret yollarını kontrol ettiği bir dönemde yaşadı.",
+      "tts": {
+        "text": "Güçlü ticaret şehirlerinin kuzeyin ticaret yollarını kontrol ettiği bir dönemde yaşadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesinde gerçeği efsaneden ayırmak her zaman mümkün değildir.",
+      "text_markdown": "Hikâyesinde gerçeği efsaneden ayırmak her zaman mümkün değildir.",
+      "tts": {
+        "text": "Hikâyesinde gerçeği efsaneden ayırmak her zaman mümkün değildir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaşadığı dönemden çok az belge günümüze ulaşmıştır.",
+      "text_markdown": "Yaşadığı dönemden çok az belge günümüze ulaşmıştır.",
+      "tts": {
+        "text": "Yaşadığı dönemden çok az belge günümüze ulaşmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bildiklerimizin çoğu onlarca yıl veya yüzyıllar sonra yazılmış kroniklerden gelmektedir.",
+      "text_markdown": "Bildiklerimizin çoğu onlarca yıl veya yüzyıllar sonra yazılmış kroniklerden gelmektedir.",
+      "tts": {
+        "text": "Bildiklerimizin çoğu onlarca yıl veya yüzyıllar sonra yazılmış kroniklerden gelmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu kitap, kaynakların izin verdiği ölçüde dürüstçe onun hikâyesini anlatır.",
+      "text_markdown": "Bu kitap, kaynakların izin verdiği ölçüde dürüstçe onun hikâyesini anlatır.",
+      "tts": {
+        "text": "Bu kitap, kaynakların izin verdiği ölçüde dürüstçe onun hikâyesini anlatır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kuzey Denizlerinin Dünyası",
+      "text_markdown": "Kuzey Denizlerinin Dünyası"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker, 14. yüzyılın ikinci yarısında yaşadı.",
+      "text_markdown": "Klaus Störtebeker, 14. yüzyılın ikinci yarısında yaşadı.",
+      "tts": {
+        "text": "Klaus Störtebeker, bin üç yüzlü yılların ikinci yarısında yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, Avrupa tarihinde geç Orta Çağ dönemiydi.",
+      "text_markdown": "Bu, Avrupa tarihinde geç Orta Çağ dönemiydi.",
+      "tts": {
+        "text": "Bu, Avrupa tarihinde geç Orta Çağ dönemiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuzey Avrupa, Akdeniz güneyinden çok farklı bir yerdi.",
+      "text_markdown": "Kuzey Avrupa, Akdeniz güneyinden çok farklı bir yerdi.",
+      "tts": {
+        "text": "Kuzey Avrupa, Akdeniz güneyinden çok farklı bir yerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baltık Denizi ve Kuzey Denizi, kuzey ticaretinin ana yollarıydı.",
+      "text_markdown": "Baltık Denizi ve Kuzey Denizi, kuzey ticaretinin ana yollarıydı.",
+      "tts": {
+        "text": "Baltık Denizi ve Kuzey Denizi, kuzey ticaretinin ana yollarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemiler, İskandinavya, Rusya, İngiltere ve Alman kıyıları arasında mal taşıyordu.",
+      "text_markdown": "Gemiler, İskandinavya, Rusya, İngiltere ve Alman kıyıları arasında mal taşıyordu.",
+      "tts": {
+        "text": "Gemiler, İskandinavya, Rusya, İngiltere ve Alman kıyıları arasında mal taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz yollarını kontrol eden, muazzam bir serveti kontrol ediyordu.",
+      "text_markdown": "Deniz yollarını kontrol eden, muazzam bir serveti kontrol ediyordu.",
+      "tts": {
+        "text": "Deniz yollarını kontrol eden, muazzam bir serveti kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey ticaretindeki en güçlü kuvvet Hansa Birliği'ydi.",
+      "text_markdown": "Kuzey ticaretindeki en güçlü kuvvet Hansa Birliği'ydi.",
+      "tts": {
+        "text": "Kuzey ticaretindeki en güçlü kuvvet Hansa Birliği'ydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birlik, Kuzey Avrupa'ya yayılmış ticaret şehirlerinin bir konfederasyonuydu.",
+      "text_markdown": "Birlik, Kuzey Avrupa'ya yayılmış ticaret şehirlerinin bir konfederasyonuydu.",
+      "tts": {
+        "text": "Birlik, Kuzey Avrupa'ya yayılmış ticaret şehirlerinin bir konfederasyonuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir ülke ya da krallık değil, ticaret için iş birliği yapan şehirler ağıydı.",
+      "text_markdown": "Bir ülke ya da krallık değil, ticaret için iş birliği yapan şehirler ağıydı.",
+      "tts": {
+        "text": "Bir ülke ya da krallık değil, ticaret için iş birliği yapan şehirler ağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zirve döneminde Birlik yaklaşık iki yüz şehri kapsıyordu.",
+      "text_markdown": "Zirve döneminde Birlik yaklaşık iki yüz şehri kapsıyordu.",
+      "tts": {
+        "text": "Zirve döneminde Birlik yaklaşık iki yüz şehri kapsıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En önemli Hansa şehirleri Lübeck, Hamburg, Bremen, Rostock ve Danzig'di.",
+      "text_markdown": "En önemli Hansa şehirleri Lübeck, Hamburg, Bremen, Rostock ve Danzig'di.",
+      "tts": {
+        "text": "En önemli Hansa şehirleri Lübeck, Hamburg, Bremen, Rostock ve Danzig'di.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lübeck, Birliğin gayriresmî başkenti sayılıyordu.",
+      "text_markdown": "Lübeck, Birliğin gayriresmî başkenti sayılıyordu.",
+      "tts": {
+        "text": "Lübeck, Birliğin gayriresmî başkenti sayılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hamburg, Elbe Nehri üzerinden Kuzey Denizi'ne erişimi kontrol ediyordu.",
+      "text_markdown": "Hamburg, Elbe Nehri üzerinden Kuzey Denizi'ne erişimi kontrol ediyordu.",
+      "tts": {
+        "text": "Hamburg, Elbe Nehri üzerinden Kuzey Denizi'ne erişimi kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bremen, Kuzey Denizi'ndeki bir diğer büyük ticaret limanıydı.",
+      "text_markdown": "Bremen, Kuzey Denizi'ndeki bir diğer büyük ticaret limanıydı.",
+      "tts": {
+        "text": "Bremen, Kuzey Denizi'ndeki bir diğer büyük ticaret limanıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birlik, Rusya'dan kürkler, İskandinavya'dan kereste ve Prusya'dan tahıl ticareti yapıyordu.",
+      "text_markdown": "Birlik, Rusya'dan kürkler, İskandinavya'dan kereste ve Prusya'dan tahıl ticareti yapıyordu.",
+      "tts": {
+        "text": "Birlik, Rusya'dan kürkler, İskandinavya'dan kereste ve Prusya'dan tahıl ticareti yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baltık'tan tuzlanmış ringa balığı en önemli ticaret mallarından biriydi.",
+      "text_markdown": "Baltık'tan tuzlanmış ringa balığı en önemli ticaret mallarından biriydi.",
+      "tts": {
+        "text": "Baltık'tan tuzlanmış ringa balığı en önemli ticaret mallarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kehribar, balmumu ve bal, Doğu Baltık'tan batıya akıyordu.",
+      "text_markdown": "Kehribar, balmumu ve bal, Doğu Baltık'tan batıya akıyordu.",
+      "tts": {
+        "text": "Kehribar, balmumu ve bal, Doğu Baltık'tan batıya akıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Flandr ve İngiltere'den kumaşlar karşılığında doğuya gidiyordu.",
+      "text_markdown": "Flandr ve İngiltere'den kumaşlar karşılığında doğuya gidiyordu.",
+      "tts": {
+        "text": "Flandr ve İngiltere'den kumaşlar karşılığında doğuya gidiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hansa Birliği ticaret tekelini acımasızca uyguluyordu.",
+      "text_markdown": "Hansa Birliği ticaret tekelini acımasızca uyguluyordu.",
+      "tts": {
+        "text": "Hansa Birliği ticaret tekelini acımasızca uyguluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üye olmayan şehirler en kârlı rotalardan dışlanıyordu.",
+      "text_markdown": "Üye olmayan şehirler en kârlı rotalardan dışlanıyordu.",
+      "tts": {
+        "text": "Üye olmayan şehirler en kârlı rotalardan dışlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birlik, bütün bölgeleri dize getirecek ticaret ambargoları koyabilirdi.",
+      "text_markdown": "Birlik, bütün bölgeleri dize getirecek ticaret ambargoları koyabilirdi.",
+      "tts": {
+        "text": "Birlik, bütün bölgeleri dize getirecek ticaret ambargoları koyabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ticaret konvoylarını korumak için kendi deniz kuvvetlerini sürdürüyordu.",
+      "text_markdown": "Ticaret konvoylarını korumak için kendi deniz kuvvetlerini sürdürüyordu.",
+      "tts": {
+        "text": "Ticaret konvoylarını korumak için kendi deniz kuvvetlerini sürdürüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu savunmalara rağmen korsanlık kuzey denizlerinde sürekli bir sorundu.",
+      "text_markdown": "Bu savunmalara rağmen korsanlık kuzey denizlerinde sürekli bir sorundu.",
+      "tts": {
+        "text": "Bu savunmalara rağmen korsanlık kuzey denizlerinde sürekli bir sorundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baltık ve Kuzey Denizi kıyıları adalar ve koylarla doluydu.",
+      "text_markdown": "Baltık ve Kuzey Denizi kıyıları adalar ve koylarla doluydu.",
+      "tts": {
+        "text": "Baltık ve Kuzey Denizi kıyıları adalar ve koylarla doluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar, büyük savaş gemilerinin giremediği sığ sularda saklanabiliyordu.",
+      "text_markdown": "Korsanlar, büyük savaş gemilerinin giremediği sığ sularda saklanabiliyordu.",
+      "tts": {
+        "text": "Korsanlar, büyük savaş gemilerinin giremediği sığ sularda saklanabiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sisli hava ve kısa kış günleri ticaret gemilerine pusu kurmayı kolaylaştırıyordu.",
+      "text_markdown": "Sisli hava ve kısa kış günleri ticaret gemilerine pusu kurmayı kolaylaştırıyordu.",
+      "tts": {
+        "text": "Sisli hava ve kısa kış günleri ticaret gemilerine pusu kurmayı kolaylaştırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İskandinavya'daki siyasi durum son derece karmaşıktı.",
+      "text_markdown": "İskandinavya'daki siyasi durum son derece karmaşıktı.",
+      "tts": {
+        "text": "İskandinavya'daki siyasi durum son derece karmaşıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Danimarka, İsveç ve Norveç sürekli birbirleriyle savaşıyordu.",
+      "text_markdown": "Danimarka, İsveç ve Norveç sürekli birbirleriyle savaşıyordu.",
+      "tts": {
+        "text": "Danimarka, İsveç ve Norveç sürekli birbirleriyle savaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kraliçe I. Margrethe yönetiminde Danimarka baskın güçtü.",
+      "text_markdown": "Kraliçe I. Margrethe yönetiminde Danimarka baskın güçtü.",
+      "tts": {
+        "text": "Kraliçe I. Margrethe yönetiminde Danimarka baskın güçtü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Danimarka, Norveç ve İsveç'i bin üç yüz doksan yedide Kalmar Birliği altında birleştirdi.",
+      "text_markdown": "Danimarka, Norveç ve İsveç'i bin üç yüz doksan yedide Kalmar Birliği altında birleştirdi.",
+      "tts": {
+        "text": "Danimarka, Norveç ve İsveç'i bin üç yüz doksan yedide Kalmar Birliği altında birleştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kalmar Birliği'nden önce İsveç, Danimarka kontrolüne direnmişti.",
+      "text_markdown": "Kalmar Birliği'nden önce İsveç, Danimarka kontrolüne direnmişti.",
+      "tts": {
+        "text": "Kalmar Birliği'nden önce İsveç, Danimarka kontrolüne direnmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mecklenburg'lu Kral Albrecht İsveç'i yönetiyordu ama Danimarkalı Margrethe tarafından meydan okundu.",
+      "text_markdown": "Mecklenburg'lu Kral Albrecht İsveç'i yönetiyordu ama Danimarkalı Margrethe tarafından meydan okundu.",
+      "tts": {
+        "text": "Mecklenburg'lu Kral Albrecht İsveç'i yönetiyordu ama Danimarkalı Margrethe tarafından meydan okundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Margrethe, Albrecht'i yenip hapsetti.",
+      "text_markdown": "Margrethe, Albrecht'i yenip hapsetti.",
+      "tts": {
+        "text": "Margrethe, Albrecht'i yenip hapsetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alman şehri Rostock ve başka yerlerdeki Albrecht destekçileri karşılık verdi.",
+      "text_markdown": "Alman şehri Rostock ve başka yerlerdeki Albrecht destekçileri karşılık verdi.",
+      "tts": {
+        "text": "Alman şehri Rostock ve başka yerlerdeki Albrecht destekçileri karşılık verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Danimarka ile Albrecht'i destekleyen şehirler arasındaki bu savaş korsanlar için fırsat yarattı.",
+      "text_markdown": "Danimarka ile Albrecht'i destekleyen şehirler arasındaki bu savaş korsanlar için fırsat yarattı.",
+      "tts": {
+        "text": "Danimarka ile Albrecht'i destekleyen şehirler arasındaki bu savaş korsanlar için fırsat yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehirler, Danimarka deniz ticaretini bozmak ve kuşatılmış Stockholm'e erzak ulaştırmak için özel korsanlar tuttu.",
+      "text_markdown": "Şehirler, Danimarka deniz ticaretini bozmak ve kuşatılmış Stockholm'e erzak ulaştırmak için özel korsanlar tuttu.",
+      "tts": {
+        "text": "Şehirler, Danimarka deniz ticaretini bozmak ve kuşatılmış Stockholm'e erzak ulaştırmak için özel korsanlar tuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu korsanlara Vitaliyanlar adı verildi.",
+      "text_markdown": "Bu korsanlara Vitaliyanlar adı verildi.",
+      "tts": {
+        "text": "Bu korsanlara Vitaliyanlar adı verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Adları Latince yiyecek anlamına gelen kelimeden geliyordu, çünkü görevleri erzak taşımaktı.",
+      "text_markdown": "Adları Latince yiyecek anlamına gelen kelimeden geliyordu, çünkü görevleri erzak taşımaktı.",
+      "tts": {
+        "text": "Adları Latince yiyecek anlamına gelen kelimeden geliyordu, çünkü görevleri erzak taşımaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orta Çağ Alman şehir devletleri Avrupa'da benzersiz yapılardı.",
+      "text_markdown": "Orta Çağ Alman şehir devletleri Avrupa'da benzersiz yapılardı.",
+      "tts": {
+        "text": "Orta Çağ Alman şehir devletleri Avrupa'da benzersiz yapılardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Varlıklı tüccarların seçilmiş meclisleri tarafından bağımsız olarak yönetiliyordu.",
+      "text_markdown": "Varlıklı tüccarların seçilmiş meclisleri tarafından bağımsız olarak yönetiliyordu.",
+      "tts": {
+        "text": "Varlıklı tüccarların seçilmiş meclisleri tarafından bağımsız olarak yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendi kanunları, kendi milisleri ve kendi donanmaları vardı.",
+      "text_markdown": "Kendi kanunları, kendi milisleri ve kendi donanmaları vardı.",
+      "tts": {
+        "text": "Kendi kanunları, kendi milisleri ve kendi donanmaları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hiçbir krala ya da prense bağlılık borçlu değillerdi.",
+      "text_markdown": "Hiçbir krala ya da prense bağlılık borçlu değillerdi.",
+      "tts": {
+        "text": "Hiçbir krala ya da prense bağlılık borçlu değillerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker'in sonunda sonunu bulacağı Hamburg, bu gururlu şehirlerden biriydi.",
+      "text_markdown": "Störtebeker'in sonunda sonunu bulacağı Hamburg, bu gururlu şehirlerden biriydi.",
+      "tts": {
+        "text": "Störtebeker'in sonunda sonunu bulacağı Hamburg, bu gururlu şehirlerden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elbe Nehri üzerinde, Kuzey Denizi'nden yaklaşık yüz kilometre uzaklıkta yer alıyordu.",
+      "text_markdown": "Elbe Nehri üzerinde, Kuzey Denizi'nden yaklaşık yüz kilometre uzaklıkta yer alıyordu.",
+      "tts": {
+        "text": "Elbe Nehri üzerinde, Kuzey Denizi'nden yaklaşık yüz kilometre uzaklıkta yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hamburg tüccarları ticaretle zenginleşmiş ve servetlerini şiddetle korumuşlardı.",
+      "text_markdown": "Hamburg tüccarları ticaretle zenginleşmiş ve servetlerini şiddetle korumuşlardı.",
+      "tts": {
+        "text": "Hamburg tüccarları ticaretle zenginleşmiş ve servetlerini şiddetle korumuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz ticaretlerini tehdit eden kimseye tahammülleri yoktu.",
+      "text_markdown": "Deniz ticaretlerini tehdit eden kimseye tahammülleri yoktu.",
+      "tts": {
+        "text": "Deniz ticaretlerini tehdit eden kimseye tahammülleri yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker'i üreten dünya buydu.",
+      "text_markdown": "Klaus Störtebeker'i üreten dünya buydu.",
+      "tts": {
+        "text": "Klaus Störtebeker'i üreten dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüccar prenslerin, savaşan krallıkların ve tehlikeli denizlerin dünyasıydı.",
+      "text_markdown": "Tüccar prenslerin, savaşan krallıkların ve tehlikeli denizlerin dünyasıydı.",
+      "tts": {
+        "text": "Tüccar prenslerin, savaşan krallıkların ve tehlikeli denizlerin dünyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kuzey Denizlerinin Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Böyle bir dünyada hızlı bir gemiye sahip cesur bir adam ya kahraman ya da kötü adam olabilirdi.",
+      "text_markdown": "Böyle bir dünyada hızlı bir gemiye sahip cesur bir adam ya kahraman ya da kötü adam olabilirdi.",
+      "tts": {
+        "text": "Böyle bir dünyada hızlı bir gemiye sahip cesur bir adam ya kahraman ya da kötü adam olabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker 1360 civarında doğdu.",
+      "text_markdown": "Klaus Störtebeker 1360 civarında doğdu.",
+      "tts": {
+        "text": "Klaus Störtebeker bin üç yüz altmış civarında doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğduğu yer kesin olarak bilinmiyor.",
+      "text_markdown": "Doğduğu yer kesin olarak bilinmiyor.",
+      "tts": {
+        "text": "Doğduğu yer kesin olarak bilinmiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı tarihçiler onun Baltık kıyısındaki bir Hansa limanı olan Wismar'dan geldiğine inanıyor.",
+      "text_markdown": "Bazı tarihçiler onun Baltık kıyısındaki bir Hansa limanı olan Wismar'dan geldiğine inanıyor.",
+      "tts": {
+        "text": "Bazı tarihçiler onun Baltık kıyısındaki bir Hansa limanı olan Wismar'dan geldiğine inanıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gerçek adı Nikolaus Storzenbecher olabilir.",
+      "text_markdown": "Gerçek adı Nikolaus Storzenbecher olabilir.",
+      "tts": {
+        "text": "Gerçek adı Nikolaus Storzenbecher olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Störtebeker adı Aşağı Almanca'da bir lakaptır.",
+      "text_markdown": "Störtebeker adı Aşağı Almanca'da bir lakaptır.",
+      "tts": {
+        "text": "Störtebeker adı Aşağı Almanca'da bir lakaptır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kupayı devirmeye veya bardağı boşaltmaya benzer bir anlama gelir.",
+      "text_markdown": "Kupayı devirmeye veya bardağı boşaltmaya benzer bir anlama gelir.",
+      "tts": {
+        "text": "Kupayı devirmeye veya bardağı boşaltmaya benzer bir anlama gelir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efsaneye göre Störtebeker, 4 litrelik bir bira kupasını tek dikişte bitirebilirdi.",
+      "text_markdown": "Efsaneye göre Störtebeker, 4 litrelik bir bira kupasını tek dikişte bitirebilirdi.",
+      "tts": {
+        "text": "Efsaneye göre Störtebeker, dört litrelik bir bira kupasını tek dikişte bitirebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğru olsun ya da abartı, lakap yapıştı.",
+      "text_markdown": "Doğru olsun ya da abartı, lakap yapıştı.",
+      "tts": {
+        "text": "Doğru olsun ya da abartı, lakap yapıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Etkileyici bir fiziksel güce ve iştaha sahip bir adamı akla getiriyor.",
+      "text_markdown": "Etkileyici bir fiziksel güce ve iştaha sahip bir adamı akla getiriyor.",
+      "tts": {
+        "text": "Etkileyici bir fiziksel güce ve iştaha sahip bir adamı akla getiriyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker'in çocukluğu veya ailesi hakkında neredeyse hiçbir şey bilinmiyor.",
+      "text_markdown": "Störtebeker'in çocukluğu veya ailesi hakkında neredeyse hiçbir şey bilinmiyor.",
+      "tts": {
+        "text": "Störtebeker'in çocukluğu veya ailesi hakkında neredeyse hiçbir şey bilinmiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sıradan insanlara ait Orta Çağ kayıtları son derece azdır.",
+      "text_markdown": "Sıradan insanlara ait Orta Çağ kayıtları son derece azdır.",
+      "tts": {
+        "text": "Sıradan insanlara ait Orta Çağ kayıtları son derece azdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizci veya balıkçı bir aileden gelmiş olabilir.",
+      "text_markdown": "Denizci veya balıkçı bir aileden gelmiş olabilir.",
+      "tts": {
+        "text": "Denizci veya balıkçı bir aileden gelmiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daha varlıklı bir çevreden de gelmiş olabilir.",
+      "text_markdown": "Daha varlıklı bir çevreden de gelmiş olabilir.",
+      "tts": {
+        "text": "Daha varlıklı bir çevreden de gelmiş olabilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bildiğimiz şey, Vitaliyanlar'a katıldığıdır.",
+      "text_markdown": "Bildiğimiz şey, Vitaliyanlar'a katıldığıdır.",
+      "tts": {
+        "text": "Bildiğimiz şey, Vitaliyanlar'a katıldığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vitaliyanlar başlangıçta meşru bir askeri görevle donatılmış özel korsanlardı.",
+      "text_markdown": "Vitaliyanlar başlangıçta meşru bir askeri görevle donatılmış özel korsanlardı.",
+      "tts": {
+        "text": "Vitaliyanlar başlangıçta meşru bir askeri görevle donatılmış özel korsanlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stockholm'ün Danimarka ablukasını kırmak için tutulmuşlardı.",
+      "text_markdown": "Stockholm'ün Danimarka ablukasını kırmak için tutulmuşlardı.",
+      "tts": {
+        "text": "Stockholm'ün Danimarka ablukasını kırmak için tutulmuşlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İsveç'in başkenti Stockholm, Danimarka kuvvetleri tarafından kuşatılmıştı.",
+      "text_markdown": "İsveç'in başkenti Stockholm, Danimarka kuvvetleri tarafından kuşatılmıştı.",
+      "tts": {
+        "text": "İsveç'in başkenti Stockholm, Danimarka kuvvetleri tarafından kuşatılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Danimarkalı Kraliçe Margrethe, İsveç'i kendi kontrolüne almak istiyordu.",
+      "text_markdown": "Danimarkalı Kraliçe Margrethe, İsveç'i kendi kontrolüne almak istiyordu.",
+      "tts": {
+        "text": "Danimarkalı Kraliçe Margrethe, İsveç'i kendi kontrolüne almak istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir açlıktan kırılıyordu ve savunucuları umutsuzca erzak ihtiyacındaydı.",
+      "text_markdown": "Şehir açlıktan kırılıyordu ve savunucuları umutsuzca erzak ihtiyacındaydı.",
+      "tts": {
+        "text": "Şehir açlıktan kırılıyordu ve savunucuları umutsuzca erzak ihtiyacındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mecklenburg'lu Kral Albrecht'i destekleyen şehirler bir yardım seferi düzenledi.",
+      "text_markdown": "Mecklenburg'lu Kral Albrecht'i destekleyen şehirler bir yardım seferi düzenledi.",
+      "tts": {
+        "text": "Mecklenburg'lu Kral Albrecht'i destekleyen şehirler bir yardım seferi düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanları Danimarka donanmasını aşıp Stockholm'e yiyecek götürmekle görevlendirdiler.",
+      "text_markdown": "Korsanları Danimarka donanmasını aşıp Stockholm'e yiyecek götürmekle görevlendirdiler.",
+      "tts": {
+        "text": "Korsanları Danimarka donanmasını aşıp Stockholm'e yiyecek götürmekle görevlendirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu korsanlar, Danimarka gemilerine yaptıkları baskınları yasallaştıran korsan belgeleri aldı.",
+      "text_markdown": "Bu korsanlar, Danimarka gemilerine yaptıkları baskınları yasallaştıran korsan belgeleri aldı.",
+      "tts": {
+        "text": "Bu korsanlar, Danimarka gemilerine yaptıkları baskınları yasallaştıran korsan belgeleri aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vitaliyanlar böyle ortaya çıktı.",
+      "text_markdown": "Vitaliyanlar böyle ortaya çıktı.",
+      "tts": {
+        "text": "Vitaliyanlar böyle ortaya çıktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vitaliyanlar görevlerinde etkiliydi.",
+      "text_markdown": "Vitaliyanlar görevlerinde etkiliydi.",
+      "tts": {
+        "text": "Vitaliyanlar görevlerinde etkiliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Danimarka ablukasını kırıp aç şehre yiyecek getirdiler.",
+      "text_markdown": "Danimarka ablukasını kırıp aç şehre yiyecek getirdiler.",
+      "tts": {
+        "text": "Danimarka ablukasını kırıp aç şehre yiyecek getirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Danimarka ve Norveç ticaret gemilerine de büyük başarıyla saldırdılar.",
+      "text_markdown": "Danimarka ve Norveç ticaret gemilerine de büyük başarıyla saldırdılar.",
+      "tts": {
+        "text": "Danimarka ve Norveç ticaret gemilerine de büyük başarıyla saldırdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mürettebatlar ele geçirdikleri ganimetle zenginleşti.",
+      "text_markdown": "Mürettebatlar ele geçirdikleri ganimetle zenginleşti.",
+      "tts": {
+        "text": "Mürettebatlar ele geçirdikleri ganimetle zenginleşti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Görev her türden insanı cezbetti.",
+      "text_markdown": "Görev her türden insanı cezbetti.",
+      "tts": {
+        "text": "Görev her türden insanı cezbetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları deneyimli denizciler ve askerlerdi.",
+      "text_markdown": "Bazıları deneyimli denizciler ve askerlerdi.",
+      "tts": {
+        "text": "Bazıları deneyimli denizciler ve askerlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri maceracılar, kanun kaçakları ya da borçtan veya adaletten kaçan insanlardı.",
+      "text_markdown": "Diğerleri maceracılar, kanun kaçakları ya da borçtan veya adaletten kaçan insanlardı.",
+      "tts": {
+        "text": "Diğerleri maceracılar, kanun kaçakları ya da borçtan veya adaletten kaçan insanlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vitaliyanlar, denizde servet ve özgürlük arayan herkes için bir mıknatıs oldu.",
+      "text_markdown": "Vitaliyanlar, denizde servet ve özgürlük arayan herkes için bir mıknatıs oldu.",
+      "tts": {
+        "text": "Vitaliyanlar, denizde servet ve özgürlük arayan herkes için bir mıknatıs oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker, grup içinde hızla liderlik konumuna yükseldi.",
+      "text_markdown": "Störtebeker, grup içinde hızla liderlik konumuna yükseldi.",
+      "tts": {
+        "text": "Störtebeker, grup içinde hızla liderlik konumuna yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yükselişinin kesin ayrıntıları tarihte kaybolmuştur.",
+      "text_markdown": "Yükselişinin kesin ayrıntıları tarihte kaybolmuştur.",
+      "tts": {
+        "text": "Yükselişinin kesin ayrıntıları tarihte kaybolmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Usta bir denizci, azılı bir savaşçı ve doğuştan bir lider olmalıydı.",
+      "text_markdown": "Usta bir denizci, azılı bir savaşçı ve doğuştan bir lider olmalıydı.",
+      "tts": {
+        "text": "Usta bir denizci, azılı bir savaşçı ve doğuştan bir lider olmalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaş sona erdiğinde, en önde gelen Vitaliyanlar'dan biriydi.",
+      "text_markdown": "Savaş sona erdiğinde, en önde gelen Vitaliyanlar'dan biriydi.",
+      "tts": {
+        "text": "Savaş sona erdiğinde, en önde gelen Vitaliyanlar'dan biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş fiilen 1395'te Kral Albrecht'in esaretten serbest bırakılmasıyla sona erdi.",
+      "text_markdown": "Savaş fiilen 1395'te Kral Albrecht'in esaretten serbest bırakılmasıyla sona erdi.",
+      "tts": {
+        "text": "Savaş fiilen bin üç yüz doksan beşte Kral Albrecht'in esaretten serbest bırakılmasıyla sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaşan taraflar arasında barış anlaşması yapıldı.",
+      "text_markdown": "Savaşan taraflar arasında barış anlaşması yapıldı.",
+      "tts": {
+        "text": "Savaşan taraflar arasında barış anlaşması yapıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vitaliyanlar'ı yetkilendiren korsan belgeleri iptal edildi.",
+      "text_markdown": "Vitaliyanlar'ı yetkilendiren korsan belgeleri iptal edildi.",
+      "tts": {
+        "text": "Vitaliyanlar'ı yetkilendiren korsan belgeleri iptal edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama Vitaliyanlar'ın durma niyeti yoktu.",
+      "text_markdown": "Ama Vitaliyanlar'ın durma niyeti yoktu.",
+      "tts": {
+        "text": "Ama Vitaliyanlar'ın durma niyeti yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Açık denizde zenginlik ve özgürlüğün tadını almışlardı.",
+      "text_markdown": "Açık denizde zenginlik ve özgürlüğün tadını almışlardı.",
+      "tts": {
+        "text": "Açık denizde zenginlik ve özgürlüğün tadını almışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kılıçla yaşamış adamlar için sıradan hayata dönmek cazip değildi.",
+      "text_markdown": "Kılıçla yaşamış adamlar için sıradan hayata dönmek cazip değildi.",
+      "tts": {
+        "text": "Kılıçla yaşamış adamlar için sıradan hayata dönmek cazip değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yağmalamaya devam ettiler, ama artık korsandılar, özel değil.",
+      "text_markdown": "Yağmalamaya devam ettiler, ama artık korsandılar, özel değil.",
+      "tts": {
+        "text": "Yağmalamaya devam ettiler, ama artık korsandılar, özel değil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efsaneye göre sloganları cesur ve meydan okuyucuydu.",
+      "text_markdown": "Efsaneye göre sloganları cesur ve meydan okuyucuydu.",
+      "tts": {
+        "text": "Efsaneye göre sloganları cesur ve meydan okuyucuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendilerini Tanrı'nın dostları ve dünyanın düşmanları ilan ettiler.",
+      "text_markdown": "Kendilerini Tanrı'nın dostları ve dünyanın düşmanları ilan ettiler.",
+      "tts": {
+        "text": "Kendilerini Tanrı'nın dostları ve dünyanın düşmanları ilan ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu ifade, kanun dışı kimliklerini mükemmel şekilde yakalıyordu.",
+      "text_markdown": "Bu ifade, kanun dışı kimliklerini mükemmel şekilde yakalıyordu.",
+      "tts": {
+        "text": "Bu ifade, kanun dışı kimliklerini mükemmel şekilde yakalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hiçbir krala, hiçbir şehre ve hiçbir yasaya boyun eğmediler.",
+      "text_markdown": "Hiçbir krala, hiçbir şehre ve hiçbir yasaya boyun eğmediler.",
+      "tts": {
+        "text": "Hiçbir krala, hiçbir şehre ve hiçbir yasaya boyun eğmediler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orta Çağ denizcileri fırtınaların ve düşman gemilerin ötesinde tehlikelerle yüzleşiyordu.",
+      "text_markdown": "Orta Çağ denizcileri fırtınaların ve düşman gemilerin ötesinde tehlikelerle yüzleşiyordu.",
+      "tts": {
+        "text": "Orta Çağ denizcileri fırtınaların ve düşman gemilerin ötesinde tehlikelerle yüzleşiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hastalık ve yetersiz beslenme uzun yolculuklarda sürekli yol arkadaşıydı.",
+      "text_markdown": "Hastalık ve yetersiz beslenme uzun yolculuklarda sürekli yol arkadaşıydı.",
+      "tts": {
+        "text": "Hastalık ve yetersiz beslenme uzun yolculuklarda sürekli yol arkadaşıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vitaliyanlar'a katılan biri zor ve çoğu zaman kısa bir yaşamı seçiyordu.",
+      "text_markdown": "Vitaliyanlar'a katılan biri zor ve çoğu zaman kısa bir yaşamı seçiyordu.",
+      "tts": {
+        "text": "Vitaliyanlar'a katılan biri zor ve çoğu zaman kısa bir yaşamı seçiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İktidara Yükseliş",
+      "text_markdown": "İktidara Yükseliş"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş sona erdikten sonra Vitaliyanlar'ın bir üsse ihtiyacı vardı.",
+      "text_markdown": "Savaş sona erdikten sonra Vitaliyanlar'ın bir üsse ihtiyacı vardı.",
+      "tts": {
+        "text": "Savaş sona erdikten sonra Vitaliyanlar'ın bir üsse ihtiyacı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baltık Denizi'ndeki Gotland Adası'nı ele geçirdiler.",
+      "text_markdown": "Baltık Denizi'ndeki Gotland Adası'nı ele geçirdiler.",
+      "tts": {
+        "text": "Baltık Denizi'ndeki Gotland Adası'nı ele geçirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gotland, İsveç ile Baltık kıyısı arasında stratejik konuma sahip büyük bir adaydı.",
+      "text_markdown": "Gotland, İsveç ile Baltık kıyısı arasında stratejik konuma sahip büyük bir adaydı.",
+      "tts": {
+        "text": "Gotland, İsveç ile Baltık kıyısı arasında stratejik konuma sahip büyük bir adaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gotland'daki Visby şehri bir zamanlar zengin bir Hansa ticaret merkeziydi.",
+      "text_markdown": "Gotland'daki Visby şehri bir zamanlar zengin bir Hansa ticaret merkeziydi.",
+      "tts": {
+        "text": "Gotland'daki Visby şehri bir zamanlar zengin bir Hansa ticaret merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar geldiğinde eski ihtişamından düşmüştü.",
+      "text_markdown": "Korsanlar geldiğinde eski ihtişamından düşmüştü.",
+      "tts": {
+        "text": "Korsanlar geldiğinde eski ihtişamından düşmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vitaliyanlar adayı kalelerine dönüştürdüler.",
+      "text_markdown": "Vitaliyanlar adayı kalelerine dönüştürdüler.",
+      "tts": {
+        "text": "Vitaliyanlar adayı kalelerine dönüştürdüler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gotland'dan Baltık'ın her yönüne giden gemilere saldırabiliyorlardı.",
+      "text_markdown": "Gotland'dan Baltık'ın her yönüne giden gemilere saldırabiliyorlardı.",
+      "tts": {
+        "text": "Gotland'dan Baltık'ın her yönüne giden gemilere saldırabiliyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker ve mürettebatları Lübeck, Hamburg ve diğer Hansa şehirlerinin ticaret gemilerine saldırdı.",
+      "text_markdown": "Störtebeker ve mürettebatları Lübeck, Hamburg ve diğer Hansa şehirlerinin ticaret gemilerine saldırdı.",
+      "tts": {
+        "text": "Störtebeker ve mürettebatları Lübeck, Hamburg ve diğer Hansa şehirlerinin ticaret gemilerine saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tahıl, kumaş, tuz ve lüks malların yüklerini ele geçirdiler.",
+      "text_markdown": "Tahıl, kumaş, tuz ve lüks malların yüklerini ele geçirdiler.",
+      "tts": {
+        "text": "Tahıl, kumaş, tuz ve lüks malların yüklerini ele geçirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birliğin nesiller boyunca sürdürdüğü ticaret yollarını aksattılar.",
+      "text_markdown": "Birliğin nesiller boyunca sürdürdüğü ticaret yollarını aksattılar.",
+      "tts": {
+        "text": "Birliğin nesiller boyunca sürdürdüğü ticaret yollarını aksattılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ekonomik hasar muazzamdı.",
+      "text_markdown": "Ekonomik hasar muazzamdı.",
+      "tts": {
+        "text": "Ekonomik hasar muazzamdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hansa Birliği öfkeliydi ama etkili karşılık vermekte zorlanıyordu.",
+      "text_markdown": "Hansa Birliği öfkeliydi ama etkili karşılık vermekte zorlanıyordu.",
+      "tts": {
+        "text": "Hansa Birliği öfkeliydi ama etkili karşılık vermekte zorlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birlik bir ticaret ittifakıydı, birleşik bir askeri güç değil.",
+      "text_markdown": "Birlik bir ticaret ittifakıydı, birleşik bir askeri güç değil.",
+      "tts": {
+        "text": "Birlik bir ticaret ittifakıydı, birleşik bir askeri güç değil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ortak bir deniz seferi düzenlemek birçok bağımsız şehrin anlaşmasını gerektiriyordu.",
+      "text_markdown": "Ortak bir deniz seferi düzenlemek birçok bağımsız şehrin anlaşmasını gerektiriyordu.",
+      "tts": {
+        "text": "Ortak bir deniz seferi düzenlemek birçok bağımsız şehrin anlaşmasını gerektiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu zaman alıyordu ve bu arada korsanlar baskınlarına devam ediyordu.",
+      "text_markdown": "Bu zaman alıyordu ve bu arada korsanlar baskınlarına devam ediyordu.",
+      "tts": {
+        "text": "Bu zaman alıyordu ve bu arada korsanlar baskınlarına devam ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gotland korsanları sadece ticaret gemilerine saldırmadı.",
+      "text_markdown": "Gotland korsanları sadece ticaret gemilerine saldırmadı.",
+      "tts": {
+        "text": "Gotland korsanları sadece ticaret gemilerine saldırmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kıyı kasabalarına ve balıkçı köylerine de baskın düzenlediler.",
+      "text_markdown": "Kıyı kasabalarına ve balıkçı köylerine de baskın düzenlediler.",
+      "tts": {
+        "text": "Kıyı kasabalarına ve balıkçı köylerine de baskın düzenlediler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fidye için insan kaçırdılar ve direnen yerleşimleri yaktılar.",
+      "text_markdown": "Fidye için insan kaçırdılar ve direnen yerleşimleri yaktılar.",
+      "tts": {
+        "text": "Fidye için insan kaçırdılar ve direnen yerleşimleri yaktılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vitaliyanlar korkusu tüm Baltık bölgesine yayıldı.",
+      "text_markdown": "Vitaliyanlar korkusu tüm Baltık bölgesine yayıldı.",
+      "tts": {
+        "text": "Vitaliyanlar korkusu tüm Baltık bölgesine yayıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker, Vitaliyanlar'ın en ünlüsü ve en çok korkulanı oldu.",
+      "text_markdown": "Störtebeker, Vitaliyanlar'ın en ünlüsü ve en çok korkulanı oldu.",
+      "tts": {
+        "text": "Störtebeker, Vitaliyanlar'ın en ünlüsü ve en çok korkulanı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Novgorod'dan Bergen'e kadar limanlarda dehşetle anılıyordu.",
+      "text_markdown": "Adı Novgorod'dan Bergen'e kadar limanlarda dehşetle anılıyordu.",
+      "tts": {
+        "text": "Adı Novgorod'dan Bergen'e kadar limanlarda dehşetle anılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Genel lider mi yoksa sadece en kötü şöhretli kaptan mı olduğu belirsizdir.",
+      "text_markdown": "Genel lider mi yoksa sadece en kötü şöhretli kaptan mı olduğu belirsizdir.",
+      "tts": {
+        "text": "Genel lider mi yoksa sadece en kötü şöhretli kaptan mı olduğu belirsizdir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Orta Çağ kronikleri başka liderleri de anmaktadır.",
+      "text_markdown": "Orta Çağ kronikleri başka liderleri de anmaktadır.",
+      "tts": {
+        "text": "Orta Çağ kronikleri başka liderleri de anmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Önemli bir müttefik, bir diğer önde gelen Vitaliyan olan Gödeke Michels'ti.",
+      "text_markdown": "Önemli bir müttefik, bir diğer önde gelen Vitaliyan olan Gödeke Michels'ti.",
+      "tts": {
+        "text": "Önemli bir müttefik, bir diğer önde gelen Vitaliyan olan Gödeke Michels'ti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Michels bağımsız hareket ediyordu ama büyük baskınlarda Störtebeker'le iş birliği yapıyordu.",
+      "text_markdown": "Michels bağımsız hareket ediyordu ama büyük baskınlarda Störtebeker'le iş birliği yapıyordu.",
+      "tts": {
+        "text": "Michels bağımsız hareket ediyordu ama büyük baskınlarda Störtebeker'le iş birliği yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birlikte önemli bir korsan filosu komuta ediyorlardı.",
+      "text_markdown": "Birlikte önemli bir korsan filosu komuta ediyorlardı.",
+      "tts": {
+        "text": "Birlikte önemli bir korsan filosu komuta ediyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Töton Şövalyeleri sonunda Gotland'daki korsanlara karşı harekete geçmeye karar verdi.",
+      "text_markdown": "Töton Şövalyeleri sonunda Gotland'daki korsanlara karşı harekete geçmeye karar verdi.",
+      "tts": {
+        "text": "Töton Şövalyeleri sonunda Gotland'daki korsanlara karşı harekete geçmeye karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Töton Şövalyeleri, Prusya merkezli güçlü bir askeri tarikattı.",
+      "text_markdown": "Töton Şövalyeleri, Prusya merkezli güçlü bir askeri tarikattı.",
+      "tts": {
+        "text": "Töton Şövalyeleri, Prusya merkezli güçlü bir askeri tarikattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Doğu Baltık kıyısı boyunca geniş toprakları kontrol ediyorlardı.",
+      "text_markdown": "Doğu Baltık kıyısı boyunca geniş toprakları kontrol ediyorlardı.",
+      "tts": {
+        "text": "Doğu Baltık kıyısı boyunca geniş toprakları kontrol ediyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanların baskınları onların çıkarlarını da tehdit ediyordu.",
+      "text_markdown": "Korsanların baskınları onların çıkarlarını da tehdit ediyordu.",
+      "tts": {
+        "text": "Korsanların baskınları onların çıkarlarını da tehdit ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1398'de Töton Şövalyeleri Gotland'a istila başlattı.",
+      "text_markdown": "1398'de Töton Şövalyeleri Gotland'a istila başlattı.",
+      "tts": {
+        "text": "Bin üç yüz doksan sekizde Töton Şövalyeleri Gotland'a istila başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ezici güçle saldırıp adayı ele geçirdiler.",
+      "text_markdown": "Ezici güçle saldırıp adayı ele geçirdiler.",
+      "tts": {
+        "text": "Ezici güçle saldırıp adayı ele geçirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok korsan öldürüldü veya yakalandı.",
+      "text_markdown": "Birçok korsan öldürüldü veya yakalandı.",
+      "tts": {
+        "text": "Birçok korsan öldürüldü veya yakalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Störtebeker aralarında değildi.",
+      "text_markdown": "Ama Störtebeker aralarında değildi.",
+      "tts": {
+        "text": "Ama Störtebeker aralarında değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker ve birçok takipçisi ada düşmeden önce kaçtı.",
+      "text_markdown": "Störtebeker ve birçok takipçisi ada düşmeden önce kaçtı.",
+      "tts": {
+        "text": "Störtebeker ve birçok takipçisi ada düşmeden önce kaçtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Batıya doğru yelken açıp Baltık Denizi'ni geride bıraktılar.",
+      "text_markdown": "Batıya doğru yelken açıp Baltık Denizi'ni geride bıraktılar.",
+      "tts": {
+        "text": "Batıya doğru yelken açıp Baltık Denizi'ni geride bıraktılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Operasyonlarını Kuzey Denizi'ne taşıdılar.",
+      "text_markdown": "Operasyonlarını Kuzey Denizi'ne taşıdılar.",
+      "tts": {
+        "text": "Operasyonlarını Kuzey Denizi'ne taşıdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan kariyerlerinin yeni bir aşaması başlıyordu.",
+      "text_markdown": "Korsan kariyerlerinin yeni bir aşaması başlıyordu.",
+      "tts": {
+        "text": "Korsan kariyerlerinin yeni bir aşaması başlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker, Doğu Frizya kıyısı boyunca yeni bir üs kurdu.",
+      "text_markdown": "Störtebeker, Doğu Frizya kıyısı boyunca yeni bir üs kurdu.",
+      "tts": {
+        "text": "Störtebeker, Doğu Frizya kıyısı boyunca yeni bir üs kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğu Frizya bataklıklar, adalar ve küçük bağımsız topraklardan oluşan bir bölgeydi.",
+      "text_markdown": "Doğu Frizya bataklıklar, adalar ve küçük bağımsız topraklardan oluşan bir bölgeydi.",
+      "tts": {
+        "text": "Doğu Frizya bataklıklar, adalar ve küçük bağımsız topraklardan oluşan bir bölgeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Frizya kıyısını tek bir otorite kontrol etmiyordu.",
+      "text_markdown": "Frizya kıyısını tek bir otorite kontrol etmiyordu.",
+      "tts": {
+        "text": "Frizya kıyısını tek bir otorite kontrol etmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu siyasi parçalanmışlık onu korsanlar için ideal bir sığınak yapıyordu.",
+      "text_markdown": "Bu siyasi parçalanmışlık onu korsanlar için ideal bir sığınak yapıyordu.",
+      "tts": {
+        "text": "Bu siyasi parçalanmışlık onu korsanlar için ideal bir sığınak yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Emden ve Marienhafe şehirleri Störtebeker'in filosu için önemli üsler oldu.",
+      "text_markdown": "Emden ve Marienhafe şehirleri Störtebeker'in filosu için önemli üsler oldu.",
+      "tts": {
+        "text": "Emden ve Marienhafe şehirleri Störtebeker'in filosu için önemli üsler oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yerel Frizya şefleri korsanları hoş görüyor ya da aktif olarak destekliyordu.",
+      "text_markdown": "Yerel Frizya şefleri korsanları hoş görüyor ya da aktif olarak destekliyordu.",
+      "tts": {
+        "text": "Yerel Frizya şefleri korsanları hoş görüyor ya da aktif olarak destekliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar yerel pazarlarda para harcıyordu, bu da Frizya ekonomisine iyi geliyordu.",
+      "text_markdown": "Korsanlar yerel pazarlarda para harcıyordu, bu da Frizya ekonomisine iyi geliyordu.",
+      "tts": {
+        "text": "Korsanlar yerel pazarlarda para harcıyordu, bu da Frizya ekonomisine iyi geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı şefler güvenli liman karşılığında ganimetin bir payını alıyordu.",
+      "text_markdown": "Bazı şefler güvenli liman karşılığında ganimetin bir payını alıyordu.",
+      "tts": {
+        "text": "Bazı şefler güvenli liman karşılığında ganimetin bir payını alıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doğu Frizya'dan Störtebeker'in gemileri Kuzey Denizi deniz yollarına saldırabiliyordu.",
+      "text_markdown": "Doğu Frizya'dan Störtebeker'in gemileri Kuzey Denizi deniz yollarına saldırabiliyordu.",
+      "tts": {
+        "text": "Doğu Frizya'dan Störtebeker'in gemileri Kuzey Denizi deniz yollarına saldırabiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere, Flandr ve Hansa limanları arasında seyreden gemilere saldırdılar.",
+      "text_markdown": "İngiltere, Flandr ve Hansa limanları arasında seyreden gemilere saldırdılar.",
+      "tts": {
+        "text": "İngiltere, Flandr ve Hansa limanları arasında seyreden gemilere saldırdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baltık'tan Kuzey Denizi'ne geçiş, faaliyet alanlarını çarpıcı biçimde genişletti.",
+      "text_markdown": "Baltık'tan Kuzey Denizi'ne geçiş, faaliyet alanlarını çarpıcı biçimde genişletti.",
+      "tts": {
+        "text": "Baltık'tan Kuzey Denizi'ne geçiş, faaliyet alanlarını çarpıcı biçimde genişletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuzey denizlerinde hiçbir ticaret gemisi güvende değildi.",
+      "text_markdown": "Kuzey denizlerinde hiçbir ticaret gemisi güvende değildi.",
+      "tts": {
+        "text": "Kuzey denizlerinde hiçbir ticaret gemisi güvende değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hansa Birliği artık aynı anda iki denizde korsan saldırılarıyla karşı karşıyaydı.",
+      "text_markdown": "Hansa Birliği artık aynı anda iki denizde korsan saldırılarıyla karşı karşıyaydı.",
+      "tts": {
+        "text": "Hansa Birliği artık aynı anda iki denizde korsan saldırılarıyla karşı karşıyaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baltık'ta kalan Vitaliyanlar oradaki baskınlarını sürdürdü.",
+      "text_markdown": "Baltık'ta kalan Vitaliyanlar oradaki baskınlarını sürdürdü.",
+      "tts": {
+        "text": "Baltık'ta kalan Vitaliyanlar oradaki baskınlarını sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Störtebeker'in grubu Kuzey Denizi'ni dehşete düşürüyordu.",
+      "text_markdown": "Störtebeker'in grubu Kuzey Denizi'ni dehşete düşürüyordu.",
+      "tts": {
+        "text": "Störtebeker'in grubu Kuzey Denizi'ni dehşete düşürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birliğin ticareti her iki yönden boğuluyordu.",
+      "text_markdown": "Birliğin ticareti her iki yönden boğuluyordu.",
+      "tts": {
+        "text": "Birliğin ticareti her iki yönden boğuluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vitaliyanlar basit ama etkili bir baskın stratejisi kullanıyordu.",
+      "text_markdown": "Vitaliyanlar basit ama etkili bir baskın stratejisi kullanıyordu.",
+      "tts": {
+        "text": "Vitaliyanlar basit ama etkili bir baskın stratejisi kullanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bilinen deniz yollarının yakınındaki korunaklı koylarda bekliyorlardı.",
+      "text_markdown": "Bilinen deniz yollarının yakınındaki korunaklı koylarda bekliyorlardı.",
+      "tts": {
+        "text": "Bilinen deniz yollarının yakınındaki korunaklı koylarda bekliyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir ticaret gemisi geçtiğinde üzerine çullanıp sayısal üstünlükle alt ediyorlardı.",
+      "text_markdown": "Bir ticaret gemisi geçtiğinde üzerine çullanıp sayısal üstünlükle alt ediyorlardı.",
+      "tts": {
+        "text": "Bir ticaret gemisi geçtiğinde üzerine çullanıp sayısal üstünlükle alt ediyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakalanan mürettebatlara bazen korsanlara katılma seçeneği sunuluyordu.",
+      "text_markdown": "Yakalanan mürettebatlara bazen korsanlara katılma seçeneği sunuluyordu.",
+      "tts": {
+        "text": "Yakalanan mürettebatlara bazen korsanlara katılma seçeneği sunuluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok sıradan denizcinin Hansa işverenlerine pek sadakati yoktu.",
+      "text_markdown": "Birçok sıradan denizcinin Hansa işverenlerine pek sadakati yoktu.",
+      "tts": {
+        "text": "Birçok sıradan denizcinin Hansa işverenlerine pek sadakati yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvedeyken",
+      "text_markdown": "Zirvedeyken"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gücünün zirvesinde Störtebeker, birden fazla gemiden oluşan bir filo komuta ediyordu.",
+      "text_markdown": "Gücünün zirvesinde Störtebeker, birden fazla gemiden oluşan bir filo komuta ediyordu.",
+      "tts": {
+        "text": "Gücünün zirvesinde Störtebeker, birden fazla gemiden oluşan bir filo komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kesin sayı bilinmiyor ama kronikler kayda değer olduğunu gösteriyor.",
+      "text_markdown": "Kesin sayı bilinmiyor ama kronikler kayda değer olduğunu gösteriyor.",
+      "tts": {
+        "text": "Kesin sayı bilinmiyor ama kronikler kayda değer olduğunu gösteriyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mürettebatı yüzlerle ifade edilebilirdi.",
+      "text_markdown": "Mürettebatı yüzlerle ifade edilebilirdi.",
+      "tts": {
+        "text": "Mürettebatı yüzlerle ifade edilebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baltık ve Kuzey Denizi korsanlarının kullandığı gemilere kog ve hulk deniyordu.",
+      "text_markdown": "Baltık ve Kuzey Denizi korsanlarının kullandığı gemilere kog ve hulk deniyordu.",
+      "tts": {
+        "text": "Baltık ve Kuzey Denizi korsanlarının kullandığı gemilere kog ve hulk deniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kog, kuzey sularına uyarlanmış sağlam, düz tabanlı bir ticaret gemisiydi.",
+      "text_markdown": "Kog, kuzey sularına uyarlanmış sağlam, düz tabanlı bir ticaret gemisiydi.",
+      "tts": {
+        "text": "Kog, kuzey sularına uyarlanmış sağlam, düz tabanlı bir ticaret gemisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Koglar yavaştı ama büyük yükler ve çok sayıda mürettebat taşıyabilirdi.",
+      "text_markdown": "Koglar yavaştı ama büyük yükler ve çok sayıda mürettebat taşıyabilirdi.",
+      "tts": {
+        "text": "Koglar yavaştı ama büyük yükler ve çok sayıda mürettebat taşıyabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar genellikle ticaret koglarını ele geçirip kendi kullanımlarına dönüştürürdü.",
+      "text_markdown": "Korsanlar genellikle ticaret koglarını ele geçirip kendi kullanımlarına dönüştürürdü.",
+      "tts": {
+        "text": "Korsanlar genellikle ticaret koglarını ele geçirip kendi kullanımlarına dönüştürürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey denizlerinde seyrüsefer tehlikeli ve zordu.",
+      "text_markdown": "Kuzey denizlerinde seyrüsefer tehlikeli ve zordu.",
+      "tts": {
+        "text": "Kuzey denizlerinde seyrüsefer tehlikeli ve zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orta Çağ denizcileri kıyı işaretlerine, güneşin konumuna ve deneyime güvenirdi.",
+      "text_markdown": "Orta Çağ denizcileri kıyı işaretlerine, güneşin konumuna ve deneyime güvenirdi.",
+      "tts": {
+        "text": "Orta Çağ denizcileri kıyı işaretlerine, güneşin konumuna ve deneyime güvenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pusula mevcuttu ama henüz yaygın güven kazanmamıştı.",
+      "text_markdown": "Pusula mevcuttu ama henüz yaygın güven kazanmamıştı.",
+      "tts": {
+        "text": "Pusula mevcuttu ama henüz yaygın güven kazanmamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haritalar sonraki yüzyıllarla karşılaştırıldığında ilkeldi.",
+      "text_markdown": "Haritalar sonraki yüzyıllarla karşılaştırıldığında ilkeldi.",
+      "tts": {
+        "text": "Haritalar sonraki yüzyıllarla karşılaştırıldığında ilkeldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Denizi'ndeki fırtınalar şiddetleriyle efsaneydi.",
+      "text_markdown": "Kuzey Denizi'ndeki fırtınalar şiddetleriyle efsaneydi.",
+      "tts": {
+        "text": "Kuzey Denizi'ndeki fırtınalar şiddetleriyle efsaneydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güney Kuzey Denizi'nin sığ suları dik, tehlikeli dalgalar üretiyordu.",
+      "text_markdown": "Güney Kuzey Denizi'nin sığ suları dik, tehlikeli dalgalar üretiyordu.",
+      "tts": {
+        "text": "Güney Kuzey Denizi'nin sığ suları dik, tehlikeli dalgalar üretiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemiler uyarı olmadan kumluklara veya kayalık kıyılara sürüklenebilirdi.",
+      "text_markdown": "Gemiler uyarı olmadan kumluklara veya kayalık kıyılara sürüklenebilirdi.",
+      "tts": {
+        "text": "Gemiler uyarı olmadan kumluklara veya kayalık kıyılara sürüklenebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her yolculuk ölümle bir kumardı.",
+      "text_markdown": "Her yolculuk ölümle bir kumardı.",
+      "tts": {
+        "text": "Her yolculuk ölümle bir kumardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker'in korsanları tahıl, kumaş, tuz ve bira taşıyan gemilere saldırdı.",
+      "text_markdown": "Störtebeker'in korsanları tahıl, kumaş, tuz ve bira taşıyan gemilere saldırdı.",
+      "tts": {
+        "text": "Störtebeker'in korsanları tahıl, kumaş, tuz ve bira taşıyan gemilere saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzey Avrupa'nın temel gıdası olan ringa yüklerini de ele geçirdiler.",
+      "text_markdown": "Kuzey Avrupa'nın temel gıdası olan ringa yüklerini de ele geçirdiler.",
+      "tts": {
+        "text": "Kuzey Avrupa'nın temel gıdası olan ringa yüklerini de ele geçirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şarap, baharat ve ince dokumalar gibi lüks mallar özellikle kıymetliydi.",
+      "text_markdown": "Şarap, baharat ve ince dokumalar gibi lüks mallar özellikle kıymetliydi.",
+      "tts": {
+        "text": "Şarap, baharat ve ince dokumalar gibi lüks mallar özellikle kıymetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Satılabilecek her şey almaya değerdi.",
+      "text_markdown": "Satılabilecek her şey almaya değerdi.",
+      "tts": {
+        "text": "Satılabilecek her şey almaya değerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efsane, Störtebeker'in ganimetini yoksullarla paylaştığını söyler.",
+      "text_markdown": "Efsane, Störtebeker'in ganimetini yoksullarla paylaştığını söyler.",
+      "tts": {
+        "text": "Efsane, Störtebeker'in ganimetini yoksullarla paylaştığını söyler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu Robin Hood imgesi yüzyıllar boyunca ona eşlik etmiştir.",
+      "text_markdown": "Bu Robin Hood imgesi yüzyıllar boyunca ona eşlik etmiştir.",
+      "tts": {
+        "text": "Bu Robin Hood imgesi yüzyıllar boyunca ona eşlik etmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gerçekten yoksullara verip vermediğini doğrulamak imkânsızdır.",
+      "text_markdown": "Gerçekten yoksullara verip vermediğini doğrulamak imkânsızdır.",
+      "tts": {
+        "text": "Gerçekten yoksullara verip vermediğini doğrulamak imkânsızdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Efsane, hikâyesini daha sempatik kılmak için ölümünden sonra ortaya çıkmış olabilir.",
+      "text_markdown": "Efsane, hikâyesini daha sempatik kılmak için ölümünden sonra ortaya çıkmış olabilir.",
+      "tts": {
+        "text": "Efsane, hikâyesini daha sempatik kılmak için ölümünden sonra ortaya çıkmış olabilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesin olan, Hansa şehirlerinin muazzam kayıplar yaşadığıdır.",
+      "text_markdown": "Kesin olan, Hansa şehirlerinin muazzam kayıplar yaşadığıdır.",
+      "tts": {
+        "text": "Kesin olan, Hansa şehirlerinin muazzam kayıplar yaşadığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret seferlerinin sigorta maliyetleri keskin şekilde arttı.",
+      "text_markdown": "Ticaret seferlerinin sigorta maliyetleri keskin şekilde arttı.",
+      "tts": {
+        "text": "Ticaret seferlerinin sigorta maliyetleri keskin şekilde arttı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı ticaret yolları silahlı koruma olmadan kullanılamayacak kadar tehlikeli hâle geldi.",
+      "text_markdown": "Bazı ticaret yolları silahlı koruma olmadan kullanılamayacak kadar tehlikeli hâle geldi.",
+      "tts": {
+        "text": "Bazı ticaret yolları silahlı koruma olmadan kullanılamayacak kadar tehlikeli hâle geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birliğin ticaretin koruyucusu olarak itibarı sarsılıyordu.",
+      "text_markdown": "Birliğin ticaretin koruyucusu olarak itibarı sarsılıyordu.",
+      "tts": {
+        "text": "Birliğin ticaretin koruyucusu olarak itibarı sarsılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar Baltık ekonomisi için hayati olan ringa balıkçılığını da aksattı.",
+      "text_markdown": "Korsanlar Baltık ekonomisi için hayati olan ringa balıkçılığını da aksattı.",
+      "tts": {
+        "text": "Korsanlar Baltık ekonomisi için hayati olan ringa balıkçılığını da aksattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lübeck ve diğer şehirlerden gelen balıkçı filoları denizde saldırıya uğradı.",
+      "text_markdown": "Lübeck ve diğer şehirlerden gelen balıkçı filoları denizde saldırıya uğradı.",
+      "tts": {
+        "text": "Lübeck ve diğer şehirlerden gelen balıkçı filoları denizde saldırıya uğradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ringa fiyatları yükseldi ve sıradan insanlara zorluk çıkardı.",
+      "text_markdown": "Ringa fiyatları yükseldi ve sıradan insanlara zorluk çıkardı.",
+      "tts": {
+        "text": "Ringa fiyatları yükseldi ve sıradan insanlara zorluk çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, korsanları zengin tüccarlar kadar halkın da nefretini çekmesine yol açtı.",
+      "text_markdown": "Bu, korsanları zengin tüccarlar kadar halkın da nefretini çekmesine yol açtı.",
+      "tts": {
+        "text": "Bu, korsanları zengin tüccarlar kadar halkın da nefretini çekmesine yol açtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker'in adı kuzey denizlerinde tehlikenin simgesi oldu.",
+      "text_markdown": "Störtebeker'in adı kuzey denizlerinde tehlikenin simgesi oldu.",
+      "tts": {
+        "text": "Störtebeker'in adı kuzey denizlerinde tehlikenin simgesi oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Annelerin çocuklarını Störtebeker gelecek diye uyardığı söylenir.",
+      "text_markdown": "Annelerin çocuklarını Störtebeker gelecek diye uyardığı söylenir.",
+      "tts": {
+        "text": "Annelerin çocuklarını Störtebeker gelecek diye uyardığı söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her başarılı baskınla ünü arttı.",
+      "text_markdown": "Her başarılı baskınla ünü arttı.",
+      "tts": {
+        "text": "Her başarılı baskınla ünü arttı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orta Çağ korsan gemisindeki yaşam sert ve vahşiydi.",
+      "text_markdown": "Orta Çağ korsan gemisindeki yaşam sert ve vahşiydi.",
+      "tts": {
+        "text": "Orta Çağ korsan gemisindeki yaşam sert ve vahşiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaşam alanları dardı, yiyecekler çoğu zaman çürüktü ve tatlı su kıttı.",
+      "text_markdown": "Yaşam alanları dardı, yiyecekler çoğu zaman çürüktü ve tatlı su kıttı.",
+      "tts": {
+        "text": "Yaşam alanları dardı, yiyecekler çoğu zaman çürüktü ve tatlı su kıttı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hastalık günler içinde bir mürettebatı silip süpürebilirdi.",
+      "text_markdown": "Hastalık günler içinde bir mürettebatı silip süpürebilirdi.",
+      "tts": {
+        "text": "Hastalık günler içinde bir mürettebatı silip süpürebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şiddet, günlük yaşamın sürekli bir parçasıydı.",
+      "text_markdown": "Şiddet, günlük yaşamın sürekli bir parçasıydı.",
+      "tts": {
+        "text": "Şiddet, günlük yaşamın sürekli bir parçasıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar arasındaki anlaşmazlıklar çoğu zaman yumrukla veya bıçakla çözülürdü.",
+      "text_markdown": "Korsanlar arasındaki anlaşmazlıklar çoğu zaman yumrukla veya bıçakla çözülürdü.",
+      "tts": {
+        "text": "Korsanlar arasındaki anlaşmazlıklar çoğu zaman yumrukla veya bıçakla çözülürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Liderlik, kaptanın ganimet getirme ve düzeni sürdürme becerisine bağlıydı.",
+      "text_markdown": "Liderlik, kaptanın ganimet getirme ve düzeni sürdürme becerisine bağlıydı.",
+      "tts": {
+        "text": "Liderlik, kaptanın ganimet getirme ve düzeni sürdürme becerisine bağlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başarısız bir kaptan meydan okunabilir ve değiştirilebilirdi.",
+      "text_markdown": "Başarısız bir kaptan meydan okunabilir ve değiştirilebilirdi.",
+      "tts": {
+        "text": "Başarısız bir kaptan meydan okunabilir ve değiştirilebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Störtebeker konumunu beceri, kurnazlık ve kişilik gücüyle korudu.",
+      "text_markdown": "Störtebeker konumunu beceri, kurnazlık ve kişilik gücüyle korudu.",
+      "tts": {
+        "text": "Störtebeker konumunu beceri, kurnazlık ve kişilik gücüyle korudu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker'i barındıran Frizya şefleri tehlikeli bir oyun oynuyordu.",
+      "text_markdown": "Störtebeker'i barındıran Frizya şefleri tehlikeli bir oyun oynuyordu.",
+      "tts": {
+        "text": "Störtebeker'i barındıran Frizya şefleri tehlikeli bir oyun oynuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hansa Birliği'nin yıkıcı ticaret ambargoları koyma gücü vardı.",
+      "text_markdown": "Hansa Birliği'nin yıkıcı ticaret ambargoları koyma gücü vardı.",
+      "tts": {
+        "text": "Hansa Birliği'nin yıkıcı ticaret ambargoları koyma gücü vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanları barındıran şehirler tüm kuzey ticaretinden kesilme riskiyle karşı karşıyaydı.",
+      "text_markdown": "Korsanları barındıran şehirler tüm kuzey ticaretinden kesilme riskiyle karşı karşıyaydı.",
+      "tts": {
+        "text": "Korsanları barındıran şehirler tüm kuzey ticaretinden kesilme riskiyle karşı karşıyaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Störtebeker'in müttefikleri üzerindeki baskı artıyordu.",
+      "text_markdown": "Störtebeker'in müttefikleri üzerindeki baskı artıyordu.",
+      "tts": {
+        "text": "Störtebeker'in müttefikleri üzerindeki baskı artıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburg özellikle Störtebeker'i yok etmeye kararlıydı.",
+      "text_markdown": "Hamburg özellikle Störtebeker'i yok etmeye kararlıydı.",
+      "tts": {
+        "text": "Hamburg özellikle Störtebeker'i yok etmeye kararlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehrin tüccarları çok fazla gemi ve çok fazla para kaybetmişti.",
+      "text_markdown": "Şehrin tüccarları çok fazla gemi ve çok fazla para kaybetmişti.",
+      "tts": {
+        "text": "Şehrin tüccarları çok fazla gemi ve çok fazla para kaybetmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Özellikle korsanları avlamak için tasarlanmış bir filo inşa etmeye başladılar.",
+      "text_markdown": "Özellikle korsanları avlamak için tasarlanmış bir filo inşa etmeye başladılar.",
+      "tts": {
+        "text": "Özellikle korsanları avlamak için tasarlanmış bir filo inşa etmeye başladılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Störtebeker'in saltanatının sonu yaklaşıyordu.",
+      "text_markdown": "Störtebeker'in saltanatının sonu yaklaşıyordu.",
+      "tts": {
+        "text": "Störtebeker'in saltanatının sonu yaklaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bira, Hansa ağında en çok ticareti yapılan mallardan biriydi.",
+      "text_markdown": "Bira, Hansa ağında en çok ticareti yapılan mallardan biriydi.",
+      "tts": {
+        "text": "Bira, Hansa ağında en çok ticareti yapılan mallardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hamburg ve Bremen, tüm Avrupa'ya bira ihraç eden büyük bira üretim merkezleriydi.",
+      "text_markdown": "Hamburg ve Bremen, tüm Avrupa'ya bira ihraç eden büyük bira üretim merkezleriydi.",
+      "tts": {
+        "text": "Hamburg ve Bremen, tüm Avrupa'ya bira ihraç eden büyük bira üretim merkezleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bira sevkiyatlarına yapılan korsan saldırıları, tahıla yapılan saldırılar kadar ciddiye alınıyordu.",
+      "text_markdown": "Bira sevkiyatlarına yapılan korsan saldırıları, tahıla yapılan saldırılar kadar ciddiye alınıyordu.",
+      "tts": {
+        "text": "Bira sevkiyatlarına yapılan korsan saldırıları, tahıla yapılan saldırılar kadar ciddiye alınıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburg bir savaş gemisi filosu topladı ve deneyimli komutanların emrine verdi.",
+      "text_markdown": "Hamburg bir savaş gemisi filosu topladı ve deneyimli komutanların emrine verdi.",
+      "tts": {
+        "text": "Hamburg bir savaş gemisi filosu topladı ve deneyimli komutanların emrine verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filonun başında Simon von Utrecht adlı biri vardı.",
+      "text_markdown": "Filonun başında Simon von Utrecht adlı biri vardı.",
+      "tts": {
+        "text": "Filonun başında Simon von Utrecht adlı biri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Simon yetenekli bir denizci ve kararlı bir korsan avcısıydı.",
+      "text_markdown": "Simon yetenekli bir denizci ve kararlı bir korsan avcısıydı.",
+      "tts": {
+        "text": "Simon yetenekli bir denizci ve kararlı bir korsan avcısıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1401'de Simon'un filosu Störtebeker'i avlamak için Hamburg'dan yelken açtı.",
+      "text_markdown": "1401'de Simon'un filosu Störtebeker'i avlamak için Hamburg'dan yelken açtı.",
+      "tts": {
+        "text": "Bin dört yüz birde Simon'un filosu Störtebeker'i avlamak için Hamburg'dan yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzey Denizi'ni ve Frizya Adaları çevresindeki suları aradılar.",
+      "text_markdown": "Kuzey Denizi'ni ve Frizya Adaları çevresindeki suları aradılar.",
+      "tts": {
+        "text": "Kuzey Denizi'ni ve Frizya Adaları çevresindeki suları aradılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Engin Kuzey Denizi'nde korsanları bulmak kolay iş değildi.",
+      "text_markdown": "Engin Kuzey Denizi'nde korsanları bulmak kolay iş değildi.",
+      "tts": {
+        "text": "Engin Kuzey Denizi'nde korsanları bulmak kolay iş değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburg filosu sonunda Helgoland Adası yakınlarında Störtebeker'in gemileriyle karşılaştı.",
+      "text_markdown": "Hamburg filosu sonunda Helgoland Adası yakınlarında Störtebeker'in gemileriyle karşılaştı.",
+      "tts": {
+        "text": "Hamburg filosu sonunda Helgoland Adası yakınlarında Störtebeker'in gemileriyle karşılaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Helgoland, Kuzey Denizi'nin açıklarında küçük, kayalık bir adadır.",
+      "text_markdown": "Helgoland, Kuzey Denizi'nin açıklarında küçük, kayalık bir adadır.",
+      "tts": {
+        "text": "Helgoland, Kuzey Denizi'nin açıklarında küçük, kayalık bir adadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alman kıyılarında seyreden denizciler için bilinen bir işaret noktasıydı.",
+      "text_markdown": "Alman kıyılarında seyreden denizciler için bilinen bir işaret noktasıydı.",
+      "tts": {
+        "text": "Alman kıyılarında seyreden denizciler için bilinen bir işaret noktasıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburg savaş gemileri ile korsan filosu arasında şiddetli bir savaş yaşandı.",
+      "text_markdown": "Hamburg savaş gemileri ile korsan filosu arasında şiddetli bir savaş yaşandı.",
+      "tts": {
+        "text": "Hamburg savaş gemileri ile korsan filosu arasında şiddetli bir savaş yaşandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çarpışma acımasızdı ve saatler sürdü.",
+      "text_markdown": "Çarpışma acımasızdı ve saatler sürdü.",
+      "tts": {
+        "text": "Çarpışma acımasızdı ve saatler sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar yakalanmanın kesin ölüm anlamına geldiğini bilerek umutsuzca savaştı.",
+      "text_markdown": "Korsanlar yakalanmanın kesin ölüm anlamına geldiğini bilerek umutsuzca savaştı.",
+      "tts": {
+        "text": "Korsanlar yakalanmanın kesin ölüm anlamına geldiğini bilerek umutsuzca savaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ünlü bir efsaneye göre Störtebeker'in gemisindeki bir hain savaşın kaderini belirledi.",
+      "text_markdown": "Ünlü bir efsaneye göre Störtebeker'in gemisindeki bir hain savaşın kaderini belirledi.",
+      "tts": {
+        "text": "Ünlü bir efsaneye göre Störtebeker'in gemisindeki bir hain savaşın kaderini belirledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu hainin geminin dümen zincirine erimiş kurşun döktüğü söylenir.",
+      "text_markdown": "Bu hainin geminin dümen zincirine erimiş kurşun döktüğü söylenir.",
+      "tts": {
+        "text": "Bu hainin geminin dümen zincirine erimiş kurşun döktüğü söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çalışan bir dümen olmadan gemi manevra yapamaz ve kaçamazdı.",
+      "text_markdown": "Çalışan bir dümen olmadan gemi manevra yapamaz ve kaçamazdı.",
+      "tts": {
+        "text": "Çalışan bir dümen olmadan gemi manevra yapamaz ve kaçamazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hamburg filosu, sakatlanmış gemiye çıkıp alt edebildi.",
+      "text_markdown": "Hamburg filosu, sakatlanmış gemiye çıkıp alt edebildi.",
+      "tts": {
+        "text": "Hamburg filosu, sakatlanmış gemiye çıkıp alt edebildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker sağ yakalandı ve zincirlenmiş hâlde Hamburg'a getirildi.",
+      "text_markdown": "Störtebeker sağ yakalandı ve zincirlenmiş hâlde Hamburg'a getirildi.",
+      "tts": {
+        "text": "Störtebeker sağ yakalandı ve zincirlenmiş hâlde Hamburg'a getirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehir meclisi önünde yargılandı.",
+      "text_markdown": "Şehir meclisi önünde yargılandı.",
+      "tts": {
+        "text": "Şehir meclisi önünde yargılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonuç hiçbir zaman şüphe götürmüyordu.",
+      "text_markdown": "Sonuç hiçbir zaman şüphe götürmüyordu.",
+      "tts": {
+        "text": "Sonuç hiçbir zaman şüphe götürmüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlıktan suçlu bulundu ve başı kesilerek idam cezasına çarptırıldı.",
+      "text_markdown": "Korsanlıktan suçlu bulundu ve başı kesilerek idam cezasına çarptırıldı.",
+      "tts": {
+        "text": "Korsanlıktan suçlu bulundu ve başı kesilerek idam cezasına çarptırıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnfaz 20 Ekim 1401'de Hamburg'daki Grasbrook'ta gerçekleştirildi.",
+      "text_markdown": "İnfaz 20 Ekim 1401'de Hamburg'daki Grasbrook'ta gerçekleştirildi.",
+      "tts": {
+        "text": "İnfaz yirmi Ekim bin dört yüz birde Hamburg'daki Grasbrook'ta gerçekleştirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Grasbrook, limanın yakınında halka açık infazlar için kullanılan bataklık bir alandı.",
+      "text_markdown": "Grasbrook, limanın yakınında halka açık infazlar için kullanılan bataklık bir alandı.",
+      "tts": {
+        "text": "Grasbrook, limanın yakınında halka açık infazlar için kullanılan bataklık bir alandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kötü şöhretli korsanın ölümünü izlemek için büyük bir kalabalık toplandı.",
+      "text_markdown": "Kötü şöhretli korsanın ölümünü izlemek için büyük bir kalabalık toplandı.",
+      "tts": {
+        "text": "Kötü şöhretli korsanın ölümünü izlemek için büyük bir kalabalık toplandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker hakkındaki en ünlü efsane burada geçer.",
+      "text_markdown": "Störtebeker hakkındaki en ünlü efsane burada geçer.",
+      "tts": {
+        "text": "Störtebeker hakkındaki en ünlü efsane burada geçer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnfazından önce Störtebeker'in Hamburg belediye başkanına bir ricada bulunduğu söylenir.",
+      "text_markdown": "İnfazından önce Störtebeker'in Hamburg belediye başkanına bir ricada bulunduğu söylenir.",
+      "tts": {
+        "text": "İnfazından önce Störtebeker'in Hamburg belediye başkanına bir ricada bulunduğu söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başı kesildikten sonra bedeninin yürüyerek geçebildiği mürettebat üyelerinin serbest bırakılmasını istedi.",
+      "text_markdown": "Başı kesildikten sonra bedeninin yürüyerek geçebildiği mürettebat üyelerinin serbest bırakılmasını istedi.",
+      "tts": {
+        "text": "Başı kesildikten sonra bedeninin yürüyerek geçebildiği mürettebat üyelerinin serbest bırakılmasını istedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Belediye başkanı, belki de eğlenerek, isteği kabul etti.",
+      "text_markdown": "Belediye başkanı, belki de eğlenerek, isteği kabul etti.",
+      "tts": {
+        "text": "Belediye başkanı, belki de eğlenerek, isteği kabul etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker, celladın kılıcının tek vuruşuyla başı kesildi.",
+      "text_markdown": "Störtebeker, celladın kılıcının tek vuruşuyla başı kesildi.",
+      "tts": {
+        "text": "Störtebeker, celladın kılıcının tek vuruşuyla başı kesildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonra efsaneye göre başsız bedeni ayağa kalktı.",
+      "text_markdown": "Sonra efsaneye göre başsız bedeni ayağa kalktı.",
+      "tts": {
+        "text": "Sonra efsaneye göre başsız bedeni ayağa kalktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "11 mürettebat arkadaşının yanından yürüyüp geçti, ardından cellat onu düşürdü.",
+      "text_markdown": "11 mürettebat arkadaşının yanından yürüyüp geçti, ardından cellat onu düşürdü.",
+      "tts": {
+        "text": "On bir mürettebat arkadaşının yanından yürüyüp geçti, ardından cellat onu düşürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı versiyonlar celladın ayağını uzattığını, diğerleri bir kütük fırlattığını söyler.",
+      "text_markdown": "Bazı versiyonlar celladın ayağını uzattığını, diğerleri bir kütük fırlattığını söyler.",
+      "tts": {
+        "text": "Bazı versiyonlar celladın ayağını uzattığını, diğerleri bir kütük fırlattığını söyler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburg belediye başkanı anlaşmayı yerine getirmeyi reddetti.",
+      "text_markdown": "Hamburg belediye başkanı anlaşmayı yerine getirmeyi reddetti.",
+      "tts": {
+        "text": "Hamburg belediye başkanı anlaşmayı yerine getirmeyi reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O gün yakalanan 73 korsanın tamamının başı kesildi.",
+      "text_markdown": "O gün yakalanan 73 korsanın tamamının başı kesildi.",
+      "tts": {
+        "text": "O gün yakalanan yetmiş üç korsanın tamamının başı kesildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başları Elbe Nehri kıyılarında tahta kazıklara asıldı.",
+      "text_markdown": "Başları Elbe Nehri kıyılarında tahta kazıklara asıldı.",
+      "tts": {
+        "text": "Başları Elbe Nehri kıyılarında tahta kazıklara asıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlığı düşünebilecek herkese kasvetli bir uyarıydı.",
+      "text_markdown": "Korsanlığı düşünebilecek herkese kasvetli bir uyarıydı.",
+      "tts": {
+        "text": "Korsanlığı düşünebilecek herkese kasvetli bir uyarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başka bir efsane, cellada sonra kolunun yorulup yorulmadığının sorulduğunu anlatır.",
+      "text_markdown": "Başka bir efsane, cellada sonra kolunun yorulup yorulmadığının sorulduğunu anlatır.",
+      "tts": {
+        "text": "Başka bir efsane, cellada sonra kolunun yorulup yorulmadığının sorulduğunu anlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüm Hamburg şehir meclisinin de başını kesebileceğini söylediği rivayet edilir.",
+      "text_markdown": "Tüm Hamburg şehir meclisinin de başını kesebileceğini söylediği rivayet edilir.",
+      "tts": {
+        "text": "Tüm Hamburg şehir meclisinin de başını kesebileceğini söylediği rivayet edilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu küstahlıktan dolayı celladın kendisi de idam edildi.",
+      "text_markdown": "Bu küstahlıktan dolayı celladın kendisi de idam edildi.",
+      "tts": {
+        "text": "Bu küstahlıktan dolayı celladın kendisi de idam edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu infaz efsanelerinden herhangi birinin doğru olup olmadığını doğrulamak imkânsızdır.",
+      "text_markdown": "Bu infaz efsanelerinden herhangi birinin doğru olup olmadığını doğrulamak imkânsızdır.",
+      "tts": {
+        "text": "Bu infaz efsanelerinden herhangi birinin doğru olup olmadığını doğrulamak imkânsızdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gödeke Michels ve kalan Vitaliyanlar, Störtebeker'in ölümünden sonra baskınlara devam etti.",
+      "text_markdown": "Gödeke Michels ve kalan Vitaliyanlar, Störtebeker'in ölümünden sonra baskınlara devam etti.",
+      "tts": {
+        "text": "Gödeke Michels ve kalan Vitaliyanlar, Störtebeker'in ölümünden sonra baskınlara devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama Hamburg filosu onları da avladı.",
+      "text_markdown": "Ama Hamburg filosu onları da avladı.",
+      "tts": {
+        "text": "Ama Hamburg filosu onları da avladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Michels, Störtebeker'den kısa süre sonra yakalanıp idam edildi.",
+      "text_markdown": "Michels, Störtebeker'den kısa süre sonra yakalanıp idam edildi.",
+      "tts": {
+        "text": "Michels, Störtebeker'den kısa süre sonra yakalanıp idam edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vitaliyanlar çağı sona ermişti.",
+      "text_markdown": "Vitaliyanlar çağı sona ermişti.",
+      "tts": {
+        "text": "Vitaliyanlar çağı sona ermişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vitaliyanlar'ın infazı korsanlığı düşünen herkese mesaj vermeyi amaçlıyordu.",
+      "text_markdown": "Vitaliyanlar'ın infazı korsanlığı düşünen herkese mesaj vermeyi amaçlıyordu.",
+      "tts": {
+        "text": "Vitaliyanlar'ın infazı korsanlığı düşünen herkese mesaj vermeyi amaçlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hamburg, kesilen başları aylarca kasvetli bir caydırıcı olarak sergiledi.",
+      "text_markdown": "Hamburg, kesilen başları aylarca kasvetli bir caydırıcı olarak sergiledi.",
+      "tts": {
+        "text": "Hamburg, kesilen başları aylarca kasvetli bir caydırıcı olarak sergiledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klaus Störtebeker, Kuzey Almanya folklorunun en ünlü figürlerinden biridir.",
+      "text_markdown": "Klaus Störtebeker, Kuzey Almanya folklorunun en ünlü figürlerinden biridir.",
+      "tts": {
+        "text": "Klaus Störtebeker, Kuzey Almanya folklorunun en ünlü figürlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Efsanesi altı yüz yıldan fazla bir süredir anlatılıp yeniden anlatılmaktadır.",
+      "text_markdown": "Efsanesi altı yüz yıldan fazla bir süredir anlatılıp yeniden anlatılmaktadır.",
+      "tts": {
+        "text": "Efsanesi altı yüz yıldan fazla bir süredir anlatılıp yeniden anlatılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir korsan, isyancı ve halk kahramanı olarak hatırlanır.",
+      "text_markdown": "Bir korsan, isyancı ve halk kahramanı olarak hatırlanır.",
+      "tts": {
+        "text": "Bir korsan, isyancı ve halk kahramanı olarak hatırlanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hamburg Tarih Müzesi'ndeki bir kafatası uzun süre onun olduğuna inanıldı.",
+      "text_markdown": "Hamburg Tarih Müzesi'ndeki bir kafatası uzun süre onun olduğuna inanıldı.",
+      "tts": {
+        "text": "Hamburg Tarih Müzesi'ndeki bir kafatası uzun süre onun olduğuna inanıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İçine büyük bir çivi çakılmıştı; iddiaya göre infazdan sonra yerleştirilmişti.",
+      "text_markdown": "İçine büyük bir çivi çakılmıştı; iddiaya göre infazdan sonra yerleştirilmişti.",
+      "tts": {
+        "text": "İçine büyük bir çivi çakılmıştı; iddiaya göre infazdan sonra yerleştirilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "DNA testleri ve adli tıp analizleri kafatasının gerçekten ona ait olup olmadığını sorgulamıştır.",
+      "text_markdown": "DNA testleri ve adli tıp analizleri kafatasının gerçekten ona ait olup olmadığını sorgulamıştır.",
+      "tts": {
+        "text": "DNA testleri ve adli tıp analizleri kafatasının gerçekten ona ait olup olmadığını sorgulamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Müze onu sergilemekten çıkardı ama efsane devam ediyor.",
+      "text_markdown": "Müze onu sergilemekten çıkardı ama efsane devam ediyor.",
+      "tts": {
+        "text": "Müze onu sergilemekten çıkardı ama efsane devam ediyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker heykelleri Hamburg ve diğer Kuzey Almanya şehirlerinde bulunabilir.",
+      "text_markdown": "Störtebeker heykelleri Hamburg ve diğer Kuzey Almanya şehirlerinde bulunabilir.",
+      "tts": {
+        "text": "Störtebeker heykelleri Hamburg ve diğer Kuzey Almanya şehirlerinde bulunabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hamburg'un antrepo bölgesindeki bir sokakta büyük bir bronz heykel duruyor.",
+      "text_markdown": "Hamburg'un antrepo bölgesindeki bir sokakta büyük bir bronz heykel duruyor.",
+      "tts": {
+        "text": "Hamburg'un antrepo bölgesindeki bir sokakta büyük bir bronz heykel duruyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Limana doğru bakan güvenli, güçlü bir adamı tasvir ediyor.",
+      "text_markdown": "Limana doğru bakan güvenli, güçlü bir adamı tasvir ediyor.",
+      "tts": {
+        "text": "Limana doğru bakan güvenli, güçlü bir adamı tasvir ediyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her yaz, Rügen Adası'ndaki bir açık hava tiyatro festivali onun hayatı hakkında oyunlar sahneler.",
+      "text_markdown": "Her yaz, Rügen Adası'ndaki bir açık hava tiyatro festivali onun hayatı hakkında oyunlar sahneler.",
+      "tts": {
+        "text": "Her yaz, Rügen Adası'ndaki bir açık hava tiyatro festivali onun hayatı hakkında oyunlar sahneler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Störtebeker Festivali her yıl on binlerce ziyaretçi çeker.",
+      "text_markdown": "Störtebeker Festivali her yıl on binlerce ziyaretçi çeker.",
+      "tts": {
+        "text": "Störtebeker Festivali her yıl on binlerce ziyaretçi çeker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Almanya'nın en popüler açık hava tiyatro etkinliklerinden biridir.",
+      "text_markdown": "Almanya'nın en popüler açık hava tiyatro etkinliklerinden biridir.",
+      "tts": {
+        "text": "Almanya'nın en popüler açık hava tiyatro etkinliklerinden biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Störtebeker, İngiliz folklorundaki Robin Hood ile karşılaştırılmıştır.",
+      "text_markdown": "Störtebeker, İngiliz folklorundaki Robin Hood ile karşılaştırılmıştır.",
+      "tts": {
+        "text": "Störtebeker, İngiliz folklorundaki Robin Hood ile karşılaştırılmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İkisi de zenginden çalıp yoksula verdiği söylenen efsanevi kanun dışılarıdır.",
+      "text_markdown": "İkisi de zenginden çalıp yoksula verdiği söylenen efsanevi kanun dışılarıdır.",
+      "tts": {
+        "text": "İkisi de zenginden çalıp yoksula verdiği söylenen efsanevi kanun dışılarıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her iki hikâye de tarihsel gerçekleri yüzyıllarca süslemeyle harmanlıyor.",
+      "text_markdown": "Her iki hikâye de tarihsel gerçekleri yüzyıllarca süslemeyle harmanlıyor.",
+      "tts": {
+        "text": "Her iki hikâye de tarihsel gerçekleri yüzyıllarca süslemeyle harmanlıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Robin Hood karşılaştırması, Störtebeker efsanesinin uluslararası düzeyde anlaşılmasını kolaylaştırmıştır.",
+      "text_markdown": "Robin Hood karşılaştırması, Störtebeker efsanesinin uluslararası düzeyde anlaşılmasını kolaylaştırmıştır.",
+      "tts": {
+        "text": "Robin Hood karşılaştırması, Störtebeker efsanesinin uluslararası düzeyde anlaşılmasını kolaylaştırmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler, Vitaliyanlar'ın özgürlük savaşçıları mı yoksa sıradan suçlular mı olduğunu tartışıyor.",
+      "text_markdown": "Tarihçiler, Vitaliyanlar'ın özgürlük savaşçıları mı yoksa sıradan suçlular mı olduğunu tartışıyor.",
+      "tts": {
+        "text": "Tarihçiler, Vitaliyanlar'ın özgürlük savaşçıları mı yoksa sıradan suçlular mı olduğunu tartışıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları onları Hansa Birliği'nin tekeline karşı direnen insanlar olarak görüyor.",
+      "text_markdown": "Bazıları onları Hansa Birliği'nin tekeline karşı direnen insanlar olarak görüyor.",
+      "tts": {
+        "text": "Bazıları onları Hansa Birliği'nin tekeline karşı direnen insanlar olarak görüyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri sıradan balıkçıları ve kıyı köylülerini dehşete düşürdüklerine dikkat çekiyor.",
+      "text_markdown": "Diğerleri sıradan balıkçıları ve kıyı köylülerini dehşete düşürdüklerine dikkat çekiyor.",
+      "tts": {
+        "text": "Diğerleri sıradan balıkçıları ve kıyı köylülerini dehşete düşürdüklerine dikkat çekiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gerçek muhtemelen her iki bakış açısının unsurlarını içermektedir.",
+      "text_markdown": "Gerçek muhtemelen her iki bakış açısının unsurlarını içermektedir.",
+      "tts": {
+        "text": "Gerçek muhtemelen her iki bakış açısının unsurlarını içermektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihsel kayıtların bize söylediği sınırlı ama açıktır.",
+      "text_markdown": "Tarihsel kayıtların bize söylediği sınırlı ama açıktır.",
+      "tts": {
+        "text": "Tarihsel kayıtların bize söylediği sınırlı ama açıktır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Störtebeker adlı bir adam Baltık ve Kuzey Denizi'nde bir korsan çetesine liderlik etti.",
+      "text_markdown": "Störtebeker adlı bir adam Baltık ve Kuzey Denizi'nde bir korsan çetesine liderlik etti.",
+      "tts": {
+        "text": "Störtebeker adlı bir adam Baltık ve Kuzey Denizi'nde bir korsan çetesine liderlik etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hamburg tarafından yakalanıp idam edildi.",
+      "text_markdown": "Hamburg tarafından yakalanıp idam edildi.",
+      "tts": {
+        "text": "Hamburg tarafından yakalanıp idam edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Geri kalan her şey yüzyılların anlatımıyla şekillenmiş efsanedir.",
+      "text_markdown": "Geri kalan her şey yüzyılların anlatımıyla şekillenmiş efsanedir.",
+      "tts": {
+        "text": "Geri kalan her şey yüzyılların anlatımıyla şekillenmiş efsanedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efsane sürer çünkü insan doğasının derinliklerindeki bir şeye hitap eder.",
+      "text_markdown": "Efsane sürer çünkü insan doğasının derinliklerindeki bir şeye hitap eder.",
+      "tts": {
+        "text": "Efsane sürer çünkü insan doğasının derinliklerindeki bir şeye hitap eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güçlülere meydan okuyan ve en yüksek bedeli ödeyen tek bir adam fikri kültürler arasında yankı uyandırır.",
+      "text_markdown": "Güçlülere meydan okuyan ve en yüksek bedeli ödeyen tek bir adam fikri kültürler arasında yankı uyandırır.",
+      "tts": {
+        "text": "Güçlülere meydan okuyan ve en yüksek bedeli ödeyen tek bir adam fikri kültürler arasında yankı uyandırır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Klaus Störtebeker'in hikâyesi bazı efsanelerin ölmeyi reddettiğinin kanıtıdır.",
+      "text_markdown": "Klaus Störtebeker'in hikâyesi bazı efsanelerin ölmeyi reddettiğinin kanıtıdır.",
+      "tts": {
+        "text": "Klaus Störtebeker'in hikâyesi bazı efsanelerin ölmeyi reddettiğinin kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

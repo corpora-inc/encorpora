@@ -1,0 +1,4259 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_olafur_egilsson",
+  "language": "ja",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのことば",
+      "text_markdown": "読者へのことば"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは実話ですが、海賊の視点からは語られていません。",
+      "text_markdown": "これは実話ですが、海賊の視点からは語られていません。",
+      "tts": {
+        "text": "これは実話ですが、海賊の視点からは語られていません。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "連れ去られた人々の側から語られています。",
+      "text_markdown": "連れ去られた人々の側から語られています。",
+      "tts": {
+        "text": "連れ去られた人々の側から語られています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの海賊物語は大胆な襲撃や財宝を称えます。",
+      "text_markdown": "多くの海賊物語は大胆な襲撃や財宝を称えます。",
+      "tts": {
+        "text": "多くの海賊物語は大胆な襲撃や財宝を称えます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この物語は、煙の中に取り残された人々に何が起きたかを語っています。",
+      "text_markdown": "この物語は、煙の中に取り残された人々に何が起きたかを語っています。",
+      "tts": {
+        "text": "この物語は、煙の中に取り残された人々に何が起きたかを語っています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年の夏、北アフリカの海賊たちがはるばるアイスランドまで航海してきました。",
+      "text_markdown": "1627年の夏、北アフリカの海賊たちがはるばるアイスランドまで航海してきました。",
+      "tts": {
+        "text": "千六百二十七年の夏、北アフリカの海賊たちがはるばるアイスランドまで航海してきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはおよそ四百人を捕らえ、奴隷として売るために海の向こうへ連れ去りました。",
+      "text_markdown": "彼らはおよそ四百人を捕らえ、奴隷として売るために海の向こうへ連れ去りました。",
+      "tts": {
+        "text": "彼らはおよそ四百人を捕らえ、奴隷として売るために海の向こうへ連れ去りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その捕虜の一人が、オーラヴュル・エイイルスソンという名の牧師でした。",
+      "text_markdown": "その捕虜の一人が、Ólafur Egilssonという名の牧師でした。",
+      "tts": {
+        "text": "その捕虜の一人が、オーラヴュル・エイイルスソンという名の牧師でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は自分が見たこと、苦しんだこと、失ったことについての本を書きました。",
+      "text_markdown": "彼は自分が見たこと、苦しんだこと、失ったことについての本を書きました。",
+      "tts": {
+        "text": "彼は自分が見たこと、苦しんだこと、失ったことについての本を書きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは彼の物語です。",
+      "text_markdown": "これは彼の物語です。",
+      "tts": {
+        "text": "これは彼の物語です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊についての本に収められるべき物語です。なぜなら、海賊行為は決して海賊だけのものではなかったからです。",
+      "text_markdown": "海賊についての本に収められるべき物語です。なぜなら、海賊行為は決して海賊だけのものではなかったからです。",
+      "tts": {
+        "text": "海賊についての本に収められるべき物語です。なぜなら、海賊行為は決して海賊だけのものではなかったからです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは常に、彼らが傷つけた人々のことでもあったのです。",
+      "text_markdown": "それは常に、彼らが傷つけた人々のことでもあったのです。",
+      "tts": {
+        "text": "それは常に、彼らが傷つけた人々のことでもあったのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ヴェストマンナエイヤル諸島",
+      "text_markdown": "ヴェストマンナエイヤル諸島"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランドの南岸のはるか沖に、小さな火山島の群れが北大西洋からそびえ立っています。",
+      "text_markdown": "アイスランドの南岸のはるか沖に、小さな火山島の群れが北大西洋からそびえ立っています。",
+      "tts": {
+        "text": "アイスランドの南岸のはるか沖に、小さな火山島の群れが北大西洋からそびえ立っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイスランド人はこれをヴェストマンナエイヤル、すなわちウェストマン諸島と呼びます。",
+      "text_markdown": "アイスランド人はこれをヴェストマンナエイヤル、すなわちウェストマン諸島と呼びます。",
+      "tts": {
+        "text": "アイスランド人はこれをヴェストマンナエイヤル、すなわちウェストマン諸島と呼びます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパで最も孤立した共同体の一つです。",
+      "text_markdown": "ヨーロッパで最も孤立した共同体の一つです。",
+      "tts": {
+        "text": "ヨーロッパで最も孤立した共同体の一つです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最大の島はヘイマエイと呼ばれ、恒久的に人が住んだ唯一の島です。",
+      "text_markdown": "最大の島はヘイマエイと呼ばれ、恒久的に人が住んだ唯一の島です。",
+      "tts": {
+        "text": "最大の島はヘイマエイと呼ばれ、恒久的に人が住んだ唯一の島です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヘイマエイでさえ小さく、直径わずか五キロメートルほどで、ほぼ全面が急峻な崖に囲まれています。",
+      "text_markdown": "ヘイマエイでさえ小さく、直径わずか五キロメートルほどで、ほぼ全面が急峻な崖に囲まれています。",
+      "tts": {
+        "text": "ヘイマエイでさえ小さく、直径わずか五キロメートルほどで、ほぼ全面が急峻な崖に囲まれています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの島々は海底の火山噴火によって形成されました。",
+      "text_markdown": "これらの島々は海底の火山噴火によって形成されました。",
+      "tts": {
+        "text": "これらの島々は海底の火山噴火によって形成されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "岩は暗い玄武岩で、崖は荒波に向かってまっすぐ落ちています。",
+      "text_markdown": "岩は暗い玄武岩で、崖は荒波に向かってまっすぐ落ちています。",
+      "tts": {
+        "text": "岩は暗い玄武岩で、崖は荒波に向かってまっすぐ落ちています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夏には何百万もの海鳥が崖の棚で営巣します。",
+      "text_markdown": "夏には何百万もの海鳥が崖の棚で営巣します。",
+      "tts": {
+        "text": "夏には何百万もの海鳥が崖の棚で営巣します。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "冬には嵐が何週間も島々を打ちつけます。",
+      "text_markdown": "冬には嵐が何週間も島々を打ちつけます。",
+      "tts": {
+        "text": "冬には嵐が何週間も島々を打ちつけます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "世界の果ての暮らし",
+      "text_markdown": "世界の果ての暮らし"
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1600年代初頭、ヘイマエイには約五百人が暮らしていました。",
+      "text_markdown": "1600年代初頭、ヘイマエイには約五百人が暮らしていました。",
+      "tts": {
+        "text": "千六百年代初頭、ヘイマエイには約五百人が暮らしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは漁をし、羊を飼い、崖から海鳥の卵を集めて生き延びていました。",
+      "text_markdown": "彼らは漁をし、羊を飼い、崖から海鳥の卵を集めて生き延びていました。",
+      "tts": {
+        "text": "彼らは漁をし、羊を飼い、崖から海鳥の卵を集めて生き延びていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "島民たちはアイスランド語を話していました。ヴァイキングの時代からほとんど変わっていない言語です。",
+      "text_markdown": "島民たちはアイスランド語を話していました。ヴァイキングの時代からほとんど変わっていない言語です。",
+      "tts": {
+        "text": "島民たちはアイスランド語を話していました。ヴァイキングの時代からほとんど変わっていない言語です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはルーテル派で、教会が共同体生活の中心でした。",
+      "text_markdown": "彼らはルーテル派で、教会が共同体生活の中心でした。",
+      "tts": {
+        "text": "彼らはルーテル派で、教会が共同体生活の中心でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランドはデンマーク王国に支配されており、厳格な独占体制ですべての交易を管理していました。",
+      "text_markdown": "アイスランドはデンマーク王国に支配されており、厳格な独占体制ですべての交易を管理していました。",
+      "tts": {
+        "text": "アイスランドはデンマーク王国に支配されており、厳格な独占体制ですべての交易を管理していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマークの商人だけが売買を行うことができ、アイスランド人は外の世界とほとんど接触がありませんでした。",
+      "text_markdown": "デンマークの商人だけが売買を行うことができ、アイスランド人は外の世界とほとんど接触がありませんでした。",
+      "tts": {
+        "text": "デンマークの商人だけが売買を行うことができ、アイスランド人は外の世界とほとんど接触がありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "小氷期",
+      "text_markdown": "小氷期"
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1600年代は、歴史家が小氷期と呼ぶ長い寒冷期の一部でした。",
+      "text_markdown": "1600年代は、歴史家が小氷期と呼ぶ長い寒冷期の一部でした。",
+      "tts": {
+        "text": "千六百年代は、歴史家が小氷期と呼ぶ長い寒冷期の一部でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイスランドでは、海氷が何か月も島を取り囲み、船を阻み、家畜を死なせることがありました。",
+      "text_markdown": "アイスランドでは、海氷が何か月も島を取り囲み、船を阻み、家畜を死なせることがありました。",
+      "tts": {
+        "text": "アイスランドでは、海氷が何か月も島を取り囲み、船を阻み、家畜を死なせることがありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヴェストマンナエイヤル諸島では、穀物を育てるには生育期が短すぎました。",
+      "text_markdown": "ヴェストマンナエイヤル諸島では、穀物を育てるには生育期が短すぎました。",
+      "tts": {
+        "text": "ヴェストマンナエイヤル諸島では、穀物を育てるには生育期が短すぎました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人々は海に頼って暮らしており、嵐で漁ができなくなると飢えに苦しみました。",
+      "text_markdown": "人々は海に頼って暮らしており、嵐で漁ができなくなると飢えに苦しみました。",
+      "tts": {
+        "text": "人々は海に頼って暮らしており、嵐で漁ができなくなると飢えに苦しみました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "平和で脆弱な場所",
+      "text_markdown": "平和で脆弱な場所"
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうした困難にもかかわらず、ヴェストマンナエイヤル諸島は平和でした。",
+      "text_markdown": "こうした困難にもかかわらず、ヴェストマンナエイヤル諸島は平和でした。",
+      "tts": {
+        "text": "こうした困難にもかかわらず、ヴェストマンナエイヤル諸島は平和でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "兵士もなく、砦もなく、城壁もなく、港の防衛もありませんでした。",
+      "text_markdown": "兵士もなく、砦もなく、城壁もなく、港の防衛もありませんでした。",
+      "tts": {
+        "text": "兵士もなく、砦もなく、城壁もなく、港の防衛もありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "島民たちはナイフと仕事道具以外の武器を持っていませんでした。",
+      "text_markdown": "島民たちはナイフと仕事道具以外の武器を持っていませんでした。",
+      "tts": {
+        "text": "島民たちはナイフと仕事道具以外の武器を持っていませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "誰も攻撃を予想していませんでした。",
+      "text_markdown": "誰も攻撃を予想していませんでした。",
+      "tts": {
+        "text": "誰も攻撃を予想していませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は遠い海の物語の中の存在でした。",
+      "text_markdown": "海賊は遠い海の物語の中の存在でした。",
+      "tts": {
+        "text": "海賊は遠い海の物語の中の存在でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北大西洋は寒すぎ、荒れすぎ、価値あるものがある場所から遠すぎると思われていました。",
+      "text_markdown": "北大西洋は寒すぎ、荒れすぎ、価値あるものがある場所から遠すぎると思われていました。",
+      "tts": {
+        "text": "北大西洋は寒すぎ、荒れすぎ、価値あるものがある場所から遠すぎると思われていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "島々の唯一の防衛は、その遠隔さでした。",
+      "text_markdown": "島々の唯一の防衛は、その遠隔さでした。",
+      "tts": {
+        "text": "島々の唯一の防衛は、その遠隔さでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし世界では何かが変わりつつあり、この忘れられた海の片隅にも危険をもたらすことになるのでした。",
+      "text_markdown": "しかし世界では何かが変わりつつあり、この忘れられた海の片隅にも危険をもたらすことになるのでした。",
+      "tts": {
+        "text": "しかし世界では何かが変わりつつあり、この忘れられた海の片隅にも危険をもたらすことになるのでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "バルバリア海賊、北へ迫る",
+      "text_markdown": "バルバリア海賊、北へ迫る"
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アフリカの海岸沿いでは、強力な港湾都市が海上略奪によって繁栄していました。",
+      "text_markdown": "北アフリカの海岸沿いでは、強力な港湾都市が海上略奪によって繁栄していました。",
+      "tts": {
+        "text": "北アフリカの海岸沿いでは、強力な港湾都市が海上略奪によって繁栄していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェ、チュニス、サレはバルバリア海賊の本拠地であり、オスマン帝国の支援を受けて活動していました。",
+      "text_markdown": "アルジェ、チュニス、サレはバルバリア海賊の本拠地であり、オスマン帝国の支援を受けて活動していました。",
+      "tts": {
+        "text": "アルジェ、チュニス、サレはバルバリア海賊の本拠地であり、オスマン帝国の支援を受けて活動していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何世紀もの間、海賊たちはスペイン、イタリア、フランスを襲撃し、人々を捕らえて奴隷として売っていました。",
+      "text_markdown": "何世紀もの間、海賊たちはスペイン、イタリア、フランスを襲撃し、人々を捕らえて奴隷として売っていました。",
+      "tts": {
+        "text": "何世紀もの間、海賊たちはスペイン、イタリア、フランスを襲撃し、人々を捕らえて奴隷として売っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェの奴隷市場は地中海全域で有名でした。",
+      "text_markdown": "アルジェの奴隷市場は地中海全域で有名でした。",
+      "tts": {
+        "text": "アルジェの奴隷市場は地中海全域で有名でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1600年代初頭、海賊に加わったヨーロッパの改宗者たちが、新しい船、航海術、そして北方の海の知識をもたらしました。",
+      "text_markdown": "1600年代初頭、海賊に加わったヨーロッパの改宗者たちが、新しい船、航海術、そして北方の海の知識をもたらしました。",
+      "tts": {
+        "text": "千六百年代初頭、海賊に加わったヨーロッパの改宗者たちが、新しい船、航海術、そして北方の海の知識をもたらしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちは大西洋に乗り出し、イングランド、アイルランド、そしてアイスランドまでも襲撃するようになりました。",
+      "text_markdown": "海賊たちは大西洋に乗り出し、イングランド、アイルランド、そしてアイスランドまでも襲撃するようになりました。",
+      "tts": {
+        "text": "海賊たちは大西洋に乗り出し、イングランド、アイルランド、そしてアイスランドまでも襲撃するようになりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も重要な改宗者の一人は、自らをバルバリアの船長として再出発したオランダ人でした。",
+      "text_markdown": "最も重要な改宗者の一人は、自らをバルバリアの船長として再出発したオランダ人でした。",
+      "tts": {
+        "text": "最も重要な改宗者の一人は、自らをバルバリアの船長として再出発したオランダ人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "ヴェストマンナエイヤル諸島",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何世紀もの間ヴェストマンナエイヤル諸島を守ってきた孤立は、終わりを迎えようとしていました。",
+      "text_markdown": "何世紀もの間ヴェストマンナエイヤル諸島を守ってきた孤立は、終わりを迎えようとしていました。",
+      "tts": {
+        "text": "何世紀もの間ヴェストマンナエイヤル諸島を守ってきた孤立は、終わりを迎えようとしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊が来た日",
+      "text_markdown": "海賊が来た日"
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年7月のある夏の日、アイスランドの南の水平線に船団が現れました。",
+      "text_markdown": "1627年7月のある夏の日、アイスランドの南の水平線に船団が現れました。",
+      "tts": {
+        "text": "千六百二十七年七月のある夏の日、アイスランドの南の水平線に船団が現れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはデンマークの商船ではありませんでした。",
+      "text_markdown": "それはデンマークの商船ではありませんでした。",
+      "tts": {
+        "text": "それはデンマークの商船ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バルバリア海岸からの軍船でした。",
+      "text_markdown": "バルバリア海岸からの軍船でした。",
+      "tts": {
+        "text": "バルバリア海岸からの軍船でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船団を率いていたのは、ヨーロッパ人がムラト・レイス・ザ・ヤンガーと呼んだ男でした。",
+      "text_markdown": "船団を率いていたのは、ヨーロッパ人がムラト・レイス・ザ・ヤンガーと呼んだ男でした。",
+      "tts": {
+        "text": "船団を率いていたのは、ヨーロッパ人がムラト・レイス・ザ・ヤンガーと呼んだ男でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の本名はヤン・ヤンスゾーン・ファン・ハールレムで、オランダ共和国で生まれました。",
+      "text_markdown": "彼の本名はJan Janszoon van Haarlemで、オランダ共和国で生まれました。",
+      "tts": {
+        "text": "彼の本名はヤン・ヤンスゾーン・ファン・ハールレムで、オランダ共和国で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は海賊に転じた船乗りで、イスラム教に改宗し、大西洋で最も強力な海賊船長の一人となりました。",
+      "text_markdown": "彼は海賊に転じた船乗りで、イスラム教に改宗し、大西洋で最も強力な海賊船長の一人となりました。",
+      "tts": {
+        "text": "彼は海賊に転じた船乗りで、イスラム教に改宗し、大西洋で最も強力な海賊船長の一人となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "オランダの裏切り者",
+      "text_markdown": "オランダの裏切り者"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヤン・ヤンスゾーンは1570年頃、ハールレムの街で生まれました。",
+      "text_markdown": "ヤン・ヤンスゾーンは1570年頃、ハールレムの街で生まれました。",
+      "tts": {
+        "text": "ヤン・ヤンスゾーンは千五百七十年頃、ハールレムの街で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はオランダの私掠船員として出発し、オランダとスペインの長い戦争中にスペイン船を攻撃する許可を得ていました。",
+      "text_markdown": "彼はオランダの私掠船員として出発し、オランダとスペインの長い戦争中にスペイン船を攻撃する許可を得ていました。",
+      "tts": {
+        "text": "彼はオランダの私掠船員として出発し、オランダとスペインの長い戦争中にスペイン船を攻撃する許可を得ていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある時点で、ヤンスゾーンは海賊に捕らえられ、モロッコのサレ港に連行されました。",
+      "text_markdown": "ある時点で、ヤンスゾーンは海賊に捕らえられ、モロッコのサレ港に連行されました。",
+      "tts": {
+        "text": "ある時点で、ヤンスゾーンは海賊に捕らえられ、モロッコのサレ港に連行されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜のままでいる代わりに、イスラム教に改宗してムラト・レイスの名を名乗り、冷酷な指揮官としての力量を示しました。",
+      "text_markdown": "捕虜のままでいる代わりに、イスラム教に改宗してムラト・レイスの名を名乗り、冷酷な指揮官としての力量を示しました。",
+      "tts": {
+        "text": "捕虜のままでいる代わりに、イスラム教に改宗してムラト・レイスの名を名乗り、冷酷な指揮官としての力量を示しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はモロッコ海岸の海賊国家、サレ共和国の大統領にまで上り詰めました。",
+      "text_markdown": "彼はモロッコ海岸の海賊国家、サレ共和国の大統領にまで上り詰めました。",
+      "tts": {
+        "text": "彼はモロッコ海岸の海賊国家、サレ共和国の大統領にまで上り詰めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サレから、そして後にアルジェから、彼は大西洋各地への襲撃を指揮しました。",
+      "text_markdown": "サレから、そして後にアルジェから、彼は大西洋各地への襲撃を指揮しました。",
+      "tts": {
+        "text": "サレから、そして後にアルジェから、彼は大西洋各地への襲撃を指揮しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1631年にはアイルランドのボルティモアの町さえ襲撃し、百人以上の捕虜を連れ去りました。",
+      "text_markdown": "1631年にはアイルランドのボルティモアの町さえ襲撃し、百人以上の捕虜を連れ去りました。",
+      "tts": {
+        "text": "千六百三十一年にはアイルランドのボルティモアの町さえ襲撃し、百人以上の捕虜を連れ去りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "北への航路",
+      "text_markdown": "北への航路"
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊に加わったイングランド人やオランダ人の改宗者たちは、大西洋の風と海流の知識をもたらしました。",
+      "text_markdown": "海賊に加わったイングランド人やオランダ人の改宗者たちは、大西洋の風と海流の知識をもたらしました。",
+      "tts": {
+        "text": "海賊に加わったイングランド人やオランダ人の改宗者たちは、大西洋の風と海流の知識をもたらしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはアイスランドがほぼ完全に無防備であることを知っていました。",
+      "text_markdown": "彼らはアイスランドがほぼ完全に無防備であることを知っていました。",
+      "tts": {
+        "text": "彼らはアイスランドがほぼ完全に無防備であることを知っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェの奴隷市場は絶え間ない捕虜の供給を必要としていました。",
+      "text_markdown": "アルジェの奴隷市場は絶え間ない捕虜の供給を必要としていました。",
+      "tts": {
+        "text": "アルジェの奴隷市場は絶え間ない捕虜の供給を必要としていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地中海の襲撃地域はますます厳しく監視されるようになり、海賊たちは新たな狩場を必要としていました。",
+      "text_markdown": "地中海の襲撃地域はますます厳しく監視されるようになり、海賊たちは新たな狩場を必要としていました。",
+      "tts": {
+        "text": "地中海の襲撃地域はますます厳しく監視されるようになり、海賊たちは新たな狩場を必要としていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランドは完璧でした。孤立し、無防備で、デンマーク当局にも無視されていました。",
+      "text_markdown": "アイスランドは完璧でした。孤立し、無防備で、デンマーク当局にも無視されていました。",
+      "tts": {
+        "text": "アイスランドは完璧でした。孤立し、無防備で、デンマーク当局にも無視されていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "襲撃の始まり",
+      "text_markdown": "襲撃の始まり"
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊船団はまずアイスランドの東海岸を襲い、小さな集落を略奪しました。",
+      "text_markdown": "海賊船団はまずアイスランドの東海岸を襲い、小さな集落を略奪しました。",
+      "tts": {
+        "text": "海賊船団はまずアイスランドの東海岸を襲い、小さな集落を略奪しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの最初の襲撃は恐ろしいものでしたが、規模は小さいものでした。",
+      "text_markdown": "これらの最初の襲撃は恐ろしいものでしたが、規模は小さいものでした。",
+      "tts": {
+        "text": "これらの最初の襲撃は恐ろしいものでしたが、規模は小さいものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "七月十六日、海賊たちはヴェストマンナエイヤル諸島に向かいました。",
+      "text_markdown": "七月十六日、海賊たちはヴェストマンナエイヤル諸島に向かいました。",
+      "tts": {
+        "text": "七月十六日、海賊たちはヴェストマンナエイヤル諸島に向かいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは早朝の霧に紛れてヘイマエイに到着しました。",
+      "text_markdown": "彼らは早朝の霧に紛れてヘイマエイに到着しました。",
+      "tts": {
+        "text": "彼らは早朝の霧に紛れてヘイマエイに到着しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "島民たちは襲撃の噂を聞いていましたが、備える手段がありませんでした。",
+      "text_markdown": "島民たちは襲撃の噂を聞いていましたが、備える手段がありませんでした。",
+      "tts": {
+        "text": "島民たちは襲撃の噂を聞いていましたが、備える手段がありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "ヘイマエイへの襲撃",
+      "text_markdown": "ヘイマエイへの襲撃"
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちは崖が最も低い東岸に上陸しました。",
+      "text_markdown": "海賊たちは崖が最も低い東岸に上陸しました。",
+      "tts": {
+        "text": "海賊たちは崖が最も低い東岸に上陸しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは小舟で岸に上がり、剣、マスケット銃、松明で武装していました。",
+      "text_markdown": "彼らは小舟で岸に上がり、剣、マスケット銃、松明で武装していました。",
+      "tts": {
+        "text": "彼らは小舟で岸に上がり、剣、マスケット銃、松明で武装していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュル・エイイルスソンは妻アウスタと子供たちと共に家にいました。",
+      "text_markdown": "Ólafur Egilssonは妻Ástaと子供たちと共に家にいました。",
+      "tts": {
+        "text": "オーラヴュル・エイイルスソンは妻アウスタと子供たちと共に家にいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は島の牧師であり、学識と信仰の人で、六十三歳でした。",
+      "text_markdown": "彼は島の牧師であり、学識と信仰の人で、六十三歳でした。",
+      "tts": {
+        "text": "彼は島の牧師であり、学識と信仰の人で、六十三歳でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちは素早く動き、扉を破り、人々を家から引きずり出しました。",
+      "text_markdown": "海賊たちは素早く動き、扉を破り、人々を家から引きずり出しました。",
+      "tts": {
+        "text": "海賊たちは素早く動き、扉を破り、人々を家から引きずり出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "崖沿いの洞窟に隠れようとした島民もいました。",
+      "text_markdown": "崖沿いの洞窟に隠れようとした島民もいました。",
+      "tts": {
+        "text": "崖沿いの洞窟に隠れようとした島民もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "暗闇の中、溶岩台地を這うように逃げた者もいました。",
+      "text_markdown": "暗闇の中、溶岩台地を這うように逃げた者もいました。",
+      "tts": {
+        "text": "暗闇の中、溶岩台地を這うように逃げた者もいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "略奪者たちは教会を含む建物に火を放ちました。",
+      "text_markdown": "略奪者たちは教会を含む建物に火を放ちました。",
+      "tts": {
+        "text": "略奪者たちは教会を含む建物に火を放ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オーラヴュルは後に、教会が燃えるのを見たことがこの試練で最も辛い瞬間の一つだったと書いています。",
+      "text_markdown": "Ólafurは後に、教会が燃えるのを見たことがこの試練で最も辛い瞬間の一つだったと書いています。",
+      "tts": {
+        "text": "オーラヴュルは後に、教会が燃えるのを見たことがこの試練で最も辛い瞬間の一つだったと書いています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは彼の共同体の心臓でした。",
+      "text_markdown": "それは彼の共同体の心臓でした。",
+      "tts": {
+        "text": "それは彼の共同体の心臓でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "捕獲",
+      "text_markdown": "捕獲"
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "襲撃が終わるまでに、海賊たちはヘイマエイからおよそ二百四十人を捕らえていました。",
+      "text_markdown": "襲撃が終わるまでに、海賊たちはヘイマエイからおよそ二百四十人を捕らえていました。",
+      "tts": {
+        "text": "襲撃が終わるまでに、海賊たちはヘイマエイからおよそ二百四十人を捕らえていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "男も女も子供も、浜辺に集められました。",
+      "text_markdown": "男も女も子供も、浜辺に集められました。",
+      "tts": {
+        "text": "男も女も子供も、浜辺に集められました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュル、アウスタ、そして彼らの子供たちも捕虜の中にいました。",
+      "text_markdown": "Ólafur、Ásta、そして彼らの子供たちも捕虜の中にいました。",
+      "tts": {
+        "text": "オーラヴュル、アウスタ、そして彼らの子供たちも捕虜の中にいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは隣人や友人たちと共に海賊船に乗せられました。",
+      "text_markdown": "彼らは隣人や友人たちと共に海賊船に乗せられました。",
+      "tts": {
+        "text": "彼らは隣人や友人たちと共に海賊船に乗せられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その夏の全襲撃を通じて、およそ四百人のアイスランド人が連れ去られました。",
+      "text_markdown": "その夏の全襲撃を通じて、およそ四百人のアイスランド人が連れ去られました。",
+      "tts": {
+        "text": "その夏の全襲撃を通じて、およそ四百人のアイスランド人が連れ去られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人口わずか約五万人の国にとって、これは壊滅的でした。",
+      "text_markdown": "人口わずか約五万人の国にとって、これは壊滅的でした。",
+      "tts": {
+        "text": "人口わずか約五万人の国にとって、これは壊滅的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちは南へ向けて出帆しました。",
+      "text_markdown": "海賊たちは南へ向けて出帆しました。",
+      "tts": {
+        "text": "海賊たちは南へ向けて出帆しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヴェストマンナエイヤル諸島の住民たちは、自分たちの家が背後に消えていくのを見つめました。",
+      "text_markdown": "ヴェストマンナエイヤル諸島の住民たちは、自分たちの家が背後に消えていくのを見つめました。",
+      "tts": {
+        "text": "ヴェストマンナエイヤル諸島の住民たちは、自分たちの家が背後に消えていくのを見つめました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "海賊が来た日",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほとんどの者は二度とアイスランドを見ることはありませんでした。",
+      "text_markdown": "ほとんどの者は二度とアイスランドを見ることはありませんでした。",
+      "tts": {
+        "text": "ほとんどの者は二度とアイスランドを見ることはありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "アルジェへの航海",
+      "text_markdown": "アルジェへの航海"
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船団は大西洋を南へ進みました。",
+      "text_markdown": "船団は大西洋を南へ進みました。",
+      "tts": {
+        "text": "船団は大西洋を南へ進みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "甲板の下の捕虜たちには、新たな苦しみが始まりました。",
+      "text_markdown": "甲板の下の捕虜たちには、新たな苦しみが始まりました。",
+      "tts": {
+        "text": "甲板の下の捕虜たちには、新たな苦しみが始まりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルはその航海を著書の中で詳しく描写しています。",
+      "text_markdown": "Ólafurはその航海を著書の中で詳しく描写しています。",
+      "tts": {
+        "text": "オーラヴュルはその航海を著書の中で詳しく描写しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜たちは狭く暗い空間に押し込められ、食料も水もわずかで、一切のプライバシーもありませんでした。",
+      "text_markdown": "捕虜たちは狭く暗い空間に押し込められ、食料も水もわずかで、一切のプライバシーもありませんでした。",
+      "tts": {
+        "text": "捕虜たちは狭く暗い空間に押し込められ、食料も水もわずかで、一切のプライバシーもありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船が南へ進むにつれ、暑さはますますひどくなりました。",
+      "text_markdown": "船が南へ進むにつれ、暑さはますますひどくなりました。",
+      "tts": {
+        "text": "船が南へ進むにつれ、暑さはますますひどくなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "船内の状況",
+      "text_markdown": "船内の状況"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕虜たちは船倉にぎゅうぎゅうに詰め込まれていました。",
+      "text_markdown": "捕虜たちは船倉にぎゅうぎゅうに詰め込まれていました。",
+      "tts": {
+        "text": "捕虜たちは船倉にぎゅうぎゅうに詰め込まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くが船酔いに苦しみ、空気は悪臭を放ち、病気が急速に広がりました。",
+      "text_markdown": "多くが船酔いに苦しみ、空気は悪臭を放ち、病気が急速に広がりました。",
+      "tts": {
+        "text": "多くが船酔いに苦しみ、空気は悪臭を放ち、病気が急速に広がりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちは捕虜を荷物として扱いました。",
+      "text_markdown": "海賊たちは捕虜を荷物として扱いました。",
+      "tts": {
+        "text": "海賊たちは捕虜を荷物として扱いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らに与えられたのは、かろうじて生き延びられるだけの食料でした。",
+      "text_markdown": "彼らに与えられたのは、かろうじて生き延びられるだけの食料でした。",
+      "tts": {
+        "text": "彼らに与えられたのは、かろうじて生き延びられるだけの食料でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊たちにとって、これらの人々は市場に届ける商品でした。",
+      "text_markdown": "海賊たちにとって、これらの人々は市場に届ける商品でした。",
+      "tts": {
+        "text": "海賊たちにとって、これらの人々は市場に届ける商品でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルは牧師として祈りを導き、人々の心が完全に折れないよう努めました。",
+      "text_markdown": "Ólafurは牧師として祈りを導き、人々の心が完全に折れないよう努めました。",
+      "tts": {
+        "text": "オーラヴュルは牧師として祈りを導き、人々の心が完全に折れないよう努めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし、絶望は圧倒的でした。",
+      "text_markdown": "しかし、絶望は圧倒的でした。",
+      "tts": {
+        "text": "しかし、絶望は圧倒的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "航海は数週間に及び、ヨーロッパ沿岸を通り、ジブラルタル海峡を抜けて地中海に入りました。",
+      "text_markdown": "航海は数週間に及び、ヨーロッパ沿岸を通り、ジブラルタル海峡を抜けて地中海に入りました。",
+      "tts": {
+        "text": "航海は数週間に及び、ヨーロッパ沿岸を通り、ジブラルタル海峡を抜けて地中海に入りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "アルジェへの到着",
+      "text_markdown": "アルジェへの到着"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船がアルジェに到着すると、捕虜たちは甲板に連れ出されました。",
+      "text_markdown": "船がアルジェに到着すると、捕虜たちは甲板に連れ出されました。",
+      "tts": {
+        "text": "船がアルジェに到着すると、捕虜たちは甲板に連れ出されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らが目にした光景は驚くべきものでした。",
+      "text_markdown": "彼らが目にした光景は驚くべきものでした。",
+      "tts": {
+        "text": "彼らが目にした光景は驚くべきものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェは地中海沿岸最大の都市の一つで、白い建物とミナレットの迷路のような急な丘の斜面に広がっていました。",
+      "text_markdown": "アルジェは地中海沿岸最大の都市の一つで、白い建物とミナレットの迷路のような急な丘の斜面に広がっていました。",
+      "tts": {
+        "text": "アルジェは地中海沿岸最大の都市の一つで、白い建物とミナレットの迷路のような急な丘の斜面に広がっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "おそらく十万人が暮らしており、アイスランド全体の人口をはるかに超えていました。",
+      "text_markdown": "おそらく十万人が暮らしており、アイスランド全体の人口をはるかに超えていました。",
+      "tts": {
+        "text": "おそらく十万人が暮らしており、アイスランド全体の人口をはるかに超えていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな火山島で一生を過ごしてきた人々にとって、その光景は理解を超えるものでした。",
+      "text_markdown": "小さな火山島で一生を過ごしてきた人々にとって、その光景は理解を超えるものでした。",
+      "tts": {
+        "text": "小さな火山島で一生を過ごしてきた人々にとって、その光景は理解を超えるものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "騒音、暑さ、群衆、礼拝への呼びかけ——すべてが圧倒的でした。",
+      "text_markdown": "騒音、暑さ、群衆、礼拝への呼びかけ——すべてが圧倒的でした。",
+      "tts": {
+        "text": "騒音、暑さ、群衆、礼拝への呼びかけ、すべてが圧倒的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "オスマン帝国下のアルジェ",
+      "text_markdown": "オスマン帝国下のアルジェ"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェは名目上オスマン帝国の一部でしたが、実際には地方の軍事指導者によって統治されていました。",
+      "text_markdown": "アルジェは名目上オスマン帝国の一部でしたが、実際には地方の軍事指導者によって統治されていました。",
+      "tts": {
+        "text": "アルジェは名目上オスマン帝国の一部でしたが、実際には地方の軍事指導者によって統治されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その経済は海賊による略奪と奴隷貿易に基づいていました。",
+      "text_markdown": "その経済は海賊による略奪と奴隷貿易に基づいていました。",
+      "tts": {
+        "text": "その経済は海賊による略奪と奴隷貿易に基づいていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家は、常時数万人の奴隷にされたヨーロッパ人がバルバリア諸国に住んでいたと推定しています。",
+      "text_markdown": "歴史家は、常時数万人の奴隷にされたヨーロッパ人がバルバリア諸国に住んでいたと推定しています。",
+      "tts": {
+        "text": "歴史家は、常時数万人の奴隷にされたヨーロッパ人がバルバリア諸国に住んでいたと推定しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜はスペイン、イタリア、フランス、ポルトガル、イングランド、そして今やアイスランドから来ていました。",
+      "text_markdown": "捕虜はスペイン、イタリア、フランス、ポルトガル、イングランド、そして今やアイスランドから来ていました。",
+      "tts": {
+        "text": "捕虜はスペイン、イタリア、フランス、ポルトガル、イングランド、そして今やアイスランドから来ていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この都市はヨーロッパのどの都市も及ばないほど国際色豊かでした。",
+      "text_markdown": "この都市はヨーロッパのどの都市も及ばないほど国際色豊かでした。",
+      "tts": {
+        "text": "この都市はヨーロッパのどの都市も及ばないほど国際色豊かでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イスラム教徒、ユダヤ人、キリスト教徒、そして何十もの国からの改宗者たちが肩を並べて暮らしていました。",
+      "text_markdown": "イスラム教徒、ユダヤ人、キリスト教徒、そして何十もの国からの改宗者たちが肩を並べて暮らしていました。",
+      "tts": {
+        "text": "イスラム教徒、ユダヤ人、キリスト教徒、そして何十もの国からの改宗者たちが肩を並べて暮らしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "奴隷市場",
+      "text_markdown": "奴隷市場"
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルによる奴隷市場の描写は、彼の著書で最も鮮烈な一節の一つです。",
+      "text_markdown": "Ólafurによる奴隷市場の描写は、彼の著書で最も鮮烈な一節の一つです。",
+      "tts": {
+        "text": "オーラヴュルによる奴隷市場の描写は、彼の著書で最も鮮烈な一節の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜たちは港近くの広場に連れて行かれ、歯、手、健康状態を確認する買い手に検分されました。",
+      "text_markdown": "捕虜たちは港近くの広場に連れて行かれ、歯、手、健康状態を確認する買い手に検分されました。",
+      "tts": {
+        "text": "捕虜たちは港近くの広場に連れて行かれ、歯、手、健康状態を確認する買い手に検分されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "若くて丈夫な者が最も高い値をつけました。",
+      "text_markdown": "若くて丈夫な者が最も高い値をつけました。",
+      "tts": {
+        "text": "若くて丈夫な者が最も高い値をつけました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "女性と子供は別々に、しばしば異なる買い手に売られました。",
+      "text_markdown": "女性と子供は別々に、しばしば異なる買い手に売られました。",
+      "tts": {
+        "text": "女性と子供は別々に、しばしば異なる買い手に売られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "航海を生き延びた家族は引き裂かれました。",
+      "text_markdown": "航海を生き延びた家族は引き裂かれました。",
+      "tts": {
+        "text": "航海を生き延びた家族は引き裂かれました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルは、夫が妻から引き離され、親が子供を連れ去られるのを見ながらの叫びと嘆きを描写しました。",
+      "text_markdown": "Ólafurは、夫が妻から引き離され、親が子供を連れ去られるのを見ながらの叫びと嘆きを描写しました。",
+      "tts": {
+        "text": "オーラヴュルは、夫が妻から引き離され、親が子供を連れ去られるのを見ながらの叫びと嘆きを描写しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あの日の恐怖はいかなる言葉でも捉えきれないと彼は書きました。",
+      "text_markdown": "あの日の恐怖はいかなる言葉でも捉えきれないと彼は書きました。",
+      "tts": {
+        "text": "あの日の恐怖はいかなる言葉でも捉えきれないと彼は書きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "離別",
+      "text_markdown": "離別"
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルと妻アウスタは市場で引き離されました。",
+      "text_markdown": "Ólafurと妻Ástaは市場で引き離されました。",
+      "tts": {
+        "text": "オーラヴュルと妻アウスタは市場で引き離されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "子供たちも連れ去られました。",
+      "text_markdown": "子供たちも連れ去られました。",
+      "tts": {
+        "text": "子供たちも連れ去られました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルにとって、離別は捕囚生活で最も辛い部分でした。",
+      "text_markdown": "Ólafurにとって、離別は捕囚生活で最も辛い部分でした。",
+      "tts": {
+        "text": "オーラヴュルにとって、離別は捕囚生活で最も辛い部分でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アウスタがどこに連れて行かれたのか、彼にはわかりませんでした。",
+      "text_markdown": "Ástaがどこに連れて行かれたのか、彼にはわかりませんでした。",
+      "tts": {
+        "text": "アウスタがどこに連れて行かれたのか、彼にはわかりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その不確かさは、終わることのない拷問のようなものでした。",
+      "text_markdown": "その不確かさは、終わることのない拷問のようなものでした。",
+      "tts": {
+        "text": "その不確かさは、終わることのない拷問のようなものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "人間の経済",
+      "text_markdown": "人間の経済"
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルバリア奴隷貿易は巨大なものでした。",
+      "text_markdown": "バルバリア奴隷貿易は巨大なものでした。",
+      "tts": {
+        "text": "バルバリア奴隷貿易は巨大なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家は、1530年から1780年の間に、海賊たちが百万人以上のヨーロッパ人を奴隷にしたと推定しています。",
+      "text_markdown": "歴史家は、1530年から1780年の間に、海賊たちが百万人以上のヨーロッパ人を奴隷にしたと推定しています。",
+      "tts": {
+        "text": "歴史家は、千五百三十年から千七百八十年の間に、海賊たちが百万人以上のヨーロッパ人を奴隷にしたと推定しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隷制はさまざまな形態をとりました。家事奉公、建設、農業、あるいはオールに鎖でつながれてのガレー船漕ぎなどです。",
+      "text_markdown": "奴隷制はさまざまな形態をとりました。家事奉公、建設、農業、あるいはオールに鎖でつながれてのガレー船漕ぎなどです。",
+      "tts": {
+        "text": "奴隷制はさまざまな形態をとりました。家事奉公、建設、農業、あるいはオールに鎖でつながれてのガレー船漕ぎなどです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イスラム教に改宗した者はしばしばより多くの自由を与えられましたが、改宗が解放を保証するわけではありませんでした。",
+      "text_markdown": "イスラム教に改宗した者はしばしばより多くの自由を与えられましたが、改宗が解放を保証するわけではありませんでした。",
+      "tts": {
+        "text": "イスラム教に改宗した者はしばしばより多くの自由を与えられましたが、改宗が解放を保証するわけではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどの捕虜にとって、唯一の現実的な希望は身代金でした。",
+      "text_markdown": "ほとんどの捕虜にとって、唯一の現実的な希望は身代金でした。",
+      "tts": {
+        "text": "ほとんどの捕虜にとって、唯一の現実的な希望は身代金でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三位一体修道会のような修道会が解放交渉を専門としていましたが、その過程は遅く、費用がかかりました。",
+      "text_markdown": "三位一体修道会のような修道会が解放交渉を専門としていましたが、その過程は遅く、費用がかかりました。",
+      "tts": {
+        "text": "三位一体修道会のような修道会が解放交渉を専門としていましたが、その過程は遅く、費用がかかりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランド人にとって、その見込みはわずかでした。",
+      "text_markdown": "アイスランド人にとって、その見込みはわずかでした。",
+      "tts": {
+        "text": "アイスランド人にとって、その見込みはわずかでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "アルジェへの航海",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイスランドは貧しく、デンマークは緊急性を示さず、通信だけで何か月もかかりました。",
+      "text_markdown": "アイスランドは貧しく、デンマークは緊急性を示さず、通信だけで何か月もかかりました。",
+      "tts": {
+        "text": "アイスランドは貧しく、デンマークは緊急性を示さず、通信だけで何か月もかかりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "捕囚と使命",
+      "text_markdown": "捕囚と使命"
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルは捕虜としてアルジェで数か月を過ごしました。",
+      "text_markdown": "Ólafurは捕虜としてアルジェで数か月を過ごしました。",
+      "tts": {
+        "text": "オーラヴュルは捕虜としてアルジェで数か月を過ごしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "六十三歳で重労働には向かず、奴隷市場での価値は低いものでした。",
+      "text_markdown": "六十三歳で重労働には向かず、奴隷市場での価値は低いものでした。",
+      "tts": {
+        "text": "六十三歳で重労働には向かず、奴隷市場での価値は低いものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし彼は教養があり、読み書きができ、教会の人間でした。",
+      "text_markdown": "しかし彼は教養があり、読み書きができ、教会の人間でした。",
+      "tts": {
+        "text": "しかし彼は教養があり、読み書きができ、教会の人間でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それが捕囚の身であっても、彼にある種の地位を与えました。",
+      "text_markdown": "それが捕囚の身であっても、彼にある種の地位を与えました。",
+      "tts": {
+        "text": "それが捕囚の身であっても、彼にある種の地位を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "交渉役に選ばれる",
+      "text_markdown": "交渉役に選ばれる"
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "誰かがヨーロッパへ渡り、デンマーク王に捕虜たちの窮状を訴えなければなりませんでした。",
+      "text_markdown": "誰かがヨーロッパへ渡り、デンマーク王に捕虜たちの窮状を訴えなければなりませんでした。",
+      "tts": {
+        "text": "誰かがヨーロッパへ渡り、デンマーク王に捕虜たちの窮状を訴えなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オーラヴュルがこの使命に選ばれました。",
+      "text_markdown": "Ólafurがこの使命に選ばれました。",
+      "tts": {
+        "text": "オーラヴュルがこの使命に選ばれました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それは辛い任務でした。",
+      "text_markdown": "それは辛い任務でした。",
+      "tts": {
+        "text": "それは辛い任務でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一種の自由を意味していましたが、同時に愛する全ての人を残し、再会できるかもわからないまま去ることでもありました。",
+      "text_markdown": "一種の自由を意味していましたが、同時に愛する全ての人を残し、再会できるかもわからないまま去ることでもありました。",
+      "tts": {
+        "text": "一種の自由を意味していましたが、同時に愛する全ての人を残し、再会できるかもわからないまま去ることでもありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は同胞を救う唯一の機会だと信じて引き受けました。",
+      "text_markdown": "彼は同胞を救う唯一の機会だと信じて引き受けました。",
+      "tts": {
+        "text": "彼は同胞を救う唯一の機会だと信じて引き受けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "成功すれば、何百人もが解放されるかもしれません。",
+      "text_markdown": "成功すれば、何百人もが解放されるかもしれません。",
+      "tts": {
+        "text": "成功すれば、何百人もが解放されるかもしれません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "失敗すれば、彼らは一生奴隷のままでした。",
+      "text_markdown": "失敗すれば、彼らは一生奴隷のままでした。",
+      "tts": {
+        "text": "失敗すれば、彼らは一生奴隷のままでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "ヨーロッパを横断する旅",
+      "text_markdown": "ヨーロッパを横断する旅"
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルのアルジェからコペンハーゲンへの旅は長く困難なものでした。",
+      "text_markdown": "Ólafurのアルジェからコペンハーゲンへの旅は長く困難なものでした。",
+      "tts": {
+        "text": "オーラヴュルのアルジェからコペンハーゲンへの旅は長く困難なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は地中海と北ヨーロッパを、船と陸路で旅しました。",
+      "text_markdown": "彼は地中海と北ヨーロッパを、船と陸路で旅しました。",
+      "tts": {
+        "text": "彼は地中海と北ヨーロッパを、船と陸路で旅しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は金も、人脈も、影響力もない年老いた牧師でした。",
+      "text_markdown": "彼は金も、人脈も、影響力もない年老いた牧師でした。",
+      "tts": {
+        "text": "彼は金も、人脈も、影響力もない年老いた牧師でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "通過する国々の言語を話すことができませんでした。",
+      "text_markdown": "通過する国々の言語を話すことができませんでした。",
+      "tts": {
+        "text": "通過する国々の言語を話すことができませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "見知らぬ人々の慈善と、心ある聖職者たちからの紹介状に頼りました。",
+      "text_markdown": "見知らぬ人々の慈善と、心ある聖職者たちからの紹介状に頼りました。",
+      "tts": {
+        "text": "見知らぬ人々の慈善と、心ある聖職者たちからの紹介状に頼りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旅の途中、彼は初めてアイスランドの外の世界を観察しました。",
+      "text_markdown": "旅の途中、彼は初めてアイスランドの外の世界を観察しました。",
+      "tts": {
+        "text": "旅の途中、彼は初めてアイスランドの外の世界を観察しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の記述は、十七世紀ヨーロッパに対する外部者の視点として歴史家にとって貴重です。",
+      "text_markdown": "彼の記述は、十七世紀ヨーロッパに対する外部者の視点として歴史家にとって貴重です。",
+      "tts": {
+        "text": "彼の記述は、十七世紀ヨーロッパに対する外部者の視点として歴史家にとって貴重です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "コペンハーゲンとデンマーク宮廷",
+      "text_markdown": "コペンハーゲンとデンマーク宮廷"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルがコペンハーゲンに到着すると、襲撃、捕囚、そして同胞の苦しみについて語りました。",
+      "text_markdown": "Ólafurがコペンハーゲンに到着すると、襲撃、捕囚、そして同胞の苦しみについて語りました。",
+      "tts": {
+        "text": "オーラヴュルがコペンハーゲンに到着すると、襲撃、捕囚、そして同胞の苦しみについて語りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は身代金を懇願しました。",
+      "text_markdown": "彼は身代金を懇願しました。",
+      "tts": {
+        "text": "彼は身代金を懇願しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その返答は失望的なものでした。",
+      "text_markdown": "その返答は失望的なものでした。",
+      "tts": {
+        "text": "その返答は失望的なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマークは裕福ではなく、三十年戦争がヨーロッパを消耗させ、アイスランドは遠い植民地でした。",
+      "text_markdown": "デンマークは裕福ではなく、三十年戦争がヨーロッパを消耗させ、アイスランドは遠い植民地でした。",
+      "tts": {
+        "text": "デンマークは裕福ではなく、三十年戦争がヨーロッパを消耗させ、アイスランドは遠い植民地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王には王自身の出費がありました。",
+      "text_markdown": "王には王自身の出費がありました。",
+      "tts": {
+        "text": "王には王自身の出費がありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "委員会が設置され書簡が書かれましたが、資金は約束されるばかりで滅多に届きませんでした。",
+      "text_markdown": "委員会が設置され書簡が書かれましたが、資金は約束されるばかりで滅多に届きませんでした。",
+      "tts": {
+        "text": "委員会が設置され書簡が書かれましたが、資金は約束されるばかりで滅多に届きませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "官僚機構は独自のペースで進み、何百人もが奴隷のままでした。",
+      "text_markdown": "官僚機構は独自のペースで進み、何百人もが奴隷のままでした。",
+      "tts": {
+        "text": "官僚機構は独自のペースで進み、何百人もが奴隷のままでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "教会の対応",
+      "text_markdown": "教会の対応"
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルはルーテル派教会にも訴えました。",
+      "text_markdown": "Ólafurはルーテル派教会にも訴えました。",
+      "tts": {
+        "text": "オーラヴュルはルーテル派教会にも訴えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "献金が集められ説教が行われましたが、集まった金額は決して十分ではありませんでした。",
+      "text_markdown": "献金が集められ説教が行われましたが、集まった金額は決して十分ではありませんでした。",
+      "tts": {
+        "text": "献金が集められ説教が行われましたが、集まった金額は決して十分ではありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェからの身代金の要求は高額で、教会や王冠が支払える額をはるかに超えていました。",
+      "text_markdown": "アルジェからの身代金の要求は高額で、教会や王冠が支払える額をはるかに超えていました。",
+      "tts": {
+        "text": "アルジェからの身代金の要求は高額で、教会や王冠が支払える額をはるかに超えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "交渉は何年も長引きました。",
+      "text_markdown": "交渉は何年も長引きました。",
+      "tts": {
+        "text": "交渉は何年も長引きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "身代金のネットワーク",
+      "text_markdown": "身代金のネットワーク"
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カトリック諸国では、三位一体修道会のような修道会が何世紀にもわたって捕虜の身代金交渉の経験を積んでいました。",
+      "text_markdown": "カトリック諸国では、三位一体修道会のような修道会が何世紀にもわたって捕虜の身代金交渉の経験を積んでいました。",
+      "tts": {
+        "text": "カトリック諸国では、三位一体修道会のような修道会が何世紀にもわたって捕虜の身代金交渉の経験を積んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしプロテスタントの北方には、同等の組織がありませんでした。",
+      "text_markdown": "しかしプロテスタントの北方には、同等の組織がありませんでした。",
+      "tts": {
+        "text": "しかしプロテスタントの北方には、同等の組織がありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "デンマークは身代金交渉の仕組みをゼロから構築しなければなりませんでした。",
+      "text_markdown": "デンマークは身代金交渉の仕組みをゼロから構築しなければなりませんでした。",
+      "tts": {
+        "text": "デンマークは身代金交渉の仕組みをゼロから構築しなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "資金は国境を越え、通貨を変え、アルジェの適切な人物に届かなければなりませんでした。",
+      "text_markdown": "資金は国境を越え、通貨を変え、アルジェの適切な人物に届かなければなりませんでした。",
+      "tts": {
+        "text": "資金は国境を越え、通貨を変え、アルジェの適切な人物に届かなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その過程は遅延、腐敗、そして破られた約束に満ちていました。",
+      "text_markdown": "その過程は遅延、腐敗、そして破られた約束に満ちていました。",
+      "tts": {
+        "text": "その過程は遅延、腐敗、そして破られた約束に満ちていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "待ち続けた年月",
+      "text_markdown": "待ち続けた年月"
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルは身代金のために何年もの間請願を続け、書簡を書き、役人を訪ねました。",
+      "text_markdown": "Ólafurは身代金のために何年もの間請願を続け、書簡を書き、役人を訪ねました。",
+      "tts": {
+        "text": "オーラヴュルは身代金のために何年もの間請願を続け、書簡を書き、役人を訪ねました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年月が過ぎ、捕虜たちはアルジェに留まったままでした。",
+      "text_markdown": "年月が過ぎ、捕虜たちはアルジェに留まったままでした。",
+      "tts": {
+        "text": "年月が過ぎ、捕虜たちはアルジェに留まったままでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この間に、彼は著書を執筆しました。",
+      "text_markdown": "この間に、彼は著書を執筆しました。",
+      "tts": {
+        "text": "この間に、彼は著書を執筆しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "襲撃から奴隷市場、ヨーロッパ横断の旅に至るまで、目撃した全てを書き記しました。",
+      "text_markdown": "襲撃から奴隷市場、ヨーロッパ横断の旅に至るまで、目撃した全てを書き記しました。",
+      "tts": {
+        "text": "襲撃から奴隷市場、ヨーロッパ横断の旅に至るまで、目撃した全てを書き記しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本は彼の存命中には出版されませんでしたが、写本として流布しました。",
+      "text_markdown": "この本は彼の存命中には出版されませんでしたが、写本として流布しました。",
+      "tts": {
+        "text": "この本は彼の存命中には出版されませんでしたが、写本として流布しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはこの一連の出来事全体で最も重要な文書の一つとなりました。",
+      "text_markdown": "それはこの一連の出来事全体で最も重要な文書の一つとなりました。",
+      "tts": {
+        "text": "それはこの一連の出来事全体で最も重要な文書の一つとなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "権力の無関心",
+      "text_markdown": "権力の無関心"
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルの記述で最も辛いテーマの一つは、権力者たちの無関心です。",
+      "text_markdown": "Ólafurの記述で最も辛いテーマの一つは、権力者たちの無関心です。",
+      "tts": {
+        "text": "オーラヴュルの記述で最も辛いテーマの一つは、権力者たちの無関心です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマークの役人たちは残酷ではありませんでした。ただ別の優先事項があっただけです。",
+      "text_markdown": "デンマークの役人たちは残酷ではありませんでした。ただ別の優先事項があっただけです。",
+      "tts": {
+        "text": "デンマークの役人たちは残酷ではありませんでした。ただ別の優先事項があっただけです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苦しんでいた人々は、貧しく、遠く、政治的に取るに足らない存在でした。",
+      "text_markdown": "苦しんでいた人々は、貧しく、遠く、政治的に取るに足らない存在でした。",
+      "tts": {
+        "text": "苦しんでいた人々は、貧しく、遠く、政治的に取るに足らない存在でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの政府は公には嘆き、私的には放置しました。",
+      "text_markdown": "彼らの政府は公には嘆き、私的には放置しました。",
+      "tts": {
+        "text": "彼らの政府は公には嘆き、私的には放置しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルの文章には募る苦悩が映し出されています。",
+      "text_markdown": "Ólafurの文章には募る苦悩が映し出されています。",
+      "tts": {
+        "text": "オーラヴュルの文章には募る苦悩が映し出されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は同胞のメッセージをコペンハーゲンに届けるために全てを賭けました。",
+      "text_markdown": "彼は同胞のメッセージをコペンハーゲンに届けるために全てを賭けました。",
+      "tts": {
+        "text": "彼は同胞のメッセージをコペンハーゲンに届けるために全てを賭けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚と使命",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その答えは、彼らは迅速に救うほど重要ではない、というものでした。",
+      "text_markdown": "その答えは、彼らは迅速に救うほど重要ではない、というものでした。",
+      "tts": {
+        "text": "その答えは、彼らは迅速に救うほど重要ではない、というものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "帰還した者と帰還しなかった者",
+      "text_markdown": "帰還した者と帰還しなかった者"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年に捕らえられたおよそ四百人のアイスランド人のうち、帰還できたのはわずかな数でした。",
+      "text_markdown": "1627年に捕らえられたおよそ四百人のアイスランド人のうち、帰還できたのはわずかな数でした。",
+      "tts": {
+        "text": "千六百二十七年に捕らえられたおよそ四百人のアイスランド人のうち、帰還できたのはわずかな数でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "身代金交渉には約十年を要し、資金が届いた頃には多くが既に亡くなっていました。",
+      "text_markdown": "身代金交渉には約十年を要し、資金が届いた頃には多くが既に亡くなっていました。",
+      "tts": {
+        "text": "身代金交渉には約十年を要し、資金が届いた頃には多くが既に亡くなっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "病気、過重労働、そして絶望が、最初の数年で多くの命を奪いました。",
+      "text_markdown": "病気、過重労働、そして絶望が、最初の数年で多くの命を奪いました。",
+      "tts": {
+        "text": "病気、過重労働、そして絶望が、最初の数年で多くの命を奪いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アイスランドの冷たい空気からアルジェの暑さへの移行は壊滅的でした。",
+      "text_markdown": "アイスランドの冷たい空気からアルジェの暑さへの移行は壊滅的でした。",
+      "tts": {
+        "text": "アイスランドの冷たい空気からアルジェの暑さへの移行は壊滅的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "改宗した者たち",
+      "text_markdown": "改宗した者たち"
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一部の捕虜はイスラム教に改宗しました。",
+      "text_markdown": "一部の捕虜はイスラム教に改宗しました。",
+      "tts": {
+        "text": "一部の捕虜はイスラム教に改宗しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "改宗には実際の利点がありました。改宗者は法的に奴隷として拘束されなくなり、仕事や結婚への道が開かれました。",
+      "text_markdown": "改宗には実際の利点がありました。改宗者は法的に奴隷として拘束されなくなり、仕事や結婚への道が開かれました。",
+      "tts": {
+        "text": "改宗には実際の利点がありました。改宗者は法的に奴隷として拘束されなくなり、仕事や結婚への道が開かれました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一部の者にとって、改宗は信仰ではなく生存のためでした。",
+      "text_markdown": "一部の者にとって、改宗は信仰ではなく生存のためでした。",
+      "tts": {
+        "text": "一部の者にとって、改宗は信仰ではなく生存のためでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他の者は心から新しい宗教を受け入れ、新しい生活を築きました。",
+      "text_markdown": "他の者は心から新しい宗教を受け入れ、新しい生活を築きました。",
+      "tts": {
+        "text": "他の者は心から新しい宗教を受け入れ、新しい生活を築きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランドの教会はこれらの改宗を恐怖の目で見ました。",
+      "text_markdown": "アイスランドの教会はこれらの改宗を恐怖の目で見ました。",
+      "tts": {
+        "text": "アイスランドの教会はこれらの改宗を恐怖の目で見ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし捕虜の側からすれば、改宗が生き延びる唯一の方法であることもありました。",
+      "text_markdown": "しかし捕虜の側からすれば、改宗が生き延びる唯一の方法であることもありました。",
+      "tts": {
+        "text": "しかし捕虜の側からすれば、改宗が生き延びる唯一の方法であることもありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "身代金で解放されたわずかな人々",
+      "text_markdown": "身代金で解放されたわずかな人々"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1636年、襲撃からほぼ九年後、ついに身代金が支払われました。",
+      "text_markdown": "1636年、襲撃からほぼ九年後、ついに身代金が支払われました。",
+      "tts": {
+        "text": "千六百三十六年、襲撃からほぼ九年後、ついに身代金が支払われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三十四人の捕虜が解放され、故郷に送り返されました。",
+      "text_markdown": "三十四人の捕虜が解放され、故郷に送り返されました。",
+      "tts": {
+        "text": "三十四人の捕虜が解放され、故郷に送り返されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四百人中、三十四人。",
+      "text_markdown": "四百人中、三十四人。",
+      "tts": {
+        "text": "四百人中、三十四人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "亡くなった者、改宗した者、そして見つからなかったり持ち主が売却を拒んだ者が多くいました。",
+      "text_markdown": "亡くなった者、改宗した者、そして見つからなかったり持ち主が売却を拒んだ者が多くいました。",
+      "tts": {
+        "text": "亡くなった者、改宗した者、そして見つからなかったり持ち主が売却を拒んだ者が多くいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "グズリーズル・シーモナルドッティル",
+      "text_markdown": "Guðríður Símonardóttir"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最終的に身代金で解放された者の中にグズリーズル・シーモナルドッティルがいました。",
+      "text_markdown": "最終的に身代金で解放された者の中にGuðríður Símonardóttirがいました。",
+      "tts": {
+        "text": "最終的に身代金で解放された者の中にグズリーズル・シーモナルドッティルがいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は若い女性として捕らえられ、アルジェで約十年間奴隷として過ごしました。",
+      "text_markdown": "彼女は若い女性として捕らえられ、アルジェで約十年間奴隷として過ごしました。",
+      "tts": {
+        "text": "彼女は若い女性として捕らえられ、アルジェで約十年間奴隷として過ごしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランドに戻った時、彼女は変わった人間になっていました。",
+      "text_markdown": "アイスランドに戻った時、彼女は変わった人間になっていました。",
+      "tts": {
+        "text": "アイスランドに戻った時、彼女は変わった人間になっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はアラビア語を話し、連れ去られた世界とはまったく異なる世界で暮らしてきました。",
+      "text_markdown": "彼女はアラビア語を話し、連れ去られた世界とはまったく異なる世界で暮らしてきました。",
+      "tts": {
+        "text": "彼女はアラビア語を話し、連れ去られた世界とはまったく異なる世界で暮らしてきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "帰還後、彼女はハトルグリームル・ペートゥルスソンと結婚しました。彼はアイスランド史上最も偉大な詩人の一人となる人物でした。",
+      "text_markdown": "帰還後、彼女はHallgrímur Pétursson と結婚しました。彼はアイスランド史上最も偉大な詩人の一人となる人物でした。",
+      "tts": {
+        "text": "帰還後、彼女はハトルグリームル・ペートゥルスソンと結婚しました。彼はアイスランド史上最も偉大な詩人の一人となる人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の受難賛歌は今もアイスランド文学の傑作とみなされています。",
+      "text_markdown": "彼の受難賛歌は今もアイスランド文学の傑作とみなされています。",
+      "tts": {
+        "text": "彼の受難賛歌は今もアイスランド文学の傑作とみなされています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アフリカで奴隷にされた女性が、アイスランドで最も愛される宗教詩人となる男性と結婚したのです。",
+      "text_markdown": "北アフリカで奴隷にされた女性が、アイスランドで最も愛される宗教詩人となる男性と結婚したのです。",
+      "tts": {
+        "text": "北アフリカで奴隷にされた女性が、アイスランドで最も愛される宗教詩人となる男性と結婚したのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人は共に生活を築きましたが、捕囚の影は彼女から完全には消えませんでした。",
+      "text_markdown": "二人は共に生活を築きましたが、捕囚の影は彼女から完全には消えませんでした。",
+      "tts": {
+        "text": "二人は共に生活を築きましたが、捕囚の影は彼女から完全には消えませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "オーラヴュルの帰還",
+      "text_markdown": "Ólafurの帰還"
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュル自身もやがてアイスランドに戻りましたが、打ちのめされ疲れ果てた人間でした。",
+      "text_markdown": "Ólafur自身もやがてアイスランドに戻りましたが、打ちのめされ疲れ果てた人間でした。",
+      "tts": {
+        "text": "オーラヴュル自身もやがてアイスランドに戻りましたが、打ちのめされ疲れ果てた人間でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p124",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家族の大半を失い、引き受けた使命はほぼ失敗に終わっていました。",
+      "text_markdown": "家族の大半を失い、引き受けた使命はほぼ失敗に終わっていました。",
+      "tts": {
+        "text": "家族の大半を失い、引き受けた使命はほぼ失敗に終わっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "妻アウスタの運命は不明のままです。",
+      "text_markdown": "妻Ástaの運命は不明のままです。",
+      "tts": {
+        "text": "妻アウスタの運命は不明のままです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p125",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家は彼女が捕囚中に亡くなったと考えていますが、状況は明らかになっていません。",
+      "text_markdown": "歴史家は彼女が捕囚中に亡くなったと考えていますが、状況は明らかになっていません。",
+      "tts": {
+        "text": "歴史家は彼女が捕囚中に亡くなったと考えていますが、状況は明らかになっていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p125",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の記述における沈黙は、言葉よりも雄弁に語っています。",
+      "text_markdown": "彼の記述における沈黙は、言葉よりも雄弁に語っています。",
+      "tts": {
+        "text": "彼の記述における沈黙は、言葉よりも雄弁に語っています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルは1651年まで生き、八十七歳に達しました。",
+      "text_markdown": "Ólafurは1651年まで生き、八十七歳に達しました。",
+      "tts": {
+        "text": "オーラヴュルは千六百五十一年まで生き、八十七歳に達しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p126",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は最期の年月を、見てきたもの、失ったものすべての重みを背負いながら過ごしました。",
+      "text_markdown": "彼は最期の年月を、見てきたもの、失ったものすべての重みを背負いながら過ごしました。",
+      "tts": {
+        "text": "彼は最期の年月を、見てきたもの、失ったものすべての重みを背負いながら過ごしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "消えないトラウマ",
+      "text_markdown": "消えないトラウマ"
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "帰還した捕虜たちは、アイスランドがすでに先に進んでしまっていることを知りました。",
+      "text_markdown": "帰還した捕虜たちは、アイスランドがすでに先に進んでしまっていることを知りました。",
+      "tts": {
+        "text": "帰還した捕虜たちは、アイスランドがすでに先に進んでしまっていることを知りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p128",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの家は他の者に与えられ、財産は消えていました。",
+      "text_markdown": "彼らの家は他の者に与えられ、財産は消えていました。",
+      "tts": {
+        "text": "彼らの家は他の者に与えられ、財産は消えていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "教会は帰還者に、改宗していないことを証明するための公開の信仰審問を受けるよう求めました。",
+      "text_markdown": "教会は帰還者に、改宗していないことを証明するための公開の信仰審問を受けるよう求めました。",
+      "tts": {
+        "text": "教会は帰還者に、改宗していないことを証明するための公開の信仰審問を受けるよう求めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p129",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "想像を絶する苦しみをすでに経験した人々にとって、それは屈辱的なことでした。",
+      "text_markdown": "想像を絶する苦しみをすでに経験した人々にとって、それは屈辱的なことでした。",
+      "tts": {
+        "text": "想像を絶する苦しみをすでに経験した人々にとって、それは屈辱的なことでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの者が再適応に苦しみました。",
+      "text_markdown": "多くの者が再適応に苦しみました。",
+      "tts": {
+        "text": "多くの者が再適応に苦しみました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p130",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは隣人たちには理解できない形で変えられていました。",
+      "text_markdown": "彼らは隣人たちには理解できない形で変えられていました。",
+      "tts": {
+        "text": "彼らは隣人たちには理解できない形で変えられていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アイスランド人がテュルキャラーニズ（トルコ人の略奪）と呼ぶこの事件は、国民の記憶に傷跡を残しました。",
+      "text_markdown": "アイスランド人がTyrkjaránið（トルコ人の略奪）と呼ぶこの事件は、国民の記憶に傷跡を残しました。",
+      "tts": {
+        "text": "アイスランド人がテュルキャラーニズ、トルコ人の略奪と呼ぶこの事件は、国民の記憶に傷跡を残しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p131",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "襲撃にまつわる歌や物語は何世代にもわたって語り継がれました。",
+      "text_markdown": "襲撃にまつわる歌や物語は何世代にもわたって語り継がれました。",
+      "tts": {
+        "text": "襲撃にまつわる歌や物語は何世代にもわたって語り継がれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "帰還した者と帰還しなかった者",
+      "paragraph_id": "p131",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヴェストマンナエイヤル諸島は決して忘れませんでした。",
+      "text_markdown": "ヴェストマンナエイヤル諸島は決して忘れませんでした。",
+      "tts": {
+        "text": "ヴェストマンナエイヤル諸島は決して忘れませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "生き残った本",
+      "text_markdown": "生き残った本"
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルの著書、レイスブックは彼の存命中には出版されませんでした。",
+      "text_markdown": "Ólafurの著書、Reisubókは彼の存命中には出版されませんでした。",
+      "tts": {
+        "text": "オーラヴュルの著書、レイスブックは彼の存命中には出版されませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "手書きの写本として流布し、読者から読者へと写され、渡されました。",
+      "text_markdown": "手書きの写本として流布し、読者から読者へと写され、渡されました。",
+      "tts": {
+        "text": "手書きの写本として流布し、読者から読者へと写され、渡されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p133",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何世紀もかけて、それはアイスランド文学で最も重要な歴史的文書の一つとなりました。",
+      "text_markdown": "何世紀もかけて、それはアイスランド文学で最も重要な歴史的文書の一つとなりました。",
+      "tts": {
+        "text": "何世紀もかけて、それはアイスランド文学で最も重要な歴史的文書の一つとなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北ヨーロッパ人によって書かれたバルバリア奴隷貿易の数少ない第一人称の記録の一つです。",
+      "text_markdown": "北ヨーロッパ人によって書かれたバルバリア奴隷貿易の数少ない第一人称の記録の一つです。",
+      "tts": {
+        "text": "北ヨーロッパ人によって書かれたバルバリア奴隷貿易の数少ない第一人称の記録の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p134",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "小さな火山島出身のアイスランド人牧師としてのオーラヴュルの視点は、ヨーロッパ文学全体の中でも類を見ないものです。",
+      "text_markdown": "小さな火山島出身のアイスランド人牧師としてのÓlafurの視点は、ヨーロッパ文学全体の中でも類を見ないものです。",
+      "tts": {
+        "text": "小さな火山島出身のアイスランド人牧師としてのオーラヴュルの視点は、ヨーロッパ文学全体の中でも類を見ないものです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "この本が教えること",
+      "text_markdown": "この本が教えること"
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルは学者の注意深い目で書きました。",
+      "text_markdown": "Ólafurは学者の注意深い目で書きました。",
+      "tts": {
+        "text": "オーラヴュルは学者の注意深い目で書きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p136",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェ、その風習、奴隷市場、日々の捕囚生活を、過度な誇張なしに描写しました。",
+      "text_markdown": "アルジェ、その風習、奴隷市場、日々の捕囚生活を、過度な誇張なしに描写しました。",
+      "tts": {
+        "text": "アルジェ、その風習、奴隷市場、日々の捕囚生活を、過度な誇張なしに描写しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の本は、海賊行為は海賊だけのものではなかったことを教えてくれます。",
+      "text_markdown": "彼の本は、海賊行為は海賊だけのものではなかったことを教えてくれます。",
+      "tts": {
+        "text": "彼の本は、海賊行為は海賊だけのものではなかったことを教えてくれます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すべての襲撃の背後には、人生を破壊された実在の人々がいました。",
+      "text_markdown": "すべての襲撃の背後には、人生を破壊された実在の人々がいました。",
+      "tts": {
+        "text": "すべての襲撃の背後には、人生を破壊された実在の人々がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p137",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オーラヴュルは、自らの物語を語った数少ない被害者の一人です。",
+      "text_markdown": "Ólafurは、自らの物語を語った数少ない被害者の一人です。",
+      "tts": {
+        "text": "オーラヴュルは、自らの物語を語った数少ない被害者の一人です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "レイスブックはまた、自国民を守ることに失敗したヨーロッパ列強の姿も明らかにしています。",
+      "text_markdown": "Reisubókはまた、自国民を守ることに失敗したヨーロッパ列強の姿も明らかにしています。",
+      "tts": {
+        "text": "レイスブックはまた、自国民を守ることに失敗したヨーロッパ列強の姿も明らかにしています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p138",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマークはアイスランドを支配していましたが、その防衛のためにはほとんど何もしませんでした。",
+      "text_markdown": "デンマークはアイスランドを支配していましたが、その防衛のためにはほとんど何もしませんでした。",
+      "tts": {
+        "text": "デンマークはアイスランドを支配していましたが、その防衛のためにはほとんど何もしませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕虜たちは、自分たちを守るべき政府に見捨てられました。",
+      "text_markdown": "捕虜たちは、自分たちを守るべき政府に見捨てられました。",
+      "tts": {
+        "text": "捕虜たちは、自分たちを守るべき政府に見捨てられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "なぜこの物語が海賊シリーズに属するのか",
+      "text_markdown": "なぜこの物語が海賊シリーズに属するのか"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本は、有名な海賊についてのシリーズの一部です。",
+      "text_markdown": "この本は、有名な海賊についてのシリーズの一部です。",
+      "tts": {
+        "text": "この本は、有名な海賊についてのシリーズの一部です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p140",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オーラヴュルは海賊ではありませんでした。",
+      "text_markdown": "Ólafurは海賊ではありませんでした。",
+      "tts": {
+        "text": "オーラヴュルは海賊ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p140",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は海賊行為の被害者でした。",
+      "text_markdown": "彼は海賊行為の被害者でした。",
+      "tts": {
+        "text": "彼は海賊行為の被害者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p140",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし、海賊行為が本当は何を意味していたのかを理解するために、彼の物語は欠かせません。",
+      "text_markdown": "しかし、海賊行為が本当は何を意味していたのかを理解するために、彼の物語は欠かせません。",
+      "tts": {
+        "text": "しかし、海賊行為が本当は何を意味していたのかを理解するために、彼の物語は欠かせません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊行為はしばしば美化されます。",
+      "text_markdown": "海賊行為はしばしば美化されます。",
+      "tts": {
+        "text": "海賊行為はしばしば美化されます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p141",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしその本質は、普通の人々に対する組織的な暴力でした。",
+      "text_markdown": "しかしその本質は、普通の人々に対する組織的な暴力でした。",
+      "tts": {
+        "text": "しかしその本質は、普通の人々に対する組織的な暴力でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p141",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バルバリア海賊は物品を盗んだだけではありませんでした。",
+      "text_markdown": "バルバリア海賊は物品を盗んだだけではありませんでした。",
+      "tts": {
+        "text": "バルバリア海賊は物品を盗んだだけではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p141",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは人を盗んだのです。",
+      "text_markdown": "彼らは人を盗んだのです。",
+      "tts": {
+        "text": "彼らは人を盗んだのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルの物語は、海賊行為を反対側から見ることを私たちに迫ります。",
+      "text_markdown": "Ólafurの物語は、海賊行為を反対側から見ることを私たちに迫ります。",
+      "tts": {
+        "text": "オーラヴュルの物語は、海賊行為を反対側から見ることを私たちに迫ります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家から引き離され、家族と別れ、市場で売られ、政府に忘れ去られることを想像するよう求めています。",
+      "text_markdown": "家から引き離され、家族と別れ、市場で売られ、政府に忘れ去られることを想像するよう求めています。",
+      "tts": {
+        "text": "家から引き離され、家族と別れ、市場で売られ、政府に忘れ去られることを想像するよう求めています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "今日のヴェストマンナエイヤル諸島",
+      "text_markdown": "今日のヴェストマンナエイヤル諸島"
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヴェストマンナエイヤル諸島には今も人が暮らしており、現在ヘイマエイには約四千人が住んでいます。",
+      "text_markdown": "ヴェストマンナエイヤル諸島には今も人が暮らしており、現在ヘイマエイには約四千人が住んでいます。",
+      "tts": {
+        "text": "ヴェストマンナエイヤル諸島には今も人が暮らしており、現在ヘイマエイには約四千人が住んでいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p144",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "島々は自然の美しさ、ツノメドリの営巣地、そして年に一度の祭りで知られています。",
+      "text_markdown": "島々は自然の美しさ、ツノメドリの営巣地、そして年に一度の祭りで知られています。",
+      "tts": {
+        "text": "島々は自然の美しさ、ツノメドリの営巣地、そして年に一度の祭りで知られています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627年の襲撃の記憶は今も生きています。",
+      "text_markdown": "1627年の襲撃の記憶は今も生きています。",
+      "tts": {
+        "text": "千六百二十七年の襲撃の記憶は今も生きています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p145",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヘイマエイの記念碑は犠牲者を称え、地元の歴史家たちは捕虜を名前で特定する作業を行ってきました。",
+      "text_markdown": "ヘイマエイの記念碑は犠牲者を称え、地元の歴史家たちは捕虜を名前で特定する作業を行ってきました。",
+      "tts": {
+        "text": "ヘイマエイの記念碑は犠牲者を称え、地元の歴史家たちは捕虜を名前で特定する作業を行ってきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2009年、連れ去られた人々を称える記念碑が建てられました。",
+      "text_markdown": "2009年、連れ去られた人々を称える記念碑が建てられました。",
+      "tts": {
+        "text": "二千九年、連れ去られた人々を称える記念碑が建てられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p146",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その碑文は、かつてここに普通の人々が暮らし、世界の反対側へ力ずくで連れ去られたことを訪問者に思い起こさせます。",
+      "text_markdown": "その碑文は、かつてここに普通の人々が暮らし、世界の反対側へ力ずくで連れ去られたことを訪問者に思い起こさせます。",
+      "tts": {
+        "text": "その碑文は、かつてここに普通の人々が暮らし、世界の反対側へ力ずくで連れ去られたことを訪問者に思い起こさせます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "記憶と遺産",
+      "text_markdown": "記憶と遺産"
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーラヴュルが亡くなって約四百年が経ちますが、彼の言葉は今も語りかけています。",
+      "text_markdown": "Ólafurが亡くなって約四百年が経ちますが、彼の言葉は今も語りかけています。",
+      "tts": {
+        "text": "オーラヴュルが亡くなって約四百年が経ちますが、彼の言葉は今も語りかけています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p148",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の本は、歴史は王や征服者だけが作るのではないことを思い出させてくれます。",
+      "text_markdown": "彼の本は、歴史は王や征服者だけが作るのではないことを思い出させてくれます。",
+      "tts": {
+        "text": "彼の本は、歴史は王や征服者だけが作るのではないことを思い出させてくれます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "並外れた苦しみに耐え、証言する方法を見つけた普通の人々によっても作られるのです。",
+      "text_markdown": "並外れた苦しみに耐え、証言する方法を見つけた普通の人々によっても作られるのです。",
+      "tts": {
+        "text": "並外れた苦しみに耐え、証言する方法を見つけた普通の人々によっても作られるのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "レイスブックは彼の証言です。",
+      "text_markdown": "Reisubókは彼の証言です。",
+      "tts": {
+        "text": "レイスブックは彼の証言です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p149",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほとんどすべてを失いながらも、自らの物語を絶やすことを拒んだ一人の人間の声です。",
+      "text_markdown": "ほとんどすべてを失いながらも、自らの物語を絶やすことを拒んだ一人の人間の声です。",
+      "tts": {
+        "text": "ほとんどすべてを失いながらも、自らの物語を絶やすことを拒んだ一人の人間の声です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "生き残った本",
+      "paragraph_id": "p149",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の本が残る限り、1627年にヴェストマンナエイヤル諸島から連れ去られた人々は忘れられることはないでしょう。",
+      "text_markdown": "彼の本が残る限り、1627年にヴェストマンナエイヤル諸島から連れ去られた人々は忘れられることはないでしょう。",
+      "tts": {
+        "text": "彼の本が残る限り、千六百二十七年にヴェストマンナエイヤル諸島から連れ去られた人々は忘れられることはないでしょう。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

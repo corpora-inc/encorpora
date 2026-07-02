@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_samuel_bellamy",
+  "language": "zh",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是塞缪尔·贝拉米的故事，一个自称海上罗宾汉的海盗。",
+      "text_markdown": "这是塞缪尔·贝拉米的故事，一个自称海上罗宾汉的海盗。",
+      "tts": {
+        "text": "这是塞缪尔·贝拉米的故事，一个自称海上罗宾汉的海盗。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的事业仅仅持续了一年，却在历史上留下了至今不灭的印记。",
+      "text_markdown": "他的事业仅仅持续了一年，却在历史上留下了至今不灭的印记。",
+      "tts": {
+        "text": "他的事业仅仅持续了一年，却在历史上留下了至今不灭的印记。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米是黄金时代最成功的海盗之一。",
+      "text_markdown": "贝拉米是黄金时代最成功的海盗之一。",
+      "tts": {
+        "text": "贝拉米是黄金时代最成功的海盗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在短短十一个月内俘获了五十多艘船。",
+      "text_markdown": "他在短短十一个月内俘获了五十多艘船。",
+      "tts": {
+        "text": "他在短短十一个月内俘获了五十多艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他发表过关于正义、不平等和统治阶级虚伪的演说。",
+      "text_markdown": "他发表过关于正义、不平等和统治阶级虚伪的演说。",
+      "tts": {
+        "text": "他发表过关于正义、不平等和统治阶级虚伪的演说。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在科德角附近的一场风暴中丧生，年仅28岁。",
+      "text_markdown": "他在科德角附近的一场风暴中丧生，年仅28岁。",
+      "tts": {
+        "text": "他在科德角附近的一场风暴中丧生，年仅二十八岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的旗舰维达号与他一同沉没，在海底沉睡了260多年。",
+      "text_markdown": "他的旗舰维达号与他一同沉没，在海底沉睡了260多年。",
+      "tts": {
+        "text": "他的旗舰维达号与他一同沉没，在海底沉睡了二百六十多年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984年，一位名叫巴里·克利福德的探险家发现了这艘沉船。",
+      "text_markdown": "1984年，一位名叫巴里·克利福德的探险家发现了这艘沉船。",
+      "tts": {
+        "text": "一九八四年，一位名叫巴里·克利福德的探险家发现了这艘沉船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这仍然是有史以来唯一一艘经过验证的海盗沉船。",
+      "text_markdown": "这仍然是有史以来唯一一艘经过验证的海盗沉船。",
+      "tts": {
+        "text": "这仍然是有史以来唯一一艘经过验证的海盗沉船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从维达号打捞出的文物彻底改变了我们对海盗生活的认知。",
+      "text_markdown": "从维达号打捞出的文物彻底改变了我们对海盗生活的认知。",
+      "tts": {
+        "text": "从维达号打捞出的文物彻底改变了我们对海盗生活的认知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这就是那些文物背后的故事，以及那个将它们带到海底的人的故事。",
+      "text_markdown": "这就是那些文物背后的故事，以及那个将它们带到海底的人的故事。",
+      "tts": {
+        "text": "这就是那些文物背后的故事，以及那个将它们带到海底的人的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海盗的黄金时代",
+      "text_markdown": "海盗的黄金时代"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初被称为海盗的黄金时代。",
+      "text_markdown": "十八世纪初被称为海盗的黄金时代。",
+      "tts": {
+        "text": "十八世纪初被称为海盗的黄金时代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在这一时期，数千人在大西洋和加勒比海转向了海盗活动。",
+      "text_markdown": "在这一时期，数千人在大西洋和加勒比海转向了海盗活动。",
+      "tts": {
+        "text": "在这一时期，数千人在大西洋和加勒比海转向了海盗活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们掠夺运载糖、烟草、布匹和被奴役者的商船。",
+      "text_markdown": "他们掠夺运载糖、烟草、布匹和被奴役者的商船。",
+      "tts": {
+        "text": "他们掠夺运载糖、烟草、布匹和被奴役者的商船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黄金时代大约始于1715年，持续到1720年代中期。",
+      "text_markdown": "黄金时代大约始于1715年，持续到1720年代中期。",
+      "tts": {
+        "text": "黄金时代大约始于一七一五年，持续到一七二零年代中期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是由西班牙王位继承战争的结束所引发的。",
+      "text_markdown": "它是由西班牙王位继承战争的结束所引发的。",
+      "tts": {
+        "text": "它是由西班牙王位继承战争的结束所引发的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战争结束后，数千名水手突然失业了。",
+      "text_markdown": "战争结束后，数千名水手突然失业了。",
+      "tts": {
+        "text": "战争结束后，数千名水手突然失业了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙王位继承战争持续了十多年。",
+      "text_markdown": "西班牙王位继承战争持续了十多年。",
+      "tts": {
+        "text": "西班牙王位继承战争持续了十多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几乎每一个欧洲大国都卷入了争夺西班牙王位继承权的战争。",
+      "text_markdown": "几乎每一个欧洲大国都卷入了争夺西班牙王位继承权的战争。",
+      "tts": {
+        "text": "几乎每一个欧洲大国都卷入了争夺西班牙王位继承权的战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "冲突延伸到了殖民地，在海上的战斗丝毫不亚于陆地上的。",
+      "text_markdown": "冲突延伸到了殖民地，在海上的战斗丝毫不亚于陆地上的。",
+      "tts": {
+        "text": "冲突延伸到了殖民地，在海上的战斗丝毫不亚于陆地上的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战争期间，许多水手曾担任私掠者，为政府袭击敌方船只。",
+      "text_markdown": "战争期间，许多水手曾担任私掠者，为政府袭击敌方船只。",
+      "tts": {
+        "text": "战争期间，许多水手曾担任私掠者，为政府袭击敌方船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "和平到来后，再也没有私掠许可证了。",
+      "text_markdown": "和平到来后，再也没有私掠许可证了。",
+      "tts": {
+        "text": "和平到来后，再也没有私掠许可证了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在战争中学到的技能在和平时期毫无合法用途。",
+      "text_markdown": "他们在战争中学到的技能在和平时期毫无合法用途。",
+      "tts": {
+        "text": "他们在战争中学到的技能在和平时期毫无合法用途。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初普通水手的生活艰苦且报酬微薄。",
+      "text_markdown": "十八世纪初普通水手的生活艰苦且报酬微薄。",
+      "tts": {
+        "text": "十八世纪初普通水手的生活艰苦且报酬微薄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船船长像暴君一样统治着他们的船。",
+      "text_markdown": "商船船长像暴君一样统治着他们的船。",
+      "tts": {
+        "text": "商船船长像暴君一样统治着他们的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鞭笞、饥饿工资和危险的工作条件是常态。",
+      "text_markdown": "鞭笞、饥饿工资和危险的工作条件是常态。",
+      "tts": {
+        "text": "鞭笞、饥饿工资和危险的工作条件是常态。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个普通水手每月大约挣一英镑。",
+      "text_markdown": "一个普通水手每月大约挣一英镑。",
+      "tts": {
+        "text": "一个普通水手每月大约挣一英镑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个成功的海盗一天就能挣到那么多。",
+      "text_markdown": "一个成功的海盗一天就能挣到那么多。",
+      "tts": {
+        "text": "一个成功的海盗一天就能挣到那么多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对于那些一无所有的人来说，转行做海盗的经济动力是巨大的。",
+      "text_markdown": "对于那些一无所有的人来说，转行做海盗的经济动力是巨大的。",
+      "tts": {
+        "text": "对于那些一无所有的人来说，转行做海盗的经济动力是巨大的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多水手将海盗视为逃离这种残酷的出路。",
+      "text_markdown": "许多水手将海盗视为逃离这种残酷的出路。",
+      "tts": {
+        "text": "许多水手将海盗视为逃离这种残酷的出路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在海盗船上，船长由船员选举产生。",
+      "text_markdown": "在海盗船上，船长由船员选举产生。",
+      "tts": {
+        "text": "在海盗船上，船长由船员选举产生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品按照约定的规则分配，每个人都有投票权。",
+      "text_markdown": "战利品按照约定的规则分配，每个人都有投票权。",
+      "tts": {
+        "text": "战利品按照约定的规则分配，每个人都有投票权。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗船在许多方面是小型的海上民主体。",
+      "text_markdown": "海盗船在许多方面是小型的海上民主体。",
+      "tts": {
+        "text": "海盗船在许多方面是小型的海上民主体。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们有书面的行为准则、选举产生的军官，以及补偿受伤船员的制度。",
+      "text_markdown": "他们有书面的行为准则、选举产生的军官，以及补偿受伤船员的制度。",
+      "tts": {
+        "text": "他们有书面的行为准则、选举产生的军官，以及补偿受伤船员的制度。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些做法在一个普通人几乎没有政治权利的时代是非凡的。",
+      "text_markdown": "这些做法在一个普通人几乎没有政治权利的时代是非凡的。",
+      "tts": {
+        "text": "这些做法在一个普通人几乎没有政治权利的时代是非凡的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴哈马成为海盗世界的非官方首都。",
+      "text_markdown": "巴哈马成为海盗世界的非官方首都。",
+      "tts": {
+        "text": "巴哈马成为海盗世界的非官方首都。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "新普罗维登斯岛上的拿骚镇是一个无法无天的避风港。",
+      "text_markdown": "新普罗维登斯岛上的拿骚镇是一个无法无天的避风港。",
+      "tts": {
+        "text": "新普罗维登斯岛上的拿骚镇是一个无法无天的避风港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数百名海盗公开生活在那里，没有总督或驻军来阻止他们。",
+      "text_markdown": "数百名海盗公开生活在那里，没有总督或驻军来阻止他们。",
+      "tts": {
+        "text": "数百名海盗公开生活在那里，没有总督或驻军来阻止他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "殖民列强决心消灭海盗。",
+      "text_markdown": "殖民列强决心消灭海盗。",
+      "tts": {
+        "text": "殖民列强决心消灭海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗袭击扰乱了贸易，给商人造成了巨大损失。",
+      "text_markdown": "海盗袭击扰乱了贸易，给商人造成了巨大损失。",
+      "tts": {
+        "text": "海盗袭击扰乱了贸易，给商人造成了巨大损失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "各国政府悬赏捉拿海盗，并派军舰追捕他们。",
+      "text_markdown": "各国政府悬赏捉拿海盗，并派军舰追捕他们。",
+      "tts": {
+        "text": "各国政府悬赏捉拿海盗，并派军舰追捕他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰在追诉海盗方面尤为积极。",
+      "text_markdown": "英格兰在追诉海盗方面尤为积极。",
+      "tts": {
+        "text": "英格兰在追诉海盗方面尤为积极。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "被俘的海盗在海事法庭受审，几乎总是被绞死。",
+      "text_markdown": "被俘的海盗在海事法庭受审，几乎总是被绞死。",
+      "tts": {
+        "text": "被俘的海盗在海事法庭受审，几乎总是被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的尸体有时被挂在港口入口处的铁笼里，以警示他人。",
+      "text_markdown": "他们的尸体有时被挂在港口入口处的铁笼里，以警示他人。",
+      "tts": {
+        "text": "他们的尸体有时被挂在港口入口处的铁笼里，以警示他人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋奴隶贸易在这个时代达到了顶峰。",
+      "text_markdown": "大西洋奴隶贸易在这个时代达到了顶峰。",
+      "tts": {
+        "text": "大西洋奴隶贸易在这个时代达到了顶峰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船只将被奴役的非洲人从西非运往加勒比海和美洲殖民地。",
+      "text_markdown": "船只将被奴役的非洲人从西非运往加勒比海和美洲殖民地。",
+      "tts": {
+        "text": "船只将被奴役的非洲人从西非运往加勒比海和美洲殖民地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些奴隶船是海盗频繁的目标，因为它们载有贵重货物。",
+      "text_markdown": "这些奴隶船是海盗频繁的目标，因为它们载有贵重货物。",
+      "tts": {
+        "text": "这些奴隶船是海盗频繁的目标，因为它们载有贵重货物。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "将成为贝拉米旗舰的那艘船就是这样一艘船。",
+      "text_markdown": "将成为贝拉米旗舰的那艘船就是这样一艘船。",
+      "tts": {
+        "text": "将成为贝拉米旗舰的那艘船就是这样一艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "维达·盖利号是一艘在伦敦建造的奴隶船，以西非贸易站维达命名。",
+      "text_markdown": "维达·盖利号是一艘在伦敦建造的奴隶船，以西非贸易站维达命名。",
+      "tts": {
+        "text": "维达·盖利号是一艘在伦敦建造的奴隶船，以西非贸易站维达命名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新英格兰海岸外的水域是出人意料的活跃的海盗猎场。",
+      "text_markdown": "新英格兰海岸外的水域是出人意料的活跃的海盗猎场。",
+      "tts": {
+        "text": "新英格兰海岸外的水域是出人意料的活跃的海盗猎场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "往返于殖民地和欧洲之间的船只不断穿过这些水域。",
+      "text_markdown": "往返于殖民地和欧洲之间的船只不断穿过这些水域。",
+      "tts": {
+        "text": "往返于殖民地和欧洲之间的船只不断穿过这些水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "科德角及其危险的浅滩和移动的沙洲是各类船只的坟场。",
+      "text_markdown": "科德角及其危险的浅滩和移动的沙洲是各类船只的坟场。",
+      "tts": {
+        "text": "科德角及其危险的浅滩和移动的沙洲是各类船只的坟场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初居住在科德角的人们对沉船非常熟悉。",
+      "text_markdown": "十八世纪初居住在科德角的人们对沉船非常熟悉。",
+      "tts": {
+        "text": "十八世纪初居住在科德角的人们对沉船非常熟悉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们从失事船只中打捞木材、货物和索具，这是生活的常规部分。",
+      "text_markdown": "他们从失事船只中打捞木材、货物和索具，这是生活的常规部分。",
+      "tts": {
+        "text": "他们从失事船只中打捞木材、货物和索具，这是生活的常规部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说有些人用虚假的信号火引诱船只触礁。",
+      "text_markdown": "据说有些人用虚假的信号火引诱船只触礁。",
+      "tts": {
+        "text": "据说有些人用虚假的信号火引诱船只触礁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "正是这个充满贫穷、不平等和海上暴力的世界造就了塞缪尔·贝拉米。",
+      "text_markdown": "正是这个充满贫穷、不平等和海上暴力的世界造就了塞缪尔·贝拉米。",
+      "tts": {
+        "text": "正是这个充满贫穷、不平等和海上暴力的世界造就了塞缪尔·贝拉米。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "海盗的黄金时代",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他一无所有地来到这个世界，在短短一年里，他攫取了他所能得到的一切。",
+      "text_markdown": "他一无所有地来到这个世界，在短短一年里，他攫取了他所能得到的一切。",
+      "tts": {
+        "text": "他一无所有地来到这个世界，在短短一年里，他攫取了他所能得到的一切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "来自德文郡的少年",
+      "text_markdown": "来自德文郡的少年"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞缪尔·贝拉米出生于英格兰西南部的德文郡。",
+      "text_markdown": "塞缪尔·贝拉米出生于英格兰西南部的德文郡。",
+      "tts": {
+        "text": "塞缪尔·贝拉米出生于英格兰西南部的德文郡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他最可能的出生年份是1689年，但没有找到洗礼记录。",
+      "text_markdown": "他最可能的出生年份是1689年，但没有找到洗礼记录。",
+      "tts": {
+        "text": "他最可能的出生年份是一六八九年，但没有找到洗礼记录。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德文郡是一个有着悠久培养水手、渔民和船长历史的海洋郡。",
+      "text_markdown": "德文郡是一个有着悠久培养水手、渔民和船长历史的海洋郡。",
+      "tts": {
+        "text": "德文郡是一个有着悠久培养水手、渔民和船长历史的海洋郡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克爵士，最著名的英国航海家之一，在一个多世纪前就出生在那里。",
+      "text_markdown": "弗朗西斯·德雷克爵士，最著名的英国航海家之一，在一个多世纪前就出生在那里。",
+      "tts": {
+        "text": "弗朗西斯·德雷克爵士，最著名的英国航海家之一，在一个多世纪前就出生在那里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大海融入了这个地区的血脉。",
+      "text_markdown": "大海融入了这个地区的血脉。",
+      "tts": {
+        "text": "大海融入了这个地区的血脉。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德文郡的沿海城镇到处都是渔船、商船和军舰。",
+      "text_markdown": "德文郡的沿海城镇到处都是渔船、商船和军舰。",
+      "tts": {
+        "text": "德文郡的沿海城镇到处都是渔船、商船和军舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "男孩们在港口看着船只来来往往长大。",
+      "text_markdown": "男孩们在港口看着船只来来往往长大。",
+      "tts": {
+        "text": "男孩们在港口看着船只来来往往长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多人梦想着自己出海远航。",
+      "text_markdown": "许多人梦想着自己出海远航。",
+      "tts": {
+        "text": "许多人梦想着自己出海远航。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于贝拉米的家庭或童年知之甚少。",
+      "text_markdown": "关于贝拉米的家庭或童年知之甚少。",
+      "tts": {
+        "text": "关于贝拉米的家庭或童年知之甚少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史学家认为他的家庭很贫穷。",
+      "text_markdown": "历史学家认为他的家庭很贫穷。",
+      "tts": {
+        "text": "历史学家认为他的家庭很贫穷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他可能从小就出海了，就像许多德文郡的穷孩子一样。",
+      "text_markdown": "他可能从小就出海了，就像许多德文郡的穷孩子一样。",
+      "tts": {
+        "text": "他可能从小就出海了，就像许多德文郡的穷孩子一样。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在某个时候，贝拉米在皇家海军服役。",
+      "text_markdown": "在某个时候，贝拉米在皇家海军服役。",
+      "tts": {
+        "text": "在某个时候，贝拉米在皇家海军服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他可能参加了1713年结束的西班牙王位继承战争。",
+      "text_markdown": "他可能参加了1713年结束的西班牙王位继承战争。",
+      "tts": {
+        "text": "他可能参加了一七一三年结束的西班牙王位继承战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战后，他在没有养老金、没有前途的情况下被遣散。",
+      "text_markdown": "战后，他在没有养老金、没有前途的情况下被遣散。",
+      "tts": {
+        "text": "战后，他在没有养老金、没有前途的情况下被遣散。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皇家海军一旦不再需要水手，就会苛待他们。",
+      "text_markdown": "皇家海军一旦不再需要水手，就会苛待他们。",
+      "tts": {
+        "text": "皇家海军一旦不再需要水手，就会苛待他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那些为王室冒生命危险的人被弃如敝屣，没有任何补偿。",
+      "text_markdown": "那些为王室冒生命危险的人被弃如敝屣，没有任何补偿。",
+      "tts": {
+        "text": "那些为王室冒生命危险的人被弃如敝屣，没有任何补偿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种不公在贝拉米心中留下了深深的烙印。",
+      "text_markdown": "这种不公在贝拉米心中留下了深深的烙印。",
+      "tts": {
+        "text": "这种不公在贝拉米心中留下了深深的烙印。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "像成千上万的其他退伍水手一样，贝拉米发现自己被抛弃在一个不需要他的世界。",
+      "text_markdown": "像成千上万的其他退伍水手一样，贝拉米发现自己被抛弃在一个不需要他的世界。",
+      "tts": {
+        "text": "像成千上万的其他退伍水手一样，贝拉米发现自己被抛弃在一个不需要他的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在海军学到的技能在陆地上一文不值。",
+      "text_markdown": "他在海军学到的技能在陆地上一文不值。",
+      "tts": {
+        "text": "他在海军学到的技能在陆地上一文不值。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约在1714年或1715年，贝拉米航行到了美洲殖民地。",
+      "text_markdown": "大约在1714年或1715年，贝拉米航行到了美洲殖民地。",
+      "tts": {
+        "text": "大约在一七一四年或一七一五年，贝拉米航行到了美洲殖民地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他抵达了马萨诸塞殖民地的科德角。",
+      "text_markdown": "他抵达了马萨诸塞殖民地的科德角。",
+      "tts": {
+        "text": "他抵达了马萨诸塞殖民地的科德角。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初的科德角是一个偏远而多风的地方。",
+      "text_markdown": "十八世纪初的科德角是一个偏远而多风的地方。",
+      "tts": {
+        "text": "十八世纪初的科德角是一个偏远而多风的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那里的沙质土壤不适合耕种，大多数人靠海为生。",
+      "text_markdown": "那里的沙质土壤不适合耕种，大多数人靠海为生。",
+      "tts": {
+        "text": "那里的沙质土壤不适合耕种，大多数人靠海为生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些社区规模小、虔诚且对外人充满戒心。",
+      "text_markdown": "这些社区规模小、虔诚且对外人充满戒心。",
+      "tts": {
+        "text": "这些社区规模小、虔诚且对外人充满戒心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根据当地传说，贝拉米在伊斯特汉姆镇遇到了一位名叫玛丽亚·哈利特的年轻女子。",
+      "text_markdown": "根据当地传说，贝拉米在伊斯特汉姆镇遇到了一位名叫玛丽亚·哈利特的年轻女子。",
+      "tts": {
+        "text": "根据当地传说，贝拉米在伊斯特汉姆镇遇到了一位名叫玛丽亚·哈利特的年轻女子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "玛丽亚来自科德角一个受人尊敬的家庭。",
+      "text_markdown": "玛丽亚来自科德角一个受人尊敬的家庭。",
+      "tts": {
+        "text": "玛丽亚来自科德角一个受人尊敬的家庭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "故事说贝拉米爱上了她，并承诺会以富人的身份回来。",
+      "text_markdown": "故事说贝拉米爱上了她，并承诺会以富人的身份回来。",
+      "tts": {
+        "text": "故事说贝拉米爱上了她，并承诺会以富人的身份回来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个爱情故事究竟是真是假还是只是民间传说，已无从确知。",
+      "text_markdown": "这个爱情故事究竟是真是假还是只是民间传说，已无从确知。",
+      "tts": {
+        "text": "这个爱情故事究竟是真是假还是只是民间传说，已无从确知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它被传颂了三个世纪，深深植根于科德角的传统中。",
+      "text_markdown": "它被传颂了三个世纪，深深植根于科德角的传统中。",
+      "tts": {
+        "text": "它被传颂了三个世纪，深深植根于科德角的传统中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "已知的是，贝拉米被寻宝的前景所吸引。",
+      "text_markdown": "已知的是，贝拉米被寻宝的前景所吸引。",
+      "tts": {
+        "text": "已知的是，贝拉米被寻宝的前景所吸引。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715年，一支西班牙宝藏船队在佛罗里达海岸被飓风摧毁。",
+      "text_markdown": "1715年，一支西班牙宝藏船队在佛罗里达海岸被飓风摧毁。",
+      "tts": {
+        "text": "一七一五年，一支西班牙宝藏船队在佛罗里达海岸被飓风摧毁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "十一艘船沉没，价值数百万比索的金银散落在海底。",
+      "text_markdown": "十一艘船沉没，价值数百万比索的金银散落在海底。",
+      "tts": {
+        "text": "十一艘船沉没，价值数百万比索的金银散落在海底。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沉船的消息迅速传遍了殖民地。",
+      "text_markdown": "沉船的消息迅速传遍了殖民地。",
+      "tts": {
+        "text": "沉船的消息迅速传遍了殖民地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数百人涌向佛罗里达，希望打捞宝藏。",
+      "text_markdown": "数百人涌向佛罗里达，希望打捞宝藏。",
+      "tts": {
+        "text": "数百人涌向佛罗里达，希望打捞宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贝拉米就在其中。",
+      "text_markdown": "贝拉米就在其中。",
+      "tts": {
+        "text": "贝拉米就在其中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他与一个名叫保尔斯格雷夫·威廉斯的人合作，此人年长且更为富有。",
+      "text_markdown": "他与一个名叫保尔斯格雷夫·威廉斯的人合作，此人年长且更为富有。",
+      "tts": {
+        "text": "他与一个名叫保尔斯格雷夫·威廉斯的人合作，此人年长且更为富有。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "威廉斯是罗德岛前总检察长的儿子。",
+      "text_markdown": "威廉斯是罗德岛前总检察长的儿子。",
+      "tts": {
+        "text": "威廉斯是罗德岛前总检察长的儿子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他资助了一艘小船，两人南下驶向佛罗里达。",
+      "text_markdown": "他资助了一艘小船，两人南下驶向佛罗里达。",
+      "tts": {
+        "text": "他资助了一艘小船，两人南下驶向佛罗里达。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "打捞行动失败了。",
+      "text_markdown": "打捞行动失败了。",
+      "tts": {
+        "text": "打捞行动失败了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙人已经收回了大部分宝藏，并在守卫剩余的部分。",
+      "text_markdown": "西班牙人已经收回了大部分宝藏，并在守卫剩余的部分。",
+      "tts": {
+        "text": "西班牙人已经收回了大部分宝藏，并在守卫剩余的部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贝拉米和威廉斯空手而归。",
+      "text_markdown": "贝拉米和威廉斯空手而归。",
+      "tts": {
+        "text": "贝拉米和威廉斯空手而归。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "身无分文且心灰意冷，两人渐渐混入了海盗之中。",
+      "text_markdown": "身无分文且心灰意冷，两人渐渐混入了海盗之中。",
+      "tts": {
+        "text": "身无分文且心灰意冷，两人渐渐混入了海盗之中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们遇到了一位名叫本杰明·霍尼戈尔德的海盗船长，他在巴哈马活动。",
+      "text_markdown": "他们遇到了一位名叫本杰明·霍尼戈尔德的海盗船长，他在巴哈马活动。",
+      "tts": {
+        "text": "他们遇到了一位名叫本杰明·霍尼戈尔德的海盗船长，他在巴哈马活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "霍尼戈尔德邀请他们加入他的船队。",
+      "text_markdown": "霍尼戈尔德邀请他们加入他的船队。",
+      "tts": {
+        "text": "霍尼戈尔德邀请他们加入他的船队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "霍尼戈尔德是一个经验丰富的海盗，但他有一条规矩激怒了许多手下。",
+      "text_markdown": "霍尼戈尔德是一个经验丰富的海盗，但他有一条规矩激怒了许多手下。",
+      "tts": {
+        "text": "霍尼戈尔德是一个经验丰富的海盗，但他有一条规矩激怒了许多手下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他拒绝攻击英国船只。",
+      "text_markdown": "他拒绝攻击英国船只。",
+      "tts": {
+        "text": "他拒绝攻击英国船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他自视为爱国者而非普通罪犯，只掠夺其他国家的船只。",
+      "text_markdown": "他自视为爱国者而非普通罪犯，只掠夺其他国家的船只。",
+      "tts": {
+        "text": "他自视为爱国者而非普通罪犯，只掠夺其他国家的船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米没有这样的顾虑。",
+      "text_markdown": "贝拉米没有这样的顾虑。",
+      "tts": {
+        "text": "贝拉米没有这样的顾虑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他认为任何富人的船都是正当的目标，不论国籍。",
+      "text_markdown": "他认为任何富人的船都是正当的目标，不论国籍。",
+      "tts": {
+        "text": "他认为任何富人的船都是正当的目标，不论国籍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的观点在大多数船员中很受欢迎。",
+      "text_markdown": "他的观点在大多数船员中很受欢迎。",
+      "tts": {
+        "text": "他的观点在大多数船员中很受欢迎。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1716年末，船员投票罢免了霍尼戈尔德的船长职位。",
+      "text_markdown": "1716年末，船员投票罢免了霍尼戈尔德的船长职位。",
+      "tts": {
+        "text": "一七一六年末，船员投票罢免了霍尼戈尔德的船长职位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们选举塞缪尔·贝拉米接替他。",
+      "text_markdown": "他们选举塞缪尔·贝拉米接替他。",
+      "tts": {
+        "text": "他们选举塞缪尔·贝拉米接替他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大约二十七岁时，贝拉米成了自己海盗船的船长。",
+      "text_markdown": "大约二十七岁时，贝拉米成了自己海盗船的船长。",
+      "tts": {
+        "text": "大约二十七岁时，贝拉米成了自己海盗船的船长。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "霍尼戈尔德带着少数忠诚的追随者平静地离开了。",
+      "text_markdown": "霍尼戈尔德带着少数忠诚的追随者平静地离开了。",
+      "tts": {
+        "text": "霍尼戈尔德带着少数忠诚的追随者平静地离开了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "来自德文郡的少年",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他后来接受了皇家赦免，并成为了一名海盗猎人。",
+      "text_markdown": "他后来接受了皇家赦免，并成为了一名海盗猎人。",
+      "tts": {
+        "text": "他后来接受了皇家赦免，并成为了一名海盗猎人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海盗王子",
+      "text_markdown": "海盗王子"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米掌权后毫不浪费时间。",
+      "text_markdown": "贝拉米掌权后毫不浪费时间。",
+      "tts": {
+        "text": "贝拉米掌权后毫不浪费时间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在加勒比海和大西洋沿岸航行，接连俘获船只。",
+      "text_markdown": "他在加勒比海和大西洋沿岸航行，接连俘获船只。",
+      "tts": {
+        "text": "他在加勒比海和大西洋沿岸航行，接连俘获船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "随着被俘船只加入他的舰队，他的船队迅速壮大。",
+      "text_markdown": "随着被俘船只加入他的舰队，他的船队迅速壮大。",
+      "tts": {
+        "text": "随着被俘船只加入他的舰队，他的船队迅速壮大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米以其魅力和雄辩的演说而闻名。",
+      "text_markdown": "贝拉米以其魅力和雄辩的演说而闻名。",
+      "tts": {
+        "text": "贝拉米以其魅力和雄辩的演说而闻名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他谈到了这样一个不公的世界：少数人拥有一切，其余的人一无所有。",
+      "text_markdown": "他谈到了这样一个不公的世界：少数人拥有一切，其余的人一无所有。",
+      "tts": {
+        "text": "他谈到了这样一个不公的世界：少数人拥有一切，其余的人一无所有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根据查尔斯·约翰逊船长关于海盗的著名著作，贝拉米曾对一位被俘的商船船长说过这样的话。",
+      "text_markdown": "根据查尔斯·约翰逊船长关于海盗的著名著作，贝拉米曾对一位被俘的商船船长说过这样的话。",
+      "tts": {
+        "text": "根据查尔斯·约翰逊船长关于海盗的著名著作，贝拉米曾对一位被俘的商船船长说过这样的话。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他告诉那人，海盗和商人之间唯一的区别是商人在法律保护下抢劫。",
+      "text_markdown": "他告诉那人，海盗和商人之间唯一的区别是商人在法律保护下抢劫。",
+      "tts": {
+        "text": "他告诉那人，海盗和商人之间唯一的区别是商人在法律保护下抢劫。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米宣称他和他的人是诚实的人，凭自己的勇气取所需之物。",
+      "text_markdown": "贝拉米宣称他和他的人是诚实的人，凭自己的勇气取所需之物。",
+      "tts": {
+        "text": "贝拉米宣称他和他的人是诚实的人，凭自己的勇气取所需之物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他说他宁愿做一个自由的海盗，也不愿做富人的奴隶。",
+      "text_markdown": "他说他宁愿做一个自由的海盗，也不愿做富人的奴隶。",
+      "tts": {
+        "text": "他说他宁愿做一个自由的海盗，也不愿做富人的奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些话，无论是否完全准确，都捕捉到了海盗反叛的精神。",
+      "text_markdown": "这些话，无论是否完全准确，都捕捉到了海盗反叛的精神。",
+      "tts": {
+        "text": "这些话，无论是否完全准确，都捕捉到了海盗反叛的精神。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米获得了“黑色山姆”的绰号，据说是因为他的黑发。",
+      "text_markdown": "贝拉米获得了“黑色山姆”的绰号，据说是因为他的黑发。",
+      "tts": {
+        "text": "贝拉米获得了黑色山姆的绰号，据说是因为他的黑发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "与他那个时代的许多人不同，他拒绝戴扑粉假发。",
+      "text_markdown": "与他那个时代的许多人不同，他拒绝戴扑粉假发。",
+      "tts": {
+        "text": "与他那个时代的许多人不同，他拒绝戴扑粉假发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他用一根简单的丝带扎起他的长黑发。",
+      "text_markdown": "他用一根简单的丝带扎起他的长黑发。",
+      "tts": {
+        "text": "他用一根简单的丝带扎起他的长黑发。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的外表成为了他传奇的一部分。",
+      "text_markdown": "他的外表成为了他传奇的一部分。",
+      "tts": {
+        "text": "他的外表成为了他传奇的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在假发象征财富和地位的时代，贝拉米的光头是一种反抗的宣言。",
+      "text_markdown": "在假发象征财富和地位的时代，贝拉米的光头是一种反抗的宣言。",
+      "tts": {
+        "text": "在假发象征财富和地位的时代，贝拉米的光头是一种反抗的宣言。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的船员以任何标准衡量都是多元化的。",
+      "text_markdown": "他的船员以任何标准衡量都是多元化的。",
+      "tts": {
+        "text": "他的船员以任何标准衡量都是多元化的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国人、爱尔兰人、苏格兰人、法国人、荷兰人、美洲原住民和非洲人都在他的船上服役。",
+      "text_markdown": "英国人、爱尔兰人、苏格兰人、法国人、荷兰人、美洲原住民和非洲人都在他的船上服役。",
+      "tts": {
+        "text": "英国人、爱尔兰人、苏格兰人、法国人、荷兰人、美洲原住民和非洲人都在他的船上服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家估计他的船员中大约一半是非洲血统。",
+      "text_markdown": "历史学家估计他的船员中大约一半是非洲血统。",
+      "tts": {
+        "text": "历史学家估计他的船员中大约一半是非洲血统。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "其中一些人是从被俘的奴隶船上获得自由的。",
+      "text_markdown": "其中一些人是从被俘的奴隶船上获得自由的。",
+      "tts": {
+        "text": "其中一些人是从被俘的奴隶船上获得自由的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其他人则自愿从加勒比各港口加入。",
+      "text_markdown": "其他人则自愿从加勒比各港口加入。",
+      "tts": {
+        "text": "其他人则自愿从加勒比各港口加入。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在贝拉米的船上，黑人和白人并肩服务，平等分享战利品。",
+      "text_markdown": "在贝拉米的船上，黑人和白人并肩服务，平等分享战利品。",
+      "tts": {
+        "text": "在贝拉米的船上，黑人和白人并肩服务，平等分享战利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种种族平等在当时是非凡的。",
+      "text_markdown": "这种种族平等在当时是非凡的。",
+      "tts": {
+        "text": "这种种族平等在当时是非凡的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在殖民世界，黑人绝大多数都是被奴役的。",
+      "text_markdown": "在殖民世界，黑人绝大多数都是被奴役的。",
+      "tts": {
+        "text": "在殖民世界，黑人绝大多数都是被奴役的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗船提供了种植园制度残酷等级制度的一种罕见替代方案。",
+      "text_markdown": "海盗船提供了种植园制度残酷等级制度的一种罕见替代方案。",
+      "tts": {
+        "text": "海盗船提供了种植园制度残酷等级制度的一种罕见替代方案。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米的僚船船长是保尔斯格雷夫·威廉斯，他在寻宝时期的原始搭档。",
+      "text_markdown": "贝拉米的僚船船长是保尔斯格雷夫·威廉斯，他在寻宝时期的原始搭档。",
+      "tts": {
+        "text": "贝拉米的僚船船长是保尔斯格雷夫·威廉斯，他在寻宝时期的原始搭档。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "威廉斯指挥一艘独立的船，作为贝拉米舰队的一部分并肩航行。",
+      "text_markdown": "威廉斯指挥一艘独立的船，作为贝拉米舰队的一部分并肩航行。",
+      "tts": {
+        "text": "威廉斯指挥一艘独立的船，作为贝拉米舰队的一部分并肩航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "两人完全信任彼此。",
+      "text_markdown": "两人完全信任彼此。",
+      "tts": {
+        "text": "两人完全信任彼此。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年2月，贝拉米获得了他最大的战利品。",
+      "text_markdown": "1717年2月，贝拉米获得了他最大的战利品。",
+      "tts": {
+        "text": "一七一七年二月，贝拉米获得了他最大的战利品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的舰队在古巴和伊斯帕尼奥拉岛之间的向风海峡遭遇了维达·盖利号。",
+      "text_markdown": "他的舰队在古巴和伊斯帕尼奥拉岛之间的向风海峡遭遇了维达·盖利号。",
+      "tts": {
+        "text": "他的舰队在古巴和伊斯帕尼奥拉岛之间的向风海峡遭遇了维达·盖利号。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号是一艘三桅帆船，速度快且火力强大。",
+      "text_markdown": "维达号是一艘三桅帆船，速度快且火力强大。",
+      "tts": {
+        "text": "维达号是一艘三桅帆船，速度快且火力强大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它于1715年在伦敦建造，长102英尺。",
+      "text_markdown": "它于1715年在伦敦建造，长102英尺。",
+      "tts": {
+        "text": "它于一七一五年在伦敦建造，长一百零二英尺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是为奴隶贸易而设计的，最近刚完成首航。",
+      "text_markdown": "它是为奴隶贸易而设计的，最近刚完成首航。",
+      "tts": {
+        "text": "它是为奴隶贸易而设计的，最近刚完成首航。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号曾运载三百多名被奴役的非洲人从如今的贝宁海岸到牙买加。",
+      "text_markdown": "维达号曾运载三百多名被奴役的非洲人从如今的贝宁海岸到牙买加。",
+      "tts": {
+        "text": "维达号曾运载三百多名被奴役的非洲人从如今的贝宁海岸到牙买加。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它已卖掉了人类货物，现在装满了奴隶贸易的利润。",
+      "text_markdown": "它已卖掉了人类货物，现在装满了奴隶贸易的利润。",
+      "tts": {
+        "text": "它已卖掉了人类货物，现在装满了奴隶贸易的利润。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船舱里装有靛蓝、糖以及装满银币和金币的箱子。",
+      "text_markdown": "船舱里装有靛蓝、糖以及装满银币和金币的箱子。",
+      "tts": {
+        "text": "船舱里装有靛蓝、糖以及装满银币和金币的箱子。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米追逐维达号整整三天。",
+      "text_markdown": "贝拉米追逐维达号整整三天。",
+      "tts": {
+        "text": "贝拉米追逐维达号整整三天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船长劳伦斯·普林斯试图逃脱海盗，但维达号货物沉重。",
+      "text_markdown": "船长劳伦斯·普林斯试图逃脱海盗，但维达号货物沉重。",
+      "tts": {
+        "text": "船长劳伦斯·普林斯试图逃脱海盗，但维达号货物沉重。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贝拉米更轻的船只稳步缩小了距离。",
+      "text_markdown": "贝拉米更轻的船只稳步缩小了距离。",
+      "tts": {
+        "text": "贝拉米更轻的船只稳步缩小了距离。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当贝拉米的船终于靠近时，普林斯船长不战而降。",
+      "text_markdown": "当贝拉米的船终于靠近时，普林斯船长不战而降。",
+      "tts": {
+        "text": "当贝拉米的船终于靠近时，普林斯船长不战而降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他知道对抗海盗舰队意味着他和他的船员的死亡。",
+      "text_markdown": "他知道对抗海盗舰队意味着他和他的船员的死亡。",
+      "tts": {
+        "text": "他知道对抗海盗舰队意味着他和他的船员的死亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米以他一贯的公平态度对待被俘船员。",
+      "text_markdown": "贝拉米以他一贯的公平态度对待被俘船员。",
+      "tts": {
+        "text": "贝拉米以他一贯的公平态度对待被俘船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他给了普林斯船长一艘较小的船，允许他离开。",
+      "text_markdown": "他给了普林斯船长一艘较小的船，允许他离开。",
+      "tts": {
+        "text": "他给了普林斯船长一艘较小的船，允许他离开。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "维达号原来的几名船员选择加入海盗而不是离开。",
+      "text_markdown": "维达号原来的几名船员选择加入海盗而不是离开。",
+      "tts": {
+        "text": "维达号原来的几名船员选择加入海盗而不是离开。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米立即将维达号作为他的旗舰。",
+      "text_markdown": "贝拉米立即将维达号作为他的旗舰。",
+      "tts": {
+        "text": "贝拉米立即将维达号作为他的旗舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在甲板上加装了额外的大炮，使其总武装达到28门。",
+      "text_markdown": "他在甲板上加装了额外的大炮，使其总武装达到28门。",
+      "tts": {
+        "text": "他在甲板上加装了额外的大炮，使其总武装达到二十八门。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她现在是大西洋上最强大的海盗船之一。",
+      "text_markdown": "她现在是大西洋上最强大的海盗船之一。",
+      "tts": {
+        "text": "她现在是大西洋上最强大的海盗船之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号船舱的宝藏估计价值两万到三万英镑。",
+      "text_markdown": "维达号船舱的宝藏估计价值两万到三万英镑。",
+      "tts": {
+        "text": "维达号船舱的宝藏估计价值两万到三万英镑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "按现代价值计算，这相当于数百万美元。",
+      "text_markdown": "按现代价值计算，这相当于数百万美元。",
+      "tts": {
+        "text": "按现代价值计算，这相当于数百万美元。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是大西洋上有史以来最大的海盗战利品之一。",
+      "text_markdown": "这是大西洋上有史以来最大的海盗战利品之一。",
+      "tts": {
+        "text": "这是大西洋上有史以来最大的海盗战利品之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夺取维达号后，贝拉米沿美国海岸北上。",
+      "text_markdown": "夺取维达号后，贝拉米沿美国海岸北上。",
+      "tts": {
+        "text": "夺取维达号后，贝拉米沿美国海岸北上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他沿途继续俘获船只。",
+      "text_markdown": "他沿途继续俘获船只。",
+      "tts": {
+        "text": "他沿途继续俘获船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到1717年春天，他指挥着一支小型海盗舰队。",
+      "text_markdown": "到1717年春天，他指挥着一支小型海盗舰队。",
+      "tts": {
+        "text": "到一七一七年春天，他指挥着一支小型海盗舰队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家认为贝拉米正在前往科德角。",
+      "text_markdown": "历史学家认为贝拉米正在前往科德角。",
+      "tts": {
+        "text": "历史学家认为贝拉米正在前往科德角。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果玛丽亚·哈利特的传说属实，他可能是在回到他承诺过要回来找的那个女人身边。",
+      "text_markdown": "如果玛丽亚·哈利特的传说属实，他可能是在回到他承诺过要回来找的那个女人身边。",
+      "tts": {
+        "text": "如果玛丽亚·哈利特的传说属实，他可能是在回到他承诺过要回来找的那个女人身边。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "海盗王子",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他也可能在寻找一个安静的港口来修缮船只和分配战利品。",
+      "text_markdown": "他也可能在寻找一个安静的港口来修缮船只和分配战利品。",
+      "tts": {
+        "text": "他也可能在寻找一个安静的港口来修缮船只和分配战利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "维达号之王",
+      "text_markdown": "维达号之王"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年4月，塞缪尔·贝拉米处于他权力的顶峰。",
+      "text_markdown": "1717年4月，塞缪尔·贝拉米处于他权力的顶峰。",
+      "tts": {
+        "text": "一七一七年四月，塞缪尔·贝拉米处于他权力的顶峰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他指挥着一支舰队、约150名船员和大量战利品。",
+      "text_markdown": "他指挥着一支舰队、约150名船员和大量战利品。",
+      "tts": {
+        "text": "他指挥着一支舰队、约一百五十名船员和大量战利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在不到一年的时间里俘获了五十多艘船。",
+      "text_markdown": "他在不到一年的时间里俘获了五十多艘船。",
+      "tts": {
+        "text": "他在不到一年的时间里俘获了五十多艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大西洋上没有哪个海盗在如此短的时间内比他更活跃或更成功。",
+      "text_markdown": "大西洋上没有哪个海盗在如此短的时间内比他更活跃或更成功。",
+      "tts": {
+        "text": "大西洋上没有哪个海盗在如此短的时间内比他更活跃或更成功。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在贝拉米的指挥下，维达号是一艘令人生畏的战船。",
+      "text_markdown": "在贝拉米的指挥下，维达号是一艘令人生畏的战船。",
+      "tts": {
+        "text": "在贝拉米的指挥下，维达号是一艘令人生畏的战船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的二十八门大炮可以摧毁任何愚蠢到要抵抗的商船。",
+      "text_markdown": "她的二十八门大炮可以摧毁任何愚蠢到要抵抗的商船。",
+      "tts": {
+        "text": "她的二十八门大炮可以摧毁任何愚蠢到要抵抗的商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数船只一看到海盗旗就投降了。",
+      "text_markdown": "大多数船只一看到海盗旗就投降了。",
+      "tts": {
+        "text": "大多数船只一看到海盗旗就投降了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米按照民主原则管理他的船。",
+      "text_markdown": "贝拉米按照民主原则管理他的船。",
+      "tts": {
+        "text": "贝拉米按照民主原则管理他的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "重大决定要付诸投票。",
+      "text_markdown": "重大决定要付诸投票。",
+      "tts": {
+        "text": "重大决定要付诸投票。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "如果船员对船长失去信心，可以随时将其免职。",
+      "text_markdown": "如果船员对船长失去信心，可以随时将其免职。",
+      "tts": {
+        "text": "如果船员对船长失去信心，可以随时将其免职。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船员有协议条款，每个人登船时都要签名或画押。",
+      "text_markdown": "船员有协议条款，每个人登船时都要签名或画押。",
+      "tts": {
+        "text": "船员有协议条款，每个人登船时都要签名或画押。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些条款规定了战利品的分配、行为规范和伤亡补偿。",
+      "text_markdown": "这些条款规定了战利品的分配、行为规范和伤亡补偿。",
+      "tts": {
+        "text": "这些条款规定了战利品的分配、行为规范和伤亡补偿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在战斗中失去肢体的人会获得额外的战利品份额作为补偿。",
+      "text_markdown": "在战斗中失去肢体的人会获得额外的战利品份额作为补偿。",
+      "tts": {
+        "text": "在战斗中失去肢体的人会获得额外的战利品份额作为补偿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一种伤残保险，在十八世纪的劳动世界中绝无仅有。",
+      "text_markdown": "这是一种伤残保险，在十八世纪的劳动世界中绝无仅有。",
+      "tts": {
+        "text": "这是一种伤残保险，在十八世纪的劳动世界中绝无仅有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米的军需官是一个非洲血统的人，这在当时极为罕见。",
+      "text_markdown": "贝拉米的军需官是一个非洲血统的人，这在当时极为罕见。",
+      "tts": {
+        "text": "贝拉米的军需官是一个非洲血统的人，这在当时极为罕见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "军需官是海盗船上权力第二大的军官。",
+      "text_markdown": "军需官是海盗船上权力第二大的军官。",
+      "tts": {
+        "text": "军需官是海盗船上权力第二大的军官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他管理食物、水和战利品的分配。",
+      "text_markdown": "他管理食物、水和战利品的分配。",
+      "tts": {
+        "text": "他管理食物、水和战利品的分配。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号上的生活并非天堂。",
+      "text_markdown": "维达号上的生活并非天堂。",
+      "tts": {
+        "text": "维达号上的生活并非天堂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船上空间狭小，食物经常腐烂，疾病的威胁无处不在。",
+      "text_markdown": "船上空间狭小，食物经常腐烂，疾病的威胁无处不在。",
+      "tts": {
+        "text": "船上空间狭小，食物经常腐烂，疾病的威胁无处不在。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但与那个时代穷人可用的其他选择相比，它提供了一定程度的自由和尊严。",
+      "text_markdown": "但与那个时代穷人可用的其他选择相比，它提供了一定程度的自由和尊严。",
+      "tts": {
+        "text": "但与那个时代穷人可用的其他选择相比，它提供了一定程度的自由和尊严。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米继续以相对仁慈的态度对待被俘船员。",
+      "text_markdown": "贝拉米继续以相对仁慈的态度对待被俘船员。",
+      "tts": {
+        "text": "贝拉米继续以相对仁慈的态度对待被俘船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他很少对和平投降的人使用暴力。",
+      "text_markdown": "他很少对和平投降的人使用暴力。",
+      "tts": {
+        "text": "他很少对和平投降的人使用暴力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他经常释放被俘水手，给他们足够的补给到达港口。",
+      "text_markdown": "他经常释放被俘水手，给他们足够的补给到达港口。",
+      "tts": {
+        "text": "他经常释放被俘水手，给他们足够的补给到达港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种公平的名声在战略上很有用。",
+      "text_markdown": "这种公平的名声在战略上很有用。",
+      "tts": {
+        "text": "这种公平的名声在战略上很有用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "知道自己会受到善待的商船船长没有什么理由战斗。",
+      "text_markdown": "知道自己会受到善待的商船船长没有什么理由战斗。",
+      "tts": {
+        "text": "知道自己会受到善待的商船船长没有什么理由战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "面对贝拉米的大炮，投降简直就是理性的选择。",
+      "text_markdown": "面对贝拉米的大炮，投降简直就是理性的选择。",
+      "tts": {
+        "text": "面对贝拉米的大炮，投降简直就是理性的选择。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然而，并非每个被俘水手都受到了温和的对待。",
+      "text_markdown": "然而，并非每个被俘水手都受到了温和的对待。",
+      "tts": {
+        "text": "然而，并非每个被俘水手都受到了温和的对待。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "反抗者有时会被殴打或他们的船被烧毁。",
+      "text_markdown": "反抗者有时会被殴打或他们的船被烧毁。",
+      "tts": {
+        "text": "反抗者有时会被殴打或他们的船被烧毁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贝拉米在认为必要时对暴力持务实态度。",
+      "text_markdown": "贝拉米在认为必要时对暴力持务实态度。",
+      "tts": {
+        "text": "贝拉米在认为必要时对暴力持务实态度。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四月初，贝拉米的舰队沿弗吉尼亚和卡罗来纳海岸北上。",
+      "text_markdown": "四月初，贝拉米的舰队沿弗吉尼亚和卡罗来纳海岸北上。",
+      "tts": {
+        "text": "四月初，贝拉米的舰队沿弗吉尼亚和卡罗来纳海岸北上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他沿途又俘获了几艘船。",
+      "text_markdown": "他沿途又俘获了几艘船。",
+      "tts": {
+        "text": "他沿途又俘获了几艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他最后俘获的船之一是一艘名为玛丽·安的商船。",
+      "text_markdown": "他最后俘获的船之一是一艘名为玛丽·安的商船。",
+      "tts": {
+        "text": "他最后俘获的船之一是一艘名为玛丽·安的商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他拿走了她的马德拉葡萄酒货物，并强迫几名船员加入他。",
+      "text_markdown": "他拿走了她的马德拉葡萄酒货物，并强迫几名船员加入他。",
+      "tts": {
+        "text": "他拿走了她的马德拉葡萄酒货物，并强迫几名船员加入他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些被迫的新兵后来在沉船后的审判中发挥了关键作用。",
+      "text_markdown": "这些被迫的新兵后来在沉船后的审判中发挥了关键作用。",
+      "tts": {
+        "text": "这些被迫的新兵后来在沉船后的审判中发挥了关键作用。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他还俘获了一艘名为费舍尔的单桅帆船，拿走了她的补给和部分船员。",
+      "text_markdown": "他还俘获了一艘名为费舍尔的单桅帆船，拿走了她的补给和部分船员。",
+      "tts": {
+        "text": "他还俘获了一艘名为费舍尔的单桅帆船，拿走了她的补给和部分船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "被俘的人抗议了，但贝拉米无视了他们的抱怨。",
+      "text_markdown": "被俘的人抗议了，但贝拉米无视了他们的抱怨。",
+      "tts": {
+        "text": "被俘的人抗议了，但贝拉米无视了他们的抱怨。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着四月的推移，天气变得越来越不稳定。",
+      "text_markdown": "随着四月的推移，天气变得越来越不稳定。",
+      "tts": {
+        "text": "随着四月的推移，天气变得越来越不稳定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "新英格兰海岸的春季风暴以危险著称。",
+      "text_markdown": "新英格兰海岸的春季风暴以危险著称。",
+      "tts": {
+        "text": "新英格兰海岸的春季风暴以危险著称。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "科德角附近的水域是西大西洋最危险的水域之一。",
+      "text_markdown": "科德角附近的水域是西大西洋最危险的水域之一。",
+      "tts": {
+        "text": "科德角附近的水域是西大西洋最危险的水域之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年4月26日，贝拉米的舰队从南方逼近科德角。",
+      "text_markdown": "1717年4月26日，贝拉米的舰队从南方逼近科德角。",
+      "tts": {
+        "text": "一七一七年四月二十六日，贝拉米的舰队从南方逼近科德角。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一场猛烈的风暴正在地平线上酝酿。",
+      "text_markdown": "一场猛烈的风暴正在地平线上酝酿。",
+      "tts": {
+        "text": "一场猛烈的风暴正在地平线上酝酿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海面在上涨，风向转为东北。",
+      "text_markdown": "海面在上涨，风向转为东北。",
+      "tts": {
+        "text": "海面在上涨，风向转为东北。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "科德角外的东北风暴是大西洋沿岸最令人恐惧的天气事件之一。",
+      "text_markdown": "科德角外的东北风暴是大西洋沿岸最令人恐惧的天气事件之一。",
+      "tts": {
+        "text": "科德角外的东北风暴是大西洋沿岸最令人恐惧的天气事件之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它将海浪直接推向外岸边的浅沙洲。",
+      "text_markdown": "它将海浪直接推向外岸边的浅沙洲。",
+      "tts": {
+        "text": "它将海浪直接推向外岸边的浅沙洲。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米有两个选择。",
+      "text_markdown": "贝拉米有两个选择。",
+      "tts": {
+        "text": "贝拉米有两个选择。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他可以将舰队驶向外海，在深水中挺过风暴。",
+      "text_markdown": "他可以将舰队驶向外海，在深水中挺过风暴。",
+      "tts": {
+        "text": "他可以将舰队驶向外海，在深水中挺过风暴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "或者他可以继续前进，试图在风暴来临前绕过海角的顶端。",
+      "text_markdown": "或者他可以继续前进，试图在风暴来临前绕过海角的顶端。",
+      "tts": {
+        "text": "或者他可以继续前进，试图在风暴来临前绕过海角的顶端。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他选择了继续前进。",
+      "text_markdown": "他选择了继续前进。",
+      "tts": {
+        "text": "他选择了继续前进。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "维达号之王",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是他做出的最后一个决定。",
+      "text_markdown": "这是他做出的最后一个决定。",
+      "tts": {
+        "text": "这是他做出的最后一个决定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "风暴",
+      "text_markdown": "风暴"
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风暴在1717年4月26日夜间袭来。",
+      "text_markdown": "风暴在1717年4月26日夜间袭来。",
+      "tts": {
+        "text": "风暴在一七一七年四月二十六日夜间袭来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那是一场猛烈的东北风暴，伴随着倾盆大雨和巨浪。",
+      "text_markdown": "那是一场猛烈的东北风暴，伴随着倾盆大雨和巨浪。",
+      "tts": {
+        "text": "那是一场猛烈的东北风暴，伴随着倾盆大雨和巨浪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "能见度几乎降为零。",
+      "text_markdown": "能见度几乎降为零。",
+      "tts": {
+        "text": "能见度几乎降为零。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "维达号的船员看不到海岸、星星，甚至看不到舰队中的其他船只。",
+      "text_markdown": "维达号的船员看不到海岸、星星，甚至看不到舰队中的其他船只。",
+      "tts": {
+        "text": "维达号的船员看不到海岸、星星，甚至看不到舰队中的其他船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在海岸最危险的水域中盲目航行。",
+      "text_markdown": "他们在海岸最危险的水域中盲目航行。",
+      "tts": {
+        "text": "他们在海岸最危险的水域中盲目航行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风在索具中呼啸，发出尖叫般的声音。",
+      "text_markdown": "风在索具中呼啸，发出尖叫般的声音。",
+      "tts": {
+        "text": "风在索具中呼啸，发出尖叫般的声音。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海浪翻过船头，横扫甲板。",
+      "text_markdown": "海浪翻过船头，横扫甲板。",
+      "tts": {
+        "text": "海浪翻过船头，横扫甲板。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船员们紧抓绳索和栏杆，以免被冲入海中。",
+      "text_markdown": "船员们紧抓绳索和栏杆，以免被冲入海中。",
+      "tts": {
+        "text": "船员们紧抓绳索和栏杆，以免被冲入海中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "午夜过后不久，维达号撞上了韦尔弗利特海岸外的一处沙洲。",
+      "text_markdown": "午夜过后不久，维达号撞上了韦尔弗利特海岸外的一处沙洲。",
+      "tts": {
+        "text": "午夜过后不久，维达号撞上了韦尔弗利特海岸外的一处沙洲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "撞击突然而猛烈。",
+      "text_markdown": "撞击突然而猛烈。",
+      "tts": {
+        "text": "撞击突然而猛烈。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船身侧翻，开始在猛烈的海浪中解体。",
+      "text_markdown": "船身侧翻，开始在猛烈的海浪中解体。",
+      "tts": {
+        "text": "船身侧翻，开始在猛烈的海浪中解体。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海浪巨大，有些高达30英尺。",
+      "text_markdown": "海浪巨大，有些高达30英尺。",
+      "tts": {
+        "text": "海浪巨大，有些高达三十英尺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们以可怕的力量冲击着受损的船只。",
+      "text_markdown": "它们以可怕的力量冲击着受损的船只。",
+      "tts": {
+        "text": "它们以可怕的力量冲击着受损的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "桅杆折断坠入海中，拖着索具和人一起沉没。",
+      "text_markdown": "桅杆折断坠入海中，拖着索具和人一起沉没。",
+      "tts": {
+        "text": "桅杆折断坠入海中，拖着索具和人一起沉没。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号沉重的大炮从固定处脱落。",
+      "text_markdown": "维达号沉重的大炮从固定处脱落。",
+      "tts": {
+        "text": "维达号沉重的大炮从固定处脱落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们在甲板上滚动，碾碎途中的一切。",
+      "text_markdown": "它们在甲板上滚动，碾碎途中的一切。",
+      "tts": {
+        "text": "它们在甲板上滚动，碾碎途中的一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船舱中的宝藏移位，船只倾覆了。",
+      "text_markdown": "船舱中的宝藏移位，船只倾覆了。",
+      "tts": {
+        "text": "船舱中的宝藏移位，船只倾覆了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号搁浅的沙洲距岸仅500英尺。",
+      "text_markdown": "维达号搁浅的沙洲距岸仅500英尺。",
+      "tts": {
+        "text": "维达号搁浅的沙洲距岸仅五百英尺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但在那种条件下，五百英尺的浪涛和大海一样致命。",
+      "text_markdown": "但在那种条件下，五百英尺的浪涛和大海一样致命。",
+      "tts": {
+        "text": "但在那种条件下，五百英尺的浪涛和大海一样致命。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号上大约146名船员中，仅有两人幸存。",
+      "text_markdown": "维达号上大约146名船员中，仅有两人幸存。",
+      "tts": {
+        "text": "维达号上大约一百四十六名船员中，仅有两人幸存。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们是托马斯·戴维斯，一个被迫入伙的木匠，以及约翰·朱利安，一个米斯基托与欧洲混血的领航员。",
+      "text_markdown": "他们是托马斯·戴维斯，一个被迫入伙的木匠，以及约翰·朱利安，一个米斯基托与欧洲混血的领航员。",
+      "tts": {
+        "text": "他们是托马斯·戴维斯，一个被迫入伙的木匠，以及约翰·朱利安，一个米斯基托与欧洲混血的领航员。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞缪尔·贝拉米在死者之中。",
+      "text_markdown": "塞缪尔·贝拉米在死者之中。",
+      "tts": {
+        "text": "塞缪尔·贝拉米在死者之中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的遗体从未被辨认出来。",
+      "text_markdown": "他的遗体从未被辨认出来。",
+      "tts": {
+        "text": "他的遗体从未被辨认出来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他年仅28岁。",
+      "text_markdown": "他年仅28岁。",
+      "tts": {
+        "text": "他年仅二十八岁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "贝拉米舰队中的其他船只也被风暴困住了。",
+      "text_markdown": "贝拉米舰队中的其他船只也被风暴困住了。",
+      "tts": {
+        "text": "贝拉米舰队中的其他船只也被风暴困住了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "玛丽·安号在同一段海滩附近搁浅。",
+      "text_markdown": "玛丽·安号在同一段海滩附近搁浅。",
+      "tts": {
+        "text": "玛丽·安号在同一段海滩附近搁浅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的七名船员幸存下来，被当地当局抓获。",
+      "text_markdown": "她的七名船员幸存下来，被当地当局抓获。",
+      "tts": {
+        "text": "她的七名船员幸存下来，被当地当局抓获。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "早晨，韦尔弗利特的居民发现海滩上满是残骸。",
+      "text_markdown": "早晨，韦尔弗利特的居民发现海滩上满是残骸。",
+      "tts": {
+        "text": "早晨，韦尔弗利特的居民发现海滩上满是残骸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "木材、绳索、布料和尸体散落在沙滩上。",
+      "text_markdown": "木材、绳索、布料和尸体散落在沙滩上。",
+      "tts": {
+        "text": "木材、绳索、布料和尸体散落在沙滩上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每一波浪都冲上来硬币和珠宝碎片。",
+      "text_markdown": "每一波浪都冲上来硬币和珠宝碎片。",
+      "tts": {
+        "text": "每一波浪都冲上来硬币和珠宝碎片。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当地人毫不犹豫地打捞他们能找到的一切。",
+      "text_markdown": "当地人毫不犹豫地打捞他们能找到的一切。",
+      "tts": {
+        "text": "当地人毫不犹豫地打捞他们能找到的一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们从残骸中收集硬币、武器和一切有价值的东西。",
+      "text_markdown": "他们从残骸中收集硬币、武器和一切有价值的东西。",
+      "tts": {
+        "text": "他们从残骸中收集硬币、武器和一切有价值的东西。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "殖民地总督派士兵来保护现场，但大部分已经被拿走了。",
+      "text_markdown": "殖民地总督派士兵来保护现场，但大部分已经被拿走了。",
+      "tts": {
+        "text": "殖民地总督派士兵来保护现场，但大部分已经被拿走了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "来自维达号和玛丽·安号的九名幸存海盗被逮捕并带到波士顿。",
+      "text_markdown": "来自维达号和玛丽·安号的九名幸存海盗被逮捕并带到波士顿。",
+      "tts": {
+        "text": "来自维达号和玛丽·安号的九名幸存海盗被逮捕并带到波士顿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们于1717年10月受审。",
+      "text_markdown": "他们于1717年10月受审。",
+      "tts": {
+        "text": "他们于一七一七年十月受审。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这场审判是美国殖民历史上最轰动的审判之一。",
+      "text_markdown": "这场审判是美国殖民历史上最轰动的审判之一。",
+      "tts": {
+        "text": "这场审判是美国殖民历史上最轰动的审判之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "著名的清教徒牧师科顿·马瑟探望了囚犯，向他们宣讲忏悔。",
+      "text_markdown": "著名的清教徒牧师科顿·马瑟探望了囚犯，向他们宣讲忏悔。",
+      "tts": {
+        "text": "著名的清教徒牧师科顿·马瑟探望了囚犯，向他们宣讲忏悔。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "托马斯·戴维斯被宣判无罪，因为他能证明自己是被迫加入船队的。",
+      "text_markdown": "托马斯·戴维斯被宣判无罪，因为他能证明自己是被迫加入船队的。",
+      "tts": {
+        "text": "托马斯·戴维斯被宣判无罪，因为他能证明自己是被迫加入船队的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "另一名男子也以类似理由被宣判无罪。",
+      "text_markdown": "另一名男子也以类似理由被宣判无罪。",
+      "tts": {
+        "text": "另一名男子也以类似理由被宣判无罪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "六名男子被判有罪并被判处死刑。",
+      "text_markdown": "六名男子被判有罪并被判处死刑。",
+      "tts": {
+        "text": "六名男子被判有罪并被判处死刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们于1717年11月15日在波士顿港的查尔斯敦渡口被绞死。",
+      "text_markdown": "他们于1717年11月15日在波士顿港的查尔斯敦渡口被绞死。",
+      "tts": {
+        "text": "他们于一七一七年十一月十五日在波士顿港的查尔斯敦渡口被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "科顿·马瑟在行刑时发表了布道。",
+      "text_markdown": "科顿·马瑟在行刑时发表了布道。",
+      "tts": {
+        "text": "科顿·马瑟在行刑时发表了布道。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米斯基托领航员约翰·朱利安没有被绞死。",
+      "text_markdown": "米斯基托领航员约翰·朱利安没有被绞死。",
+      "tts": {
+        "text": "米斯基托领航员约翰·朱利安没有被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被卖为奴隶。",
+      "text_markdown": "他被卖为奴隶。",
+      "tts": {
+        "text": "他被卖为奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他此后的命运无人知晓，但一些记录表明他在试图逃跑时死亡。",
+      "text_markdown": "他此后的命运无人知晓，但一些记录表明他在试图逃跑时死亡。",
+      "tts": {
+        "text": "他此后的命运无人知晓，但一些记录表明他在试图逃跑时死亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维达号的残骸沉入了韦尔弗利特外的沙中。",
+      "text_markdown": "维达号的残骸沉入了韦尔弗利特外的沙中。",
+      "tts": {
+        "text": "维达号的残骸沉入了韦尔弗利特外的沙中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几年之内，流沙将其完全掩埋。",
+      "text_markdown": "几年之内，流沙将其完全掩埋。",
+      "tts": {
+        "text": "几年之内，流沙将其完全掩埋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "风暴",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "两个半世纪以来，维达号一直隐藏在海底之下。",
+      "text_markdown": "两个半世纪以来，维达号一直隐藏在海底之下。",
+      "tts": {
+        "text": "两个半世纪以来，维达号一直隐藏在海底之下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "被时间遗忘的船",
+      "text_markdown": "被时间遗忘的船"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "267年来，维达号的沉船不过是一个地方传说。",
+      "text_markdown": "267年来，维达号的沉船不过是一个地方传说。",
+      "tts": {
+        "text": "二百六十七年来，维达号的沉船不过是一个地方传说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "科德角的人们讲述着关于埋在海岸外某处的海盗船的故事。",
+      "text_markdown": "科德角的人们讲述着关于埋在海岸外某处的海盗船的故事。",
+      "tts": {
+        "text": "科德角的人们讲述着关于埋在海岸外某处的海盗船的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但没有人确切知道它在哪里。",
+      "text_markdown": "但没有人确切知道它在哪里。",
+      "tts": {
+        "text": "但没有人确切知道它在哪里。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在二十世纪八十年代，一位名叫巴里·克利福德的水下探险家开始痴迷于寻找维达号。",
+      "text_markdown": "在二十世纪八十年代，一位名叫巴里·克利福德的水下探险家开始痴迷于寻找维达号。",
+      "tts": {
+        "text": "在二十世纪八十年代，一位名叫巴里·克利福德的水下探险家开始痴迷于寻找维达号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "克利福德在科德角长大，从叔叔那里听到了关于海盗船的故事。",
+      "text_markdown": "克利福德在科德角长大，从叔叔那里听到了关于海盗船的故事。",
+      "tts": {
+        "text": "克利福德在科德角长大，从叔叔那里听到了关于海盗船的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他花了多年时间研究历史记录以缩小沉船地点的范围。",
+      "text_markdown": "他花了多年时间研究历史记录以缩小沉船地点的范围。",
+      "tts": {
+        "text": "他花了多年时间研究历史记录以缩小沉船地点的范围。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984年，克利福德和他的潜水团队找到了沉船。",
+      "text_markdown": "1984年，克利福德和他的潜水团队找到了沉船。",
+      "tts": {
+        "text": "一九八四年，克利福德和他的潜水团队找到了沉船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "关键的证据是船钟，上面刻着维达·盖利号 1716。",
+      "text_markdown": "关键的证据是船钟，上面刻着维达·盖利号 1716。",
+      "tts": {
+        "text": "关键的证据是船钟，上面刻着维达·盖利号一七一六。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这口钟毫无疑问地证明了这艘沉船就是维达号。",
+      "text_markdown": "这口钟毫无疑问地证明了这艘沉船就是维达号。",
+      "tts": {
+        "text": "这口钟毫无疑问地证明了这艘沉船就是维达号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是历史上第一次也是唯一一次通过实物证据确认了一艘海盗沉船的身份。",
+      "text_markdown": "这是历史上第一次也是唯一一次通过实物证据确认了一艘海盗沉船的身份。",
+      "tts": {
+        "text": "这是历史上第一次也是唯一一次通过实物证据确认了一艘海盗沉船的身份。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在随后的几十年里，克利福德的团队从沉船中打捞出超过二十万件文物。",
+      "text_markdown": "在随后的几十年里，克利福德的团队从沉船中打捞出超过二十万件文物。",
+      "tts": {
+        "text": "在随后的几十年里，克利福德的团队从沉船中打捞出超过二十万件文物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其中包括金币、银条、武器、导航仪器、衣物碎片和个人物品。",
+      "text_markdown": "其中包括金币、银条、武器、导航仪器、衣物碎片和个人物品。",
+      "tts": {
+        "text": "其中包括金币、银条、武器、导航仪器、衣物碎片和个人物品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些文物揭示了任何书面文件都无法提供的海盗生活细节。",
+      "text_markdown": "这些文物揭示了任何书面文件都无法提供的海盗生活细节。",
+      "tts": {
+        "text": "这些文物揭示了任何书面文件都无法提供的海盗生活细节。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "考古学家发现西非金饰与欧洲银币并排出土。",
+      "text_markdown": "考古学家发现西非金饰与欧洲银币并排出土。",
+      "tts": {
+        "text": "考古学家发现西非金饰与欧洲银币并排出土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们发现了丝带、袖扣和手枪弹丸。",
+      "text_markdown": "他们发现了丝带、袖扣和手枪弹丸。",
+      "tts": {
+        "text": "他们发现了丝带、袖扣和手枪弹丸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "文物的多样性证实了船员是多民族的。",
+      "text_markdown": "文物的多样性证实了船员是多民族的。",
+      "tts": {
+        "text": "文物的多样性证实了船员是多民族的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "来自欧洲、非洲和美洲的物品混杂在一起被发现。",
+      "text_markdown": "来自欧洲、非洲和美洲的物品混杂在一起被发现。",
+      "tts": {
+        "text": "来自欧洲、非洲和美洲的物品混杂在一起被发现。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "维达号的船员是大西洋世界的一个缩影。",
+      "text_markdown": "维达号的船员是大西洋世界的一个缩影。",
+      "tts": {
+        "text": "维达号的船员是大西洋世界的一个缩影。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "科德角建立了一座专门纪念维达号的博物馆。",
+      "text_markdown": "科德角建立了一座专门纪念维达号的博物馆。",
+      "tts": {
+        "text": "科德角建立了一座专门纪念维达号的博物馆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它展示沉船中的文物，讲述塞缪尔·贝拉米及其船员的故事。",
+      "text_markdown": "它展示沉船中的文物，讲述塞缪尔·贝拉米及其船员的故事。",
+      "tts": {
+        "text": "它展示沉船中的文物，讲述塞缪尔·贝拉米及其船员的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每年有数千名游客前来参观。",
+      "text_markdown": "每年有数千名游客前来参观。",
+      "tts": {
+        "text": "每年有数千名游客前来参观。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞缪尔·贝拉米的事业仅持续了十一个月。",
+      "text_markdown": "塞缪尔·贝拉米的事业仅持续了十一个月。",
+      "tts": {
+        "text": "塞缪尔·贝拉米的事业仅持续了十一个月。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那段时间里，他俘获的船只比大多数海盗一生中俘获的还多。",
+      "text_markdown": "在那段时间里，他俘获的船只比大多数海盗一生中俘获的还多。",
+      "tts": {
+        "text": "在那段时间里，他俘获的船只比大多数海盗一生中俘获的还多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在不平等和奴役的时代宣扬正义和自由。",
+      "text_markdown": "他在不平等和奴役的时代宣扬正义和自由。",
+      "tts": {
+        "text": "他在不平等和奴役的时代宣扬正义和自由。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当民主本身还是一个激进理念时，他以民主方式管理他的船。",
+      "text_markdown": "当民主本身还是一个激进理念时，他以民主方式管理他的船。",
+      "tts": {
+        "text": "当民主本身还是一个激进理念时，他以民主方式管理他的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p115",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当世界其余地方按肤色划分人群时，他欢迎所有种族的人。",
+      "text_markdown": "当世界其余地方按肤色划分人群时，他欢迎所有种族的人。",
+      "tts": {
+        "text": "当世界其余地方按肤色划分人群时，他欢迎所有种族的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他也是一个窃贼，偷窃劳动人民的财物，扰乱诚实水手的生计。",
+      "text_markdown": "他也是一个窃贼，偷窃劳动人民的财物，扰乱诚实水手的生计。",
+      "tts": {
+        "text": "他也是一个窃贼，偷窃劳动人民的财物，扰乱诚实水手的生计。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他关于平等的理想并没有延伸到他持枪抢劫的商人身上。",
+      "text_markdown": "他关于平等的理想并没有延伸到他持枪抢劫的商人身上。",
+      "tts": {
+        "text": "他关于平等的理想并没有延伸到他持枪抢劫的商人身上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大海在任何人审判他之前就夺去了塞缪尔·贝拉米的生命。",
+      "text_markdown": "大海在任何人审判他之前就夺去了塞缪尔·贝拉米的生命。",
+      "tts": {
+        "text": "大海在任何人审判他之前就夺去了塞缪尔·贝拉米的生命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但他的船幸存了下来，埋在沙中，等待讲述它的故事。",
+      "text_markdown": "但他的船幸存了下来，埋在沙中，等待讲述它的故事。",
+      "tts": {
+        "text": "但他的船幸存了下来，埋在沙中，等待讲述它的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "被时间遗忘的船",
+      "paragraph_id": "p117",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "维达号替那些在她上面航行的人说话，在他们的声音沉寂许久之后。",
+      "text_markdown": "维达号替那些在她上面航行的人说话，在他们的声音沉寂许久之后。",
+      "tts": {
+        "text": "维达号替那些在她上面航行的人说话，在他们的声音沉寂许久之后。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

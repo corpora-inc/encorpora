@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "nl",
+  "total_segments": 310,
+  "segments": [
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 0,
+      "id": "ch00-001",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Een noot voor de lezer",
+      "text_markdown": "Een noot voor de lezer",
+      "title": "Een noot voor de lezer"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "text": "Dit is een waargebeurd verhaal over de meest succesvolle piraat in de hele opgetekende geschiedenis.",
+      "text_markdown": "Dit is een waargebeurd verhaal over de meest succesvolle piraat in de hele opgetekende geschiedenis.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Dit is een waargebeurd verhaal over de meest succesvolle piraat in de hele opgetekende geschiedenis.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "text": "Haar naam was Zheng Yi Sao, en zij voerde het bevel over de grootste piratenvloot die de wereld ooit heeft gekend.",
+      "text_markdown": "Haar naam was Zheng Yi Sao, en zij voerde het bevel over de grootste piratenvloot die de wereld ooit heeft gekend.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Haar naam was Zheng Yi Sao, en zij voerde het bevel over de grootste piratenvloot die de wereld ooit heeft gekend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "text": "Op het hoogtepunt van haar macht controleerde ze meer schepen dan de meeste naties bezaten.",
+      "text_markdown": "Op het hoogtepunt van haar macht controleerde ze meer schepen dan de meeste naties bezaten.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Op het hoogtepunt van haar macht controleerde ze meer schepen dan de meeste naties bezaten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "text": "Ze werd niet geboren in rijkdom of privileges.",
+      "text_markdown": "Ze werd niet geboren in rijkdom of privileges.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Ze werd niet geboren in rijkdom of privileges.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "text": "Ze werd geboren in armoede in Zuid-China, in de late achttiende eeuw.",
+      "text_markdown": "Ze werd geboren in armoede in Zuid-China, in de late achttiende eeuw.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Ze werd geboren in armoede in Zuid-China, in de late achttiende eeuw.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "text": "Alles wat ze bereikte, bouwde ze op door intelligentie, meedogenloosheid en een buitengewoon vermogen om mensen te organiseren.",
+      "text_markdown": "Alles wat ze bereikte, bouwde ze op door intelligentie, meedogenloosheid en een buitengewoon vermogen om mensen te organiseren.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Alles wat ze bereikte, bouwde ze op door intelligentie, meedogenloosheid en een buitengewoon vermogen om mensen te organiseren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "text": "Dit boek vertelt het verhaal van hoe een vrouw zonder iets de onbetwiste heerser van de Zuid-Chinese Zee werd.",
+      "text_markdown": "Dit boek vertelt het verhaal van hoe een vrouw zonder iets de onbetwiste heerser van de Zuid-Chinese Zee werd.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Dit boek vertelt het verhaal van hoe een vrouw zonder iets de onbetwiste heerser van de Zuid-Chinese Zee werd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "text": "Het is een verhaal over oorlog, handel, recht en overleven.",
+      "text_markdown": "Het is een verhaal over oorlog, handel, recht en overleven.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Het is een verhaal over oorlog, handel, recht en overleven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "text": "Het is ook een verhaal over een wereld die snel veranderde, terwijl Europese machten dieper Azië binnendrongen.",
+      "text_markdown": "Het is ook een verhaal over een wereld die snel veranderde, terwijl Europese machten dieper Azië binnendrongen.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Het is ook een verhaal over een wereld die snel veranderde, terwijl Europese machten dieper Azië binnendrongen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "text": "Elk feit in dit boek komt uit de historische archieven.",
+      "text_markdown": "Elk feit in dit boek komt uit de historische archieven.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Elk feit in dit boek komt uit de historische archieven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "text": "Waar de archieven onzeker zijn, vermelden we dat.",
+      "text_markdown": "Waar de archieven onzeker zijn, vermelden we dat.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Waar de archieven onzeker zijn, vermelden we dat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "text": "Waar historici van mening verschillen, presenteren we het sterkste beschikbare bewijs.",
+      "text_markdown": "Waar historici van mening verschillen, presenteren we het sterkste beschikbare bewijs.",
+      "title": "Een noot voor de lezer",
+      "tts": {
+        "text": "Waar historici van mening verschillen, presenteren we het sterkste beschikbare bewijs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 1,
+      "id": "ch01-014",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "De wereld van de Zuid-Chinese Zee",
+      "text_markdown": "De wereld van de Zuid-Chinese Zee",
+      "title": "De wereld van de Zuid-Chinese Zee"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-015",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "text": "De Zuid-Chinese Zee is een van de drukste waterwegen op Aarde.",
+      "text_markdown": "De Zuid-Chinese Zee is een van de drukste waterwegen op Aarde.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De Zuid-Chinese Zee is een van de drukste waterwegen op Aarde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "text": "Het strekt zich uit van de kust van Vietnam in het westen tot de Filipijnen in het oosten.",
+      "text_markdown": "Het strekt zich uit van de kust van Vietnam in het westen tot de Filipijnen in het oosten.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Het strekt zich uit van de kust van Vietnam in het westen tot de Filipijnen in het oosten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-017",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "text": "In het noorden ligt de kust van China, en in het zuiden liggen de eilanden Borneo en Sumatra.",
+      "text_markdown": "In het noorden ligt de kust van China, en in het zuiden liggen de eilanden Borneo en Sumatra.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "In het noorden ligt de kust van China, en in het zuiden liggen de eilanden Borneo en Sumatra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-018",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "text": "Duizenden jaren lang hebben handelaren deze wateren bevaren.",
+      "text_markdown": "Duizenden jaren lang hebben handelaren deze wateren bevaren.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Duizenden jaren lang hebben handelaren deze wateren bevaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "text": "Chinese jonken vervoerden zijde, porselein en thee naar havens in heel Zuidoost-Azië.",
+      "text_markdown": "Chinese jonken vervoerden zijde, porselein en thee naar havens in heel Zuidoost-Azië.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Chinese jonken vervoerden zijde, porselein en thee naar havens in heel Zuidoost-Azië.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "text": "In ruil daarvoor stroomden specerijen, tropisch hout en exotische goederen terug naar China.",
+      "text_markdown": "In ruil daarvoor stroomden specerijen, tropisch hout en exotische goederen terug naar China.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "In ruil daarvoor stroomden specerijen, tropisch hout en exotische goederen terug naar China.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-021",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "text": "De stad Kanton, nu Guangzhou genaamd, lag in het centrum van deze handel.",
+      "text_markdown": "De stad Kanton, nu Guangzhou genaamd, lag in het centrum van deze handel.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De stad Kanton, nu Guangzhou genaamd, lag in het centrum van deze handel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "text": "Kanton was in de achttiende eeuw een van de rijkste steden ter wereld.",
+      "text_markdown": "Kanton was in de achttiende eeuw een van de rijkste steden ter wereld.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Kanton was in de achttiende eeuw een van de rijkste steden ter wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-023",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "text": "Buitenlandse kooplieden uit Groot-Brittannië, Frankrijk, Portugal en Nederland streden allemaal om toegang tot de markten.",
+      "text_markdown": "Buitenlandse kooplieden uit Groot-Brittannië, Frankrijk, Portugal en Nederland streden allemaal om toegang tot de markten.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Buitenlandse kooplieden uit Groot-Brittannië, Frankrijk, Portugal en Nederland streden allemaal om toegang tot de markten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-024",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "text": "De Qing-dynastie regeerde China in deze periode.",
+      "text_markdown": "De Qing-dynastie regeerde China in deze periode.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De Qing-dynastie regeerde China in deze periode.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "text": "De Qing-keizers waren Mantsjoe, geen Han-Chinezen.",
+      "text_markdown": "De Qing-keizers waren Mantsjoe, geen Han-Chinezen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De Qing-keizers waren Mantsjoe, geen Han-Chinezen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-026",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "text": "Ze hadden China veroverd in 1644 en bouwden een van de grootste rijken ter wereld.",
+      "text_markdown": "Ze hadden China veroverd in 1644 en bouwden een van de grootste rijken ter wereld.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Ze hadden China veroverd in zestienhonderdvierenveertig en bouwden een van de grootste rijken ter wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-027",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "text": "Tegen het einde van de jaren 1700 begon de Qing-dynastie echter te verzwakken.",
+      "text_markdown": "Tegen het einde van de jaren 1700 begon de Qing-dynastie echter te verzwakken.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Tegen het einde van de zeventienhonderd, begon de Qing-dynastie echter te verzwakken.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-028",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "text": "Corruptie verspreidde zich door de keizerlijke bureaucratie.",
+      "text_markdown": "Corruptie verspreidde zich door de keizerlijke bureaucratie.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Corruptie verspreidde zich door de keizerlijke bureaucratie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "text": "Belastinginners persten boeren en vissers elke munt af die ze konden bemachtigen.",
+      "text_markdown": "Belastinginners persten boeren en vissers elke munt af die ze konden bemachtigen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Belastinginners persten boeren en vissers elke munt af die ze konden bemachtigen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-030",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "text": "De kloof tussen arm en rijk werd jaar na jaar groter.",
+      "text_markdown": "De kloof tussen arm en rijk werd jaar na jaar groter.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De kloof tussen arm en rijk werd jaar na jaar groter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-031",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "text": "In de kustprovincies leefden veel mensen in desperate armoede.",
+      "text_markdown": "In de kustprovincies leefden veel mensen in desperate armoede.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "In de kustprovincies leefden veel mensen in desperate armoede.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-032",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "text": "De vissersgemeenschappen langs de kust van Guangdong behoorden tot de armste in China.",
+      "text_markdown": "De vissersgemeenschappen langs de kust van Guangdong behoorden tot de armste in China.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De vissersgemeenschappen langs de kust van Guangdong behoorden tot de armste in China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "text": "Hele families leefden op kleine boten genaamd sampans.",
+      "text_markdown": "Hele families leefden op kleine boten genaamd sampans.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Hele families leefden op kleine boten genaamd sampans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-034",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "text": "Ze werden op het water geboren, werkten op het water en stierven op het water.",
+      "text_markdown": "Ze werden op het water geboren, werkten op het water en stierven op het water.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Ze werden op het water geboren, werkten op het water en stierven op het water.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "text": "De keizerlijke regering noemde hen het Tanka-volk en behandelde hen als verschoppelingen.",
+      "text_markdown": "De keizerlijke regering noemde hen het Tanka-volk en behandelde hen als verschoppelingen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De keizerlijke regering noemde hen het Tanka-volk en behandelde hen als verschoppelingen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-036",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "text": "Tanka-families mochten in veel gebieden niet op het land wonen.",
+      "text_markdown": "Tanka-families mochten in veel gebieden niet op het land wonen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Tanka-families mochten in veel gebieden niet op het land wonen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-037",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "text": "Ze konden de keizerlijke examens niet afleggen die leidden tot overheidsbanen.",
+      "text_markdown": "Ze konden de keizerlijke examens niet afleggen die leidden tot overheidsbanen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Ze konden de keizerlijke examens niet afleggen die leidden tot overheidsbanen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-038",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "text": "Ze werden door wet en gewoonte buitengesloten van de mainstream Chinese samenleving.",
+      "text_markdown": "Ze werden door wet en gewoonte buitengesloten van de mainstream Chinese samenleving.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Ze werden door wet en gewoonte buitengesloten van de mainstream Chinese samenleving.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-039",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "text": "Generaties lang hadden ze geen pad naar een beter leven.",
+      "text_markdown": "Generaties lang hadden ze geen pad naar een beter leven.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Generaties lang hadden ze geen pad naar een beter leven.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-040",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "text": "Piraterij bood een alternatief.",
+      "text_markdown": "Piraterij bood een alternatief.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Piraterij bood een alternatief.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-041",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "text": "Als je niet via legale middelen kon opklimmen, bood de zee haar eigen economie.",
+      "text_markdown": "Als je niet via legale middelen kon opklimmen, bood de zee haar eigen economie.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Als je niet via legale middelen kon opklimmen, bood de zee haar eigen economie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-042",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "text": "Piratenvloten plunderden koopvaardijschepen, persten vissersdorpen af en smokkelden goederen langs keizerlijke patrouilles.",
+      "text_markdown": "Piratenvloten plunderden koopvaardijschepen, persten vissersdorpen af en smokkelden goederen langs keizerlijke patrouilles.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Piratenvloten plunderden koopvaardijschepen, persten vissersdorpen af en smokkelden goederen langs keizerlijke patrouilles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-043",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "text": "Voor veel arme kustbewoners was het toetreden tot een piratenbemanning een rationele economische beslissing.",
+      "text_markdown": "Voor veel arme kustbewoners was het toetreden tot een piratenbemanning een rationele economische beslissing.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Voor veel arme kustbewoners was het toetreden tot een piratenbemanning een rationele economische beslissing.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-044",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "text": "De wateren van de Zuid-Chinese Zee waren ideaal voor piraterij.",
+      "text_markdown": "De wateren van de Zuid-Chinese Zee waren ideaal voor piraterij.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De wateren van de Zuid-Chinese Zee waren ideaal voor piraterij.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-045",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "text": "Duizenden eilanden, inhammen en riviermondingen boden schuilplaatsen.",
+      "text_markdown": "Duizenden eilanden, inhammen en riviermondingen boden schuilplaatsen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Duizenden eilanden, inhammen en riviermondingen boden schuilplaatsen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-046",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "text": "Dichte mist en plotselinge stormen maakten de achtervolging moeilijk.",
+      "text_markdown": "Dichte mist en plotselinge stormen maakten de achtervolging moeilijk.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Dichte mist en plotselinge stormen maakten de achtervolging moeilijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-047",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "text": "Een snelle jonk met een bekwame bemanning kon binnen enkele minuten in de kustlijn verdwijnen.",
+      "text_markdown": "Een snelle jonk met een bekwame bemanning kon binnen enkele minuten in de kustlijn verdwijnen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Een snelle jonk met een bekwame bemanning kon binnen enkele minuten in de kustlijn verdwijnen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-048",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "text": "Ondertussen begon de opiumhandel de regio te hervormen.",
+      "text_markdown": "Ondertussen begon de opiumhandel de regio te hervormen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Ondertussen begon de opiumhandel de regio te hervormen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-049",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "text": "Britse kooplieden verscheepten opium in enorme hoeveelheden van India naar China.",
+      "text_markdown": "Britse kooplieden verscheepten opium in enorme hoeveelheden van India naar China.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Britse kooplieden verscheepten opium in enorme hoeveelheden van India naar China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-050",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "text": "De drug was illegaal in China, maar de winsten waren zo enorm dat de handel elk jaar groeide.",
+      "text_markdown": "De drug was illegaal in China, maar de winsten waren zo enorm dat de handel elk jaar groeide.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De drug was illegaal in China, maar de winsten waren zo enorm dat de handel elk jaar groeide.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-051",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "text": "Smokkelnetwerken strekten zich uit langs de hele zuidkust.",
+      "text_markdown": "Smokkelnetwerken strekten zich uit langs de hele zuidkust.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Smokkelnetwerken strekten zich uit langs de hele zuidkust.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-052",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "text": "Dit was de wereld die Zheng Yi Sao voortbracht.",
+      "text_markdown": "Dit was de wereld die Zheng Yi Sao voortbracht.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Dit was de wereld die Zheng Yi Sao voortbracht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-053",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "text": "Een wereld van enorme rijkdom en schrijnende armoede, gescheiden door een smalle strook oceaan.",
+      "text_markdown": "Een wereld van enorme rijkdom en schrijnende armoede, gescheiden door een smalle strook oceaan.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Een wereld van enorme rijkdom en schrijnende armoede, gescheiden door een smalle strook oceaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-054",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "text": "Een wereld waar rijken streden, en de wet van de zee toebehoorde aan wie sterk genoeg was om deze af te dwingen.",
+      "text_markdown": "Een wereld waar rijken streden, en de wet van de zee toebehoorde aan wie sterk genoeg was om deze af te dwingen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Een wereld waar rijken streden, en de wet van de zee toebehoorde aan wie sterk genoeg was om deze af te dwingen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-055",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "text": "De Europese machten zagen China als een markt die moest worden opengebroken.",
+      "text_markdown": "De Europese machten zagen China als een markt die moest worden opengebroken.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De Europese machten zagen China als een markt die moest worden opengebroken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-056",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "text": "De Qing-regering zag de Europeanen als barbaren die moesten worden beheerd.",
+      "text_markdown": "De Qing-regering zag de Europeanen als barbaren die moesten worden beheerd.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De Qing-regering zag de Europeanen als barbaren die moesten worden beheerd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-057",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "text": "En de piraten van de Zuid-Chinese Zee zagen kansen in de chaos tussen hen in.",
+      "text_markdown": "En de piraten van de Zuid-Chinese Zee zagen kansen in de chaos tussen hen in.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "En de piraten van de Zuid-Chinese Zee zagen kansen in de chaos tussen hen in.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-058",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "text": "Tegen 1790 telden piratenvloten in de Zuid-Chinese Zee honderden schepen.",
+      "text_markdown": "Tegen 1790 telden piratenvloten in de Zuid-Chinese Zee honderden schepen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Tegen zeventienhonderdnegentig telden piratenvloten in de Zuid-Chinese Zee honderden schepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-059",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "text": "Het waren geen ongeorganiseerde criminelen.",
+      "text_markdown": "Het waren geen ongeorganiseerde criminelen.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Het waren geen ongeorganiseerde criminelen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-060",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "text": "Velen opereerden als gedisciplineerde zeestrijdkrachten met hiërarchieën en gedragscodes.",
+      "text_markdown": "Velen opereerden als gedisciplineerde zeestrijdkrachten met hiërarchieën en gedragscodes.",
+      "title": "De wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "Velen opereerden als gedisciplineerde zeestrijdkrachten met hiërarchieën en gedragscodes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-061",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "text": "De grootste van deze strijdkrachten stond op het punt de machtigste piratenvloot in de geschiedenis te worden.",
+      "text_markdown": "De grootste van deze strijdkrachten stond op het punt de machtigste piratenvloot in de geschiedenis te worden.",
+      "title": "De Wereld van de Zuid-Chinese Zee",
+      "tts": {
+        "text": "De grootste van deze strijdkrachten stond op het punt de machtigste piratenvloot in de geschiedenis te worden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 2,
+      "id": "ch02-062",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Oorsprong",
+      "text_markdown": "Oorsprong",
+      "title": "Oorsprong"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-063",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "text": "De vrouw die Zheng Yi Sao zou worden, werd geboren rond 1775.",
+      "text_markdown": "De vrouw die Zheng Yi Sao zou worden, werd geboren rond 1775.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De vrouw die Zheng Yi Sao zou worden, werd geboren rond zeventien vijfenzeventig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-064",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "text": "Ze wordt in Chinese bronnen meestal Shi Xianggu genoemd.",
+      "text_markdown": "Ze wordt in Chinese bronnen meestal Shi Xianggu genoemd.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze wordt in Chinese bronnen meestal Shi Xianggu genoemd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "text": "De naam Zheng Yi Sao betekent simpelweg echtgenote van Zheng Yi.",
+      "text_markdown": "De naam Zheng Yi Sao betekent simpelweg echtgenote van Zheng Yi.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De naam Zheng Yi Sao betekent simpelweg echtgenote van Zheng Yi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "text": "Ze werd geboren in de Tanka-gemeenschap van bootbewoners in de provincie Guangdong.",
+      "text_markdown": "Ze werd geboren in de Tanka-gemeenschap van bootbewoners in de provincie Guangdong.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze werd geboren in de Tanka-gemeenschap van bootbewoners in de provincie Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-067",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "text": "Haar familie was arm, zoals bijna alle Tanka-families.",
+      "text_markdown": "Haar familie was arm, zoals bijna alle Tanka-families.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Haar familie was arm, zoals bijna alle Tanka-families.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "text": "Ze bracht haar vroege jaren op het water door en leerde de ritmes van de kust kennen.",
+      "text_markdown": "Ze bracht haar vroege jaren op het water door en leerde de ritmes van de kust kennen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze bracht haar vroege jaren op het water door en leerde de ritmes van de kust kennen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "text": "Als jonge vrouw werkte ze op een drijvend bordeel in de haven van Kanton.",
+      "text_markdown": "Als jonge vrouw werkte ze op een drijvend bordeel in de haven van Kanton.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Als jonge vrouw werkte ze op een drijvend bordeel in de haven van Kanton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-070",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "text": "Ze bedienden zeelieden, kooplieden en vissers die door de drukke haven kwamen.",
+      "text_markdown": "Ze bedienden zeelieden, kooplieden en vissers die door de drukke haven kwamen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze bedienden zeelieden, kooplieden en vissers die door de drukke haven kwamen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "text": "Het was zwaar en gevaarlijk werk, maar het gaf haar kennis van de wereld die weinig vrouwen van haar klasse konden verwerven.",
+      "text_markdown": "Het was zwaar en gevaarlijk werk, maar het gaf haar kennis van de wereld die weinig vrouwen van haar klasse konden verwerven.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Het was zwaar en gevaarlijk werk, maar het gaf haar kennis van de wereld die weinig vrouwen van haar klasse konden verwerven.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-072",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "text": "Ze leerde mensen snel en nauwkeurig te doorgronden.",
+      "text_markdown": "Ze leerde mensen snel en nauwkeurig te doorgronden.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze leerde mensen snel en nauwkeurig te doorgronden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "text": "Ze leerde de talen van handel en onderhandeling.",
+      "text_markdown": "Ze leerde de talen van handel en onderhandeling.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze leerde de talen van handel en onderhandeling.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "text": "Deze vaardigheden zouden veel waardevoller blijken dan wie dan ook had kunnen voorspellen.",
+      "text_markdown": "Deze vaardigheden zouden veel waardevoller blijken dan wie dan ook had kunnen voorspellen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Deze vaardigheden zouden veel waardevoller blijken dan wie dan ook had kunnen voorspellen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-075",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "text": "In 1798 nam een piratenkapitein genaamd Zheng Yi het schip waarop ze zich bevond gevangen.",
+      "text_markdown": "In 1798 nam een piratenkapitein genaamd Zheng Yi het schip waarop ze zich bevond gevangen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "In zeventien achtennegentig nam een piratenkapitein genaamd Zheng Yi het schip waarop ze zich bevond gevangen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-076",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "text": "Hij kwam uit een lange lijn van piraten, die generaties terugging.",
+      "text_markdown": "Hij kwam uit een lange lijn van piraten, die generaties terugging.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Hij kwam uit een lange lijn van piraten, die generaties terugging.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-077",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "text": "Zijn familie had de overblijfselen van de Ming-dynastie gesteund tegen de Qing-veroveraars.",
+      "text_markdown": "Zijn familie had de overblijfselen van de Ming-dynastie gesteund tegen de Qing-veroveraars.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zijn familie had de overblijfselen van de Ming-dynastie gesteund tegen de Qing-veroveraars.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-078",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "text": "Zheng Yi vroeg de jonge vrouw ten huwelijk.",
+      "text_markdown": "Zheng Yi vroeg de jonge vrouw ten huwelijk.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zheng Yi vroeg de jonge vrouw ten huwelijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-079",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "text": "Volgens de meeste verslagen accepteerde ze niet zomaar.",
+      "text_markdown": "Volgens de meeste verslagen accepteerde ze niet zomaar.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Volgens de meeste verslagen accepteerde ze niet zomaar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-080",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "text": "Ze onderhandelde over de voorwaarden van hun partnerschap voordat ze instemde met het huwelijk.",
+      "text_markdown": "Ze onderhandelde over de voorwaarden van hun partnerschap voordat ze instemde met het huwelijk.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze onderhandelde over de voorwaarden van hun partnerschap voordat ze instemde met het huwelijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-081",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "text": "Ze eiste een gelijk deel van zijn vloot en een gelijke stem in beslissingen over het bevel.",
+      "text_markdown": "Ze eiste een gelijk deel van zijn vloot en een gelijke stem in beslissingen over het bevel.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze eiste een gelijk deel van zijn vloot en een gelijke stem in beslissingen over het bevel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-082",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "text": "Dit was buitengewoon voor die tijd.",
+      "text_markdown": "Dit was buitengewoon voor die tijd.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Dit was buitengewoon voor die tijd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-083",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "text": "Vrouwen in het late Qing-China hadden zeer weinig wettelijke rechten.",
+      "text_markdown": "Vrouwen in het late Qing-China hadden zeer weinig wettelijke rechten.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Vrouwen in het late Qing-China hadden zeer weinig wettelijke rechten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-084",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "text": "Van een vrouw werd verwacht dat ze haar man zonder vragen gehoorzaamde.",
+      "text_markdown": "Van een vrouw werd verwacht dat ze haar man zonder vragen gehoorzaamde.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Van een vrouw werd verwacht dat ze haar man zonder vragen gehoorzaamde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-085",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "text": "Maar dit was de piratenwereld, en de piratenwereld maakte haar eigen regels.",
+      "text_markdown": "Maar dit was de piratenwereld, en de piratenwereld maakte haar eigen regels.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Maar dit was de piratenwereld, en de piratenwereld maakte haar eigen regels.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-086",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "text": "Zheng Yi stemde in met haar voorwaarden.",
+      "text_markdown": "Zheng Yi stemde in met haar voorwaarden.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zheng Yi stemde in met haar voorwaarden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-087",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "text": "Historici geloven dat hij haar intelligentie en haar potentieel als leider erkende.",
+      "text_markdown": "Historici geloven dat hij haar intelligentie en haar potentieel als leider erkende.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Historici geloven dat hij haar intelligentie en haar potentieel als leider erkende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-088",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "text": "Hun huwelijk was zowel een strategische alliantie als een persoonlijke band.",
+      "text_markdown": "Hun huwelijk was zowel een strategische alliantie als een persoonlijke band.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Hun huwelijk was zowel een strategische alliantie als een persoonlijke band.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-089",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "text": "Samen zouden ze iets ongekends opbouwen.",
+      "text_markdown": "Samen zouden ze iets ongekends opbouwen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Samen zouden ze iets ongekends opbouwen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-090",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "text": "Zheng Yi had een gedurfde visie.",
+      "text_markdown": "Zheng Yi had een gedurfde visie.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zheng Yi had een gedurfde visie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-091",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "text": "Hij wilde de verspreide piratenvloten van de Zuid-Chinese Zee verenigen in één confederatie.",
+      "text_markdown": "Hij wilde de verspreide piratenvloten van de Zuid-Chinese Zee verenigen in één confederatie.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Hij wilde de verspreide piratenvloten van de Zuid-Chinese Zee verenigen in één confederatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-092",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "text": "Individuele piratenkapiteins hadden altijd met elkaar geconcurreerd.",
+      "text_markdown": "Individuele piratenkapiteins hadden altijd met elkaar geconcurreerd.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Individuele piratenkapiteins hadden altijd met elkaar geconcurreerd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-093",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "text": "Zheng Yi geloofde dat ze veel machtiger zouden zijn als ze samenwerkten.",
+      "text_markdown": "Zheng Yi geloofde dat ze veel machtiger zouden zijn als ze samenwerkten.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zheng Yi geloofde dat ze veel machtiger zouden zijn als ze samenwerkten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-094",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "text": "Tussen 1798 en 1805 werkte Zheng Yi onvermoeibaar om allianties te smeden.",
+      "text_markdown": "Tussen 1798 en 1805 werkte Zheng Yi onvermoeibaar om allianties te smeden.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Tussen zeventien achtennegentig en achttienhonderdvijf werkte Zheng Yi onvermoeibaar om allianties te smeden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-095",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "text": "Hij overtuigde rivaliserende kapiteins om zich bij zijn confederatie aan te sluiten door een combinatie van diplomatie en intimidatie.",
+      "text_markdown": "Hij overtuigde rivaliserende kapiteins om zich bij zijn confederatie aan te sluiten door een combinatie van diplomatie en intimidatie.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Hij overtuigde rivaliserende kapiteins om zich bij zijn confederatie aan te sluiten door een combinatie van diplomatie en intimidatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-096",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "text": "Zijn vrouw was nauw betrokken bij deze onderhandelingen.",
+      "text_markdown": "Zijn vrouw was nauw betrokken bij deze onderhandelingen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zijn vrouw was nauw betrokken bij deze onderhandelingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-097",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "text": "Ze hielp bij het opstellen van de overeenkomsten die de vloot bijeenhielden.",
+      "text_markdown": "Ze hielp bij het opstellen van de overeenkomsten die de vloot bijeenhielden.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze hielp bij het opstellen van de overeenkomsten die de vloot bijeenhielden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-098",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "text": "Tegen 1805 was de confederatie compleet.",
+      "text_markdown": "Tegen 1805 was de confederatie compleet.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Tegen achttienhonderdvijf was de confederatie compleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-099",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "text": "Ze bestond uit zes vloten, elk geïdentificeerd door de kleur van hun vlag.",
+      "text_markdown": "Ze bestond uit zes vloten, elk geïdentificeerd door de kleur van hun vlag.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze bestond uit zes vloten, elk geïdentificeerd door de kleur van hun vlag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-100",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "text": "De Rode Vlag Vloot was de grootste en machtigste.",
+      "text_markdown": "De Rode Vlag Vloot was de grootste en machtigste.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De Rode Vlag Vloot was de grootste en machtigste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-101",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "text": "Zheng Yi voerde persoonlijk het bevel over de Rode Vlag Vloot.",
+      "text_markdown": "Zheng Yi voerde persoonlijk het bevel over de Rode Vlag Vloot.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zheng Yi voerde persoonlijk het bevel over de Rode Vlag Vloot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-102",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "text": "De confederatie controleerde honderden schepen en tienduizenden piraten.",
+      "text_markdown": "De confederatie controleerde honderden schepen en tienduizenden piraten.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De confederatie controleerde honderden schepen en tienduizenden piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-103",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "text": "Ze domineerde de hele Zuid-Chinese Zee.",
+      "text_markdown": "Ze domineerde de hele Zuid-Chinese Zee.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze domineerde de hele Zuid-Chinese Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-104",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "text": "Geen enkel koopvaardijschip kon door deze wateren varen zonder tol te betalen of vernietiging te riskeren.",
+      "text_markdown": "Geen enkel koopvaardijschip kon door deze wateren varen zonder tol te betalen of vernietiging te riskeren.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Geen enkel koopvaardijschip kon door deze wateren varen zonder tol te betalen of vernietiging te riskeren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-105",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "text": "Toen, in november 1807, stierf Zheng Yi.",
+      "text_markdown": "Toen, in november 1807, stierf Zheng Yi.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Toen, in november achttienhonderdzeven, stierf Zheng Yi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-106",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "text": "De omstandigheden van zijn dood worden door historici betwist.",
+      "text_markdown": "De omstandigheden van zijn dood worden door historici betwist.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De omstandigheden van zijn dood worden door historici betwist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-107",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "text": "Sommige verslagen zeggen dat hij verdronk in een storm.",
+      "text_markdown": "Sommige verslagen zeggen dat hij verdronk in een storm.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Sommige verslagen zeggen dat hij verdronk in een storm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-108",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "text": "Anderen suggereren dat hij werd gedood in een gevecht voor de kust van Vietnam.",
+      "text_markdown": "Anderen suggereren dat hij werd gedood in een gevecht voor de kust van Vietnam.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Anderen suggereren dat hij werd gedood in een gevecht voor de kust van Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-109",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "text": "Zijn dood veroorzaakte een crisis voor de hele confederatie.",
+      "text_markdown": "Zijn dood veroorzaakte een crisis voor de hele confederatie.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zijn dood veroorzaakte een crisis voor de hele confederatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-110",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "text": "De alliantie die hij had opgebouwd, werd bijeengehouden door zijn persoonlijke autoriteit.",
+      "text_markdown": "De alliantie die hij had opgebouwd, werd bijeengehouden door zijn persoonlijke autoriteit.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De alliantie die hij had opgebouwd, werd bijeengehouden door zijn persoonlijke autoriteit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-111",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "text": "Zonder een sterke leider zou ze uiteenvallen in concurrerende facties.",
+      "text_markdown": "Zonder een sterke leider zou ze uiteenvallen in concurrerende facties.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Zonder een sterke leider zou ze uiteenvallen in concurrerende facties.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-112",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "text": "Alles wat ze hadden opgebouwd, stond op het spel.",
+      "text_markdown": "Alles wat ze hadden opgebouwd, stond op het spel.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Alles wat ze hadden opgebouwd, stond op het spel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-113",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "text": "De kapiteins van de andere vloten verwachtten dat de confederatie zou instorten.",
+      "text_markdown": "De kapiteins van de andere vloten verwachtten dat de confederatie zou instorten.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "De kapiteins van de andere vloten verwachtten dat de confederatie zou instorten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-114",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "text": "Ze begonnen te manoeuvreren voor positie, zich voorbereidend om grondgebied in te nemen.",
+      "text_markdown": "Ze begonnen te manoeuvreren voor positie, zich voorbereidend om grondgebied in te nemen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze begonnen te manoeuvreren voor positie, zich voorbereidend om grondgebied in te nemen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-115",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "text": "Maar ze hadden geen rekening gehouden met de ambitie en bekwaamheid van Zheng Yi's weduwe.",
+      "text_markdown": "Maar ze hadden geen rekening gehouden met de ambitie en bekwaamheid van Zheng Yi's weduwe.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Maar ze hadden geen rekening gehouden met de ambitie en bekwaamheid van Zheng Yi's weduwe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-116",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "text": "Ze was niet van plan op te geven wat ze had helpen opbouwen.",
+      "text_markdown": "Ze was niet van plan op te geven wat ze had helpen opbouwen.",
+      "title": "Oorsprong",
+      "tts": {
+        "text": "Ze was niet van plan op te geven wat ze had helpen opbouwen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 3,
+      "id": "ch03-117",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Opkomst aan de Macht",
+      "text_markdown": "Opkomst aan de Macht",
+      "title": "Opkomst aan de Macht"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-118",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "text": "In de dagen na de dood van haar man handelde Zheng Yi Sao met berekende snelheid.",
+      "text_markdown": "In de dagen na de dood van haar man handelde Zheng Yi Sao met berekende snelheid.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "In de dagen na de dood van haar man handelde Zheng Yi Sao met berekende snelheid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-119",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "text": "Haar eerste actie was het veiligstellen van de loyaliteit van Zhang Bao, de meest vertrouwde luitenant van haar man.",
+      "text_markdown": "Haar eerste actie was het veiligstellen van de loyaliteit van Zhang Bao, de meest vertrouwde luitenant van haar man.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Haar eerste actie was het veiligstellen van de loyaliteit van Zhang Bao, de meest vertrouwde luitenant van haar man.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-120",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "text": "Zhang Bao was de zoon van een visser die als jongen door piraten was gevangengenomen.",
+      "text_markdown": "Zhang Bao was de zoon van een visser die als jongen door piraten was gevangengenomen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Zhang Bao was de zoon van een visser die als jongen door piraten was gevangengenomen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-121",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "text": "Zheng Yi had hem geadopteerd, opgeleid en grootgebracht om een militair commandant te worden.",
+      "text_markdown": "Zheng Yi had hem geadopteerd, opgeleid en grootgebracht om een militair commandant te worden.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Zheng Yi had hem geadopteerd, opgeleid en grootgebracht om een militair commandant te worden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-122",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao sloot een alliantie met Zhang Bao die zowel persoonlijk als strategisch was.",
+      "text_markdown": "Zheng Yi Sao sloot een alliantie met Zhang Bao die zowel persoonlijk als strategisch was.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Zheng Yi Sao sloot een alliantie met Zhang Bao die zowel persoonlijk als strategisch was.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-123",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "text": "De twee zouden uiteindelijk trouwen.",
+      "text_markdown": "De twee zouden uiteindelijk trouwen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De twee zouden uiteindelijk trouwen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-124",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "text": "Maar in die eerste cruciale weken draaide het partnerschap om overleving.",
+      "text_markdown": "Maar in die eerste cruciale weken draaide het partnerschap om overleving.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Maar in die eerste cruciale weken draaide het partnerschap om overleving.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-125",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "text": "Samen presenteerden ze een verenigd front aan de andere vlootcommandanten.",
+      "text_markdown": "Samen presenteerden ze een verenigd front aan de andere vlootcommandanten.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Samen presenteerden ze een verenigd front aan de andere vlootcommandanten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-126",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "text": "Ze riep een raad bijeen van de zes vlootkapiteins.",
+      "text_markdown": "Ze riep een raad bijeen van de zes vlootkapiteins.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze riep een raad bijeen van de zes vlootkapiteins.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-127",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "text": "Op die bijeenkomst pleitte ze voor haar leiderschap over de confederatie.",
+      "text_markdown": "Op die bijeenkomst pleitte ze voor haar leiderschap over de confederatie.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Op die bijeenkomst pleitte ze voor haar leiderschap over de confederatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-128",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "text": "Ze betoogde dat ze de gelijkwaardige partner van haar man was geweest bij het opbouwen van deze alliantie.",
+      "text_markdown": "Ze betoogde dat ze de gelijkwaardige partner van haar man was geweest bij het opbouwen van deze alliantie.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze betoogde dat ze de gelijkwaardige partner van haar man was geweest bij het opbouwen van deze alliantie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-129",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "text": "Eén voor één stemden de kapiteins ermee in haar bevel te volgen.",
+      "text_markdown": "Eén voor één stemden de kapiteins ermee in haar bevel te volgen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Eén voor één stemden de kapiteins ermee in haar bevel te volgen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-130",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "text": "Haar eerste uitdaging was om discipline op te leggen aan een strijdmacht van 70.000 piraten.",
+      "text_markdown": "Haar eerste uitdaging was om discipline op te leggen aan een strijdmacht van 70.000 piraten.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Haar eerste uitdaging was om discipline op te leggen aan een strijdmacht van zeventigduizend piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-131",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "text": "Piraten waren van nature onafhankelijk en wantrouwig tegenover autoriteit.",
+      "text_markdown": "Piraten waren van nature onafhankelijk en wantrouwig tegenover autoriteit.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Piraten waren van nature onafhankelijk en wantrouwig tegenover autoriteit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-132",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao begreep dat een vloot zonder wetten zichzelf zou verscheuren.",
+      "text_markdown": "Zheng Yi Sao begreep dat een vloot zonder wetten zichzelf zou verscheuren.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Zheng Yi Sao begreep dat een vloot zonder wetten zichzelf zou verscheuren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-133",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "text": "Ze creëerde een van de meest opmerkelijke wetboeken in de piratengeschiedenis.",
+      "text_markdown": "Ze creëerde een van de meest opmerkelijke wetboeken in de piratengeschiedenis.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze creëerde een van de meest opmerkelijke wetboeken in de piratengeschiedenis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-134",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "text": "De code was streng en specifiek.",
+      "text_markdown": "De code was streng en specifiek.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De code was streng en specifiek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-135",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "text": "Elke piraat die een direct bevel van een meerdere negeerde, zou worden onthoofd.",
+      "text_markdown": "Elke piraat die een direct bevel van een meerdere negeerde, zou worden onthoofd.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Elke piraat die een direct bevel van een meerdere negeerde, zou worden onthoofd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-136",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "text": "Desertie was strafbaar met de dood.",
+      "text_markdown": "Desertie was strafbaar met de dood.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Desertie was strafbaar met de dood.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-137",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "text": "Stelen uit de gemeenschappelijke schatkist was strafbaar met de dood.",
+      "text_markdown": "Stelen uit de gemeenschappelijke schatkist was strafbaar met de dood.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Stelen uit de gemeenschappelijke schatkist was strafbaar met de dood.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-138",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "text": "De code beschermde ook gevangengenomen mensen op manieren die ongebruikelijk waren voor die tijd.",
+      "text_markdown": "De code beschermde ook gevangengenomen mensen op manieren die ongebruikelijk waren voor die tijd.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De code beschermde ook gevangengenomen mensen op manieren die ongebruikelijk waren voor die tijd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-139",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "text": "Piraten die gevangenen aanvielen, kregen zware straffen.",
+      "text_markdown": "Piraten die gevangenen aanvielen, kregen zware straffen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Piraten die gevangenen aanvielen, kregen zware straffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-140",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "text": "Als een piraat een gevangene als vrouw nam, moest hij haar trouw zijn.",
+      "text_markdown": "Als een piraat een gevangene als vrouw nam, moest hij haar trouw zijn.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Als een piraat een gevangene als vrouw nam, moest hij haar trouw zijn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-141",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "text": "Deze regels waren geen suggesties; ze werden met ijzeren consistentie gehandhaafd.",
+      "text_markdown": "Deze regels waren geen suggesties; ze werden met ijzeren consistentie gehandhaafd.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Deze regels waren geen suggesties; ze werden met ijzeren consistentie gehandhaafd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-142",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "text": "Alle buit werd geregistreerd en verdeeld volgens een vast systeem.",
+      "text_markdown": "Alle buit werd geregistreerd en verdeeld volgens een vast systeem.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Alle buit werd geregistreerd en verdeeld volgens een vast systeem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-143",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "text": "De piraat die de goederen buitmaakte, ontving 20 procent.",
+      "text_markdown": "De piraat die de goederen buitmaakte, ontving 20 procent.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De piraat die de goederen buitmaakte, ontving twintig procent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-144",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "text": "De resterende 80 procent ging naar het gemeenschappelijke fonds.",
+      "text_markdown": "De resterende 80 procent ging naar het gemeenschappelijke fonds.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De resterende tachtig procent ging naar het gemeenschappelijke fonds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-145",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "text": "Dit systeem voorkwam de interne vetes die de meeste piratenorganisaties vernietigden.",
+      "text_markdown": "Dit systeem voorkwam de interne vetes die de meeste piratenorganisaties vernietigden.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Dit systeem voorkwam de interne vetes die de meeste piratenorganisaties vernietigden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-146",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao bouwde ook een geavanceerd belastingstelsel op.",
+      "text_markdown": "Zheng Yi Sao bouwde ook een geavanceerd belastingstelsel op.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Zheng Yi Sao bouwde ook een geavanceerd belastingstelsel op.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-147",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "text": "Koopvaardijschepen konden veilige doorgang kopen door een reguliere vergoeding te betalen.",
+      "text_markdown": "Koopvaardijschepen konden veilige doorgang kopen door een reguliere vergoeding te betalen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Koopvaardijschepen konden veilige doorgang kopen door een reguliere vergoeding te betalen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-148",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "text": "Vissersdorpen langs de kust betaalden tribuut in ruil voor bescherming.",
+      "text_markdown": "Vissersdorpen langs de kust betaalden tribuut in ruil voor bescherming.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Vissersdorpen langs de kust betaalden tribuut in ruil voor bescherming.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-149",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "text": "Het systeem functioneerde als een parallelle regering, die inkomsten inde in ruil voor veiligheid.",
+      "text_markdown": "Het systeem functioneerde als een parallelle regering, die inkomsten inde in ruil voor veiligheid.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Het systeem functioneerde als een parallelle regering, die inkomsten inde in ruil voor veiligheid.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-150",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "text": "De Qing-regering erkende de dreiging en stuurde haar marine om de piraten te verpletteren.",
+      "text_markdown": "De Qing-regering erkende de dreiging en stuurde haar marine om de piraten te verpletteren.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De Qing-regering erkende de dreiging en stuurde haar marine om de piraten te verpletteren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-151",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "text": "In 1808 voer een enorme keizerlijke vloot de Zuid-Chinese Zee binnen.",
+      "text_markdown": "In 1808 voer een enorme keizerlijke vloot de Zuid-Chinese Zee binnen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "In achttienhonderdacht voer een enorme keizerlijke vloot de Zuid-Chinese Zee binnen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-152",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "text": "De slag was een ramp voor de regering.",
+      "text_markdown": "De slag was een ramp voor de regering.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De slag was een ramp voor de regering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-153",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "text": "De troepen van Zheng Yi Sao brachten tientallen keizerlijke oorlogsschepen tot zinken of namen ze gevangen.",
+      "text_markdown": "De troepen van Zheng Yi Sao brachten tientallen keizerlijke oorlogsschepen tot zinken of namen ze gevangen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De troepen van Zheng Yi Sao brachten tientallen keizerlijke oorlogsschepen tot zinken of namen ze gevangen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-154",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "text": "De verslagen admiraal was zo vernederd dat hij zijn eigen leven nam.",
+      "text_markdown": "De verslagen admiraal was zo vernederd dat hij zijn eigen leven nam.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De verslagen admiraal was zo vernederd dat hij zijn eigen leven nam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-155",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "text": "Het keizerlijke hof was verbijsterd door de omvang van het verlies.",
+      "text_markdown": "Het keizerlijke hof was verbijsterd door de omvang van het verlies.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Het keizerlijke hof was verbijsterd door de omvang van het verlies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-156",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "text": "Ze hadden hun beste schepen en hun meest ervaren commandant gestuurd, en ze hadden verloren.",
+      "text_markdown": "Ze hadden hun beste schepen en hun meest ervaren commandant gestuurd, en ze hadden verloren.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze hadden hun beste schepen en hun meest ervaren commandant gestuurd, en ze hadden verloren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-157",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "text": "De piraten waren nu sterker dan de eigen marine van de regering.",
+      "text_markdown": "De piraten waren nu sterker dan de eigen marine van de regering.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De piraten waren nu sterker dan de eigen marine van de regering.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-158",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao zette haar voordeel meedogenloos door.",
+      "text_markdown": "Zheng Yi Sao zette haar voordeel meedogenloos door.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Zheng Yi Sao zette haar voordeel meedogenloos door.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-159",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "text": "Haar vloot breidde haar territorium uit langs de hele kust van Guangdong.",
+      "text_markdown": "Haar vloot breidde haar territorium uit langs de hele kust van Guangdong.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Haar vloot breidde haar territorium uit langs de hele kust van Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-160",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "text": "Ze vestigde bases op eilanden en in verborgen riviermondingen.",
+      "text_markdown": "Ze vestigde bases op eilanden en in verborgen riviermondingen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze vestigde bases op eilanden en in verborgen riviermondingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-161",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "text": "Haar inlichtingennetwerk strekte zich uit van Canton tot Vietnam.",
+      "text_markdown": "Haar inlichtingennetwerk strekte zich uit van Canton tot Vietnam.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Haar inlichtingennetwerk strekte zich uit van Canton tot Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-162",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "text": "De Qing-regering probeerde een nieuwe strategie.",
+      "text_markdown": "De Qing-regering probeerde een nieuwe strategie.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De Qing-regering probeerde een nieuwe strategie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-163",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "text": "Ze huurden Portugese oorlogsschepen van de kolonie Macao in om de piraten te bestrijden.",
+      "text_markdown": "Ze huurden Portugese oorlogsschepen van de kolonie Macao in om de piraten te bestrijden.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze huurden Portugese oorlogsschepen van de kolonie Macao in om de piraten te bestrijden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-164",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "text": "De Portugezen hadden moderne Europese kanonnen en getrainde marineofficieren.",
+      "text_markdown": "De Portugezen hadden moderne Europese kanonnen en getrainde marineofficieren.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De Portugezen hadden moderne Europese kanonnen en getrainde marineofficieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-165",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "text": "Een tijdlang zette deze alliantie de piratenvloot onder zware druk.",
+      "text_markdown": "Een tijdlang zette deze alliantie de piratenvloot onder zware druk.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Een tijdlang zette deze alliantie de piratenvloot onder zware druk.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-166",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "text": "Maar Zheng Yi Sao paste zich snel aan.",
+      "text_markdown": "Maar Zheng Yi Sao paste zich snel aan.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Maar Zheng Yi Sao paste zich snel aan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-167",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "text": "Ze vermeed directe confrontatie met de Portugese oorlogsschepen.",
+      "text_markdown": "Ze vermeed directe confrontatie met de Portugese oorlogsschepen.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze vermeed directe confrontatie met de Portugese oorlogsschepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-168",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "text": "In plaats daarvan richtte ze zich op hun bevoorradingslijnen en viel ze hun koopvaardijbondgenoten aan.",
+      "text_markdown": "In plaats daarvan richtte ze zich op hun bevoorradingslijnen en viel ze hun koopvaardijbondgenoten aan.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "In plaats daarvan richtte ze zich op hun bevoorradingslijnen en viel ze hun koopvaardijbondgenoten aan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-169",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "text": "Ze begreep dat de Portugezen alleen zouden vechten zolang ze betaald werden.",
+      "text_markdown": "Ze begreep dat de Portugezen alleen zouden vechten zolang ze betaald werden.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Ze begreep dat de Portugezen alleen zouden vechten zolang ze betaald werden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-170",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "text": "Tegen 1809 was de alliantie van Qing en Portugal er niet in geslaagd haar te verslaan.",
+      "text_markdown": "Tegen 1809 was de alliantie van Qing en Portugal er niet in geslaagd haar te verslaan.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "Tegen achttienhonderdnegen was de alliantie van Qing en Portugal er niet in geslaagd haar te verslaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-171",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "text": "De regering had enorme bedragen uitgegeven en tientallen schepen verloren.",
+      "text_markdown": "De regering had enorme bedragen uitgegeven en tientallen schepen verloren.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De regering had enorme bedragen uitgegeven en tientallen schepen verloren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-172",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "text": "De piraten beheersten de kust steviger dan ooit.",
+      "text_markdown": "De piraten beheersten de kust steviger dan ooit.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De piraten beheersten de kust steviger dan ooit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-173",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "text": "De confederatie van Zheng Yi Sao was op het hoogtepunt van haar macht.",
+      "text_markdown": "De confederatie van Zheng Yi Sao was op het hoogtepunt van haar macht.",
+      "title": "Opkomst aan de Macht",
+      "tts": {
+        "text": "De confederatie van Zheng Yi Sao was op het hoogtepunt van haar macht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 4,
+      "id": "ch04-174",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Op het Hoogtepunt",
+      "text_markdown": "Op het Hoogtepunt",
+      "title": "Op het Hoogtepunt"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-175",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "text": "Op haar hoogtepunt voerde de piratenconfederatie het bevel over ongeveer 1.800 schepen.",
+      "text_markdown": "Op haar hoogtepunt voerde de piratenconfederatie het bevel over ongeveer 1.800 schepen.",
+      "title": "Op het Hoogtepunt",
+      "tts": {
+        "text": "Op haar hoogtepunt voerde de piratenconfederatie het bevel over ongeveer achttienhonderd schepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-176",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "text": "Deze varieerden van kleine, snelle overvalboten tot enorme oorlogsschepen die tientallen kanonnen droegen.",
+      "text_markdown": "Deze varieerden van kleine, snelle overvalboten tot enorme oorlogsschepen die tientallen kanonnen droegen.",
+      "title": "Op het Hoogtepunt",
+      "tts": {
+        "text": "Deze varieerden van kleine, snelle overvalboten tot enorme oorlogsschepen die tientallen kanonnen droegen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-177",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "text": "De totale strijdmacht telde tussen de 70.000 en 80.000 mensen.",
+      "text_markdown": "De totale strijdmacht telde tussen de 70.000 en 80.000 mensen.",
+      "title": "Op het Hoogtepunt",
+      "tts": {
+        "text": "De totale strijdmacht telde tussen de zeventigduizend en tachtigduizend mensen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-178",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "text": "Dit was groter dan de marines van de meeste Europese naties in die tijd.",
+      "text_markdown": "Dit was groter dan de marines van de meeste Europese naties in die tijd.",
+      "title": "Op het Hoogtepunt",
+      "tts": {
+        "text": "Dit was groter dan de marines van de meeste Europese naties in die tijd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-179",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "text": "De Rode Vlag Vloot alleen al had tussen de 600 en 800 schepen.",
+      "text_markdown": "De Rode Vlag Vloot alleen al had tussen de 600 en 800 schepen.",
+      "title": "Op het Hoogtepunt",
+      "tts": {
+        "text": "De Rode Vlag Vloot alleen al had tussen de zeshonderd en achthonderd schepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-180",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "text": "Het was de grootste individuele vloot in de confederatie.",
+      "text_markdown": "Het was de grootste individuele vloot in de confederatie.",
+      "title": "Op het Hoogtepunt",
+      "tts": {
+        "text": "Het was de grootste individuele vloot in de confederatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-181",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao voerde er direct het bevel over, met Zhang Bao als haar belangrijkste militaire officier.",
+      "text_markdown": "Zheng Yi Sao voerde er direct het bevel over, met Zhang Bao als haar belangrijkste militaire officier.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zheng Yi Sao voerde er direct het bevel over, met Zhang Bao als haar belangrijkste militaire officier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-182",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "text": "De andere vijf vloten opereerden semi-onafhankelijk, maar volgden haar strategische aanwijzingen.",
+      "text_markdown": "De andere vijf vloten opereerden semi-onafhankelijk, maar volgden haar strategische aanwijzingen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "De andere vijf vloten opereerden semi-onafhankelijk, maar volgden haar strategische aanwijzingen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-183",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "text": "Het grondgebied van de confederatie strekte zich uit over meer dan 1.000 mijl kustlijn.",
+      "text_markdown": "Het grondgebied van de confederatie strekte zich uit over meer dan 1.000 mijl kustlijn.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Het grondgebied van de confederatie strekte zich uit over meer dan duizend mijl kustlijn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-184",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "text": "Van de grens met Vietnam in het zuiden tot de kust van Fujian in het noorden was geen enkel schip veilig zonder toestemming van de piraten.",
+      "text_markdown": "Van de grens met Vietnam in het zuiden tot de kust van Fujian in het noorden was geen enkel schip veilig zonder toestemming van de piraten.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Van de grens met Vietnam in het zuiden tot de kust van Fujian in het noorden was geen enkel schip veilig zonder toestemming van de piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-185",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "text": "Zelfs de machtige Britse Oost-Indische Compagnie betaalde tribuut om te voorkomen dat ze haar lading verloor.",
+      "text_markdown": "Zelfs de machtige Britse Oost-Indische Compagnie betaalde tribuut om te voorkomen dat ze haar lading verloor.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zelfs de machtige Britse Oost-Indische Compagnie betaalde tribuut om te voorkomen dat ze haar lading verloor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-186",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "text": "Het leven aan boord van een piratenjonk was zwaar, maar georganiseerd.",
+      "text_markdown": "Het leven aan boord van een piratenjonk was zwaar, maar georganiseerd.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Het leven aan boord van een piratenjonk was zwaar, maar georganiseerd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-187",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "text": "Elk schip had een duidelijke hiërarchie, van kapitein tot de nieuwste rekruut.",
+      "text_markdown": "Elk schip had een duidelijke hiërarchie, van kapitein tot de nieuwste rekruut.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Elk schip had een duidelijke hiërarchie, van kapitein tot de nieuwste rekruut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-188",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "text": "Maaltijden waren gemeenschappelijk en rantsoenen werden gelijk verdeeld.",
+      "text_markdown": "Maaltijden waren gemeenschappelijk en rantsoenen werden gelijk verdeeld.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Maaltijden waren gemeenschappelijk en rantsoenen werden gelijk verdeeld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-189",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "text": "Elk bemanningslid ontving een deel van de buit op basis van hun rang en rol.",
+      "text_markdown": "Elk bemanningslid ontving een deel van de buit op basis van hun rang en rol.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Elk bemanningslid ontving een deel van de buit op basis van hun rang en rol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-190",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "text": "Vrouwen dienden op veel piratenschepen in de vloot.",
+      "text_markdown": "Vrouwen dienden op veel piratenschepen in de vloot.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Vrouwen dienden op veel piratenschepen in de vloot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-191",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "text": "Sommigen vochten zij aan zij met de mannen tijdens overvallen.",
+      "text_markdown": "Sommigen vochten zij aan zij met de mannen tijdens overvallen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Sommigen vochten zij aan zij met de mannen tijdens overvallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-192",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "text": "Anderen beheerden voorraden, navigatie en communicatie tussen schepen.",
+      "text_markdown": "Anderen beheerden voorraden, navigatie en communicatie tussen schepen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Anderen beheerden voorraden, navigatie en communicatie tussen schepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-193",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "text": "De piratenwereld bood vrouwen meer vrijheid dan de reguliere Qing-samenleving.",
+      "text_markdown": "De piratenwereld bood vrouwen meer vrijheid dan de reguliere Qing-samenleving.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "De piratenwereld bood vrouwen meer vrijheid dan de reguliere Qing-samenleving.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-194",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "text": "De oorlogjonken van de vloot waren geduchte vechtmachines.",
+      "text_markdown": "De oorlogjonken van de vloot waren geduchte vechtmachines.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "De oorlogjonken van de vloot waren geduchte vechtmachines.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-195",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "text": "Een grote jonk kon 30 of meer kanonnen dragen.",
+      "text_markdown": "Een grote jonk kon 30 of meer kanonnen dragen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Een grote jonk kon dertig of meer kanonnen dragen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-196",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "text": "De schepen waren gebouwd met versterkte rompen en hoge zijden om enterende vijanden af te weren.",
+      "text_markdown": "De schepen waren gebouwd met versterkte rompen en hoge zijden om enterende vijanden af te weren.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "De schepen waren gebouwd met versterkte rompen en hoge zijden om enterende vijanden af te weren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-197",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "text": "Hun platte bodems stelden hen in staat om door ondiepe kustwateren te navigeren waar diepere Europese schepen niet konden volgen.",
+      "text_markdown": "Hun platte bodems stelden hen in staat om door ondiepe kustwateren te navigeren waar diepere Europese schepen niet konden volgen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Hun platte bodems stelden hen in staat om door ondiepe kustwateren te navigeren waar diepere Europese schepen niet konden volgen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-198",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao's inlichtingennetwerk was een van haar grootste wapens.",
+      "text_markdown": "Zheng Yi Sao's inlichtingennetwerk was een van haar grootste wapens.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zheng Yi Sao's inlichtingennetwerk was een van haar grootste wapens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-199",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "text": "Ze had spionnen in Canton, in Macao en in elke grote haven langs de kust.",
+      "text_markdown": "Ze had spionnen in Canton, in Macao en in elke grote haven langs de kust.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Ze had spionnen in Canton, in Macao en in elke grote haven langs de kust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-200",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "text": "Ze wist wanneer waardevolle vrachtschepen vertrokken en welke routes ze zouden nemen.",
+      "text_markdown": "Ze wist wanneer waardevolle vrachtschepen vertrokken en welke routes ze zouden nemen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Ze wist wanneer waardevolle vrachtschepen vertrokken en welke routes ze zouden nemen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-201",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "text": "Deze informatie stelde haar in staat om met precisie toe te slaan in plaats van op toeval te vertrouwen.",
+      "text_markdown": "Deze informatie stelde haar in staat om met precisie toe te slaan in plaats van op toeval te vertrouwen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Deze informatie stelde haar in staat om met precisie toe te slaan in plaats van op toeval te vertrouwen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-202",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "text": "Het belastingsysteem dat ze opbouwde, was opmerkelijk geavanceerd.",
+      "text_markdown": "Het belastingsysteem dat ze opbouwde, was opmerkelijk geavanceerd.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Het belastingsysteem dat ze opbouwde, was opmerkelijk geavanceerd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-203",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "text": "Verschillende tarieven golden voor verschillende soorten lading.",
+      "text_markdown": "Verschillende tarieven golden voor verschillende soorten lading.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Verschillende tarieven golden voor verschillende soorten lading.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-204",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "text": "Zijdehandelaren betaalden meer dan rijsthandelaren.",
+      "text_markdown": "Zijdehandelaren betaalden meer dan rijsthandelaren.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zijdehandelaren betaalden meer dan rijsthandelaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-205",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "text": "Zoutsmokkelaars betaalden een premie omdat hun lading al illegaal was.",
+      "text_markdown": "Zoutsmokkelaars betaalden een premie omdat hun lading al illegaal was.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zoutsmokkelaars betaalden een premie omdat hun lading al illegaal was.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-206",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "text": "Het hele systeem werd gedocumenteerd en gehandhaafd met bureaucratische precisie.",
+      "text_markdown": "Het hele systeem werd gedocumenteerd en gehandhaafd met bureaucratische precisie.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Het hele systeem werd gedocumenteerd en gehandhaafd met bureaucratische precisie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-207",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "text": "Kustdorpen hadden een complexe relatie met de piraten.",
+      "text_markdown": "Kustdorpen hadden een complexe relatie met de piraten.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Kustdorpen hadden een complexe relatie met de piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-208",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "text": "Velen hadden een hekel aan de tribuutbetalingen die de piraten eisten.",
+      "text_markdown": "Velen hadden een hekel aan de tribuutbetalingen die de piraten eisten.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Velen hadden een hekel aan de tribuutbetalingen die de piraten eisten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-209",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "text": "Maar de piraten boden ook bescherming tegen andere overvallers en bandieten.",
+      "text_markdown": "Maar de piraten boden ook bescherming tegen andere overvallers en bandieten.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Maar de piraten boden ook bescherming tegen andere overvallers en bandieten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-210",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "text": "In sommige gebieden waren de piraten betrouwbaarder dan de keizerlijke regering.",
+      "text_markdown": "In sommige gebieden waren de piraten betrouwbaarder dan de keizerlijke regering.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "In sommige gebieden waren de piraten betrouwbaarder dan de keizerlijke regering.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-211",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "text": "Het Qing-hof schaamde zich diep voor zijn onvermogen om de zee te beheersen.",
+      "text_markdown": "Het Qing-hof schaamde zich diep voor zijn onvermogen om de zee te beheersen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Het Qing-hof schaamde zich diep voor zijn onvermogen om de zee te beheersen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-212",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "text": "Keizerlijke functionarissen schreven bezorgde rapporten over de groeiende macht van de piratenkoningin.",
+      "text_markdown": "Keizerlijke functionarissen schreven bezorgde rapporten over de groeiende macht van de piratenkoningin.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Keizerlijke functionarissen schreven bezorgde rapporten over de groeiende macht van de piratenkoningin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-213",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "text": "Ze vreesden dat de piraten zich zouden kunnen verbinden met rebellengroepen op het land.",
+      "text_markdown": "Ze vreesden dat de piraten zich zouden kunnen verbinden met rebellengroepen op het land.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Ze vreesden dat de piraten zich zouden kunnen verbinden met rebellengroepen op het land.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-214",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "text": "Een gecombineerde opstand te land en ter zee zou de dynastie zelf kunnen bedreigen.",
+      "text_markdown": "Een gecombineerde opstand te land en ter zee zou de dynastie zelf kunnen bedreigen.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Een gecombineerde opstand te land en ter zee zou de dynastie zelf kunnen bedreigen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-215",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "text": "De Britten observeerden de situatie met grote belangstelling.",
+      "text_markdown": "De Britten observeerden de situatie met grote belangstelling.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "De Britten observeerden de situatie met grote belangstelling.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-216",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "text": "Ze breidden hun opiumhandel uit langs de Chinese kust.",
+      "text_markdown": "Ze breidden hun opiumhandel uit langs de Chinese kust.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Ze breidden hun opiumhandel uit langs de Chinese kust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-217",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "text": "De piraten verstoorden deze handel, wat Britse kooplieden enorme sommen kostte.",
+      "text_markdown": "De piraten verstoorden deze handel, wat Britse kooplieden enorme sommen kostte.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "De piraten verstoorden deze handel, wat Britse kooplieden enorme sommen kostte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-218",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "text": "Voor de mensen die onder de vlag van Zheng Yi Sao voeren, was het leven beter dan het alternatief.",
+      "text_markdown": "Voor de mensen die onder de vlag van Zheng Yi Sao voeren, was het leven beter dan het alternatief.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Voor de mensen die onder de vlag van Zheng Yi Sao voeren, was het leven beter dan het alternatief.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-219",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "text": "Een piraat ontving regelmatig voedsel, een deel van de buit en een gevoel van saamhorigheid.",
+      "text_markdown": "Een piraat ontving regelmatig voedsel, een deel van de buit en een gevoel van saamhorigheid.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Een piraat ontving regelmatig voedsel, een deel van de buit en een gevoel van saamhorigheid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-220",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "text": "Een Tanka-visser ontving armoede, minachting en geen hoop op vooruitgang.",
+      "text_markdown": "Een Tanka-visser ontving armoede, minachting en geen hoop op vooruitgang.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Een Tanka-visser ontving armoede, minachting en geen hoop op vooruitgang.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-221",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao regeerde deze samenleving met absolute autoriteit.",
+      "text_markdown": "Zheng Yi Sao regeerde deze samenleving met absolute autoriteit.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zheng Yi Sao regeerde deze samenleving met absolute autoriteit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-222",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "text": "Zij nam de strategische beslissingen die de toekomst van de vloot vormden.",
+      "text_markdown": "Zij nam de strategische beslissingen die de toekomst van de vloot vormden.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zij nam de strategische beslissingen die de toekomst van de vloot vormden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-223",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "text": "Zij beslechtte geschillen tussen kapiteins en handhaafde de wetgeving.",
+      "text_markdown": "Zij beslechtte geschillen tussen kapiteins en handhaafde de wetgeving.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Zij beslechtte geschillen tussen kapiteins en handhaafde de wetgeving.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-224",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "text": "Geen enkele belangrijke actie werd ondernomen zonder haar goedkeuring.",
+      "text_markdown": "Geen enkele belangrijke actie werd ondernomen zonder haar goedkeuring.",
+      "title": "Op het hoogtepunt",
+      "tts": {
+        "text": "Geen enkele belangrijke actie werd ondernomen zonder haar goedkeuring.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 5,
+      "id": "ch05-225",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Het Einde",
+      "text_markdown": "Het Einde",
+      "title": "Het Einde"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-226",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "text": "Tegen 1810 begonnen er scheuren te ontstaan in de confederatie.",
+      "text_markdown": "Tegen 1810 begonnen er scheuren te ontstaan in de confederatie.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Tegen achttienhonderdtien begonnen er scheuren te ontstaan in de confederatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-227",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "text": "De constante oorlogvoering had zijn tol geëist van schepen en bemanningen.",
+      "text_markdown": "De constante oorlogvoering had zijn tol geëist van schepen en bemanningen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De constante oorlogvoering had zijn tol geëist van schepen en bemanningen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-228",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "text": "De blokkades van de Qing-regering verstoorden de aanvoerlijnen langs de kust.",
+      "text_markdown": "De blokkades van de Qing-regering verstoorden de aanvoerlijnen langs de kust.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De blokkades van de Qing-regering verstoorden de aanvoerlijnen langs de kust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-229",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "text": "En interne rivaliteiten tussen vlootkapiteins waren intenser geworden.",
+      "text_markdown": "En interne rivaliteiten tussen vlootkapiteins waren intenser geworden.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "En interne rivaliteiten tussen vlootkapiteins waren intenser geworden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-230",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "text": "De gevaarlijkste rivaliteit was die tussen Zhang Bao en een kapitein genaamd Guo Podai.",
+      "text_markdown": "De gevaarlijkste rivaliteit was die tussen Zhang Bao en een kapitein genaamd Guo Podai.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De gevaarlijkste rivaliteit was die tussen Zhang Bao en een kapitein genaamd Guo Podai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-231",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "text": "Guo Podai voerde het bevel over de Zwarte Vlag Vloot, de op één na grootste in de confederatie.",
+      "text_markdown": "Guo Podai voerde het bevel over de Zwarte Vlag Vloot, de op één na grootste in de confederatie.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Guo Podai voerde het bevel over de Zwarte Vlag Vloot, de op één na grootste in de confederatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-232",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "text": "Hij had er een hekel aan om orders aan te nemen van Zhang Bao en, bij uitbreiding, van Zheng Yi Sao.",
+      "text_markdown": "Hij had er een hekel aan om orders aan te nemen van Zhang Bao en, bij uitbreiding, van Zheng Yi Sao.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Hij had er een hekel aan om orders aan te nemen van Zhang Bao en, bij uitbreiding, van Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-233",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "text": "De spanning tussen hen dreigde de confederatie in tweeën te splitsen.",
+      "text_markdown": "De spanning tussen hen dreigde de confederatie in tweeën te splitsen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De spanning tussen hen dreigde de confederatie in tweeën te splitsen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-234",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "text": "Begin 1810 nam Guo Podai een noodlottige beslissing.",
+      "text_markdown": "Begin 1810 nam Guo Podai een noodlottige beslissing.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Begin achttienhonderdtien nam Guo Podai een noodlottige beslissing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-235",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "text": "Hij opende geheime onderhandelingen met de Qing-regering.",
+      "text_markdown": "Hij opende geheime onderhandelingen met de Qing-regering.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Hij opende geheime onderhandelingen met de Qing-regering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-236",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "text": "De regering bood hem een volledig pardon, een militaire aanstelling en een geldbetaling aan.",
+      "text_markdown": "De regering bood hem een volledig pardon, een militaire aanstelling en een geldbetaling aan.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De regering bood hem een volledig pardon, een militaire aanstelling en een geldbetaling aan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-237",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "text": "In ruil daarvoor zou hij zich tegen zijn voormalige bondgenoten keren.",
+      "text_markdown": "In ruil daarvoor zou hij zich tegen zijn voormalige bondgenoten keren.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "In ruil daarvoor zou hij zich tegen zijn voormalige bondgenoten keren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-238",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "text": "Guo Podai accepteerde de deal en gaf zijn hele vloot over aan de regering.",
+      "text_markdown": "Guo Podai accepteerde de deal en gaf zijn hele vloot over aan de regering.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Guo Podai accepteerde de deal en gaf zijn hele vloot over aan de regering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-239",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "text": "Van de ene op de andere dag verloor de confederatie honderden schepen en duizenden strijders.",
+      "text_markdown": "Van de ene op de andere dag verloor de confederatie honderden schepen en duizenden strijders.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Van de ene op de andere dag verloor de confederatie honderden schepen en duizenden strijders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-240",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "text": "Erger nog, Guo Podai diende nu als regeringscommandant en gebruikte zijn kennis van piratentactieken tegen hen.",
+      "text_markdown": "Erger nog, Guo Podai diende nu als regeringscommandant en gebruikte zijn kennis van piratentactieken tegen hen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Erger nog, Guo Podai diende nu als regeringscommandant en gebruikte zijn kennis van piratentactieken tegen hen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-241",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "text": "Het machtsevenwicht was drastisch verschoven.",
+      "text_markdown": "Het machtsevenwicht was drastisch verschoven.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Het machtsevenwicht was drastisch verschoven.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-242",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao beoordeelde de nieuwe situatie met haar kenmerkende helderheid.",
+      "text_markdown": "Zheng Yi Sao beoordeelde de nieuwe situatie met haar kenmerkende helderheid.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zheng Yi Sao beoordeelde de nieuwe situatie met haar kenmerkende helderheid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-243",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "text": "De confederatie was verzwakt, maar niet vernietigd.",
+      "text_markdown": "De confederatie was verzwakt, maar niet vernietigd.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De confederatie was verzwakt, maar niet vernietigd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-244",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "text": "Ze voerde nog steeds het bevel over de Rode Vloot en verschillende geallieerde vloten.",
+      "text_markdown": "Ze voerde nog steeds het bevel over de Rode Vloot en verschillende geallieerde vloten.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze voerde nog steeds het bevel over de Rode Vloot en verschillende geallieerde vloten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-245",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "text": "Maar het momentum was gekeerd, en dat wist ze.",
+      "text_markdown": "Maar het momentum was gekeerd, en dat wist ze.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Maar het momentum was gekeerd, en dat wist ze.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-246",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "text": "Ze nam een besluit dat haar strategische genialiteit onthulde.",
+      "text_markdown": "Ze nam een besluit dat haar strategische genialiteit onthulde.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze nam een besluit dat haar strategische genialiteit onthulde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-247",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "text": "In plaats van tot de dood te vechten, koos ze ervoor om te onderhandelen vanuit een positie van resterende kracht.",
+      "text_markdown": "In plaats van tot de dood te vechten, koos ze ervoor om te onderhandelen vanuit een positie van resterende kracht.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "In plaats van tot de dood te vechten, koos ze ervoor om te onderhandelen vanuit een positie van resterende kracht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-248",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "text": "Ze opende onderhandelingen met de Qing-regering via tussenpersonen.",
+      "text_markdown": "Ze opende onderhandelingen met de Qing-regering via tussenpersonen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze opende onderhandelingen met de Qing-regering via tussenpersonen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-249",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "text": "Haar eisen waren stoutmoedig en specifiek.",
+      "text_markdown": "Haar eisen waren stoutmoedig en specifiek.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Haar eisen waren stoutmoedig en specifiek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-250",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "text": "Ze eiste een volledige gratie voor zichzelf en voor Zhang Bao.",
+      "text_markdown": "Ze eiste een volledige gratie voor zichzelf en voor Zhang Bao.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze eiste een volledige gratie voor zichzelf en voor Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-251",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "text": "Ze eiste dat haar piraten hun persoonlijke rijkdom mochten behouden.",
+      "text_markdown": "Ze eiste dat haar piraten hun persoonlijke rijkdom mochten behouden.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze eiste dat haar piraten hun persoonlijke rijkdom mochten behouden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-252",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "text": "Ze eiste dat Zhang Bao een aanstelling kreeg in de keizerlijke marine.",
+      "text_markdown": "Ze eiste dat Zhang Bao een aanstelling kreeg in de keizerlijke marine.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze eiste dat Zhang Bao een aanstelling kreeg in de keizerlijke marine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-253",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "text": "En ze eiste dat de gewone piraten die zich overgaven geen straf zouden krijgen.",
+      "text_markdown": "En ze eiste dat de gewone piraten die zich overgaven geen straf zouden krijgen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "En ze eiste dat de gewone piraten die zich overgaven geen straf zouden krijgen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-254",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "text": "De Qing-regering was terughoudend om zulke genereuze voorwaarden te accepteren.",
+      "text_markdown": "De Qing-regering was terughoudend om zulke genereuze voorwaarden te accepteren.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De Qing-regering was terughoudend om zulke genereuze voorwaarden te accepteren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-255",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "text": "Het verlenen van gratie aan piraten voelde als een vernedering voor het rijk.",
+      "text_markdown": "Het verlenen van gratie aan piraten voelde als een vernedering voor het rijk.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Het verlenen van gratie aan piraten voelde als een vernedering voor het rijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-256",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "text": "Maar ze hadden geweld geprobeerd en gefaald.",
+      "text_markdown": "Maar ze hadden geweld geprobeerd en gefaald.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Maar ze hadden geweld geprobeerd en gefaald.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-257",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "text": "Onderhandelen was de enige optie die overbleef.",
+      "text_markdown": "Onderhandelen was de enige optie die overbleef.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Onderhandelen was de enige optie die overbleef.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-258",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "text": "In april 1810 werd de overeenkomst afgerond.",
+      "text_markdown": "In april 1810 werd de overeenkomst afgerond.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "In april achttienhonderdtien werd de overeenkomst afgerond.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-259",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "text": "Zheng Yi Sao gaf haar vloot over aan de regering.",
+      "text_markdown": "Zheng Yi Sao gaf haar vloot over aan de regering.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zheng Yi Sao gaf haar vloot over aan de regering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-260",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "text": "In ruil daarvoor kreeg ze alles wat ze had gevraagd.",
+      "text_markdown": "In ruil daarvoor kreeg ze alles wat ze had gevraagd.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "In ruil daarvoor kreeg ze alles wat ze had gevraagd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-261",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "text": "Zhang Bao werd benoemd tot luitenant in de Qing-marine met het bevel over 20 schepen.",
+      "text_markdown": "Zhang Bao werd benoemd tot luitenant in de Qing-marine met het bevel over 20 schepen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zhang Bao werd benoemd tot luitenant in de Qing-marine met het bevel over twintig schepen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-262",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "text": "De piraten mochten een deel van hun schepen behouden.",
+      "text_markdown": "De piraten mochten een deel van hun schepen behouden.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "De piraten mochten een deel van hun schepen behouden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-263",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "text": "Degenen die wilden terugkeren naar het burgerleven, mochten dat doen.",
+      "text_markdown": "Degenen die wilden terugkeren naar het burgerleven, mochten dat doen.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Degenen die wilden terugkeren naar het burgerleven, mochten dat doen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-264",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "text": "Degenen die wilden toetreden tot de keizerlijke marine, werden verwelkomd.",
+      "text_markdown": "Degenen die wilden toetreden tot de keizerlijke marine, werden verwelkomd.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Degenen die wilden toetreden tot de keizerlijke marine, werden verwelkomd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-265",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "text": "Het was de meest gunstige overgave in de geschiedenis van piraterij.",
+      "text_markdown": "Het was de meest gunstige overgave in de geschiedenis van piraterij.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Het was de meest gunstige overgave in de geschiedenis van piraterij.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-266",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao trok zich als een rijke vrouw terug van de zee.",
+      "text_markdown": "Zheng Yi Sao trok zich als een rijke vrouw terug van de zee.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zheng Yi Sao trok zich als een rijke vrouw terug van de zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-267",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "text": "Ze vestigde zich in Canton met Zhang Bao.",
+      "text_markdown": "Ze vestigde zich in Canton met Zhang Bao.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze vestigde zich in Canton met Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-268",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "text": "Samen openden ze een gokhuis dat een van de meest winstgevende in de stad werd.",
+      "text_markdown": "Samen openden ze een gokhuis dat een van de meest winstgevende in de stad werd.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Samen openden ze een gokhuis dat een van de meest winstgevende in de stad werd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-269",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "text": "Ze investeerde ook in de zouthandel, wat jarenlang een stabiel inkomen opleverde.",
+      "text_markdown": "Ze investeerde ook in de zouthandel, wat jarenlang een stabiel inkomen opleverde.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze investeerde ook in de zouthandel, wat jarenlang een stabiel inkomen opleverde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-270",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "text": "Zhang Bao diende enkele jaren met onderscheiding in de keizerlijke marine.",
+      "text_markdown": "Zhang Bao diende enkele jaren met onderscheiding in de keizerlijke marine.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zhang Bao diende enkele jaren met onderscheiding in de keizerlijke marine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-271",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "text": "Hij stierf in 1822, terwijl hij nog in overheidsdienst was.",
+      "text_markdown": "Hij stierf in 1822, terwijl hij nog in overheidsdienst was.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Hij stierf in achttien tweeëntwintig, terwijl hij nog in overheidsdienst was.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-272",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "text": "Zijn dood werd betreurd met volledige militaire eer.",
+      "text_markdown": "Zijn dood werd betreurd met volledige militaire eer.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zijn dood werd betreurd met volledige militaire eer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-273",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao leefde meer dan twee decennia nadat ze de piraterij had verlaten.",
+      "text_markdown": "Zheng Yi Sao leefde meer dan twee decennia nadat ze de piraterij had verlaten.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Zheng Yi Sao leefde meer dan twee decennia nadat ze de piraterij had verlaten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-274",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "text": "Ze beheerde haar zakelijke belangen en stichtte een gezin in Canton.",
+      "text_markdown": "Ze beheerde haar zakelijke belangen en stichtte een gezin in Canton.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze beheerde haar zakelijke belangen en stichtte een gezin in Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-275",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "text": "Ze stierf in 1844, op ongeveer 69-jarige leeftijd.",
+      "text_markdown": "Ze stierf in 1844, op ongeveer 69-jarige leeftijd.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze stierf in achttien vierenveertig, op ongeveer negenenzestigjarige leeftijd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-276",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "text": "Ze stierf in haar eigen bed, omringd door haar familie, als een gerespecteerd lid van de samenleving van Canton.",
+      "text_markdown": "Ze stierf in haar eigen bed, omringd door haar familie, als een gerespecteerd lid van de samenleving van Canton.",
+      "title": "Het Einde",
+      "tts": {
+        "text": "Ze stierf in haar eigen bed, omringd door haar familie, als een gerespecteerd lid van de samenleving van Canton.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 6,
+      "id": "ch06-277",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Nalatenschap",
+      "text_markdown": "Nalatenschap",
+      "title": "Nalatenschap"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-278",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "text": "De carrière van Zheng Yi Sao is uniek in de geschiedenis van piraterij.",
+      "text_markdown": "De carrière van Zheng Yi Sao is uniek in de geschiedenis van piraterij.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "De carrière van Zheng Yi Sao is uniek in de geschiedenis van piraterij.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-279",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "text": "Geen enkele andere piraat, man of vrouw, voerde ooit het bevel over een strijdmacht van vergelijkbare omvang.",
+      "text_markdown": "Geen enkele andere piraat, man of vrouw, voerde ooit het bevel over een strijdmacht van vergelijkbare omvang.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Geen enkele andere piraat, man of vrouw, voerde ooit het bevel over een strijdmacht van vergelijkbare omvang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-280",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "text": "Geen enkele andere piraat bouwde zo'n geavanceerd systeem van wetgeving en bestuur.",
+      "text_markdown": "Geen enkele andere piraat bouwde zo'n geavanceerd systeem van wetgeving en bestuur.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Geen enkele andere piraat bouwde zo'n geavanceerd systeem van wetgeving en bestuur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-281",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "text": "En geen enkele andere piraat onderhandelde over een pensioen onder zulke gunstige voorwaarden.",
+      "text_markdown": "En geen enkele andere piraat onderhandelde over een pensioen onder zulke gunstige voorwaarden.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "En geen enkele andere piraat onderhandelde over een pensioen onder zulke gunstige voorwaarden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-282",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "text": "Haar succes daagt veel aannames over de rol van vrouwen in de geschiedenis uit.",
+      "text_markdown": "Haar succes daagt veel aannames over de rol van vrouwen in de geschiedenis uit.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Haar succes daagt veel aannames over de rol van vrouwen in de geschiedenis uit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-283",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "text": "Ze kwam aan de macht in een samenleving die vrouwen bijna geen wettelijke rechten bood.",
+      "text_markdown": "Ze kwam aan de macht in een samenleving die vrouwen bijna geen wettelijke rechten bood.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Ze kwam aan de macht in een samenleving die vrouwen bijna geen wettelijke rechten bood.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-284",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "text": "Ze voerde het bevel over tienduizenden mannen in een wereld die vrouwen als inferieur beschouwde.",
+      "text_markdown": "Ze voerde het bevel over tienduizenden mannen in een wereld die vrouwen als inferieur beschouwde.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Ze voerde het bevel over tienduizenden mannen in een wereld die vrouwen als inferieur beschouwde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-285",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "text": "Haar verhaal is het bewijs dat bekwaamheid geen geslacht kent.",
+      "text_markdown": "Haar verhaal is het bewijs dat bekwaamheid geen geslacht kent.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Haar verhaal is het bewijs dat bekwaamheid geen geslacht kent.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-286",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "text": "Historici hebben gedebatteerd over de redenen voor haar buitengewone succes.",
+      "text_markdown": "Historici hebben gedebatteerd over de redenen voor haar buitengewone succes.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Historici hebben gedebatteerd over de redenen voor haar buitengewone succes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-287",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "text": "Sommigen benadrukken haar persoonlijke kwaliteiten: haar intelligentie, haar besluitvaardigheid, haar vermogen om loyaliteit te inspireren.",
+      "text_markdown": "Sommigen benadrukken haar persoonlijke kwaliteiten: haar intelligentie, haar besluitvaardigheid, haar vermogen om loyaliteit te inspireren.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Sommigen benadrukken haar persoonlijke kwaliteiten: haar intelligentie, haar besluitvaardigheid, haar vermogen om loyaliteit te inspireren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-288",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "text": "Anderen wijzen op de structurele omstandigheden die haar opkomst mogelijk maakten: de zwakte van de Qing-staat, de armoede van de kustbevolking en de geografie van de Zuid-Chinese Zee.",
+      "text_markdown": "Anderen wijzen op de structurele omstandigheden die haar opkomst mogelijk maakten: de zwakte van de Qing-staat, de armoede van de kustbevolking en de geografie van de Zuid-Chinese Zee.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Anderen wijzen op de structurele omstandigheden die haar opkomst mogelijk maakten: de zwakte van de Qing-staat, de armoede van de kustbevolking en de geografie van de Zuid-Chinese Zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-289",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "text": "De waarheid omvat vrijwel zeker beide factoren.",
+      "text_markdown": "De waarheid omvat vrijwel zeker beide factoren.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "De waarheid omvat vrijwel zeker beide factoren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-290",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "text": "Zonder de omstandigheden zou haar talent geen podium hebben gehad.",
+      "text_markdown": "Zonder de omstandigheden zou haar talent geen podium hebben gehad.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Zonder de omstandigheden zou haar talent geen podium hebben gehad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-291",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "text": "Zonder haar talent zouden de omstandigheden alleen maar chaos hebben voortgebracht.",
+      "text_markdown": "Zonder haar talent zouden de omstandigheden alleen maar chaos hebben voortgebracht.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Zonder haar talent zouden de omstandigheden alleen maar chaos hebben voortgebracht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-292",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "text": "Zij was de juiste persoon op het juiste moment in de geschiedenis.",
+      "text_markdown": "Zij was de juiste persoon op het juiste moment in de geschiedenis.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Zij was de juiste persoon op het juiste moment in de geschiedenis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-293",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "text": "Haar wetboek beïnvloedde het piratenbestuur decennia na haar pensioen.",
+      "text_markdown": "Haar wetboek beïnvloedde het piratenbestuur decennia na haar pensioen.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Haar wetboek beïnvloedde het piratenbestuur decennia na haar pensioen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-294",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "text": "Latere piratenleiders in de Zuid-Chinese Zee namen vergelijkbare systemen van belastingheffing en wetgeving over.",
+      "text_markdown": "Latere piratenleiders in de Zuid-Chinese Zee namen vergelijkbare systemen van belastingheffing en wetgeving over.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Latere piratenleiders in de Zuid-Chinese Zee namen vergelijkbare systemen van belastingheffing en wetgeving over.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-295",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "text": "Haar model toonde aan dat piratenvloten net zo effectief georganiseerd konden worden als nationale marines.",
+      "text_markdown": "Haar model toonde aan dat piratenvloten net zo effectief georganiseerd konden worden als nationale marines.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Haar model toonde aan dat piratenvloten net zo effectief georganiseerd konden worden als nationale marines.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-296",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "text": "In moderne tijden is Zheng Yi Sao een cultureel icoon geworden.",
+      "text_markdown": "In moderne tijden is Zheng Yi Sao een cultureel icoon geworden.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "In moderne tijden is Zheng Yi Sao een cultureel icoon geworden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-297",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "text": "Ze is verschenen in romans, films en videogames over de hele wereld.",
+      "text_markdown": "Ze is verschenen in romans, films en videogames over de hele wereld.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Ze is verschenen in romans, films en videogames over de hele wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-298",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "text": "Haar verhaal is vertaald in tientallen talen.",
+      "text_markdown": "Haar verhaal is vertaald in tientallen talen.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Haar verhaal is vertaald in tientallen talen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-299",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "text": "Toch blijft veel over haar leven onbekend.",
+      "text_markdown": "Toch blijft veel over haar leven onbekend.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Toch blijft veel over haar leven onbekend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-300",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "text": "We kennen haar geboortenaam niet met zekerheid.",
+      "text_markdown": "We kennen haar geboortenaam niet met zekerheid.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "We kennen haar geboortenaam niet met zekerheid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-301",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "text": "We hebben geen enkele geverifieerde afbeelding van haar gezicht.",
+      "text_markdown": "We hebben geen enkele geverifieerde afbeelding van haar gezicht.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "We hebben geen enkele geverifieerde afbeelding van haar gezicht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-302",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "text": "Het meeste van wat we weten komt uit overheidsdocumenten geschreven door haar vijanden.",
+      "text_markdown": "Het meeste van wat we weten komt uit overheidsdocumenten geschreven door haar vijanden.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Het meeste van wat we weten komt uit overheidsdocumenten geschreven door haar vijanden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-303",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "text": "Het Qing-hof had alle reden om haar prestaties te minimaliseren.",
+      "text_markdown": "Het Qing-hof had alle reden om haar prestaties te minimaliseren.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Het Qing-hof had alle reden om haar prestaties te minimaliseren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-304",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "text": "Veel officiële documenten bagatelliseren haar rol of schrijven haar succes toe aan Zhang Bao.",
+      "text_markdown": "Veel officiële documenten bagatelliseren haar rol of schrijven haar succes toe aan Zhang Bao.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Veel officiële documenten bagatelliseren haar rol of schrijven haar succes toe aan Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-305",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "text": "Historici moeten deze bronnen zorgvuldig lezen, wetende dat ze met politieke motieven zijn geschreven.",
+      "text_markdown": "Historici moeten deze bronnen zorgvuldig lezen, wetende dat ze met politieke motieven zijn geschreven.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Historici moeten deze bronnen zorgvuldig lezen, wetende dat ze met politieke motieven zijn geschreven.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-306",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "text": "Wat de documenten niet kunnen verbergen, is de omvang van haar prestatie.",
+      "text_markdown": "Wat de documenten niet kunnen verbergen, is de omvang van haar prestatie.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Wat de documenten niet kunnen verbergen, is de omvang van haar prestatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-307",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "text": "Ze bouwde de grootste piratenvloot in de geschiedenis.",
+      "text_markdown": "Ze bouwde de grootste piratenvloot in de geschiedenis.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Ze bouwde de grootste piratenvloot in de geschiedenis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-308",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "text": "Ze versloeg de gecombineerde strijdkrachten van het Qing-rijk en de Portugese marine.",
+      "text_markdown": "Ze versloeg de gecombineerde strijdkrachten van het Qing-rijk en de Portugese marine.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Ze versloeg de gecombineerde strijdkrachten van het Qing-rijk en de Portugese marine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-309",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "text": "Ze ging met pensioen, rijk, vrij en ongeslagen.",
+      "text_markdown": "Ze ging met pensioen, rijk, vrij en ongeslagen.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "Ze ging met pensioen, rijk, vrij en ongeslagen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-310",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "text": "In de lange geschiedenis van de zee heeft niemand anders dat gedaan.",
+      "text_markdown": "In de lange geschiedenis van de zee heeft niemand anders dat gedaan.",
+      "title": "Nalatenschap",
+      "tts": {
+        "text": "In de lange geschiedenis van de zee heeft niemand anders dat gedaan.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

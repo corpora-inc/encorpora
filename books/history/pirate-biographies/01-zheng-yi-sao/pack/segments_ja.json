@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "ja",
+  "total_segments": 310,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への覚え書き",
+      "text_markdown": "読者への覚え書き"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、記録に残る歴史上最も成功した海賊の実話です。",
+      "text_markdown": "これは、記録に残る歴史上最も成功した海賊の実話です。",
+      "tts": {
+        "text": "これは、記録に残る歴史上最も成功した海賊の実話です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の名はチェン・イー・サオ。世界史上最大の海賊艦隊を率いた女性です。",
+      "text_markdown": "彼女の名はチェン・イー・サオ。世界史上最大の海賊艦隊を率いた女性です。",
+      "tts": {
+        "text": "彼女の名はチェン・イー・サオ。世界史上最大の海賊艦隊を率いた女性です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "権力の絶頂期、彼女はほとんどの国家が保有するよりも多くの船を支配していました。",
+      "text_markdown": "権力の絶頂期、彼女はほとんどの国家が保有するよりも多くの船を支配していました。",
+      "tts": {
+        "text": "権力の絶頂期、彼女はほとんどの国家が保有するよりも多くの船を支配していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は富や特権のある家に生まれたわけではありません。",
+      "text_markdown": "彼女は富や特権のある家に生まれたわけではありません。",
+      "tts": {
+        "text": "彼女は富や特権のある家に生まれたわけではありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "十八世紀後半、中国南部の貧困の中に生まれました。",
+      "text_markdown": "十八世紀後半、中国南部の貧困の中に生まれました。",
+      "tts": {
+        "text": "十八世紀後半、中国南部の貧困の中に生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女が成し遂げたすべてのことは、知性、冷酷さ、そして人を組織する卓越した能力によって築かれました。",
+      "text_markdown": "彼女が成し遂げたすべてのことは、知性、冷酷さ、そして人を組織する卓越した能力によって築かれました。",
+      "tts": {
+        "text": "彼女が成し遂げたすべてのことは、知性、冷酷さ、そして人を組織する卓越した能力によって築かれました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本は、何も持たなかった一人の女性が南シナ海の絶対的支配者になるまでの物語です。",
+      "text_markdown": "この本は、何も持たなかった一人の女性が南シナ海の絶対的支配者になるまでの物語です。",
+      "tts": {
+        "text": "この本は、何も持たなかった一人の女性が南シナ海の絶対的支配者になるまでの物語です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦争、交易、法、そして生存の物語です。",
+      "text_markdown": "戦争、交易、法、そして生存の物語です。",
+      "tts": {
+        "text": "戦争、交易、法、そして生存の物語です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "また、ヨーロッパ列強がアジアの奥深くへ進出する中、急速に変わりゆく世界の物語でもあります。",
+      "text_markdown": "また、ヨーロッパ列強がアジアの奥深くへ進出する中、急速に変わりゆく世界の物語でもあります。",
+      "tts": {
+        "text": "また、ヨーロッパ列強がアジアの奥深くへ進出する中、急速に変わりゆく世界の物語でもあります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本のすべての事実は、歴史的記録に基づいています。",
+      "text_markdown": "この本のすべての事実は、歴史的記録に基づいています。",
+      "tts": {
+        "text": "この本のすべての事実は、歴史的記録に基づいています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "記録が不確かな場合は、そのことを明記しています。",
+      "text_markdown": "記録が不確かな場合は、そのことを明記しています。",
+      "tts": {
+        "text": "記録が不確かな場合は、そのことを明記しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家の見解が分かれる場合は、最も有力な証拠を提示しています。",
+      "text_markdown": "歴史家の見解が分かれる場合は、最も有力な証拠を提示しています。",
+      "tts": {
+        "text": "歴史家の見解が分かれる場合は、最も有力な証拠を提示しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "南シナ海の世界",
+      "text_markdown": "南シナ海の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南シナ海は、地球上で最も交通量の多い航路のひとつです。",
+      "text_markdown": "南シナ海は、地球上で最も交通量の多い航路のひとつです。",
+      "tts": {
+        "text": "南シナ海は、地球上で最も交通量の多い航路のひとつです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西はベトナムの海岸から、東はフィリピンまで広がっています。",
+      "text_markdown": "西はベトナムの海岸から、東はフィリピンまで広がっています。",
+      "tts": {
+        "text": "西はベトナムの海岸から、東はフィリピンまで広がっています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北には中国の海岸があり、南にはボルネオ島とスマトラ島があります。",
+      "text_markdown": "北には中国の海岸があり、南にはボルネオ島とスマトラ島があります。",
+      "tts": {
+        "text": "北には中国の海岸があり、南にはボルネオ島とスマトラ島があります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もの間、商人たちがこの海域を航海してきました。",
+      "text_markdown": "何千年もの間、商人たちがこの海域を航海してきました。",
+      "tts": {
+        "text": "何千年もの間、商人たちがこの海域を航海してきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国のジャンク船が、絹、磁器、茶を東南アジア各地の港へ運びました。",
+      "text_markdown": "中国のジャンク船が、絹、磁器、茶を東南アジア各地の港へ運びました。",
+      "tts": {
+        "text": "中国のジャンク船が、絹、磁器、茶を東南アジア各地の港へ運びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見返りに、香辛料、熱帯木材、珍しい品々が中国へ流れ込みました。",
+      "text_markdown": "見返りに、香辛料、熱帯木材、珍しい品々が中国へ流れ込みました。",
+      "tts": {
+        "text": "見返りに、香辛料、熱帯木材、珍しい品々が中国へ流れ込みました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現在の広州、当時カントンと呼ばれた都市がこの交易の中心でした。",
+      "text_markdown": "現在の広州、当時カントンと呼ばれた都市がこの交易の中心でした。",
+      "tts": {
+        "text": "現在の広州、当時カントンと呼ばれた都市がこの交易の中心でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カントンは十八世紀、世界で最も裕福な都市のひとつでした。",
+      "text_markdown": "カントンは十八世紀、世界で最も裕福な都市のひとつでした。",
+      "tts": {
+        "text": "カントンは十八世紀、世界で最も裕福な都市のひとつでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリス、フランス、ポルトガル、オランダの商人たちがその市場への参入を競いました。",
+      "text_markdown": "イギリス、フランス、ポルトガル、オランダの商人たちがその市場への参入を競いました。",
+      "tts": {
+        "text": "イギリス、フランス、ポルトガル、オランダの商人たちがその市場への参入を競いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時代、中国を統治していたのは清朝でした。",
+      "text_markdown": "この時代、中国を統治していたのは清朝でした。",
+      "tts": {
+        "text": "この時代、中国を統治していたのは清朝でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "清朝の皇帝は漢民族ではなく、満州族でした。",
+      "text_markdown": "清朝の皇帝は漢民族ではなく、満州族でした。",
+      "tts": {
+        "text": "清朝の皇帝は漢民族ではなく、満州族でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは千六百四十四年に中国を征服し、世界最大級の帝国を築きました。",
+      "text_markdown": "彼らは千六百四十四年に中国を征服し、世界最大級の帝国を築きました。",
+      "tts": {
+        "text": "彼らは千六百四十四年に中国を征服し、世界最大級の帝国を築きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし千七百年代後半には、清朝は衰退し始めていました。",
+      "text_markdown": "しかし千七百年代後半には、清朝は衰退し始めていました。",
+      "tts": {
+        "text": "しかし千七百年代後半には、清朝は衰退し始めていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "腐敗が官僚機構全体に蔓延していました。",
+      "text_markdown": "腐敗が官僚機構全体に蔓延していました。",
+      "tts": {
+        "text": "腐敗が官僚機構全体に蔓延していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "徴税人たちは農民や漁師からあらゆる銭を搾り取りました。",
+      "text_markdown": "徴税人たちは農民や漁師からあらゆる銭を搾り取りました。",
+      "tts": {
+        "text": "徴税人たちは農民や漁師からあらゆる銭を搾り取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "貧富の差は年々広がっていきました。",
+      "text_markdown": "貧富の差は年々広がっていきました。",
+      "tts": {
+        "text": "貧富の差は年々広がっていきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "沿岸部の省では、多くの人々が絶望的な貧困の中で暮らしていました。",
+      "text_markdown": "沿岸部の省では、多くの人々が絶望的な貧困の中で暮らしていました。",
+      "tts": {
+        "text": "沿岸部の省では、多くの人々が絶望的な貧困の中で暮らしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "広東沿岸の漁村は、中国で最も貧しい地域でした。",
+      "text_markdown": "広東沿岸の漁村は、中国で最も貧しい地域でした。",
+      "tts": {
+        "text": "広東沿岸の漁村は、中国で最も貧しい地域でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家族全員がサンパンと呼ばれる小舟の上で暮らしていました。",
+      "text_markdown": "家族全員がサンパンと呼ばれる小舟の上で暮らしていました。",
+      "tts": {
+        "text": "家族全員がサンパンと呼ばれる小舟の上で暮らしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "水の上で生まれ、水の上で働き、水の上で死にました。",
+      "text_markdown": "水の上で生まれ、水の上で働き、水の上で死にました。",
+      "tts": {
+        "text": "水の上で生まれ、水の上で働き、水の上で死にました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "清朝政府は彼らをタンカと呼び、社会の最下層として扱いました。",
+      "text_markdown": "清朝政府は彼らをタンカと呼び、社会の最下層として扱いました。",
+      "tts": {
+        "text": "清朝政府は彼らをタンカと呼び、社会の最下層として扱いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "タンカの人々は多くの地域で陸地に住むことを禁じられていました。",
+      "text_markdown": "タンカの人々は多くの地域で陸地に住むことを禁じられていました。",
+      "tts": {
+        "text": "タンカの人々は多くの地域で陸地に住むことを禁じられていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "官職につながる科挙を受けることもできませんでした。",
+      "text_markdown": "官職につながる科挙を受けることもできませんでした。",
+      "tts": {
+        "text": "官職につながる科挙を受けることもできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "法律と慣習の両方によって、中国の主流社会から閉め出されていました。",
+      "text_markdown": "法律と慣習の両方によって、中国の主流社会から閉め出されていました。",
+      "tts": {
+        "text": "法律と慣習の両方によって、中国の主流社会から閉め出されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "何世代にもわたり、より良い生活への道はありませんでした。",
+      "text_markdown": "何世代にもわたり、より良い生活への道はありませんでした。",
+      "tts": {
+        "text": "何世代にもわたり、より良い生活への道はありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊行為はひとつの選択肢を示しました。",
+      "text_markdown": "海賊行為はひとつの選択肢を示しました。",
+      "tts": {
+        "text": "海賊行為はひとつの選択肢を示しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "合法的な手段で身を立てられないなら、海には海の経済がありました。",
+      "text_markdown": "合法的な手段で身を立てられないなら、海には海の経済がありました。",
+      "tts": {
+        "text": "合法的な手段で身を立てられないなら、海には海の経済がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊艦隊は商船を襲撃し、漁村を脅迫し、帝国の巡回船をかいくぐって密輸を行いました。",
+      "text_markdown": "海賊艦隊は商船を襲撃し、漁村を脅迫し、帝国の巡回船をかいくぐって密輸を行いました。",
+      "tts": {
+        "text": "海賊艦隊は商船を襲撃し、漁村を脅迫し、帝国の巡回船をかいくぐって密輸を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "沿岸の貧しい人々にとって、海賊に加わることは合理的な経済的判断でした。",
+      "text_markdown": "沿岸の貧しい人々にとって、海賊に加わることは合理的な経済的判断でした。",
+      "tts": {
+        "text": "沿岸の貧しい人々にとって、海賊に加わることは合理的な経済的判断でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南シナ海の海域は海賊行為に理想的でした。",
+      "text_markdown": "南シナ海の海域は海賊行為に理想的でした。",
+      "tts": {
+        "text": "南シナ海の海域は海賊行為に理想的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何千もの島々、入り江、河口が隠れ場所となりました。",
+      "text_markdown": "何千もの島々、入り江、河口が隠れ場所となりました。",
+      "tts": {
+        "text": "何千もの島々、入り江、河口が隠れ場所となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "濃い霧と突然の嵐が追跡を困難にしました。",
+      "text_markdown": "濃い霧と突然の嵐が追跡を困難にしました。",
+      "tts": {
+        "text": "濃い霧と突然の嵐が追跡を困難にしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "腕の良い乗組員を乗せた高速のジャンク船は、数分で海岸線に消えることができました。",
+      "text_markdown": "腕の良い乗組員を乗せた高速のジャンク船は、数分で海岸線に消えることができました。",
+      "tts": {
+        "text": "腕の良い乗組員を乗せた高速のジャンク船は、数分で海岸線に消えることができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その一方で、阿片貿易がこの地域を変え始めていました。",
+      "text_markdown": "その一方で、阿片貿易がこの地域を変え始めていました。",
+      "tts": {
+        "text": "その一方で、阿片貿易がこの地域を変え始めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスの商人たちがインドから中国へ膨大な量の阿片を運んでいました。",
+      "text_markdown": "イギリスの商人たちがインドから中国へ膨大な量の阿片を運んでいました。",
+      "tts": {
+        "text": "イギリスの商人たちがインドから中国へ膨大な量の阿片を運んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "阿片は中国では違法でしたが、利益が莫大だったため取引は年々拡大しました。",
+      "text_markdown": "阿片は中国では違法でしたが、利益が莫大だったため取引は年々拡大しました。",
+      "tts": {
+        "text": "阿片は中国では違法でしたが、利益が莫大だったため取引は年々拡大しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "密輸ネットワークが南部沿岸全域に広がっていました。",
+      "text_markdown": "密輸ネットワークが南部沿岸全域に広がっていました。",
+      "tts": {
+        "text": "密輸ネットワークが南部沿岸全域に広がっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがチェン・イー・サオを生んだ世界でした。",
+      "text_markdown": "これがチェン・イー・サオを生んだ世界でした。",
+      "tts": {
+        "text": "これがチェン・イー・サオを生んだ世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莫大な富と極度の貧困が、細い海峡で隔てられた世界でした。",
+      "text_markdown": "莫大な富と極度の貧困が、細い海峡で隔てられた世界でした。",
+      "tts": {
+        "text": "莫大な富と極度の貧困が、細い海峡で隔てられた世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帝国が覇を競い、海の法は強制できる力を持つ者に属する世界でした。",
+      "text_markdown": "帝国が覇を競い、海の法は強制できる力を持つ者に属する世界でした。",
+      "tts": {
+        "text": "帝国が覇を競い、海の法は強制できる力を持つ者に属する世界でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパ列強は中国をこじ開けるべき市場と見なしていました。",
+      "text_markdown": "ヨーロッパ列強は中国をこじ開けるべき市場と見なしていました。",
+      "tts": {
+        "text": "ヨーロッパ列強は中国をこじ開けるべき市場と見なしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "清朝政府はヨーロッパ人を管理すべき蛮族と見なしていました。",
+      "text_markdown": "清朝政府はヨーロッパ人を管理すべき蛮族と見なしていました。",
+      "tts": {
+        "text": "清朝政府はヨーロッパ人を管理すべき蛮族と見なしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そして南シナ海の海賊たちは、両者の間の混乱に機会を見出しました。",
+      "text_markdown": "そして南シナ海の海賊たちは、両者の間の混乱に機会を見出しました。",
+      "tts": {
+        "text": "そして南シナ海の海賊たちは、両者の間の混乱に機会を見出しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百九十年までに、南シナ海の海賊艦隊は数百隻規模に達していました。",
+      "text_markdown": "千七百九十年までに、南シナ海の海賊艦隊は数百隻規模に達していました。",
+      "tts": {
+        "text": "千七百九十年までに、南シナ海の海賊艦隊は数百隻規模に達していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは無秩序な犯罪者ではありませんでした。",
+      "text_markdown": "彼らは無秩序な犯罪者ではありませんでした。",
+      "tts": {
+        "text": "彼らは無秩序な犯罪者ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くは階級制度と行動規範を持つ、規律ある海軍力として活動していました。",
+      "text_markdown": "多くは階級制度と行動規範を持つ、規律ある海軍力として活動していました。",
+      "tts": {
+        "text": "多くは階級制度と行動規範を持つ、規律ある海軍力として活動していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "南シナ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの勢力の中で最大のものが、間もなく史上最強の海賊艦隊となるのです。",
+      "text_markdown": "これらの勢力の中で最大のものが、間もなく史上最強の海賊艦隊となるのです。",
+      "tts": {
+        "text": "これらの勢力の中で最大のものが、間もなく史上最強の海賊艦隊となるのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "生い立ち",
+      "text_markdown": "生い立ち"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "後にチェン・イー・サオと呼ばれることになる女性は、千七百七十五年頃に生まれました。",
+      "text_markdown": "後にチェン・イー・サオと呼ばれることになる女性は、千七百七十五年頃に生まれました。",
+      "tts": {
+        "text": "後にチェン・イー・サオと呼ばれることになる女性は、千七百七十五年頃に生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国の史料ではスー・シャングーという名で最も多く言及されています。",
+      "text_markdown": "中国の史料ではスー・シャングーという名で最も多く言及されています。",
+      "tts": {
+        "text": "中国の史料ではスー・シャングーという名で最も多く言及されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "チェン・イー・サオという名は、単にチェン・イーの妻という意味です。",
+      "text_markdown": "チェン・イー・サオという名は、単にチェン・イーの妻という意味です。",
+      "tts": {
+        "text": "チェン・イー・サオという名は、単にチェン・イーの妻という意味です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は広東省のタンカの水上生活者の家に生まれました。",
+      "text_markdown": "彼女は広東省のタンカの水上生活者の家に生まれました。",
+      "tts": {
+        "text": "彼女は広東省のタンカの水上生活者の家に生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほぼすべてのタンカの家族と同様に、彼女の家族も貧しいものでした。",
+      "text_markdown": "ほぼすべてのタンカの家族と同様に、彼女の家族も貧しいものでした。",
+      "tts": {
+        "text": "ほぼすべてのタンカの家族と同様に、彼女の家族も貧しいものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "幼い頃を水の上で過ごし、海岸のリズムを学びました。",
+      "text_markdown": "幼い頃を水の上で過ごし、海岸のリズムを学びました。",
+      "tts": {
+        "text": "幼い頃を水の上で過ごし、海岸のリズムを学びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "若い女性として、広州港の水上遊廓で働いていました。",
+      "text_markdown": "若い女性として、広州港の水上遊廓で働いていました。",
+      "tts": {
+        "text": "若い女性として、広州港の水上遊廓で働いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこでは賑やかな港を行き交う船乗り、商人、漁師たちを相手にしていました。",
+      "text_markdown": "そこでは賑やかな港を行き交う船乗り、商人、漁師たちを相手にしていました。",
+      "tts": {
+        "text": "そこでは賑やかな港を行き交う船乗り、商人、漁師たちを相手にしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "困難で危険な仕事でしたが、同じ階層の女性にはほとんど得られない世界の知識を彼女に与えました。",
+      "text_markdown": "困難で危険な仕事でしたが、同じ階層の女性にはほとんど得られない世界の知識を彼女に与えました。",
+      "tts": {
+        "text": "困難で危険な仕事でしたが、同じ階層の女性にはほとんど得られない世界の知識を彼女に与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は人を素早く正確に見抜く力を身につけました。",
+      "text_markdown": "彼女は人を素早く正確に見抜く力を身につけました。",
+      "tts": {
+        "text": "彼女は人を素早く正確に見抜く力を身につけました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "交易と交渉の言葉を学びました。",
+      "text_markdown": "交易と交渉の言葉を学びました。",
+      "tts": {
+        "text": "交易と交渉の言葉を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの技能は、誰も予想できなかったほど大きな価値を持つことになります。",
+      "text_markdown": "これらの技能は、誰も予想できなかったほど大きな価値を持つことになります。",
+      "tts": {
+        "text": "これらの技能は、誰も予想できなかったほど大きな価値を持つことになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百九十八年、チェン・イーという名の海賊船長が彼女の乗っていた船を拿捕しました。",
+      "text_markdown": "千七百九十八年、チェン・イーという名の海賊船長が彼女の乗っていた船を拿捕しました。",
+      "tts": {
+        "text": "千七百九十八年、チェン・イーという名の海賊船長が彼女の乗っていた船を拿捕しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は何世代にもわたる海賊の家系の出でした。",
+      "text_markdown": "彼は何世代にもわたる海賊の家系の出でした。",
+      "tts": {
+        "text": "彼は何世代にもわたる海賊の家系の出でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の一族は、清朝の征服者に対する明朝の残党を支持していました。",
+      "text_markdown": "彼の一族は、清朝の征服者に対する明朝の残党を支持していました。",
+      "tts": {
+        "text": "彼の一族は、清朝の征服者に対する明朝の残党を支持していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チェン・イーはその若い女性に結婚を申し込みました。",
+      "text_markdown": "チェン・イーはその若い女性に結婚を申し込みました。",
+      "tts": {
+        "text": "チェン・イーはその若い女性に結婚を申し込みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほとんどの記録によれば、彼女は単純に承諾したわけではありませんでした。",
+      "text_markdown": "ほとんどの記録によれば、彼女は単純に承諾したわけではありませんでした。",
+      "tts": {
+        "text": "ほとんどの記録によれば、彼女は単純に承諾したわけではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "結婚に同意する前に、二人の関係の条件を交渉しました。",
+      "text_markdown": "結婚に同意する前に、二人の関係の条件を交渉しました。",
+      "tts": {
+        "text": "結婚に同意する前に、二人の関係の条件を交渉しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は艦隊の平等な取り分と指揮決定における平等な発言権を要求しました。",
+      "text_markdown": "彼女は艦隊の平等な取り分と指揮決定における平等な発言権を要求しました。",
+      "tts": {
+        "text": "彼女は艦隊の平等な取り分と指揮決定における平等な発言権を要求しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは当時としては異例のことでした。",
+      "text_markdown": "これは当時としては異例のことでした。",
+      "tts": {
+        "text": "これは当時としては異例のことでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "清朝末期の中国では、女性の法的権利は極めて限られていました。",
+      "text_markdown": "清朝末期の中国では、女性の法的権利は極めて限られていました。",
+      "tts": {
+        "text": "清朝末期の中国では、女性の法的権利は極めて限られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "妻は夫に疑問なく従うことが求められていました。",
+      "text_markdown": "妻は夫に疑問なく従うことが求められていました。",
+      "tts": {
+        "text": "妻は夫に疑問なく従うことが求められていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしここは海賊の世界であり、海賊の世界には独自の掟がありました。",
+      "text_markdown": "しかしここは海賊の世界であり、海賊の世界には独自の掟がありました。",
+      "tts": {
+        "text": "しかしここは海賊の世界であり、海賊の世界には独自の掟がありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チェン・イーは彼女の条件を受け入れました。",
+      "text_markdown": "チェン・イーは彼女の条件を受け入れました。",
+      "tts": {
+        "text": "チェン・イーは彼女の条件を受け入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家たちは、彼が彼女の知性と指導者としての資質を認めたと考えています。",
+      "text_markdown": "歴史家たちは、彼が彼女の知性と指導者としての資質を認めたと考えています。",
+      "tts": {
+        "text": "歴史家たちは、彼が彼女の知性と指導者としての資質を認めたと考えています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二人の結婚は個人的な絆であると同時に、戦略的な同盟でもありました。",
+      "text_markdown": "二人の結婚は個人的な絆であると同時に、戦略的な同盟でもありました。",
+      "tts": {
+        "text": "二人の結婚は個人的な絆であると同時に、戦略的な同盟でもありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "二人は共に、前例のないものを築き上げることになります。",
+      "text_markdown": "二人は共に、前例のないものを築き上げることになります。",
+      "tts": {
+        "text": "二人は共に、前例のないものを築き上げることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チェン・イーには大胆な構想がありました。",
+      "text_markdown": "チェン・イーには大胆な構想がありました。",
+      "tts": {
+        "text": "チェン・イーには大胆な構想がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "南シナ海に散在する海賊艦隊をひとつの連合体に統合しようとしたのです。",
+      "text_markdown": "南シナ海に散在する海賊艦隊をひとつの連合体に統合しようとしたのです。",
+      "tts": {
+        "text": "南シナ海に散在する海賊艦隊をひとつの連合体に統合しようとしたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "個々の海賊船長たちは常に互いに競い合っていました。",
+      "text_markdown": "個々の海賊船長たちは常に互いに競い合っていました。",
+      "tts": {
+        "text": "個々の海賊船長たちは常に互いに競い合っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "チェン・イーは、協力すればはるかに強力になれると信じていました。",
+      "text_markdown": "チェン・イーは、協力すればはるかに強力になれると信じていました。",
+      "tts": {
+        "text": "チェン・イーは、協力すればはるかに強力になれると信じていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百九十八年から千八百五年にかけて、チェン・イーは同盟の構築にたゆまず取り組みました。",
+      "text_markdown": "千七百九十八年から千八百五年にかけて、チェン・イーは同盟の構築にたゆまず取り組みました。",
+      "tts": {
+        "text": "千七百九十八年から千八百五年にかけて、チェン・イーは同盟の構築にたゆまず取り組みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "外交と脅迫を使い分けて、対立する船長たちを連合に引き入れました。",
+      "text_markdown": "外交と脅迫を使い分けて、対立する船長たちを連合に引き入れました。",
+      "tts": {
+        "text": "外交と脅迫を使い分けて、対立する船長たちを連合に引き入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "妻はこれらの交渉に深く関与していました。",
+      "text_markdown": "妻はこれらの交渉に深く関与していました。",
+      "tts": {
+        "text": "妻はこれらの交渉に深く関与していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は艦隊を束ねる合意書の作成を助けました。",
+      "text_markdown": "彼女は艦隊を束ねる合意書の作成を助けました。",
+      "tts": {
+        "text": "彼女は艦隊を束ねる合意書の作成を助けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百五年までに連合は完成しました。",
+      "text_markdown": "千八百五年までに連合は完成しました。",
+      "tts": {
+        "text": "千八百五年までに連合は完成しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは旗の色で区別される六つの艦隊から成っていました。",
+      "text_markdown": "それは旗の色で区別される六つの艦隊から成っていました。",
+      "tts": {
+        "text": "それは旗の色で区別される六つの艦隊から成っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紅旗艦隊が最大かつ最強でした。",
+      "text_markdown": "紅旗艦隊が最大かつ最強でした。",
+      "tts": {
+        "text": "紅旗艦隊が最大かつ最強でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "チェン・イーが紅旗艦隊を自ら指揮しました。",
+      "text_markdown": "チェン・イーが紅旗艦隊を自ら指揮しました。",
+      "tts": {
+        "text": "チェン・イーが紅旗艦隊を自ら指揮しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "連合は数百隻の船と数万人の海賊を支配していました。",
+      "text_markdown": "連合は数百隻の船と数万人の海賊を支配していました。",
+      "tts": {
+        "text": "連合は数百隻の船と数万人の海賊を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "南シナ海全域を支配していました。",
+      "text_markdown": "南シナ海全域を支配していました。",
+      "tts": {
+        "text": "南シナ海全域を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船は朝貢を払うか、壊滅の危険を冒さずには、この海域を通過できませんでした。",
+      "text_markdown": "商船は朝貢を払うか、壊滅の危険を冒さずには、この海域を通過できませんでした。",
+      "tts": {
+        "text": "商船は朝貢を払うか、壊滅の危険を冒さずには、この海域を通過できませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして千八百七年十一月、チェン・イーが死去しました。",
+      "text_markdown": "そして千八百七年十一月、チェン・イーが死去しました。",
+      "tts": {
+        "text": "そして千八百七年十一月、チェン・イーが死去しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の死の状況については歴史家の間で議論されています。",
+      "text_markdown": "彼の死の状況については歴史家の間で議論されています。",
+      "tts": {
+        "text": "彼の死の状況については歴史家の間で議論されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "嵐で溺死したとする記録もあります。",
+      "text_markdown": "嵐で溺死したとする記録もあります。",
+      "tts": {
+        "text": "嵐で溺死したとする記録もあります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ベトナム沖の戦闘で戦死したとする説もあります。",
+      "text_markdown": "ベトナム沖の戦闘で戦死したとする説もあります。",
+      "tts": {
+        "text": "ベトナム沖の戦闘で戦死したとする説もあります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の死は連合全体に危機をもたらしました。",
+      "text_markdown": "彼の死は連合全体に危機をもたらしました。",
+      "tts": {
+        "text": "彼の死は連合全体に危機をもたらしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼が築いた同盟は、彼個人の権威によって結束していました。",
+      "text_markdown": "彼が築いた同盟は、彼個人の権威によって結束していました。",
+      "tts": {
+        "text": "彼が築いた同盟は、彼個人の権威によって結束していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "強力な指導者なくしては、対立する派閥に分裂するはずでした。",
+      "text_markdown": "強力な指導者なくしては、対立する派閥に分裂するはずでした。",
+      "tts": {
+        "text": "強力な指導者なくしては、対立する派閥に分裂するはずでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "築き上げたすべてが危機に瀕していました。",
+      "text_markdown": "築き上げたすべてが危機に瀕していました。",
+      "tts": {
+        "text": "築き上げたすべてが危機に瀕していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の艦隊の船長たちは連合が崩壊すると予想しました。",
+      "text_markdown": "他の艦隊の船長たちは連合が崩壊すると予想しました。",
+      "tts": {
+        "text": "他の艦隊の船長たちは連合が崩壊すると予想しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは領土を奪取すべく、態勢を整え始めました。",
+      "text_markdown": "彼らは領土を奪取すべく、態勢を整え始めました。",
+      "tts": {
+        "text": "彼らは領土を奪取すべく、態勢を整え始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼らは、チェン・イーの未亡人の野心と能力を見誤っていました。",
+      "text_markdown": "しかし彼らは、チェン・イーの未亡人の野心と能力を見誤っていました。",
+      "tts": {
+        "text": "しかし彼らは、チェン・イーの未亡人の野心と能力を見誤っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "生い立ち",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女には、自ら築いたものを手放す気は毛頭ありませんでした。",
+      "text_markdown": "彼女には、自ら築いたものを手放す気は毛頭ありませんでした。",
+      "tts": {
+        "text": "彼女には、自ら築いたものを手放す気は毛頭ありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力への道",
+      "text_markdown": "権力への道"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夫の死後数日のうちに、鄭一嫂は計算された速さで動きました。",
+      "text_markdown": "夫の死後数日のうちに、鄭一嫂は計算された速さで動きました。",
+      "tts": {
+        "text": "夫の死後数日のうちに、鄭一嫂は計算された速さで動きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最初の行動は、夫の最も信頼する副官、チャン・バオの忠誠を確保することでした。",
+      "text_markdown": "最初の行動は、夫の最も信頼する副官、チャン・バオの忠誠を確保することでした。",
+      "tts": {
+        "text": "最初の行動は、夫の最も信頼する副官、チャン・バオの忠誠を確保することでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "チャン・バオは漁師の息子で、少年の頃に海賊に捕らえられた人物でした。",
+      "text_markdown": "チャン・バオは漁師の息子で、少年の頃に海賊に捕らえられた人物でした。",
+      "tts": {
+        "text": "チャン・バオは漁師の息子で、少年の頃に海賊に捕らえられた人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "チェン・イーが彼を養子とし、訓練し、軍事指揮官に育て上げました。",
+      "text_markdown": "チェン・イーが彼を養子とし、訓練し、軍事指揮官に育て上げました。",
+      "tts": {
+        "text": "チェン・イーが彼を養子とし、訓練し、軍事指揮官に育て上げました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂はチャン・バオと、個人的かつ戦略的な同盟を結びました。",
+      "text_markdown": "鄭一嫂はチャン・バオと、個人的かつ戦略的な同盟を結びました。",
+      "tts": {
+        "text": "鄭一嫂はチャン・バオと、個人的かつ戦略的な同盟を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人はやがて結婚することになります。",
+      "text_markdown": "二人はやがて結婚することになります。",
+      "tts": {
+        "text": "二人はやがて結婚することになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしあの最初の決定的な数週間は、生き残りのための提携でした。",
+      "text_markdown": "しかしあの最初の決定的な数週間は、生き残りのための提携でした。",
+      "tts": {
+        "text": "しかしあの最初の決定的な数週間は、生き残りのための提携でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "二人は他の艦隊司令官たちに対し、結束した姿を示しました。",
+      "text_markdown": "二人は他の艦隊司令官たちに対し、結束した姿を示しました。",
+      "tts": {
+        "text": "二人は他の艦隊司令官たちに対し、結束した姿を示しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は六つの艦隊の船長を集めて会議を開きました。",
+      "text_markdown": "彼女は六つの艦隊の船長を集めて会議を開きました。",
+      "tts": {
+        "text": "彼女は六つの艦隊の船長を集めて会議を開きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その会議で、彼女は連合の指導者としての自らの立場を主張しました。",
+      "text_markdown": "その会議で、彼女は連合の指導者としての自らの立場を主張しました。",
+      "tts": {
+        "text": "その会議で、彼女は連合の指導者としての自らの立場を主張しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この同盟を築く上で夫と対等のパートナーであったと論じました。",
+      "text_markdown": "この同盟を築く上で夫と対等のパートナーであったと論じました。",
+      "tts": {
+        "text": "この同盟を築く上で夫と対等のパートナーであったと論じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船長たちは一人また一人と、彼女の指揮に従うことに同意しました。",
+      "text_markdown": "船長たちは一人また一人と、彼女の指揮に従うことに同意しました。",
+      "tts": {
+        "text": "船長たちは一人また一人と、彼女の指揮に従うことに同意しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の課題は、七万人の海賊に規律を課すことでした。",
+      "text_markdown": "最初の課題は、七万人の海賊に規律を課すことでした。",
+      "tts": {
+        "text": "最初の課題は、七万人の海賊に規律を課すことでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は本質的に独立心が強く、権威を信用しない人々でした。",
+      "text_markdown": "海賊は本質的に独立心が強く、権威を信用しない人々でした。",
+      "tts": {
+        "text": "海賊は本質的に独立心が強く、権威を信用しない人々でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鄭一嫂は、法なき艦隊は自壊すると理解していました。",
+      "text_markdown": "鄭一嫂は、法なき艦隊は自壊すると理解していました。",
+      "tts": {
+        "text": "鄭一嫂は、法なき艦隊は自壊すると理解していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は海賊史上最も注目すべき法典のひとつを作り上げました。",
+      "text_markdown": "彼女は海賊史上最も注目すべき法典のひとつを作り上げました。",
+      "tts": {
+        "text": "彼女は海賊史上最も注目すべき法典のひとつを作り上げました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その法典は厳格かつ具体的でした。",
+      "text_markdown": "その法典は厳格かつ具体的でした。",
+      "tts": {
+        "text": "その法典は厳格かつ具体的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "上官の直接命令に背いた海賊は斬首されました。",
+      "text_markdown": "上官の直接命令に背いた海賊は斬首されました。",
+      "tts": {
+        "text": "上官の直接命令に背いた海賊は斬首されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "脱走は死刑に値しました。",
+      "text_markdown": "脱走は死刑に値しました。",
+      "tts": {
+        "text": "脱走は死刑に値しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "共有財産からの窃盗も死刑でした。",
+      "text_markdown": "共有財産からの窃盗も死刑でした。",
+      "tts": {
+        "text": "共有財産からの窃盗も死刑でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この法典はまた、当時としては珍しい形で捕虜を保護しました。",
+      "text_markdown": "この法典はまた、当時としては珍しい形で捕虜を保護しました。",
+      "tts": {
+        "text": "この法典はまた、当時としては珍しい形で捕虜を保護しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜を暴行した海賊は厳罰に処されました。",
+      "text_markdown": "捕虜を暴行した海賊は厳罰に処されました。",
+      "tts": {
+        "text": "捕虜を暴行した海賊は厳罰に処されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕虜を妻とした海賊は、彼女に忠実であることを求められました。",
+      "text_markdown": "捕虜を妻とした海賊は、彼女に忠実であることを求められました。",
+      "tts": {
+        "text": "捕虜を妻とした海賊は、彼女に忠実であることを求められました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの規則は提案ではなく、鉄の一貫性をもって執行されました。",
+      "text_markdown": "これらの規則は提案ではなく、鉄の一貫性をもって執行されました。",
+      "tts": {
+        "text": "これらの規則は提案ではなく、鉄の一貫性をもって執行されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "略奪品はすべて登録され、固定の制度に従って分配されました。",
+      "text_markdown": "略奪品はすべて登録され、固定の制度に従って分配されました。",
+      "tts": {
+        "text": "略奪品はすべて登録され、固定の制度に従って分配されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "品物を奪取した海賊は二十パーセントを受け取りました。",
+      "text_markdown": "品物を奪取した海賊は二十パーセントを受け取りました。",
+      "tts": {
+        "text": "品物を奪取した海賊は二十パーセントを受け取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "残りの八十パーセントは共有基金に入りました。",
+      "text_markdown": "残りの八十パーセントは共有基金に入りました。",
+      "tts": {
+        "text": "残りの八十パーセントは共有基金に入りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この制度は、ほとんどの海賊組織を崩壊させた内部抗争を防ぎました。",
+      "text_markdown": "この制度は、ほとんどの海賊組織を崩壊させた内部抗争を防ぎました。",
+      "tts": {
+        "text": "この制度は、ほとんどの海賊組織を崩壊させた内部抗争を防ぎました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂はまた、精巧な課税制度を構築しました。",
+      "text_markdown": "鄭一嫂はまた、精巧な課税制度を構築しました。",
+      "tts": {
+        "text": "鄭一嫂はまた、精巧な課税制度を構築しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船は定期的な料金を支払うことで安全な航行を購入できました。",
+      "text_markdown": "商船は定期的な料金を支払うことで安全な航行を購入できました。",
+      "tts": {
+        "text": "商船は定期的な料金を支払うことで安全な航行を購入できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "沿岸の漁村は保護と引き換えに朝貢を納めました。",
+      "text_markdown": "沿岸の漁村は保護と引き換えに朝貢を納めました。",
+      "tts": {
+        "text": "沿岸の漁村は保護と引き換えに朝貢を納めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この制度は並行政府のように機能し、安全保障と引き換えに歳入を徴収しました。",
+      "text_markdown": "この制度は並行政府のように機能し、安全保障と引き換えに歳入を徴収しました。",
+      "tts": {
+        "text": "この制度は並行政府のように機能し、安全保障と引き換えに歳入を徴収しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "清朝政府は脅威を認識し、海賊を壊滅させるべく海軍を派遣しました。",
+      "text_markdown": "清朝政府は脅威を認識し、海賊を壊滅させるべく海軍を派遣しました。",
+      "tts": {
+        "text": "清朝政府は脅威を認識し、海賊を壊滅させるべく海軍を派遣しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千八百八年、大規模な帝国艦隊が南シナ海に出航しました。",
+      "text_markdown": "千八百八年、大規模な帝国艦隊が南シナ海に出航しました。",
+      "tts": {
+        "text": "千八百八年、大規模な帝国艦隊が南シナ海に出航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この戦いは政府にとって惨敗でした。",
+      "text_markdown": "この戦いは政府にとって惨敗でした。",
+      "tts": {
+        "text": "この戦いは政府にとって惨敗でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "鄭一嫂の軍勢は帝国の軍艦数十隻を撃沈または拿捕しました。",
+      "text_markdown": "鄭一嫂の軍勢は帝国の軍艦数十隻を撃沈または拿捕しました。",
+      "tts": {
+        "text": "鄭一嫂の軍勢は帝国の軍艦数十隻を撃沈または拿捕しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "敗北した提督は恥辱のあまり自ら命を絶ちました。",
+      "text_markdown": "敗北した提督は恥辱のあまり自ら命を絶ちました。",
+      "tts": {
+        "text": "敗北した提督は恥辱のあまり自ら命を絶ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "朝廷はこの大敗に衝撃を受けました。",
+      "text_markdown": "朝廷はこの大敗に衝撃を受けました。",
+      "tts": {
+        "text": "朝廷はこの大敗に衝撃を受けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最良の船と最も経験豊富な司令官を送り出したのに、敗れたのです。",
+      "text_markdown": "最良の船と最も経験豊富な司令官を送り出したのに、敗れたのです。",
+      "tts": {
+        "text": "最良の船と最も経験豊富な司令官を送り出したのに、敗れたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊は今や政府の海軍より強くなっていました。",
+      "text_markdown": "海賊は今や政府の海軍より強くなっていました。",
+      "tts": {
+        "text": "海賊は今や政府の海軍より強くなっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂は容赦なく優勢を押し進めました。",
+      "text_markdown": "鄭一嫂は容赦なく優勢を押し進めました。",
+      "tts": {
+        "text": "鄭一嫂は容赦なく優勢を押し進めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "艦隊は広東沿岸全域に勢力を拡大しました。",
+      "text_markdown": "艦隊は広東沿岸全域に勢力を拡大しました。",
+      "tts": {
+        "text": "艦隊は広東沿岸全域に勢力を拡大しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "島々や隠れた河口に拠点を設けました。",
+      "text_markdown": "島々や隠れた河口に拠点を設けました。",
+      "tts": {
+        "text": "島々や隠れた河口に拠点を設けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "情報網は広州からベトナムまで広がっていました。",
+      "text_markdown": "情報網は広州からベトナムまで広がっていました。",
+      "tts": {
+        "text": "情報網は広州からベトナムまで広がっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "清朝政府は新たな戦略を試みました。",
+      "text_markdown": "清朝政府は新たな戦略を試みました。",
+      "tts": {
+        "text": "清朝政府は新たな戦略を試みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マカオのポルトガル植民地から軍艦を雇い、海賊と戦わせました。",
+      "text_markdown": "マカオのポルトガル植民地から軍艦を雇い、海賊と戦わせました。",
+      "tts": {
+        "text": "マカオのポルトガル植民地から軍艦を雇い、海賊と戦わせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ポルトガル側はヨーロッパ式の最新の大砲と訓練された海軍将校を有していました。",
+      "text_markdown": "ポルトガル側はヨーロッパ式の最新の大砲と訓練された海軍将校を有していました。",
+      "tts": {
+        "text": "ポルトガル側はヨーロッパ式の最新の大砲と訓練された海軍将校を有していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一時期、この同盟は海賊艦隊に本当の圧力をかけました。",
+      "text_markdown": "一時期、この同盟は海賊艦隊に本当の圧力をかけました。",
+      "tts": {
+        "text": "一時期、この同盟は海賊艦隊に本当の圧力をかけました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし鄭一嫂は素早く適応しました。",
+      "text_markdown": "しかし鄭一嫂は素早く適応しました。",
+      "tts": {
+        "text": "しかし鄭一嫂は素早く適応しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ポルトガル軍艦との直接対決を避けました。",
+      "text_markdown": "ポルトガル軍艦との直接対決を避けました。",
+      "tts": {
+        "text": "ポルトガル軍艦との直接対決を避けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "代わりに補給線を狙い、同盟相手の商船を攻撃しました。",
+      "text_markdown": "代わりに補給線を狙い、同盟相手の商船を攻撃しました。",
+      "tts": {
+        "text": "代わりに補給線を狙い、同盟相手の商船を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ポルトガルは報酬が支払われる限りしか戦わないと見抜いていたのです。",
+      "text_markdown": "ポルトガルは報酬が支払われる限りしか戦わないと見抜いていたのです。",
+      "tts": {
+        "text": "ポルトガルは報酬が支払われる限りしか戦わないと見抜いていたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百九年までに、清朝とポルトガルの同盟は彼女を打ち負かせませんでした。",
+      "text_markdown": "千八百九年までに、清朝とポルトガルの同盟は彼女を打ち負かせませんでした。",
+      "tts": {
+        "text": "千八百九年までに、清朝とポルトガルの同盟は彼女を打ち負かせませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "政府は莫大な費用を費やし、数十隻の船を失いました。",
+      "text_markdown": "政府は莫大な費用を費やし、数十隻の船を失いました。",
+      "tts": {
+        "text": "政府は莫大な費用を費やし、数十隻の船を失いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊はかつてないほど堅固に沿岸を支配していました。",
+      "text_markdown": "海賊はかつてないほど堅固に沿岸を支配していました。",
+      "tts": {
+        "text": "海賊はかつてないほど堅固に沿岸を支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への道",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "鄭一嫂の連合は権力の頂点にありました。",
+      "text_markdown": "鄭一嫂の連合は権力の頂点にありました。",
+      "tts": {
+        "text": "鄭一嫂の連合は権力の頂点にありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最盛期、海賊連合はおよそ千八百隻の船を擁していました。",
+      "text_markdown": "最盛期、海賊連合はおよそ千八百隻の船を擁していました。",
+      "tts": {
+        "text": "最盛期、海賊連合はおよそ千八百隻の船を擁していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "小型の高速襲撃船から、数十門の大砲を搭載した大型軍用ジャンク船まで多岐にわたりました。",
+      "text_markdown": "小型の高速襲撃船から、数十門の大砲を搭載した大型軍用ジャンク船まで多岐にわたりました。",
+      "tts": {
+        "text": "小型の高速襲撃船から、数十門の大砲を搭載した大型軍用ジャンク船まで多岐にわたりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "総戦力は七万人から八万人に及びました。",
+      "text_markdown": "総戦力は七万人から八万人に及びました。",
+      "tts": {
+        "text": "総戦力は七万人から八万人に及びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これは当時のほとんどのヨーロッパ諸国の海軍より大きい規模でした。",
+      "text_markdown": "これは当時のほとんどのヨーロッパ諸国の海軍より大きい規模でした。",
+      "tts": {
+        "text": "これは当時のほとんどのヨーロッパ諸国の海軍より大きい規模でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "紅旗艦隊だけで六百隻から八百隻の船を有していました。",
+      "text_markdown": "紅旗艦隊だけで六百隻から八百隻の船を有していました。",
+      "tts": {
+        "text": "紅旗艦隊だけで六百隻から八百隻の船を有していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "連合の中で最大の単独艦隊でした。",
+      "text_markdown": "連合の中で最大の単独艦隊でした。",
+      "tts": {
+        "text": "連合の中で最大の単独艦隊でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鄭一嫂がこれを直接指揮し、チャン・バオが軍事長官を務めました。",
+      "text_markdown": "鄭一嫂がこれを直接指揮し、チャン・バオが軍事長官を務めました。",
+      "tts": {
+        "text": "鄭一嫂がこれを直接指揮し、チャン・バオが軍事長官を務めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他の五つの艦隊は半ば独立して活動しましたが、彼女の戦略的方針に従いました。",
+      "text_markdown": "他の五つの艦隊は半ば独立して活動しましたが、彼女の戦略的方針に従いました。",
+      "tts": {
+        "text": "他の五つの艦隊は半ば独立して活動しましたが、彼女の戦略的方針に従いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "連合の領土は千マイル以上の海岸線に及びました。",
+      "text_markdown": "連合の領土は千マイル以上の海岸線に及びました。",
+      "tts": {
+        "text": "連合の領土は千マイル以上の海岸線に及びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "南のベトナム国境から北の福建沿岸まで、海賊の許可なしには安全に航行できる船はありませんでした。",
+      "text_markdown": "南のベトナム国境から北の福建沿岸まで、海賊の許可なしには安全に航行できる船はありませんでした。",
+      "tts": {
+        "text": "南のベトナム国境から北の福建沿岸まで、海賊の許可なしには安全に航行できる船はありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "強大なイギリス東インド会社でさえ、貨物を失わないために朝貢を支払いました。",
+      "text_markdown": "強大なイギリス東インド会社でさえ、貨物を失わないために朝貢を支払いました。",
+      "tts": {
+        "text": "強大なイギリス東インド会社でさえ、貨物を失わないために朝貢を支払いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊のジャンク船での生活は過酷でしたが、組織だっていました。",
+      "text_markdown": "海賊のジャンク船での生活は過酷でしたが、組織だっていました。",
+      "tts": {
+        "text": "海賊のジャンク船での生活は過酷でしたが、組織だっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "各船には船長から最新の新兵まで、明確な序列がありました。",
+      "text_markdown": "各船には船長から最新の新兵まで、明確な序列がありました。",
+      "tts": {
+        "text": "各船には船長から最新の新兵まで、明確な序列がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "食事は共同で、配給は平等に分配されました。",
+      "text_markdown": "食事は共同で、配給は平等に分配されました。",
+      "tts": {
+        "text": "食事は共同で、配給は平等に分配されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "すべての乗組員が階級と役割に応じた略奪品の分け前を受け取りました。",
+      "text_markdown": "すべての乗組員が階級と役割に応じた略奪品の分け前を受け取りました。",
+      "tts": {
+        "text": "すべての乗組員が階級と役割に応じた略奪品の分け前を受け取りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "艦隊の多くの船で女性が働いていました。",
+      "text_markdown": "艦隊の多くの船で女性が働いていました。",
+      "tts": {
+        "text": "艦隊の多くの船で女性が働いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "襲撃の際に男性と共に戦う者もいました。",
+      "text_markdown": "襲撃の際に男性と共に戦う者もいました。",
+      "tts": {
+        "text": "襲撃の際に男性と共に戦う者もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "物資の管理、航海、船同士の通信を担当する者もいました。",
+      "text_markdown": "物資の管理、航海、船同士の通信を担当する者もいました。",
+      "tts": {
+        "text": "物資の管理、航海、船同士の通信を担当する者もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊の世界は、主流の清朝社会よりも女性に多くの自由を与えました。",
+      "text_markdown": "海賊の世界は、主流の清朝社会よりも女性に多くの自由を与えました。",
+      "tts": {
+        "text": "海賊の世界は、主流の清朝社会よりも女性に多くの自由を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "艦隊の軍用ジャンク船は恐るべき戦闘力を持っていました。",
+      "text_markdown": "艦隊の軍用ジャンク船は恐るべき戦闘力を持っていました。",
+      "tts": {
+        "text": "艦隊の軍用ジャンク船は恐るべき戦闘力を持っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大型のジャンク船は三十門以上の大砲を搭載できました。",
+      "text_markdown": "大型のジャンク船は三十門以上の大砲を搭載できました。",
+      "tts": {
+        "text": "大型のジャンク船は三十門以上の大砲を搭載できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船体は補強され、乗り込みを防ぐために舷側が高く造られていました。",
+      "text_markdown": "船体は補強され、乗り込みを防ぐために舷側が高く造られていました。",
+      "tts": {
+        "text": "船体は補強され、乗り込みを防ぐために舷側が高く造られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "平底の構造により、喫水の深いヨーロッパ船が追えない浅い沿岸水域を航行できました。",
+      "text_markdown": "平底の構造により、喫水の深いヨーロッパ船が追えない浅い沿岸水域を航行できました。",
+      "tts": {
+        "text": "平底の構造により、喫水の深いヨーロッパ船が追えない浅い沿岸水域を航行できました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂の情報網は最大の武器のひとつでした。",
+      "text_markdown": "鄭一嫂の情報網は最大の武器のひとつでした。",
+      "tts": {
+        "text": "鄭一嫂の情報網は最大の武器のひとつでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "広州、マカオ、そして沿岸の主要な港すべてに密偵がいました。",
+      "text_markdown": "広州、マカオ、そして沿岸の主要な港すべてに密偵がいました。",
+      "tts": {
+        "text": "広州、マカオ、そして沿岸の主要な港すべてに密偵がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高価な貨物船がいつ出港し、どの航路をとるか把握していました。",
+      "text_markdown": "高価な貨物船がいつ出港し、どの航路をとるか把握していました。",
+      "tts": {
+        "text": "高価な貨物船がいつ出港し、どの航路をとるか把握していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この情報により、偶然に頼らず精密に攻撃できました。",
+      "text_markdown": "この情報により、偶然に頼らず精密に攻撃できました。",
+      "tts": {
+        "text": "この情報により、偶然に頼らず精密に攻撃できました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女が構築した課税制度は驚くほど精巧でした。",
+      "text_markdown": "彼女が構築した課税制度は驚くほど精巧でした。",
+      "tts": {
+        "text": "彼女が構築した課税制度は驚くほど精巧でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貨物の種類によって異なる税率が適用されました。",
+      "text_markdown": "貨物の種類によって異なる税率が適用されました。",
+      "tts": {
+        "text": "貨物の種類によって異なる税率が適用されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "絹商人は米商人より高い税を払いました。",
+      "text_markdown": "絹商人は米商人より高い税を払いました。",
+      "tts": {
+        "text": "絹商人は米商人より高い税を払いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "塩の密輸人は、積荷がすでに違法であったため割増料金を払いました。",
+      "text_markdown": "塩の密輸人は、積荷がすでに違法であったため割増料金を払いました。",
+      "tts": {
+        "text": "塩の密輸人は、積荷がすでに違法であったため割増料金を払いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "この制度全体が文書化され、官僚的な正確さで執行されました。",
+      "text_markdown": "この制度全体が文書化され、官僚的な正確さで執行されました。",
+      "tts": {
+        "text": "この制度全体が文書化され、官僚的な正確さで執行されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿岸の村々は海賊と複雑な関係にありました。",
+      "text_markdown": "沿岸の村々は海賊と複雑な関係にありました。",
+      "tts": {
+        "text": "沿岸の村々は海賊と複雑な関係にありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くは海賊が要求する朝貢に不満を抱いていました。",
+      "text_markdown": "多くは海賊が要求する朝貢に不満を抱いていました。",
+      "tts": {
+        "text": "多くは海賊が要求する朝貢に不満を抱いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし海賊は他の略奪者や山賊からの保護も提供しました。",
+      "text_markdown": "しかし海賊は他の略奪者や山賊からの保護も提供しました。",
+      "tts": {
+        "text": "しかし海賊は他の略奪者や山賊からの保護も提供しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一部の地域では、海賊の方が帝国政府より頼りになりました。",
+      "text_markdown": "一部の地域では、海賊の方が帝国政府より頼りになりました。",
+      "tts": {
+        "text": "一部の地域では、海賊の方が帝国政府より頼りになりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "清朝宮廷は海を制御できないことに深く恥じていました。",
+      "text_markdown": "清朝宮廷は海を制御できないことに深く恥じていました。",
+      "tts": {
+        "text": "清朝宮廷は海を制御できないことに深く恥じていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帝国の官吏たちは海賊女王の勢力拡大について不安な報告書を書きました。",
+      "text_markdown": "帝国の官吏たちは海賊女王の勢力拡大について不安な報告書を書きました。",
+      "tts": {
+        "text": "帝国の官吏たちは海賊女王の勢力拡大について不安な報告書を書きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊が陸上の反乱勢力と結びつくことを恐れました。",
+      "text_markdown": "海賊が陸上の反乱勢力と結びつくことを恐れました。",
+      "tts": {
+        "text": "海賊が陸上の反乱勢力と結びつくことを恐れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "水陸合同の反乱は王朝そのものを脅かしかねませんでした。",
+      "text_markdown": "水陸合同の反乱は王朝そのものを脅かしかねませんでした。",
+      "tts": {
+        "text": "水陸合同の反乱は王朝そのものを脅かしかねませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスはこの状況を鋭い関心をもって観察していました。",
+      "text_markdown": "イギリスはこの状況を鋭い関心をもって観察していました。",
+      "tts": {
+        "text": "イギリスはこの状況を鋭い関心をもって観察していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中国沿岸での阿片貿易を拡大していたのです。",
+      "text_markdown": "中国沿岸での阿片貿易を拡大していたのです。",
+      "tts": {
+        "text": "中国沿岸での阿片貿易を拡大していたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊がこの貿易を妨害し、イギリスの商人に莫大な損害を与えていました。",
+      "text_markdown": "海賊がこの貿易を妨害し、イギリスの商人に莫大な損害を与えていました。",
+      "tts": {
+        "text": "海賊がこの貿易を妨害し、イギリスの商人に莫大な損害を与えていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂の旗の下に航海する者たちにとって、生活は他の選択肢よりましでした。",
+      "text_markdown": "鄭一嫂の旗の下に航海する者たちにとって、生活は他の選択肢よりましでした。",
+      "tts": {
+        "text": "鄭一嫂の旗の下に航海する者たちにとって、生活は他の選択肢よりましでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は定期的な食事、略奪品の分け前、帰属意識を得られました。",
+      "text_markdown": "海賊は定期的な食事、略奪品の分け前、帰属意識を得られました。",
+      "tts": {
+        "text": "海賊は定期的な食事、略奪品の分け前、帰属意識を得られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "タンカの漁師が得るのは貧困、蔑視、そして出世の望みのなさでした。",
+      "text_markdown": "タンカの漁師が得るのは貧困、蔑視、そして出世の望みのなさでした。",
+      "tts": {
+        "text": "タンカの漁師が得るのは貧困、蔑視、そして出世の望みのなさでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂は絶対的な権威をもってこの社会を統治しました。",
+      "text_markdown": "鄭一嫂は絶対的な権威をもってこの社会を統治しました。",
+      "tts": {
+        "text": "鄭一嫂は絶対的な権威をもってこの社会を統治しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "艦隊の将来を形づくる戦略的決定を下しました。",
+      "text_markdown": "艦隊の将来を形づくる戦略的決定を下しました。",
+      "tts": {
+        "text": "艦隊の将来を形づくる戦略的決定を下しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船長間の紛争を裁き、法典を執行しました。",
+      "text_markdown": "船長間の紛争を裁き、法典を執行しました。",
+      "tts": {
+        "text": "船長間の紛争を裁き、法典を執行しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の承認なしには、いかなる重大な行動もとられませんでした。",
+      "text_markdown": "彼女の承認なしには、いかなる重大な行動もとられませんでした。",
+      "tts": {
+        "text": "彼女の承認なしには、いかなる重大な行動もとられませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百十年までに、連合にひび割れが生じ始めていました。",
+      "text_markdown": "千八百十年までに、連合にひび割れが生じ始めていました。",
+      "tts": {
+        "text": "千八百十年までに、連合にひび割れが生じ始めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "絶え間ない戦闘が船と乗組員に犠牲を強いていました。",
+      "text_markdown": "絶え間ない戦闘が船と乗組員に犠牲を強いていました。",
+      "tts": {
+        "text": "絶え間ない戦闘が船と乗組員に犠牲を強いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "清朝政府の海上封鎖が沿岸の補給線を断ちました。",
+      "text_markdown": "清朝政府の海上封鎖が沿岸の補給線を断ちました。",
+      "tts": {
+        "text": "清朝政府の海上封鎖が沿岸の補給線を断ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "艦隊船長間の内部対立も激化していました。",
+      "text_markdown": "艦隊船長間の内部対立も激化していました。",
+      "tts": {
+        "text": "艦隊船長間の内部対立も激化していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も危険な対立はチャン・バオとグオ・ポーダイという船長の間にありました。",
+      "text_markdown": "最も危険な対立はチャン・バオとグオ・ポーダイという船長の間にありました。",
+      "tts": {
+        "text": "最も危険な対立はチャン・バオとグオ・ポーダイという船長の間にありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "グオ・ポーダイは連合で二番目に大きい黒旗艦隊を率いていました。",
+      "text_markdown": "グオ・ポーダイは連合で二番目に大きい黒旗艦隊を率いていました。",
+      "tts": {
+        "text": "グオ・ポーダイは連合で二番目に大きい黒旗艦隊を率いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "チャン・バオから、ひいては鄭一嫂から命令を受けることに不満を募らせていました。",
+      "text_markdown": "チャン・バオから、ひいては鄭一嫂から命令を受けることに不満を募らせていました。",
+      "tts": {
+        "text": "チャン・バオから、ひいては鄭一嫂から命令を受けることに不満を募らせていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "両者の緊張は連合を二つに引き裂く恐れがありました。",
+      "text_markdown": "両者の緊張は連合を二つに引き裂く恐れがありました。",
+      "tts": {
+        "text": "両者の緊張は連合を二つに引き裂く恐れがありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百十年初頭、グオ・ポーダイは運命的な決断を下しました。",
+      "text_markdown": "千八百十年初頭、グオ・ポーダイは運命的な決断を下しました。",
+      "tts": {
+        "text": "千八百十年初頭、グオ・ポーダイは運命的な決断を下しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "清朝政府との秘密交渉を始めたのです。",
+      "text_markdown": "清朝政府との秘密交渉を始めたのです。",
+      "tts": {
+        "text": "清朝政府との秘密交渉を始めたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "政府は彼に完全な恩赦、軍の役職、そして金銭的報酬を提示しました。",
+      "text_markdown": "政府は彼に完全な恩赦、軍の役職、そして金銭的報酬を提示しました。",
+      "tts": {
+        "text": "政府は彼に完全な恩赦、軍の役職、そして金銭的報酬を提示しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その見返りに、かつての同盟者を裏切ることを求められました。",
+      "text_markdown": "その見返りに、かつての同盟者を裏切ることを求められました。",
+      "tts": {
+        "text": "その見返りに、かつての同盟者を裏切ることを求められました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グオ・ポーダイはこの取引を受け入れ、艦隊全体を政府に引き渡しました。",
+      "text_markdown": "グオ・ポーダイはこの取引を受け入れ、艦隊全体を政府に引き渡しました。",
+      "tts": {
+        "text": "グオ・ポーダイはこの取引を受け入れ、艦隊全体を政府に引き渡しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一夜にして、連合は数百隻の船と数千人の戦力を失いました。",
+      "text_markdown": "一夜にして、連合は数百隻の船と数千人の戦力を失いました。",
+      "tts": {
+        "text": "一夜にして、連合は数百隻の船と数千人の戦力を失いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "さらに悪いことに、グオ・ポーダイは政府軍の司令官として、海賊の戦術に関する知識を彼らに対して使い始めました。",
+      "text_markdown": "さらに悪いことに、グオ・ポーダイは政府軍の司令官として、海賊の戦術に関する知識を彼らに対して使い始めました。",
+      "tts": {
+        "text": "さらに悪いことに、グオ・ポーダイは政府軍の司令官として、海賊の戦術に関する知識を彼らに対して使い始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "力の均衡は劇的に変化しました。",
+      "text_markdown": "力の均衡は劇的に変化しました。",
+      "tts": {
+        "text": "力の均衡は劇的に変化しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂は持ち前の明晰さで新たな状況を見極めました。",
+      "text_markdown": "鄭一嫂は持ち前の明晰さで新たな状況を見極めました。",
+      "tts": {
+        "text": "鄭一嫂は持ち前の明晰さで新たな状況を見極めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "連合は弱体化しましたが、壊滅はしていませんでした。",
+      "text_markdown": "連合は弱体化しましたが、壊滅はしていませんでした。",
+      "tts": {
+        "text": "連合は弱体化しましたが、壊滅はしていませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紅旗艦隊と数隻の同盟艦隊はまだ彼女の指揮下にありました。",
+      "text_markdown": "紅旗艦隊と数隻の同盟艦隊はまだ彼女の指揮下にありました。",
+      "tts": {
+        "text": "紅旗艦隊と数隻の同盟艦隊はまだ彼女の指揮下にありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし潮目は変わっており、彼女はそれを承知していました。",
+      "text_markdown": "しかし潮目は変わっており、彼女はそれを承知していました。",
+      "tts": {
+        "text": "しかし潮目は変わっており、彼女はそれを承知していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女は戦略的天才を示す決断を下しました。",
+      "text_markdown": "彼女は戦略的天才を示す決断を下しました。",
+      "tts": {
+        "text": "彼女は戦略的天才を示す決断を下しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "死ぬまで戦うのではなく、残された力を背景に交渉することを選びました。",
+      "text_markdown": "死ぬまで戦うのではなく、残された力を背景に交渉することを選びました。",
+      "tts": {
+        "text": "死ぬまで戦うのではなく、残された力を背景に交渉することを選びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "仲介者を通じて清朝政府との交渉を開始しました。",
+      "text_markdown": "仲介者を通じて清朝政府との交渉を開始しました。",
+      "tts": {
+        "text": "仲介者を通じて清朝政府との交渉を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の要求は大胆かつ具体的でした。",
+      "text_markdown": "彼女の要求は大胆かつ具体的でした。",
+      "tts": {
+        "text": "彼女の要求は大胆かつ具体的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "自分自身とチャン・バオの完全な恩赦を要求しました。",
+      "text_markdown": "自分自身とチャン・バオの完全な恩赦を要求しました。",
+      "tts": {
+        "text": "自分自身とチャン・バオの完全な恩赦を要求しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちの個人的な財産を保持する権利を要求しました。",
+      "text_markdown": "海賊たちの個人的な財産を保持する権利を要求しました。",
+      "tts": {
+        "text": "海賊たちの個人的な財産を保持する権利を要求しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "チャン・バオに帝国海軍の役職を与えることを要求しました。",
+      "text_markdown": "チャン・バオに帝国海軍の役職を与えることを要求しました。",
+      "tts": {
+        "text": "チャン・バオに帝国海軍の役職を与えることを要求しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして投降した一般の海賊が罰を受けないことも要求しました。",
+      "text_markdown": "そして投降した一般の海賊が罰を受けないことも要求しました。",
+      "tts": {
+        "text": "そして投降した一般の海賊が罰を受けないことも要求しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "清朝政府はこれほど寛大な条件を受け入れることに難色を示しました。",
+      "text_markdown": "清朝政府はこれほど寛大な条件を受け入れることに難色を示しました。",
+      "tts": {
+        "text": "清朝政府はこれほど寛大な条件を受け入れることに難色を示しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊に恩赦を与えることは帝国の恥辱と感じられました。",
+      "text_markdown": "海賊に恩赦を与えることは帝国の恥辱と感じられました。",
+      "tts": {
+        "text": "海賊に恩赦を与えることは帝国の恥辱と感じられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし武力を試みて失敗していました。",
+      "text_markdown": "しかし武力を試みて失敗していました。",
+      "tts": {
+        "text": "しかし武力を試みて失敗していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "交渉だけが残された選択肢でした。",
+      "text_markdown": "交渉だけが残された選択肢でした。",
+      "tts": {
+        "text": "交渉だけが残された選択肢でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百十年四月、合意が成立しました。",
+      "text_markdown": "千八百十年四月、合意が成立しました。",
+      "tts": {
+        "text": "千八百十年四月、合意が成立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鄭一嫂は艦隊を政府に引き渡しました。",
+      "text_markdown": "鄭一嫂は艦隊を政府に引き渡しました。",
+      "tts": {
+        "text": "鄭一嫂は艦隊を政府に引き渡しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その代わりに、要求したすべてを手に入れました。",
+      "text_markdown": "その代わりに、要求したすべてを手に入れました。",
+      "tts": {
+        "text": "その代わりに、要求したすべてを手に入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "チャン・バオは清朝海軍の尉官に任命され、二十隻の指揮権を与えられました。",
+      "text_markdown": "チャン・バオは清朝海軍の尉官に任命され、二十隻の指揮権を与えられました。",
+      "tts": {
+        "text": "チャン・バオは清朝海軍の尉官に任命され、二十隻の指揮権を与えられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちは船の一部を保持することを許されました。",
+      "text_markdown": "海賊たちは船の一部を保持することを許されました。",
+      "tts": {
+        "text": "海賊たちは船の一部を保持することを許されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "民間の生活に戻りたい者は自由にそうできました。",
+      "text_markdown": "民間の生活に戻りたい者は自由にそうできました。",
+      "tts": {
+        "text": "民間の生活に戻りたい者は自由にそうできました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帝国海軍に加わりたい者は歓迎されました。",
+      "text_markdown": "帝国海軍に加わりたい者は歓迎されました。",
+      "tts": {
+        "text": "帝国海軍に加わりたい者は歓迎されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊史上、最も有利な降伏でした。",
+      "text_markdown": "海賊史上、最も有利な降伏でした。",
+      "tts": {
+        "text": "海賊史上、最も有利な降伏でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂は裕福な女性として海から引退しました。",
+      "text_markdown": "鄭一嫂は裕福な女性として海から引退しました。",
+      "tts": {
+        "text": "鄭一嫂は裕福な女性として海から引退しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "チャン・バオと共に広州に居を構えました。",
+      "text_markdown": "チャン・バオと共に広州に居を構えました。",
+      "tts": {
+        "text": "チャン・バオと共に広州に居を構えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二人は賭博場を開き、やがて市内で最も利益の上がる店のひとつとなりました。",
+      "text_markdown": "二人は賭博場を開き、やがて市内で最も利益の上がる店のひとつとなりました。",
+      "tts": {
+        "text": "二人は賭博場を開き、やがて市内で最も利益の上がる店のひとつとなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はまた塩の取引に投資し、何年にもわたり安定した収入を得ました。",
+      "text_markdown": "彼女はまた塩の取引に投資し、何年にもわたり安定した収入を得ました。",
+      "tts": {
+        "text": "彼女はまた塩の取引に投資し、何年にもわたり安定した収入を得ました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チャン・バオは帝国海軍で数年間功績を挙げました。",
+      "text_markdown": "チャン・バオは帝国海軍で数年間功績を挙げました。",
+      "tts": {
+        "text": "チャン・バオは帝国海軍で数年間功績を挙げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千八百二十二年、政府に仕えたまま亡くなりました。",
+      "text_markdown": "千八百二十二年、政府に仕えたまま亡くなりました。",
+      "tts": {
+        "text": "千八百二十二年、政府に仕えたまま亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の死は軍の最高儀礼をもって弔われました。",
+      "text_markdown": "彼の死は軍の最高儀礼をもって弔われました。",
+      "tts": {
+        "text": "彼の死は軍の最高儀礼をもって弔われました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂は海賊を退いてから二十年以上生きました。",
+      "text_markdown": "鄭一嫂は海賊を退いてから二十年以上生きました。",
+      "tts": {
+        "text": "鄭一嫂は海賊を退いてから二十年以上生きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "広州で事業を営み、家族を育てました。",
+      "text_markdown": "広州で事業を営み、家族を育てました。",
+      "tts": {
+        "text": "広州で事業を営み、家族を育てました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "千八百四十四年、およそ六十九歳で亡くなりました。",
+      "text_markdown": "千八百四十四年、およそ六十九歳で亡くなりました。",
+      "tts": {
+        "text": "千八百四十四年、およそ六十九歳で亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自らの寝床で、家族に囲まれ、広州社会の尊敬される一員として息を引き取りました。",
+      "text_markdown": "自らの寝床で、家族に囲まれ、広州社会の尊敬される一員として息を引き取りました。",
+      "tts": {
+        "text": "自らの寝床で、家族に囲まれ、広州社会の尊敬される一員として息を引き取りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鄭一嫂の経歴は海賊の歴史において唯一無二です。",
+      "text_markdown": "鄭一嫂の経歴は海賊の歴史において唯一無二です。",
+      "tts": {
+        "text": "鄭一嫂の経歴は海賊の歴史において唯一無二です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "男女を問わず、これほどの規模の戦力を指揮した海賊は他にいません。",
+      "text_markdown": "男女を問わず、これほどの規模の戦力を指揮した海賊は他にいません。",
+      "tts": {
+        "text": "男女を問わず、これほどの規模の戦力を指揮した海賊は他にいません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これほど精巧な法と統治の制度を築いた海賊も他にいません。",
+      "text_markdown": "これほど精巧な法と統治の制度を築いた海賊も他にいません。",
+      "tts": {
+        "text": "これほど精巧な法と統治の制度を築いた海賊も他にいません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そしてこれほど有利な条件で引退交渉を行った海賊も他にいません。",
+      "text_markdown": "そしてこれほど有利な条件で引退交渉を行った海賊も他にいません。",
+      "tts": {
+        "text": "そしてこれほど有利な条件で引退交渉を行った海賊も他にいません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の成功は、歴史における女性の役割に関する多くの先入観に異議を唱えます。",
+      "text_markdown": "彼女の成功は、歴史における女性の役割に関する多くの先入観に異議を唱えます。",
+      "tts": {
+        "text": "彼女の成功は、歴史における女性の役割に関する多くの先入観に異議を唱えます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "女性にほとんど法的権利のない社会で権力の座に上り詰めました。",
+      "text_markdown": "女性にほとんど法的権利のない社会で権力の座に上り詰めました。",
+      "tts": {
+        "text": "女性にほとんど法的権利のない社会で権力の座に上り詰めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "女性を劣等と見なす世界で、数万人の男たちを指揮しました。",
+      "text_markdown": "女性を劣等と見なす世界で、数万人の男たちを指揮しました。",
+      "tts": {
+        "text": "女性を劣等と見なす世界で、数万人の男たちを指揮しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の物語は、能力に性別はないことの証です。",
+      "text_markdown": "彼女の物語は、能力に性別はないことの証です。",
+      "tts": {
+        "text": "彼女の物語は、能力に性別はないことの証です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちは彼女の非凡な成功の理由を議論してきました。",
+      "text_markdown": "歴史家たちは彼女の非凡な成功の理由を議論してきました。",
+      "tts": {
+        "text": "歴史家たちは彼女の非凡な成功の理由を議論してきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "知性、決断力、忠誠心を鼓舞する力といった個人の資質を重視する者もいます。",
+      "text_markdown": "知性、決断力、忠誠心を鼓舞する力といった個人の資質を重視する者もいます。",
+      "tts": {
+        "text": "知性、決断力、忠誠心を鼓舞する力といった個人の資質を重視する者もいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "清朝の衰弱、沿岸部の貧困、南シナ海の地理といった構造的条件を指摘する者もいます。",
+      "text_markdown": "清朝の衰弱、沿岸部の貧困、南シナ海の地理といった構造的条件を指摘する者もいます。",
+      "tts": {
+        "text": "清朝の衰弱、沿岸部の貧困、南シナ海の地理といった構造的条件を指摘する者もいます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真実はほぼ間違いなく、両方の要素を含んでいます。",
+      "text_markdown": "真実はほぼ間違いなく、両方の要素を含んでいます。",
+      "tts": {
+        "text": "真実はほぼ間違いなく、両方の要素を含んでいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "条件がなければ、彼女の才能には舞台がなかったでしょう。",
+      "text_markdown": "条件がなければ、彼女の才能には舞台がなかったでしょう。",
+      "tts": {
+        "text": "条件がなければ、彼女の才能には舞台がなかったでしょう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の才能がなければ、条件は混沌を生むだけだったでしょう。",
+      "text_markdown": "彼女の才能がなければ、条件は混沌を生むだけだったでしょう。",
+      "tts": {
+        "text": "彼女の才能がなければ、条件は混沌を生むだけだったでしょう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は歴史の正しい瞬間に現れた正しい人物でした。",
+      "text_markdown": "彼女は歴史の正しい瞬間に現れた正しい人物でした。",
+      "tts": {
+        "text": "彼女は歴史の正しい瞬間に現れた正しい人物でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の法典は引退後も何十年にもわたり海賊の統治に影響を与えました。",
+      "text_markdown": "彼女の法典は引退後も何十年にもわたり海賊の統治に影響を与えました。",
+      "tts": {
+        "text": "彼女の法典は引退後も何十年にもわたり海賊の統治に影響を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "後の南シナ海の海賊指導者たちも同様の課税と法の制度を採用しました。",
+      "text_markdown": "後の南シナ海の海賊指導者たちも同様の課税と法の制度を採用しました。",
+      "tts": {
+        "text": "後の南シナ海の海賊指導者たちも同様の課税と法の制度を採用しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の手法は、海賊艦隊が国家海軍と同等に組織できることを示しました。",
+      "text_markdown": "彼女の手法は、海賊艦隊が国家海軍と同等に組織できることを示しました。",
+      "tts": {
+        "text": "彼女の手法は、海賊艦隊が国家海軍と同等に組織できることを示しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代において、鄭一嫂は文化的象徴となっています。",
+      "text_markdown": "現代において、鄭一嫂は文化的象徴となっています。",
+      "tts": {
+        "text": "現代において、鄭一嫂は文化的象徴となっています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界中の小説、映画、ビデオゲームに登場しています。",
+      "text_markdown": "世界中の小説、映画、ビデオゲームに登場しています。",
+      "tts": {
+        "text": "世界中の小説、映画、ビデオゲームに登場しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の物語は数十の言語に翻訳されています。",
+      "text_markdown": "彼女の物語は数十の言語に翻訳されています。",
+      "tts": {
+        "text": "彼女の物語は数十の言語に翻訳されています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし彼女の人生については未だ多くが不明です。",
+      "text_markdown": "しかし彼女の人生については未だ多くが不明です。",
+      "tts": {
+        "text": "しかし彼女の人生については未だ多くが不明です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の本名さえ確かなことはわかっていません。",
+      "text_markdown": "彼女の本名さえ確かなことはわかっていません。",
+      "tts": {
+        "text": "彼女の本名さえ確かなことはわかっていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の顔を確認できる画像はひとつも残っていません。",
+      "text_markdown": "彼女の顔を確認できる画像はひとつも残っていません。",
+      "tts": {
+        "text": "彼女の顔を確認できる画像はひとつも残っていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "私たちが知る情報のほとんどは、敵が書いた政府記録から来ています。",
+      "text_markdown": "私たちが知る情報のほとんどは、敵が書いた政府記録から来ています。",
+      "tts": {
+        "text": "私たちが知る情報のほとんどは、敵が書いた政府記録から来ています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "清朝宮廷には彼女の功績を矮小化するあらゆる理由がありました。",
+      "text_markdown": "清朝宮廷には彼女の功績を矮小化するあらゆる理由がありました。",
+      "tts": {
+        "text": "清朝宮廷には彼女の功績を矮小化するあらゆる理由がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの公式記録は彼女の役割を軽視したり、成功をチャン・バオに帰しています。",
+      "text_markdown": "多くの公式記録は彼女の役割を軽視したり、成功をチャン・バオに帰しています。",
+      "tts": {
+        "text": "多くの公式記録は彼女の役割を軽視したり、成功をチャン・バオに帰しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家はこれらの史料が政治的動機で書かれたことを念頭に、慎重に読まなければなりません。",
+      "text_markdown": "歴史家はこれらの史料が政治的動機で書かれたことを念頭に、慎重に読まなければなりません。",
+      "tts": {
+        "text": "歴史家はこれらの史料が政治的動機で書かれたことを念頭に、慎重に読まなければなりません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "記録が隠しきれないのは、彼女の偉業の規模です。",
+      "text_markdown": "記録が隠しきれないのは、彼女の偉業の規模です。",
+      "tts": {
+        "text": "記録が隠しきれないのは、彼女の偉業の規模です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "記録に残る歴史上最大の海賊艦隊を築きました。",
+      "text_markdown": "記録に残る歴史上最大の海賊艦隊を築きました。",
+      "tts": {
+        "text": "記録に残る歴史上最大の海賊艦隊を築きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "清帝国とポルトガル海軍の連合軍を打ち破りました。",
+      "text_markdown": "清帝国とポルトガル海軍の連合軍を打ち破りました。",
+      "tts": {
+        "text": "清帝国とポルトガル海軍の連合軍を打ち破りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "裕福で、自由で、無敗のまま引退しました。",
+      "text_markdown": "裕福で、自由で、無敗のまま引退しました。",
+      "tts": {
+        "text": "裕福で、自由で、無敗のまま引退しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-310",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "海の長い歴史の中で、それを成し遂げた者は他に誰もいません。",
+      "text_markdown": "海の長い歴史の中で、それを成し遂げた者は他に誰もいません。",
+      "tts": {
+        "text": "海の長い歴史の中で、それを成し遂げた者は他に誰もいません。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

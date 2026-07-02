@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "ko",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말",
+      "text_markdown": "독자에게 드리는 말"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 역사상 가장 무시무시한 해적의 실화이다.",
+      "text_markdown": "이것은 역사상 가장 무시무시한 해적의 실화이다.",
+      "tts": {
+        "text": "이것은 역사상 가장 무시무시한 해적의 실화이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 에드워드 티치였지만, 세상은 그를 검은 수염으로 기억한다.",
+      "text_markdown": "그의 이름은 에드워드 티치였지만, 세상은 그를 검은 수염으로 기억한다.",
+      "tts": {
+        "text": "그의 이름은 에드워드 티치였지만, 세상은 그를 검은 수염으로 기억한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 약 2년 동안만 바다를 공포에 떨게 했지만, 그의 전설은 300년 이상 이어져 왔다.",
+      "text_markdown": "그는 약 2년 동안만 바다를 공포에 떨게 했지만, 그의 전설은 300년 이상 이어져 왔다.",
+      "tts": {
+        "text": "그는 약 이 년 동안만 바다를 공포에 떨게 했지만, 그의 전설은 삼백 년 이상 이어져 왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염은 영화에서 보는 해적들과 달랐다.",
+      "text_markdown": "검은 수염은 영화에서 보는 해적들과 달랐다.",
+      "tts": {
+        "text": "검은 수염은 영화에서 보는 해적들과 달랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 더 끔찍했다.",
+      "text_markdown": "그는 더 끔찍했다.",
+      "tts": {
+        "text": "그는 더 끔찍했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 거대한 검은 수염에 느린 연소 심지를 엮어 넣고 전투 전에 불을 붙였다.",
+      "text_markdown": "그는 거대한 검은 수염에 느린 연소 심지를 엮어 넣고 전투 전에 불을 붙였다.",
+      "tts": {
+        "text": "그는 거대한 검은 수염에 느린 연소 심지를 엮어 넣고 전투 전에 불을 붙였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "연기가 그의 얼굴 주위를 감싸며, 바다에서 솟아오르는 악마처럼 보이게 했다.",
+      "text_markdown": "연기가 그의 얼굴 주위를 감싸며, 바다에서 솟아오르는 악마처럼 보이게 했다.",
+      "tts": {
+        "text": "연기가 그의 얼굴 주위를 감싸며, 바다에서 솟아오르는 악마처럼 보이게 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 십팔 세기 초의 항구와 항로로 여러분을 안내할 것이다.",
+      "text_markdown": "이 책은 십팔 세기 초의 항구와 항로로 여러분을 안내할 것이다.",
+      "tts": {
+        "text": "이 책은 십팔 세기 초의 항구와 항로로 여러분을 안내할 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "평범한 선원들이 어떻게 무법자가 되었는지, 그리고 제국들이 어떻게 그들을 막으려 했는지 보게 될 것이다.",
+      "text_markdown": "평범한 선원들이 어떻게 무법자가 되었는지, 그리고 제국들이 어떻게 그들을 막으려 했는지 보게 될 것이다.",
+      "tts": {
+        "text": "평범한 선원들이 어떻게 무법자가 되었는지, 그리고 제국들이 어떻게 그들을 막으려 했는지 보게 될 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 책의 모든 내용은 역사 기록, 법원 문서, 그리고 목격자 증언에 기반하고 있다.",
+      "text_markdown": "이 책의 모든 내용은 역사 기록, 법원 문서, 그리고 목격자 증언에 기반하고 있다.",
+      "tts": {
+        "text": "이 책의 모든 내용은 역사 기록, 법원 문서, 그리고 목격자 증언에 기반하고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사실이 불확실할 때는 그것을 분명히 밝힐 것이다.",
+      "text_markdown": "사실이 불확실할 때는 그것을 분명히 밝힐 것이다.",
+      "tts": {
+        "text": "사실이 불확실할 때는 그것을 분명히 밝힐 것이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적을 만든 세계",
+      "text_markdown": "해적을 만든 세계"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십칠 세기 후반은 제국과 해상 무역의 시대였다.",
+      "text_markdown": "십칠 세기 후반은 제국과 해상 무역의 시대였다.",
+      "tts": {
+        "text": "십칠 세기 후반은 제국과 해상 무역의 시대였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드, 스페인, 프랑스, 네덜란드 모두 아메리카 대륙의 식민지를 놓고 경쟁했다.",
+      "text_markdown": "잉글랜드, 스페인, 프랑스, 네덜란드 모두 아메리카 대륙의 식민지를 놓고 경쟁했다.",
+      "tts": {
+        "text": "잉글랜드, 스페인, 프랑스, 네덜란드 모두 아메리카 대륙의 식민지를 놓고 경쟁했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 상선은 설탕, 담배, 면화, 그리고 노예가 된 사람들을 대서양을 가로질러 운반했다.",
+      "text_markdown": "그들의 상선은 설탕, 담배, 면화, 그리고 노예가 된 사람들을 대서양을 가로질러 운반했다.",
+      "tts": {
+        "text": "그들의 상선은 설탕, 담배, 면화, 그리고 노예가 된 사람들을 대서양을 가로질러 운반했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바다에서 귀중한 화물이 이동하는 곳이면 어디든 해적이 따라다녔다.",
+      "text_markdown": "바다에서 귀중한 화물이 이동하는 곳이면 어디든 해적이 따라다녔다.",
+      "tts": {
+        "text": "바다에서 귀중한 화물이 이동하는 곳이면 어디든 해적이 따라다녔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "카리브해는 이 세계 무역의 교차로였다.",
+      "text_markdown": "카리브해는 이 세계 무역의 교차로였다.",
+      "tts": {
+        "text": "카리브해는 이 세계 무역의 교차로였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "플로리다와 남아메리카 사이의 따뜻한 청록색 바다에 수백 개의 섬이 흩어져 있었다.",
+      "text_markdown": "플로리다와 남아메리카 사이의 따뜻한 청록색 바다에 수백 개의 섬이 흩어져 있었다.",
+      "tts": {
+        "text": "플로리다와 남아메리카 사이의 따뜻한 청록색 바다에 수백 개의 섬이 흩어져 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 섬들 중 많은 곳이 설탕 농장으로 사용하던 유럽 강국들의 소유였다.",
+      "text_markdown": "이 섬들 중 많은 곳이 설탕 농장으로 사용하던 유럽 강국들의 소유였다.",
+      "tts": {
+        "text": "이 섬들 중 많은 곳이 설탕 농장으로 사용하던 유럽 강국들의 소유였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "설탕과 럼주를 가득 실은 배들이 매주 카리브해 항구에서 유럽으로 출항했다.",
+      "text_markdown": "설탕과 럼주를 가득 실은 배들이 매주 카리브해 항구에서 유럽으로 출항했다.",
+      "tts": {
+        "text": "설탕과 럼주를 가득 실은 배들이 매주 카리브해 항구에서 유럽으로 출항했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드와 스페인은 한 세기 이상 경쟁 관계였다.",
+      "text_markdown": "잉글랜드와 스페인은 한 세기 이상 경쟁 관계였다.",
+      "tts": {
+        "text": "잉글랜드와 스페인은 한 세기 이상 경쟁 관계였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프랜시스 드레이크 경과 같은 영국의 사략선장들은 십오 세기 후반에 스페인 보물 함대를 약탈했다.",
+      "text_markdown": "프랜시스 드레이크 경과 같은 영국의 사략선장들은 십오 세기 후반에 스페인 보물 함대를 약탈했다.",
+      "tts": {
+        "text": "프랜시스 드레이크 경과 같은 영국의 사략선장들은 십오 세기 후반에 스페인 보물 함대를 약탈했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사략선장은 정부로부터 적의 선박을 공격할 권한을 부여받은 민간 선장이었다.",
+      "text_markdown": "사략선장은 정부로부터 적의 선박을 공격할 권한을 부여받은 민간 선장이었다.",
+      "tts": {
+        "text": "사략선장은 정부로부터 적의 선박을 공격할 권한을 부여받은 민간 선장이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사략선장들은 그들의 공격을 합법화하는 나포면허장이라는 문서를 지니고 있었다.",
+      "text_markdown": "사략선장들은 그들의 공격을 합법화하는 나포면허장이라는 문서를 지니고 있었다.",
+      "tts": {
+        "text": "사략선장들은 그들의 공격을 합법화하는 나포면허장이라는 문서를 지니고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 여왕의 전쟁은 1702년에 발발하여 1713년까지 계속되었다.",
+      "text_markdown": "앤 여왕의 전쟁은 1702년에 발발하여 1713년까지 계속되었다.",
+      "tts": {
+        "text": "앤 여왕의 전쟁은 천칠백이 년에 발발하여 천칠백십삼 년까지 계속되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 스페인 왕위 계승 전쟁이라 불리는 더 큰 유럽 분쟁의 일부였다.",
+      "text_markdown": "이것은 스페인 왕위 계승 전쟁이라 불리는 더 큰 유럽 분쟁의 일부였다.",
+      "tts": {
+        "text": "이것은 스페인 왕위 계승 전쟁이라 불리는 더 큰 유럽 분쟁의 일부였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잉글랜드와 동맹국들은 무역로와 영토의 지배권을 놓고 프랑스 및 스페인과 싸웠다.",
+      "text_markdown": "잉글랜드와 동맹국들은 무역로와 영토의 지배권을 놓고 프랑스 및 스페인과 싸웠다.",
+      "tts": {
+        "text": "잉글랜드와 동맹국들은 무역로와 영토의 지배권을 놓고 프랑스 및 스페인과 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전쟁 중 수천 명의 선원들이 사략선에서 복무하며 이익을 위해 적 상선을 약탈했다.",
+      "text_markdown": "전쟁 중 수천 명의 선원들이 사략선에서 복무하며 이익을 위해 적 상선을 약탈했다.",
+      "tts": {
+        "text": "전쟁 중 수천 명의 선원들이 사략선에서 복무하며 이익을 위해 적 상선을 약탈했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1713년 위트레흐트 조약으로 전쟁이 끝나자 모든 것이 변했다.",
+      "text_markdown": "1713년 위트레흐트 조약으로 전쟁이 끝나자 모든 것이 변했다.",
+      "tts": {
+        "text": "천칠백십삼 년 위트레흐트 조약으로 전쟁이 끝나자 모든 것이 변했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사략 위임장은 하룻밤 사이에 취소되었다.",
+      "text_markdown": "사략 위임장은 하룻밤 사이에 취소되었다.",
+      "tts": {
+        "text": "사략 위임장은 하룻밤 사이에 취소되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수천 명의 훈련된 선원과 전투원들이 갑자기 합법적인 일자리를 잃었다.",
+      "text_markdown": "수천 명의 훈련된 선원과 전투원들이 갑자기 합법적인 일자리를 잃었다.",
+      "tts": {
+        "text": "수천 명의 훈련된 선원과 전투원들이 갑자기 합법적인 일자리를 잃었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들 중 많은 이들은 입고 있는 옷과 바다에 대한 지식 외에는 아무것도 가진 것이 없었다.",
+      "text_markdown": "그들 중 많은 이들은 입고 있는 옷과 바다에 대한 지식 외에는 아무것도 가진 것이 없었다.",
+      "tts": {
+        "text": "그들 중 많은 이들은 입고 있는 옷과 바다에 대한 지식 외에는 아무것도 가진 것이 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시대에 평범한 선원으로 사는 것은 잔인했다.",
+      "text_markdown": "이 시대에 평범한 선원으로 사는 것은 잔인했다.",
+      "tts": {
+        "text": "이 시대에 평범한 선원으로 사는 것은 잔인했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상선 선장들은 폭군처럼 배를 지배했다.",
+      "text_markdown": "상선 선장들은 폭군처럼 배를 지배했다.",
+      "tts": {
+        "text": "상선 선장들은 폭군처럼 배를 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들은 사소한 위반으로 구타당했고, 때로는 전혀 급여를 받지 못했다.",
+      "text_markdown": "선원들은 사소한 위반으로 구타당했고, 때로는 전혀 급여를 받지 못했다.",
+      "tts": {
+        "text": "선원들은 사소한 위반으로 구타당했고, 때로는 전혀 급여를 받지 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "평균적인 선원은 한 달에 약 1파운드를 벌었는데, 육지에서 생존하기에 겨우 충분한 액수였다.",
+      "text_markdown": "평균적인 선원은 한 달에 약 1파운드를 벌었는데, 육지에서 생존하기에 겨우 충분한 액수였다.",
+      "tts": {
+        "text": "평균적인 선원은 한 달에 약 일 파운드를 벌었는데, 육지에서 생존하기에 겨우 충분한 액수였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해군 복무는 여러 면에서 더 나빴다.",
+      "text_markdown": "해군 복무는 여러 면에서 더 나빴다.",
+      "tts": {
+        "text": "해군 복무는 여러 면에서 더 나빴다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 해군은 강제 징집대를 사용하여 거리에서 남자들을 납치해 군함에 태웠다.",
+      "text_markdown": "영국 해군은 강제 징집대를 사용하여 거리에서 남자들을 납치해 군함에 태웠다.",
+      "tts": {
+        "text": "영국 해군은 강제 징집대를 사용하여 거리에서 남자들을 납치해 군함에 태웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "질병은 전투보다 더 많은 선원의 목숨을 앗아갔다.",
+      "text_markdown": "질병은 전투보다 더 많은 선원의 목숨을 앗아갔다.",
+      "tts": {
+        "text": "질병은 전투보다 더 많은 선원의 목숨을 앗아갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "괴혈병, 이질, 열대열이 비좁은 하층 갑판을 무시무시한 속도로 휩쓸었다.",
+      "text_markdown": "괴혈병, 이질, 열대열이 비좁은 하층 갑판을 무시무시한 속도로 휩쓸었다.",
+      "tts": {
+        "text": "괴혈병, 이질, 열대열이 비좁은 하층 갑판을 무시무시한 속도로 휩쓸었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 행위는 많은 선원들이 거부할 수 없다고 느끼는 대안을 제시했다.",
+      "text_markdown": "해적 행위는 많은 선원들이 거부할 수 없다고 느끼는 대안을 제시했다.",
+      "tts": {
+        "text": "해적 행위는 많은 선원들이 거부할 수 없다고 느끼는 대안을 제시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 자신들의 선장을 선출하고 주요 결정에 투표했다.",
+      "text_markdown": "해적들은 자신들의 선장을 선출하고 주요 결정에 투표했다.",
+      "tts": {
+        "text": "해적들은 자신들의 선장을 선출하고 주요 결정에 투표했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전리품은 상선이나 해군 함정보다 훨씬 공평하게 분배되었다.",
+      "text_markdown": "전리품은 상선이나 해군 함정보다 훨씬 공평하게 분배되었다.",
+      "tts": {
+        "text": "전리품은 상선이나 해군 함정보다 훨씬 공평하게 분배되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "평범한 해적은 한 번의 약탈로 상선 선원이 몇 년 동안 버는 것을 벌 수 있었다.",
+      "text_markdown": "평범한 해적은 한 번의 약탈로 상선 선원이 몇 년 동안 버는 것을 벌 수 있었다.",
+      "tts": {
+        "text": "평범한 해적은 한 번의 약탈로 상선 선원이 몇 년 동안 버는 것을 벌 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바하마의 뉴프로비던스 섬이 해적 활동의 비공식 수도가 되었다.",
+      "text_markdown": "바하마의 뉴프로비던스 섬이 해적 활동의 비공식 수도가 되었다.",
+      "tts": {
+        "text": "바하마의 뉴프로비던스 섬이 해적 활동의 비공식 수도가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "나소의 주요 항구는 수백 척의 배를 수용할 수 있었다.",
+      "text_markdown": "나소의 주요 항구는 수백 척의 배를 수용할 수 있었다.",
+      "tts": {
+        "text": "나소의 주요 항구는 수백 척의 배를 수용할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 섬에는 강력한 식민 정부도, 방어할 수 있는 요새도 없었다.",
+      "text_markdown": "이 섬에는 강력한 식민 정부도, 방어할 수 있는 요새도 없었다.",
+      "tts": {
+        "text": "이 섬에는 강력한 식민 정부도, 방어할 수 있는 요새도 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "십팔 세기 초, 나소에서는 해적이 선량한 시민보다 수가 많았다.",
+      "text_markdown": "십팔 세기 초, 나소에서는 해적이 선량한 시민보다 수가 많았다.",
+      "tts": {
+        "text": "십팔 세기 초, 나소에서는 해적이 선량한 시민보다 수가 많았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나소는 역사가들이 해적 공화국이라 부르는 곳이 되었다.",
+      "text_markdown": "나소는 역사가들이 해적 공화국이라 부르는 곳이 되었다.",
+      "tts": {
+        "text": "나소는 역사가들이 해적 공화국이라 부르는 곳이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "벤저민 호니골드, 찰스 베인, 캘리코 잭 래컴 같은 해적 선장들이 그곳을 본거지로 삼았다.",
+      "text_markdown": "벤저민 호니골드, 찰스 베인, 캘리코 잭 래컴 같은 해적 선장들이 그곳을 본거지로 삼았다.",
+      "tts": {
+        "text": "벤저민 호니골드, 찰스 베인, 캘리코 잭 래컴 같은 해적 선장들이 그곳을 본거지로 삼았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배들이 끊임없이 도착하며 약탈한 물건을 가져와 거래했다.",
+      "text_markdown": "배들이 끊임없이 도착하며 약탈한 물건을 가져와 거래했다.",
+      "tts": {
+        "text": "배들이 끊임없이 도착하며 약탈한 물건을 가져와 거래했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "선술집과 시장이 해적 경제를 뒷받침하기 위해 생겨났다.",
+      "text_markdown": "선술집과 시장이 해적 경제를 뒷받침하기 위해 생겨났다.",
+      "tts": {
+        "text": "선술집과 시장이 해적 경제를 뒷받침하기 위해 생겨났다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아메리카 해안을 따라 있는 식민지 정부들은 방어가 취약했다.",
+      "text_markdown": "아메리카 해안을 따라 있는 식민지 정부들은 방어가 취약했다.",
+      "tts": {
+        "text": "아메리카 해안을 따라 있는 식민지 정부들은 방어가 취약했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "버지니아, 캐롤라이나, 뉴잉글랜드 식민지는 생존을 위해 무역에 의존했다.",
+      "text_markdown": "버지니아, 캐롤라이나, 뉴잉글랜드 식민지는 생존을 위해 무역에 의존했다.",
+      "tts": {
+        "text": "버지니아, 캐롤라이나, 뉴잉글랜드 식민지는 생존을 위해 무역에 의존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항구는 분주했지만 해군은 규모가 작았다.",
+      "text_markdown": "항구는 분주했지만 해군은 규모가 작았다.",
+      "tts": {
+        "text": "항구는 분주했지만 해군은 규모가 작았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잘 무장한 해적선 한 척이 한 식민지 전체의 상업을 마비시킬 수 있었다.",
+      "text_markdown": "잘 무장한 해적선 한 척이 한 식민지 전체의 상업을 마비시킬 수 있었다.",
+      "tts": {
+        "text": "잘 무장한 해적선 한 척이 한 식민지 전체의 상업을 마비시킬 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 에드워드 티치를 만들어낸 세상이었다.",
+      "text_markdown": "이것이 에드워드 티치를 만들어낸 세상이었다.",
+      "tts": {
+        "text": "이것이 에드워드 티치를 만들어낸 세상이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 폭력적인 기회의 세계였고, 대담한 선원은 부자가 되거나 시도하다 죽을 수 있었다.",
+      "text_markdown": "그것은 폭력적인 기회의 세계였고, 대담한 선원은 부자가 되거나 시도하다 죽을 수 있었다.",
+      "tts": {
+        "text": "그것은 폭력적인 기회의 세계였고, 대담한 선원은 부자가 되거나 시도하다 죽을 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "합법적인 사략과 불법적인 해적 행위 사이의 경계선은 가늘고 끊임없이 변화했다.",
+      "text_markdown": "합법적인 사략과 불법적인 해적 행위 사이의 경계선은 가늘고 끊임없이 변화했다.",
+      "tts": {
+        "text": "합법적인 사략과 불법적인 해적 행위 사이의 경계선은 가늘고 끊임없이 변화했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적을 만든 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "검은 수염은 그 회색 지대를 거의 누구보다도 잘 이용할 것이었다.",
+      "text_markdown": "검은 수염은 그 회색 지대를 거의 누구보다도 잘 이용할 것이었다.",
+      "tts": {
+        "text": "검은 수염은 그 회색 지대를 거의 누구보다도 잘 이용할 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "에드워드 티치의 탄생",
+      "text_markdown": "에드워드 티치의 탄생"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 초기 생애에 대해 확실히 알려진 것은 거의 없다.",
+      "text_markdown": "검은 수염의 초기 생애에 대해 확실히 알려진 것은 거의 없다.",
+      "tts": {
+        "text": "검은 수염의 초기 생애에 대해 확실히 알려진 것은 거의 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 해적들에게 흔한 일로, 해적이 되기 전의 삶은 공식 기록에 남는 경우가 드물었다.",
+      "text_markdown": "이것은 해적들에게 흔한 일로, 해적이 되기 전의 삶은 공식 기록에 남는 경우가 드물었다.",
+      "tts": {
+        "text": "이것은 해적들에게 흔한 일로, 해적이 되기 전의 삶은 공식 기록에 남는 경우가 드물었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사가들은 흩어진 단서와 후대의 기록에서 그의 출신을 조각해야 한다.",
+      "text_markdown": "역사가들은 흩어진 단서와 후대의 기록에서 그의 출신을 조각해야 한다.",
+      "tts": {
+        "text": "역사가들은 흩어진 단서와 후대의 기록에서 그의 출신을 조각해야 한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 널리 받아들여지는 이론은 에드워드 티치가 잉글랜드 브리스톨에서 태어났다는 것이다.",
+      "text_markdown": "가장 널리 받아들여지는 이론은 에드워드 티치가 잉글랜드 브리스톨에서 태어났다는 것이다.",
+      "tts": {
+        "text": "가장 널리 받아들여지는 이론은 에드워드 티치가 잉글랜드 브리스톨에서 태어났다는 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "브리스톨은 십칠 세기 후반 대영 제국에서 가장 위대한 항구 도시 중 하나였다.",
+      "text_markdown": "브리스톨은 십칠 세기 후반 대영 제국에서 가장 위대한 항구 도시 중 하나였다.",
+      "tts": {
+        "text": "브리스톨은 십칠 세기 후반 대영 제국에서 가장 위대한 항구 도시 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배들은 브리스톨에서 아프리카, 카리브해, 아메리카 식민지로 항해했다.",
+      "text_markdown": "배들은 브리스톨에서 아프리카, 카리브해, 아메리카 식민지로 항해했다.",
+      "tts": {
+        "text": "배들은 브리스톨에서 아프리카, 카리브해, 아메리카 식민지로 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "도시의 경제는 대서양 횡단 노예 무역을 포함한 해상 무역 위에 세워져 있었다.",
+      "text_markdown": "도시의 경제는 대서양 횡단 노예 무역을 포함한 해상 무역 위에 세워져 있었다.",
+      "tts": {
+        "text": "도시의 경제는 대서양 횡단 노예 무역을 포함한 해상 무역 위에 세워져 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 티치가 1680년경에 태어난 것으로 추정하지만, 출생 기록은 발견되지 않았다.",
+      "text_markdown": "역사가들은 티치가 1680년경에 태어난 것으로 추정하지만, 출생 기록은 발견되지 않았다.",
+      "tts": {
+        "text": "역사가들은 티치가 천육백팔십 년경에 태어난 것으로 추정하지만, 출생 기록은 발견되지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 성은 여러 기록에서 티치, 새치, 색, 태치로 나타난다.",
+      "text_markdown": "그의 성은 여러 기록에서 티치, 새치, 색, 태치로 나타난다.",
+      "tts": {
+        "text": "그의 성은 여러 기록에서 티치, 새치, 색, 태치로 나타난다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 시대에는 철자가 표준화되지 않았고, 이름은 종종 발음대로 쓰였다.",
+      "text_markdown": "이 시대에는 철자가 표준화되지 않았고, 이름은 종종 발음대로 쓰였다.",
+      "tts": {
+        "text": "이 시대에는 철자가 표준화되지 않았고, 이름은 종종 발음대로 쓰였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 증거는 티치가 존경받는 가문 출신임을 시사한다.",
+      "text_markdown": "일부 증거는 티치가 존경받는 가문 출신임을 시사한다.",
+      "tts": {
+        "text": "일부 증거는 티치가 존경받는 가문 출신임을 시사한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 읽고 쓸 줄 알았는데, 이는 당시 일반 선원에게는 드문 일이었다.",
+      "text_markdown": "그는 읽고 쓸 줄 알았는데, 이는 당시 일반 선원에게는 드문 일이었다.",
+      "tts": {
+        "text": "그는 읽고 쓸 줄 알았는데, 이는 당시 일반 선원에게는 드문 일이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그가 쓴 편지가 역사 기록 보관소에 남아 있으며, 깔끔하고 자신감 있는 필체를 보여준다.",
+      "text_markdown": "그가 쓴 편지가 역사 기록 보관소에 남아 있으며, 깔끔하고 자신감 있는 필체를 보여준다.",
+      "tts": {
+        "text": "그가 쓴 편지가 역사 기록 보관소에 남아 있으며, 깔끔하고 자신감 있는 필체를 보여준다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "문해력은 적어도 약간의 정규 교육을 받았음을 시사하며, 아마도 브리스톨의 자선 학교 중 하나였을 것이다.",
+      "text_markdown": "문해력은 적어도 약간의 정규 교육을 받았음을 시사하며, 아마도 브리스톨의 자선 학교 중 하나였을 것이다.",
+      "tts": {
+        "text": "문해력은 적어도 약간의 정규 교육을 받았음을 시사하며, 아마도 브리스톨의 자선 학교 중 하나였을 것이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "티치는 거의 확실하게 젊은 나이에 바다로 나갔다.",
+      "text_markdown": "티치는 거의 확실하게 젊은 나이에 바다로 나갔다.",
+      "tts": {
+        "text": "티치는 거의 확실하게 젊은 나이에 바다로 나갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "브리스톨에서 바다는 취업을 위한 가장 분명한 길이었다.",
+      "text_markdown": "브리스톨에서 바다는 취업을 위한 가장 분명한 길이었다.",
+      "tts": {
+        "text": "브리스톨에서 바다는 취업을 위한 가장 분명한 길이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "열두 살밖에 되지 않은 소년들이 상선에서 선실 소년이나 견습 선원으로 일했다.",
+      "text_markdown": "열두 살밖에 되지 않은 소년들이 상선에서 선실 소년이나 견습 선원으로 일했다.",
+      "tts": {
+        "text": "열두 살밖에 되지 않은 소년들이 상선에서 선실 소년이나 견습 선원으로 일했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일은 위험했지만, 모험과 세상을 볼 기회를 제공했다.",
+      "text_markdown": "일은 위험했지만, 모험과 세상을 볼 기회를 제공했다.",
+      "tts": {
+        "text": "일은 위험했지만, 모험과 세상을 볼 기회를 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 여왕의 전쟁이 시작되자, 티치는 아마도 사략선원으로 입대했을 것이다.",
+      "text_markdown": "앤 여왕의 전쟁이 시작되자, 티치는 아마도 사략선원으로 입대했을 것이다.",
+      "tts": {
+        "text": "앤 여왕의 전쟁이 시작되자, 티치는 아마도 사략선원으로 입대했을 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "브리스톨은 프랑스와 스페인 선박에 대한 사략 작전의 주요 기지였다.",
+      "text_markdown": "브리스톨은 프랑스와 스페인 선박에 대한 사략 작전의 주요 기지였다.",
+      "tts": {
+        "text": "브리스톨은 프랑스와 스페인 선박에 대한 사략 작전의 주요 기지였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항해 경험이 있는 젊은이는 열렬히 모집되었을 것이다.",
+      "text_markdown": "항해 경험이 있는 젊은이는 열렬히 모집되었을 것이다.",
+      "tts": {
+        "text": "항해 경험이 있는 젊은이는 열렬히 모집되었을 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사략 활동은 티치에게 나중에 그를 유명하게 만든 해전 기술을 가르쳤다.",
+      "text_markdown": "사략 활동은 티치에게 나중에 그를 유명하게 만든 해전 기술을 가르쳤다.",
+      "tts": {
+        "text": "사략 활동은 티치에게 나중에 그를 유명하게 만든 해전 기술을 가르쳤다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁은 티치에게 선대선 전투의 수년간의 경험을 주었다.",
+      "text_markdown": "전쟁은 티치에게 선대선 전투의 수년간의 경험을 주었다.",
+      "tts": {
+        "text": "전쟁은 티치에게 선대선 전투의 수년간의 경험을 주었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 대포를 다루고, 적선에 올라타고, 포화 속에서 선원을 지휘하는 법을 배웠다.",
+      "text_markdown": "그는 대포를 다루고, 적선에 올라타고, 포화 속에서 선원을 지휘하는 법을 배웠다.",
+      "tts": {
+        "text": "그는 대포를 다루고, 적선에 올라타고, 포화 속에서 선원을 지휘하는 법을 배웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또한 카리브해의 지리와 상선 항로의 패턴도 배웠다.",
+      "text_markdown": "또한 카리브해의 지리와 상선 항로의 패턴도 배웠다.",
+      "tts": {
+        "text": "또한 카리브해의 지리와 상선 항로의 패턴도 배웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 지식은 미래의 해적에게 매우 귀중했다.",
+      "text_markdown": "이 지식은 미래의 해적에게 매우 귀중했다.",
+      "tts": {
+        "text": "이 지식은 미래의 해적에게 매우 귀중했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1713년 전쟁이 끝났을 때, 티치는 수천 명의 다른 선원들과 같은 처지에 놓였다.",
+      "text_markdown": "1713년 전쟁이 끝났을 때, 티치는 수천 명의 다른 선원들과 같은 처지에 놓였다.",
+      "tts": {
+        "text": "천칠백십삼 년 전쟁이 끝났을 때, 티치는 수천 명의 다른 선원들과 같은 처지에 놓였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기술과 경험은 있었지만 그것을 사용할 합법적인 방법이 없었다.",
+      "text_markdown": "기술과 경험은 있었지만 그것을 사용할 합법적인 방법이 없었다.",
+      "tts": {
+        "text": "기술과 경험은 있었지만 그것을 사용할 합법적인 방법이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "평시의 영국 해군은 축소되고 있었고, 상선도 고용하지 않았다.",
+      "text_markdown": "평시의 영국 해군은 축소되고 있었고, 상선도 고용하지 않았다.",
+      "tts": {
+        "text": "평시의 영국 해군은 축소되고 있었고, 상선도 고용하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그와 같은 사람들에게 해적으로의 길은 거의 불가피했다.",
+      "text_markdown": "그와 같은 사람들에게 해적으로의 길은 거의 불가피했다.",
+      "tts": {
+        "text": "그와 같은 사람들에게 해적으로의 길은 거의 불가피했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "티치는 바하마의 뉴프로비던스 섬으로 향했다.",
+      "text_markdown": "티치는 바하마의 뉴프로비던스 섬으로 향했다.",
+      "tts": {
+        "text": "티치는 바하마의 뉴프로비던스 섬으로 향했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그곳에서 그는 그 시대 가장 성공한 해적 중 한 명인 벤저민 호니골드 선장의 선원이 되었다.",
+      "text_markdown": "그곳에서 그는 그 시대 가장 성공한 해적 중 한 명인 벤저민 호니골드 선장의 선원이 되었다.",
+      "tts": {
+        "text": "그곳에서 그는 그 시대 가장 성공한 해적 중 한 명인 벤저민 호니골드 선장의 선원이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "호니골드는 전후에 해적으로 전향한 전직 사략선장이었다.",
+      "text_markdown": "호니골드는 전후에 해적으로 전향한 전직 사략선장이었다.",
+      "tts": {
+        "text": "호니골드는 전후에 해적으로 전향한 전직 사략선장이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 나소 항구를 기반으로 소규모 함대를 지휘했다.",
+      "text_markdown": "그는 나소 항구를 기반으로 소규모 함대를 지휘했다.",
+      "tts": {
+        "text": "그는 나소 항구를 기반으로 소규모 함대를 지휘했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "호니골드는 빠르게 티치의 능력을 알아보았다.",
+      "text_markdown": "호니골드는 빠르게 티치의 능력을 알아보았다.",
+      "tts": {
+        "text": "호니골드는 빠르게 티치의 능력을 알아보았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "티치는 체격이 위압적이었으며, 대부분의 남자가 훨씬 작았던 시대에 육 피트를 훌쩍 넘는 장신이었다.",
+      "text_markdown": "티치는 체격이 위압적이었으며, 대부분의 남자가 훨씬 작았던 시대에 육 피트를 훌쩍 넘는 장신이었다.",
+      "tts": {
+        "text": "티치는 체격이 위압적이었으며, 대부분의 남자가 훨씬 작았던 시대에 육 피트를 훌쩍 넘는 장신이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전투에서 용감했고, 다른 사람들을 지휘하는 타고난 재능이 있었다.",
+      "text_markdown": "전투에서 용감했고, 다른 사람들을 지휘하는 타고난 재능이 있었다.",
+      "tts": {
+        "text": "전투에서 용감했고, 다른 사람들을 지휘하는 타고난 재능이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "호니골드는 티치에게 나포한 슬루프선의 지휘권을 주었다.",
+      "text_markdown": "호니골드는 티치에게 나포한 슬루프선의 지휘권을 주었다.",
+      "tts": {
+        "text": "호니골드는 티치에게 나포한 슬루프선의 지휘권을 주었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717년 말, 티치와 호니골드는 라 콩코르드라는 대형 프랑스 상선을 나포했다.",
+      "text_markdown": "1717년 말, 티치와 호니골드는 라 콩코르드라는 대형 프랑스 상선을 나포했다.",
+      "tts": {
+        "text": "천칠백십칠 년 말, 티치와 호니골드는 라 콩코르드라는 대형 프랑스 상선을 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라 콩코르드는 노예선으로, 중무장에 귀중한 화물을 싣고 있었다.",
+      "text_markdown": "라 콩코르드는 노예선으로, 중무장에 귀중한 화물을 싣고 있었다.",
+      "tts": {
+        "text": "라 콩코르드는 노예선으로, 중무장에 귀중한 화물을 싣고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "티치는 이 배를 자신의 것으로 삼고 개조하기 시작했다.",
+      "text_markdown": "티치는 이 배를 자신의 것으로 삼고 개조하기 시작했다.",
+      "tts": {
+        "text": "티치는 이 배를 자신의 것으로 삼고 개조하기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 배가 화력으로 가득 찰 때까지 추가 대포를 장착했다.",
+      "text_markdown": "그는 배가 화력으로 가득 찰 때까지 추가 대포를 장착했다.",
+      "tts": {
+        "text": "그는 배가 화력으로 가득 찰 때까지 추가 대포를 장착했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "티치는 새 기함을 퀸 앤의 복수호라고 명명했다.",
+      "text_markdown": "티치는 새 기함을 퀸 앤의 복수호라고 명명했다.",
+      "tts": {
+        "text": "티치는 새 기함을 퀸 앤의 복수호라고 명명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 이름은 의도적인 정치적 선언이었다.",
+      "text_markdown": "그 이름은 의도적인 정치적 선언이었다.",
+      "tts": {
+        "text": "그 이름은 의도적인 정치적 선언이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사략선원들이 합법적으로 복무했던 앤 여왕의 통치를 가리키는 것이었다.",
+      "text_markdown": "사략선원들이 합법적으로 복무했던 앤 여왕의 통치를 가리키는 것이었다.",
+      "tts": {
+        "text": "사략선원들이 합법적으로 복무했던 앤 여왕의 통치를 가리키는 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "티치는 자신의 해적 행위가 왕실의 약속 위반에 대한 복수라고 선언한 것이었다.",
+      "text_markdown": "티치는 자신의 해적 행위가 왕실의 약속 위반에 대한 복수라고 선언한 것이었다.",
+      "tts": {
+        "text": "티치는 자신의 해적 행위가 왕실의 약속 위반에 대한 복수라고 선언한 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "40문의 대포와 300명 이상의 선원을 갖춘 퀸 앤의 복수호는 바다 위에서 가장 강력한 해적선 중 하나였다.",
+      "text_markdown": "40문의 대포와 300명 이상의 선원을 갖춘 퀸 앤의 복수호는 바다 위에서 가장 강력한 해적선 중 하나였다.",
+      "tts": {
+        "text": "사십 문의 대포와 삼백 명 이상의 선원을 갖춘 퀸 앤의 복수호는 바다 위에서 가장 강력한 해적선 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "검은 수염은 더 이상 다른 사람의 권한 아래서 활동하는 하급 해적이 아니었다.",
+      "text_markdown": "검은 수염은 더 이상 다른 사람의 권한 아래서 활동하는 하급 해적이 아니었다.",
+      "tts": {
+        "text": "검은 수염은 더 이상 다른 사람의 권한 아래서 활동하는 하급 해적이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 이제 스스로 무시 못 할 세력이 되었다.",
+      "text_markdown": "그는 이제 스스로 무시 못 할 세력이 되었다.",
+      "tts": {
+        "text": "그는 이제 스스로 무시 못 할 세력이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "에드워드 티치의 탄생",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "검은 수염의 전설이 곧 시작되려 하고 있었다.",
+      "text_markdown": "검은 수염의 전설이 곧 시작되려 하고 있었다.",
+      "tts": {
+        "text": "검은 수염의 전설이 곧 시작되려 하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "대서양의 공포",
+      "text_markdown": "대서양의 공포"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718년 초, 검은 수염은 퀸 앤의 복수호를 타고 카리브해에서 북쪽으로 항해했다.",
+      "text_markdown": "1718년 초, 검은 수염은 퀸 앤의 복수호를 타고 카리브해에서 북쪽으로 항해했다.",
+      "tts": {
+        "text": "천칠백십팔 년 초, 검은 수염은 퀸 앤의 복수호를 타고 카리브해에서 북쪽으로 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 아메리카 식민지 해안을 따른 항로를 향하고 있었다.",
+      "text_markdown": "그는 아메리카 식민지 해안을 따른 항로를 향하고 있었다.",
+      "tts": {
+        "text": "그는 아메리카 식민지 해안을 따른 항로를 향하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 해역은 상선 교통이 풍부하고 방어가 허술했다.",
+      "text_markdown": "이 해역은 상선 교통이 풍부하고 방어가 허술했다.",
+      "tts": {
+        "text": "이 해역은 상선 교통이 풍부하고 방어가 허술했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "검은 수염은 이 취약점을 최대한 이용할 작정이었다.",
+      "text_markdown": "검은 수염은 이 취약점을 최대한 이용할 작정이었다.",
+      "tts": {
+        "text": "검은 수염은 이 취약점을 최대한 이용할 작정이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 전략은 화력만큼이나 공포에 기반했다.",
+      "text_markdown": "검은 수염의 전략은 화력만큼이나 공포에 기반했다.",
+      "tts": {
+        "text": "검은 수염의 전략은 화력만큼이나 공포에 기반했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "겁에 질린 적은 싸우지 않고 항복할 것임을 그는 이해했다.",
+      "text_markdown": "겁에 질린 적은 싸우지 않고 항복할 것임을 그는 이해했다.",
+      "tts": {
+        "text": "겁에 질린 적은 싸우지 않고 항복할 것임을 그는 이해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "피한 전투는 이긴 전투였다, 선원과 배가 보전되기 때문이다.",
+      "text_markdown": "피한 전투는 이긴 전투였다, 선원과 배가 보전되기 때문이다.",
+      "tts": {
+        "text": "피한 전투는 이긴 전투였다, 선원과 배가 보전되기 때문이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 외모의 모든 요소는 공포를 극대화하도록 설계되었다.",
+      "text_markdown": "그의 외모의 모든 요소는 공포를 극대화하도록 설계되었다.",
+      "tts": {
+        "text": "그의 외모의 모든 요소는 공포를 극대화하도록 설계되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 두꺼운 검은 턱수염을 엄청난 길이로 기르며, 얼굴과 가슴의 대부분을 덮었다.",
+      "text_markdown": "그는 두꺼운 검은 턱수염을 엄청난 길이로 기르며, 얼굴과 가슴의 대부분을 덮었다.",
+      "tts": {
+        "text": "그는 두꺼운 검은 턱수염을 엄청난 길이로 기르며, 얼굴과 가슴의 대부분을 덮었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전투 전에 그는 느린 연소 대마 심지인 슬로 매치를 턱수염에 엮어 넣었다.",
+      "text_markdown": "전투 전에 그는 느린 연소 대마 심지인 슬로 매치를 턱수염에 엮어 넣었다.",
+      "tts": {
+        "text": "전투 전에 그는 느린 연소 대마 심지인 슬로 매치를 턱수염에 엮어 넣었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "점화되면, 이 심지들은 그의 머리 주위에 연기 구름을 만들어냈다.",
+      "text_markdown": "점화되면, 이 심지들은 그의 머리 주위에 연기 구름을 만들어냈다.",
+      "tts": {
+        "text": "점화되면, 이 심지들은 그의 머리 주위에 연기 구름을 만들어냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 효과는 초자연적이었고, 유황불에서 나타나는 괴물 같았다.",
+      "text_markdown": "그 효과는 초자연적이었고, 유황불에서 나타나는 괴물 같았다.",
+      "tts": {
+        "text": "그 효과는 초자연적이었고, 유황불에서 나타나는 괴물 같았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 가죽 탄띠에 여러 자루의 권총을 가슴에 묶고 다녔다.",
+      "text_markdown": "그는 가죽 탄띠에 여러 자루의 권총을 가슴에 묶고 다녔다.",
+      "tts": {
+        "text": "그는 가죽 탄띠에 여러 자루의 권총을 가슴에 묶고 다녔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "허리띠에는 여러 자루의 단검과 커틀러스도 차고 있었다.",
+      "text_markdown": "허리띠에는 여러 자루의 단검과 커틀러스도 차고 있었다.",
+      "tts": {
+        "text": "허리띠에는 여러 자루의 단검과 커틀러스도 차고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 복장은 의도적으로 연극적이었으며, 가능한 한 무서워 보이도록 설계되었다.",
+      "text_markdown": "그의 복장은 의도적으로 연극적이었으며, 가능한 한 무서워 보이도록 설계되었다.",
+      "tts": {
+        "text": "그의 복장은 의도적으로 연극적이었으며, 가능한 한 무서워 보이도록 설계되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "목격자들은 그를 악마의 화신이라고 묘사했다.",
+      "text_markdown": "목격자들은 그를 악마의 화신이라고 묘사했다.",
+      "tts": {
+        "text": "목격자들은 그를 악마의 화신이라고 묘사했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염은 자기 주위에 소규모 해적 함대를 모았다.",
+      "text_markdown": "검은 수염은 자기 주위에 소규모 해적 함대를 모았다.",
+      "tts": {
+        "text": "검은 수염은 자기 주위에 소규모 해적 함대를 모았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전성기에 그는 4척의 배와 수백 명의 해적을 지휘했다.",
+      "text_markdown": "전성기에 그는 4척의 배와 수백 명의 해적을 지휘했다.",
+      "tts": {
+        "text": "전성기에 그는 네 척의 배와 수백 명의 해적을 지휘했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것은 해적 세력의 이례적인 집중이었다.",
+      "text_markdown": "이것은 해적 세력의 이례적인 집중이었다.",
+      "tts": {
+        "text": "이것은 해적 세력의 이례적인 집중이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대부분의 해적은 단독이나 둘이서 활동했지만, 검은 수염은 더 큰 규모로 생각했다.",
+      "text_markdown": "대부분의 해적은 단독이나 둘이서 활동했지만, 검은 수염은 더 큰 규모로 생각했다.",
+      "tts": {
+        "text": "대부분의 해적은 단독이나 둘이서 활동했지만, 검은 수염은 더 큰 규모로 생각했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 함대는 해안을 따라 배를 하나씩 나포했다.",
+      "text_markdown": "그의 함대는 해안을 따라 배를 하나씩 나포했다.",
+      "tts": {
+        "text": "그의 함대는 해안을 따라 배를 하나씩 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 검은 깃발을 본 상선 선장들은 종종 즉시 항복했다.",
+      "text_markdown": "그의 검은 깃발을 본 상선 선장들은 종종 즉시 항복했다.",
+      "tts": {
+        "text": "그의 검은 깃발을 본 상선 선장들은 종종 즉시 항복했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "저항한 자들은 압도적인 수와 화력에 굴복했다.",
+      "text_markdown": "저항한 자들은 압도적인 수와 화력에 굴복했다.",
+      "tts": {
+        "text": "저항한 자들은 압도적인 수와 화력에 굴복했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "검은 수염의 명성은 카리브해에서 뉴잉글랜드까지 모든 항구에 퍼졌다.",
+      "text_markdown": "검은 수염의 명성은 카리브해에서 뉴잉글랜드까지 모든 항구에 퍼졌다.",
+      "tts": {
+        "text": "검은 수염의 명성은 카리브해에서 뉴잉글랜드까지 모든 항구에 퍼졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전형적인 공격에서, 검은 수염은 목표에 접근하기 위해 위장 깃발을 올렸다.",
+      "text_markdown": "전형적인 공격에서, 검은 수염은 목표에 접근하기 위해 위장 깃발을 올렸다.",
+      "tts": {
+        "text": "전형적인 공격에서, 검은 수염은 목표에 접근하기 위해 위장 깃발을 올렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 종종 우호국의 깃발을 올려 접근한 뒤 정체를 드러냈다.",
+      "text_markdown": "해적들은 종종 우호국의 깃발을 올려 접근한 뒤 정체를 드러냈다.",
+      "tts": {
+        "text": "해적들은 종종 우호국의 깃발을 올려 접근한 뒤 정체를 드러냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마지막 순간에 진짜 해적 깃발을 올렸다.",
+      "text_markdown": "마지막 순간에 진짜 해적 깃발을 올렸다.",
+      "tts": {
+        "text": "마지막 순간에 진짜 해적 깃발을 올렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그때쯤이면 보통 피해자가 도망치기엔 너무 늦었다.",
+      "text_markdown": "그때쯤이면 보통 피해자가 도망치기엔 너무 늦었다.",
+      "tts": {
+        "text": "그때쯤이면 보통 피해자가 도망치기엔 너무 늦었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 깃발은 독특하고 무시무시했다.",
+      "text_markdown": "검은 수염의 깃발은 독특하고 무시무시했다.",
+      "tts": {
+        "text": "검은 수염의 깃발은 독특하고 무시무시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 손에 모래시계를, 다른 손에 창을 든 해골이 그려져 있었다.",
+      "text_markdown": "한 손에 모래시계를, 다른 손에 창을 든 해골이 그려져 있었다.",
+      "tts": {
+        "text": "한 손에 모래시계를, 다른 손에 창을 든 해골이 그려져 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "창은 피 흘리는 심장을 가리키고 있었다.",
+      "text_markdown": "창은 피 흘리는 심장을 가리키고 있었다.",
+      "tts": {
+        "text": "창은 피 흘리는 심장을 가리키고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 메시지는 분명했다. 너희의 시간이 다해가고 있으며, 죽음이 다가온다.",
+      "text_markdown": "그 메시지는 분명했다. 너희의 시간이 다해가고 있으며, 죽음이 다가온다.",
+      "tts": {
+        "text": "그 메시지는 분명했다. 너희의 시간이 다해가고 있으며, 죽음이 다가온다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718년 5월, 검은 수염은 가장 대담한 계획을 실행했다.",
+      "text_markdown": "1718년 5월, 검은 수염은 가장 대담한 계획을 실행했다.",
+      "tts": {
+        "text": "천칠백십팔 년 오월, 검은 수염은 가장 대담한 계획을 실행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 함대를 이끌고 사우스캐롤라이나주 찰스턴 항구로 직행했다.",
+      "text_markdown": "그는 함대를 이끌고 사우스캐롤라이나주 찰스턴 항구로 직행했다.",
+      "tts": {
+        "text": "그는 함대를 이끌고 사우스캐롤라이나주 찰스턴 항구로 직행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "찰스턴은 아메리카 식민지에서 가장 부유하고 중요한 항구 중 하나였다.",
+      "text_markdown": "찰스턴은 아메리카 식민지에서 가장 부유하고 중요한 항구 중 하나였다.",
+      "tts": {
+        "text": "찰스턴은 아메리카 식민지에서 가장 부유하고 중요한 항구 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "뒤이어 벌어진 것은 역사상 가장 뻔뻔한 해적 행위 중 하나였다.",
+      "text_markdown": "뒤이어 벌어진 것은 역사상 가장 뻔뻔한 해적 행위 중 하나였다.",
+      "tts": {
+        "text": "뒤이어 벌어진 것은 역사상 가장 뻔뻔한 해적 행위 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염은 찰스턴 항구 전체를 봉쇄했다.",
+      "text_markdown": "검은 수염은 찰스턴 항구 전체를 봉쇄했다.",
+      "tts": {
+        "text": "검은 수염은 찰스턴 항구 전체를 봉쇄했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 허락 없이는 어떤 배도 드나들 수 없었다.",
+      "text_markdown": "그의 허락 없이는 어떤 배도 드나들 수 없었다.",
+      "tts": {
+        "text": "그의 허락 없이는 어떤 배도 드나들 수 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "거의 일주일 동안 그는 도시를 인질로 잡았다.",
+      "text_markdown": "거의 일주일 동안 그는 도시를 인질로 잡았다.",
+      "tts": {
+        "text": "거의 일주일 동안 그는 도시를 인질로 잡았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 항구 입구를 통과하려는 모든 선박을 나포했다.",
+      "text_markdown": "그는 항구 입구를 통과하려는 모든 선박을 나포했다.",
+      "tts": {
+        "text": "그는 항구 입구를 통과하려는 모든 선박을 나포했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봉쇄 기간 동안 최소 8척의 배를 빼앗았다.",
+      "text_markdown": "봉쇄 기간 동안 최소 8척의 배를 빼앗았다.",
+      "tts": {
+        "text": "봉쇄 기간 동안 최소 여덟 척의 배를 빼앗았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 포로 중에는 찰스턴의 가장 저명한 시민 일부가 포함되어 있었다.",
+      "text_markdown": "그의 포로 중에는 찰스턴의 가장 저명한 시민 일부가 포함되어 있었다.",
+      "tts": {
+        "text": "그의 포로 중에는 찰스턴의 가장 저명한 시민 일부가 포함되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 인질을 잡고 모두 죽이겠다고 위협했다.",
+      "text_markdown": "그는 인질을 잡고 모두 죽이겠다고 위협했다.",
+      "tts": {
+        "text": "그는 인질을 잡고 모두 죽이겠다고 위협했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 요구는 놀라웠다.",
+      "text_markdown": "검은 수염의 요구는 놀라웠다.",
+      "tts": {
+        "text": "검은 수염의 요구는 놀라웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "금이나 보석을 요구하지 않았다.",
+      "text_markdown": "금이나 보석을 요구하지 않았다.",
+      "tts": {
+        "text": "금이나 보석을 요구하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신, 약품 상자를 요구했다.",
+      "text_markdown": "대신, 약품 상자를 요구했다.",
+      "tts": {
+        "text": "대신, 약품 상자를 요구했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "역사가들은 그의 선원들이 매독과 선원들에게 흔한 다른 질병으로 고통받고 있었다고 믿는다.",
+      "text_markdown": "역사가들은 그의 선원들이 매독과 선원들에게 흔한 다른 질병으로 고통받고 있었다고 믿는다.",
+      "tts": {
+        "text": "역사가들은 그의 선원들이 매독과 선원들에게 흔한 다른 질병으로 고통받고 있었다고 믿는다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사우스캐롤라이나 총독은 검은 수염의 함대에 대항할 수 있는 해군이 없었다.",
+      "text_markdown": "사우스캐롤라이나 총독은 검은 수염의 함대에 대항할 수 있는 해군이 없었다.",
+      "tts": {
+        "text": "사우스캐롤라이나 총독은 검은 수염의 함대에 대항할 수 있는 해군이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "긴장된 협상 끝에, 도시는 해적들에게 약품을 보냈다.",
+      "text_markdown": "긴장된 협상 끝에, 도시는 해적들에게 약품을 보냈다.",
+      "tts": {
+        "text": "긴장된 협상 끝에, 도시는 해적들에게 약품을 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "검은 수염은 인질들을 풀어주었지만, 먼저 그들의 귀중품을 빼앗았다.",
+      "text_markdown": "검은 수염은 인질들을 풀어주었지만, 먼저 그들의 귀중품을 빼앗았다.",
+      "tts": {
+        "text": "검은 수염은 인질들을 풀어주었지만, 먼저 그들의 귀중품을 빼앗았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 명성이 절정에 이른 채 찰스턴을 떠났다.",
+      "text_markdown": "그는 명성이 절정에 이른 채 찰스턴을 떠났다.",
+      "tts": {
+        "text": "그는 명성이 절정에 이른 채 찰스턴을 떠났다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찰스턴 이후, 검은 수염은 노스캐롤라이나의 보퍼트 수로로 북상했다.",
+      "text_markdown": "찰스턴 이후, 검은 수염은 노스캐롤라이나의 보퍼트 수로로 북상했다.",
+      "tts": {
+        "text": "찰스턴 이후, 검은 수염은 노스캐롤라이나의 보퍼트 수로로 북상했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여기서 퀸 앤의 복수호가 모래톱에 걸려 좌초되어 잃었다.",
+      "text_markdown": "여기서 퀸 앤의 복수호가 모래톱에 걸려 좌초되어 잃었다.",
+      "tts": {
+        "text": "여기서 퀸 앤의 복수호가 모래톱에 걸려 좌초되어 잃었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 역사가들은 이것이 검은 수염이 함대와 선원을 줄이기 위한 고의적인 행위였다고 믿는다.",
+      "text_markdown": "일부 역사가들은 이것이 검은 수염이 함대와 선원을 줄이기 위한 고의적인 행위였다고 믿는다.",
+      "tts": {
+        "text": "일부 역사가들은 이것이 검은 수염이 함대와 선원을 줄이기 위한 고의적인 행위였다고 믿는다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "대서양의 공포",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수백 명의 해적이 낙오되었고, 검은 수염은 최고의 보물을 자기 것으로 챙겼다.",
+      "text_markdown": "수백 명의 해적이 낙오되었고, 검은 수염은 최고의 보물을 자기 것으로 챙겼다.",
+      "tts": {
+        "text": "수백 명의 해적이 낙오되었고, 검은 수염은 최고의 보물을 자기 것으로 챙겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력의 정점에서",
+      "text_markdown": "권력의 정점에서"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "퀸 앤의 복수호를 잃은 후, 검은 수염은 노스캐롤라이나의 바스 마을로 항해했다.",
+      "text_markdown": "퀸 앤의 복수호를 잃은 후, 검은 수염은 노스캐롤라이나의 바스 마을로 항해했다.",
+      "tts": {
+        "text": "퀸 앤의 복수호를 잃은 후, 검은 수염은 노스캐롤라이나의 바스 마을로 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그곳에서 찰스 이든 총독을 만나 왕실 사면을 받아들였다.",
+      "text_markdown": "그곳에서 찰스 이든 총독을 만나 왕실 사면을 받아들였다.",
+      "tts": {
+        "text": "그곳에서 찰스 이든 총독을 만나 왕실 사면을 받아들였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사면은 그의 해적 경력을 끝내기 위한 것이었다.",
+      "text_markdown": "사면은 그의 해적 경력을 끝내기 위한 것이었다.",
+      "tts": {
+        "text": "사면은 그의 해적 경력을 끝내기 위한 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 검은 수염은 은퇴할 생각이 전혀 없었다.",
+      "text_markdown": "그러나 검은 수염은 은퇴할 생각이 전혀 없었다.",
+      "tts": {
+        "text": "그러나 검은 수염은 은퇴할 생각이 전혀 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바스는 팸리코 강가에 수십 채의 집이 있는 작은 마을이었다.",
+      "text_markdown": "바스는 팸리코 강가에 수십 채의 집이 있는 작은 마을이었다.",
+      "tts": {
+        "text": "바스는 팸리코 강가에 수십 채의 집이 있는 작은 마을이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대서양에서 가장 두려운 해적에게는 어울리지 않는 고향이었다.",
+      "text_markdown": "대서양에서 가장 두려운 해적에게는 어울리지 않는 고향이었다.",
+      "tts": {
+        "text": "대서양에서 가장 두려운 해적에게는 어울리지 않는 고향이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 그 고립과 부패한 총독이 검은 수염의 목적에 딱 맞았다.",
+      "text_markdown": "그러나 그 고립과 부패한 총독이 검은 수염의 목적에 딱 맞았다.",
+      "tts": {
+        "text": "그러나 그 고립과 부패한 총독이 검은 수염의 목적에 딱 맞았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찰스 이든 총독은 검은 수염의 자발적인 동반자였던 것으로 보인다.",
+      "text_markdown": "찰스 이든 총독은 검은 수염의 자발적인 동반자였던 것으로 보인다.",
+      "tts": {
+        "text": "찰스 이든 총독은 검은 수염의 자발적인 동반자였던 것으로 보인다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 해적의 지속적인 활동에 법적 보호를 제공했다.",
+      "text_markdown": "그는 해적의 지속적인 활동에 법적 보호를 제공했다.",
+      "tts": {
+        "text": "그는 해적의 지속적인 활동에 법적 보호를 제공했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "검은 수염은 바다에서 배를 나포한 뒤 화물을 바스로 가져왔다.",
+      "text_markdown": "검은 수염은 바다에서 배를 나포한 뒤 화물을 바스로 가져왔다.",
+      "tts": {
+        "text": "검은 수염은 바다에서 배를 나포한 뒤 화물을 바스로 가져왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이든은 그 물건을 합법적인 해난 구조물로 선언하고 수익의 일부를 가져갔다.",
+      "text_markdown": "이든은 그 물건을 합법적인 해난 구조물로 선언하고 수익의 일부를 가져갔다.",
+      "tts": {
+        "text": "이든은 그 물건을 합법적인 해난 구조물로 선언하고 수익의 일부를 가져갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염은 바스 체류 중 현지 여성과 결혼했다.",
+      "text_markdown": "검은 수염은 바스 체류 중 현지 여성과 결혼했다.",
+      "tts": {
+        "text": "검은 수염은 바스 체류 중 현지 여성과 결혼했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 약 16세였던 것으로 추정된다.",
+      "text_markdown": "그녀는 약 16세였던 것으로 추정된다.",
+      "tts": {
+        "text": "그녀는 약 열여섯 세였던 것으로 추정된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사 기록은 그녀가 그의 열네 번째 아내였을 수 있음을 시사한다.",
+      "text_markdown": "역사 기록은 그녀가 그의 열네 번째 아내였을 수 있음을 시사한다.",
+      "tts": {
+        "text": "역사 기록은 그녀가 그의 열네 번째 아내였을 수 있음을 시사한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 결혼 대부분은 뱃사람들 사이에서 흔한 비공식적 약정이었다.",
+      "text_markdown": "이러한 결혼 대부분은 뱃사람들 사이에서 흔한 비공식적 약정이었다.",
+      "tts": {
+        "text": "이러한 결혼 대부분은 뱃사람들 사이에서 흔한 비공식적 약정이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사면에도 불구하고, 검은 수염은 계속해서 선박을 약탈했다.",
+      "text_markdown": "사면에도 불구하고, 검은 수염은 계속해서 선박을 약탈했다.",
+      "tts": {
+        "text": "사면에도 불구하고, 검은 수염은 계속해서 선박을 약탈했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 나포한 배가 스페인이나 프랑스 선박이라고 주장하며, 정당한 전리품이라고 했다.",
+      "text_markdown": "그는 나포한 배가 스페인이나 프랑스 선박이라고 주장하며, 정당한 전리품이라고 했다.",
+      "tts": {
+        "text": "그는 나포한 배가 스페인이나 프랑스 선박이라고 주장하며, 정당한 전리품이라고 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이든 총독은 조사 없이 이러한 주장을 편리하게 인증했다.",
+      "text_markdown": "이든 총독은 조사 없이 이러한 주장을 편리하게 인증했다.",
+      "tts": {
+        "text": "이든 총독은 조사 없이 이러한 주장을 편리하게 인증했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염과 지역 사회의 관계는 복잡했다.",
+      "text_markdown": "검은 수염과 지역 사회의 관계는 복잡했다.",
+      "tts": {
+        "text": "검은 수염과 지역 사회의 관계는 복잡했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 주민들은 그가 어려운 마을에 가져다주는 부를 환영했다.",
+      "text_markdown": "일부 주민들은 그가 어려운 마을에 가져다주는 부를 환영했다.",
+      "tts": {
+        "text": "일부 주민들은 그가 어려운 마을에 가져다주는 부를 환영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 폭력적인 해적과 그의 무장한 선원에 대한 공포 속에 살았다.",
+      "text_markdown": "다른 이들은 폭력적인 해적과 그의 무장한 선원에 대한 공포 속에 살았다.",
+      "tts": {
+        "text": "다른 이들은 폭력적인 해적과 그의 무장한 선원에 대한 공포 속에 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "누구도 공개적으로 그에게 도전할 엄두를 내지 못했다.",
+      "text_markdown": "누구도 공개적으로 그에게 도전할 엄두를 내지 못했다.",
+      "tts": {
+        "text": "누구도 공개적으로 그에게 도전할 엄두를 내지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 바스의 자택에서 호화로운 모임을 주최했다.",
+      "text_markdown": "그는 바스의 자택에서 호화로운 모임을 주최했다.",
+      "tts": {
+        "text": "그는 바스의 자택에서 호화로운 모임을 주최했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "총독 자신을 포함한 지역 유지들이 이 행사에 참석했다.",
+      "text_markdown": "총독 자신을 포함한 지역 유지들이 이 행사에 참석했다.",
+      "tts": {
+        "text": "총독 자신을 포함한 지역 유지들이 이 행사에 참석했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "훔친 포도주와 증류주가 아낌없이 흘렀다.",
+      "text_markdown": "훔친 포도주와 증류주가 아낌없이 흘렀다.",
+      "tts": {
+        "text": "훔친 포도주와 증류주가 아낌없이 흘렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 파티는 검은 수염이 동맹과 정보원 네트워크를 유지하는 데 도움이 되었다.",
+      "text_markdown": "이러한 파티는 검은 수염이 동맹과 정보원 네트워크를 유지하는 데 도움이 되었다.",
+      "tts": {
+        "text": "이러한 파티는 검은 수염이 동맹과 정보원 네트워크를 유지하는 데 도움이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염은 오크라코크 섬에도 은신처를 유지했다.",
+      "text_markdown": "검은 수염은 오크라코크 섬에도 은신처를 유지했다.",
+      "tts": {
+        "text": "검은 수염은 오크라코크 섬에도 은신처를 유지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오크라코크는 노스캐롤라이나 아우터뱅크스의 외딴 방벽섬이었다.",
+      "text_markdown": "오크라코크는 노스캐롤라이나 아우터뱅크스의 외딴 방벽섬이었다.",
+      "tts": {
+        "text": "오크라코크는 노스캐롤라이나 아우터뱅크스의 외딴 방벽섬이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "얕은 물과 위험한 모래톱 때문에 대형 군함이 접근하는 것은 거의 불가능했다.",
+      "text_markdown": "얕은 물과 위험한 모래톱 때문에 대형 군함이 접근하는 것은 거의 불가능했다.",
+      "tts": {
+        "text": "얕은 물과 위험한 모래톱 때문에 대형 군함이 접근하는 것은 거의 불가능했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수로를 아는 해적에게 그것은 난공불락의 요새였다.",
+      "text_markdown": "수로를 아는 해적에게 그것은 난공불락의 요새였다.",
+      "tts": {
+        "text": "수로를 아는 해적에게 그것은 난공불락의 요새였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 해적들이 교역, 보급, 교류를 위해 오크라코크에 왔다.",
+      "text_markdown": "다른 해적들이 교역, 보급, 교류를 위해 오크라코크에 왔다.",
+      "tts": {
+        "text": "다른 해적들이 교역, 보급, 교류를 위해 오크라코크에 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "또 다른 악명 높은 해적 선장 찰스 베인이 그곳에서 검은 수염을 방문했다.",
+      "text_markdown": "또 다른 악명 높은 해적 선장 찰스 베인이 그곳에서 검은 수염을 방문했다.",
+      "tts": {
+        "text": "또 다른 악명 높은 해적 선장 찰스 베인이 그곳에서 검은 수염을 방문했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "두 선원단은 해변에서 며칠간의 축제를 벌였다.",
+      "text_markdown": "두 선원단은 해변에서 며칠간의 축제를 벌였다.",
+      "tts": {
+        "text": "두 선원단은 해변에서 며칠간의 축제를 벌였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 해적 모임에 대한 보고는 해안을 따라 식민지 관리들을 놀라게 했다.",
+      "text_markdown": "이 해적 모임에 대한 보고는 해안을 따라 식민지 관리들을 놀라게 했다.",
+      "tts": {
+        "text": "이 해적 모임에 대한 보고는 해안을 따라 식민지 관리들을 놀라게 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 검은 수염이 엄격히 시행하는 행동 강령에 따라 생활했다.",
+      "text_markdown": "해적들은 검은 수염이 엄격히 시행하는 행동 강령에 따라 생활했다.",
+      "tts": {
+        "text": "해적들은 검은 수염이 엄격히 시행하는 행동 강령에 따라 생활했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모든 사람이 주요 결정에 투표권을 가졌다.",
+      "text_markdown": "모든 사람이 주요 결정에 투표권을 가졌다.",
+      "tts": {
+        "text": "모든 사람이 주요 결정에 투표권을 가졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전리품은 합의된 몫에 따라 분배되었다.",
+      "text_markdown": "전리품은 합의된 몫에 따라 분배되었다.",
+      "tts": {
+        "text": "전리품은 합의된 몫에 따라 분배되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "공동 금고에서 도둑질한 것이 발각된 자는 가혹하게 처벌받았다.",
+      "text_markdown": "공동 금고에서 도둑질한 것이 발각된 자는 가혹하게 처벌받았다.",
+      "tts": {
+        "text": "공동 금고에서 도둑질한 것이 발각된 자는 가혹하게 처벌받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해안을 따라 있는 상인과 농장주들은 절망적이었다.",
+      "text_markdown": "해안을 따라 있는 상인과 농장주들은 절망적이었다.",
+      "tts": {
+        "text": "해안을 따라 있는 상인과 농장주들은 절망적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 무역은 검은 수염의 끊임없는 약탈로 질식당하고 있었다.",
+      "text_markdown": "그들의 무역은 검은 수염의 끊임없는 약탈로 질식당하고 있었다.",
+      "tts": {
+        "text": "그들의 무역은 검은 수염의 끊임없는 약탈로 질식당하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "캐롤라이나 해역을 항해하는 선박의 보험료가 급등했다.",
+      "text_markdown": "캐롤라이나 해역을 항해하는 선박의 보험료가 급등했다.",
+      "tts": {
+        "text": "캐롤라이나 해역을 항해하는 선박의 보험료가 급등했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일부 상인은 모든 것을 잃느니 사업을 잃는 편이 낫다며 선박 운항을 완전히 중단했다.",
+      "text_markdown": "일부 상인은 모든 것을 잃느니 사업을 잃는 편이 낫다며 선박 운항을 완전히 중단했다.",
+      "tts": {
+        "text": "일부 상인은 모든 것을 잃느니 사업을 잃는 편이 낫다며 선박 운항을 완전히 중단했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "버지니아 총독 알렉산더 스포츠우드는 특히 분노했다.",
+      "text_markdown": "버지니아 총독 알렉산더 스포츠우드는 특히 분노했다.",
+      "tts": {
+        "text": "버지니아 총독 알렉산더 스포츠우드는 특히 분노했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "버지니아의 경제는 체서피크만을 통해 수출하는 담배에 의존했다.",
+      "text_markdown": "버지니아의 경제는 체서피크만을 통해 수출하는 담배에 의존했다.",
+      "tts": {
+        "text": "버지니아의 경제는 체서피크만을 통해 수출하는 담배에 의존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가까이에 있는 검은 수염의 존재가 버지니아의 가장 중요한 산업을 위협했다.",
+      "text_markdown": "가까이에 있는 검은 수염의 존재가 버지니아의 가장 중요한 산업을 위협했다.",
+      "tts": {
+        "text": "가까이에 있는 검은 수염의 존재가 버지니아의 가장 중요한 산업을 위협했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스포츠우드는 노스캐롤라이나가 해적을 처리하지 않으면 버지니아가 하겠다고 결심했다.",
+      "text_markdown": "스포츠우드는 노스캐롤라이나가 해적을 처리하지 않으면 버지니아가 하겠다고 결심했다.",
+      "tts": {
+        "text": "스포츠우드는 노스캐롤라이나가 해적을 처리하지 않으면 버지니아가 하겠다고 결심했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스포츠우드는 검은 수염을 포획하거나 사살하기 위한 군사 작전을 비밀리에 계획하기 시작했다.",
+      "text_markdown": "스포츠우드는 검은 수염을 포획하거나 사살하기 위한 군사 작전을 비밀리에 계획하기 시작했다.",
+      "tts": {
+        "text": "스포츠우드는 검은 수염을 포획하거나 사살하기 위한 군사 작전을 비밀리에 계획하기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "허가 없이 버지니아 군대를 노스캐롤라이나에 파견하는 것은 법적으로 논란의 여지가 있었다.",
+      "text_markdown": "허가 없이 버지니아 군대를 노스캐롤라이나에 파견하는 것은 법적으로 논란의 여지가 있었다.",
+      "tts": {
+        "text": "허가 없이 버지니아 군대를 노스캐롤라이나에 파견하는 것은 법적으로 논란의 여지가 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "권력의 정점에서",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 스포츠우드는 어쨌든 행동하기로 결정했고, 위협이 비상 조치를 정당화한다고 믿었다.",
+      "text_markdown": "그러나 스포츠우드는 어쨌든 행동하기로 결정했고, 위협이 비상 조치를 정당화한다고 믿었다.",
+      "tts": {
+        "text": "그러나 스포츠우드는 어쨌든 행동하기로 결정했고, 위협이 비상 조치를 정당화한다고 믿었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "오크라코크 전투",
+      "text_markdown": "오크라코크 전투"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718년 11월, 스포츠우드 총독은 자신의 계획을 실행에 옮겼다.",
+      "text_markdown": "1718년 11월, 스포츠우드 총독은 자신의 계획을 실행에 옮겼다.",
+      "tts": {
+        "text": "천칠백십팔 년 십일월, 스포츠우드 총독은 자신의 계획을 실행에 옮겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 민간인 소유의 소형 슬루프 두 척을 임차하여 해군 지휘 하에 두었다.",
+      "text_markdown": "그는 민간인 소유의 소형 슬루프 두 척을 임차하여 해군 지휘 하에 두었다.",
+      "tts": {
+        "text": "그는 민간인 소유의 소형 슬루프 두 척을 임차하여 해군 지휘 하에 두었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "원정대는 영국 해군의 로버트 메이너드 중위가 이끌었다.",
+      "text_markdown": "원정대는 영국 해군의 로버트 메이너드 중위가 이끌었다.",
+      "tts": {
+        "text": "원정대는 영국 해군의 로버트 메이너드 중위가 이끌었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "메이너드는 용기와 결단력으로 명성을 가진 경험 많은 장교였다.",
+      "text_markdown": "메이너드는 용기와 결단력으로 명성을 가진 경험 많은 장교였다.",
+      "tts": {
+        "text": "메이너드는 용기와 결단력으로 명성을 가진 경험 많은 장교였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스포츠우드가 슬루프를 선택한 것은 흘수가 얕았기 때문이다.",
+      "text_markdown": "스포츠우드가 슬루프를 선택한 것은 흘수가 얕았기 때문이다.",
+      "tts": {
+        "text": "스포츠우드가 슬루프를 선택한 것은 흘수가 얕았기 때문이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오크라코크 섬 주변의 수로를 항해할 수 있는 것은 바닥이 평평한 배뿐이었다.",
+      "text_markdown": "오크라코크 섬 주변의 수로를 항해할 수 있는 것은 바닥이 평평한 배뿐이었다.",
+      "tts": {
+        "text": "오크라코크 섬 주변의 수로를 항해할 수 있는 것은 바닥이 평평한 배뿐이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "더 큰 군함은 검은 수염의 정박지에 도달하기 훨씬 전에 좌초되었을 것이다.",
+      "text_markdown": "더 큰 군함은 검은 수염의 정박지에 도달하기 훨씬 전에 좌초되었을 것이다.",
+      "tts": {
+        "text": "더 큰 군함은 검은 수염의 정박지에 도달하기 훨씬 전에 좌초되었을 것이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메이너드의 슬루프 두 척에는 총 약 60명이 탑승했다.",
+      "text_markdown": "메이너드의 슬루프 두 척에는 총 약 60명이 탑승했다.",
+      "tts": {
+        "text": "메이너드의 슬루프 두 척에는 총 약 육십 명이 탑승했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 버지니아에 주둔한 영국 해군 군함의 수병들이었다.",
+      "text_markdown": "그들은 버지니아에 주둔한 영국 해군 군함의 수병들이었다.",
+      "tts": {
+        "text": "그들은 버지니아에 주둔한 영국 해군 군함의 수병들이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대원들에게는 노획한 해적 전리품의 몫이 약속되었다.",
+      "text_markdown": "대원들에게는 노획한 해적 전리품의 몫이 약속되었다.",
+      "tts": {
+        "text": "대원들에게는 노획한 해적 전리품의 몫이 약속되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "원정대는 비밀리에 버지니아에서 남쪽으로 항해했다.",
+      "text_markdown": "원정대는 비밀리에 버지니아에서 남쪽으로 항해했다.",
+      "tts": {
+        "text": "원정대는 비밀리에 버지니아에서 남쪽으로 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스포츠우드는 검은 수염에게 경고가 전달되는 것을 막기 위해 거의 아무에게도 임무를 말하지 않았다.",
+      "text_markdown": "스포츠우드는 검은 수염에게 경고가 전달되는 것을 막기 위해 거의 아무에게도 임무를 말하지 않았다.",
+      "tts": {
+        "text": "스포츠우드는 검은 수염에게 경고가 전달되는 것을 막기 위해 거의 아무에게도 임무를 말하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "속도와 기습이 계획의 성공에 필수적이었다.",
+      "text_markdown": "속도와 기습이 계획의 성공에 필수적이었다.",
+      "tts": {
+        "text": "속도와 기습이 계획의 성공에 필수적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718년 11월 21일 저녁, 메이너드의 슬루프가 오크라코크 섬 근처에 도착했다.",
+      "text_markdown": "1718년 11월 21일 저녁, 메이너드의 슬루프가 오크라코크 섬 근처에 도착했다.",
+      "tts": {
+        "text": "천칠백십팔 년 십일월 이십일일 저녁, 메이너드의 슬루프가 오크라코크 섬 근처에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 수로의 가장자리에 닻을 내리고 새벽을 기다렸다.",
+      "text_markdown": "그들은 수로의 가장자리에 닻을 내리고 새벽을 기다렸다.",
+      "tts": {
+        "text": "그들은 수로의 가장자리에 닻을 내리고 새벽을 기다렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "메이너드는 항구에 있는 검은 수염의 슬루프 어드벤처호의 불빛을 볼 수 있었다.",
+      "text_markdown": "메이너드는 항구에 있는 검은 수염의 슬루프 어드벤처호의 불빛을 볼 수 있었다.",
+      "tts": {
+        "text": "메이너드는 항구에 있는 검은 수염의 슬루프 어드벤처호의 불빛을 볼 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적들은 축제를 벌이고 있었고, 자신들의 운명이 다가오고 있음을 몰랐다.",
+      "text_markdown": "해적들은 축제를 벌이고 있었고, 자신들의 운명이 다가오고 있음을 몰랐다.",
+      "tts": {
+        "text": "해적들은 축제를 벌이고 있었고, 자신들의 운명이 다가오고 있음을 몰랐다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 빛이 비치자 메이너드의 슬루프가 수로에 진입했다.",
+      "text_markdown": "첫 빛이 비치자 메이너드의 슬루프가 수로에 진입했다.",
+      "tts": {
+        "text": "첫 빛이 비치자 메이너드의 슬루프가 수로에 진입했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "검은 수염은 즉시 그들을 발견하고 위협으로 인식했다.",
+      "text_markdown": "검은 수염은 즉시 그들을 발견하고 위협으로 인식했다.",
+      "tts": {
+        "text": "검은 수염은 즉시 그들을 발견하고 위협으로 인식했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 닻줄을 끊고 전투를 위해 기동하려 했다.",
+      "text_markdown": "그는 닻줄을 끊고 전투를 위해 기동하려 했다.",
+      "tts": {
+        "text": "그는 닻줄을 끊고 전투를 위해 기동하려 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "오크라코크 수로의 좁고 얕은 물이 전투를 근접전으로 바꾸었다.",
+      "text_markdown": "오크라코크 수로의 좁고 얕은 물이 전투를 근접전으로 바꾸었다.",
+      "tts": {
+        "text": "오크라코크 수로의 좁고 얕은 물이 전투를 근접전으로 바꾸었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 첫 수는 파괴적이었다.",
+      "text_markdown": "검은 수염의 첫 수는 파괴적이었다.",
+      "tts": {
+        "text": "검은 수염의 첫 수는 파괴적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 포도탄과 금속 파편을 장전한 대포를 일제 사격했다.",
+      "text_markdown": "그는 포도탄과 금속 파편을 장전한 대포를 일제 사격했다.",
+      "tts": {
+        "text": "그는 포도탄과 금속 파편을 장전한 대포를 일제 사격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "폭발이 메이너드의 슬루프 한 척의 갑판을 휩쓸었다.",
+      "text_markdown": "폭발이 메이너드의 슬루프 한 척의 갑판을 휩쓸었다.",
+      "tts": {
+        "text": "폭발이 메이너드의 슬루프 한 척의 갑판을 휩쓸었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 슬루프의 지휘관은 부하 여럿과 함께 즉사했다.",
+      "text_markdown": "그 슬루프의 지휘관은 부하 여럿과 함께 즉사했다.",
+      "tts": {
+        "text": "그 슬루프의 지휘관은 부하 여럿과 함께 즉사했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메이너드 자신의 슬루프도 포격으로 심각한 피해를 입었다.",
+      "text_markdown": "메이너드 자신의 슬루프도 포격으로 심각한 피해를 입었다.",
+      "tts": {
+        "text": "메이너드 자신의 슬루프도 포격으로 심각한 피해를 입었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "첫 교전에서 선원의 약 삼분의 일이 전사하거나 부상했다.",
+      "text_markdown": "첫 교전에서 선원의 약 삼분의 일이 전사하거나 부상했다.",
+      "tts": {
+        "text": "첫 교전에서 선원의 약 삼분의 일이 전사하거나 부상했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 메이너드에게는 영리한 계획이 있었다.",
+      "text_markdown": "그러나 메이너드에게는 영리한 계획이 있었다.",
+      "tts": {
+        "text": "그러나 메이너드에게는 영리한 계획이 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 살아남은 대부분의 부하들에게 갑판 아래에 숨으라고 명령했다.",
+      "text_markdown": "그는 살아남은 대부분의 부하들에게 갑판 아래에 숨으라고 명령했다.",
+      "tts": {
+        "text": "그는 살아남은 대부분의 부하들에게 갑판 아래에 숨으라고 명령했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상층 갑판에는 소수의 수병만 보이도록 남겨두었다.",
+      "text_markdown": "상층 갑판에는 소수의 수병만 보이도록 남겨두었다.",
+      "tts": {
+        "text": "상층 갑판에는 소수의 수병만 보이도록 남겨두었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "검은 수염이 겉보기에 텅 빈 배를 보았을 때, 선원 대부분이 죽었다고 판단했다.",
+      "text_markdown": "검은 수염이 겉보기에 텅 빈 배를 보았을 때, 선원 대부분이 죽었다고 판단했다.",
+      "tts": {
+        "text": "검은 수염이 겉보기에 텅 빈 배를 보았을 때, 선원 대부분이 죽었다고 판단했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 해적들에게 메이너드의 슬루프에 올라 처치하라고 명령했다.",
+      "text_markdown": "그는 해적들에게 메이너드의 슬루프에 올라 처치하라고 명령했다.",
+      "tts": {
+        "text": "그는 해적들에게 메이너드의 슬루프에 올라 처치하라고 명령했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염과 그의 부하들이 메이너드의 슬루프 갑판으로 뛰어올랐다.",
+      "text_markdown": "검은 수염과 그의 부하들이 메이너드의 슬루프 갑판으로 뛰어올랐다.",
+      "tts": {
+        "text": "검은 수염과 그의 부하들이 메이너드의 슬루프 갑판으로 뛰어올랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 순간, 메이너드가 신호를 보냈다.",
+      "text_markdown": "그 순간, 메이너드가 신호를 보냈다.",
+      "tts": {
+        "text": "그 순간, 메이너드가 신호를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "숨어 있던 수병들이 무기를 들고 아래에서 뛰쳐나왔다.",
+      "text_markdown": "숨어 있던 수병들이 무기를 들고 아래에서 뛰쳐나왔다.",
+      "tts": {
+        "text": "숨어 있던 수병들이 무기를 들고 아래에서 뛰쳐나왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적들은 치열한 백병전에 갇혔다.",
+      "text_markdown": "해적들은 치열한 백병전에 갇혔다.",
+      "tts": {
+        "text": "해적들은 치열한 백병전에 갇혔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염과 메이너드가 직접 맞붙어 싸웠다.",
+      "text_markdown": "검은 수염과 메이너드가 직접 맞붙어 싸웠다.",
+      "tts": {
+        "text": "검은 수염과 메이너드가 직접 맞붙어 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "검은 수염이 커틀러스를 엄청난 힘으로 휘둘러 메이너드의 칼날을 부러뜨렸다.",
+      "text_markdown": "검은 수염이 커틀러스를 엄청난 힘으로 휘둘러 메이너드의 칼날을 부러뜨렸다.",
+      "tts": {
+        "text": "검은 수염이 커틀러스를 엄청난 힘으로 휘둘러 메이너드의 칼날을 부러뜨렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "검은 수염이 최후의 일격을 위해 커틀러스를 치켜들었을 때, 메이너드의 부하 한 명이 그의 목을 베었다.",
+      "text_markdown": "검은 수염이 최후의 일격을 위해 커틀러스를 치켜들었을 때, 메이너드의 부하 한 명이 그의 목을 베었다.",
+      "tts": {
+        "text": "검은 수염이 최후의 일격을 위해 커틀러스를 치켜들었을 때, 메이너드의 부하 한 명이 그의 목을 베었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "검은 수염은 비틀거렸지만 계속 싸웠다.",
+      "text_markdown": "검은 수염은 비틀거렸지만 계속 싸웠다.",
+      "tts": {
+        "text": "검은 수염은 비틀거렸지만 계속 싸웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마침내, 검은 수염은 쓰러져 메이너드의 슬루프 갑판 위에서 숨을 거두었다.",
+      "text_markdown": "마침내, 검은 수염은 쓰러져 메이너드의 슬루프 갑판 위에서 숨을 거두었다.",
+      "tts": {
+        "text": "마침내, 검은 수염은 쓰러져 메이너드의 슬루프 갑판 위에서 숨을 거두었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 시신을 조사했을 때, 5발의 총상과 20군데 이상의 칼자국을 셌다.",
+      "text_markdown": "그의 시신을 조사했을 때, 5발의 총상과 20군데 이상의 칼자국을 셌다.",
+      "tts": {
+        "text": "그의 시신을 조사했을 때, 다섯 발의 총상과 스무 군데 이상의 칼자국을 셌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선장이 쓰러지는 것을 본 나머지 해적들은 항복했다.",
+      "text_markdown": "선장이 쓰러지는 것을 본 나머지 해적들은 항복했다.",
+      "tts": {
+        "text": "선장이 쓰러지는 것을 본 나머지 해적들은 항복했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메이너드는 검은 수염의 머리를 몸에서 잘라내라고 명령했다.",
+      "text_markdown": "메이너드는 검은 수염의 머리를 몸에서 잘라내라고 명령했다.",
+      "tts": {
+        "text": "메이너드는 검은 수염의 머리를 몸에서 잘라내라고 명령했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 머리는 사살의 증거로 슬루프의 이물에 매달렸다.",
+      "text_markdown": "그 머리는 사살의 증거로 슬루프의 이물에 매달렸다.",
+      "tts": {
+        "text": "그 머리는 사살의 증거로 슬루프의 이물에 매달렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "검은 수염의 목 없는 시신은 오크라코크 수로의 물속에 던져졌다.",
+      "text_markdown": "검은 수염의 목 없는 시신은 오크라코크 수로의 물속에 던져졌다.",
+      "tts": {
+        "text": "검은 수염의 목 없는 시신은 오크라코크 수로의 물속에 던져졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "오크라코크 전투",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전설에 따르면 시신이 가라앉기 전에 슬루프 주위를 헤엄쳤다고 하지만, 이는 분명 허구이다.",
+      "text_markdown": "전설에 따르면 시신이 가라앉기 전에 슬루프 주위를 헤엄쳤다고 하지만, 이는 분명 허구이다.",
+      "tts": {
+        "text": "전설에 따르면 시신이 가라앉기 전에 슬루프 주위를 헤엄쳤다고 하지만, 이는 분명 허구이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "결코 죽지 않는 전설",
+      "text_markdown": "결코 죽지 않는 전설"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 죽음은 해적 사회에 충격파를 보냈다.",
+      "text_markdown": "검은 수염의 죽음은 해적 사회에 충격파를 보냈다.",
+      "tts": {
+        "text": "검은 수염의 죽음은 해적 사회에 충격파를 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대서양에서 가장 두려운 해적도 추적되어 죽을 수 있다면, 아무도 안전하지 않았다.",
+      "text_markdown": "대서양에서 가장 두려운 해적도 추적되어 죽을 수 있다면, 아무도 안전하지 않았다.",
+      "tts": {
+        "text": "대서양에서 가장 두려운 해적도 추적되어 죽을 수 있다면, 아무도 안전하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이후 몇 달 동안 많은 해적들이 왕실 사면을 받아들였다.",
+      "text_markdown": "이후 몇 달 동안 많은 해적들이 왕실 사면을 받아들였다.",
+      "tts": {
+        "text": "이후 몇 달 동안 많은 해적들이 왕실 사면을 받아들였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적의 황금시대는 마지막 해를 향해 가고 있었다.",
+      "text_markdown": "해적의 황금시대는 마지막 해를 향해 가고 있었다.",
+      "tts": {
+        "text": "해적의 황금시대는 마지막 해를 향해 가고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염 선원의 생존자들은 버지니아에서 재판을 받았다.",
+      "text_markdown": "검은 수염 선원의 생존자들은 버지니아에서 재판을 받았다.",
+      "tts": {
+        "text": "검은 수염 선원의 생존자들은 버지니아에서 재판을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대부분 유죄 판결을 받고 교수형에 처해졌다.",
+      "text_markdown": "대부분 유죄 판결을 받고 교수형에 처해졌다.",
+      "tts": {
+        "text": "대부분 유죄 판결을 받고 교수형에 처해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 시신은 항구를 따라 철창에 매달려 섬뜩한 경고로 전시되었다.",
+      "text_markdown": "그들의 시신은 항구를 따라 철창에 매달려 섬뜩한 경고로 전시되었다.",
+      "tts": {
+        "text": "그들의 시신은 항구를 따라 철창에 매달려 섬뜩한 경고로 전시되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "식민 당국은 해적 관용의 시대가 끝났음을 분명히 하고 싶었다.",
+      "text_markdown": "식민 당국은 해적 관용의 시대가 끝났음을 분명히 하고 싶었다.",
+      "tts": {
+        "text": "식민 당국은 해적 관용의 시대가 끝났음을 분명히 하고 싶었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724년, 런던에서 해적의 일반사라는 책이 출간되었다.",
+      "text_markdown": "1724년, 런던에서 해적의 일반사라는 책이 출간되었다.",
+      "tts": {
+        "text": "천칠백이십사 년, 런던에서 해적의 일반사라는 책이 출간되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "저자는 찰스 존슨 선장으로 기재되어 있었지만, 그의 실제 정체는 여전히 알려져 있지 않다.",
+      "text_markdown": "저자는 찰스 존슨 선장으로 기재되어 있었지만, 그의 실제 정체는 여전히 알려져 있지 않다.",
+      "tts": {
+        "text": "저자는 찰스 존슨 선장으로 기재되어 있었지만, 그의 실제 정체는 여전히 알려져 있지 않다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 책은 검은 수염의 업적에 한 장 전체를 할애했다.",
+      "text_markdown": "이 책은 검은 수염의 업적에 한 장 전체를 할애했다.",
+      "tts": {
+        "text": "이 책은 검은 수염의 업적에 한 장 전체를 할애했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그것은 검은 수염 전설이 세워진 토대였다.",
+      "text_markdown": "그것은 검은 수염 전설이 세워진 토대였다.",
+      "tts": {
+        "text": "그것은 검은 수염 전설이 세워진 토대였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수세기에 걸쳐, 검은 수염은 해적 그 자체의 상징이 되었다.",
+      "text_markdown": "수세기에 걸쳐, 검은 수염은 해적 그 자체의 상징이 되었다.",
+      "tts": {
+        "text": "수세기에 걸쳐, 검은 수염은 해적 그 자체의 상징이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들이 해적을 상상할 때, 보통 검은 수염 같은 모습을 떠올린다.",
+      "text_markdown": "사람들이 해적을 상상할 때, 보통 검은 수염 같은 모습을 떠올린다.",
+      "tts": {
+        "text": "사람들이 해적을 상상할 때, 보통 검은 수염 같은 모습을 떠올린다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "거대한 턱수염, 연기 나는 심지, 권총 탄띠는 표준적인 해적 이미지가 되었다.",
+      "text_markdown": "거대한 턱수염, 연기 나는 심지, 권총 탄띠는 표준적인 해적 이미지가 되었다.",
+      "tts": {
+        "text": "거대한 턱수염, 연기 나는 심지, 권총 탄띠는 표준적인 해적 이미지가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대중문화에 이토록 지속적인 영향을 미친 해적은 없다.",
+      "text_markdown": "대중문화에 이토록 지속적인 영향을 미친 해적은 없다.",
+      "tts": {
+        "text": "대중문화에 이토록 지속적인 영향을 미친 해적은 없다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1996년, 해양 고고학자들이 노스캐롤라이나 보퍼트 근처에서 난파선을 발견했다.",
+      "text_markdown": "1996년, 해양 고고학자들이 노스캐롤라이나 보퍼트 근처에서 난파선을 발견했다.",
+      "tts": {
+        "text": "천구백구십육 년, 해양 고고학자들이 노스캐롤라이나 보퍼트 근처에서 난파선을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것이 퀸 앤의 복수호의 잔해라고 믿고 있다.",
+      "text_markdown": "그것이 퀸 앤의 복수호의 잔해라고 믿고 있다.",
+      "tts": {
+        "text": "그것이 퀸 앤의 복수호의 잔해라고 믿고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 이후로 현장에서 280,000점 이상의 유물이 회수되었다.",
+      "text_markdown": "그 이후로 현장에서 280,000점 이상의 유물이 회수되었다.",
+      "tts": {
+        "text": "그 이후로 현장에서 이십팔만 점 이상의 유물이 회수되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대포, 닻, 의료 기구, 금가루 등이 포함된다.",
+      "text_markdown": "대포, 닻, 의료 기구, 금가루 등이 포함된다.",
+      "tts": {
+        "text": "대포, 닻, 의료 기구, 금가루 등이 포함된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 유물들은 해적선에서의 일상생활에 대해 많은 것을 알려준다.",
+      "text_markdown": "이 유물들은 해적선에서의 일상생활에 대해 많은 것을 알려준다.",
+      "tts": {
+        "text": "이 유물들은 해적선에서의 일상생활에 대해 많은 것을 알려준다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "선원들이 잘 먹었음을 보여주며, 돼지고기, 쇠고기, 생선이 식단에 포함된 증거가 있다.",
+      "text_markdown": "선원들이 잘 먹었음을 보여주며, 돼지고기, 쇠고기, 생선이 식단에 포함된 증거가 있다.",
+      "tts": {
+        "text": "선원들이 잘 먹었음을 보여주며, 돼지고기, 쇠고기, 생선이 식단에 포함된 증거가 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "의료 기구는 대부분의 대형 선박처럼 이 배에도 외과의사가 있었음을 시사한다.",
+      "text_markdown": "의료 기구는 대부분의 대형 선박처럼 이 배에도 외과의사가 있었음을 시사한다.",
+      "tts": {
+        "text": "의료 기구는 대부분의 대형 선박처럼 이 배에도 외과의사가 있었음을 시사한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "금가루는 해적 행위가 창출할 수 있었던 막대한 부를 확인시켜 준다.",
+      "text_markdown": "금가루는 해적 행위가 창출할 수 있었던 막대한 부를 확인시켜 준다.",
+      "tts": {
+        "text": "금가루는 해적 행위가 창출할 수 있었던 막대한 부를 확인시켜 준다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "검은 수염의 해적 경력은 약 이 년에 불과했다.",
+      "text_markdown": "검은 수염의 해적 경력은 약 이 년에 불과했다.",
+      "tts": {
+        "text": "검은 수염의 해적 경력은 약 이 년에 불과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 짧은 기간에, 그는 수십 척의 배를 나포하고 해안선 전체를 공포에 떨게 했다.",
+      "text_markdown": "그 짧은 기간에, 그는 수십 척의 배를 나포하고 해안선 전체를 공포에 떨게 했다.",
+      "tts": {
+        "text": "그 짧은 기간에, 그는 수십 척의 배를 나포하고 해안선 전체를 공포에 떨게 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "주요 식민지 항구를 봉쇄하고 세계에서 가장 강력한 해군에 도전했다.",
+      "text_markdown": "주요 식민지 항구를 봉쇄하고 세계에서 가장 강력한 해군에 도전했다.",
+      "tts": {
+        "text": "주요 식민지 항구를 봉쇄하고 세계에서 가장 강력한 해군에 도전했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 이야기는 해양 역사에서 가장 극적인 장 중 하나로 남아 있다.",
+      "text_markdown": "그의 이야기는 해양 역사에서 가장 극적인 장 중 하나로 남아 있다.",
+      "tts": {
+        "text": "그의 이야기는 해양 역사에서 가장 극적인 장 중 하나로 남아 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날, 검은 수염의 이름은 수많은 책, 영화, 텔레비전 프로그램에서 살아 있다.",
+      "text_markdown": "오늘날, 검은 수염의 이름은 수많은 책, 영화, 텔레비전 프로그램에서 살아 있다.",
+      "tts": {
+        "text": "오늘날, 검은 수염의 이름은 수많은 책, 영화, 텔레비전 프로그램에서 살아 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오크라코크 섬은 이제 인기 있는 관광지이며, 부분적으로는 해적 역사 때문이다.",
+      "text_markdown": "오크라코크 섬은 이제 인기 있는 관광지이며, 부분적으로는 해적 역사 때문이다.",
+      "tts": {
+        "text": "오크라코크 섬은 이제 인기 있는 관광지이며, 부분적으로는 해적 역사 때문이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "매년, 마을은 유명한 전투의 기념일을 축하하는 축제를 개최한다.",
+      "text_markdown": "매년, 마을은 유명한 전투의 기념일을 축하하는 축제를 개최한다.",
+      "tts": {
+        "text": "매년, 마을은 유명한 전투의 기념일을 축하하는 축제를 개최한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "결코 죽지 않는 전설",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수염에 불을 붙인 해적은 대중의 상상력 속에서 불멸의 인물이 되었다.",
+      "text_markdown": "수염에 불을 붙인 해적은 대중의 상상력 속에서 불멸의 인물이 되었다.",
+      "tts": {
+        "text": "수염에 불을 붙인 해적은 대중의 상상력 속에서 불멸의 인물이 되었다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

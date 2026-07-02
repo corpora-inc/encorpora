@@ -1,0 +1,4457 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sayyida_al_hurra",
+  "language": "es",
+  "total_segments": 298,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nota para el lector",
+      "text_markdown": "Nota para el lector"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta es la verdadera historia de una reina que se convirtió en pirata.",
+      "text_markdown": "Esta es la verdadera historia de una reina que se convirtió en pirata.",
+      "tts": {
+        "text": "Esta es la verdadera historia de una reina que se convirtió en pirata.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su nombre era Sayyida al-Hurra, y gobernó las aguas del Mediterráneo occidental.",
+      "text_markdown": "Su nombre era Sayyida al-Hurra, y gobernó las aguas del Mediterráneo occidental.",
+      "tts": {
+        "text": "Su nombre era Sayyida al-Hurra, y gobernó las aguas del Mediterráneo occidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fue la última mujer del mundo islámico en ostentar el título de al-Hurra, que significa la libre y soberana.",
+      "text_markdown": "Fue la última mujer del mundo islámico en ostentar el título de al-Hurra, que significa la libre y soberana.",
+      "tts": {
+        "text": "Fue la última mujer del mundo islámico en ostentar el título de al-Hurra, que significa la libre y soberana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La historia de Sayyida comienza con una catástrofe.",
+      "text_markdown": "La historia de Sayyida comienza con una catástrofe.",
+      "tts": {
+        "text": "La historia de Sayyida comienza con una catástrofe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En 1492, el último reino musulmán de España cayó ante los ejércitos cristianos de Fernando e Isabel.",
+      "text_markdown": "En 1492, el último reino musulmán de España cayó ante los ejércitos cristianos de Fernando e Isabel.",
+      "tts": {
+        "text": "En mil cuatrocientos noventa y dos, el último reino musulmán de España cayó ante los ejércitos cristianos de Fernando e Isabel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cientos de miles de musulmanes fueron expulsados de la tierra que sus familias habían llamado hogar durante siglos.",
+      "text_markdown": "Cientos de miles de musulmanes fueron expulsados de la tierra que sus familias habían llamado hogar durante siglos.",
+      "tts": {
+        "text": "Cientos de miles de musulmanes fueron expulsados de la tierra que sus familias habían llamado hogar durante siglos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La familia de Sayyida estaba entre ellos.",
+      "text_markdown": "La familia de Sayyida estaba entre ellos.",
+      "tts": {
+        "text": "La familia de Sayyida estaba entre ellos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este libro te llevará a los puertos y fortalezas del Mediterráneo occidental en el siglo dieciséis.",
+      "text_markdown": "Este libro te llevará a los puertos y fortalezas del Mediterráneo occidental en el siglo dieciséis.",
+      "tts": {
+        "text": "Este libro te llevará a los puertos y fortalezas del Mediterráneo occidental en el siglo dieciséis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Verás cómo una niña refugiada se convirtió en reina, diplomática y señora de piratas.",
+      "text_markdown": "Verás cómo una niña refugiada se convirtió en reina, diplomática y señora de piratas.",
+      "tts": {
+        "text": "Verás cómo una niña refugiada se convirtió en reina, diplomática y señora de piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Todo en este libro se basa en registros históricos, aunque las fuentes son menos que para los piratas europeos.",
+      "text_markdown": "Todo en este libro se basa en registros históricos, aunque las fuentes son menos que para los piratas europeos.",
+      "tts": {
+        "text": "Todo en este libro se basa en registros históricos, aunque las fuentes son menos que para los piratas europeos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota para el lector",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuando los hechos sean inciertos, lo diremos con claridad.",
+      "text_markdown": "Cuando los hechos sean inciertos, lo diremos con claridad.",
+      "tts": {
+        "text": "Cuando los hechos sean inciertos, lo diremos con claridad.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El mundo entre dos credos",
+      "text_markdown": "El mundo entre dos credos"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El Mediterráneo occidental era un campo de batalla entre la Europa cristiana y el mundo islámico.",
+      "text_markdown": "El Mediterráneo occidental era un campo de batalla entre la Europa cristiana y el mundo islámico.",
+      "tts": {
+        "text": "El Mediterráneo occidental era un campo de batalla entre la Europa cristiana y el mundo islámico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Durante siglos, las dos civilizaciones se habían enfrentado por el control de este estrecho mar.",
+      "text_markdown": "Durante siglos, las dos civilizaciones se habían enfrentado por el control de este estrecho mar.",
+      "tts": {
+        "text": "Durante siglos, las dos civilizaciones se habían enfrentado por el control de este estrecho mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El estrecho de Gibraltar, de solo nueve millas de ancho en su punto más angosto, las separaba.",
+      "text_markdown": "El estrecho de Gibraltar, de solo nueve millas de ancho en su punto más angosto, las separaba.",
+      "tts": {
+        "text": "El estrecho de Gibraltar, de solo nueve millas de ancho en su punto más angosto, las separaba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Controlar el estrecho significaba controlar el paso entre el Atlántico y el Mediterráneo.",
+      "text_markdown": "Controlar el estrecho significaba controlar el paso entre el Atlántico y el Mediterráneo.",
+      "tts": {
+        "text": "Controlar el estrecho significaba controlar el paso entre el Atlántico y el Mediterráneo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante casi 800 años, los musulmanes habían gobernado partes de la península ibérica.",
+      "text_markdown": "Durante casi 800 años, los musulmanes habían gobernado partes de la península ibérica.",
+      "tts": {
+        "text": "Durante casi ochocientos años, los musulmanes habían gobernado partes de la península ibérica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Llamaron a su territorio al-Ándalus, y fue una de las civilizaciones más avanzadas de la Europa medieval.",
+      "text_markdown": "Llamaron a su territorio al-Ándalus, y fue una de las civilizaciones más avanzadas de la Europa medieval.",
+      "tts": {
+        "text": "Llamaron a su territorio al-Ándalus, y fue una de las civilizaciones más avanzadas de la Europa medieval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus ciudades tenían bibliotecas, universidades y hospitales cuando gran parte de Europa aún estaba en la oscuridad.",
+      "text_markdown": "Sus ciudades tenían bibliotecas, universidades y hospitales cuando gran parte de Europa aún estaba en la oscuridad.",
+      "tts": {
+        "text": "Sus ciudades tenían bibliotecas, universidades y hospitales cuando gran parte de Europa aún estaba en la oscuridad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Córdoba, Granada y Sevilla eran joyas de la arquitectura y el saber islámicos.",
+      "text_markdown": "Córdoba, Granada y Sevilla eran joyas de la arquitectura y el saber islámicos.",
+      "tts": {
+        "text": "Córdoba, Granada y Sevilla eran joyas de la arquitectura y el saber islámicos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al-Ándalus era un centro de logros intelectuales.",
+      "text_markdown": "Al-Ándalus era un centro de logros intelectuales.",
+      "tts": {
+        "text": "Al-Ándalus era un centro de logros intelectuales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eruditos musulmanes, judíos y cristianos habían trabajado codo a codo durante siglos.",
+      "text_markdown": "Eruditos musulmanes, judíos y cristianos habían trabajado codo a codo durante siglos.",
+      "tts": {
+        "text": "Eruditos musulmanes, judíos y cristianos habían trabajado codo a codo durante siglos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tradujeron la filosofía griega, avanzaron en matemáticas y lograron avances en medicina y astronomía.",
+      "text_markdown": "Tradujeron la filosofía griega, avanzaron en matemáticas y lograron avances en medicina y astronomía.",
+      "tts": {
+        "text": "Tradujeron la filosofía griega, avanzaron en matemáticas y lograron avances en medicina y astronomía.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta tradición de saber influiría profundamente en el Renacimiento europeo.",
+      "text_markdown": "Esta tradición de saber influiría profundamente en el Renacimiento europeo.",
+      "tts": {
+        "text": "Esta tradición de saber influiría profundamente en el Renacimiento europeo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los reinos cristianos del norte de España habían pasado siglos avanzando hacia el sur en una campaña llamada la Reconquista.",
+      "text_markdown": "Los reinos cristianos del norte de España habían pasado siglos avanzando hacia el sur en una campaña llamada la Reconquista.",
+      "tts": {
+        "text": "Los reinos cristianos del norte de España habían pasado siglos avanzando hacia el sur en una campaña llamada la Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Año tras año, década tras década, conquistaron territorio musulmán.",
+      "text_markdown": "Año tras año, década tras década, conquistaron territorio musulmán.",
+      "tts": {
+        "text": "Año tras año, década tras década, conquistaron territorio musulmán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A finales del siglo quince, solo el pequeño reino de Granada permanecía bajo dominio musulmán.",
+      "text_markdown": "A finales del siglo quince, solo el pequeño reino de Granada permanecía bajo dominio musulmán.",
+      "tts": {
+        "text": "A finales del siglo quince, solo el pequeño reino de Granada permanecía bajo dominio musulmán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su caída era solo cuestión de tiempo.",
+      "text_markdown": "Su caída era solo cuestión de tiempo.",
+      "tts": {
+        "text": "Su caída era solo cuestión de tiempo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Granada cayó en enero de 1492, poniendo fin a casi 8 siglos de presencia musulmana en España.",
+      "text_markdown": "Granada cayó en enero de 1492, poniendo fin a casi 8 siglos de presencia musulmana en España.",
+      "tts": {
+        "text": "Granada cayó en enero de mil cuatrocientos noventa y dos, poniendo fin a casi ocho siglos de presencia musulmana en España.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El rey Fernando y la reina Isabel entraron triunfantes en el palacio de la Alhambra.",
+      "text_markdown": "El rey Fernando y la reina Isabel entraron triunfantes en el palacio de la Alhambra.",
+      "tts": {
+        "text": "El rey Fernando y la reina Isabel entraron triunfantes en el palacio de la Alhambra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El último gobernante musulmán de España, Muhammad XII, partió al exilio en Marruecos.",
+      "text_markdown": "El último gobernante musulmán de España, Muhammad XII, partió al exilio en Marruecos.",
+      "tts": {
+        "text": "El último gobernante musulmán de España, Muhammad el Duodécimo, partió al exilio en Marruecos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toda una civilización había sido desarraigada.",
+      "text_markdown": "Toda una civilización había sido desarraigada.",
+      "tts": {
+        "text": "Toda una civilización había sido desarraigada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La caída de Granada fue un desastre para la población musulmana de España.",
+      "text_markdown": "La caída de Granada fue un desastre para la población musulmana de España.",
+      "tts": {
+        "text": "La caída de Granada fue un desastre para la población musulmana de España.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inicialmente, Fernando e Isabel prometieron que los musulmanes podrían conservar su religión y costumbres.",
+      "text_markdown": "Inicialmente, Fernando e Isabel prometieron que los musulmanes podrían conservar su religión y costumbres.",
+      "tts": {
+        "text": "Inicialmente, Fernando e Isabel prometieron que los musulmanes podrían conservar su religión y costumbres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estas promesas pronto fueron incumplidas.",
+      "text_markdown": "Estas promesas pronto fueron incumplidas.",
+      "tts": {
+        "text": "Estas promesas pronto fueron incumplidas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los musulmanes fueron obligados a convertirse al cristianismo o abandonar España por completo.",
+      "text_markdown": "Los musulmanes fueron obligados a convertirse al cristianismo o abandonar España por completo.",
+      "tts": {
+        "text": "Los musulmanes fueron obligados a convertirse al cristianismo o abandonar España por completo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los que se negaron a convertirse fueron expulsados.",
+      "text_markdown": "Los que se negaron a convertirse fueron expulsados.",
+      "tts": {
+        "text": "Los que se negaron a convertirse fueron expulsados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huyeron a través del estrecho de Gibraltar hacia Marruecos, Argelia y Túnez.",
+      "text_markdown": "Huyeron a través del estrecho de Gibraltar hacia Marruecos, Argelia y Túnez.",
+      "tts": {
+        "text": "Huyeron a través del estrecho de Gibraltar hacia Marruecos, Argelia y Túnez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Llegaron como refugiados, cargando lo que pudieron y llorando todo lo que habían perdido.",
+      "text_markdown": "Llegaron como refugiados, cargando lo que pudieron y llorando todo lo que habían perdido.",
+      "tts": {
+        "text": "Llegaron como refugiados, cargando lo que pudieron y llorando todo lo que habían perdido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muchos de ellos ardían con un deseo de venganza contra la Corona española.",
+      "text_markdown": "Muchos de ellos ardían con un deseo de venganza contra la Corona española.",
+      "tts": {
+        "text": "Muchos de ellos ardían con un deseo de venganza contra la Corona española.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Marruecos era el destino principal de estos refugiados.",
+      "text_markdown": "Marruecos era el destino principal de estos refugiados.",
+      "tts": {
+        "text": "Marruecos era el destino principal de estos refugiados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La costa marroquí se encontraba justo al otro lado del estrecho desde España.",
+      "text_markdown": "La costa marroquí se encontraba justo al otro lado del estrecho desde España.",
+      "tts": {
+        "text": "La costa marroquí se encontraba justo al otro lado del estrecho desde España.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ciudades como Fez, Tánger y Tetuán absorbieron grandes cantidades de refugiados andalusíes.",
+      "text_markdown": "Ciudades como Fez, Tánger y Tetuán absorbieron grandes cantidades de refugiados andalusíes.",
+      "tts": {
+        "text": "Ciudades como Fez, Tánger y Tetuán absorbieron grandes cantidades de refugiados andalusíes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Estas familias desplazadas trajeron consigo sus habilidades, su saber y su ira.",
+      "text_markdown": "Estas familias desplazadas trajeron consigo sus habilidades, su saber y su ira.",
+      "tts": {
+        "text": "Estas familias desplazadas trajeron consigo sus habilidades, su saber y su ira.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El Imperio otomano era la mayor potencia islámica de esta era.",
+      "text_markdown": "El Imperio otomano era la mayor potencia islámica de esta era.",
+      "tts": {
+        "text": "El Imperio otomano era la mayor potencia islámica de esta era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Desde su capital en Estambul, controlaba un vasto territorio que abarcaba tres continentes.",
+      "text_markdown": "Desde su capital en Estambul, controlaba un vasto territorio que abarcaba tres continentes.",
+      "tts": {
+        "text": "Desde su capital en Estambul, controlaba un vasto territorio que abarcaba tres continentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La armada otomana dominaba el Mediterráneo oriental.",
+      "text_markdown": "La armada otomana dominaba el Mediterráneo oriental.",
+      "tts": {
+        "text": "La armada otomana dominaba el Mediterráneo oriental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los corsarios otomanos, operando desde puertos del norte de África, saqueaban barcos y costas europeas.",
+      "text_markdown": "Los corsarios otomanos, operando desde puertos del norte de África, saqueaban barcos y costas europeas.",
+      "tts": {
+        "text": "Los corsarios otomanos, operando desde puertos del norte de África, saqueaban barcos y costas europeas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El corsario otomano más famoso era Hayreddin Barbarroja.",
+      "text_markdown": "El corsario otomano más famoso era Hayreddin Barbarroja.",
+      "tts": {
+        "text": "El corsario otomano más famoso era Hayreddin Barbarroja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Operaba desde la costa de Argelia y comandaba una poderosa flota.",
+      "text_markdown": "Operaba desde la costa de Argelia y comandaba una poderosa flota.",
+      "tts": {
+        "text": "Operaba desde la costa de Argelia y comandaba una poderosa flota.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbarroja era tanto pirata como almirante de la armada otomana.",
+      "text_markdown": "Barbarroja era tanto pirata como almirante de la armada otomana.",
+      "tts": {
+        "text": "Barbarroja era tanto pirata como almirante de la armada otomana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sus incursiones aterrorizaban las costas de España, Italia y Francia.",
+      "text_markdown": "Sus incursiones aterrorizaban las costas de España, Italia y Francia.",
+      "tts": {
+        "text": "Sus incursiones aterrorizaban las costas de España, Italia y Francia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "España y Portugal, mientras tanto, construían vastos imperios de ultramar.",
+      "text_markdown": "España y Portugal, mientras tanto, construían vastos imperios de ultramar.",
+      "tts": {
+        "text": "España y Portugal, mientras tanto, construían vastos imperios de ultramar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Habían colonizado las Américas y establecido puestos comerciales en África y Asia.",
+      "text_markdown": "Habían colonizado las Américas y establecido puestos comerciales en África y Asia.",
+      "tts": {
+        "text": "Habían colonizado las Américas y establecido puestos comerciales en África y Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Su riqueza dependía del paso seguro de barcos por el estrecho de Gibraltar.",
+      "text_markdown": "Su riqueza dependía del paso seguro de barcos por el estrecho de Gibraltar.",
+      "tts": {
+        "text": "Su riqueza dependía del paso seguro de barcos por el estrecho de Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cualquier interrupción de este tráfico amenazaba los cimientos económicos de sus imperios.",
+      "text_markdown": "Cualquier interrupción de este tráfico amenazaba los cimientos económicos de sus imperios.",
+      "tts": {
+        "text": "Cualquier interrupción de este tráfico amenazaba los cimientos económicos de sus imperios.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El estrecho de Gibraltar era por tanto un lugar de inmensa importancia estratégica.",
+      "text_markdown": "El estrecho de Gibraltar era por tanto un lugar de inmensa importancia estratégica.",
+      "tts": {
+        "text": "El estrecho de Gibraltar era por tanto un lugar de inmensa importancia estratégica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quien controlara el estrecho controlaba el flujo de riqueza entre el Atlántico y el Mediterráneo.",
+      "text_markdown": "Quien controlara el estrecho controlaba el flujo de riqueza entre el Atlántico y el Mediterráneo.",
+      "tts": {
+        "text": "Quien controlara el estrecho controlaba el flujo de riqueza entre el Atlántico y el Mediterráneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era el terreno de caza perfecto para cualquiera lo bastante audaz como para desafiar a las grandes potencias.",
+      "text_markdown": "Era el terreno de caza perfecto para cualquiera lo bastante audaz como para desafiar a las grandes potencias.",
+      "tts": {
+        "text": "Era el terreno de caza perfecto para cualquiera lo bastante audaz como para desafiar a las grandes potencias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra se convertiría en una de las más audaces.",
+      "text_markdown": "Sayyida al-Hurra se convertiría en una de las más audaces.",
+      "tts": {
+        "text": "Sayyida al-Hurra se convertiría en una de las más audaces.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La piratería en el Mediterráneo era diferente de la piratería en el Caribe.",
+      "text_markdown": "La piratería en el Mediterráneo era diferente de la piratería en el Caribe.",
+      "tts": {
+        "text": "La piratería en el Mediterráneo era diferente de la piratería en el Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estaba profundamente entrelazada con el conflicto religioso entre cristianos y musulmanes.",
+      "text_markdown": "Estaba profundamente entrelazada con el conflicto religioso entre cristianos y musulmanes.",
+      "tts": {
+        "text": "Estaba profundamente entrelazada con el conflicto religioso entre cristianos y musulmanes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los corsarios musulmanes asaltaban barcos cristianos, y los corsarios cristianos asaltaban barcos musulmanes.",
+      "text_markdown": "Los corsarios musulmanes asaltaban barcos cristianos, y los corsarios cristianos asaltaban barcos musulmanes.",
+      "tts": {
+        "text": "Los corsarios musulmanes asaltaban barcos cristianos, y los corsarios cristianos asaltaban barcos musulmanes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo entre dos credos",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ambos bandos justificaban sus ataques como guerra santa, aunque buscaban beneficio personal.",
+      "text_markdown": "Ambos bandos justificaban sus ataques como guerra santa, aunque buscaban beneficio personal.",
+      "tts": {
+        "text": "Ambos bandos justificaban sus ataques como guerra santa, aunque buscaban beneficio personal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Granada a Tetuán",
+      "text_markdown": "De Granada a Tetuán"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra nació alrededor de 1485 en el reino de Granada.",
+      "text_markdown": "Sayyida al-Hurra nació alrededor de 1485 en el reino de Granada.",
+      "tts": {
+        "text": "Sayyida al-Hurra nació alrededor de mil cuatrocientos ochenta y cinco en el reino de Granada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su nombre de nacimiento pudo haber sido Lalla Aicha, aunque esto es incierto.",
+      "text_markdown": "Su nombre de nacimiento pudo haber sido Lalla Aicha, aunque esto es incierto.",
+      "tts": {
+        "text": "Su nombre de nacimiento pudo haber sido Lalla Aicha, aunque esto es incierto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El título Sayyida al-Hurra, por el que la recuerda la historia, era un honorífico que significaba noble dama, la libre.",
+      "text_markdown": "El título Sayyida al-Hurra, por el que la recuerda la historia, era un honorífico que significaba noble dama, la libre.",
+      "tts": {
+        "text": "El título Sayyida al-Hurra, por el que la recuerda la historia, era un honorífico que significaba noble dama, la libre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le fue otorgado más tarde en su vida como marca de su poder e independencia.",
+      "text_markdown": "Le fue otorgado más tarde en su vida como marca de su poder e independencia.",
+      "tts": {
+        "text": "Le fue otorgado más tarde en su vida como marca de su poder e independencia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su familia pertenecía a la dinastía Rashid, un clan noble con profundas raíces en la sociedad andalusí.",
+      "text_markdown": "Su familia pertenecía a la dinastía Rashid, un clan noble con profundas raíces en la sociedad andalusí.",
+      "tts": {
+        "text": "Su familia pertenecía a la dinastía Rashid, un clan noble con profundas raíces en la sociedad andalusí.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su padre, Moulay Ali ibn Rashid, era un hombre de considerable influencia política.",
+      "text_markdown": "Su padre, Moulay Ali ibn Rashid, era un hombre de considerable influencia política.",
+      "tts": {
+        "text": "Su padre, Moulay Ali ibn Rashid, era un hombre de considerable influencia política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La familia vivía en la ciudad montañosa de Chefchaouen en la región del Rif, tras su anterior partida de Granada.",
+      "text_markdown": "La familia vivía en la ciudad montañosa de Chefchaouen en la región del Rif, tras su anterior partida de Granada.",
+      "tts": {
+        "text": "La familia vivía en la ciudad montañosa de Chefchaouen en la región del Rif, tras su anterior partida de Granada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chefchaouen había sido fundada por refugiados de la Reconquista y servía como base de resistencia contra los portugueses.",
+      "text_markdown": "Chefchaouen había sido fundada por refugiados de la Reconquista y servía como base de resistencia contra los portugueses.",
+      "tts": {
+        "text": "Chefchaouen había sido fundada por refugiados de la Reconquista y servía como base de resistencia contra los portugueses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida creció en un ambiente de aprendizaje y conciencia política.",
+      "text_markdown": "Sayyida creció en un ambiente de aprendizaje y conciencia política.",
+      "tts": {
+        "text": "Sayyida creció en un ambiente de aprendizaje y conciencia política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su familia valoraba la educación, y recibió una formación completa en teología, lenguas y diplomacia.",
+      "text_markdown": "Su familia valoraba la educación, y recibió una formación completa en teología, lenguas y diplomacia.",
+      "tts": {
+        "text": "Su familia valoraba la educación, y recibió una formación completa en teología, lenguas y diplomacia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hablaba árabe y probablemente entendía español por la herencia andalusí de su familia.",
+      "text_markdown": "Hablaba árabe y probablemente entendía español por la herencia andalusí de su familia.",
+      "tts": {
+        "text": "Hablaba árabe y probablemente entendía español por la herencia andalusí de su familia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta educación era inusual para las mujeres de la época, pero la familia Rashid no era ordinaria.",
+      "text_markdown": "Esta educación era inusual para las mujeres de la época, pero la familia Rashid no era ordinaria.",
+      "tts": {
+        "text": "Esta educación era inusual para las mujeres de la época, pero la familia Rashid no era ordinaria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La experiencia del exilio moldeó toda la visión del mundo de Sayyida.",
+      "text_markdown": "La experiencia del exilio moldeó toda la visión del mundo de Sayyida.",
+      "tts": {
+        "text": "La experiencia del exilio moldeó toda la visión del mundo de Sayyida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Creció escuchando historias del paraíso perdido de al-Ándalus.",
+      "text_markdown": "Creció escuchando historias del paraíso perdido de al-Ándalus.",
+      "tts": {
+        "text": "Creció escuchando historias del paraíso perdido de al-Ándalus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La generación mayor hablaba de sus hermosas casas, sus huertos y sus bibliotecas con profundo dolor.",
+      "text_markdown": "La generación mayor hablaba de sus hermosas casas, sus huertos y sus bibliotecas con profundo dolor.",
+      "tts": {
+        "text": "La generación mayor hablaba de sus hermosas casas, sus huertos y sus bibliotecas con profundo dolor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este trauma colectivo de la desposesión alimentó un poderoso deseo de retribución.",
+      "text_markdown": "Este trauma colectivo de la desposesión alimentó un poderoso deseo de retribución.",
+      "tts": {
+        "text": "Este trauma colectivo de la desposesión alimentó un poderoso deseo de retribución.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La propia Chefchaouen era un lugar extraordinario.",
+      "text_markdown": "La propia Chefchaouen era un lugar extraordinario.",
+      "tts": {
+        "text": "La propia Chefchaouen era un lugar extraordinario.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enclavada en las montañas del Rif, era una ciudad de muros azulados y calles estrechas.",
+      "text_markdown": "Enclavada en las montañas del Rif, era una ciudad de muros azulados y calles estrechas.",
+      "tts": {
+        "text": "Enclavada en las montañas del Rif, era una ciudad de muros azulados y calles estrechas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus fundadores habían elegido la ubicación por su capacidad defensiva contra las incursiones portuguesas.",
+      "text_markdown": "Sus fundadores habían elegido la ubicación por su capacidad defensiva contra las incursiones portuguesas.",
+      "tts": {
+        "text": "Sus fundadores habían elegido la ubicación por su capacidad defensiva contra las incursiones portuguesas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La ciudad se convirtió en un refugio para los exiliados andalusíes y un centro de resistencia.",
+      "text_markdown": "La ciudad se convirtió en un refugio para los exiliados andalusíes y un centro de resistencia.",
+      "tts": {
+        "text": "La ciudad se convirtió en un refugio para los exiliados andalusíes y un centro de resistencia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siendo aún joven, Sayyida fue casada con Abu al-Hassan al-Mandri, el gobernador de Tetuán.",
+      "text_markdown": "Siendo aún joven, Sayyida fue casada con Abu al-Hassan al-Mandri, el gobernador de Tetuán.",
+      "tts": {
+        "text": "Siendo aún joven, Sayyida fue casada con Abu al-Hassan al-Mandri, el gobernador de Tetuán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al-Mandri era un líder respetado que había reconstruido Tetuán desde las ruinas.",
+      "text_markdown": "Al-Mandri era un líder respetado que había reconstruido Tetuán desde las ruinas.",
+      "tts": {
+        "text": "Al-Mandri era un líder respetado que había reconstruido Tetuán desde las ruinas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ciudad había sido destruida por los portugueses décadas antes y se recuperaba lentamente.",
+      "text_markdown": "La ciudad había sido destruida por los portugueses décadas antes y se recuperaba lentamente.",
+      "tts": {
+        "text": "La ciudad había sido destruida por los portugueses décadas antes y se recuperaba lentamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El matrimonio fue una alianza política entre dos poderosas familias de refugiados.",
+      "text_markdown": "El matrimonio fue una alianza política entre dos poderosas familias de refugiados.",
+      "tts": {
+        "text": "El matrimonio fue una alianza política entre dos poderosas familias de refugiados.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetuán se encontraba en la costa norte de Marruecos, cerca del estrecho de Gibraltar.",
+      "text_markdown": "Tetuán se encontraba en la costa norte de Marruecos, cerca del estrecho de Gibraltar.",
+      "tts": {
+        "text": "Tetuán se encontraba en la costa norte de Marruecos, cerca del estrecho de Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estaba idealmente posicionada para el comercio y para asaltar barcos europeos.",
+      "text_markdown": "Estaba idealmente posicionada para el comercio y para asaltar barcos europeos.",
+      "tts": {
+        "text": "Estaba idealmente posicionada para el comercio y para asaltar barcos europeos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ciudad se convirtió en un puerto próspero, poblado principalmente por refugiados andalusíes.",
+      "text_markdown": "La ciudad se convirtió en un puerto próspero, poblado principalmente por refugiados andalusíes.",
+      "tts": {
+        "text": "La ciudad se convirtió en un puerto próspero, poblado principalmente por refugiados andalusíes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Estos refugiados trajeron su conocimiento de los puertos, las bahías y las rutas marítimas españolas.",
+      "text_markdown": "Estos refugiados trajeron su conocimiento de los puertos, las bahías y las rutas marítimas españolas.",
+      "tts": {
+        "text": "Estos refugiados trajeron su conocimiento de los puertos, las bahías y las rutas marítimas españolas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida demostró ser una compañera capaz de su esposo en el gobierno de Tetuán.",
+      "text_markdown": "Sayyida demostró ser una compañera capaz de su esposo en el gobierno de Tetuán.",
+      "tts": {
+        "text": "Sayyida demostró ser una compañera capaz de su esposo en el gobierno de Tetuán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Participaba en las decisiones políticas y entendía la compleja diplomacia de la región.",
+      "text_markdown": "Participaba en las decisiones políticas y entendía la compleja diplomacia de la región.",
+      "tts": {
+        "text": "Participaba en las decisiones políticas y entendía la compleja diplomacia de la región.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuando su esposo murió, Sayyida no se retiró a la vida privada.",
+      "text_markdown": "Cuando su esposo murió, Sayyida no se retiró a la vida privada.",
+      "tts": {
+        "text": "Cuando su esposo murió, Sayyida no se retiró a la vida privada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En cambio, asumió ella misma el gobierno de Tetuán.",
+      "text_markdown": "En cambio, asumió ella misma el gobierno de Tetuán.",
+      "tts": {
+        "text": "En cambio, asumió ella misma el gobierno de Tetuán.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Convertirse en la gobernante única de una ciudad fue un logro extraordinario para una mujer en esta época.",
+      "text_markdown": "Convertirse en la gobernante única de una ciudad fue un logro extraordinario para una mujer en esta época.",
+      "tts": {
+        "text": "Convertirse en la gobernante única de una ciudad fue un logro extraordinario para una mujer en esta época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyida tenía las habilidades políticas, las conexiones familiares y la autoridad personal para mantener el poder.",
+      "text_markdown": "Sayyida tenía las habilidades políticas, las conexiones familiares y la autoridad personal para mantener el poder.",
+      "tts": {
+        "text": "Sayyida tenía las habilidades políticas, las conexiones familiares y la autoridad personal para mantener el poder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El pueblo de Tetuán aceptó su gobierno porque era competente y porque su difunto esposo había confiado en ella.",
+      "text_markdown": "El pueblo de Tetuán aceptó su gobierno porque era competente y porque su difunto esposo había confiado en ella.",
+      "tts": {
+        "text": "El pueblo de Tetuán aceptó su gobierno porque era competente y porque su difunto esposo había confiado en ella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era ahora una de las personas más poderosas de la costa marroquí.",
+      "text_markdown": "Era ahora una de las personas más poderosas de la costa marroquí.",
+      "tts": {
+        "text": "Era ahora una de las personas más poderosas de la costa marroquí.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida también tenía aliados poderosos.",
+      "text_markdown": "Sayyida también tenía aliados poderosos.",
+      "tts": {
+        "text": "Sayyida también tenía aliados poderosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sus conexiones familiares en Chefchaouen le daban una red de apoyo en las montañas del Rif.",
+      "text_markdown": "Sus conexiones familiares en Chefchaouen le daban una red de apoyo en las montañas del Rif.",
+      "tts": {
+        "text": "Sus conexiones familiares en Chefchaouen le daban una red de apoyo en las montañas del Rif.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mantenía buenas relaciones con la dinastía wattásida que gobernaba Marruecos desde Fez.",
+      "text_markdown": "Mantenía buenas relaciones con la dinastía wattásida que gobernaba Marruecos desde Fez.",
+      "tts": {
+        "text": "Mantenía buenas relaciones con la dinastía wattásida que gobernaba Marruecos desde Fez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Estas alianzas la protegían de rivales que pudieran desafiar a una gobernante mujer.",
+      "text_markdown": "Estas alianzas la protegían de rivales que pudieran desafiar a una gobernante mujer.",
+      "tts": {
+        "text": "Estas alianzas la protegían de rivales que pudieran desafiar a una gobernante mujer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bajo el gobierno de Sayyida, Tetuán prosperó.",
+      "text_markdown": "Bajo el gobierno de Sayyida, Tetuán prosperó.",
+      "tts": {
+        "text": "Bajo el gobierno de Sayyida, Tetuán prosperó.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El comercio fluía por su puerto y su población crecía.",
+      "text_markdown": "El comercio fluía por su puerto y su población crecía.",
+      "tts": {
+        "text": "El comercio fluía por su puerto y su población crecía.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pero Sayyida tenía ambiciones más allá de la simple gobernanza.",
+      "text_markdown": "Pero Sayyida tenía ambiciones más allá de la simple gobernanza.",
+      "tts": {
+        "text": "Pero Sayyida tenía ambiciones más allá de la simple gobernanza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dirigió su mirada al mar y a los barcos europeos que cruzaban el estrecho de Gibraltar cada día.",
+      "text_markdown": "Dirigió su mirada al mar y a los barcos europeos que cruzaban el estrecho de Gibraltar cada día.",
+      "tts": {
+        "text": "Dirigió su mirada al mar y a los barcos europeos que cruzaban el estrecho de Gibraltar cada día.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los españoles y portugueses habían tomado varias ciudades costeras marroquíes.",
+      "text_markdown": "Los españoles y portugueses habían tomado varias ciudades costeras marroquíes.",
+      "tts": {
+        "text": "Los españoles y portugueses habían tomado varias ciudades costeras marroquíes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ceuta, Tánger y otros puertos estaban bajo control europeo.",
+      "text_markdown": "Ceuta, Tánger y otros puertos estaban bajo control europeo.",
+      "tts": {
+        "text": "Ceuta, Tánger y otros puertos estaban bajo control europeo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estas ocupaciones eran una humillación constante para el pueblo marroquí.",
+      "text_markdown": "Estas ocupaciones eran una humillación constante para el pueblo marroquí.",
+      "tts": {
+        "text": "Estas ocupaciones eran una humillación constante para el pueblo marroquí.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Granada a Tetuán",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida veía la actividad corsaria como una forma legítima de resistencia contra estos ocupantes extranjeros.",
+      "text_markdown": "Sayyida veía la actividad corsaria como una forma legítima de resistencia contra estos ocupantes extranjeros.",
+      "tts": {
+        "text": "Sayyida veía la actividad corsaria como una forma legítima de resistencia contra estos ocupantes extranjeros.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Reina de los piratas",
+      "text_markdown": "Reina de los piratas"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra construyó una flota corsaria que operaba en todo el Mediterráneo occidental.",
+      "text_markdown": "Sayyida al-Hurra construyó una flota corsaria que operaba en todo el Mediterráneo occidental.",
+      "tts": {
+        "text": "Sayyida al-Hurra construyó una flota corsaria que operaba en todo el Mediterráneo occidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sus barcos atacaban las naves mercantes españolas y portuguesas que pasaban por el estrecho de Gibraltar.",
+      "text_markdown": "Sus barcos atacaban las naves mercantes españolas y portuguesas que pasaban por el estrecho de Gibraltar.",
+      "tts": {
+        "text": "Sus barcos atacaban las naves mercantes españolas y portuguesas que pasaban por el estrecho de Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Organizaba estas incursiones con la precisión de un comandante militar.",
+      "text_markdown": "Organizaba estas incursiones con la precisión de un comandante militar.",
+      "tts": {
+        "text": "Organizaba estas incursiones con la precisión de un comandante militar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cada ataque estaba planificado para maximizar el beneficio minimizando el riesgo para sus barcos y tripulaciones.",
+      "text_markdown": "Cada ataque estaba planificado para maximizar el beneficio minimizando el riesgo para sus barcos y tripulaciones.",
+      "tts": {
+        "text": "Cada ataque estaba planificado para maximizar el beneficio minimizando el riesgo para sus barcos y tripulaciones.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los corsarios que navegaban para Sayyida eran una mezcla de marineros marroquíes y refugiados andalusíes.",
+      "text_markdown": "Los corsarios que navegaban para Sayyida eran una mezcla de marineros marroquíes y refugiados andalusíes.",
+      "tts": {
+        "text": "Los corsarios que navegaban para Sayyida eran una mezcla de marineros marroquíes y refugiados andalusíes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muchos de los refugiados eran antiguos marineros que conocían íntimamente la costa española.",
+      "text_markdown": "Muchos de los refugiados eran antiguos marineros que conocían íntimamente la costa española.",
+      "tts": {
+        "text": "Muchos de los refugiados eran antiguos marineros que conocían íntimamente la costa española.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Conocían los puertos, las rutas marítimas y los horarios de los convoyes mercantes.",
+      "text_markdown": "Conocían los puertos, las rutas marítimas y los horarios de los convoyes mercantes.",
+      "tts": {
+        "text": "Conocían los puertos, las rutas marítimas y los horarios de los convoyes mercantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta inteligencia daba a la flota de Sayyida una ventaja decisiva.",
+      "text_markdown": "Esta inteligencia daba a la flota de Sayyida una ventaja decisiva.",
+      "tts": {
+        "text": "Esta inteligencia daba a la flota de Sayyida una ventaja decisiva.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida forjó una alianza con Hayreddin Barbarroja, el famoso corsario otomano.",
+      "text_markdown": "Sayyida forjó una alianza con Hayreddin Barbarroja, el famoso corsario otomano.",
+      "tts": {
+        "text": "Sayyida forjó una alianza con Hayreddin Barbarroja, el famoso corsario otomano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbarroja controlaba el Mediterráneo oriental desde su base en Argel.",
+      "text_markdown": "Barbarroja controlaba el Mediterráneo oriental desde su base en Argel.",
+      "tts": {
+        "text": "Barbarroja controlaba el Mediterráneo oriental desde su base en Argel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Juntos, dividieron el Mediterráneo occidental entre ellos.",
+      "text_markdown": "Juntos, dividieron el Mediterráneo occidental entre ellos.",
+      "tts": {
+        "text": "Juntos, dividieron el Mediterráneo occidental entre ellos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida controlaba las aguas cercanas al estrecho de Gibraltar, mientras que Barbarroja dominaba más al este.",
+      "text_markdown": "Sayyida controlaba las aguas cercanas al estrecho de Gibraltar, mientras que Barbarroja dominaba más al este.",
+      "tts": {
+        "text": "Sayyida controlaba las aguas cercanas al estrecho de Gibraltar, mientras que Barbarroja dominaba más al este.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta alianza hizo de Sayyida una de las figuras más importantes de la piratería mediterránea.",
+      "text_markdown": "Esta alianza hizo de Sayyida una de las figuras más importantes de la piratería mediterránea.",
+      "tts": {
+        "text": "Esta alianza hizo de Sayyida una de las figuras más importantes de la piratería mediterránea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era la única mujer conocida que mantuvo una asociación así con Barbarroja.",
+      "text_markdown": "Era la única mujer conocida que mantuvo una asociación así con Barbarroja.",
+      "tts": {
+        "text": "Era la única mujer conocida que mantuvo una asociación así con Barbarroja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus fuerzas combinadas hacían del Mediterráneo occidental un lugar extremadamente peligroso para la navegación europea.",
+      "text_markdown": "Sus fuerzas combinadas hacían del Mediterráneo occidental un lugar extremadamente peligroso para la navegación europea.",
+      "tts": {
+        "text": "Sus fuerzas combinadas hacían del Mediterráneo occidental un lugar extremadamente peligroso para la navegación europea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "España y Portugal luchaban por proteger sus flotas mercantes de esta amenaza coordinada.",
+      "text_markdown": "España y Portugal luchaban por proteger sus flotas mercantes de esta amenaza coordinada.",
+      "tts": {
+        "text": "España y Portugal luchaban por proteger sus flotas mercantes de esta amenaza coordinada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los corsarios de Sayyida no se limitaban a robar barcos y soltarlos.",
+      "text_markdown": "Los corsarios de Sayyida no se limitaban a robar barcos y soltarlos.",
+      "tts": {
+        "text": "Los corsarios de Sayyida no se limitaban a robar barcos y soltarlos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capturaban tanto cargamento como pasajeros.",
+      "text_markdown": "Capturaban tanto cargamento como pasajeros.",
+      "tts": {
+        "text": "Capturaban tanto cargamento como pasajeros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los prisioneros europeos eran retenidos para pedir rescate, lo que se convirtió en una importante fuente de ingresos.",
+      "text_markdown": "Los prisioneros europeos eran retenidos para pedir rescate, lo que se convirtió en una importante fuente de ingresos.",
+      "tts": {
+        "text": "Los prisioneros europeos eran retenidos para pedir rescate, lo que se convirtió en una importante fuente de ingresos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los cautivos adinerados podían generar sumas enormes, pagadas por sus familias o sus gobiernos.",
+      "text_markdown": "Los cautivos adinerados podían generar sumas enormes, pagadas por sus familias o sus gobiernos.",
+      "tts": {
+        "text": "Los cautivos adinerados podían generar sumas enormes, pagadas por sus familias o sus gobiernos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El comercio de rescates era un negocio complejo con sus propias reglas e intermediarios.",
+      "text_markdown": "El comercio de rescates era un negocio complejo con sus propias reglas e intermediarios.",
+      "tts": {
+        "text": "El comercio de rescates era un negocio complejo con sus propias reglas e intermediarios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Órdenes religiosas de España y Portugal se especializaban en negociar la liberación de cautivos.",
+      "text_markdown": "Órdenes religiosas de España y Portugal se especializaban en negociar la liberación de cautivos.",
+      "tts": {
+        "text": "Órdenes religiosas de España y Portugal se especializaban en negociar la liberación de cautivos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyida trataba con estos intermediarios como jefa de estado, no simplemente como pirata.",
+      "text_markdown": "Sayyida trataba con estos intermediarios como jefa de estado, no simplemente como pirata.",
+      "tts": {
+        "text": "Sayyida trataba con estos intermediarios como jefa de estado, no simplemente como pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su correspondencia diplomática con gobiernos europeos ha sobrevivido en archivos españoles y portugueses.",
+      "text_markdown": "Su correspondencia diplomática con gobiernos europeos ha sobrevivido en archivos españoles y portugueses.",
+      "tts": {
+        "text": "Su correspondencia diplomática con gobiernos europeos ha sobrevivido en archivos españoles y portugueses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las fuentes europeas describen a Sayyida con una mezcla de miedo y respeto a regañadientes.",
+      "text_markdown": "Las fuentes europeas describen a Sayyida con una mezcla de miedo y respeto a regañadientes.",
+      "tts": {
+        "text": "Las fuentes europeas describen a Sayyida con una mezcla de miedo y respeto a regañadientes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La llamaban reina pirata, aunque ella se veía como una soberana legítima librando una guerra.",
+      "text_markdown": "La llamaban reina pirata, aunque ella se veía como una soberana legítima librando una guerra.",
+      "tts": {
+        "text": "La llamaban reina pirata, aunque ella se veía como una soberana legítima librando una guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A sus ojos, los españoles y portugueses eran los agresores que habían robado tierras musulmanas.",
+      "text_markdown": "A sus ojos, los españoles y portugueses eran los agresores que habían robado tierras musulmanas.",
+      "tts": {
+        "text": "A sus ojos, los españoles y portugueses eran los agresores que habían robado tierras musulmanas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sus incursiones eran actos de justicia, no mero bandidaje.",
+      "text_markdown": "Sus incursiones eran actos de justicia, no mero bandidaje.",
+      "tts": {
+        "text": "Sus incursiones eran actos de justicia, no mero bandidaje.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La riqueza de Sayyida proveniente de la piratería y los rescates hizo de Tetuán una de las ciudades más ricas de Marruecos.",
+      "text_markdown": "La riqueza de Sayyida proveniente de la piratería y los rescates hizo de Tetuán una de las ciudades más ricas de Marruecos.",
+      "tts": {
+        "text": "La riqueza de Sayyida proveniente de la piratería y los rescates hizo de Tetuán una de las ciudades más ricas de Marruecos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Invirtió en la infraestructura de la ciudad, ampliando su puerto y reforzando sus defensas.",
+      "text_markdown": "Invirtió en la infraestructura de la ciudad, ampliando su puerto y reforzando sus defensas.",
+      "tts": {
+        "text": "Invirtió en la infraestructura de la ciudad, ampliando su puerto y reforzando sus defensas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se construyeron nuevas mezquitas, mercados y casas con las ganancias de su flota corsaria.",
+      "text_markdown": "Se construyeron nuevas mezquitas, mercados y casas con las ganancias de su flota corsaria.",
+      "tts": {
+        "text": "Se construyeron nuevas mezquitas, mercados y casas con las ganancias de su flota corsaria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetuán se convirtió en un próspero centro de comercio y cultura.",
+      "text_markdown": "Tetuán se convirtió en un próspero centro de comercio y cultura.",
+      "tts": {
+        "text": "Tetuán se convirtió en un próspero centro de comercio y cultura.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sus capitanes eran navegantes hábiles que conocían cada cala y corriente del estrecho.",
+      "text_markdown": "Sus capitanes eran navegantes hábiles que conocían cada cala y corriente del estrecho.",
+      "tts": {
+        "text": "Sus capitanes eran navegantes hábiles que conocían cada cala y corriente del estrecho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Usaban embarcaciones rápidas y maniobrables que podían superar a los pesados buques de guerra europeos.",
+      "text_markdown": "Usaban embarcaciones rápidas y maniobrables que podían superar a los pesados buques de guerra europeos.",
+      "tts": {
+        "text": "Usaban embarcaciones rápidas y maniobrables que podían superar a los pesados buques de guerra europeos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atacaban al amanecer o al atardecer cuando la visibilidad era escasa.",
+      "text_markdown": "Atacaban al amanecer o al atardecer cuando la visibilidad era escasa.",
+      "tts": {
+        "text": "Atacaban al amanecer o al atardecer cuando la visibilidad era escasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El elemento sorpresa era su arma más poderosa.",
+      "text_markdown": "El elemento sorpresa era su arma más poderosa.",
+      "tts": {
+        "text": "El elemento sorpresa era su arma más poderosa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su reputación creció hasta atraer la atención del propio sultán wattásida.",
+      "text_markdown": "Su reputación creció hasta atraer la atención del propio sultán wattásida.",
+      "tts": {
+        "text": "Su reputación creció hasta atraer la atención del propio sultán wattásida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El sultán Ahmed al-Wattasi propuso matrimonio a Sayyida alrededor de 1515.",
+      "text_markdown": "El sultán Ahmed al-Wattasi propuso matrimonio a Sayyida alrededor de 1515.",
+      "tts": {
+        "text": "El sultán Ahmed al-Wattasi propuso matrimonio a Sayyida alrededor de mil quinientos quince.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fue un honor extraordinario para cualquier mujer de la época.",
+      "text_markdown": "Fue un honor extraordinario para cualquier mujer de la época.",
+      "tts": {
+        "text": "Fue un honor extraordinario para cualquier mujer de la época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "También reflejaba el poder político y económico que Sayyida había acumulado.",
+      "text_markdown": "También reflejaba el poder político y económico que Sayyida había acumulado.",
+      "tts": {
+        "text": "También reflejaba el poder político y económico que Sayyida había acumulado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida aceptó el matrimonio pero en sus propios términos.",
+      "text_markdown": "Sayyida aceptó el matrimonio pero en sus propios términos.",
+      "tts": {
+        "text": "Sayyida aceptó el matrimonio pero en sus propios términos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Insistió en que la boda se celebrara en Tetuán, no en Fez donde el sultán tenía su corte.",
+      "text_markdown": "Insistió en que la boda se celebrara en Tetuán, no en Fez donde el sultán tenía su corte.",
+      "tts": {
+        "text": "Insistió en que la boda se celebrara en Tetuán, no en Fez donde el sultán tenía su corte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fue una condición extraordinaria, ya que la convención exigía que la novia viajara al novio.",
+      "text_markdown": "Fue una condición extraordinaria, ya que la convención exigía que la novia viajara al novio.",
+      "tts": {
+        "text": "Fue una condición extraordinaria, ya que la convención exigía que la novia viajara al novio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El sultán aceptó y viajó a Tetuán para la ceremonia.",
+      "text_markdown": "El sultán aceptó y viajó a Tetuán para la ceremonia.",
+      "tts": {
+        "text": "El sultán aceptó y viajó a Tetuán para la ceremonia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fue el único caso registrado en la historia de Marruecos en que un rey viajó a su novia para una boda.",
+      "text_markdown": "Fue el único caso registrado en la historia de Marruecos en que un rey viajó a su novia para una boda.",
+      "tts": {
+        "text": "Fue el único caso registrado en la historia de Marruecos en que un rey viajó a su novia para una boda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Demostró el inmenso poder y prestigio que Sayyida había alcanzado.",
+      "text_markdown": "Demostró el inmenso poder y prestigio que Sayyida había alcanzado.",
+      "tts": {
+        "text": "Demostró el inmenso poder y prestigio que Sayyida había alcanzado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Incluso después del matrimonio, continuó gobernando Tetuán de forma independiente.",
+      "text_markdown": "Incluso después del matrimonio, continuó gobernando Tetuán de forma independiente.",
+      "tts": {
+        "text": "Incluso después del matrimonio, continuó gobernando Tetuán de forma independiente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era una reina por derecho propio, no simplemente la esposa de un sultán.",
+      "text_markdown": "Era una reina por derecho propio, no simplemente la esposa de un sultán.",
+      "tts": {
+        "text": "Era una reina por derecho propio, no simplemente la esposa de un sultán.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El matrimonio le dio protección política adicional.",
+      "text_markdown": "El matrimonio le dio protección política adicional.",
+      "tts": {
+        "text": "El matrimonio le dio protección política adicional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Como esposa del sultán, era intocable por los rivales locales.",
+      "text_markdown": "Como esposa del sultán, era intocable por los rivales locales.",
+      "tts": {
+        "text": "Como esposa del sultán, era intocable por los rivales locales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus operaciones corsarias continuaron con aún mayor confianza.",
+      "text_markdown": "Sus operaciones corsarias continuaron con aún mayor confianza.",
+      "tts": {
+        "text": "Sus operaciones corsarias continuaron con aún mayor confianza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El Mediterráneo occidental seguía siendo su dominio.",
+      "text_markdown": "El Mediterráneo occidental seguía siendo su dominio.",
+      "tts": {
+        "text": "El Mediterráneo occidental seguía siendo su dominio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "España intentó repetidamente negociar con Sayyida para detener sus incursiones.",
+      "text_markdown": "España intentó repetidamente negociar con Sayyida para detener sus incursiones.",
+      "tts": {
+        "text": "España intentó repetidamente negociar con Sayyida para detener sus incursiones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enviados españoles viajaron a Tetuán para discutir la liberación de prisioneros y la posibilidad de paz.",
+      "text_markdown": "Enviados españoles viajaron a Tetuán para discutir la liberación de prisioneros y la posibilidad de paz.",
+      "tts": {
+        "text": "Enviados españoles viajaron a Tetuán para discutir la liberación de prisioneros y la posibilidad de paz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyida negociaba con dureza y nunca aceptó detener sus operaciones corsarias por completo.",
+      "text_markdown": "Sayyida negociaba con dureza y nunca aceptó detener sus operaciones corsarias por completo.",
+      "tts": {
+        "text": "Sayyida negociaba con dureza y nunca aceptó detener sus operaciones corsarias por completo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Entendía que su poder naval era la fuente de su influencia política.",
+      "text_markdown": "Entendía que su poder naval era la fuente de su influencia política.",
+      "tts": {
+        "text": "Entendía que su poder naval era la fuente de su influencia política.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portugal también luchaba por hacer frente a la amenaza que ella representaba.",
+      "text_markdown": "Portugal también luchaba por hacer frente a la amenaza que ella representaba.",
+      "tts": {
+        "text": "Portugal también luchaba por hacer frente a la amenaza que ella representaba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los barcos portugueses que intentaban llegar a sus colonias en África y Asia tenían que pasar por el estrecho de Gibraltar.",
+      "text_markdown": "Los barcos portugueses que intentaban llegar a sus colonias en África y Asia tenían que pasar por el estrecho de Gibraltar.",
+      "tts": {
+        "text": "Los barcos portugueses que intentaban llegar a sus colonias en África y Asia tenían que pasar por el estrecho de Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los corsarios de Sayyida hacían este paso peligroso y costoso.",
+      "text_markdown": "Los corsarios de Sayyida hacían este paso peligroso y costoso.",
+      "tts": {
+        "text": "Los corsarios de Sayyida hacían este paso peligroso y costoso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Reina de los piratas",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El gobierno portugués consideró una acción militar contra Tetuán pero nunca la llevó a cabo.",
+      "text_markdown": "El gobierno portugués consideró una acción militar contra Tetuán pero nunca la llevó a cabo.",
+      "tts": {
+        "text": "El gobierno portugués consideró una acción militar contra Tetuán pero nunca la llevó a cabo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La mujer soberana",
+      "text_markdown": "La mujer soberana"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el apogeo de su poder, Sayyida al-Hurra controlaba uno de los tramos de agua más estratégicos del mundo.",
+      "text_markdown": "En el apogeo de su poder, Sayyida al-Hurra controlaba uno de los tramos de agua más estratégicos del mundo.",
+      "tts": {
+        "text": "En el apogeo de su poder, Sayyida al-Hurra controlaba uno de los tramos de agua más estratégicos del mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su flota corsaria dominaba los accesos occidentales al estrecho de Gibraltar.",
+      "text_markdown": "Su flota corsaria dominaba los accesos occidentales al estrecho de Gibraltar.",
+      "tts": {
+        "text": "Su flota corsaria dominaba los accesos occidentales al estrecho de Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ningún barco europeo podía cruzar estas aguas sin arriesgarse a un ataque.",
+      "text_markdown": "Ningún barco europeo podía cruzar estas aguas sin arriesgarse a un ataque.",
+      "tts": {
+        "text": "Ningún barco europeo podía cruzar estas aguas sin arriesgarse a un ataque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El peaje sobre el comercio español y portugués era severo.",
+      "text_markdown": "El peaje sobre el comercio español y portugués era severo.",
+      "tts": {
+        "text": "El peaje sobre el comercio español y portugués era severo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida gobernaba Tetuán con una combinación de fuerza militar y habilidad política.",
+      "text_markdown": "Sayyida gobernaba Tetuán con una combinación de fuerza militar y habilidad política.",
+      "tts": {
+        "text": "Sayyida gobernaba Tetuán con una combinación de fuerza militar y habilidad política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mantenía una red de informantes que rastreaban los movimientos de los barcos europeos.",
+      "text_markdown": "Mantenía una red de informantes que rastreaban los movimientos de los barcos europeos.",
+      "tts": {
+        "text": "Mantenía una red de informantes que rastreaban los movimientos de los barcos europeos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Negociaba acuerdos de rescate con gobiernos europeos como una igual.",
+      "text_markdown": "Negociaba acuerdos de rescate con gobiernos europeos como una igual.",
+      "tts": {
+        "text": "Negociaba acuerdos de rescate con gobiernos europeos como una igual.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su corte en Tetuán era un centro de actividad política e intrigas diplomáticas.",
+      "text_markdown": "Su corte en Tetuán era un centro de actividad política e intrigas diplomáticas.",
+      "tts": {
+        "text": "Su corte en Tetuán era un centro de actividad política e intrigas diplomáticas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El título al-Hurra tenía un profundo significado en el mundo islámico.",
+      "text_markdown": "El título al-Hurra tenía un profundo significado en el mundo islámico.",
+      "tts": {
+        "text": "El título al-Hurra tenía un profundo significado en el mundo islámico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Significaba que Sayyida no respondía ante ningún hombre y gobernaba en su propio nombre.",
+      "text_markdown": "Significaba que Sayyida no respondía ante ningún hombre y gobernaba en su propio nombre.",
+      "tts": {
+        "text": "Significaba que Sayyida no respondía ante ningún hombre y gobernaba en su propio nombre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fue la última mujer en la historia islámica en ostentar este título.",
+      "text_markdown": "Fue la última mujer en la historia islámica en ostentar este título.",
+      "tts": {
+        "text": "Fue la última mujer en la historia islámica en ostentar este título.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ninguna mujer antes o después de ella logró la misma combinación de poder político y militar en la región.",
+      "text_markdown": "Ninguna mujer antes o después de ella logró la misma combinación de poder político y militar en la región.",
+      "tts": {
+        "text": "Ninguna mujer antes o después de ella logró la misma combinación de poder político y militar en la región.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su éxito se construyó sobre la comunidad de refugiados andalusíes que poblaban Tetuán.",
+      "text_markdown": "Su éxito se construyó sobre la comunidad de refugiados andalusíes que poblaban Tetuán.",
+      "tts": {
+        "text": "Su éxito se construyó sobre la comunidad de refugiados andalusíes que poblaban Tetuán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estos refugiados proporcionaban un suministro constante de administradores educados y marineros experimentados.",
+      "text_markdown": "Estos refugiados proporcionaban un suministro constante de administradores educados y marineros experimentados.",
+      "tts": {
+        "text": "Estos refugiados proporcionaban un suministro constante de administradores educados y marineros experimentados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Su conocimiento de la lengua y cultura españolas era invaluable para la recopilación de inteligencia.",
+      "text_markdown": "Su conocimiento de la lengua y cultura españolas era invaluable para la recopilación de inteligencia.",
+      "tts": {
+        "text": "Su conocimiento de la lengua y cultura españolas era invaluable para la recopilación de inteligencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetuán bajo Sayyida era una ciudad definida por la memoria de al-Ándalus y la esperanza de venganza.",
+      "text_markdown": "Tetuán bajo Sayyida era una ciudad definida por la memoria de al-Ándalus y la esperanza de venganza.",
+      "tts": {
+        "text": "Tetuán bajo Sayyida era una ciudad definida por la memoria de al-Ándalus y la esperanza de venganza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida también mantenía relaciones con otros puertos norteafricanos.",
+      "text_markdown": "Sayyida también mantenía relaciones con otros puertos norteafricanos.",
+      "tts": {
+        "text": "Sayyida también mantenía relaciones con otros puertos norteafricanos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Argel, Túnez y Salé eran todos centros de actividad corsaria.",
+      "text_markdown": "Argel, Túnez y Salé eran todos centros de actividad corsaria.",
+      "tts": {
+        "text": "Argel, Túnez y Salé eran todos centros de actividad corsaria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se coordinaba con los líderes de estas ciudades para evitar conflictos y compartir inteligencia.",
+      "text_markdown": "Se coordinaba con los líderes de estas ciudades para evitar conflictos y compartir inteligencia.",
+      "tts": {
+        "text": "Se coordinaba con los líderes de estas ciudades para evitar conflictos y compartir inteligencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta red de alianzas hacía más efectivas sus operaciones corsarias.",
+      "text_markdown": "Esta red de alianzas hacía más efectivas sus operaciones corsarias.",
+      "tts": {
+        "text": "Esta red de alianzas hacía más efectivas sus operaciones corsarias.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los relatos europeos de este período están llenos de quejas sobre los piratas de Sayyida.",
+      "text_markdown": "Los relatos europeos de este período están llenos de quejas sobre los piratas de Sayyida.",
+      "tts": {
+        "text": "Los relatos europeos de este período están llenos de quejas sobre los piratas de Sayyida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los embajadores españoles escribían cartas exigiendo acción contra los piratas de Tetuán.",
+      "text_markdown": "Los embajadores españoles escribían cartas exigiendo acción contra los piratas de Tetuán.",
+      "tts": {
+        "text": "Los embajadores españoles escribían cartas exigiendo acción contra los piratas de Tetuán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los comerciantes portugueses pedían a su rey protección militar.",
+      "text_markdown": "Los comerciantes portugueses pedían a su rey protección militar.",
+      "tts": {
+        "text": "Los comerciantes portugueses pedían a su rey protección militar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El daño económico causado por su flota era lo bastante significativo como para afectar la política europea.",
+      "text_markdown": "El daño económico causado por su flota era lo bastante significativo como para afectar la política europea.",
+      "tts": {
+        "text": "El daño económico causado por su flota era lo bastante significativo como para afectar la política europea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La propia Sayyida era tanto temida como admirada.",
+      "text_markdown": "La propia Sayyida era tanto temida como admirada.",
+      "tts": {
+        "text": "La propia Sayyida era tanto temida como admirada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Representaba algo que las potencias europeas encontraban profundamente perturbador.",
+      "text_markdown": "Representaba algo que las potencias europeas encontraban profundamente perturbador.",
+      "tts": {
+        "text": "Representaba algo que las potencias europeas encontraban profundamente perturbador.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una mujer musulmana con verdadero poder político y militar desafiaba cada uno de sus supuestos.",
+      "text_markdown": "Una mujer musulmana con verdadero poder político y militar desafiaba cada uno de sus supuestos.",
+      "tts": {
+        "text": "Una mujer musulmana con verdadero poder político y militar desafiaba cada uno de sus supuestos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su mera existencia era una provocación al orden europeo.",
+      "text_markdown": "Su mera existencia era una provocación al orden europeo.",
+      "tts": {
+        "text": "Su mera existencia era una provocación al orden europeo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vida en Tetuán bajo el gobierno de Sayyida reflejaba la herencia cosmopolita de al-Ándalus.",
+      "text_markdown": "La vida en Tetuán bajo el gobierno de Sayyida reflejaba la herencia cosmopolita de al-Ándalus.",
+      "tts": {
+        "text": "La vida en Tetuán bajo el gobierno de Sayyida reflejaba la herencia cosmopolita de al-Ándalus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La ciudad tenía hermosos jardines, fuentes que brotaban y casas encaladas al estilo andalusí.",
+      "text_markdown": "La ciudad tenía hermosos jardines, fuentes que brotaban y casas encaladas al estilo andalusí.",
+      "tts": {
+        "text": "La ciudad tenía hermosos jardines, fuentes que brotaban y casas encaladas al estilo andalusí.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los artesanos producían finas cerámicas, textiles y trabajos en metal.",
+      "text_markdown": "Los artesanos producían finas cerámicas, textiles y trabajos en metal.",
+      "tts": {
+        "text": "Los artesanos producían finas cerámicas, textiles y trabajos en metal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La riqueza cultural de la ciudad contrastaba fuertemente con la violencia del comercio corsario que la financiaba.",
+      "text_markdown": "La riqueza cultural de la ciudad contrastaba fuertemente con la violencia del comercio corsario que la financiaba.",
+      "tts": {
+        "text": "La riqueza cultural de la ciudad contrastaba fuertemente con la violencia del comercio corsario que la financiaba.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La flota de Sayyida llegó a incluir decenas de embarcaciones.",
+      "text_markdown": "La flota de Sayyida llegó a incluir decenas de embarcaciones.",
+      "tts": {
+        "text": "La flota de Sayyida llegó a incluir decenas de embarcaciones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algunas eran barcos europeos capturados, vueltos contra sus antiguos propietarios.",
+      "text_markdown": "Algunas eran barcos europeos capturados, vueltos contra sus antiguos propietarios.",
+      "tts": {
+        "text": "Algunas eran barcos europeos capturados, vueltos contra sus antiguos propietarios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otros fueron construidos en los propios astilleros de Tetuán.",
+      "text_markdown": "Otros fueron construidos en los propios astilleros de Tetuán.",
+      "tts": {
+        "text": "Otros fueron construidos en los propios astilleros de Tetuán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La flota estaba bien mantenida y tripulada por marineros experimentados que conocían cada corriente y bajío del estrecho.",
+      "text_markdown": "La flota estaba bien mantenida y tripulada por marineros experimentados que conocían cada corriente y bajío del estrecho.",
+      "tts": {
+        "text": "La flota estaba bien mantenida y tripulada por marineros experimentados que conocían cada corriente y bajío del estrecho.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su reinado representó un breve período en que el equilibrio de poder en el Mediterráneo occidental fue disputado.",
+      "text_markdown": "Su reinado representó un breve período en que el equilibrio de poder en el Mediterráneo occidental fue disputado.",
+      "tts": {
+        "text": "Su reinado representó un breve período en que el equilibrio de poder en el Mediterráneo occidental fue disputado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "España y Portugal tenían armadas más grandes, pero no podían estar en todas partes a la vez.",
+      "text_markdown": "España y Portugal tenían armadas más grandes, pero no podían estar en todas partes a la vez.",
+      "tts": {
+        "text": "España y Portugal tenían armadas más grandes, pero no podían estar en todas partes a la vez.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los corsarios de Sayyida explotaban con precisión las brechas en la cobertura naval europea.",
+      "text_markdown": "Los corsarios de Sayyida explotaban con precisión las brechas en la cobertura naval europea.",
+      "tts": {
+        "text": "Los corsarios de Sayyida explotaban con precisión las brechas en la cobertura naval europea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Durante casi tres décadas, fue la fuerza dominante en su tramo de mar.",
+      "text_markdown": "Durante casi tres décadas, fue la fuerza dominante en su tramo de mar.",
+      "tts": {
+        "text": "Durante casi tres décadas, fue la fuerza dominante en su tramo de mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La economía de rescates que administraba era sofisticada y bien organizada.",
+      "text_markdown": "La economía de rescates que administraba era sofisticada y bien organizada.",
+      "tts": {
+        "text": "La economía de rescates que administraba era sofisticada y bien organizada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los precios se fijaban según el rango social del cautivo y la capacidad de pago de su familia.",
+      "text_markdown": "Los precios se fijaban según el rango social del cautivo y la capacidad de pago de su familia.",
+      "tts": {
+        "text": "Los precios se fijaban según el rango social del cautivo y la capacidad de pago de su familia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las negociaciones podían durar meses o incluso años.",
+      "text_markdown": "Las negociaciones podían durar meses o incluso años.",
+      "tts": {
+        "text": "Las negociaciones podían durar meses o incluso años.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algunos cautivos eran bien tratados durante su cautiverio, mientras que otros soportaban condiciones duras.",
+      "text_markdown": "Algunos cautivos eran bien tratados durante su cautiverio, mientras que otros soportaban condiciones duras.",
+      "tts": {
+        "text": "Algunos cautivos eran bien tratados durante su cautiverio, mientras que otros soportaban condiciones duras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida veía sus actividades corsarias no como piratería sino como una continuación de la lucha contra la Reconquista.",
+      "text_markdown": "Sayyida veía sus actividades corsarias no como piratería sino como una continuación de la lucha contra la Reconquista.",
+      "tts": {
+        "text": "Sayyida veía sus actividades corsarias no como piratería sino como una continuación de la lucha contra la Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los españoles habían tomado al-Ándalus de los musulmanes por la fuerza.",
+      "text_markdown": "Los españoles habían tomado al-Ándalus de los musulmanes por la fuerza.",
+      "tts": {
+        "text": "Los españoles habían tomado al-Ándalus de los musulmanes por la fuerza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En la visión de Sayyida, ella simplemente respondía por otros medios.",
+      "text_markdown": "En la visión de Sayyida, ella simplemente respondía por otros medios.",
+      "tts": {
+        "text": "En la visión de Sayyida, ella simplemente respondía por otros medios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "La mujer soberana",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este enfoque daba a sus acciones una legitimidad moral a los ojos de su comunidad.",
+      "text_markdown": "Este enfoque daba a sus acciones una legitimidad moral a los ojos de su comunidad.",
+      "tts": {
+        "text": "Este enfoque daba a sus acciones una legitimidad moral a los ojos de su comunidad.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La caída de una reina",
+      "text_markdown": "La caída de una reina"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El poder de Sayyida al-Hurra, aunque formidable, no era invulnerable.",
+      "text_markdown": "El poder de Sayyida al-Hurra, aunque formidable, no era invulnerable.",
+      "tts": {
+        "text": "El poder de Sayyida al-Hurra, aunque formidable, no era invulnerable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dependía de un cuidadoso equilibrio de alianzas, fuerza militar y habilidad política.",
+      "text_markdown": "Dependía de un cuidadoso equilibrio de alianzas, fuerza militar y habilidad política.",
+      "tts": {
+        "text": "Dependía de un cuidadoso equilibrio de alianzas, fuerza militar y habilidad política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuando ese equilibrio cambió, su posición se volvió precaria.",
+      "text_markdown": "Cuando ese equilibrio cambió, su posición se volvió precaria.",
+      "tts": {
+        "text": "Cuando ese equilibrio cambió, su posición se volvió precaria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las fuerzas que la derribarían no vinieron de Europa sino de dentro de su propia familia.",
+      "text_markdown": "Las fuerzas que la derribarían no vinieron de Europa sino de dentro de su propia familia.",
+      "tts": {
+        "text": "Las fuerzas que la derribarían no vinieron de Europa sino de dentro de su propia familia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su matrimonio con el sultán wattásida le había proporcionado protección política.",
+      "text_markdown": "Su matrimonio con el sultán wattásida le había proporcionado protección política.",
+      "tts": {
+        "text": "Su matrimonio con el sultán wattásida le había proporcionado protección política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pero la propia dinastía wattásida se estaba debilitando.",
+      "text_markdown": "Pero la propia dinastía wattásida se estaba debilitando.",
+      "tts": {
+        "text": "Pero la propia dinastía wattásida se estaba debilitando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Facciones rivales competían por el poder dentro de Marruecos.",
+      "text_markdown": "Facciones rivales competían por el poder dentro de Marruecos.",
+      "tts": {
+        "text": "Facciones rivales competían por el poder dentro de Marruecos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La autoridad del sultán sobre provincias distantes como Tetuán se volvía cada vez más tenue.",
+      "text_markdown": "La autoridad del sultán sobre provincias distantes como Tetuán se volvía cada vez más tenue.",
+      "tts": {
+        "text": "La autoridad del sultán sobre provincias distantes como Tetuán se volvía cada vez más tenue.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El hijastro de Sayyida, Moulay Ahmed al-Hassan al-Mandri, tenía sus propias ambiciones.",
+      "text_markdown": "El hijastro de Sayyida, Moulay Ahmed al-Hassan al-Mandri, tenía sus propias ambiciones.",
+      "tts": {
+        "text": "El hijastro de Sayyida, Moulay Ahmed al-Hassan al-Mandri, tenía sus propias ambiciones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Creía que Tetuán debía ser gobernada por un hombre, específicamente por él mismo.",
+      "text_markdown": "Creía que Tetuán debía ser gobernada por un hombre, específicamente por él mismo.",
+      "tts": {
+        "text": "Creía que Tetuán debía ser gobernada por un hombre, específicamente por él mismo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Resentía el prolongado dominio de su madrastra sobre el poder.",
+      "text_markdown": "Resentía el prolongado dominio de su madrastra sobre el poder.",
+      "tts": {
+        "text": "Resentía el prolongado dominio de su madrastra sobre el poder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Comenzó a conspirar para derrocarla.",
+      "text_markdown": "Comenzó a conspirar para derrocarla.",
+      "tts": {
+        "text": "Comenzó a conspirar para derrocarla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moulay Ahmed reunió partidarios entre los insatisfechos con el gobierno de Sayyida.",
+      "text_markdown": "Moulay Ahmed reunió partidarios entre los insatisfechos con el gobierno de Sayyida.",
+      "tts": {
+        "text": "Moulay Ahmed reunió partidarios entre los insatisfechos con el gobierno de Sayyida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algunos hombres de Tetuán se sentían incómodos siendo gobernados por una mujer, independientemente de su competencia.",
+      "text_markdown": "Algunos hombres de Tetuán se sentían incómodos siendo gobernados por una mujer, independientemente de su competencia.",
+      "tts": {
+        "text": "Algunos hombres de Tetuán se sentían incómodos siendo gobernados por una mujer, independientemente de su competencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otros veían la oportunidad de obtener poder y riqueza para sí mismos.",
+      "text_markdown": "Otros veían la oportunidad de obtener poder y riqueza para sí mismos.",
+      "tts": {
+        "text": "Otros veían la oportunidad de obtener poder y riqueza para sí mismos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La conspiración creció en secreto.",
+      "text_markdown": "La conspiración creció en secreto.",
+      "tts": {
+        "text": "La conspiración creció en secreto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alrededor de 1542, Moulay Ahmed lanzó un golpe de palacio contra Sayyida.",
+      "text_markdown": "Alrededor de 1542, Moulay Ahmed lanzó un golpe de palacio contra Sayyida.",
+      "tts": {
+        "text": "Alrededor de mil quinientos cuarenta y dos, Moulay Ahmed lanzó un golpe de palacio contra Sayyida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los detalles del golpe no están bien documentados en las fuentes que han sobrevivido.",
+      "text_markdown": "Los detalles del golpe no están bien documentados en las fuentes que han sobrevivido.",
+      "tts": {
+        "text": "Los detalles del golpe no están bien documentados en las fuentes que han sobrevivido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lo que se sabe es que tomó el control de Tetuán y apartó a Sayyida del poder.",
+      "text_markdown": "Lo que se sabe es que tomó el control de Tetuán y apartó a Sayyida del poder.",
+      "tts": {
+        "text": "Lo que se sabe es que tomó el control de Tetuán y apartó a Sayyida del poder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su gobierno, que había durado aproximadamente tres décadas, había terminado.",
+      "text_markdown": "Su gobierno, que había durado aproximadamente tres décadas, había terminado.",
+      "tts": {
+        "text": "Su gobierno, que había durado aproximadamente tres décadas, había terminado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida fue despojada de su título, su autoridad y su riqueza.",
+      "text_markdown": "Sayyida fue despojada de su título, su autoridad y su riqueza.",
+      "tts": {
+        "text": "Sayyida fue despojada de su título, su autoridad y su riqueza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La flota corsaria que había construido le fue arrebatada.",
+      "text_markdown": "La flota corsaria que había construido le fue arrebatada.",
+      "tts": {
+        "text": "La flota corsaria que había construido le fue arrebatada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pasó de ser una de las personas más poderosas de Marruecos a ser una ciudadana particular sin influencia.",
+      "text_markdown": "Pasó de ser una de las personas más poderosas de Marruecos a ser una ciudadana particular sin influencia.",
+      "tts": {
+        "text": "Pasó de ser una de las personas más poderosas de Marruecos a ser una ciudadana particular sin influencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La caída fue rápida y total.",
+      "text_markdown": "La caída fue rápida y total.",
+      "tts": {
+        "text": "La caída fue rápida y total.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Después de perder el poder, Sayyida desapareció del registro histórico casi por completo.",
+      "text_markdown": "Después de perder el poder, Sayyida desapareció del registro histórico casi por completo.",
+      "tts": {
+        "text": "Después de perder el poder, Sayyida desapareció del registro histórico casi por completo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ninguna fuente fiable describe su vida después del golpe.",
+      "text_markdown": "Ninguna fuente fiable describe su vida después del golpe.",
+      "tts": {
+        "text": "Ninguna fuente fiable describe su vida después del golpe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pudo haberse retirado a Chefchaouen, la ciudad de montaña donde su familia tenía raíces.",
+      "text_markdown": "Pudo haberse retirado a Chefchaouen, la ciudad de montaña donde su familia tenía raíces.",
+      "tts": {
+        "text": "Pudo haberse retirado a Chefchaouen, la ciudad de montaña donde su familia tenía raíces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pudo haber vivido el resto de sus años en la oscuridad.",
+      "text_markdown": "Pudo haber vivido el resto de sus años en la oscuridad.",
+      "tts": {
+        "text": "Pudo haber vivido el resto de sus años en la oscuridad.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los historiadores estiman que Sayyida murió alrededor de 1561, aunque la fecha es incierta.",
+      "text_markdown": "Los historiadores estiman que Sayyida murió alrededor de 1561, aunque la fecha es incierta.",
+      "tts": {
+        "text": "Los historiadores estiman que Sayyida murió alrededor de mil quinientos sesenta y uno, aunque la fecha es incierta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si esta estimación es correcta, vivió hasta aproximadamente setenta y seis años.",
+      "text_markdown": "Si esta estimación es correcta, vivió hasta aproximadamente setenta y seis años.",
+      "tts": {
+        "text": "Si esta estimación es correcta, vivió hasta aproximadamente setenta y seis años.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fue una vida excepcionalmente larga para la época.",
+      "text_markdown": "Fue una vida excepcionalmente larga para la época.",
+      "tts": {
+        "text": "Fue una vida excepcionalmente larga para la época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pero nada se sabe de sus últimos años.",
+      "text_markdown": "Pero nada se sabe de sus últimos años.",
+      "tts": {
+        "text": "Pero nada se sabe de sus últimos años.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La ciudad de Tetuán continuó siendo un centro de actividad corsaria después de la caída de Sayyida.",
+      "text_markdown": "La ciudad de Tetuán continuó siendo un centro de actividad corsaria después de la caída de Sayyida.",
+      "tts": {
+        "text": "La ciudad de Tetuán continuó siendo un centro de actividad corsaria después de la caída de Sayyida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pero nunca volvió a tener una líder de su calibre.",
+      "text_markdown": "Pero nunca volvió a tener una líder de su calibre.",
+      "tts": {
+        "text": "Pero nunca volvió a tener una líder de su calibre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus sucesores carecían de su habilidad política y su red de alianzas internacionales.",
+      "text_markdown": "Sus sucesores carecían de su habilidad política y su red de alianzas internacionales.",
+      "tts": {
+        "text": "Sus sucesores carecían de su habilidad política y su red de alianzas internacionales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La edad dorada de Tetuán como potencia pirata terminó con ella.",
+      "text_markdown": "La edad dorada de Tetuán como potencia pirata terminó con ella.",
+      "tts": {
+        "text": "La edad dorada de Tetuán como potencia pirata terminó con ella.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El contexto político más amplio también se volvió contra la piratería mediterránea.",
+      "text_markdown": "El contexto político más amplio también se volvió contra la piratería mediterránea.",
+      "tts": {
+        "text": "El contexto político más amplio también se volvió contra la piratería mediterránea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "España estaba construyendo una armada cada vez más grande para proteger sus rutas comerciales atlánticas.",
+      "text_markdown": "España estaba construyendo una armada cada vez más grande para proteger sus rutas comerciales atlánticas.",
+      "tts": {
+        "text": "España estaba construyendo una armada cada vez más grande para proteger sus rutas comerciales atlánticas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El Imperio otomano, que había apoyado a los corsarios norteafricanos, estaba comenzando su largo declive.",
+      "text_markdown": "El Imperio otomano, que había apoyado a los corsarios norteafricanos, estaba comenzando su largo declive.",
+      "tts": {
+        "text": "El Imperio otomano, que había apoyado a los corsarios norteafricanos, estaba comenzando su largo declive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El mundo que había hecho posible la carrera de Sayyida estaba desapareciendo lentamente.",
+      "text_markdown": "El mundo que había hecho posible la carrera de Sayyida estaba desapareciendo lentamente.",
+      "tts": {
+        "text": "El mundo que había hecho posible la carrera de Sayyida estaba desapareciendo lentamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su caída fue un recordatorio de la fragilidad del poder en el mundo premoderno.",
+      "text_markdown": "Su caída fue un recordatorio de la fragilidad del poder en el mundo premoderno.",
+      "tts": {
+        "text": "Su caída fue un recordatorio de la fragilidad del poder en el mundo premoderno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Incluso una gobernante tan capaz como Sayyida podía ser derrocada por un rival decidido con las conexiones adecuadas.",
+      "text_markdown": "Incluso una gobernante tan capaz como Sayyida podía ser derrocada por un rival decidido con las conexiones adecuadas.",
+      "tts": {
+        "text": "Incluso una gobernante tan capaz como Sayyida podía ser derrocada por un rival decidido con las conexiones adecuadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En un mundo sin protecciones constitucionales, el poder dependía enteramente de alianzas personales y fuerza militar.",
+      "text_markdown": "En un mundo sin protecciones constitucionales, el poder dependía enteramente de alianzas personales y fuerza militar.",
+      "tts": {
+        "text": "En un mundo sin protecciones constitucionales, el poder dependía enteramente de alianzas personales y fuerza militar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "La caída de una reina",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuando estas fallaban, incluso una reina podía caer.",
+      "text_markdown": "Cuando estas fallaban, incluso una reina podía caer.",
+      "tts": {
+        "text": "Cuando estas fallaban, incluso una reina podía caer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El legado de la mujer libre",
+      "text_markdown": "El legado de la mujer libre"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El legado de Sayyida al-Hurra ha crecido significativamente en las últimas décadas.",
+      "text_markdown": "El legado de Sayyida al-Hurra ha crecido significativamente en las últimas décadas.",
+      "tts": {
+        "text": "El legado de Sayyida al-Hurra ha crecido significativamente en las últimas décadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Durante siglos, fue en gran parte olvidada fuera de Marruecos.",
+      "text_markdown": "Durante siglos, fue en gran parte olvidada fuera de Marruecos.",
+      "tts": {
+        "text": "Durante siglos, fue en gran parte olvidada fuera de Marruecos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las historias europeas de la piratería se centraban casi exclusivamente en piratas masculinos del Caribe.",
+      "text_markdown": "Las historias europeas de la piratería se centraban casi exclusivamente en piratas masculinos del Caribe.",
+      "tts": {
+        "text": "Las historias europeas de la piratería se centraban casi exclusivamente en piratas masculinos del Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La historia de Sayyida se preservó principalmente en la tradición oral marroquí y las historias en lengua árabe.",
+      "text_markdown": "La historia de Sayyida se preservó principalmente en la tradición oral marroquí y las historias en lengua árabe.",
+      "tts": {
+        "text": "La historia de Sayyida se preservó principalmente en la tradición oral marroquí y las historias en lengua árabe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los historiadores modernos han comenzado a recuperar y celebrar su historia.",
+      "text_markdown": "Los historiadores modernos han comenzado a recuperar y celebrar su historia.",
+      "tts": {
+        "text": "Los historiadores modernos han comenzado a recuperar y celebrar su historia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ahora es reconocida como una de las figuras más notables de la era de la piratería mediterránea.",
+      "text_markdown": "Ahora es reconocida como una de las figuras más notables de la era de la piratería mediterránea.",
+      "tts": {
+        "text": "Ahora es reconocida como una de las figuras más notables de la era de la piratería mediterránea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Su logro de mantener el poder independiente durante tres décadas se considera extraordinario.",
+      "text_markdown": "Su logro de mantener el poder independiente durante tres décadas se considera extraordinario.",
+      "tts": {
+        "text": "Su logro de mantener el poder independiente durante tres décadas se considera extraordinario.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es estudiada como un ejemplo de liderazgo femenino en un período en que tal liderazgo era extremadamente raro.",
+      "text_markdown": "Es estudiada como un ejemplo de liderazgo femenino en un período en que tal liderazgo era extremadamente raro.",
+      "tts": {
+        "text": "Es estudiada como un ejemplo de liderazgo femenino en un período en que tal liderazgo era extremadamente raro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Marruecos, Sayyida es recordada como una heroína nacional.",
+      "text_markdown": "En Marruecos, Sayyida es recordada como una heroína nacional.",
+      "tts": {
+        "text": "En Marruecos, Sayyida es recordada como una heroína nacional.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Representa la resistencia de los refugiados andalusíes que se negaron a aceptar su desposesión.",
+      "text_markdown": "Representa la resistencia de los refugiados andalusíes que se negaron a aceptar su desposesión.",
+      "tts": {
+        "text": "Representa la resistencia de los refugiados andalusíes que se negaron a aceptar su desposesión.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ciudad de Tetuán honra su memoria hasta el día de hoy.",
+      "text_markdown": "La ciudad de Tetuán honra su memoria hasta el día de hoy.",
+      "tts": {
+        "text": "La ciudad de Tetuán honra su memoria hasta el día de hoy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su historia se enseña en las escuelas marroquíes como ejemplo de valentía e independencia.",
+      "text_markdown": "Su historia se enseña en las escuelas marroquíes como ejemplo de valentía e independencia.",
+      "tts": {
+        "text": "Su historia se enseña en las escuelas marroquíes como ejemplo de valentía e independencia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La alianza de Sayyida con Barbarroja es históricamente significativa.",
+      "text_markdown": "La alianza de Sayyida con Barbarroja es históricamente significativa.",
+      "tts": {
+        "text": "La alianza de Sayyida con Barbarroja es históricamente significativa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Demuestra que el mundo de la piratería mediterránea no era solo una colección de saqueadores individuales.",
+      "text_markdown": "Demuestra que el mundo de la piratería mediterránea no era solo una colección de saqueadores individuales.",
+      "tts": {
+        "text": "Demuestra que el mundo de la piratería mediterránea no era solo una colección de saqueadores individuales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era una red estratégica, coordinada a través de vastas distancias.",
+      "text_markdown": "Era una red estratégica, coordinada a través de vastas distancias.",
+      "tts": {
+        "text": "Era una red estratégica, coordinada a través de vastas distancias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida desempeñó un papel central en esa red en un momento en que el Mediterráneo era el mar más disputado del mundo.",
+      "text_markdown": "Sayyida desempeñó un papel central en esa red en un momento en que el Mediterráneo era el mar más disputado del mundo.",
+      "tts": {
+        "text": "Sayyida desempeñó un papel central en esa red en un momento en que el Mediterráneo era el mar más disputado del mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su historia también ilumina la compleja relación entre piratería y arte de gobernar.",
+      "text_markdown": "Su historia también ilumina la compleja relación entre piratería y arte de gobernar.",
+      "tts": {
+        "text": "Su historia también ilumina la compleja relación entre piratería y arte de gobernar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyida era simultáneamente reina, pirata y diplomática.",
+      "text_markdown": "Sayyida era simultáneamente reina, pirata y diplomática.",
+      "tts": {
+        "text": "Sayyida era simultáneamente reina, pirata y diplomática.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Usó la actividad corsaria como herramienta de política exterior, no simplemente como forma de enriquecerse.",
+      "text_markdown": "Usó la actividad corsaria como herramienta de política exterior, no simplemente como forma de enriquecerse.",
+      "tts": {
+        "text": "Usó la actividad corsaria como herramienta de política exterior, no simplemente como forma de enriquecerse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su carrera demuestra que la línea entre piratería y guerra legítima era tan difusa en el Mediterráneo como en el Caribe.",
+      "text_markdown": "Su carrera demuestra que la línea entre piratería y guerra legítima era tan difusa en el Mediterráneo como en el Caribe.",
+      "tts": {
+        "text": "Su carrera demuestra que la línea entre piratería y guerra legítima era tan difusa en el Mediterráneo como en el Caribe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El título al-Hurra sigue siendo su símbolo más perdurable.",
+      "text_markdown": "El título al-Hurra sigue siendo su símbolo más perdurable.",
+      "tts": {
+        "text": "El título al-Hurra sigue siendo su símbolo más perdurable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Significaba la mujer libre, la mujer soberana, la mujer que no responde ante nadie.",
+      "text_markdown": "Significaba la mujer libre, la mujer soberana, la mujer que no responde ante nadie.",
+      "tts": {
+        "text": "Significaba la mujer libre, la mujer soberana, la mujer que no responde ante nadie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ninguna mujer en el mundo islámico ha ostentado ese título desde entonces.",
+      "text_markdown": "Ninguna mujer en el mundo islámico ha ostentado ese título desde entonces.",
+      "tts": {
+        "text": "Ninguna mujer en el mundo islámico ha ostentado ese título desde entonces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra permanece sola en la historia, la última de su clase.",
+      "text_markdown": "Sayyida al-Hurra permanece sola en la historia, la última de su clase.",
+      "tts": {
+        "text": "Sayyida al-Hurra permanece sola en la historia, la última de su clase.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoy, los estudiosos continúan buscando nuevos documentos que puedan revelar más sobre su vida.",
+      "text_markdown": "Hoy, los estudiosos continúan buscando nuevos documentos que puedan revelar más sobre su vida.",
+      "tts": {
+        "text": "Hoy, los estudiosos continúan buscando nuevos documentos que puedan revelar más sobre su vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los archivos de Marruecos, España y Portugal aún pueden albergar cartas, tratados y relatos no descubiertos.",
+      "text_markdown": "Los archivos de Marruecos, España y Portugal aún pueden albergar cartas, tratados y relatos no descubiertos.",
+      "tts": {
+        "text": "Los archivos de Marruecos, España y Portugal aún pueden albergar cartas, tratados y relatos no descubiertos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada nuevo descubrimiento añade otra pieza al rompecabezas de esta mujer extraordinaria.",
+      "text_markdown": "Cada nuevo descubrimiento añade otra pieza al rompecabezas de esta mujer extraordinaria.",
+      "tts": {
+        "text": "Cada nuevo descubrimiento añade otra pieza al rompecabezas de esta mujer extraordinaria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "El legado de la mujer libre",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La historia completa de Sayyida al-Hurra aún está por escribirse.",
+      "text_markdown": "La historia completa de Sayyida al-Hurra aún está por escribirse.",
+      "tts": {
+        "text": "La historia completa de Sayyida al-Hurra aún está por escribirse.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

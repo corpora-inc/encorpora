@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_stede_bonnet",
+  "language": "pl",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Słowo do czytelnika",
+      "text_markdown": "Słowo do czytelnika"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każda historia piracka w tej serii opowiada o kimś, kto był twardy, zaradny lub zdesperowany.",
+      "text_markdown": "Każda historia piracka w tej serii opowiada o kimś, kto był twardy, zaradny lub zdesperowany.",
+      "tts": {
+        "text": "Każda historia piracka w tej serii opowiada o kimś, kto był twardy, zaradny lub zdesperowany.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Stede Bonnet nie był żadną z tych rzeczy.",
+      "text_markdown": "Stede Bonnet nie był żadną z tych rzeczy.",
+      "tts": {
+        "text": "Stede Bonnet nie był żadną z tych rzeczy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Był zamożnym plantatorem trzciny cukrowej na Barbadosie, z ładnym domem, dobrym wykształceniem i zupełnie żadnym powodem, by zostać piratem.",
+      "text_markdown": "Był zamożnym plantatorem trzciny cukrowej na Barbadosie, z ładnym domem, dobrym wykształceniem i zupełnie żadnym powodem, by zostać piratem.",
+      "tts": {
+        "text": "Był zamożnym plantatorem trzciny cukrowej na Barbadosie, z ładnym domem, dobrym wykształceniem i zupełnie żadnym powodem, by zostać piratem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I tak to zrobił.",
+      "text_markdown": "I tak to zrobił.",
+      "tts": {
+        "text": "I tak to zrobił.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego historia jest jedną z najdziwniejszych w całej historii piractwa.",
+      "text_markdown": "Jego historia jest jedną z najdziwniejszych w całej historii piractwa.",
+      "tts": {
+        "text": "Jego historia jest jedną z najdziwniejszych w całej historii piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kupił statek zamiast go ukraść.",
+      "text_markdown": "Kupił statek zamiast go ukraść.",
+      "tts": {
+        "text": "Kupił statek zamiast go ukraść.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wynajął załogę zamiast zdobyć ich lojalność.",
+      "text_markdown": "Wynajął załogę zamiast zdobyć ich lojalność.",
+      "tts": {
+        "text": "Wynajął załogę zamiast zdobyć ich lojalność.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wypłynął w życie pełne przestępstw z przygotowaniem człowieka jadącego na wakacje.",
+      "text_markdown": "Wypłynął w życie pełne przestępstw z przygotowaniem człowieka jadącego na wakacje.",
+      "tts": {
+        "text": "Wypłynął w życie pełne przestępstw z przygotowaniem człowieka jadącego na wakacje.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Był, według niemal każdej relacji, spektakularnie kiepskim piratem.",
+      "text_markdown": "Był, według niemal każdej relacji, spektakularnie kiepskim piratem.",
+      "tts": {
+        "text": "Był, według niemal każdej relacji, spektakularnie kiepskim piratem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A jednak jego historia jest niezwykle pouczająca.",
+      "text_markdown": "A jednak jego historia jest niezwykle pouczająca.",
+      "tts": {
+        "text": "A jednak jego historia jest niezwykle pouczająca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mówi nam, czego piractwo naprawdę wymagało, właśnie dlatego, że Bonnet nie posiadał niczego z tego.",
+      "text_markdown": "Mówi nam, czego piractwo naprawdę wymagało, właśnie dlatego, że Bonnet nie posiadał niczego z tego.",
+      "tts": {
+        "text": "Mówi nam, czego piractwo naprawdę wymagało, właśnie dlatego, że Bonnet nie posiadał niczego z tego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego losy splatają się również z niektórymi najsłynniejszymi postaciami Złotego Wieku Piractwa.",
+      "text_markdown": "Jego losy splatają się również z niektórymi najsłynniejszymi postaciami Złotego Wieku Piractwa.",
+      "tts": {
+        "text": "Jego losy splatają się również z niektórymi najsłynniejszymi postaciami Złotego Wieku Piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Żeglował z samym Czarnobrodym.",
+      "text_markdown": "Żeglował z samym Czarnobrodym.",
+      "tts": {
+        "text": "Żeglował z samym Czarnobrodym.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To nie skończyło się dobrze dla Stede Bonneta.",
+      "text_markdown": "To nie skończyło się dobrze dla Stede Bonneta.",
+      "tts": {
+        "text": "To nie skończyło się dobrze dla Stede Bonneta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Świat Karaibów",
+      "text_markdown": "Świat Karaibów"
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Początek lat 1700 był szczytem Złotego Wieku Piractwa.",
+      "text_markdown": "Początek lat 1700 był szczytem Złotego Wieku Piractwa.",
+      "tts": {
+        "text": "Początek lat tysiąc siedemsetnych był szczytem Złotego Wieku Piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morze Karaibskie było centrum tego świata, rozległy basen ciepłej wody usianej tysiącami wysp.",
+      "text_markdown": "Morze Karaibskie było centrum tego świata, rozległy basen ciepłej wody usianej tysiącami wysp.",
+      "tts": {
+        "text": "Morze Karaibskie było centrum tego świata, rozległy basen ciepłej wody usianej tysiącami wysp.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To był raj piratów.",
+      "text_markdown": "To był raj piratów.",
+      "tts": {
+        "text": "To był raj piratów.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Imperia europejskie walczyły o Karaiby od ponad dwóch stuleci.",
+      "text_markdown": "Imperia europejskie walczyły o Karaiby od ponad dwóch stuleci.",
+      "tts": {
+        "text": "Imperia europejskie walczyły o Karaiby od ponad dwóch stuleci.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiszpania, Anglia, Francja i Holandia rościły sobie prawa do wysp i terytoriów kontynentalnych.",
+      "text_markdown": "Hiszpania, Anglia, Francja i Holandia rościły sobie prawa do wysp i terytoriów kontynentalnych.",
+      "tts": {
+        "text": "Hiszpania, Anglia, Francja i Holandia rościły sobie prawa do wysp i terytoriów kontynentalnych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bogactwo przepływające przez ten region było oszałamiające.",
+      "text_markdown": "Bogactwo przepływające przez ten region było oszałamiające.",
+      "tts": {
+        "text": "Bogactwo przepływające przez ten region było oszałamiające.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cukier był fundamentem bogactwa karaibskiego.",
+      "text_markdown": "Cukier był fundamentem bogactwa karaibskiego.",
+      "tts": {
+        "text": "Cukier był fundamentem bogactwa karaibskiego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Plantacje trzciny cukrowej pokrywały wyspy, obsługiwane przez setki tysięcy zniewolonych Afrykanów.",
+      "text_markdown": "Plantacje trzciny cukrowej pokrywały wyspy, obsługiwane przez setki tysięcy zniewolonych Afrykanów.",
+      "tts": {
+        "text": "Plantacje trzciny cukrowej pokrywały wyspy, obsługiwane przez setki tysięcy zniewolonych Afrykanów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Handel cukrem generował ogromne zyski dla plantatorów i europejskich kupców, którzy kupowali ich produkt.",
+      "text_markdown": "Handel cukrem generował ogromne zyski dla plantatorów i europejskich kupców, którzy kupowali ich produkt.",
+      "tts": {
+        "text": "Handel cukrem generował ogromne zyski dla plantatorów i europejskich kupców, którzy kupowali ich produkt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbados była jedną z najbogatszych wysp cukrowych na Karaibach.",
+      "text_markdown": "Barbados była jedną z najbogatszych wysp cukrowych na Karaibach.",
+      "tts": {
+        "text": "Barbados była jedną z najbogatszych wysp cukrowych na Karaibach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Angielscy koloniści założyli tam plantacje trzciny cukrowej począwszy od lat czterdziestych XVII wieku.",
+      "text_markdown": "Angielscy koloniści założyli tam plantacje trzciny cukrowej począwszy od lat czterdziestych XVII wieku.",
+      "tts": {
+        "text": "Angielscy koloniści założyli tam plantacje trzciny cukrowej począwszy od lat tysiąc sześćset czterdziestych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na początku XVIII wieku wyspa była jedną z najgęściej zaludnionych i najbardziej dochodowych kolonii Imperium Brytyjskiego.",
+      "text_markdown": "Na początku XVIII wieku wyspa była jedną z najgęściej zaludnionych i najbardziej dochodowych kolonii Imperium Brytyjskiego.",
+      "tts": {
+        "text": "Na początku osiemnastego wieku wyspa była jedną z najgęściej zaludnionych i najbardziej dochodowych kolonii Imperium Brytyjskiego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bogactwo Barbadosu zostało zbudowane na niewolnictwie.",
+      "text_markdown": "Bogactwo Barbadosu zostało zbudowane na niewolnictwie.",
+      "tts": {
+        "text": "Bogactwo Barbadosu zostało zbudowane na niewolnictwie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Na każdego zamożnego plantatora przypadały setki zniewolonych ludzi pracujących w brutalnych warunkach.",
+      "text_markdown": "Na każdego zamożnego plantatora przypadały setki zniewolonych ludzi pracujących w brutalnych warunkach.",
+      "tts": {
+        "text": "Na każdego zamożnego plantatora przypadały setki zniewolonych ludzi pracujących w brutalnych warunkach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plantacje trzciny cukrowej były miejscami ogromnego cierpienia.",
+      "text_markdown": "Plantacje trzciny cukrowej były miejscami ogromnego cierpienia.",
+      "tts": {
+        "text": "Plantacje trzciny cukrowej były miejscami ogromnego cierpienia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "To był świat, który uczynił Stede Bonneta bogatym.",
+      "text_markdown": "To był świat, który uczynił Stede Bonneta bogatym.",
+      "tts": {
+        "text": "To był świat, który uczynił Stede Bonneta bogatym.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poza plantacjami Karaiby były bezprawnym pograniczem.",
+      "text_markdown": "Poza plantacjami Karaiby były bezprawnym pograniczem.",
+      "tts": {
+        "text": "Poza plantacjami Karaiby były bezprawnym pograniczem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Odległości między wyspami były ogromne.",
+      "text_markdown": "Odległości między wyspami były ogromne.",
+      "tts": {
+        "text": "Odległości między wyspami były ogromne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Patrole marynarki wojennej były nieliczne i zawodne.",
+      "text_markdown": "Patrole marynarki wojennej były nieliczne i zawodne.",
+      "tts": {
+        "text": "Patrole marynarki wojennej były nieliczne i zawodne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Szybki statek z odważną załogą mógł polować na statki handlowe ze względną bezkarnością.",
+      "text_markdown": "Szybki statek z odważną załogą mógł polować na statki handlowe ze względną bezkarnością.",
+      "tts": {
+        "text": "Szybki statek z odważną załogą mógł polować na statki handlowe ze względną bezkarnością.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Koniec wojny o sukcesję hiszpańską w 1713 roku zalał Karaiby bezrobotnymi marynarzami.",
+      "text_markdown": "Koniec wojny o sukcesję hiszpańską w 1713 roku zalał Karaiby bezrobotnymi marynarzami.",
+      "tts": {
+        "text": "Koniec wojny o sukcesję hiszpańską w tysiąc siedemset trzynastym roku zalał Karaiby bezrobotnymi marynarzami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tysiące mężczyzn, którzy służyli jako kaprowcy podczas wojny, nagle znalazło się bez legalnego zatrudnienia.",
+      "text_markdown": "Tysiące mężczyzn, którzy służyli jako kaprowcy podczas wojny, nagle znalazło się bez legalnego zatrudnienia.",
+      "tts": {
+        "text": "Tysiące mężczyzn, którzy służyli jako kaprowcy podczas wojny, nagle znalazło się bez legalnego zatrudnienia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu zwróciło się ku piractwu jako jedynemu rzemiosłu, jakie znali.",
+      "text_markdown": "Wielu zwróciło się ku piractwu jako jedynemu rzemiosłu, jakie znali.",
+      "tts": {
+        "text": "Wielu zwróciło się ku piractwu jako jedynemu rzemiosłu, jakie znali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piraci Złotego Wieku działali według zestawu kodeksów i zwyczajów, które ewoluowały przez dziesięciolecia.",
+      "text_markdown": "Piraci Złotego Wieku działali według zestawu kodeksów i zwyczajów, które ewoluowały przez dziesięciolecia.",
+      "tts": {
+        "text": "Piraci Złotego Wieku działali według zestawu kodeksów i zwyczajów, które ewoluowały przez dziesięciolecia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitanowie byli wybierani przez załogę.",
+      "text_markdown": "Kapitanowie byli wybierani przez załogę.",
+      "tts": {
+        "text": "Kapitanowie byli wybierani przez załogę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Łup dzielono według ustalonych udziałów.",
+      "text_markdown": "Łup dzielono według ustalonych udziałów.",
+      "tts": {
+        "text": "Łup dzielono według ustalonych udziałów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dyscyplinę utrzymywano poprzez zgodę grupy, a nie absolutną władzę kapitana.",
+      "text_markdown": "Dyscyplinę utrzymywano poprzez zgodę grupy, a nie absolutną władzę kapitana.",
+      "tts": {
+        "text": "Dyscyplinę utrzymywano poprzez zgodę grupy, a nie absolutną władzę kapitana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Była to forma surowej demokracji.",
+      "text_markdown": "Była to forma surowej demokracji.",
+      "tts": {
+        "text": "Była to forma surowej demokracji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Statki pirackie były jednymi z najbardziej egalitarnych społeczności w świecie atlantyckim.",
+      "text_markdown": "Statki pirackie były jednymi z najbardziej egalitarnych społeczności w świecie atlantyckim.",
+      "tts": {
+        "text": "Statki pirackie były jednymi z najbardziej egalitarnych społeczności w świecie atlantyckim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mężczyźni wszystkich ras i pochodzenia służyli razem.",
+      "text_markdown": "Mężczyźni wszystkich ras i pochodzenia służyli razem.",
+      "tts": {
+        "text": "Mężczyźni wszystkich ras i pochodzenia służyli razem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Byli niewolnicy żeglowali obok byłych oficerów marynarki.",
+      "text_markdown": "Byli niewolnicy żeglowali obok byłych oficerów marynarki.",
+      "tts": {
+        "text": "Byli niewolnicy żeglowali obok byłych oficerów marynarki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skuteczny kapitan piracki potrzebował konkretnych umiejętności.",
+      "text_markdown": "Skuteczny kapitan piracki potrzebował konkretnych umiejętności.",
+      "tts": {
+        "text": "Skuteczny kapitan piracki potrzebował konkretnych umiejętności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Musiał nawigować po gwiazdach.",
+      "text_markdown": "Musiał nawigować po gwiazdach.",
+      "tts": {
+        "text": "Musiał nawigować po gwiazdach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Musiał umieć czytać pogodę i prądy morskie.",
+      "text_markdown": "Musiał umieć czytać pogodę i prądy morskie.",
+      "tts": {
+        "text": "Musiał umieć czytać pogodę i prądy morskie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Musiał inspirować lojalność i zarządzać konfliktami wśród niebezpiecznych ludzi.",
+      "text_markdown": "Musiał inspirować lojalność i zarządzać konfliktami wśród niebezpiecznych ludzi.",
+      "tts": {
+        "text": "Musiał inspirować lojalność i zarządzać konfliktami wśród niebezpiecznych ludzi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przede wszystkim kapitan piracki potrzebował szacunku swojej załogi.",
+      "text_markdown": "Przede wszystkim kapitan piracki potrzebował szacunku swojej załogi.",
+      "tts": {
+        "text": "Przede wszystkim kapitan piracki potrzebował szacunku swojej załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeśli załoga traciła zaufanie do kapitana, po prostu go odwoływali w głosowaniu.",
+      "text_markdown": "Jeśli załoga traciła zaufanie do kapitana, po prostu go odwoływali w głosowaniu.",
+      "tts": {
+        "text": "Jeśli załoga traciła zaufanie do kapitana, po prostu go odwoływali w głosowaniu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kapitan niekompetentny, tchórzliwy lub niesprawiedliwy był zastępowany bez ceregieli.",
+      "text_markdown": "Kapitan niekompetentny, tchórzliwy lub niesprawiedliwy był zastępowany bez ceregieli.",
+      "tts": {
+        "text": "Kapitan niekompetentny, tchórzliwy lub niesprawiedliwy był zastępowany bez ceregieli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1717 roku rząd brytyjski postanowił zdławić piractwo.",
+      "text_markdown": "W 1717 roku rząd brytyjski postanowił zdławić piractwo.",
+      "tts": {
+        "text": "W tysiąc siedemset siedemnastym roku rząd brytyjski postanowił zdławić piractwo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Król Jerzy I wydał królewską proklamację oferującą ułaskawienie każdemu piratowi, który podda się przed określonym terminem.",
+      "text_markdown": "Król Jerzy I wydał królewską proklamację oferującą ułaskawienie każdemu piratowi, który podda się przed określonym terminem.",
+      "tts": {
+        "text": "Król Jerzy Pierwszy wydał królewską proklamację oferującą ułaskawienie każdemu piratowi, który podda się przed określonym terminem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu piratów przyjęło ułaskawienie.",
+      "text_markdown": "Wielu piratów przyjęło ułaskawienie.",
+      "tts": {
+        "text": "Wielu piratów przyjęło ułaskawienie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Inni je zignorowali.",
+      "text_markdown": "Inni je zignorowali.",
+      "tts": {
+        "text": "Inni je zignorowali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To był świat, do którego Stede Bonnet postanowił wkroczyć.",
+      "text_markdown": "To był świat, do którego Stede Bonnet postanowił wkroczyć.",
+      "tts": {
+        "text": "To był świat, do którego Stede Bonnet postanowił wkroczyć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Świat zawodowych przestępców, doświadczonych zabójców i zahartowanych marynarzy.",
+      "text_markdown": "Świat zawodowych przestępców, doświadczonych zabójców i zahartowanych marynarzy.",
+      "tts": {
+        "text": "Świat zawodowych przestępców, doświadczonych zabójców i zahartowanych marynarzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wkroczył do niego bez absolutnie żadnego odpowiedniego doświadczenia.",
+      "text_markdown": "Wkroczył do niego bez absolutnie żadnego odpowiedniego doświadczenia.",
+      "tts": {
+        "text": "Wkroczył do niego bez absolutnie żadnego odpowiedniego doświadczenia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Karaibów",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wyniki były do przewidzenia.",
+      "text_markdown": "Wyniki były do przewidzenia.",
+      "tts": {
+        "text": "Wyniki były do przewidzenia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Początki",
+      "text_markdown": "Początki"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stede Bonnet urodził się w 1688 roku na Barbadosie.",
+      "text_markdown": "Stede Bonnet urodził się w 1688 roku na Barbadosie.",
+      "tts": {
+        "text": "Stede Bonnet urodził się w tysiąc sześćset osiemdziesiątym ósmym roku na Barbadosie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego rodzina należała do szlachty ziemskiej wyspy.",
+      "text_markdown": "Jego rodzina należała do szlachty ziemskiej wyspy.",
+      "tts": {
+        "text": "Jego rodzina należała do szlachty ziemskiej wyspy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Posiadali dochodową plantację trzciny cukrowej i cieszyli się wygodnym, uprzywilejowanym życiem.",
+      "text_markdown": "Posiadali dochodową plantację trzciny cukrowej i cieszyli się wygodnym, uprzywilejowanym życiem.",
+      "tts": {
+        "text": "Posiadali dochodową plantację trzciny cukrowej i cieszyli się wygodnym, uprzywilejowanym życiem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Otrzymał dobre wykształcenie, co było rzadkością w koloniach karaibskich.",
+      "text_markdown": "Otrzymał dobre wykształcenie, co było rzadkością w koloniach karaibskich.",
+      "tts": {
+        "text": "Otrzymał dobre wykształcenie, co było rzadkością w koloniach karaibskich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Umiał dobrze czytać i pisać.",
+      "text_markdown": "Umiał dobrze czytać i pisać.",
+      "tts": {
+        "text": "Umiał dobrze czytać i pisać.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Znał literaturę i historię.",
+      "text_markdown": "Znał literaturę i historię.",
+      "tts": {
+        "text": "Znał literaturę i historię.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był, krótko mówiąc, dżentelmenem.",
+      "text_markdown": "Był, krótko mówiąc, dżentelmenem.",
+      "tts": {
+        "text": "Był, krótko mówiąc, dżentelmenem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet odziedziczył rodzinną plantację i stał się człowiekiem znacznego bogactwa.",
+      "text_markdown": "Bonnet odziedziczył rodzinną plantację i stał się człowiekiem znacznego bogactwa.",
+      "tts": {
+        "text": "Bonnet odziedziczył rodzinną plantację i stał się człowiekiem znacznego bogactwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był szanowanym członkiem społeczności Barbadosu.",
+      "text_markdown": "Był szanowanym członkiem społeczności Barbadosu.",
+      "tts": {
+        "text": "Był szanowanym członkiem społeczności Barbadosu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Posiadał stopień majora w milicji wyspy, pozycję o wysokim prestiżu społecznym.",
+      "text_markdown": "Posiadał stopień majora w milicji wyspy, pozycję o wysokim prestiżu społecznym.",
+      "tts": {
+        "text": "Posiadał stopień majora w milicji wyspy, pozycję o wysokim prestiżu społecznym.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ożenił się z kobietą imieniem Mary Allamby.",
+      "text_markdown": "Ożenił się z kobietą imieniem Mary Allamby.",
+      "tts": {
+        "text": "Ożenił się z kobietą imieniem Mary Allamby.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mieli razem dzieci.",
+      "text_markdown": "Mieli razem dzieci.",
+      "tts": {
+        "text": "Mieli razem dzieci.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na pozór Stede Bonnet miał wszystko, czego mężczyzna tamtej epoki mógł pragnąć.",
+      "text_markdown": "Na pozór Stede Bonnet miał wszystko, czego mężczyzna tamtej epoki mógł pragnąć.",
+      "tts": {
+        "text": "Na pozór Stede Bonnet miał wszystko, czego mężczyzna tamtej epoki mógł pragnąć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A jednak coś było nie tak.",
+      "text_markdown": "A jednak coś było nie tak.",
+      "tts": {
+        "text": "A jednak coś było nie tak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Relacje historyczne sugerują, że Bonnet był głęboko nieszczęśliwy.",
+      "text_markdown": "Relacje historyczne sugerują, że Bonnet był głęboko nieszczęśliwy.",
+      "tts": {
+        "text": "Relacje historyczne sugerują, że Bonnet był głęboko nieszczęśliwy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Najczęściej podawanym powodem jest jego małżeństwo.",
+      "text_markdown": "Najczęściej podawanym powodem jest jego małżeństwo.",
+      "tts": {
+        "text": "Najczęściej podawanym powodem jest jego małżeństwo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Liczne źródła opisują jego życie domowe jako nieszczęśliwe.",
+      "text_markdown": "Liczne źródła opisują jego życie domowe jako nieszczęśliwe.",
+      "tts": {
+        "text": "Liczne źródła opisują jego życie domowe jako nieszczęśliwe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedna z ówczesnych relacji stwierdzała wprost, że Bonnet zwrócił się ku piractwu, by uciec od narzekań żony.",
+      "text_markdown": "Jedna z ówczesnych relacji stwierdzała wprost, że Bonnet zwrócił się ku piractwu, by uciec od narzekań żony.",
+      "tts": {
+        "text": "Jedna z ówczesnych relacji stwierdzała wprost, że Bonnet zwrócił się ku piractwu, by uciec od narzekań żony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czy to było sprawiedliwe wobec Mary Allamby, nie możemy wiedzieć.",
+      "text_markdown": "Czy to było sprawiedliwe wobec Mary Allamby, nie możemy wiedzieć.",
+      "tts": {
+        "text": "Czy to było sprawiedliwe wobec Mary Allamby, nie możemy wiedzieć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To, co wiemy, to fakt, że decyzja Bonneta o zostaniu piratem wprawiła w osłupienie wszystkich, którzy go znali.",
+      "text_markdown": "To, co wiemy, to fakt, że decyzja Bonneta o zostaniu piratem wprawiła w osłupienie wszystkich, którzy go znali.",
+      "tts": {
+        "text": "To, co wiemy, to fakt, że decyzja Bonneta o zostaniu piratem wprawiła w osłupienie wszystkich, którzy go znali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektórzy historycy sugerowali, że Bonnet mógł cierpieć na zaburzenie psychiczne.",
+      "text_markdown": "Niektórzy historycy sugerowali, że Bonnet mógł cierpieć na zaburzenie psychiczne.",
+      "tts": {
+        "text": "Niektórzy historycy sugerowali, że Bonnet mógł cierpieć na zaburzenie psychiczne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego współcześni używali określenia, że miał zaburzenie umysłu.",
+      "text_markdown": "Jego współcześni używali określenia, że miał zaburzenie umysłu.",
+      "tts": {
+        "text": "Jego współcześni używali określenia, że miał zaburzenie umysłu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Coś pchnęło go do porzucenia życia w przywilejach na rzecz życia w przestępstwie.",
+      "text_markdown": "Coś pchnęło go do porzucenia życia w przywilejach na rzecz życia w przestępstwie.",
+      "tts": {
+        "text": "Coś pchnęło go do porzucenia życia w przywilejach na rzecz życia w przestępstwie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną 1717 roku Bonnet potajemnie zlecił budowę szalupy.",
+      "text_markdown": "Wiosną 1717 roku Bonnet potajemnie zlecił budowę szalupy.",
+      "tts": {
+        "text": "Wiosną tysiąc siedemset siedemnastego roku Bonnet potajemnie zlecił budowę szalupy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Szalupa to szybki, jednomasztowy żaglowiec preferowany przez piratów.",
+      "text_markdown": "Szalupa to szybki, jednomasztowy żaglowiec preferowany przez piratów.",
+      "tts": {
+        "text": "Szalupa to szybki, jednomasztowy żaglowiec preferowany przez piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale piraci nie kupowali swoich statków.",
+      "text_markdown": "Ale piraci nie kupowali swoich statków.",
+      "tts": {
+        "text": "Ale piraci nie kupowali swoich statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kradli je.",
+      "text_markdown": "Kradli je.",
+      "tts": {
+        "text": "Kradli je.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet zapłacił za swoją szalupę z własnej kieszeni.",
+      "text_markdown": "Bonnet zapłacił za swoją szalupę z własnej kieszeni.",
+      "tts": {
+        "text": "Bonnet zapłacił za swoją szalupę z własnej kieszeni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nazwał ją Revenge.",
+      "text_markdown": "Nazwał ją Revenge.",
+      "tts": {
+        "text": "Nazwał ją Revenge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nazwa sugerowała jakąś urazę, choć wobec kogo lub czego, pozostaje niejasne.",
+      "text_markdown": "Nazwa sugerowała jakąś urazę, choć wobec kogo lub czego, pozostaje niejasne.",
+      "tts": {
+        "text": "Nazwa sugerowała jakąś urazę, choć wobec kogo lub czego, pozostaje niejasne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Być może była to zemsta na własnym nieszczęściu.",
+      "text_markdown": "Być może była to zemsta na własnym nieszczęściu.",
+      "tts": {
+        "text": "Być może była to zemsta na własnym nieszczęściu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Następnie wynajął załogę składającą się z około siedemdziesięciu mężczyzn.",
+      "text_markdown": "Następnie wynajął załogę składającą się z około siedemdziesięciu mężczyzn.",
+      "tts": {
+        "text": "Następnie wynajął załogę składającą się z około siedemdziesięciu mężczyzn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Prawdziwi kapitanowie piraccy nie wynajmowali swoich załóg.",
+      "text_markdown": "Prawdziwi kapitanowie piraccy nie wynajmowali swoich załóg.",
+      "tts": {
+        "text": "Prawdziwi kapitanowie piraccy nie wynajmowali swoich załóg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To załogi wybierały swojego kapitana.",
+      "text_markdown": "To załogi wybierały swojego kapitana.",
+      "tts": {
+        "text": "To załogi wybierały swojego kapitana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bonnet miał cały ten układ na opak od samego początku.",
+      "text_markdown": "Bonnet miał cały ten układ na opak od samego początku.",
+      "tts": {
+        "text": "Bonnet miał cały ten układ na opak od samego początku.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie, których wynajął, byli twardą bandą, doświadczonymi marynarzami i prawdopodobnie kilkoma byłymi piratami.",
+      "text_markdown": "Ludzie, których wynajął, byli twardą bandą, doświadczonymi marynarzami i prawdopodobnie kilkoma byłymi piratami.",
+      "tts": {
+        "text": "Ludzie, których wynajął, byli twardą bandą, doświadczonymi marynarzami i prawdopodobnie kilkoma byłymi piratami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Szybko zorientowali się, że ich nowy kapitan nie wie prawie nic o żeglowaniu ani walce.",
+      "text_markdown": "Szybko zorientowali się, że ich nowy kapitan nie wie prawie nic o żeglowaniu ani walce.",
+      "tts": {
+        "text": "Szybko zorientowali się, że ich nowy kapitan nie wie prawie nic o żeglowaniu ani walce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale im płacił, więc się zgodzili.",
+      "text_markdown": "Ale im płacił, więc się zgodzili.",
+      "tts": {
+        "text": "Ale im płacił, więc się zgodzili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pewnej nocy Bonnet wypłynął z zatoki Carlisle na Barbadosie pod osłoną ciemności.",
+      "text_markdown": "Pewnej nocy Bonnet wypłynął z zatoki Carlisle na Barbadosie pod osłoną ciemności.",
+      "tts": {
+        "text": "Pewnej nocy Bonnet wypłynął z zatoki Carlisle na Barbadosie pod osłoną ciemności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zostawił za sobą plantację, rodzinę i całe dotychczasowe życie.",
+      "text_markdown": "Zostawił za sobą plantację, rodzinę i całe dotychczasowe życie.",
+      "tts": {
+        "text": "Zostawił za sobą plantację, rodzinę i całe dotychczasowe życie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zmierzał do świata, do którego był spektakularnie nieprzygotowany.",
+      "text_markdown": "Zmierzał do świata, do którego był spektakularnie nieprzygotowany.",
+      "tts": {
+        "text": "Zmierzał do świata, do którego był spektakularnie nieprzygotowany.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Szlachcic-plantator stał się piratem.",
+      "text_markdown": "Szlachcic-plantator stał się piratem.",
+      "tts": {
+        "text": "Szlachcic-plantator stał się piratem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karaiby nigdy nie widziały czegoś podobnego.",
+      "text_markdown": "Karaiby nigdy nie widziały czegoś podobnego.",
+      "tts": {
+        "text": "Karaiby nigdy nie widziały czegoś podobnego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pewnie wolałyby nie widzieć.",
+      "text_markdown": "Pewnie wolałyby nie widzieć.",
+      "tts": {
+        "text": "Pewnie wolałyby nie widzieć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pirat-dżentelmen",
+      "text_markdown": "Pirat-dżentelmen"
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wczesna kariera piracka Stede Bonneta była serią potykających się, na wpół udanych napadów.",
+      "text_markdown": "Wczesna kariera piracka Stede Bonneta była serią potykających się, na wpół udanych napadów.",
+      "tts": {
+        "text": "Wczesna kariera piracka Stede Bonneta była serią potykających się, na wpół udanych napadów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Żeglował na północ wzdłuż amerykańskiego wybrzeża, przechwytując kilka małych statków.",
+      "text_markdown": "Żeglował na północ wzdłuż amerykańskiego wybrzeża, przechwytując kilka małych statków.",
+      "tts": {
+        "text": "Żeglował na północ wzdłuż amerykańskiego wybrzeża, przechwytując kilka małych statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Łupy były skromne, ale wystarczające, by zapobiec natychmiastowemu buntowi załogi.",
+      "text_markdown": "Łupy były skromne, ale wystarczające, by zapobiec natychmiastowemu buntowi załogi.",
+      "tts": {
+        "text": "Łupy były skromne, ale wystarczające, by zapobiec natychmiastowemu buntowi załogi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przejmował statki u wybrzeży Wirginii i Karoliny.",
+      "text_markdown": "Przejmował statki u wybrzeży Wirginii i Karoliny.",
+      "tts": {
+        "text": "Przejmował statki u wybrzeży Wirginii i Karoliny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dokonywał też napadów w pobliżu Nowego Jorku.",
+      "text_markdown": "Dokonywał też napadów w pobliżu Nowego Jorku.",
+      "tts": {
+        "text": "Dokonywał też napadów w pobliżu Nowego Jorku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego metody były niezgrabne, ale okazjonalnie skuteczne, głównie dlatego, że jego celami były nieuzbrojone statki handlowe, które nie mogły się bronić.",
+      "text_markdown": "Jego metody były niezgrabne, ale okazjonalnie skuteczne, głównie dlatego, że jego celami były nieuzbrojone statki handlowe, które nie mogły się bronić.",
+      "tts": {
+        "text": "Jego metody były niezgrabne, ale okazjonalnie skuteczne, głównie dlatego, że jego celami były nieuzbrojone statki handlowe, które nie mogły się bronić.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brak wiedzy żeglarskiej Bonneta był ciągłym problemem.",
+      "text_markdown": "Brak wiedzy żeglarskiej Bonneta był ciągłym problemem.",
+      "tts": {
+        "text": "Brak wiedzy żeglarskiej Bonneta był ciągłym problemem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nie rozumiał nawigacji, sztuki żeglarskiej ani walki morskiej.",
+      "text_markdown": "Nie rozumiał nawigacji, sztuki żeglarskiej ani walki morskiej.",
+      "tts": {
+        "text": "Nie rozumiał nawigacji, sztuki żeglarskiej ani walki morskiej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego załoga w zasadzie prowadziła statek za niego, podczas gdy on wydawał rozkazy, które grzecznie ignorowali.",
+      "text_markdown": "Jego załoga w zasadzie prowadziła statek za niego, podczas gdy on wydawał rozkazy, które grzecznie ignorowali.",
+      "tts": {
+        "text": "Jego załoga w zasadzie prowadziła statek za niego, podczas gdy on wydawał rozkazy, które grzecznie ignorowali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pomimo swojej niekompetencji Bonnet miał jedną cechę, która mu się przydawała.",
+      "text_markdown": "Pomimo swojej niekompetencji Bonnet miał jedną cechę, która mu się przydawała.",
+      "tts": {
+        "text": "Pomimo swojej niekompetencji Bonnet miał jedną cechę, która mu się przydawała.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był hojny z żołdem dla swojej załogi.",
+      "text_markdown": "Był hojny z żołdem dla swojej załogi.",
+      "tts": {
+        "text": "Był hojny z żołdem dla swojej załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Większość kapitanów pirackich dzieliła łup według udziałów.",
+      "text_markdown": "Większość kapitanów pirackich dzieliła łup według udziałów.",
+      "tts": {
+        "text": "Większość kapitanów pirackich dzieliła łup według udziałów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bonnet po prostu płacił swoim ludziom pensje z osobistej fortuny, co było całkowicie niespotykane.",
+      "text_markdown": "Bonnet po prostu płacił swoim ludziom pensje z osobistej fortuny, co było całkowicie niespotykane.",
+      "tts": {
+        "text": "Bonnet po prostu płacił swoim ludziom pensje z osobistej fortuny, co było całkowicie niespotykane.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego załoga tolerowała jego przywództwo, bo pieniądze płynęły regularnie.",
+      "text_markdown": "Jego załoga tolerowała jego przywództwo, bo pieniądze płynęły regularnie.",
+      "tts": {
+        "text": "Jego załoga tolerowała jego przywództwo, bo pieniądze płynęły regularnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W niepewnym świecie piractwa kapitan, który płacił regularnie, miał pewną wartość, nawet jeśli nie potrafił wyprowadzić statku z portu.",
+      "text_markdown": "W niepewnym świecie piractwa kapitan, który płacił regularnie, miał pewną wartość, nawet jeśli nie potrafił wyprowadzić statku z portu.",
+      "tts": {
+        "text": "W niepewnym świecie piractwa kapitan, który płacił regularnie, miał pewną wartość, nawet jeśli nie potrafił wyprowadzić statku z portu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reputacja Bonneta jako pirata-dżentelmena szybko się rozprzestrzeniła.",
+      "text_markdown": "Reputacja Bonneta jako pirata-dżentelmena szybko się rozprzestrzeniła.",
+      "tts": {
+        "text": "Reputacja Bonneta jako pirata-dżentelmena szybko się rozprzestrzeniła.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nowość zamożnego plantatora, który został piratem, była nieodpartą plotką.",
+      "text_markdown": "Nowość zamożnego plantatora, który został piratem, była nieodpartą plotką.",
+      "tts": {
+        "text": "Nowość zamożnego plantatora, który został piratem, była nieodpartą plotką.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wszyscy na wybrzeżu znali tę historię.",
+      "text_markdown": "Wszyscy na wybrzeżu znali tę historię.",
+      "tts": {
+        "text": "Wszyscy na wybrzeżu znali tę historię.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Większość ludzi uważała ją za przezabawną.",
+      "text_markdown": "Większość ludzi uważała ją za przezabawną.",
+      "tts": {
+        "text": "Większość ludzi uważała ją za przezabawną.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią 1717 roku Stede Bonnet spotkał najbardziej niesławnego pirata na Karaibach.",
+      "text_markdown": "Jesienią 1717 roku Stede Bonnet spotkał najbardziej niesławnego pirata na Karaibach.",
+      "tts": {
+        "text": "Jesienią tysiąc siedemset siedemnastego roku Stede Bonnet spotkał najbardziej niesławnego pirata na Karaibach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotkał Edwarda Teacha, znanego w historii jako Czarnobrody.",
+      "text_markdown": "Spotkał Edwarda Teacha, znanego w historii jako Czarnobrody.",
+      "tts": {
+        "text": "Spotkał Edwarda Teacha, znanego w historii jako Czarnobrody.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To spotkanie miało zdefiniować resztę pirackiej kariery Bonneta.",
+      "text_markdown": "To spotkanie miało zdefiniować resztę pirackiej kariery Bonneta.",
+      "tts": {
+        "text": "To spotkanie miało zdefiniować resztę pirackiej kariery Bonneta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody był wszystkim, czym Bonnet nie był.",
+      "text_markdown": "Czarnobrody był wszystkim, czym Bonnet nie był.",
+      "tts": {
+        "text": "Czarnobrody był wszystkim, czym Bonnet nie był.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był doświadczony, bezwzględny, charyzmatyczny i przerażający.",
+      "text_markdown": "Był doświadczony, bezwzględny, charyzmatyczny i przerażający.",
+      "tts": {
+        "text": "Był doświadczony, bezwzględny, charyzmatyczny i przerażający.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dowodził załogą poprzez połączenie umiejętności i zastraszania.",
+      "text_markdown": "Dowodził załogą poprzez połączenie umiejętności i zastraszania.",
+      "tts": {
+        "text": "Dowodził załogą poprzez połączenie umiejętności i zastraszania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był naturalnym przywódcą brutalnych ludzi.",
+      "text_markdown": "Był naturalnym przywódcą brutalnych ludzi.",
+      "tts": {
+        "text": "Był naturalnym przywódcą brutalnych ludzi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy Czarnobrody zobaczył sytuację Bonneta, natychmiast zrozumiał okazję.",
+      "text_markdown": "Kiedy Czarnobrody zobaczył sytuację Bonneta, natychmiast zrozumiał okazję.",
+      "tts": {
+        "text": "Kiedy Czarnobrody zobaczył sytuację Bonneta, natychmiast zrozumiał okazję.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oto człowiek z doskonałym statkiem i żadną umiejętnością dowodzenia nim.",
+      "text_markdown": "Oto człowiek z doskonałym statkiem i żadną umiejętnością dowodzenia nim.",
+      "tts": {
+        "text": "Oto człowiek z doskonałym statkiem i żadną umiejętnością dowodzenia nim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Czarnobrody zaproponował Bonnetowi połączenie sił.",
+      "text_markdown": "Czarnobrody zaproponował Bonnetowi połączenie sił.",
+      "tts": {
+        "text": "Czarnobrody zaproponował Bonnetowi połączenie sił.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "W rzeczywistości po prostu przejął kontrolę.",
+      "text_markdown": "W rzeczywistości po prostu przejął kontrolę.",
+      "tts": {
+        "text": "W rzeczywistości po prostu przejął kontrolę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czarnobrody umieścił jednego ze swoich oficerów na czele Revenge.",
+      "text_markdown": "Czarnobrody umieścił jednego ze swoich oficerów na czele Revenge.",
+      "tts": {
+        "text": "Czarnobrody umieścił jednego ze swoich oficerów na czele Revenge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bonnet został przeniesiony na okręt flagowy Czarnobrodego, Queen Anne's Revenge, jako gość.",
+      "text_markdown": "Bonnet został przeniesiony na okręt flagowy Czarnobrodego, Queen Anne's Revenge, jako gość.",
+      "tts": {
+        "text": "Bonnet został przeniesiony na okręt flagowy Czarnobrodego, Queen Anne's Revenge, jako gość.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był gościem w tym samym sensie, co zakładnik jest gościem.",
+      "text_markdown": "Był gościem w tym samym sensie, co zakładnik jest gościem.",
+      "tts": {
+        "text": "Był gościem w tym samym sensie, co zakładnik jest gościem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nie miał żadnej władzy ani żadnej roli.",
+      "text_markdown": "Nie miał żadnej władzy ani żadnej roli.",
+      "tts": {
+        "text": "Nie miał żadnej władzy ani żadnej roli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Według licznych relacji Bonnet spędzał czas na statku Czarnobrodego czytając książki i spacerując po pokładzie w szlafroku.",
+      "text_markdown": "Według licznych relacji Bonnet spędzał czas na statku Czarnobrodego czytając książki i spacerując po pokładzie w szlafroku.",
+      "tts": {
+        "text": "Według licznych relacji Bonnet spędzał czas na statku Czarnobrodego czytając książki i spacerując po pokładzie w szlafroku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przeszedł od bycia kiepskim kapitanem pirackim do niebydowania kapitanem w ogóle.",
+      "text_markdown": "Przeszedł od bycia kiepskim kapitanem pirackim do niebydowania kapitanem w ogóle.",
+      "tts": {
+        "text": "Przeszedł od bycia kiepskim kapitanem pirackim do niebydowania kapitanem w ogóle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był pasażerem na tym, co kiedyś było jego własnym statkiem.",
+      "text_markdown": "Był pasażerem na tym, co kiedyś było jego własnym statkiem.",
+      "tts": {
+        "text": "Był pasażerem na tym, co kiedyś było jego własnym statkiem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego załoga nie była niezadowolona z tego układu.",
+      "text_markdown": "Jego załoga nie była niezadowolona z tego układu.",
+      "tts": {
+        "text": "Jego załoga nie była niezadowolona z tego układu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czarnobrody był o wiele bardziej kompetentnym przywódcą niż Bonnet kiedykolwiek był.",
+      "text_markdown": "Czarnobrody był o wiele bardziej kompetentnym przywódcą niż Bonnet kiedykolwiek był.",
+      "tts": {
+        "text": "Czarnobrody był o wiele bardziej kompetentnym przywódcą niż Bonnet kiedykolwiek był.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pod dowództwem Czarnobrodego połączona flota zdobywała bogatsze łupy i działała sprawniej.",
+      "text_markdown": "Pod dowództwem Czarnobrodego połączona flota zdobywała bogatsze łupy i działała sprawniej.",
+      "tts": {
+        "text": "Pod dowództwem Czarnobrodego połączona flota zdobywała bogatsze łupy i działała sprawniej.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez kilka miesięcy Bonnet żeglował z Czarnobrodym jako podwładny.",
+      "text_markdown": "Przez kilka miesięcy Bonnet żeglował z Czarnobrodym jako podwładny.",
+      "tts": {
+        "text": "Przez kilka miesięcy Bonnet żeglował z Czarnobrodym jako podwładny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Napadali na statki wzdłuż amerykańskiego wybrzeża i na Karaibach.",
+      "text_markdown": "Napadali na statki wzdłuż amerykańskiego wybrzeża i na Karaibach.",
+      "tts": {
+        "text": "Napadali na statki wzdłuż amerykańskiego wybrzeża i na Karaibach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Czarnobrody się bogacił.",
+      "text_markdown": "Czarnobrody się bogacił.",
+      "tts": {
+        "text": "Czarnobrody się bogacił.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bonnet stawał się coraz bardziej nieistotny.",
+      "text_markdown": "Bonnet stawał się coraz bardziej nieistotny.",
+      "tts": {
+        "text": "Bonnet stawał się coraz bardziej nieistotny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W maju 1718 roku Czarnobrody poprowadził flotę do Charleston w Karolinie Południowej i zablokował cały port.",
+      "text_markdown": "W maju 1718 roku Czarnobrody poprowadził flotę do Charleston w Karolinie Południowej i zablokował cały port.",
+      "tts": {
+        "text": "W maju tysiąc siedemset osiemnastego roku Czarnobrody poprowadził flotę do Charleston w Karolinie Południowej i zablokował cały port.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był to jeden z najśmielszych aktów piractwa w historii Ameryki.",
+      "text_markdown": "Był to jeden z najśmielszych aktów piractwa w historii Ameryki.",
+      "tts": {
+        "text": "Był to jeden z najśmielszych aktów piractwa w historii Ameryki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Statki wchodzące i wychodzące z portu były przejmowane.",
+      "text_markdown": "Statki wchodzące i wychodzące z portu były przejmowane.",
+      "tts": {
+        "text": "Statki wchodzące i wychodzące z portu były przejmowane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Miasto było faktycznie przetrzymywane jako zakładnik.",
+      "text_markdown": "Miasto było faktycznie przetrzymywane jako zakładnik.",
+      "tts": {
+        "text": "Miasto było faktycznie przetrzymywane jako zakładnik.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Żądanie Czarnobrodego było niezwykłe.",
+      "text_markdown": "Żądanie Czarnobrodego było niezwykłe.",
+      "tts": {
+        "text": "Żądanie Czarnobrodego było niezwykłe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nie poprosił o złoto ani skarby.",
+      "text_markdown": "Nie poprosił o złoto ani skarby.",
+      "tts": {
+        "text": "Nie poprosił o złoto ani skarby.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zażądał skrzyni z lekami.",
+      "text_markdown": "Zażądał skrzyni z lekami.",
+      "tts": {
+        "text": "Zażądał skrzyni z lekami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego załoga cierpiała na choroby weneryczne i potrzebował zaopatrzenia medycznego.",
+      "text_markdown": "Jego załoga cierpiała na choroby weneryczne i potrzebował zaopatrzenia medycznego.",
+      "tts": {
+        "text": "Jego załoga cierpiała na choroby weneryczne i potrzebował zaopatrzenia medycznego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miasto Charleston się podporządkowało.",
+      "text_markdown": "Miasto Charleston się podporządkowało.",
+      "tts": {
+        "text": "Miasto Charleston się podporządkowało.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leki zostały dostarczone, a Czarnobrody uwolnił zakładników.",
+      "text_markdown": "Leki zostały dostarczone, a Czarnobrody uwolnił zakładników.",
+      "tts": {
+        "text": "Leki zostały dostarczone, a Czarnobrody uwolnił zakładników.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cała ta sprawa ukazała zuchwałość Czarnobrodego i jego pełną kontrolę nad sytuacją.",
+      "text_markdown": "Cała ta sprawa ukazała zuchwałość Czarnobrodego i jego pełną kontrolę nad sytuacją.",
+      "tts": {
+        "text": "Cała ta sprawa ukazała zuchwałość Czarnobrodego i jego pełną kontrolę nad sytuacją.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet obserwował to wszystko z boku.",
+      "text_markdown": "Bonnet obserwował to wszystko z boku.",
+      "tts": {
+        "text": "Bonnet obserwował to wszystko z boku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był obecny przy jednym z najsłynniejszych wydarzeń w historii piractwa.",
+      "text_markdown": "Był obecny przy jednym z najsłynniejszych wydarzeń w historii piractwa.",
+      "tts": {
+        "text": "Był obecny przy jednym z najsłynniejszych wydarzeń w historii piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Pirat-dżentelmen",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nic do niego nie wniósł.",
+      "text_markdown": "Nic do niego nie wniósł.",
+      "tts": {
+        "text": "Nic do niego nie wniósł.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ułaskawienie",
+      "text_markdown": "Ułaskawienie"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wkrótce po blokadzie Charleston Czarnobrody postanowił skorzystać z królewskiego ułaskawienia.",
+      "text_markdown": "Wkrótce po blokadzie Charleston Czarnobrody postanowił skorzystać z królewskiego ułaskawienia.",
+      "tts": {
+        "text": "Wkrótce po blokadzie Charleston Czarnobrody postanowił skorzystać z królewskiego ułaskawienia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Popłynął do Bath Town w Karolinie Północnej i poddał się gubernatorowi.",
+      "text_markdown": "Popłynął do Bath Town w Karolinie Północnej i poddał się gubernatorowi.",
+      "tts": {
+        "text": "Popłynął do Bath Town w Karolinie Północnej i poddał się gubernatorowi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otrzymał ułaskawienie i osiedlił się, przynajmniej tymczasowo.",
+      "text_markdown": "Otrzymał ułaskawienie i osiedlił się, przynajmniej tymczasowo.",
+      "tts": {
+        "text": "Otrzymał ułaskawienie i osiedlił się, przynajmniej tymczasowo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zanim to zrobił, Czarnobrody zdradził Bonneta po raz ostatni.",
+      "text_markdown": "Zanim to zrobił, Czarnobrody zdradził Bonneta po raz ostatni.",
+      "tts": {
+        "text": "Zanim to zrobił, Czarnobrody zdradził Bonneta po raz ostatni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogołocił Revenge z zapasów i porzucił wielu z pierwotnej załogi Bonneta na mieliźnie.",
+      "text_markdown": "Ogołocił Revenge z zapasów i porzucił wielu z pierwotnej załogi Bonneta na mieliźnie.",
+      "tts": {
+        "text": "Ogołocił Revenge z zapasów i porzucił wielu z pierwotnej załogi Bonneta na mieliźnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Najlepszy łup zatrzymał dla siebie.",
+      "text_markdown": "Najlepszy łup zatrzymał dla siebie.",
+      "tts": {
+        "text": "Najlepszy łup zatrzymał dla siebie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bonnet został z pustym statkiem i załogą porzuconych ludzi.",
+      "text_markdown": "Bonnet został z pustym statkiem i załogą porzuconych ludzi.",
+      "tts": {
+        "text": "Bonnet został z pustym statkiem i załogą porzuconych ludzi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet był wściekły.",
+      "text_markdown": "Bonnet był wściekły.",
+      "tts": {
+        "text": "Bonnet był wściekły.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przysiągł tropić Czarnobrodego i zemścić się.",
+      "text_markdown": "Przysiągł tropić Czarnobrodego i zemścić się.",
+      "tts": {
+        "text": "Przysiągł tropić Czarnobrodego i zemścić się.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nazwa jego statku nigdy nie była bardziej odpowiednia.",
+      "text_markdown": "Nazwa jego statku nigdy nie była bardziej odpowiednia.",
+      "tts": {
+        "text": "Nazwa jego statku nigdy nie była bardziej odpowiednia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ale nigdy nie dopadł Czarnobrodego, a groźba pozostała pusta.",
+      "text_markdown": "Ale nigdy nie dopadł Czarnobrodego, a groźba pozostała pusta.",
+      "tts": {
+        "text": "Ale nigdy nie dopadł Czarnobrodego, a groźba pozostała pusta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet postanowił sam ubiegać się o ułaskawienie.",
+      "text_markdown": "Bonnet postanowił sam ubiegać się o ułaskawienie.",
+      "tts": {
+        "text": "Bonnet postanowił sam ubiegać się o ułaskawienie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Popłynął do Bath Town, tego samego miejsca, gdzie Czarnobrody otrzymał swoje ułaskawienie, i poddał się władzom.",
+      "text_markdown": "Popłynął do Bath Town, tego samego miejsca, gdzie Czarnobrody otrzymał swoje ułaskawienie, i poddał się władzom.",
+      "tts": {
+        "text": "Popłynął do Bath Town, tego samego miejsca, gdzie Czarnobrody otrzymał swoje ułaskawienie, i poddał się władzom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otrzymał królewskie ułaskawienie latem 1718 roku.",
+      "text_markdown": "Otrzymał królewskie ułaskawienie latem 1718 roku.",
+      "tts": {
+        "text": "Otrzymał królewskie ułaskawienie latem tysiąc siedemset osiemnastego roku.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ułaskawienie wymagało, by Bonnet całkowicie porzucił piractwo.",
+      "text_markdown": "Ułaskawienie wymagało, by Bonnet całkowicie porzucił piractwo.",
+      "tts": {
+        "text": "Ułaskawienie wymagało, by Bonnet całkowicie porzucił piractwo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miał stać się praworządnym obywatelem.",
+      "text_markdown": "Miał stać się praworządnym obywatelem.",
+      "tts": {
+        "text": "Miał stać się praworządnym obywatelem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dla człowieka jego bogactwa i wykształcenia powinno to być proste.",
+      "text_markdown": "Dla człowieka jego bogactwa i wykształcenia powinno to być proste.",
+      "tts": {
+        "text": "Dla człowieka jego bogactwa i wykształcenia powinno to być proste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nie było.",
+      "text_markdown": "Nie było.",
+      "tts": {
+        "text": "Nie było.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bonnet wytrzymał zaledwie kilka tygodni, zanim wrócił do piractwa.",
+      "text_markdown": "Bonnet wytrzymał zaledwie kilka tygodni, zanim wrócił do piractwa.",
+      "tts": {
+        "text": "Bonnet wytrzymał zaledwie kilka tygodni, zanim wrócił do piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historycy dyskutowali o jego powodach.",
+      "text_markdown": "Historycy dyskutowali o jego powodach.",
+      "tts": {
+        "text": "Historycy dyskutowali o jego powodach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niektórzy uważają, że nie stać go było na powrót do domu, bo wydał fortunę na Revenge i jego załogę.",
+      "text_markdown": "Niektórzy uważają, że nie stać go było na powrót do domu, bo wydał fortunę na Revenge i jego załogę.",
+      "tts": {
+        "text": "Niektórzy uważają, że nie stać go było na powrót do domu, bo wydał fortunę na Revenge i jego załogę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inni sugerują, że Bonnet po prostu spalił za sobą zbyt wiele mostów.",
+      "text_markdown": "Inni sugerują, że Bonnet po prostu spalił za sobą zbyt wiele mostów.",
+      "tts": {
+        "text": "Inni sugerują, że Bonnet po prostu spalił za sobą zbyt wiele mostów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nie mógł wrócić na Barbados.",
+      "text_markdown": "Nie mógł wrócić na Barbados.",
+      "tts": {
+        "text": "Nie mógł wrócić na Barbados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był poszukiwanym piratem, który porzucił rodzinę i plantację.",
+      "text_markdown": "Był poszukiwanym piratem, który porzucił rodzinę i plantację.",
+      "tts": {
+        "text": "Był poszukiwanym piratem, który porzucił rodzinę i plantację.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Piractwo, jakkolwiek kiepski w nim był, pozostawało jedynym życiem, jakie mu zostało.",
+      "text_markdown": "Piractwo, jakkolwiek kiepski w nim był, pozostawało jedynym życiem, jakie mu zostało.",
+      "tts": {
+        "text": "Piractwo, jakkolwiek kiepski w nim był, pozostawało jedynym życiem, jakie mu zostało.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przyjął fałszywe nazwisko, nazywając siebie Kapitanem Thomasem.",
+      "text_markdown": "Przyjął fałszywe nazwisko, nazywając siebie Kapitanem Thomasem.",
+      "tts": {
+        "text": "Przyjął fałszywe nazwisko, nazywając siebie Kapitanem Thomasem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przemianował swój statek na Royal James.",
+      "text_markdown": "Przemianował swój statek na Royal James.",
+      "tts": {
+        "text": "Przemianował swój statek na Royal James.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sądził, że te przebrania go ochronią.",
+      "text_markdown": "Sądził, że te przebrania go ochronią.",
+      "tts": {
+        "text": "Sądził, że te przebrania go ochronią.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nie ochroniły.",
+      "text_markdown": "Nie ochroniły.",
+      "tts": {
+        "text": "Nie ochroniły.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wznowił napady na statki wzdłuż wybrzeża Karoliny.",
+      "text_markdown": "Wznowił napady na statki wzdłuż wybrzeża Karoliny.",
+      "tts": {
+        "text": "Wznowił napady na statki wzdłuż wybrzeża Karoliny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego celami były głównie małe statki handlowe.",
+      "text_markdown": "Jego celami były głównie małe statki handlowe.",
+      "tts": {
+        "text": "Jego celami były głównie małe statki handlowe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Łupy nie były duże, ale wystarczały, by wyżywić załogę.",
+      "text_markdown": "Łupy nie były duże, ale wystarczały, by wyżywić załogę.",
+      "tts": {
+        "text": "Łupy nie były duże, ale wystarczały, by wyżywić załogę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bonnet wrócił do swoich starych, miernych pirackich metod.",
+      "text_markdown": "Bonnet wrócił do swoich starych, miernych pirackich metod.",
+      "tts": {
+        "text": "Bonnet wrócił do swoich starych, miernych pirackich metod.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Władze Charleston były zdecydowane go powstrzymać.",
+      "text_markdown": "Władze Charleston były zdecydowane go powstrzymać.",
+      "tts": {
+        "text": "Władze Charleston były zdecydowane go powstrzymać.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pułkownik William Rhett, prominentny obywatel i dowódca milicji, zgłosił się na ochotnika do poprowadzenia wyprawy przeciwko piratom.",
+      "text_markdown": "Pułkownik William Rhett, prominentny obywatel i dowódca milicji, zgłosił się na ochotnika do poprowadzenia wyprawy przeciwko piratom.",
+      "tts": {
+        "text": "Pułkownik William Rhett, prominentny obywatel i dowódca milicji, zgłosił się na ochotnika do poprowadzenia wyprawy przeciwko piratom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rhett otrzymał dwie uzbrojone szalupy i załogę doświadczonych wojowników.",
+      "text_markdown": "Rhett otrzymał dwie uzbrojone szalupy i załogę doświadczonych wojowników.",
+      "tts": {
+        "text": "Rhett otrzymał dwie uzbrojone szalupy i załogę doświadczonych wojowników.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rhett wytropił Bonneta na rzece Cape Fear w Karolinie Północnej.",
+      "text_markdown": "Rhett wytropił Bonneta na rzece Cape Fear w Karolinie Północnej.",
+      "tts": {
+        "text": "Rhett wytropił Bonneta na rzece Cape Fear w Karolinie Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bonnet zakotwiczył tam, by naprawić swój statek.",
+      "text_markdown": "Bonnet zakotwiczył tam, by naprawić swój statek.",
+      "tts": {
+        "text": "Bonnet zakotwiczył tam, by naprawić swój statek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był w bezbronnej pozycji, a Rhett o tym wiedział.",
+      "text_markdown": "Był w bezbronnej pozycji, a Rhett o tym wiedział.",
+      "tts": {
+        "text": "Był w bezbronnej pozycji, a Rhett o tym wiedział.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bitwa na rzece Cape Fear odbyła się we wrześniu 1718 roku.",
+      "text_markdown": "Bitwa na rzece Cape Fear odbyła się we wrześniu 1718 roku.",
+      "tts": {
+        "text": "Bitwa na rzece Cape Fear odbyła się we wrześniu tysiąc siedemset osiemnastego roku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Było to chaotyczne i niezgrabne starcie.",
+      "text_markdown": "Było to chaotyczne i niezgrabne starcie.",
+      "tts": {
+        "text": "Było to chaotyczne i niezgrabne starcie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zarówno statki Rhetta, jak i statek Bonneta osiadły na mieliznach w różnych momentach.",
+      "text_markdown": "Zarówno statki Rhetta, jak i statek Bonneta osiadły na mieliznach w różnych momentach.",
+      "tts": {
+        "text": "Zarówno statki Rhetta, jak i statek Bonneta osiadły na mieliznach w różnych momentach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Walka trwała godzinami.",
+      "text_markdown": "Walka trwała godzinami.",
+      "tts": {
+        "text": "Walka trwała godzinami.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ostatecznie przewaga liczbowa Rhetta zwyciężyła.",
+      "text_markdown": "Ostatecznie przewaga liczbowa Rhetta zwyciężyła.",
+      "tts": {
+        "text": "Ostatecznie przewaga liczbowa Rhetta zwyciężyła.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bonnet poddał się po tym, jak jego załoga odmówiła dalszej walki.",
+      "text_markdown": "Bonnet poddał się po tym, jak jego załoga odmówiła dalszej walki.",
+      "tts": {
+        "text": "Bonnet poddał się po tym, jak jego załoga odmówiła dalszej walki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pirat-dżentelmen został schwytany.",
+      "text_markdown": "Pirat-dżentelmen został schwytany.",
+      "tts": {
+        "text": "Pirat-dżentelmen został schwytany.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet został przewieziony do Charleston w kajdanach.",
+      "text_markdown": "Bonnet został przewieziony do Charleston w kajdanach.",
+      "tts": {
+        "text": "Bonnet został przewieziony do Charleston w kajdanach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miasto, które Czarnobrody zablokował zaledwie kilka miesięcy wcześniej, miało teraz własnego pirata do osądzenia.",
+      "text_markdown": "Miasto, które Czarnobrody zablokował zaledwie kilka miesięcy wcześniej, miało teraz własnego pirata do osądzenia.",
+      "tts": {
+        "text": "Miasto, które Czarnobrody zablokował zaledwie kilka miesięcy wcześniej, miało teraz własnego pirata do osądzenia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ułaskawienie",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I w przeciwieństwie do Czarnobrodego, ten nie miał uciec.",
+      "text_markdown": "I w przeciwieństwie do Czarnobrodego, ten nie miał uciec.",
+      "tts": {
+        "text": "I w przeciwieństwie do Czarnobrodego, ten nie miał uciec.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Koniec",
+      "text_markdown": "Koniec"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stede Bonnet został uwięziony w Charleston w oczekiwaniu na proces.",
+      "text_markdown": "Stede Bonnet został uwięziony w Charleston w oczekiwaniu na proces.",
+      "tts": {
+        "text": "Stede Bonnet został uwięziony w Charleston w oczekiwaniu na proces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przetrzymywano go w domu marszałka miejskiego, co było stosunkowo komfortowym uwięzieniem jak na pirata.",
+      "text_markdown": "Przetrzymywano go w domu marszałka miejskiego, co było stosunkowo komfortowym uwięzieniem jak na pirata.",
+      "tts": {
+        "text": "Przetrzymywano go w domu marszałka miejskiego, co było stosunkowo komfortowym uwięzieniem jak na pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego status dżentelmena wciąż coś znaczył, nawet jako więźnia.",
+      "text_markdown": "Jego status dżentelmena wciąż coś znaczył, nawet jako więźnia.",
+      "tts": {
+        "text": "Jego status dżentelmena wciąż coś znaczył, nawet jako więźnia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udało mu się uciec raz, na krótko.",
+      "text_markdown": "Udało mu się uciec raz, na krótko.",
+      "tts": {
+        "text": "Udało mu się uciec raz, na krótko.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zbiegł z miejsca uwięzienia i ukrył się na wyspie Sullivan w pobliżu portu.",
+      "text_markdown": "Zbiegł z miejsca uwięzienia i ukrył się na wyspie Sullivan w pobliżu portu.",
+      "tts": {
+        "text": "Zbiegł z miejsca uwięzienia i ukrył się na wyspie Sullivan w pobliżu portu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Został ponownie schwytany w ciągu kilku dni.",
+      "text_markdown": "Został ponownie schwytany w ciągu kilku dni.",
+      "tts": {
+        "text": "Został ponownie schwytany w ciągu kilku dni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Próba ucieczki wyeliminowała wszelką resztkową sympatię, jaką władze mogły wobec niego żywić.",
+      "text_markdown": "Próba ucieczki wyeliminowała wszelką resztkową sympatię, jaką władze mogły wobec niego żywić.",
+      "tts": {
+        "text": "Próba ucieczki wyeliminowała wszelką resztkową sympatię, jaką władze mogły wobec niego żywić.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego proces rozpoczął się pod koniec października 1718 roku.",
+      "text_markdown": "Jego proces rozpoczął się pod koniec października 1718 roku.",
+      "tts": {
+        "text": "Jego proces rozpoczął się pod koniec października tysiąc siedemset osiemnastego roku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był jednym z najważniejszych procesów pirackich Złotego Wieku.",
+      "text_markdown": "Był jednym z najważniejszych procesów pirackich Złotego Wieku.",
+      "tts": {
+        "text": "Był jednym z najważniejszych procesów pirackich Złotego Wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Postępowanie prowadzono przed sędzią Nicholasem Trottem, który był jednocześnie skrupulatny i bezlitosny.",
+      "text_markdown": "Postępowanie prowadzono przed sędzią Nicholasem Trottem, który był jednocześnie skrupulatny i bezlitosny.",
+      "tts": {
+        "text": "Postępowanie prowadzono przed sędzią Nicholasem Trottem, który był jednocześnie skrupulatny i bezlitosny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnetowi postawiono dwa zarzuty piractwa.",
+      "text_markdown": "Bonnetowi postawiono dwa zarzuty piractwa.",
+      "tts": {
+        "text": "Bonnetowi postawiono dwa zarzuty piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dowody przeciwko niemu były przytłaczające.",
+      "text_markdown": "Dowody przeciwko niemu były przytłaczające.",
+      "tts": {
+        "text": "Dowody przeciwko niemu były przytłaczające.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu świadków zeznawało o jego napadach.",
+      "text_markdown": "Wielu świadków zeznawało o jego napadach.",
+      "tts": {
+        "text": "Wielu świadków zeznawało o jego napadach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego własni członkowie załogi zeznawali przeciwko niemu.",
+      "text_markdown": "Jego własni członkowie załogi zeznawali przeciwko niemu.",
+      "tts": {
+        "text": "Jego własni członkowie załogi zeznawali przeciwko niemu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bonnet bronił się z zaskakującą elokwencją.",
+      "text_markdown": "Bonnet bronił się z zaskakującą elokwencją.",
+      "tts": {
+        "text": "Bonnet bronił się z zaskakującą elokwencją.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Argumentował, że działał pod przymusem, zmuszony do piractwa przez Czarnobrodego.",
+      "text_markdown": "Argumentował, że działał pod przymusem, zmuszony do piractwa przez Czarnobrodego.",
+      "tts": {
+        "text": "Argumentował, że działał pod przymusem, zmuszony do piractwa przez Czarnobrodego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wskazał na przyjęcie królewskiego ułaskawienia jako dowód swoich dobrych intencji.",
+      "text_markdown": "Wskazał na przyjęcie królewskiego ułaskawienia jako dowód swoich dobrych intencji.",
+      "tts": {
+        "text": "Wskazał na przyjęcie królewskiego ułaskawienia jako dowód swoich dobrych intencji.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sąd nie dał się przekonać.",
+      "text_markdown": "Sąd nie dał się przekonać.",
+      "tts": {
+        "text": "Sąd nie dał się przekonać.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bonnet złamał warunki ułaskawienia, wracając do piractwa.",
+      "text_markdown": "Bonnet złamał warunki ułaskawienia, wracając do piractwa.",
+      "tts": {
+        "text": "Bonnet złamał warunki ułaskawienia, wracając do piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dokonał swojego wyboru dobrowolnie.",
+      "text_markdown": "Dokonał swojego wyboru dobrowolnie.",
+      "tts": {
+        "text": "Dokonał swojego wyboru dobrowolnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ława przysięgłych uznała go za winnego wszystkich zarzutów.",
+      "text_markdown": "Ława przysięgłych uznała go za winnego wszystkich zarzutów.",
+      "tts": {
+        "text": "Ława przysięgłych uznała go za winnego wszystkich zarzutów.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sędzia Trott skazał Bonneta na śmierć przez powieszenie.",
+      "text_markdown": "Sędzia Trott skazał Bonneta na śmierć przez powieszenie.",
+      "tts": {
+        "text": "Sędzia Trott skazał Bonneta na śmierć przez powieszenie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W swoim przemówieniu sędzia wyraził szczególną pogardę dla człowieka o pozycji społecznej Bonneta, który wybrał życie w przestępstwie.",
+      "text_markdown": "W swoim przemówieniu sędzia wyraził szczególną pogardę dla człowieka o pozycji społecznej Bonneta, który wybrał życie w przestępstwie.",
+      "tts": {
+        "text": "W swoim przemówieniu sędzia wyraził szczególną pogardę dla człowieka o pozycji społecznej Bonneta, który wybrał życie w przestępstwie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mowa była długa, szczegółowa i druzgocąca.",
+      "text_markdown": "Mowa była długa, szczegółowa i druzgocąca.",
+      "tts": {
+        "text": "Mowa była długa, szczegółowa i druzgocąca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Według relacji Bonnet płakał podczas ogłaszania wyroku.",
+      "text_markdown": "Według relacji Bonnet płakał podczas ogłaszania wyroku.",
+      "tts": {
+        "text": "Według relacji Bonnet płakał podczas ogłaszania wyroku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Napisał list do gubernatora Karoliny Południowej błagając o łaskę.",
+      "text_markdown": "Napisał list do gubernatora Karoliny Południowej błagając o łaskę.",
+      "tts": {
+        "text": "Napisał list do gubernatora Karoliny Południowej błagając o łaskę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "List był dobrze napisany i wzruszający.",
+      "text_markdown": "List był dobrze napisany i wzruszający.",
+      "tts": {
+        "text": "List był dobrze napisany i wzruszający.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nie uratował go.",
+      "text_markdown": "Nie uratował go.",
+      "tts": {
+        "text": "Nie uratował go.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nie był zatwardziałym przestępcą, jakim była większość piratów.",
+      "text_markdown": "Nie był zatwardziałym przestępcą, jakim była większość piratów.",
+      "tts": {
+        "text": "Nie był zatwardziałym przestępcą, jakim była większość piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był zagubiony i nieszczęśliwy, człowiekiem, który podjął katastrofalną serię decyzji.",
+      "text_markdown": "Był zagubiony i nieszczęśliwy, człowiekiem, który podjął katastrofalną serię decyzji.",
+      "tts": {
+        "text": "Był zagubiony i nieszczęśliwy, człowiekiem, który podjął katastrofalną serię decyzji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teraz te decyzje go dopadły.",
+      "text_markdown": "Teraz te decyzje go dopadły.",
+      "tts": {
+        "text": "Teraz te decyzje go dopadły.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dziesiątego grudnia 1718 roku Stede Bonnet został powieszony w White Point w Charleston.",
+      "text_markdown": "Dziesiątego grudnia 1718 roku Stede Bonnet został powieszony w White Point w Charleston.",
+      "tts": {
+        "text": "Dziesiątego grudnia tysiąc siedemset osiemnastego roku Stede Bonnet został powieszony w White Point w Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miał trzydzieści lat.",
+      "text_markdown": "Miał trzydzieści lat.",
+      "tts": {
+        "text": "Miał trzydzieści lat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tłum zebrał się, by obejrzeć egzekucję pirata-dżentelmena.",
+      "text_markdown": "Tłum zebrał się, by obejrzeć egzekucję pirata-dżentelmena.",
+      "tts": {
+        "text": "Tłum zebrał się, by obejrzeć egzekucję pirata-dżentelmena.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Według świadków był przerażony.",
+      "text_markdown": "Według świadków był przerażony.",
+      "tts": {
+        "text": "Według świadków był przerażony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ściskał mały bukiecik więdnących kwiatów, żałosny szczegół, który przetrwał w zapisach historycznych.",
+      "text_markdown": "Ściskał mały bukiecik więdnących kwiatów, żałosny szczegół, który przetrwał w zapisach historycznych.",
+      "tts": {
+        "text": "Ściskał mały bukiecik więdnących kwiatów, żałosny szczegół, który przetrwał w zapisach historycznych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nie umarł z buntowniczością Rahmaha ibn Jabira ani z godnością Bartholomew Robertsa.",
+      "text_markdown": "Nie umarł z buntowniczością Rahmaha ibn Jabira ani z godnością Bartholomew Robertsa.",
+      "tts": {
+        "text": "Nie umarł z buntowniczością Rahmaha ibn Jabira ani z godnością Bartholomew Robertsa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Umarł tak, jak przeżył swoją piracką karierę: kiepsko i z poczuciem, że nic z tego nie było dobrym pomysłem.",
+      "text_markdown": "Umarł tak, jak przeżył swoją piracką karierę: kiepsko i z poczuciem, że nic z tego nie było dobrym pomysłem.",
+      "tts": {
+        "text": "Umarł tak, jak przeżył swoją piracką karierę: kiepsko i z poczuciem, że nic z tego nie było dobrym pomysłem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Koniec",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sznur wykonał swoją robotę i pirat-dżentelmen odszedł.",
+      "text_markdown": "Sznur wykonał swoją robotę i pirat-dżentelmen odszedł.",
+      "tts": {
+        "text": "Sznur wykonał swoją robotę i pirat-dżentelmen odszedł.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dziedzictwo",
+      "text_markdown": "Dziedzictwo"
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stede Bonnet stał się jednym z najsłynniejszych piratów Złotego Wieku.",
+      "text_markdown": "Stede Bonnet stał się jednym z najsłynniejszych piratów Złotego Wieku.",
+      "tts": {
+        "text": "Stede Bonnet stał się jednym z najsłynniejszych piratów Złotego Wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego sława opiera się nie na jego dokonaniach, które były minimalne, ale na czystej absurdalności jego historii.",
+      "text_markdown": "Jego sława opiera się nie na jego dokonaniach, które były minimalne, ale na czystej absurdalności jego historii.",
+      "tts": {
+        "text": "Jego sława opiera się nie na jego dokonaniach, które były minimalne, ale na czystej absurdalności jego historii.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest odpowiedzią na pytanie: co się dzieje, gdy zupełnie niewykwalifikowana osoba postanawia zostać piratem?",
+      "text_markdown": "Jest odpowiedzią na pytanie: co się dzieje, gdy zupełnie niewykwalifikowana osoba postanawia zostać piratem?",
+      "tts": {
+        "text": "Jest odpowiedzią na pytanie: co się dzieje, gdy zupełnie niewykwalifikowana osoba postanawia zostać piratem?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Odpowiedź brzmi: prawie nic dobrego.",
+      "text_markdown": "Odpowiedź brzmi: prawie nic dobrego.",
+      "tts": {
+        "text": "Odpowiedź brzmi: prawie nic dobrego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historia Bonneta była opowiadana w książkach, sztukach teatralnych i programach telewizyjnych.",
+      "text_markdown": "Historia Bonneta była opowiadana w książkach, sztukach teatralnych i programach telewizyjnych.",
+      "tts": {
+        "text": "Historia Bonneta była opowiadana w książkach, sztukach teatralnych i programach telewizyjnych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Stał się popularną postacią w fikcji, często portretowany jako niezdara, ale sympatyczny bohater.",
+      "text_markdown": "Stał się popularną postacią w fikcji, często portretowany jako niezdara, ale sympatyczny bohater.",
+      "tts": {
+        "text": "Stał się popularną postacią w fikcji, często portretowany jako niezdara, ale sympatyczny bohater.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Komizm jego sytuacji uczynił go wiecznie atrakcyjnym.",
+      "text_markdown": "Komizm jego sytuacji uczynił go wiecznie atrakcyjnym.",
+      "tts": {
+        "text": "Komizm jego sytuacji uczynił go wiecznie atrakcyjnym.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale za komedią kryje się prawdziwa tragedia.",
+      "text_markdown": "Ale za komedią kryje się prawdziwa tragedia.",
+      "tts": {
+        "text": "Ale za komedią kryje się prawdziwa tragedia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ofiary Bonneta były prawdziwymi ludźmi.",
+      "text_markdown": "Ofiary Bonneta były prawdziwymi ludźmi.",
+      "tts": {
+        "text": "Ofiary Bonneta były prawdziwymi ludźmi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Statki, które przechwycił, przewoziły prawdziwych marynarzy, którzy byli terroryzowani i okradani.",
+      "text_markdown": "Statki, które przechwycił, przewoziły prawdziwych marynarzy, którzy byli terroryzowani i okradani.",
+      "tts": {
+        "text": "Statki, które przechwycił, przewoziły prawdziwych marynarzy, którzy byli terroryzowani i okradani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Humor jego niekompetencji nie powinien przysłaniać krzywdy, którą wyrządził.",
+      "text_markdown": "Humor jego niekompetencji nie powinien przysłaniać krzywdy, którą wyrządził.",
+      "tts": {
+        "text": "Humor jego niekompetencji nie powinien przysłaniać krzywdy, którą wyrządził.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Członkowie jego załogi zapłacili najwyższą cenę.",
+      "text_markdown": "Członkowie jego załogi zapłacili najwyższą cenę.",
+      "tts": {
+        "text": "Członkowie jego załogi zapłacili najwyższą cenę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wielu z nich powieszono razem z ich kapitanem.",
+      "text_markdown": "Wielu z nich powieszono razem z ich kapitanem.",
+      "tts": {
+        "text": "Wielu z nich powieszono razem z ich kapitanem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poszli za człowiekiem, który nigdy nie powinien był wyjść na morze.",
+      "text_markdown": "Poszli za człowiekiem, który nigdy nie powinien był wyjść na morze.",
+      "tts": {
+        "text": "Poszli za człowiekiem, który nigdy nie powinien był wyjść na morze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ich zaufanie do niego, jakie by nie było, kosztowało ich życie.",
+      "text_markdown": "Ich zaufanie do niego, jakie by nie było, kosztowało ich życie.",
+      "tts": {
+        "text": "Ich zaufanie do niego, jakie by nie było, kosztowało ich życie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historia Bonneta ilustruje również sztywną strukturę klasową kolonialnych Karaibów.",
+      "text_markdown": "Historia Bonneta ilustruje również sztywną strukturę klasową kolonialnych Karaibów.",
+      "tts": {
+        "text": "Historia Bonneta ilustruje również sztywną strukturę klasową kolonialnych Karaibów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bogaty biały plantator mógł robić niemal wszystko na Barbadosie bez konsekwencji.",
+      "text_markdown": "Bogaty biały plantator mógł robić niemal wszystko na Barbadosie bez konsekwencji.",
+      "tts": {
+        "text": "Bogaty biały plantator mógł robić niemal wszystko na Barbadosie bez konsekwencji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale w momencie, gdy Bonnet wyszedł poza swoją rolę klasową, system go zniszczył.",
+      "text_markdown": "Ale w momencie, gdy Bonnet wyszedł poza swoją rolę klasową, system go zniszczył.",
+      "tts": {
+        "text": "Ale w momencie, gdy Bonnet wyszedł poza swoją rolę klasową, system go zniszczył.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Złoty Wiek Piractwa dobiegał końca, gdy Bonnet został powieszony.",
+      "text_markdown": "Złoty Wiek Piractwa dobiegał końca, gdy Bonnet został powieszony.",
+      "tts": {
+        "text": "Złoty Wiek Piractwa dobiegał końca, gdy Bonnet został powieszony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rząd brytyjski systematycznie tropił piratów na całych Karaibach.",
+      "text_markdown": "Rząd brytyjski systematycznie tropił piratów na całych Karaibach.",
+      "tts": {
+        "text": "Rząd brytyjski systematycznie tropił piratów na całych Karaibach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sam Czarnobrody został zabity zaledwie kilka tygodni po egzekucji Bonneta.",
+      "text_markdown": "Sam Czarnobrody został zabity zaledwie kilka tygodni po egzekucji Bonneta.",
+      "tts": {
+        "text": "Sam Czarnobrody został zabity zaledwie kilka tygodni po egzekucji Bonneta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W ciągu kilku lat większość słynnych piratów Złotego Wieku byłaby martwa lub schwytana.",
+      "text_markdown": "W ciągu kilku lat większość słynnych piratów Złotego Wieku byłaby martwa lub schwytana.",
+      "tts": {
+        "text": "W ciągu kilku lat większość słynnych piratów Złotego Wieku byłaby martwa lub schwytana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era swobodnego piractwa na Karaibach dobiegała końca.",
+      "text_markdown": "Era swobodnego piractwa na Karaibach dobiegała końca.",
+      "tts": {
+        "text": "Era swobodnego piractwa na Karaibach dobiegała końca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Marynarki wojenne się wzmocniły, rządy kolonialne stały się bardziej zorganizowane, a przestrzeń dla piractwa się skurczyła.",
+      "text_markdown": "Marynarki wojenne się wzmocniły, rządy kolonialne stały się bardziej zorganizowane, a przestrzeń dla piractwa się skurczyła.",
+      "tts": {
+        "text": "Marynarki wojenne się wzmocniły, rządy kolonialne stały się bardziej zorganizowane, a przestrzeń dla piractwa się skurczyła.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stede Bonnet nie był wielkim piratem.",
+      "text_markdown": "Stede Bonnet nie był wielkim piratem.",
+      "tts": {
+        "text": "Stede Bonnet nie był wielkim piratem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nie był nawet kompetentnym.",
+      "text_markdown": "Nie był nawet kompetentnym.",
+      "tts": {
+        "text": "Nie był nawet kompetentnym.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale jego historia przetrwała, bo jest fundamentalnie ludzka.",
+      "text_markdown": "Ale jego historia przetrwała, bo jest fundamentalnie ludzka.",
+      "tts": {
+        "text": "Ale jego historia przetrwała, bo jest fundamentalnie ludzka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Był człowiekiem desperacko nieszczęśliwym ze swojego życia, który podjął szaloną, irracjonalną decyzję, by je zmienić.",
+      "text_markdown": "Był człowiekiem desperacko nieszczęśliwym ze swojego życia, który podjął szaloną, irracjonalną decyzję, by je zmienić.",
+      "tts": {
+        "text": "Był człowiekiem desperacko nieszczęśliwym ze swojego życia, który podjął szaloną, irracjonalną decyzję, by je zmienić.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spalił wszystko dla fantazji, do życia w której był zupełnie nieprzygotowany.",
+      "text_markdown": "Spalił wszystko dla fantazji, do życia w której był zupełnie nieprzygotowany.",
+      "tts": {
+        "text": "Spalił wszystko dla fantazji, do życia w której był zupełnie nieprzygotowany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przynajmniej pod tym względem nie różni się tak bardzo od wielu z nas.",
+      "text_markdown": "Przynajmniej pod tym względem nie różni się tak bardzo od wielu z nas.",
+      "tts": {
+        "text": "Przynajmniej pod tym względem nie różni się tak bardzo od wielu z nas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Umarł w Charleston z więdnącymi kwiatami w ręku.",
+      "text_markdown": "Umarł w Charleston z więdnącymi kwiatami w ręku.",
+      "tts": {
+        "text": "Umarł w Charleston z więdnącymi kwiatami w ręku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pirat-dżentelmen dotarł do kresu swojej nieprawdopodobnej, nieszczęsnej podróży.",
+      "text_markdown": "Pirat-dżentelmen dotarł do kresu swojej nieprawdopodobnej, nieszczęsnej podróży.",
+      "tts": {
+        "text": "Pirat-dżentelmen dotarł do kresu swojej nieprawdopodobnej, nieszczęsnej podróży.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morze nie miało już cierpliwości do Stede Bonneta, a prawo tym bardziej.",
+      "text_markdown": "Morze nie miało już cierpliwości do Stede Bonneta, a prawo tym bardziej.",
+      "tts": {
+        "text": "Morze nie miało już cierpliwości do Stede Bonneta, a prawo tym bardziej.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

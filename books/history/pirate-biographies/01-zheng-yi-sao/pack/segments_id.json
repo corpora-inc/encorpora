@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "id",
+  "total_segments": 310,
+  "segments": [
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch00-001",
+      "chapter": 0,
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "text": "Catatan untuk Pembaca",
+      "text_markdown": "Catatan untuk Pembaca",
+      "title": "Catatan untuk Pembaca"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch00-002",
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "Ini adalah kisah nyata tentang bajak laut paling sukses sepanjang sejarah yang tercatat.",
+      "text_markdown": "Ini adalah kisah nyata tentang bajak laut paling sukses sepanjang sejarah yang tercatat.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Ini adalah kisah nyata tentang bajak laut paling sukses sepanjang sejarah yang tercatat.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch00-003",
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "Namanya Zheng Yi Sao, dan dia memimpin armada bajak laut terbesar yang pernah ada di dunia.",
+      "text_markdown": "Namanya Zheng Yi Sao, dan dia memimpin armada bajak laut terbesar yang pernah ada di dunia.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Namanya Zheng Yi Sao, dan dia memimpin armada bajak laut terbesar yang pernah ada di dunia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch00-004",
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "Pada puncak kekuasaannya, dia menguasai lebih banyak kapal daripada yang dimiliki sebagian besar negara.",
+      "text_markdown": "Pada puncak kekuasaannya, dia menguasai lebih banyak kapal daripada yang dimiliki sebagian besar negara.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Pada puncak kekuasaannya, dia menguasai lebih banyak kapal daripada yang dimiliki sebagian besar negara.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch00-005",
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "Dia tidak dilahirkan dalam kekayaan atau hak istimewa.",
+      "text_markdown": "Dia tidak dilahirkan dalam kekayaan atau hak istimewa.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Dia tidak dilahirkan dalam kekayaan atau hak istimewa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch00-006",
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "Dia dilahirkan dalam kemiskinan di Tiongkok selatan, pada akhir abad kedelapan belas.",
+      "text_markdown": "Dia dilahirkan dalam kemiskinan di Tiongkok selatan, pada akhir abad kedelapan belas.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Dia dilahirkan dalam kemiskinan di Tiongkok selatan, pada akhir abad kedelapan belas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch00-007",
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "Segala yang dia capai, dia bangun melalui kecerdasan, kekejaman, dan kemampuan luar biasa untuk mengorganisir orang.",
+      "text_markdown": "Segala yang dia capai, dia bangun melalui kecerdasan, kekejaman, dan kemampuan luar biasa untuk mengorganisir orang.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Segala yang dia capai, dia bangun melalui kecerdasan, kekejaman, dan kemampuan luar biasa untuk mengorganisir orang.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch00-008",
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "text": "Buku ini menceritakan kisah bagaimana seorang wanita tanpa apa-apa menjadi penguasa tak terbantahkan di Laut Cina Selatan.",
+      "text_markdown": "Buku ini menceritakan kisah bagaimana seorang wanita tanpa apa-apa menjadi penguasa tak terbantahkan di Laut Cina Selatan.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Buku ini menceritakan kisah bagaimana seorang wanita tanpa apa-apa menjadi penguasa tak terbantahkan di Laut Cina Selatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch00-009",
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "text": "Ini adalah kisah tentang perang, perdagangan, hukum, dan kelangsungan hidup.",
+      "text_markdown": "Ini adalah kisah tentang perang, perdagangan, hukum, dan kelangsungan hidup.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Ini adalah kisah tentang perang, perdagangan, hukum, dan kelangsungan hidup.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch00-010",
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "text": "Ini juga kisah tentang dunia yang berubah dengan cepat, saat kekuatan Eropa semakin menekan ke Asia.",
+      "text_markdown": "Ini juga kisah tentang dunia yang berubah dengan cepat, saat kekuatan Eropa semakin menekan ke Asia.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Ini juga kisah tentang dunia yang berubah dengan cepat, saat kekuatan Eropa semakin menekan ke Asia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch00-011",
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "Setiap fakta dalam buku ini berasal dari catatan sejarah.",
+      "text_markdown": "Setiap fakta dalam buku ini berasal dari catatan sejarah.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Setiap fakta dalam buku ini berasal dari catatan sejarah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch00-012",
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "Jika catatan tidak pasti, kami menyatakannya.",
+      "text_markdown": "Jika catatan tidak pasti, kami menyatakannya.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Jika catatan tidak pasti, kami menyatakannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch00-013",
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "Jika sejarawan tidak setuju, kami menyajikan bukti terkuat yang tersedia.",
+      "text_markdown": "Jika sejarawan tidak setuju, kami menyajikan bukti terkuat yang tersedia.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Jika sejarawan tidak setuju, kami menyajikan bukti terkuat yang tersedia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch01-014",
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "heading",
+      "text": "Dunia Laut Cina Selatan",
+      "text_markdown": "Dunia Laut Cina Selatan",
+      "title": "Dunia Laut Cina Selatan"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "Laut Cina Selatan adalah salah satu jalur air tersibuk di Bumi.",
+      "text_markdown": "Laut Cina Selatan adalah salah satu jalur air tersibuk di Bumi.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Laut Cina Selatan adalah salah satu jalur air tersibuk di Bumi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "Ia membentang dari pantai Vietnam di barat hingga Filipina di timur.",
+      "text_markdown": "Ia membentang dari pantai Vietnam di barat hingga Filipina di timur.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Ia membentang dari pantai Vietnam di barat hingga Filipina di timur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "Di utara terhampar pantai Tiongkok, dan di selatan terhampar pulau-pulau Kalimantan dan Sumatra.",
+      "text_markdown": "Di utara terhampar pantai Tiongkok, dan di selatan terhampar pulau-pulau Kalimantan dan Sumatra.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Di utara terhampar pantai Tiongkok, dan di selatan terhampar pulau-pulau Kalimantan dan Sumatra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-018",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "Selama ribuan tahun, para pedagang telah berlayar di perairan ini.",
+      "text_markdown": "Selama ribuan tahun, para pedagang telah berlayar di perairan ini.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Selama ribuan tahun, para pedagang telah berlayar di perairan ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-019",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "Junk Tiongkok membawa sutra, porselen, dan teh ke pelabuhan-pelabuhan di seluruh Asia Tenggara.",
+      "text_markdown": "Junk Tiongkok membawa sutra, porselen, dan teh ke pelabuhan-pelabuhan di seluruh Asia Tenggara.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Junk Tiongkok membawa sutra, porselen, dan teh ke pelabuhan-pelabuhan di seluruh Asia Tenggara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-020",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "Sebagai gantinya, rempah-rempah, kayu tropis, dan barang-barang eksotis mengalir kembali ke Tiongkok.",
+      "text_markdown": "Sebagai gantinya, rempah-rempah, kayu tropis, dan barang-barang eksotis mengalir kembali ke Tiongkok.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Sebagai gantinya, rempah-rempah, kayu tropis, dan barang-barang eksotis mengalir kembali ke Tiongkok.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-021",
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "text": "Kota Kanton, yang sekarang disebut Guangzhou, berada di pusat perdagangan ini.",
+      "text_markdown": "Kota Kanton, yang sekarang disebut Guangzhou, berada di pusat perdagangan ini.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Kota Kanton, yang sekarang disebut Guangzhou, berada di pusat perdagangan ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-022",
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "text": "Kanton adalah salah satu kota terkaya di dunia pada abad kedelapan belas.",
+      "text_markdown": "Kanton adalah salah satu kota terkaya di dunia pada abad kedelapan belas.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Kanton adalah salah satu kota terkaya di dunia pada abad kedelapan belas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-023",
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "text": "Pedagang asing dari Inggris, Prancis, Portugal, dan Belanda semuanya bersaing untuk mendapatkan akses ke pasarnya.",
+      "text_markdown": "Pedagang asing dari Inggris, Prancis, Portugal, dan Belanda semuanya bersaing untuk mendapatkan akses ke pasarnya.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pedagang asing dari Inggris, Prancis, Portugal, dan Belanda semuanya bersaing untuk mendapatkan akses ke pasarnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "text": "Dinasti Qing memerintah Tiongkok selama periode ini.",
+      "text_markdown": "Dinasti Qing memerintah Tiongkok selama periode ini.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Dinasti Qing memerintah Tiongkok selama periode ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "text": "Para kaisar Qing adalah Manchu, bukan Tionghoa Han.",
+      "text_markdown": "Para kaisar Qing adalah Manchu, bukan Tionghoa Han.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Para kaisar Qing adalah Manchu, bukan Tionghoa Han.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "text": "Mereka telah menaklukkan Tiongkok pada tahun 1644 dan membangun salah satu kekaisaran terbesar di dunia.",
+      "text_markdown": "Mereka telah menaklukkan Tiongkok pada tahun 1644 dan membangun salah satu kekaisaran terbesar di dunia.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Mereka telah menaklukkan Tiongkok pada tahun seribu enam ratus empat puluh empat dan membangun salah satu kekaisaran terbesar di dunia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "text": "Namun, pada akhir tahun 1700-an, Dinasti Qing mulai melemah.",
+      "text_markdown": "Namun, pada akhir tahun 1700-an, Dinasti Qing mulai melemah.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Namun, pada akhir tahun seribu tujuh ratusan, Dinasti Qing mulai melemah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "Korupsi menyebar melalui birokrasi kekaisaran.",
+      "text_markdown": "Korupsi menyebar melalui birokrasi kekaisaran.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Korupsi menyebar melalui birokrasi kekaisaran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "Penagih pajak memeras petani dan nelayan untuk setiap koin yang bisa mereka ambil.",
+      "text_markdown": "Penagih pajak memeras petani dan nelayan untuk setiap koin yang bisa mereka ambil.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Penagih pajak memeras petani dan nelayan untuk setiap koin yang bisa mereka ambil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "Kesenjangan antara si kaya dan si miskin melebar dari tahun ke tahun.",
+      "text_markdown": "Kesenjangan antara si kaya dan si miskin melebar dari tahun ke tahun.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Kesenjangan antara si kaya dan si miskin melebar dari tahun ke tahun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "Di provinsi-provinsi pesisir, banyak orang hidup dalam kemiskinan yang sangat parah.",
+      "text_markdown": "Di provinsi-provinsi pesisir, banyak orang hidup dalam kemiskinan yang sangat parah.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Di provinsi-provinsi pesisir, banyak orang hidup dalam kemiskinan yang sangat parah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-032",
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "Komunitas nelayan di sepanjang pantai Guangdong termasuk yang termiskin di Tiongkok.",
+      "text_markdown": "Komunitas nelayan di sepanjang pantai Guangdong termasuk yang termiskin di Tiongkok.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Komunitas nelayan di sepanjang pantai Guangdong termasuk yang termiskin di Tiongkok.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-033",
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "Seluruh keluarga tinggal di perahu kecil yang disebut sampan.",
+      "text_markdown": "Seluruh keluarga tinggal di perahu kecil yang disebut sampan.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Seluruh keluarga tinggal di perahu kecil yang disebut sampan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-034",
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "Mereka lahir di air, bekerja di air, dan meninggal di air.",
+      "text_markdown": "Mereka lahir di air, bekerja di air, dan meninggal di air.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Mereka lahir di air, bekerja di air, dan meninggal di air.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-035",
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "Pemerintah kekaisaran menyebut mereka orang Tanka, dan memperlakukan mereka sebagai orang buangan.",
+      "text_markdown": "Pemerintah kekaisaran menyebut mereka orang Tanka, dan memperlakukan mereka sebagai orang buangan.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pemerintah kekaisaran menyebut mereka orang Tanka, dan memperlakukan mereka sebagai orang buangan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-036",
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "Keluarga Tanka dilarang tinggal di darat di banyak daerah.",
+      "text_markdown": "Keluarga Tanka dilarang tinggal di darat di banyak daerah.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Keluarga Tanka dilarang tinggal di darat di banyak daerah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-037",
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "Mereka tidak bisa mengikuti ujian kekaisaran yang mengarah pada pekerjaan pemerintah.",
+      "text_markdown": "Mereka tidak bisa mengikuti ujian kekaisaran yang mengarah pada pekerjaan pemerintah.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Mereka tidak bisa mengikuti ujian kekaisaran yang mengarah pada pekerjaan pemerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-038",
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "Mereka terasing dari masyarakat Tiongkok arus utama oleh hukum dan adat.",
+      "text_markdown": "Mereka terasing dari masyarakat Tiongkok arus utama oleh hukum dan adat.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Mereka terasing dari masyarakat Tiongkok arus utama oleh hukum dan adat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-039",
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "Selama beberapa generasi, mereka tidak memiliki jalan menuju kehidupan yang lebih baik.",
+      "text_markdown": "Selama beberapa generasi, mereka tidak memiliki jalan menuju kehidupan yang lebih baik.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Selama beberapa generasi, mereka tidak memiliki jalan menuju kehidupan yang lebih baik.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-040",
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "Pembajakan menawarkan alternatif.",
+      "text_markdown": "Pembajakan menawarkan alternatif.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pembajakan menawarkan alternatif.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-041",
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "Jika seseorang tidak bisa maju melalui jalur hukum, laut menyediakan ekonominya sendiri.",
+      "text_markdown": "Jika seseorang tidak bisa maju melalui jalur hukum, laut menyediakan ekonominya sendiri.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Jika seseorang tidak bisa maju melalui jalur hukum, laut menyediakan ekonominya sendiri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-042",
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "Armada bajak laut menyerbu kapal dagang, memeras desa-desa nelayan, dan menyelundupkan barang melewati patroli kekaisaran.",
+      "text_markdown": "Armada bajak laut menyerbu kapal dagang, memeras desa-desa nelayan, dan menyelundupkan barang melewati patroli kekaisaran.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Armada bajak laut menyerbu kapal dagang, memeras desa-desa nelayan, dan menyelundupkan barang melewati patroli kekaisaran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-043",
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "Bagi banyak penduduk miskin pesisir, bergabung dengan kru bajak laut adalah keputusan ekonomi yang rasional.",
+      "text_markdown": "Bagi banyak penduduk miskin pesisir, bergabung dengan kru bajak laut adalah keputusan ekonomi yang rasional.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Bagi banyak penduduk miskin pesisir, bergabung dengan kru bajak laut adalah keputusan ekonomi yang rasional.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-044",
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "Perairan Laut Cina Selatan sangat ideal untuk pembajakan.",
+      "text_markdown": "Perairan Laut Cina Selatan sangat ideal untuk pembajakan.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Perairan Laut Cina Selatan sangat ideal untuk pembajakan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-045",
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "Ribuan pulau, teluk kecil, dan muara sungai menyediakan tempat persembunyian.",
+      "text_markdown": "Ribuan pulau, teluk kecil, dan muara sungai menyediakan tempat persembunyian.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Ribuan pulau, teluk kecil, dan muara sungai menyediakan tempat persembunyian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-046",
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "Kabut tebal dan badai mendadak membuat pengejaran menjadi sulit.",
+      "text_markdown": "Kabut tebal dan badai mendadak membuat pengejaran menjadi sulit.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Kabut tebal dan badai mendadak membuat pengejaran menjadi sulit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-047",
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "Sebuah jung cepat dengan kru terampil bisa menghilang ke garis pantai dalam hitungan menit.",
+      "text_markdown": "Sebuah jung cepat dengan kru terampil bisa menghilang ke garis pantai dalam hitungan menit.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Sebuah jung cepat dengan kru terampil bisa menghilang ke garis pantai dalam hitungan menit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-048",
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "Sementara itu, perdagangan opium mulai membentuk kembali wilayah tersebut.",
+      "text_markdown": "Sementara itu, perdagangan opium mulai membentuk kembali wilayah tersebut.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Sementara itu, perdagangan opium mulai membentuk kembali wilayah tersebut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-049",
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "Pedagang Inggris mengirim opium dari India ke Tiongkok dalam jumlah yang sangat besar.",
+      "text_markdown": "Pedagang Inggris mengirim opium dari India ke Tiongkok dalam jumlah yang sangat besar.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pedagang Inggris mengirim opium dari India ke Tiongkok dalam jumlah yang sangat besar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-050",
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "Obat itu ilegal di Tiongkok, tetapi keuntungannya sangat besar sehingga perdagangan itu tumbuh setiap tahun.",
+      "text_markdown": "Obat itu ilegal di Tiongkok, tetapi keuntungannya sangat besar sehingga perdagangan itu tumbuh setiap tahun.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Obat itu ilegal di Tiongkok, tetapi keuntungannya sangat besar sehingga perdagangan itu tumbuh setiap tahun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-051",
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "Jaringan penyelundupan membentang di sepanjang seluruh pantai selatan.",
+      "text_markdown": "Jaringan penyelundupan membentang di sepanjang seluruh pantai selatan.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Jaringan penyelundupan membentang di sepanjang seluruh pantai selatan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-052",
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "Inilah dunia yang melahirkan Zheng Yi Sao.",
+      "text_markdown": "Inilah dunia yang melahirkan Zheng Yi Sao.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Inilah dunia yang melahirkan Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-053",
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "Dunia kekayaan yang melimpah dan kemiskinan yang mencekik, dipisahkan oleh sebidang laut tipis.",
+      "text_markdown": "Dunia kekayaan yang melimpah dan kemiskinan yang mencekik, dipisahkan oleh sebidang laut tipis.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Dunia kekayaan yang melimpah dan kemiskinan yang mencekik, dipisahkan oleh sebidang laut tipis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-054",
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "Dunia di mana kekaisaran bersaing, dan hukum laut menjadi milik siapa pun yang cukup kuat untuk menegakkannya.",
+      "text_markdown": "Dunia di mana kekaisaran bersaing, dan hukum laut menjadi milik siapa pun yang cukup kuat untuk menegakkannya.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Dunia di mana kekaisaran bersaing, dan hukum laut menjadi milik siapa pun yang cukup kuat untuk menegakkannya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-055",
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "Kekuatan Eropa melihat Tiongkok sebagai pasar yang harus dibuka.",
+      "text_markdown": "Kekuatan Eropa melihat Tiongkok sebagai pasar yang harus dibuka.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Kekuatan Eropa melihat Tiongkok sebagai pasar yang harus dibuka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-056",
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "Pemerintah Qing memandang bangsa Eropa sebagai orang barbar yang harus diatur.",
+      "text_markdown": "Pemerintah Qing memandang bangsa Eropa sebagai orang barbar yang harus diatur.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pemerintah Ching memandang bangsa Eropa sebagai orang barbar yang harus diatur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-057",
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "Dan para bajak laut Laut Cina Selatan melihat peluang dalam kekacauan di antara mereka.",
+      "text_markdown": "Dan para bajak laut Laut Cina Selatan melihat peluang dalam kekacauan di antara mereka.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Dan para bajak laut Laut Cina Selatan melihat peluang dalam kekacauan di antara mereka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-058",
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "text": "Pada tahun 1790, armada bajak laut di Laut Cina Selatan berjumlah ratusan kapal.",
+      "text_markdown": "Pada tahun 1790, armada bajak laut di Laut Cina Selatan berjumlah ratusan kapal.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pada tahun seribu tujuh ratus sembilan puluh, armada bajak laut di Laut Cina Selatan berjumlah ratusan kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-059",
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "text": "Mereka bukan penjahat yang tidak terorganisir.",
+      "text_markdown": "Mereka bukan penjahat yang tidak terorganisir.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Mereka bukan penjahat yang tidak terorganisir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-060",
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "text": "Banyak yang beroperasi sebagai pasukan angkatan laut yang disiplin dengan hierarki dan kode etik.",
+      "text_markdown": "Banyak yang beroperasi sebagai pasukan angkatan laut yang disiplin dengan hierarki dan kode etik.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Banyak yang beroperasi sebagai pasukan angkatan laut yang disiplin dengan hierarki dan kode etik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-061",
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "text": "Pasukan terbesar di antara ini akan menjadi armada bajak laut paling kuat dalam sejarah.",
+      "text_markdown": "Pasukan terbesar di antara ini akan menjadi armada bajak laut paling kuat dalam sejarah.",
+      "title": "Dunia Laut Cina Selatan",
+      "tts": {
+        "text": "Pasukan terbesar di antara ini akan menjadi armada bajak laut paling kuat dalam sejarah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch02-062",
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "block_type": "heading",
+      "text": "Asal-usul",
+      "text_markdown": "Asal-usul",
+      "title": "Asal-usul"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-063",
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "Wanita yang kelak menjadi Zheng Yi Sao lahir sekitar tahun 1775.",
+      "text_markdown": "Wanita yang kelak menjadi Zheng Yi Sao lahir sekitar tahun 1775.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Wanita yang kelak menjadi Zheng Yi Sao lahir sekitar tahun seribu tujuh ratus tujuh puluh lima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-064",
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "Dia paling sering disebut sebagai Shi Xianggu dalam sumber-sumber Tiongkok.",
+      "text_markdown": "Dia paling sering disebut sebagai Shi Xianggu dalam sumber-sumber Tiongkok.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia paling sering disebut sebagai Shi Xianggu dalam sumber-sumber Tiongkok.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-065",
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "Nama Zheng Yi Sao berarti istri dari Zheng Yi.",
+      "text_markdown": "Nama Zheng Yi Sao berarti istri dari Zheng Yi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Nama Zheng Yi Sao berarti istri dari Zheng Yi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-066",
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "Dia lahir dalam komunitas Tanka yang tinggal di perahu di Provinsi Guangdong.",
+      "text_markdown": "Dia lahir dalam komunitas Tanka yang tinggal di perahu di Provinsi Guangdong.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia lahir dalam komunitas Tanka yang tinggal di perahu di Provinsi Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-067",
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "Keluarganya miskin, seperti hampir semua keluarga Tanka.",
+      "text_markdown": "Keluarganya miskin, seperti hampir semua keluarga Tanka.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Keluarganya miskin, seperti hampir semua keluarga Tanka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-068",
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "Dia menghabiskan masa mudanya di air, mempelajari ritme pesisir.",
+      "text_markdown": "Dia menghabiskan masa mudanya di air, mempelajari ritme pesisir.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia menghabiskan masa mudanya di air, mempelajari ritme pesisir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-069",
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "Sebagai seorang wanita muda, dia bekerja di sebuah rumah bordil terapung di pelabuhan Canton.",
+      "text_markdown": "Sebagai seorang wanita muda, dia bekerja di sebuah rumah bordil terapung di pelabuhan Canton.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Sebagai seorang wanita muda, dia bekerja di sebuah rumah bordil terapung di pelabuhan Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-070",
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "Mereka melayani para pelaut, pedagang, dan nelayan yang melewati pelabuhan yang sibuk itu.",
+      "text_markdown": "Mereka melayani para pelaut, pedagang, dan nelayan yang melewati pelabuhan yang sibuk itu.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Mereka melayani para pelaut, pedagang, dan nelayan yang melewati pelabuhan yang sibuk itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-071",
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "Itu adalah pekerjaan yang sulit dan berbahaya, tetapi memberinya pengetahuan tentang dunia yang hanya sedikit wanita dari kelasnya bisa akses.",
+      "text_markdown": "Itu adalah pekerjaan yang sulit dan berbahaya, tetapi memberinya pengetahuan tentang dunia yang hanya sedikit wanita dari kelasnya bisa akses.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Itu adalah pekerjaan yang sulit dan berbahaya, tetapi memberinya pengetahuan tentang dunia yang hanya sedikit wanita dari kelasnya bisa akses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-072",
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "Dia belajar membaca orang dengan cepat dan akurat.",
+      "text_markdown": "Dia belajar membaca orang dengan cepat dan akurat.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia belajar membaca orang dengan cepat dan akurat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-073",
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "Dia mempelajari bahasa perdagangan dan negosiasi.",
+      "text_markdown": "Dia mempelajari bahasa perdagangan dan negosiasi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia mempelajari bahasa perdagangan dan negosiasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-074",
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "Keterampilan ini akan terbukti jauh lebih berharga daripada yang bisa diperkirakan siapa pun.",
+      "text_markdown": "Keterampilan ini akan terbukti jauh lebih berharga daripada yang bisa diperkirakan siapa pun.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Keterampilan ini akan terbukti jauh lebih berharga daripada yang bisa diperkirakan siapa pun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-075",
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "Pada tahun 1798, seorang kapten bajak laut bernama Zheng Yi menangkap kapal yang ditumpanginya.",
+      "text_markdown": "Pada tahun 1798, seorang kapten bajak laut bernama Zheng Yi menangkap kapal yang ditumpanginya.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Pada tahun seribu tujuh ratus sembilan puluh delapan, seorang kapten bajak laut bernama Zheng Yi menangkap kapal yang ditumpanginya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-076",
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "Dia berasal dari garis keturunan bajak laut yang panjang, membentang beberapa generasi.",
+      "text_markdown": "Dia berasal dari garis keturunan bajak laut yang panjang, membentang beberapa generasi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia berasal dari garis keturunan bajak laut yang panjang, membentang beberapa generasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-077",
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "Keluarganya telah mendukung sisa-sisa Dinasti Ming melawan penakluk Qing.",
+      "text_markdown": "Keluarganya telah mendukung sisa-sisa Dinasti Ming melawan penakluk Qing.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Keluarganya telah mendukung sisa-sisa Dinasti Ming melawan penakluk Ching.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-078",
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "Zheng Yi melamar wanita muda itu.",
+      "text_markdown": "Zheng Yi melamar wanita muda itu.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Zheng Yi melamar wanita muda itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-079",
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "Menurut sebagian besar catatan, dia tidak serta merta menerima.",
+      "text_markdown": "Menurut sebagian besar catatan, dia tidak serta merta menerima.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Menurut sebagian besar catatan, dia tidak serta merta menerima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-080",
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "Dia menegosiasikan syarat-syarat kemitraan mereka sebelum menyetujui pernikahan itu.",
+      "text_markdown": "Dia menegosiasikan syarat-syarat kemitraan mereka sebelum menyetujui pernikahan itu.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia menegosiasikan syarat-syarat kemitraan mereka sebelum menyetujui pernikahan itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-081",
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "Dia menuntut bagian yang sama dari armadanya dan suara yang sama dalam keputusan komando.",
+      "text_markdown": "Dia menuntut bagian yang sama dari armadanya dan suara yang sama dalam keputusan komando.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Dia menuntut bagian yang sama dari armadanya dan suara yang sama dalam keputusan komando.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-082",
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "Ini luar biasa untuk masa itu.",
+      "text_markdown": "Ini luar biasa untuk masa itu.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Ini luar biasa untuk masa itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-083",
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "Wanita di Tiongkok akhir Dinasti Qing memiliki sangat sedikit hak hukum.",
+      "text_markdown": "Wanita di Tiongkok akhir Dinasti Qing memiliki sangat sedikit hak hukum.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Wanita di Tiongkok akhir Dinasti Ching memiliki sangat sedikit hak hukum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-084",
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "Seorang istri diharapkan mematuhi suaminya tanpa pertanyaan.",
+      "text_markdown": "Seorang istri diharapkan mematuhi suaminya tanpa pertanyaan.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Seorang istri diharapkan mematuhi suaminya tanpa pertanyaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-085",
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "Namun ini adalah dunia bajak laut, dan dunia bajak laut membuat aturannya sendiri.",
+      "text_markdown": "Namun ini adalah dunia bajak laut, dan dunia bajak laut membuat aturannya sendiri.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Namun ini adalah dunia bajak laut, dan dunia bajak laut membuat aturannya sendiri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-086",
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "text": "Zheng Yi menyetujui persyaratannya.",
+      "text_markdown": "Zheng Yi menyetujui persyaratannya.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Zheng Yi menyetujui persyaratannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-087",
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "text": "Para sejarawan percaya dia mengakui kecerdasan dan potensinya sebagai seorang pemimpin.",
+      "text_markdown": "Para sejarawan percaya dia mengakui kecerdasan dan potensinya sebagai seorang pemimpin.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Para sejarawan percaya dia mengakui kecerdasan dan potensinya sebagai seorang pemimpin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-088",
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "text": "Pernikahan mereka adalah aliansi strategis sekaligus ikatan pribadi.",
+      "text_markdown": "Pernikahan mereka adalah aliansi strategis sekaligus ikatan pribadi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Pernikahan mereka adalah aliansi strategis sekaligus ikatan pribadi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-089",
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "text": "Bersama-sama, mereka akan membangun sesuatu yang belum pernah ada sebelumnya.",
+      "text_markdown": "Bersama-sama, mereka akan membangun sesuatu yang belum pernah ada sebelumnya.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Bersama-sama, mereka akan membangun sesuatu yang belum pernah ada sebelumnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-090",
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "Zheng Yi memiliki visi yang berani.",
+      "text_markdown": "Zheng Yi memiliki visi yang berani.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Zheng Yi memiliki visi yang berani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-091",
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "Ia ingin menyatukan armada bajak laut yang tersebar di Laut Cina Selatan menjadi satu konfederasi.",
+      "text_markdown": "Ia ingin menyatukan armada bajak laut yang tersebar di Laut Cina Selatan menjadi satu konfederasi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Ia ingin menyatukan armada bajak laut yang tersebar di Laut Cina Selatan menjadi satu konfederasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-092",
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "Kapten-kapten bajak laut individu selalu bersaing satu sama lain.",
+      "text_markdown": "Kapten-kapten bajak laut individu selalu bersaing satu sama lain.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Kapten-kapten bajak laut individu selalu bersaing satu sama lain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-093",
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "Zheng Yi percaya mereka akan jauh lebih kuat jika bekerja sama.",
+      "text_markdown": "Zheng Yi percaya mereka akan jauh lebih kuat jika bekerja sama.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Zheng Yi percaya mereka akan jauh lebih kuat jika bekerja sama.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-094",
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "Antara tahun 1798 dan 1805, Zheng Yi bekerja tanpa lelah untuk membentuk aliansi.",
+      "text_markdown": "Antara tahun 1798 dan 1805, Zheng Yi bekerja tanpa lelah untuk membentuk aliansi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Antara tahun seribu tujuh ratus sembilan puluh delapan dan seribu delapan ratus lima, Zheng Yi bekerja tanpa lelah untuk membentuk aliansi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-095",
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "Ia membujuk kapten-kapten saingan untuk bergabung dengan konfederasinya melalui kombinasi diplomasi dan intimidasi.",
+      "text_markdown": "Ia membujuk kapten-kapten saingan untuk bergabung dengan konfederasinya melalui kombinasi diplomasi dan intimidasi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Ia membujuk kapten-kapten saingan untuk bergabung dengan konfederasinya melalui kombinasi diplomasi dan intimidasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-096",
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "Istrinya sangat terlibat dalam negosiasi ini.",
+      "text_markdown": "Istrinya sangat terlibat dalam negosiasi ini.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Istrinya sangat terlibat dalam negosiasi ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-097",
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "Ia membantu menyusun perjanjian yang mengikat armada itu menjadi satu.",
+      "text_markdown": "Ia membantu menyusun perjanjian yang mengikat armada itu menjadi satu.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Ia membantu menyusun perjanjian yang mengikat armada itu menjadi satu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-098",
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "Pada tahun 1805, konfederasi itu selesai.",
+      "text_markdown": "Pada tahun 1805, konfederasi itu selesai.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus lima, konfederasi itu selesai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-099",
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "Konfederasi itu terdiri dari enam armada, masing-masing diidentifikasi berdasarkan warna benderanya.",
+      "text_markdown": "Konfederasi itu terdiri dari enam armada, masing-masing diidentifikasi berdasarkan warna benderanya.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Konfederasi itu terdiri dari enam armada, masing-masing diidentifikasi berdasarkan warna benderanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-100",
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "Armada Bendera Merah adalah yang terbesar dan terkuat.",
+      "text_markdown": "Armada Bendera Merah adalah yang terbesar dan terkuat.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Armada Bendera Merah adalah yang terbesar dan terkuat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-101",
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "Zheng Yi secara pribadi memimpin Armada Bendera Merah.",
+      "text_markdown": "Zheng Yi secara pribadi memimpin Armada Bendera Merah.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Zheng Yi secara pribadi memimpin Armada Bendera Merah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-102",
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "Konfederasi itu menguasai ratusan kapal dan puluhan ribu bajak laut.",
+      "text_markdown": "Konfederasi itu menguasai ratusan kapal dan puluhan ribu bajak laut.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Konfederasi itu menguasai ratusan kapal dan puluhan ribu bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-103",
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "Konfederasi itu mendominasi seluruh Laut Cina Selatan.",
+      "text_markdown": "Konfederasi itu mendominasi seluruh Laut Cina Selatan.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Konfederasi itu mendominasi seluruh Laut Cina Selatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-104",
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "Tidak ada kapal dagang yang bisa melewati perairan ini tanpa membayar upeti atau berisiko dihancurkan.",
+      "text_markdown": "Tidak ada kapal dagang yang bisa melewati perairan ini tanpa membayar upeti atau berisiko dihancurkan.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Tidak ada kapal dagang yang bisa melewati perairan ini tanpa membayar upeti atau berisiko dihancurkan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-105",
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "Kemudian, pada November 1807, Zheng Yi meninggal dunia.",
+      "text_markdown": "Kemudian, pada November 1807, Zheng Yi meninggal dunia.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Kemudian, pada November seribu delapan ratus tujuh, Zheng Yi meninggal dunia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-106",
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "Keadaan kematiannya diperdebatkan oleh para sejarawan.",
+      "text_markdown": "Keadaan kematiannya diperdebatkan oleh para sejarawan.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Keadaan kematiannya diperdebatkan oleh para sejarawan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-107",
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "Beberapa catatan mengatakan ia tenggelam dalam badai.",
+      "text_markdown": "Beberapa catatan mengatakan ia tenggelam dalam badai.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Beberapa catatan mengatakan ia tenggelam dalam badai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-108",
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "Yang lain menduga ia tewas dalam pertempuran di lepas pantai Vietnam.",
+      "text_markdown": "Yang lain menduga ia tewas dalam pertempuran di lepas pantai Vietnam.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Yang lain menduga ia tewas dalam pertempuran di lepas pantai Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-109",
+      "chapter": 2,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "Kematiannya menciptakan krisis bagi seluruh konfederasi.",
+      "text_markdown": "Kematiannya menciptakan krisis bagi seluruh konfederasi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Kematiannya menciptakan krisis bagi seluruh konfederasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-110",
+      "chapter": 2,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "Aliansi yang ia bangun disatukan oleh otoritas pribadinya.",
+      "text_markdown": "Aliansi yang ia bangun disatukan oleh otoritas pribadinya.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Aliansi yang ia bangun disatukan oleh otoritas pribadinya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-111",
+      "chapter": 2,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "Tanpa pemimpin yang kuat, konfederasi itu akan pecah kembali menjadi faksi-faksi yang bersaing.",
+      "text_markdown": "Tanpa pemimpin yang kuat, konfederasi itu akan pecah kembali menjadi faksi-faksi yang bersaing.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Tanpa pemimpin yang kuat, konfederasi itu akan pecah kembali menjadi faksi-faksi yang bersaing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-112",
+      "chapter": 2,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "Segala yang telah mereka bangun terancam.",
+      "text_markdown": "Segala yang telah mereka bangun terancam.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Segala yang telah mereka bangun terancam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-113",
+      "chapter": 2,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "Para kapten armada lain memperkirakan konfederasi itu akan runtuh.",
+      "text_markdown": "Para kapten armada lain memperkirakan konfederasi itu akan runtuh.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Para kapten armada lain memperkirakan konfederasi itu akan runtuh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-114",
+      "chapter": 2,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "Mereka mulai bermanuver untuk posisi, bersiap merebut wilayah.",
+      "text_markdown": "Mereka mulai bermanuver untuk posisi, bersiap merebut wilayah.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Mereka mulai bermanuver untuk posisi, bersiap merebut wilayah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-115",
+      "chapter": 2,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "Namun mereka tidak memperhitungkan ambisi dan kemampuan janda Zheng Yi.",
+      "text_markdown": "Namun mereka tidak memperhitungkan ambisi dan kemampuan janda Zheng Yi.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Namun mereka tidak memperhitungkan ambisi dan kemampuan janda Zheng Yi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-116",
+      "chapter": 2,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "Ia tidak berniat menyerahkan apa yang telah ia bantu bangun.",
+      "text_markdown": "Ia tidak berniat menyerahkan apa yang telah ia bantu bangun.",
+      "title": "Asal-usul",
+      "tts": {
+        "text": "Ia tidak berniat menyerahkan apa yang telah ia bantu bangun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch03-117",
+      "chapter": 3,
+      "paragraph_id": "p36",
+      "block_type": "heading",
+      "text": "Naik ke Kekuasaan",
+      "text_markdown": "Naik ke Kekuasaan",
+      "title": "Naik ke Kekuasaan"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-118",
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "text": "Pada hari-hari setelah kematian suaminya, Zheng Yi Sao bergerak dengan kecepatan yang diperhitungkan.",
+      "text_markdown": "Pada hari-hari setelah kematian suaminya, Zheng Yi Sao bergerak dengan kecepatan yang diperhitungkan.",
+      "title": "Naik ke Kekuasaan",
+      "tts": {
+        "text": "Pada hari-hari setelah kematian suaminya, Zheng Yi Sao bergerak dengan kecepatan yang diperhitungkan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-119",
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "text": "Tindakan pertamanya adalah mengamankan kesetiaan Zhang Bao, letnan paling tepercaya suaminya.",
+      "text_markdown": "Tindakan pertamanya adalah mengamankan kesetiaan Zhang Bao, letnan paling tepercaya suaminya.",
+      "title": "Naik ke Kekuasaan",
+      "tts": {
+        "text": "Tindakan pertamanya adalah mengamankan kesetiaan Zhang Bao, letnan paling tepercaya suaminya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-120",
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "text": "Zhang Bao adalah putra seorang nelayan yang ditangkap oleh bajak laut saat masih kecil.",
+      "text_markdown": "Zhang Bao adalah putra seorang nelayan yang ditangkap oleh bajak laut saat masih kecil.",
+      "title": "Naik ke Kekuasaan",
+      "tts": {
+        "text": "Zhang Bao adalah putra seorang nelayan yang ditangkap oleh bajak laut saat masih kecil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-121",
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "text": "Zheng Yi telah mengadopsi, melatih, dan membesarkannya menjadi seorang komandan militer.",
+      "text_markdown": "Zheng Yi telah mengadopsi, melatih, dan membesarkannya menjadi seorang komandan militer.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Zheng Yi telah mengadopsi, melatih, dan membesarkannya menjadi seorang komandan militer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-122",
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "Zheng Yi Sao membentuk aliansi dengan Zhang Bao yang bersifat pribadi sekaligus strategis.",
+      "text_markdown": "Zheng Yi Sao membentuk aliansi dengan Zhang Bao yang bersifat pribadi sekaligus strategis.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Zheng Yi Sao membentuk aliansi dengan Zhang Bao yang bersifat pribadi sekaligus strategis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-123",
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "Keduanya pada akhirnya akan menikah.",
+      "text_markdown": "Keduanya pada akhirnya akan menikah.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Keduanya pada akhirnya akan menikah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-124",
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "Namun, pada minggu-minggu kritis pertama itu, kemitraan tersebut adalah tentang bertahan hidup.",
+      "text_markdown": "Namun, pada minggu-minggu kritis pertama itu, kemitraan tersebut adalah tentang bertahan hidup.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Namun, pada minggu-minggu kritis pertama itu, kemitraan tersebut adalah tentang bertahan hidup.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-125",
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "Bersama-sama, mereka menunjukkan front persatuan kepada komandan-komandan armada lainnya.",
+      "text_markdown": "Bersama-sama, mereka menunjukkan front persatuan kepada komandan-komandan armada lainnya.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Bersama-sama, mereka menunjukkan front persatuan kepada komandan-komandan armada lainnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-126",
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "Dia mengadakan pertemuan dewan enam kapten armada.",
+      "text_markdown": "Dia mengadakan pertemuan dewan enam kapten armada.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Dia mengadakan pertemuan dewan enam kapten armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-127",
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "Dalam pertemuan itu, dia menyampaikan argumennya untuk kepemimpinan konfederasi.",
+      "text_markdown": "Dalam pertemuan itu, dia menyampaikan argumennya untuk kepemimpinan konfederasi.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Dalam pertemuan itu, dia menyampaikan argumennya untuk kepemimpinan konfederasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-128",
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "Dia berargumen bahwa dia adalah mitra setara suaminya dalam membangun aliansi ini.",
+      "text_markdown": "Dia berargumen bahwa dia adalah mitra setara suaminya dalam membangun aliansi ini.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Dia berargumen bahwa dia adalah mitra setara suaminya dalam membangun aliansi ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-129",
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "Satu per satu, para kapten setuju untuk mengikuti perintahnya.",
+      "text_markdown": "Satu per satu, para kapten setuju untuk mengikuti perintahnya.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Satu per satu, para kapten setuju untuk mengikuti perintahnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-130",
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "text": "Tantangan pertamanya adalah menegakkan disiplin pada pasukan 70.000 bajak laut.",
+      "text_markdown": "Tantangan pertamanya adalah menegakkan disiplin pada pasukan 70.000 bajak laut.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Tantangan pertamanya adalah menegakkan disiplin pada pasukan tujuh puluh ribu bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-131",
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "text": "Bajak laut, secara alami, bersifat independen dan tidak mempercayai otoritas.",
+      "text_markdown": "Bajak laut, secara alami, bersifat independen dan tidak mempercayai otoritas.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Bajak laut, secara alami, bersifat independen dan tidak mempercayai otoritas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-132",
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "text": "Zheng Yi Sao memahami bahwa armada tanpa hukum akan hancur dengan sendirinya.",
+      "text_markdown": "Zheng Yi Sao memahami bahwa armada tanpa hukum akan hancur dengan sendirinya.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Zheng Yi Sao memahami bahwa armada tanpa hukum akan hancur dengan sendirinya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-133",
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "text": "Dia menciptakan salah satu kode hukum paling luar biasa dalam sejarah bajak laut.",
+      "text_markdown": "Dia menciptakan salah satu kode hukum paling luar biasa dalam sejarah bajak laut.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Dia menciptakan salah satu kode hukum paling luar biasa dalam sejarah bajak laut.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-134",
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "Kode tersebut ketat dan spesifik.",
+      "text_markdown": "Kode tersebut ketat dan spesifik.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Kode tersebut ketat dan spesifik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-135",
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "Setiap bajak laut yang tidak mematuhi perintah langsung dari atasan akan dipenggal.",
+      "text_markdown": "Setiap bajak laut yang tidak mematuhi perintah langsung dari atasan akan dipenggal.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Setiap bajak laut yang tidak mematuhi perintah langsung dari atasan akan dipenggal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-136",
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "Pembelotan dapat dihukum mati.",
+      "text_markdown": "Pembelotan dapat dihukum mati.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Pembelotan dapat dihukum mati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-137",
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "Mencuri dari kas bersama dapat dihukum mati.",
+      "text_markdown": "Mencuri dari kas bersama dapat dihukum mati.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Mencuri dari kas bersama dapat dihukum mati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-138",
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "Kode tersebut juga melindungi orang-orang yang ditangkap dengan cara yang tidak biasa untuk era itu.",
+      "text_markdown": "Kode tersebut juga melindungi orang-orang yang ditangkap dengan cara yang tidak biasa untuk era itu.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Kode tersebut juga melindungi orang-orang yang ditangkap dengan cara yang tidak biasa untuk era itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-139",
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "Bajak laut yang menyerang tawanan akan menghadapi hukuman berat.",
+      "text_markdown": "Bajak laut yang menyerang tawanan akan menghadapi hukuman berat.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Bajak laut yang menyerang tawanan akan menghadapi hukuman berat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-140",
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "Jika seorang bajak laut menjadikan tawanan sebagai istri, dia diwajibkan untuk setia kepadanya.",
+      "text_markdown": "Jika seorang bajak laut menjadikan tawanan sebagai istri, dia diwajibkan untuk setia kepadanya.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Jika seorang bajak laut menjadikan tawanan sebagai istri, dia diwajibkan untuk setia kepadanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-141",
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "Aturan-aturan ini bukan sekadar saran; aturan-aturan ini ditegakkan dengan konsistensi yang kuat.",
+      "text_markdown": "Aturan-aturan ini bukan sekadar saran; aturan-aturan ini ditegakkan dengan konsistensi yang kuat.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Aturan-aturan ini bukan sekadar saran; aturan-aturan ini ditegakkan dengan konsistensi yang kuat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-142",
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "Semua jarahan dicatat dan dibagi sesuai dengan sistem yang tetap.",
+      "text_markdown": "Semua jarahan dicatat dan dibagi sesuai dengan sistem yang tetap.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Semua jarahan dicatat dan dibagi sesuai dengan sistem yang tetap.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-143",
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "Bajak laut yang merebut barang-barang tersebut menerima 20 persen.",
+      "text_markdown": "Bajak laut yang merebut barang-barang tersebut menerima 20 persen.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Bajak laut yang merebut barang-barang tersebut menerima dua puluh persen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-144",
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "Sisa 80 persen masuk ke kas bersama.",
+      "text_markdown": "Sisa 80 persen masuk ke kas bersama.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Sisa delapan puluh persen masuk ke kas bersama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-145",
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "Sistem ini mencegah perselisihan internal yang menghancurkan sebagian besar organisasi bajak laut.",
+      "text_markdown": "Sistem ini mencegah perselisihan internal yang menghancurkan sebagian besar organisasi bajak laut.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Sistem ini mencegah perselisihan internal yang menghancurkan sebagian besar organisasi bajak laut.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-146",
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "Zheng Yi Sao juga membangun sistem perpajakan yang canggih.",
+      "text_markdown": "Zheng Yi Sao juga membangun sistem perpajakan yang canggih.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Zheng Yi Sao juga membangun sistem perpajakan yang canggih.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-147",
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "Kapal dagang dapat membeli jalur aman dengan membayar biaya rutin.",
+      "text_markdown": "Kapal dagang dapat membeli jalur aman dengan membayar biaya rutin.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Kapal dagang dapat membeli jalur aman dengan membayar biaya rutin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-148",
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "Desa-desa nelayan di sepanjang pantai membayar upeti sebagai imbalan atas perlindungan.",
+      "text_markdown": "Desa-desa nelayan di sepanjang pantai membayar upeti sebagai imbalan atas perlindungan.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Desa-desa nelayan di sepanjang pantai membayar upeti sebagai imbalan atas perlindungan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-149",
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "Sistem ini berfungsi seperti pemerintahan paralel, mengumpulkan pendapatan sebagai imbalan atas keamanan.",
+      "text_markdown": "Sistem ini berfungsi seperti pemerintahan paralel, mengumpulkan pendapatan sebagai imbalan atas keamanan.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Sistem ini berfungsi seperti pemerintahan paralel, mengumpulkan pendapatan sebagai imbalan atas keamanan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-150",
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "Pemerintah Qing menyadari ancaman tersebut dan mengirim angkatan lautnya untuk menghancurkan para bajak laut.",
+      "text_markdown": "Pemerintah Qing menyadari ancaman tersebut dan mengirim angkatan lautnya untuk menghancurkan para bajak laut.",
+      "title": "Naik ke Tampuk Kekuasaan",
+      "tts": {
+        "text": "Pemerintah Ching menyadari ancaman tersebut dan mengirim angkatan lautnya untuk menghancurkan para bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-151",
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "Pada tahun 1808, armada kekaisaran besar berlayar ke Laut Cina Selatan.",
+      "text_markdown": "Pada tahun 1808, armada kekaisaran besar berlayar ke Laut Cina Selatan.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus delapan, armada kekaisaran besar berlayar ke Laut Cina Selatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-152",
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "Pertempuran itu merupakan bencana bagi pemerintah.",
+      "text_markdown": "Pertempuran itu merupakan bencana bagi pemerintah.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Pertempuran itu merupakan bencana bagi pemerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-153",
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "Pasukan Zheng Yi Sao menenggelamkan atau menangkap puluhan kapal perang kekaisaran.",
+      "text_markdown": "Pasukan Zheng Yi Sao menenggelamkan atau menangkap puluhan kapal perang kekaisaran.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Pasukan Zheng Yi Sao menenggelamkan atau menangkap puluhan kapal perang kekaisaran.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-154",
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "text": "Laksamana yang kalah itu begitu dipermalukan hingga ia bunuh diri.",
+      "text_markdown": "Laksamana yang kalah itu begitu dipermalukan hingga ia bunuh diri.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Laksamana yang kalah itu begitu dipermalukan hingga ia bunuh diri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-155",
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "text": "Istana kekaisaran terkejut dengan besarnya kerugian tersebut.",
+      "text_markdown": "Istana kekaisaran terkejut dengan besarnya kerugian tersebut.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Istana kekaisaran terkejut dengan besarnya kerugian tersebut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-156",
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "text": "Mereka telah mengirim kapal-kapal terbaik dan komandan paling berpengalaman mereka, dan mereka kalah.",
+      "text_markdown": "Mereka telah mengirim kapal-kapal terbaik dan komandan paling berpengalaman mereka, dan mereka kalah.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Mereka telah mengirim kapal-kapal terbaik dan komandan paling berpengalaman mereka, dan mereka kalah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-157",
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "text": "Para bajak laut kini lebih kuat daripada angkatan laut pemerintah sendiri.",
+      "text_markdown": "Para bajak laut kini lebih kuat daripada angkatan laut pemerintah sendiri.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Para bajak laut kini lebih kuat daripada angkatan laut pemerintah sendiri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-158",
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "Zheng Yi Sao terus mendesak keuntungannya tanpa henti.",
+      "text_markdown": "Zheng Yi Sao terus mendesak keuntungannya tanpa henti.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Zheng Yi Sao terus mendesak keuntungannya tanpa henti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-159",
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "Armadanya memperluas wilayahnya di sepanjang seluruh pantai Guangdong.",
+      "text_markdown": "Armadanya memperluas wilayahnya di sepanjang seluruh pantai Guangdong.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Armadanya memperluas wilayahnya di sepanjang seluruh pantai Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-160",
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "Ia mendirikan pangkalan di pulau-pulau dan di muara sungai yang tersembunyi.",
+      "text_markdown": "Ia mendirikan pangkalan di pulau-pulau dan di muara sungai yang tersembunyi.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Ia mendirikan pangkalan di pulau-pulau dan di muara sungai yang tersembunyi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-161",
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "Jaringan intelijennya membentang dari Canton hingga Vietnam.",
+      "text_markdown": "Jaringan intelijennya membentang dari Canton hingga Vietnam.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Jaringan intelijennya membentang dari Canton hingga Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-162",
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "Pemerintah Qing mencoba strategi baru.",
+      "text_markdown": "Pemerintah Qing mencoba strategi baru.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Pemerintah Ching mencoba strategi baru.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-163",
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "Mereka menyewa kapal perang Portugis dari koloni Makau untuk melawan para bajak laut.",
+      "text_markdown": "Mereka menyewa kapal perang Portugis dari koloni Makau untuk melawan para bajak laut.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Mereka menyewa kapal perang Portugis dari koloni Makau untuk melawan para bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-164",
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "Portugis memiliki meriam Eropa modern dan perwira angkatan laut yang terlatih.",
+      "text_markdown": "Portugis memiliki meriam Eropa modern dan perwira angkatan laut yang terlatih.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Portugis memiliki meriam Eropa modern dan perwira angkatan laut yang terlatih.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-165",
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "Untuk sementara waktu, aliansi ini memberikan tekanan nyata pada armada bajak laut.",
+      "text_markdown": "Untuk sementara waktu, aliansi ini memberikan tekanan nyata pada armada bajak laut.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Untuk sementara waktu, aliansi ini memberikan tekanan nyata pada armada bajak laut.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-166",
+      "chapter": 3,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "Namun Zheng Yi Sao beradaptasi dengan cepat.",
+      "text_markdown": "Namun Zheng Yi Sao beradaptasi dengan cepat.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Namun Zheng Yi Sao beradaptasi dengan cepat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-167",
+      "chapter": 3,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "Ia menghindari konfrontasi langsung dengan kapal perang Portugis.",
+      "text_markdown": "Ia menghindari konfrontasi langsung dengan kapal perang Portugis.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Ia menghindari konfrontasi langsung dengan kapal perang Portugis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-168",
+      "chapter": 3,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "Sebaliknya, ia menargetkan jalur pasokan mereka dan menyerang sekutu pedagang mereka.",
+      "text_markdown": "Sebaliknya, ia menargetkan jalur pasokan mereka dan menyerang sekutu pedagang mereka.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Sebaliknya, ia menargetkan jalur pasokan mereka dan menyerang sekutu pedagang mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-169",
+      "chapter": 3,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "Ia memahami bahwa Portugis hanya akan bertempur selama mereka dibayar.",
+      "text_markdown": "Ia memahami bahwa Portugis hanya akan bertempur selama mereka dibayar.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Ia memahami bahwa Portugis hanya akan bertempur selama mereka dibayar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-170",
+      "chapter": 3,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "Pada tahun 1809, aliansi Qing dan Portugis gagal mengalahkannya.",
+      "text_markdown": "Pada tahun 1809, aliansi Qing dan Portugis gagal mengalahkannya.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus sembilan, aliansi Ching dan Portugis gagal mengalahkannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-171",
+      "chapter": 3,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "Pemerintah telah menghabiskan sejumlah besar uang dan kehilangan puluhan kapal.",
+      "text_markdown": "Pemerintah telah menghabiskan sejumlah besar uang dan kehilangan puluhan kapal.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Pemerintah telah menghabiskan sejumlah besar uang dan kehilangan puluhan kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-172",
+      "chapter": 3,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "Para bajak laut menguasai pantai lebih kuat dari sebelumnya.",
+      "text_markdown": "Para bajak laut menguasai pantai lebih kuat dari sebelumnya.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Para bajak laut menguasai pantai lebih kuat dari sebelumnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-173",
+      "chapter": 3,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "Konfederasi Zheng Yi Sao berada di puncak kekuasaannya.",
+      "text_markdown": "Konfederasi Zheng Yi Sao berada di puncak kekuasaannya.",
+      "title": "Bangkitnya Kekuasaan",
+      "tts": {
+        "text": "Konfederasi Zheng Yi Sao berada di puncak kekuasaannya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch04-174",
+      "chapter": 4,
+      "paragraph_id": "p51",
+      "block_type": "heading",
+      "text": "Di Puncak Kejayaan",
+      "text_markdown": "Di Puncak Kejayaan",
+      "title": "Di Puncak Kejayaan"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-175",
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "Pada puncaknya, konfederasi bajak laut menguasai sekitar 1.800 kapal.",
+      "text_markdown": "Pada puncaknya, konfederasi bajak laut menguasai sekitar 1.800 kapal.",
+      "title": "Di Puncak Kejayaan",
+      "tts": {
+        "text": "Pada puncaknya, konfederasi bajak laut menguasai sekitar seribu delapan ratus kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-176",
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "Ini berkisar dari perahu penyerang kecil dan cepat hingga jung perang besar yang membawa puluhan meriam.",
+      "text_markdown": "Ini berkisar dari perahu penyerang kecil dan cepat hingga jung perang besar yang membawa puluhan meriam.",
+      "title": "Di Puncak Kejayaan",
+      "tts": {
+        "text": "Ini berkisar dari perahu penyerang kecil dan cepat hingga jung perang besar yang membawa puluhan meriam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-177",
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "Total kekuatan tempur berjumlah antara 70.000 dan 80.000 orang.",
+      "text_markdown": "Total kekuatan tempur berjumlah antara 70.000 dan 80.000 orang.",
+      "title": "Di Puncak Kejayaan",
+      "tts": {
+        "text": "Total kekuatan tempur berjumlah antara tujuh puluh ribu dan delapan puluh ribu orang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-178",
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "Jumlah ini lebih besar dari angkatan laut sebagian besar negara Eropa pada masa itu.",
+      "text_markdown": "Jumlah ini lebih besar dari angkatan laut sebagian besar negara Eropa pada masa itu.",
+      "title": "Di Puncak Kejayaan",
+      "tts": {
+        "text": "Jumlah ini lebih besar dari angkatan laut sebagian besar negara Eropa pada masa itu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-179",
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "Armada Bendera Merah sendiri memiliki antara 600 dan 800 kapal.",
+      "text_markdown": "Armada Bendera Merah sendiri memiliki antara 600 dan 800 kapal.",
+      "title": "Di Puncak Kejayaan",
+      "tts": {
+        "text": "Armada Bendera Merah sendiri memiliki antara enam ratus dan delapan ratus kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-180",
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "Itu adalah armada tunggal terbesar dalam konfederasi tersebut.",
+      "text_markdown": "Itu adalah armada tunggal terbesar dalam konfederasi tersebut.",
+      "title": "Di Puncak Kejayaan",
+      "tts": {
+        "text": "Itu adalah armada tunggal terbesar dalam konfederasi tersebut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-181",
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "Zheng Yi Sao memimpinnya secara langsung, dengan Zhang Bao sebagai kepala perwira militernya.",
+      "text_markdown": "Zheng Yi Sao memimpinnya secara langsung, dengan Zhang Bao sebagai kepala perwira militernya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Zheng Yi Sao memimpinnya secara langsung, dengan Zhang Bao sebagai kepala perwira militernya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-182",
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "Lima armada lainnya beroperasi semi-independen tetapi mengikuti arahan strategisnya.",
+      "text_markdown": "Lima armada lainnya beroperasi semi-independen tetapi mengikuti arahan strategisnya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Lima armada lainnya beroperasi semi-independen tetapi mengikuti arahan strategisnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-183",
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "text": "Wilayah konfederasi membentang di sepanjang lebih dari 1.000 mil garis pantai.",
+      "text_markdown": "Wilayah konfederasi membentang di sepanjang lebih dari 1.000 mil garis pantai.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Wilayah konfederasi membentang di sepanjang lebih dari seribu mil garis pantai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-184",
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "text": "Dari perbatasan Vietnam di selatan hingga pesisir Fujian di utara, tidak ada kapal yang aman tanpa izin bajak laut.",
+      "text_markdown": "Dari perbatasan Vietnam di selatan hingga pesisir Fujian di utara, tidak ada kapal yang aman tanpa izin bajak laut.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dari perbatasan Vietnam di selatan hingga pesisir Fujian di utara, tidak ada kapal yang aman tanpa izin bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-185",
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "text": "Bahkan British East India Company yang perkasa membayar upeti untuk menghindari kehilangan kargonya.",
+      "text_markdown": "Bahkan British East India Company yang perkasa membayar upeti untuk menghindari kehilangan kargonya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Bahkan British East India Company yang perkasa membayar upeti untuk menghindari kehilangan kargonya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-186",
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "Kehidupan di atas jung bajak laut itu keras tetapi terorganisir.",
+      "text_markdown": "Kehidupan di atas jung bajak laut itu keras tetapi terorganisir.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Kehidupan di atas jung bajak laut itu keras tetapi terorganisir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-187",
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "Setiap kapal memiliki hierarki yang jelas, dari kapten hingga rekrutan terbaru.",
+      "text_markdown": "Setiap kapal memiliki hierarki yang jelas, dari kapten hingga rekrutan terbaru.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Setiap kapal memiliki hierarki yang jelas, dari kapten hingga rekrutan terbaru.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-188",
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "Makanan bersifat komunal, dan jatah dibagikan secara merata.",
+      "text_markdown": "Makanan bersifat komunal, dan jatah dibagikan secara merata.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Makanan bersifat komunal, dan jatah dibagikan secara merata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-189",
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "Setiap anggota kru menerima bagian dari jarahan berdasarkan pangkat dan peran mereka.",
+      "text_markdown": "Setiap anggota kru menerima bagian dari jarahan berdasarkan pangkat dan peran mereka.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Setiap anggota kru menerima bagian dari jarahan berdasarkan pangkat dan peran mereka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-190",
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "Wanita bertugas di banyak kapal bajak laut dalam armada.",
+      "text_markdown": "Wanita bertugas di banyak kapal bajak laut dalam armada.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Wanita bertugas di banyak kapal bajak laut dalam armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-191",
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "Beberapa bertempur bersama para pria selama penyerbuan.",
+      "text_markdown": "Beberapa bertempur bersama para pria selama penyerbuan.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Beberapa bertempur bersama para pria selama penyerbuan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-192",
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "Yang lain mengelola pasokan, navigasi, dan komunikasi antar kapal.",
+      "text_markdown": "Yang lain mengelola pasokan, navigasi, dan komunikasi antar kapal.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Yang lain mengelola pasokan, navigasi, dan komunikasi antar kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-193",
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "Dunia bajak laut menawarkan kebebasan lebih kepada wanita daripada masyarakat Qing pada umumnya.",
+      "text_markdown": "Dunia bajak laut menawarkan kebebasan lebih kepada wanita daripada masyarakat Qing pada umumnya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dunia bajak laut menawarkan kebebasan lebih kepada wanita daripada masyarakat Ching pada umumnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-194",
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "Jung perang armada itu adalah mesin tempur yang tangguh.",
+      "text_markdown": "Jung perang armada itu adalah mesin tempur yang tangguh.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Jung perang armada itu adalah mesin tempur yang tangguh.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-195",
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "Sebuah jung besar bisa membawa 30 meriam atau lebih.",
+      "text_markdown": "Sebuah jung besar bisa membawa 30 meriam atau lebih.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Sebuah jung besar bisa membawa tiga puluh meriam atau lebih.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-196",
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "Kapal-kapal itu dibangun dengan lambung yang diperkuat dan sisi yang tinggi untuk menangkis penyerbu.",
+      "text_markdown": "Kapal-kapal itu dibangun dengan lambung yang diperkuat dan sisi yang tinggi untuk menangkis penyerbu.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Kapal-kapal itu dibangun dengan lambung yang diperkuat dan sisi yang tinggi untuk menangkis penyerbu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-197",
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "Dasar kapal mereka yang datar memungkinkan mereka menavigasi perairan pesisir yang dangkal di mana kapal-kapal Eropa yang lebih dalam tidak bisa mengikuti.",
+      "text_markdown": "Dasar kapal mereka yang datar memungkinkan mereka menavigasi perairan pesisir yang dangkal di mana kapal-kapal Eropa yang lebih dalam tidak bisa mengikuti.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dasar kapal mereka yang datar memungkinkan mereka menavigasi perairan pesisir yang dangkal di mana kapal-kapal Eropa yang lebih dalam tidak bisa mengikuti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-198",
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "Jaringan intelijen Zheng Yi Sao adalah salah satu senjata terbesarnya.",
+      "text_markdown": "Jaringan intelijen Zheng Yi Sao adalah salah satu senjata terbesarnya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Jaringan intelijen Zheng Yi Sao adalah salah satu senjata terbesarnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-199",
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "Dia memiliki mata-mata di Canton, di Macao, dan di setiap pelabuhan utama di sepanjang pantai.",
+      "text_markdown": "Dia memiliki mata-mata di Canton, di Macao, dan di setiap pelabuhan utama di sepanjang pantai.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dia memiliki mata-mata di Canton, di Macao, dan di setiap pelabuhan utama di sepanjang pantai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-200",
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "Dia tahu kapan kapal kargo berharga akan berangkat dan rute apa yang akan mereka ambil.",
+      "text_markdown": "Dia tahu kapan kapal kargo berharga akan berangkat dan rute apa yang akan mereka ambil.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dia tahu kapan kapal kargo berharga akan berangkat dan rute apa yang akan mereka ambil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-201",
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "Informasi ini memungkinkannya menyerang dengan presisi alih-alih mengandalkan kebetulan.",
+      "text_markdown": "Informasi ini memungkinkannya menyerang dengan presisi alih-alih mengandalkan kebetulan.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Informasi ini memungkinkannya menyerang dengan presisi alih-alih mengandalkan kebetulan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-202",
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "Sistem perpajakan yang dia bangun sangat canggih.",
+      "text_markdown": "Sistem perpajakan yang dia bangun sangat canggih.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Sistem perpajakan yang dia bangun sangat canggih.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-203",
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "Tarif yang berbeda berlaku untuk berbagai jenis kargo.",
+      "text_markdown": "Tarif yang berbeda berlaku untuk berbagai jenis kargo.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Tarif yang berbeda berlaku untuk berbagai jenis kargo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-204",
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "Pedagang sutra membayar lebih dari pedagang beras.",
+      "text_markdown": "Pedagang sutra membayar lebih dari pedagang beras.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Pedagang sutra membayar lebih dari pedagang beras.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-205",
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "Penyelundup garam membayar premi karena kargo mereka sudah ilegal.",
+      "text_markdown": "Penyelundup garam membayar premi karena kargo mereka sudah ilegal.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Penyelundup garam membayar premi karena kargo mereka sudah ilegal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-206",
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "Seluruh sistem didokumentasikan dan ditegakkan dengan presisi birokrasi.",
+      "text_markdown": "Seluruh sistem didokumentasikan dan ditegakkan dengan presisi birokrasi.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Seluruh sistem didokumentasikan dan ditegakkan dengan presisi birokrasi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-207",
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "Desa-desa pesisir memiliki hubungan yang kompleks dengan para bajak laut.",
+      "text_markdown": "Desa-desa pesisir memiliki hubungan yang kompleks dengan para bajak laut.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Desa-desa pesisir memiliki hubungan yang kompleks dengan para bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-208",
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "Banyak yang membenci pembayaran upeti yang dituntut oleh para bajak laut.",
+      "text_markdown": "Banyak yang membenci pembayaran upeti yang dituntut oleh para bajak laut.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Banyak yang membenci pembayaran upeti yang dituntut oleh para bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-209",
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "Namun para bajak laut juga memberikan perlindungan terhadap penyerbu dan bandit lainnya.",
+      "text_markdown": "Namun para bajak laut juga memberikan perlindungan terhadap penyerbu dan bandit lainnya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Namun para bajak laut juga memberikan perlindungan terhadap penyerbu dan bandit lainnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-210",
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "Di beberapa daerah, para bajak laut lebih dapat diandalkan daripada pemerintah kekaisaran.",
+      "text_markdown": "Di beberapa daerah, para bajak laut lebih dapat diandalkan daripada pemerintah kekaisaran.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Di beberapa daerah, para bajak laut lebih dapat diandalkan daripada pemerintah kekaisaran.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-211",
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "Istana Qing sangat malu dengan ketidakmampuannya menguasai laut.",
+      "text_markdown": "Istana Qing sangat malu dengan ketidakmampuannya menguasai laut.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Istana Ching sangat malu dengan ketidakmampuannya menguasai laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-212",
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "Para pejabat kekaisaran menulis laporan yang cemas tentang kekuatan ratu bajak laut yang semakin besar.",
+      "text_markdown": "Para pejabat kekaisaran menulis laporan yang cemas tentang kekuatan ratu bajak laut yang semakin besar.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Para pejabat kekaisaran menulis laporan yang cemas tentang kekuatan ratu bajak laut yang semakin besar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-213",
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "Mereka khawatir bahwa para bajak laut mungkin bersekutu dengan kelompok pemberontak di darat.",
+      "text_markdown": "Mereka khawatir bahwa para bajak laut mungkin bersekutu dengan kelompok pemberontak di darat.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Mereka khawatir bahwa para bajak laut mungkin bersekutu dengan kelompok pemberontak di darat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-214",
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "Pemberontakan gabungan darat dan laut bisa mengancam dinasti itu sendiri.",
+      "text_markdown": "Pemberontakan gabungan darat dan laut bisa mengancam dinasti itu sendiri.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Pemberontakan gabungan darat dan laut bisa mengancam dinasti itu sendiri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-215",
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "text": "Pihak Inggris mengamati situasi tersebut dengan minat yang besar.",
+      "text_markdown": "Pihak Inggris mengamati situasi tersebut dengan minat yang besar.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Pihak Inggris mengamati situasi tersebut dengan minat yang besar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-216",
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "text": "Mereka memperluas perdagangan opium mereka di sepanjang pantai Tiongkok.",
+      "text_markdown": "Mereka memperluas perdagangan opium mereka di sepanjang pantai Tiongkok.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Mereka memperluas perdagangan opium mereka di sepanjang pantai Tiongkok.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-217",
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "text": "Para bajak laut mengganggu perdagangan ini, yang merugikan pedagang Inggris sejumlah besar uang.",
+      "text_markdown": "Para bajak laut mengganggu perdagangan ini, yang merugikan pedagang Inggris sejumlah besar uang.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Para bajak laut mengganggu perdagangan ini, yang merugikan pedagang Inggris sejumlah besar uang.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-218",
+      "chapter": 4,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "Bagi orang-orang yang berlayar di bawah bendera Zheng Yi Sao, hidup lebih baik daripada pilihan lainnya.",
+      "text_markdown": "Bagi orang-orang yang berlayar di bawah bendera Zheng Yi Sao, hidup lebih baik daripada pilihan lainnya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Bagi orang-orang yang berlayar di bawah bendera Zheng Yi Sao, hidup lebih baik daripada pilihan lainnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-219",
+      "chapter": 4,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "Seorang bajak laut menerima makanan teratur, bagian dari hasil jarahan, dan rasa memiliki.",
+      "text_markdown": "Seorang bajak laut menerima makanan teratur, bagian dari hasil jarahan, dan rasa memiliki.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Seorang bajak laut menerima makanan teratur, bagian dari hasil jarahan, dan rasa memiliki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-220",
+      "chapter": 4,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "Seorang nelayan Tanka menerima kemiskinan, penghinaan, dan tidak ada harapan untuk maju.",
+      "text_markdown": "Seorang nelayan Tanka menerima kemiskinan, penghinaan, dan tidak ada harapan untuk maju.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Seorang nelayan Tanka menerima kemiskinan, penghinaan, dan tidak ada harapan untuk maju.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-221",
+      "chapter": 4,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "text": "Zheng Yi Sao memerintah masyarakat ini dengan otoritas mutlak.",
+      "text_markdown": "Zheng Yi Sao memerintah masyarakat ini dengan otoritas mutlak.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Zheng Yi Sao memerintah masyarakat ini dengan otoritas mutlak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-222",
+      "chapter": 4,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "text": "Dia membuat keputusan strategis yang membentuk masa depan armada.",
+      "text_markdown": "Dia membuat keputusan strategis yang membentuk masa depan armada.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dia membuat keputusan strategis yang membentuk masa depan armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-223",
+      "chapter": 4,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "text": "Dia menyelesaikan perselisihan antar kapten dan menegakkan kode hukum.",
+      "text_markdown": "Dia menyelesaikan perselisihan antar kapten dan menegakkan kode hukum.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Dia menyelesaikan perselisihan antar kapten dan menegakkan kode hukum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-224",
+      "chapter": 4,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "text": "Tidak ada tindakan besar yang diambil tanpa persetujuannya.",
+      "text_markdown": "Tidak ada tindakan besar yang diambil tanpa persetujuannya.",
+      "title": "Pada Puncaknya",
+      "tts": {
+        "text": "Tidak ada tindakan besar yang diambil tanpa persetujuannya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch05-225",
+      "chapter": 5,
+      "paragraph_id": "p65",
+      "block_type": "heading",
+      "text": "Akhir",
+      "text_markdown": "Akhir",
+      "title": "Akhir"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-226",
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "Pada tahun 1810, retakan mulai muncul dalam konfederasi.",
+      "text_markdown": "Pada tahun 1810, retakan mulai muncul dalam konfederasi.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus sepuluh, retakan mulai muncul dalam konfederasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-227",
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "Peperangan yang terus-menerus telah memakan korban pada kapal dan awaknya.",
+      "text_markdown": "Peperangan yang terus-menerus telah memakan korban pada kapal dan awaknya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Peperangan yang terus-menerus telah memakan korban pada kapal dan awaknya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-228",
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "Blokade pemerintah Qing mengganggu jalur pasokan di sepanjang pantai.",
+      "text_markdown": "Blokade pemerintah Qing mengganggu jalur pasokan di sepanjang pantai.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Blokade pemerintah Ching mengganggu jalur pasokan di sepanjang pantai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-229",
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "Dan persaingan internal antar kapten armada semakin memanas.",
+      "text_markdown": "Dan persaingan internal antar kapten armada semakin memanas.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dan persaingan internal antar kapten armada semakin memanas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-230",
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "Persaingan paling berbahaya adalah antara Zhang Bao dan seorang kapten bernama Guo Podai.",
+      "text_markdown": "Persaingan paling berbahaya adalah antara Zhang Bao dan seorang kapten bernama Guo Podai.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Persaingan paling berbahaya adalah antara Zhang Bao dan seorang kapten bernama Guo Podai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-231",
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "Guo Podai memimpin Armada Bendera Hitam, yang terbesar kedua dalam konfederasi.",
+      "text_markdown": "Guo Podai memimpin Armada Bendera Hitam, yang terbesar kedua dalam konfederasi.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Guo Podai memimpin Armada Bendera Hitam, yang terbesar kedua dalam konfederasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-232",
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "Dia membenci menerima perintah dari Zhang Bao dan, secara tidak langsung, dari Zheng Yi Sao.",
+      "text_markdown": "Dia membenci menerima perintah dari Zhang Bao dan, secara tidak langsung, dari Zheng Yi Sao.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia membenci menerima perintah dari Zhang Bao dan, secara tidak langsung, dari Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-233",
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "Ketegangan di antara mereka mengancam akan memecah konfederasi menjadi dua.",
+      "text_markdown": "Ketegangan di antara mereka mengancam akan memecah konfederasi menjadi dua.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Ketegangan di antara mereka mengancam akan memecah konfederasi menjadi dua.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-234",
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "Pada awal tahun 1810, Guo Podai membuat keputusan yang menentukan.",
+      "text_markdown": "Pada awal tahun 1810, Guo Podai membuat keputusan yang menentukan.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Pada awal tahun seribu delapan ratus sepuluh, Guo Podai membuat keputusan yang menentukan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-235",
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "Dia membuka negosiasi rahasia dengan pemerintah Qing.",
+      "text_markdown": "Dia membuka negosiasi rahasia dengan pemerintah Qing.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia membuka negosiasi rahasia dengan pemerintah Ching.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-236",
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "Pemerintah menawarinya pengampunan penuh, jabatan militer, dan pembayaran tunai.",
+      "text_markdown": "Pemerintah menawarinya pengampunan penuh, jabatan militer, dan pembayaran tunai.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Pemerintah menawarinya pengampunan penuh, jabatan militer, dan pembayaran tunai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-237",
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "Sebagai imbalannya, dia akan berbalik melawan mantan sekutunya.",
+      "text_markdown": "Sebagai imbalannya, dia akan berbalik melawan mantan sekutunya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Sebagai imbalannya, dia akan berbalik melawan mantan sekutunya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-238",
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "Guo Podai menerima kesepakatan itu dan menyerahkan seluruh armadanya kepada pemerintah.",
+      "text_markdown": "Guo Podai menerima kesepakatan itu dan menyerahkan seluruh armadanya kepada pemerintah.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Guo Podai menerima kesepakatan itu dan menyerahkan seluruh armadanya kepada pemerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-239",
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "Dalam semalam, konfederasi kehilangan ratusan kapal dan ribuan pejuang.",
+      "text_markdown": "Dalam semalam, konfederasi kehilangan ratusan kapal dan ribuan pejuang.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dalam semalam, konfederasi kehilangan ratusan kapal dan ribuan pejuang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-240",
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "Lebih buruk lagi, Guo Podai kini menjabat sebagai komandan pemerintah, menggunakan pengetahuannya tentang taktik bajak laut untuk melawan mereka.",
+      "text_markdown": "Lebih buruk lagi, Guo Podai kini menjabat sebagai komandan pemerintah, menggunakan pengetahuannya tentang taktik bajak laut untuk melawan mereka.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Lebih buruk lagi, Guo Podai kini menjabat sebagai komandan pemerintah, menggunakan pengetahuannya tentang taktik bajak laut untuk melawan mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-241",
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "Keseimbangan kekuasaan telah bergeser secara dramatis.",
+      "text_markdown": "Keseimbangan kekuasaan telah bergeser secara dramatis.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Keseimbangan kekuasaan telah bergeser secara dramatis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-242",
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "text": "Zheng Yi Sao menilai situasi baru itu dengan kejernihan khasnya.",
+      "text_markdown": "Zheng Yi Sao menilai situasi baru itu dengan kejernihan khasnya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Zheng Yi Sao menilai situasi baru itu dengan kejernihan khasnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-243",
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "text": "Konfederasi itu melemah tetapi tidak hancur.",
+      "text_markdown": "Konfederasi itu melemah tetapi tidak hancur.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Konfederasi itu melemah tetapi tidak hancur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-244",
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "text": "Dia masih memimpin Armada Bendera Merah dan beberapa armada sekutu.",
+      "text_markdown": "Dia masih memimpin Armada Bendera Merah dan beberapa armada sekutu.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia masih memimpin Armada Bendera Merah dan beberapa armada sekutu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-245",
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "text": "Namun momentum telah berubah, dan dia mengetahuinya.",
+      "text_markdown": "Namun momentum telah berubah, dan dia mengetahuinya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Namun momentum telah berubah, dan dia mengetahuinya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-246",
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "text": "Dia membuat keputusan yang menunjukkan kejeniusan strategisnya.",
+      "text_markdown": "Dia membuat keputusan yang menunjukkan kejeniusan strategisnya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia membuat keputusan yang menunjukkan kejeniusan strategisnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-247",
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "text": "Daripada bertarung sampai mati, dia memilih untuk bernegosiasi dari posisi kekuatan yang tersisa.",
+      "text_markdown": "Daripada bertarung sampai mati, dia memilih untuk bernegosiasi dari posisi kekuatan yang tersisa.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Daripada bertarung sampai mati, dia memilih untuk bernegosiasi dari posisi kekuatan yang tersisa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-248",
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "text": "Dia membuka pembicaraan dengan pemerintah Qing melalui perantara.",
+      "text_markdown": "Dia membuka pembicaraan dengan pemerintah Qing melalui perantara.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia membuka pembicaraan dengan pemerintah Ching melalui perantara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-249",
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "text": "Tuntutannya berani dan spesifik.",
+      "text_markdown": "Tuntutannya berani dan spesifik.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Tuntutannya berani dan spesifik.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-250",
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "text": "Dia menuntut pengampunan penuh untuk dirinya sendiri dan untuk Zhang Bao.",
+      "text_markdown": "Dia menuntut pengampunan penuh untuk dirinya sendiri dan untuk Zhang Bao.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia menuntut pengampunan penuh untuk dirinya sendiri dan untuk Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-251",
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "text": "Dia menuntut agar para bajak lautnya diizinkan menyimpan kekayaan pribadi mereka.",
+      "text_markdown": "Dia menuntut agar para bajak lautnya diizinkan menyimpan kekayaan pribadi mereka.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia menuntut agar para bajak lautnya diizinkan menyimpan kekayaan pribadi mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-252",
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "text": "Dia menuntut agar Zhang Bao diberi pangkat di angkatan laut kekaisaran.",
+      "text_markdown": "Dia menuntut agar Zhang Bao diberi pangkat di angkatan laut kekaisaran.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia menuntut agar Zhang Bao diberi pangkat di angkatan laut kekaisaran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-253",
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "text": "Dan dia menuntut agar para bajak laut biasa yang menyerah tidak menghadapi hukuman.",
+      "text_markdown": "Dan dia menuntut agar para bajak laut biasa yang menyerah tidak menghadapi hukuman.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dan dia menuntut agar para bajak laut biasa yang menyerah tidak menghadapi hukuman.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-254",
+      "chapter": 5,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "text": "Pemerintah Qing enggan menerima persyaratan yang begitu murah hati.",
+      "text_markdown": "Pemerintah Qing enggan menerima persyaratan yang begitu murah hati.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Pemerintah Ching enggan menerima persyaratan yang begitu murah hati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-255",
+      "chapter": 5,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "text": "Memberikan pengampunan kepada bajak laut terasa seperti penghinaan bagi kekaisaran.",
+      "text_markdown": "Memberikan pengampunan kepada bajak laut terasa seperti penghinaan bagi kekaisaran.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Memberikan pengampunan kepada bajak laut terasa seperti penghinaan bagi kekaisaran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-256",
+      "chapter": 5,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "text": "Namun mereka telah mencoba kekerasan dan gagal.",
+      "text_markdown": "Namun mereka telah mencoba kekerasan dan gagal.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Namun mereka telah mencoba kekerasan dan gagal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-257",
+      "chapter": 5,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "text": "Negosiasi adalah satu-satunya pilihan yang tersisa.",
+      "text_markdown": "Negosiasi adalah satu-satunya pilihan yang tersisa.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Negosiasi adalah satu-satunya pilihan yang tersisa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-258",
+      "chapter": 5,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "text": "Pada April 1810, kesepakatan itu diselesaikan.",
+      "text_markdown": "Pada April 1810, kesepakatan itu diselesaikan.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Pada April tahun seribu delapan ratus sepuluh, kesepakatan itu diselesaikan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-259",
+      "chapter": 5,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "text": "Zheng Yi Sao menyerahkan armadanya kepada pemerintah.",
+      "text_markdown": "Zheng Yi Sao menyerahkan armadanya kepada pemerintah.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Zheng Yi Sao menyerahkan armadanya kepada pemerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-260",
+      "chapter": 5,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "text": "Sebagai gantinya, dia menerima semua yang telah dia minta.",
+      "text_markdown": "Sebagai gantinya, dia menerima semua yang telah dia minta.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Sebagai gantinya, dia menerima semua yang telah dia minta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-261",
+      "chapter": 5,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "text": "Zhang Bao diangkat sebagai letnan di angkatan laut Qing dengan komando 20 kapal.",
+      "text_markdown": "Zhang Bao diangkat sebagai letnan di angkatan laut Qing dengan komando 20 kapal.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Zhang Bao diangkat sebagai letnan di angkatan laut Ching dengan komando dua puluh kapal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-262",
+      "chapter": 5,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "text": "Para bajak laut diizinkan menyimpan sebagian dari kapal mereka.",
+      "text_markdown": "Para bajak laut diizinkan menyimpan sebagian dari kapal mereka.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Para bajak laut diizinkan menyimpan sebagian dari kapal mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-263",
+      "chapter": 5,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "text": "Mereka yang ingin kembali ke kehidupan sipil bebas melakukannya.",
+      "text_markdown": "Mereka yang ingin kembali ke kehidupan sipil bebas melakukannya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Mereka yang ingin kembali ke kehidupan sipil bebas melakukannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-264",
+      "chapter": 5,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "text": "Mereka yang ingin bergabung dengan angkatan laut kekaisaran disambut.",
+      "text_markdown": "Mereka yang ingin bergabung dengan angkatan laut kekaisaran disambut.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Mereka yang ingin bergabung dengan angkatan laut kekaisaran disambut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-265",
+      "chapter": 5,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "text": "Itu adalah penyerahan paling menguntungkan dalam sejarah pembajakan.",
+      "text_markdown": "Itu adalah penyerahan paling menguntungkan dalam sejarah pembajakan.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Itu adalah penyerahan paling menguntungkan dalam sejarah pembajakan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-266",
+      "chapter": 5,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "text": "Zheng Yi Sao pensiun dari laut sebagai wanita kaya.",
+      "text_markdown": "Zheng Yi Sao pensiun dari laut sebagai wanita kaya.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Zheng Yi Sao pensiun dari laut sebagai wanita kaya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-267",
+      "chapter": 5,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "text": "Dia menetap di Canton bersama Zhang Bao.",
+      "text_markdown": "Dia menetap di Canton bersama Zhang Bao.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia menetap di Canton bersama Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-268",
+      "chapter": 5,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "text": "Bersama-sama, mereka membuka rumah judi yang menjadi salah satu yang paling menguntungkan di kota itu.",
+      "text_markdown": "Bersama-sama, mereka membuka rumah judi yang menjadi salah satu yang paling menguntungkan di kota itu.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Bersama-sama, mereka membuka rumah judi yang menjadi salah satu yang paling menguntungkan di kota itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-269",
+      "chapter": 5,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "text": "Dia juga berinvestasi dalam perdagangan garam, yang menghasilkan pendapatan tetap selama bertahun-tahun.",
+      "text_markdown": "Dia juga berinvestasi dalam perdagangan garam, yang menghasilkan pendapatan tetap selama bertahun-tahun.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Dia juga berinvestasi dalam perdagangan garam, yang menghasilkan pendapatan tetap selama bertahun-tahun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-270",
+      "chapter": 5,
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "text": "Zhang Bao bertugas di angkatan laut kekaisaran dengan cemerlang selama beberapa tahun.",
+      "text_markdown": "Zhang Bao bertugas di angkatan laut kekaisaran dengan cemerlang selama beberapa tahun.",
+      "title": "Akhir",
+      "tts": {
+        "text": "Zhang Bao bertugas di angkatan laut kekaisaran dengan cemerlang selama beberapa tahun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-271",
+      "chapter": 5,
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "text": "Ia meninggal pada tahun 1822, saat masih dalam pelayanan pemerintah.",
+      "text_markdown": "Ia meninggal pada tahun 1822, saat masih dalam pelayanan pemerintah.",
+      "title": "Akhir Kisah",
+      "tts": {
+        "text": "Ia meninggal pada tahun seribu delapan ratus dua puluh dua, saat masih dalam pelayanan pemerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-272",
+      "chapter": 5,
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "text": "Kematiannya ditangisi dengan upacara militer penuh.",
+      "text_markdown": "Kematiannya ditangisi dengan upacara militer penuh.",
+      "title": "Akhir Kisah",
+      "tts": {
+        "text": "Kematiannya ditangisi dengan upacara militer penuh.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-273",
+      "chapter": 5,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "text": "Zheng Yi Sao hidup selama lebih dari dua dekade setelah meninggalkan dunia bajak laut.",
+      "text_markdown": "Zheng Yi Sao hidup selama lebih dari dua dekade setelah meninggalkan dunia bajak laut.",
+      "title": "Akhir Kisah",
+      "tts": {
+        "text": "Zheng Yi Sao hidup selama lebih dari dua dekade setelah meninggalkan dunia bajak laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-274",
+      "chapter": 5,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "text": "Ia mengelola kepentingan bisnisnya dan membesarkan keluarga di Kanton.",
+      "text_markdown": "Ia mengelola kepentingan bisnisnya dan membesarkan keluarga di Kanton.",
+      "title": "Akhir Kisah",
+      "tts": {
+        "text": "Ia mengelola kepentingan bisnisnya dan membesarkan keluarga di Kanton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-275",
+      "chapter": 5,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "text": "Ia meninggal pada tahun 1844, pada usia sekitar 69 tahun.",
+      "text_markdown": "Ia meninggal pada tahun 1844, pada usia sekitar 69 tahun.",
+      "title": "Akhir Kisah",
+      "tts": {
+        "text": "Ia meninggal pada tahun seribu delapan ratus empat puluh empat, pada usia sekitar enam puluh sembilan tahun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-276",
+      "chapter": 5,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "text": "Ia meninggal di ranjangnya sendiri, dikelilingi keluarganya, sebagai anggota masyarakat Kanton yang dihormati.",
+      "text_markdown": "Ia meninggal di ranjangnya sendiri, dikelilingi keluarganya, sebagai anggota masyarakat Kanton yang dihormati.",
+      "title": "Akhir Kisah",
+      "tts": {
+        "text": "Ia meninggal di ranjangnya sendiri, dikelilingi keluarganya, sebagai anggota masyarakat Kanton yang dihormati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "sentence_index": 0,
+      "id": "ch06-277",
+      "chapter": 6,
+      "paragraph_id": "p79",
+      "block_type": "heading",
+      "text": "Warisan",
+      "text_markdown": "Warisan",
+      "title": "Warisan"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-278",
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "text": "Karier Zheng Yi Sao unik dalam sejarah pembajakan.",
+      "text_markdown": "Karier Zheng Yi Sao unik dalam sejarah pembajakan.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Karier Zheng Yi Sao unik dalam sejarah pembajakan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-279",
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "text": "Tidak ada bajak laut lain, pria atau wanita, yang pernah memimpin pasukan dengan ukuran yang sebanding.",
+      "text_markdown": "Tidak ada bajak laut lain, pria atau wanita, yang pernah memimpin pasukan dengan ukuran yang sebanding.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Tidak ada bajak laut lain, pria atau wanita, yang pernah memimpin pasukan dengan ukuran yang sebanding.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-280",
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "text": "Tidak ada bajak laut lain yang membangun sistem hukum dan pemerintahan secanggih itu.",
+      "text_markdown": "Tidak ada bajak laut lain yang membangun sistem hukum dan pemerintahan secanggih itu.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Tidak ada bajak laut lain yang membangun sistem hukum dan pemerintahan secanggih itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-281",
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "text": "Dan tidak ada bajak laut lain yang menegosiasikan masa pensiun dengan persyaratan yang begitu menguntungkan.",
+      "text_markdown": "Dan tidak ada bajak laut lain yang menegosiasikan masa pensiun dengan persyaratan yang begitu menguntungkan.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Dan tidak ada bajak laut lain yang menegosiasikan masa pensiun dengan persyaratan yang begitu menguntungkan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-282",
+      "chapter": 6,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "text": "Keberhasilannya menantang banyak asumsi tentang peran wanita dalam sejarah.",
+      "text_markdown": "Keberhasilannya menantang banyak asumsi tentang peran wanita dalam sejarah.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Keberhasilannya menantang banyak asumsi tentang peran wanita dalam sejarah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-283",
+      "chapter": 6,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "text": "Ia naik ke tampuk kekuasaan dalam masyarakat yang hampir tidak memberikan hak hukum kepada wanita.",
+      "text_markdown": "Ia naik ke tampuk kekuasaan dalam masyarakat yang hampir tidak memberikan hak hukum kepada wanita.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Ia naik ke tampuk kekuasaan dalam masyarakat yang hampir tidak memberikan hak hukum kepada wanita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-284",
+      "chapter": 6,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "text": "Ia memimpin puluhan ribu pria di dunia yang menganggap wanita lebih rendah.",
+      "text_markdown": "Ia memimpin puluhan ribu pria di dunia yang menganggap wanita lebih rendah.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Ia memimpin puluhan ribu pria di dunia yang menganggap wanita lebih rendah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-285",
+      "chapter": 6,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "text": "Kisah hidupnya adalah bukti bahwa kemampuan tidak mengenal gender.",
+      "text_markdown": "Kisah hidupnya adalah bukti bahwa kemampuan tidak mengenal gender.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Kisah hidupnya adalah bukti bahwa kemampuan tidak mengenal gender.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-286",
+      "chapter": 6,
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "text": "Para sejarawan telah memperdebatkan alasan di balik kesuksesannya yang luar biasa.",
+      "text_markdown": "Para sejarawan telah memperdebatkan alasan di balik kesuksesannya yang luar biasa.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Para sejarawan telah memperdebatkan alasan di balik kesuksesannya yang luar biasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-287",
+      "chapter": 6,
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "text": "Beberapa menekankan kualitas pribadinya: kecerdasannya, ketegasannya, kemampuannya untuk menginspirasi kesetiaan.",
+      "text_markdown": "Beberapa menekankan kualitas pribadinya: kecerdasannya, ketegasannya, kemampuannya untuk menginspirasi kesetiaan.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Beberapa menekankan kualitas pribadinya: kecerdasannya, ketegasannya, kemampuannya untuk menginspirasi kesetiaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-288",
+      "chapter": 6,
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "text": "Yang lain menunjuk pada kondisi struktural yang memungkinkan kebangkitannya: kelemahan negara Qing, kemiskinan penduduk pesisir, dan geografi Laut Cina Selatan.",
+      "text_markdown": "Yang lain menunjuk pada kondisi struktural yang memungkinkan kebangkitannya: kelemahan negara Qing, kemiskinan penduduk pesisir, dan geografi Laut Cina Selatan.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Yang lain menunjuk pada kondisi struktural yang memungkinkan kebangkitannya: kelemahan negara Ching, kemiskinan penduduk pesisir, dan geografi Laut Cina Selatan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-289",
+      "chapter": 6,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "text": "Kebenarannya hampir pasti mencakup kedua faktor tersebut.",
+      "text_markdown": "Kebenarannya hampir pasti mencakup kedua faktor tersebut.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Kebenarannya hampir pasti mencakup kedua faktor tersebut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-290",
+      "chapter": 6,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "text": "Tanpa kondisi tersebut, bakatnya tidak akan memiliki panggung.",
+      "text_markdown": "Tanpa kondisi tersebut, bakatnya tidak akan memiliki panggung.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Tanpa kondisi tersebut, bakatnya tidak akan memiliki panggung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-291",
+      "chapter": 6,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "text": "Tanpa bakatnya, kondisi tersebut hanya akan menghasilkan kekacauan.",
+      "text_markdown": "Tanpa bakatnya, kondisi tersebut hanya akan menghasilkan kekacauan.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Tanpa bakatnya, kondisi tersebut hanya akan menghasilkan kekacauan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-292",
+      "chapter": 6,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "text": "Ia adalah orang yang tepat pada saat yang tepat dalam sejarah.",
+      "text_markdown": "Ia adalah orang yang tepat pada saat yang tepat dalam sejarah.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Ia adalah orang yang tepat pada saat yang tepat dalam sejarah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-293",
+      "chapter": 6,
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "text": "Kode hukumnya memengaruhi tata kelola bajak laut selama beberapa dekade setelah ia pensiun.",
+      "text_markdown": "Kode hukumnya memengaruhi tata kelola bajak laut selama beberapa dekade setelah ia pensiun.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Kode hukumnya memengaruhi tata kelola bajak laut selama beberapa dekade setelah ia pensiun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-294",
+      "chapter": 6,
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "text": "Para pemimpin bajak laut di Laut Cina Selatan kemudian mengadopsi sistem perpajakan dan hukum yang serupa.",
+      "text_markdown": "Para pemimpin bajak laut di Laut Cina Selatan kemudian mengadopsi sistem perpajakan dan hukum yang serupa.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Para pemimpin bajak laut di Laut Cina Selatan kemudian mengadopsi sistem perpajakan dan hukum yang serupa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-295",
+      "chapter": 6,
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "text": "Modelnya menunjukkan bahwa armada bajak laut dapat diorganisir seefektif angkatan laut nasional.",
+      "text_markdown": "Modelnya menunjukkan bahwa armada bajak laut dapat diorganisir seefektif angkatan laut nasional.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Modelnya menunjukkan bahwa armada bajak laut dapat diorganisir seefektif angkatan laut nasional.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-296",
+      "chapter": 6,
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "text": "Di zaman modern, Zheng Yi Sao telah menjadi ikon budaya.",
+      "text_markdown": "Di zaman modern, Zheng Yi Sao telah menjadi ikon budaya.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Di zaman modern, Zheng Yi Sao telah menjadi ikon budaya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-297",
+      "chapter": 6,
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "text": "Ia telah muncul dalam novel, film, dan permainan video di seluruh dunia.",
+      "text_markdown": "Ia telah muncul dalam novel, film, dan permainan video di seluruh dunia.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Ia telah muncul dalam novel, film, dan permainan video di seluruh dunia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-298",
+      "chapter": 6,
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "text": "Kisah hidupnya telah diterjemahkan ke dalam puluhan bahasa.",
+      "text_markdown": "Kisah hidupnya telah diterjemahkan ke dalam puluhan bahasa.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Kisah hidupnya telah diterjemahkan ke dalam puluhan bahasa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-299",
+      "chapter": 6,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "text": "Namun, banyak hal tentang hidupnya yang masih belum diketahui.",
+      "text_markdown": "Namun, banyak hal tentang hidupnya yang masih belum diketahui.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Namun, banyak hal tentang hidupnya yang masih belum diketahui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-300",
+      "chapter": 6,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "text": "Kami tidak mengetahui nama lahirnya dengan pasti.",
+      "text_markdown": "Kami tidak mengetahui nama lahirnya dengan pasti.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Kami tidak mengetahui nama lahirnya dengan pasti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-301",
+      "chapter": 6,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "text": "Kita tidak memiliki satu pun gambar wajahnya yang terverifikasi.",
+      "text_markdown": "Kita tidak memiliki satu pun gambar wajahnya yang terverifikasi.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Kita tidak memiliki satu pun gambar wajahnya yang terverifikasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-302",
+      "chapter": 6,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "text": "Sebagian besar yang kita ketahui berasal dari catatan pemerintah yang ditulis oleh musuh-musuhnya.",
+      "text_markdown": "Sebagian besar yang kita ketahui berasal dari catatan pemerintah yang ditulis oleh musuh-musuhnya.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Sebagian besar yang kita ketahui berasal dari catatan pemerintah yang ditulis oleh musuh-musuhnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-303",
+      "chapter": 6,
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "text": "Istana Qing memiliki setiap alasan untuk mengecilkan pencapaiannya.",
+      "text_markdown": "Istana Qing memiliki setiap alasan untuk mengecilkan pencapaiannya.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Istana Ching memiliki setiap alasan untuk mengecilkan pencapaiannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-304",
+      "chapter": 6,
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "text": "Banyak catatan resmi meremehkan perannya atau mengaitkan keberhasilannya dengan Zhang Bao.",
+      "text_markdown": "Banyak catatan resmi meremehkan perannya atau mengaitkan keberhasilannya dengan Zhang Bao.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Banyak catatan resmi meremehkan perannya atau mengaitkan keberhasilannya dengan Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-305",
+      "chapter": 6,
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "text": "Sejarawan harus membaca sumber-sumber ini dengan cermat, mengetahui bahwa sumber-sumber tersebut ditulis dengan motif politik.",
+      "text_markdown": "Sejarawan harus membaca sumber-sumber ini dengan cermat, mengetahui bahwa sumber-sumber tersebut ditulis dengan motif politik.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Sejarawan harus membaca sumber-sumber ini dengan cermat, mengetahui bahwa sumber-sumber tersebut ditulis dengan motif politik.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-306",
+      "chapter": 6,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "text": "Apa yang tidak bisa disembunyikan oleh catatan-catatan itu adalah skala pencapaiannya.",
+      "text_markdown": "Apa yang tidak bisa disembunyikan oleh catatan-catatan itu adalah skala pencapaiannya.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Apa yang tidak bisa disembunyikan oleh catatan-catatan itu adalah skala pencapaiannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-307",
+      "chapter": 6,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "text": "Dia membangun armada bajak laut terbesar dalam sejarah yang tercatat.",
+      "text_markdown": "Dia membangun armada bajak laut terbesar dalam sejarah yang tercatat.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Dia membangun armada bajak laut terbesar dalam sejarah yang tercatat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-308",
+      "chapter": 6,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "text": "Dia mengalahkan gabungan kekuatan Kekaisaran Qing dan angkatan laut Portugis.",
+      "text_markdown": "Dia mengalahkan gabungan kekuatan Kekaisaran Qing dan angkatan laut Portugis.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Dia mengalahkan gabungan kekuatan Kekaisaran Ching dan angkatan laut Portugis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-309",
+      "chapter": 6,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "text": "Dia pensiun dalam keadaan kaya, bebas, dan tak terkalahkan.",
+      "text_markdown": "Dia pensiun dalam keadaan kaya, bebas, dan tak terkalahkan.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Dia pensiun dalam keadaan kaya, bebas, dan tak terkalahkan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-310",
+      "chapter": 6,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "text": "Dalam sejarah panjang lautan, tidak ada orang lain yang melakukan hal itu.",
+      "text_markdown": "Dalam sejarah panjang lautan, tidak ada orang lain yang melakukan hal itu.",
+      "title": "Warisan",
+      "tts": {
+        "text": "Dalam sejarah panjang lautan, tidak ada orang lain yang melakukan hal itu.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

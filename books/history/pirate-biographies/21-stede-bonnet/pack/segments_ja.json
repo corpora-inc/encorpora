@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_stede_bonnet",
+  "language": "ja",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への覚え書き",
+      "text_markdown": "読者への覚え書き"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このシリーズのすべての海賊物語には、強靱で、機知に富み、あるいは追い詰められた人物が登場する。",
+      "text_markdown": "このシリーズのすべての海賊物語には、強靱で、機知に富み、あるいは追い詰められた人物が登場する。",
+      "tts": {
+        "text": "このシリーズのすべての海賊物語には、強靱で、機知に富み、あるいは追い詰められた人物が登場する。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スティード・ボネットは、そのいずれでもなかった。",
+      "text_markdown": "スティード・ボネットは、そのいずれでもなかった。",
+      "tts": {
+        "text": "スティード・ボネットは、そのいずれでもなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はバルバドスの裕福な砂糖農園主で、立派な家と良い教育を受けており、海賊になる理由など何一つなかった。",
+      "text_markdown": "彼はバルバドスの裕福な砂糖農園主で、立派な家と良い教育を受けており、海賊になる理由など何一つなかった。",
+      "tts": {
+        "text": "彼はバルバドスの裕福な砂糖農園主で、立派な家と良い教育を受けており、海賊になる理由など何一つなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それでも彼はなった。",
+      "text_markdown": "それでも彼はなった。",
+      "tts": {
+        "text": "それでも彼はなった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語は、海賊の歴史全体の中でも最も奇妙なものの一つである。",
+      "text_markdown": "彼の物語は、海賊の歴史全体の中でも最も奇妙なものの一つである。",
+      "tts": {
+        "text": "彼の物語は、海賊の歴史全体の中でも最も奇妙なものの一つである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は船を盗むのではなく、買った。",
+      "text_markdown": "彼は船を盗むのではなく、買った。",
+      "tts": {
+        "text": "彼は船を盗むのではなく、買った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は乗組員の忠誠を勝ち取るのではなく、雇った。",
+      "text_markdown": "彼は乗組員の忠誠を勝ち取るのではなく、雇った。",
+      "tts": {
+        "text": "彼は乗組員の忠誠を勝ち取るのではなく、雇った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は休暇に出かける男のような準備で犯罪の世界に船出した。",
+      "text_markdown": "彼は休暇に出かける男のような準備で犯罪の世界に船出した。",
+      "tts": {
+        "text": "彼は休暇に出かける男のような準備で犯罪の世界に船出した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほぼすべての記録によれば、彼は海賊として見事なまでに無能だった。",
+      "text_markdown": "ほぼすべての記録によれば、彼は海賊として見事なまでに無能だった。",
+      "tts": {
+        "text": "ほぼすべての記録によれば、彼は海賊として見事なまでに無能だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それでも彼の物語は深く教訓的である。",
+      "text_markdown": "それでも彼の物語は深く教訓的である。",
+      "tts": {
+        "text": "それでも彼の物語は深く教訓的である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ボネットにはそのいずれも備わっていなかったからこそ、海賊に実際に何が必要だったかを教えてくれる。",
+      "text_markdown": "ボネットにはそのいずれも備わっていなかったからこそ、海賊に実際に何が必要だったかを教えてくれる。",
+      "tts": {
+        "text": "ボネットにはそのいずれも備わっていなかったからこそ、海賊に実際に何が必要だったかを教えてくれる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語はまた、海賊の黄金時代の最も有名な人物たちとも交差する。",
+      "text_markdown": "彼の物語はまた、海賊の黄金時代の最も有名な人物たちとも交差する。",
+      "tts": {
+        "text": "彼の物語はまた、海賊の黄金時代の最も有名な人物たちとも交差する。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は黒ひげ本人と共に航海した。",
+      "text_markdown": "彼は黒ひげ本人と共に航海した。",
+      "tts": {
+        "text": "彼はブラックビアード本人と共に航海した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚え書き",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはスティード・ボネットにとって良い結果にはならなかった。",
+      "text_markdown": "それはスティード・ボネットにとって良い結果にはならなかった。",
+      "tts": {
+        "text": "それはスティード・ボネットにとって良い結果にはならなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "カリブ海の世界",
+      "text_markdown": "カリブ海の世界"
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700年代初頭は海賊の黄金時代の最盛期だった。",
+      "text_markdown": "1700年代初頭は海賊の黄金時代の最盛期だった。",
+      "tts": {
+        "text": "千七百年代初頭は海賊の黄金時代の最盛期だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カリブ海はこの世界の中心であり、何千もの島々が点在する温かい水の広大な海盆だった。",
+      "text_markdown": "カリブ海はこの世界の中心であり、何千もの島々が点在する温かい水の広大な海盆だった。",
+      "tts": {
+        "text": "カリブ海はこの世界の中心であり、何千もの島々が点在する温かい水の広大な海盆だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこは海賊の楽園だった。",
+      "text_markdown": "そこは海賊の楽園だった。",
+      "tts": {
+        "text": "そこは海賊の楽園だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの帝国は二世紀以上にわたってカリブ海を巡って争ってきた。",
+      "text_markdown": "ヨーロッパの帝国は二世紀以上にわたってカリブ海を巡って争ってきた。",
+      "tts": {
+        "text": "ヨーロッパの帝国は二世紀以上にわたってカリブ海を巡って争ってきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン、イングランド、フランス、オランダのすべてが島嶼と本土の領土を主張した。",
+      "text_markdown": "スペイン、イングランド、フランス、オランダのすべてが島嶼と本土の領土を主張した。",
+      "tts": {
+        "text": "スペイン、イングランド、フランス、オランダのすべてが島嶼と本土の領土を主張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この地域を流れる富は驚異的だった。",
+      "text_markdown": "この地域を流れる富は驚異的だった。",
+      "tts": {
+        "text": "この地域を流れる富は驚異的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂糖はカリブ海の富の基盤だった。",
+      "text_markdown": "砂糖はカリブ海の富の基盤だった。",
+      "tts": {
+        "text": "砂糖はカリブ海の富の基盤だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "砂糖農園は島々を覆い、何十万人もの奴隷にされたアフリカ人が働いていた。",
+      "text_markdown": "砂糖農園は島々を覆い、何十万人もの奴隷にされたアフリカ人が働いていた。",
+      "tts": {
+        "text": "砂糖農園は島々を覆い、何十万人もの奴隷にされたアフリカ人が働いていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "砂糖貿易は農園主と彼らの製品を買うヨーロッパの商人に莫大な利益をもたらした。",
+      "text_markdown": "砂糖貿易は農園主と彼らの製品を買うヨーロッパの商人に莫大な利益をもたらした。",
+      "tts": {
+        "text": "砂糖貿易は農園主と彼らの製品を買うヨーロッパの商人に莫大な利益をもたらした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルバドスはカリブ海で最も裕福な砂糖の島の一つだった。",
+      "text_markdown": "バルバドスはカリブ海で最も裕福な砂糖の島の一つだった。",
+      "tts": {
+        "text": "バルバドスはカリブ海で最も裕福な砂糖の島の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドの植民者たちは1640年代からそこに砂糖農園を設立していた。",
+      "text_markdown": "イングランドの植民者たちは1640年代からそこに砂糖農園を設立していた。",
+      "tts": {
+        "text": "イングランドの植民者たちは千六百四十年代からそこに砂糖農園を設立していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1700年代初頭までに、この島は大英帝国で最も人口密度が高く、最も収益性の高い植民地の一つとなっていた。",
+      "text_markdown": "1700年代初頭までに、この島は大英帝国で最も人口密度が高く、最も収益性の高い植民地の一つとなっていた。",
+      "tts": {
+        "text": "千七百年代初頭までに、この島は大英帝国で最も人口密度が高く、最も収益性の高い植民地の一つとなっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルバドスの富は奴隷制の上に築かれていた。",
+      "text_markdown": "バルバドスの富は奴隷制の上に築かれていた。",
+      "tts": {
+        "text": "バルバドスの富は奴隷制の上に築かれていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裕福な農園主一人に対し、何百人もの奴隷が過酷な条件で働いていた。",
+      "text_markdown": "裕福な農園主一人に対し、何百人もの奴隷が過酷な条件で働いていた。",
+      "tts": {
+        "text": "裕福な農園主一人に対し、何百人もの奴隷が過酷な条件で働いていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "砂糖農園は甚大な苦しみの場所だった。",
+      "text_markdown": "砂糖農園は甚大な苦しみの場所だった。",
+      "tts": {
+        "text": "砂糖農園は甚大な苦しみの場所だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これがスティード・ボネットを裕福にした世界である。",
+      "text_markdown": "これがスティード・ボネットを裕福にした世界である。",
+      "tts": {
+        "text": "これがスティード・ボネットを裕福にした世界である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "農園の向こうには、カリブ海は無法の辺境地帯だった。",
+      "text_markdown": "農園の向こうには、カリブ海は無法の辺境地帯だった。",
+      "tts": {
+        "text": "農園の向こうには、カリブ海は無法の辺境地帯だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "島々の間の距離は広大だった。",
+      "text_markdown": "島々の間の距離は広大だった。",
+      "tts": {
+        "text": "島々の間の距離は広大だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海軍の哨戒は手薄で信頼できなかった。",
+      "text_markdown": "海軍の哨戒は手薄で信頼できなかった。",
+      "tts": {
+        "text": "海軍の哨戒は手薄で信頼できなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "高速の船と大胆な乗組員がいれば、商船を比較的罰せられることなく襲撃できた。",
+      "text_markdown": "高速の船と大胆な乗組員がいれば、商船を比較的罰せられることなく襲撃できた。",
+      "tts": {
+        "text": "高速の船と大胆な乗組員がいれば、商船を比較的罰せられることなく襲撃できた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1713年のスペイン継承戦争の終結により、カリブ海は失業した船乗りであふれた。",
+      "text_markdown": "1713年のスペイン継承戦争の終結により、カリブ海は失業した船乗りであふれた。",
+      "tts": {
+        "text": "千七百十三年のスペイン継承戦争の終結により、カリブ海は失業した船乗りであふれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦争中に私掠船として従軍していた何千人もの男たちが、突然合法的な仕事を失った。",
+      "text_markdown": "戦争中に私掠船として従軍していた何千人もの男たちが、突然合法的な仕事を失った。",
+      "tts": {
+        "text": "戦争中に私掠船として従軍していた何千人もの男たちが、突然合法的な仕事を失った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの者が、自分が知っている唯一の稼業として海賊に転じた。",
+      "text_markdown": "多くの者が、自分が知っている唯一の稼業として海賊に転じた。",
+      "tts": {
+        "text": "多くの者が、自分が知っている唯一の稼業として海賊に転じた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黄金時代の海賊たちは、数十年にわたって発展してきた一連の規則と慣習の下で活動していた。",
+      "text_markdown": "黄金時代の海賊たちは、数十年にわたって発展してきた一連の規則と慣習の下で活動していた。",
+      "tts": {
+        "text": "黄金時代の海賊たちは、数十年にわたって発展してきた一連の規則と慣習の下で活動していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船長は乗組員によって選出された。",
+      "text_markdown": "船長は乗組員によって選出された。",
+      "tts": {
+        "text": "船長は乗組員によって選出された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "略奪品は合意された配分に従って分配された。",
+      "text_markdown": "略奪品は合意された配分に従って分配された。",
+      "tts": {
+        "text": "略奪品は合意された配分に従って分配された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "規律は船長の絶対的な権威ではなく、集団の合意によって維持された。",
+      "text_markdown": "規律は船長の絶対的な権威ではなく、集団の合意によって維持された。",
+      "tts": {
+        "text": "規律は船長の絶対的な権威ではなく、集団の合意によって維持された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは荒削りな民主主義の一形態だった。",
+      "text_markdown": "これは荒削りな民主主義の一形態だった。",
+      "tts": {
+        "text": "これは荒削りな民主主義の一形態だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊船は大西洋世界で最も平等主義的な共同体の一つだった。",
+      "text_markdown": "海賊船は大西洋世界で最も平等主義的な共同体の一つだった。",
+      "tts": {
+        "text": "海賊船は大西洋世界で最も平等主義的な共同体の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あらゆる人種と背景の男たちが共に働いた。",
+      "text_markdown": "あらゆる人種と背景の男たちが共に働いた。",
+      "tts": {
+        "text": "あらゆる人種と背景の男たちが共に働いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "元奴隷が元海軍士官と並んで航海した。",
+      "text_markdown": "元奴隷が元海軍士官と並んで航海した。",
+      "tts": {
+        "text": "元奴隷が元海軍士官と並んで航海した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "成功する海賊の船長には特定の技能が必要だった。",
+      "text_markdown": "成功する海賊の船長には特定の技能が必要だった。",
+      "tts": {
+        "text": "成功する海賊の船長には特定の技能が必要だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "星を頼りに航海する必要があった。",
+      "text_markdown": "星を頼りに航海する必要があった。",
+      "tts": {
+        "text": "星を頼りに航海する必要があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "天候と海流を読む必要があった。",
+      "text_markdown": "天候と海流を読む必要があった。",
+      "tts": {
+        "text": "天候と海流を読む必要があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "危険な男たちの間で忠誠心を育み、対立を管理する必要があった。",
+      "text_markdown": "危険な男たちの間で忠誠心を育み、対立を管理する必要があった。",
+      "tts": {
+        "text": "危険な男たちの間で忠誠心を育み、対立を管理する必要があった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何よりも、海賊の船長には乗組員の敬意が必要だった。",
+      "text_markdown": "何よりも、海賊の船長には乗組員の敬意が必要だった。",
+      "tts": {
+        "text": "何よりも、海賊の船長には乗組員の敬意が必要だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員が船長への信頼を失えば、彼らは単に投票で船長を罷免した。",
+      "text_markdown": "乗組員が船長への信頼を失えば、彼らは単に投票で船長を罷免した。",
+      "tts": {
+        "text": "乗組員が船長への信頼を失えば、彼らは単に投票で船長を罷免した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "無能、臆病、または不公平な船長は、何の儀式もなく交代させられた。",
+      "text_markdown": "無能、臆病、または不公平な船長は、何の儀式もなく交代させられた。",
+      "tts": {
+        "text": "無能、臆病、または不公平な船長は、何の儀式もなく交代させられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年までに、イギリス政府は海賊行為の取り締まりを決定していた。",
+      "text_markdown": "1717年までに、イギリス政府は海賊行為の取り締まりを決定していた。",
+      "tts": {
+        "text": "千七百十七年までに、イギリス政府は海賊行為の取り締まりを決定していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジョージ一世は、特定の期限までに投降した海賊に恩赦を与える勅令を発布した。",
+      "text_markdown": "ジョージ一世は、特定の期限までに投降した海賊に恩赦を与える勅令を発布した。",
+      "tts": {
+        "text": "ジョージ一世は、特定の期限までに投降した海賊に恩赦を与える勅令を発布した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの海賊が恩赦を受け入れた。",
+      "text_markdown": "多くの海賊が恩赦を受け入れた。",
+      "tts": {
+        "text": "多くの海賊が恩赦を受け入れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それを無視した者もいた。",
+      "text_markdown": "それを無視した者もいた。",
+      "tts": {
+        "text": "それを無視した者もいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがスティード・ボネットが足を踏み入れることを選んだ世界だった。",
+      "text_markdown": "これがスティード・ボネットが足を踏み入れることを選んだ世界だった。",
+      "tts": {
+        "text": "これがスティード・ボネットが足を踏み入れることを選んだ世界だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "職業犯罪者、熟練した殺し屋、叩き上げの船乗りたちの世界。",
+      "text_markdown": "職業犯罪者、熟練した殺し屋、叩き上げの船乗りたちの世界。",
+      "tts": {
+        "text": "職業犯罪者、熟練した殺し屋、叩き上げの船乗りたちの世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はまったく関連する経験なしにそこに飛び込んだ。",
+      "text_markdown": "彼はまったく関連する経験なしにそこに飛び込んだ。",
+      "tts": {
+        "text": "彼はまったく関連する経験なしにそこに飛び込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "カリブ海の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "結果は予想通りだった。",
+      "text_markdown": "結果は予想通りだった。",
+      "tts": {
+        "text": "結果は予想通りだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "出自",
+      "text_markdown": "出自"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スティード・ボネットは1688年にバルバドスで生まれた。",
+      "text_markdown": "スティード・ボネットは1688年にバルバドスで生まれた。",
+      "tts": {
+        "text": "スティード・ボネットは千六百八十八年にバルバドスで生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の家族は島の地主階級の一員だった。",
+      "text_markdown": "彼の家族は島の地主階級の一員だった。",
+      "tts": {
+        "text": "彼の家族は島の地主階級の一員だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは収益性の高い砂糖農園を所有し、快適で特権的な生活を送っていた。",
+      "text_markdown": "彼らは収益性の高い砂糖農園を所有し、快適で特権的な生活を送っていた。",
+      "tts": {
+        "text": "彼らは収益性の高い砂糖農園を所有し、快適で特権的な生活を送っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は良い教育を受けた。これはカリブ海の植民地では珍しいことだった。",
+      "text_markdown": "彼は良い教育を受けた。これはカリブ海の植民地では珍しいことだった。",
+      "tts": {
+        "text": "彼は良い教育を受けた。これはカリブ海の植民地では珍しいことだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は読み書きが堪能だった。",
+      "text_markdown": "彼は読み書きが堪能だった。",
+      "tts": {
+        "text": "彼は読み書きが堪能だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "文学と歴史に通じていた。",
+      "text_markdown": "文学と歴史に通じていた。",
+      "tts": {
+        "text": "文学と歴史に通じていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一言で言えば、彼は紳士だった。",
+      "text_markdown": "一言で言えば、彼は紳士だった。",
+      "tts": {
+        "text": "一言で言えば、彼は紳士だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは家族の農園を相続し、かなりの資産家となった。",
+      "text_markdown": "ボネットは家族の農園を相続し、かなりの資産家となった。",
+      "tts": {
+        "text": "ボネットは家族の農園を相続し、かなりの資産家となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はバルバドス社会の尊敬される一員だった。",
+      "text_markdown": "彼はバルバドス社会の尊敬される一員だった。",
+      "tts": {
+        "text": "彼はバルバドス社会の尊敬される一員だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は島の民兵で少佐の階級を持っていた。これは社会的地位を示す役職だった。",
+      "text_markdown": "彼は島の民兵で少佐の階級を持っていた。これは社会的地位を示す役職だった。",
+      "tts": {
+        "text": "彼は島の民兵で少佐の階級を持っていた。これは社会的地位を示す役職だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はメアリー・アランビーという女性と結婚した。",
+      "text_markdown": "彼はメアリー・アランビーという女性と結婚した。",
+      "tts": {
+        "text": "彼はメアリー・アランビーという女性と結婚した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人の間には子どもが生まれた。",
+      "text_markdown": "二人の間には子どもが生まれた。",
+      "tts": {
+        "text": "二人の間には子どもが生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どこから見ても、スティード・ボネットはその時代の男が望みうるすべてを手にしていた。",
+      "text_markdown": "どこから見ても、スティード・ボネットはその時代の男が望みうるすべてを手にしていた。",
+      "tts": {
+        "text": "どこから見ても、スティード・ボネットはその時代の男が望みうるすべてを手にしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それでも何かが間違っていた。",
+      "text_markdown": "それでも何かが間違っていた。",
+      "tts": {
+        "text": "それでも何かが間違っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史的記録は、ボネットが深く不幸だったことを示唆している。",
+      "text_markdown": "歴史的記録は、ボネットが深く不幸だったことを示唆している。",
+      "tts": {
+        "text": "歴史的記録は、ボネットが深く不幸だったことを示唆している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最もよく挙げられる理由は彼の結婚生活である。",
+      "text_markdown": "最もよく挙げられる理由は彼の結婚生活である。",
+      "tts": {
+        "text": "最もよく挙げられる理由は彼の結婚生活である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "複数の資料が彼の家庭生活を悲惨なものとして描いている。",
+      "text_markdown": "複数の資料が彼の家庭生活を悲惨なものとして描いている。",
+      "tts": {
+        "text": "複数の資料が彼の家庭生活を悲惨なものとして描いている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある同時代の記録は、ボネットが妻の小言から逃れるために海賊になったと率直に述べている。",
+      "text_markdown": "ある同時代の記録は、ボネットが妻の小言から逃れるために海賊になったと率直に述べている。",
+      "tts": {
+        "text": "ある同時代の記録は、ボネットが妻の小言から逃れるために海賊になったと率直に述べている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これがメアリー・アランビーにとって公平かどうかは知る由もない。",
+      "text_markdown": "これがメアリー・アランビーにとって公平かどうかは知る由もない。",
+      "tts": {
+        "text": "これがメアリー・アランビーにとって公平かどうかは知る由もない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "わかっていることは、ボネットが海賊になるという決断が彼を知るすべての人を困惑させたということである。",
+      "text_markdown": "わかっていることは、ボネットが海賊になるという決断が彼を知るすべての人を困惑させたということである。",
+      "tts": {
+        "text": "わかっていることは、ボネットが海賊になるという決断が彼を知るすべての人を困惑させたということである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一部の歴史家は、ボネットが精神的な障害を患っていた可能性を示唆している。",
+      "text_markdown": "一部の歴史家は、ボネットが精神的な障害を患っていた可能性を示唆している。",
+      "tts": {
+        "text": "一部の歴史家は、ボネットが精神的な障害を患っていた可能性を示唆している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "同時代の人々は、彼が精神の混乱状態にあったという表現を使った。",
+      "text_markdown": "同時代の人々は、彼が精神の混乱状態にあったという表現を使った。",
+      "tts": {
+        "text": "同時代の人々は、彼が精神の混乱状態にあったという表現を使った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何かが彼を特権ある生活から犯罪の生活へと駆り立てた。",
+      "text_markdown": "何かが彼を特権ある生活から犯罪の生活へと駆り立てた。",
+      "tts": {
+        "text": "何かが彼を特権ある生活から犯罪の生活へと駆り立てた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年の春、ボネットは秘密裏にスループ船の建造を依頼した。",
+      "text_markdown": "1717年の春、ボネットは秘密裏にスループ船の建造を依頼した。",
+      "tts": {
+        "text": "千七百十七年の春、ボネットは秘密裏にスループ船の建造を依頼した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スループ船は、海賊に好まれた高速の単マスト帆船だった。",
+      "text_markdown": "スループ船は、海賊に好まれた高速の単マスト帆船だった。",
+      "tts": {
+        "text": "スループ船は、海賊に好まれた高速の単マスト帆船だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし海賊は船を買わなかった。",
+      "text_markdown": "しかし海賊は船を買わなかった。",
+      "tts": {
+        "text": "しかし海賊は船を買わなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "盗むのだ。",
+      "text_markdown": "盗むのだ。",
+      "tts": {
+        "text": "盗むのだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは自腹でスループ船の代金を支払った。",
+      "text_markdown": "ボネットは自腹でスループ船の代金を支払った。",
+      "tts": {
+        "text": "ボネットは自腹でスループ船の代金を支払った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はそれをリベンジ号と名付けた。",
+      "text_markdown": "彼はそれをリベンジ号と名付けた。",
+      "tts": {
+        "text": "彼はそれをリベンジ号と名付けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その名は恨みを暗示していたが、誰に対するものかは不明のままである。",
+      "text_markdown": "その名は恨みを暗示していたが、誰に対するものかは不明のままである。",
+      "tts": {
+        "text": "その名は恨みを暗示していたが、誰に対するものかは不明のままである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "おそらくそれは自らの不幸への復讐だったのだろう。",
+      "text_markdown": "おそらくそれは自らの不幸への復讐だったのだろう。",
+      "tts": {
+        "text": "おそらくそれは自らの不幸への復讐だったのだろう。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次に彼は約七十人の乗組員を雇った。",
+      "text_markdown": "次に彼は約七十人の乗組員を雇った。",
+      "tts": {
+        "text": "次に彼は約七十人の乗組員を雇った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "本物の海賊の船長は乗組員を雇わなかった。",
+      "text_markdown": "本物の海賊の船長は乗組員を雇わなかった。",
+      "tts": {
+        "text": "本物の海賊の船長は乗組員を雇わなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員が船長を選ぶのだ。",
+      "text_markdown": "乗組員が船長を選ぶのだ。",
+      "tts": {
+        "text": "乗組員が船長を選ぶのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ボネットは最初から関係を完全に逆転させていた。",
+      "text_markdown": "ボネットは最初から関係を完全に逆転させていた。",
+      "tts": {
+        "text": "ボネットは最初から関係を完全に逆転させていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼が雇った男たちは荒くれ者で、経験豊富な船乗り、そしておそらく元海賊も含まれていた。",
+      "text_markdown": "彼が雇った男たちは荒くれ者で、経験豊富な船乗り、そしておそらく元海賊も含まれていた。",
+      "tts": {
+        "text": "彼が雇った男たちは荒くれ者で、経験豊富な船乗り、そしておそらく元海賊も含まれていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはすぐに、新しい船長が航海や戦闘についてほとんど何も知らないことに気づいた。",
+      "text_markdown": "彼らはすぐに、新しい船長が航海や戦闘についてほとんど何も知らないことに気づいた。",
+      "tts": {
+        "text": "彼らはすぐに、新しい船長が航海や戦闘についてほとんど何も知らないことに気づいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼が金を払っていたので、彼らは従った。",
+      "text_markdown": "しかし彼が金を払っていたので、彼らは従った。",
+      "tts": {
+        "text": "しかし彼が金を払っていたので、彼らは従った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある夜、ボネットは闇に紛れてバルバドスのカーライル湾を出港した。",
+      "text_markdown": "ある夜、ボネットは闇に紛れてバルバドスのカーライル湾を出港した。",
+      "tts": {
+        "text": "ある夜、ボネットは闇に紛れてバルバドスのカーライル湾を出港した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は農園も、家族も、それまでの人生すべてを置き去りにした。",
+      "text_markdown": "彼は農園も、家族も、それまでの人生すべてを置き去りにした。",
+      "tts": {
+        "text": "彼は農園も、家族も、それまでの人生すべてを置き去りにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が向かっていたのは、自分が参加する資格など見事なまでになかった世界だった。",
+      "text_markdown": "彼が向かっていたのは、自分が参加する資格など見事なまでになかった世界だった。",
+      "tts": {
+        "text": "彼が向かっていたのは、自分が参加する資格など見事なまでになかった世界だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "紳士農園主は海賊になった。",
+      "text_markdown": "紳士農園主は海賊になった。",
+      "tts": {
+        "text": "紳士農園主は海賊になった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カリブ海はそのようなものを見たことがなかった。",
+      "text_markdown": "カリブ海はそのようなものを見たことがなかった。",
+      "tts": {
+        "text": "カリブ海はそのようなものを見たことがなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "出自",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "おそらく見たくもなかっただろう。",
+      "text_markdown": "おそらく見たくもなかっただろう。",
+      "tts": {
+        "text": "おそらく見たくもなかっただろう。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "紳士海賊",
+      "text_markdown": "紳士海賊"
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スティード・ボネットの初期の海賊としての経歴は、つまずきながらの、半ば成功した襲撃の連続だった。",
+      "text_markdown": "スティード・ボネットの初期の海賊としての経歴は、つまずきながらの、半ば成功した襲撃の連続だった。",
+      "tts": {
+        "text": "スティード・ボネットの初期の海賊としての経歴は、つまずきながらの、半ば成功した襲撃の連続だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はアメリカ沿岸に沿って北上し、いくつかの小型船を拿捕した。",
+      "text_markdown": "彼はアメリカ沿岸に沿って北上し、いくつかの小型船を拿捕した。",
+      "tts": {
+        "text": "彼はアメリカ沿岸に沿って北上し、いくつかの小型船を拿捕した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "獲物は控えめだったが、乗組員がただちに反乱を起こさない程度には十分だった。",
+      "text_markdown": "獲物は控えめだったが、乗組員がただちに反乱を起こさない程度には十分だった。",
+      "tts": {
+        "text": "獲物は控えめだったが、乗組員がただちに反乱を起こさない程度には十分だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はバージニアとカロライナの沿岸で船を拿捕した。",
+      "text_markdown": "彼はバージニアとカロライナの沿岸で船を拿捕した。",
+      "tts": {
+        "text": "彼はバージニアとカロライナの沿岸で船を拿捕した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ニューヨーク付近でも襲撃を行った。",
+      "text_markdown": "ニューヨーク付近でも襲撃を行った。",
+      "tts": {
+        "text": "ニューヨーク付近でも襲撃を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の手法は不器用だったが時折効果的だった。主な理由は、標的が反撃できない非武装の商船だったからである。",
+      "text_markdown": "彼の手法は不器用だったが時折効果的だった。主な理由は、標的が反撃できない非武装の商船だったからである。",
+      "tts": {
+        "text": "彼の手法は不器用だったが時折効果的だった。主な理由は、標的が反撃できない非武装の商船だったからである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットの航海知識の欠如は常に問題だった。",
+      "text_markdown": "ボネットの航海知識の欠如は常に問題だった。",
+      "tts": {
+        "text": "ボネットの航海知識の欠如は常に問題だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は航海術も、船の操縦も、海上戦闘も理解していなかった。",
+      "text_markdown": "彼は航海術も、船の操縦も、海上戦闘も理解していなかった。",
+      "tts": {
+        "text": "彼は航海術も、船の操縦も、海上戦闘も理解していなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員が実質的に彼の代わりに船を操り、彼が出す命令を丁重に無視していた。",
+      "text_markdown": "乗組員が実質的に彼の代わりに船を操り、彼が出す命令を丁重に無視していた。",
+      "tts": {
+        "text": "乗組員が実質的に彼の代わりに船を操り、彼が出す命令を丁重に無視していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "無能にもかかわらず、ボネットには一つだけ役に立つ資質があった。",
+      "text_markdown": "無能にもかかわらず、ボネットには一つだけ役に立つ資質があった。",
+      "tts": {
+        "text": "無能にもかかわらず、ボネットには一つだけ役に立つ資質があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員への支払いが気前よかったのだ。",
+      "text_markdown": "乗組員への支払いが気前よかったのだ。",
+      "tts": {
+        "text": "乗組員への支払いが気前よかったのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほとんどの海賊の船長は略奪品を配分に従って分けた。",
+      "text_markdown": "ほとんどの海賊の船長は略奪品を配分に従って分けた。",
+      "tts": {
+        "text": "ほとんどの海賊の船長は略奪品を配分に従って分けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ボネットは単に私財から部下に給料を払った。前代未聞の仕組みだった。",
+      "text_markdown": "ボネットは単に私財から部下に給料を払った。前代未聞の仕組みだった。",
+      "tts": {
+        "text": "ボネットは単に私財から部下に給料を払った。前代未聞の仕組みだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "金が安定して入るので、乗組員は彼のリーダーシップを我慢した。",
+      "text_markdown": "金が安定して入るので、乗組員は彼のリーダーシップを我慢した。",
+      "tts": {
+        "text": "金が安定して入るので、乗組員は彼のリーダーシップを我慢した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊の不確実な世界では、確実に支払う船長には一定の価値があった。たとえ港から出る道さえわからなくとも。",
+      "text_markdown": "海賊の不確実な世界では、確実に支払う船長には一定の価値があった。たとえ港から出る道さえわからなくとも。",
+      "tts": {
+        "text": "海賊の不確実な世界では、確実に支払う船長には一定の価値があった。たとえ港から出る道さえわからなくとも。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "紳士海賊としてのボネットの評判は瞬く間に広まった。",
+      "text_markdown": "紳士海賊としてのボネットの評判は瞬く間に広まった。",
+      "tts": {
+        "text": "紳士海賊としてのボネットの評判は瞬く間に広まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裕福な農園主が海賊に転じたという珍事は、たまらない噂話だった。",
+      "text_markdown": "裕福な農園主が海賊に転じたという珍事は、たまらない噂話だった。",
+      "tts": {
+        "text": "裕福な農園主が海賊に転じたという珍事は、たまらない噂話だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "沿岸の誰もがこの話を知っていた。",
+      "text_markdown": "沿岸の誰もがこの話を知っていた。",
+      "tts": {
+        "text": "沿岸の誰もがこの話を知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大半の人はそれを愉快だと思った。",
+      "text_markdown": "大半の人はそれを愉快だと思った。",
+      "tts": {
+        "text": "大半の人はそれを愉快だと思った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして1717年の秋、スティード・ボネットはカリブ海で最も悪名高い海賊と出会った。",
+      "text_markdown": "そして1717年の秋、スティード・ボネットはカリブ海で最も悪名高い海賊と出会った。",
+      "tts": {
+        "text": "そして千七百十七年の秋、スティード・ボネットはカリブ海で最も悪名高い海賊と出会った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はエドワード・ティーチ、歴史上黒ひげとして知られる男と出会った。",
+      "text_markdown": "彼はエドワード・ティーチ、歴史上黒ひげとして知られる男と出会った。",
+      "tts": {
+        "text": "彼はエドワード・ティーチ、歴史上ブラックビアードとして知られる男と出会った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この出会いがボネットの残りの海賊人生を決定づけることになる。",
+      "text_markdown": "この出会いがボネットの残りの海賊人生を決定づけることになる。",
+      "tts": {
+        "text": "この出会いがボネットの残りの海賊人生を決定づけることになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒ひげはボネットにないすべてを備えていた。",
+      "text_markdown": "黒ひげはボネットにないすべてを備えていた。",
+      "tts": {
+        "text": "ブラックビアードはボネットにないすべてを備えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は経験豊富で、冷酷で、カリスマ的で、恐ろしかった。",
+      "text_markdown": "彼は経験豊富で、冷酷で、カリスマ的で、恐ろしかった。",
+      "tts": {
+        "text": "彼は経験豊富で、冷酷で、カリスマ的で、恐ろしかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は技量と威嚇を組み合わせて乗組員を指揮した。",
+      "text_markdown": "彼は技量と威嚇を組み合わせて乗組員を指揮した。",
+      "tts": {
+        "text": "彼は技量と威嚇を組み合わせて乗組員を指揮した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は暴力的な男たちの生まれながらの指導者だった。",
+      "text_markdown": "彼は暴力的な男たちの生まれながらの指導者だった。",
+      "tts": {
+        "text": "彼は暴力的な男たちの生まれながらの指導者だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒ひげはボネットの状況を見て、すぐに好機を悟った。",
+      "text_markdown": "黒ひげはボネットの状況を見て、すぐに好機を悟った。",
+      "tts": {
+        "text": "ブラックビアードはボネットの状況を見て、すぐに好機を悟った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ここに、立派な船を持ちながらそれを指揮する能力のない男がいた。",
+      "text_markdown": "ここに、立派な船を持ちながらそれを指揮する能力のない男がいた。",
+      "tts": {
+        "text": "ここに、立派な船を持ちながらそれを指揮する能力のない男がいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黒ひげはボネットに共同戦線を張ろうと提案した。",
+      "text_markdown": "黒ひげはボネットに共同戦線を張ろうと提案した。",
+      "tts": {
+        "text": "ブラックビアードはボネットに共同戦線を張ろうと提案した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "実際にやったことは、乗っ取りだった。",
+      "text_markdown": "実際にやったことは、乗っ取りだった。",
+      "tts": {
+        "text": "実際にやったことは、乗っ取りだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒ひげは自分の部下の一人をリベンジ号の指揮官に据えた。",
+      "text_markdown": "黒ひげは自分の部下の一人をリベンジ号の指揮官に据えた。",
+      "tts": {
+        "text": "ブラックビアードは自分の部下の一人をリベンジ号の指揮官に据えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ボネットは黒ひげの旗艦クイーン・アンズ・リベンジに、客人として移された。",
+      "text_markdown": "ボネットは黒ひげの旗艦クイーン・アンズ・リベンジに、客人として移された。",
+      "tts": {
+        "text": "ボネットはブラックビアードの旗艦クイーン・アンズ・リベンジに、客人として移された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人質が客人であるのと同じ意味での客人だった。",
+      "text_markdown": "人質が客人であるのと同じ意味での客人だった。",
+      "tts": {
+        "text": "人質が客人であるのと同じ意味での客人だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼には何の権限も役割もなかった。",
+      "text_markdown": "彼には何の権限も役割もなかった。",
+      "tts": {
+        "text": "彼には何の権限も役割もなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "複数の証言によれば、ボネットは黒ひげの船上で読書をし、ガウン姿で甲板を散歩して過ごした。",
+      "text_markdown": "複数の証言によれば、ボネットは黒ひげの船上で読書をし、ガウン姿で甲板を散歩して過ごした。",
+      "tts": {
+        "text": "複数の証言によれば、ボネットはブラックビアードの船上で読書をし、ガウン姿で甲板を散歩して過ごした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は下手な海賊船長から、船長ですらない存在に成り下がった。",
+      "text_markdown": "彼は下手な海賊船長から、船長ですらない存在に成り下がった。",
+      "tts": {
+        "text": "彼は下手な海賊船長から、船長ですらない存在に成り下がった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はかつて自分の船だったものの上の一乗客だった。",
+      "text_markdown": "彼はかつて自分の船だったものの上の一乗客だった。",
+      "tts": {
+        "text": "彼はかつて自分の船だったものの上の一乗客だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乗組員はこの取り決めに不満ではなかった。",
+      "text_markdown": "乗組員はこの取り決めに不満ではなかった。",
+      "tts": {
+        "text": "乗組員はこの取り決めに不満ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黒ひげはボネットよりはるかに有能な指導者だった。",
+      "text_markdown": "黒ひげはボネットよりはるかに有能な指導者だった。",
+      "tts": {
+        "text": "ブラックビアードはボネットよりはるかに有能な指導者だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黒ひげの指揮下で、合同艦隊はより豊かな獲物を捕らえ、より効率的に活動した。",
+      "text_markdown": "黒ひげの指揮下で、合同艦隊はより豊かな獲物を捕らえ、より効率的に活動した。",
+      "tts": {
+        "text": "ブラックビアードの指揮下で、合同艦隊はより豊かな獲物を捕らえ、より効率的に活動した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数ヶ月にわたり、ボネットは黒ひげの部下として航海した。",
+      "text_markdown": "数ヶ月にわたり、ボネットは黒ひげの部下として航海した。",
+      "tts": {
+        "text": "数ヶ月にわたり、ボネットはブラックビアードの部下として航海した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはアメリカ沿岸とカリブ海で船を襲撃した。",
+      "text_markdown": "彼らはアメリカ沿岸とカリブ海で船を襲撃した。",
+      "tts": {
+        "text": "彼らはアメリカ沿岸とカリブ海で船を襲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黒ひげはますます裕福になった。",
+      "text_markdown": "黒ひげはますます裕福になった。",
+      "tts": {
+        "text": "ブラックビアードはますます裕福になった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ボネットはますます無用の存在になった。",
+      "text_markdown": "ボネットはますます無用の存在になった。",
+      "tts": {
+        "text": "ボネットはますます無用の存在になった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年5月、黒ひげは艦隊をサウスカロライナのチャールストンに率い、港全体を封鎖した。",
+      "text_markdown": "1718年5月、黒ひげは艦隊をサウスカロライナのチャールストンに率い、港全体を封鎖した。",
+      "tts": {
+        "text": "千七百十八年五月、ブラックビアードは艦隊をサウスカロライナのチャールストンに率い、港全体を封鎖した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはアメリカ史上最も大胆な海賊行為の一つだった。",
+      "text_markdown": "それはアメリカ史上最も大胆な海賊行為の一つだった。",
+      "tts": {
+        "text": "それはアメリカ史上最も大胆な海賊行為の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "港に出入りする船が拿捕された。",
+      "text_markdown": "港に出入りする船が拿捕された。",
+      "tts": {
+        "text": "港に出入りする船が拿捕された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "都市は事実上、人質にされた。",
+      "text_markdown": "都市は事実上、人質にされた。",
+      "tts": {
+        "text": "都市は事実上、人質にされた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒ひげの要求は異例だった。",
+      "text_markdown": "黒ひげの要求は異例だった。",
+      "tts": {
+        "text": "ブラックビアードの要求は異例だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は金や財宝を求めなかった。",
+      "text_markdown": "彼は金や財宝を求めなかった。",
+      "tts": {
+        "text": "彼は金や財宝を求めなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が要求したのは薬箱だった。",
+      "text_markdown": "彼が要求したのは薬箱だった。",
+      "tts": {
+        "text": "彼が要求したのは薬箱だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "乗組員が性病に苦しんでおり、医療品が必要だったのだ。",
+      "text_markdown": "乗組員が性病に苦しんでおり、医療品が必要だったのだ。",
+      "tts": {
+        "text": "乗組員が性病に苦しんでおり、医療品が必要だったのだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チャールストン市はこれに従った。",
+      "text_markdown": "チャールストン市はこれに従った。",
+      "tts": {
+        "text": "チャールストン市はこれに従った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "薬が届けられ、黒ひげは人質を解放した。",
+      "text_markdown": "薬が届けられ、黒ひげは人質を解放した。",
+      "tts": {
+        "text": "薬が届けられ、ブラックビアードは人質を解放した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この一件は黒ひげの大胆さと状況の完全な掌握を示していた。",
+      "text_markdown": "この一件は黒ひげの大胆さと状況の完全な掌握を示していた。",
+      "tts": {
+        "text": "この一件はブラックビアードの大胆さと状況の完全な掌握を示していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットはこのすべてを傍観していた。",
+      "text_markdown": "ボネットはこのすべてを傍観していた。",
+      "tts": {
+        "text": "ボネットはこのすべてを傍観していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は海賊史上最も有名な出来事の一つに居合わせた。",
+      "text_markdown": "彼は海賊史上最も有名な出来事の一つに居合わせた。",
+      "tts": {
+        "text": "彼は海賊史上最も有名な出来事の一つに居合わせた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "紳士海賊",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はそれに何の貢献もしなかった。",
+      "text_markdown": "彼はそれに何の貢献もしなかった。",
+      "tts": {
+        "text": "彼はそれに何の貢献もしなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "恩赦",
+      "text_markdown": "恩赦"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チャールストン封鎖の直後、黒ひげは国王の恩赦を利用することを決めた。",
+      "text_markdown": "チャールストン封鎖の直後、黒ひげは国王の恩赦を利用することを決めた。",
+      "tts": {
+        "text": "チャールストン封鎖の直後、ブラックビアードは国王の恩赦を利用することを決めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はノースカロライナのバスタウンに向かい、総督に投降した。",
+      "text_markdown": "彼はノースカロライナのバスタウンに向かい、総督に投降した。",
+      "tts": {
+        "text": "彼はノースカロライナのバスタウンに向かい、総督に投降した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は恩赦を受け、少なくとも一時的には落ち着いた。",
+      "text_markdown": "彼は恩赦を受け、少なくとも一時的には落ち着いた。",
+      "tts": {
+        "text": "彼は恩赦を受け、少なくとも一時的には落ち着いた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その前に、黒ひげはボネットに最後の裏切りを行った。",
+      "text_markdown": "その前に、黒ひげはボネットに最後の裏切りを行った。",
+      "tts": {
+        "text": "その前に、ブラックビアードはボネットに最後の裏切りを行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はリベンジ号から物資を剥ぎ取り、ボネットの元の乗組員の多くを砂州に置き去りにした。",
+      "text_markdown": "彼はリベンジ号から物資を剥ぎ取り、ボネットの元の乗組員の多くを砂州に置き去りにした。",
+      "tts": {
+        "text": "彼はリベンジ号から物資を剥ぎ取り、ボネットの元の乗組員の多くを砂州に置き去りにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最上の略奪品は自分のものにした。",
+      "text_markdown": "最上の略奪品は自分のものにした。",
+      "tts": {
+        "text": "最上の略奪品は自分のものにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ボネットには空っぽの船と、見捨てられた男たちの乗組員が残された。",
+      "text_markdown": "ボネットには空っぽの船と、見捨てられた男たちの乗組員が残された。",
+      "tts": {
+        "text": "ボネットには空っぽの船と、見捨てられた男たちの乗組員が残された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは激怒した。",
+      "text_markdown": "ボネットは激怒した。",
+      "tts": {
+        "text": "ボネットは激怒した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は黒ひげを追い詰めて復讐すると誓った。",
+      "text_markdown": "彼は黒ひげを追い詰めて復讐すると誓った。",
+      "tts": {
+        "text": "彼はブラックビアードを追い詰めて復讐すると誓った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の船の名前がこれほどふさわしかったことはなかった。",
+      "text_markdown": "彼の船の名前がこれほどふさわしかったことはなかった。",
+      "tts": {
+        "text": "彼の船の名前がこれほどふさわしかったことはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし彼は黒ひげを捕まえることはなく、その脅しは空虚だった。",
+      "text_markdown": "しかし彼は黒ひげを捕まえることはなく、その脅しは空虚だった。",
+      "tts": {
+        "text": "しかし彼はブラックビアードを捕まえることはなく、その脅しは空虚だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは自らも恩赦を求めることにした。",
+      "text_markdown": "ボネットは自らも恩赦を求めることにした。",
+      "tts": {
+        "text": "ボネットは自らも恩赦を求めることにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は黒ひげが恩赦を受けたのと同じバスタウンに向かい、当局に投降した。",
+      "text_markdown": "彼は黒ひげが恩赦を受けたのと同じバスタウンに向かい、当局に投降した。",
+      "tts": {
+        "text": "彼はブラックビアードが恩赦を受けたのと同じバスタウンに向かい、当局に投降した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は1718年の夏に国王の恩赦を得た。",
+      "text_markdown": "彼は1718年の夏に国王の恩赦を得た。",
+      "tts": {
+        "text": "彼は千七百十八年の夏に国王の恩赦を得た。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "恩赦の条件は、ボネットが海賊行為を完全にやめることだった。",
+      "text_markdown": "恩赦の条件は、ボネットが海賊行為を完全にやめることだった。",
+      "tts": {
+        "text": "恩赦の条件は、ボネットが海賊行為を完全にやめることだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は法律を守る市民になるはずだった。",
+      "text_markdown": "彼は法律を守る市民になるはずだった。",
+      "tts": {
+        "text": "彼は法律を守る市民になるはずだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の財産と教養からすれば、これは容易なはずだった。",
+      "text_markdown": "彼の財産と教養からすれば、これは容易なはずだった。",
+      "tts": {
+        "text": "彼の財産と教養からすれば、これは容易なはずだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そうはならなかった。",
+      "text_markdown": "そうはならなかった。",
+      "tts": {
+        "text": "そうはならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ボネットはわずか数週間で海賊に逆戻りした。",
+      "text_markdown": "ボネットはわずか数週間で海賊に逆戻りした。",
+      "tts": {
+        "text": "ボネットはわずか数週間で海賊に逆戻りした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちはその理由を議論してきた。",
+      "text_markdown": "歴史家たちはその理由を議論してきた。",
+      "tts": {
+        "text": "歴史家たちはその理由を議論してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "リベンジ号とその乗組員に財産を使い果たし、帰る余裕がなかったと考える者もいる。",
+      "text_markdown": "リベンジ号とその乗組員に財産を使い果たし、帰る余裕がなかったと考える者もいる。",
+      "tts": {
+        "text": "リベンジ号とその乗組員に財産を使い果たし、帰る余裕がなかったと考える者もいる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットはあまりにも多くの橋を焼いてしまったのだと示唆する者もいる。",
+      "text_markdown": "ボネットはあまりにも多くの橋を焼いてしまったのだと示唆する者もいる。",
+      "tts": {
+        "text": "ボネットはあまりにも多くの橋を焼いてしまったのだと示唆する者もいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルバドスに戻ることはできなかった。",
+      "text_markdown": "バルバドスに戻ることはできなかった。",
+      "tts": {
+        "text": "バルバドスに戻ることはできなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は家族と農園を捨てた指名手配中の海賊だった。",
+      "text_markdown": "彼は家族と農園を捨てた指名手配中の海賊だった。",
+      "tts": {
+        "text": "彼は家族と農園を捨てた指名手配中の海賊だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊行為は、どれほど下手だったとしても、彼に残された唯一の人生だった。",
+      "text_markdown": "海賊行為は、どれほど下手だったとしても、彼に残された唯一の人生だった。",
+      "tts": {
+        "text": "海賊行為は、どれほど下手だったとしても、彼に残された唯一の人生だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は偽名を名乗り、トーマス船長と自称した。",
+      "text_markdown": "彼は偽名を名乗り、トーマス船長と自称した。",
+      "tts": {
+        "text": "彼は偽名を名乗り、トーマス船長と自称した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船の名をロイヤル・ジェームズ号に改めた。",
+      "text_markdown": "船の名をロイヤル・ジェームズ号に改めた。",
+      "tts": {
+        "text": "船の名をロイヤル・ジェームズ号に改めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの偽装が自分を守ってくれると考えた。",
+      "text_markdown": "これらの偽装が自分を守ってくれると考えた。",
+      "tts": {
+        "text": "これらの偽装が自分を守ってくれると考えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "守ってはくれなかった。",
+      "text_markdown": "守ってはくれなかった。",
+      "tts": {
+        "text": "守ってはくれなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はカロライナ沿岸で船の襲撃を再開した。",
+      "text_markdown": "彼はカロライナ沿岸で船の襲撃を再開した。",
+      "tts": {
+        "text": "彼はカロライナ沿岸で船の襲撃を再開した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "標的はほとんどが小型の商船だった。",
+      "text_markdown": "標的はほとんどが小型の商船だった。",
+      "tts": {
+        "text": "標的はほとんどが小型の商船だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "獲物は大きくなかったが、乗組員を養うには十分だった。",
+      "text_markdown": "獲物は大きくなかったが、乗組員を養うには十分だった。",
+      "tts": {
+        "text": "獲物は大きくなかったが、乗組員を養うには十分だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ボネットはかつての平凡な海賊稼業に戻っていた。",
+      "text_markdown": "ボネットはかつての平凡な海賊稼業に戻っていた。",
+      "tts": {
+        "text": "ボネットはかつての平凡な海賊稼業に戻っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チャールストンの当局は彼を止める決意を固めていた。",
+      "text_markdown": "チャールストンの当局は彼を止める決意を固めていた。",
+      "tts": {
+        "text": "チャールストンの当局は彼を止める決意を固めていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "著名な市民で民兵の指導者であるウィリアム・レット大佐が、海賊に対する遠征の指揮を志願した。",
+      "text_markdown": "著名な市民で民兵の指導者であるウィリアム・レット大佐が、海賊に対する遠征の指揮を志願した。",
+      "tts": {
+        "text": "著名な市民で民兵の指導者であるウィリアム・レット大佐が、海賊に対する遠征の指揮を志願した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "レットには武装したスループ船二隻と経験豊富な戦闘員の一隊が与えられた。",
+      "text_markdown": "レットには武装したスループ船二隻と経験豊富な戦闘員の一隊が与えられた。",
+      "tts": {
+        "text": "レットには武装したスループ船二隻と経験豊富な戦闘員の一隊が与えられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "レットはボネットをノースカロライナのケープ・フィア川まで追跡した。",
+      "text_markdown": "レットはボネットをノースカロライナのケープ・フィア川まで追跡した。",
+      "tts": {
+        "text": "レットはボネットをノースカロライナのケープ・フィア川まで追跡した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ボネットは船の修理のためにそこに停泊していた。",
+      "text_markdown": "ボネットは船の修理のためにそこに停泊していた。",
+      "tts": {
+        "text": "ボネットは船の修理のためにそこに停泊していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は脆弱な位置にいた。レットはそれを知っていた。",
+      "text_markdown": "彼は脆弱な位置にいた。レットはそれを知っていた。",
+      "tts": {
+        "text": "彼は脆弱な位置にいた。レットはそれを知っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ケープ・フィア川の戦いは1718年9月に行われた。",
+      "text_markdown": "ケープ・フィア川の戦いは1718年9月に行われた。",
+      "tts": {
+        "text": "ケープ・フィア川の戦いは千七百十八年九月に行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは混乱した、不器用な交戦だった。",
+      "text_markdown": "それは混乱した、不器用な交戦だった。",
+      "tts": {
+        "text": "それは混乱した、不器用な交戦だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "レットの船もボネットの船も、さまざまな場面で砂州に乗り上げた。",
+      "text_markdown": "レットの船もボネットの船も、さまざまな場面で砂州に乗り上げた。",
+      "tts": {
+        "text": "レットの船もボネットの船も、さまざまな場面で砂州に乗り上げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "戦闘は何時間も続いた。",
+      "text_markdown": "戦闘は何時間も続いた。",
+      "tts": {
+        "text": "戦闘は何時間も続いた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最終的に、レットの数的優位が勝った。",
+      "text_markdown": "最終的に、レットの数的優位が勝った。",
+      "tts": {
+        "text": "最終的に、レットの数的優位が勝った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員がこれ以上戦うことを拒否した後、ボネットは降伏した。",
+      "text_markdown": "乗組員がこれ以上戦うことを拒否した後、ボネットは降伏した。",
+      "tts": {
+        "text": "乗組員がこれ以上戦うことを拒否した後、ボネットは降伏した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紳士海賊は捕らえられた。",
+      "text_markdown": "紳士海賊は捕らえられた。",
+      "tts": {
+        "text": "紳士海賊は捕らえられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは鎖につながれてチャールストンに連行された。",
+      "text_markdown": "ボネットは鎖につながれてチャールストンに連行された。",
+      "tts": {
+        "text": "ボネットは鎖につながれてチャールストンに連行された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黒ひげがわずか数ヶ月前に封鎖したその都市に、今や独自の海賊が送り届けられた。",
+      "text_markdown": "黒ひげがわずか数ヶ月前に封鎖したその都市に、今や独自の海賊が送り届けられた。",
+      "tts": {
+        "text": "ブラックビアードがわずか数ヶ月前に封鎖したその都市に、今や独自の海賊が送り届けられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "恩赦",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そして黒ひげとは違い、こちらは逃がしてもらえなかった。",
+      "text_markdown": "そして黒ひげとは違い、こちらは逃がしてもらえなかった。",
+      "tts": {
+        "text": "そしてブラックビアードとは違い、こちらは逃がしてもらえなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "最期",
+      "text_markdown": "最期"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スティード・ボネットはチャールストンで裁判を待ちながら投獄された。",
+      "text_markdown": "スティード・ボネットはチャールストンで裁判を待ちながら投獄された。",
+      "tts": {
+        "text": "スティード・ボネットはチャールストンで裁判を待ちながら投獄された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は町の執行官の家に収容された。海賊にしては比較的快適な監禁だった。",
+      "text_markdown": "彼は町の執行官の家に収容された。海賊にしては比較的快適な監禁だった。",
+      "tts": {
+        "text": "彼は町の執行官の家に収容された。海賊にしては比較的快適な監禁だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "囚人であっても、紳士としての身分は依然として多少の意味を持った。",
+      "text_markdown": "囚人であっても、紳士としての身分は依然として多少の意味を持った。",
+      "tts": {
+        "text": "囚人であっても、紳士としての身分は依然として多少の意味を持った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は一度だけ脱走に成功した。短い間だったが。",
+      "text_markdown": "彼は一度だけ脱走に成功した。短い間だったが。",
+      "tts": {
+        "text": "彼は一度だけ脱走に成功した。短い間だったが。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は監禁場所から逃げ出し、港の近くのサリバンズ島に隠れた。",
+      "text_markdown": "彼は監禁場所から逃げ出し、港の近くのサリバンズ島に隠れた。",
+      "tts": {
+        "text": "彼は監禁場所から逃げ出し、港の近くのサリバンズ島に隠れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数日以内に再び捕らえられた。",
+      "text_markdown": "数日以内に再び捕らえられた。",
+      "tts": {
+        "text": "数日以内に再び捕らえられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "脱走の試みにより、当局が抱いていたかもしれない残りの同情は消え去った。",
+      "text_markdown": "脱走の試みにより、当局が抱いていたかもしれない残りの同情は消え去った。",
+      "tts": {
+        "text": "脱走の試みにより、当局が抱いていたかもしれない残りの同情は消え去った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "裁判は1718年10月下旬に始まった。",
+      "text_markdown": "裁判は1718年10月下旬に始まった。",
+      "tts": {
+        "text": "裁判は千七百十八年十月下旬に始まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは黄金時代で最も重要な海賊裁判の一つだった。",
+      "text_markdown": "それは黄金時代で最も重要な海賊裁判の一つだった。",
+      "tts": {
+        "text": "それは黄金時代で最も重要な海賊裁判の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "審理はニコラス・トロット判事の前で行われた。彼は徹底的かつ容赦のない人物だった。",
+      "text_markdown": "審理はニコラス・トロット判事の前で行われた。彼は徹底的かつ容赦のない人物だった。",
+      "tts": {
+        "text": "審理はニコラス・トロット判事の前で行われた。彼は徹底的かつ容赦のない人物だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは海賊行為二件で起訴された。",
+      "text_markdown": "ボネットは海賊行為二件で起訴された。",
+      "tts": {
+        "text": "ボネットは海賊行為二件で起訴された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼に対する証拠は圧倒的だった。",
+      "text_markdown": "彼に対する証拠は圧倒的だった。",
+      "tts": {
+        "text": "彼に対する証拠は圧倒的だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "複数の証人が彼の襲撃を証言した。",
+      "text_markdown": "複数の証人が彼の襲撃を証言した。",
+      "tts": {
+        "text": "複数の証人が彼の襲撃を証言した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼自身の乗組員が彼に不利な証言をした。",
+      "text_markdown": "彼自身の乗組員が彼に不利な証言をした。",
+      "tts": {
+        "text": "彼自身の乗組員が彼に不利な証言をした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは驚くべき雄弁さで自らを弁護した。",
+      "text_markdown": "ボネットは驚くべき雄弁さで自らを弁護した。",
+      "tts": {
+        "text": "ボネットは驚くべき雄弁さで自らを弁護した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は強制のもとに行動しており、黒ひげに海賊行為を強いられたと主張した。",
+      "text_markdown": "彼は強制のもとに行動しており、黒ひげに海賊行為を強いられたと主張した。",
+      "tts": {
+        "text": "彼は強制のもとに行動しており、ブラックビアードに海賊行為を強いられたと主張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は国王の恩赦を受け入れたことを善意の証拠として示した。",
+      "text_markdown": "彼は国王の恩赦を受け入れたことを善意の証拠として示した。",
+      "tts": {
+        "text": "彼は国王の恩赦を受け入れたことを善意の証拠として示した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "法廷は納得しなかった。",
+      "text_markdown": "法廷は納得しなかった。",
+      "tts": {
+        "text": "法廷は納得しなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ボネットは海賊行為に復帰することで恩赦の条件に違反していた。",
+      "text_markdown": "ボネットは海賊行為に復帰することで恩赦の条件に違反していた。",
+      "tts": {
+        "text": "ボネットは海賊行為に復帰することで恩赦の条件に違反していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は自らの意志で選択をしたのだ。",
+      "text_markdown": "彼は自らの意志で選択をしたのだ。",
+      "tts": {
+        "text": "彼は自らの意志で選択をしたのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "陪審はすべての罪状について有罪の評決を下した。",
+      "text_markdown": "陪審はすべての罪状について有罪の評決を下した。",
+      "tts": {
+        "text": "陪審はすべての罪状について有罪の評決を下した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トロット判事はボネットに絞首刑を宣告した。",
+      "text_markdown": "トロット判事はボネットに絞首刑を宣告した。",
+      "tts": {
+        "text": "トロット判事はボネットに絞首刑を宣告した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "判決の演説で、判事はボネットのような社会的地位の人間が犯罪の道を選んだことに対し、格別の軽蔑を表明した。",
+      "text_markdown": "判決の演説で、判事はボネットのような社会的地位の人間が犯罪の道を選んだことに対し、格別の軽蔑を表明した。",
+      "tts": {
+        "text": "判決の演説で、判事はボネットのような社会的地位の人間が犯罪の道を選んだことに対し、格別の軽蔑を表明した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その演説は長く、詳細で、壊滅的だった。",
+      "text_markdown": "その演説は長く、詳細で、壊滅的だった。",
+      "tts": {
+        "text": "その演説は長く、詳細で、壊滅的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットは判決を聞いて泣いたと伝えられている。",
+      "text_markdown": "ボネットは判決を聞いて泣いたと伝えられている。",
+      "tts": {
+        "text": "ボネットは判決を聞いて泣いたと伝えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はサウスカロライナ総督に慈悲を乞う手紙を書いた。",
+      "text_markdown": "彼はサウスカロライナ総督に慈悲を乞う手紙を書いた。",
+      "tts": {
+        "text": "彼はサウスカロライナ総督に慈悲を乞う手紙を書いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その手紙は巧みに書かれ、感情に溢れていた。",
+      "text_markdown": "その手紙は巧みに書かれ、感情に溢れていた。",
+      "tts": {
+        "text": "その手紙は巧みに書かれ、感情に溢れていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし彼を救うことはなかった。",
+      "text_markdown": "しかし彼を救うことはなかった。",
+      "tts": {
+        "text": "しかし彼を救うことはなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はほとんどの海賊のような筋金入りの犯罪者ではなかった。",
+      "text_markdown": "彼はほとんどの海賊のような筋金入りの犯罪者ではなかった。",
+      "tts": {
+        "text": "彼はほとんどの海賊のような筋金入りの犯罪者ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は混乱し、不幸な男で、破滅的な一連の決断を下した人物だった。",
+      "text_markdown": "彼は混乱し、不幸な男で、破滅的な一連の決断を下した人物だった。",
+      "tts": {
+        "text": "彼は混乱し、不幸な男で、破滅的な一連の決断を下した人物だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今やそれらの決断が彼に追いついたのだ。",
+      "text_markdown": "今やそれらの決断が彼に追いついたのだ。",
+      "tts": {
+        "text": "今やそれらの決断が彼に追いついたのだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年12月10日、スティード・ボネットはチャールストンのホワイトポイントで絞首刑に処された。",
+      "text_markdown": "1718年12月10日、スティード・ボネットはチャールストンのホワイトポイントで絞首刑に処された。",
+      "tts": {
+        "text": "千七百十八年十二月十日、スティード・ボネットはチャールストンのホワイトポイントで絞首刑に処された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三十歳だった。",
+      "text_markdown": "三十歳だった。",
+      "tts": {
+        "text": "三十歳だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紳士海賊の処刑を見物するために群衆が集まった。",
+      "text_markdown": "紳士海賊の処刑を見物するために群衆が集まった。",
+      "tts": {
+        "text": "紳士海賊の処刑を見物するために群衆が集まった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "目撃者によれば、彼は怯えていた。",
+      "text_markdown": "目撃者によれば、彼は怯えていた。",
+      "tts": {
+        "text": "目撃者によれば、彼は怯えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はしおれた花の小さな花束を握りしめていた。歴史の記録に残った哀れな一幕である。",
+      "text_markdown": "彼はしおれた花の小さな花束を握りしめていた。歴史の記録に残った哀れな一幕である。",
+      "tts": {
+        "text": "彼はしおれた花の小さな花束を握りしめていた。歴史の記録に残った哀れな一幕である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はラフマ・イブン・ジャービルのような反骨心も、バーソロミュー・ロバーツのような威厳も持たずに死んだ。",
+      "text_markdown": "彼はラフマ・イブン・ジャービルのような反骨心も、バーソロミュー・ロバーツのような威厳も持たずに死んだ。",
+      "tts": {
+        "text": "彼はラフマ・イブン・ジャービルのような反骨心も、バーソロミュー・ロバーツのような威厳も持たずに死んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は自らの海賊人生と同じように死んだ。みじめに、そしてこれがすべて悪い考えだったという感覚と共に。",
+      "text_markdown": "彼は自らの海賊人生と同じように死んだ。みじめに、そしてこれがすべて悪い考えだったという感覚と共に。",
+      "tts": {
+        "text": "彼は自らの海賊人生と同じように死んだ。みじめに、そしてこれがすべて悪い考えだったという感覚と共に。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "縄がその役目を果たし、紳士海賊はこの世を去った。",
+      "text_markdown": "縄がその役目を果たし、紳士海賊はこの世を去った。",
+      "tts": {
+        "text": "縄がその役目を果たし、紳士海賊はこの世を去った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スティード・ボネットは黄金時代で最も有名な海賊の一人となった。",
+      "text_markdown": "スティード・ボネットは黄金時代で最も有名な海賊の一人となった。",
+      "tts": {
+        "text": "スティード・ボネットは黄金時代で最も有名な海賊の一人となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名声は、ごくわずかだった功績ではなく、その物語のまったくの荒唐無稽さに基づいている。",
+      "text_markdown": "彼の名声は、ごくわずかだった功績ではなく、その物語のまったくの荒唐無稽さに基づいている。",
+      "tts": {
+        "text": "彼の名声は、ごくわずかだった功績ではなく、その物語のまったくの荒唐無稽さに基づいている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は次の問いへの答えである。完全に不適格な人間が海賊になろうとしたらどうなるか。",
+      "text_markdown": "彼は次の問いへの答えである。完全に不適格な人間が海賊になろうとしたらどうなるか。",
+      "tts": {
+        "text": "彼は次の問いへの答えである。完全に不適格な人間が海賊になろうとしたらどうなるか。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "答えは、ほぼ何一つ良いことはない、である。",
+      "text_markdown": "答えは、ほぼ何一つ良いことはない、である。",
+      "tts": {
+        "text": "答えは、ほぼ何一つ良いことはない、である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットの物語は書籍、演劇、テレビ番組で繰り返し語られてきた。",
+      "text_markdown": "ボネットの物語は書籍、演劇、テレビ番組で繰り返し語られてきた。",
+      "tts": {
+        "text": "ボネットの物語は書籍、演劇、テレビ番組で繰り返し語られてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はフィクションで人気のある人物となり、ドジだが共感を呼ぶキャラクターとして描かれることが多い。",
+      "text_markdown": "彼はフィクションで人気のある人物となり、ドジだが共感を呼ぶキャラクターとして描かれることが多い。",
+      "tts": {
+        "text": "彼はフィクションで人気のある人物となり、ドジだが共感を呼ぶキャラクターとして描かれることが多い。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の状況の滑稽さが、時代を超えた魅力を生んでいる。",
+      "text_markdown": "彼の状況の滑稽さが、時代を超えた魅力を生んでいる。",
+      "tts": {
+        "text": "彼の状況の滑稽さが、時代を超えた魅力を生んでいる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし、喜劇の裏には本物の悲劇がある。",
+      "text_markdown": "しかし、喜劇の裏には本物の悲劇がある。",
+      "tts": {
+        "text": "しかし、喜劇の裏には本物の悲劇がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ボネットの犠牲者は実在の人々だった。",
+      "text_markdown": "ボネットの犠牲者は実在の人々だった。",
+      "tts": {
+        "text": "ボネットの犠牲者は実在の人々だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が拿捕した船には、恐怖にさらされ略奪された実在の船乗りたちが乗っていた。",
+      "text_markdown": "彼が拿捕した船には、恐怖にさらされ略奪された実在の船乗りたちが乗っていた。",
+      "tts": {
+        "text": "彼が拿捕した船には、恐怖にさらされ略奪された実在の船乗りたちが乗っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の無能さの可笑しさは、彼が引き起こした被害を覆い隠してはならない。",
+      "text_markdown": "彼の無能さの可笑しさは、彼が引き起こした被害を覆い隠してはならない。",
+      "tts": {
+        "text": "彼の無能さの可笑しさは、彼が引き起こした被害を覆い隠してはならない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の乗組員たちが最も高い代償を払った。",
+      "text_markdown": "彼の乗組員たちが最も高い代償を払った。",
+      "tts": {
+        "text": "彼の乗組員たちが最も高い代償を払った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その多くが船長と共に絞首刑に処された。",
+      "text_markdown": "その多くが船長と共に絞首刑に処された。",
+      "tts": {
+        "text": "その多くが船長と共に絞首刑に処された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは本来海にいるべきではなかった男の後を追ったのだ。",
+      "text_markdown": "彼らは本来海にいるべきではなかった男の後を追ったのだ。",
+      "tts": {
+        "text": "彼らは本来海にいるべきではなかった男の後を追ったのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼への信頼は、それがどの程度のものであれ、彼らの命を奪った。",
+      "text_markdown": "彼への信頼は、それがどの程度のものであれ、彼らの命を奪った。",
+      "tts": {
+        "text": "彼への信頼は、それがどの程度のものであれ、彼らの命を奪った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットの物語はまた、植民地カリブ海の厳格な階級構造を浮き彫りにしている。",
+      "text_markdown": "ボネットの物語はまた、植民地カリブ海の厳格な階級構造を浮き彫りにしている。",
+      "tts": {
+        "text": "ボネットの物語はまた、植民地カリブ海の厳格な階級構造を浮き彫りにしている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裕福な白人農園主はバルバドスでほぼ何でも無罪で行えた。",
+      "text_markdown": "裕福な白人農園主はバルバドスでほぼ何でも無罪で行えた。",
+      "tts": {
+        "text": "裕福な白人農園主はバルバドスでほぼ何でも無罪で行えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしボネットが自らの階級の役割から外れた瞬間、体制は彼を破滅させた。",
+      "text_markdown": "しかしボネットが自らの階級の役割から外れた瞬間、体制は彼を破滅させた。",
+      "tts": {
+        "text": "しかしボネットが自らの階級の役割から外れた瞬間、体制は彼を破滅させた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ボネットが絞首刑に処される頃には、海賊の黄金時代は終わりを迎えつつあった。",
+      "text_markdown": "ボネットが絞首刑に処される頃には、海賊の黄金時代は終わりを迎えつつあった。",
+      "tts": {
+        "text": "ボネットが絞首刑に処される頃には、海賊の黄金時代は終わりを迎えつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス政府はカリブ海全域で組織的に海賊を追い詰めていた。",
+      "text_markdown": "イギリス政府はカリブ海全域で組織的に海賊を追い詰めていた。",
+      "tts": {
+        "text": "イギリス政府はカリブ海全域で組織的に海賊を追い詰めていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黒ひげ自身も、ボネットの処刑からわずか数週間後に殺された。",
+      "text_markdown": "黒ひげ自身も、ボネットの処刑からわずか数週間後に殺された。",
+      "tts": {
+        "text": "ブラックビアード自身も、ボネットの処刑からわずか数週間後に殺された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数年以内に、黄金時代の著名な海賊のほとんどが死亡または捕らえられることになる。",
+      "text_markdown": "数年以内に、黄金時代の著名な海賊のほとんどが死亡または捕らえられることになる。",
+      "tts": {
+        "text": "数年以内に、黄金時代の著名な海賊のほとんどが死亡または捕らえられることになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カリブ海における自由奔放な海賊行為の時代は終わりを迎えつつあった。",
+      "text_markdown": "カリブ海における自由奔放な海賊行為の時代は終わりを迎えつつあった。",
+      "tts": {
+        "text": "カリブ海における自由奔放な海賊行為の時代は終わりを迎えつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海軍は増強され、植民地政府はより組織化され、海賊の活動する余地は縮小した。",
+      "text_markdown": "海軍は増強され、植民地政府はより組織化され、海賊の活動する余地は縮小した。",
+      "tts": {
+        "text": "海軍は増強され、植民地政府はより組織化され、海賊の活動する余地は縮小した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スティード・ボネットは偉大な海賊ではなかった。",
+      "text_markdown": "スティード・ボネットは偉大な海賊ではなかった。",
+      "tts": {
+        "text": "スティード・ボネットは偉大な海賊ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有能な海賊ですらなかった。",
+      "text_markdown": "有能な海賊ですらなかった。",
+      "tts": {
+        "text": "有能な海賊ですらなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼の物語は、それが根本的に人間的であるがゆえに生き続けている。",
+      "text_markdown": "しかし彼の物語は、それが根本的に人間的であるがゆえに生き続けている。",
+      "tts": {
+        "text": "しかし彼の物語は、それが根本的に人間的であるがゆえに生き続けている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は自分の人生に深く絶望し、それを変えようと荒々しく非合理な決断を下した男だった。",
+      "text_markdown": "彼は自分の人生に深く絶望し、それを変えようと荒々しく非合理な決断を下した男だった。",
+      "tts": {
+        "text": "彼は自分の人生に深く絶望し、それを変えようと荒々しく非合理な決断を下した男だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は、自分がまったく生きる準備のできていなかった幻想のために、すべてを燃やし尽くした。",
+      "text_markdown": "彼は、自分がまったく生きる準備のできていなかった幻想のために、すべてを燃やし尽くした。",
+      "tts": {
+        "text": "彼は、自分がまったく生きる準備のできていなかった幻想のために、すべてを燃やし尽くした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "少なくともその点において、彼は私たちの多くとそれほど違わない。",
+      "text_markdown": "少なくともその点において、彼は私たちの多くとそれほど違わない。",
+      "tts": {
+        "text": "少なくともその点において、彼は私たちの多くとそれほど違わない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はチャールストンでしおれた花を手にして死んだ。",
+      "text_markdown": "彼はチャールストンでしおれた花を手にして死んだ。",
+      "tts": {
+        "text": "彼はチャールストンでしおれた花を手にして死んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "紳士海賊は、その信じがたい不運な航海の終わりに辿り着いた。",
+      "text_markdown": "紳士海賊は、その信じがたい不運な航海の終わりに辿り着いた。",
+      "tts": {
+        "text": "紳士海賊は、その信じがたい不運な航海の終わりに辿り着いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海はもはやスティード・ボネットに忍耐を持たなかった。法もまた然り。",
+      "text_markdown": "海はもはやスティード・ボネットに忍耐を持たなかった。法もまた然り。",
+      "tts": {
+        "text": "海はもはやスティード・ボネットに忍耐を持たなかった。法もまた然り。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}
