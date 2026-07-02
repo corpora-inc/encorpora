@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "苔原",
+      "text_markdown": "苔原"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "这个生物群系分布在哪里",
+      "text_markdown": "这个生物群系分布在哪里"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欢迎来到苔原。",
+      "text_markdown": "欢迎来到苔原。",
+      "tts": {
+        "text": "欢迎来到苔原。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界上伟大的生物群系之一。",
+      "text_markdown": "这是世界上伟大的生物群系之一。",
+      "tts": {
+        "text": "这是世界上伟大的生物群系之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生物群系是地球上的一片区域，有着自己独特的天气、植物和动物。",
+      "text_markdown": "生物群系是地球上的一片区域，有着自己独特的天气、植物和动物。",
+      "tts": {
+        "text": "生物群系是地球上的一片区域，有着自己独特的天气、植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原是一片寒冷开阔的土地，这里太冷了，树木无法生长。",
+      "text_markdown": "苔原是一片寒冷开阔的土地，这里太冷了，树木无法生长。",
+      "tts": {
+        "text": "苔原是一片寒冷开阔的土地，这里太冷了，树木无法生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原这个词来自一个古老的词，意思是没有树木的平原。",
+      "text_markdown": "苔原这个词来自一个古老的词，意思是没有树木的平原。",
+      "tts": {
+        "text": "苔原这个词来自一个古老的词，意思是没有树木的平原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原是陆地上最寒冷的生物群系。",
+      "text_markdown": "苔原是陆地上最寒冷的生物群系。",
+      "tts": {
+        "text": "苔原是陆地上最寒冷的生物群系。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大部分苔原分布在世界之巅周围一圈宽阔的地带。",
+      "text_markdown": "大部分苔原分布在世界之巅周围一圈宽阔的地带。",
+      "tts": {
+        "text": "大部分苔原分布在世界之巅周围一圈宽阔的地带。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在北美洲，它覆盖着加拿大、阿拉斯加和格陵兰的北部边缘。",
+      "text_markdown": "在北美洲，它覆盖着加拿大、阿拉斯加和格陵兰的北部边缘。",
+      "tts": {
+        "text": "在北美洲，它覆盖着加拿大、阿拉斯加和格陵兰的北部边缘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在欧洲北部，它覆盖着挪威、瑞典和芬兰的极北地区。",
+      "text_markdown": "在欧洲北部，它覆盖着挪威、瑞典和芬兰的极北地区。",
+      "tts": {
+        "text": "在欧洲北部，它覆盖着挪威、瑞典和芬兰的极北地区。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它覆盖着俄罗斯漫长的北部海岸，横跨亚洲的顶端。",
+      "text_markdown": "它覆盖着俄罗斯漫长的北部海岸，横跨亚洲的顶端。",
+      "tts": {
+        "text": "它覆盖着俄罗斯漫长的北部海岸，横跨亚洲的顶端。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这片寒冷的环状土地位于北方针叶林以北，环绕着冰封的海洋。",
+      "text_markdown": "这片寒冷的环状土地位于北方针叶林以北，环绕着冰封的海洋。",
+      "tts": {
+        "text": "这片寒冷的环状土地位于北方针叶林以北，环绕着冰封的海洋。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "还有另一种苔原。",
+      "text_markdown": "还有另一种苔原。",
+      "tts": {
+        "text": "还有另一种苔原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在高山之巅，最后的树木之上，出现了同样寒冷而开阔的土地。",
+      "text_markdown": "在高山之巅，最后的树木之上，出现了同样寒冷而开阔的土地。",
+      "tts": {
+        "text": "在高山之巅，最后的树木之上，出现了同样寒冷而开阔的土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种高山苔原分布在世界各地的高峰上，甚至靠近地球温暖的中部。",
+      "text_markdown": "这种高山苔原分布在世界各地的高峰上，甚至靠近地球温暖的中部。",
+      "tts": {
+        "text": "这种高山苔原分布在世界各地的高峰上，甚至靠近地球温暖的中部。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "无论生长在哪里，苔原都是一片低矮植物、寒风和辽阔天空的土地。",
+      "text_markdown": "无论生长在哪里，苔原都是一片低矮植物、寒风和辽阔天空的土地。",
+      "tts": {
+        "text": "无论生长在哪里，苔原都是一片低矮植物、寒风和辽阔天空的土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里没有森林。",
+      "text_markdown": "这里没有森林。",
+      "tts": {
+        "text": "这里没有森林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年中的大部分时间，地面都冻得坚硬。",
+      "text_markdown": "一年中的大部分时间，地面都冻得坚硬。",
+      "tts": {
+        "text": "一年中的大部分时间，地面都冻得坚硬。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但即使在这寒冷的地方，生命也能找到出路。",
+      "text_markdown": "但即使在这寒冷的地方，生命也能找到出路。",
+      "tts": {
+        "text": "但即使在这寒冷的地方，生命也能找到出路。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天气",
+      "text_markdown": "天气"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年中的大部分时间，苔原都寒冷、干燥、多风。",
+      "text_markdown": "一年中的大部分时间，苔原都寒冷、干燥、多风。",
+      "tts": {
+        "text": "一年中的大部分时间，苔原都寒冷、干燥、多风。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬天漫长、黑暗、严寒刺骨。",
+      "text_markdown": "冬天漫长、黑暗、严寒刺骨。",
+      "tts": {
+        "text": "冬天漫长、黑暗、严寒刺骨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在极北地区，冬天可以持续八九个月。",
+      "text_markdown": "在极北地区，冬天可以持续八九个月。",
+      "tts": {
+        "text": "在极北地区，冬天可以持续八九个月。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "气温可以降到远低于冰点，比家用冰柜还要冷。",
+      "text_markdown": "气温可以降到远低于冰点，比家用冰柜还要冷。",
+      "tts": {
+        "text": "气温可以降到远低于冰点，比家用冰柜还要冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在隆冬的许多个星期里，太阳根本不会升起。",
+      "text_markdown": "在隆冬的许多个星期里，太阳根本不会升起。",
+      "tts": {
+        "text": "在隆冬的许多个星期里，太阳根本不会升起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大地日复一日地笼罩在漫长的幽蓝暮色之中。",
+      "text_markdown": "大地日复一日地笼罩在漫长的幽蓝暮色之中。",
+      "tts": {
+        "text": "大地日复一日地笼罩在漫长的幽蓝暮色之中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "强风吹过开阔的土地，没有树木能让它们减速。",
+      "text_markdown": "强风吹过开阔的土地，没有树木能让它们减速。",
+      "tts": {
+        "text": "强风吹过开阔的土地，没有树木能让它们减速。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风卷起干燥的雪，沿着地面驱赶着它。",
+      "text_markdown": "风卷起干燥的雪，沿着地面驱赶着它。",
+      "tts": {
+        "text": "风卷起干燥的雪，沿着地面驱赶着它。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里很少下雪或下雨。",
+      "text_markdown": "这里很少下雪或下雨。",
+      "tts": {
+        "text": "这里很少下雪或下雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原如此干燥，有时被称为寒冷的沙漠。",
+      "text_markdown": "苔原如此干燥，有时被称为寒冷的沙漠。",
+      "tts": {
+        "text": "苔原如此干燥，有时被称为寒冷的沙漠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但落下的水无法渗入冻结的土地。",
+      "text_markdown": "但落下的水无法渗入冻结的土地。",
+      "tts": {
+        "text": "但落下的水无法渗入冻结的土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "于是水停留在表面，大地上点缀着浅浅的水洼和湿润的地面。",
+      "text_markdown": "于是水停留在表面，大地上点缀着浅浅的水洼和湿润的地面。",
+      "tts": {
+        "text": "于是水停留在表面，大地上点缀着浅浅的水洼和湿润的地面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天短暂而凉爽。",
+      "text_markdown": "夏天短暂而凉爽。",
+      "tts": {
+        "text": "夏天短暂而凉爽。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有几个星期，太阳几乎整日整夜都留在天空中。",
+      "text_markdown": "有几个星期，太阳几乎整日整夜都留在天空中。",
+      "tts": {
+        "text": "有几个星期，太阳几乎整日整夜都留在天空中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冻土的表层变软，大地变得翠绿而明亮。",
+      "text_markdown": "冻土的表层变软，大地变得翠绿而明亮。",
+      "tts": {
+        "text": "冻土的表层变软，大地变得翠绿而明亮。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "即使在夏天，空气依然凉爽，任何一个夜晚都可能再度结霜。",
+      "text_markdown": "即使在夏天，空气依然凉爽，任何一个夜晚都可能再度结霜。",
+      "tts": {
+        "text": "即使在夏天，空气依然凉爽，任何一个夜晚都可能再度结霜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后短暂的夏天结束，太阳低沉下去，漫长的冬天再次开始。",
+      "text_markdown": "然后短暂的夏天结束，太阳低沉下去，漫长的冬天再次开始。",
+      "tts": {
+        "text": "然后短暂的夏天结束，太阳低沉下去，漫长的冬天再次开始。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地与水",
+      "text_markdown": "土地与水"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于苔原最重要的东西就在你的脚下。",
+      "text_markdown": "关于苔原最重要的东西就在你的脚下。",
+      "tts": {
+        "text": "关于苔原最重要的东西就在你的脚下。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在地表之下，土地终年冻得坚硬。",
+      "text_markdown": "在地表之下，土地终年冻得坚硬。",
+      "tts": {
+        "text": "在地表之下，土地终年冻得坚硬。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种冻结的土地叫做永久冻土。",
+      "text_markdown": "这种冻结的土地叫做永久冻土。",
+      "tts": {
+        "text": "这种冻结的土地叫做永久冻土。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在有些地方，永久冻土向下延伸得比最高的建筑还要深。",
+      "text_markdown": "在有些地方，永久冻土向下延伸得比最高的建筑还要深。",
+      "tts": {
+        "text": "在有些地方，永久冻土向下延伸得比最高的建筑还要深。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它已经冻结了数千年。",
+      "text_markdown": "它已经冻结了数千年。",
+      "tts": {
+        "text": "它已经冻结了数千年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到了夏天，只有土壤最上面的一层会融化。",
+      "text_markdown": "到了夏天，只有土壤最上面的一层会融化。",
+      "tts": {
+        "text": "到了夏天，只有土壤最上面的一层会融化。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这层薄薄的融化土壤，是所有植物必须赖以生存的地方。",
+      "text_markdown": "这层薄薄的融化土壤，是所有植物必须赖以生存的地方。",
+      "tts": {
+        "text": "这层薄薄的融化土壤，是所有植物必须赖以生存的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们的根无法向深处生长，因为就在下面，土地坚硬如岩石。",
+      "text_markdown": "它们的根无法向深处生长，因为就在下面，土地坚硬如岩石。",
+      "tts": {
+        "text": "它们的根无法向深处生长，因为就在下面，土地坚硬如岩石。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冻结的土地也把水困在了地表。",
+      "text_markdown": "冻结的土地也把水困在了地表。",
+      "tts": {
+        "text": "冻结的土地也把水困在了地表。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨水和融化的雪无法穿过永久冻土排走。",
+      "text_markdown": "雨水和融化的雪无法穿过永久冻土排走。",
+      "tts": {
+        "text": "雨水和融化的雪无法穿过永久冻土排走。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "于是到了夏天，苔原变成一片浅水洼、沼泽和缓缓流淌的溪流的土地。",
+      "text_markdown": "于是到了夏天，苔原变成一片浅水洼、沼泽和缓缓流淌的溪流的土地。",
+      "tts": {
+        "text": "于是到了夏天，苔原变成一片浅水洼、沼泽和缓缓流淌的溪流的土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从高空俯瞰，夏天的苔原上闪耀着成千上万的小水塘。",
+      "text_markdown": "从高空俯瞰，夏天的苔原上闪耀着成千上万的小水塘。",
+      "tts": {
+        "text": "从高空俯瞰，夏天的苔原上闪耀着成千上万的小水塘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土地本身大多平坦，或是轻缓起伏。",
+      "text_markdown": "土地本身大多平坦，或是轻缓起伏。",
+      "tts": {
+        "text": "土地本身大多平坦，或是轻缓起伏。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在许多地方，地面因反复冻结与融化而裂成奇异的形状。",
+      "text_markdown": "在许多地方，地面因反复冻结与融化而裂成奇异的形状。",
+      "tts": {
+        "text": "在许多地方，地面因反复冻结与融化而裂成奇异的形状。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年复一年，土壤冻结隆起，然后融化沉降。",
+      "text_markdown": "年复一年，土壤冻结隆起，然后融化沉降。",
+      "tts": {
+        "text": "年复一年，土壤冻结隆起，然后融化沉降。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种缓慢的移动把地面裂成环状、条状和低矮的土丘。",
+      "text_markdown": "这种缓慢的移动把地面裂成环状、条状和低矮的土丘。",
+      "tts": {
+        "text": "这种缓慢的移动把地面裂成环状、条状和低矮的土丘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原的土壤稀薄、贫瘠而寒冷。",
+      "text_markdown": "苔原的土壤稀薄、贫瘠而寒冷。",
+      "tts": {
+        "text": "苔原的土壤稀薄、贫瘠而寒冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "枯死的植物在寒冷中分解得很慢，所以肥沃的土壤积累得也慢。",
+      "text_markdown": "枯死的植物在寒冷中分解得很慢，所以肥沃的土壤积累得也慢。",
+      "tts": {
+        "text": "枯死的植物在寒冷中分解得很慢，所以肥沃的土壤积累得也慢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一片艰苦的土地，冰冷、潮湿而光秃，但它静静地充满了生命。",
+      "text_markdown": "这是一片艰苦的土地，冰冷、潮湿而光秃，但它静静地充满了生命。",
+      "tts": {
+        "text": "这是一片艰苦的土地，冰冷、潮湿而光秃，但它静静地充满了生命。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原的植物矮小、坚韧，贴近地面。",
+      "text_markdown": "苔原的植物矮小、坚韧，贴近地面。",
+      "tts": {
+        "text": "苔原的植物矮小、坚韧，贴近地面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里没有树木，因为树木无法在冻结的土地和寒风中生存。",
+      "text_markdown": "这里没有树木，因为树木无法在冻结的土地和寒风中生存。",
+      "tts": {
+        "text": "这里没有树木，因为树木无法在冻结的土地和寒风中生存。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "取而代之的是，苔原上覆盖着低矮的小植物层。",
+      "text_markdown": "取而代之的是，苔原上覆盖着低矮的小植物层。",
+      "tts": {
+        "text": "取而代之的是，苔原上覆盖着低矮的小植物层。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "保持低矮是在这里生存的秘诀。",
+      "text_markdown": "保持低矮是在这里生存的秘诀。",
+      "tts": {
+        "text": "保持低矮是在这里生存的秘诀。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "靠近地面，风更弱，空气也稍微暖和一些。",
+      "text_markdown": "靠近地面，风更弱，空气也稍微暖和一些。",
+      "tts": {
+        "text": "靠近地面，风更弱，空气也稍微暖和一些。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多苔原植物长成紧密的垫状或厚厚的一层，好留住它们的温暖。",
+      "text_markdown": "许多苔原植物长成紧密的垫状或厚厚的一层，好留住它们的温暖。",
+      "tts": {
+        "text": "许多苔原植物长成紧密的垫状或厚厚的一层，好留住它们的温暖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔藓在大片地面上长得又厚又软。",
+      "text_markdown": "苔藓在大片地面上长得又厚又软。",
+      "tts": {
+        "text": "苔藓在大片地面上长得又厚又软。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地衣在裸露的岩石和土壤上生长，形成灰色、绿色和黄色的斑块。",
+      "text_markdown": "地衣在裸露的岩石和土壤上生长，形成灰色、绿色和黄色的斑块。",
+      "tts": {
+        "text": "地衣在裸露的岩石和土壤上生长，形成灰色、绿色和黄色的斑块。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地衣不是一种植物，而是两种生命合为一体地生活在一起。",
+      "text_markdown": "地衣不是一种植物，而是两种生命合为一体地生活在一起。",
+      "tts": {
+        "text": "地衣不是一种植物，而是两种生命合为一体地生活在一起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地衣能在几乎没有其他生物能存活的地方生存，而且它们长得非常缓慢。",
+      "text_markdown": "地衣能在几乎没有其他生物能存活的地方生存，而且它们长得非常缓慢。",
+      "tts": {
+        "text": "地衣能在几乎没有其他生物能存活的地方生存，而且它们长得非常缓慢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原上有些地衣已有数百年之久。",
+      "text_markdown": "苔原上有些地衣已有数百年之久。",
+      "tts": {
+        "text": "苔原上有些地衣已有数百年之久。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "矮小的草和低矮的开花植物在苔藓之间生长。",
+      "text_markdown": "矮小的草和低矮的开花植物在苔藓之间生长。",
+      "tts": {
+        "text": "矮小的草和低矮的开花植物在苔藓之间生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在短暂的夏天，苔原繁花盛开。",
+      "text_markdown": "在短暂的夏天，苔原繁花盛开。",
+      "tts": {
+        "text": "在短暂的夏天，苔原繁花盛开。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在明媚的几个星期里，地面上开满了细小的花朵。",
+      "text_markdown": "在明媚的几个星期里，地面上开满了细小的花朵。",
+      "tts": {
+        "text": "在明媚的几个星期里，地面上开满了细小的花朵。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到处都是黄色、白色、粉色和紫色的小花。",
+      "text_markdown": "到处都是黄色、白色、粉色和紫色的小花。",
+      "tts": {
+        "text": "到处都是黄色、白色、粉色和紫色的小花。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "植物必须在寒冷回来之前，飞快地开花、结籽并储存养分。",
+      "text_markdown": "植物必须在寒冷回来之前，飞快地开花、结籽并储存养分。",
+      "tts": {
+        "text": "植物必须在寒冷回来之前，飞快地开花、结籽并储存养分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里也生长着一些矮小的灌木，比如矮柳和矮桦。",
+      "text_markdown": "这里也生长着一些矮小的灌木，比如矮柳和矮桦。",
+      "tts": {
+        "text": "这里也生长着一些矮小的灌木，比如矮柳和矮桦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些和在更温暖的土地上长得高大的树木是同一类。",
+      "text_markdown": "这些和在更温暖的土地上长得高大的树木是同一类。",
+      "tts": {
+        "text": "这些和在更温暖的土地上长得高大的树木是同一类。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但在这里它们长成矮小的丛，只有脚踝那么高，沿着地面匍匐生长。",
+      "text_markdown": "但在这里它们长成矮小的丛，只有脚踝那么高，沿着地面匍匐生长。",
+      "tts": {
+        "text": "但在这里它们长成矮小的丛，只有脚踝那么高，沿着地面匍匐生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏末，一些这样的矮小植物上会结出成熟的小浆果。",
+      "text_markdown": "夏末，一些这样的矮小植物上会结出成熟的小浆果。",
+      "tts": {
+        "text": "夏末，一些这样的矮小植物上会结出成熟的小浆果。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原上的动物和人们会趁着时机把它们采集起来。",
+      "text_markdown": "苔原上的动物和人们会趁着时机把它们采集起来。",
+      "tts": {
+        "text": "苔原上的动物和人们会趁着时机把它们采集起来。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "动物",
+      "text_markdown": "动物"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原的动物天生就能在寒冷和风中生存。",
+      "text_markdown": "苔原的动物天生就能在寒冷和风中生存。",
+      "tts": {
+        "text": "苔原的动物天生就能在寒冷和风中生存。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们中的许多都有厚厚的毛皮或厚厚的羽毛，还有一层脂肪来保暖。",
+      "text_markdown": "它们中的许多都有厚厚的毛皮或厚厚的羽毛，还有一层脂肪来保暖。",
+      "tts": {
+        "text": "它们中的许多都有厚厚的毛皮或厚厚的羽毛，还有一层脂肪来保暖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原上最大的动物是北美驯鹿，也叫驯鹿。",
+      "text_markdown": "苔原上最大的动物是北美驯鹿，也叫驯鹿。",
+      "tts": {
+        "text": "苔原上最大的动物是北美驯鹿，也叫驯鹿。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "驯鹿成群结队地生活，在开阔的土地上长途跋涉。",
+      "text_markdown": "驯鹿成群结队地生活，在开阔的土地上长途跋涉。",
+      "tts": {
+        "text": "驯鹿成群结队地生活，在开阔的土地上长途跋涉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天它们以苔原植物为食，冬天则扒开积雪寻找地衣。",
+      "text_markdown": "夏天它们以苔原植物为食，冬天则扒开积雪寻找地衣。",
+      "tts": {
+        "text": "夏天它们以苔原植物为食，冬天则扒开积雪寻找地衣。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "麝牛是苔原上另一种大型动物。",
+      "text_markdown": "麝牛是苔原上另一种大型动物。",
+      "tts": {
+        "text": "麝牛是苔原上另一种大型动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "麝牛体格壮硕，身披厚厚的长毛，几乎垂到地面。",
+      "text_markdown": "麝牛体格壮硕，身披厚厚的长毛，几乎垂到地面。",
+      "tts": {
+        "text": "麝牛体格壮硕，身披厚厚的长毛，几乎垂到地面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当狼群靠近时，麝牛们会围成一圈，朝外站立，好护住幼崽的安全。",
+      "text_markdown": "当狼群靠近时，麝牛们会围成一圈，朝外站立，好护住幼崽的安全。",
+      "tts": {
+        "text": "当狼群靠近时，麝牛们会围成一圈，朝外站立，好护住幼崽的安全。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狼群跟随着兽群穿越苔原，捕猎年老和体弱的猎物。",
+      "text_markdown": "狼群跟随着兽群穿越苔原，捕猎年老和体弱的猎物。",
+      "tts": {
+        "text": "狼群跟随着兽群穿越苔原，捕猎年老和体弱的猎物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北极狐体型小巧，有着厚厚的毛皮，冬天变白，夏天变棕。",
+      "text_markdown": "北极狐体型小巧，有着厚厚的毛皮，冬天变白，夏天变棕。",
+      "tts": {
+        "text": "北极狐体型小巧，有着厚厚的毛皮，冬天变白，夏天变棕。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它跟随较大的动物，吃它们剩下的食物，也捕猎小动物。",
+      "text_markdown": "它跟随较大的动物，吃它们剩下的食物，也捕猎小动物。",
+      "tts": {
+        "text": "它跟随较大的动物，吃它们剩下的食物，也捕猎小动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北极兔在冬天是白色的，有着短短的耳朵来保住体温。",
+      "text_markdown": "北极兔在冬天是白色的，有着短短的耳朵来保住体温。",
+      "tts": {
+        "text": "北极兔在冬天是白色的，有着短短的耳朵来保住体温。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在积雪之下，一种叫旅鼠的小动物挖掘隧道，整个冬天都忙个不停。",
+      "text_markdown": "在积雪之下，一种叫旅鼠的小动物挖掘隧道，整个冬天都忙个不停。",
+      "tts": {
+        "text": "在积雪之下，一种叫旅鼠的小动物挖掘隧道，整个冬天都忙个不停。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旅鼠是狐狸、猫头鹰和许多其他猎手的食物。",
+      "text_markdown": "旅鼠是狐狸、猫头鹰和许多其他猎手的食物。",
+      "tts": {
+        "text": "旅鼠是狐狸、猫头鹰和许多其他猎手的食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雪鸮是一种大型的白色猫头鹰，日夜在开阔的苔原上捕猎。",
+      "text_markdown": "雪鸮是一种大型的白色猫头鹰，日夜在开阔的苔原上捕猎。",
+      "tts": {
+        "text": "雪鸮是一种大型的白色猫头鹰，日夜在开阔的苔原上捕猎。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它从低矮的高地上守望，无声地扑向旅鼠和其他小动物。",
+      "text_markdown": "它从低矮的高地上守望，无声地扑向旅鼠和其他小动物。",
+      "tts": {
+        "text": "它从低矮的高地上守望，无声地扑向旅鼠和其他小动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在短暂的夏天，成群的鸟儿从南方飞来。",
+      "text_markdown": "在短暂的夏天，成群的鸟儿从南方飞来。",
+      "tts": {
+        "text": "在短暂的夏天，成群的鸟儿从南方飞来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大雁、鸭子和许多小鸟来到潮湿、多虫的苔原上筑巢。",
+      "text_markdown": "大雁、鸭子和许多小鸟来到潮湿、多虫的苔原上筑巢。",
+      "tts": {
+        "text": "大雁、鸭子和许多小鸟来到潮湿、多虫的苔原上筑巢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们来到这里，是因为漫长的夏日和众多的昆虫意味着充足的食物。",
+      "text_markdown": "它们来到这里，是因为漫长的夏日和众多的昆虫意味着充足的食物。",
+      "tts": {
+        "text": "它们来到这里，是因为漫长的夏日和众多的昆虫意味着充足的食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有几个星期，成群的蚊子和小飞虫弥漫在空中。",
+      "text_markdown": "有几个星期，成群的蚊子和小飞虫弥漫在空中。",
+      "tts": {
+        "text": "有几个星期，成群的蚊子和小飞虫弥漫在空中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后鸟儿飞快地养育幼鸟，趁着寒冷回来之前再次飞向南方。",
+      "text_markdown": "然后鸟儿飞快地养育幼鸟，趁着寒冷回来之前再次飞向南方。",
+      "tts": {
+        "text": "然后鸟儿飞快地养育幼鸟，趁着寒冷回来之前再次飞向南方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在北部边缘，苔原与冰封的海洋相接的地方，北极熊在冰上捕猎。",
+      "text_markdown": "在北部边缘，苔原与冰封的海洋相接的地方，北极熊在冰上捕猎。",
+      "tts": {
+        "text": "在北部边缘，苔原与冰封的海洋相接的地方，北极熊在冰上捕猎。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人们",
+      "text_markdown": "人们"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们在苔原上已经生活了数千年。",
+      "text_markdown": "人们在苔原上已经生活了数千年。",
+      "tts": {
+        "text": "人们在苔原上已经生活了数千年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "要在这里生活，需要对这片寒冷的土地和它的动物有深刻的了解。",
+      "text_markdown": "要在这里生活，需要对这片寒冷的土地和它的动物有深刻的了解。",
+      "tts": {
+        "text": "要在这里生活，需要对这片寒冷的土地和它的动物有深刻的了解。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在北美洲，因纽特人和其他北方民族在苔原和冰封的海岸上已经生活了很长时间。",
+      "text_markdown": "在北美洲，因纽特人和其他北方民族在苔原和冰封的海岸上已经生活了很长时间。",
+      "tts": {
+        "text": "在北美洲，因纽特人和其他北方民族在苔原和冰封的海岸上已经生活了很长时间。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们猎捕驯鹿，在河流和海洋中捕鱼，还在冰上猎捕海豹。",
+      "text_markdown": "他们猎捕驯鹿，在河流和海洋中捕鱼，还在冰上猎捕海豹。",
+      "tts": {
+        "text": "他们猎捕驯鹿，在河流和海洋中捕鱼，还在冰上猎捕海豹。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们用兽皮和毛皮制作暖和的衣服，缝制得严严实实以抵御寒风。",
+      "text_markdown": "他们用兽皮和毛皮制作暖和的衣服，缝制得严严实实以抵御寒风。",
+      "tts": {
+        "text": "他们用兽皮和毛皮制作暖和的衣服，缝制得严严实实以抵御寒风。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们用大地给予的东西建造住所，乘着雪橇穿越雪原。",
+      "text_markdown": "他们用大地给予的东西建造住所，乘着雪橇穿越雪原。",
+      "tts": {
+        "text": "他们用大地给予的东西建造住所，乘着雪橇穿越雪原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在欧洲北部，萨米人世世代代跟随着驯鹿穿越苔原。",
+      "text_markdown": "在欧洲北部，萨米人世世代代跟随着驯鹿穿越苔原。",
+      "tts": {
+        "text": "在欧洲北部，萨米人世世代代跟随着驯鹿穿越苔原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "驯鹿给了他们肉、奶、做衣服的皮，还有拉雪橇的办法。",
+      "text_markdown": "驯鹿给了他们肉、奶、做衣服的皮，还有拉雪橇的办法。",
+      "tts": {
+        "text": "驯鹿给了他们肉、奶、做衣服的皮，还有拉雪橇的办法。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在俄罗斯北部，许多民族把苔原当作了自己的家。",
+      "text_markdown": "在俄罗斯北部，许多民族把苔原当作了自己的家。",
+      "tts": {
+        "text": "在俄罗斯北部，许多民族把苔原当作了自己的家。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "涅涅茨人、楚科奇人和其他民族在这些寒冷的土地上放牧驯鹿已经很长时间了。",
+      "text_markdown": "涅涅茨人、楚科奇人和其他民族在这些寒冷的土地上放牧驯鹿已经很长时间了。",
+      "tts": {
+        "text": "涅涅茨人、楚科奇人和其他民族在这些寒冷的土地上放牧驯鹿已经很长时间了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们中的一些人今天仍然带着自己的鹿群迁徙，随着季节而移动。",
+      "text_markdown": "他们中的一些人今天仍然带着自己的鹿群迁徙，随着季节而移动。",
+      "tts": {
+        "text": "他们中的一些人今天仍然带着自己的鹿群迁徙，随着季节而移动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天他们跟随驯鹿向北朝海岸走去。",
+      "text_markdown": "夏天他们跟随驯鹿向北朝海岸走去。",
+      "tts": {
+        "text": "夏天他们跟随驯鹿向北朝海岸走去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬天他们向南迁移，朝森林边缘的庇护处走去。",
+      "text_markdown": "冬天他们向南迁移，朝森林边缘的庇护处走去。",
+      "tts": {
+        "text": "冬天他们向南迁移，朝森林边缘的庇护处走去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在所有这些土地上，人们学会了读懂天气、积雪和冰。",
+      "text_markdown": "在所有这些土地上，人们学会了读懂天气、积雪和冰。",
+      "tts": {
+        "text": "在所有这些土地上，人们学会了读懂天气、积雪和冰。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们了解了驯鹿迁徙的路径。",
+      "text_markdown": "他们了解了驯鹿迁徙的路径。",
+      "tts": {
+        "text": "他们了解了驯鹿迁徙的路径。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们知道了鱼群聚集的地方，以及鸟儿何时会到来。",
+      "text_markdown": "他们知道了鱼群聚集的地方，以及鸟儿何时会到来。",
+      "tts": {
+        "text": "他们知道了鱼群聚集的地方，以及鸟儿何时会到来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们学会了把短暂夏天里的食物储存起来，以熬过漫长的冬天。",
+      "text_markdown": "他们学会了把短暂夏天里的食物储存起来，以熬过漫长的冬天。",
+      "tts": {
+        "text": "他们学会了把短暂夏天里的食物储存起来，以熬过漫长的冬天。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原给予的很少，索取的却很多，但人们在这里已经好好地生活了很长时间。",
+      "text_markdown": "苔原给予的很少，索取的却很多，但人们在这里已经好好地生活了很长时间。",
+      "tts": {
+        "text": "苔原给予的很少，索取的却很多，但人们在这里已经好好地生活了很长时间。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们的歌谣、他们的故事、他们的语言，都伴随着寒风和辽阔的土地一同成长。",
+      "text_markdown": "他们的歌谣、他们的故事、他们的语言，都伴随着寒风和辽阔的土地一同成长。",
+      "tts": {
+        "text": "他们的歌谣、他们的故事、他们的语言，都伴随着寒风和辽阔的土地一同成长。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日的生物群系",
+      "text_markdown": "今日的生物群系"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原是最荒野、最空旷的生物群系之一，但它正在迅速改变。",
+      "text_markdown": "苔原是最荒野、最空旷的生物群系之一，但它正在迅速改变。",
+      "tts": {
+        "text": "苔原是最荒野、最空旷的生物群系之一，但它正在迅速改变。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在所有生物群系中，苔原变暖得最快。",
+      "text_markdown": "在所有生物群系中，苔原变暖得最快。",
+      "tts": {
+        "text": "在所有生物群系中，苔原变暖得最快。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "极北地区一年比一年暖和。",
+      "text_markdown": "极北地区一年比一年暖和。",
+      "tts": {
+        "text": "极北地区一年比一年暖和。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着空气变暖，冻结的土地开始融化。",
+      "text_markdown": "随着空气变暖，冻结的土地开始融化。",
+      "tts": {
+        "text": "随着空气变暖，冻结的土地开始融化。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当永久冻土融化时，土地会下陷、开裂，化作泥浆。",
+      "text_markdown": "当永久冻土融化时，土地会下陷、开裂，化作泥浆。",
+      "tts": {
+        "text": "当永久冻土融化时，土地会下陷、开裂，化作泥浆。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "建在冻土上的道路、房屋和管道会弯曲、断裂。",
+      "text_markdown": "建在冻土上的道路、房屋和管道会弯曲、断裂。",
+      "tts": {
+        "text": "建在冻土上的道路、房屋和管道会弯曲、断裂。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "融化的土地还会释放出气体，这些气体在冻结的土壤里被封存了很长时间。",
+      "text_markdown": "融化的土地还会释放出气体，这些气体在冻结的土壤里被封存了很长时间。",
+      "tts": {
+        "text": "融化的土地还会释放出气体，这些气体在冻结的土壤里被封存了很长时间。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些气体升入空中，会让整个地球变得更暖一些。",
+      "text_markdown": "这些气体升入空中，会让整个地球变得更暖一些。",
+      "tts": {
+        "text": "这些气体升入空中，会让整个地球变得更暖一些。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着苔原变暖，灌木和小树正慢慢向北蔓延进来。",
+      "text_markdown": "随着苔原变暖，灌木和小树正慢慢向北蔓延进来。",
+      "tts": {
+        "text": "随着苔原变暖，灌木和小树正慢慢向北蔓延进来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些来自更温暖南方的动物也在向北移动。",
+      "text_markdown": "一些来自更温暖南方的动物也在向北移动。",
+      "tts": {
+        "text": "一些来自更温暖南方的动物也在向北移动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们也来到苔原，在地下寻找石油、天然气和金属。",
+      "text_markdown": "人们也来到苔原，在地下寻找石油、天然气和金属。",
+      "tts": {
+        "text": "人们也来到苔原，在地下寻找石油、天然气和金属。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们的道路和机器会在土地上留下痕迹，而这些痕迹在寒冷中愈合得非常缓慢。",
+      "text_markdown": "他们的道路和机器会在土地上留下痕迹，而这些痕迹在寒冷中愈合得非常缓慢。",
+      "tts": {
+        "text": "他们的道路和机器会在土地上留下痕迹，而这些痕迹在寒冷中愈合得非常缓慢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天，许多人和团体正在努力照料苔原。",
+      "text_markdown": "今天，许多人和团体正在努力照料苔原。",
+      "tts": {
+        "text": "今天，许多人和团体正在努力照料苔原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们划出大片的公园，让驯鹿和鸟儿仍能自由漫游。",
+      "text_markdown": "他们划出大片的公园，让驯鹿和鸟儿仍能自由漫游。",
+      "tts": {
+        "text": "他们划出大片的公园，让驯鹿和鸟儿仍能自由漫游。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们与世世代代生活在这里的人们合作，共同保护这片土地。",
+      "text_markdown": "他们与世世代代生活在这里的人们合作，共同保护这片土地。",
+      "tts": {
+        "text": "他们与世世代代生活在这里的人们合作，共同保护这片土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们研究苔原，以了解它如何变化，以及如何让它保持健康。",
+      "text_markdown": "他们研究苔原，以了解它如何变化，以及如何让它保持健康。",
+      "tts": {
+        "text": "他们研究苔原，以了解它如何变化，以及如何让它保持健康。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔原脆弱而愈合缓慢，它蕴藏着大量冻结的碳。",
+      "text_markdown": "苔原脆弱而愈合缓慢，它蕴藏着大量冻结的碳。",
+      "tts": {
+        "text": "苔原脆弱而愈合缓慢，它蕴藏着大量冻结的碳。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它值得我们珍惜。",
+      "text_markdown": "它值得我们珍惜。",
+      "tts": {
+        "text": "它值得我们珍惜。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "结语",
+      "text_markdown": "结语"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是苔原。",
+      "text_markdown": "这就是苔原。",
+      "tts": {
+        "text": "这就是苔原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片寒冷、开阔、没有树木的土地，有着冻结的地面、低矮的植物，和世界之巅辽阔明亮的天空。",
+      "text_markdown": "一片寒冷、开阔、没有树木的土地，有着冻结的地面、低矮的植物，和世界之巅辽阔明亮的天空。",
+      "tts": {
+        "text": "一片寒冷、开阔、没有树木的土地，有着冻结的地面、低矮的植物，和世界之巅辽阔明亮的天空。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你有一天站在那里，请安静地待上一会儿。",
+      "text_markdown": "如果你有一天站在那里，请安静地待上一会儿。",
+      "tts": {
+        "text": "如果你有一天站在那里，请安静地待上一会儿。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "感受寒风掠过开阔的土地。",
+      "text_markdown": "感受寒风掠过开阔的土地。",
+      "tts": {
+        "text": "感受寒风掠过开阔的土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "低头看看脚下细小的花朵和柔软的苔藓。",
+      "text_markdown": "低头看看脚下细小的花朵和柔软的苔藓。",
+      "tts": {
+        "text": "低头看看脚下细小的花朵和柔软的苔藓。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "抬头望望那广袤而空旷的天空。",
+      "text_markdown": "抬头望望那广袤而空旷的天空。",
+      "tts": {
+        "text": "抬头望望那广袤而空旷的天空。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你会感受到这个生物群系那颗宁静而耐心的心，正在你周围跳动。",
+      "text_markdown": "你会感受到这个生物群系那颗宁静而耐心的心，正在你周围跳动。",
+      "tts": {
+        "text": "你会感受到这个生物群系那颗宁静而耐心的心，正在你周围跳动。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

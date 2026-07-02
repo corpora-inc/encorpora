@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tundran",
+      "text_markdown": "Tundran"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Var det här biomet finns",
+      "text_markdown": "Var det här biomet finns"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välkommen till tundran.",
+      "text_markdown": "Välkommen till tundran.",
+      "tts": {
+        "text": "Välkommen till tundran.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det här är ett av världens stora biom.",
+      "text_markdown": "Det här är ett av världens stora biom.",
+      "tts": {
+        "text": "Det här är ett av världens stora biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett biom är en del av jorden med sitt eget väder, sina egna växter och djur.",
+      "text_markdown": "Ett biom är en del av jorden med sitt eget väder, sina egna växter och djur.",
+      "tts": {
+        "text": "Ett biom är en del av jorden med sitt eget väder, sina egna växter och djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran är ett kallt, öppet land där det är för kallt för träd att växa.",
+      "text_markdown": "Tundran är ett kallt, öppet land där det är för kallt för träd att växa.",
+      "tts": {
+        "text": "Tundran är ett kallt, öppet land där det är för kallt för träd att växa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ordet tundra kommer från ett gammalt ord som betyder en trädlös slätt.",
+      "text_markdown": "Ordet tundra kommer från ett gammalt ord som betyder en trädlös slätt.",
+      "tts": {
+        "text": "Ordet tundra kommer från ett gammalt ord som betyder en trädlös slätt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran är det kallaste biomet på land.",
+      "text_markdown": "Tundran är det kallaste biomet på land.",
+      "tts": {
+        "text": "Tundran är det kallaste biomet på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Största delen av tundran ligger i en bred ring runt jordens topp.",
+      "text_markdown": "Största delen av tundran ligger i en bred ring runt jordens topp.",
+      "tts": {
+        "text": "Största delen av tundran ligger i en bred ring runt jordens topp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den täcker de norra kanterna av Kanada, Alaska och Grönland, i Nordamerika.",
+      "text_markdown": "Den täcker de norra kanterna av Kanada, Alaska och Grönland, i Nordamerika.",
+      "tts": {
+        "text": "Den täcker de norra kanterna av Kanada, Alaska och Grönland, i Nordamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den täcker den yttersta norden av Norge, Sverige och Finland, i norra Europa.",
+      "text_markdown": "Den täcker den yttersta norden av Norge, Sverige och Finland, i norra Europa.",
+      "tts": {
+        "text": "Den täcker den yttersta norden av Norge, Sverige och Finland, i norra Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den täcker Rysslands långa norra kust, tvärs över toppen av Asien.",
+      "text_markdown": "Den täcker Rysslands långa norra kust, tvärs över toppen av Asien.",
+      "tts": {
+        "text": "Den täcker Rysslands långa norra kust, tvärs över toppen av Asien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den här kalla ringen av land ligger norr om barrskogen och runt det frusna havet.",
+      "text_markdown": "Den här kalla ringen av land ligger norr om barrskogen och runt det frusna havet.",
+      "tts": {
+        "text": "Den här kalla ringen av land ligger norr om barrskogen och runt det frusna havet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns också en annan sorts tundra.",
+      "text_markdown": "Det finns också en annan sorts tundra.",
+      "tts": {
+        "text": "Det finns också en annan sorts tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Högt uppe på höga berg, ovanför de sista träden, dyker samma kalla och öppna land upp.",
+      "text_markdown": "Högt uppe på höga berg, ovanför de sista träden, dyker samma kalla och öppna land upp.",
+      "tts": {
+        "text": "Högt uppe på höga berg, ovanför de sista träden, dyker samma kalla och öppna land upp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den här bergstundran finns på höga toppar över hela världen, till och med nära jordens varma mitt.",
+      "text_markdown": "Den här bergstundran finns på höga toppar över hela världen, till och med nära jordens varma mitt.",
+      "tts": {
+        "text": "Den här bergstundran finns på höga toppar över hela världen, till och med nära jordens varma mitt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Var den än finns är tundran ett land med låga växter, kall vind och vid öppen himmel.",
+      "text_markdown": "Var den än finns är tundran ett land med låga växter, kall vind och vid öppen himmel.",
+      "tts": {
+        "text": "Var den än finns är tundran ett land med låga växter, kall vind och vid öppen himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Här finns inga skogar.",
+      "text_markdown": "Här finns inga skogar.",
+      "tts": {
+        "text": "Här finns inga skogar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Marken är hårt frusen större delen av året.",
+      "text_markdown": "Marken är hårt frusen större delen av året.",
+      "tts": {
+        "text": "Marken är hårt frusen större delen av året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men även på den här kalla platsen hittar livet en väg.",
+      "text_markdown": "Men även på den här kalla platsen hittar livet en väg.",
+      "tts": {
+        "text": "Men även på den här kalla platsen hittar livet en väg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vädret",
+      "text_markdown": "Vädret"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran är kall, torr och blåsig större delen av året.",
+      "text_markdown": "Tundran är kall, torr och blåsig större delen av året.",
+      "tts": {
+        "text": "Tundran är kall, torr och blåsig större delen av året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vintern är lång, mörk och bitande kall.",
+      "text_markdown": "Vintern är lång, mörk och bitande kall.",
+      "tts": {
+        "text": "Vintern är lång, mörk och bitande kall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Längst i norr kan vintern vara i åtta eller nio månader.",
+      "text_markdown": "Längst i norr kan vintern vara i åtta eller nio månader.",
+      "tts": {
+        "text": "Längst i norr kan vintern vara i åtta eller nio månader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luften kan sjunka långt under fryspunkten, kallare än en frys hemma.",
+      "text_markdown": "Luften kan sjunka långt under fryspunkten, kallare än en frys hemma.",
+      "tts": {
+        "text": "Luften kan sjunka långt under fryspunkten, kallare än en frys hemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under många veckor mitt i vintern går solen inte upp alls.",
+      "text_markdown": "Under många veckor mitt i vintern går solen inte upp alls.",
+      "tts": {
+        "text": "Under många veckor mitt i vintern går solen inte upp alls.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landet ligger i en lång blå och mörk skymning, dag efter dag.",
+      "text_markdown": "Landet ligger i en lång blå och mörk skymning, dag efter dag.",
+      "tts": {
+        "text": "Landet ligger i en lång blå och mörk skymning, dag efter dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Starka vindar blåser över det öppna landet, utan några träd som bromsar dem.",
+      "text_markdown": "Starka vindar blåser över det öppna landet, utan några träd som bromsar dem.",
+      "tts": {
+        "text": "Starka vindar blåser över det öppna landet, utan några träd som bromsar dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden tar upp den torra snön och driver den längs marken.",
+      "text_markdown": "Vinden tar upp den torra snön och driver den längs marken.",
+      "tts": {
+        "text": "Vinden tar upp den torra snön och driver den längs marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Väldigt lite snö eller regn faller här.",
+      "text_markdown": "Väldigt lite snö eller regn faller här.",
+      "tts": {
+        "text": "Väldigt lite snö eller regn faller här.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran är så torr att den ibland kallas en kall öken.",
+      "text_markdown": "Tundran är så torr att den ibland kallas en kall öken.",
+      "tts": {
+        "text": "Tundran är så torr att den ibland kallas en kall öken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men det vatten som faller kan inte sjunka ner i den frusna marken.",
+      "text_markdown": "Men det vatten som faller kan inte sjunka ner i den frusna marken.",
+      "tts": {
+        "text": "Men det vatten som faller kan inte sjunka ner i den frusna marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så det blir kvar på ytan, och landet är prickigt av grunda pölar och våt mark.",
+      "text_markdown": "Så det blir kvar på ytan, och landet är prickigt av grunda pölar och våt mark.",
+      "tts": {
+        "text": "Så det blir kvar på ytan, och landet är prickigt av grunda pölar och våt mark.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommaren är kort och sval.",
+      "text_markdown": "Sommaren är kort och sval.",
+      "tts": {
+        "text": "Sommaren är kort och sval.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under några veckor stannar solen på himlen nästan hela dagen och hela natten.",
+      "text_markdown": "Under några veckor stannar solen på himlen nästan hela dagen och hela natten.",
+      "tts": {
+        "text": "Under några veckor stannar solen på himlen nästan hela dagen och hela natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ytan på den frusna marken mjuknar, och landet blir grönt och ljust.",
+      "text_markdown": "Ytan på den frusna marken mjuknar, och landet blir grönt och ljust.",
+      "tts": {
+        "text": "Ytan på den frusna marken mjuknar, och landet blir grönt och ljust.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Även på sommaren håller sig luften sval, och frost kan komma tillbaka vilken natt som helst.",
+      "text_markdown": "Även på sommaren håller sig luften sval, och frost kan komma tillbaka vilken natt som helst.",
+      "tts": {
+        "text": "Även på sommaren håller sig luften sval, och frost kan komma tillbaka vilken natt som helst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan tar den korta sommaren slut, solen sjunker lågt, och den långa vintern börjar igen.",
+      "text_markdown": "Sedan tar den korta sommaren slut, solen sjunker lågt, och den långa vintern börjar igen.",
+      "tts": {
+        "text": "Sedan tar den korta sommaren slut, solen sjunker lågt, och den långa vintern börjar igen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet och vattnet",
+      "text_markdown": "Landet och vattnet"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det viktigaste med tundran ligger under dina fötter.",
+      "text_markdown": "Det viktigaste med tundran ligger under dina fötter.",
+      "tts": {
+        "text": "Det viktigaste med tundran ligger under dina fötter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under ytan är marken frusen hård hela året.",
+      "text_markdown": "Under ytan är marken frusen hård hela året.",
+      "tts": {
+        "text": "Under ytan är marken frusen hård hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den här frusna marken kallas permafrost.",
+      "text_markdown": "Den här frusna marken kallas permafrost.",
+      "tts": {
+        "text": "Den här frusna marken kallas permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På vissa ställen når permafrosten djupare ner än den högsta byggnaden.",
+      "text_markdown": "På vissa ställen når permafrosten djupare ner än den högsta byggnaden.",
+      "tts": {
+        "text": "På vissa ställen når permafrosten djupare ner än den högsta byggnaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den har varit frusen i tusentals år.",
+      "text_markdown": "Den har varit frusen i tusentals år.",
+      "tts": {
+        "text": "Den har varit frusen i tusentals år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På sommaren tinar bara det allra översta lagret av jorden.",
+      "text_markdown": "På sommaren tinar bara det allra översta lagret av jorden.",
+      "tts": {
+        "text": "På sommaren tinar bara det allra översta lagret av jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det här tunna tinade lagret är där alla växter måste leva.",
+      "text_markdown": "Det här tunna tinade lagret är där alla växter måste leva.",
+      "tts": {
+        "text": "Det här tunna tinade lagret är där alla växter måste leva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras rötter kan inte gå djupt, för strax under dem är marken hård som sten.",
+      "text_markdown": "Deras rötter kan inte gå djupt, för strax under dem är marken hård som sten.",
+      "tts": {
+        "text": "Deras rötter kan inte gå djupt, för strax under dem är marken hård som sten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den frusna marken fångar också vatten på ytan.",
+      "text_markdown": "Den frusna marken fångar också vatten på ytan.",
+      "tts": {
+        "text": "Den frusna marken fångar också vatten på ytan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regn och smältande snö kan inte rinna undan genom permafrosten.",
+      "text_markdown": "Regn och smältande snö kan inte rinna undan genom permafrosten.",
+      "tts": {
+        "text": "Regn och smältande snö kan inte rinna undan genom permafrosten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så på sommaren blir tundran ett land med grunda pölar, myrar och långsamma bäckar.",
+      "text_markdown": "Så på sommaren blir tundran ett land med grunda pölar, myrar och långsamma bäckar.",
+      "tts": {
+        "text": "Så på sommaren blir tundran ett land med grunda pölar, myrar och långsamma bäckar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uppifrån glittrar sommartundran av tusentals små dammar.",
+      "text_markdown": "Uppifrån glittrar sommartundran av tusentals små dammar.",
+      "tts": {
+        "text": "Uppifrån glittrar sommartundran av tusentals små dammar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Själva landet är mestadels platt eller mjukt böljande.",
+      "text_markdown": "Själva landet är mestadels platt eller mjukt böljande.",
+      "tts": {
+        "text": "Själva landet är mestadels platt eller mjukt böljande.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På många ställen bryts marken upp i märkliga former av frysandet och tinandet.",
+      "text_markdown": "På många ställen bryts marken upp i märkliga former av frysandet och tinandet.",
+      "tts": {
+        "text": "På många ställen bryts marken upp i märkliga former av frysandet och tinandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorden fryser och lyfts, tinar sedan och sjunker ihop, år efter år.",
+      "text_markdown": "Jorden fryser och lyfts, tinar sedan och sjunker ihop, år efter år.",
+      "tts": {
+        "text": "Jorden fryser och lyfts, tinar sedan och sjunker ihop, år efter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den här långsamma rörelsen spräcker marken i ringar och ränder och låga kullar.",
+      "text_markdown": "Den här långsamma rörelsen spräcker marken i ringar och ränder och låga kullar.",
+      "tts": {
+        "text": "Den här långsamma rörelsen spräcker marken i ringar och ränder och låga kullar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundrans jord är tunn och mager och kall.",
+      "text_markdown": "Tundrans jord är tunn och mager och kall.",
+      "tts": {
+        "text": "Tundrans jord är tunn och mager och kall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Döda växter bryts ner mycket långsamt i kylan, så god jord byggs upp långsamt.",
+      "text_markdown": "Döda växter bryts ner mycket långsamt i kylan, så god jord byggs upp långsamt.",
+      "tts": {
+        "text": "Döda växter bryts ner mycket långsamt i kylan, så god jord byggs upp långsamt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är ett kärvt land, fruset och blött och kalt, men det är stilla fullt av liv.",
+      "text_markdown": "Det är ett kärvt land, fruset och blött och kalt, men det är stilla fullt av liv.",
+      "tts": {
+        "text": "Det är ett kärvt land, fruset och blött och kalt, men det är stilla fullt av liv.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Växterna",
+      "text_markdown": "Växterna"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundrans växter är små, tåliga och låga mot marken.",
+      "text_markdown": "Tundrans växter är små, tåliga och låga mot marken.",
+      "tts": {
+        "text": "Tundrans växter är små, tåliga och låga mot marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Här finns inga träd, för träd kan inte leva i den frusna marken och den kalla vinden.",
+      "text_markdown": "Här finns inga träd, för träd kan inte leva i den frusna marken och den kalla vinden.",
+      "tts": {
+        "text": "Här finns inga träd, för träd kan inte leva i den frusna marken och den kalla vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I stället är tundran täckt av låga mattor av små växter.",
+      "text_markdown": "I stället är tundran täckt av låga mattor av små växter.",
+      "tts": {
+        "text": "I stället är tundran täckt av låga mattor av små växter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Att hålla sig låg är hemligheten med att leva här.",
+      "text_markdown": "Att hålla sig låg är hemligheten med att leva här.",
+      "tts": {
+        "text": "Att hålla sig låg är hemligheten med att leva här.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nära marken är vinden svagare och luften lite varmare.",
+      "text_markdown": "Nära marken är vinden svagare och luften lite varmare.",
+      "tts": {
+        "text": "Nära marken är vinden svagare och luften lite varmare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många tundraväxter växer i täta kuddar eller tjocka mattor för att hålla kvar sin värme.",
+      "text_markdown": "Många tundraväxter växer i täta kuddar eller tjocka mattor för att hålla kvar sin värme.",
+      "tts": {
+        "text": "Många tundraväxter växer i täta kuddar eller tjocka mattor för att hålla kvar sin värme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mossor växer tjocka och mjuka över stora delar av marken.",
+      "text_markdown": "Mossor växer tjocka och mjuka över stora delar av marken.",
+      "tts": {
+        "text": "Mossor växer tjocka och mjuka över stora delar av marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lavar växer på de nakna stenarna och på jorden i grå, gröna och gula fläckar.",
+      "text_markdown": "Lavar växer på de nakna stenarna och på jorden i grå, gröna och gula fläckar.",
+      "tts": {
+        "text": "Lavar växer på de nakna stenarna och på jorden i grå, gröna och gula fläckar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lav är inte en enda växt utan två slags liv som lever tillsammans som ett.",
+      "text_markdown": "En lav är inte en enda växt utan två slags liv som lever tillsammans som ett.",
+      "tts": {
+        "text": "En lav är inte en enda växt utan två slags liv som lever tillsammans som ett.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lavar kan leva där nästan inget annat kan, och de växer mycket långsamt.",
+      "text_markdown": "Lavar kan leva där nästan inget annat kan, och de växer mycket långsamt.",
+      "tts": {
+        "text": "Lavar kan leva där nästan inget annat kan, och de växer mycket långsamt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa lavar på tundran är hundratals år gamla.",
+      "text_markdown": "Vissa lavar på tundran är hundratals år gamla.",
+      "tts": {
+        "text": "Vissa lavar på tundran är hundratals år gamla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Små gräs och låga blommande växter växer mellan mossorna.",
+      "text_markdown": "Små gräs och låga blommande växter växer mellan mossorna.",
+      "tts": {
+        "text": "Små gräs och låga blommande växter växer mellan mossorna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under den korta sommaren spricker tundran ut i blom.",
+      "text_markdown": "Under den korta sommaren spricker tundran ut i blom.",
+      "tts": {
+        "text": "Under den korta sommaren spricker tundran ut i blom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under några ljusa veckor är marken täckt av pyttesmå blommor.",
+      "text_markdown": "Under några ljusa veckor är marken täckt av pyttesmå blommor.",
+      "tts": {
+        "text": "Under några ljusa veckor är marken täckt av pyttesmå blommor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns små gula, vita, rosa och lila blommor överallt.",
+      "text_markdown": "Det finns små gula, vita, rosa och lila blommor överallt.",
+      "tts": {
+        "text": "Det finns små gula, vita, rosa och lila blommor överallt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Växterna måste blomma, göra frön och lagra näring mycket snabbt innan kylan kommer tillbaka.",
+      "text_markdown": "Växterna måste blomma, göra frön och lagra näring mycket snabbt innan kylan kommer tillbaka.",
+      "tts": {
+        "text": "Växterna måste blomma, göra frön och lagra näring mycket snabbt innan kylan kommer tillbaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Några små buskar växer här också, som dvärgvide och dvärgbjörk.",
+      "text_markdown": "Några små buskar växer här också, som dvärgvide och dvärgbjörk.",
+      "tts": {
+        "text": "Några små buskar växer här också, som dvärgvide och dvärgbjörk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är samma sorters träd som växer höga i varmare länder.",
+      "text_markdown": "Det är samma sorters träd som växer höga i varmare länder.",
+      "tts": {
+        "text": "Det är samma sorters träd som växer höga i varmare länder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men här växer de som pyttesmå buskar, bara så höga som din vrist, krypande längs marken.",
+      "text_markdown": "Men här växer de som pyttesmå buskar, bara så höga som din vrist, krypande längs marken.",
+      "tts": {
+        "text": "Men här växer de som pyttesmå buskar, bara så höga som din vrist, krypande längs marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Små bär mognar på några av dessa låga växter i slutet av sommaren.",
+      "text_markdown": "Små bär mognar på några av dessa låga växter i slutet av sommaren.",
+      "tts": {
+        "text": "Små bär mognar på några av dessa låga växter i slutet av sommaren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundrans djur och människor samlar dem medan de kan.",
+      "text_markdown": "Tundrans djur och människor samlar dem medan de kan.",
+      "tts": {
+        "text": "Tundrans djur och människor samlar dem medan de kan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Djuren",
+      "text_markdown": "Djuren"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundrans djur är byggda för att leva med kyla och vind.",
+      "text_markdown": "Tundrans djur är byggda för att leva med kyla och vind.",
+      "tts": {
+        "text": "Tundrans djur är byggda för att leva med kyla och vind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många av dem har tjock päls eller tjocka fjädrar, och ett lager fett för att hålla värmen.",
+      "text_markdown": "Många av dem har tjock päls eller tjocka fjädrar, och ett lager fett för att hålla värmen.",
+      "tts": {
+        "text": "Många av dem har tjock päls eller tjocka fjädrar, och ett lager fett för att hålla värmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundrans största djur är karibuerna, som också kallas renar.",
+      "text_markdown": "Tundrans största djur är karibuerna, som också kallas renar.",
+      "tts": {
+        "text": "Tundrans största djur är karibuerna, som också kallas renar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibuer lever i stora hjordar och färdas långa sträckor över det öppna landet.",
+      "text_markdown": "Karibuer lever i stora hjordar och färdas långa sträckor över det öppna landet.",
+      "tts": {
+        "text": "Karibuer lever i stora hjordar och färdas långa sträckor över det öppna landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På sommaren äter de av tundrans växter, och på vintern gräver de genom snön efter lavar.",
+      "text_markdown": "På sommaren äter de av tundrans växter, och på vintern gräver de genom snön efter lavar.",
+      "tts": {
+        "text": "På sommaren äter de av tundrans växter, och på vintern gräver de genom snön efter lavar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myskoxen är ett annat stort djur på tundran.",
+      "text_markdown": "Myskoxen är ett annat stort djur på tundran.",
+      "tts": {
+        "text": "Myskoxen är ett annat stort djur på tundran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En myskoxe har en tung kropp och en tjock päls av långt hår som hänger nästan ända ner till marken.",
+      "text_markdown": "En myskoxe har en tung kropp och en tjock päls av långt hår som hänger nästan ända ner till marken.",
+      "tts": {
+        "text": "En myskoxe har en tung kropp och en tjock päls av långt hår som hänger nästan ända ner till marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När vargar kommer nära ställer sig myskoxarna i en ring, vända utåt, för att skydda de unga.",
+      "text_markdown": "När vargar kommer nära ställer sig myskoxarna i en ring, vända utåt, för att skydda de unga.",
+      "tts": {
+        "text": "När vargar kommer nära ställer sig myskoxarna i en ring, vända utåt, för att skydda de unga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vargar följer hjordarna över tundran och jagar de gamla och de svaga.",
+      "text_markdown": "Vargar följer hjordarna över tundran och jagar de gamla och de svaga.",
+      "tts": {
+        "text": "Vargar följer hjordarna över tundran och jagar de gamla och de svaga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fjällräven är liten, med tjock päls som blir vit på vintern och brun på sommaren.",
+      "text_markdown": "Fjällräven är liten, med tjock päls som blir vit på vintern och brun på sommaren.",
+      "tts": {
+        "text": "Fjällräven är liten, med tjock päls som blir vit på vintern och brun på sommaren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den följer större djur och äter det de lämnar efter sig, och den jagar små djur också.",
+      "text_markdown": "Den följer större djur och äter det de lämnar efter sig, och den jagar små djur också.",
+      "tts": {
+        "text": "Den följer större djur och äter det de lämnar efter sig, och den jagar små djur också.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fjällharen är vit på vintern och har korta öron för att hålla kvar sin värme.",
+      "text_markdown": "Fjällharen är vit på vintern och har korta öron för att hålla kvar sin värme.",
+      "tts": {
+        "text": "Fjällharen är vit på vintern och har korta öron för att hålla kvar sin värme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under snön gräver små djur som kallas lämlar tunnlar och håller sig sysselsatta hela vintern.",
+      "text_markdown": "Under snön gräver små djur som kallas lämlar tunnlar och håller sig sysselsatta hela vintern.",
+      "tts": {
+        "text": "Under snön gräver små djur som kallas lämlar tunnlar och håller sig sysselsatta hela vintern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lämlar är föda för räven, ugglan och många andra jägare.",
+      "text_markdown": "Lämlar är föda för räven, ugglan och många andra jägare.",
+      "tts": {
+        "text": "Lämlar är föda för räven, ugglan och många andra jägare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fjällugglan är en stor vit uggla som jagar över den öppna tundran dag och natt.",
+      "text_markdown": "Fjällugglan är en stor vit uggla som jagar över den öppna tundran dag och natt.",
+      "tts": {
+        "text": "Fjällugglan är en stor vit uggla som jagar över den öppna tundran dag och natt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den spanar från en låg höjd och slår ljudlöst ner på lämlar och andra små djur.",
+      "text_markdown": "Den spanar från en låg höjd och slår ljudlöst ner på lämlar och andra små djur.",
+      "tts": {
+        "text": "Den spanar från en låg höjd och slår ljudlöst ner på lämlar och andra små djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under den korta sommaren anländer väldiga flockar av fåglar söderifrån.",
+      "text_markdown": "Under den korta sommaren anländer väldiga flockar av fåglar söderifrån.",
+      "tts": {
+        "text": "Under den korta sommaren anländer väldiga flockar av fåglar söderifrån.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gäss, änder och många små fåglar kommer för att häcka på den våta, insektsrika tundran.",
+      "text_markdown": "Gäss, änder och många små fåglar kommer för att häcka på den våta, insektsrika tundran.",
+      "tts": {
+        "text": "Gäss, änder och många små fåglar kommer för att häcka på den våta, insektsrika tundran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kommer för att de långa sommardagarna och de många insekterna betyder gott om mat.",
+      "text_markdown": "De kommer för att de långa sommardagarna och de många insekterna betyder gott om mat.",
+      "tts": {
+        "text": "De kommer för att de långa sommardagarna och de många insekterna betyder gott om mat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under några veckor fyller moln av myggor och små flugor luften.",
+      "text_markdown": "Under några veckor fyller moln av myggor och små flugor luften.",
+      "tts": {
+        "text": "Under några veckor fyller moln av myggor och små flugor luften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan föder fåglarna snabbt upp sina ungar och flyger söderut igen innan kylan kommer tillbaka.",
+      "text_markdown": "Sedan föder fåglarna snabbt upp sina ungar och flyger söderut igen innan kylan kommer tillbaka.",
+      "tts": {
+        "text": "Sedan föder fåglarna snabbt upp sina ungar och flyger söderut igen innan kylan kommer tillbaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Längs den norra kanten, där tundran möter det frusna havet, jagar isbjörnen på isen.",
+      "text_markdown": "Längs den norra kanten, där tundran möter det frusna havet, jagar isbjörnen på isen.",
+      "tts": {
+        "text": "Längs den norra kanten, där tundran möter det frusna havet, jagar isbjörnen på isen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Människorna",
+      "text_markdown": "Människorna"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människor har levt på tundran i många tusen år.",
+      "text_markdown": "Människor har levt på tundran i många tusen år.",
+      "tts": {
+        "text": "Människor har levt på tundran i många tusen år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Att leva här kräver djup kunskap om det kalla landet och dess djur.",
+      "text_markdown": "Att leva här kräver djup kunskap om det kalla landet och dess djur.",
+      "tts": {
+        "text": "Att leva här kräver djup kunskap om det kalla landet och dess djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Nordamerika har inuiterna och andra nordliga folk levt på tundran och den frusna kusten under mycket lång tid.",
+      "text_markdown": "I Nordamerika har inuiterna och andra nordliga folk levt på tundran och den frusna kusten under mycket lång tid.",
+      "tts": {
+        "text": "I Nordamerika har inuiterna och andra nordliga folk levt på tundran och den frusna kusten under mycket lång tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De jagade karibuer, fiskade i floderna och havet, och jagade sälar längs isen.",
+      "text_markdown": "De jagade karibuer, fiskade i floderna och havet, och jagade sälar längs isen.",
+      "tts": {
+        "text": "De jagade karibuer, fiskade i floderna och havet, och jagade sälar längs isen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De gjorde varma kläder av djurskinn och päls, sydda för att hålla vinden ute.",
+      "text_markdown": "De gjorde varma kläder av djurskinn och päls, sydda för att hålla vinden ute.",
+      "tts": {
+        "text": "De gjorde varma kläder av djurskinn och päls, sydda för att hålla vinden ute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De byggde hem av det som landet gav dem, och färdades med släde över snön.",
+      "text_markdown": "De byggde hem av det som landet gav dem, och färdades med släde över snön.",
+      "tts": {
+        "text": "De byggde hem av det som landet gav dem, och färdades med släde över snön.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I norra Europa har samerna följt renarna över tundran i många generationer.",
+      "text_markdown": "I norra Europa har samerna följt renarna över tundran i många generationer.",
+      "tts": {
+        "text": "I norra Europa har samerna följt renarna över tundran i många generationer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Renarna gav dem kött, mjölk, skinn till kläder, och ett sätt att dra slädar.",
+      "text_markdown": "Renarna gav dem kött, mjölk, skinn till kläder, och ett sätt att dra slädar.",
+      "tts": {
+        "text": "Renarna gav dem kött, mjölk, skinn till kläder, och ett sätt att dra slädar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I norra Ryssland har många folk gjort tundran till sitt hem.",
+      "text_markdown": "I norra Ryssland har många folk gjort tundran till sitt hem.",
+      "tts": {
+        "text": "I norra Ryssland har många folk gjort tundran till sitt hem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nenetserna, tjuktjerna och andra har vallat renar över dessa kalla länder under mycket lång tid.",
+      "text_markdown": "Nenetserna, tjuktjerna och andra har vallat renar över dessa kalla länder under mycket lång tid.",
+      "tts": {
+        "text": "Nenetserna, tjuktjerna och andra har vallat renar över dessa kalla länder under mycket lång tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Några av dem färdas fortfarande med sina hjordar i dag, och flyttar med årstiderna.",
+      "text_markdown": "Några av dem färdas fortfarande med sina hjordar i dag, och flyttar med årstiderna.",
+      "tts": {
+        "text": "Några av dem färdas fortfarande med sina hjordar i dag, och flyttar med årstiderna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På sommaren följer de renarna norrut mot kusten.",
+      "text_markdown": "På sommaren följer de renarna norrut mot kusten.",
+      "tts": {
+        "text": "På sommaren följer de renarna norrut mot kusten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På vintern flyttar de söderut mot skogsbrynets skydd.",
+      "text_markdown": "På vintern flyttar de söderut mot skogsbrynets skydd.",
+      "tts": {
+        "text": "På vintern flyttar de söderut mot skogsbrynets skydd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Över alla dessa länder lärde sig människorna att läsa vädret, snön och isen.",
+      "text_markdown": "Över alla dessa länder lärde sig människorna att läsa vädret, snön och isen.",
+      "tts": {
+        "text": "Över alla dessa länder lärde sig människorna att läsa vädret, snön och isen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lärde sig karibuernas och renarnas stigar.",
+      "text_markdown": "De lärde sig karibuernas och renarnas stigar.",
+      "tts": {
+        "text": "De lärde sig karibuernas och renarnas stigar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lärde sig var fiskarna samlades och när fåglarna skulle komma.",
+      "text_markdown": "De lärde sig var fiskarna samlades och när fåglarna skulle komma.",
+      "tts": {
+        "text": "De lärde sig var fiskarna samlades och när fåglarna skulle komma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lärde sig att lagra mat från den korta sommaren så att den räckte genom den långa vintern.",
+      "text_markdown": "De lärde sig att lagra mat från den korta sommaren så att den räckte genom den långa vintern.",
+      "tts": {
+        "text": "De lärde sig att lagra mat från den korta sommaren så att den räckte genom den långa vintern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran ger lite, och den kräver mycket, men människor har byggt goda liv här under mycket lång tid.",
+      "text_markdown": "Tundran ger lite, och den kräver mycket, men människor har byggt goda liv här under mycket lång tid.",
+      "tts": {
+        "text": "Tundran ger lite, och den kräver mycket, men människor har byggt goda liv här under mycket lång tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras sånger, deras berättelser och deras språk växte upp med den kalla vinden och det vida öppna landet.",
+      "text_markdown": "Deras sånger, deras berättelser och deras språk växte upp med den kalla vinden och det vida öppna landet.",
+      "tts": {
+        "text": "Deras sånger, deras berättelser och deras språk växte upp med den kalla vinden och det vida öppna landet.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomet i dag",
+      "text_markdown": "Biomet i dag"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran är ett av de vildaste och tommaste biomen, men det förändras snabbt.",
+      "text_markdown": "Tundran är ett av de vildaste och tommaste biomen, men det förändras snabbt.",
+      "tts": {
+        "text": "Tundran är ett av de vildaste och tommaste biomen, men det förändras snabbt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Av alla biom värms tundran upp snabbast.",
+      "text_markdown": "Av alla biom värms tundran upp snabbast.",
+      "tts": {
+        "text": "Av alla biom värms tundran upp snabbast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den yttersta norden blir varmare år för år.",
+      "text_markdown": "Den yttersta norden blir varmare år för år.",
+      "tts": {
+        "text": "Den yttersta norden blir varmare år för år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När luften värms upp börjar den frusna marken tina.",
+      "text_markdown": "När luften värms upp börjar den frusna marken tina.",
+      "tts": {
+        "text": "När luften värms upp börjar den frusna marken tina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När permafrosten tinar kan landet sjunka, spricka och bli till gyttja.",
+      "text_markdown": "När permafrosten tinar kan landet sjunka, spricka och bli till gyttja.",
+      "tts": {
+        "text": "När permafrosten tinar kan landet sjunka, spricka och bli till gyttja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vägar, hus och rörledningar byggda på den frusna marken kan böjas och brytas.",
+      "text_markdown": "Vägar, hus och rörledningar byggda på den frusna marken kan böjas och brytas.",
+      "tts": {
+        "text": "Vägar, hus och rörledningar byggda på den frusna marken kan böjas och brytas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tinande marken släpper också ut gaser som hade varit inlåsta i den frusna jorden under mycket lång tid.",
+      "text_markdown": "Den tinande marken släpper också ut gaser som hade varit inlåsta i den frusna jorden under mycket lång tid.",
+      "tts": {
+        "text": "Den tinande marken släpper också ut gaser som hade varit inlåsta i den frusna jorden under mycket lång tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dessa gaser stiger upp i luften och kan göra hela jorden ännu lite varmare.",
+      "text_markdown": "Dessa gaser stiger upp i luften och kan göra hela jorden ännu lite varmare.",
+      "tts": {
+        "text": "Dessa gaser stiger upp i luften och kan göra hela jorden ännu lite varmare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När tundran värms upp sprider sig buskar och små träd långsamt norrut in i den.",
+      "text_markdown": "När tundran värms upp sprider sig buskar och små träd långsamt norrut in i den.",
+      "tts": {
+        "text": "När tundran värms upp sprider sig buskar och små träd långsamt norrut in i den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa djur från den varmare södern flyttar också norrut.",
+      "text_markdown": "Vissa djur från den varmare södern flyttar också norrut.",
+      "tts": {
+        "text": "Vissa djur från den varmare södern flyttar också norrut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människor kommer också till tundran för att leta efter olja, gas och metall i marken.",
+      "text_markdown": "Människor kommer också till tundran för att leta efter olja, gas och metall i marken.",
+      "tts": {
+        "text": "Människor kommer också till tundran för att leta efter olja, gas och metall i marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras vägar och maskiner kan lämna spår i landet som läker mycket långsamt i kylan.",
+      "text_markdown": "Deras vägar och maskiner kan lämna spår i landet som läker mycket långsamt i kylan.",
+      "tts": {
+        "text": "Deras vägar och maskiner kan lämna spår i landet som läker mycket långsamt i kylan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många människor och grupper arbetar i dag för att ta hand om tundran.",
+      "text_markdown": "Många människor och grupper arbetar i dag för att ta hand om tundran.",
+      "tts": {
+        "text": "Många människor och grupper arbetar i dag för att ta hand om tundran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De avsätter stora parker där karibuerna och fåglarna fortfarande kan ströva.",
+      "text_markdown": "De avsätter stora parker där karibuerna och fåglarna fortfarande kan ströva.",
+      "tts": {
+        "text": "De avsätter stora parker där karibuerna och fåglarna fortfarande kan ströva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De samarbetar med de människor som har levt här i många generationer för att skydda landet.",
+      "text_markdown": "De samarbetar med de människor som har levt här i många generationer för att skydda landet.",
+      "tts": {
+        "text": "De samarbetar med de människor som har levt här i många generationer för att skydda landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerar tundran för att förstå hur den förändras och hur man håller den frisk.",
+      "text_markdown": "De studerar tundran för att förstå hur den förändras och hur man håller den frisk.",
+      "tts": {
+        "text": "De studerar tundran för att förstå hur den förändras och hur man håller den frisk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundran är skör och långsam att läka, och den rymmer ett enormt förråd av fruset kol.",
+      "text_markdown": "Tundran är skör och långsam att läka, och den rymmer ett enormt förråd av fruset kol.",
+      "tts": {
+        "text": "Tundran är skör och långsam att läka, och den rymmer ett enormt förråd av fruset kol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den är värd vår omsorg.",
+      "text_markdown": "Den är värd vår omsorg.",
+      "tts": {
+        "text": "Den är värd vår omsorg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Avslutning",
+      "text_markdown": "Avslutning"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är tundran.",
+      "text_markdown": "Det är tundran.",
+      "tts": {
+        "text": "Det är tundran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett kallt, öppet, trädlöst land av frusen mark, låga växter och vid ljus himmel högst upp på jorden.",
+      "text_markdown": "Ett kallt, öppet, trädlöst land av frusen mark, låga växter och vid ljus himmel högst upp på jorden.",
+      "tts": {
+        "text": "Ett kallt, öppet, trädlöst land av frusen mark, låga växter och vid ljus himmel högst upp på jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du någonsin står i en, var stilla en stund.",
+      "text_markdown": "Om du någonsin står i en, var stilla en stund.",
+      "tts": {
+        "text": "Om du någonsin står i en, var stilla en stund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Känn den kalla vinden röra sig över det öppna landet.",
+      "text_markdown": "Känn den kalla vinden röra sig över det öppna landet.",
+      "tts": {
+        "text": "Känn den kalla vinden röra sig över det öppna landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Titta ner på de pyttesmå blommorna och den mjuka mossan under dina fötter.",
+      "text_markdown": "Titta ner på de pyttesmå blommorna och den mjuka mossan under dina fötter.",
+      "tts": {
+        "text": "Titta ner på de pyttesmå blommorna och den mjuka mossan under dina fötter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Titta upp mot den väldiga och tomma himlen.",
+      "text_markdown": "Titta upp mot den väldiga och tomma himlen.",
+      "tts": {
+        "text": "Titta upp mot den väldiga och tomma himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kommer att känna biomets stilla, tålmodiga hjärta slå omkring dig.",
+      "text_markdown": "Du kommer att känna biomets stilla, tålmodiga hjärta slå omkring dig.",
+      "tts": {
+        "text": "Du kommer att känna biomets stilla, tålmodiga hjärta slå omkring dig.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

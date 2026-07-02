@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Η Τούνδρα",
+      "text_markdown": "Η Τούνδρα"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Πού Απλώνεται Αυτή η Βιόμη",
+      "text_markdown": "Πού Απλώνεται Αυτή η Βιόμη"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καλώς ήρθατε στην τούνδρα.",
+      "text_markdown": "Καλώς ήρθατε στην τούνδρα.",
+      "tts": {
+        "text": "Καλώς ήρθατε στην τούνδρα.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή είναι μία από τις μεγάλες βιόμες του κόσμου.",
+      "text_markdown": "Αυτή είναι μία από τις μεγάλες βιόμες του κόσμου.",
+      "tts": {
+        "text": "Αυτή είναι μία από τις μεγάλες βιόμες του κόσμου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια βιόμη είναι ένα κομμάτι της Γης με τον δικό της καιρό, φυτά και ζώα.",
+      "text_markdown": "Μια βιόμη είναι ένα κομμάτι της Γης με τον δικό της καιρό, φυτά και ζώα.",
+      "tts": {
+        "text": "Μια βιόμη είναι ένα κομμάτι της Γης με τον δικό της καιρό, φυτά και ζώα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα είναι μια κρύα, ανοιχτή γη, όπου κάνει πολύ κρύο για να φυτρώσουν δέντρα.",
+      "text_markdown": "Η τούνδρα είναι μια κρύα, ανοιχτή γη, όπου κάνει πολύ κρύο για να φυτρώσουν δέντρα.",
+      "tts": {
+        "text": "Η τούνδρα είναι μια κρύα, ανοιχτή γη, όπου κάνει πολύ κρύο για να φυτρώσουν δέντρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η λέξη τούνδρα προέρχεται από μια παλιά λέξη που σημαίνει άδεντρη πεδιάδα.",
+      "text_markdown": "Η λέξη τούνδρα προέρχεται από μια παλιά λέξη που σημαίνει άδεντρη πεδιάδα.",
+      "tts": {
+        "text": "Η λέξη τούνδρα προέρχεται από μια παλιά λέξη που σημαίνει άδεντρη πεδιάδα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα είναι η πιο κρύα βιόμη της στεριάς.",
+      "text_markdown": "Η τούνδρα είναι η πιο κρύα βιόμη της στεριάς.",
+      "tts": {
+        "text": "Η τούνδρα είναι η πιο κρύα βιόμη της στεριάς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μεγαλύτερο μέρος της τούνδρας απλώνεται σε έναν πλατύ δακτύλιο γύρω από την κορυφή του κόσμου.",
+      "text_markdown": "Το μεγαλύτερο μέρος της τούνδρας απλώνεται σε έναν πλατύ δακτύλιο γύρω από την κορυφή του κόσμου.",
+      "tts": {
+        "text": "Το μεγαλύτερο μέρος της τούνδρας απλώνεται σε έναν πλατύ δακτύλιο γύρω από την κορυφή του κόσμου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καλύπτει τις βόρειες άκρες του Καναδά, της Αλάσκας και της Γροιλανδίας, στη Βόρεια Αμερική.",
+      "text_markdown": "Καλύπτει τις βόρειες άκρες του Καναδά, της Αλάσκας και της Γροιλανδίας, στη Βόρεια Αμερική.",
+      "tts": {
+        "text": "Καλύπτει τις βόρειες άκρες του Καναδά, της Αλάσκας και της Γροιλανδίας, στη Βόρεια Αμερική.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καλύπτει τον απώτατο βορρά της Νορβηγίας, της Σουηδίας και της Φινλανδίας, στη βόρεια Ευρώπη.",
+      "text_markdown": "Καλύπτει τον απώτατο βορρά της Νορβηγίας, της Σουηδίας και της Φινλανδίας, στη βόρεια Ευρώπη.",
+      "tts": {
+        "text": "Καλύπτει τον απώτατο βορρά της Νορβηγίας, της Σουηδίας και της Φινλανδίας, στη βόρεια Ευρώπη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καλύπτει τη μακριά βόρεια ακτή της Ρωσίας, κατά μήκος της κορυφής της Ασίας.",
+      "text_markdown": "Καλύπτει τη μακριά βόρεια ακτή της Ρωσίας, κατά μήκος της κορυφής της Ασίας.",
+      "tts": {
+        "text": "Καλύπτει τη μακριά βόρεια ακτή της Ρωσίας, κατά μήκος της κορυφής της Ασίας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτός ο κρύος δακτύλιος γης βρίσκεται βόρεια του βόρειου δάσους και γύρω από την παγωμένη θάλασσα.",
+      "text_markdown": "Αυτός ο κρύος δακτύλιος γης βρίσκεται βόρεια του βόρειου δάσους και γύρω από την παγωμένη θάλασσα.",
+      "tts": {
+        "text": "Αυτός ο κρύος δακτύλιος γης βρίσκεται βόρεια του βόρειου δάσους και γύρω από την παγωμένη θάλασσα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχει και ένα άλλο είδος τούνδρας.",
+      "text_markdown": "Υπάρχει και ένα άλλο είδος τούνδρας.",
+      "tts": {
+        "text": "Υπάρχει και ένα άλλο είδος τούνδρας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ψηλά στα βουνά, πάνω από τα τελευταία δέντρα, εμφανίζεται η ίδια κρύα και ανοιχτή γη.",
+      "text_markdown": "Ψηλά στα βουνά, πάνω από τα τελευταία δέντρα, εμφανίζεται η ίδια κρύα και ανοιχτή γη.",
+      "tts": {
+        "text": "Ψηλά στα βουνά, πάνω από τα τελευταία δέντρα, εμφανίζεται η ίδια κρύα και ανοιχτή γη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή η ορεινή τούνδρα βρίσκεται σε ψηλές κορυφές σε όλον τον κόσμο, ακόμη και κοντά στο ζεστό μέσον της Γης.",
+      "text_markdown": "Αυτή η ορεινή τούνδρα βρίσκεται σε ψηλές κορυφές σε όλον τον κόσμο, ακόμη και κοντά στο ζεστό μέσον της Γης.",
+      "tts": {
+        "text": "Αυτή η ορεινή τούνδρα βρίσκεται σε ψηλές κορυφές σε όλον τον κόσμο, ακόμη και κοντά στο ζεστό μέσον της Γης.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όπου κι αν απλώνεται, η τούνδρα είναι μια γη με χαμηλά φυτά, κρύο άνεμο και πλατύ ανοιχτό ουρανό.",
+      "text_markdown": "Όπου κι αν απλώνεται, η τούνδρα είναι μια γη με χαμηλά φυτά, κρύο άνεμο και πλατύ ανοιχτό ουρανό.",
+      "tts": {
+        "text": "Όπου κι αν απλώνεται, η τούνδρα είναι μια γη με χαμηλά φυτά, κρύο άνεμο και πλατύ ανοιχτό ουρανό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Εδώ δεν υπάρχουν δάση.",
+      "text_markdown": "Εδώ δεν υπάρχουν δάση.",
+      "tts": {
+        "text": "Εδώ δεν υπάρχουν δάση.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το έδαφος είναι παγωμένο σκληρά για το μεγαλύτερο μέρος του χρόνου.",
+      "text_markdown": "Το έδαφος είναι παγωμένο σκληρά για το μεγαλύτερο μέρος του χρόνου.",
+      "tts": {
+        "text": "Το έδαφος είναι παγωμένο σκληρά για το μεγαλύτερο μέρος του χρόνου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όμως ακόμη και σε αυτόν τον κρύο τόπο, η ζωή βρίσκει τρόπο.",
+      "text_markdown": "Όμως ακόμη και σε αυτόν τον κρύο τόπο, η ζωή βρίσκει τρόπο.",
+      "tts": {
+        "text": "Όμως ακόμη και σε αυτόν τον κρύο τόπο, η ζωή βρίσκει τρόπο.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ο Καιρός",
+      "text_markdown": "Ο Καιρός"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα είναι κρύα, ξηρή και ανεμώδης για το μεγαλύτερο μέρος του χρόνου.",
+      "text_markdown": "Η τούνδρα είναι κρύα, ξηρή και ανεμώδης για το μεγαλύτερο μέρος του χρόνου.",
+      "tts": {
+        "text": "Η τούνδρα είναι κρύα, ξηρή και ανεμώδης για το μεγαλύτερο μέρος του χρόνου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο χειμώνας είναι μακρύς, σκοτεινός και τσουχτερά κρύος.",
+      "text_markdown": "Ο χειμώνας είναι μακρύς, σκοτεινός και τσουχτερά κρύος.",
+      "tts": {
+        "text": "Ο χειμώνας είναι μακρύς, σκοτεινός και τσουχτερά κρύος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στον απώτατο βορρά, ο χειμώνας μπορεί να διαρκέσει οκτώ ή εννέα μήνες.",
+      "text_markdown": "Στον απώτατο βορρά, ο χειμώνας μπορεί να διαρκέσει οκτώ ή εννέα μήνες.",
+      "tts": {
+        "text": "Στον απώτατο βορρά, ο χειμώνας μπορεί να διαρκέσει οκτώ ή εννέα μήνες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο αέρας μπορεί να πέσει πολύ κάτω από το μηδέν, πιο κρύος από έναν οικιακό καταψύκτη.",
+      "text_markdown": "Ο αέρας μπορεί να πέσει πολύ κάτω από το μηδέν, πιο κρύος από έναν οικιακό καταψύκτη.",
+      "tts": {
+        "text": "Ο αέρας μπορεί να πέσει πολύ κάτω από το μηδέν, πιο κρύος από έναν οικιακό καταψύκτη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για πολλές εβδομάδες μέσα στην καρδιά του χειμώνα, ο ήλιος δεν ανατέλλει καθόλου.",
+      "text_markdown": "Για πολλές εβδομάδες μέσα στην καρδιά του χειμώνα, ο ήλιος δεν ανατέλλει καθόλου.",
+      "tts": {
+        "text": "Για πολλές εβδομάδες μέσα στην καρδιά του χειμώνα, ο ήλιος δεν ανατέλλει καθόλου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η γη βρίσκεται σε ένα μακρύ γαλάζιο και σκοτεινό λυκόφως, μέρα με τη μέρα.",
+      "text_markdown": "Η γη βρίσκεται σε ένα μακρύ γαλάζιο και σκοτεινό λυκόφως, μέρα με τη μέρα.",
+      "tts": {
+        "text": "Η γη βρίσκεται σε ένα μακρύ γαλάζιο και σκοτεινό λυκόφως, μέρα με τη μέρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δυνατοί άνεμοι φυσούν πάνω από την ανοιχτή γη, χωρίς δέντρα να τους επιβραδύνουν.",
+      "text_markdown": "Δυνατοί άνεμοι φυσούν πάνω από την ανοιχτή γη, χωρίς δέντρα να τους επιβραδύνουν.",
+      "tts": {
+        "text": "Δυνατοί άνεμοι φυσούν πάνω από την ανοιχτή γη, χωρίς δέντρα να τους επιβραδύνουν.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο άνεμος σηκώνει το ξερό χιόνι και το σπρώχνει πάνω στο έδαφος.",
+      "text_markdown": "Ο άνεμος σηκώνει το ξερό χιόνι και το σπρώχνει πάνω στο έδαφος.",
+      "tts": {
+        "text": "Ο άνεμος σηκώνει το ξερό χιόνι και το σπρώχνει πάνω στο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολύ λίγο χιόνι ή βροχή πέφτει εδώ.",
+      "text_markdown": "Πολύ λίγο χιόνι ή βροχή πέφτει εδώ.",
+      "tts": {
+        "text": "Πολύ λίγο χιόνι ή βροχή πέφτει εδώ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα είναι τόσο ξηρή που μερικές φορές την αποκαλούν κρύα έρημο.",
+      "text_markdown": "Η τούνδρα είναι τόσο ξηρή που μερικές φορές την αποκαλούν κρύα έρημο.",
+      "tts": {
+        "text": "Η τούνδρα είναι τόσο ξηρή που μερικές φορές την αποκαλούν κρύα έρημο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όμως το νερό που πέφτει δεν μπορεί να διαπεράσει το παγωμένο έδαφος.",
+      "text_markdown": "Όμως το νερό που πέφτει δεν μπορεί να διαπεράσει το παγωμένο έδαφος.",
+      "tts": {
+        "text": "Όμως το νερό που πέφτει δεν μπορεί να διαπεράσει το παγωμένο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έτσι μένει στην επιφάνεια, και η γη είναι διάσπαρτη με ρηχές λιμνούλες και υγρό έδαφος.",
+      "text_markdown": "Έτσι μένει στην επιφάνεια, και η γη είναι διάσπαρτη με ρηχές λιμνούλες και υγρό έδαφος.",
+      "tts": {
+        "text": "Έτσι μένει στην επιφάνεια, και η γη είναι διάσπαρτη με ρηχές λιμνούλες και υγρό έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το καλοκαίρι είναι σύντομο και δροσερό.",
+      "text_markdown": "Το καλοκαίρι είναι σύντομο και δροσερό.",
+      "tts": {
+        "text": "Το καλοκαίρι είναι σύντομο και δροσερό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για λίγες εβδομάδες, ο ήλιος μένει στον ουρανό σχεδόν όλη μέρα και όλη νύχτα.",
+      "text_markdown": "Για λίγες εβδομάδες, ο ήλιος μένει στον ουρανό σχεδόν όλη μέρα και όλη νύχτα.",
+      "tts": {
+        "text": "Για λίγες εβδομάδες, ο ήλιος μένει στον ουρανό σχεδόν όλη μέρα και όλη νύχτα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η επιφάνεια του παγωμένου εδάφους μαλακώνει, και η γη γίνεται πράσινη και φωτεινή.",
+      "text_markdown": "Η επιφάνεια του παγωμένου εδάφους μαλακώνει, και η γη γίνεται πράσινη και φωτεινή.",
+      "tts": {
+        "text": "Η επιφάνεια του παγωμένου εδάφους μαλακώνει, και η γη γίνεται πράσινη και φωτεινή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακόμη και το καλοκαίρι, ο αέρας παραμένει δροσερός, και η παγωνιά μπορεί να επιστρέψει οποιαδήποτε νύχτα.",
+      "text_markdown": "Ακόμη και το καλοκαίρι, ο αέρας παραμένει δροσερός, και η παγωνιά μπορεί να επιστρέψει οποιαδήποτε νύχτα.",
+      "tts": {
+        "text": "Ακόμη και το καλοκαίρι, ο αέρας παραμένει δροσερός, και η παγωνιά μπορεί να επιστρέψει οποιαδήποτε νύχτα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ύστερα το σύντομο καλοκαίρι τελειώνει, ο ήλιος χαμηλώνει, και ο μακρύς χειμώνας αρχίζει ξανά.",
+      "text_markdown": "Ύστερα το σύντομο καλοκαίρι τελειώνει, ο ήλιος χαμηλώνει, και ο μακρύς χειμώνας αρχίζει ξανά.",
+      "tts": {
+        "text": "Ύστερα το σύντομο καλοκαίρι τελειώνει, ο ήλιος χαμηλώνει, και ο μακρύς χειμώνας αρχίζει ξανά.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Η Γη και το Νερό",
+      "text_markdown": "Η Γη και το Νερό"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πιο σημαντικό πράγμα για την τούνδρα βρίσκεται κάτω από τα πόδια σας.",
+      "text_markdown": "Το πιο σημαντικό πράγμα για την τούνδρα βρίσκεται κάτω από τα πόδια σας.",
+      "tts": {
+        "text": "Το πιο σημαντικό πράγμα για την τούνδρα βρίσκεται κάτω από τα πόδια σας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάτω από την επιφάνεια, το έδαφος είναι παγωμένο συμπαγές όλον τον χρόνο.",
+      "text_markdown": "Κάτω από την επιφάνεια, το έδαφος είναι παγωμένο συμπαγές όλον τον χρόνο.",
+      "tts": {
+        "text": "Κάτω από την επιφάνεια, το έδαφος είναι παγωμένο συμπαγές όλον τον χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό το παγωμένο έδαφος ονομάζεται μόνιμος παγετός.",
+      "text_markdown": "Αυτό το παγωμένο έδαφος ονομάζεται μόνιμος παγετός.",
+      "tts": {
+        "text": "Αυτό το παγωμένο έδαφος ονομάζεται μόνιμος παγετός.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε μερικά μέρη ο μόνιμος παγετός φτάνει πιο βαθιά από το ψηλότερο κτίριο.",
+      "text_markdown": "Σε μερικά μέρη ο μόνιμος παγετός φτάνει πιο βαθιά από το ψηλότερο κτίριο.",
+      "tts": {
+        "text": "Σε μερικά μέρη ο μόνιμος παγετός φτάνει πιο βαθιά από το ψηλότερο κτίριο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είναι παγωμένο εδώ και χιλιάδες χρόνια.",
+      "text_markdown": "Είναι παγωμένο εδώ και χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Είναι παγωμένο εδώ και χιλιάδες χρόνια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το καλοκαίρι, ξεπαγώνει μόνο το πιο πάνω στρώμα του χώματος.",
+      "text_markdown": "Το καλοκαίρι, ξεπαγώνει μόνο το πιο πάνω στρώμα του χώματος.",
+      "tts": {
+        "text": "Το καλοκαίρι, ξεπαγώνει μόνο το πιο πάνω στρώμα του χώματος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε αυτό το λεπτό λιωμένο στρώμα πρέπει να ζήσουν όλα τα φυτά.",
+      "text_markdown": "Σε αυτό το λεπτό λιωμένο στρώμα πρέπει να ζήσουν όλα τα φυτά.",
+      "tts": {
+        "text": "Σε αυτό το λεπτό λιωμένο στρώμα πρέπει να ζήσουν όλα τα φυτά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι ρίζες τους δεν μπορούν να πάνε βαθιά, γιατί ακριβώς από κάτω το έδαφος είναι σκληρό σαν βράχος.",
+      "text_markdown": "Οι ρίζες τους δεν μπορούν να πάνε βαθιά, γιατί ακριβώς από κάτω το έδαφος είναι σκληρό σαν βράχος.",
+      "tts": {
+        "text": "Οι ρίζες τους δεν μπορούν να πάνε βαθιά, γιατί ακριβώς από κάτω το έδαφος είναι σκληρό σαν βράχος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το παγωμένο έδαφος παγιδεύει επίσης το νερό στην επιφάνεια.",
+      "text_markdown": "Το παγωμένο έδαφος παγιδεύει επίσης το νερό στην επιφάνεια.",
+      "tts": {
+        "text": "Το παγωμένο έδαφος παγιδεύει επίσης το νερό στην επιφάνεια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η βροχή και το χιόνι που λιώνει δεν μπορούν να στραγγίξουν μέσα από τον μόνιμο παγετό.",
+      "text_markdown": "Η βροχή και το χιόνι που λιώνει δεν μπορούν να στραγγίξουν μέσα από τον μόνιμο παγετό.",
+      "tts": {
+        "text": "Η βροχή και το χιόνι που λιώνει δεν μπορούν να στραγγίξουν μέσα από τον μόνιμο παγετό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έτσι το καλοκαίρι η τούνδρα γίνεται μια γη με ρηχές λιμνούλες, βάλτους και αργά ρυάκια.",
+      "text_markdown": "Έτσι το καλοκαίρι η τούνδρα γίνεται μια γη με ρηχές λιμνούλες, βάλτους και αργά ρυάκια.",
+      "tts": {
+        "text": "Έτσι το καλοκαίρι η τούνδρα γίνεται μια γη με ρηχές λιμνούλες, βάλτους και αργά ρυάκια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Από ψηλά, η καλοκαιρινή τούνδρα λάμπει με χιλιάδες μικρές λιμνούλες.",
+      "text_markdown": "Από ψηλά, η καλοκαιρινή τούνδρα λάμπει με χιλιάδες μικρές λιμνούλες.",
+      "tts": {
+        "text": "Από ψηλά, η καλοκαιρινή τούνδρα λάμπει με χιλιάδες μικρές λιμνούλες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η ίδια η γη είναι κυρίως επίπεδη ή απαλά κυματιστή.",
+      "text_markdown": "Η ίδια η γη είναι κυρίως επίπεδη ή απαλά κυματιστή.",
+      "tts": {
+        "text": "Η ίδια η γη είναι κυρίως επίπεδη ή απαλά κυματιστή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε πολλά μέρη το έδαφος σπάει σε παράξενα σχήματα από το πάγωμα και το ξεπάγωμα.",
+      "text_markdown": "Σε πολλά μέρη το έδαφος σπάει σε παράξενα σχήματα από το πάγωμα και το ξεπάγωμα.",
+      "tts": {
+        "text": "Σε πολλά μέρη το έδαφος σπάει σε παράξενα σχήματα από το πάγωμα και το ξεπάγωμα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το χώμα παγώνει και ανασηκώνεται, ύστερα λιώνει και κατακάθεται, χρόνο με τον χρόνο.",
+      "text_markdown": "Το χώμα παγώνει και ανασηκώνεται, ύστερα λιώνει και κατακάθεται, χρόνο με τον χρόνο.",
+      "tts": {
+        "text": "Το χώμα παγώνει και ανασηκώνεται, ύστερα λιώνει και κατακάθεται, χρόνο με τον χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή η αργή κίνηση ραγίζει το έδαφος σε δακτυλίους, λωρίδες και χαμηλά αναχώματα.",
+      "text_markdown": "Αυτή η αργή κίνηση ραγίζει το έδαφος σε δακτυλίους, λωρίδες και χαμηλά αναχώματα.",
+      "tts": {
+        "text": "Αυτή η αργή κίνηση ραγίζει το έδαφος σε δακτυλίους, λωρίδες και χαμηλά αναχώματα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το χώμα της τούνδρας είναι λεπτό, φτωχό και κρύο.",
+      "text_markdown": "Το χώμα της τούνδρας είναι λεπτό, φτωχό και κρύο.",
+      "tts": {
+        "text": "Το χώμα της τούνδρας είναι λεπτό, φτωχό και κρύο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα νεκρά φυτά αποσυντίθενται πολύ αργά στο κρύο, γι' αυτό το καλό χώμα σχηματίζεται αργά.",
+      "text_markdown": "Τα νεκρά φυτά αποσυντίθενται πολύ αργά στο κρύο, γι' αυτό το καλό χώμα σχηματίζεται αργά.",
+      "tts": {
+        "text": "Τα νεκρά φυτά αποσυντίθενται πολύ αργά στο κρύο, γι' αυτό το καλό χώμα σχηματίζεται αργά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είναι μια σκληρή γη, παγωμένη, υγρή και γυμνή, όμως είναι ήσυχα γεμάτη ζωή.",
+      "text_markdown": "Είναι μια σκληρή γη, παγωμένη, υγρή και γυμνή, όμως είναι ήσυχα γεμάτη ζωή.",
+      "tts": {
+        "text": "Είναι μια σκληρή γη, παγωμένη, υγρή και γυμνή, όμως είναι ήσυχα γεμάτη ζωή.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Τα Φυτά",
+      "text_markdown": "Τα Φυτά"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα φυτά της τούνδρας είναι μικρά, ανθεκτικά και χαμηλά στο έδαφος.",
+      "text_markdown": "Τα φυτά της τούνδρας είναι μικρά, ανθεκτικά και χαμηλά στο έδαφος.",
+      "tts": {
+        "text": "Τα φυτά της τούνδρας είναι μικρά, ανθεκτικά και χαμηλά στο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Εδώ δεν υπάρχουν δέντρα, γιατί τα δέντρα δεν μπορούν να ζήσουν στο παγωμένο έδαφος και τον κρύο άνεμο.",
+      "text_markdown": "Εδώ δεν υπάρχουν δέντρα, γιατί τα δέντρα δεν μπορούν να ζήσουν στο παγωμένο έδαφος και τον κρύο άνεμο.",
+      "tts": {
+        "text": "Εδώ δεν υπάρχουν δέντρα, γιατί τα δέντρα δεν μπορούν να ζήσουν στο παγωμένο έδαφος και τον κρύο άνεμο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αντ' αυτού, η τούνδρα είναι σκεπασμένη με χαμηλά στρώματα μικρών φυτών.",
+      "text_markdown": "Αντ' αυτού, η τούνδρα είναι σκεπασμένη με χαμηλά στρώματα μικρών φυτών.",
+      "tts": {
+        "text": "Αντ' αυτού, η τούνδρα είναι σκεπασμένη με χαμηλά στρώματα μικρών φυτών.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το να μένεις χαμηλά είναι το μυστικό για να ζεις εδώ.",
+      "text_markdown": "Το να μένεις χαμηλά είναι το μυστικό για να ζεις εδώ.",
+      "tts": {
+        "text": "Το να μένεις χαμηλά είναι το μυστικό για να ζεις εδώ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κοντά στο έδαφος, ο άνεμος είναι πιο αδύναμος και ο αέρας λίγο πιο ζεστός.",
+      "text_markdown": "Κοντά στο έδαφος, ο άνεμος είναι πιο αδύναμος και ο αέρας λίγο πιο ζεστός.",
+      "tts": {
+        "text": "Κοντά στο έδαφος, ο άνεμος είναι πιο αδύναμος και ο αέρας λίγο πιο ζεστός.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλά φυτά της τούνδρας μεγαλώνουν σε σφιχτά μαξιλαράκια ή πυκνά στρώματα για να κρατούν τη ζεστασιά τους.",
+      "text_markdown": "Πολλά φυτά της τούνδρας μεγαλώνουν σε σφιχτά μαξιλαράκια ή πυκνά στρώματα για να κρατούν τη ζεστασιά τους.",
+      "tts": {
+        "text": "Πολλά φυτά της τούνδρας μεγαλώνουν σε σφιχτά μαξιλαράκια ή πυκνά στρώματα για να κρατούν τη ζεστασιά τους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα βρύα φυτρώνουν πυκνά και απαλά σε μεγάλο μέρος του εδάφους.",
+      "text_markdown": "Τα βρύα φυτρώνουν πυκνά και απαλά σε μεγάλο μέρος του εδάφους.",
+      "tts": {
+        "text": "Τα βρύα φυτρώνουν πυκνά και απαλά σε μεγάλο μέρος του εδάφους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι λειχήνες φυτρώνουν στους γυμνούς βράχους και στο χώμα σε γκρίζες, πράσινες και κίτρινες κηλίδες.",
+      "text_markdown": "Οι λειχήνες φυτρώνουν στους γυμνούς βράχους και στο χώμα σε γκρίζες, πράσινες και κίτρινες κηλίδες.",
+      "tts": {
+        "text": "Οι λειχήνες φυτρώνουν στους γυμνούς βράχους και στο χώμα σε γκρίζες, πράσινες και κίτρινες κηλίδες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια λειχήνα δεν είναι ένα φυτό, αλλά δύο είδη ζωής που ζουν μαζί σαν ένα.",
+      "text_markdown": "Μια λειχήνα δεν είναι ένα φυτό, αλλά δύο είδη ζωής που ζουν μαζί σαν ένα.",
+      "tts": {
+        "text": "Μια λειχήνα δεν είναι ένα φυτό, αλλά δύο είδη ζωής που ζουν μαζί σαν ένα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι λειχήνες μπορούν να ζήσουν εκεί που σχεδόν τίποτε άλλο δεν μπορεί, και μεγαλώνουν πολύ αργά.",
+      "text_markdown": "Οι λειχήνες μπορούν να ζήσουν εκεί που σχεδόν τίποτε άλλο δεν μπορεί, και μεγαλώνουν πολύ αργά.",
+      "tts": {
+        "text": "Οι λειχήνες μπορούν να ζήσουν εκεί που σχεδόν τίποτε άλλο δεν μπορεί, και μεγαλώνουν πολύ αργά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικές λειχήνες στην τούνδρα είναι εκατοντάδων ετών.",
+      "text_markdown": "Μερικές λειχήνες στην τούνδρα είναι εκατοντάδων ετών.",
+      "tts": {
+        "text": "Μερικές λειχήνες στην τούνδρα είναι εκατοντάδων ετών.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μικρά χορτάρια και χαμηλά ανθισμένα φυτά φυτρώνουν ανάμεσα στα βρύα.",
+      "text_markdown": "Μικρά χορτάρια και χαμηλά ανθισμένα φυτά φυτρώνουν ανάμεσα στα βρύα.",
+      "tts": {
+        "text": "Μικρά χορτάρια και χαμηλά ανθισμένα φυτά φυτρώνουν ανάμεσα στα βρύα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στο σύντομο καλοκαίρι, η τούνδρα ξεσπά σε άνθηση.",
+      "text_markdown": "Στο σύντομο καλοκαίρι, η τούνδρα ξεσπά σε άνθηση.",
+      "tts": {
+        "text": "Στο σύντομο καλοκαίρι, η τούνδρα ξεσπά σε άνθηση.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για λίγες φωτεινές εβδομάδες, το έδαφος σκεπάζεται με μικροσκοπικά λουλούδια.",
+      "text_markdown": "Για λίγες φωτεινές εβδομάδες, το έδαφος σκεπάζεται με μικροσκοπικά λουλούδια.",
+      "tts": {
+        "text": "Για λίγες φωτεινές εβδομάδες, το έδαφος σκεπάζεται με μικροσκοπικά λουλούδια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παντού υπάρχουν μικρά κίτρινα, λευκά, ροζ και μοβ λουλούδια.",
+      "text_markdown": "Παντού υπάρχουν μικρά κίτρινα, λευκά, ροζ και μοβ λουλούδια.",
+      "tts": {
+        "text": "Παντού υπάρχουν μικρά κίτρινα, λευκά, ροζ και μοβ λουλούδια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα φυτά πρέπει να ανθίσουν, να φτιάξουν σπόρους και να αποθηκεύσουν τροφή πολύ γρήγορα πριν επιστρέψει το κρύο.",
+      "text_markdown": "Τα φυτά πρέπει να ανθίσουν, να φτιάξουν σπόρους και να αποθηκεύσουν τροφή πολύ γρήγορα πριν επιστρέψει το κρύο.",
+      "tts": {
+        "text": "Τα φυτά πρέπει να ανθίσουν, να φτιάξουν σπόρους και να αποθηκεύσουν τροφή πολύ γρήγορα πριν επιστρέψει το κρύο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Λίγοι μικροί θάμνοι φυτρώνουν κι εδώ, όπως η νάνα ιτιά και η νάνα σημύδα.",
+      "text_markdown": "Λίγοι μικροί θάμνοι φυτρώνουν κι εδώ, όπως η νάνα ιτιά και η νάνα σημύδα.",
+      "tts": {
+        "text": "Λίγοι μικροί θάμνοι φυτρώνουν κι εδώ, όπως η νάνα ιτιά και η νάνα σημύδα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτά είναι τα ίδια είδη δέντρων που ψηλώνουν σε πιο ζεστές χώρες.",
+      "text_markdown": "Αυτά είναι τα ίδια είδη δέντρων που ψηλώνουν σε πιο ζεστές χώρες.",
+      "tts": {
+        "text": "Αυτά είναι τα ίδια είδη δέντρων που ψηλώνουν σε πιο ζεστές χώρες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όμως εδώ μεγαλώνουν σαν μικροσκοπικοί θάμνοι, μόλις ως τον αστράγαλό σας, έρποντας πάνω στο έδαφος.",
+      "text_markdown": "Όμως εδώ μεγαλώνουν σαν μικροσκοπικοί θάμνοι, μόλις ως τον αστράγαλό σας, έρποντας πάνω στο έδαφος.",
+      "tts": {
+        "text": "Όμως εδώ μεγαλώνουν σαν μικροσκοπικοί θάμνοι, μόλις ως τον αστράγαλό σας, έρποντας πάνω στο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μικρά μούρα ωριμάζουν σε μερικά από αυτά τα χαμηλά φυτά στο τέλος του καλοκαιριού.",
+      "text_markdown": "Μικρά μούρα ωριμάζουν σε μερικά από αυτά τα χαμηλά φυτά στο τέλος του καλοκαιριού.",
+      "tts": {
+        "text": "Μικρά μούρα ωριμάζουν σε μερικά από αυτά τα χαμηλά φυτά στο τέλος του καλοκαιριού.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα ζώα και οι άνθρωποι της τούνδρας τα μαζεύουν όσο μπορούν.",
+      "text_markdown": "Τα ζώα και οι άνθρωποι της τούνδρας τα μαζεύουν όσο μπορούν.",
+      "tts": {
+        "text": "Τα ζώα και οι άνθρωποι της τούνδρας τα μαζεύουν όσο μπορούν.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Τα Ζώα",
+      "text_markdown": "Τα Ζώα"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα ζώα της τούνδρας είναι φτιαγμένα να ζουν με το κρύο και τον άνεμο.",
+      "text_markdown": "Τα ζώα της τούνδρας είναι φτιαγμένα να ζουν με το κρύο και τον άνεμο.",
+      "tts": {
+        "text": "Τα ζώα της τούνδρας είναι φτιαγμένα να ζουν με το κρύο και τον άνεμο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλά από αυτά έχουν πυκνή γούνα ή πυκνά φτερά, και ένα στρώμα λίπους για να κρατιούνται ζεστά.",
+      "text_markdown": "Πολλά από αυτά έχουν πυκνή γούνα ή πυκνά φτερά, και ένα στρώμα λίπους για να κρατιούνται ζεστά.",
+      "tts": {
+        "text": "Πολλά από αυτά έχουν πυκνή γούνα ή πυκνά φτερά, και ένα στρώμα λίπους για να κρατιούνται ζεστά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα μεγαλύτερα ζώα της τούνδρας είναι οι καριμπού, που λέγονται και τάρανδοι.",
+      "text_markdown": "Τα μεγαλύτερα ζώα της τούνδρας είναι οι καριμπού, που λέγονται και τάρανδοι.",
+      "tts": {
+        "text": "Τα μεγαλύτερα ζώα της τούνδρας είναι οι καριμπού, που λέγονται και τάρανδοι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι καριμπού ζουν σε μεγάλα κοπάδια και διανύουν μεγάλες αποστάσεις πάνω στην ανοιχτή γη.",
+      "text_markdown": "Οι καριμπού ζουν σε μεγάλα κοπάδια και διανύουν μεγάλες αποστάσεις πάνω στην ανοιχτή γη.",
+      "tts": {
+        "text": "Οι καριμπού ζουν σε μεγάλα κοπάδια και διανύουν μεγάλες αποστάσεις πάνω στην ανοιχτή γη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το καλοκαίρι τρέφονται με τα φυτά της τούνδρας, και τον χειμώνα σκάβουν μέσα στο χιόνι για λειχήνες.",
+      "text_markdown": "Το καλοκαίρι τρέφονται με τα φυτά της τούνδρας, και τον χειμώνα σκάβουν μέσα στο χιόνι για λειχήνες.",
+      "tts": {
+        "text": "Το καλοκαίρι τρέφονται με τα φυτά της τούνδρας, και τον χειμώνα σκάβουν μέσα στο χιόνι για λειχήνες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μοσχοβόδι είναι ένα άλλο μεγάλο ζώο της τούνδρας.",
+      "text_markdown": "Το μοσχοβόδι είναι ένα άλλο μεγάλο ζώο της τούνδρας.",
+      "tts": {
+        "text": "Το μοσχοβόδι είναι ένα άλλο μεγάλο ζώο της τούνδρας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μοσχοβόδι έχει βαρύ σώμα και μια πυκνή προβιά από μακριά τρίχα που κρέμεται σχεδόν ως το έδαφος.",
+      "text_markdown": "Το μοσχοβόδι έχει βαρύ σώμα και μια πυκνή προβιά από μακριά τρίχα που κρέμεται σχεδόν ως το έδαφος.",
+      "tts": {
+        "text": "Το μοσχοβόδι έχει βαρύ σώμα και μια πυκνή προβιά από μακριά τρίχα που κρέμεται σχεδόν ως το έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν πλησιάζουν λύκοι, τα μοσχοβόδια στέκονται σε κύκλο, με το πρόσωπο προς τα έξω, για να κρατούν ασφαλή τα μικρά.",
+      "text_markdown": "Όταν πλησιάζουν λύκοι, τα μοσχοβόδια στέκονται σε κύκλο, με το πρόσωπο προς τα έξω, για να κρατούν ασφαλή τα μικρά.",
+      "tts": {
+        "text": "Όταν πλησιάζουν λύκοι, τα μοσχοβόδια στέκονται σε κύκλο, με το πρόσωπο προς τα έξω, για να κρατούν ασφαλή τα μικρά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι λύκοι ακολουθούν τα κοπάδια στην τούνδρα, κυνηγώντας τα γέρικα και τα αδύναμα.",
+      "text_markdown": "Οι λύκοι ακολουθούν τα κοπάδια στην τούνδρα, κυνηγώντας τα γέρικα και τα αδύναμα.",
+      "tts": {
+        "text": "Οι λύκοι ακολουθούν τα κοπάδια στην τούνδρα, κυνηγώντας τα γέρικα και τα αδύναμα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η αρκτική αλεπού είναι μικρή, με πυκνή γούνα που γίνεται λευκή τον χειμώνα και καφέ το καλοκαίρι.",
+      "text_markdown": "Η αρκτική αλεπού είναι μικρή, με πυκνή γούνα που γίνεται λευκή τον χειμώνα και καφέ το καλοκαίρι.",
+      "tts": {
+        "text": "Η αρκτική αλεπού είναι μικρή, με πυκνή γούνα που γίνεται λευκή τον χειμώνα και καφέ το καλοκαίρι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακολουθεί μεγαλύτερα ζώα και τρώει ό,τι αφήνουν πίσω, και κυνηγά και μικρά ζώα.",
+      "text_markdown": "Ακολουθεί μεγαλύτερα ζώα και τρώει ό,τι αφήνουν πίσω, και κυνηγά και μικρά ζώα.",
+      "tts": {
+        "text": "Ακολουθεί μεγαλύτερα ζώα και τρώει ό,τι αφήνουν πίσω, και κυνηγά και μικρά ζώα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο αρκτικός λαγός είναι λευκός τον χειμώνα και έχει κοντά αυτιά για να κρατά τη ζεστασιά του.",
+      "text_markdown": "Ο αρκτικός λαγός είναι λευκός τον χειμώνα και έχει κοντά αυτιά για να κρατά τη ζεστασιά του.",
+      "tts": {
+        "text": "Ο αρκτικός λαγός είναι λευκός τον χειμώνα και έχει κοντά αυτιά για να κρατά τη ζεστασιά του.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάτω από το χιόνι, μικρά ζώα που λέγονται λέμμινγκ σκάβουν σήραγγες και μένουν δραστήρια όλον τον χειμώνα.",
+      "text_markdown": "Κάτω από το χιόνι, μικρά ζώα που λέγονται λέμμινγκ σκάβουν σήραγγες και μένουν δραστήρια όλον τον χειμώνα.",
+      "tts": {
+        "text": "Κάτω από το χιόνι, μικρά ζώα που λέγονται λέμμινγκ σκάβουν σήραγγες και μένουν δραστήρια όλον τον χειμώνα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα λέμμινγκ είναι τροφή για την αλεπού, την κουκουβάγια και πολλούς άλλους κυνηγούς.",
+      "text_markdown": "Τα λέμμινγκ είναι τροφή για την αλεπού, την κουκουβάγια και πολλούς άλλους κυνηγούς.",
+      "tts": {
+        "text": "Τα λέμμινγκ είναι τροφή για την αλεπού, την κουκουβάγια και πολλούς άλλους κυνηγούς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η χιονόγλαυκα είναι μια μεγάλη λευκή κουκουβάγια που κυνηγά πάνω στην ανοιχτή τούνδρα μέρα και νύχτα.",
+      "text_markdown": "Η χιονόγλαυκα είναι μια μεγάλη λευκή κουκουβάγια που κυνηγά πάνω στην ανοιχτή τούνδρα μέρα και νύχτα.",
+      "tts": {
+        "text": "Η χιονόγλαυκα είναι μια μεγάλη λευκή κουκουβάγια που κυνηγά πάνω στην ανοιχτή τούνδρα μέρα και νύχτα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παραμονεύει από ένα χαμηλό ύψωμα και πέφτει αθόρυβα πάνω σε λέμμινγκ και άλλα μικρά ζώα.",
+      "text_markdown": "Παραμονεύει από ένα χαμηλό ύψωμα και πέφτει αθόρυβα πάνω σε λέμμινγκ και άλλα μικρά ζώα.",
+      "tts": {
+        "text": "Παραμονεύει από ένα χαμηλό ύψωμα και πέφτει αθόρυβα πάνω σε λέμμινγκ και άλλα μικρά ζώα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στο σύντομο καλοκαίρι, τεράστια σμήνη πουλιών φτάνουν από τον νότο.",
+      "text_markdown": "Στο σύντομο καλοκαίρι, τεράστια σμήνη πουλιών φτάνουν από τον νότο.",
+      "tts": {
+        "text": "Στο σύντομο καλοκαίρι, τεράστια σμήνη πουλιών φτάνουν από τον νότο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Χήνες, πάπιες και πολλά μικρά πουλιά έρχονται να φωλιάσουν στην υγρή, γεμάτη έντομα τούνδρα.",
+      "text_markdown": "Χήνες, πάπιες και πολλά μικρά πουλιά έρχονται να φωλιάσουν στην υγρή, γεμάτη έντομα τούνδρα.",
+      "tts": {
+        "text": "Χήνες, πάπιες και πολλά μικρά πουλιά έρχονται να φωλιάσουν στην υγρή, γεμάτη έντομα τούνδρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έρχονται επειδή οι μεγάλες καλοκαιρινές μέρες και τα πολλά έντομα σημαίνουν άφθονη τροφή.",
+      "text_markdown": "Έρχονται επειδή οι μεγάλες καλοκαιρινές μέρες και τα πολλά έντομα σημαίνουν άφθονη τροφή.",
+      "tts": {
+        "text": "Έρχονται επειδή οι μεγάλες καλοκαιρινές μέρες και τα πολλά έντομα σημαίνουν άφθονη τροφή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για λίγες εβδομάδες, σύννεφα από κουνούπια και μικρές μύγες γεμίζουν τον αέρα.",
+      "text_markdown": "Για λίγες εβδομάδες, σύννεφα από κουνούπια και μικρές μύγες γεμίζουν τον αέρα.",
+      "tts": {
+        "text": "Για λίγες εβδομάδες, σύννεφα από κουνούπια και μικρές μύγες γεμίζουν τον αέρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ύστερα τα πουλιά μεγαλώνουν γρήγορα τα μικρά τους και πετούν πάλι νότια πριν επιστρέψει το κρύο.",
+      "text_markdown": "Ύστερα τα πουλιά μεγαλώνουν γρήγορα τα μικρά τους και πετούν πάλι νότια πριν επιστρέψει το κρύο.",
+      "tts": {
+        "text": "Ύστερα τα πουλιά μεγαλώνουν γρήγορα τα μικρά τους και πετούν πάλι νότια πριν επιστρέψει το κρύο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κατά μήκος της βόρειας άκρης, εκεί που η τούνδρα συναντά την παγωμένη θάλασσα, η πολική αρκούδα κυνηγά πάνω στον πάγο.",
+      "text_markdown": "Κατά μήκος της βόρειας άκρης, εκεί που η τούνδρα συναντά την παγωμένη θάλασσα, η πολική αρκούδα κυνηγά πάνω στον πάγο.",
+      "tts": {
+        "text": "Κατά μήκος της βόρειας άκρης, εκεί που η τούνδρα συναντά την παγωμένη θάλασσα, η πολική αρκούδα κυνηγά πάνω στον πάγο.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Οι Άνθρωποι",
+      "text_markdown": "Οι Άνθρωποι"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άνθρωποι ζουν στην τούνδρα εδώ και πολλές χιλιάδες χρόνια.",
+      "text_markdown": "Άνθρωποι ζουν στην τούνδρα εδώ και πολλές χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Άνθρωποι ζουν στην τούνδρα εδώ και πολλές χιλιάδες χρόνια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για να ζεις εδώ χρειάζεται βαθιά γνώση της κρύας γης και των ζώων της.",
+      "text_markdown": "Για να ζεις εδώ χρειάζεται βαθιά γνώση της κρύας γης και των ζώων της.",
+      "tts": {
+        "text": "Για να ζεις εδώ χρειάζεται βαθιά γνώση της κρύας γης και των ζώων της.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στη Βόρεια Αμερική, οι Ινουίτ και άλλοι βόρειοι λαοί ζουν στην τούνδρα και στην παγωμένη ακτή εδώ και πάρα πολύ καιρό.",
+      "text_markdown": "Στη Βόρεια Αμερική, οι Ινουίτ και άλλοι βόρειοι λαοί ζουν στην τούνδρα και στην παγωμένη ακτή εδώ και πάρα πολύ καιρό.",
+      "tts": {
+        "text": "Στη Βόρεια Αμερική, οι Ινουίτ και άλλοι βόρειοι λαοί ζουν στην τούνδρα και στην παγωμένη ακτή εδώ και πάρα πολύ καιρό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κυνηγούσαν καριμπού, ψάρευαν στα ποτάμια και στη θάλασσα, και κυνηγούσαν φώκιες κατά μήκος του πάγου.",
+      "text_markdown": "Κυνηγούσαν καριμπού, ψάρευαν στα ποτάμια και στη θάλασσα, και κυνηγούσαν φώκιες κατά μήκος του πάγου.",
+      "tts": {
+        "text": "Κυνηγούσαν καριμπού, ψάρευαν στα ποτάμια και στη θάλασσα, και κυνηγούσαν φώκιες κατά μήκος του πάγου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έφτιαχναν ζεστά ρούχα από δέρματα και γούνες ζώων, ραμμένα για να κρατούν έξω τον άνεμο.",
+      "text_markdown": "Έφτιαχναν ζεστά ρούχα από δέρματα και γούνες ζώων, ραμμένα για να κρατούν έξω τον άνεμο.",
+      "tts": {
+        "text": "Έφτιαχναν ζεστά ρούχα από δέρματα και γούνες ζώων, ραμμένα για να κρατούν έξω τον άνεμο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έχτιζαν σπίτια από ό,τι τους έδινε η γη, και ταξίδευαν με έλκηθρο πάνω στο χιόνι.",
+      "text_markdown": "Έχτιζαν σπίτια από ό,τι τους έδινε η γη, και ταξίδευαν με έλκηθρο πάνω στο χιόνι.",
+      "tts": {
+        "text": "Έχτιζαν σπίτια από ό,τι τους έδινε η γη, και ταξίδευαν με έλκηθρο πάνω στο χιόνι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στη βόρεια Ευρώπη, οι Σάμι ακολουθούν τους τάρανδους στην τούνδρα εδώ και πολλές γενιές.",
+      "text_markdown": "Στη βόρεια Ευρώπη, οι Σάμι ακολουθούν τους τάρανδους στην τούνδρα εδώ και πολλές γενιές.",
+      "tts": {
+        "text": "Στη βόρεια Ευρώπη, οι Σάμι ακολουθούν τους τάρανδους στην τούνδρα εδώ και πολλές γενιές.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι τάρανδοι τους έδιναν κρέας, γάλα, δέρματα για ρούχα, και έναν τρόπο να τραβούν έλκηθρα.",
+      "text_markdown": "Οι τάρανδοι τους έδιναν κρέας, γάλα, δέρματα για ρούχα, και έναν τρόπο να τραβούν έλκηθρα.",
+      "tts": {
+        "text": "Οι τάρανδοι τους έδιναν κρέας, γάλα, δέρματα για ρούχα, και έναν τρόπο να τραβούν έλκηθρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στη βόρεια Ρωσία, πολλοί λαοί έχουν κάνει την τούνδρα σπίτι τους.",
+      "text_markdown": "Στη βόρεια Ρωσία, πολλοί λαοί έχουν κάνει την τούνδρα σπίτι τους.",
+      "tts": {
+        "text": "Στη βόρεια Ρωσία, πολλοί λαοί έχουν κάνει την τούνδρα σπίτι τους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι Νένετς, οι Τσούκτσι και άλλοι βόσκουν τάρανδους σε αυτές τις κρύες γαίες εδώ και πάρα πολύ καιρό.",
+      "text_markdown": "Οι Νένετς, οι Τσούκτσι και άλλοι βόσκουν τάρανδους σε αυτές τις κρύες γαίες εδώ και πάρα πολύ καιρό.",
+      "tts": {
+        "text": "Οι Νένετς, οι Τσούκτσι και άλλοι βόσκουν τάρανδους σε αυτές τις κρύες γαίες εδώ και πάρα πολύ καιρό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικοί από αυτούς ταξιδεύουν ακόμη με τα κοπάδια τους σήμερα, μετακινούμενοι με τις εποχές.",
+      "text_markdown": "Μερικοί από αυτούς ταξιδεύουν ακόμη με τα κοπάδια τους σήμερα, μετακινούμενοι με τις εποχές.",
+      "tts": {
+        "text": "Μερικοί από αυτούς ταξιδεύουν ακόμη με τα κοπάδια τους σήμερα, μετακινούμενοι με τις εποχές.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το καλοκαίρι ακολουθούν τους τάρανδους βόρεια προς την ακτή.",
+      "text_markdown": "Το καλοκαίρι ακολουθούν τους τάρανδους βόρεια προς την ακτή.",
+      "tts": {
+        "text": "Το καλοκαίρι ακολουθούν τους τάρανδους βόρεια προς την ακτή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τον χειμώνα κινούνται νότια προς το καταφύγιο της άκρης του δάσους.",
+      "text_markdown": "Τον χειμώνα κινούνται νότια προς το καταφύγιο της άκρης του δάσους.",
+      "tts": {
+        "text": "Τον χειμώνα κινούνται νότια προς το καταφύγιο της άκρης του δάσους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε όλες αυτές τις γαίες, οι άνθρωποι έμαθαν να διαβάζουν τον καιρό, το χιόνι και τον πάγο.",
+      "text_markdown": "Σε όλες αυτές τις γαίες, οι άνθρωποι έμαθαν να διαβάζουν τον καιρό, το χιόνι και τον πάγο.",
+      "tts": {
+        "text": "Σε όλες αυτές τις γαίες, οι άνθρωποι έμαθαν να διαβάζουν τον καιρό, το χιόνι και τον πάγο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έμαθαν τα μονοπάτια των καριμπού και των ταράνδων.",
+      "text_markdown": "Έμαθαν τα μονοπάτια των καριμπού και των ταράνδων.",
+      "tts": {
+        "text": "Έμαθαν τα μονοπάτια των καριμπού και των ταράνδων.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έμαθαν πού μαζεύονταν τα ψάρια και πότε θα έρχονταν τα πουλιά.",
+      "text_markdown": "Έμαθαν πού μαζεύονταν τα ψάρια και πότε θα έρχονταν τα πουλιά.",
+      "tts": {
+        "text": "Έμαθαν πού μαζεύονταν τα ψάρια και πότε θα έρχονταν τα πουλιά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έμαθαν να αποθηκεύουν τροφή από το σύντομο καλοκαίρι για να φτάνει σε όλον τον μακρύ χειμώνα.",
+      "text_markdown": "Έμαθαν να αποθηκεύουν τροφή από το σύντομο καλοκαίρι για να φτάνει σε όλον τον μακρύ χειμώνα.",
+      "tts": {
+        "text": "Έμαθαν να αποθηκεύουν τροφή από το σύντομο καλοκαίρι για να φτάνει σε όλον τον μακρύ χειμώνα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα δίνει λίγα, και ζητά πολλά, όμως οι άνθρωποι έχουν φτιάξει καλές ζωές εδώ για πάρα πολύ καιρό.",
+      "text_markdown": "Η τούνδρα δίνει λίγα, και ζητά πολλά, όμως οι άνθρωποι έχουν φτιάξει καλές ζωές εδώ για πάρα πολύ καιρό.",
+      "tts": {
+        "text": "Η τούνδρα δίνει λίγα, και ζητά πολλά, όμως οι άνθρωποι έχουν φτιάξει καλές ζωές εδώ για πάρα πολύ καιρό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα τραγούδια τους, οι ιστορίες τους και οι γλώσσες τους μεγάλωσαν μαζί με τον κρύο άνεμο και την πλατιά ανοιχτή γη.",
+      "text_markdown": "Τα τραγούδια τους, οι ιστορίες τους και οι γλώσσες τους μεγάλωσαν μαζί με τον κρύο άνεμο και την πλατιά ανοιχτή γη.",
+      "tts": {
+        "text": "Τα τραγούδια τους, οι ιστορίες τους και οι γλώσσες τους μεγάλωσαν μαζί με τον κρύο άνεμο και την πλατιά ανοιχτή γη.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Η Βιόμη Σήμερα",
+      "text_markdown": "Η Βιόμη Σήμερα"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα είναι μία από τις πιο άγριες και άδειες βιόμες, όμως αλλάζει γρήγορα.",
+      "text_markdown": "Η τούνδρα είναι μία από τις πιο άγριες και άδειες βιόμες, όμως αλλάζει γρήγορα.",
+      "tts": {
+        "text": "Η τούνδρα είναι μία από τις πιο άγριες και άδειες βιόμες, όμως αλλάζει γρήγορα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Από όλες τις βιόμες, η τούνδρα ζεσταίνεται πιο γρήγορα.",
+      "text_markdown": "Από όλες τις βιόμες, η τούνδρα ζεσταίνεται πιο γρήγορα.",
+      "tts": {
+        "text": "Από όλες τις βιόμες, η τούνδρα ζεσταίνεται πιο γρήγορα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο απώτατος βορράς γίνεται πιο ζεστός χρόνο με τον χρόνο.",
+      "text_markdown": "Ο απώτατος βορράς γίνεται πιο ζεστός χρόνο με τον χρόνο.",
+      "tts": {
+        "text": "Ο απώτατος βορράς γίνεται πιο ζεστός χρόνο με τον χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καθώς ο αέρας ζεσταίνεται, το παγωμένο έδαφος αρχίζει να λιώνει.",
+      "text_markdown": "Καθώς ο αέρας ζεσταίνεται, το παγωμένο έδαφος αρχίζει να λιώνει.",
+      "tts": {
+        "text": "Καθώς ο αέρας ζεσταίνεται, το παγωμένο έδαφος αρχίζει να λιώνει.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν ο μόνιμος παγετός λιώνει, η γη μπορεί να βυθιστεί, να ραγίσει και να γίνει λάσπη.",
+      "text_markdown": "Όταν ο μόνιμος παγετός λιώνει, η γη μπορεί να βυθιστεί, να ραγίσει και να γίνει λάσπη.",
+      "tts": {
+        "text": "Όταν ο μόνιμος παγετός λιώνει, η γη μπορεί να βυθιστεί, να ραγίσει και να γίνει λάσπη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δρόμοι, σπίτια και αγωγοί χτισμένοι πάνω στο παγωμένο έδαφος μπορούν να λυγίσουν και να σπάσουν.",
+      "text_markdown": "Δρόμοι, σπίτια και αγωγοί χτισμένοι πάνω στο παγωμένο έδαφος μπορούν να λυγίσουν και να σπάσουν.",
+      "tts": {
+        "text": "Δρόμοι, σπίτια και αγωγοί χτισμένοι πάνω στο παγωμένο έδαφος μπορούν να λυγίσουν και να σπάσουν.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το έδαφος που λιώνει απελευθερώνει επίσης αέρια που ήταν κλεισμένα στο παγωμένο χώμα για πάρα πολύ καιρό.",
+      "text_markdown": "Το έδαφος που λιώνει απελευθερώνει επίσης αέρια που ήταν κλεισμένα στο παγωμένο χώμα για πάρα πολύ καιρό.",
+      "tts": {
+        "text": "Το έδαφος που λιώνει απελευθερώνει επίσης αέρια που ήταν κλεισμένα στο παγωμένο χώμα για πάρα πολύ καιρό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτά τα αέρια ανεβαίνουν στον αέρα και μπορούν να κάνουν όλη τη Γη λίγο πιο ζεστή ακόμη.",
+      "text_markdown": "Αυτά τα αέρια ανεβαίνουν στον αέρα και μπορούν να κάνουν όλη τη Γη λίγο πιο ζεστή ακόμη.",
+      "tts": {
+        "text": "Αυτά τα αέρια ανεβαίνουν στον αέρα και μπορούν να κάνουν όλη τη Γη λίγο πιο ζεστή ακόμη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καθώς η τούνδρα ζεσταίνεται, θάμνοι και μικρά δέντρα απλώνονται αργά βόρεια μέσα σε αυτή.",
+      "text_markdown": "Καθώς η τούνδρα ζεσταίνεται, θάμνοι και μικρά δέντρα απλώνονται αργά βόρεια μέσα σε αυτή.",
+      "tts": {
+        "text": "Καθώς η τούνδρα ζεσταίνεται, θάμνοι και μικρά δέντρα απλώνονται αργά βόρεια μέσα σε αυτή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά ζώα του πιο ζεστού νότου μετακινούνται κι αυτά βόρεια.",
+      "text_markdown": "Μερικά ζώα του πιο ζεστού νότου μετακινούνται κι αυτά βόρεια.",
+      "tts": {
+        "text": "Μερικά ζώα του πιο ζεστού νότου μετακινούνται κι αυτά βόρεια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άνθρωποι έρχονται επίσης στην τούνδρα για να ψάξουν για πετρέλαιο, φυσικό αέριο και μέταλλα στο έδαφος.",
+      "text_markdown": "Άνθρωποι έρχονται επίσης στην τούνδρα για να ψάξουν για πετρέλαιο, φυσικό αέριο και μέταλλα στο έδαφος.",
+      "tts": {
+        "text": "Άνθρωποι έρχονται επίσης στην τούνδρα για να ψάξουν για πετρέλαιο, φυσικό αέριο και μέταλλα στο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι δρόμοι και τα μηχανήματά τους μπορούν να αφήσουν σημάδια στη γη που επουλώνονται πολύ αργά στο κρύο.",
+      "text_markdown": "Οι δρόμοι και τα μηχανήματά τους μπορούν να αφήσουν σημάδια στη γη που επουλώνονται πολύ αργά στο κρύο.",
+      "tts": {
+        "text": "Οι δρόμοι και τα μηχανήματά τους μπορούν να αφήσουν σημάδια στη γη που επουλώνονται πολύ αργά στο κρύο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλοί άνθρωποι και ομάδες σήμερα εργάζονται για να φροντίσουν την τούνδρα.",
+      "text_markdown": "Πολλοί άνθρωποι και ομάδες σήμερα εργάζονται για να φροντίσουν την τούνδρα.",
+      "tts": {
+        "text": "Πολλοί άνθρωποι και ομάδες σήμερα εργάζονται για να φροντίσουν την τούνδρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ξεχωρίζουν μεγάλα πάρκα όπου τα καριμπού και τα πουλιά μπορούν ακόμη να περιπλανιούνται.",
+      "text_markdown": "Ξεχωρίζουν μεγάλα πάρκα όπου τα καριμπού και τα πουλιά μπορούν ακόμη να περιπλανιούνται.",
+      "tts": {
+        "text": "Ξεχωρίζουν μεγάλα πάρκα όπου τα καριμπού και τα πουλιά μπορούν ακόμη να περιπλανιούνται.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Συνεργάζονται με τους ανθρώπους που ζουν εδώ επί πολλές γενιές για να προστατέψουν τη γη.",
+      "text_markdown": "Συνεργάζονται με τους ανθρώπους που ζουν εδώ επί πολλές γενιές για να προστατέψουν τη γη.",
+      "tts": {
+        "text": "Συνεργάζονται με τους ανθρώπους που ζουν εδώ επί πολλές γενιές για να προστατέψουν τη γη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μελετούν την τούνδρα για να καταλάβουν πώς αλλάζει και πώς να την κρατήσουν υγιή.",
+      "text_markdown": "Μελετούν την τούνδρα για να καταλάβουν πώς αλλάζει και πώς να την κρατήσουν υγιή.",
+      "tts": {
+        "text": "Μελετούν την τούνδρα για να καταλάβουν πώς αλλάζει και πώς να την κρατήσουν υγιή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τούνδρα είναι εύθραυστη και αργεί να επουλωθεί, και κρατά ένα τεράστιο απόθεμα παγωμένου άνθρακα.",
+      "text_markdown": "Η τούνδρα είναι εύθραυστη και αργεί να επουλωθεί, και κρατά ένα τεράστιο απόθεμα παγωμένου άνθρακα.",
+      "tts": {
+        "text": "Η τούνδρα είναι εύθραυστη και αργεί να επουλωθεί, και κρατά ένα τεράστιο απόθεμα παγωμένου άνθρακα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αξίζει τη φροντίδα μας.",
+      "text_markdown": "Αξίζει τη φροντίδα μας.",
+      "tts": {
+        "text": "Αξίζει τη φροντίδα μας.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Επίλογος",
+      "text_markdown": "Επίλογος"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή είναι η τούνδρα.",
+      "text_markdown": "Αυτή είναι η τούνδρα.",
+      "tts": {
+        "text": "Αυτή είναι η τούνδρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια κρύα, ανοιχτή, άδεντρη γη με παγωμένο έδαφος, χαμηλά φυτά και πλατύ φωτεινό ουρανό στην κορυφή του κόσμου.",
+      "text_markdown": "Μια κρύα, ανοιχτή, άδεντρη γη με παγωμένο έδαφος, χαμηλά φυτά και πλατύ φωτεινό ουρανό στην κορυφή του κόσμου.",
+      "tts": {
+        "text": "Μια κρύα, ανοιχτή, άδεντρη γη με παγωμένο έδαφος, χαμηλά φυτά και πλατύ φωτεινό ουρανό στην κορυφή του κόσμου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν σταθείτε ποτέ σε μία, μείνετε ακίνητοι για ένα λεπτό.",
+      "text_markdown": "Αν σταθείτε ποτέ σε μία, μείνετε ακίνητοι για ένα λεπτό.",
+      "tts": {
+        "text": "Αν σταθείτε ποτέ σε μία, μείνετε ακίνητοι για ένα λεπτό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Νιώστε τον κρύο άνεμο να κινείται πάνω από την ανοιχτή γη.",
+      "text_markdown": "Νιώστε τον κρύο άνεμο να κινείται πάνω από την ανοιχτή γη.",
+      "tts": {
+        "text": "Νιώστε τον κρύο άνεμο να κινείται πάνω από την ανοιχτή γη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κοιτάξτε κάτω τα μικροσκοπικά λουλούδια και το απαλό βρύο κάτω από τα πόδια σας.",
+      "text_markdown": "Κοιτάξτε κάτω τα μικροσκοπικά λουλούδια και το απαλό βρύο κάτω από τα πόδια σας.",
+      "tts": {
+        "text": "Κοιτάξτε κάτω τα μικροσκοπικά λουλούδια και το απαλό βρύο κάτω από τα πόδια σας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κοιτάξτε ψηλά τον τεράστιο και άδειο ουρανό.",
+      "text_markdown": "Κοιτάξτε ψηλά τον τεράστιο και άδειο ουρανό.",
+      "tts": {
+        "text": "Κοιτάξτε ψηλά τον τεράστιο και άδειο ουρανό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Θα νιώσετε την ήσυχη, υπομονετική καρδιά της βιόμης να χτυπά γύρω σας.",
+      "text_markdown": "Θα νιώσετε την ήσυχη, υπομονετική καρδιά της βιόμης να χτυπά γύρω σας.",
+      "tts": {
+        "text": "Θα νιώσετε την ήσυχη, υπομονετική καρδιά της βιόμης να χτυπά γύρω σας.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

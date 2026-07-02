@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "التندرا",
+      "text_markdown": "التندرا"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "أين تمتد هذه المنطقة الحيوية",
+      "text_markdown": "أين تمتد هذه المنطقة الحيوية"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مرحبًا بك في التندرا.",
+      "text_markdown": "مرحبًا بك في التندرا.",
+      "tts": {
+        "text": "مرحبًا بك في التندرا.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "text_markdown": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "tts": {
+        "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "text_markdown": "المنطقة الحيوية جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "tts": {
+        "text": "المنطقة الحيوية جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التندرا أرض باردة مفتوحة، شديدة البرودة على نمو الأشجار.",
+      "text_markdown": "التندرا أرض باردة مفتوحة، شديدة البرودة على نمو الأشجار.",
+      "tts": {
+        "text": "التندرا أرض باردة مفتوحة، شديدة البرودة على نمو الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأتي كلمة تندرا من كلمة قديمة تعني سهلًا بلا أشجار.",
+      "text_markdown": "تأتي كلمة تندرا من كلمة قديمة تعني سهلًا بلا أشجار.",
+      "tts": {
+        "text": "تأتي كلمة تندرا من كلمة قديمة تعني سهلًا بلا أشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التندرا أبرد منطقة حيوية على اليابسة.",
+      "text_markdown": "التندرا أبرد منطقة حيوية على اليابسة.",
+      "tts": {
+        "text": "التندرا أبرد منطقة حيوية على اليابسة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تمتد معظم التندرا في حلقة واسعة حول قمة العالم.",
+      "text_markdown": "تمتد معظم التندرا في حلقة واسعة حول قمة العالم.",
+      "tts": {
+        "text": "تمتد معظم التندرا في حلقة واسعة حول قمة العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تغطي الأطراف الشمالية لكندا وألاسكا وغرينلاند في أمريكا الشمالية.",
+      "text_markdown": "تغطي الأطراف الشمالية لكندا وألاسكا وغرينلاند في أمريكا الشمالية.",
+      "tts": {
+        "text": "تغطي الأطراف الشمالية لكندا وألاسكا وغرينلاند في أمريكا الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتغطي أقصى شمال النرويج والسويد وفنلندا في شمال أوروبا.",
+      "text_markdown": "وتغطي أقصى شمال النرويج والسويد وفنلندا في شمال أوروبا.",
+      "tts": {
+        "text": "وتغطي أقصى شمال النرويج والسويد وفنلندا في شمال أوروبا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتغطي الساحل الشمالي الطويل لروسيا عبر قمة آسيا.",
+      "text_markdown": "وتغطي الساحل الشمالي الطويل لروسيا عبر قمة آسيا.",
+      "tts": {
+        "text": "وتغطي الساحل الشمالي الطويل لروسيا عبر قمة آسيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تقع هذه الحلقة الباردة من الأرض شمال الغابة الشمالية وحول البحر المتجمد.",
+      "text_markdown": "تقع هذه الحلقة الباردة من الأرض شمال الغابة الشمالية وحول البحر المتجمد.",
+      "tts": {
+        "text": "تقع هذه الحلقة الباردة من الأرض شمال الغابة الشمالية وحول البحر المتجمد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهناك نوع آخر من التندرا أيضًا.",
+      "text_markdown": "وهناك نوع آخر من التندرا أيضًا.",
+      "tts": {
+        "text": "وهناك نوع آخر من التندرا أيضًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عاليًا على الجبال الشاهقة، فوق آخر الأشجار، تظهر الأرض الباردة المفتوحة نفسها.",
+      "text_markdown": "عاليًا على الجبال الشاهقة، فوق آخر الأشجار، تظهر الأرض الباردة المفتوحة نفسها.",
+      "tts": {
+        "text": "عاليًا على الجبال الشاهقة، فوق آخر الأشجار، تظهر الأرض الباردة المفتوحة نفسها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "توجد تندرا الجبال هذه على القمم العالية في كل أنحاء العالم، حتى قرب وسط الأرض الدافئ.",
+      "text_markdown": "توجد تندرا الجبال هذه على القمم العالية في كل أنحاء العالم، حتى قرب وسط الأرض الدافئ.",
+      "tts": {
+        "text": "توجد تندرا الجبال هذه على القمم العالية في كل أنحاء العالم، حتى قرب وسط الأرض الدافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أينما وُجدت، تكون التندرا أرض نباتات منخفضة ورياح باردة وسماء واسعة مفتوحة.",
+      "text_markdown": "أينما وُجدت، تكون التندرا أرض نباتات منخفضة ورياح باردة وسماء واسعة مفتوحة.",
+      "tts": {
+        "text": "أينما وُجدت، تكون التندرا أرض نباتات منخفضة ورياح باردة وسماء واسعة مفتوحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا توجد غابات هنا.",
+      "text_markdown": "لا توجد غابات هنا.",
+      "tts": {
+        "text": "لا توجد غابات هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبقى الأرض متجمدة صلبة معظم أيام السنة.",
+      "text_markdown": "تبقى الأرض متجمدة صلبة معظم أيام السنة.",
+      "tts": {
+        "text": "تبقى الأرض متجمدة صلبة معظم أيام السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن حتى في هذا المكان البارد، تجد الحياة طريقها.",
+      "text_markdown": "لكن حتى في هذا المكان البارد، تجد الحياة طريقها.",
+      "tts": {
+        "text": "لكن حتى في هذا المكان البارد، تجد الحياة طريقها.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الطقس",
+      "text_markdown": "الطقس"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التندرا باردة وجافة وعاصفة معظم أيام السنة.",
+      "text_markdown": "التندرا باردة وجافة وعاصفة معظم أيام السنة.",
+      "tts": {
+        "text": "التندرا باردة وجافة وعاصفة معظم أيام السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الشتاء طويل ومظلم وقارس البرودة.",
+      "text_markdown": "الشتاء طويل ومظلم وقارس البرودة.",
+      "tts": {
+        "text": "الشتاء طويل ومظلم وقارس البرودة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أقصى الشمال، قد يدوم الشتاء ثمانية أو تسعة أشهر.",
+      "text_markdown": "في أقصى الشمال، قد يدوم الشتاء ثمانية أو تسعة أشهر.",
+      "tts": {
+        "text": "في أقصى الشمال، قد يدوم الشتاء ثمانية أو تسعة أشهر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قد يهبط الهواء إلى ما دون التجمد بكثير، أبرد من مجمّد المنزل.",
+      "text_markdown": "قد يهبط الهواء إلى ما دون التجمد بكثير، أبرد من مجمّد المنزل.",
+      "tts": {
+        "text": "قد يهبط الهواء إلى ما دون التجمد بكثير، أبرد من مجمّد المنزل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "طوال أسابيع كثيرة في عمق الشتاء، لا تشرق الشمس أبدًا.",
+      "text_markdown": "طوال أسابيع كثيرة في عمق الشتاء، لا تشرق الشمس أبدًا.",
+      "tts": {
+        "text": "طوال أسابيع كثيرة في عمق الشتاء، لا تشرق الشمس أبدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تغرق الأرض في شفق أزرق مظلم طويل، يومًا بعد يوم.",
+      "text_markdown": "تغرق الأرض في شفق أزرق مظلم طويل، يومًا بعد يوم.",
+      "tts": {
+        "text": "تغرق الأرض في شفق أزرق مظلم طويل، يومًا بعد يوم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تهب رياح قوية عبر الأرض المفتوحة، بلا أشجار تبطئها.",
+      "text_markdown": "تهب رياح قوية عبر الأرض المفتوحة، بلا أشجار تبطئها.",
+      "tts": {
+        "text": "تهب رياح قوية عبر الأرض المفتوحة، بلا أشجار تبطئها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحمل الريح الثلج الجاف وتدفعه على طول الأرض.",
+      "text_markdown": "تحمل الريح الثلج الجاف وتدفعه على طول الأرض.",
+      "tts": {
+        "text": "تحمل الريح الثلج الجاف وتدفعه على طول الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتساقط القليل جدًا من الثلج أو المطر هنا.",
+      "text_markdown": "يتساقط القليل جدًا من الثلج أو المطر هنا.",
+      "tts": {
+        "text": "يتساقط القليل جدًا من الثلج أو المطر هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التندرا جافة جدًا حتى إنها تُسمى أحيانًا صحراء باردة.",
+      "text_markdown": "التندرا جافة جدًا حتى إنها تُسمى أحيانًا صحراء باردة.",
+      "tts": {
+        "text": "التندرا جافة جدًا حتى إنها تُسمى أحيانًا صحراء باردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الماء الذي يتساقط لا يستطيع التسرب في الأرض المتجمدة.",
+      "text_markdown": "لكن الماء الذي يتساقط لا يستطيع التسرب في الأرض المتجمدة.",
+      "tts": {
+        "text": "لكن الماء الذي يتساقط لا يستطيع التسرب في الأرض المتجمدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فيبقى على السطح، وتتناثر في الأرض برك ضحلة وأرض رطبة.",
+      "text_markdown": "فيبقى على السطح، وتتناثر في الأرض برك ضحلة وأرض رطبة.",
+      "tts": {
+        "text": "فيبقى على السطح، وتتناثر في الأرض برك ضحلة وأرض رطبة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الصيف قصير وبارد.",
+      "text_markdown": "الصيف قصير وبارد.",
+      "tts": {
+        "text": "الصيف قصير وبارد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لأسابيع قليلة، تبقى الشمس في السماء طوال النهار والليل تقريبًا.",
+      "text_markdown": "لأسابيع قليلة، تبقى الشمس في السماء طوال النهار والليل تقريبًا.",
+      "tts": {
+        "text": "لأسابيع قليلة، تبقى الشمس في السماء طوال النهار والليل تقريبًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يلين سطح الأرض المتجمدة، وتصير الأرض خضراء زاهية.",
+      "text_markdown": "يلين سطح الأرض المتجمدة، وتصير الأرض خضراء زاهية.",
+      "tts": {
+        "text": "يلين سطح الأرض المتجمدة، وتصير الأرض خضراء زاهية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حتى في الصيف، يبقى الهواء باردًا، وقد يعود الصقيع في أي ليلة.",
+      "text_markdown": "حتى في الصيف، يبقى الهواء باردًا، وقد يعود الصقيع في أي ليلة.",
+      "tts": {
+        "text": "حتى في الصيف، يبقى الهواء باردًا، وقد يعود الصقيع في أي ليلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم ينتهي الصيف القصير، وتغرب الشمس منخفضة، ويبدأ الشتاء الطويل من جديد.",
+      "text_markdown": "ثم ينتهي الصيف القصير، وتغرب الشمس منخفضة، ويبدأ الشتاء الطويل من جديد.",
+      "tts": {
+        "text": "ثم ينتهي الصيف القصير، وتغرب الشمس منخفضة، ويبدأ الشتاء الطويل من جديد.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الأرض والماء",
+      "text_markdown": "الأرض والماء"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهم ما في التندرا يكمن تحت قدميك.",
+      "text_markdown": "أهم ما في التندرا يكمن تحت قدميك.",
+      "tts": {
+        "text": "أهم ما في التندرا يكمن تحت قدميك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحت السطح، تبقى الأرض متجمدة صلبة طوال العام.",
+      "text_markdown": "تحت السطح، تبقى الأرض متجمدة صلبة طوال العام.",
+      "tts": {
+        "text": "تحت السطح، تبقى الأرض متجمدة صلبة طوال العام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُسمى هذه الأرض المتجمدة الجليد الدائم.",
+      "text_markdown": "تُسمى هذه الأرض المتجمدة الجليد الدائم.",
+      "tts": {
+        "text": "تُسمى هذه الأرض المتجمدة الجليد الدائم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض الأماكن يمتد الجليد الدائم إلى عمق أكبر من أطول مبنى.",
+      "text_markdown": "في بعض الأماكن يمتد الجليد الدائم إلى عمق أكبر من أطول مبنى.",
+      "tts": {
+        "text": "في بعض الأماكن يمتد الجليد الدائم إلى عمق أكبر من أطول مبنى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ظل متجمدًا آلاف السنين.",
+      "text_markdown": "ظل متجمدًا آلاف السنين.",
+      "tts": {
+        "text": "ظل متجمدًا آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف، تذوب الطبقة العليا فقط من التربة.",
+      "text_markdown": "في الصيف، تذوب الطبقة العليا فقط من التربة.",
+      "tts": {
+        "text": "في الصيف، تذوب الطبقة العليا فقط من التربة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في هذه الطبقة الرقيقة الذائبة يجب أن تعيش كل النباتات.",
+      "text_markdown": "في هذه الطبقة الرقيقة الذائبة يجب أن تعيش كل النباتات.",
+      "tts": {
+        "text": "في هذه الطبقة الرقيقة الذائبة يجب أن تعيش كل النباتات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا تستطيع جذورها التعمق، لأن الأرض تحتها مباشرة صلبة كالصخر.",
+      "text_markdown": "لا تستطيع جذورها التعمق، لأن الأرض تحتها مباشرة صلبة كالصخر.",
+      "tts": {
+        "text": "لا تستطيع جذورها التعمق، لأن الأرض تحتها مباشرة صلبة كالصخر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كما تحبس الأرض المتجمدة الماء على السطح.",
+      "text_markdown": "كما تحبس الأرض المتجمدة الماء على السطح.",
+      "tts": {
+        "text": "كما تحبس الأرض المتجمدة الماء على السطح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا يستطيع المطر والثلج الذائب النفاذ عبر الجليد الدائم.",
+      "text_markdown": "لا يستطيع المطر والثلج الذائب النفاذ عبر الجليد الدائم.",
+      "tts": {
+        "text": "لا يستطيع المطر والثلج الذائب النفاذ عبر الجليد الدائم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فتصير التندرا في الصيف أرض برك ضحلة ومستنقعات وجداول بطيئة.",
+      "text_markdown": "فتصير التندرا في الصيف أرض برك ضحلة ومستنقعات وجداول بطيئة.",
+      "tts": {
+        "text": "فتصير التندرا في الصيف أرض برك ضحلة ومستنقعات وجداول بطيئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من الأعلى، تلمع تندرا الصيف بآلاف البرك الصغيرة.",
+      "text_markdown": "من الأعلى، تلمع تندرا الصيف بآلاف البرك الصغيرة.",
+      "tts": {
+        "text": "من الأعلى، تلمع تندرا الصيف بآلاف البرك الصغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأرض نفسها مستوية في الغالب أو متموجة بلطف.",
+      "text_markdown": "الأرض نفسها مستوية في الغالب أو متموجة بلطف.",
+      "tts": {
+        "text": "الأرض نفسها مستوية في الغالب أو متموجة بلطف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أماكن كثيرة تتشقق الأرض إلى أشكال غريبة بفعل التجمد والذوبان.",
+      "text_markdown": "في أماكن كثيرة تتشقق الأرض إلى أشكال غريبة بفعل التجمد والذوبان.",
+      "tts": {
+        "text": "في أماكن كثيرة تتشقق الأرض إلى أشكال غريبة بفعل التجمد والذوبان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتجمد التربة فترتفع، ثم تذوب فتهبط، عامًا بعد عام.",
+      "text_markdown": "تتجمد التربة فترتفع، ثم تذوب فتهبط، عامًا بعد عام.",
+      "tts": {
+        "text": "تتجمد التربة فترتفع، ثم تذوب فتهبط، عامًا بعد عام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تشقّ هذه الحركة البطيئة الأرض إلى حلقات وخطوط وتلال منخفضة.",
+      "text_markdown": "تشقّ هذه الحركة البطيئة الأرض إلى حلقات وخطوط وتلال منخفضة.",
+      "tts": {
+        "text": "تشقّ هذه الحركة البطيئة الأرض إلى حلقات وخطوط وتلال منخفضة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تربة التندرا رقيقة وفقيرة وباردة.",
+      "text_markdown": "تربة التندرا رقيقة وفقيرة وباردة.",
+      "tts": {
+        "text": "تربة التندرا رقيقة وفقيرة وباردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتحلل النباتات الميتة ببطء شديد في البرد، فتتكوّن التربة الجيدة ببطء.",
+      "text_markdown": "تتحلل النباتات الميتة ببطء شديد في البرد، فتتكوّن التربة الجيدة ببطء.",
+      "tts": {
+        "text": "تتحلل النباتات الميتة ببطء شديد في البرد، فتتكوّن التربة الجيدة ببطء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إنها أرض قاسية، متجمدة ورطبة وعارية، لكنها مليئة بالحياة في هدوء.",
+      "text_markdown": "إنها أرض قاسية، متجمدة ورطبة وعارية، لكنها مليئة بالحياة في هدوء.",
+      "tts": {
+        "text": "إنها أرض قاسية، متجمدة ورطبة وعارية، لكنها مليئة بالحياة في هدوء.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "النباتات",
+      "text_markdown": "النباتات"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نباتات التندرا صغيرة وقوية ومنخفضة قرب الأرض.",
+      "text_markdown": "نباتات التندرا صغيرة وقوية ومنخفضة قرب الأرض.",
+      "tts": {
+        "text": "نباتات التندرا صغيرة وقوية ومنخفضة قرب الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا أشجار هنا، لأن الأشجار لا تستطيع العيش في الأرض المتجمدة والريح الباردة.",
+      "text_markdown": "لا أشجار هنا، لأن الأشجار لا تستطيع العيش في الأرض المتجمدة والريح الباردة.",
+      "tts": {
+        "text": "لا أشجار هنا، لأن الأشجار لا تستطيع العيش في الأرض المتجمدة والريح الباردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بدلًا من ذلك، تغطي التندرا فرشات منخفضة من النباتات الصغيرة.",
+      "text_markdown": "بدلًا من ذلك، تغطي التندرا فرشات منخفضة من النباتات الصغيرة.",
+      "tts": {
+        "text": "بدلًا من ذلك، تغطي التندرا فرشات منخفضة من النباتات الصغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "البقاء منخفضًا هو سر الحياة هنا.",
+      "text_markdown": "البقاء منخفضًا هو سر الحياة هنا.",
+      "tts": {
+        "text": "البقاء منخفضًا هو سر الحياة هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قرب الأرض، تكون الريح أضعف والهواء أدفأ قليلًا.",
+      "text_markdown": "قرب الأرض، تكون الريح أضعف والهواء أدفأ قليلًا.",
+      "tts": {
+        "text": "قرب الأرض، تكون الريح أضعف والهواء أدفأ قليلًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو نباتات كثيرة في التندرا في وسائد متضامة أو فرشات كثيفة لتحفظ دفأها.",
+      "text_markdown": "تنمو نباتات كثيرة في التندرا في وسائد متضامة أو فرشات كثيفة لتحفظ دفأها.",
+      "tts": {
+        "text": "تنمو نباتات كثيرة في التندرا في وسائد متضامة أو فرشات كثيفة لتحفظ دفأها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو الطحالب كثيفة وناعمة فوق كثير من الأرض.",
+      "text_markdown": "تنمو الطحالب كثيفة وناعمة فوق كثير من الأرض.",
+      "tts": {
+        "text": "تنمو الطحالب كثيفة وناعمة فوق كثير من الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو الأشنات على الصخور العارية وعلى التربة في بقع رمادية وخضراء وصفراء.",
+      "text_markdown": "تنمو الأشنات على الصخور العارية وعلى التربة في بقع رمادية وخضراء وصفراء.",
+      "tts": {
+        "text": "تنمو الأشنات على الصخور العارية وعلى التربة في بقع رمادية وخضراء وصفراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأشنة ليست نباتًا واحدًا بل نوعان من الحياة يعيشان معًا ككائن واحد.",
+      "text_markdown": "الأشنة ليست نباتًا واحدًا بل نوعان من الحياة يعيشان معًا ككائن واحد.",
+      "tts": {
+        "text": "الأشنة ليست نباتًا واحدًا بل نوعان من الحياة يعيشان معًا ككائن واحد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستطيع الأشنات العيش حيث لا يعيش سواها تقريبًا، وتنمو ببطء شديد.",
+      "text_markdown": "تستطيع الأشنات العيش حيث لا يعيش سواها تقريبًا، وتنمو ببطء شديد.",
+      "tts": {
+        "text": "تستطيع الأشنات العيش حيث لا يعيش سواها تقريبًا، وتنمو ببطء شديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأشنات في التندرا يبلغ عمرها مئات السنين.",
+      "text_markdown": "بعض الأشنات في التندرا يبلغ عمرها مئات السنين.",
+      "tts": {
+        "text": "بعض الأشنات في التندرا يبلغ عمرها مئات السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو أعشاب صغيرة ونباتات مزهرة منخفضة بين الطحالب.",
+      "text_markdown": "تنمو أعشاب صغيرة ونباتات مزهرة منخفضة بين الطحالب.",
+      "tts": {
+        "text": "تنمو أعشاب صغيرة ونباتات مزهرة منخفضة بين الطحالب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف القصير، تتفتح التندرا بالأزهار.",
+      "text_markdown": "في الصيف القصير، تتفتح التندرا بالأزهار.",
+      "tts": {
+        "text": "في الصيف القصير، تتفتح التندرا بالأزهار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لأسابيع قليلة زاهية، تغطي الأرض أزهار صغيرة.",
+      "text_markdown": "لأسابيع قليلة زاهية، تغطي الأرض أزهار صغيرة.",
+      "tts": {
+        "text": "لأسابيع قليلة زاهية، تغطي الأرض أزهار صغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنتشر أزهار صغيرة صفراء وبيضاء ووردية وأرجوانية في كل مكان.",
+      "text_markdown": "تنتشر أزهار صغيرة صفراء وبيضاء ووردية وأرجوانية في كل مكان.",
+      "tts": {
+        "text": "تنتشر أزهار صغيرة صفراء وبيضاء ووردية وأرجوانية في كل مكان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على النباتات أن تزهر وتصنع البذور وتخزن الغذاء بسرعة كبيرة قبل عودة البرد.",
+      "text_markdown": "على النباتات أن تزهر وتصنع البذور وتخزن الغذاء بسرعة كبيرة قبل عودة البرد.",
+      "tts": {
+        "text": "على النباتات أن تزهر وتصنع البذور وتخزن الغذاء بسرعة كبيرة قبل عودة البرد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو هنا أيضًا شجيرات صغيرة قليلة، مثل الصفصاف القزم والبتولا القزمة.",
+      "text_markdown": "تنمو هنا أيضًا شجيرات صغيرة قليلة، مثل الصفصاف القزم والبتولا القزمة.",
+      "tts": {
+        "text": "تنمو هنا أيضًا شجيرات صغيرة قليلة، مثل الصفصاف القزم والبتولا القزمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه هي أنواع الأشجار نفسها التي تنمو عالية في الأراضي الأدفأ.",
+      "text_markdown": "هذه هي أنواع الأشجار نفسها التي تنمو عالية في الأراضي الأدفأ.",
+      "tts": {
+        "text": "هذه هي أنواع الأشجار نفسها التي تنمو عالية في الأراضي الأدفأ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكنها تنمو هنا شجيرات صغيرة، بارتفاع كاحلك فقط، تزحف على الأرض.",
+      "text_markdown": "لكنها تنمو هنا شجيرات صغيرة، بارتفاع كاحلك فقط، تزحف على الأرض.",
+      "tts": {
+        "text": "لكنها تنمو هنا شجيرات صغيرة، بارتفاع كاحلك فقط، تزحف على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنضج توتات صغيرة على بعض هذه النباتات المنخفضة في نهاية الصيف.",
+      "text_markdown": "تنضج توتات صغيرة على بعض هذه النباتات المنخفضة في نهاية الصيف.",
+      "tts": {
+        "text": "تنضج توتات صغيرة على بعض هذه النباتات المنخفضة في نهاية الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تجمعها حيوانات التندرا وناسها ما داموا يستطيعون.",
+      "text_markdown": "تجمعها حيوانات التندرا وناسها ما داموا يستطيعون.",
+      "tts": {
+        "text": "تجمعها حيوانات التندرا وناسها ما داموا يستطيعون.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الحيوانات",
+      "text_markdown": "الحيوانات"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حيوانات التندرا مهيأة للعيش مع البرد والريح.",
+      "text_markdown": "حيوانات التندرا مهيأة للعيش مع البرد والريح.",
+      "tts": {
+        "text": "حيوانات التندرا مهيأة للعيش مع البرد والريح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكثير منها فراء كثيف أو ريش كثيف، وطبقة من الدهن تحفظ الدفء.",
+      "text_markdown": "لكثير منها فراء كثيف أو ريش كثيف، وطبقة من الدهن تحفظ الدفء.",
+      "tts": {
+        "text": "لكثير منها فراء كثيف أو ريش كثيف، وطبقة من الدهن تحفظ الدفء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أكبر حيوانات التندرا هي الكاريبو، التي تُسمى أيضًا الرنة.",
+      "text_markdown": "أكبر حيوانات التندرا هي الكاريبو، التي تُسمى أيضًا الرنة.",
+      "tts": {
+        "text": "أكبر حيوانات التندرا هي الكاريبو، التي تُسمى أيضًا الرنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعيش الكاريبو في قطعان كبيرة وتقطع مسافات طويلة عبر الأرض المفتوحة.",
+      "text_markdown": "تعيش الكاريبو في قطعان كبيرة وتقطع مسافات طويلة عبر الأرض المفتوحة.",
+      "tts": {
+        "text": "تعيش الكاريبو في قطعان كبيرة وتقطع مسافات طويلة عبر الأرض المفتوحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف تتغذى على نباتات التندرا، وفي الشتاء تحفر في الثلج بحثًا عن الأشنات.",
+      "text_markdown": "في الصيف تتغذى على نباتات التندرا، وفي الشتاء تحفر في الثلج بحثًا عن الأشنات.",
+      "tts": {
+        "text": "في الصيف تتغذى على نباتات التندرا، وفي الشتاء تحفر في الثلج بحثًا عن الأشنات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثور المسك حيوان كبير آخر من حيوانات التندرا.",
+      "text_markdown": "ثور المسك حيوان كبير آخر من حيوانات التندرا.",
+      "tts": {
+        "text": "ثور المسك حيوان كبير آخر من حيوانات التندرا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لثور المسك جسم ثقيل ومعطف كثيف من شعر طويل يتدلى حتى الأرض تقريبًا.",
+      "text_markdown": "لثور المسك جسم ثقيل ومعطف كثيف من شعر طويل يتدلى حتى الأرض تقريبًا.",
+      "tts": {
+        "text": "لثور المسك جسم ثقيل ومعطف كثيف من شعر طويل يتدلى حتى الأرض تقريبًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تقترب الذئاب، تقف ثيران المسك في حلقة تواجه الخارج، لتحمي صغارها.",
+      "text_markdown": "حين تقترب الذئاب، تقف ثيران المسك في حلقة تواجه الخارج، لتحمي صغارها.",
+      "tts": {
+        "text": "حين تقترب الذئاب، تقف ثيران المسك في حلقة تواجه الخارج، لتحمي صغارها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتبع الذئاب القطعان عبر التندرا، تصطاد الهرمة والضعيفة.",
+      "text_markdown": "تتبع الذئاب القطعان عبر التندرا، تصطاد الهرمة والضعيفة.",
+      "tts": {
+        "text": "تتبع الذئاب القطعان عبر التندرا، تصطاد الهرمة والضعيفة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الثعلب القطبي صغير، بفراء كثيف يصير أبيض في الشتاء وبنيًا في الصيف.",
+      "text_markdown": "الثعلب القطبي صغير، بفراء كثيف يصير أبيض في الشتاء وبنيًا في الصيف.",
+      "tts": {
+        "text": "الثعلب القطبي صغير، بفراء كثيف يصير أبيض في الشتاء وبنيًا في الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتبع الحيوانات الأكبر ويأكل ما تتركه، ويصطاد الحيوانات الصغيرة أيضًا.",
+      "text_markdown": "يتبع الحيوانات الأكبر ويأكل ما تتركه، ويصطاد الحيوانات الصغيرة أيضًا.",
+      "tts": {
+        "text": "يتبع الحيوانات الأكبر ويأكل ما تتركه، ويصطاد الحيوانات الصغيرة أيضًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأرنب القطبي أبيض في الشتاء وله أذنان قصيرتان تحفظان دفأه.",
+      "text_markdown": "الأرنب القطبي أبيض في الشتاء وله أذنان قصيرتان تحفظان دفأه.",
+      "tts": {
+        "text": "الأرنب القطبي أبيض في الشتاء وله أذنان قصيرتان تحفظان دفأه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحت الثلج، تحفر حيوانات صغيرة تُسمى الليمن أنفاقًا وتبقى نشطة طوال الشتاء.",
+      "text_markdown": "تحت الثلج، تحفر حيوانات صغيرة تُسمى الليمن أنفاقًا وتبقى نشطة طوال الشتاء.",
+      "tts": {
+        "text": "تحت الثلج، تحفر حيوانات صغيرة تُسمى الليمن أنفاقًا وتبقى نشطة طوال الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الليمن غذاء للثعلب والبومة وكثير من الصيادين الآخرين.",
+      "text_markdown": "الليمن غذاء للثعلب والبومة وكثير من الصيادين الآخرين.",
+      "tts": {
+        "text": "الليمن غذاء للثعلب والبومة وكثير من الصيادين الآخرين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "البومة الثلجية بومة بيضاء كبيرة تصطاد عبر التندرا المفتوحة نهارًا وليلًا.",
+      "text_markdown": "البومة الثلجية بومة بيضاء كبيرة تصطاد عبر التندرا المفتوحة نهارًا وليلًا.",
+      "tts": {
+        "text": "البومة الثلجية بومة بيضاء كبيرة تصطاد عبر التندرا المفتوحة نهارًا وليلًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تراقب من مرتفع منخفض وتنقض بصمت على الليمن وغيرها من الحيوانات الصغيرة.",
+      "text_markdown": "تراقب من مرتفع منخفض وتنقض بصمت على الليمن وغيرها من الحيوانات الصغيرة.",
+      "tts": {
+        "text": "تراقب من مرتفع منخفض وتنقض بصمت على الليمن وغيرها من الحيوانات الصغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف القصير، تصل أسراب هائلة من الطيور من الجنوب.",
+      "text_markdown": "في الصيف القصير، تصل أسراب هائلة من الطيور من الجنوب.",
+      "tts": {
+        "text": "في الصيف القصير، تصل أسراب هائلة من الطيور من الجنوب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يأتي الإوز والبط وطيور صغيرة كثيرة لتعشش في التندرا الرطبة المليئة بالحشرات.",
+      "text_markdown": "يأتي الإوز والبط وطيور صغيرة كثيرة لتعشش في التندرا الرطبة المليئة بالحشرات.",
+      "tts": {
+        "text": "يأتي الإوز والبط وطيور صغيرة كثيرة لتعشش في التندرا الرطبة المليئة بالحشرات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأتي لأن أيام الصيف الطويلة والحشرات الكثيرة تعني وفرة في الغذاء.",
+      "text_markdown": "تأتي لأن أيام الصيف الطويلة والحشرات الكثيرة تعني وفرة في الغذاء.",
+      "tts": {
+        "text": "تأتي لأن أيام الصيف الطويلة والحشرات الكثيرة تعني وفرة في الغذاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لأسابيع قليلة، تملأ الهواء سُحب من البعوض والذباب الصغير.",
+      "text_markdown": "لأسابيع قليلة، تملأ الهواء سُحب من البعوض والذباب الصغير.",
+      "tts": {
+        "text": "لأسابيع قليلة، تملأ الهواء سُحب من البعوض والذباب الصغير.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تربي الطيور صغارها بسرعة وتطير جنوبًا من جديد قبل عودة البرد.",
+      "text_markdown": "ثم تربي الطيور صغارها بسرعة وتطير جنوبًا من جديد قبل عودة البرد.",
+      "tts": {
+        "text": "ثم تربي الطيور صغارها بسرعة وتطير جنوبًا من جديد قبل عودة البرد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على الطرف الشمالي، حيث تلتقي التندرا بالبحر المتجمد، يصطاد الدب القطبي على الجليد.",
+      "text_markdown": "على الطرف الشمالي، حيث تلتقي التندرا بالبحر المتجمد، يصطاد الدب القطبي على الجليد.",
+      "tts": {
+        "text": "على الطرف الشمالي، حيث تلتقي التندرا بالبحر المتجمد، يصطاد الدب القطبي على الجليد.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الناس",
+      "text_markdown": "الناس"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عاش الناس في التندرا آلاف السنين.",
+      "text_markdown": "عاش الناس في التندرا آلاف السنين.",
+      "tts": {
+        "text": "عاش الناس في التندرا آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتطلب العيش هنا معرفة عميقة بالأرض الباردة وحيواناتها.",
+      "text_markdown": "يتطلب العيش هنا معرفة عميقة بالأرض الباردة وحيواناتها.",
+      "tts": {
+        "text": "يتطلب العيش هنا معرفة عميقة بالأرض الباردة وحيواناتها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أمريكا الشمالية، عاش الإنويت وشعوب شمالية أخرى في التندرا وعلى الساحل المتجمد منذ زمن طويل جدًا.",
+      "text_markdown": "في أمريكا الشمالية، عاش الإنويت وشعوب شمالية أخرى في التندرا وعلى الساحل المتجمد منذ زمن طويل جدًا.",
+      "tts": {
+        "text": "في أمريكا الشمالية، عاش الإنويت وشعوب شمالية أخرى في التندرا وعلى الساحل المتجمد منذ زمن طويل جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانوا يصطادون الكاريبو، ويصطادون السمك في الأنهار والبحر، ويصطادون الفقمات على طول الجليد.",
+      "text_markdown": "كانوا يصطادون الكاريبو، ويصطادون السمك في الأنهار والبحر، ويصطادون الفقمات على طول الجليد.",
+      "tts": {
+        "text": "كانوا يصطادون الكاريبو، ويصطادون السمك في الأنهار والبحر، ويصطادون الفقمات على طول الجليد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "صنعوا ملابس دافئة من جلود الحيوانات وفرائها، مخيطة لتصد الريح.",
+      "text_markdown": "صنعوا ملابس دافئة من جلود الحيوانات وفرائها، مخيطة لتصد الريح.",
+      "tts": {
+        "text": "صنعوا ملابس دافئة من جلود الحيوانات وفرائها، مخيطة لتصد الريح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بنوا بيوتهم مما أعطتهم الأرض، وتنقلوا بالزلاجة عبر الثلج.",
+      "text_markdown": "بنوا بيوتهم مما أعطتهم الأرض، وتنقلوا بالزلاجة عبر الثلج.",
+      "tts": {
+        "text": "بنوا بيوتهم مما أعطتهم الأرض، وتنقلوا بالزلاجة عبر الثلج.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في شمال أوروبا، تبع شعب الصامي الرنة عبر التندرا أجيالًا كثيرة.",
+      "text_markdown": "في شمال أوروبا، تبع شعب الصامي الرنة عبر التندرا أجيالًا كثيرة.",
+      "tts": {
+        "text": "في شمال أوروبا، تبع شعب الصامي الرنة عبر التندرا أجيالًا كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "منحتهم الرنة اللحم والحليب والجلود للملابس ووسيلة لجر الزلاجات.",
+      "text_markdown": "منحتهم الرنة اللحم والحليب والجلود للملابس ووسيلة لجر الزلاجات.",
+      "tts": {
+        "text": "منحتهم الرنة اللحم والحليب والجلود للملابس ووسيلة لجر الزلاجات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في شمال روسيا، اتخذت شعوب كثيرة من التندرا وطنًا لها.",
+      "text_markdown": "في شمال روسيا، اتخذت شعوب كثيرة من التندرا وطنًا لها.",
+      "tts": {
+        "text": "في شمال روسيا، اتخذت شعوب كثيرة من التندرا وطنًا لها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "رعى النينيتس والشوكشي وآخرون الرنة عبر هذه الأراضي الباردة منذ زمن طويل جدًا.",
+      "text_markdown": "رعى النينيتس والشوكشي وآخرون الرنة عبر هذه الأراضي الباردة منذ زمن طويل جدًا.",
+      "tts": {
+        "text": "رعى النينيتس والشوكشي وآخرون الرنة عبر هذه الأراضي الباردة منذ زمن طويل جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا يزال بعضهم يترحل مع قطعانه اليوم، متنقلًا مع الفصول.",
+      "text_markdown": "لا يزال بعضهم يترحل مع قطعانه اليوم، متنقلًا مع الفصول.",
+      "tts": {
+        "text": "لا يزال بعضهم يترحل مع قطعانه اليوم، متنقلًا مع الفصول.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف يتبعون الرنة شمالًا نحو الساحل.",
+      "text_markdown": "في الصيف يتبعون الرنة شمالًا نحو الساحل.",
+      "tts": {
+        "text": "في الصيف يتبعون الرنة شمالًا نحو الساحل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الشتاء ينتقلون جنوبًا نحو مأوى حافة الغابة.",
+      "text_markdown": "في الشتاء ينتقلون جنوبًا نحو مأوى حافة الغابة.",
+      "tts": {
+        "text": "في الشتاء ينتقلون جنوبًا نحو مأوى حافة الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عبر كل هذه الأراضي، تعلم الناس قراءة الطقس والثلج والجليد.",
+      "text_markdown": "عبر كل هذه الأراضي، تعلم الناس قراءة الطقس والثلج والجليد.",
+      "tts": {
+        "text": "عبر كل هذه الأراضي، تعلم الناس قراءة الطقس والثلج والجليد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلموا مسارات الكاريبو والرنة.",
+      "text_markdown": "تعلموا مسارات الكاريبو والرنة.",
+      "tts": {
+        "text": "تعلموا مسارات الكاريبو والرنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلموا أين يتجمع السمك ومتى تأتي الطيور.",
+      "text_markdown": "تعلموا أين يتجمع السمك ومتى تأتي الطيور.",
+      "tts": {
+        "text": "تعلموا أين يتجمع السمك ومتى تأتي الطيور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلموا تخزين الطعام من الصيف القصير ليكفي طوال الشتاء الطويل.",
+      "text_markdown": "تعلموا تخزين الطعام من الصيف القصير ليكفي طوال الشتاء الطويل.",
+      "tts": {
+        "text": "تعلموا تخزين الطعام من الصيف القصير ليكفي طوال الشتاء الطويل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعطي التندرا قليلًا وتطلب كثيرًا، لكن الناس صنعوا حياة طيبة هنا منذ زمن طويل جدًا.",
+      "text_markdown": "تعطي التندرا قليلًا وتطلب كثيرًا، لكن الناس صنعوا حياة طيبة هنا منذ زمن طويل جدًا.",
+      "tts": {
+        "text": "تعطي التندرا قليلًا وتطلب كثيرًا، لكن الناس صنعوا حياة طيبة هنا منذ زمن طويل جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نمت أغانيهم وقصصهم ولغاتهم مع الريح الباردة والأرض الواسعة المفتوحة.",
+      "text_markdown": "نمت أغانيهم وقصصهم ولغاتهم مع الريح الباردة والأرض الواسعة المفتوحة.",
+      "tts": {
+        "text": "نمت أغانيهم وقصصهم ولغاتهم مع الريح الباردة والأرض الواسعة المفتوحة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "المنطقة الحيوية اليوم",
+      "text_markdown": "المنطقة الحيوية اليوم"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التندرا من أكثر المناطق الحيوية برية وخلاءً، لكنها تتغير بسرعة.",
+      "text_markdown": "التندرا من أكثر المناطق الحيوية برية وخلاءً، لكنها تتغير بسرعة.",
+      "tts": {
+        "text": "التندرا من أكثر المناطق الحيوية برية وخلاءً، لكنها تتغير بسرعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من بين كل المناطق الحيوية، تُدفأ التندرا أسرع من غيرها.",
+      "text_markdown": "من بين كل المناطق الحيوية، تُدفأ التندرا أسرع من غيرها.",
+      "tts": {
+        "text": "من بين كل المناطق الحيوية، تُدفأ التندرا أسرع من غيرها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزداد أقصى الشمال دفئًا عامًا بعد عام.",
+      "text_markdown": "يزداد أقصى الشمال دفئًا عامًا بعد عام.",
+      "tts": {
+        "text": "يزداد أقصى الشمال دفئًا عامًا بعد عام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مع دفء الهواء، تبدأ الأرض المتجمدة في الذوبان.",
+      "text_markdown": "مع دفء الهواء، تبدأ الأرض المتجمدة في الذوبان.",
+      "tts": {
+        "text": "مع دفء الهواء، تبدأ الأرض المتجمدة في الذوبان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين يذوب الجليد الدائم، قد تهبط الأرض وتتشقق وتتحول إلى وحل.",
+      "text_markdown": "حين يذوب الجليد الدائم، قد تهبط الأرض وتتشقق وتتحول إلى وحل.",
+      "tts": {
+        "text": "حين يذوب الجليد الدائم، قد تهبط الأرض وتتشقق وتتحول إلى وحل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قد تنحني الطرق والبيوت والأنابيب المبنية على الأرض المتجمدة وتنكسر.",
+      "text_markdown": "قد تنحني الطرق والبيوت والأنابيب المبنية على الأرض المتجمدة وتنكسر.",
+      "tts": {
+        "text": "قد تنحني الطرق والبيوت والأنابيب المبنية على الأرض المتجمدة وتنكسر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كما تطلق الأرض الذائبة غازات كانت محبوسة في التربة المتجمدة منذ زمن طويل جدًا.",
+      "text_markdown": "كما تطلق الأرض الذائبة غازات كانت محبوسة في التربة المتجمدة منذ زمن طويل جدًا.",
+      "tts": {
+        "text": "كما تطلق الأرض الذائبة غازات كانت محبوسة في التربة المتجمدة منذ زمن طويل جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ترتفع هذه الغازات في الهواء وقد تزيد الأرض كلها دفئًا قليلًا.",
+      "text_markdown": "ترتفع هذه الغازات في الهواء وقد تزيد الأرض كلها دفئًا قليلًا.",
+      "tts": {
+        "text": "ترتفع هذه الغازات في الهواء وقد تزيد الأرض كلها دفئًا قليلًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مع دفء التندرا، تنتشر الشجيرات والأشجار الصغيرة ببطء شمالًا نحوها.",
+      "text_markdown": "مع دفء التندرا، تنتشر الشجيرات والأشجار الصغيرة ببطء شمالًا نحوها.",
+      "tts": {
+        "text": "مع دفء التندرا، تنتشر الشجيرات والأشجار الصغيرة ببطء شمالًا نحوها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنتقل بعض حيوانات الجنوب الأدفأ شمالًا أيضًا.",
+      "text_markdown": "تنتقل بعض حيوانات الجنوب الأدفأ شمالًا أيضًا.",
+      "tts": {
+        "text": "تنتقل بعض حيوانات الجنوب الأدفأ شمالًا أيضًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يأتي الناس أيضًا إلى التندرا بحثًا عن النفط والغاز والمعادن في الأرض.",
+      "text_markdown": "يأتي الناس أيضًا إلى التندرا بحثًا عن النفط والغاز والمعادن في الأرض.",
+      "tts": {
+        "text": "يأتي الناس أيضًا إلى التندرا بحثًا عن النفط والغاز والمعادن في الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قد تترك طرقهم وآلاتهم في الأرض آثارًا تلتئم ببطء شديد في البرد.",
+      "text_markdown": "قد تترك طرقهم وآلاتهم في الأرض آثارًا تلتئم ببطء شديد في البرد.",
+      "tts": {
+        "text": "قد تترك طرقهم وآلاتهم في الأرض آثارًا تلتئم ببطء شديد في البرد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعمل كثير من الناس والجماعات اليوم على الاعتناء بالتندرا.",
+      "text_markdown": "يعمل كثير من الناس والجماعات اليوم على الاعتناء بالتندرا.",
+      "tts": {
+        "text": "يعمل كثير من الناس والجماعات اليوم على الاعتناء بالتندرا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يخصصون حدائق كبيرة تظل الكاريبو والطيور تجول فيها بحرية.",
+      "text_markdown": "يخصصون حدائق كبيرة تظل الكاريبو والطيور تجول فيها بحرية.",
+      "tts": {
+        "text": "يخصصون حدائق كبيرة تظل الكاريبو والطيور تجول فيها بحرية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعملون مع الناس الذين عاشوا هنا أجيالًا كثيرة لحماية الأرض.",
+      "text_markdown": "يعملون مع الناس الذين عاشوا هنا أجيالًا كثيرة لحماية الأرض.",
+      "tts": {
+        "text": "يعملون مع الناس الذين عاشوا هنا أجيالًا كثيرة لحماية الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يدرسون التندرا لفهم كيف تتغير وكيف تبقى معافاة.",
+      "text_markdown": "يدرسون التندرا لفهم كيف تتغير وكيف تبقى معافاة.",
+      "tts": {
+        "text": "يدرسون التندرا لفهم كيف تتغير وكيف تبقى معافاة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التندرا هشة وبطيئة الالتئام، وتحوي مخزونًا هائلًا من الكربون المتجمد.",
+      "text_markdown": "التندرا هشة وبطيئة الالتئام، وتحوي مخزونًا هائلًا من الكربون المتجمد.",
+      "tts": {
+        "text": "التندرا هشة وبطيئة الالتئام، وتحوي مخزونًا هائلًا من الكربون المتجمد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إنها جديرة برعايتنا.",
+      "text_markdown": "إنها جديرة برعايتنا.",
+      "tts": {
+        "text": "إنها جديرة برعايتنا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الخاتمة",
+      "text_markdown": "الخاتمة"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي التندرا.",
+      "text_markdown": "تلك هي التندرا.",
+      "tts": {
+        "text": "تلك هي التندرا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض باردة مفتوحة بلا أشجار، ذات أرض متجمدة ونباتات منخفضة وسماء واسعة زاهية في قمة العالم.",
+      "text_markdown": "أرض باردة مفتوحة بلا أشجار، ذات أرض متجمدة ونباتات منخفضة وسماء واسعة زاهية في قمة العالم.",
+      "tts": {
+        "text": "أرض باردة مفتوحة بلا أشجار، ذات أرض متجمدة ونباتات منخفضة وسماء واسعة زاهية في قمة العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن وقفت يومًا في واحدة منها، فاسكن لحظة.",
+      "text_markdown": "إن وقفت يومًا في واحدة منها، فاسكن لحظة.",
+      "tts": {
+        "text": "إن وقفت يومًا في واحدة منها، فاسكن لحظة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أحسس بالريح الباردة تتحرك عبر الأرض المفتوحة.",
+      "text_markdown": "أحسس بالريح الباردة تتحرك عبر الأرض المفتوحة.",
+      "tts": {
+        "text": "أحسس بالريح الباردة تتحرك عبر الأرض المفتوحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انظر إلى الأسفل إلى الأزهار الصغيرة والطحلب الناعم تحت قدميك.",
+      "text_markdown": "انظر إلى الأسفل إلى الأزهار الصغيرة والطحلب الناعم تحت قدميك.",
+      "tts": {
+        "text": "انظر إلى الأسفل إلى الأزهار الصغيرة والطحلب الناعم تحت قدميك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انظر إلى الأعلى إلى السماء الهائلة الخالية.",
+      "text_markdown": "انظر إلى الأعلى إلى السماء الهائلة الخالية.",
+      "tts": {
+        "text": "انظر إلى الأعلى إلى السماء الهائلة الخالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ستشعر بقلب المنطقة الحيوية الهادئ الصبور ينبض من حولك.",
+      "text_markdown": "ستشعر بقلب المنطقة الحيوية الهادئ الصبور ينبض من حولك.",
+      "tts": {
+        "text": "ستشعر بقلب المنطقة الحيوية الهادئ الصبور ينبض من حولك.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

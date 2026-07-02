@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הטונדרה",
+      "text_markdown": "הטונדרה"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "היכן צומח הביום הזה",
+      "text_markdown": "היכן צומח הביום הזה"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ברוכים הבאים אל הטונדרה.",
+      "text_markdown": "ברוכים הבאים אל הטונדרה.",
+      "tts": {
+        "text": "בְּרוּכִים הַבָּאִים אֶל הַטּוּנְדְּרָה.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו אחד מן הביומים הגדולים של העולם.",
+      "text_markdown": "זהו אחד מן הביומים הגדולים של העולם.",
+      "tts": {
+        "text": "זֶהוּ אֶחָד מִן הַבִּיוֹמִים הַגְּדוֹלִים שֶׁל הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביום הוא חלק של כדור הארץ עם מזג אויר, צמחים ובעלי חיים משלו.",
+      "text_markdown": "ביום הוא חלק של כדור הארץ עם מזג אויר, צמחים ובעלי חיים משלו.",
+      "tts": {
+        "text": "בִּיוֹם הוּא חֵלֶק שֶׁל כַּדּוּר הָאָרֶץ עִם מֶזֶג אֲוִיר, צְמָחִים וּבַעֲלֵי חַיִּים מִשֶּׁלּוֹ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה היא ארץ קרה ופתוחה, שבה קר מדי לעצים לצמח.",
+      "text_markdown": "הטונדרה היא ארץ קרה ופתוחה, שבה קר מדי לעצים לצמח.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה הִיא אֶרֶץ קָרָה וּפְתוּחָה, שֶׁבָּהּ קַר מִדַּי לְעֵצִים לִצְמֹחַ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המלה טונדרה באה ממלה עתיקה שמשמעה מישור בלי עצים.",
+      "text_markdown": "המלה טונדרה באה ממלה עתיקה שמשמעה מישור בלי עצים.",
+      "tts": {
+        "text": "הַמִּלָּה טּוּנְדְּרָה בָּאָה מִמִּלָּה עַתִּיקָה שֶׁמַּשְׁמָעָהּ מִישׁוֹר בְּלִי עֵצִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה היא הביום הכי קר ביבשה.",
+      "text_markdown": "הטונדרה היא הביום הכי קר ביבשה.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה הִיא הַבִּיוֹם הֲכִי קַר בַּיַּבָּשָׁה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רב הטונדרה שוכנת בטבעת רחבה סביב ראש העולם.",
+      "text_markdown": "רב הטונדרה שוכנת בטבעת רחבה סביב ראש העולם.",
+      "tts": {
+        "text": "רֹב הַטּוּנְדְּרָה שׂוֹכֶנֶת בְּטַבַּעַת רְחָבָה סְבִיב רֹאשׁ הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היא מכסה את השולים הצפוניים של קנדה, אלסקה וגרינלנד, בצפון אמריקה.",
+      "text_markdown": "היא מכסה את השולים הצפוניים של קנדה, אלסקה וגרינלנד, בצפון אמריקה.",
+      "tts": {
+        "text": "הִיא מְכַסָּה אֶת הַשּׁוּלַיִם הַצְּפוֹנִיִּים שֶׁל קָנָדָה, אֲלַסְקָה וּגְרִינְלַנְד, בִּצְפוֹן אָמֵרִיקָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היא מכסה את הצפון הרחוק של נורבגיה, שודיה ופינלנד, בצפון אירופה.",
+      "text_markdown": "היא מכסה את הצפון הרחוק של נורבגיה, שודיה ופינלנד, בצפון אירופה.",
+      "tts": {
+        "text": "הִיא מְכַסָּה אֶת הַצָּפוֹן הָרָחוֹק שֶׁל נוֹרְבֶגְיָה, שְׁוֶדְיָה וּפִינְלַנְד, בִּצְפוֹן אֵירוֹפָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היא מכסה את החוף הצפוני הארך של רוסיה, לארך ראש אסיה.",
+      "text_markdown": "היא מכסה את החוף הצפוני הארך של רוסיה, לארך ראש אסיה.",
+      "tts": {
+        "text": "הִיא מְכַסָּה אֶת הַחוֹף הַצְּפוֹנִי הָאָרֹךְ שֶׁל רוּסְיָה, לְאֹרֶךְ רֹאשׁ אַסְיָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "טבעת האדמה הקרה הזאת יושבת מצפון ליער הצפוני וסביב הים הקפוא.",
+      "text_markdown": "טבעת האדמה הקרה הזאת יושבת מצפון ליער הצפוני וסביב הים הקפוא.",
+      "tts": {
+        "text": "טַבַּעַת הָאֲדָמָה הַקָּרָה הַזֹּאת יוֹשֶׁבֶת מִצָּפוֹן לַיַּעַר הַצְּפוֹנִי וּסְבִיב הַיָּם הַקָּפוּא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש גם סוג אחר של טונדרה.",
+      "text_markdown": "יש גם סוג אחר של טונדרה.",
+      "tts": {
+        "text": "יֵשׁ גַּם סוּג אַחֵר שֶׁל טּוּנְדְּרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גבוה על הרים תלולים, מעל העצים האחרונים, מופיעה אותה ארץ קרה ופתוחה.",
+      "text_markdown": "גבוה על הרים תלולים, מעל העצים האחרונים, מופיעה אותה ארץ קרה ופתוחה.",
+      "tts": {
+        "text": "גָּבוֹהַּ עַל הָרִים תְּלוּלִים, מֵעַל הָעֵצִים הָאַחֲרוֹנִים, מוֹפִיעָה אוֹתָהּ אֶרֶץ קָרָה וּפְתוּחָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "טונדרת ההרים הזאת נמצאת על פסגות גבוהות בכל רחבי העולם, אפלו קרוב לאמצע כדור הארץ החמים.",
+      "text_markdown": "טונדרת ההרים הזאת נמצאת על פסגות גבוהות בכל רחבי העולם, אפלו קרוב לאמצע כדור הארץ החמים.",
+      "tts": {
+        "text": "טּוּנְדְּרַת הֶהָרִים הַזֹּאת נִמְצֵאת עַל פְּסָגוֹת גְּבוֹהוֹת בְּכָל רַחֲבֵי הָעוֹלָם, אֲפִלּוּ קָרוֹב לְאֶמְצַע כַּדּוּר הָאָרֶץ הֶחָמִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל מקום שבו היא צומחת, הטונדרה היא ארץ של צמחים נמוכים, רוח קרה ושמים רחבים ופתוחים.",
+      "text_markdown": "בכל מקום שבו היא צומחת, הטונדרה היא ארץ של צמחים נמוכים, רוח קרה ושמים רחבים ופתוחים.",
+      "tts": {
+        "text": "בְּכָל מָקוֹם שֶׁבּוֹ הִיא צוֹמַחַת, הַטּוּנְדְּרָה הִיא אֶרֶץ שֶׁל צְמָחִים נְמוּכִים, רוּחַ קָרָה וְשָׁמַיִם רְחָבִים וּפְתוּחִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אין כאן יערות.",
+      "text_markdown": "אין כאן יערות.",
+      "tts": {
+        "text": "אֵין כָּאן יְעָרוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה קפואה קשה במשך רב השנה.",
+      "text_markdown": "האדמה קפואה קשה במשך רב השנה.",
+      "tts": {
+        "text": "הָאֲדָמָה קְפוּאָה קָשֶׁה בְּמֶשֶׁךְ רֹב הַשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל אפלו במקום הקר הזה, החיים מוצאים דרך.",
+      "text_markdown": "אבל אפלו במקום הקר הזה, החיים מוצאים דרך.",
+      "tts": {
+        "text": "אֲבָל אֲפִלּוּ בַּמָּקוֹם הַקַּר הַזֶּה, הַחַיִּים מוֹצְאִים דֶּרֶךְ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "מזג האויר",
+      "text_markdown": "מזג האויר"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה קרה, יבשה וסוערת במשך רב השנה.",
+      "text_markdown": "הטונדרה קרה, יבשה וסוערת במשך רב השנה.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה קָרָה, יְבֵשָׁה וְסוֹעֶרֶת בְּמֶשֶׁךְ רֹב הַשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "החרף ארך, חשוך וקר מאוד.",
+      "text_markdown": "החרף ארך, חשוך וקר מאוד.",
+      "tts": {
+        "text": "הַחֹרֶף אָרֹךְ, חָשׁוּךְ וְקַר מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצפון הרחוק, החרף יכול להמשך שמונה או תשעה חדשים.",
+      "text_markdown": "בצפון הרחוק, החרף יכול להמשך שמונה או תשעה חדשים.",
+      "tts": {
+        "text": "בַּצָּפוֹן הָרָחוֹק, הַחֹרֶף יָכוֹל לְהִמָּשֵׁךְ שְׁמוֹנָה אוֹ תִּשְׁעָה חֳדָשִׁים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האויר יכול לרדת הרבה מתחת לנקדת הקפאון, קר יותר ממקפיא ביתי.",
+      "text_markdown": "האויר יכול לרדת הרבה מתחת לנקדת הקפאון, קר יותר ממקפיא ביתי.",
+      "tts": {
+        "text": "הָאֲוִיר יָכוֹל לָרֶדֶת הַרְבֵּה מִתַּחַת לִנְקֻדַּת הַקִּפָּאוֹן, קַר יוֹתֵר מִמַּקְפִּיא בֵּיתִי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך שבועות רבים בלב החרף, השמש אינה זורחת כלל.",
+      "text_markdown": "במשך שבועות רבים בלב החרף, השמש אינה זורחת כלל.",
+      "tts": {
+        "text": "בְּמֶשֶׁךְ שָׁבוּעוֹת רַבִּים בְּלֵב הַחֹרֶף, הַשֶּׁמֶשׁ אֵינָהּ זוֹרַחַת כְּלָל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הארץ שרויה בדמדומים ארכים, כחלים וחשוכים, יום אחר יום.",
+      "text_markdown": "הארץ שרויה בדמדומים ארכים, כחלים וחשוכים, יום אחר יום.",
+      "tts": {
+        "text": "הָאֶרֶץ שְׁרוּיָה בְּדִמְדּוּמִים אֲרֻכִּים, כְּחֻלִּים וַחֲשׁוּכִים, יוֹם אַחַר יוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוחות חזקות נושבות על פני הארץ הפתוחה, בלי עצים שיאטו אותן.",
+      "text_markdown": "רוחות חזקות נושבות על פני הארץ הפתוחה, בלי עצים שיאטו אותן.",
+      "tts": {
+        "text": "רוּחוֹת חֲזָקוֹת נוֹשְׁבוֹת עַל פְּנֵי הָאֶרֶץ הַפְּתוּחָה, בְּלִי עֵצִים שֶׁיַּאֲטוּ אוֹתָן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרוח מרימה את השלג היבש ומסיעה אותו על פני האדמה.",
+      "text_markdown": "הרוח מרימה את השלג היבש ומסיעה אותו על פני האדמה.",
+      "tts": {
+        "text": "הָרוּחַ מְרִימָה אֶת הַשֶּׁלֶג הַיָּבֵשׁ וּמַסִּיעָה אוֹתוֹ עַל פְּנֵי הָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מעט מאוד שלג או גשם יורד כאן.",
+      "text_markdown": "מעט מאוד שלג או גשם יורד כאן.",
+      "tts": {
+        "text": "מְעַט מְאוֹד שֶׁלֶג אוֹ גֶּשֶׁם יוֹרֵד כָּאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה כה יבשה, עד שלפעמים קוראים לה מדבר קר.",
+      "text_markdown": "הטונדרה כה יבשה, עד שלפעמים קוראים לה מדבר קר.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה כֹּה יְבֵשָׁה, עַד שֶׁלִּפְעָמִים קוֹרְאִים לָהּ מִדְבָּר קַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל המים שכן יורדים אינם יכולים לחלח אל האדמה הקפואה.",
+      "text_markdown": "אבל המים שכן יורדים אינם יכולים לחלח אל האדמה הקפואה.",
+      "tts": {
+        "text": "אֲבָל הַמַּיִם שֶׁכֵּן יוֹרְדִים אֵינָם יְכוֹלִים לַחְלֹחַ אֶל הָאֲדָמָה הַקְּפוּאָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לכן הם נשארים למעלה, והארץ מנקדת בשלוליות רדודות ובאדמה רטבה.",
+      "text_markdown": "לכן הם נשארים למעלה, והארץ מנקדת בשלוליות רדודות ובאדמה רטבה.",
+      "tts": {
+        "text": "לָכֵן הֵם נִשְׁאָרִים לְמַעְלָה, וְהָאֶרֶץ מְנֻקֶּדֶת בִּשְׁלוּלִיּוֹת רְדוּדוֹת וּבַאֲדָמָה רְטֻבָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקיץ קצר וקריר.",
+      "text_markdown": "הקיץ קצר וקריר.",
+      "tts": {
+        "text": "הַקַּיִץ קָצָר וְקָרִיר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך שבועות אחדים, השמש נשארת בשמים כמעט כל היום וכל הלילה.",
+      "text_markdown": "במשך שבועות אחדים, השמש נשארת בשמים כמעט כל היום וכל הלילה.",
+      "tts": {
+        "text": "בְּמֶשֶׁךְ שָׁבוּעוֹת אֲחָדִים, הַשֶּׁמֶשׁ נִשְׁאֶרֶת בַּשָּׁמַיִם כִּמְעַט כָּל הַיּוֹם וְכָל הַלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פני האדמה הקפואה מתרככים, והארץ הופכת ירקה ובהירה.",
+      "text_markdown": "פני האדמה הקפואה מתרככים, והארץ הופכת ירקה ובהירה.",
+      "tts": {
+        "text": "פְּנֵי הָאֲדָמָה הַקְּפוּאָה מִתְרַכְּכִים, וְהָאֶרֶץ הוֹפֶכֶת יְרֻקָּה וּבְהִירָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אפלו בקיץ, האויר נשאר קריר, והכפור יכול לחזר בכל לילה.",
+      "text_markdown": "אפלו בקיץ, האויר נשאר קריר, והכפור יכול לחזר בכל לילה.",
+      "tts": {
+        "text": "אֲפִלּוּ בַּקַּיִץ, הָאֲוִיר נִשְׁאָר קָרִיר, וְהַכְּפוֹר יָכוֹל לַחְזֹר בְּכָל לַיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אז הקיץ הקצר מסתים, השמש שוקעת נמוך, והחרף הארך מתחיל שוב.",
+      "text_markdown": "אז הקיץ הקצר מסתים, השמש שוקעת נמוך, והחרף הארך מתחיל שוב.",
+      "tts": {
+        "text": "אָז הַקַּיִץ הַקָּצָר מִסְתַּיֵּם, הַשֶּׁמֶשׁ שׁוֹקַעַת נָמוּךְ, וְהַחֹרֶף הָאָרֹךְ מַתְחִיל שׁוּב.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האדמה והמים",
+      "text_markdown": "האדמה והמים"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הדבר הכי חשוב בטונדרה נמצא מתחת לרגליך.",
+      "text_markdown": "הדבר הכי חשוב בטונדרה נמצא מתחת לרגליך.",
+      "tts": {
+        "text": "הַדָּבָר הֲכִי חָשׁוּב בַּטּוּנְדְּרָה נִמְצָא מִתַּחַת לְרַגְלֶיךָ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מתחת לפני השטח, האדמה קפואה לחלוטין לארך כל השנה.",
+      "text_markdown": "מתחת לפני השטח, האדמה קפואה לחלוטין לארך כל השנה.",
+      "tts": {
+        "text": "מִתַּחַת לִפְנֵי הַשֶּׁטַח, הָאֲדָמָה קְפוּאָה לַחֲלוּטִין לְאֹרֶךְ כָּל הַשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאדמה הקפואה הזאת קוראים פרמפרוסט.",
+      "text_markdown": "לאדמה הקפואה הזאת קוראים פרמפרוסט.",
+      "tts": {
+        "text": "לָאֲדָמָה הַקְּפוּאָה הַזֹּאת קוֹרְאִים פֶּרְמָפְרוֹסְט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות מסימים הפרמפרוסט יורד עמק יותר מהבנין הכי גבוה.",
+      "text_markdown": "במקומות מסימים הפרמפרוסט יורד עמק יותר מהבנין הכי גבוה.",
+      "tts": {
+        "text": "בְּמָקוֹמוֹת מְסֻיָּמִים הַפֶּרְמָפְרוֹסְט יוֹרֵד עָמֹק יוֹתֵר מֵהַבִּנְיָן הֲכִי גָּבוֹהַּ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא קפוא כבר אלפי שנים.",
+      "text_markdown": "הוא קפוא כבר אלפי שנים.",
+      "tts": {
+        "text": "הוּא קָפוּא כְּבָר אַלְפֵי שָׁנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ, רק שכבת הקרקע העליונה ביותר מפשירה.",
+      "text_markdown": "בקיץ, רק שכבת הקרקע העליונה ביותר מפשירה.",
+      "tts": {
+        "text": "בַּקַּיִץ, רַק שִׁכְבַת הַקַּרְקַע הָעֶלְיוֹנָה בְּיוֹתֵר מַפְשִׁירָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשכבה הדקה והמופשרת הזאת חיבים כל הצמחים לחיות.",
+      "text_markdown": "בשכבה הדקה והמופשרת הזאת חיבים כל הצמחים לחיות.",
+      "tts": {
+        "text": "בַּשִּׁכְבָה הַדַּקָּה וְהַמּוּפְשֶׁרֶת הַזֹּאת חַיָּבִים כָּל הַצְּמָחִים לִחְיוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השרשים שלהם אינם יכולים להעמיק, כי ממש מתחתם האדמה קשה כסלע.",
+      "text_markdown": "השרשים שלהם אינם יכולים להעמיק, כי ממש מתחתם האדמה קשה כסלע.",
+      "tts": {
+        "text": "הַשָּׁרָשִׁים שֶׁלָּהֶם אֵינָם יְכוֹלִים לְהַעֲמִיק, כִּי מַמָּשׁ מִתַּחְתָּם הָאֲדָמָה קָשָׁה כְּסֶלַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה הקפואה גם לוכדת מים על פני השטח.",
+      "text_markdown": "האדמה הקפואה גם לוכדת מים על פני השטח.",
+      "tts": {
+        "text": "הָאֲדָמָה הַקְּפוּאָה גַּם לוֹכֶדֶת מַיִם עַל פְּנֵי הַשֶּׁטַח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גשם ושלג נמס אינם יכולים להתנקז דרך הפרמפרוסט.",
+      "text_markdown": "גשם ושלג נמס אינם יכולים להתנקז דרך הפרמפרוסט.",
+      "tts": {
+        "text": "גֶּשֶׁם וְשֶׁלֶג נָמֵס אֵינָם יְכוֹלִים לְהִתְנַקֵּז דֶּרֶךְ הַפֶּרְמָפְרוֹסְט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לכן בקיץ הטונדרה הופכת לארץ של שלוליות רדודות, בצות ונחלים אטיים.",
+      "text_markdown": "לכן בקיץ הטונדרה הופכת לארץ של שלוליות רדודות, בצות ונחלים אטיים.",
+      "tts": {
+        "text": "לָכֵן בַּקַּיִץ הַטּוּנְדְּרָה הוֹפֶכֶת לְאֶרֶץ שֶׁל שְׁלוּלִיּוֹת רְדוּדוֹת, בִּצּוֹת וּנְחָלִים אִטִּיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מלמעלה, טונדרת הקיץ נוצצת באלפי ברכות קטנות.",
+      "text_markdown": "מלמעלה, טונדרת הקיץ נוצצת באלפי ברכות קטנות.",
+      "tts": {
+        "text": "מִלְמַעְלָה, טּוּנְדְּרַת הַקַּיִץ נוֹצֶצֶת בְּאַלְפֵי בְּרֵכוֹת קְטַנּוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הארץ עצמה בעקר שטוחה או מתגלגלת בעדינות.",
+      "text_markdown": "הארץ עצמה בעקר שטוחה או מתגלגלת בעדינות.",
+      "tts": {
+        "text": "הָאֶרֶץ עַצְמָהּ בְּעִקָּר שְׁטוּחָה אוֹ מִתְגַּלְגֶּלֶת בַּעֲדִינוּת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות רבים האדמה נשברת לצורות מוזרות בגלל הקפאון וההפשרה.",
+      "text_markdown": "במקומות רבים האדמה נשברת לצורות מוזרות בגלל הקפאון וההפשרה.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת רַבִּים הָאֲדָמָה נִשְׁבֶּרֶת לְצוּרוֹת מוּזָרוֹת בִּגְלַל הַקִּפָּאוֹן וְהַהַפְשָׁרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקרקע קופאת ומתרוממת, אחר כך מפשירה ושוקעת, שנה אחר שנה.",
+      "text_markdown": "הקרקע קופאת ומתרוממת, אחר כך מפשירה ושוקעת, שנה אחר שנה.",
+      "tts": {
+        "text": "הַקַּרְקַע קוֹפֵאת וּמִתְרוֹמֶמֶת, אַחַר כָּךְ מַפְשִׁירָה וְשׁוֹקַעַת, שָׁנָה אַחַר שָׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "התנועה האטית הזאת מבקעת את האדמה לטבעות, פסים ותלים נמוכים.",
+      "text_markdown": "התנועה האטית הזאת מבקעת את האדמה לטבעות, פסים ותלים נמוכים.",
+      "tts": {
+        "text": "הַתְּנוּעָה הָאִטִּית הַזֹּאת מְבַקַּעַת אֶת הָאֲדָמָה לְטַבָּעוֹת, פַּסִּים וְתִלִּים נְמוּכִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קרקע הטונדרה דקה, דלה וקרה.",
+      "text_markdown": "קרקע הטונדרה דקה, דלה וקרה.",
+      "tts": {
+        "text": "קַרְקַע הַטּוּנְדְּרָה דַּקָּה, דַּלָּה וְקָרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים מתים מתפרקים לאט מאוד בקר, ולכן קרקע טובה נבנית לאט.",
+      "text_markdown": "צמחים מתים מתפרקים לאט מאוד בקר, ולכן קרקע טובה נבנית לאט.",
+      "tts": {
+        "text": "צְמָחִים מֵתִים מִתְפָּרְקִים לְאַט מְאוֹד בַּקֹּר, וְלָכֵן קַרְקַע טוֹבָה נִבְנֵית לְאַט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זו ארץ קשה, קפואה, רטבה וחשופה, אבל היא מלאת חיים בשקט.",
+      "text_markdown": "זו ארץ קשה, קפואה, רטבה וחשופה, אבל היא מלאת חיים בשקט.",
+      "tts": {
+        "text": "זוֹ אֶרֶץ קָשָׁה, קְפוּאָה, רְטֻבָּה וַחֲשׂוּפָה, אֲבָל הִיא מְלֵאַת חַיִּים בְּשֶׁקֶט.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הצמחים",
+      "text_markdown": "הצמחים"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחי הטונדרה קטנים, קשוחים ונמוכים אל האדמה.",
+      "text_markdown": "צמחי הטונדרה קטנים, קשוחים ונמוכים אל האדמה.",
+      "tts": {
+        "text": "צִמְחֵי הַטּוּנְדְּרָה קְטַנִּים, קָשׁוּחִים וּנְמוּכִים אֶל הָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אין כאן עצים, כי עצים אינם יכולים לחיות באדמה הקפואה וברוח הקרה.",
+      "text_markdown": "אין כאן עצים, כי עצים אינם יכולים לחיות באדמה הקפואה וברוח הקרה.",
+      "tts": {
+        "text": "אֵין כָּאן עֵצִים, כִּי עֵצִים אֵינָם יְכוֹלִים לִחְיוֹת בָּאֲדָמָה הַקְּפוּאָה וּבָרוּחַ הַקָּרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקום זאת, הטונדרה מכסה במרבדים נמוכים של צמחים קטנים.",
+      "text_markdown": "במקום זאת, הטונדרה מכסה במרבדים נמוכים של צמחים קטנים.",
+      "tts": {
+        "text": "בִּמְקוֹם זֹאת, הַטּוּנְדְּרָה מְכֻסָּה בְּמַרְבַדִּים נְמוּכִים שֶׁל צְמָחִים קְטַנִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "להשאר נמוך הוא הסוד לחיים כאן.",
+      "text_markdown": "להשאר נמוך הוא הסוד לחיים כאן.",
+      "tts": {
+        "text": "לְהִשָּׁאֵר נָמוּךְ הוּא הַסּוֹד לַחַיִּים כָּאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קרוב לאדמה, הרוח חלשה יותר והאויר חם קצת יותר.",
+      "text_markdown": "קרוב לאדמה, הרוח חלשה יותר והאויר חם קצת יותר.",
+      "tts": {
+        "text": "קָרוֹב לָאֲדָמָה, הָרוּחַ חַלָּשָׁה יוֹתֵר וְהָאֲוִיר חַם קְצָת יוֹתֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים רבים בטונדרה גדלים בכריות צפופות או במרבדים עבים כדי לשמר על חמם.",
+      "text_markdown": "צמחים רבים בטונדרה גדלים בכריות צפופות או במרבדים עבים כדי לשמר על חמם.",
+      "tts": {
+        "text": "צְמָחִים רַבִּים בַּטּוּנְדְּרָה גְּדֵלִים בְּכָרִיּוֹת צְפוּפוֹת אוֹ בְּמַרְבַדִּים עָבִים כְּדֵי לִשְׁמֹר עַל חֻמָּם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "טחבים גדלים עבים ורכים על פני חלק גדול מהאדמה.",
+      "text_markdown": "טחבים גדלים עבים ורכים על פני חלק גדול מהאדמה.",
+      "tts": {
+        "text": "טְחָבִים גְּדֵלִים עָבִים וְרַכִּים עַל פְּנֵי חֵלֶק גָּדוֹל מֵהָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חזזיות גדלות על הסלעים החשופים ועל הקרקע בכתמים אפרים, ירקים וצהבים.",
+      "text_markdown": "חזזיות גדלות על הסלעים החשופים ועל הקרקע בכתמים אפרים, ירקים וצהבים.",
+      "tts": {
+        "text": "חֲזָזִיּוֹת גְּדֵלוֹת עַל הַסְּלָעִים הַחֲשׂוּפִים וְעַל הַקַּרְקַע בִּכְתָמִים אֲפֹרִים, יְרֻקִּים וּצְהֻבִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חזזית אינה צמח אחד אלא שני סוגי חיים החיים יחד כאחד.",
+      "text_markdown": "חזזית אינה צמח אחד אלא שני סוגי חיים החיים יחד כאחד.",
+      "tts": {
+        "text": "חֲזָזִית אֵינָהּ צֶמַח אֶחָד אֶלָּא שְׁנֵי סוּגֵי חַיִּים הַחַיִּים יַחַד כְּאֶחָד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חזזיות יכולות לחיות במקום שכמעט שום דבר אחר אינו יכול, והן גדלות לאט מאוד.",
+      "text_markdown": "חזזיות יכולות לחיות במקום שכמעט שום דבר אחר אינו יכול, והן גדלות לאט מאוד.",
+      "tts": {
+        "text": "חֲזָזִיּוֹת יְכוֹלוֹת לִחְיוֹת בְּמָקוֹם שֶׁכִּמְעַט שׁוּם דָּבָר אַחֵר אֵינוֹ יָכוֹל, וְהֵן גְּדֵלוֹת לְאַט מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כמה חזזיות בטונדרה בנות מאות שנים.",
+      "text_markdown": "כמה חזזיות בטונדרה בנות מאות שנים.",
+      "tts": {
+        "text": "כַּמָּה חֲזָזִיּוֹת בַּטּוּנְדְּרָה בְּנוֹת מֵאוֹת שָׁנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עשבי מרעה קטנים וצמחים פורחים נמוכים גדלים בין הטחבים.",
+      "text_markdown": "עשבי מרעה קטנים וצמחים פורחים נמוכים גדלים בין הטחבים.",
+      "tts": {
+        "text": "עִשְׂבֵי מִרְעֶה קְטַנִּים וּצְמָחִים פּוֹרְחִים נְמוּכִים גְּדֵלִים בֵּין הַטְּחָבִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ הקצר, הטונדרה פורחת בעצמה.",
+      "text_markdown": "בקיץ הקצר, הטונדרה פורחת בעצמה.",
+      "tts": {
+        "text": "בַּקַּיִץ הַקָּצָר, הַטּוּנְדְּרָה פּוֹרַחַת בְּעָצְמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך שבועות בהירים אחדים, האדמה מכסה בפרחים זעירים.",
+      "text_markdown": "במשך שבועות בהירים אחדים, האדמה מכסה בפרחים זעירים.",
+      "tts": {
+        "text": "בְּמֶשֶׁךְ שָׁבוּעוֹת בְּהִירִים אֲחָדִים, הָאֲדָמָה מְכֻסָּה בִּפְרָחִים זְעִירִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש בכל מקום פרחים קטנים צהבים, לבנים, ורדים וסגלים.",
+      "text_markdown": "יש בכל מקום פרחים קטנים צהבים, לבנים, ורדים וסגלים.",
+      "tts": {
+        "text": "יֵשׁ בְּכָל מָקוֹם פְּרָחִים קְטַנִּים צְהֻבִּים, לְבָנִים, וְרֻדִּים וּסְגֻלִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הצמחים חיבים לפרח, ליצר זרעים ולאגר מזון מהר מאוד לפני שהקר חוזר.",
+      "text_markdown": "הצמחים חיבים לפרח, ליצר זרעים ולאגר מזון מהר מאוד לפני שהקר חוזר.",
+      "tts": {
+        "text": "הַצְּמָחִים חַיָּבִים לִפְרֹחַ, לְיַצֵּר זְרָעִים וְלֶאֱגֹר מָזוֹן מַהֵר מְאוֹד לִפְנֵי שֶׁהַקֹּר חוֹזֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם כמה שיחים קטנים גדלים כאן, כמו ערבה גמדית ולבנה גמדי.",
+      "text_markdown": "גם כמה שיחים קטנים גדלים כאן, כמו ערבה גמדית ולבנה גמדי.",
+      "tts": {
+        "text": "גַּם כַּמָּה שִׂיחִים קְטַנִּים גְּדֵלִים כָּאן, כְּמוֹ עֲרָבָה גַּמָּדִית וְלִבְנֶה גַּמָּדִי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אלה אותם סוגי עצים שגדלים גבוהים בארצות חמות יותר.",
+      "text_markdown": "אלה אותם סוגי עצים שגדלים גבוהים בארצות חמות יותר.",
+      "tts": {
+        "text": "אֵלֶּה אוֹתָם סוּגֵי עֵצִים שֶׁגְּדֵלִים גְּבוֹהִים בַּאֲרָצוֹת חַמּוֹת יוֹתֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל כאן הם גדלים כשיחים זעירים, גבוהים רק כמו קרסלך, זוחלים על פני האדמה.",
+      "text_markdown": "אבל כאן הם גדלים כשיחים זעירים, גבוהים רק כמו קרסלך, זוחלים על פני האדמה.",
+      "tts": {
+        "text": "אֲבָל כָּאן הֵם גְּדֵלִים כִּשְׂיחִים זְעִירִים, גְּבוֹהִים רַק כְּמוֹ קַרְסֻלְּךָ, זוֹחֲלִים עַל פְּנֵי הָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גרגרי יער קטנים מבשילים על כמה מהצמחים הנמוכים האלה בסוף הקיץ.",
+      "text_markdown": "גרגרי יער קטנים מבשילים על כמה מהצמחים הנמוכים האלה בסוף הקיץ.",
+      "tts": {
+        "text": "גַּרְגְּרֵי יַעַר קְטַנִּים מַבְשִׁילִים עַל כַּמָּה מֵהַצְּמָחִים הַנְּמוּכִים הָאֵלֶּה בְּסוֹף הַקַּיִץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעלי החיים והאנשים של הטונדרה אוספים אותם כל עוד הם יכולים.",
+      "text_markdown": "בעלי החיים והאנשים של הטונדרה אוספים אותם כל עוד הם יכולים.",
+      "tts": {
+        "text": "בַּעֲלֵי הַחַיִּים וְהָאֲנָשִׁים שֶׁל הַטּוּנְדְּרָה אוֹסְפִים אוֹתָם כָּל עוֹד הֵם יְכוֹלִים.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "בעלי החיים",
+      "text_markdown": "בעלי החיים"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעלי החיים של הטונדרה בנויים לחיות עם קר ורוח.",
+      "text_markdown": "בעלי החיים של הטונדרה בנויים לחיות עם קר ורוח.",
+      "tts": {
+        "text": "בַּעֲלֵי הַחַיִּים שֶׁל הַטּוּנְדְּרָה בְּנוּיִים לִחְיוֹת עִם קֹר וְרוּחַ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לרבים מהם יש פרוה עבה או נוצות עבות, ושכבת שמן כדי לשמר על חם.",
+      "text_markdown": "לרבים מהם יש פרוה עבה או נוצות עבות, ושכבת שמן כדי לשמר על חם.",
+      "tts": {
+        "text": "לְרַבִּים מֵהֶם יֵשׁ פַּרְוָה עָבָה אוֹ נוֹצוֹת עָבוֹת, וּשְׁכַבַת שֻׁמָּן כְּדֵי לִשְׁמֹר עַל חֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעלי החיים הגדולים ביותר בטונדרה הם הקריבו, הנקראים גם אילי הצפון.",
+      "text_markdown": "בעלי החיים הגדולים ביותר בטונדרה הם הקריבו, הנקראים גם אילי הצפון.",
+      "tts": {
+        "text": "בַּעֲלֵי הַחַיִּים הַגְּדוֹלִים בְּיוֹתֵר בַּטּוּנְדְּרָה הֵם הַקָּרִיבּוּ, הַנִּקְרָאִים גַּם אַיָּלֵי הַצָּפוֹן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקריבו חיים בעדרים גדולים ונודדים מרחקים ארכים על פני הארץ הפתוחה.",
+      "text_markdown": "הקריבו חיים בעדרים גדולים ונודדים מרחקים ארכים על פני הארץ הפתוחה.",
+      "tts": {
+        "text": "הַקָּרִיבּוּ חַיִּים בַּעֲדָרִים גְּדוֹלִים וְנוֹדְדִים מֶרְחַקִּים אֲרֻכִּים עַל פְּנֵי הָאֶרֶץ הַפְּתוּחָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ הם נזונים מצמחי הטונדרה, ובחרף הם חופרים בשלג כדי למצא חזזיות.",
+      "text_markdown": "בקיץ הם נזונים מצמחי הטונדרה, ובחרף הם חופרים בשלג כדי למצא חזזיות.",
+      "tts": {
+        "text": "בַּקַּיִץ הֵם נִזּוֹנִים מִצִּמְחֵי הַטּוּנְדְּרָה, וּבַחֹרֶף הֵם חוֹפְרִים בַּשֶּׁלֶג כְּדֵי לִמְצֹא חֲזָזִיּוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שור המשק הוא בעל חיים גדול נוסף של הטונדרה.",
+      "text_markdown": "שור המשק הוא בעל חיים גדול נוסף של הטונדרה.",
+      "tts": {
+        "text": "שׁוֹר הַמֹּשְׁק הוּא בַּעַל חַיִּים גָּדוֹל נוֹסָף שֶׁל הַטּוּנְדְּרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לשור המשק גוף כבד ומעיל עבה של שער ארך התלוי כמעט עד האדמה.",
+      "text_markdown": "לשור המשק גוף כבד ומעיל עבה של שער ארך התלוי כמעט עד האדמה.",
+      "tts": {
+        "text": "לְשׁוֹר הַמֹּשְׁק גּוּף כָּבֵד וּמְעִיל עָבֶה שֶׁל שֵׂעָר אָרֹךְ הַתָּלוּי כִּמְעַט עַד הָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשזאבים מתקרבים, שורי המשק עומדים במעגל, פניהם החוצה, כדי לשמר על הצעירים.",
+      "text_markdown": "כשזאבים מתקרבים, שורי המשק עומדים במעגל, פניהם החוצה, כדי לשמר על הצעירים.",
+      "tts": {
+        "text": "כְּשֶׁזְּאֵבִים מִתְקָרְבִים, שְׁוָרֵי הַמֹּשְׁק עוֹמְדִים בְּמַעְגָּל, פְּנֵיהֶם הַחוּצָה, כְּדֵי לִשְׁמֹר עַל הַצְּעִירִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זאבים עוקבים אחרי העדרים ברחבי הטונדרה, וצדים את הזקנים והחלשים.",
+      "text_markdown": "זאבים עוקבים אחרי העדרים ברחבי הטונדרה, וצדים את הזקנים והחלשים.",
+      "tts": {
+        "text": "זְאֵבִים עוֹקְבִים אַחֲרֵי הָעֲדָרִים בְּרַחֲבֵי הַטּוּנְדְּרָה, וְצָדִים אֶת הַזְּקֵנִים וְהַחַלָּשִׁים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השועל הארקטי קטן, עם פרוה עבה שהופכת לבנה בחרף וחומה בקיץ.",
+      "text_markdown": "השועל הארקטי קטן, עם פרוה עבה שהופכת לבנה בחרף וחומה בקיץ.",
+      "tts": {
+        "text": "הַשּׁוּעָל הָאַרְקְטִי קָטָן, עִם פַּרְוָה עָבָה שֶׁהוֹפֶכֶת לְבָנָה בַּחֹרֶף וְחוּמָה בַּקַּיִץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא עוקב אחרי בעלי חיים גדולים יותר ואוכל את מה שהם משאירים, והוא גם צד בעלי חיים קטנים.",
+      "text_markdown": "הוא עוקב אחרי בעלי חיים גדולים יותר ואוכל את מה שהם משאירים, והוא גם צד בעלי חיים קטנים.",
+      "tts": {
+        "text": "הוּא עוֹקֵב אַחֲרֵי בַּעֲלֵי חַיִּים גְּדוֹלִים יוֹתֵר וְאוֹכֵל אֶת מַה שֶּׁהֵם מַשְׁאִירִים, וְהוּא גַּם צָד בַּעֲלֵי חַיִּים קְטַנִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הארנבת הארקטית לבנה בחרף ויש לה אזנים קצרות כדי לשמר על חמה.",
+      "text_markdown": "הארנבת הארקטית לבנה בחרף ויש לה אזנים קצרות כדי לשמר על חמה.",
+      "tts": {
+        "text": "הָאַרְנֶבֶת הָאַרְקְטִית לְבָנָה בַּחֹרֶף וְיֵשׁ לָהּ אָזְנַיִם קְצָרוֹת כְּדֵי לִשְׁמֹר עַל חֻמָּהּ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מתחת לשלג, בעלי חיים קטנים הנקראים למינגים חופרים מנהרות ונשארים עסוקים כל החרף.",
+      "text_markdown": "מתחת לשלג, בעלי חיים קטנים הנקראים למינגים חופרים מנהרות ונשארים עסוקים כל החרף.",
+      "tts": {
+        "text": "מִתַּחַת לַשֶּׁלֶג, בַּעֲלֵי חַיִּים קְטַנִּים הַנִּקְרָאִים לֶמִינְגִים חוֹפְרִים מִנְהָרוֹת וְנִשְׁאָרִים עֲסוּקִים כָּל הַחֹרֶף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הלמינגים הם מזון לשועל, לינשוף ולצידים רבים אחרים.",
+      "text_markdown": "הלמינגים הם מזון לשועל, לינשוף ולצידים רבים אחרים.",
+      "tts": {
+        "text": "הַלֶּמִינְגִים הֵם מָזוֹן לַשּׁוּעָל, לַיַּנְשׁוּף וּלְצַיָּדִים רַבִּים אֲחֵרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ינשוף השלג הוא ינשוף לבן גדול הצד ברחבי הטונדרה הפתוחה ביום ובלילה.",
+      "text_markdown": "ינשוף השלג הוא ינשוף לבן גדול הצד ברחבי הטונדרה הפתוחה ביום ובלילה.",
+      "tts": {
+        "text": "יַנְשׁוּף הַשֶּׁלֶג הוּא יַנְשׁוּף לָבָן גָּדוֹל הַצָּד בְּרַחֲבֵי הַטּוּנְדְּרָה הַפְּתוּחָה בַּיּוֹם וּבַלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא צופה מגבעה נמוכה וצונח בשקט על למינגים ועל בעלי חיים קטנים אחרים.",
+      "text_markdown": "הוא צופה מגבעה נמוכה וצונח בשקט על למינגים ועל בעלי חיים קטנים אחרים.",
+      "tts": {
+        "text": "הוּא צוֹפֶה מִגִּבְעָה נְמוּכָה וְצוֹנֵחַ בְּשֶׁקֶט עַל לֶמִינְגִים וְעַל בַּעֲלֵי חַיִּים קְטַנִּים אֲחֵרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ הקצר, להקות ענק של צפרים מגיעות מן הדרום.",
+      "text_markdown": "בקיץ הקצר, להקות ענק של צפרים מגיעות מן הדרום.",
+      "tts": {
+        "text": "בַּקַּיִץ הַקָּצָר, לְהָקוֹת עֲנָק שֶׁל צִפֳּרִים מַגִּיעוֹת מִן הַדָּרוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אוזים, ברוזים וצפרים קטנות רבות באות לקנן בטונדרה הרטבה ומלאת החרקים.",
+      "text_markdown": "אוזים, ברוזים וצפרים קטנות רבות באות לקנן בטונדרה הרטבה ומלאת החרקים.",
+      "tts": {
+        "text": "אֲוָזִים, בַּרְוָזִים וְצִפֳּרִים קְטַנּוֹת רַבּוֹת בָּאוֹת לְקַנֵּן בַּטּוּנְדְּרָה הָרְטֻבָּה וּמְלֵאַת הַחֲרָקִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הן באות משום שימי הקיץ הארכים והחרקים הרבים משמעם שפע של מזון.",
+      "text_markdown": "הן באות משום שימי הקיץ הארכים והחרקים הרבים משמעם שפע של מזון.",
+      "tts": {
+        "text": "הֵן בָּאוֹת מִשּׁוּם שֶׁיְּמֵי הַקַּיִץ הָאֲרֻכִּים וְהַחֲרָקִים הָרַבִּים מַשְׁמָעָם שֶׁפַע שֶׁל מָזוֹן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך שבועות אחדים, ענני יתושים וזבובים קטנים ממלאים את האויר.",
+      "text_markdown": "במשך שבועות אחדים, ענני יתושים וזבובים קטנים ממלאים את האויר.",
+      "tts": {
+        "text": "בְּמֶשֶׁךְ שָׁבוּעוֹת אֲחָדִים, עַנְנֵי יַתּוּשִׁים וּזְבוּבִים קְטַנִּים מְמַלְּאִים אֶת הָאֲוִיר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אז הצפרים מגדלות את גוזליהן מהר ועפות דרומה שוב לפני שהקר חוזר.",
+      "text_markdown": "אז הצפרים מגדלות את גוזליהן מהר ועפות דרומה שוב לפני שהקר חוזר.",
+      "tts": {
+        "text": "אָז הַצִּפֳּרִים מְגַדְּלוֹת אֶת גּוֹזָלֵיהֶן מַהֵר וְעָפוֹת דָּרוֹמָה שׁוּב לִפְנֵי שֶׁהַקֹּר חוֹזֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לארך השולים הצפוניים, במקום שבו הטונדרה פוגשת את הים הקפוא, דב הקטב צד על הקרח.",
+      "text_markdown": "לארך השולים הצפוניים, במקום שבו הטונדרה פוגשת את הים הקפוא, דב הקטב צד על הקרח.",
+      "tts": {
+        "text": "לְאֹרֶךְ הַשּׁוּלַיִם הַצְּפוֹנִיִּים, בַּמָּקוֹם שֶׁבּוֹ הַטּוּנְדְּרָה פּוֹגֶשֶׁת אֶת הַיָּם הַקָּפוּא, דֹּב הַקֹּטֶב צָד עַל הַקֶּרַח.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האנשים",
+      "text_markdown": "האנשים"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים חיים בטונדרה כבר אלפי שנים רבות.",
+      "text_markdown": "אנשים חיים בטונדרה כבר אלפי שנים רבות.",
+      "tts": {
+        "text": "אֲנָשִׁים חַיִּים בַּטּוּנְדְּרָה כְּבָר אַלְפֵי שָׁנִים רַבּוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לחיות כאן דורש ידיעה עמקה של הארץ הקרה ובעלי חייה.",
+      "text_markdown": "לחיות כאן דורש ידיעה עמקה של הארץ הקרה ובעלי חייה.",
+      "tts": {
+        "text": "לִחְיוֹת כָּאן דּוֹרֵשׁ יְדִיעָה עֲמֻקָּה שֶׁל הָאֶרֶץ הַקָּרָה וּבַעֲלֵי חַיֶּיהָ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצפון אמריקה, האינואיט ועמים צפוניים אחרים חיים בטונדרה ועל החוף הקפוא זמן רב מאוד.",
+      "text_markdown": "בצפון אמריקה, האינואיט ועמים צפוניים אחרים חיים בטונדרה ועל החוף הקפוא זמן רב מאוד.",
+      "tts": {
+        "text": "בִּצְפוֹן אָמֵרִיקָה, הָאִינוּאִיט וְעַמִּים צְפוֹנִיִּים אֲחֵרִים חַיִּים בַּטּוּנְדְּרָה וְעַל הַחוֹף הַקָּפוּא זְמַן רַב מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם צדו קריבו, דגו בנהרות ובים, וצדו כלבי ים לארך הקרח.",
+      "text_markdown": "הם צדו קריבו, דגו בנהרות ובים, וצדו כלבי ים לארך הקרח.",
+      "tts": {
+        "text": "הֵם צָדוּ קָרִיבּוּ, דָּגוּ בַּנְּהָרוֹת וּבַיָּם, וְצָדוּ כַּלְבֵי יָם לְאֹרֶךְ הַקֶּרַח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם עשו בגדים חמים מעורות ופרוה של בעלי חיים, תפורים כדי לחסם את הרוח.",
+      "text_markdown": "הם עשו בגדים חמים מעורות ופרוה של בעלי חיים, תפורים כדי לחסם את הרוח.",
+      "tts": {
+        "text": "הֵם עָשׂוּ בְּגָדִים חַמִּים מֵעוֹרוֹת וּפַרְוָה שֶׁל בַּעֲלֵי חַיִּים, תְּפוּרִים כְּדֵי לַחְסֹם אֶת הָרוּחַ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם בנו בתים ממה שהארץ נתנה להם, ונסעו במזחלת על פני השלג.",
+      "text_markdown": "הם בנו בתים ממה שהארץ נתנה להם, ונסעו במזחלת על פני השלג.",
+      "tts": {
+        "text": "הֵם בָּנוּ בָּתִּים מִמַּה שֶּׁהָאֶרֶץ נָתְנָה לָהֶם, וְנָסְעוּ בְּמִזְחֶלֶת עַל פְּנֵי הַשֶּׁלֶג.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצפון אירופה, בני הסאמי עוקבים אחרי אילי הצפון ברחבי הטונדרה כבר דורות רבים.",
+      "text_markdown": "בצפון אירופה, בני הסאמי עוקבים אחרי אילי הצפון ברחבי הטונדרה כבר דורות רבים.",
+      "tts": {
+        "text": "בִּצְפוֹן אֵירוֹפָּה, בְּנֵי הַסָּאמִי עוֹקְבִים אַחֲרֵי אַיָּלֵי הַצָּפוֹן בְּרַחֲבֵי הַטּוּנְדְּרָה כְּבָר דּוֹרוֹת רַבִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אילי הצפון נתנו להם בשר, חלב, עורות לבגדים, ודרך למשך מזחלות.",
+      "text_markdown": "אילי הצפון נתנו להם בשר, חלב, עורות לבגדים, ודרך למשך מזחלות.",
+      "tts": {
+        "text": "אַיָּלֵי הַצָּפוֹן נָתְנוּ לָהֶם בָּשָׂר, חָלָב, עוֹרוֹת לִבְגָדִים, וְדֶרֶךְ לִמְשֹׁךְ מִזְחָלוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצפון רוסיה, עמים רבים עשו את הטונדרה לביתם.",
+      "text_markdown": "בצפון רוסיה, עמים רבים עשו את הטונדרה לביתם.",
+      "tts": {
+        "text": "בִּצְפוֹן רוּסְיָה, עַמִּים רַבִּים עָשׂוּ אֶת הַטּוּנְדְּרָה לְבֵיתָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הננצים, הצ'וקצ'ים ואחרים רועים אילי צפון בארצות הקרות האלה זמן רב מאוד.",
+      "text_markdown": "הננצים, הצ'וקצ'ים ואחרים רועים אילי צפון בארצות הקרות האלה זמן רב מאוד.",
+      "tts": {
+        "text": "הַנֵּנֵצִים, הַצ'וּקְצִ'ים וַאֲחֵרִים רוֹעִים אַיָּלֵי צָפוֹן בָּאֲרָצוֹת הַקָּרוֹת הָאֵלֶּה זְמַן רַב מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מהם עדין נודדים עם עדריהם היום, נעים עם העונות.",
+      "text_markdown": "חלק מהם עדין נודדים עם עדריהם היום, נעים עם העונות.",
+      "tts": {
+        "text": "חֵלֶק מֵהֶם עֲדַיִן נוֹדְדִים עִם עֶדְרֵיהֶם הַיּוֹם, נָעִים עִם הָעוֹנוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ הם עוקבים אחרי אילי הצפון צפונה לעבר החוף.",
+      "text_markdown": "בקיץ הם עוקבים אחרי אילי הצפון צפונה לעבר החוף.",
+      "tts": {
+        "text": "בַּקַּיִץ הֵם עוֹקְבִים אַחֲרֵי אַיָּלֵי הַצָּפוֹן צָפוֹנָה לְעֵבֶר הַחוֹף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בחרף הם נעים דרומה לעבר מחסה קצה היער.",
+      "text_markdown": "בחרף הם נעים דרומה לעבר מחסה קצה היער.",
+      "tts": {
+        "text": "בַּחֹרֶף הֵם נָעִים דָּרוֹמָה לְעֵבֶר מַחֲסֵה קְצֵה הַיַּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל הארצות האלה, האנשים למדו לקרא את מזג האויר, את השלג ואת הקרח.",
+      "text_markdown": "בכל הארצות האלה, האנשים למדו לקרא את מזג האויר, את השלג ואת הקרח.",
+      "tts": {
+        "text": "בְּכָל הָאֲרָצוֹת הָאֵלֶּה, הָאֲנָשִׁים לָמְדוּ לִקְרֹא אֶת מֶזֶג הָאֲוִיר, אֶת הַשֶּׁלֶג וְאֶת הַקֶּרַח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו את נתיבי הקריבו ואילי הצפון.",
+      "text_markdown": "הם למדו את נתיבי הקריבו ואילי הצפון.",
+      "tts": {
+        "text": "הֵם לָמְדוּ אֶת נְתִיבֵי הַקָּרִיבּוּ וְאַיָּלֵי הַצָּפוֹן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו היכן הדגים מתקבצים ומתי הצפרים יגיעו.",
+      "text_markdown": "הם למדו היכן הדגים מתקבצים ומתי הצפרים יגיעו.",
+      "tts": {
+        "text": "הֵם לָמְדוּ הֵיכָן הַדָּגִים מִתְקַבְּצִים וּמָתַי הַצִּפֳּרִים יַגִּיעוּ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו לאגר מזון מן הקיץ הקצר כדי שיספיק לכל החרף הארך.",
+      "text_markdown": "הם למדו לאגר מזון מן הקיץ הקצר כדי שיספיק לכל החרף הארך.",
+      "tts": {
+        "text": "הֵם לָמְדוּ לֶאֱגֹר מָזוֹן מִן הַקַּיִץ הַקָּצָר כְּדֵי שֶׁיַּסְפִּיק לְכָל הַחֹרֶף הָאָרֹךְ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה נותנת מעט ודורשת הרבה, אבל אנשים בנו כאן חיים טובים זמן רב מאוד.",
+      "text_markdown": "הטונדרה נותנת מעט ודורשת הרבה, אבל אנשים בנו כאן חיים טובים זמן רב מאוד.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה נוֹתֶנֶת מְעַט וְדוֹרֶשֶׁת הַרְבֵּה, אֲבָל אֲנָשִׁים בָּנוּ כָּאן חַיִּים טוֹבִים זְמַן רַב מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השירים שלהם, הספורים שלהם והשפות שלהם צמחו יחד עם הרוח הקרה והארץ הרחבה והפתוחה.",
+      "text_markdown": "השירים שלהם, הספורים שלהם והשפות שלהם צמחו יחד עם הרוח הקרה והארץ הרחבה והפתוחה.",
+      "tts": {
+        "text": "הַשִּׁירִים שֶׁלָּהֶם, הַסִּפּוּרִים שֶׁלָּהֶם וְהַשָּׂפוֹת שֶׁלָּהֶם צָמְחוּ יַחַד עִם הָרוּחַ הַקָּרָה וְהָאֶרֶץ הָרְחָבָה וְהַפְּתוּחָה.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הביום כיום",
+      "text_markdown": "הביום כיום"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה היא אחד הביומים הפראיים והריקים ביותר, אבל היא משתנה מהר.",
+      "text_markdown": "הטונדרה היא אחד הביומים הפראיים והריקים ביותר, אבל היא משתנה מהר.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה הִיא אֶחָד הַבִּיוֹמִים הַפְּרָאִיִּים וְהָרֵיקִים בְּיוֹתֵר, אֲבָל הִיא מִשְׁתַּנָּה מַהֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מכל הביומים, הטונדרה מתחממת הכי מהר.",
+      "text_markdown": "מכל הביומים, הטונדרה מתחממת הכי מהר.",
+      "tts": {
+        "text": "מִכָּל הַבִּיוֹמִים, הַטּוּנְדְּרָה מִתְחַמֶּמֶת הֲכִי מַהֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הצפון הרחוק מתחמם משנה לשנה.",
+      "text_markdown": "הצפון הרחוק מתחמם משנה לשנה.",
+      "tts": {
+        "text": "הַצָּפוֹן הָרָחוֹק מִתְחַמֵּם מִשָּׁנָה לְשָׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהאויר מתחמם, האדמה הקפואה מתחילה להפשיר.",
+      "text_markdown": "כשהאויר מתחמם, האדמה הקפואה מתחילה להפשיר.",
+      "tts": {
+        "text": "כְּשֶׁהָאֲוִיר מִתְחַמֵּם, הָאֲדָמָה הַקְּפוּאָה מַתְחִילָה לְהַפְשִׁיר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהפרמפרוסט מפשיר, הארץ יכולה לשקע, להבקע ולהפך לבץ.",
+      "text_markdown": "כשהפרמפרוסט מפשיר, הארץ יכולה לשקע, להבקע ולהפך לבץ.",
+      "tts": {
+        "text": "כְּשֶׁהַפֶּרְמָפְרוֹסְט מַפְשִׁיר, הָאֶרֶץ יְכוֹלָה לִשְׁקֹעַ, לְהִבָּקַע וְלַהֲפֹךְ לְבֹץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כבישים, בתים וצנורות שנבנו על האדמה הקפואה יכולים להתעקם ולהשבר.",
+      "text_markdown": "כבישים, בתים וצנורות שנבנו על האדמה הקפואה יכולים להתעקם ולהשבר.",
+      "tts": {
+        "text": "כְּבִישִׁים, בָּתִּים וְצִנּוֹרוֹת שֶׁנִּבְנוּ עַל הָאֲדָמָה הַקְּפוּאָה יְכוֹלִים לְהִתְעַקֵּם וּלְהִשָּׁבֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה המפשירה גם משחררת גזים שהיו כלואים בקרקע הקפואה זמן רב מאוד.",
+      "text_markdown": "האדמה המפשירה גם משחררת גזים שהיו כלואים בקרקע הקפואה זמן רב מאוד.",
+      "tts": {
+        "text": "הָאֲדָמָה הַמַּפְשִׁירָה גַּם מְשַׁחְרֶרֶת גַּזִּים שֶׁהָיוּ כְּלוּאִים בַּקַּרְקַע הַקְּפוּאָה זְמַן רַב מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגזים האלה עולים לאויר ויכולים לחמם עוד קצת את כל כדור הארץ.",
+      "text_markdown": "הגזים האלה עולים לאויר ויכולים לחמם עוד קצת את כל כדור הארץ.",
+      "tts": {
+        "text": "הַגַּזִּים הָאֵלֶּה עוֹלִים לָאֲוִיר וִיכוֹלִים לְחַמֵּם עוֹד קְצָת אֶת כָּל כַּדּוּר הָאָרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהטונדרה מתחממת, שיחים ועצים קטנים מתפשטים אליה לאט צפונה.",
+      "text_markdown": "כשהטונדרה מתחממת, שיחים ועצים קטנים מתפשטים אליה לאט צפונה.",
+      "tts": {
+        "text": "כְּשֶׁהַטּוּנְדְּרָה מִתְחַמֶּמֶת, שִׂיחִים וְעֵצִים קְטַנִּים מִתְפַּשְּׁטִים אֵלֶיהָ לְאַט צָפוֹנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם כמה בעלי חיים מן הדרום החמים יותר נעים צפונה.",
+      "text_markdown": "גם כמה בעלי חיים מן הדרום החמים יותר נעים צפונה.",
+      "tts": {
+        "text": "גַּם כַּמָּה בַּעֲלֵי חַיִּים מִן הַדָּרוֹם הֶחָמִים יוֹתֵר נָעִים צָפוֹנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים גם באים אל הטונדרה כדי לחפש נפט, גז ומתכת באדמה.",
+      "text_markdown": "אנשים גם באים אל הטונדרה כדי לחפש נפט, גז ומתכת באדמה.",
+      "tts": {
+        "text": "אֲנָשִׁים גַּם בָּאִים אֶל הַטּוּנְדְּרָה כְּדֵי לְחַפֵּשׂ נֵפְט, גַּז וּמַתֶּכֶת בָּאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הכבישים והמכונות שלהם יכולים להשאיר על הארץ סימנים המחלימים לאט מאוד בקר.",
+      "text_markdown": "הכבישים והמכונות שלהם יכולים להשאיר על הארץ סימנים המחלימים לאט מאוד בקר.",
+      "tts": {
+        "text": "הַכְּבִישִׁים וְהַמְּכוֹנוֹת שֶׁלָּהֶם יְכוֹלִים לְהַשְׁאִיר עַל הָאֶרֶץ סִימָנִים הַמַּחְלִימִים לְאַט מְאוֹד בַּקֹּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים רבים וקבוצות רבות פועלים היום כדי לשמר על הטונדרה.",
+      "text_markdown": "אנשים רבים וקבוצות רבות פועלים היום כדי לשמר על הטונדרה.",
+      "tts": {
+        "text": "אֲנָשִׁים רַבִּים וּקְבוּצוֹת רַבּוֹת פּוֹעֲלִים הַיּוֹם כְּדֵי לִשְׁמֹר עַל הַטּוּנְדְּרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מקצים פרקים גדולים שבהם הקריבו והצפרים עדין יכולים לשוטט.",
+      "text_markdown": "הם מקצים פרקים גדולים שבהם הקריבו והצפרים עדין יכולים לשוטט.",
+      "tts": {
+        "text": "הֵם מַקְצִים פַּרְקִים גְּדוֹלִים שֶׁבָּהֶם הַקָּרִיבּוּ וְהַצִּפֳּרִים עֲדַיִן יְכוֹלִים לְשׁוֹטֵט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם עובדים יחד עם האנשים שחיים כאן דורות רבים כדי להגן על הארץ.",
+      "text_markdown": "הם עובדים יחד עם האנשים שחיים כאן דורות רבים כדי להגן על הארץ.",
+      "tts": {
+        "text": "הֵם עוֹבְדִים יַחַד עִם הָאֲנָשִׁים שֶׁחַיִּים כָּאן דּוֹרוֹת רַבִּים כְּדֵי לְהָגֵן עַל הָאֶרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם חוקרים את הטונדרה כדי להבין כיצד היא משתנה וכיצד לשמר עליה בריאה.",
+      "text_markdown": "הם חוקרים את הטונדרה כדי להבין כיצד היא משתנה וכיצד לשמר עליה בריאה.",
+      "tts": {
+        "text": "הֵם חוֹקְרִים אֶת הַטּוּנְדְּרָה כְּדֵי לְהָבִין כֵּיצַד הִיא מִשְׁתַּנָּה וְכֵיצַד לִשְׁמֹר עָלֶיהָ בְּרִיאָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטונדרה שבירה ואטית להחלמה, והיא אוגרת מאגר עצום של פחמן קפוא.",
+      "text_markdown": "הטונדרה שבירה ואטית להחלמה, והיא אוגרת מאגר עצום של פחמן קפוא.",
+      "tts": {
+        "text": "הַטּוּנְדְּרָה שְׁבִירָה וְאִטִּית לְהַחְלָמָה, וְהִיא אוֹגֶרֶת מַאֲגָר עָצוּם שֶׁל פַּחְמָן קָפוּא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היא ראויה לדאגתנו.",
+      "text_markdown": "היא ראויה לדאגתנו.",
+      "tts": {
+        "text": "הִיא רְאוּיָה לְדַאֲגָתֵנוּ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "סיום",
+      "text_markdown": "סיום"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זאת הטונדרה.",
+      "text_markdown": "זאת הטונדרה.",
+      "tts": {
+        "text": "זֹאת הַטּוּנְדְּרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ארץ קרה, פתוחה וחסרת עצים, של אדמה קפואה, צמחים נמוכים ושמים רחבים ובהירים בראש העולם.",
+      "text_markdown": "ארץ קרה, פתוחה וחסרת עצים, של אדמה קפואה, צמחים נמוכים ושמים רחבים ובהירים בראש העולם.",
+      "tts": {
+        "text": "אֶרֶץ קָרָה, פְּתוּחָה וַחֲסַרַת עֵצִים, שֶׁל אֲדָמָה קְפוּאָה, צְמָחִים נְמוּכִים וְשָׁמַיִם רְחָבִים וּבְהִירִים בְּרֹאשׁ הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם אי פעם תעמד באחת מהן, עמד דומם לרגע.",
+      "text_markdown": "אם אי פעם תעמד באחת מהן, עמד דומם לרגע.",
+      "tts": {
+        "text": "אִם אֵי פַּעַם תַּעֲמֹד בְּאַחַת מֵהֶן, עֲמֹד דּוּמָם לְרֶגַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרגש את הרוח הקרה נעה על פני הארץ הפתוחה.",
+      "text_markdown": "הרגש את הרוח הקרה נעה על פני הארץ הפתוחה.",
+      "tts": {
+        "text": "הַרְגֵּשׁ אֶת הָרוּחַ הַקָּרָה נָעָה עַל פְּנֵי הָאֶרֶץ הַפְּתוּחָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הבט למטה אל הפרחים הזעירים והטחב הרך שמתחת לרגליך.",
+      "text_markdown": "הבט למטה אל הפרחים הזעירים והטחב הרך שמתחת לרגליך.",
+      "tts": {
+        "text": "הַבֵּט לְמַטָּה אֶל הַפְּרָחִים הַזְּעִירִים וְהַטַּחַב הָרַךְ שֶׁמִּתַּחַת לְרַגְלֶיךָ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הבט למעלה אל השמים העצומים והריקים.",
+      "text_markdown": "הבט למעלה אל השמים העצומים והריקים.",
+      "tts": {
+        "text": "הַבֵּט לְמַעְלָה אֶל הַשָּׁמַיִם הָעֲצוּמִים וְהָרֵיקִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תרגיש את לבו השקט והסבלני של הביום הולם סביבך.",
+      "text_markdown": "תרגיש את לבו השקט והסבלני של הביום הולם סביבך.",
+      "tts": {
+        "text": "תַּרְגִּישׁ אֶת לִבּוֹ הַשָּׁקֵט וְהַסַּבְלָנִי שֶׁל הַבִּיוֹם הוֹלֵם סְבִיבְךָ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

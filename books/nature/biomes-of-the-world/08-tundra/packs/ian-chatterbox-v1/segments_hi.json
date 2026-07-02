@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "टुंड्रा",
+      "text_markdown": "टुंड्रा"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "यह बायोम कहाँ पनपता है",
+      "text_markdown": "यह बायोम कहाँ पनपता है"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा में आपका स्वागत है।",
+      "text_markdown": "टुंड्रा में आपका स्वागत है।",
+      "tts": {
+        "text": "टुंड्रा में आपका स्वागत है।",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह दुनिया के महान बायोमों में से एक है।",
+      "text_markdown": "यह दुनिया के महान बायोमों में से एक है।",
+      "tts": {
+        "text": "यह दुनिया के महान बायोमों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बायोम पृथ्वी का एक हिस्सा है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+      "text_markdown": "बायोम पृथ्वी का एक हिस्सा है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+      "tts": {
+        "text": "बायोम पृथ्वी का एक हिस्सा है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा एक ठंडी, खुली धरती है जहाँ पेड़ों के उगने के लिए बहुत ज़्यादा ठंड होती है।",
+      "text_markdown": "टुंड्रा एक ठंडी, खुली धरती है जहाँ पेड़ों के उगने के लिए बहुत ज़्यादा ठंड होती है।",
+      "tts": {
+        "text": "टुंड्रा एक ठंडी, खुली धरती है जहाँ पेड़ों के उगने के लिए बहुत ज़्यादा ठंड होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा शब्द एक पुराने शब्द से आया है जिसका अर्थ है पेड़ों रहित मैदान।",
+      "text_markdown": "टुंड्रा शब्द एक पुराने शब्द से आया है जिसका अर्थ है पेड़ों रहित मैदान।",
+      "tts": {
+        "text": "टुंड्रा शब्द एक पुराने शब्द से आया है जिसका अर्थ है पेड़ों रहित मैदान।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा ज़मीन का सबसे ठंडा बायोम है।",
+      "text_markdown": "टुंड्रा ज़मीन का सबसे ठंडा बायोम है।",
+      "tts": {
+        "text": "टुंड्रा ज़मीन का सबसे ठंडा बायोम है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर टुंड्रा दुनिया की चोटी के चारों ओर एक चौड़े छल्ले में फैला है।",
+      "text_markdown": "ज़्यादातर टुंड्रा दुनिया की चोटी के चारों ओर एक चौड़े छल्ले में फैला है।",
+      "tts": {
+        "text": "ज़्यादातर टुंड्रा दुनिया की चोटी के चारों ओर एक चौड़े छल्ले में फैला है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह उत्तरी अमेरिका में कनाडा, अलास्का और ग्रीनलैंड के उत्तरी किनारों को ढकता है।",
+      "text_markdown": "यह उत्तरी अमेरिका में कनाडा, अलास्का और ग्रीनलैंड के उत्तरी किनारों को ढकता है।",
+      "tts": {
+        "text": "यह उत्तरी अमेरिका में कनाडा, अलास्का और ग्रीनलैंड के उत्तरी किनारों को ढकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह उत्तरी यूरोप में नॉर्वे, स्वीडन और फ़िनलैंड के सुदूर उत्तर को ढकता है।",
+      "text_markdown": "यह उत्तरी यूरोप में नॉर्वे, स्वीडन और फ़िनलैंड के सुदूर उत्तर को ढकता है।",
+      "tts": {
+        "text": "यह उत्तरी यूरोप में नॉर्वे, स्वीडन और फ़िनलैंड के सुदूर उत्तर को ढकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह एशिया की चोटी के आर पार, रूस के लंबे उत्तरी तट को ढकता है।",
+      "text_markdown": "यह एशिया की चोटी के आर पार, रूस के लंबे उत्तरी तट को ढकता है।",
+      "tts": {
+        "text": "यह एशिया की चोटी के आर पार, रूस के लंबे उत्तरी तट को ढकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "धरती का यह ठंडा छल्ला बोरियल जंगल के उत्तर में और जमे हुए समुद्र के चारों ओर बसा है।",
+      "text_markdown": "धरती का यह ठंडा छल्ला बोरियल जंगल के उत्तर में और जमे हुए समुद्र के चारों ओर बसा है।",
+      "tts": {
+        "text": "धरती का यह ठंडा छल्ला बोरियल जंगल के उत्तर में और जमे हुए समुद्र के चारों ओर बसा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा का एक और प्रकार भी है।",
+      "text_markdown": "टुंड्रा का एक और प्रकार भी है।",
+      "tts": {
+        "text": "टुंड्रा का एक और प्रकार भी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊँचे पहाड़ों पर, आख़िरी पेड़ों के ऊपर, वही ठंडी और खुली धरती दिखाई देती है।",
+      "text_markdown": "ऊँचे पहाड़ों पर, आख़िरी पेड़ों के ऊपर, वही ठंडी और खुली धरती दिखाई देती है।",
+      "tts": {
+        "text": "ऊँचे पहाड़ों पर, आख़िरी पेड़ों के ऊपर, वही ठंडी और खुली धरती दिखाई देती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह पर्वतीय टुंड्रा दुनिया भर की ऊँची चोटियों पर पाया जाता है, यहाँ तक कि पृथ्वी के गर्म मध्य के पास भी।",
+      "text_markdown": "यह पर्वतीय टुंड्रा दुनिया भर की ऊँची चोटियों पर पाया जाता है, यहाँ तक कि पृथ्वी के गर्म मध्य के पास भी।",
+      "tts": {
+        "text": "यह पर्वतीय टुंड्रा दुनिया भर की ऊँची चोटियों पर पाया जाता है, यहाँ तक कि पृथ्वी के गर्म मध्य के पास भी।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जहाँ भी यह पनपता है, टुंड्रा नीचे उगे पौधों, ठंडी हवा और चौड़े खुले आसमान की धरती है।",
+      "text_markdown": "जहाँ भी यह पनपता है, टुंड्रा नीचे उगे पौधों, ठंडी हवा और चौड़े खुले आसमान की धरती है।",
+      "tts": {
+        "text": "जहाँ भी यह पनपता है, टुंड्रा नीचे उगे पौधों, ठंडी हवा और चौड़े खुले आसमान की धरती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ कोई जंगल नहीं हैं।",
+      "text_markdown": "यहाँ कोई जंगल नहीं हैं।",
+      "tts": {
+        "text": "यहाँ कोई जंगल नहीं हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साल के ज़्यादातर समय ज़मीन सख़्त जमी रहती है।",
+      "text_markdown": "साल के ज़्यादातर समय ज़मीन सख़्त जमी रहती है।",
+      "tts": {
+        "text": "साल के ज़्यादातर समय ज़मीन सख़्त जमी रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन इस ठंडी जगह में भी, जीवन अपना रास्ता ढूँढ लेता है।",
+      "text_markdown": "लेकिन इस ठंडी जगह में भी, जीवन अपना रास्ता ढूँढ लेता है।",
+      "tts": {
+        "text": "लेकिन इस ठंडी जगह में भी, जीवन अपना रास्ता ढूँढ लेता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "मौसम",
+      "text_markdown": "मौसम"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साल के ज़्यादातर समय टुंड्रा ठंडा, सूखा और हवादार रहता है।",
+      "text_markdown": "साल के ज़्यादातर समय टुंड्रा ठंडा, सूखा और हवादार रहता है।",
+      "tts": {
+        "text": "साल के ज़्यादातर समय टुंड्रा ठंडा, सूखा और हवादार रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सर्दी लंबी, अँधेरी और कड़ाके की ठंडी होती है।",
+      "text_markdown": "सर्दी लंबी, अँधेरी और कड़ाके की ठंडी होती है।",
+      "tts": {
+        "text": "सर्दी लंबी, अँधेरी और कड़ाके की ठंडी होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सुदूर उत्तर में, सर्दी आठ या नौ महीने तक रह सकती है।",
+      "text_markdown": "सुदूर उत्तर में, सर्दी आठ या नौ महीने तक रह सकती है।",
+      "tts": {
+        "text": "सुदूर उत्तर में, सर्दी आठ या नौ महीने तक रह सकती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हवा जमाव बिंदु से कहीं नीचे गिर सकती है, घर के फ़्रीज़र से भी ठंडी।",
+      "text_markdown": "हवा जमाव बिंदु से कहीं नीचे गिर सकती है, घर के फ़्रीज़र से भी ठंडी।",
+      "tts": {
+        "text": "हवा जमाव बिंदु से कहीं नीचे गिर सकती है, घर के फ़्रीज़र से भी ठंडी।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सर्दी की गहराई में कई हफ़्तों तक सूरज बिल्कुल नहीं उगता।",
+      "text_markdown": "सर्दी की गहराई में कई हफ़्तों तक सूरज बिल्कुल नहीं उगता।",
+      "tts": {
+        "text": "सर्दी की गहराई में कई हफ़्तों तक सूरज बिल्कुल नहीं उगता।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "धरती दिन ब दिन एक लंबी नीली और अँधेरी सांझ में पड़ी रहती है।",
+      "text_markdown": "धरती दिन ब दिन एक लंबी नीली और अँधेरी सांझ में पड़ी रहती है।",
+      "tts": {
+        "text": "धरती दिन ब दिन एक लंबी नीली और अँधेरी सांझ में पड़ी रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खुली धरती पर तेज़ हवाएँ बहती हैं, और उन्हें धीमा करने के लिए कोई पेड़ नहीं होते।",
+      "text_markdown": "खुली धरती पर तेज़ हवाएँ बहती हैं, और उन्हें धीमा करने के लिए कोई पेड़ नहीं होते।",
+      "tts": {
+        "text": "खुली धरती पर तेज़ हवाएँ बहती हैं, और उन्हें धीमा करने के लिए कोई पेड़ नहीं होते।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हवा सूखी बर्फ़ को उठाती है और उसे ज़मीन के साथ साथ बहा ले जाती है।",
+      "text_markdown": "हवा सूखी बर्फ़ को उठाती है और उसे ज़मीन के साथ साथ बहा ले जाती है।",
+      "tts": {
+        "text": "हवा सूखी बर्फ़ को उठाती है और उसे ज़मीन के साथ साथ बहा ले जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ बहुत कम बर्फ़ या बारिश होती है।",
+      "text_markdown": "यहाँ बहुत कम बर्फ़ या बारिश होती है।",
+      "tts": {
+        "text": "यहाँ बहुत कम बर्फ़ या बारिश होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा इतना सूखा है कि इसे कभी कभी ठंडा रेगिस्तान कहा जाता है।",
+      "text_markdown": "टुंड्रा इतना सूखा है कि इसे कभी कभी ठंडा रेगिस्तान कहा जाता है।",
+      "tts": {
+        "text": "टुंड्रा इतना सूखा है कि इसे कभी कभी ठंडा रेगिस्तान कहा जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन जो पानी गिरता है वह जमी हुई ज़मीन में नहीं समा सकता।",
+      "text_markdown": "लेकिन जो पानी गिरता है वह जमी हुई ज़मीन में नहीं समा सकता।",
+      "tts": {
+        "text": "लेकिन जो पानी गिरता है वह जमी हुई ज़मीन में नहीं समा सकता।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसलिए वह ऊपर ही ठहर जाता है, और धरती उथले तालाबों और गीली ज़मीन से भर जाती है।",
+      "text_markdown": "इसलिए वह ऊपर ही ठहर जाता है, और धरती उथले तालाबों और गीली ज़मीन से भर जाती है।",
+      "tts": {
+        "text": "इसलिए वह ऊपर ही ठहर जाता है, और धरती उथले तालाबों और गीली ज़मीन से भर जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी छोटी और ठंडी होती है।",
+      "text_markdown": "गर्मी छोटी और ठंडी होती है।",
+      "tts": {
+        "text": "गर्मी छोटी और ठंडी होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ हफ़्तों तक सूरज लगभग पूरे दिन और पूरी रात आसमान में रहता है।",
+      "text_markdown": "कुछ हफ़्तों तक सूरज लगभग पूरे दिन और पूरी रात आसमान में रहता है।",
+      "tts": {
+        "text": "कुछ हफ़्तों तक सूरज लगभग पूरे दिन और पूरी रात आसमान में रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जमी हुई ज़मीन की ऊपरी सतह नरम पड़ जाती है, और धरती हरी और चमकीली हो जाती है।",
+      "text_markdown": "जमी हुई ज़मीन की ऊपरी सतह नरम पड़ जाती है, और धरती हरी और चमकीली हो जाती है।",
+      "tts": {
+        "text": "जमी हुई ज़मीन की ऊपरी सतह नरम पड़ जाती है, और धरती हरी और चमकीली हो जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी में भी हवा ठंडी रहती है, और किसी भी रात पाला लौट सकता है।",
+      "text_markdown": "गर्मी में भी हवा ठंडी रहती है, और किसी भी रात पाला लौट सकता है।",
+      "tts": {
+        "text": "गर्मी में भी हवा ठंडी रहती है, और किसी भी रात पाला लौट सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर छोटी गर्मी खत्म होती है, सूरज नीचे डूब जाता है, और लंबी सर्दी फिर से शुरू हो जाती है।",
+      "text_markdown": "फिर छोटी गर्मी खत्म होती है, सूरज नीचे डूब जाता है, और लंबी सर्दी फिर से शुरू हो जाती है।",
+      "tts": {
+        "text": "फिर छोटी गर्मी खत्म होती है, सूरज नीचे डूब जाता है, और लंबी सर्दी फिर से शुरू हो जाती है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "धरती और पानी",
+      "text_markdown": "धरती और पानी"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा की सबसे ज़रूरी बात आपके पैरों के नीचे छिपी है।",
+      "text_markdown": "टुंड्रा की सबसे ज़रूरी बात आपके पैरों के नीचे छिपी है।",
+      "tts": {
+        "text": "टुंड्रा की सबसे ज़रूरी बात आपके पैरों के नीचे छिपी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सतह के नीचे, ज़मीन पूरे साल ठोस जमी रहती है।",
+      "text_markdown": "सतह के नीचे, ज़मीन पूरे साल ठोस जमी रहती है।",
+      "tts": {
+        "text": "सतह के नीचे, ज़मीन पूरे साल ठोस जमी रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इस जमी हुई ज़मीन को पर्माफ़्रॉस्ट कहते हैं।",
+      "text_markdown": "इस जमी हुई ज़मीन को पर्माफ़्रॉस्ट कहते हैं।",
+      "tts": {
+        "text": "इस जमी हुई ज़मीन को पर्माफ़्रॉस्ट कहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ जगहों पर पर्माफ़्रॉस्ट सबसे ऊँची इमारत से भी गहराई तक पहुँचता है।",
+      "text_markdown": "कुछ जगहों पर पर्माफ़्रॉस्ट सबसे ऊँची इमारत से भी गहराई तक पहुँचता है।",
+      "tts": {
+        "text": "कुछ जगहों पर पर्माफ़्रॉस्ट सबसे ऊँची इमारत से भी गहराई तक पहुँचता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह हज़ारों सालों से जमा हुआ है।",
+      "text_markdown": "यह हज़ारों सालों से जमा हुआ है।",
+      "tts": {
+        "text": "यह हज़ारों सालों से जमा हुआ है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी में, मिट्टी की केवल सबसे ऊपरी परत ही पिघलती है।",
+      "text_markdown": "गर्मी में, मिट्टी की केवल सबसे ऊपरी परत ही पिघलती है।",
+      "tts": {
+        "text": "गर्मी में, मिट्टी की केवल सबसे ऊपरी परत ही पिघलती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसी पतली पिघली परत में सारे पौधों को जीना पड़ता है।",
+      "text_markdown": "इसी पतली पिघली परत में सारे पौधों को जीना पड़ता है।",
+      "tts": {
+        "text": "इसी पतली पिघली परत में सारे पौधों को जीना पड़ता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनकी जड़ें गहराई तक नहीं जा सकतीं, क्योंकि उनके ठीक नीचे ज़मीन चट्टान जैसी सख़्त होती है।",
+      "text_markdown": "उनकी जड़ें गहराई तक नहीं जा सकतीं, क्योंकि उनके ठीक नीचे ज़मीन चट्टान जैसी सख़्त होती है।",
+      "tts": {
+        "text": "उनकी जड़ें गहराई तक नहीं जा सकतीं, क्योंकि उनके ठीक नीचे ज़मीन चट्टान जैसी सख़्त होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जमी हुई ज़मीन सतह पर पानी को भी रोक लेती है।",
+      "text_markdown": "जमी हुई ज़मीन सतह पर पानी को भी रोक लेती है।",
+      "tts": {
+        "text": "जमी हुई ज़मीन सतह पर पानी को भी रोक लेती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बारिश और पिघलती बर्फ़ पर्माफ़्रॉस्ट के आर पार बहकर नहीं निकल सकती।",
+      "text_markdown": "बारिश और पिघलती बर्फ़ पर्माफ़्रॉस्ट के आर पार बहकर नहीं निकल सकती।",
+      "tts": {
+        "text": "बारिश और पिघलती बर्फ़ पर्माफ़्रॉस्ट के आर पार बहकर नहीं निकल सकती।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसलिए गर्मी में टुंड्रा उथले तालाबों, दलदलों और धीमी धाराओं की धरती बन जाता है।",
+      "text_markdown": "इसलिए गर्मी में टुंड्रा उथले तालाबों, दलदलों और धीमी धाराओं की धरती बन जाता है।",
+      "tts": {
+        "text": "इसलिए गर्मी में टुंड्रा उथले तालाबों, दलदलों और धीमी धाराओं की धरती बन जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊपर से देखने पर, गर्मी का टुंड्रा हज़ारों छोटे तालाबों से चमकता है।",
+      "text_markdown": "ऊपर से देखने पर, गर्मी का टुंड्रा हज़ारों छोटे तालाबों से चमकता है।",
+      "tts": {
+        "text": "ऊपर से देखने पर, गर्मी का टुंड्रा हज़ारों छोटे तालाबों से चमकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "धरती खुद ज़्यादातर समतल या हल्की ढलानदार होती है।",
+      "text_markdown": "धरती खुद ज़्यादातर समतल या हल्की ढलानदार होती है।",
+      "tts": {
+        "text": "धरती खुद ज़्यादातर समतल या हल्की ढलानदार होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कई जगहों पर जमने और पिघलने से ज़मीन अजीब आकारों में टूट जाती है।",
+      "text_markdown": "कई जगहों पर जमने और पिघलने से ज़मीन अजीब आकारों में टूट जाती है।",
+      "tts": {
+        "text": "कई जगहों पर जमने और पिघलने से ज़मीन अजीब आकारों में टूट जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मिट्टी जमती है और उठती है, फिर पिघलती है और बैठ जाती है, साल दर साल।",
+      "text_markdown": "मिट्टी जमती है और उठती है, फिर पिघलती है और बैठ जाती है, साल दर साल।",
+      "tts": {
+        "text": "मिट्टी जमती है और उठती है, फिर पिघलती है और बैठ जाती है, साल दर साल।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह धीमी हलचल ज़मीन को छल्लों, धारियों और नीचे टीलों में चटका देती है।",
+      "text_markdown": "यह धीमी हलचल ज़मीन को छल्लों, धारियों और नीचे टीलों में चटका देती है।",
+      "tts": {
+        "text": "यह धीमी हलचल ज़मीन को छल्लों, धारियों और नीचे टीलों में चटका देती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा की मिट्टी पतली, बंजर और ठंडी होती है।",
+      "text_markdown": "टुंड्रा की मिट्टी पतली, बंजर और ठंडी होती है।",
+      "tts": {
+        "text": "टुंड्रा की मिट्टी पतली, बंजर और ठंडी होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ठंड में मरे हुए पौधे बहुत धीरे धीरे गलते हैं, इसलिए अच्छी मिट्टी धीरे धीरे बनती है।",
+      "text_markdown": "ठंड में मरे हुए पौधे बहुत धीरे धीरे गलते हैं, इसलिए अच्छी मिट्टी धीरे धीरे बनती है।",
+      "tts": {
+        "text": "ठंड में मरे हुए पौधे बहुत धीरे धीरे गलते हैं, इसलिए अच्छी मिट्टी धीरे धीरे बनती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह एक कठोर धरती है, जमी हुई, गीली और नंगी, पर यह चुपचाप जीवन से भरी है।",
+      "text_markdown": "यह एक कठोर धरती है, जमी हुई, गीली और नंगी, पर यह चुपचाप जीवन से भरी है।",
+      "tts": {
+        "text": "यह एक कठोर धरती है, जमी हुई, गीली और नंगी, पर यह चुपचाप जीवन से भरी है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पौधे",
+      "text_markdown": "पौधे"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा के पौधे छोटे, मज़बूत और ज़मीन से नीचे रहते हैं।",
+      "text_markdown": "टुंड्रा के पौधे छोटे, मज़बूत और ज़मीन से नीचे रहते हैं।",
+      "tts": {
+        "text": "टुंड्रा के पौधे छोटे, मज़बूत और ज़मीन से नीचे रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ कोई पेड़ नहीं हैं, क्योंकि पेड़ जमी हुई ज़मीन और ठंडी हवा में नहीं जी सकते।",
+      "text_markdown": "यहाँ कोई पेड़ नहीं हैं, क्योंकि पेड़ जमी हुई ज़मीन और ठंडी हवा में नहीं जी सकते।",
+      "tts": {
+        "text": "यहाँ कोई पेड़ नहीं हैं, क्योंकि पेड़ जमी हुई ज़मीन और ठंडी हवा में नहीं जी सकते।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसके बजाय, टुंड्रा छोटे पौधों की नीची चादरों से ढका रहता है।",
+      "text_markdown": "इसके बजाय, टुंड्रा छोटे पौधों की नीची चादरों से ढका रहता है।",
+      "tts": {
+        "text": "इसके बजाय, टुंड्रा छोटे पौधों की नीची चादरों से ढका रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नीचे बने रहना ही यहाँ जीने का राज़ है।",
+      "text_markdown": "नीचे बने रहना ही यहाँ जीने का राज़ है।",
+      "tts": {
+        "text": "नीचे बने रहना ही यहाँ जीने का राज़ है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़मीन के पास हवा कमज़ोर होती है और हवा थोड़ी गर्म रहती है।",
+      "text_markdown": "ज़मीन के पास हवा कमज़ोर होती है और हवा थोड़ी गर्म रहती है।",
+      "tts": {
+        "text": "ज़मीन के पास हवा कमज़ोर होती है और हवा थोड़ी गर्म रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा के कई पौधे अपनी गर्मी बनाए रखने के लिए कसे हुए गद्दों या मोटी चादरों में उगते हैं।",
+      "text_markdown": "टुंड्रा के कई पौधे अपनी गर्मी बनाए रखने के लिए कसे हुए गद्दों या मोटी चादरों में उगते हैं।",
+      "tts": {
+        "text": "टुंड्रा के कई पौधे अपनी गर्मी बनाए रखने के लिए कसे हुए गद्दों या मोटी चादरों में उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "काई ज़मीन के बड़े हिस्से पर मोटी और नरम उगती है।",
+      "text_markdown": "काई ज़मीन के बड़े हिस्से पर मोटी और नरम उगती है।",
+      "tts": {
+        "text": "काई ज़मीन के बड़े हिस्से पर मोटी और नरम उगती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लाइकेन नंगी चट्टानों और मिट्टी पर धूसर, हरे और पीले धब्बों में उगते हैं।",
+      "text_markdown": "लाइकेन नंगी चट्टानों और मिट्टी पर धूसर, हरे और पीले धब्बों में उगते हैं।",
+      "tts": {
+        "text": "लाइकेन नंगी चट्टानों और मिट्टी पर धूसर, हरे और पीले धब्बों में उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लाइकेन एक पौधा नहीं बल्कि दो तरह के जीवन हैं जो एक साथ एक बनकर रहते हैं।",
+      "text_markdown": "लाइकेन एक पौधा नहीं बल्कि दो तरह के जीवन हैं जो एक साथ एक बनकर रहते हैं।",
+      "tts": {
+        "text": "लाइकेन एक पौधा नहीं बल्कि दो तरह के जीवन हैं जो एक साथ एक बनकर रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लाइकेन वहाँ जी सकते हैं जहाँ लगभग और कुछ नहीं जी सकता, और वे बहुत धीरे धीरे बढ़ते हैं।",
+      "text_markdown": "लाइकेन वहाँ जी सकते हैं जहाँ लगभग और कुछ नहीं जी सकता, और वे बहुत धीरे धीरे बढ़ते हैं।",
+      "tts": {
+        "text": "लाइकेन वहाँ जी सकते हैं जहाँ लगभग और कुछ नहीं जी सकता, और वे बहुत धीरे धीरे बढ़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा के कुछ लाइकेन सैकड़ों साल पुराने हैं।",
+      "text_markdown": "टुंड्रा के कुछ लाइकेन सैकड़ों साल पुराने हैं।",
+      "tts": {
+        "text": "टुंड्रा के कुछ लाइकेन सैकड़ों साल पुराने हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "काई के बीच छोटी घास और नीचे फूलने वाले पौधे उगते हैं।",
+      "text_markdown": "काई के बीच छोटी घास और नीचे फूलने वाले पौधे उगते हैं।",
+      "tts": {
+        "text": "काई के बीच छोटी घास और नीचे फूलने वाले पौधे उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "छोटी गर्मी में, टुंड्रा फूलों से खिल उठता है।",
+      "text_markdown": "छोटी गर्मी में, टुंड्रा फूलों से खिल उठता है।",
+      "tts": {
+        "text": "छोटी गर्मी में, टुंड्रा फूलों से खिल उठता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ चमकीले हफ़्तों तक, ज़मीन नन्हे फूलों से ढकी रहती है।",
+      "text_markdown": "कुछ चमकीले हफ़्तों तक, ज़मीन नन्हे फूलों से ढकी रहती है।",
+      "tts": {
+        "text": "कुछ चमकीले हफ़्तों तक, ज़मीन नन्हे फूलों से ढकी रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर जगह छोटे पीले, सफ़ेद, गुलाबी और बैंगनी फूल होते हैं।",
+      "text_markdown": "हर जगह छोटे पीले, सफ़ेद, गुलाबी और बैंगनी फूल होते हैं।",
+      "tts": {
+        "text": "हर जगह छोटे पीले, सफ़ेद, गुलाबी और बैंगनी फूल होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पौधों को ठंड लौटने से पहले बहुत जल्दी फूलना, बीज बनाना और भोजन जमा करना पड़ता है।",
+      "text_markdown": "पौधों को ठंड लौटने से पहले बहुत जल्दी फूलना, बीज बनाना और भोजन जमा करना पड़ता है।",
+      "tts": {
+        "text": "पौधों को ठंड लौटने से पहले बहुत जल्दी फूलना, बीज बनाना और भोजन जमा करना पड़ता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ कुछ छोटी झाड़ियाँ भी उगती हैं, जैसे बौना विलो और बौना बर्च।",
+      "text_markdown": "यहाँ कुछ छोटी झाड़ियाँ भी उगती हैं, जैसे बौना विलो और बौना बर्च।",
+      "tts": {
+        "text": "यहाँ कुछ छोटी झाड़ियाँ भी उगती हैं, जैसे बौना विलो और बौना बर्च।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये उसी तरह के पेड़ हैं जो गर्म इलाकों में ऊँचे बढ़ते हैं।",
+      "text_markdown": "ये उसी तरह के पेड़ हैं जो गर्म इलाकों में ऊँचे बढ़ते हैं।",
+      "tts": {
+        "text": "ये उसी तरह के पेड़ हैं जो गर्म इलाकों में ऊँचे बढ़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पर यहाँ वे नन्ही झाड़ियों की तरह उगते हैं, बस आपके टखने जितने ऊँचे, ज़मीन पर रेंगते हुए।",
+      "text_markdown": "पर यहाँ वे नन्ही झाड़ियों की तरह उगते हैं, बस आपके टखने जितने ऊँचे, ज़मीन पर रेंगते हुए।",
+      "tts": {
+        "text": "पर यहाँ वे नन्ही झाड़ियों की तरह उगते हैं, बस आपके टखने जितने ऊँचे, ज़मीन पर रेंगते हुए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी के अंत में इनमें से कुछ नीचे पौधों पर छोटी बेरियाँ पकती हैं।",
+      "text_markdown": "गर्मी के अंत में इनमें से कुछ नीचे पौधों पर छोटी बेरियाँ पकती हैं।",
+      "tts": {
+        "text": "गर्मी के अंत में इनमें से कुछ नीचे पौधों पर छोटी बेरियाँ पकती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा के जानवर और लोग जब तक हो सके इन्हें इकट्ठा करते हैं।",
+      "text_markdown": "टुंड्रा के जानवर और लोग जब तक हो सके इन्हें इकट्ठा करते हैं।",
+      "tts": {
+        "text": "टुंड्रा के जानवर और लोग जब तक हो सके इन्हें इकट्ठा करते हैं।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "जानवर",
+      "text_markdown": "जानवर"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा के जानवर ठंड और हवा के साथ जीने के लिए बने हैं।",
+      "text_markdown": "टुंड्रा के जानवर ठंड और हवा के साथ जीने के लिए बने हैं।",
+      "tts": {
+        "text": "टुंड्रा के जानवर ठंड और हवा के साथ जीने के लिए बने हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से कई के पास मोटी खाल या मोटे पंख होते हैं, और गर्म रहने के लिए चर्बी की एक परत।",
+      "text_markdown": "इनमें से कई के पास मोटी खाल या मोटे पंख होते हैं, और गर्म रहने के लिए चर्बी की एक परत।",
+      "tts": {
+        "text": "इनमें से कई के पास मोटी खाल या मोटे पंख होते हैं, और गर्म रहने के लिए चर्बी की एक परत।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा के सबसे बड़े जानवर कैरिबू हैं, जिन्हें रेनडियर भी कहते हैं।",
+      "text_markdown": "टुंड्रा के सबसे बड़े जानवर कैरिबू हैं, जिन्हें रेनडियर भी कहते हैं।",
+      "tts": {
+        "text": "टुंड्रा के सबसे बड़े जानवर कैरिबू हैं, जिन्हें रेनडियर भी कहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कैरिबू बड़े झुंडों में रहते हैं और खुली धरती पर लंबी दूरियाँ तय करते हैं।",
+      "text_markdown": "कैरिबू बड़े झुंडों में रहते हैं और खुली धरती पर लंबी दूरियाँ तय करते हैं।",
+      "tts": {
+        "text": "कैरिबू बड़े झुंडों में रहते हैं और खुली धरती पर लंबी दूरियाँ तय करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी में वे टुंड्रा के पौधे खाते हैं, और सर्दी में लाइकेन के लिए बर्फ़ खोदते हैं।",
+      "text_markdown": "गर्मी में वे टुंड्रा के पौधे खाते हैं, और सर्दी में लाइकेन के लिए बर्फ़ खोदते हैं।",
+      "tts": {
+        "text": "गर्मी में वे टुंड्रा के पौधे खाते हैं, और सर्दी में लाइकेन के लिए बर्फ़ खोदते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कस्तूरी बैल टुंड्रा का एक और बड़ा जानवर है।",
+      "text_markdown": "कस्तूरी बैल टुंड्रा का एक और बड़ा जानवर है।",
+      "tts": {
+        "text": "कस्तूरी बैल टुंड्रा का एक और बड़ा जानवर है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कस्तूरी बैल का शरीर भारी होता है और लंबे बालों का मोटा आवरण जो लगभग ज़मीन तक लटकता है।",
+      "text_markdown": "कस्तूरी बैल का शरीर भारी होता है और लंबे बालों का मोटा आवरण जो लगभग ज़मीन तक लटकता है।",
+      "tts": {
+        "text": "कस्तूरी बैल का शरीर भारी होता है और लंबे बालों का मोटा आवरण जो लगभग ज़मीन तक लटकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब भेड़िए पास आते हैं, तो कस्तूरी बैल एक छल्ले में खड़े होते हैं, बाहर की ओर मुँह किए, ताकि बच्चों को सुरक्षित रखें।",
+      "text_markdown": "जब भेड़िए पास आते हैं, तो कस्तूरी बैल एक छल्ले में खड़े होते हैं, बाहर की ओर मुँह किए, ताकि बच्चों को सुरक्षित रखें।",
+      "tts": {
+        "text": "जब भेड़िए पास आते हैं, तो कस्तूरी बैल एक छल्ले में खड़े होते हैं, बाहर की ओर मुँह किए, ताकि बच्चों को सुरक्षित रखें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भेड़िए टुंड्रा भर में झुंडों के पीछे चलते हैं, बूढ़ों और कमज़ोरों का शिकार करते हुए।",
+      "text_markdown": "भेड़िए टुंड्रा भर में झुंडों के पीछे चलते हैं, बूढ़ों और कमज़ोरों का शिकार करते हुए।",
+      "tts": {
+        "text": "भेड़िए टुंड्रा भर में झुंडों के पीछे चलते हैं, बूढ़ों और कमज़ोरों का शिकार करते हुए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आर्कटिक लोमड़ी छोटी होती है, जिसकी मोटी खाल सर्दी में सफ़ेद और गर्मी में भूरी हो जाती है।",
+      "text_markdown": "आर्कटिक लोमड़ी छोटी होती है, जिसकी मोटी खाल सर्दी में सफ़ेद और गर्मी में भूरी हो जाती है।",
+      "tts": {
+        "text": "आर्कटिक लोमड़ी छोटी होती है, जिसकी मोटी खाल सर्दी में सफ़ेद और गर्मी में भूरी हो जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह बड़े जानवरों के पीछे चलती है और उनका छोड़ा हुआ खाती है, और छोटे जानवरों का शिकार भी करती है।",
+      "text_markdown": "यह बड़े जानवरों के पीछे चलती है और उनका छोड़ा हुआ खाती है, और छोटे जानवरों का शिकार भी करती है।",
+      "tts": {
+        "text": "यह बड़े जानवरों के पीछे चलती है और उनका छोड़ा हुआ खाती है, और छोटे जानवरों का शिकार भी करती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आर्कटिक खरगोश सर्दी में सफ़ेद होता है और उसके कान छोटे होते हैं ताकि उसकी गर्मी बनी रहे।",
+      "text_markdown": "आर्कटिक खरगोश सर्दी में सफ़ेद होता है और उसके कान छोटे होते हैं ताकि उसकी गर्मी बनी रहे।",
+      "tts": {
+        "text": "आर्कटिक खरगोश सर्दी में सफ़ेद होता है और उसके कान छोटे होते हैं ताकि उसकी गर्मी बनी रहे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बर्फ़ के नीचे, लेमिंग नाम के छोटे जानवर सुरंगें खोदते हैं और पूरी सर्दी व्यस्त रहते हैं।",
+      "text_markdown": "बर्फ़ के नीचे, लेमिंग नाम के छोटे जानवर सुरंगें खोदते हैं और पूरी सर्दी व्यस्त रहते हैं।",
+      "tts": {
+        "text": "बर्फ़ के नीचे, लेमिंग नाम के छोटे जानवर सुरंगें खोदते हैं और पूरी सर्दी व्यस्त रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेमिंग लोमड़ी, उल्लू और कई दूसरे शिकारियों का भोजन हैं।",
+      "text_markdown": "लेमिंग लोमड़ी, उल्लू और कई दूसरे शिकारियों का भोजन हैं।",
+      "tts": {
+        "text": "लेमिंग लोमड़ी, उल्लू और कई दूसरे शिकारियों का भोजन हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बर्फ़ीला उल्लू एक बड़ा सफ़ेद उल्लू है जो खुले टुंड्रा में दिन और रात शिकार करता है।",
+      "text_markdown": "बर्फ़ीला उल्लू एक बड़ा सफ़ेद उल्लू है जो खुले टुंड्रा में दिन और रात शिकार करता है।",
+      "tts": {
+        "text": "बर्फ़ीला उल्लू एक बड़ा सफ़ेद उल्लू है जो खुले टुंड्रा में दिन और रात शिकार करता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह एक नीची ऊँचाई से देखता है और लेमिंग और दूसरे छोटे जानवरों पर चुपचाप झपटता है।",
+      "text_markdown": "यह एक नीची ऊँचाई से देखता है और लेमिंग और दूसरे छोटे जानवरों पर चुपचाप झपटता है।",
+      "tts": {
+        "text": "यह एक नीची ऊँचाई से देखता है और लेमिंग और दूसरे छोटे जानवरों पर चुपचाप झपटता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "छोटी गर्मी में, दक्षिण से पक्षियों के विशाल झुंड आते हैं।",
+      "text_markdown": "छोटी गर्मी में, दक्षिण से पक्षियों के विशाल झुंड आते हैं।",
+      "tts": {
+        "text": "छोटी गर्मी में, दक्षिण से पक्षियों के विशाल झुंड आते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हंस, बत्तख और कई छोटे पक्षी गीले, कीड़ों भरे टुंड्रा पर घोंसला बनाने आते हैं।",
+      "text_markdown": "हंस, बत्तख और कई छोटे पक्षी गीले, कीड़ों भरे टुंड्रा पर घोंसला बनाने आते हैं।",
+      "tts": {
+        "text": "हंस, बत्तख और कई छोटे पक्षी गीले, कीड़ों भरे टुंड्रा पर घोंसला बनाने आते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे इसलिए आते हैं क्योंकि गर्मी के लंबे दिन और ढेरों कीड़े भरपूर भोजन का मतलब हैं।",
+      "text_markdown": "वे इसलिए आते हैं क्योंकि गर्मी के लंबे दिन और ढेरों कीड़े भरपूर भोजन का मतलब हैं।",
+      "tts": {
+        "text": "वे इसलिए आते हैं क्योंकि गर्मी के लंबे दिन और ढेरों कीड़े भरपूर भोजन का मतलब हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ हफ़्तों तक, मच्छरों और छोटी मक्खियों के बादल हवा में भर जाते हैं।",
+      "text_markdown": "कुछ हफ़्तों तक, मच्छरों और छोटी मक्खियों के बादल हवा में भर जाते हैं।",
+      "tts": {
+        "text": "कुछ हफ़्तों तक, मच्छरों और छोटी मक्खियों के बादल हवा में भर जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर पक्षी अपने बच्चों को जल्दी बड़ा करते हैं और ठंड लौटने से पहले फिर से दक्षिण उड़ जाते हैं।",
+      "text_markdown": "फिर पक्षी अपने बच्चों को जल्दी बड़ा करते हैं और ठंड लौटने से पहले फिर से दक्षिण उड़ जाते हैं।",
+      "tts": {
+        "text": "फिर पक्षी अपने बच्चों को जल्दी बड़ा करते हैं और ठंड लौटने से पहले फिर से दक्षिण उड़ जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उत्तरी किनारे पर, जहाँ टुंड्रा जमे हुए समुद्र से मिलता है, ध्रुवीय भालू बर्फ़ पर शिकार करता है।",
+      "text_markdown": "उत्तरी किनारे पर, जहाँ टुंड्रा जमे हुए समुद्र से मिलता है, ध्रुवीय भालू बर्फ़ पर शिकार करता है।",
+      "tts": {
+        "text": "उत्तरी किनारे पर, जहाँ टुंड्रा जमे हुए समुद्र से मिलता है, ध्रुवीय भालू बर्फ़ पर शिकार करता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "लोग",
+      "text_markdown": "लोग"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग हज़ारों सालों से टुंड्रा पर रहते आए हैं।",
+      "text_markdown": "लोग हज़ारों सालों से टुंड्रा पर रहते आए हैं।",
+      "tts": {
+        "text": "लोग हज़ारों सालों से टुंड्रा पर रहते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ रहने के लिए ठंडी धरती और उसके जानवरों का गहरा ज्ञान चाहिए।",
+      "text_markdown": "यहाँ रहने के लिए ठंडी धरती और उसके जानवरों का गहरा ज्ञान चाहिए।",
+      "tts": {
+        "text": "यहाँ रहने के लिए ठंडी धरती और उसके जानवरों का गहरा ज्ञान चाहिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उत्तरी अमेरिका में, इनुइट और दूसरे उत्तरी लोग बहुत लंबे समय से टुंड्रा और जमे हुए तट पर रहते आए हैं।",
+      "text_markdown": "उत्तरी अमेरिका में, इनुइट और दूसरे उत्तरी लोग बहुत लंबे समय से टुंड्रा और जमे हुए तट पर रहते आए हैं।",
+      "tts": {
+        "text": "उत्तरी अमेरिका में, इनुइट और दूसरे उत्तरी लोग बहुत लंबे समय से टुंड्रा और जमे हुए तट पर रहते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने कैरिबू का शिकार किया, नदियों और समुद्र में मछली पकड़ी, और बर्फ़ के किनारे सील का शिकार किया।",
+      "text_markdown": "उन्होंने कैरिबू का शिकार किया, नदियों और समुद्र में मछली पकड़ी, और बर्फ़ के किनारे सील का शिकार किया।",
+      "tts": {
+        "text": "उन्होंने कैरिबू का शिकार किया, नदियों और समुद्र में मछली पकड़ी, और बर्फ़ के किनारे सील का शिकार किया।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने जानवरों की खाल और फ़र से गर्म कपड़े बनाए, जो हवा रोकने के लिए सिले जाते थे।",
+      "text_markdown": "उन्होंने जानवरों की खाल और फ़र से गर्म कपड़े बनाए, जो हवा रोकने के लिए सिले जाते थे।",
+      "tts": {
+        "text": "उन्होंने जानवरों की खाल और फ़र से गर्म कपड़े बनाए, जो हवा रोकने के लिए सिले जाते थे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने धरती से मिली चीज़ों से घर बनाए, और बर्फ़ पर स्लेज से यात्रा की।",
+      "text_markdown": "उन्होंने धरती से मिली चीज़ों से घर बनाए, और बर्फ़ पर स्लेज से यात्रा की।",
+      "tts": {
+        "text": "उन्होंने धरती से मिली चीज़ों से घर बनाए, और बर्फ़ पर स्लेज से यात्रा की।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उत्तरी यूरोप में, सामी लोग कई पीढ़ियों से टुंड्रा भर में रेनडियर के पीछे चलते आए हैं।",
+      "text_markdown": "उत्तरी यूरोप में, सामी लोग कई पीढ़ियों से टुंड्रा भर में रेनडियर के पीछे चलते आए हैं।",
+      "tts": {
+        "text": "उत्तरी यूरोप में, सामी लोग कई पीढ़ियों से टुंड्रा भर में रेनडियर के पीछे चलते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेनडियर ने उन्हें मांस, दूध, कपड़ों के लिए खाल, और स्लेज खींचने का ज़रिया दिया।",
+      "text_markdown": "रेनडियर ने उन्हें मांस, दूध, कपड़ों के लिए खाल, और स्लेज खींचने का ज़रिया दिया।",
+      "tts": {
+        "text": "रेनडियर ने उन्हें मांस, दूध, कपड़ों के लिए खाल, और स्लेज खींचने का ज़रिया दिया।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उत्तरी रूस में, कई लोगों ने टुंड्रा को अपना घर बनाया है।",
+      "text_markdown": "उत्तरी रूस में, कई लोगों ने टुंड्रा को अपना घर बनाया है।",
+      "tts": {
+        "text": "उत्तरी रूस में, कई लोगों ने टुंड्रा को अपना घर बनाया है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नेनेट्स, चुकची और दूसरे लोग बहुत लंबे समय से इन ठंडी धरतियों पर रेनडियर चराते आए हैं।",
+      "text_markdown": "नेनेट्स, चुकची और दूसरे लोग बहुत लंबे समय से इन ठंडी धरतियों पर रेनडियर चराते आए हैं।",
+      "tts": {
+        "text": "नेनेट्स, चुकची और दूसरे लोग बहुत लंबे समय से इन ठंडी धरतियों पर रेनडियर चराते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से कुछ आज भी अपने झुंडों के साथ यात्रा करते हैं, मौसमों के साथ चलते हुए।",
+      "text_markdown": "इनमें से कुछ आज भी अपने झुंडों के साथ यात्रा करते हैं, मौसमों के साथ चलते हुए।",
+      "tts": {
+        "text": "इनमें से कुछ आज भी अपने झुंडों के साथ यात्रा करते हैं, मौसमों के साथ चलते हुए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी में वे रेनडियर के पीछे उत्तर की ओर तट की तरफ़ चलते हैं।",
+      "text_markdown": "गर्मी में वे रेनडियर के पीछे उत्तर की ओर तट की तरफ़ चलते हैं।",
+      "tts": {
+        "text": "गर्मी में वे रेनडियर के पीछे उत्तर की ओर तट की तरफ़ चलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सर्दी में वे दक्षिण की ओर जंगल के किनारे की शरण की तरफ़ जाते हैं।",
+      "text_markdown": "सर्दी में वे दक्षिण की ओर जंगल के किनारे की शरण की तरफ़ जाते हैं।",
+      "tts": {
+        "text": "सर्दी में वे दक्षिण की ओर जंगल के किनारे की शरण की तरफ़ जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इन सभी धरतियों में, लोगों ने मौसम, बर्फ़ और हिम को पढ़ना सीखा।",
+      "text_markdown": "इन सभी धरतियों में, लोगों ने मौसम, बर्फ़ और हिम को पढ़ना सीखा।",
+      "tts": {
+        "text": "इन सभी धरतियों में, लोगों ने मौसम, बर्फ़ और हिम को पढ़ना सीखा।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने कैरिबू और रेनडियर के रास्ते सीखे।",
+      "text_markdown": "उन्होंने कैरिबू और रेनडियर के रास्ते सीखे।",
+      "tts": {
+        "text": "उन्होंने कैरिबू और रेनडियर के रास्ते सीखे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने सीखा कि मछलियाँ कहाँ इकट्ठा होती हैं और पक्षी कब आते हैं।",
+      "text_markdown": "उन्होंने सीखा कि मछलियाँ कहाँ इकट्ठा होती हैं और पक्षी कब आते हैं।",
+      "tts": {
+        "text": "उन्होंने सीखा कि मछलियाँ कहाँ इकट्ठा होती हैं और पक्षी कब आते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने छोटी गर्मी से भोजन जमा करना सीखा ताकि वह लंबी सर्दी भर चले।",
+      "text_markdown": "उन्होंने छोटी गर्मी से भोजन जमा करना सीखा ताकि वह लंबी सर्दी भर चले।",
+      "tts": {
+        "text": "उन्होंने छोटी गर्मी से भोजन जमा करना सीखा ताकि वह लंबी सर्दी भर चले।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा कम देता है, और बहुत माँगता है, पर लोगों ने यहाँ बहुत लंबे समय से अच्छा जीवन बनाया है।",
+      "text_markdown": "टुंड्रा कम देता है, और बहुत माँगता है, पर लोगों ने यहाँ बहुत लंबे समय से अच्छा जीवन बनाया है।",
+      "tts": {
+        "text": "टुंड्रा कम देता है, और बहुत माँगता है, पर लोगों ने यहाँ बहुत लंबे समय से अच्छा जीवन बनाया है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके गीत, उनकी कहानियाँ और उनकी भाषाएँ ठंडी हवा और चौड़ी खुली धरती के साथ बड़ी हुईं।",
+      "text_markdown": "उनके गीत, उनकी कहानियाँ और उनकी भाषाएँ ठंडी हवा और चौड़ी खुली धरती के साथ बड़ी हुईं।",
+      "tts": {
+        "text": "उनके गीत, उनकी कहानियाँ और उनकी भाषाएँ ठंडी हवा और चौड़ी खुली धरती के साथ बड़ी हुईं।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "आज का बायोम",
+      "text_markdown": "आज का बायोम"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा सबसे जंगली और सबसे खाली बायोमों में से एक है, पर यह तेज़ी से बदल रहा है।",
+      "text_markdown": "टुंड्रा सबसे जंगली और सबसे खाली बायोमों में से एक है, पर यह तेज़ी से बदल रहा है।",
+      "tts": {
+        "text": "टुंड्रा सबसे जंगली और सबसे खाली बायोमों में से एक है, पर यह तेज़ी से बदल रहा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सभी बायोमों में से, टुंड्रा सबसे तेज़ी से गर्म हो रहा है।",
+      "text_markdown": "सभी बायोमों में से, टुंड्रा सबसे तेज़ी से गर्म हो रहा है।",
+      "tts": {
+        "text": "सभी बायोमों में से, टुंड्रा सबसे तेज़ी से गर्म हो रहा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सुदूर उत्तर साल दर साल गर्म होता जा रहा है।",
+      "text_markdown": "सुदूर उत्तर साल दर साल गर्म होता जा रहा है।",
+      "tts": {
+        "text": "सुदूर उत्तर साल दर साल गर्म होता जा रहा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जैसे जैसे हवा गर्म होती है, जमी हुई ज़मीन पिघलने लगती है।",
+      "text_markdown": "जैसे जैसे हवा गर्म होती है, जमी हुई ज़मीन पिघलने लगती है।",
+      "tts": {
+        "text": "जैसे जैसे हवा गर्म होती है, जमी हुई ज़मीन पिघलने लगती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब पर्माफ़्रॉस्ट पिघलता है, तो धरती धँस सकती है, चटक सकती है और कीचड़ बन सकती है।",
+      "text_markdown": "जब पर्माफ़्रॉस्ट पिघलता है, तो धरती धँस सकती है, चटक सकती है और कीचड़ बन सकती है।",
+      "tts": {
+        "text": "जब पर्माफ़्रॉस्ट पिघलता है, तो धरती धँस सकती है, चटक सकती है और कीचड़ बन सकती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जमी हुई ज़मीन पर बनी सड़कें, घर और पाइपलाइनें मुड़ और टूट सकती हैं।",
+      "text_markdown": "जमी हुई ज़मीन पर बनी सड़कें, घर और पाइपलाइनें मुड़ और टूट सकती हैं।",
+      "tts": {
+        "text": "जमी हुई ज़मीन पर बनी सड़कें, घर और पाइपलाइनें मुड़ और टूट सकती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पिघलती ज़मीन ऐसी गैसें भी छोड़ती है जो बहुत लंबे समय से जमी हुई मिट्टी में बंद थीं।",
+      "text_markdown": "पिघलती ज़मीन ऐसी गैसें भी छोड़ती है जो बहुत लंबे समय से जमी हुई मिट्टी में बंद थीं।",
+      "tts": {
+        "text": "पिघलती ज़मीन ऐसी गैसें भी छोड़ती है जो बहुत लंबे समय से जमी हुई मिट्टी में बंद थीं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये गैसें हवा में उठती हैं और पूरी पृथ्वी को थोड़ा और गर्म कर सकती हैं।",
+      "text_markdown": "ये गैसें हवा में उठती हैं और पूरी पृथ्वी को थोड़ा और गर्म कर सकती हैं।",
+      "tts": {
+        "text": "ये गैसें हवा में उठती हैं और पूरी पृथ्वी को थोड़ा और गर्म कर सकती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जैसे जैसे टुंड्रा गर्म होता है, झाड़ियाँ और छोटे पेड़ धीरे धीरे उत्तर की ओर इसमें फैल रहे हैं।",
+      "text_markdown": "जैसे जैसे टुंड्रा गर्म होता है, झाड़ियाँ और छोटे पेड़ धीरे धीरे उत्तर की ओर इसमें फैल रहे हैं।",
+      "tts": {
+        "text": "जैसे जैसे टुंड्रा गर्म होता है, झाड़ियाँ और छोटे पेड़ धीरे धीरे उत्तर की ओर इसमें फैल रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म दक्षिण के कुछ जानवर भी उत्तर की ओर बढ़ रहे हैं।",
+      "text_markdown": "गर्म दक्षिण के कुछ जानवर भी उत्तर की ओर बढ़ रहे हैं।",
+      "tts": {
+        "text": "गर्म दक्षिण के कुछ जानवर भी उत्तर की ओर बढ़ रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग ज़मीन में तेल, गैस और धातु की खोज के लिए भी टुंड्रा आते हैं।",
+      "text_markdown": "लोग ज़मीन में तेल, गैस और धातु की खोज के लिए भी टुंड्रा आते हैं।",
+      "tts": {
+        "text": "लोग ज़मीन में तेल, गैस और धातु की खोज के लिए भी टुंड्रा आते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनकी सड़कें और मशीनें धरती पर ऐसे निशान छोड़ सकती हैं जो ठंड में बहुत धीरे भरते हैं।",
+      "text_markdown": "उनकी सड़कें और मशीनें धरती पर ऐसे निशान छोड़ सकती हैं जो ठंड में बहुत धीरे भरते हैं।",
+      "tts": {
+        "text": "उनकी सड़कें और मशीनें धरती पर ऐसे निशान छोड़ सकती हैं जो ठंड में बहुत धीरे भरते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज कई लोग और समूह टुंड्रा की देखभाल के लिए काम कर रहे हैं।",
+      "text_markdown": "आज कई लोग और समूह टुंड्रा की देखभाल के लिए काम कर रहे हैं।",
+      "tts": {
+        "text": "आज कई लोग और समूह टुंड्रा की देखभाल के लिए काम कर रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे बड़े उद्यान अलग रखते हैं जहाँ कैरिबू और पक्षी अब भी घूम सकें।",
+      "text_markdown": "वे बड़े उद्यान अलग रखते हैं जहाँ कैरिबू और पक्षी अब भी घूम सकें।",
+      "tts": {
+        "text": "वे बड़े उद्यान अलग रखते हैं जहाँ कैरिबू और पक्षी अब भी घूम सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे उन लोगों के साथ काम करते हैं जो कई पीढ़ियों से यहाँ रहते आए हैं, ताकि धरती की रक्षा हो सके।",
+      "text_markdown": "वे उन लोगों के साथ काम करते हैं जो कई पीढ़ियों से यहाँ रहते आए हैं, ताकि धरती की रक्षा हो सके।",
+      "tts": {
+        "text": "वे उन लोगों के साथ काम करते हैं जो कई पीढ़ियों से यहाँ रहते आए हैं, ताकि धरती की रक्षा हो सके।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे टुंड्रा का अध्ययन करते हैं ताकि समझ सकें कि यह कैसे बदल रहा है और इसे स्वस्थ कैसे रखा जाए।",
+      "text_markdown": "वे टुंड्रा का अध्ययन करते हैं ताकि समझ सकें कि यह कैसे बदल रहा है और इसे स्वस्थ कैसे रखा जाए।",
+      "tts": {
+        "text": "वे टुंड्रा का अध्ययन करते हैं ताकि समझ सकें कि यह कैसे बदल रहा है और इसे स्वस्थ कैसे रखा जाए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टुंड्रा नाज़ुक है और धीरे भरता है, और इसमें जमे हुए कार्बन का विशाल भंडार है।",
+      "text_markdown": "टुंड्रा नाज़ुक है और धीरे भरता है, और इसमें जमे हुए कार्बन का विशाल भंडार है।",
+      "tts": {
+        "text": "टुंड्रा नाज़ुक है और धीरे भरता है, और इसमें जमे हुए कार्बन का विशाल भंडार है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह हमारी देखभाल के लायक है।",
+      "text_markdown": "यह हमारी देखभाल के लायक है।",
+      "tts": {
+        "text": "यह हमारी देखभाल के लायक है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "समापन",
+      "text_markdown": "समापन"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही है टुंड्रा।",
+      "text_markdown": "यही है टुंड्रा।",
+      "tts": {
+        "text": "यही है टुंड्रा।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया की चोटी पर एक ठंडी, खुली, पेड़ों रहित धरती, जमी हुई ज़मीन, नीचे पौधों और चौड़े चमकीले आसमान की।",
+      "text_markdown": "दुनिया की चोटी पर एक ठंडी, खुली, पेड़ों रहित धरती, जमी हुई ज़मीन, नीचे पौधों और चौड़े चमकीले आसमान की।",
+      "tts": {
+        "text": "दुनिया की चोटी पर एक ठंडी, खुली, पेड़ों रहित धरती, जमी हुई ज़मीन, नीचे पौधों और चौड़े चमकीले आसमान की।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप कभी किसी में खड़े हों, तो एक पल के लिए ठहर जाइए।",
+      "text_markdown": "अगर आप कभी किसी में खड़े हों, तो एक पल के लिए ठहर जाइए।",
+      "tts": {
+        "text": "अगर आप कभी किसी में खड़े हों, तो एक पल के लिए ठहर जाइए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खुली धरती पर बहती ठंडी हवा को महसूस कीजिए।",
+      "text_markdown": "खुली धरती पर बहती ठंडी हवा को महसूस कीजिए।",
+      "tts": {
+        "text": "खुली धरती पर बहती ठंडी हवा को महसूस कीजिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अपने पैरों के नीचे नन्हे फूलों और नरम काई को देखिए।",
+      "text_markdown": "अपने पैरों के नीचे नन्हे फूलों और नरम काई को देखिए।",
+      "tts": {
+        "text": "अपने पैरों के नीचे नन्हे फूलों और नरम काई को देखिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊपर विशाल और खाली आसमान को देखिए।",
+      "text_markdown": "ऊपर विशाल और खाली आसमान को देखिए।",
+      "tts": {
+        "text": "ऊपर विशाल और खाली आसमान को देखिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप अपने चारों ओर बायोम के शांत, धैर्यवान दिल को धड़कता हुआ महसूस करेंगे।",
+      "text_markdown": "आप अपने चारों ओर बायोम के शांत, धैर्यवान दिल को धड़कता हुआ महसूस करेंगे।",
+      "tts": {
+        "text": "आप अपने चारों ओर बायोम के शांत, धैर्यवान दिल को धड़कता हुआ महसूस करेंगे।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

@@ -952,6 +952,30 @@ BOOKS: list[BookSpec] = [
             "animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_tundra",
+        title="The Tundra",
+        description=(
+            "A short, plain-spoken tour of the tundra — the cold, "
+            "treeless land at the top of the world and high on the "
+            "mountains. Frozen ground and a brief bright summer, low "
+            "mosses and lichens and tiny flowers, caribou and musk ox "
+            "and arctic fox and snowy owl, and the Inuit, Sami, Nenets "
+            "and Chukchi who have lived here for thousands of years. "
+            "Book eight of the Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a vast open tundra in the low "
+            "golden light of the far north. Treeless rolling ground "
+            "covered in soft green and rust-red moss and tiny "
+            "wildflowers, dotted with small still ponds that mirror a "
+            "huge pale sky. Distant low hills fade into cold blue haze "
+            "on the horizon. Painterly digital art, restrained palette "
+            "of mossy green, rust, pale gold, and cold sky blue, "
+            "spacious and quiet, no people, no clearly rendered "
+            "animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 

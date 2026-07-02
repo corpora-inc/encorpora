@@ -98,6 +98,7 @@ DATES = {
     "book_biomes_temperate_grassland": "2026-06-18",
     "book_biomes_mediterranean":       "2026-06-19",
     "book_biomes_boreal_forest":       "2026-06-20",
+    "book_biomes_tundra":              "2026-06-21",
 }
 
 
@@ -134,6 +135,21 @@ BOOK_ROWS: dict[str, dict] = {
             "of the World series."
         ),
         "coverImageUrl": f"{CDN_BASE}/books/book_biomes_boreal_forest/cover.jpg",
+        "series": "Biomes of the World",
+        "primaryLanguage": "en",
+        "tags": BIOMES_TAGS,
+    },
+    "book_biomes_tundra": {
+        "title": "The Tundra",
+        "description": (
+            "A short, plain-spoken tour of the tundra — the cold, treeless "
+            "land at the top of the world and high on the mountains. Frozen "
+            "ground and a brief bright summer, low mosses and lichens and "
+            "tiny flowers, caribou and musk ox and arctic fox and snowy owl, "
+            "and the Inuit, Sami, Nenets and Chukchi who have lived here for "
+            "thousands of years. Book eight of the Biomes of the World series."
+        ),
+        "coverImageUrl": f"{CDN_BASE}/books/book_biomes_tundra/cover.jpg",
         "series": "Biomes of the World",
         "primaryLanguage": "en",
         "tags": BIOMES_TAGS,

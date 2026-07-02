@@ -20,7 +20,7 @@ set -euo pipefail
 LANG=${1:?usage: translate_lang.sh <lang> [<lang_name>]}
 LANG_NAME=${2:-}
 
-BOOK=/home/skyl/encorpora/books/nature/biomes-of-the-world/07-boreal-forest
+BOOK=/home/skyl/encorpora/books/nature/biomes-of-the-world/08-tundra
 PACK=$BOOK/packs/ian-chatterbox-v1
 SRC=$PACK/segments.json
 OUT=$PACK/segments_${LANG}.json
@@ -63,14 +63,14 @@ fi
 # Derive segment count from the source (never hardcode — differs per book).
 NSEG=$(/home/skyl/tts_venv/bin/python -c "import json; print(len(json.load(open('$SRC'))['segments']))")
 
-PROMPT_FILE=/tmp/boreal_translate_${LANG}.prompt
+PROMPT_FILE=/tmp/tundra_translate_${LANG}.prompt
 cat > "$PROMPT_FILE" <<PROMPT_EOF
 Translate every segment of a short narration book to $LANG_NAME. This is production content — the file you write goes straight to a TTS engine and gets shipped.
 
 **Read source**: $SRC
 **Write output**: $OUT (do not touch anything else).
 
-**Book context**: "The Boreal Forest" — book 7 of the "Biomes of the World" series. A warm, plain-spoken, third-person tour-guide narration about the taiga: cold winters, brief bright summers, spruce and pine trees, moose, brown bears, lynx, wolves, and the Sami/Evenki/Dene peoples who live there. ~8 minutes of audio.
+**Book context**: "The Tundra" — book 8 of the "Biomes of the World" series. A warm, plain-spoken, third-person tour-guide narration about the tundra: the cold, treeless land north of the boreal forest and high on the world's mountains; frozen ground (permafrost), a short cool summer when the top of the soil thaws, low plants, mosses and lichens, caribou/reindeer, musk oxen, arctic foxes, hares, lemmings, snowy owls, vast summer bird flocks and mosquitoes, and the Inuit, Sami, Nenets, and Chukchi peoples who live there. ~8 minutes of audio.
 
 **Hard rules** (the file will fail downstream pipeline gates otherwise):
 
@@ -103,7 +103,7 @@ echo "[$(date +%T)] [$LANG] codex translate → $OUT"
 # codex exec with --dangerously-bypass-approvals-and-sandbox is the
 # required flag for headless writes (per feedback_codex_sandbox_flag.md).
 codex exec --dangerously-bypass-approvals-and-sandbox --cd "$PACK" "$(cat $PROMPT_FILE)" \
-  > /tmp/boreal_translate_${LANG}.log 2>&1
+  > /tmp/tundra_translate_${LANG}.log 2>&1
 CODEX_RC=$?
 echo "[$(date +%T)] [$LANG] codex rc=$CODEX_RC"
 
@@ -111,10 +111,10 @@ echo "[$(date +%T)] [$LANG] codex rc=$CODEX_RC"
 if [ ! -f "$OUT" ]; then
   echo "codex did not write $OUT — falling back to Claude subagent"
   # This fallback is exercised only when codex fails outright.
-  claude -p "Translate boreal-forest to $LANG_NAME. Read the prompt at $PROMPT_FILE and follow it exactly. The output file $OUT does not yet exist — write it." \
+  claude -p "Translate the tundra book to $LANG_NAME. Read the prompt at $PROMPT_FILE and follow it exactly. The output file $OUT does not yet exist — write it." \
     --dangerously-skip-permissions \
     --allowedTools "Read,Write,Bash" \
-    > /tmp/boreal_translate_${LANG}_claude.log 2>&1
+    > /tmp/tundra_translate_${LANG}_claude.log 2>&1
 fi
 
 # Final verification

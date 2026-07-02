@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tundraen",
+      "text_markdown": "Tundraen"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hvor dette biom findes",
+      "text_markdown": "Hvor dette biom findes"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til tundraen.",
+      "text_markdown": "Velkommen til tundraen.",
+      "tts": {
+        "text": "Velkommen til tundraen.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er et af verdens store biomer.",
+      "text_markdown": "Dette er et af verdens store biomer.",
+      "tts": {
+        "text": "Dette er et af verdens store biomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del af Jorden med sin egen slags vejr, planter og dyr.",
+      "text_markdown": "Et biom er en del af Jorden med sin egen slags vejr, planter og dyr.",
+      "tts": {
+        "text": "Et biom er en del af Jorden med sin egen slags vejr, planter og dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen er et koldt, åbent land, hvor det er for koldt til, at træer kan vokse.",
+      "text_markdown": "Tundraen er et koldt, åbent land, hvor det er for koldt til, at træer kan vokse.",
+      "tts": {
+        "text": "Tundraen er et koldt, åbent land, hvor det er for koldt til, at træer kan vokse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ordet tundra kommer fra et gammelt ord, der betyder en træløs slette.",
+      "text_markdown": "Ordet tundra kommer fra et gammelt ord, der betyder en træløs slette.",
+      "tts": {
+        "text": "Ordet tundra kommer fra et gammelt ord, der betyder en træløs slette.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen er det koldeste biom på land.",
+      "text_markdown": "Tundraen er det koldeste biom på land.",
+      "tts": {
+        "text": "Tundraen er det koldeste biom på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det meste af tundraen ligger i en bred ring omkring toppen af verden.",
+      "text_markdown": "Det meste af tundraen ligger i en bred ring omkring toppen af verden.",
+      "tts": {
+        "text": "Det meste af tundraen ligger i en bred ring omkring toppen af verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den dækker de nordlige kanter af Canada, Alaska og Grønland i Nordamerika.",
+      "text_markdown": "Den dækker de nordlige kanter af Canada, Alaska og Grønland i Nordamerika.",
+      "tts": {
+        "text": "Den dækker de nordlige kanter af Canada, Alaska og Grønland i Nordamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den dækker det yderste nord i Norge, Sverige og Finland i det nordlige Europa.",
+      "text_markdown": "Den dækker det yderste nord i Norge, Sverige og Finland i det nordlige Europa.",
+      "tts": {
+        "text": "Den dækker det yderste nord i Norge, Sverige og Finland i det nordlige Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den dækker Ruslands lange nordkyst tværs over toppen af Asien.",
+      "text_markdown": "Den dækker Ruslands lange nordkyst tværs over toppen af Asien.",
+      "tts": {
+        "text": "Den dækker Ruslands lange nordkyst tværs over toppen af Asien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne kolde ring af land ligger nord for den boreale skov og rundt om det frosne hav.",
+      "text_markdown": "Denne kolde ring af land ligger nord for den boreale skov og rundt om det frosne hav.",
+      "tts": {
+        "text": "Denne kolde ring af land ligger nord for den boreale skov og rundt om det frosne hav.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der findes også en anden slags tundra.",
+      "text_markdown": "Der findes også en anden slags tundra.",
+      "tts": {
+        "text": "Der findes også en anden slags tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Højt oppe på høje bjerge, over de sidste træer, dukker det samme kolde og åbne land op.",
+      "text_markdown": "Højt oppe på høje bjerge, over de sidste træer, dukker det samme kolde og åbne land op.",
+      "tts": {
+        "text": "Højt oppe på høje bjerge, over de sidste træer, dukker det samme kolde og åbne land op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne bjergtundra findes på høje tinder over hele verden, selv nær Jordens varme midte.",
+      "text_markdown": "Denne bjergtundra findes på høje tinder over hele verden, selv nær Jordens varme midte.",
+      "tts": {
+        "text": "Denne bjergtundra findes på høje tinder over hele verden, selv nær Jordens varme midte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uanset hvor den findes, er tundraen et land af lave planter, kold vind og vid åben himmel.",
+      "text_markdown": "Uanset hvor den findes, er tundraen et land af lave planter, kold vind og vid åben himmel.",
+      "tts": {
+        "text": "Uanset hvor den findes, er tundraen et land af lave planter, kold vind og vid åben himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her er der ingen skove.",
+      "text_markdown": "Her er der ingen skove.",
+      "tts": {
+        "text": "Her er der ingen skove.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorden er frosset hård det meste af året.",
+      "text_markdown": "Jorden er frosset hård det meste af året.",
+      "tts": {
+        "text": "Jorden er frosset hård det meste af året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men selv på dette kolde sted finder livet en vej.",
+      "text_markdown": "Men selv på dette kolde sted finder livet en vej.",
+      "tts": {
+        "text": "Men selv på dette kolde sted finder livet en vej.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vejret",
+      "text_markdown": "Vejret"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen er kold, tør og blæsende det meste af året.",
+      "text_markdown": "Tundraen er kold, tør og blæsende det meste af året.",
+      "tts": {
+        "text": "Tundraen er kold, tør og blæsende det meste af året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinteren er lang, mørk og bitterligt kold.",
+      "text_markdown": "Vinteren er lang, mørk og bitterligt kold.",
+      "tts": {
+        "text": "Vinteren er lang, mørk og bitterligt kold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I det yderste nord kan vinteren vare i otte eller ni måneder.",
+      "text_markdown": "I det yderste nord kan vinteren vare i otte eller ni måneder.",
+      "tts": {
+        "text": "I det yderste nord kan vinteren vare i otte eller ni måneder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luften kan falde langt under frysepunktet, koldere end en fryser derhjemme.",
+      "text_markdown": "Luften kan falde langt under frysepunktet, koldere end en fryser derhjemme.",
+      "tts": {
+        "text": "Luften kan falde langt under frysepunktet, koldere end en fryser derhjemme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I mange uger midt i vinteren står solen slet ikke op.",
+      "text_markdown": "I mange uger midt i vinteren står solen slet ikke op.",
+      "tts": {
+        "text": "I mange uger midt i vinteren står solen slet ikke op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landet ligger i et langt blåt og mørkt tusmørke, dag efter dag.",
+      "text_markdown": "Landet ligger i et langt blåt og mørkt tusmørke, dag efter dag.",
+      "tts": {
+        "text": "Landet ligger i et langt blåt og mørkt tusmørke, dag efter dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stærke vinde blæser hen over det åbne land, uden træer til at bremse dem.",
+      "text_markdown": "Stærke vinde blæser hen over det åbne land, uden træer til at bremse dem.",
+      "tts": {
+        "text": "Stærke vinde blæser hen over det åbne land, uden træer til at bremse dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden løfter den tørre sne og driver den hen langs jorden.",
+      "text_markdown": "Vinden løfter den tørre sne og driver den hen langs jorden.",
+      "tts": {
+        "text": "Vinden løfter den tørre sne og driver den hen langs jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der falder meget lidt sne eller regn her.",
+      "text_markdown": "Der falder meget lidt sne eller regn her.",
+      "tts": {
+        "text": "Der falder meget lidt sne eller regn her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen er så tør, at den nogle gange kaldes en kold ørken.",
+      "text_markdown": "Tundraen er så tør, at den nogle gange kaldes en kold ørken.",
+      "tts": {
+        "text": "Tundraen er så tør, at den nogle gange kaldes en kold ørken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men det vand, der falder, kan ikke sive ned i den frosne jord.",
+      "text_markdown": "Men det vand, der falder, kan ikke sive ned i den frosne jord.",
+      "tts": {
+        "text": "Men det vand, der falder, kan ikke sive ned i den frosne jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så det bliver liggende ovenpå, og landet er prikket med lavvandede vandhuller og våd jord.",
+      "text_markdown": "Så det bliver liggende ovenpå, og landet er prikket med lavvandede vandhuller og våd jord.",
+      "tts": {
+        "text": "Så det bliver liggende ovenpå, og landet er prikket med lavvandede vandhuller og våd jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommeren er kort og kølig.",
+      "text_markdown": "Sommeren er kort og kølig.",
+      "tts": {
+        "text": "Sommeren er kort og kølig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle få uger bliver solen på himlen næsten hele dagen og hele natten.",
+      "text_markdown": "I nogle få uger bliver solen på himlen næsten hele dagen og hele natten.",
+      "tts": {
+        "text": "I nogle få uger bliver solen på himlen næsten hele dagen og hele natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toppen af den frosne jord blødgøres, og landet bliver grønt og lyst.",
+      "text_markdown": "Toppen af den frosne jord blødgøres, og landet bliver grønt og lyst.",
+      "tts": {
+        "text": "Toppen af den frosne jord blødgøres, og landet bliver grønt og lyst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selv om sommeren forbliver luften kølig, og frosten kan vende tilbage enhver nat.",
+      "text_markdown": "Selv om sommeren forbliver luften kølig, og frosten kan vende tilbage enhver nat.",
+      "tts": {
+        "text": "Selv om sommeren forbliver luften kølig, og frosten kan vende tilbage enhver nat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så slutter den korte sommer, solen synker lavt, og den lange vinter begynder igen.",
+      "text_markdown": "Så slutter den korte sommer, solen synker lavt, og den lange vinter begynder igen.",
+      "tts": {
+        "text": "Så slutter den korte sommer, solen synker lavt, og den lange vinter begynder igen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vandet",
+      "text_markdown": "Landet og vandet"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vigtigste ved tundraen ligger under dine fødder.",
+      "text_markdown": "Det vigtigste ved tundraen ligger under dine fødder.",
+      "tts": {
+        "text": "Det vigtigste ved tundraen ligger under dine fødder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under overfladen er jorden frosset helt hård hele året rundt.",
+      "text_markdown": "Under overfladen er jorden frosset helt hård hele året rundt.",
+      "tts": {
+        "text": "Under overfladen er jorden frosset helt hård hele året rundt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne frosne jord kaldes permafrost.",
+      "text_markdown": "Denne frosne jord kaldes permafrost.",
+      "tts": {
+        "text": "Denne frosne jord kaldes permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle steder når permafrosten dybere ned end den højeste bygning.",
+      "text_markdown": "Nogle steder når permafrosten dybere ned end den højeste bygning.",
+      "tts": {
+        "text": "Nogle steder når permafrosten dybere ned end den højeste bygning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den har været frosset i tusinder af år.",
+      "text_markdown": "Den har været frosset i tusinder af år.",
+      "tts": {
+        "text": "Den har været frosset i tusinder af år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren tør kun det allerøverste lag af jorden op.",
+      "text_markdown": "Om sommeren tør kun det allerøverste lag af jorden op.",
+      "tts": {
+        "text": "Om sommeren tør kun det allerøverste lag af jorden op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette tynde optøede lag er der, hvor alle planterne må leve.",
+      "text_markdown": "Dette tynde optøede lag er der, hvor alle planterne må leve.",
+      "tts": {
+        "text": "Dette tynde optøede lag er der, hvor alle planterne må leve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres rødder kan ikke gå dybt, for lige under dem er jorden hård som sten.",
+      "text_markdown": "Deres rødder kan ikke gå dybt, for lige under dem er jorden hård som sten.",
+      "tts": {
+        "text": "Deres rødder kan ikke gå dybt, for lige under dem er jorden hård som sten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den frosne jord fanger også vand på overfladen.",
+      "text_markdown": "Den frosne jord fanger også vand på overfladen.",
+      "tts": {
+        "text": "Den frosne jord fanger også vand på overfladen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regn og smeltende sne kan ikke sive væk gennem permafrosten.",
+      "text_markdown": "Regn og smeltende sne kan ikke sive væk gennem permafrosten.",
+      "tts": {
+        "text": "Regn og smeltende sne kan ikke sive væk gennem permafrosten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så om sommeren bliver tundraen et land af lavvandede vandhuller, moser og langsomme vandløb.",
+      "text_markdown": "Så om sommeren bliver tundraen et land af lavvandede vandhuller, moser og langsomme vandløb.",
+      "tts": {
+        "text": "Så om sommeren bliver tundraen et land af lavvandede vandhuller, moser og langsomme vandløb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Set oppefra glimter sommertundraen med tusinder af små damme.",
+      "text_markdown": "Set oppefra glimter sommertundraen med tusinder af små damme.",
+      "tts": {
+        "text": "Set oppefra glimter sommertundraen med tusinder af små damme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selve landet er for det meste fladt eller let bølgende.",
+      "text_markdown": "Selve landet er for det meste fladt eller let bølgende.",
+      "tts": {
+        "text": "Selve landet er for det meste fladt eller let bølgende.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange steder er jorden brudt op i mærkelige former af frysningen og optøningen.",
+      "text_markdown": "Mange steder er jorden brudt op i mærkelige former af frysningen og optøningen.",
+      "tts": {
+        "text": "Mange steder er jorden brudt op i mærkelige former af frysningen og optøningen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorden fryser og løfter sig, tør så op og synker sammen, år efter år.",
+      "text_markdown": "Jorden fryser og løfter sig, tør så op og synker sammen, år efter år.",
+      "tts": {
+        "text": "Jorden fryser og løfter sig, tør så op og synker sammen, år efter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne langsomme bevægelse revner jorden i ringe og striber og lave forhøjninger.",
+      "text_markdown": "Denne langsomme bevægelse revner jorden i ringe og striber og lave forhøjninger.",
+      "tts": {
+        "text": "Denne langsomme bevægelse revner jorden i ringe og striber og lave forhøjninger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraens jord er tynd og mager og kold.",
+      "text_markdown": "Tundraens jord er tynd og mager og kold.",
+      "tts": {
+        "text": "Tundraens jord er tynd og mager og kold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Døde planter nedbrydes meget langsomt i kulden, så god jord bygges kun langsomt op.",
+      "text_markdown": "Døde planter nedbrydes meget langsomt i kulden, så god jord bygges kun langsomt op.",
+      "tts": {
+        "text": "Døde planter nedbrydes meget langsomt i kulden, så god jord bygges kun langsomt op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er et barskt land, frossent og vådt og nøgent, men det er stille fuldt af liv.",
+      "text_markdown": "Det er et barskt land, frossent og vådt og nøgent, men det er stille fuldt af liv.",
+      "tts": {
+        "text": "Det er et barskt land, frossent og vådt og nøgent, men det er stille fuldt af liv.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Planterne",
+      "text_markdown": "Planterne"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraens planter er små, hårdføre og lave mod jorden.",
+      "text_markdown": "Tundraens planter er små, hårdføre og lave mod jorden.",
+      "tts": {
+        "text": "Tundraens planter er små, hårdføre og lave mod jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her er der ingen træer, for træer kan ikke leve i den frosne jord og den kolde vind.",
+      "text_markdown": "Her er der ingen træer, for træer kan ikke leve i den frosne jord og den kolde vind.",
+      "tts": {
+        "text": "Her er der ingen træer, for træer kan ikke leve i den frosne jord og den kolde vind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I stedet er tundraen dækket af lave tæpper af små planter.",
+      "text_markdown": "I stedet er tundraen dækket af lave tæpper af små planter.",
+      "tts": {
+        "text": "I stedet er tundraen dækket af lave tæpper af små planter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At holde sig lav er hemmeligheden ved at leve her.",
+      "text_markdown": "At holde sig lav er hemmeligheden ved at leve her.",
+      "tts": {
+        "text": "At holde sig lav er hemmeligheden ved at leve her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nær jorden er vinden svagere, og luften er lidt varmere.",
+      "text_markdown": "Nær jorden er vinden svagere, og luften er lidt varmere.",
+      "tts": {
+        "text": "Nær jorden er vinden svagere, og luften er lidt varmere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange tundraplanter vokser i tætte puder eller tykke tæpper for at holde på deres varme.",
+      "text_markdown": "Mange tundraplanter vokser i tætte puder eller tykke tæpper for at holde på deres varme.",
+      "tts": {
+        "text": "Mange tundraplanter vokser i tætte puder eller tykke tæpper for at holde på deres varme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mosser vokser tykke og bløde over store dele af jorden.",
+      "text_markdown": "Mosser vokser tykke og bløde over store dele af jorden.",
+      "tts": {
+        "text": "Mosser vokser tykke og bløde over store dele af jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laver vokser på de nøgne klipper og på jorden i grå, grønne og gule pletter.",
+      "text_markdown": "Laver vokser på de nøgne klipper og på jorden i grå, grønne og gule pletter.",
+      "tts": {
+        "text": "Laver vokser på de nøgne klipper og på jorden i grå, grønne og gule pletter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lav er ikke én plante, men to slags liv, der lever sammen som ét.",
+      "text_markdown": "En lav er ikke én plante, men to slags liv, der lever sammen som ét.",
+      "tts": {
+        "text": "En lav er ikke én plante, men to slags liv, der lever sammen som ét.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laver kan leve, hvor næsten intet andet kan, og de vokser meget langsomt.",
+      "text_markdown": "Laver kan leve, hvor næsten intet andet kan, og de vokser meget langsomt.",
+      "tts": {
+        "text": "Laver kan leve, hvor næsten intet andet kan, og de vokser meget langsomt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle laver på tundraen er hundreder af år gamle.",
+      "text_markdown": "Nogle laver på tundraen er hundreder af år gamle.",
+      "tts": {
+        "text": "Nogle laver på tundraen er hundreder af år gamle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Små græsser og lave blomstrende planter vokser mellem mosserne.",
+      "text_markdown": "Små græsser og lave blomstrende planter vokser mellem mosserne.",
+      "tts": {
+        "text": "Små græsser og lave blomstrende planter vokser mellem mosserne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I den korte sommer springer tundraen ud i blomst.",
+      "text_markdown": "I den korte sommer springer tundraen ud i blomst.",
+      "tts": {
+        "text": "I den korte sommer springer tundraen ud i blomst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle få lyse uger er jorden dækket af bittesmå blomster.",
+      "text_markdown": "I nogle få lyse uger er jorden dækket af bittesmå blomster.",
+      "tts": {
+        "text": "I nogle få lyse uger er jorden dækket af bittesmå blomster.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er små gule, hvide, lyserøde og lilla blomster overalt.",
+      "text_markdown": "Der er små gule, hvide, lyserøde og lilla blomster overalt.",
+      "tts": {
+        "text": "Der er små gule, hvide, lyserøde og lilla blomster overalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planterne må blomstre, danne frø og gemme næring meget hurtigt, før kulden vender tilbage.",
+      "text_markdown": "Planterne må blomstre, danne frø og gemme næring meget hurtigt, før kulden vender tilbage.",
+      "tts": {
+        "text": "Planterne må blomstre, danne frø og gemme næring meget hurtigt, før kulden vender tilbage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle få små buske vokser også her, som dværgpil og dværgbirk.",
+      "text_markdown": "Nogle få små buske vokser også her, som dværgpil og dværgbirk.",
+      "tts": {
+        "text": "Nogle få små buske vokser også her, som dværgpil og dværgbirk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er de samme slags træer, der vokser sig høje i varmere lande.",
+      "text_markdown": "Det er de samme slags træer, der vokser sig høje i varmere lande.",
+      "tts": {
+        "text": "Det er de samme slags træer, der vokser sig høje i varmere lande.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men her vokser de som bittesmå buske, kun så høje som din ankel, krybende langs jorden.",
+      "text_markdown": "Men her vokser de som bittesmå buske, kun så høje som din ankel, krybende langs jorden.",
+      "tts": {
+        "text": "Men her vokser de som bittesmå buske, kun så høje som din ankel, krybende langs jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Små bær modnes på nogle af disse lave planter i slutningen af sommeren.",
+      "text_markdown": "Små bær modnes på nogle af disse lave planter i slutningen af sommeren.",
+      "tts": {
+        "text": "Små bær modnes på nogle af disse lave planter i slutningen af sommeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraens dyr og mennesker samler dem, mens de kan.",
+      "text_markdown": "Tundraens dyr og mennesker samler dem, mens de kan.",
+      "tts": {
+        "text": "Tundraens dyr og mennesker samler dem, mens de kan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraens dyr er skabt til at leve med kulde og vind.",
+      "text_markdown": "Tundraens dyr er skabt til at leve med kulde og vind.",
+      "tts": {
+        "text": "Tundraens dyr er skabt til at leve med kulde og vind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af dem har tyk pels eller tykke fjer og et lag fedt for at holde varmen.",
+      "text_markdown": "Mange af dem har tyk pels eller tykke fjer og et lag fedt for at holde varmen.",
+      "tts": {
+        "text": "Mange af dem har tyk pels eller tykke fjer og et lag fedt for at holde varmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraens største dyr er caribouerne, der også kaldes rensdyr.",
+      "text_markdown": "Tundraens største dyr er caribouerne, der også kaldes rensdyr.",
+      "tts": {
+        "text": "Tundraens største dyr er caribouerne, der også kaldes rensdyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Caribouer lever i store flokke og rejser lange strækninger hen over det åbne land.",
+      "text_markdown": "Caribouer lever i store flokke og rejser lange strækninger hen over det åbne land.",
+      "tts": {
+        "text": "Caribouer lever i store flokke og rejser lange strækninger hen over det åbne land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren æder de tundraens planter, og om vinteren graver de gennem sneen efter laver.",
+      "text_markdown": "Om sommeren æder de tundraens planter, og om vinteren graver de gennem sneen efter laver.",
+      "tts": {
+        "text": "Om sommeren æder de tundraens planter, og om vinteren graver de gennem sneen efter laver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moskusoksen er et andet stort dyr på tundraen.",
+      "text_markdown": "Moskusoksen er et andet stort dyr på tundraen.",
+      "tts": {
+        "text": "Moskusoksen er et andet stort dyr på tundraen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En moskusokse har en tung krop og en tyk pels af langt hår, der hænger næsten helt ned til jorden.",
+      "text_markdown": "En moskusokse har en tung krop og en tyk pels af langt hår, der hænger næsten helt ned til jorden.",
+      "tts": {
+        "text": "En moskusokse har en tung krop og en tyk pels af langt hår, der hænger næsten helt ned til jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når ulve kommer nær, stiller moskusokserne sig i en ring med hovedet udad for at holde ungerne i sikkerhed.",
+      "text_markdown": "Når ulve kommer nær, stiller moskusokserne sig i en ring med hovedet udad for at holde ungerne i sikkerhed.",
+      "tts": {
+        "text": "Når ulve kommer nær, stiller moskusokserne sig i en ring med hovedet udad for at holde ungerne i sikkerhed.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulve følger flokkene hen over tundraen og jager de gamle og de svage.",
+      "text_markdown": "Ulve følger flokkene hen over tundraen og jager de gamle og de svage.",
+      "tts": {
+        "text": "Ulve følger flokkene hen over tundraen og jager de gamle og de svage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fjeldræven er lille, med tyk pels, der bliver hvid om vinteren og brun om sommeren.",
+      "text_markdown": "Fjeldræven er lille, med tyk pels, der bliver hvid om vinteren og brun om sommeren.",
+      "tts": {
+        "text": "Fjeldræven er lille, med tyk pels, der bliver hvid om vinteren og brun om sommeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den følger større dyr og æder det, de efterlader, og den jager også små dyr.",
+      "text_markdown": "Den følger større dyr og æder det, de efterlader, og den jager også små dyr.",
+      "tts": {
+        "text": "Den følger større dyr og æder det, de efterlader, og den jager også små dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Polarharen er hvid om vinteren og har korte ører for at holde på sin varme.",
+      "text_markdown": "Polarharen er hvid om vinteren og har korte ører for at holde på sin varme.",
+      "tts": {
+        "text": "Polarharen er hvid om vinteren og har korte ører for at holde på sin varme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under sneen graver små dyr, der kaldes lemminger, tunneler og har travlt hele vinteren.",
+      "text_markdown": "Under sneen graver små dyr, der kaldes lemminger, tunneler og har travlt hele vinteren.",
+      "tts": {
+        "text": "Under sneen graver små dyr, der kaldes lemminger, tunneler og har travlt hele vinteren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lemminger er føde for ræven, uglen og mange andre jægere.",
+      "text_markdown": "Lemminger er føde for ræven, uglen og mange andre jægere.",
+      "tts": {
+        "text": "Lemminger er føde for ræven, uglen og mange andre jægere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sneuglen er en stor hvid ugle, der jager hen over den åbne tundra dag og nat.",
+      "text_markdown": "Sneuglen er en stor hvid ugle, der jager hen over den åbne tundra dag og nat.",
+      "tts": {
+        "text": "Sneuglen er en stor hvid ugle, der jager hen over den åbne tundra dag og nat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den holder udkig fra en lav forhøjning og falder lydløst ned over lemminger og andre små dyr.",
+      "text_markdown": "Den holder udkig fra en lav forhøjning og falder lydløst ned over lemminger og andre små dyr.",
+      "tts": {
+        "text": "Den holder udkig fra en lav forhøjning og falder lydløst ned over lemminger og andre små dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I den korte sommer ankommer enorme flokke af fugle fra syd.",
+      "text_markdown": "I den korte sommer ankommer enorme flokke af fugle fra syd.",
+      "tts": {
+        "text": "I den korte sommer ankommer enorme flokke af fugle fra syd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gæs, ænder og mange små fugle kommer for at yngle på den våde, insektfyldte tundra.",
+      "text_markdown": "Gæs, ænder og mange små fugle kommer for at yngle på den våde, insektfyldte tundra.",
+      "tts": {
+        "text": "Gæs, ænder og mange små fugle kommer for at yngle på den våde, insektfyldte tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kommer, fordi de lange sommerdage og de mange insekter betyder rigeligt med føde.",
+      "text_markdown": "De kommer, fordi de lange sommerdage og de mange insekter betyder rigeligt med føde.",
+      "tts": {
+        "text": "De kommer, fordi de lange sommerdage og de mange insekter betyder rigeligt med føde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle få uger fylder skyer af myg og små fluer luften.",
+      "text_markdown": "I nogle få uger fylder skyer af myg og små fluer luften.",
+      "tts": {
+        "text": "I nogle få uger fylder skyer af myg og små fluer luften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så opfostrer fuglene hurtigt deres unger og flyver sydpå igen, før kulden vender tilbage.",
+      "text_markdown": "Så opfostrer fuglene hurtigt deres unger og flyver sydpå igen, før kulden vender tilbage.",
+      "tts": {
+        "text": "Så opfostrer fuglene hurtigt deres unger og flyver sydpå igen, før kulden vender tilbage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs den nordlige kant, hvor tundraen møder det frosne hav, jager isbjørnen på isen.",
+      "text_markdown": "Langs den nordlige kant, hvor tundraen møder det frosne hav, jager isbjørnen på isen.",
+      "tts": {
+        "text": "Langs den nordlige kant, hvor tundraen møder det frosne hav, jager isbjørnen på isen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Menneskene",
+      "text_markdown": "Menneskene"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mennesker har levet på tundraen i mange tusinder af år.",
+      "text_markdown": "Mennesker har levet på tundraen i mange tusinder af år.",
+      "tts": {
+        "text": "Mennesker har levet på tundraen i mange tusinder af år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At leve her kræver dyb viden om det kolde land og dets dyr.",
+      "text_markdown": "At leve her kræver dyb viden om det kolde land og dets dyr.",
+      "tts": {
+        "text": "At leve her kræver dyb viden om det kolde land og dets dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Nordamerika har inuitterne og andre nordlige folk levet på tundraen og den frosne kyst i meget lang tid.",
+      "text_markdown": "I Nordamerika har inuitterne og andre nordlige folk levet på tundraen og den frosne kyst i meget lang tid.",
+      "tts": {
+        "text": "I Nordamerika har inuitterne og andre nordlige folk levet på tundraen og den frosne kyst i meget lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De jagede caribou, fiskede i floderne og havet og jagede sæler langs isen.",
+      "text_markdown": "De jagede caribou, fiskede i floderne og havet og jagede sæler langs isen.",
+      "tts": {
+        "text": "De jagede caribou, fiskede i floderne og havet og jagede sæler langs isen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lavede varmt tøj af dyreskind og pels, syet til at holde vinden ude.",
+      "text_markdown": "De lavede varmt tøj af dyreskind og pels, syet til at holde vinden ude.",
+      "tts": {
+        "text": "De lavede varmt tøj af dyreskind og pels, syet til at holde vinden ude.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De byggede hjem af det, landet gav dem, og rejste på slæde hen over sneen.",
+      "text_markdown": "De byggede hjem af det, landet gav dem, og rejste på slæde hen over sneen.",
+      "tts": {
+        "text": "De byggede hjem af det, landet gav dem, og rejste på slæde hen over sneen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I det nordlige Europa har samerne fulgt rensdyrene hen over tundraen i mange generationer.",
+      "text_markdown": "I det nordlige Europa har samerne fulgt rensdyrene hen over tundraen i mange generationer.",
+      "tts": {
+        "text": "I det nordlige Europa har samerne fulgt rensdyrene hen over tundraen i mange generationer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rensdyrene gav dem kød, mælk, skind til tøj og en måde at trække slæder på.",
+      "text_markdown": "Rensdyrene gav dem kød, mælk, skind til tøj og en måde at trække slæder på.",
+      "tts": {
+        "text": "Rensdyrene gav dem kød, mælk, skind til tøj og en måde at trække slæder på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I det nordlige Rusland har mange folk gjort tundraen til deres hjem.",
+      "text_markdown": "I det nordlige Rusland har mange folk gjort tundraen til deres hjem.",
+      "tts": {
+        "text": "I det nordlige Rusland har mange folk gjort tundraen til deres hjem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nenetserne, tjuktjerne og andre har drevet rensdyr hen over disse kolde lande i meget lang tid.",
+      "text_markdown": "Nenetserne, tjuktjerne og andre har drevet rensdyr hen over disse kolde lande i meget lang tid.",
+      "tts": {
+        "text": "Nenetserne, tjuktjerne og andre har drevet rensdyr hen over disse kolde lande i meget lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle af dem rejser stadig med deres flokke i dag og flytter med årstiderne.",
+      "text_markdown": "Nogle af dem rejser stadig med deres flokke i dag og flytter med årstiderne.",
+      "tts": {
+        "text": "Nogle af dem rejser stadig med deres flokke i dag og flytter med årstiderne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren følger de rensdyrene nordpå mod kysten.",
+      "text_markdown": "Om sommeren følger de rensdyrene nordpå mod kysten.",
+      "tts": {
+        "text": "Om sommeren følger de rensdyrene nordpå mod kysten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren flytter de sydpå mod læ ved skovkanten.",
+      "text_markdown": "Om vinteren flytter de sydpå mod læ ved skovkanten.",
+      "tts": {
+        "text": "Om vinteren flytter de sydpå mod læ ved skovkanten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Overalt i disse lande lærte menneskene at læse vejret, sneen og isen.",
+      "text_markdown": "Overalt i disse lande lærte menneskene at læse vejret, sneen og isen.",
+      "tts": {
+        "text": "Overalt i disse lande lærte menneskene at læse vejret, sneen og isen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lærte caribouernes og rensdyrenes stier.",
+      "text_markdown": "De lærte caribouernes og rensdyrenes stier.",
+      "tts": {
+        "text": "De lærte caribouernes og rensdyrenes stier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lærte, hvor fiskene samledes, og hvornår fuglene ville komme.",
+      "text_markdown": "De lærte, hvor fiskene samledes, og hvornår fuglene ville komme.",
+      "tts": {
+        "text": "De lærte, hvor fiskene samledes, og hvornår fuglene ville komme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lærte at gemme føde fra den korte sommer, så den kunne holde gennem den lange vinter.",
+      "text_markdown": "De lærte at gemme føde fra den korte sommer, så den kunne holde gennem den lange vinter.",
+      "tts": {
+        "text": "De lærte at gemme føde fra den korte sommer, så den kunne holde gennem den lange vinter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen giver lidt og kræver meget, men mennesker har skabt gode liv her i meget lang tid.",
+      "text_markdown": "Tundraen giver lidt og kræver meget, men mennesker har skabt gode liv her i meget lang tid.",
+      "tts": {
+        "text": "Tundraen giver lidt og kræver meget, men mennesker har skabt gode liv her i meget lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres sange, deres fortællinger og deres sprog voksede op sammen med den kolde vind og det vide åbne land.",
+      "text_markdown": "Deres sange, deres fortællinger og deres sprog voksede op sammen med den kolde vind og det vide åbne land.",
+      "tts": {
+        "text": "Deres sange, deres fortællinger og deres sprog voksede op sammen med den kolde vind og det vide åbne land.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomet i dag",
+      "text_markdown": "Biomet i dag"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen er et af de vildeste og tommeste biomer, men den forandrer sig hurtigt.",
+      "text_markdown": "Tundraen er et af de vildeste og tommeste biomer, men den forandrer sig hurtigt.",
+      "tts": {
+        "text": "Tundraen er et af de vildeste og tommeste biomer, men den forandrer sig hurtigt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Af alle biomerne bliver tundraen varmere hurtigst.",
+      "text_markdown": "Af alle biomerne bliver tundraen varmere hurtigst.",
+      "tts": {
+        "text": "Af alle biomerne bliver tundraen varmere hurtigst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det yderste nord bliver varmere år for år.",
+      "text_markdown": "Det yderste nord bliver varmere år for år.",
+      "tts": {
+        "text": "Det yderste nord bliver varmere år for år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efterhånden som luften bliver varmere, begynder den frosne jord at tø.",
+      "text_markdown": "Efterhånden som luften bliver varmere, begynder den frosne jord at tø.",
+      "tts": {
+        "text": "Efterhånden som luften bliver varmere, begynder den frosne jord at tø.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når permafrosten tør, kan landet synke, revne og blive til mudder.",
+      "text_markdown": "Når permafrosten tør, kan landet synke, revne og blive til mudder.",
+      "tts": {
+        "text": "Når permafrosten tør, kan landet synke, revne og blive til mudder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veje, huse og rørledninger bygget på den frosne jord kan bøje og briste.",
+      "text_markdown": "Veje, huse og rørledninger bygget på den frosne jord kan bøje og briste.",
+      "tts": {
+        "text": "Veje, huse og rørledninger bygget på den frosne jord kan bøje og briste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den optøende jord frigiver også gasser, der havde været låst inde i den frosne jord i meget lang tid.",
+      "text_markdown": "Den optøende jord frigiver også gasser, der havde været låst inde i den frosne jord i meget lang tid.",
+      "tts": {
+        "text": "Den optøende jord frigiver også gasser, der havde været låst inde i den frosne jord i meget lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Disse gasser stiger op i luften og kan gøre hele Jorden en lille smule varmere endnu.",
+      "text_markdown": "Disse gasser stiger op i luften og kan gøre hele Jorden en lille smule varmere endnu.",
+      "tts": {
+        "text": "Disse gasser stiger op i luften og kan gøre hele Jorden en lille smule varmere endnu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efterhånden som tundraen bliver varmere, breder buske og små træer sig langsomt nordpå ind i den.",
+      "text_markdown": "Efterhånden som tundraen bliver varmere, breder buske og små træer sig langsomt nordpå ind i den.",
+      "tts": {
+        "text": "Efterhånden som tundraen bliver varmere, breder buske og små træer sig langsomt nordpå ind i den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle dyr fra det varmere syd flytter også nordpå.",
+      "text_markdown": "Nogle dyr fra det varmere syd flytter også nordpå.",
+      "tts": {
+        "text": "Nogle dyr fra det varmere syd flytter også nordpå.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mennesker kommer også til tundraen for at lede efter olie, gas og metal i jorden.",
+      "text_markdown": "Mennesker kommer også til tundraen for at lede efter olie, gas og metal i jorden.",
+      "tts": {
+        "text": "Mennesker kommer også til tundraen for at lede efter olie, gas og metal i jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres veje og maskiner kan efterlade mærker i landet, der heler meget langsomt i kulden.",
+      "text_markdown": "Deres veje og maskiner kan efterlade mærker i landet, der heler meget langsomt i kulden.",
+      "tts": {
+        "text": "Deres veje og maskiner kan efterlade mærker i landet, der heler meget langsomt i kulden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange mennesker og grupper arbejder i dag på at passe på tundraen.",
+      "text_markdown": "Mange mennesker og grupper arbejder i dag på at passe på tundraen.",
+      "tts": {
+        "text": "Mange mennesker og grupper arbejder i dag på at passe på tundraen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De sætter store parker til side, hvor caribouerne og fuglene stadig kan strejfe omkring.",
+      "text_markdown": "De sætter store parker til side, hvor caribouerne og fuglene stadig kan strejfe omkring.",
+      "tts": {
+        "text": "De sætter store parker til side, hvor caribouerne og fuglene stadig kan strejfe omkring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De samarbejder med de mennesker, der har levet her i mange generationer, om at beskytte landet.",
+      "text_markdown": "De samarbejder med de mennesker, der har levet her i mange generationer, om at beskytte landet.",
+      "tts": {
+        "text": "De samarbejder med de mennesker, der har levet her i mange generationer, om at beskytte landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer tundraen for at forstå, hvordan den forandrer sig, og hvordan man holder den sund.",
+      "text_markdown": "De studerer tundraen for at forstå, hvordan den forandrer sig, og hvordan man holder den sund.",
+      "tts": {
+        "text": "De studerer tundraen for at forstå, hvordan den forandrer sig, og hvordan man holder den sund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraen er skrøbelig og sen til at hele, og den rummer et enormt lager af frossent kulstof.",
+      "text_markdown": "Tundraen er skrøbelig og sen til at hele, og den rummer et enormt lager af frossent kulstof.",
+      "tts": {
+        "text": "Tundraen er skrøbelig og sen til at hele, og den rummer et enormt lager af frossent kulstof.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er vores omsorg værd.",
+      "text_markdown": "Den er vores omsorg værd.",
+      "tts": {
+        "text": "Den er vores omsorg værd.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afslutning",
+      "text_markdown": "Afslutning"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er tundraen.",
+      "text_markdown": "Det er tundraen.",
+      "tts": {
+        "text": "Det er tundraen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et koldt, åbent, træløst land af frossen jord, lave planter og vid lys himmel på toppen af verden.",
+      "text_markdown": "Et koldt, åbent, træløst land af frossen jord, lave planter og vid lys himmel på toppen af verden.",
+      "tts": {
+        "text": "Et koldt, åbent, træløst land af frossen jord, lave planter og vid lys himmel på toppen af verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du nogensinde står i en, så vær stille et øjeblik.",
+      "text_markdown": "Hvis du nogensinde står i en, så vær stille et øjeblik.",
+      "tts": {
+        "text": "Hvis du nogensinde står i en, så vær stille et øjeblik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mærk den kolde vind bevæge sig hen over det åbne land.",
+      "text_markdown": "Mærk den kolde vind bevæge sig hen over det åbne land.",
+      "tts": {
+        "text": "Mærk den kolde vind bevæge sig hen over det åbne land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ned på de bittesmå blomster og det bløde mos under dine fødder.",
+      "text_markdown": "Se ned på de bittesmå blomster og det bløde mos under dine fødder.",
+      "tts": {
+        "text": "Se ned på de bittesmå blomster og det bløde mos under dine fødder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se op på den enorme og tomme himmel.",
+      "text_markdown": "Se op på den enorme og tomme himmel.",
+      "tts": {
+        "text": "Se op på den enorme og tomme himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil mærke biomets stille, tålmodige hjerte slå omkring dig.",
+      "text_markdown": "Du vil mærke biomets stille, tålmodige hjerte slå omkring dig.",
+      "tts": {
+        "text": "Du vil mærke biomets stille, tålmodige hjerte slå omkring dig.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}
